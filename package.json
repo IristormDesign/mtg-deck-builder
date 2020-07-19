@@ -39,7 +39,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "indent": ["warn", "tab"],
+      "no-tabs": "off"
+    }
   },
   "browserslist": [
     "> 1%",
