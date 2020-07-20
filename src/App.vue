@@ -1,20 +1,23 @@
 <template>
 	<div id="app">
 		<header>
-			<h1>Magic: The Gathering Deck List App</h1>
+			<h1>Magic: The Gathering Deck List Organizer</h1>
 		</header>
 
-		<deck-list :deck="deck" />
+		<deck-list v-bind:deck="deck" />
+		<card-adder v-on:addCard="addCard" />
 	</div>
 </template>
 
 <script>
 import DeckList from './components/DeckList.vue'
+import CardAdder from './components/CardAdder.vue'
 
 export default {
 	name: 'App',
 	components: {
-		DeckList
+		DeckList,
+		CardAdder
 	},
 	data () {
 		return {
@@ -22,13 +25,13 @@ export default {
 				{
 					name: 'Forest',
 					type: 'Land',
-					mana: 0,
+					mana: '—',
 					qty: 12
 				},
 				{
 					name: 'Mountain',
 					type: 'Land',
-					mana: 0,
+					mana: '—',
 					qty: 12
 				},
 				{
@@ -57,6 +60,11 @@ export default {
 				}
 			]
 		}
+	},
+	methods: {
+		addCard (card) {
+			this.deck.push(card)
+		}
 	}
 }
 </script>
@@ -68,7 +76,6 @@ $font-family-standard: 'Vollkorn', 'Sitka Heading', serif;
 
 html {
 	font: 18px/1.5 $font-family-standard;
-	font-size: calc(.5vw + 12px);
 	color: #111;
 	background: tan;
 }
