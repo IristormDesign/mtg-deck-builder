@@ -4,7 +4,9 @@
 			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
 		<main>
-			<deck-list v-bind:deck="cardsInDeck" />
+			<h2>{{ deck.name }}</h2>
+			<deck-list v-bind:deckProp="deck.cards" />
+
 			<card-adder v-on:addCardEvent="addCardMethod" />
 		</main>
 	</div>
@@ -22,49 +24,52 @@ export default {
 	},
 	data () {
 		return {
-			cardsInDeck: [
-				{
-					name: 'Forest',
-					type: 'Land',
-					mana: '—',
-					qty: 12
-				},
-				{
-					name: 'Mountain',
-					type: 'Land',
-					mana: '—',
-					qty: 12
-				},
-				{
-					name: 'Jaya’s Greeting',
-					type: 'Instant',
-					mana: '1R',
-					qty: 3
-				},
-				{
-					name: 'Leafkin Avenger',
-					type: 'Creature',
-					mana: '2RG',
-					qty: 2
-				},
-				{
-					name: 'Nyxroot Elemental',
-					type: 'Creature',
-					mana: '4GGG',
-					qty: 2
-				},
-				{
-					name: 'Stonecoil Serpent',
-					type: 'Artifact Creature',
-					mana: 'X',
-					qty: 2
-				}
-			]
+			deck: {
+				name: 'Nyxbloom Deck',
+				cards: [
+					{
+						name: 'Forest',
+						type: 'Land',
+						mana: '—',
+						qty: 12
+					},
+					{
+						name: 'Mountain',
+						type: 'Land',
+						mana: '—',
+						qty: 12
+					},
+					{
+						name: 'Jaya’s Greeting',
+						type: 'Instant',
+						mana: '1R',
+						qty: 3
+					},
+					{
+						name: 'Leafkin Avenger',
+						type: 'Creature',
+						mana: '2RG',
+						qty: 2
+					},
+					{
+						name: 'Nyxbloom Elemental',
+						type: 'Creature',
+						mana: '4GGG',
+						qty: 2
+					},
+					{
+						name: 'Stonecoil Serpent',
+						type: 'Artifact Creature',
+						mana: 'X',
+						qty: 2
+					}
+				]
+			}
 		}
 	},
 	methods: {
 		addCardMethod (card) {
-			this.cardsInDeck.push(card)
+			this.deck.cards.push(card)
 		}
 	}
 }
@@ -76,8 +81,8 @@ export default {
 $font-family-standard: 'Volkhov', 'Georgia', serif;
 
 html {
-	font: 20px/1.5 $font-family-standard;
-	color: #111;
+	font: 18px/1.5 $font-family-standard;
+	color: #222;
 	background: gray;
 }
 body {
@@ -91,9 +96,11 @@ body {
 
 	> header {
 		background: #000;
-		color: orangered;
+		background: radial-gradient(skyblue, navy);
+		color: #fff;
 		padding: 2.25em 1em;
 		text-align: center;
+		text-shadow: 0 0 .75em navy;
 	}
 	main {
 		padding: 0 1.5em 1.5em;
