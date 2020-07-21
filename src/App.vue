@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<header>
-			<h1>Magic: The Gathering Deck List Organizer</h1>
+			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
 		<main>
 			<deck-list v-bind:deck="cardsInDeck" />
@@ -73,12 +73,12 @@ export default {
 <style lang="scss">
 @import 'sass/normalize';
 
-$font-family-standard: 'Vollkorn', 'Palatino Linotype', serif;
+$font-family-standard: 'Volkhov', 'Georgia', serif;
 
 html {
-	font: 18px/1.5 $font-family-standard;
+	font: 20px/1.5 $font-family-standard;
 	color: #111;
-	background: tan;
+	background: gray;
 }
 body {
 	padding: .75em;
@@ -87,12 +87,22 @@ body {
 	margin: 0 auto;
 	max-width: 1024px;
 	background: antiquewhite;
-	padding: 1.5em;
 	box-shadow: 0 .375em .75em rgba(#000, .5);
+
+	> header {
+		background: #000;
+		color: orangered;
+		padding: 2.25em 1em;
+		text-align: center;
+	}
+	main {
+		padding: 0 1.5em 1.5em;
+	}
 }
 h1 {
 	line-height: 1;
 	font-size: 1.5em;
 	margin: 0;
+	text-transform: uppercase;
 }
 </style>
