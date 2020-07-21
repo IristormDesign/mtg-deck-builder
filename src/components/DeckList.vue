@@ -4,7 +4,7 @@
 
 		<div v-if="deck.length == 0">
 			<br>
-			<p>This deck currently has no cards.</p>
+			<p>There are currently no cards in this deck.</p>
 			<br>
 		</div>
 		<table v-else>
@@ -60,11 +60,12 @@ export default {
 	}
 	thead {
 		th {
-			font-size: .875em;
-			font-variant: small-caps;
+			font-size: .6667em;
+			text-transform: uppercase;
+			letter-spacing: (1/32) * 1em;
 			background: saddlebrown;
 			color: antiquewhite;
-			padding: .25em .5em
+			padding: .375em .5em;
 		}
 	}
 	tbody {
@@ -73,7 +74,6 @@ export default {
 		}
 	}
 	.mana-cost {
-		font-family: monospace;
 		letter-spacing: .0833em;
 	}
 </style>

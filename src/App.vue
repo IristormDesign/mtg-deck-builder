@@ -3,9 +3,10 @@
 		<header>
 			<h1>Magic: The Gathering Deck List Organizer</h1>
 		</header>
-
-		<deck-list v-bind:deck="deck" />
-		<card-adder v-on:addCard="addCard" />
+		<main>
+			<deck-list v-bind:deck="cardsInDeck" />
+			<card-adder v-on:addCardEvent="addCardMethod" />
+		</main>
 	</div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
 	},
 	data () {
 		return {
-			deck: [
+			cardsInDeck: [
 				{
 					name: 'Forest',
 					type: 'Land',
@@ -62,8 +63,8 @@ export default {
 		}
 	},
 	methods: {
-		addCard (card) {
-			this.deck.push(card)
+		addCardMethod (card) {
+			this.cardsInDeck.push(card)
 		}
 	}
 }
@@ -72,7 +73,7 @@ export default {
 <style lang="scss">
 @import 'sass/normalize';
 
-$font-family-standard: 'Vollkorn', 'Sitka Heading', serif;
+$font-family-standard: 'Vollkorn', 'Palatino Linotype', serif;
 
 html {
 	font: 18px/1.5 $font-family-standard;
