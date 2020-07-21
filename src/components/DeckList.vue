@@ -9,7 +9,7 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Type</th>
+					<th>Card Type</th>
 					<th>Mana Cost</th>
 					<th>Quantity</th>
 				</tr>
@@ -50,7 +50,7 @@ export default {
 	}
 	thead {
 		th {
-			font-size: .6667em;
+			font-size: .75em;
 			text-transform: uppercase;
 			letter-spacing: (1/32) * 1em;
 			background: saddlebrown;

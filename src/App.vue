@@ -81,7 +81,7 @@ export default {
 $font-family-standard: 'Volkhov', 'Georgia', serif;
 
 html {
-	font: 18px/1.5 $font-family-standard;
+	font: 16px/1.5 $font-family-standard;
 	color: #222;
 	background: gray;
 }
@@ -108,7 +108,7 @@ body {
 }
 h1 {
 	line-height: 1;
-	font-size: 1.5em;
+	font-size: 2em;
 	margin: 0;
 	text-transform: uppercase;
 }
