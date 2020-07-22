@@ -21,8 +21,17 @@
 					<td class="mana-cost">{{ card.mana }}</td>
 					<td class="qty">
 						<button v-on:click="$emit('decQtyEvent', card)">&minus;</button>
+
 						<span>{{ card.qty }}</span>
-						<button v-on:click="$emit('incQtyEvent', card)">+</button>
+
+						<button
+							v-if="card.qty < 4 || card.type == 'Basic Land'"
+							v-on:click="$emit('incQtyEvent', card)"
+						>+</button>
+						<button v-else
+							disabled
+							title="Only up to 4 duplicates of each card are allowed, except for basic land cards which are unlimited."
+						>+</button>
 					</td>
 				</tr>
 			</tbody>
@@ -51,15 +60,15 @@ export default {
 	td {
 		text-align: left;
 		padding: .25em .375em;
-		border: 1px solid #bbb;
+		border: 1px solid #ccc;
 	}
 	thead {
 		th {
 			font-size: .75em;
 			text-transform: uppercase;
 			letter-spacing: (1/32) * 1em;
-			background: saddlebrown;
-			color: #fff;
+			background: #000;
+			color: #ccc;
 			padding: .375em .625em;
 		}
 	}
@@ -68,9 +77,15 @@ export default {
 			transition: all .125s linear;
 
 			&:hover {
-				background: rgba(skyblue, .25);
+				background: rgba(salmon, .25);
 				color: #000;
 				transition-duration: 0s;
+
+				th,
+				td {
+					border-right-color: darksalmon;
+					border-left-color: darksalmon;
+				}
 			}
 		}
 		th {
@@ -82,13 +97,31 @@ export default {
 	}
 	.qty {
 		button {
-			background: orangered;
+			background: salmon;
 			color: #fff;
 			font-weight: bold;
 			line-height: 1;
+			font-size: 1.25em;
 			margin: 0;
 			transition: all .125s ease;
+			border-radius: .375em;
+			border: 2px solid rgba(#000, .75);
+			border-top-color: rgba(#fff, .75);
+			border-right-color: rgba(#000, .5);
+			border-left-color: rgba(#fff, .5);
+			padding: 0 .375em;
+			outline: 0;
+			cursor: pointer;
 
+			&[disabled] {
+				&,
+				&:hover,
+				&:focus {
+					background: gray;
+					cursor: not-allowed;
+					opacity: .375;
+				}
+			}
 			&:first-of-type {
 				margin-right: .375em;
 			}
@@ -97,7 +130,7 @@ export default {
 			}
 			&:hover,
 			&:focus {
-				background: darkred;
+				background: orangered;
 			}
 			&:active {
 				background: orange;

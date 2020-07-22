@@ -104,9 +104,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'sass/normalize';
 
-$font-family-standard: 'Volkhov', 'Georgia', serif;
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+@import 'sass/normalize';
+@import 'sass/variables';
 
 html {
 	font: 16px/1.5 $font-family-standard;
