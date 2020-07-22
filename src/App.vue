@@ -5,7 +5,11 @@
 		</header>
 		<main>
 			<h2>{{ deck.name }}</h2>
-			<deck-list v-bind:deckProp="deck.cards" />
+			<deck-list
+				v-bind:deckProp="deck.cards"
+				v-on:decQtyEvent="decQtyMethod"
+				v-on:incQtyEvent="incQtyMethod"
+			/>
 
 			<card-adder v-on:addCardEvent="addCardMethod" />
 		</main>
@@ -29,13 +33,13 @@ export default {
 				cards: [
 					{
 						name: 'Forest',
-						type: 'Land',
+						type: 'Basic Land',
 						mana: '—',
 						qty: 12
 					},
 					{
 						name: 'Mountain',
-						type: 'Land',
+						type: 'Basic Land',
 						mana: '—',
 						qty: 12
 					},
@@ -47,19 +51,19 @@ export default {
 					},
 					{
 						name: 'Leafkin Avenger',
-						type: 'Creature',
+						type: 'Creature — Elemental',
 						mana: '2RG',
 						qty: 2
 					},
 					{
 						name: 'Nyxbloom Elemental',
-						type: 'Creature',
+						type: 'Creature — Elemental',
 						mana: '4GGG',
 						qty: 2
 					},
 					{
 						name: 'Stonecoil Serpent',
-						type: 'Artifact Creature',
+						type: 'Artifact Creature — Snake',
 						mana: 'X',
 						qty: 2
 					}
@@ -70,6 +74,30 @@ export default {
 	methods: {
 		addCardMethod (card) {
 			this.deck.cards.push(card)
+		},
+		decQtyMethod (card) {
+			card.qty--
+
+			if (card.qty <= 0) {
+				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
+
+				if (confirmRemoval === true) {
+					this.deck.cards = this.deck.cards.filter(
+						eachCard => eachCard.name !== card.name
+					)
+				} else {
+					card.qty = 1
+				}
+			}
+		},
+		incQtyMethod (card) {
+			card.qty++
+
+			if (card.qty >= 4 && card.type !== 'Basic Land') {
+				card.qty = 4
+
+				// To-do: Also disable card's "+" button
+			}
 		}
 	}
 }

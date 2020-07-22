@@ -2,7 +2,7 @@
 	<div class="deck-list">
 		<div v-if="deckProp.length == 0">
 			<br>
-			<p>This deck currently contains no cards.</p>
+			<p>This deck contains no cards.</p>
 			<br>
 		</div>
 		<table v-else>
@@ -19,7 +19,11 @@
 					<th>{{ card.name }}</th>
 					<td>{{ card.type }}</td>
 					<td class="mana-cost">{{ card.mana }}</td>
-					<td>{{ card.qty }}</td>
+					<td class="qty">
+						<button v-on:click="$emit('decQtyEvent', card)">&minus;</button>
+						<span>{{ card.qty }}</span>
+						<button v-on:click="$emit('incQtyEvent', card)">+</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -40,7 +44,8 @@ export default {
 		border: 3px solid #222;
 		border-collapse: collapse;
 		line-height: 1;
-		background: #eee;
+		background: #fff;
+		width: 75%;
 	}
 	th,
 	td {
@@ -60,13 +65,12 @@ export default {
 	}
 	tbody {
 		tr {
-			transition: all .125s ease-out;
+			transition: all .125s linear;
 
 			&:hover {
-				background: #f7f7f7;
+				background: rgba(skyblue, .25);
 				color: #000;
-				transform: scale(1.0833);
-				box-shadow: 0 .125em .25em rgba(#000, .25);
+				transition-duration: 0s;
 			}
 		}
 		th {
@@ -75,5 +79,35 @@ export default {
 	}
 	.mana-cost {
 		letter-spacing: .0833em;
+	}
+	.qty {
+		button {
+			background: orangered;
+			color: #fff;
+			font-weight: bold;
+			line-height: 1;
+			margin: 0;
+			transition: all .125s ease;
+
+			&:first-of-type {
+				margin-right: .375em;
+			}
+			&:last-of-type {
+				margin-left: .375em;
+			}
+			&:hover,
+			&:focus {
+				background: darkred;
+			}
+			&:active {
+				background: orange;
+				transition-duration: 0s;
+			}
+		}
+		span {
+			display: inline-block;
+			width: 1.25em;
+			text-align: center;
+		}
 	}
 </style>
