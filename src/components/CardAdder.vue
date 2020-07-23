@@ -117,34 +117,37 @@ export default {
 </script>
 
 <style scoped lang="scss">
-	h2 {
-		margin-bottom: 0;
-	}
-	label {
-		font-weight: bold;
-		display: block;
-		margin: .375em 0
-	}
-	input {
-		font-size: 1em;
-		line-height: 1.5;
-	}
-	button {
-		font-size: 1em;
-		padding: .375em;
-	}
-	.message {
-		margin-left: .75em;
-		font-size: .875em;
-		display: inline-block
-	}
-  .error-message {
-    color: #d33c40;
-  }
-  .success-message {
-    color: #32a95d;
-  }
-	.has-error {
-		background: #d33c40;
-	}
+#card-adder {
+	clear: both;
+}
+h2 {
+	margin-bottom: 0;
+}
+label {
+	font-weight: bold;
+	display: block;
+	margin: .375em 0
+}
+input {
+	font-size: 1em;
+	line-height: 1.5;
+}
+button {
+	font-size: 1em;
+	padding: .375em;
+}
+.message {
+	margin-left: .75em;
+	font-size: .875em;
+	display: inline-block
+}
+.error-message {
+	color: #d33c40;
+}
+.success-message {
+	color: #32a95d;
+}
+.has-error {
+	background: #d33c40;
+}
 </style>

@@ -7,6 +7,7 @@
 			<h2>{{ deck.name }}</h2>
 			<deck-list
 				v-bind:deckProp="deck.cards"
+				v-on:showCardEvent="showCardMethod"
 				v-on:decQtyEvent="decQtyMethod"
 				v-on:incQtyEvent="incQtyMethod"
 			/>
@@ -29,19 +30,20 @@ export default {
 	data () {
 		return {
 			deck: {
-				name: 'Nyxbloom Deck',
+				name: 'My Nyxbloom Deck',
 				cards: [
 					{
 						name: 'Forest',
-						type: 'Basic Land',
+						type: 'Basic Land — Forest',
 						mana: '—',
-						qty: 12
+						qty: 12,
+						img: 'forest.jpg'
 					},
 					{
 						name: 'Mountain',
-						type: 'Basic Land',
+						type: 'Basic Land — Mountain',
 						mana: '—',
-						qty: 12
+						qty: 10
 					},
 					{
 						name: 'Jaya’s Greeting',
@@ -56,7 +58,7 @@ export default {
 						qty: 2
 					},
 					{
-						name: 'Nyxbloom Elemental',
+						name: 'Nyxbloom Ancient',
 						type: 'Creature — Elemental',
 						mana: '4GGG',
 						qty: 2
@@ -75,6 +77,9 @@ export default {
 		addCardMethod (card) {
 			this.deck.cards.push(card)
 		},
+		showCardMethod (card) {
+
+		},
 		decQtyMethod (card) {
 			card.qty--
 
@@ -92,17 +97,12 @@ export default {
 		},
 		incQtyMethod (card) {
 			card.qty++
-
-			if (card.qty >= 4 && card.type !== 'Basic Land') {
-				card.qty = 4
-			}
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-
 *, *::before, *::after {
 	box-sizing: border-box;
 }
@@ -120,7 +120,6 @@ body {
 }
 #app {
 	margin: 0 auto;
-	max-width: 1024px;
 	background: antiquewhite;
 	box-shadow: 0 .375em .75em rgba(#000, .5);
 
@@ -132,9 +131,9 @@ body {
 		text-align: center;
 		text-shadow: 0 0 .75em navy;
 	}
-	main {
-		padding: 0 1.5em 1.5em;
-	}
+}
+main {
+	padding: 0 1.5em 1.5em;
 }
 h1 {
 	line-height: 1;
