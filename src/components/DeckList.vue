@@ -28,10 +28,7 @@
 							v-if="card.qty < 4 || card.type == 'Basic Land'"
 							v-on:click="$emit('incQtyEvent', card)"
 						>+</button>
-						<button v-else
-							disabled
-							title="Only up to 4 duplicates of each card are allowed, except for basic land cards which are unlimited."
-						>+</button>
+						<button v-else disabled>+</button>
 					</td>
 				</tr>
 			</tbody>
@@ -77,14 +74,14 @@ export default {
 			transition: all .125s linear;
 
 			&:hover {
-				background: rgba(salmon, .25);
+				background: rgba(#faeda6, .25);
 				color: #000;
 				transition-duration: 0s;
 
 				th,
 				td {
-					border-right-color: darksalmon;
-					border-left-color: darksalmon;
+					border-right-color: gold;
+					border-left-color: gold;
 				}
 			}
 		}
@@ -93,33 +90,41 @@ export default {
 		}
 	}
 	.mana-cost {
-		letter-spacing: .0833em;
+		letter-spacing: .125em;
 	}
 	.qty {
+		display: flex;
+		align-items: center;
+		border-bottom: 0;
+		border-left: 0;
+
 		button {
 			background: salmon;
-			color: #fff;
+			color: #000;
 			font-weight: bold;
 			line-height: 1;
 			font-size: 1.25em;
 			margin: 0;
-			transition: all .125s ease;
+			transition: all .125s ease, opacity .25s ease;
 			border-radius: .375em;
-			border: 2px solid rgba(#000, .75);
-			border-top-color: rgba(#fff, .75);
-			border-right-color: rgba(#000, .5);
+			border: 1px solid rgba(#000, .5);
+			border-top-width: 0;
+			border-right-color: rgba(#000, .25);
+			border-bottom-width: 2px;
 			border-left-color: rgba(#fff, .5);
 			padding: 0 .375em;
 			outline: 0;
 			cursor: pointer;
+			position: relative;
+			display: block;
 
 			&[disabled] {
 				&,
 				&:hover,
 				&:focus {
 					background: gray;
-					cursor: not-allowed;
-					opacity: .375;
+					cursor: default;
+					opacity: .333;
 				}
 			}
 			&:first-of-type {
@@ -128,13 +133,18 @@ export default {
 			&:last-of-type {
 				margin-left: .375em;
 			}
-			&:hover,
-			&:focus {
+			&:hover {
 				background: orangered;
+			}
+			&:focus:not(:hover) {
+				outline: 1px dashed #333;
 			}
 			&:active {
 				background: orange;
 				transition-duration: 0s;
+				border-top-width: 0;
+				border-bottom-width: 0;
+				margin-bottom: -2px;
 			}
 		}
 		span {

@@ -95,8 +95,6 @@ export default {
 
 			if (card.qty >= 4 && card.type !== 'Basic Land') {
 				card.qty = 4
-
-				// To-do: Also disable card's "+" button
 			}
 		}
 	}
@@ -114,7 +112,7 @@ export default {
 
 html {
 	font: 16px/1.5 $font-family-standard;
-	color: #222;
+	color: #333;
 	background: gray;
 }
 body {
