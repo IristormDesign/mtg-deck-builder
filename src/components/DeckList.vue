@@ -82,14 +82,14 @@ tbody {
 		transition: all .125s linear;
 
 		&:hover {
-			background: rgba(#faeda6, .25);
+			background: rgba(skyblue, .25);
 			color: #000;
 			transition-duration: 0s;
 
 			th,
 			td {
-				border-right-color: gold;
-				border-left-color: gold;
+				border-right-color: skyblue;
+				border-left-color: skyblue;
 			}
 		}
 	}

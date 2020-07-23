@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<header>
-			<h1>“Magic: The Gathering” Deck List Organizer</h1>
+			<h1>Magic: The Gathering Deck List Organizer</h1>
 		</header>
 		<main>
 			<h2>{{ deck.name }}</h2>
@@ -139,6 +139,6 @@ h1 {
 	line-height: 1;
 	font-size: 2em;
 	margin: 0;
-	text-transform: uppercase;
+	font-family: $font-family-heading;
 }
 </style>

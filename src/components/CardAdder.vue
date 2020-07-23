@@ -117,9 +117,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#card-adder {
-	clear: both;
-}
 h2 {
 	margin-bottom: 0;
 }
