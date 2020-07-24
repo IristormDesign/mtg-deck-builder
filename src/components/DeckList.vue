@@ -1,9 +1,7 @@
 <template>
 	<div id="deck-list">
-		<div v-if="deckProp.length == 0">
-			<br>
+		<div v-if="deckProp.length == 0" class="no-cards">
 			<p>This deck contains no cards.</p>
-			<br>
 		</div>
 		<table v-else>
 			<thead>
@@ -53,6 +51,12 @@ export default {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: .75em;
+}
+.no-cards {
+	grid-column: span 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 table {
 	border: 3px solid #222;
