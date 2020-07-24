@@ -3,21 +3,23 @@
 		<div v-if="deckProp.length == 0" class="no-cards">
 			<p>This deck contains no cards.</p>
 		</div>
-		<table v-else>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Card Type</th>
-					<th>Mana Cost</th>
-					<th>Quantity</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="card in deckProp" v-bind:key="card.name" v-on:click="$emit('showCardEvent', card)">
-					<th>{{ card.name }}</th>
-					<td>{{ card.type }}</td>
-					<td class="mana-cost">{{ card.mana }}</td>
-					<td class="qty">
+		<div v-else class="deck-list">
+			<div class="labels">
+				<div class="button-group">
+					<div>Card Name</div>
+					<div>Mana Cost</div>
+					<div>Card Type</div>
+				</div>
+				<div class="qty-group">Quantity</div>
+			</div>
+			<ul>
+				<li v-for="card in deckProp" v-bind:key="card.name">
+					<button v-on:click="$emit('showCardEvent', card)">
+						<h3 class="name">{{ card.name }}</h3>
+						<div class="mana">{{ card.mana }}</div>
+						<div class="type">{{ card.type }}</div>
+					</button>
+					<div class="qty">
 						<button v-on:click="$emit('decQtyEvent', card)">&minus;</button>
 
 						<span>{{ card.qty }}</span>
@@ -27,10 +29,10 @@
 							v-on:click="$emit('incQtyEvent', card)"
 						>+</button>
 						<button v-else disabled>+</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+					</div>
+				</li>
+			</ul>
+		</div>
 		<div class="card-display">
 			<img src="img/cards/forest.jpg" alt="Card" width="336" height="468">
 		</div>
@@ -47,10 +49,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../sass/variables';
+
 #deck-list {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-gap: .75em;
+	grid-gap: 1.5em;
 }
 .no-cards {
 	grid-column: span 2;
@@ -58,61 +62,112 @@ export default {
 	align-items: center;
 	justify-content: center;
 }
-table {
-	border: 3px solid #222;
-	border-collapse: collapse;
-	line-height: 1;
-	background: #fff;
+.deck-list {
 	grid-column: span 2;
 }
-th,
-td {
-	text-align: left;
-	padding: .25em .375em;
-	border: 1px solid #ccc;
-}
-thead {
-	th {
-		font-size: .75em;
-		text-transform: uppercase;
-		letter-spacing: (1/32) * 1em;
-		background: #000;
-		color: #ccc;
-		padding: .375em .625em;
-	}
-}
-tbody {
-	tr {
-		transition: all .125s linear;
+.labels {
+	display: flex;
+	text-transform: uppercase;
+	justify-content: space-between;
+	font-size: .833em;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-gap: .75em;
+	padding: 0 .5em;
+	font-family: $font-family-heading;
+	color: #bbb;
 
-		&:hover {
-			background: rgba(skyblue, .25);
-			color: #000;
-			transition-duration: 0s;
+	.button-group {
+		display: flex;
+		grid-column: span 7;
 
-			th,
-			td {
-				border-right-color: skyblue;
-				border-left-color: skyblue;
+		div {
+			&:nth-of-type(1) {
+				width: 33.3%;
+			}
+			&:nth-of-type(2) {
+				width: 33.33%;
+			}
+			&:nth-of-type(3) {
+				width: 33.3%;
 			}
 		}
 	}
-	th {
-		text-align: right;
-		word-wrap:unset;
+	.qty-group {
+		grid-column: span 1;
+		text-align: center;
 	}
 }
-.mana-cost {
-	letter-spacing: .125em;
+ul {
+	line-height: 1.25;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-gap: .75em;
+
+	&:hover {
+		.qty {
+			button:not([disabled]) {
+				opacity: 1;
+			}
+		}
+	}
+	> button {
+		background: hsl(0, 0%, 87.5%);
+		display: flex;
+		grid-column: span 7;
+		justify-content: space-between;
+		margin: 2px 0;
+		padding: .167em .375em;
+		border-radius: .5em / 50%;
+		border: 2px outset #ccc;
+		border-top-color: #eee;
+		transition: all .125s linear;
+		width: 100%;
+		text-align: left;
+		margin-right: .375em;
+		align-items: center;
+		line-height: 1.25;
+
+		&:hover,
+		&:focus {
+			background: #eee;
+			transition-duration: 0s;
+			outline: 0;
+		}
+		&:active {
+			background: greenyellow;
+		}
+	}
+}
+.name {
+	font-family: $font-family-heading;
+	font-size: 1.125em;
+	line-height: 1;
+	margin: 0;
+	width: 33.3%;
+}
+.mana {
+	text-align: left;
+	width: 33.3%;
+}
+.type {
+	font-size: .875em;
+	width: 33.3%;
+	font-family: $font-family-heading;
 }
 .qty {
+	grid-column: span 1;
+	width: 100%;
 	display: flex;
 	align-items: center;
-	border-bottom: 0;
-	border-left: 0;
 
 	button {
-		background: salmon;
+		background: tan;
 		color: #000;
 		font-weight: bold;
 		line-height: 1;
@@ -120,24 +175,23 @@ tbody {
 		margin: 0;
 		transition: all .125s ease, opacity .25s ease;
 		border-radius: .375em;
-		border: 1px solid rgba(#000, .5);
-		border-top-width: 0;
-		border-right-color: rgba(#000, .25);
+		border: 1px outset wheat;
 		border-bottom-width: 2px;
-		border-left-color: rgba(#fff, .5);
 		padding: 0 .375em;
 		outline: 0;
 		cursor: pointer;
 		position: relative;
 		display: block;
+		opacity: .667;
 
 		&[disabled] {
 			&,
 			&:hover,
 			&:focus {
 				background: gray;
-				cursor: default;
-				opacity: .333;
+				cursor: not-allowed;
+				opacity: .5;
+				border-color: gray;
 			}
 		}
 		&:first-of-type {
@@ -147,10 +201,13 @@ tbody {
 			margin-left: .375em;
 		}
 		&:hover {
-			background: orangered;
+			background: wheat;
 		}
 		&:focus:not(:hover) {
 			outline: 1px dashed #333;
+		}
+		&:focus {
+			opacity: 1 !important;
 		}
 		&:active {
 			transition-duration: 0s;
@@ -161,7 +218,8 @@ tbody {
 	}
 	span {
 		display: inline-block;
-		width: 1.25em;
+		width: 1em;
+		font-size: 1.125em;
 		text-align: center;
 	}
 }
@@ -173,7 +231,7 @@ tbody {
 		width: 100%;
 		max-width: 672px;
 		height: auto;
-		border-radius: 12px;
+		border-radius: 20px;
 	}
 }
 </style>
