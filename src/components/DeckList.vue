@@ -35,6 +35,7 @@
 		</div>
 		<div class="card-display">
 			<img src="img/cards/forest.jpg" alt="Card" width="336" height="468">
+			<!-- <img v-bind:src="'img/cards/' + card.img" alt="Card" width="336" height="468"> -->
 		</div>
 	</div>
 </template>
@@ -110,7 +111,18 @@ li {
 	grid-gap: .75em;
 
 	&:hover {
+		> button {
+			background: #fff;
+			transition-duration: 0s;
+			outline: 0;
+		}
 		.qty {
+			button {
+				transition-duration: 0s;
+			}
+			button[disabled] {
+				opacity: .5;
+			}
 			button:not([disabled]) {
 				opacity: 1;
 			}
@@ -126,19 +138,13 @@ li {
 		border-radius: .5em / 50%;
 		border: 2px outset #ccc;
 		border-top-color: #eee;
-		transition: all .125s linear;
+		transition: all .125s ease-out;
 		width: 100%;
 		text-align: left;
 		margin-right: .375em;
 		align-items: center;
 		line-height: 1.25;
 
-		&:hover,
-		&:focus {
-			background: #eee;
-			transition-duration: 0s;
-			outline: 0;
-		}
 		&:active {
 			background: greenyellow;
 		}
@@ -174,23 +180,20 @@ li {
 		font-size: 1.25em;
 		margin: 0;
 		transition: all .125s ease, opacity .25s ease;
-		border-radius: .375em;
+		border-radius: .25em;
 		border: 1px outset wheat;
 		border-bottom-width: 2px;
 		padding: 0 .375em;
-		outline: 0;
-		cursor: pointer;
-		position: relative;
-		display: block;
 		opacity: .667;
+		height: 1.333em;
+		font-family: $font-family-heading;
 
 		&[disabled] {
 			&,
-			&:hover,
-			&:focus {
+			&:hover {
 				background: gray;
 				cursor: not-allowed;
-				opacity: .5;
+				opacity: .333;
 				border-color: gray;
 			}
 		}
@@ -202,9 +205,7 @@ li {
 		}
 		&:hover {
 			background: wheat;
-		}
-		&:focus:not(:hover) {
-			outline: 1px dashed #333;
+			outline: 0;
 		}
 		&:focus {
 			opacity: 1 !important;
@@ -218,7 +219,7 @@ li {
 	}
 	span {
 		display: inline-block;
-		width: 1em;
+		width: 1.25em;
 		font-size: 1.125em;
 		text-align: center;
 	}

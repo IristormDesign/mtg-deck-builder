@@ -11,7 +11,6 @@
 				v-on:decQtyEvent="decQtyMethod"
 				v-on:incQtyEvent="incQtyMethod"
 			/>
-
 			<card-adder v-on:addCardEvent="addCardMethod" />
 		</main>
 	</div>
@@ -79,7 +78,8 @@ export default {
 			this.deck.cards.push(card)
 		},
 		showCardMethod (card) {
-
+			// console.log(card.img)
+			// return card.img
 		},
 		decQtyMethod (card) {
 			card.qty--
@@ -113,21 +113,24 @@ export default {
 
 html {
 	font: 16px/1.5 $font-family-standard;
+	background: #000;
+	color: #eee;
 }
 #app {
 	background: #333;
-	color: #fff;
 
 	> header {
 		background: #000;
-		color: orangered;
-		padding: 2.25em 1em;
+		color: #f39135;
+		padding: 1.5em 1em;
 		text-align: center;
+		border-bottom: 2px solid #f39135;
 	}
 }
 main {
 	padding: 0 1.5em 1.5em;
-	border-top: 1px solid rgba(#fff, .125);
+	max-width: 1280px;
+	margin: 0 auto;
 }
 h1 {
 	line-height: 1;
@@ -139,5 +142,8 @@ h1 {
 h2 {
 	font-family: $font-family-heading;
 	color: tan;
+}
+button {
+	cursor: pointer;
 }
 </style>
