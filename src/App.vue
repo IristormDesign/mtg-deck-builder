@@ -5,25 +5,21 @@
 		</header>
 
 		<main>
-			<tab-group>
-				<tab name="One Deck" v-bind:selected="true">
-					<p>Jubby jub</p>
-				</tab>
-				<tab name="Another Deck">
-					<p>Wig wag</p>
-				</tab>
-				<tab name="Deck #3">
-					<p>Zook zeek</p>
-				</tab>
-			</tab-group>
-
-			<h2>{{ deck.name }}</h2>
-			<deck-list
-				v-bind:deckProp="deck.cards"
-				v-on:showCardEvent="showCardMethod"
-				v-on:decQtyEvent="decQtyMethod"
-				v-on:incQtyEvent="incQtyMethod"
-			/>
+			<tabs>
+				<tab-contents
+					v-for="deck in decks"
+					v-bind:key="deck.name"
+					v-bind:name="deck.name"
+				>
+					<h2>{{ deck.name }}</h2>
+					<deck-list
+						v-bind:deckProp="deck.cards"
+						v-on:showCardEvent="showCardMethod"
+						v-on:decQtyEvent="decQtyMethod"
+						v-on:incQtyEvent="incQtyMethod"
+					/>
+				</tab-contents>
+			</tabs>
 			<card-adder v-on:addCardEvent="addCardMethod" />
 		</main>
 	</div>
@@ -32,62 +28,117 @@
 <script>
 import DeckList from './components/DeckList.vue'
 import CardAdder from './components/CardAdder.vue'
-import TabGroup from './components/TabGroup.vue'
-import Tab from './components/Tab.vue'
+import Tabs from './components/Tabs.vue'
+import TabContents from './components/TabContents.vue'
 
 export default {
 	name: 'App',
 	components: {
 		DeckList,
 		CardAdder,
-		TabGroup,
-		Tab
+		Tabs,
+		TabContents
 	},
 	data () {
 		return {
-			deck: {
-				name: 'Mana Overload',
-				cards: [
-					{
-						name: 'Forest',
-						type: 'Basic Land — Forest',
-						mana: '0',
-						qty: 12,
-						img: 'forest.jpg'
-					},
-					{
-						name: 'Mountain',
-						type: 'Basic Land — Mountain',
-						mana: '0',
-						qty: 10
-					},
-					{
-						name: 'Jaya’s Greeting',
-						type: 'Instant',
-						mana: '1 🔴',
-						qty: 4
-					},
-					{
-						name: 'Leafkin Avenger',
-						type: 'Creature — Elemental',
-						mana: '2 🔴🟢',
-						qty: 2
-					},
-					{
-						name: 'Nyxbloom Ancient',
-						type: 'Creature — Elemental',
-						mana: '4 🟢🟢🟢',
-						qty: 2,
-						img: 'nxybloom-ancient.jpg'
-					},
-					{
-						name: 'Stonecoil Serpent',
-						type: 'Artifact Creature — Snake',
-						mana: 'X',
-						qty: 2
-					}
-				]
-			}
+			decks: [
+				{
+					name: 'Mana Overload',
+					cards: [
+						{
+							name: 'Forest',
+							type: 'Basic Land — Forest',
+							mana: '0',
+							qty: 12,
+							img: 'forest.jpg'
+						},
+						{
+							name: 'Mountain',
+							type: 'Basic Land — Mountain',
+							mana: '0',
+							qty: 10
+						},
+						{
+							name: 'Almighty Bushwagg',
+							type: 'Creature — Bushwagg',
+							mana: '🟢',
+							qty: 2
+						},
+						{
+							name: 'Jaya’s Greeting',
+							type: 'Instant',
+							mana: '1 🔴',
+							qty: 4
+						},
+						{
+							name: 'Leafkin Avenger',
+							type: 'Creature — Elemental',
+							mana: '2 🔴🟢',
+							qty: 2
+						},
+						{
+							name: 'Shivan Dragon',
+							type: 'Creature — Dragon',
+							mana: '4 🔴🔴',
+							qty: 2
+						},
+						{
+							name: 'Nyxbloom Ancient',
+							type: 'Creature — Elemental',
+							mana: '4 🟢🟢🟢',
+							qty: 2,
+							img: 'nxybloom-ancient.jpg'
+						},
+						{
+							name: 'Stonecoil Serpent',
+							type: 'Artifact Creature — Snake',
+							mana: 'X',
+							qty: 2
+						}
+					]
+				},
+				{
+					name: 'High Life',
+					cards: [
+						{
+							name: 'Plains',
+							type: 'Basic Land — Plains',
+							mana: '0',
+							qty: 13
+						},
+						{
+							name: 'Island',
+							type: 'Basic Land — Island',
+							mana: '0',
+							qty: 10
+						},
+						{
+							name: 'Azorious Guildgate',
+							type: 'Land – Gate',
+							mana: '0',
+							qty: 2
+						},
+						{
+							name: 'Healer’s Hawk',
+							type: 'Creature — Bird',
+							mana: '⚪',
+							qty: 2
+						},
+						{
+							name: 'Tide Skimmer',
+							type: 'Creature — Drake',
+							mana: '2 🔵🔵',
+							qty: 2
+						},
+						{
+							name: 'Baneslayer Angel',
+							type: 'Creature — Angel',
+							mana: '3 ⚪⚪',
+							qty: 1
+						}
+					]
+				}
+			]
 		}
 	},
 	methods: {

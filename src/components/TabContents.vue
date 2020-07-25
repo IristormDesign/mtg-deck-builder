@@ -6,8 +6,7 @@
 
 <script>
 export default {
-	name: 'tab',
-
+	name: 'tab-contents',
 	props: {
 		name: { required: true },
 		selected: { default: false }

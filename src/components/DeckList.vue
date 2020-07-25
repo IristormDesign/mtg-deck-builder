@@ -6,9 +6,9 @@
 		<div v-else class="deck-list">
 			<div class="labels">
 				<div class="button-group">
-					<div>Card Name</div>
+					<div>Name</div>
 					<div>Mana Cost</div>
-					<div>Card Type</div>
+					<div>Type</div>
 				</div>
 				<div class="qty-group">Quantity</div>
 			</div>
@@ -70,7 +70,7 @@ export default {
 	display: flex;
 	text-transform: uppercase;
 	justify-content: space-between;
-	font-size: .833em;
+	font-size: .75em;
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
 	grid-gap: .75em;
@@ -152,7 +152,7 @@ li {
 }
 .name {
 	font-family: $font-family-heading;
-	font-size: 1.125em;
+	font-size: 1em;
 	line-height: 1;
 	margin: 0;
 	width: 33.3%;

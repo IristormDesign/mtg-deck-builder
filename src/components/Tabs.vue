@@ -6,20 +6,21 @@
 				v-bind:class="{ 'is-active': tab.isActive }"
 				v-bind:key="tab.name"
 			>
-				<a v-bind:href="tab.href" v-on:click="selectTab(tab)">
+				<a
+					v-bind:href="tab.href"
+					v-on:click="selectTabMethod(tab)"
+				>
 					{{ tab.name }}
 				</a>
 			</li>
 		</ul>
-		<div class="tabs-details">
-			<slot></slot>
-		</div>
+		<slot><!-- Tab contents here --></slot>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'tab-group',
+	name: 'tabs',
 
 	data () {
 		return {
@@ -30,7 +31,7 @@ export default {
 		this.tabs = this.$children
 	},
 	methods: {
-		selectTab (selectedTab) {
+		selectTabMethod (selectedTab) {
 			this.tabs.forEach(tab => {
 				tab.isActive = (tab.href === selectedTab.href)
 			})
