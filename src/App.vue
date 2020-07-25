@@ -3,7 +3,20 @@
 		<header>
 			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
+
 		<main>
+			<tab-group>
+				<tab name="One Deck" v-bind:selected="true">
+					<p>Jubby jub</p>
+				</tab>
+				<tab name="Another Deck">
+					<p>Wig wag</p>
+				</tab>
+				<tab name="Deck #3">
+					<p>Zook zeek</p>
+				</tab>
+			</tab-group>
+
 			<h2>{{ deck.name }}</h2>
 			<deck-list
 				v-bind:deckProp="deck.cards"
@@ -19,17 +32,21 @@
 <script>
 import DeckList from './components/DeckList.vue'
 import CardAdder from './components/CardAdder.vue'
+import TabGroup from './components/TabGroup.vue'
+import Tab from './components/Tab.vue'
 
 export default {
 	name: 'App',
 	components: {
 		DeckList,
-		CardAdder
+		CardAdder,
+		TabGroup,
+		Tab
 	},
 	data () {
 		return {
 			deck: {
-				name: 'My Nyxbloom Deck',
+				name: 'Mana Overload',
 				cards: [
 					{
 						name: 'Forest',
@@ -120,11 +137,10 @@ html {
 	background: #333;
 
 	> header {
-		background: #000;
-		color: #f39135;
-		padding: 1.5em 1em;
+		background: linear-gradient(orangered, #000, #000, orangered);
+		color: #ddd;
+		padding: 1em;
 		text-align: center;
-		border-bottom: 2px solid #f39135;
 	}
 }
 main {
@@ -134,7 +150,7 @@ main {
 }
 h1 {
 	line-height: 1;
-	font-size: 2em;
+	font-size: 1.5em;
 	margin: 0;
 	font-family: $font-family-heading;
 	text-transform: uppercase;
@@ -145,5 +161,17 @@ h2 {
 }
 button {
 	cursor: pointer;
+}
+a {
+	color: #f39135;
+	text-decoration: none;
+
+	&:hover {
+		color: orangered;
+		text-decoration: underline;
+	}
+	&:active {
+		color: #fff;
+	}
 }
 </style>
