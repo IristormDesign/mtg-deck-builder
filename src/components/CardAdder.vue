@@ -34,7 +34,7 @@
 			<label>
 				Quantity:
 				<input
-					type="text"
+					type="number"
 					v-model="card.qty"
 					v-bind:class="{ 'has-error': submitting && invalidQty }"
 					v-on:focus="clearStatus"

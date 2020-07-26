@@ -14,7 +14,7 @@
 				</a>
 			</li>
 		</ul>
-		<slot><!-- Tab contents here --></slot>
+		<slot><!-- Tab contents inserted here --></slot>
 	</div>
 </template>
 

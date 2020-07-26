@@ -1,6 +1,6 @@
 <template>
 	<div v-show="isActive">
-		<slot></slot>
+		<slot><!-- Tab contents inserted from App.vue --></slot>
 	</div>
 </template>
 

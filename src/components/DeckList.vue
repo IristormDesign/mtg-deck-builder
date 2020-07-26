@@ -6,7 +6,7 @@
 		<div v-else class="deck-list">
 			<div class="labels">
 				<div class="button-group">
-					<div>Name</div>
+					<div>Card Name</div>
 					<div>Mana Cost</div>
 					<div>Type</div>
 				</div>
