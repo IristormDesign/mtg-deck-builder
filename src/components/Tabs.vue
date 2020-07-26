@@ -60,12 +60,12 @@ export default {
 			}
 		}
 		a {
+			@include heading-font;
 			background: #000;
 			padding: .75em;
 			border-radius: .75em .75em 0 0;
 			display: block;
 			line-height: 1;
-			font-family: $font-family-heading;
 		}
 	}
 }

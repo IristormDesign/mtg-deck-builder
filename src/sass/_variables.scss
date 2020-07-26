@@ -1,2 +1,7 @@
 $font-family-standard: 'Crimson Text', 'Palatino Linotype', serif;
-$font-family-heading: 'Asul', $font-family-standard;
+
+@mixin heading-font {
+	font-family: 'Asul', $font-family-standard;
+	letter-spacing: -(1/24) * 1em;
+	font-weight: bold;
+}

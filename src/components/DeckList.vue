@@ -67,6 +67,7 @@ export default {
 	grid-column: span 2;
 }
 .labels {
+	@include heading-font;
 	display: flex;
 	text-transform: uppercase;
 	justify-content: space-between;
@@ -75,7 +76,6 @@ export default {
 	grid-template-columns: repeat(8, 1fr);
 	grid-gap: .75em;
 	padding: 0 .5em;
-	font-family: $font-family-heading;
 	color: #bbb;
 
 	.button-group {
@@ -151,7 +151,6 @@ li {
 	}
 }
 .name {
-	font-family: $font-family-heading;
 	font-size: 1em;
 	line-height: 1;
 	margin: 0;
@@ -162,9 +161,9 @@ li {
 	width: 33.3%;
 }
 .type {
+	@include heading-font;
 	font-size: .875em;
 	width: 33.3%;
-	font-family: $font-family-heading;
 }
 .qty {
 	grid-column: span 1;
@@ -173,6 +172,7 @@ li {
 	align-items: center;
 
 	button {
+		@include heading-font;
 		background: tan;
 		color: #000;
 		font-weight: bold;
@@ -186,7 +186,6 @@ li {
 		padding: 0 .375em;
 		opacity: .667;
 		height: 1.333em;
-		font-family: $font-family-heading;
 
 		&[disabled] {
 			&,

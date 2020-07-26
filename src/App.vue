@@ -180,7 +180,7 @@ export default {
 @import 'sass/variables';
 
 html {
-	font: 16px/1.5 $font-family-standard;
+	font: 18px/1.5 $font-family-standard;
 	background: #000;
 	color: #eee;
 }
@@ -199,15 +199,19 @@ main {
 	max-width: 1280px;
 	margin: 0 auto;
 }
+h1,
+h2,
+h3,
+h4 {
+	@include heading-font;
+}
 h1 {
 	line-height: 1;
 	font-size: 1.5em;
 	margin: 0;
-	font-family: $font-family-heading;
 	text-transform: uppercase;
 }
 h2 {
-	font-family: $font-family-heading;
 	color: tan;
 }
 button {
