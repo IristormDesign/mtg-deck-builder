@@ -77,6 +77,7 @@ export default {
 	grid-gap: .75em;
 	padding: 0 .5em;
 	color: #bbb;
+	letter-spacing: 0;
 
 	.button-group {
 		display: flex;
@@ -144,6 +145,7 @@ li {
 		margin-right: .375em;
 		align-items: center;
 		line-height: 1.25;
+		color: #111;
 
 		&:active {
 			background: greenyellow;
