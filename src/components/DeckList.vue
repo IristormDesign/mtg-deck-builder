@@ -1,6 +1,6 @@
 <template>
 	<div id="deck-list">
-		<div v-if="deckProp.length == 0" class="no-cards">
+		<div v-if="deckContents.length == 0" class="no-cards">
 			<p>This deck contains no cards.</p>
 		</div>
 		<div v-else class="deck-list">
@@ -13,14 +13,14 @@
 				<div class="qty-group">Quantity</div>
 			</div>
 			<ul>
-				<li v-for="card in deckProp" v-bind:key="card.name">
+				<li v-for="card in deckContents" v-bind:key="card.name">
 					<button v-on:click="$emit('showCardEvent', card)">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
 					</button>
 					<div class="qty">
-						<button v-on:click="$emit('decQtyEvent', card)">&minus;</button>
+						<button v-on:click="$emit('decQtyEvent', card, activeDeck)">&minus;</button>
 
 						<span>{{ card.qty }}</span>
 
@@ -44,7 +44,8 @@
 export default {
 	name: 'deck-list',
 	props: {
-		deckProp: Array
+		activeDeck: Object,
+		deckContents: Array
 	}
 }
 </script>

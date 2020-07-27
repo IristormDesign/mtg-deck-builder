@@ -13,7 +13,8 @@
 				>
 					<h2>{{ deck.name }}</h2>
 					<deck-list
-						v-bind:deckProp="deck.cards"
+						v-bind:activeDeck="deck"
+						v-bind:deckContents="deck.cards"
 						v-on:showCardEvent="showCardMethod"
 						v-on:decQtyEvent="decQtyMethod"
 						v-on:incQtyEvent="incQtyMethod"
@@ -156,14 +157,14 @@ export default {
 			// console.log(card.img)
 			// return card.img
 		},
-		decQtyMethod (card) {
+		decQtyMethod (card, activeDeck) {
 			card.qty--
 
 			if (card.qty <= 0) {
 				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
 
 				if (confirmRemoval === true) {
-					this.deck.cards = this.deck.cards.filter(
+					activeDeck.cards = activeDeck.cards.filter(
 						eachCard => eachCard.name !== card.name
 					)
 				} else {
