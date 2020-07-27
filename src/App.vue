@@ -143,11 +143,14 @@ export default {
 	},
 	methods: {
 		addCardMethod (newCard) {
-			this.decks.forEach(deck => {
+			for (let i = 0; i < this.decks.length; i++) {
+				const deck = this.decks[i]
+
 				if (deck.name === newCard.deckName) {
-					return deck.cards.push(newCard)
+					deck.cards.push(newCard)
+					break
 				}
-			})
+			}
 		},
 		showCardMethod (card) {
 			// console.log(card.img)
