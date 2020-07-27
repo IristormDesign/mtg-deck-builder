@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	font: 18px/1.5 $font-family-standard;
+	background: #000;
+	color: #eee;
+}
+h1,
+h2,
+h3,
+h4 {
+	@include heading-font;
+	color: tan;
+}
+h2 {
+}
+button {
+	cursor: pointer;
+}
+a {
+	color: #f39135;
+	text-decoration: none;
+
+	&:hover {
+		color: orangered;
+		text-decoration: underline;
+	}
+	&:active {
+		color: #fff;
+	}
+}

@@ -175,18 +175,10 @@ export default {
 </script>
 
 <style lang="scss">
-*, *::before, *::after {
-	box-sizing: border-box;
-}
-
 @import 'sass/normalize';
 @import 'sass/variables';
+@import 'sass/general';
 
-html {
-	font: 18px/1.5 $font-family-standard;
-	background: #000;
-	color: #eee;
-}
 #app {
 	background: #333;
 
@@ -202,34 +194,10 @@ main {
 	max-width: 1280px;
 	margin: 0 auto;
 }
-h1,
-h2,
-h3,
-h4 {
-	@include heading-font;
-}
 h1 {
 	line-height: 1;
 	font-size: 1.5em;
 	margin: 0;
 	text-transform: uppercase;
-}
-h2 {
-	color: tan;
-}
-button {
-	cursor: pointer;
-}
-a {
-	color: #f39135;
-	text-decoration: none;
-
-	&:hover {
-		color: orangered;
-		text-decoration: underline;
-	}
-	&:active {
-		color: #fff;
-	}
 }
 </style>

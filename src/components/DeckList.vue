@@ -157,6 +157,7 @@ li {
 	line-height: 1;
 	margin: 0;
 	width: 33.3%;
+	color: inherit;
 }
 .mana {
 	text-align: left;
