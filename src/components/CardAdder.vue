@@ -40,6 +40,15 @@
 					v-on:focus="clearStatus"
 				>
 			</label>
+			<label>
+				Put into Deck:
+				<input
+					type="text"
+					v-model="card.deckName"
+					v-bind:class="{ 'has-error': submitting && invalidQty }"
+					v-on:focus="clearStatus"
+				>
+			</label>
 			<button>Add Card</button>
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
@@ -82,6 +91,9 @@ export default {
 		},
 		invalidQty () {
 			return this.card.qty === ''
+		},
+		invalidDeckName () {
+			return this.card.deckName === ''
 		}
 	},
 	methods: {
@@ -89,7 +101,7 @@ export default {
 			this.clearStatus()
 			this.submitting = true
 
-			if (this.invalidName || this.invalidType || this.invalidMana || this.invalidQty) {
+			if (this.invalidName || this.invalidType || this.invalidMana || this.invalidQty || this.invalidDeckName) {
 				this.error = true
 				return
 			}
@@ -101,7 +113,8 @@ export default {
 				name: '',
 				type: '',
 				mana: '',
-				qty: ''
+				qty: '',
+				deckName: ''
 			}
 			this.error = false
 			this.success = true

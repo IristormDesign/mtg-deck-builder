@@ -142,8 +142,12 @@ export default {
 		}
 	},
 	methods: {
-		addCardMethod (card) {
-			this.deck.cards.push(card)
+		addCardMethod (newCard) {
+			this.decks.forEach(deck => {
+				if (deck.name === newCard.deckName) {
+					return deck.cards.push(newCard)
+				}
+			})
 		},
 		showCardMethod (card) {
 			// console.log(card.img)
