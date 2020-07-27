@@ -46,7 +46,7 @@ export default {
 .tabs {
 	list-style: none;
 	padding: 0;
-	border-bottom: 4px solid #999;
+	border-bottom: 4px solid tan;
 
 	li {
 		display: inline-block;
@@ -54,7 +54,7 @@ export default {
 
 		&.is-active {
 			a {
-				background: #999;
+				background: tan;
 				color: #000;
 				text-decoration: none;
 			}
