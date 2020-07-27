@@ -29,18 +29,18 @@
 </template>
 
 <script>
-import DeckList from './components/DeckList.vue'
-import CardAdder from './components/CardAdder.vue'
 import Tabs from './components/Tabs.vue'
 import TabContents from './components/TabContents.vue'
+import DeckList from './components/DeckList.vue'
+import CardAdder from './components/CardAdder.vue'
 
 export default {
 	name: 'App',
 	components: {
-		DeckList,
-		CardAdder,
 		Tabs,
-		TabContents
+		TabContents,
+		DeckList,
+		CardAdder
 	},
 	data () {
 		return {

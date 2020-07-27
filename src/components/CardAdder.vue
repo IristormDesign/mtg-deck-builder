@@ -34,7 +34,7 @@
 			<label>
 				Quantity:
 				<input
-					type="number" min="1" max="60"
+					type="number" min="1" max="99"
 					v-model="card.qty"
 					v-bind:class="{ 'has-error': submitting && invalidQty }"
 					v-on:focus="clearStatus"
@@ -84,9 +84,6 @@ export default {
 		},
 		invalidQty () {
 			return this.card.qty === ''
-		},
-		invalidDeckName () {
-			return this.card.deckName === ''
 		}
 	},
 	methods: {
