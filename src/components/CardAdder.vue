@@ -25,7 +25,7 @@
 			<label>
 				Mana Cost:
 				<input
-					type="text"
+					type="text" pattern="\d*[WUBRGwubrg]*"
 					v-model="card.mana"
 					v-bind:class="{ 'has-error': submitting && invalidMana }"
 					v-on:focus="clearStatus"
@@ -34,22 +34,15 @@
 			<label>
 				Quantity:
 				<input
-					type="number"
+					type="number" min="1" max="60"
 					v-model="card.qty"
 					v-bind:class="{ 'has-error': submitting && invalidQty }"
 					v-on:focus="clearStatus"
 				>
 			</label>
-			<label>
-				Put into Deck:
-				<input
-					type="text"
-					v-model="card.deckName"
-					v-bind:class="{ 'has-error': submitting && invalidQty }"
-					v-on:focus="clearStatus"
-				>
-			</label>
+
 			<button>Add Card</button>
+
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
 					🛑 Please fill in the required form fields.
@@ -101,20 +94,19 @@ export default {
 			this.clearStatus()
 			this.submitting = true
 
-			if (this.invalidName || this.invalidType || this.invalidMana || this.invalidQty || this.invalidDeckName) {
+			if (this.invalidName || this.invalidType || this.invalidMana || this.invalidQty) {
 				this.error = true
 				return
 			}
 
-			this.$emit('addCardEvent', this.card)
+			this.$emit('addCardEvent', this.card, this.activeDeck)
 
 			this.$refs.first.focus()
 			this.card = {
 				name: '',
 				type: '',
 				mana: '',
-				qty: '',
-				deckName: ''
+				qty: ''
 			}
 			this.error = false
 			this.success = true
@@ -125,6 +117,9 @@ export default {
 			this.success = false
 			this.error = false
 		}
+	},
+	props: {
+		activeDeck: Object
 	}
 }
 </script>

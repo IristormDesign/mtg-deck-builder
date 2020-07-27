@@ -18,9 +18,12 @@
 						v-on:decQtyEvent="decQtyMethod"
 						v-on:incQtyEvent="incQtyMethod"
 					/>
+					<card-adder
+						v-bind:activeDeck="deck"
+						v-on:addCardEvent="addCardMethod"
+					/>
 				</tab-contents>
 			</tabs>
-			<card-adder v-on:addCardEvent="addCardMethod" />
 		</main>
 	</div>
 </template>
@@ -142,15 +145,8 @@ export default {
 		}
 	},
 	methods: {
-		addCardMethod (newCard) {
-			for (let i = 0; i < this.decks.length; i++) {
-				const deck = this.decks[i]
-
-				if (deck.name === newCard.deckName) {
-					deck.cards.push(newCard)
-					break
-				}
-			}
+		addCardMethod (newCard, activeDeck) {
+			activeDeck.cards.push(newCard)
 		},
 		showCardMethod (card) {
 			// console.log(card.img)
