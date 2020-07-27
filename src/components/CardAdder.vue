@@ -68,7 +68,7 @@ export default {
 				name: '',
 				type: '',
 				mana: '',
-				qty: ''
+				qty: '1'
 			}
 		}
 	},
@@ -103,7 +103,7 @@ export default {
 				name: '',
 				type: '',
 				mana: '',
-				qty: ''
+				qty: '1'
 			}
 			this.error = false
 			this.success = true
