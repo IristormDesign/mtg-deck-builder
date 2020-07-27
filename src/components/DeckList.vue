@@ -135,7 +135,7 @@ li {
 		grid-column: span 7;
 		justify-content: space-between;
 		margin: 2px 0;
-		padding: .167em .375em;
+		padding: .083em .375em;
 		border-radius: .5em / 50%;
 		border: 2px outset #ccc;
 		border-top-color: #eee;

@@ -45,7 +45,7 @@
 
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
-					🛑 Please fill in the required form fields.
+					🛑 One or more form fields are invalid.
 				</span>
 				<span v-if="success" class="success-message">
 					✅ The card is now added to the deck.
@@ -125,13 +125,13 @@ h2 {
 	margin-bottom: 0;
 }
 label {
-	font-weight: bold;
 	display: block;
 	margin: .375em 0
 }
 input {
 	font-size: 1em;
 	line-height: 1.5;
+	margin-left: .25em;
 }
 button {
 	font-size: 1em;
