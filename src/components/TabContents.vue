@@ -8,8 +8,12 @@
 export default {
 	name: 'tab-contents',
 	props: {
-		name: { required: true },
-		selected: { default: false }
+		name: {
+			required: true
+		},
+		selected: {
+			default: false
+		}
 	},
 	data () {
 		return {
