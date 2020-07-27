@@ -83,7 +83,7 @@ export default {
 			return this.card.mana === ''
 		},
 		invalidQty () {
-			return this.card.qty === ''
+			return this.card.qty === '' || (this.card.qty > 4 && !RegExp(/^Basic Land\b/).test(this.card.type))
 		}
 	},
 	methods: {
@@ -109,7 +109,6 @@ export default {
 			this.success = true
 			this.submitting = false
 		},
-
 		clearStatus () {
 			this.success = false
 			this.error = false
