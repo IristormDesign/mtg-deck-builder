@@ -12,12 +12,16 @@
 					v-bind:name="deck.name"
 				>
 					<h2>{{ deck.name }}</h2>
+
 					<deck-list
 						v-bind:activeDeck="deck"
 						v-on:showCardEvent="showCardMethod"
 						v-on:decQtyEvent="decQtyMethod"
 						v-on:incQtyEvent="incQtyMethod"
 					/>
+
+					<card-display v-bind:activeDeck="deck" />
+
 					<card-adder
 						v-bind:activeDeck="deck"
 						v-on:addCardEvent="addCardMethod"
@@ -32,6 +36,7 @@
 import Tabs from './components/Tabs.vue'
 import TabContents from './components/TabContents.vue'
 import DeckList from './components/DeckList.vue'
+import CardDisplay from './components/CardDisplay.vue'
 import CardAdder from './components/CardAdder.vue'
 
 export default {
@@ -40,6 +45,7 @@ export default {
 		Tabs,
 		TabContents,
 		DeckList,
+		CardDisplay,
 		CardAdder
 	},
 	data () {
@@ -90,7 +96,7 @@ export default {
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
 							qty: 2,
-							img: 'nxybloom-ancient.jpg'
+							img: 'nyxbloom-ancient.jpg'
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -113,7 +119,8 @@ export default {
 							name: 'Island',
 							type: 'Basic Land — Island',
 							mana: '0',
-							qty: 10
+							qty: 10,
+							img: 'island.jpg'
 						},
 						{
 							name: 'Azorious Guildgate',

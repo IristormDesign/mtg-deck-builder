@@ -33,14 +33,11 @@
 				</li>
 			</ul>
 		</div>
-		<div class="card-display">
-			<img src="img/cards/nyxbloom-ancient.jpg" alt="Card" width="336" height="468">
-			<!-- <img v-bind:src="'img/cards/' + card.img" alt="Card" width="336" height="468"> -->
-		</div>
 	</div>
 </template>
 
 <script>
+
 export default {
 	name: 'deck-list',
 	props: {
