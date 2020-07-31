@@ -60,8 +60,7 @@ export default {
 							name: 'Forest',
 							type: 'Basic Land — Forest',
 							mana: '0',
-							qty: 12,
-							showCard: false
+							qty: 12
 						},
 						{
 							name: 'Mountain',
@@ -97,8 +96,7 @@ export default {
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
-							qty: 2,
-							showCard: false
+							qty: 2
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -154,9 +152,16 @@ export default {
 		}
 	},
 	methods: {
+		// Give every card an object property of `showCard` which is set to false by default.
+		setShowCardToFalse () {
+			this.decks.forEach(deck => {
+				deck.cards.forEach(card => {
+					this.$set(card, 'showCard', false)
+				})
+			})
+		},
 		selectedCardMethod (card) {
-			console.log(card.name)
-
+			this.setShowCardToFalse()
 			card.showCard = true
 		},
 		decQtyMethod (card, deck) {
@@ -182,17 +187,12 @@ export default {
 		}
 	},
 	mounted () {
+		this.setShowCardToFalse()
+
 		// Give each card data the name of the card image file which is based on the card's name.
 		this.decks.forEach(deck => {
 			deck.cards.forEach(card => {
 				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.jpg'
-			})
-		})
-	},
-	created () {
-		this.decks.forEach(deck => {
-			deck.cards.forEach(card => {
-				this.$set(card, 'showCard', false)
 			})
 		})
 	}
