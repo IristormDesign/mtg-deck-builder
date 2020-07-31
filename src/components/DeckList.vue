@@ -13,8 +13,13 @@
 				<div class="qty-group">Quantity</div>
 			</div>
 			<ul>
-				<li v-for="card in activeDeck.cards" v-bind:key="card.name">
-					<button v-on:click="$emit('showCardEvent', card)">
+				<li
+					v-for="card in activeDeck.cards"
+					v-bind:key="card.name"
+				>
+					<button
+						v-on:click="$emit('selectedCardEvent', card)"
+					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>

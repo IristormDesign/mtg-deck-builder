@@ -15,12 +15,14 @@
 
 					<deck-list
 						v-bind:activeDeck="deck"
-						v-on:showCardEvent="showCardMethod"
+						v-on:selectedCardEvent="selectedCardMethod"
 						v-on:decQtyEvent="decQtyMethod"
 						v-on:incQtyEvent="incQtyMethod"
 					/>
 
-					<card-display v-bind:activeDeck="deck" />
+					<card-display
+						v-bind:activeDeck="deck"
+					/>
 
 					<card-adder
 						v-bind:activeDeck="deck"
@@ -59,7 +61,7 @@ export default {
 							type: 'Basic Land — Forest',
 							mana: '0',
 							qty: 12,
-							img: 'forest.jpg'
+							showCard: false
 						},
 						{
 							name: 'Mountain',
@@ -96,7 +98,7 @@ export default {
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
 							qty: 2,
-							img: 'nyxbloom-ancient.jpg'
+							showCard: false
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -152,12 +154,10 @@ export default {
 		}
 	},
 	methods: {
-		addCardMethod (newCard, activeDeck) {
-			activeDeck.cards.push(newCard)
-		},
-		showCardMethod (card) {
-			// console.log(card.img)
-			// return card.img
+		selectedCardMethod (card) {
+			console.log(card.name)
+
+			card.showCard = true
 		},
 		decQtyMethod (card, deck) {
 			card.qty--
@@ -176,7 +176,25 @@ export default {
 		},
 		incQtyMethod (card) {
 			card.qty++
+		},
+		addCardMethod (newCard, activeDeck) {
+			activeDeck.cards.push(newCard)
 		}
+	},
+	mounted () {
+		// Give each card data the name of the card image file which is based on the card's name.
+		this.decks.forEach(deck => {
+			deck.cards.forEach(card => {
+				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.jpg'
+			})
+		})
+	},
+	created () {
+		this.decks.forEach(deck => {
+			deck.cards.forEach(card => {
+				this.$set(card, 'showCard', false)
+			})
+		})
 	}
 }
 </script>

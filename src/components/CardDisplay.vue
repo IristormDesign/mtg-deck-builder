@@ -1,33 +1,34 @@
 <template>
 	<div class="card-display">
-		<img
+		<div
 			v-for="card in activeDeck.cards"
 			v-bind:key="card.name"
-			v-bind:src="'img/cards/' + card.img"
-			alt="Card" width="336" height="468"
 		>
+			<img
+				v-if="card.showCard == true"
+				v-bind:src="'img/cards/' + card.img"
+				v-bind:alt="card.name"
+				width="336" height="468"
+			>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'card-display',
-	data () {
-		return {
-			shownCard: []
-		}
-	},
-	// created () {
-	// this.shownCard = card.img
-	// },
 	props: {
-		// shownCard: Object,
 		activeDeck: Object
+		// showCard: Boolean
 	}
 }
 </script>
 
 <style scoped lang="scss">
 @import '../sass/variables';
+
+.card-display {
+	outline: 3px dashed #00f;
+}
 
 </style>
