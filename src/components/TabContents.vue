@@ -1,5 +1,5 @@
 <template>
-	<div v-show="isActive">
+	<div v-show="isActive" class="tab-contents">
 		<slot><!-- Tab contents inserted from App.vue --></slot>
 	</div>
 </template>
@@ -30,3 +30,13 @@ export default {
 	}
 }
 </script>
+
+<style scoped lang="scss">
+
+.tab-contents {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1.5em;
+}
+
+</style>

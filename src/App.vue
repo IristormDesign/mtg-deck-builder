@@ -119,8 +119,7 @@ export default {
 							name: 'Island',
 							type: 'Basic Land — Island',
 							mana: '0',
-							qty: 10,
-							img: 'island.jpg'
+							qty: 10
 						},
 						{
 							name: 'Azorious Guildgate',
@@ -192,7 +191,7 @@ export default {
 		// Give each card data the name of the card image file which is based on the card's name.
 		this.decks.forEach(deck => {
 			deck.cards.forEach(card => {
-				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.jpg'
+				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 			})
 		})
 	}
@@ -224,5 +223,11 @@ h1 {
 	font-size: 1.5em;
 	margin: 0;
 	text-transform: uppercase;
+}
+.tab-contents {
+	h2 {
+		grid-column: span 3;
+		margin: 0;
+	}
 }
 </style>

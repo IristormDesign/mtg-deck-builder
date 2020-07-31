@@ -1,9 +1,9 @@
 <template>
-	<div id="deck-list">
+	<div class="deck-list">
 		<div v-if="activeDeck.cards.length == 0" class="no-cards">
 			<p>This deck currently has no cards.</p>
 		</div>
-		<div v-else class="deck-list">
+		<div v-else>
 			<div class="labels">
 				<div class="button-group">
 					<div>Card Name</div>
@@ -54,19 +54,13 @@ export default {
 <style scoped lang="scss">
 @import '../sass/variables';
 
-#deck-list {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 1.5em;
+.deck-list {
+	grid-column: span 2;
 }
 .no-cards {
-	grid-column: span 2;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-.deck-list {
-	grid-column: span 2;
 }
 .labels {
 	@include heading-font;
@@ -226,17 +220,6 @@ li {
 		width: 1.25em;
 		font-size: 1.125em;
 		text-align: center;
-	}
-}
-.card-display {
-	grid-column: span 1;
-
-	img {
-		display: block;
-		width: 100%;
-		max-width: 672px;
-		height: auto;
-		border-radius: 20px;
 	}
 }
 </style>

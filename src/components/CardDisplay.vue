@@ -19,16 +19,20 @@ export default {
 	name: 'card-display',
 	props: {
 		activeDeck: Object
-		// showCard: Boolean
 	}
 }
 </script>
 
 <style scoped lang="scss">
-@import '../sass/variables';
 
 .card-display {
-	outline: 3px dashed #00f;
+	grid-column: 3 / 4;
+}
+img {
+	display: block;
+	width: 100%;
+	max-width: 672px;
+	height: auto;
 }
 
 </style>
