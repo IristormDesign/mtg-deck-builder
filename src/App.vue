@@ -96,7 +96,8 @@ export default {
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
-							qty: 2
+							qty: 2,
+							default: true
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -119,7 +120,8 @@ export default {
 							name: 'Island',
 							type: 'Basic Land — Island',
 							mana: '0',
-							qty: 10
+							qty: 10,
+							default: true
 						},
 						{
 							name: 'Azorious Guildgate',
@@ -188,10 +190,13 @@ export default {
 	mounted () {
 		this.setShowCardToFalse()
 
-		// Give each card data the name of the card image file which is based on the card's name.
 		this.decks.forEach(deck => {
 			deck.cards.forEach(card => {
+				// Give each card data the name of the card image file which is based on the card's name.
 				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
+
+				// Show the deck's default card.
+				card.showCard = card.default
 			})
 		})
 	}
