@@ -96,8 +96,7 @@ export default {
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
-							qty: 2,
-							default: true
+							qty: 2
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -105,7 +104,8 @@ export default {
 							mana: 'X',
 							qty: 2
 						}
-					]
+					],
+					defaultCard: 'Nyxbloom Ancient'
 				},
 				{
 					name: 'High Life',
@@ -120,8 +120,7 @@ export default {
 							name: 'Island',
 							type: 'Basic Land — Island',
 							mana: '0',
-							qty: 10,
-							default: true
+							qty: 10
 						},
 						{
 							name: 'Azorious Guildgate',
@@ -147,7 +146,8 @@ export default {
 							mana: '3 ⚪⚪',
 							qty: 1
 						}
-					]
+					],
+					defaultCard: 'Island'
 				}
 			]
 		}
@@ -196,7 +196,9 @@ export default {
 				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 
 				// Show the deck's default card.
-				card.showCard = card.default
+				if (deck.defaultCard === card.name) {
+					card.showCard = true
+				}
 			})
 		})
 	}
