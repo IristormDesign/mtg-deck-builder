@@ -18,7 +18,7 @@
 					v-bind:key="card.name"
 				>
 					<button
-						v-on:click="$emit('selectedCardEvent', card)"
+						v-on:click="$emit('selectedCardEvent', card, activeDeck)"
 					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>

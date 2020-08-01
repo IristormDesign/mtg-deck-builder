@@ -147,22 +147,20 @@ export default {
 							qty: 1
 						}
 					],
-					defaultCard: 'Island'
+					defaultCard: 'Baneslayer Angel'
 				}
 			]
 		}
 	},
 	methods: {
 		// Give every card an object property of `showCard` which is set to false by default.
-		setShowCardToFalse () {
-			this.decks.forEach(deck => {
-				deck.cards.forEach(card => {
-					this.$set(card, 'showCard', false)
-				})
+		setShowCardToFalse (deck) {
+			deck.cards.forEach(card => {
+				this.$set(card, 'showCard', false)
 			})
 		},
-		selectedCardMethod (card) {
-			this.setShowCardToFalse()
+		selectedCardMethod (card, deck) {
+			this.setShowCardToFalse(deck)
 			card.showCard = true
 		},
 		decQtyMethod (card, deck) {
@@ -187,10 +185,10 @@ export default {
 			activeDeck.cards.push(newCard)
 		}
 	},
-	mounted () {
-		this.setShowCardToFalse()
-
+	created () {
 		this.decks.forEach(deck => {
+			this.setShowCardToFalse(deck)
+
 			deck.cards.forEach(card => {
 				// Give each card data the name of the card image file which is based on the card's name.
 				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
