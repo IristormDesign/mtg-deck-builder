@@ -14,6 +14,10 @@
 				</a>
 			</li>
 		</ul>
+		<div v-if="noActiveTabs" class="no-active-tabs">
+			<p>To view a deck list, click on a tab above.</p>
+		</div>
+
 		<slot><!-- Tab contents inserted here --></slot>
 	</div>
 </template>
@@ -29,12 +33,26 @@ export default {
 	},
 	created () {
 		this.tabs = this.$children
+		this.noActiveTabsMethod()
 	},
 	methods: {
 		selectTabMethod (selectedTab) {
 			this.tabs.forEach(tab => {
 				tab.isActive = (tab.href === selectedTab.href)
 			})
+
+			this.noActiveTabsMethod()
+		},
+		noActiveTabsMethod () {
+			for (let i = 0; i < this.tabs.length; i++) {
+				const tab = this.tabs[i]
+
+				if (tab.isActive === true) {
+					this.noActiveTabs = false
+					return
+				}
+			}
+			this.noActiveTabs = true
 		}
 	}
 }
@@ -67,6 +85,13 @@ export default {
 			display: block;
 			line-height: 1;
 		}
+	}
+}
+.no-active-tabs {
+	width: 66.67%;
+
+	p {
+		margin: 3em 3em 1.5em;
 	}
 }
 </style>

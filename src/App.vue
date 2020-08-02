@@ -213,7 +213,6 @@ export default {
 
 	> header {
 		background: linear-gradient(orangered, #000, #000, orangered);
-		color: #ddd;
 		padding: 1em;
 		text-align: center;
 	}

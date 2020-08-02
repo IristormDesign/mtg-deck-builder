@@ -17,13 +17,12 @@
 					v-for="card in activeDeck.cards"
 					v-bind:key="card.name"
 				>
-					<button
-						v-on:click="$emit('selectedCardEvent', card, activeDeck)"
-					>
+					<button v-on:click="$emit('selectedCardEvent', card, activeDeck)">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
 					</button>
+
 					<div class="qty">
 						<button v-on:click="$emit('decQtyEvent', card, activeDeck)">&minus;</button>
 
