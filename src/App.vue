@@ -199,6 +199,11 @@ export default {
 				}
 			})
 		})
+		this.decks.push({
+			name: 'New Deck',
+			cards: [],
+			defaultCard: ''
+		})
 	}
 }
 </script>
