@@ -1,6 +1,6 @@
 <template>
-	<div id="card-adder">
-		<h2>Add Card to Deck</h2>
+	<div class="card-adder">
+		<h2>Add a Card to the Deck</h2>
 		<form v-on:submit.prevent="handleSubmit">
 			<label>
 				Name:
@@ -121,8 +121,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.card-adder {
+	border: 2px solid tan;
+	grid-column: span 2;
+	padding: .75em;
+}
 h2 {
-	margin-bottom: 0;
+	line-height: 1;
+	margin: 0;
 }
 label {
 	display: block;
