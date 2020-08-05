@@ -51,7 +51,6 @@
 					✅ The card is now added to the deck.
 				</span>
 			</div>
-
 		</form>
 	</div>
 </template>
@@ -96,7 +95,7 @@ export default {
 				return
 			}
 
-			this.$emit('addCardEvent', this.card, this.activeDeck)
+			this.$emit('add-card-event', this.card, this.activeDeck)
 
 			this.$refs.first.focus()
 			this.card = {
