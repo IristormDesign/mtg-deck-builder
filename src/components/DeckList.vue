@@ -29,7 +29,7 @@
 						<span>{{ card.qty }}</span>
 
 						<button
-							v-if="card.qty < 4 || RegExp(/^Basic Land\b/).test(card.type)"
+							v-if="card.qty < 4 || (card.qty < 99 && RegExp(/^Basic Land\b/).test(card.type))"
 							v-on:click="$emit('inc-qty-event', card)"
 						>+</button>
 						<button v-else disabled>+</button>
