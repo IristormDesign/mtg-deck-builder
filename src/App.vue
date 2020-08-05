@@ -5,19 +5,45 @@
 		</header>
 
 		<main>
-			<tabs>
+			<tabs
+				v-on:rename-deck-event="renameDeck"
+				v-on:delete-deck-event="deleteDeck"
+			>
 				<tab-contents
 					v-for="deck in decks"
 					v-bind:key="deck.name"
 					v-bind:name="deck.name"
 				>
-					<h2>{{ deck.name }}</h2>
+					<header v-if="editing === deck.name">
+						<h2>
+							<input type="text" v-model="deck.name" />
+						</h2>
+						<button
+							v-on:click="renameDeck(deck)"
+							title="Save changes"
+						>💾</button>
+						<button
+							v-on:click="cancelEdit(deck)"
+							title="Cancel" class="cancel-button"
+						>↩</button>
+					</header>
+					<header v-else>
+						<h2>{{ deck.name }}</h2>
+						<button
+							v-on:click="editMode(deck)"
+							title="Rename this deck"
+						>Rename</button>
+						<button
+							v-on:click="$emit('delete-deck-event', deck.name)"
+							title="Delete this deck"
+						>Delete</button>
+					</header>
 
 					<deck-list
 						v-bind:activeDeck="deck"
-						v-on:selectedCardEvent="selectedCardMethod"
-						v-on:decQtyEvent="decQtyMethod"
-						v-on:incQtyEvent="incQtyMethod"
+						v-on:selected-card-event="selectedCard"
+						v-on:dec-qty-event="decQty"
+						v-on:inc-qty-event="incQty"
 					/>
 
 					<card-display
@@ -26,7 +52,7 @@
 
 					<card-adder
 						v-bind:activeDeck="deck"
-						v-on:addCardEvent="addCardMethod"
+						v-on:add-card-event="addCard"
 					/>
 				</tab-contents>
 			</tabs>
@@ -149,7 +175,8 @@ export default {
 					],
 					defaultCard: 'Baneslayer Angel'
 				}
-			]
+			],
+			editing: null
 		}
 	},
 	methods: {
@@ -159,11 +186,27 @@ export default {
 				this.$set(card, 'showCard', false)
 			})
 		},
-		selectedCardMethod (card, deck) {
+		selectedCard (card, deck) {
 			this.setShowCardToFalse(deck)
 			card.showCard = true
 		},
-		decQtyMethod (card, deck) {
+		editMode (deck) {
+			this.cachedDeck = Object.assign({}, deck)
+			this.editing = deck.name
+		},
+		cancelEdit (deck) {
+			Object.assign(deck, this.cachedDeck)
+			this.editing = null
+		},
+		renameDeck (deck) {
+			// if (deck.name === '') return
+			this.$emit('rename-deck', deck.name, deck)
+			this.editing = null
+		},
+		deleteDeck (deletedDeckName) {
+			this.decks = this.decks.filter(deck => deck.name !== deletedDeckName)
+		},
+		decQty (card, deck) {
 			card.qty--
 
 			if (card.qty <= 0) {
@@ -178,10 +221,10 @@ export default {
 				}
 			}
 		},
-		incQtyMethod (card) {
+		incQty (card) {
 			card.qty++
 		},
-		addCardMethod (newCard, activeDeck) {
+		addCard (newCard, activeDeck) {
 			activeDeck.cards.push(newCard)
 		}
 	},
@@ -234,9 +277,30 @@ h1 {
 	text-transform: uppercase;
 }
 .tab-contents {
-	h2 {
+	header {
 		grid-column: span 3;
-		margin: 0;
+		display: flex;
+		align-items: center;
+
+		h2 {
+			margin: 0;
+			display: inline-block;
+			margin-right: 1em;
+		}
+		button {
+			margin-left: .75em;
+			background: #aaa;
+			color: #000;
+			border-radius: .167em;
+			padding: .167em .25em;
+			min-width: 4.5em;
+
+			&:hover,
+			&:focus {
+				background: #777;
+				color: #fff;
+			}
+		}
 	}
 }
 </style>
