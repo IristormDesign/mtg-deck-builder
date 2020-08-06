@@ -95,7 +95,7 @@ export default {
 				return
 			}
 
-			this.$emit('add-card-event', this.card, this.activeDeck)
+			this.$emit('card-added', this.card, this.activeDeck)
 
 			this.$refs.first.focus()
 			this.card = {

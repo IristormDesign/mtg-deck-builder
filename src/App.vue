@@ -6,8 +6,8 @@
 
 		<main>
 			<tabs
-				v-on:rename-deck-event="renameDeck"
-				v-on:delete-deck-event="deleteDeck"
+				v-on:deck-renamed="renameDeck"
+				v-on:deck-deleted="deleteDeck"
 			>
 				<tab-contents
 					v-for="deck in decks"
@@ -34,16 +34,16 @@
 							title="Rename this deck"
 						>Rename</button>
 						<button
-							v-on:click="$emit('delete-deck-event', deck.name)"
+							v-on:click="$emit('deck-deleted', deck.name)"
 							title="Delete this deck"
 						>Delete</button>
 					</header>
 
 					<deck-list
 						v-bind:activeDeck="deck"
-						v-on:selected-card-event="selectedCard"
-						v-on:dec-qty-event="decQty"
-						v-on:inc-qty-event="incQty"
+						v-on:card-selected="selectedCard"
+						v-on:qty-decreased="decQty"
+						v-on:qty-increased="incQty"
 					/>
 
 					<card-display
@@ -52,7 +52,7 @@
 
 					<card-adder
 						v-bind:activeDeck="deck"
-						v-on:add-card-event="addCard"
+						v-on:card-added="addCard"
 					/>
 				</tab-contents>
 			</tabs>
@@ -200,7 +200,7 @@ export default {
 		},
 		renameDeck (deck) {
 			// if (deck.name === '') return
-			this.$emit('rename-deck', deck.name, deck)
+			this.$emit('deck-renamed', deck.name, deck)
 			this.editing = null
 		},
 		deleteDeck (deletedDeckName) {

@@ -17,20 +17,20 @@
 					v-for="card in activeDeck.cards"
 					v-bind:key="card.name"
 				>
-					<button v-on:click="$emit('selected-card-event', card, activeDeck)">
+					<button v-on:click="$emit('card-selected', card, activeDeck)">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
 					</button>
 
 					<div class="qty">
-						<button v-on:click="$emit('dec-qty-event', card, activeDeck)">&minus;</button>
+						<button v-on:click="$emit('qty-decreased', card, activeDeck)">&minus;</button>
 
 						<span>{{ card.qty }}</span>
 
 						<button
 							v-if="card.qty < 4 || (card.qty < 99 && RegExp(/^Basic Land\b/).test(card.type))"
-							v-on:click="$emit('inc-qty-event', card)"
+							v-on:click="$emit('qty-increased', card)"
 						>+</button>
 						<button v-else disabled>+</button>
 					</div>
