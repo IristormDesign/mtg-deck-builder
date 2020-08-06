@@ -7,7 +7,6 @@
 		<main>
 			<tabs
 				v-on:deck-renamed="renameDeck"
-				v-on:deck-deleted="deleteDeck"
 			>
 				<tab-contents
 					v-for="deck in decks"
@@ -34,7 +33,7 @@
 							title="Rename this deck"
 						>Rename</button>
 						<button
-							v-on:click="$emit('deck-deleted', deck.name)"
+							v-on:click="deleteDeck(deck.name)"
 							title="Delete this deck"
 						>Delete</button>
 					</header>
