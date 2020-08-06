@@ -14,7 +14,7 @@
 					v-bind:key="deck.name"
 					v-bind:name="deck.name"
 				>
-					<header v-if="editing === deck.name">
+					<header v-if="renaming === deck.name">
 						<h2>
 							<input type="text" v-model="deck.name" />
 						</h2>
@@ -176,7 +176,7 @@ export default {
 					defaultCard: 'Baneslayer Angel'
 				}
 			],
-			editing: null
+			renaming: null
 		}
 	},
 	methods: {
@@ -192,16 +192,16 @@ export default {
 		},
 		editMode (deck) {
 			this.cachedDeck = Object.assign({}, deck)
-			this.editing = deck.name
+			this.renaming = deck.name
 		},
 		cancelEdit (deck) {
 			Object.assign(deck, this.cachedDeck)
-			this.editing = null
+			this.renaming = null
 		},
 		renameDeck (deck) {
 			// if (deck.name === '') return
 			this.$emit('deck-renamed', deck.name, deck)
-			this.editing = null
+			this.renaming = null
 		},
 		deleteDeck (deletedDeckName) {
 			this.decks = this.decks.filter(deck => deck.name !== deletedDeckName)
