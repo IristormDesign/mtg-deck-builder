@@ -6,7 +6,7 @@
 
 		<main>
 			<tabs
-				v-on:deck-renamed="renameDeck"
+				v-on:deck-renamed="saveRename"
 			>
 				<tab-contents
 					v-for="deck in decks"
@@ -18,18 +18,18 @@
 							<input type="text" v-model="deck.name" />
 						</h2>
 						<button
-							v-on:click="renameDeck(deck)"
+							v-on:click="saveRename(deck)"
 							title="Save changes"
 						>💾</button>
 						<button
-							v-on:click="cancelEdit(deck)"
+							v-on:click="cancelRename(deck)"
 							title="Cancel" class="cancel-button"
 						>↩</button>
 					</header>
 					<header v-else>
 						<h2>{{ deck.name }}</h2>
 						<button
-							v-on:click="editMode(deck)"
+							v-on:click="renameDeck(deck)"
 							title="Rename this deck"
 						>Rename</button>
 						<button
@@ -189,15 +189,15 @@ export default {
 			this.setShowCardToFalse(deck)
 			card.showCard = true
 		},
-		editMode (deck) {
+		renameDeck (deck) {
 			this.cachedDeck = Object.assign({}, deck)
 			this.renaming = deck.name
 		},
-		cancelEdit (deck) {
+		cancelRename (deck) {
 			Object.assign(deck, this.cachedDeck)
 			this.renaming = null
 		},
-		renameDeck (deck) {
+		saveRename (deck) {
 			// if (deck.name === '') return
 			this.$emit('deck-renamed', deck.name, deck)
 			this.renaming = null
