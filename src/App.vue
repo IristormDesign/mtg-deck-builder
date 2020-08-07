@@ -191,12 +191,12 @@ export default {
 			deck.cachedName = deck.name
 			this.renaming = deck.name
 		},
-		cancelRename (deck) {
-			Object.assign(deck, this.cachedDeck)
-			this.renaming = null
-		},
 		saveRename (deck) {
 			if (deck.name === '') return
+			this.renaming = null
+		},
+		cancelRename (deck) {
+			deck.name = deck.cachedName
 			this.renaming = null
 		},
 		deleteDeck (deletedDeckName) {
