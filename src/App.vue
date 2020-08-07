@@ -5,15 +5,13 @@
 		</header>
 
 		<main>
-			<tabs
-				v-on:deck-renamed="saveRename"
-			>
+			<tabs>
 				<tab-contents
-					v-for="deck in decks"
-					v-bind:key="deck.name"
+					v-for="(deck, i) in decks"
+					v-bind:key="i"
 					v-bind:name="deck.name"
 				>
-					<header v-if="renaming === deck.name">
+					<header v-if="renaming === deck.cachedName">
 						<h2>
 							<input type="text" v-model="deck.name" />
 						</h2>
@@ -190,7 +188,7 @@ export default {
 			card.showCard = true
 		},
 		renameDeck (deck) {
-			this.cachedDeck = Object.assign({}, deck)
+			deck.cachedName = deck.name
 			this.renaming = deck.name
 		},
 		cancelRename (deck) {
@@ -198,8 +196,7 @@ export default {
 			this.renaming = null
 		},
 		saveRename (deck) {
-			// if (deck.name === '') return
-			this.$emit('deck-renamed', deck.name, deck)
+			if (deck.name === '') return
 			this.renaming = null
 		},
 		deleteDeck (deletedDeckName) {
