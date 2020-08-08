@@ -192,7 +192,9 @@ export default {
 			this.renaming = deck.name
 		},
 		saveRename (deck) {
-			if (deck.name === '') return
+			if (deck.name === '') {
+				deck.name = '(Unnamed)'
+			}
 			this.renaming = null
 		},
 		cancelRename (deck) {
