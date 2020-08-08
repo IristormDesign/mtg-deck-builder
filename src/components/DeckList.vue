@@ -57,9 +57,7 @@ export default {
 	grid-column: span 2;
 }
 .no-cards {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	margin: 1.5em;
 }
 .labels {
 	@include heading-font;
