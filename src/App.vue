@@ -15,7 +15,7 @@
 						<form>
 							<template v-if="renaming === deck.cachedName">
 								<h2>
-									<input type="text" v-model.lazy="deck.name" />
+									<input type="text" v-model.lazy="deck.name" v-focus />
 								</h2>
 								<button
 									type="submit"
@@ -179,6 +179,13 @@ export default {
 				}
 			],
 			renaming: null
+		}
+	},
+	directives: {
+		focus: {
+			inserted: function (el) {
+				el.focus()
+			}
 		}
 	},
 	methods: {
