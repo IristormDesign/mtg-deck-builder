@@ -11,29 +11,34 @@
 					v-bind:key="i"
 					v-bind:name="deck.name"
 				>
-					<header v-if="renaming === deck.cachedName">
-						<h2>
-							<input type="text" v-model="deck.name" />
-						</h2>
-						<button
-							v-on:click="saveRename(deck)"
-							title="Save changes"
-						>💾</button>
-						<button
-							v-on:click="cancelRename(deck)"
-							title="Cancel" class="cancel-button"
-						>↩</button>
-					</header>
-					<header v-else>
-						<h2>{{ deck.name }}</h2>
-						<button
-							v-on:click="renameDeck(deck)"
-							title="Rename this deck"
-						>Rename</button>
-						<button
-							v-on:click="deleteDeck(deck.name)"
-							title="Delete this deck"
-						>Delete</button>
+					<header>
+						<form>
+							<template v-if="renaming === deck.cachedName">
+								<h2>
+									<input type="text" v-model.lazy="deck.name" />
+								</h2>
+								<button
+									type="submit"
+									v-on:click="saveRename(deck)"
+									title="Save changes"
+								>Save</button>
+								<button
+									v-on:click="cancelRename(deck)"
+									title="Cancel"
+								>Cancel</button>
+							</template>
+							<template v-else>
+								<h2>{{ deck.name }}</h2>
+								<button
+									v-on:click="renameDeck(deck)"
+									title="Rename this deck"
+								>Rename</button>
+								<button
+									v-on:click="deleteDeck(deck.name)"
+									title="Delete this deck"
+								>Delete</button>
+							</template>
+						</form>
 					</header>
 
 					<deck-list
