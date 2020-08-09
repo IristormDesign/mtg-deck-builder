@@ -4,7 +4,9 @@
 			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
 		<main>
-			<tabs>
+			<tabs
+				v-on:create-deck="createDeck"
+			>
 				<tab-contents
 					v-for="(deck, i) in decks"
 					v-bind:key="i"
@@ -187,6 +189,38 @@ export default {
 		addCard (newCard, activeDeck) {
 			activeDeck.cards.push(newCard)
 		},
+		createDeck () {
+			let newDeckName = prompt('Enter a name for this new deck:')
+
+			function checkExistingDeckName (decks) {
+				// TO-DO: Name-checking should be case insensitive.
+
+				for (let i = 0; i < decks.length; i++) {
+					if (newDeckName === decks[i].name) {
+						return true
+					}
+				}
+				return false
+			}
+			function applyNewDeckName (decks) {
+				if (newDeckName) {
+					if (checkExistingDeckName(decks)) {
+						newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please enter a different name.')
+
+						applyNewDeckName(decks)
+					} else {
+						decks.push({
+							name: newDeckName,
+							cards: [],
+							defaultCard: ''
+						})
+
+						// TO-DO: Switch to new deck tab.
+					}
+				}
+			}
+			applyNewDeckName(this.decks)
+		},
 		deleteDeck (deletedDeckName) {
 			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')
 
@@ -210,11 +244,6 @@ export default {
 					card.showCard = true
 				}
 			})
-		})
-		this.decks.push({
-			name: 'New Deck',
-			cards: [],
-			defaultCard: ''
 		})
 	}
 }

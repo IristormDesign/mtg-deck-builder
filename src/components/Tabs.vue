@@ -13,6 +13,13 @@
 					{{ tab.name }}
 				</a>
 			</li>
+			<li>
+				<a
+					href="#"
+					title="Create a new deck list"
+					v-on:click="$emit('create-deck')"
+				>+</a>
+			</li>
 		</ul>
 		<div v-if="noActiveTabs" class="no-active-tabs">
 			<p>To view a deck list, click on a tab above.</p>
