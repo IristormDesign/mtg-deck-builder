@@ -194,10 +194,8 @@ export default {
 			let newDeckName = prompt('Enter a name for this new deck:')
 
 			function checkExistingDeckName (decks) {
-				// TO-DO: Name-checking should be case insensitive.
-
 				for (let i = 0; i < decks.length; i++) {
-					if (newDeckName === decks[i].name) {
+					if (newDeckName.toUpperCase() === decks[i].name.toUpperCase()) {
 						return true
 					}
 				}
