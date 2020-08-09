@@ -12,30 +12,52 @@
 					v-bind:name="deck.name"
 				>
 					<header>
-						<form>
+						<form @submit.prevent>
 							<template v-if="renaming === deck.cachedName">
 								<h2>
 									<input type="text" v-model.lazy="deck.name" v-focus />
 								</h2>
 								<button
-									type="submit"
+									title="Save changes" type="submit"
 									v-on:click="saveRename(deck)"
-									title="Save changes"
 								>Save</button>
 								<button
-									v-on:click="cancelRename(deck)"
 									title="Cancel"
+									v-on:click="cancelRename(deck)"
 								>Cancel</button>
 							</template>
+
+							<template v-else-if="editingDefaultCard === deck.name">
+								<h2>{{ deck.name }}</h2>
+								<select id="defaultCardOptions">
+									<option value="">&darr; Select a default card</option>
+									<option v-for="card in deck.cards" v-bind:key="card.name">
+										{{ card.name }}
+									</option>
+								</select>
+								<button
+									title="Save changes" type="submit"
+									v-on:click="saveDefaultCard(deck)"
+								>Save</button>
+								<button
+									title="Cancel"
+									v-on:click="cancelDefaultCard(deck)"
+								>Cancel</button>
+							</template>
+
 							<template v-else>
 								<h2>{{ deck.name }}</h2>
 								<button
-									v-on:click="renameDeck(deck)"
 									title="Rename this deck"
+									v-on:click="renameDeck(deck)"
 								>Rename</button>
 								<button
-									v-on:click="deleteDeck(deck.name)"
+									title="Set the default card of this deck"
+									v-on:click="setDefaultCard(deck)"
+								>Default Card</button>
+								<button
 									title="Delete this deck"
+									v-on:click="deleteDeck(deck.name)"
 								>Delete</button>
 							</template>
 						</form>
@@ -178,7 +200,8 @@ export default {
 					defaultCard: 'Baneslayer Angel'
 				}
 			],
-			renaming: null
+			renaming: null,
+			editingDefaultCard: null
 		}
 	},
 	directives: {
@@ -212,6 +235,20 @@ export default {
 		cancelRename (deck) {
 			deck.name = deck.cachedName
 			this.renaming = null
+		},
+		setDefaultCard (deck) {
+			deck.cachedDefaultCard = deck.defaultCard
+			this.editingDefaultCard = deck.name
+		},
+		saveDefaultCard (deck) {
+			const selectedDefaultCard = document.getElementById('defaultCardOptions')
+
+			this.editingDefaultCard = null
+			deck.defaultCard = selectedDefaultCard.options[selectedDefaultCard.selectedIndex].value
+		},
+		cancelDefaultCard (deck) {
+			deck.defaultCard = deck.cachedDefaultCard
+			this.editingDefaultCard = null
 		},
 		deleteDeck (deletedDeckName) {
 			this.decks = this.decks.filter(deck => deck.name !== deletedDeckName)
