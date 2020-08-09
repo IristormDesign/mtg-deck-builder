@@ -41,7 +41,6 @@
 </template>
 
 <script>
-
 export default {
 	name: 'deck-list',
 	props: {

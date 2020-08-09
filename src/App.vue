@@ -3,7 +3,6 @@
 		<header>
 			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
-
 		<main>
 			<tabs>
 				<tab-contents
@@ -11,69 +10,19 @@
 					v-bind:key="i"
 					v-bind:name="deck.name"
 				>
-					<header>
-						<form @submit.prevent>
-							<template v-if="renaming === deck.cachedName">
-								<h2>
-									<input type="text" v-model.lazy="deck.name" v-focus />
-								</h2>
-								<button
-									title="Save changes" type="submit"
-									v-on:click="saveRename(deck)"
-								>Save</button>
-								<button
-									title="Cancel"
-									v-on:click="cancelRename(deck)"
-								>Cancel</button>
-							</template>
-
-							<template v-else-if="editingDefaultCard === deck.name">
-								<h2>{{ deck.name }}</h2>
-								<select id="defaultCardOptions">
-									<option value="">&darr; Select a default card</option>
-									<option v-for="card in deck.cards" v-bind:key="card.name">
-										{{ card.name }}
-									</option>
-								</select>
-								<button
-									title="Save changes" type="submit"
-									v-on:click="saveDefaultCard(deck)"
-								>Save</button>
-								<button
-									title="Cancel"
-									v-on:click="cancelDefaultCard(deck)"
-								>Cancel</button>
-							</template>
-
-							<template v-else>
-								<h2>{{ deck.name }}</h2>
-								<button
-									title="Rename this deck"
-									v-on:click="renameDeck(deck)"
-								>Rename</button>
-								<button
-									title="Set the default card of this deck"
-									v-on:click="setDefaultCard(deck)"
-								>Default Card</button>
-								<button
-									title="Delete this deck"
-									v-on:click="deleteDeck(deck.name)"
-								>Delete</button>
-							</template>
-						</form>
-					</header>
-
+					<deck-header
+						v-bind:deck="deck"
+						v-on:deck-deleted="deleteDeck"
+					/>
 					<deck-list
 						v-bind:activeDeck="deck"
 						v-on:card-selected="selectedCard"
 						v-on:qty-decreased="decQty"
 						v-on:qty-increased="incQty"
 					/>
-
 					<card-display
 						v-bind:activeDeck="deck"
 					/>
-
 					<card-adder
 						v-bind:activeDeck="deck"
 						v-on:card-added="addCard"
@@ -87,6 +36,7 @@
 <script>
 import Tabs from './components/Tabs.vue'
 import TabContents from './components/TabContents.vue'
+import DeckHeader from './components/DeckHeader.vue'
 import DeckList from './components/DeckList.vue'
 import CardDisplay from './components/CardDisplay.vue'
 import CardAdder from './components/CardAdder.vue'
@@ -96,6 +46,7 @@ export default {
 	components: {
 		Tabs,
 		TabContents,
+		DeckHeader,
 		DeckList,
 		CardDisplay,
 		CardAdder
@@ -204,13 +155,6 @@ export default {
 			editingDefaultCard: null
 		}
 	},
-	directives: {
-		focus: {
-			inserted: function (el) {
-				el.focus()
-			}
-		}
-	},
 	methods: {
 		// Give every card an object property of `showCard` which is set to false by default.
 		setShowCardToFalse (deck) {
@@ -221,37 +165,6 @@ export default {
 		selectedCard (card, deck) {
 			this.setShowCardToFalse(deck)
 			card.showCard = true
-		},
-		renameDeck (deck) {
-			deck.cachedName = deck.name
-			this.renaming = deck.name
-		},
-		saveRename (deck) {
-			if (deck.name === '') {
-				deck.name = '(Unnamed)'
-			}
-			this.renaming = null
-		},
-		cancelRename (deck) {
-			deck.name = deck.cachedName
-			this.renaming = null
-		},
-		setDefaultCard (deck) {
-			deck.cachedDefaultCard = deck.defaultCard
-			this.editingDefaultCard = deck.name
-		},
-		saveDefaultCard (deck) {
-			const selectedDefaultCard = document.getElementById('defaultCardOptions')
-
-			this.editingDefaultCard = null
-			deck.defaultCard = selectedDefaultCard.options[selectedDefaultCard.selectedIndex].value
-		},
-		cancelDefaultCard (deck) {
-			deck.defaultCard = deck.cachedDefaultCard
-			this.editingDefaultCard = null
-		},
-		deleteDeck (deletedDeckName) {
-			this.decks = this.decks.filter(deck => deck.name !== deletedDeckName)
 		},
 		decQty (card, deck) {
 			card.qty--
@@ -273,6 +186,15 @@ export default {
 		},
 		addCard (newCard, activeDeck) {
 			activeDeck.cards.push(newCard)
+		},
+		deleteDeck (deletedDeckName) {
+			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')
+
+			if (confirmDeletion) {
+				this.decks = this.decks.filter(deck =>
+					deck.name !== deletedDeckName
+				)
+			}
 		}
 	},
 	created () {
@@ -322,32 +244,5 @@ h1 {
 	font-size: 1.5em;
 	margin: 0;
 	text-transform: uppercase;
-}
-.tab-contents {
-	header {
-		grid-column: span 3;
-		display: flex;
-		align-items: center;
-
-		h2 {
-			margin: 0;
-			display: inline-block;
-			margin-right: 1em;
-		}
-		button {
-			margin-left: .75em;
-			background: #aaa;
-			color: #000;
-			border-radius: .167em;
-			padding: .167em .25em;
-			min-width: 4.5em;
-
-			&:hover,
-			&:focus {
-				background: #777;
-				color: #fff;
-			}
-		}
-	}
 }
 </style>
