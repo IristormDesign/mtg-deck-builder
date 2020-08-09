@@ -188,6 +188,7 @@ export default {
 		},
 		addCard (newCard, activeDeck) {
 			activeDeck.cards.push(newCard)
+			setCardImageURL(newCard)
 		},
 		createDeck () {
 			let newDeckName = prompt('Enter a name for this new deck:')
@@ -237,7 +238,7 @@ export default {
 
 			deck.cards.forEach(card => {
 				// Give each card data the name of the card image file which is based on the card's name.
-				card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
+				setCardImageURL(card)
 
 				// Show the deck's default card.
 				if (deck.defaultCard === card.name) {
@@ -246,6 +247,9 @@ export default {
 			})
 		})
 	}
+}
+function setCardImageURL (card) {
+	card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 }
 </script>
 
