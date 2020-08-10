@@ -230,7 +230,7 @@ export default {
 			}
 		}
 	},
-	created () {
+	mounted () {
 		this.decks.forEach(deck => {
 			this.setShowCardToFalse(deck)
 

@@ -80,6 +80,8 @@ export default {
 			if (deck.name === '') {
 				deck.name = '(Unnamed)'
 			}
+			// TO-DO: Deck's new name should not match any existing deck's name.
+
 			this.renaming = null
 		},
 		cancelRename (deck) {
