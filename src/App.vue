@@ -4,9 +4,7 @@
 			<h1>“Magic: The Gathering” Deck List Organizer</h1>
 		</header>
 		<main>
-			<tabs
-				v-on:create-deck="createDeck"
-			>
+			<tabs v-on:create-deck="createDeck">
 				<tab-contents
 					v-for="(deck, i) in decks"
 					v-bind:key="i"
@@ -191,24 +189,19 @@ export default {
 			setCardImageURL(newCard)
 		},
 		createDeck () {
-			let newDeckName = prompt('Enter a name for this new deck:')
+			const allDecks = this.decks
+			let newDeckName = prompt('Give this new deck a name:')
 
-			function checkExistingDeckName (decks) {
-				for (let i = 0; i < decks.length; i++) {
-					if (newDeckName.toUpperCase() === decks[i].name.toUpperCase()) {
-						return true
-					}
-				}
-				return false
-			}
-			function applyNewDeckName (decks) {
+			applyNewDeckName(this.checkExistingDeckNames(newDeckName))
+
+			function applyNewDeckName (deckNameExists) {
 				if (newDeckName) {
-					if (checkExistingDeckName(decks)) {
+					if (deckNameExists) {
 						newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please enter a different name.')
 
-						applyNewDeckName(decks)
+						applyNewDeckName()
 					} else {
-						decks.push({
+						allDecks.push({
 							name: newDeckName,
 							cards: [],
 							defaultCard: ''
@@ -218,7 +211,14 @@ export default {
 					}
 				}
 			}
-			applyNewDeckName(this.decks)
+		},
+		checkExistingDeckNames (newDeckName) {
+			for (let i = 0; i < this.decks.length; i++) {
+				if (newDeckName.toUpperCase() === this.decks[i].name.toUpperCase()) {
+					return true
+				}
+			}
+			return false
 		},
 		deleteDeck (deletedDeckName) {
 			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')
