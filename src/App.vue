@@ -11,6 +11,7 @@
 					v-bind:name="deck.name"
 				>
 					<deck-header
+						v-bind:decks="decks"
 						v-bind:deck="deck"
 						v-on:deck-deleted="deleteDeck"
 					/>
@@ -189,28 +190,9 @@ export default {
 			setCardImageURL(newCard)
 		},
 		createDeck () {
-			const allDecks = this.decks
-			let newDeckName = prompt('Give this new deck a name:')
+			const newDeckName = prompt('Give this new deck a name:')
 
-			applyNewDeckName(this.checkExistingDeckNames(newDeckName))
-
-			function applyNewDeckName (deckNameExists) {
-				if (newDeckName) {
-					if (deckNameExists) {
-						newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please enter a different name.')
-
-						applyNewDeckName()
-					} else {
-						allDecks.push({
-							name: newDeckName,
-							cards: [],
-							defaultCard: ''
-						})
-
-						// TO-DO: Switch to new deck tab.
-					}
-				}
-			}
+			this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
 		},
 		checkExistingDeckNames (newDeckName) {
 			for (let i = 0; i < this.decks.length; i++) {
@@ -219,6 +201,25 @@ export default {
 				}
 			}
 			return false
+		},
+		applyNewDeckName (deckNameExists, newDeckName) {
+			if (newDeckName) {
+				if (deckNameExists) {
+					newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please enter a different name.')
+
+					this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
+				} else {
+					this.decks.push({
+						name: newDeckName,
+						cards: [],
+						defaultCard: ''
+					})
+
+					// TO-DO: Switch to new deck tab.
+				}
+			} else {
+				// The user didn't enter a deck name, so do nothing.
+			}
 		},
 		deleteDeck (deletedDeckName) {
 			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')

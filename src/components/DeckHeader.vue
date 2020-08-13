@@ -7,7 +7,7 @@
 				</h2>
 				<button
 					title="Save changes" type="submit"
-					v-on:click="saveRename(deck)"
+					v-on:click="saveRename(deck, decks)"
 				>Save</button>
 				<button
 					title="Cancel"
@@ -62,6 +62,7 @@ export default {
 		}
 	},
 	props: {
+		decks: Array,
 		deck: Object
 	},
 	directives: {
@@ -73,16 +74,37 @@ export default {
 	},
 	methods: {
 		renameDeck (deck) {
-			deck.cachedName = deck.name
+			this.decks.forEach(deck => {
+				deck.cachedName = deck.name
+			})
 			this.renaming = deck.name
 		},
-		saveRename (deck) {
-			if (deck.name === '') {
-				deck.name = '(Unnamed)'
-			}
-			// TO-DO: Deck's new name should not match any existing deck's name.
+		saveRename (activeDeck, decks) {
+			let newName = activeDeck.name
+			const cachedName = activeDeck.cachedName
 
-			this.renaming = null
+			if (newName === '') {
+				alert('Please give this deck a name.')
+
+				newName = cachedName
+			} else {
+				const deckNameExists = function () {
+					for (let i = 0; i < decks.length; i++) {
+						if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
+							return true
+						}
+					}
+					return false
+				}
+
+				if (deckNameExists()) {
+					alert('⚠ Another deck already has the name “' + newName + '.” Please enter a different name.')
+
+					newName = cachedName
+				} else {
+					this.renaming = null
+				}
+			}
 		},
 		cancelRename (deck) {
 			deck.name = deck.cachedName
