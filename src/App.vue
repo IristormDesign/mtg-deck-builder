@@ -205,7 +205,7 @@ export default {
 		applyNewDeckName (deckNameExists, newDeckName) {
 			if (newDeckName) {
 				if (deckNameExists) {
-					newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please enter a different name.')
+					newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
 
 					this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
 				} else {
