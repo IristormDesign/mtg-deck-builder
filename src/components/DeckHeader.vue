@@ -2,7 +2,7 @@
 	<header>
 		<form @submit.prevent>
 			<template v-if="renaming === deck.cachedName">
-				<h2>
+				<h2 class="renaming">
 					<input type="text" v-model.lazy="deck.name" v-focus />
 				</h2>
 				<button
@@ -17,7 +17,8 @@
 
 			<template v-else-if="editingDefaultCard === deck.name">
 				<h2>{{ deck.name }}</h2>
-				<select id="defaultCardOptions">
+				<label for="defaultCardOptions">Default Card:</label>
+				<select name="defaultCardOptions" id="defaultCardOptions">
 					<option value="">&darr; Select a default card</option>
 					<option v-for="card in deck.cards" v-bind:key="card.name">
 						{{ card.name }}
@@ -133,13 +134,26 @@ export default {
 
 header {
 	grid-column: span 3;
-	display: flex;
 	align-items: center;
+	background: #000;
+	padding: .375em;
 
+	form {
+		display: flex;
+	}
 	h2 {
 		margin: 0;
-		display: inline-block;
-		margin-right: 1em;
+		margin-right: .75em;
+		flex-grow: 1;
+
+		&.renaming {
+			flex-grow: 0
+		}
+	}
+	label {
+		display: flex;
+		align-items: center;
+		margin-right: .5em;
 	}
 	button {
 		margin-left: .75em;
