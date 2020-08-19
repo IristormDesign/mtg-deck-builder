@@ -10,7 +10,7 @@
 					v-bind:href="tab.href"
 					v-on:click="selectTabMethod(tab)"
 				>
-					{{ tab.name }}
+					{{ tab.name || '—' }}
 				</a>
 			</li>
 			<li>
