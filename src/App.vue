@@ -193,6 +193,10 @@ export default {
 			const newDeckName = prompt('Give this new deck a name:')
 
 			this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
+
+			setTimeout(() => {
+				this.switchToNewDeck(newDeckName)
+			}, 1, newDeckName)
 		},
 		checkExistingDeckNames (newDeckName) {
 			for (let i = 0; i < this.decks.length; i++) {
@@ -217,6 +221,19 @@ export default {
 				}
 			} else {
 				// The user didn't enter a deck name, so do nothing.
+			}
+		},
+		switchToNewDeck (newDeckName) {
+			const tabs = this.$children[0].$children
+
+			for (let i = 0; i < tabs.length; i++) {
+				const tab = tabs[i]
+
+				if (tab.name === newDeckName) {
+					tab.isActive = true
+				} else {
+					tab.isActive = false
+				}
 			}
 		},
 		deleteDeck (deletedDeckName) {

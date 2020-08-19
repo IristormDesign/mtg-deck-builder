@@ -22,6 +22,9 @@
 			</li>
 		</ul>
 		<div v-if="noActiveTabs" class="no-active-tabs">
+			<header>
+				<h2>Welcome</h2>
+			</header>
 			<p>To view a deck list, click on a tab above.</p>
 		</div>
 
