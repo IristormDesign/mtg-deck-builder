@@ -214,8 +214,6 @@ export default {
 						cards: [],
 						defaultCard: ''
 					})
-
-					// TO-DO: Switch to new deck tab.
 				}
 			} else {
 				// The user didn't enter a deck name, so do nothing.

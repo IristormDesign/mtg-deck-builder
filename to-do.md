@@ -1,0 +1,3 @@
+- Add to deck header the date of the last edit made.
+- When creating a new deck, automatically switch to that new deck's tab.
+- Make animations.
