@@ -52,9 +52,7 @@ export default {
 		},
 		noActiveTabsMethod () {
 			for (let i = 0; i < this.tabs.length; i++) {
-				const tab = this.tabs[i]
-
-				if (tab.isActive === true) {
+				if (this.tabs[i].isActive === true) {
 					this.noActiveTabs = false
 					return
 				}
