@@ -192,11 +192,13 @@ export default {
 		createDeck () {
 			const newDeckName = prompt('Give this new deck a name:')
 
-			this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
+			if (newDeckName) {
+				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 
-			this.$nextTick(function () {
-				this.switchToNewDeck(newDeckName)
-			})
+				this.$nextTick(function () {
+					this.switchToNewDeck(newDeckName)
+				})
+			}
 		},
 		checkExistingDeckNames (newDeckName) {
 			for (let i = 0; i < this.decks.length; i++) {
@@ -207,20 +209,18 @@ export default {
 			return false
 		},
 		applyNewDeckName (newDeckName, existingDeckName) {
-			if (newDeckName) {
-				if (existingDeckName) {
-					newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
+			if (existingDeckName) {
+				newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
 
+				if (newDeckName) {
 					this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
-				} else {
-					this.decks.push({
-						name: newDeckName,
-						cards: [],
-						defaultCard: ''
-					})
 				}
 			} else {
-				// The user didn't enter a deck name, so do nothing.
+				this.decks.push({
+					name: newDeckName,
+					cards: [],
+					defaultCard: ''
+				})
 			}
 		},
 		switchToNewDeck (newDeckName) {

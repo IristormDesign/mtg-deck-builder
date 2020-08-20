@@ -8,9 +8,9 @@
 			>
 				<a
 					v-bind:href="tab.href"
-					v-on:click="selectTabMethod(tab)"
+					v-on:click="selectTab(tab)"
 				>
-					{{ tab.name || '—' }}
+					{{ tab.name || '?' }}
 				</a>
 			</li>
 			<li>
@@ -21,11 +21,12 @@
 				>+</a>
 			</li>
 		</ul>
-		<div v-if="noActiveTabs" class="no-active-tabs">
+		<div v-if="noActiveTabs" class="welcome">
 			<header>
 				<h2>Welcome</h2>
 			</header>
-			<p>To view a deck list, click on a tab above.</p>
+			<p>This is an app for building and managing deck lists for the collectible card game <i>Magic: The Gathering</i>.</p>
+			<p>To view an existing deck list, click on a tab above. To create a new deck list, click the “+” tab.</p>
 		</div>
 
 		<slot><!-- Tab contents inserted here --></slot>
@@ -43,24 +44,22 @@ export default {
 	},
 	created () {
 		this.tabs = this.$children
-		this.noActiveTabsMethod()
+	},
+	computed: {
+		noActiveTabs () {
+			for (let i = 0; i < this.tabs.length; i++) {
+				if (this.tabs[i].isActive === true) {
+					return false
+				}
+			}
+			return true
+		}
 	},
 	methods: {
-		selectTabMethod (selectedTab) {
+		selectTab (selectedTab) {
 			this.tabs.forEach(tab => {
 				tab.isActive = (tab.href === selectedTab.href)
 			})
-
-			this.noActiveTabsMethod()
-		},
-		noActiveTabsMethod () {
-			for (let i = 0; i < this.tabs.length; i++) {
-				if (this.tabs[i].isActive === true) {
-					this.noActiveTabs = false
-					return
-				}
-			}
-			this.noActiveTabs = true
 		}
 	}
 }
@@ -95,11 +94,7 @@ export default {
 		}
 	}
 }
-.no-active-tabs {
-	width: 66.67%;
-
-	p {
-		margin: 3em 3em 1.5em;
-	}
+.welcome {
+	font-size: 1.125em;
 }
 </style>
