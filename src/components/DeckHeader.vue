@@ -89,7 +89,7 @@ export default {
 
 				newName = cachedName
 			} else {
-				const deckNameExists = function () {
+				const existingDeckName = function () {
 					for (let i = 0; i < decks.length; i++) {
 						if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
 							return true
@@ -97,8 +97,7 @@ export default {
 					}
 					return false
 				}
-
-				if (deckNameExists()) {
+				if (existingDeckName()) {
 					alert('⚠ Another deck already has the name “' + newName + '.” Please enter a different name.')
 
 					newName = cachedName

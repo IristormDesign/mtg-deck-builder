@@ -192,7 +192,7 @@ export default {
 		createDeck () {
 			const newDeckName = prompt('Give this new deck a name:')
 
-			this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
+			this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 
 			this.$nextTick(function () {
 				this.switchToNewDeck(newDeckName)
@@ -206,12 +206,12 @@ export default {
 			}
 			return false
 		},
-		applyNewDeckName (deckNameExists, newDeckName) {
+		applyNewDeckName (newDeckName, existingDeckName) {
 			if (newDeckName) {
-				if (deckNameExists) {
+				if (existingDeckName) {
 					newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
 
-					this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
+					this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 				} else {
 					this.decks.push({
 						name: newDeckName,
