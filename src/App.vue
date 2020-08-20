@@ -271,6 +271,7 @@ function setCardImageURL (card) {
 @import 'sass/normalize';
 @import 'sass/variables';
 @import 'sass/general';
+@import 'sass/misc';
 
 #app {
 	background: #333;

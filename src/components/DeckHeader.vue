@@ -36,6 +36,10 @@
 
 			<template v-else>
 				<h2>{{ deck.name }}</h2>
+				<div class="total-cards">
+					<h3>Total Cards</h3>
+					<div v-html="totalCards" class="amount"></div>
+				</div>
 				<button
 					title="Rename this deck"
 					v-on:click="renameDeck(deck)"
@@ -71,6 +75,23 @@ export default {
 			inserted: function (el) {
 				el.focus()
 			}
+		}
+	},
+	computed: {
+		totalCards () {
+			let total = 0
+
+			this.deck.cards.forEach(card => {
+				for (let i = 0; i < card.qty; i++) {
+					total++
+				}
+			})
+
+			if (total < 60) {
+				total += ' <span class="warning-symbol" title="Every deck’s minimum card limit is 60.">⚠</span> '
+			}
+
+			return total
 		}
 	},
 	methods: {
@@ -167,6 +188,24 @@ header {
 			background: #777;
 			color: #fff;
 		}
+	}
+}
+.total-cards {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	text-align: center;
+	height: 100%;
+
+	h3 {
+		margin: 0;
+		margin-top: .25em;
+		text-transform: uppercase;
+		font-size: .667em;
+		letter-spacing: 0;
+	}
+	.amount {
+		font-size: 1.333em;
 	}
 }
 </style>
