@@ -194,9 +194,9 @@ export default {
 
 			this.applyNewDeckName(this.checkExistingDeckNames(newDeckName), newDeckName)
 
-			setTimeout(() => {
+			this.$nextTick(function () {
 				this.switchToNewDeck(newDeckName)
-			}, 1, newDeckName)
+			})
 		},
 		checkExistingDeckNames (newDeckName) {
 			for (let i = 0; i < this.decks.length; i++) {
