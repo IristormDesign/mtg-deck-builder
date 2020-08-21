@@ -38,7 +38,10 @@
 				<h2>{{ deck.name }}</h2>
 				<div class="total-cards">
 					<h3>Total Cards</h3>
-					<div v-html="totalCards" class="amount"></div>
+					<div class="amount">
+						{{ totalCards }}
+						<span v-show="totalCards < 60" class="warning-symbol" title="The minimum card limit in a deck is 60.">⚠</span>
+					</div>
 				</div>
 				<button
 					title="Rename this deck"
@@ -86,10 +89,6 @@ export default {
 					total++
 				}
 			})
-
-			if (total < 60) {
-				total += ' <span class="warning-symbol" title="Every deck’s minimum card limit is 60.">⚠</span> '
-			}
 
 			return total
 		}
@@ -154,9 +153,6 @@ export default {
 
 header {
 	grid-column: span 3;
-	align-items: center;
-	background: #000;
-	padding: .375em;
 
 	form {
 		display: flex;
@@ -196,10 +192,12 @@ header {
 	line-height: 1;
 	text-align: center;
 	height: 100%;
+	background: #222;
+	border: 1px solid #444;
+	padding: 1px .375em;
 
 	h3 {
-		margin: 0;
-		margin-top: .25em;
+		margin: .125em 0 -.0625em;
 		text-transform: uppercase;
 		font-size: .667em;
 		letter-spacing: 0;
