@@ -1,10 +1,14 @@
 <template>
 	<div id="app">
-		<header>
-			<h1>“Magic: The Gathering” Deck List Organizer</h1>
+		<header class="site-header">
+			<h1>
+				<a href="/">“Magic: The Gathering” Deck List Organizer</a>
+			</h1>
 		</header>
 		<main>
-			<tabs v-on:create-deck="createDeck">
+			<tabs
+				v-on:create-deck="createDeck" v-on:tab-active="noActiveTabs = false"
+			>
 				<tab-contents
 					v-for="(deck, i) in decks"
 					v-bind:key="i"
@@ -30,7 +34,19 @@
 					/>
 				</tab-contents>
 			</tabs>
+
+			<div v-if="noActiveTabs" class="welcome">
+				<header>
+					<h2>Welcome</h2>
+				</header>
+				<p>This is an app for building and managing deck lists for the collectible card game <i>Magic: The Gathering</i>.</p>
+				<p>To view an existing deck list, click on a tab above. To create a new deck list, click the “+” tab.</p>
+			</div>
 		</main>
+		<footer class="site-footer">
+			<p>Web design and development by <a href="https://iristormdesign.com">Iristorm Design</a>. Copyright &copy; 2020 Damian Schmidt.</p>
+			<p><i>Magic: The Gathering</i> material is TM and &copy; by Wizards of the Coast. Iristorm Design and this web app are not affiliated with Wizards of the Coast.</p>
+		</footer>
 	</div>
 </template>
 
@@ -54,6 +70,7 @@ export default {
 	},
 	data () {
 		return {
+			noActiveTabs: true,
 			decks: [
 				{
 					name: 'Mana Overload',

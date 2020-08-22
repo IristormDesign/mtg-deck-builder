@@ -9,6 +9,9 @@ html {
 	color: #eee;
 }
 #app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 	background: #333;
 
 	> header {
@@ -21,4 +24,18 @@ main {
 	padding: 0 1.5em 1.5em;
 	max-width: 1280px;
 	margin: 0 auto;
+	height: 100%;
+	flex-grow: 1;
+}
+.site-footer {
+	margin-top: 1.5em;
+	font-size: .833em;
+	padding: .375em .75em;
+	background: #000;
+	color: #999;
+	text-align: center;
+
+	p {
+		margin: .375em;
+	}
 }
