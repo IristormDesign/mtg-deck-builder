@@ -43,10 +43,7 @@
 				<p>To view a pre-made deck list, click on one of the tabs above. To make a new deck list, click the “+” tab.</p>
 			</div>
 		</main>
-		<footer class="site-footer">
-			<p>Web design and development by <a href="https://iristormdesign.com">Iristorm Design</a>. Copyright &copy; 2020 Damian Schmidt.</p>
-			<p><i>Magic: The Gathering</i> material is TM and &copy; by Wizards of the Coast. Iristorm Design and this web app are not affiliated with Wizards of the Coast.</p>
-		</footer>
+		<site-footer />
 	</div>
 </template>
 
@@ -57,6 +54,7 @@ import DeckHeader from './components/DeckHeader.vue'
 import DeckList from './components/DeckList.vue'
 import CardDisplay from './components/CardDisplay.vue'
 import CardAdder from './components/CardAdder.vue'
+import SiteFooter from './components/SiteFooter.vue'
 
 export default {
 	name: 'App',
@@ -66,7 +64,8 @@ export default {
 		DeckHeader,
 		DeckList,
 		CardDisplay,
-		CardAdder
+		CardAdder,
+		SiteFooter
 	},
 	data () {
 		return {
