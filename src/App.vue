@@ -74,19 +74,19 @@ export default {
 							name: 'Almighty Bushwagg',
 							type: 'Creature — Bushwagg',
 							mana: '🟢',
-							qty: 2
+							qty: 1
 						},
 						{
 							name: 'Jaya’s Greeting',
 							type: 'Instant',
 							mana: '1 🔴',
-							qty: 4
+							qty: 3
 						},
 						{
 							name: 'Leafkin Avenger',
 							type: 'Creature — Elemental',
 							mana: '2 🔴🟢',
-							qty: 2
+							qty: 3
 						},
 						{
 							name: 'Shivan Dragon',
@@ -98,7 +98,7 @@ export default {
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
-							qty: 2
+							qty: 3
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -110,7 +110,7 @@ export default {
 					defaultCard: 'Nyxbloom Ancient'
 				},
 				{
-					name: 'High Life',
+					name: 'Air Force',
 					cards: [
 						{
 							name: 'Plains',
