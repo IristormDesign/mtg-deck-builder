@@ -22,17 +22,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped lang="scss">
-
-.card-display {
-	grid-column: 3 / 4;
-}
-img {
-	display: block;
-	width: 100%;
-	max-width: 672px;
-	height: auto;
-}
-
-</style>

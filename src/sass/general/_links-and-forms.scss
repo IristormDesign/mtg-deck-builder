@@ -1,0 +1,23 @@
+a {
+	color: #f39135;
+	text-decoration: none;
+
+	&:hover {
+		color: orangered;
+		text-decoration: underline;
+	}
+	&:active {
+		color: #fff;
+	}
+}
+button {
+	cursor: pointer;
+	box-shadow: 0 0 0 1px #000;
+}
+input {
+	&[type="text"],
+	&[type="number"] {
+		background-color: #ddd;
+		color: #000
+	}
+}

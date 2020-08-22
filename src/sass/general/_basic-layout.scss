@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	font: 18px/1.5 $font-family-standard;
+	background: #111;
+	color: #eee;
+}
+#app {
+	background: #333;
+
+	> header {
+		background: linear-gradient(orangered, #000, #000, orangered);
+		padding: 1em;
+		text-align: center;
+	}
+}
+main {
+	padding: 0 1.5em 1.5em;
+	max-width: 1280px;
+	margin: 0 auto;
+}

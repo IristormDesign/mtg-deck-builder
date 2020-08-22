@@ -21,6 +21,7 @@
 				>+</a>
 			</li>
 		</ul>
+
 		<div v-if="noActiveTabs" class="welcome">
 			<header>
 				<h2>Welcome</h2>
@@ -64,37 +65,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped lang="scss">
-@import '../sass/variables';
-
-.tabs {
-	list-style: none;
-	padding: 0;
-	border-bottom: 4px solid tan;
-
-	li {
-		display: inline-block;
-		margin: 0 .5em;
-
-		&.is-active {
-			a {
-				background: tan;
-				color: #000;
-				text-decoration: none;
-			}
-		}
-		a {
-			@include heading-font;
-			background: #000;
-			padding: .75em;
-			border-radius: .75em .75em 0 0;
-			display: block;
-			line-height: 1;
-		}
-	}
-}
-.welcome {
-	font-size: 1.125em;
-}
-</style>

@@ -268,29 +268,5 @@ function setCardImageURL (card) {
 </script>
 
 <style lang="scss">
-@import 'sass/normalize';
-@import 'sass/variables';
-@import 'sass/general';
-@import 'sass/misc';
-
-#app {
-	background: #333;
-
-	> header {
-		background: linear-gradient(orangered, #000, #000, orangered);
-		padding: 1em;
-		text-align: center;
-	}
-}
-main {
-	padding: 0 1.5em 1.5em;
-	max-width: 1280px;
-	margin: 0 auto;
-}
-h1 {
-	line-height: 1;
-	font-size: 1.5em;
-	margin: 0;
-	text-transform: uppercase;
-}
+	@import 'sass/index';
 </style>

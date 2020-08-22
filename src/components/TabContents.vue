@@ -30,13 +30,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped lang="scss">
-
-.tab-contents {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 1.5em;
-}
-
-</style>

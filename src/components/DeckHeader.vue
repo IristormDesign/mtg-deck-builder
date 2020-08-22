@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header class="deck-header">
 		<form @submit.prevent>
 			<template v-if="renaming === deck.cachedName">
 				<h2 class="renaming">
@@ -147,63 +147,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped lang="scss">
-@import '../sass/variables';
-
-header {
-	grid-column: span 3;
-
-	form {
-		display: flex;
-	}
-	h2 {
-		margin: 0;
-		margin-right: .75em;
-		flex-grow: 1;
-
-		&.renaming {
-			flex-grow: 0
-		}
-	}
-	label {
-		display: flex;
-		align-items: center;
-		margin-right: .5em;
-	}
-	button {
-		margin-left: .75em;
-		background: #aaa;
-		color: #000;
-		border-radius: .167em;
-		padding: .167em .25em;
-		min-width: 4.5em;
-
-		&:hover,
-		&:focus {
-			background: #777;
-			color: #fff;
-		}
-	}
-}
-.total-cards {
-	display: flex;
-	flex-direction: column;
-	line-height: 1;
-	text-align: center;
-	height: 100%;
-	background: #222;
-	border: 1px solid #444;
-	padding: 1px .375em;
-
-	h3 {
-		margin: .125em 0 -.0625em;
-		text-transform: uppercase;
-		font-size: .667em;
-		letter-spacing: 0;
-	}
-	.amount {
-		font-size: 1.333em;
-	}
-}
-</style>
