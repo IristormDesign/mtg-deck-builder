@@ -4,9 +4,9 @@
 	box-sizing: border-box;
 }
 html {
-	font: 18px/1.5 $font-family-standard;
+	font: 17px/1.5 $font-family-standard;
 	background: #111;
-	color: #eee;
+	color: #dfdfdf;
 }
 #app {
 	display: flex;
@@ -26,12 +26,13 @@ main {
 	margin: 0 auto;
 	height: 100%;
 	flex-grow: 1;
+	width: 100%;
 }
 .site-footer {
 	margin-top: 1.5em;
 	font-size: .833em;
 	padding: .375em .75em;
-	background: #000;
+	background: #111;
 	color: #999;
 	text-align: center;
 

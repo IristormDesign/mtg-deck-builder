@@ -23,3 +23,7 @@ h1 {
 p {
 	margin: .75em 0;
 }
+strong,
+b {
+	@include heading-font;
+}
