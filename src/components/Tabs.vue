@@ -2,7 +2,7 @@
 	<div>
 		<ul class="tabs">
 			<li
-				v-for="tab in tabs" :key="tab.name"
+				v-for="(tab, i) in tabs" :key="i"
 				:class="{ 'is-active': tab.isActive }"
 			>
 				<a :href="tab.href" @click="selectTab(tab)">
