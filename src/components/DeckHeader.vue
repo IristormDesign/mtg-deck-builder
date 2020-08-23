@@ -7,11 +7,10 @@
 				</h2>
 				<button
 					title="Save changes" type="submit"
-					v-on:click="saveRename(deck, decks)"
+					@click="saveRename(deck, decks)"
 				>Save</button>
 				<button
-					title="Cancel"
-					v-on:click="cancelRename(deck)"
+					title="Cancel" @click="cancelRename(deck)"
 				>Cancel</button>
 			</template>
 
@@ -20,17 +19,16 @@
 				<label for="defaultCardOptions">Default Card:</label>
 				<select name="defaultCardOptions" id="defaultCardOptions">
 					<option value="">&darr; Select a default card</option>
-					<option v-for="card in deck.cards" v-bind:key="card.name">
+					<option v-for="card in deck.cards" :key="card.name">
 						{{ card.name }}
 					</option>
 				</select>
 				<button
 					title="Save changes" type="submit"
-					v-on:click="saveDefaultCard(deck)"
+					@click="saveDefaultCard(deck)"
 				>Save</button>
 				<button
-					title="Cancel"
-					v-on:click="cancelDefaultCard(deck)"
+					title="Cancel" @click="cancelDefaultCard(deck)"
 				>Cancel</button>
 			</template>
 
@@ -45,15 +43,15 @@
 				</div>
 				<button
 					title="Rename this deck"
-					v-on:click="renameDeck(deck)"
+					@click="renameDeck(deck)"
 				>Rename</button>
 				<button
 					title="Set the default card of this deck"
-					v-on:click="setDefaultCard(deck)"
+					@click="setDefaultCard(deck)"
 				>Default Card</button>
 				<button
 					title="Delete this deck"
-					v-on:click="$emit('deck-deleted', deck.name)"
+					@click="$emit('deck-deleted', deck.name)"
 				>Delete</button>
 			</template>
 		</form>

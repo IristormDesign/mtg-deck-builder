@@ -2,12 +2,12 @@
 	<div class="card-display">
 		<div
 			v-for="card in activeDeck.cards"
-			v-bind:key="card.name"
+			:key="card.name"
 		>
 			<img
 				v-if="card.showCard == true"
-				v-bind:src="'img/cards/' + card.img"
-				v-bind:alt="card.name"
+				:src="'img/cards/' + card.img"
+				:alt="card.name"
 				width="336" height="468"
 			>
 		</div>

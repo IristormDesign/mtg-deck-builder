@@ -2,22 +2,17 @@
 	<div>
 		<ul class="tabs">
 			<li
-				v-for="tab in tabs"
-				v-bind:class="{ 'is-active': tab.isActive }"
-				v-bind:key="tab.name"
+				v-for="tab in tabs" :key="tab.name"
+				:class="{ 'is-active': tab.isActive }"
 			>
-				<a
-					v-bind:href="tab.href"
-					v-on:click="selectTab(tab)"
-				>
+				<a :href="tab.href" @click="selectTab(tab)">
 					{{ tab.name || '?' }}
 				</a>
 			</li>
 			<li>
 				<a
-					href="#"
-					title="Create a new deck list"
-					v-on:click="$emit('create-deck')"
+					href="#" title="Create a new deck list"
+					@click="$emit('create-deck')"
 				>+</a>
 			</li>
 		</ul>

@@ -7,30 +7,28 @@
 		</header>
 		<main>
 			<tabs
-				v-on:create-deck="createDeck" v-on:tab-active="noActiveTabs = false"
+				@create-deck="createDeck"
+				@tab-active="noActiveTabs = false"
 			>
 				<tab-contents
 					v-for="(deck, i) in decks"
-					v-bind:key="i"
-					v-bind:name="deck.name"
+					:key="i" :name="deck.name"
 				>
 					<deck-header
-						v-bind:decks="decks"
-						v-bind:deck="deck"
-						v-on:deck-deleted="deleteDeck"
+						:decks="decks" :deck="deck"
+						@deck-deleted="deleteDeck"
 					/>
 					<deck-list
-						v-bind:activeDeck="deck"
-						v-on:card-selected="selectedCard"
-						v-on:qty-decreased="decQty"
-						v-on:qty-increased="incQty"
+						:activeDeck="deck"
+						@card-selected="selectedCard"
+						@qty-decreased="decQty"
+						@qty-increased="incQty"
 					/>
 					<card-display
-						v-bind:activeDeck="deck"
+						:activeDeck="deck"
 					/>
 					<card-adder
-						v-bind:activeDeck="deck"
-						v-on:card-added="addCard"
+						:activeDeck="deck" @card-added="addCard"
 					/>
 				</tab-contents>
 			</tabs>

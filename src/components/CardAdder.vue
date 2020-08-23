@@ -1,43 +1,36 @@
 <template>
 	<div class="card-adder">
 		<h2>Add a Card to the Deck</h2>
-		<form v-on:submit.prevent="handleSubmit">
+		<form @submit.prevent="handleSubmit">
 			<label>
 				Name:
 				<input
-					type="text"
-					v-model="card.name"
-					v-bind:class="{ 'has-error': submitting && invalidName }"
-					v-on:focus="clearStatus"
-					v-on:keypress="clearStatus"
-					ref="first"
+					type="text" v-model="card.name" ref="first"
+					@focus="clearStatus" @keypress="clearStatus"
+					:class="{ 'has-error': submitting && invalidName }"
 				>
 			</label>
 			<label>
 				Type:
 				<input
-					type="text"
-					v-model="card.type"
-					v-bind:class="{ 'has-error': submitting && invalidType }"
-					v-on:focus="clearStatus"
+					type="text" v-model="card.type" @focus="clearStatus"
+					:class="{ 'has-error': submitting && invalidType }"
 				>
 			</label>
 			<label>
 				Mana Cost:
 				<input
 					type="text" pattern="\d*[WUBRGwubrg]*"
-					v-model="card.mana"
-					v-bind:class="{ 'has-error': submitting && invalidMana }"
-					v-on:focus="clearStatus"
+					v-model="card.mana" @focus="clearStatus"
+					:class="{ 'has-error': submitting && invalidMana }"
 				>
 			</label>
 			<label>
 				Quantity:
 				<input
 					type="number" min="1" max="99"
-					v-model="card.qty"
-					v-bind:class="{ 'has-error': submitting && invalidQty }"
-					v-on:focus="clearStatus"
+					v-model="card.qty" @focus="clearStatus"
+					:class="{ 'has-error': submitting && invalidQty }"
 				>
 			</label>
 
