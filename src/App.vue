@@ -241,15 +241,10 @@ export default {
 			}
 		},
 		switchToNewDeck (newDeckName) {
-			const tabs = this.$children[0].$children
-
-			for (let i = 0; i < tabs.length; i++) {
-				const tab = tabs[i]
-
-				if (tab.name === newDeckName) {
-					tab.isActive = true
-				} else {
-					tab.isActive = false
+			for (let i = 0; i < this.decks.length; i++) {
+				if (this.decks[i].name === newDeckName) {
+					this.activeTab = newDeckName
+					return
 				}
 			}
 		},
