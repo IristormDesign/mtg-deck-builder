@@ -1,9 +1,7 @@
 <template>
 	<div id="app">
 		<header class="site-header">
-			<h1>
-				<a href="/">MTG Deck List Organizer</a>
-			</h1>
+			<h1><a href="/">MTG Deck List Organizer</a></h1>
 		</header>
 		<main>
 			<tabs
@@ -11,26 +9,18 @@
 			/>
 
 			<tab-contents
-				v-for="(deck, i) in decks"
-				:key="i" :name="deck.name"
+				v-for="(deck, i) in decks" :key="i" :name="deck.name"
 				v-show="activeTab == deck.name"
 			>
 				<deck-header
-					:decks="decks" :deck="deck"
-					@deck-deleted="deleteDeck"
+					:decks="decks" :deck="deck" @deck-deleted="deleteDeck"
 				/>
 				<deck-list
-					:activeDeck="deck"
-					@card-selected="selectedCard"
-					@qty-decreased="decQty"
-					@qty-increased="incQty"
+					:activeDeck="deck" @card-selected="selectedCard"
+					@qty-decreased="decQty" @qty-increased="incQty"
 				/>
-				<card-display
-					:activeDeck="deck"
-				/>
-				<card-adder
-					:activeDeck="deck" @card-added="addCard"
-				/>
+				<card-display :activeDeck="deck" />
+				<card-adder :activeDeck="deck" @card-added="addCard" />
 			</tab-contents>
 
 			<div v-if="activeTab == null" class="welcome">

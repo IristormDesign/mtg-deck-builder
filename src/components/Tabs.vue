@@ -1,8 +1,6 @@
 <template>
 	<ul class="tabs">
-		<li
-			v-for="(deck, i) in decks" :key="i"
-		>
+		<li v-for="(deck, i) in decks" :key="i">
 			<template v-if="activeTab != deck.name">
 				<a :href="tabHref(deck)" @click="selectTab(deck)">
 					{{ deck.name || '?' }}

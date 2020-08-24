@@ -6,17 +6,6 @@
 
 <script>
 export default {
-	name: 'tab-contents',
-	props: {
-		name: {
-			required: true
-		},
-		selected: {
-			default: false
-		}
-	},
-	mounted () {
-		this.isActive = this.selected
-	}
+	name: 'tab-contents'
 }
 </script>
