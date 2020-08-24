@@ -1,5 +1,5 @@
 <template>
-	<div v-show="isActive" class="tab-contents">
+	<div class="tab-contents">
 		<slot><!-- Tab contents inserted from App.vue --></slot>
 	</div>
 </template>
@@ -13,16 +13,6 @@ export default {
 		},
 		selected: {
 			default: false
-		}
-	},
-	data () {
-		return {
-			isActive: false
-		}
-	},
-	computed: {
-		href () {
-			return '#' + this.name.toLowerCase().replace(/ /g, '-')
 		}
 	},
 	mounted () {

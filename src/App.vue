@@ -2,38 +2,38 @@
 	<div id="app">
 		<header class="site-header">
 			<h1>
-				<a href="/">“Magic: The Gathering” Deck List Organizer</a>
+				<a href="/">MTG Deck List Organizer</a>
 			</h1>
 		</header>
 		<main>
 			<tabs
-				@create-deck="createDeck"
-				@tab-active="noActiveTabs = false"
-			>
-				<tab-contents
-					v-for="(deck, i) in decks"
-					:key="i" :name="deck.name"
-				>
-					<deck-header
-						:decks="decks" :deck="deck"
-						@deck-deleted="deleteDeck"
-					/>
-					<deck-list
-						:activeDeck="deck"
-						@card-selected="selectedCard"
-						@qty-decreased="decQty"
-						@qty-increased="incQty"
-					/>
-					<card-display
-						:activeDeck="deck"
-					/>
-					<card-adder
-						:activeDeck="deck" @card-added="addCard"
-					/>
-				</tab-contents>
-			</tabs>
+				:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
+			/>
 
-			<div v-if="noActiveTabs" class="welcome">
+			<tab-contents
+				v-for="(deck, i) in decks"
+				:key="i" :name="deck.name"
+				v-show="activeTab == deck.name"
+			>
+				<deck-header
+					:decks="decks" :deck="deck"
+					@deck-deleted="deleteDeck"
+				/>
+				<deck-list
+					:activeDeck="deck"
+					@card-selected="selectedCard"
+					@qty-decreased="decQty"
+					@qty-increased="incQty"
+				/>
+				<card-display
+					:activeDeck="deck"
+				/>
+				<card-adder
+					:activeDeck="deck" @card-added="addCard"
+				/>
+			</tab-contents>
+
+			<div v-if="activeTab == null" class="welcome">
 				<header>
 					<h2>Welcome</h2>
 				</header>
@@ -67,7 +67,7 @@ export default {
 	},
 	data () {
 		return {
-			noActiveTabs: true,
+			activeTab: null,
 			decks: [
 				{
 					name: 'Mana Overload',
@@ -171,6 +171,9 @@ export default {
 		}
 	},
 	methods: {
+		assignActiveTab (deck) {
+			this.activeTab = deck.name
+		},
 		// Give every card an object property of `showCard` which is set to false by default.
 		setShowCardToFalse (deck) {
 			deck.cards.forEach(card => {
@@ -276,6 +279,7 @@ export default {
 		})
 	}
 }
+
 function setCardImageURL (card) {
 	card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 }

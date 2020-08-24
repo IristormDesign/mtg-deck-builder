@@ -1,45 +1,42 @@
 <template>
-	<div>
-		<ul class="tabs">
-			<li
-				v-for="(tab, i) in tabs" :key="i"
-				:class="{ 'is-active': tab.isActive }"
-			>
-				<a :href="tab.href" @click="selectTab(tab)">
-					{{ tab.name || '?' }}
+	<ul class="tabs">
+		<li
+			v-for="(deck, i) in decks" :key="i"
+		>
+			<template v-if="activeTab != deck.name">
+				<a :href="tabHref(deck)" @click="selectTab(deck)">
+					{{ deck.name || '?' }}
 				</a>
-			</li>
-			<li>
-				<a
-					href="#" title="Create a new deck list"
-					@click="$emit('create-deck')"
-				>+</a>
-			</li>
-		</ul>
-
-		<slot><!-- Tab contents inserted here --></slot>
-	</div>
+			</template>
+			<template v-else>
+				<div>
+					{{ deck.name || '?' }}
+				</div>
+			</template>
+		</li>
+		<li>
+			<a
+				href="#" title="Create a new deck list"
+				@click="$emit('create-deck')"
+			>+</a>
+		</li>
+	</ul>
 </template>
 
 <script>
 export default {
 	name: 'tabs',
-
-	data () {
-		return {
-			tabs: []
-		}
-	},
-	created () {
-		this.tabs = this.$children
-	},
 	methods: {
-		selectTab (selectedTab) {
-			this.tabs.forEach(tab => {
-				tab.isActive = (tab.href === selectedTab.href)
-			})
-			this.$emit('tab-active')
+		tabHref (deck) {
+			return '#' + deck.name.toLowerCase().replace(/ /g, '-')
+		},
+		selectTab (deck) {
+			this.$emit('activated-tab', deck)
 		}
+	},
+	props: {
+		activeTab: String,
+		decks: Array
 	}
 }
 </script>

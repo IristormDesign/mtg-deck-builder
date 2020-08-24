@@ -1,26 +1,40 @@
 .tabs {
 	list-style: none;
-	padding: 0;
-	border-bottom: 4px solid tan;
+	background: #000;
+	padding: .375em .375em 0;
 
 	li {
 		display: inline-block;
-		margin: 0 .5em;
+		margin: 0 .375em;
 
-		&.is-active {
-			a {
-				background: tan;
-				color: #000;
-				text-decoration: none;
+		> a,
+		> div {
+			@include heading-font;
+			border-radius: .5em .5em 0 0;
+			line-height: 1;
+			display: block;
+			padding: .75em;
+			text-decoration: none;
+			text-align: center;
+			min-width: 2.5em;
+			border-top: 1px solid #666;
+		}
+		> a {
+			background: linear-gradient(tan, darken(tan, 16.7));
+			color: #000;
+			border-top-color: lighten(tan, 33.3%);
+
+			&:hover,
+			&:focus {
+				background: linear-gradient(tan, saturate(darken(tan, 33.3), 25));
+			}
+			&:active {
+				color: #fff;
 			}
 		}
-		a {
-			@include heading-font;
-			background: #000;
-			padding: .75em;
-			border-radius: .75em .75em 0 0;
-			display: block;
-			line-height: 1;
+		> div {
+			background: linear-gradient(#444, #333);
+			color: #aaa;
 		}
 	}
 }
