@@ -1,8 +1,12 @@
 .welcome {
 	font-size: 1.125em;
+
+	h2 {
+		margin-top: .375em;
+	}
 }
 .warning-symbol {
-	color: orange;
+	color: orangered;
 	display: inline-block;
 	cursor: default;
 }

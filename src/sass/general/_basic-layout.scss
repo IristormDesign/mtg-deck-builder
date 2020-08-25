@@ -3,28 +3,58 @@
 *::after {
 	box-sizing: border-box;
 }
-html {
-	font: 17px/1.5 $font-family-standard;
-	background: #111;
-	color: #dfdfdf;
+body {
+	font: 18px/1.5 $font-family-standard;
+	background: #333;
+	color: #ddd
 }
 #app {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	background: #333;
+	margin: 0 auto;
+}
+.site-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 1.5em;
 
-	> header {
-		background: linear-gradient(orangered, #000, #000, orangered);
-		padding: 1em;
-		text-align: center;
+	h1 {
+		margin: .75em 0;
+		line-height: 1;
+		font-size: 1.5em;
+
+		a {
+			color: orangered;
+
+			&,
+			&:hover,
+			&:focus {
+				text-decoration: none
+			}
+		}
 	}
 }
 main {
-	padding: 0 1.5em 1.5em;
 	max-width: 1280px;
 	margin: 0 auto;
 	height: 100%;
 	flex-grow: 1;
 	width: 100%;
+}
+.contents,
+.tab-contents {
+	background: $color-content-bg;
+	color: #000;
+	padding: .75em 1.5em;
+	border-radius: .75em;
+}
+.tab-contents {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1.5em;
 }

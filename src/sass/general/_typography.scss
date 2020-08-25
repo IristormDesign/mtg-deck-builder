@@ -3,22 +3,7 @@ h2,
 h3,
 h4 {
 	@include heading-font;
-	color: tan;
-}
-h1 {
-	line-height: 1;
-	font-size: 1.5em;
-	margin: 0;
-	text-transform: uppercase;
-
-	a {
-		&,
-		&:hover,
-		&:focus {
-			color: tan;
-			text-decoration: none
-		}
-	}
+	color: #000;
 }
 p {
 	margin: .75em 0;
@@ -26,4 +11,8 @@ p {
 strong,
 b {
 	@include heading-font;
+}
+::selection {
+	background: orangered;
+	color: #fff;
 }

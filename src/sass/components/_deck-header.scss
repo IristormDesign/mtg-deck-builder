@@ -22,16 +22,19 @@
 	}
 	button {
 		margin-left: .75em;
-		background: #aaa;
-		color: #000;
+		background: orangered;
+		border-color: orangered;
+		color: #fff;
 		border-radius: .167em;
 		padding: .167em .25em;
 		min-width: 4.5em;
 
 		&:hover,
 		&:focus {
-			background: #777;
-			color: #fff;
+			background: darken(orangered, 12.5%);
+		}
+		&:active {
+			border-style: inset;
 		}
 	}
 	.total-cards {
@@ -40,9 +43,7 @@
 		line-height: 1;
 		text-align: center;
 		height: 100%;
-		background: #222;
-		border: 1px solid #444;
-		padding: 1px .375em;
+		padding-top: 4px;
 	
 		h3 {
 			margin: .125em 0 -.0625em;

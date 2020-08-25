@@ -2,12 +2,12 @@
 	<div id="app">
 		<header class="site-header">
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
-		</header>
-		<main>
+
 			<tabs
 				:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
 			/>
-
+		</header>
+		<main>
 			<tab-contents
 				v-for="(deck, i) in decks" :key="i" :name="deck.name"
 				v-show="activeTab == deck.name"
@@ -23,12 +23,12 @@
 				<card-adder :activeDeck="deck" @card-added="addCard" />
 			</tab-contents>
 
-			<div v-if="activeTab == null" class="welcome">
+			<div v-if="activeTab == null" class="welcome contents">
 				<header>
 					<h2>Welcome</h2>
 				</header>
 				<p>This is an app for building and managing deck lists for the collectible card game <a href="https://magic.wizards.com" target="_blank" rel="noopener"><i>Magic: The Gathering</i></a>.</p>
-				<p>To view a pre-made deck list, click on one of the tabs above. To make a new deck list, click the “+” tab.</p>
+				<p>To view a pre-made deck list, click on one of the tabs by the upper-left corner. To make a new deck list, click the “+” tab.</p>
 			</div>
 		</main>
 		<site-footer />
@@ -156,8 +156,8 @@ export default {
 					defaultCard: 'Baneslayer Angel'
 				}
 			],
-			renaming: null,
-			editingDefaultCard: null
+			editingDefaultCard: null,
+			renaming: null
 		}
 	},
 	methods: {

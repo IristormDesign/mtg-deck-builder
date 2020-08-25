@@ -1,32 +1,39 @@
 .tabs {
 	list-style: none;
-	background: #000;
-	padding: .375em .375em 0;
+	padding: 0;
+	margin: 0;
 
 	li {
 		display: inline-block;
-		margin: 0 .375em;
+		margin: 0 .25em;
 
 		> a,
 		> div {
 			@include heading-font;
-			border-radius: .5em .5em 0 0;
+			border-radius: .75em .75em 0 0;
 			line-height: 1;
 			display: block;
 			padding: .75em;
 			text-decoration: none;
 			text-align: center;
 			min-width: 2.5em;
-			border-top: 1px solid #666;
+			border-top: 1px solid #555;
 		}
 		> a {
-			background: linear-gradient(tan, darken(tan, 16.7));
+			background: linear-gradient(
+				desaturate(darken($color-content-bg, 25%), 25%) 66.67%,
+				desaturate(darken($color-content-bg, 37.5%), 37.5%)
+			);
 			color: #000;
-			border-top-color: lighten(tan, 33.3%);
+			border-top-color: rgba(#fff, .333);
+			text-shadow: 0 1px 1px rgba(#fff, .25);
 
 			&:hover,
 			&:focus {
-				background: linear-gradient(tan, saturate(darken(tan, 33.3), 25));
+				background: linear-gradient(
+					desaturate(darken($color-content-bg, 12.5%), 12.5%) 66.67%,
+					desaturate(darken($color-content-bg, 25%), 25%)
+				);
 			}
 			&:active {
 				color: #fff;
@@ -34,12 +41,8 @@
 		}
 		> div {
 			background: linear-gradient(#444, #333);
-			color: #aaa;
+			background: $color-content-bg;
+			color: desaturate(darken($color-content-bg, 50%), 50%);
 		}
 	}
-}
-.tab-contents {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 1.5em;
 }

@@ -1,9 +1,8 @@
 a {
-	color: #f39135;
+	color: royalblue;
 	text-decoration: none;
 
 	&:hover {
-		color: orangered;
 		text-decoration: underline;
 	}
 	&:active {
@@ -12,7 +11,7 @@ a {
 }
 button {
 	cursor: pointer;
-	box-shadow: 0 0 0 1px #000;
+	box-shadow: 0 1px 0 1px rgba(#000, .5);
 }
 input {
 	&[type="text"],
