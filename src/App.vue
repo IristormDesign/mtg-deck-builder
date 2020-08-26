@@ -1,8 +1,9 @@
 <template>
 	<div id="app">
 		<header class="site-header">
-			<h1><a href="/">MTG Deck List Organizer</a></h1>
-
+			<h1>
+				<a href="/">MTG Deck List Organizer</a>
+			</h1>
 			<tabs
 				:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
 			/>
@@ -16,8 +17,7 @@
 					:decks="decks" :deck="deck" @deck-deleted="deleteDeck"
 				/>
 				<deck-list
-					:activeDeck="deck" @card-selected="selectedCard"
-					@qty-decreased="decQty" @qty-increased="incQty"
+					:activeDeck="deck" @card-clicked="selectedCard"
 				/>
 				<card-display :activeDeck="deck" />
 				<card-adder :activeDeck="deck" @card-added="addCard" />
@@ -164,7 +164,6 @@ export default {
 		assignActiveTab (deck) {
 			this.activeTab = deck.name
 		},
-		// Give every card an object property of `showCard` which is set to false by default.
 		setShowCardToFalse (deck) {
 			deck.cards.forEach(card => {
 				this.$set(card, 'showCard', false)
@@ -173,24 +172,6 @@ export default {
 		selectedCard (card, deck) {
 			this.setShowCardToFalse(deck)
 			card.showCard = true
-		},
-		decQty (card, deck) {
-			card.qty--
-
-			if (card.qty <= 0) {
-				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
-
-				if (confirmRemoval === true) {
-					deck.cards = deck.cards.filter(
-						eachCard => eachCard.name !== card.name
-					)
-				} else {
-					card.qty = 1
-				}
-			}
-		},
-		incQty (card) {
-			card.qty++
 		},
 		addCard (newCard, activeDeck) {
 			activeDeck.cards.push(newCard)
@@ -253,10 +234,8 @@ export default {
 			this.setShowCardToFalse(deck)
 
 			deck.cards.forEach(card => {
-				// Give each card data the name of the card image file which is based on the card's name.
 				setCardImageURL(card)
 
-				// Show the deck's default card.
 				if (deck.defaultCard === card.name) {
 					card.showCard = true
 				}

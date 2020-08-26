@@ -10,7 +10,7 @@
 		> a,
 		> div {
 			@include heading-font;
-			border-radius: .75em .75em 0 0;
+			border-radius: .5em .5em 0 0;
 			line-height: 1;
 			display: block;
 			padding: .75em;
@@ -21,8 +21,8 @@
 		}
 		> a {
 			background: linear-gradient(
-				desaturate(darken($color-content-bg, 25%), 25%) 66.67%,
-				desaturate(darken($color-content-bg, 37.5%), 37.5%)
+				desaturate(darken($color-content-bg, 25%), 25%) 75%,
+				desaturate(darken($color-content-bg, 37.5%), 33.33%)
 			);
 			color: #000;
 			border-top-color: rgba(#fff, .333);
@@ -36,7 +36,7 @@
 				);
 			}
 			&:active {
-				color: #fff;
+				color: orangered;
 			}
 		}
 		> div {

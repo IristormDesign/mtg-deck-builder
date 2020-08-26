@@ -50,8 +50,7 @@ main {
 .tab-contents {
 	background: $color-content-bg;
 	color: #000;
-	padding: .75em 1.5em;
-	border-radius: .75em;
+	padding: 1.5*.75em 1.5em;
 }
 .tab-contents {
 	display: grid;
