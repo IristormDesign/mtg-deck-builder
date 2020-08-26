@@ -6,12 +6,12 @@
 					<input type="text" v-model.lazy="deck.name" v-focus />
 				</h2>
 				<button
-					title="Save changes" type="submit"
-					@click="saveRename(deck, decks)"
-				>Save</button>
-				<button
 					title="Cancel" @click="cancelRename(deck)"
 				>Cancel</button>
+				<button
+					title="Save changes" type="submit" class="primary-btn"
+					@click="saveRename(deck, decks)"
+				>Save</button>
 			</template>
 
 			<template v-else-if="editingDefaultCard === deck.name">
@@ -24,12 +24,13 @@
 					</option>
 				</select>
 				<button
-					title="Save changes" type="submit"
-					@click="saveDefaultCard(deck)"
-				>Save</button>
-				<button
 					title="Cancel" @click="cancelDefaultCard(deck)"
 				>Cancel</button>
+				<button
+					title="Save changes" type="submit" class="primary-btn"
+					@click="saveDefaultCard(deck)"
+				>Save</button>
+
 			</template>
 
 			<template v-else>
@@ -95,6 +96,7 @@ export default {
 		renameDeck (deck) {
 			this.decks.forEach(deck => {
 				deck.cachedName = deck.name
+				console.log(deck.cachedName)
 			})
 			this.renaming = deck.name
 		},

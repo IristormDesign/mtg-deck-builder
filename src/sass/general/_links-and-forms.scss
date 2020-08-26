@@ -11,12 +11,39 @@ a {
 }
 button {
 	cursor: pointer;
-	box-shadow: 0 1px 0 1px rgba(#000, .5);
+	box-shadow: 0 1px 0 1px rgba(#000, .875);
+	background: linear-gradient(peru, darken(peru, 8.33%));
+	border: 1px outset peru;
+	border-top-width: 0;
+	border-bottom-width: 2px;
+	color: #fff;
+	border-radius: 12.5% / 1.5em;
+	padding: .167em .375em;
+	min-width: 4.5em;
+
+	&:hover,
+	&:focus {
+		background: darken(peru, 8.33%);
+	}
+	&:active {
+		border-style: inset;
+	}
+	&[type="submit"] {
+		background: peru;
+		background: linear-gradient(orangered, darken(orangered, 8.33%));
+		border-color: orangered;
+		color: #fff;
+
+		&:hover,
+		&:focus {
+			background: darken(orangered, 8.33%);
+		}
+	}
 }
 input {
 	&[type="text"],
 	&[type="number"] {
-		background-color: #ddd;
+		background-color: #fff;
 		color: #000
 	}
 }

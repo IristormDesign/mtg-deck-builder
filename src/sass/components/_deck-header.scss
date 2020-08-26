@@ -22,20 +22,6 @@
 	}
 	button {
 		margin-left: .75em;
-		background: orangered;
-		border-color: orangered;
-		color: #fff;
-		border-radius: .167em;
-		padding: .167em .25em;
-		min-width: 4.5em;
-
-		&:hover,
-		&:focus {
-			background: darken(orangered, 12.5%);
-		}
-		&:active {
-			border-style: inset;
-		}
 	}
 	.total-cards {
 		display: flex;

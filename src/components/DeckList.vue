@@ -24,9 +24,9 @@
 					</button>
 
 					<div class="qty">
-						<button @click="$emit('qty-decreased', card, activeDeck)">&minus;</button>
-
 						<span>{{ card.qty }}</span>
+
+						<button @click="$emit('qty-decreased', card, activeDeck)">&minus;</button>
 
 						<button
 							v-if="card.qty < 4 || (card.qty < 99 && RegExp(/^Basic Land\b/).test(card.type))"

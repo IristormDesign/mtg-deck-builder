@@ -271,5 +271,5 @@ function setCardImageURL (card) {
 </script>
 
 <style lang="scss">
-	@import 'sass/index';
+	/* CSS gets inserted here. Don't remove this line. */
 </style>
