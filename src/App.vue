@@ -228,13 +228,10 @@ export default {
 				)
 			}
 		},
-		isBasicLand (card) {
-			return RegExp(/^Basic Land\b/).test(card.type)
-		},
 		setupCardProps (card) {
 			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 
-			if (this.isBasicLand(card)) {
+			if (RegExp(/^Basic Land\b/).test(card.type)) {
 				card.maxQty = 99
 			} else {
 				card.maxQty = 4
