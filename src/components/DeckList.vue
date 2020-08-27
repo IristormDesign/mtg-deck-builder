@@ -25,7 +25,8 @@
 					<div class="qty">
 						<span>&times;</span>
 						<input
-							type="number" v-model="card.qty" min="0"
+							type="number" v-model="card.qty"
+							min="0" :max="card.maxQty"
 							@change="validateQty(card, activeDeck)"
 						/>
 					</div>
@@ -46,12 +47,18 @@ export default {
 			if (card.qty % 1 !== card.qty) {
 				card.qty = Math.round(card.qty)
 			}
-			if (card.qty > 4) {
-				if (!RegExp(/^Basic Land\b/).test(card.type)) {
+
+			if (RegExp(/^Basic Land\b/).test(card.type)) {
+				if (card.qty > 99) {
+					card.qty = 99
+				}
+			} else {
+				if (card.qty > 4) {
 					card.qty = 4
 				}
-			} else if (card.qty < 1) {
-				// this.$emit('card-zeroed', card, deck)
+			}
+
+			if (card.qty < 1) {
 				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
 
 				this.$nextTick(function () {

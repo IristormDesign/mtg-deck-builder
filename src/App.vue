@@ -174,8 +174,8 @@ export default {
 			card.showCard = true
 		},
 		addCard (newCard, activeDeck) {
+			this.setupCardProps(newCard)
 			activeDeck.cards.push(newCard)
-			setCardImageURL(newCard)
 		},
 		createDeck () {
 			const newDeckName = prompt('Give this new deck a name:')
@@ -227,6 +227,18 @@ export default {
 					deck.name !== deletedDeckName
 				)
 			}
+		},
+		isBasicLand (card) {
+			return RegExp(/^Basic Land\b/).test(card.type)
+		},
+		setupCardProps (card) {
+			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
+
+			if (this.isBasicLand(card)) {
+				card.maxQty = 99
+			} else {
+				card.maxQty = 4
+			}
 		}
 	},
 	mounted () {
@@ -234,7 +246,7 @@ export default {
 			this.setShowCardToFalse(deck)
 
 			deck.cards.forEach(card => {
-				setCardImageURL(card)
+				this.setupCardProps(card)
 
 				if (deck.defaultCard === card.name) {
 					card.showCard = true
@@ -242,10 +254,6 @@ export default {
 			})
 		})
 	}
-}
-
-function setCardImageURL (card) {
-	card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 }
 </script>
 
