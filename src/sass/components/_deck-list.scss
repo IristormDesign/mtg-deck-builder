@@ -10,13 +10,13 @@
 		justify-content: space-between;
 		font-size: .75em;
 		display: grid;
-		grid-template-columns: repeat(8, 1fr);
+		grid-template-columns: repeat(9, 1fr);
 		padding: 0 .5em;
 		letter-spacing: 0;
 	
 		.button-group {
 			display: flex;
-			grid-column: span 7;
+			grid-column: span 8;
 	
 			div {
 				&:nth-of-type(1) {
@@ -42,7 +42,7 @@
 	}
 	li {
 		display: grid;
-		grid-template-columns: repeat(8, 1fr);
+		grid-template-columns: repeat(9, 1fr);
 	
 		&:hover {
 			input {
@@ -55,34 +55,24 @@
 				transition-duration: 0s;
 				outline: 0;
 			}
-			// .qty {
-			// 	button {
-			// 		transition-duration: 0s;
-			// 	}
-			// 	button[disabled] {
-			// 		opacity: .5;
-			// 	}
-			// 	button:not([disabled]) {
-			// 		opacity: 1;
-			// 	}
-			// }
 		}
 		> button {
 			background: #dfdfdf;
 			display: flex;
-			grid-column: span 7;
+			grid-column: span 8;
 			justify-content: space-between;
 			margin: 2px 0;
 			padding: 0 .375em;
 			border-radius: .5em / 50%;
-			border: 2px outset #dfdfdf;
+			border: 2px outset #bbb;
 			transition: all .125s ease-out;
 			width: 100%;
 			text-align: left;
 			align-items: center;
 			line-height: 1.375;
 			color: #111;
-	
+			box-shadow: none;
+
 			&:active {
 				background: orangered;
 			}
