@@ -27,7 +27,7 @@
 						<input
 							type="number" v-model="card.qty"
 							min="0" :max="card.maxQty"
-							@change="validateQty(card, activeDeck)"
+							@input="validateQty(card, activeDeck)"
 						/>
 					</div>
 				</li>
@@ -44,9 +44,7 @@ export default {
 	},
 	methods: {
 		validateQty: function (card, deck) {
-			if (card.qty % 1 !== card.qty) {
-				card.qty = Math.round(card.qty)
-			}
+			card.qty = Math.round(card.qty)
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
 				if (card.qty > 99) {

@@ -39,13 +39,15 @@
 					<h3>Total Cards</h3>
 					<div class="amount">
 						{{ totalCards }}
-						<span v-show="totalCards < 60" class="warning-symbol" title="The minimum card limit in a deck is 60.">⚠</span>
+						<span
+							v-show="totalCards < 60" class="warning-symbol" title="The minimum card limit in a deck is 60."
+						>⚠</span>
 					</div>
 				</div>
 				<button
 					title="Rename this deck"
 					@click="renameDeck(deck)"
-				>Rename</button>
+				>Rename Deck</button>
 				<button
 					title="Set the default card of this deck"
 					@click="setDefaultCard(deck)"
@@ -53,7 +55,7 @@
 				<button
 					title="Delete this deck"
 					@click="$emit('deck-deleted', deck.name)"
-				>Delete</button>
+				>Delete Deck</button>
 			</template>
 		</form>
 	</header>
