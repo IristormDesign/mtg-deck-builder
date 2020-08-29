@@ -1,6 +1,6 @@
 <template>
 	<div class="deck-list">
-		<div v-if="activeDeck.cards.length == 0" class="no-cards">
+		<div v-if="deck.cards.length == 0" class="no-cards">
 			<p>This deck currently has no cards.</p>
 		</div>
 		<div v-else>
@@ -13,9 +13,9 @@
 				<div class="qty-group">Quantity</div>
 			</div>
 			<ul>
-				<li v-for="card in activeDeck.cards" :key="card.name">
+				<li v-for="card in deck.cards" :key="card.name">
 					<button
-						@click="$emit('card-clicked', card, activeDeck)"
+						@click="$emit('card-clicked', card, deck)"
 					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
@@ -27,7 +27,7 @@
 						<input
 							type="number" v-model="card.qty"
 							min="0" :max="card.maxQty"
-							@input="validateQty(card, activeDeck)"
+							@input="validateQty(card, deck)"
 						/>
 					</div>
 				</li>
@@ -40,7 +40,7 @@
 export default {
 	name: 'deck-list',
 	props: {
-		activeDeck: Object
+		deck: Object
 	},
 	methods: {
 		validateQty: function (card, deck) {

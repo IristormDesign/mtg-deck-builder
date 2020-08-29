@@ -1,7 +1,7 @@
 <template>
 	<div class="card-display">
 		<div
-			v-for="card in activeDeck.cards"
+			v-for="card in deck.cards"
 			:key="card.name"
 		>
 			<img
@@ -18,7 +18,7 @@
 export default {
 	name: 'card-display',
 	props: {
-		activeDeck: Object
+		deck: Object
 	}
 }
 </script>

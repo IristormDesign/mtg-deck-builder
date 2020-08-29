@@ -1,9 +1,7 @@
 <template>
 	<div id="app">
 		<header class="site-header">
-			<h1>
-				<a href="/">MTG Deck List Organizer</a>
-			</h1>
+			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<tabs
 				:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
 			/>
@@ -15,13 +13,11 @@
 			>
 				<div class="tab-contents-main">
 					<deck-header :deck="deck" />
-					<deck-list
-						:activeDeck="deck" @card-clicked="selectedCard"
-					/>
-					<card-display :activeDeck="deck" />
+					<deck-list :deck="deck" @card-clicked="selectedCard" />
+					<card-display :deck="deck" />
 				</div>
 				<deck-footer
-					:decks="decks" :deck="deck" @deck-deleted="deleteDeck"
+					:deck="deck" :decks="decks" @deck-deleted="deleteDeck"
 					@setup-new-card="setupCardProps"
 				/>
 			</tab-contents>
@@ -44,7 +40,6 @@ import TabContents from './components/TabContents.vue'
 import DeckHeader from './components/DeckHeader.vue'
 import DeckList from './components/DeckList.vue'
 import CardDisplay from './components/CardDisplay.vue'
-// import CardAdder from './components/CardAdder.vue'
 import DeckFooter from './components/DeckFooter.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
@@ -56,7 +51,6 @@ export default {
 		DeckHeader,
 		DeckList,
 		CardDisplay,
-		// CardAdder,
 		DeckFooter,
 		SiteFooter
 	},
