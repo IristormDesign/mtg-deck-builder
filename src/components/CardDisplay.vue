@@ -1,14 +1,10 @@
 <template>
 	<div class="card-display">
-		<div
-			v-for="card in deck.cards"
-			:key="card.name"
-		>
+		<div v-for="card in deck.cards" :key="card.name">
 			<img
 				v-if="card.showCard == true"
 				:src="'img/cards/' + card.img"
-				:alt="card.name"
-				width="336" height="468"
+				width="336" height="468" :alt="card.name"
 			>
 		</div>
 	</div>
