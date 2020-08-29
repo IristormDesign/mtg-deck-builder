@@ -1,29 +1,37 @@
 .card-adder {
-	border: 2px solid tan;
-	grid-column: span 2;
-	padding: .75em;
+	border: 2px solid orangered;
+	padding: .375em .75em;
+	margin: 0 1.5em;
 
-	h2 {
-		line-height: 1;
+	h3 {
 		margin: 0;
 	}
 	label {
 		display: block;
-		margin: .375em 0
+		float: left;
+		margin: .375em 1.5em .375em 0;
 	}
 	input {
 		font-size: 1em;
 		line-height: 1.5;
 		margin-left: .25em;
+		background: rgba(#fff, .75);
+		border: 1px inset tan;
+		padding: .083em .167em;
 	}
 	button {
 		font-size: 1em;
 		padding: .375em;
+		float: left;
+		min-width: 6em;
 	}
 	.message {
 		margin-left: .75em;
 		font-size: .875em;
-		display: inline-block
+		background: #fff;
+		margin: 0 1.5em;
+		float: right;
+		clear: both;
 	}
 	.error-message {
 		color: #d33c40;

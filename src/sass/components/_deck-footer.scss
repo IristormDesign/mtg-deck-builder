@@ -1,0 +1,26 @@
+.deck-footer {
+	grid-column: span 3;
+	padding: 0 1.5em;
+	background: tan;
+	
+	.deck-footer-form {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	h3 {
+		color: #111;
+	}
+	label {
+		display: flex;
+		align-items: center;
+		margin-right: .5em;
+	}
+	.button-group {
+		button {
+			display: block;
+			margin: .75em auto;
+			width: 100%;
+		}
+	}
+}

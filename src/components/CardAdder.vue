@@ -1,6 +1,6 @@
 <template>
 	<div class="card-adder">
-		<h2>Add a Card to the Deck</h2>
+		<h3>Add a Card to the Deck</h3>
 		<form @submit.prevent="handleSubmit">
 			<label>
 				Name:
@@ -25,16 +25,8 @@
 					:class="{ 'has-error': submitting && invalidMana }"
 				>
 			</label>
-			<label>
-				Quantity:
-				<input
-					type="number" min="1" max="99"
-					v-model="card.qty" @focus="clearStatus"
-					:class="{ 'has-error': submitting && invalidQty }"
-				>
-			</label>
 
-			<button>Add Card</button>
+			<button class="primary-btn">Add Card</button>
 
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
@@ -73,9 +65,6 @@ export default {
 		},
 		invalidMana () {
 			return this.card.mana === ''
-		},
-		invalidQty () {
-			return this.card.qty === '' || (this.card.qty > 4 && !RegExp(/^Basic Land\b/).test(this.card.type))
 		}
 	},
 	methods: {
@@ -83,19 +72,18 @@ export default {
 			this.clearStatus()
 			this.submitting = true
 
-			if (this.invalidName || this.invalidType || this.invalidMana || this.invalidQty) {
+			if (this.invalidName || this.invalidType || this.invalidMana) {
 				this.error = true
 				return
 			}
 
-			this.$emit('card-added', this.card, this.activeDeck)
+			this.$emit('card-added', this.card, this.deck)
 
 			this.$refs.first.focus()
 			this.card = {
 				name: '',
 				type: '',
-				mana: '',
-				qty: 1
+				mana: ''
 			}
 			this.error = false
 			this.success = true
@@ -107,7 +95,7 @@ export default {
 		}
 	},
 	props: {
-		activeDeck: Object
+		deck: Object
 	}
 }
 </script>

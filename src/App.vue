@@ -13,14 +13,17 @@
 				v-for="(deck, i) in decks" :key="i" :name="deck.name"
 				v-show="activeTab == deck.name"
 			>
-				<deck-header
+				<div class="tab-contents-main">
+					<deck-header :deck="deck" />
+					<deck-list
+						:activeDeck="deck" @card-clicked="selectedCard"
+					/>
+					<card-display :activeDeck="deck" />
+				</div>
+				<deck-footer
 					:decks="decks" :deck="deck" @deck-deleted="deleteDeck"
+					@setup-new-card="setupCardProps"
 				/>
-				<deck-list
-					:activeDeck="deck" @card-clicked="selectedCard"
-				/>
-				<card-display :activeDeck="deck" />
-				<card-adder :activeDeck="deck" @card-added="addCard" />
 			</tab-contents>
 
 			<div v-if="activeTab == null" class="welcome contents">
@@ -41,7 +44,8 @@ import TabContents from './components/TabContents.vue'
 import DeckHeader from './components/DeckHeader.vue'
 import DeckList from './components/DeckList.vue'
 import CardDisplay from './components/CardDisplay.vue'
-import CardAdder from './components/CardAdder.vue'
+// import CardAdder from './components/CardAdder.vue'
+import DeckFooter from './components/DeckFooter.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
 export default {
@@ -52,7 +56,8 @@ export default {
 		DeckHeader,
 		DeckList,
 		CardDisplay,
-		CardAdder,
+		// CardAdder,
+		DeckFooter,
 		SiteFooter
 	},
 	data () {
@@ -172,10 +177,6 @@ export default {
 		selectedCard (card, deck) {
 			this.setShowCardToFalse(deck)
 			card.showCard = true
-		},
-		addCard (newCard, activeDeck) {
-			this.setupCardProps(newCard)
-			activeDeck.cards.push(newCard)
 		},
 		createDeck () {
 			const newDeckName = prompt('Give this new deck a name:')

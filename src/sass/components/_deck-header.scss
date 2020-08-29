@@ -2,43 +2,25 @@
 	grid-column: span 3;
 	padding-bottom: .75em;
 	border-bottom: 1px solid tan;
-
-	form {
-		display: flex;
-	}
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
 	h2 {
 		margin: 0;
-		margin-right: .75em;
-		flex-grow: 1;
-
-		&.renaming {
-			flex-grow: 0
-		}
-	}
-	label {
-		display: flex;
-		align-items: center;
-		margin-right: .5em;
-	}
-	button {
-		margin-left: .75em;
 	}
 	.total-cards {
-		display: flex;
-		flex-direction: column;
 		line-height: 1;
 		text-align: center;
-		height: 100%;
-		padding-top: 4px;
 	
 		h3 {
-			margin: .125em 0 -.0625em;
+			margin: .125em 0 -.125em;
 			text-transform: uppercase;
 			font-size: .667em;
 			letter-spacing: 0;
 		}
 		.amount {
-			font-size: 1.333em;
+			font-size: 1.5em;
 		}
 	}
 }

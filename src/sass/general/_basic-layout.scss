@@ -5,10 +5,11 @@
 }
 body {
 	font: 18px/1.5 $font-family-standard;
-	background: #333;
-	color: #ddd
+	background: linear-gradient(slategray, #333);
+	color: #ddd;
 }
 #app {
+	border-top: .375em solid orangered;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -27,9 +28,10 @@ body {
 		margin: .75em 0;
 		line-height: 1;
 		font-size: 1.5em;
+		text-shadow: 0 0 .125em #000;
 
 		a {
-			color: orangered;
+			color: #fff;
 
 			&,
 			&:hover,
@@ -50,10 +52,17 @@ main {
 .tab-contents {
 	background: $color-content-bg;
 	color: #000;
-	padding: 1.5*.75em 1.5em;
 }
-.tab-contents {
+.contents {
+	padding: 1.5em;
+
+	&.welcome {
+		text-align: center;
+	}
+}
+.tab-contents-main {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 1.5em;
+	grid-gap: .75em;
+	grid-template-columns: repeat(4, 1fr);
+	padding: 1.5em 1.5em .75em;
 }

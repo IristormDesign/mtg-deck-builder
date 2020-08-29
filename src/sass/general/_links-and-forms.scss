@@ -1,12 +1,12 @@
 a {
-	color: royalblue;
+	color: orangered;
 	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
 	}
 	&:active {
-		color: #fff;
+		color: #000;
 	}
 }
 button {
@@ -18,7 +18,7 @@ button {
 	border-bottom-width: 2px;
 	color: #fff;
 	border-radius: 12.5% / 1.5em;
-	padding: .167em .375em;
+	padding: .375em .375em;
 	min-width: 4.5em;
 
 	&:hover,
@@ -28,7 +28,8 @@ button {
 	&:active {
 		border-style: inset;
 	}
-	&[type="submit"] {
+	&[type="submit"],
+	&.primary-btn {
 		background: peru;
 		background: linear-gradient(orangered, darken(orangered, 8.33%));
 		border-color: orangered;
