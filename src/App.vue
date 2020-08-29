@@ -13,7 +13,7 @@
 			>
 				<div class="tab-contents-main">
 					<deck-header :deck="deck" />
-					<deck-list :deck="deck" @card-clicked="selectedCard" />
+					<deck-list :deck="deck" :decks="decks" />
 					<card-display :deck="deck" />
 				</div>
 				<deck-footer
@@ -163,15 +163,6 @@ export default {
 		assignActiveTab (deck) {
 			this.activeTab = deck.name
 		},
-		setShowCardToFalse (deck) {
-			deck.cards.forEach(card => {
-				this.$set(card, 'showCard', false)
-			})
-		},
-		selectedCard (card, deck) {
-			this.setShowCardToFalse(deck)
-			card.showCard = true
-		},
 		createDeck () {
 			const newDeckName = prompt('Give this new deck a name:')
 
@@ -235,8 +226,6 @@ export default {
 	},
 	mounted () {
 		this.decks.forEach(deck => {
-			this.setShowCardToFalse(deck)
-
 			deck.cards.forEach(card => {
 				this.setupCardProps(card)
 

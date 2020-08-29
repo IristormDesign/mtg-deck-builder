@@ -14,9 +14,7 @@
 			</div>
 			<ul>
 				<li v-for="card in deck.cards" :key="card.name">
-					<button
-						@click="$emit('card-clicked', card, deck)"
-					>
+					<button @click="selectedCard(card, deck)">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
@@ -40,9 +38,19 @@
 export default {
 	name: 'deck-list',
 	props: {
-		deck: Object
+		deck: Object,
+		decks: Array
 	},
 	methods: {
+		selectedCard (card, deck) {
+			this.setShowCardToFalse(deck)
+			card.showCard = true
+		},
+		setShowCardToFalse (deck) {
+			deck.cards.forEach(card => {
+				this.$set(card, 'showCard', false)
+			})
+		},
 		validateQty: function (card, deck) {
 			card.qty = Math.round(card.qty)
 
@@ -70,6 +78,11 @@ export default {
 				})
 			}
 		}
+	},
+	mounted () {
+		this.decks.forEach(deck => {
+			this.setShowCardToFalse(deck)
+		})
 	}
 }
 </script>
