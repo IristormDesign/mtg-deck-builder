@@ -51,8 +51,7 @@ export default {
 			card: {
 				name: '',
 				type: '',
-				mana: '',
-				qty: 1
+				mana: ''
 			}
 		}
 	},

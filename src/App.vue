@@ -193,7 +193,8 @@ export default {
 				this.decks.push({
 					name: newDeckName,
 					cards: [],
-					defaultCard: ''
+					defaultCard: '',
+					editDate: new Date()
 				})
 			}
 		},
@@ -201,6 +202,7 @@ export default {
 			for (let i = 0; i < this.decks.length; i++) {
 				if (this.decks[i].name === newDeckName) {
 					this.activeTab = newDeckName
+					this.decks[i].editDate = new Date()
 					return
 				}
 			}
@@ -216,6 +218,10 @@ export default {
 		},
 		setupCardProps (card) {
 			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
+
+			if (card.qty === undefined) {
+				card.qty = 1
+			}
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
 				card.maxQty = 99

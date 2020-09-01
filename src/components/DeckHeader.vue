@@ -9,8 +9,16 @@
 				{{ totalCards }}
 				<span
 					class="warning-symbol" v-show="totalCards < 60"
-					title="The minimum card limit in a deck is 60."
+					title="The minimum card limit is 60."
 				>⚠</span>
+			</div>
+		</div>
+
+		<div class="date-edited">
+			<h3>Last Edited</h3>
+
+			<div class="date">
+				{{ dateEdited(deck) }}
 			</div>
 		</div>
 	</header>
@@ -21,6 +29,73 @@ export default {
 	name: 'deck-header',
 	props: {
 		deck: Object
+	},
+	methods: {
+		dateEdited (deck) {
+			const date = deck.editDate
+
+			if (date instanceof Date) {
+				let month = date.getMonth() + 1
+				const day = date.getDate()
+				const year = date.getFullYear()
+				let hour = date.getHours()
+				let minute = date.getMinutes()
+				let second = date.getSeconds()
+
+				switch (month) {
+				case 1:
+					month = 'Jan.'
+					break
+				case 2:
+					month = 'Feb.'
+					break
+				case 3:
+					month = 'Mar.'
+					break
+				case 4:
+					month = 'Apr.'
+					break
+				case 5:
+					month = 'May'
+					break
+				case 6:
+					month = 'June'
+					break
+				case 7:
+					month = 'July'
+					break
+				case 8:
+					month = 'Aug.'
+					break
+				case 9:
+					month = 'Sep.'
+					break
+				case 10:
+					month = 'Oct.'
+					break
+				case 11:
+					month = 'Nov.'
+					break
+				case 12:
+					month = 'Dec.'
+					break
+				}
+
+				if (hour < 10) {
+					hour = '0' + hour
+				}
+				if (minute < 10) {
+					minute = '0' + minute
+				}
+				if (second < 10) {
+					second = '0' + second
+				}
+
+				return month + ' ' + day + ', ' + year + ', ' + hour + ':' + minute + ':' + second
+			} else {
+				return '—'
+			}
+		}
 	},
 	computed: {
 		totalCards () {

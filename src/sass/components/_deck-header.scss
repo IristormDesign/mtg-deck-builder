@@ -8,19 +8,23 @@
 	
 	h2 {
 		margin: 0;
+		flex-grow: 1;
 	}
-	.total-cards {
+	> div {
 		line-height: 1;
 		text-align: center;
-	
-		h3 {
-			margin: .125em 0 -.125em;
-			text-transform: uppercase;
-			font-size: .667em;
-			letter-spacing: 0;
-		}
-		.amount {
-			font-size: 1.5em;
-		}
+		margin-left: 2em;
+	}
+	h3 {
+		margin: .125em 0 -.125em;
+		text-transform: uppercase;
+		font-size: .667em;
+		letter-spacing: 0;
+	}
+	.date {
+		line-height: 1.375
+	}
+	.amount {
+		font-size: 1.5em;
 	}
 }

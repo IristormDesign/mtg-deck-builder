@@ -97,6 +97,7 @@ export default {
 		addCard (newCard, deck) {
 			this.$emit('setup-new-card', newCard)
 			deck.cards.push(newCard)
+			deck.editDate = new Date()
 		},
 		renameDeck (deck) {
 			this.decks.forEach(deck => {
@@ -104,9 +105,9 @@ export default {
 			})
 			this.renaming = deck.name
 		},
-		saveRename (activeDeck, decks) {
-			let newName = activeDeck.name
-			const cachedName = activeDeck.cachedName
+		saveRename (deck, decks) {
+			let newName = deck.name
+			const cachedName = deck.cachedName
 
 			if (newName === '') {
 				alert('Please give this deck a name.')
@@ -127,6 +128,7 @@ export default {
 					newName = cachedName
 				} else {
 					this.renaming = null
+					deck.editDate = new Date()
 				}
 			}
 		},
@@ -141,8 +143,11 @@ export default {
 		saveDefaultCard (deck) {
 			const selectedDefaultCard = document.getElementById('defaultCardOptions')
 
-			this.editingDefaultCard = null
 			deck.defaultCard = selectedDefaultCard.options[selectedDefaultCard.selectedIndex].value
+
+			this.editingDefaultCard = null
+
+			deck.editDate = new Date()
 		},
 		cancelDefaultCard (deck) {
 			deck.defaultCard = deck.cachedDefaultCard

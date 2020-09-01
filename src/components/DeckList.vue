@@ -77,6 +77,8 @@ export default {
 					}
 				})
 			}
+
+			deck.editDate = new Date()
 		}
 	},
 	mounted () {
