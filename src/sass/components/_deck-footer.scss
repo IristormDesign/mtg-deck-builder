@@ -2,12 +2,10 @@
 	grid-column: span 3;
 	padding: 0 1.5em;
 	background: tan;
-	
-	.deck-footer-form {
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
 	h3 {
 		color: #111;
 	}

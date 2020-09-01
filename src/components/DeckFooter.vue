@@ -1,57 +1,55 @@
 <template>
 	<footer class="deck-footer">
-		<form @submit.prevent class="deck-footer-form">
-			<template v-if="renaming === deck.cachedName">
-				<h3>New deck name:</h3>
-				<input
-					type="text" class="renaming"
-					v-model.lazy="deck.name" v-focus
-				/>
-				<button
-					title="Save changes" type="submit" class="primary-btn"
-					@click="saveRename(deck, decks)"
-				>Save</button>
-				<button
-					title="Cancel" @click="cancelRename(deck)"
-				>Cancel</button>
-			</template>
+		<template v-if="renaming === deck.cachedName">
+			<h3>New deck name:</h3>
+			<input
+				type="text" class="renaming"
+				v-model.lazy="deck.name" v-focus
+			/>
+			<button
+				title="Save changes" class="primary-btn"
+				@click="saveRename(deck, decks)"
+			>Save</button>
+			<button
+				title="Cancel" @click="cancelRename(deck)"
+			>Cancel</button>
+		</template>
 
-			<template v-else-if="editingDefaultCard === deck.name">
-				<label for="defaultCardOptions">Default Card:</label>
-				<select name="defaultCardOptions" id="defaultCardOptions">
-					<option value="">&darr; Select a default card</option>
-					<option v-for="card in deck.cards" :key="card.name">
-						{{ card.name }}
-					</option>
-				</select>
-				<button
-					title="Save changes" type="submit" class="primary-btn"
-					@click="saveDefaultCard(deck)"
-				>Save</button>
-				<button
-					title="Cancel" @click="cancelDefaultCard(deck)"
-				>Cancel</button>
-			</template>
+		<template v-else-if="editingDefaultCard === deck.name">
+			<label for="defaultCardOptions">Default Card:</label>
+			<select name="defaultCardOptions" id="defaultCardOptions">
+				<option value="">&darr; Select a default card</option>
+				<option v-for="card in deck.cards" :key="card.name">
+					{{ card.name }}
+				</option>
+			</select>
+			<button
+				title="Save changes" class="primary-btn"
+				@click="saveDefaultCard(deck)"
+			>Save</button>
+			<button
+				title="Cancel" @click="cancelDefaultCard(deck)"
+			>Cancel</button>
+		</template>
 
-			<template v-else>
-				<card-adder :deck="deck" @card-added="addCard" />
+		<template v-else>
+			<card-adder :deck="deck" @card-added="addCard" />
 
-				<div class="button-group">
-					<button
-						title="Rename this deck"
-						@click="renameDeck(deck)"
-					>Rename Deck</button>
-					<button
-						title="Set the default card of this deck"
-						@click="setDefaultCard(deck)"
-					>Set Default Card</button>
-					<button
-						title="Delete this deck"
-						@click="$emit('deck-deleted', deck.name)"
-					>Delete Deck</button>
-				</div>
-			</template>
-		</form>
+			<div class="button-group">
+				<button
+					title="Rename this deck"
+					@click="renameDeck(deck)"
+				>Rename Deck</button>
+				<button
+					title="Set the default card of this deck"
+					@click="setDefaultCard(deck)"
+				>Set Default Card</button>
+				<button
+					title="Delete this deck"
+					@click="$emit('deck-deleted', deck.name)"
+				>Delete Deck</button>
+			</div>
+		</template>
 	</footer>
 </template>
 
