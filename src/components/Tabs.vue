@@ -2,16 +2,14 @@
 	<nav>
 		<ul class="tabs">
 			<li v-for="(deck, i) in decks" :key="i">
-				<template v-if="activeTab != deck.name">
-					<a @click="selectTab(deck)" :href="tabHref(deck)">
-						{{ deck.name || '?' }}
-					</a>
-				</template>
-				<template v-else>
-					<div>
-						{{ deck.name || '?' }}
-					</div>
-				</template>
+				<div v-if="activeTab == deck.name">
+					{{ deck.name || '?' }}
+				</div>
+				<a v-else
+					@click="selectTab(deck)" :href="tabHref(deck)"
+				>
+					{{ deck.name || '?' }}
+				</a>
 			</li>
 			<li>
 				<a
