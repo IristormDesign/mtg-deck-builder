@@ -4,7 +4,7 @@
 			<h3>New deck name:</h3>
 			<input
 				type="text" class="renaming"
-				v-model.lazy="deck.name" v-focus
+				v-model.lazy="deck.newName" v-focus
 			/>
 			<button
 				title="Save changes" class="primary-btn"
@@ -104,30 +104,25 @@ export default {
 			this.renaming = deck.name
 		},
 		saveRename (deck, decks) {
-			let newName = deck.name
-			const cachedName = deck.cachedName
+			const newName = deck.newName
+
+			function existingDeckName () {
+				for (let i = 0; i < decks.length; i++) {
+					if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
+						return true
+					}
+				}
+				return false
+			}
 
 			if (newName === '') {
 				alert('Please give this deck a name.')
-
-				newName = cachedName
+			} else if (existingDeckName()) {
+				alert('⚠ Another deck is already named “' + newName + '.” Please enter a different name.')
 			} else {
-				const existingDeckName = function () {
-					for (let i = 0; i < decks.length; i++) {
-						if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
-							return true
-						}
-					}
-					return false
-				}
-				if (existingDeckName()) {
-					alert('⚠ Another deck already has the name “' + newName + '.” Please enter a different name.')
-
-					newName = cachedName
-				} else {
-					this.renaming = null
-					deck.editDate = new Date()
-				}
+				deck.name = newName
+				this.renaming = null
+				deck.editDate = new Date()
 			}
 		},
 		cancelRename (deck) {
