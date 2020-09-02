@@ -22,8 +22,8 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			border: 1px solid rgba(#000, .125);
-			border-top-color: rgba(#fff, .25);
+			border: 1px solid rgba(#000, .25);
+			border-top-width: 0;
 			border-bottom-width: 0;
 			color: linen;
 			box-sizing: content-box;
@@ -47,13 +47,15 @@
 				background: lighten(orangered, 12.5%);
 				background: linear-gradient(
 					lighten(orangered, 12.5%) 25%,
-					orangered
+					orangered 75%,
+					desaturate(darken(orangered, 25%), 16.7%)
 				);
 				color: #fff;
 			}
 		}
 		div {
 			background: orangered;
+			cursor: default;
 		}
 		&.add-new-deck {
 			span {

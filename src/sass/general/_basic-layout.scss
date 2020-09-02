@@ -21,7 +21,7 @@ body {
 	max-width: 1280px;
 	width: 100%;
 	margin: 0 auto;
-	padding-left: .75em;
+	padding: 0 1.5em;
 
 	h1 {
 		margin: .5em 0;
@@ -52,6 +52,7 @@ main {
 	background: $color-content-bg;
 	color: #000;
 	border-top: .5em solid orangered;
+	margin-bottom: 1.5em;
 }
 .contents {
 	padding: .75em;
