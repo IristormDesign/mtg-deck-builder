@@ -27,7 +27,7 @@
 					<h2>Welcome</h2>
 				</header>
 				<p>This is an app for building and managing deck lists for the collectible card game <a href="https://magic.wizards.com" target="_blank" rel="noopener"><i>Magic: The Gathering</i></a>.</p>
-				<p>To view a pre-made deck list, click on one of the tabs by the upper-left corner. To make a new deck list, click the “+” tab.</p>
+				<p>To view a pre-made deck list, click on one of the tabs by the top-right corner. To make a new deck list, click on the “+” tab.</p>
 			</div>
 		</main>
 		<site-footer />

@@ -5,28 +5,31 @@
 
 	li {
 		display: block;
-		margin: 0 .25em;
+		margin: 0 .1875em;
 		height: 2.25em;
 		float: left;
 
-		> a,
-		> div {
-			@include heading-font;
-			border-radius: .5em .5em 0 0;
+		a,
+		div {
+			border-radius: .75em .75em 0 0 / 50% 50% 0 0;
 			padding: 0 .5em;
-			height: 100%;
 			display: block;
 			line-height: 2.25em;
 			text-decoration: none;
 			text-align: center;
-			min-width: 4.5em;
+			min-width: 3em;
+			max-width: 9em;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			border: 1px solid rgba(#000, .125);
-			border-top-color: rgba(#fff, .333);
+			border-top-color: rgba(#fff, .25);
 			border-bottom-width: 0;
 			color: linen;
 			box-sizing: content-box;
+			transition: all .125s ease;
 		}
-		> a {
+		a {
 			background: linear-gradient(
 				desaturate(darken(orangered, 8.33%), 8.33%) 75%,
 				desaturate(darken(orangered, 16.7%), 16.7%)
@@ -37,6 +40,8 @@
 					desaturate(darken(orangered, 12.5%), 8.33%) 75%,
 					desaturate(darken(orangered, 25%), 16.7%)
 				);
+				padding-bottom: .25em;
+				margin-top: -.25em;
 			}
 			&:active {
 				background: lighten(orangered, 12.5%);
@@ -47,7 +52,7 @@
 				color: #fff;
 			}
 		}
-		> div {
+		div {
 			background: orangered;
 		}
 		&.add-new-deck {
