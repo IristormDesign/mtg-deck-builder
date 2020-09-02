@@ -11,11 +11,11 @@
 					{{ deck.name || '?' }}
 				</a>
 			</li>
-			<li>
+			<li class="add-new-deck">
 				<a
 					href="#" title="Create a new deck list"
 					@click="$emit('create-deck')"
-				>+</a>
+				><span>+</span></a>
 			</li>
 		</ul>
 	</nav>

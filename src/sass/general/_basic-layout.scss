@@ -9,7 +9,7 @@ body {
 	color: #ddd;
 }
 #app {
-	border-top: .375em solid orangered;
+	// border-top: .375em solid orangered;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -52,9 +52,10 @@ main {
 .tab-contents {
 	background: $color-content-bg;
 	color: #000;
+	border-top: .5em solid orangered;
 }
 .contents {
-	padding: 1.5em;
+	padding: .75em;
 
 	&.welcome {
 		text-align: center;
@@ -64,5 +65,5 @@ main {
 	display: grid;
 	grid-gap: .75em;
 	grid-template-columns: repeat(4, 1fr);
-	padding: 1.5em 1.5em .75em;
+	padding: .75em 1.5em;
 }
