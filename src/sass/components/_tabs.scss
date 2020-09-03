@@ -40,8 +40,8 @@
 					desaturate(darken(orangered, 12.5%), 8.33%) 75%,
 					desaturate(darken(orangered, 25%), 16.7%)
 				);
-				padding-bottom: .25em;
-				margin-top: -.25em;
+				padding-bottom: .125em;
+				margin-top: -.125em;
 			}
 			&:active {
 				background: lighten(orangered, 12.5%);

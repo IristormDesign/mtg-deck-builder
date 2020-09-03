@@ -81,7 +81,7 @@ export default {
 					const card = cards[i]
 
 					if (thisCard.name === card.name) {
-						alert('A card named “' + card.name + '” already exists in this deck. Its quantity will be increased by 1 instead.')
+						alert('A card named “' + card.name + '” already exists in this deck. Its quantity will increase by 1 instead.')
 
 						card.qty++
 
