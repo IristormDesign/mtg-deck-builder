@@ -200,9 +200,11 @@ export default {
 		},
 		switchToNewDeck (newDeckName) {
 			for (let i = 0; i < this.decks.length; i++) {
-				if (this.decks[i].name === newDeckName) {
+				const deck = this.decks[i]
+
+				if (deck.name === newDeckName) {
 					this.activeTab = newDeckName
-					this.decks[i].editDate = new Date()
+					deck.editDate = new Date()
 					return
 				}
 			}
@@ -228,6 +230,26 @@ export default {
 			} else {
 				card.maxQty = 4
 			}
+
+			this.$nextTick(() => {
+				this.sortCards()
+			})
+		},
+		sortCards () {
+			this.decks.forEach(deck => {
+				deck.cards.sort(function (a, b) {
+					const cardA = a.name.toUpperCase()
+					const cardB = b.name.toUpperCase()
+
+					if (cardA < cardB) {
+						return -1
+					}
+					if (cardA > cardB) {
+						return 1
+					}
+					return 0
+				})
+			})
 		}
 	},
 	mounted () {
