@@ -20,7 +20,7 @@
 			<label>
 				Mana Cost:
 				<input
-					type="text" pattern="\d*[WUBRGwubrg]*"
+					type="text" pattern="\d*[WUBRGXwubrgx]*"
 					v-model="card.mana" @focus="clearStatus"
 					:class="{ 'has-error': submitting && invalidMana }"
 				>
@@ -76,7 +76,25 @@ export default {
 				return
 			}
 
-			this.$emit('card-added', this.card, this.deck)
+			function cardExists (thisCard, cards) {
+				for (let i = 0; i < cards.length; i++) {
+					const card = cards[i]
+
+					if (thisCard.name === card.name) {
+						alert('A card named “' + card.name + '” already exists in this deck. Its quantity will be increased by 1 instead.')
+
+						card.qty++
+
+						return true
+					}
+				}
+				return false
+			}
+
+			// If the submitted card already exists in the deck, don't add another instance (because the existing card's quantity has increased by 1 instead).
+			if (!cardExists(this.card, this.deck.cards)) {
+				this.$emit('card-added', this.card, this.deck)
+			}
 
 			this.$refs.first.focus()
 			this.card = {
