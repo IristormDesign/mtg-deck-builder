@@ -233,7 +233,7 @@ export default {
 			}
 
 			this.$nextTick(() => {
-				this.sortCards('name')
+				this.sortCards()
 			})
 		},
 		sortCards (prop) {
@@ -243,9 +243,16 @@ export default {
 					let cardB = b[prop]
 					let reverseOrder = false
 
-					if (prop === 'qty') {
+					if (prop === undefined) {
+						if (this.previousSortProp) {
+							prop = this.previousSortProp
+						} else {
+							prop = 'type'
+						}
+					} else if (prop === 'qty') {
 						reverseOrder = true
 					}
+
 					if (a[prop] instanceof String) {
 						cardA = cardA.toUpperCase()
 						cardB = cardB.toUpperCase()

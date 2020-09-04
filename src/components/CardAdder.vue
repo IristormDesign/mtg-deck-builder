@@ -11,18 +11,18 @@
 				>
 			</label>
 			<label>
-				Type:
-				<input
-					type="text" v-model="card.type" @focus="clearStatus"
-					:class="{ 'has-error': submitting && invalidType }"
-				>
-			</label>
-			<label>
 				Mana Cost:
 				<input
 					type="text" pattern="\d*[WUBRGXwubrgx]*"
 					v-model="card.mana" @focus="clearStatus"
 					:class="{ 'has-error': submitting && invalidMana }"
+				>
+			</label>
+			<label>
+				Type:
+				<input
+					type="text" v-model="card.type" @focus="clearStatus"
+					:class="{ 'has-error': submitting && invalidType }"
 				>
 			</label>
 
@@ -50,8 +50,8 @@ export default {
 			success: false,
 			card: {
 				name: '',
-				type: '',
-				mana: ''
+				mana: '',
+				type: ''
 			}
 		}
 	},
@@ -59,11 +59,11 @@ export default {
 		invalidName () {
 			return this.card.name === ''
 		},
-		invalidType () {
-			return this.card.type === ''
-		},
 		invalidMana () {
 			return this.card.mana === ''
+		},
+		invalidType () {
+			return this.card.type === ''
 		}
 	},
 	methods: {
@@ -71,7 +71,7 @@ export default {
 			this.clearStatus()
 			this.submitting = true
 
-			if (this.invalidName || this.invalidType || this.invalidMana) {
+			if (this.invalidName || this.invalidMana || this.invalidType) {
 				this.error = true
 				return
 			}
@@ -99,8 +99,8 @@ export default {
 			this.$refs.first.focus()
 			this.card = {
 				name: '',
-				type: '',
-				mana: ''
+				mana: '',
+				type: ''
 			}
 			this.error = false
 			this.success = true
