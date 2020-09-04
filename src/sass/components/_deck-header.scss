@@ -27,4 +27,17 @@
 	.amount {
 		font-size: 1.5em;
 	}
+	select {
+		border: 1px solid tan;
+		margin-top: .125em;
+		line-height: 1.5;
+		padding: .125em 0;
+		background: rgba(#fff, .75);
+
+		&:hover,
+		&:focus {
+			border-color: orangered;
+			cursor: pointer;
+		}
+	}
 }
