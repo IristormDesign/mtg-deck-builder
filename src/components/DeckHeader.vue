@@ -2,6 +2,24 @@
 	<header class="deck-header">
 		<h2>{{ deck.name }}</h2>
 
+		<div class="sorter">
+			<h3>Sort Cards By</h3>
+			<select v-model="sort">
+				<option>Name</option>
+				<option>Converted mana cost</option>
+				<option>Type</option>
+				<option>Quantity</option>
+			</select>
+		</div>
+
+		<div class="date-edited">
+			<h3>Last Edited On</h3>
+
+			<div class="date">
+				{{ dateEdited(deck) }}
+			</div>
+		</div>
+
 		<div class="total-cards">
 			<h3>Total Cards</h3>
 
@@ -13,20 +31,17 @@
 				>⚠</span>
 			</div>
 		</div>
-
-		<div class="date-edited">
-			<h3>Last Edited</h3>
-
-			<div class="date">
-				{{ dateEdited(deck) }}
-			</div>
-		</div>
 	</header>
 </template>
 
 <script>
 export default {
 	name: 'deck-header',
+	data () {
+		return {
+			sort: 'Type'
+		}
+	},
 	props: {
 		deck: Object
 	},
@@ -108,6 +123,24 @@ export default {
 			})
 
 			return total
+		}
+	},
+	watch: {
+		sort: function (input) {
+			switch (input) {
+			case 'Name':
+				this.$emit('sort-cards', 'name')
+				break
+			case 'Converted mana cost':
+				this.$emit('sort-cards', 'mana')
+				break
+			case 'Type':
+				this.$emit('sort-cards', 'type')
+				break
+			case 'Quantity':
+				this.$emit('sort-cards', 'qty')
+				break
+			}
 		}
 	}
 }

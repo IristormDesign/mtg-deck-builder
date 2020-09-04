@@ -12,7 +12,7 @@
 				v-show="activeTab == deck.name"
 			>
 				<div class="tab-contents-main">
-					<deck-header :deck="deck" />
+					<deck-header :deck="deck" @sort-cards="sortCards" />
 					<deck-list :deck="deck" :decks="decks" />
 					<card-display :deck="deck" />
 				</div>
@@ -232,21 +232,43 @@ export default {
 			}
 
 			this.$nextTick(() => {
-				this.sortCards()
+				this.sortCards('name')
 			})
 		},
-		sortCards () {
+		sortCards (prop) {
 			this.decks.forEach(deck => {
-				deck.cards.sort(function (a, b) {
-					const cardA = a.name.toUpperCase()
-					const cardB = b.name.toUpperCase()
+				deck.cards.sort((a, b) => {
+					let cardA = a[prop]
+					let cardB = b[prop]
 
-					if (cardA < cardB) {
+					if (prop !== 'qty') {
+						cardA = a[prop].toUpperCase()
+						cardB = b[prop].toUpperCase()
+
+						if (cardA < cardB) {
+							return -1
+						}
+						if (cardA > cardB) {
+							return 1
+						}
+						// Reverse order of sorting for qty.
+					} else if (prop === 'qty') {
+						if (cardA < cardB) {
+							return 1
+						}
+						if (cardA > cardB) {
+							return -1
+						}
+					}
+
+					// Always sort by name as a last resort.
+					if (a.name < b.name) {
 						return -1
 					}
-					if (cardA > cardB) {
+					if (a.name > b.name) {
 						return 1
 					}
+
 					return 0
 				})
 			})
