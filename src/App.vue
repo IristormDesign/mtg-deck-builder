@@ -238,17 +238,15 @@ export default {
 		},
 		sortCards (prop) {
 			this.decks.forEach(deck => {
+				const prevProp = this.previousSortProp
+
 				deck.cards.sort((a, b) => {
 					let cardA = a[prop]
 					let cardB = b[prop]
 					let reverseOrder = false
 
 					if (prop === undefined) {
-						if (this.previousSortProp) {
-							prop = this.previousSortProp
-						} else {
-							prop = 'type'
-						}
+						prop = prevProp
 					} else if (prop === 'qty') {
 						reverseOrder = true
 					}
@@ -272,7 +270,6 @@ export default {
 						}
 					}
 
-					const prevProp = this.previousSortProp
 					let prevReverseOrder = false
 
 					if (prevProp === 'qty') {
