@@ -156,7 +156,6 @@ export default {
 				}
 			],
 			editingDefaultCard: null,
-			previousSortProp: 'type',
 			renaming: null
 		}
 	},
@@ -195,7 +194,8 @@ export default {
 					name: newDeckName,
 					cards: [],
 					defaultCard: '',
-					editDate: new Date()
+					editDate: new Date(),
+					previousSortProp: 'type'
 				})
 			}
 		},
@@ -237,19 +237,23 @@ export default {
 			})
 		},
 		sortCards (prop) {
+			console.log('sortCards(' + prop + ')')
+
 			this.decks.forEach(deck => {
-				const prevProp = this.previousSortProp
+				const prevProp = deck.previousSortProp
 
 				deck.cards.sort((a, b) => {
-					let cardA = a[prop]
-					let cardB = b[prop]
 					let reverseOrder = false
 
 					if (prop === undefined) {
 						prop = prevProp
-					} else if (prop === 'qty') {
+					}
+					if (prop === 'qty') {
 						reverseOrder = true
 					}
+
+					let cardA = a[prop]
+					let cardB = b[prop]
 
 					if (a[prop] instanceof String) {
 						cardA = cardA.toUpperCase()
@@ -302,12 +306,14 @@ export default {
 					return 0
 				})
 
-				this.previousSortProp = prop
+				deck.previousSortProp = prop
 			})
 		}
 	},
 	mounted () {
 		this.decks.forEach(deck => {
+			this.$set(deck, 'previousSortProp', 'type')
+
 			deck.cards.forEach(card => {
 				this.setupCardProps(card)
 
