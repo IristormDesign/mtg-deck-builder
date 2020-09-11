@@ -294,7 +294,7 @@ export default {
 						}
 					}
 
-					// Always sort by name as a last resort.
+					// Sort by name as a last resort (if name isn't the previously selected property).
 					if (prevProp !== 'name') {
 						if (a.name < b.name) {
 							return -1
