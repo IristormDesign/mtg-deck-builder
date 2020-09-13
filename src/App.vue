@@ -237,8 +237,6 @@ export default {
 			})
 		},
 		sortCards (prop) {
-			console.log('sortCards(' + prop + ')')
-
 			this.decks.forEach(deck => {
 				const prevProp = deck.previousSortProp
 
@@ -255,6 +253,7 @@ export default {
 					let cardA = a[prop]
 					let cardB = b[prop]
 
+					// If prop is a card name, mana cost, or type...
 					if (a[prop] instanceof String) {
 						cardA = cardA.toUpperCase()
 						cardB = cardB.toUpperCase()
