@@ -123,22 +123,30 @@ export default {
 			})
 
 			return total
+		},
+
+		// The Vue 2 `watch` feature doesn't work with multiple parameters, so this is a workaround.
+		parametersForSorting () {
+			return [this.sort, this.deck]
 		}
 	},
 	watch: {
-		sort: function (input) {
-			switch (input) {
+		parametersForSorting: function (p) {
+			const sortOption = p[0]
+			const deck = p[1]
+
+			switch (sortOption) {
 			case 'Name':
-				this.$emit('sort-cards', 'name')
+				this.$emit('sort-cards', 'name', deck)
 				break
 			case 'Converted mana cost':
-				this.$emit('sort-cards', 'mana')
+				this.$emit('sort-cards', 'mana', deck)
 				break
 			case 'Type':
-				this.$emit('sort-cards', 'type')
+				this.$emit('sort-cards', 'type', deck)
 				break
 			case 'Quantity':
-				this.$emit('sort-cards', 'qty')
+				this.$emit('sort-cards', 'qty', deck)
 				break
 			}
 		}

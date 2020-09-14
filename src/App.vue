@@ -219,7 +219,7 @@ export default {
 				)
 			}
 		},
-		setupCardProps (card) {
+		setupCardProps (card, deck) {
 			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 
 			if (card.qty === undefined) {
@@ -231,90 +231,85 @@ export default {
 			} else {
 				card.maxQty = 4
 			}
-
-			this.$nextTick(() => {
-				this.sortCards()
-			})
 		},
-		sortCards (prop) {
-			this.decks.forEach(deck => {
-				const prevProp = deck.previousSortProp
+		sortCards (prop, deck) {
+			const prevProp = deck.previousSortProp
 
-				deck.cards.sort((a, b) => {
-					let reverseOrder = false
+			deck.cards.sort((a, b) => {
+				let reverseOrder = false
 
-					if (prop === undefined) {
-						prop = prevProp
+				if (prop === undefined) {
+					prop = prevProp
+				}
+				if (prop === 'qty') {
+					reverseOrder = true
+				}
+
+				let cardA = a[prop]
+				let cardB = b[prop]
+
+				// If prop is a card name, mana cost, or type...
+				if (a[prop] instanceof String) {
+					cardA = cardA.toUpperCase()
+					cardB = cardB.toUpperCase()
+				}
+
+				if (cardA < cardB) {
+					if (reverseOrder) {
+						return 1
+					} else {
+						return -1
 					}
-					if (prop === 'qty') {
-						reverseOrder = true
+				} else if (cardA > cardB) {
+					if (reverseOrder) {
+						return -1
+					} else {
+						return 1
 					}
+				}
 
-					let cardA = a[prop]
-					let cardB = b[prop]
+				let prevReverseOrder = false
 
-					// If prop is a card name, mana cost, or type...
-					if (a[prop] instanceof String) {
-						cardA = cardA.toUpperCase()
-						cardB = cardB.toUpperCase()
+				if (prevProp === 'qty') {
+					prevReverseOrder = true
+				}
+
+				if (a[prevProp] < b[prevProp]) {
+					if (prevReverseOrder) {
+						return 1
+					} else {
+						return -1
 					}
-
-					if (cardA < cardB) {
-						if (reverseOrder) {
-							return 1
-						} else {
-							return -1
-						}
-					} else if (cardA > cardB) {
-						if (reverseOrder) {
-							return -1
-						} else {
-							return 1
-						}
+				} else if (a[prevProp] > b[prevProp]) {
+					if (prevReverseOrder) {
+						return -1
+					} else {
+						return 1
 					}
+				}
 
-					let prevReverseOrder = false
-
-					if (prevProp === 'qty') {
-						prevReverseOrder = true
+				// Sort by name as a last resort (if name isn't the previously selected property).
+				if (prevProp !== 'name') {
+					if (a.name < b.name) {
+						return -1
+					} else if (a.name > b.name) {
+						return 1
 					}
+				}
 
-					if (a[prevProp] < b[prevProp]) {
-						if (prevReverseOrder) {
-							return 1
-						} else {
-							return -1
-						}
-					} else if (a[prevProp] > b[prevProp]) {
-						if (prevReverseOrder) {
-							return -1
-						} else {
-							return 1
-						}
-					}
-
-					// Sort by name as a last resort (if name isn't the previously selected property).
-					if (prevProp !== 'name') {
-						if (a.name < b.name) {
-							return -1
-						} else if (a.name > b.name) {
-							return 1
-						}
-					}
-
-					return 0
-				})
-
-				deck.previousSortProp = prop
+				return 0
 			})
+
+			deck.previousSortProp = prop
 		}
 	},
 	mounted () {
 		this.decks.forEach(deck => {
 			this.$set(deck, 'previousSortProp', 'type')
+			this.sortCards(undefined, deck)
 
 			deck.cards.forEach(card => {
-				this.setupCardProps(card)
+				this.setupCardProps(card, deck)
 
 				if (deck.defaultCard === card.name) {
 					card.showCard = true
