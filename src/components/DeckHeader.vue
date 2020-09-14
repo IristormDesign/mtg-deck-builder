@@ -56,6 +56,7 @@ export default {
 				let hour = date.getHours()
 				let minute = date.getMinutes()
 				let second = date.getSeconds()
+				let meridiem
 
 				switch (month) {
 				case 1:
@@ -96,6 +97,13 @@ export default {
 					break
 				}
 
+				if (hour < 12) {
+					meridiem = 'a.m.'
+				} else {
+					hour = hour - 12
+					meridiem = 'p.m.'
+				}
+
 				if (hour < 10) {
 					hour = '0' + hour
 				}
@@ -106,7 +114,7 @@ export default {
 					second = '0' + second
 				}
 
-				return month + ' ' + day + ', ' + year + ', ' + hour + ':' + minute + ':' + second
+				return `${month} ${day}, ${year}, ${hour}:${minute}:${second} ${meridiem}`
 			} else {
 				return '—'
 			}
