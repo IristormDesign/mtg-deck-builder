@@ -233,14 +233,9 @@ export default {
 			}
 		},
 		sortCards (prop, deck) {
-			const prevProp = deck.previousSortProp
-
 			deck.cards.sort((a, b) => {
 				let reverseOrder = false
 
-				if (prop === undefined) {
-					prop = prevProp
-				}
 				if (prop === 'qty') {
 					reverseOrder = true
 				}
@@ -268,6 +263,7 @@ export default {
 					}
 				}
 
+				const prevProp = deck.previousSortProp
 				let prevReverseOrder = false
 
 				if (prevProp === 'qty') {
@@ -305,8 +301,7 @@ export default {
 	},
 	mounted () {
 		this.decks.forEach(deck => {
-			this.$set(deck, 'previousSortProp', 'type')
-			this.sortCards(undefined, deck)
+			this.sortCards('type', deck)
 
 			deck.cards.forEach(card => {
 				this.setupCardProps(card, deck)
