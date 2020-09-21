@@ -2,9 +2,11 @@
 	<div id="app">
 		<header class="site-header">
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
-			<tabs
-				:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
-			/>
+			<nav>
+				<tabs
+					:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
+				/>
+			</nav>
 		</header>
 		<main>
 			<tab-contents
@@ -22,12 +24,20 @@
 				/>
 			</tab-contents>
 
-			<div v-if="activeTab == null" class="welcome contents">
-				<header>
-					<h2>Welcome</h2>
-				</header>
-				<p>This is an app for building and managing deck lists for the collectible card game <a href="https://magic.wizards.com" target="_blank" rel="noopener"><i>Magic: The Gathering</i></a>.</p>
-				<p>To view a pre-made deck list, click on one of the tabs by the top-right corner. To make a new deck list, click on the “+” tab.</p>
+			<div v-if="activeTab == null" class="welcome">
+				<div class="contents">
+					<div class="text-box">
+						<header>
+							<h2>Greetings, planeswalker.</h2>
+						</header>
+						<p>This is the MTG Deck List Organizer, a web app where you can create and manage deck lists for <a href="https://magic.wizards.com" target="_blank" rel="noopener"><i><u>Magic: The Gathering</u></i></a> (a strategic collectible card game).</p>
+						<p>To view a pre-made deck list, click on one of the tabs by the top-right corner.</p>
+						<p>To construct a new deck list, click on the “+” tab.</p>
+					</div>
+				</div>
+				<footer>
+					<small>Illustration by <a href="https://www.davidrevoy.com/article24/video-timelapse-lezard" target="_blank" rel="noopener">David Revoy</a>; used with <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International">CC BY 4.0 license</a></small>
+				</footer>
 			</div>
 		</main>
 		<site-footer />
