@@ -24,21 +24,7 @@
 				/>
 			</tab-contents>
 
-			<div v-if="activeTab == null" class="welcome">
-				<div class="contents">
-					<div class="text-box">
-						<header>
-							<h2>Greetings, planeswalker.</h2>
-						</header>
-						<p>This is the MTG Deck List Organizer, a web app where you can create and manage deck lists for <a href="https://magic.wizards.com" target="_blank" rel="noopener"><i><u>Magic: The Gathering</u></i></a> (a strategic collectible card game).</p>
-						<p>To view a pre-made deck list, click on one of the tabs by the top-right corner.</p>
-						<p>To construct a new deck list, click on the “+” tab.</p>
-					</div>
-				</div>
-				<footer>
-					<small>Illustration by <a href="https://www.davidrevoy.com/article24/video-timelapse-lezard" target="_blank" rel="noopener">David Revoy</a>; used with <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" title="Creative Commons Attribution 4.0 International">CC BY 4.0 license</a></small>
-				</footer>
-			</div>
+			<welcome v-if="activeTab == null"></welcome>
 		</main>
 		<site-footer />
 	</div>
@@ -47,6 +33,7 @@
 <script>
 import Tabs from './components/Tabs.vue'
 import TabContents from './components/TabContents.vue'
+import Welcome from './components/Welcome.vue'
 import DeckHeader from './components/DeckHeader.vue'
 import DeckList from './components/DeckList.vue'
 import CardDisplay from './components/CardDisplay.vue'
@@ -58,6 +45,7 @@ export default {
 	components: {
 		Tabs,
 		TabContents,
+		Welcome,
 		DeckHeader,
 		DeckList,
 		CardDisplay,
