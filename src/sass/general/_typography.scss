@@ -9,7 +9,7 @@ p {
 }
 strong,
 b {
-	@include heading-font;
+	// @include heading-font;
 }
 ::selection {
 	background: orangered;
