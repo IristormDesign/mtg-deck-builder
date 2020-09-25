@@ -19,7 +19,7 @@
 					<card-display :deck="deck" />
 				</div>
 				<deck-footer
-					:deck="deck" :decks="decks" @deck-deleted="deleteDeck"
+					:deck="deck" :decks="decks" @activated-tab="assignActiveTab" @deck-deleted="deleteDeck"
 					@setup-new-card="setupCardProps"
 				/>
 			</tab-contents>

@@ -122,6 +122,7 @@ export default {
 			} else {
 				deck.name = newName
 				this.renaming = null
+				this.$emit('activated-tab', deck)
 				deck.editDate = new Date()
 			}
 		},
