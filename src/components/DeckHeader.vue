@@ -1,6 +1,27 @@
 <template>
 	<header class="deck-header">
-		<h2>{{ deck.name }}</h2>
+		<form class="deck-name">
+			<template v-if="renaming !== deck.cachedName">
+				<h2>
+					<button
+						@click="renameDeck(deck, decks)"
+						title="Rename this deck"
+					>{{ deck.name }}</button>
+				</h2>
+			</template>
+			<template v-else>
+				<h2>
+					<input type="text" class="renaming" v-model.lazy="deck.newName" v-focus />
+				</h2>
+				<button
+					title="Save new name" class="primary-btn"
+					@click="saveRename(deck, decks)"
+				>Save</button>
+				<button
+					title="Cancel" @click="cancelRename(deck)"
+				>Cancel</button>
+			</template>
+		</form>
 
 		<div class="sorter">
 			<h3>Sort Cards By</h3>
@@ -39,13 +60,55 @@ export default {
 	name: 'deck-header',
 	data () {
 		return {
+			renaming: '',
 			sort: 'Type'
 		}
 	},
 	props: {
-		deck: Object
+		deck: Object,
+		decks: Array
+	},
+	directives: {
+		focus: {
+			inserted: function (el) {
+				el.focus()
+			}
+		}
 	},
 	methods: {
+		renameDeck (deck) {
+			this.decks.forEach(deck => {
+				deck.cachedName = deck.name
+			})
+			this.renaming = deck.name
+		},
+		saveRename (deck, decks) {
+			const newName = deck.newName
+
+			function existingDeckName () {
+				for (let i = 0; i < decks.length; i++) {
+					if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
+						return true
+					}
+				}
+				return false
+			}
+
+			if (newName === '') {
+				alert('Please give this deck a name.')
+			} else if (existingDeckName()) {
+				alert('⚠ Another deck is already named “' + newName + '.” Please enter a different name.')
+			} else {
+				deck.name = newName
+				this.renaming = null
+				this.$emit('renamed-tab', deck)
+				deck.editDate = new Date()
+			}
+		},
+		cancelRename (deck) {
+			deck.name = deck.cachedName
+			this.renaming = null
+		},
 		dateEdited (deck) {
 			const date = deck.editDate
 

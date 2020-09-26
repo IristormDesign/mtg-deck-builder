@@ -1,21 +1,6 @@
 <template>
 	<footer class="deck-footer">
-		<template v-if="renaming === deck.cachedName">
-			<h3>New deck name:</h3>
-			<input
-				type="text" class="renaming"
-				v-model.lazy="deck.newName" v-focus
-			/>
-			<button
-				title="Save changes" class="primary-btn"
-				@click="saveRename(deck, decks)"
-			>Save</button>
-			<button
-				title="Cancel" @click="cancelRename(deck)"
-			>Cancel</button>
-		</template>
-
-		<template v-else-if="editingDefaultCard === deck.name">
+		<template v-if="editingDefaultCard === deck.name">
 			<label for="defaultCardOptions">Default Card:</label>
 			<select name="defaultCardOptions" id="defaultCardOptions">
 				<option value="">&darr; Select a default card</option>
@@ -36,10 +21,6 @@
 			<card-adder :deck="deck" @card-added="addCard" />
 
 			<div class="button-group">
-				<button
-					title="Rename this deck"
-					@click="renameDeck(deck)"
-				>Rename Deck</button>
 				<button
 					title="Set the default card of this deck"
 					@click="setDefaultCard(deck)"
@@ -63,12 +44,10 @@ export default {
 	},
 	data () {
 		return {
-			renaming: '',
 			editingDefaultCard: ''
 		}
 	},
 	props: {
-		decks: Array,
 		deck: Object
 	},
 	directives: {
@@ -96,39 +75,6 @@ export default {
 			this.$emit('setup-new-card', newCard)
 			deck.cards.push(newCard)
 			deck.editDate = new Date()
-		},
-		renameDeck (deck) {
-			this.decks.forEach(deck => {
-				deck.cachedName = deck.name
-			})
-			this.renaming = deck.name
-		},
-		saveRename (deck, decks) {
-			const newName = deck.newName
-
-			function existingDeckName () {
-				for (let i = 0; i < decks.length; i++) {
-					if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
-						return true
-					}
-				}
-				return false
-			}
-
-			if (newName === '') {
-				alert('Please give this deck a name.')
-			} else if (existingDeckName()) {
-				alert('⚠ Another deck is already named “' + newName + '.” Please enter a different name.')
-			} else {
-				deck.name = newName
-				this.renaming = null
-				this.$emit('activated-tab', deck)
-				deck.editDate = new Date()
-			}
-		},
-		cancelRename (deck) {
-			deck.name = deck.cachedName
-			this.renaming = null
 		},
 		setDefaultCard (deck) {
 			deck.cachedDefaultCard = deck.defaultCard

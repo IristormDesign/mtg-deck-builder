@@ -4,7 +4,9 @@
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
 				<tabs
-					:decks="decks" @create-deck="createDeck"  :activeTab="activeTab" @activated-tab="assignActiveTab"
+					:decks="decks" :activeTab="activeTab"
+					@create-deck="createDeck"
+					@activated-tab="assignActiveTab"
 				/>
 			</nav>
 		</header>
@@ -14,12 +16,16 @@
 				v-show="activeTab == deck.name"
 			>
 				<div class="tab-contents-main">
-					<deck-header :deck="deck" @sort-cards="sortCards" />
+					<deck-header
+						:deck="deck" :decks="decks"
+						@sort-cards="sortCards" @renamed-tab="assignActiveTab"
+					/>
 					<deck-list :deck="deck" :decks="decks" />
 					<card-display :deck="deck" />
 				</div>
 				<deck-footer
-					:deck="deck" :decks="decks" @activated-tab="assignActiveTab" @deck-deleted="deleteDeck"
+					:deck="deck"
+					@deck-deleted="deleteDeck"
 					@setup-new-card="setupCardProps"
 				/>
 			</tab-contents>
