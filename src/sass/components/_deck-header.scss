@@ -6,11 +6,6 @@
 	align-items: center;
 	justify-content: space-between;
 	
-	.deck-name {
-		display: flex;
-		align-items: center;
-		flex-grow: 1;
-	}
 	.rename-btn {
 		padding: 0;
 		color: #000;
@@ -40,6 +35,7 @@
 	}
 	h2 {
 		margin: 0;
+		flex-grow: 1;
 	}
 	> div {
 		line-height: 1;
@@ -53,7 +49,8 @@
 		letter-spacing: 0;
 	}
 	.date {
-		line-height: 1.375
+		line-height: 1.375;
+		font-size: .875em;
 	}
 	.amount {
 		font-size: 1.5em;

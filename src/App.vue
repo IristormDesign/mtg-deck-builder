@@ -158,8 +158,7 @@ export default {
 					],
 					defaultCard: 'Baneslayer Angel'
 				}
-			],
-			editingDefaultCard: null
+			]
 		}
 	},
 	methods: {
@@ -196,7 +195,6 @@ export default {
 				this.decks.push({
 					name: newDeckName,
 					cards: [],
-					defaultCard: '',
 					editDate: new Date(),
 					previousSortProp: 'type'
 				})

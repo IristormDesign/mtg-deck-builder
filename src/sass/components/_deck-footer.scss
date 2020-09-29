@@ -1,10 +1,10 @@
 .deck-footer {
 	grid-column: span 3;
-	padding: 0 1.5em;
+	padding: .75em 1.5em;
 	background: tan;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 
 	h3 {
 		color: #111;
@@ -13,12 +13,5 @@
 		display: flex;
 		align-items: center;
 		margin-right: .5em;
-	}
-	.button-group {
-		button {
-			display: block;
-			margin: .75em auto;
-			width: 100%;
-		}
 	}
 }
