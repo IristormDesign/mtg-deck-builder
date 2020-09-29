@@ -14,10 +14,12 @@
 	.rename-btn {
 		padding: 0;
 		color: #000;
-		background: transparent;
+		background: none;
 		border: 0;
 		box-shadow: none;
 		min-width: auto;
+		display: flex;
+		align-items: center;
 
 		&:hover,
 		&:focus {
@@ -33,10 +35,7 @@
 			color: orangered;
 			font-size: .667em;
 			font-family: $font-family-standard;
-			display: block;
-			float: right;
 			padding-left: .5em;
-			margin-top: -.167em;
 		}	
 	}
 	h2 {

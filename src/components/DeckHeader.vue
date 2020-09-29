@@ -61,7 +61,7 @@ export default {
 	},
 	methods: {
 		renameDeck (deck, decks) {
-			const pendingName = prompt('Rename this deck:', deck.name)
+			const pendingName = prompt('Change the name of this deck:', deck.name)
 
 			function existingDeckName () {
 				for (let i = 0; i < decks.length; i++) {
