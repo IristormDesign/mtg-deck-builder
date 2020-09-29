@@ -70,21 +70,24 @@ export default {
 						return decks[i].name
 					}
 				}
-				return null
+			}
+			function applyNewDeckName (vue, deck) {
+				deck.name = pendingName
+				vue.$emit('renamed-tab', deck)
+				deck.editDate = new Date()
 			}
 
 			if (pendingName) {
-				if (pendingName === deck.name) {
-					// If the user gives the existing deck name as the new name, then cancel.
-					return false
-				} else if (existingDeckName()) {
-					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
+				if (existingDeckName()) {
+					if (pendingName.toUpperCase() === deck.name.toUpperCase()) {
+						applyNewDeckName(this, deck)
+					} else {
+						alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
 
-					this.renameDeck(deck, decks)
+						this.renameDeck(deck, decks)
+					}
 				} else {
-					deck.name = pendingName
-					this.$emit('renamed-tab', deck)
-					deck.editDate = new Date()
+					applyNewDeckName(this, deck)
 				}
 			}
 		},
