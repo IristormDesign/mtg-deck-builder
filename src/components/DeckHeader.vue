@@ -1,27 +1,12 @@
 <template>
 	<header class="deck-header">
-		<form class="deck-name">
-			<template v-if="renaming !== deck.cachedName">
-				<h2>
-					<button
-						@click="renameDeck(deck, decks)"
-						title="Rename this deck"
-					>{{ deck.name }}</button>
-				</h2>
-			</template>
-			<template v-else>
-				<h2>
-					<input type="text" class="renaming" v-model.lazy="deck.newName" v-focus />
-				</h2>
-				<button
-					title="Save new name" class="primary-btn"
-					@click="saveRename(deck, decks)"
-				>Save</button>
-				<button
-					title="Cancel" @click="cancelRename(deck)"
-				>Cancel</button>
-			</template>
-		</form>
+		<h2>
+			<button
+				@click="renameDeck(deck, decks)"
+				class="rename-btn"
+				title="Change the name of this deck"
+			>{{ deck.name }} <small>Rename</small></button>
+		</h2>
 
 		<div class="sorter">
 			<h3>Sort Cards By</h3>
@@ -60,7 +45,6 @@ export default {
 	name: 'deck-header',
 	data () {
 		return {
-			renaming: '',
 			sort: 'Type'
 		}
 	},
@@ -76,38 +60,33 @@ export default {
 		}
 	},
 	methods: {
-		renameDeck (deck) {
-			this.decks.forEach(deck => {
-				deck.cachedName = deck.name
-			})
-			this.renaming = deck.name
-		},
-		saveRename (deck, decks) {
-			const newName = deck.newName
+		renameDeck (deck, decks) {
+			const pendingName = prompt('Rename this deck:', deck.name)
 
 			function existingDeckName () {
 				for (let i = 0; i < decks.length; i++) {
-					if (newName.toUpperCase() === decks[i].cachedName.toUpperCase()) {
-						return true
+					if (pendingName.toUpperCase() === decks[i].name.toUpperCase()) {
+						// Return deck name in original capitalization
+						return decks[i].name
 					}
 				}
-				return false
+				return null
 			}
 
-			if (newName === '') {
-				alert('Please give this deck a name.')
-			} else if (existingDeckName()) {
-				alert('⚠ Another deck is already named “' + newName + '.” Please enter a different name.')
-			} else {
-				deck.name = newName
-				this.renaming = null
-				this.$emit('renamed-tab', deck)
-				deck.editDate = new Date()
+			if (pendingName) {
+				if (pendingName === deck.name) {
+					// If the user gives the existing deck name as the new name, then cancel.
+					return false
+				} else if (existingDeckName()) {
+					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
+
+					this.renameDeck(deck, decks)
+				} else {
+					deck.name = pendingName
+					this.$emit('renamed-tab', deck)
+					deck.editDate = new Date()
+				}
 			}
-		},
-		cancelRename (deck) {
-			deck.name = deck.cachedName
-			this.renaming = null
 		},
 		dateEdited (deck) {
 			const date = deck.editDate

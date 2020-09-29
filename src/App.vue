@@ -159,8 +159,7 @@ export default {
 					defaultCard: 'Baneslayer Angel'
 				}
 			],
-			editingDefaultCard: null,
-			renaming: null
+			editingDefaultCard: null
 		}
 	},
 	methods: {

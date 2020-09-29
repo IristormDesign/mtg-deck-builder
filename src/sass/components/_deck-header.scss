@@ -6,9 +6,41 @@
 	align-items: center;
 	justify-content: space-between;
 	
+	.deck-name {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
+	}
+	.rename-btn {
+		padding: 0;
+		color: #000;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		min-width: auto;
+
+		&:hover,
+		&:focus {
+			color: orangered;
+
+			small {
+				opacity: 1;
+			}	
+		}
+		small {
+			transition: all .25s ease;
+			opacity: 0;
+			color: orangered;
+			font-size: .667em;
+			font-family: $font-family-standard;
+			display: block;
+			float: right;
+			padding-left: .5em;
+			margin-top: -.167em;
+		}	
+	}
 	h2 {
 		margin: 0;
-		flex-grow: 1;
 	}
 	> div {
 		line-height: 1;
