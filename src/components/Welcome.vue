@@ -12,6 +12,7 @@
 		</div>
 		<footer>
 			<small>Illustration: “Lezard” by <a href="https://www.davidrevoy.com/article24/video-timelapse-lezard" target="_blank" rel="noopener">David Revoy</a>, used with <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener" title="Creative Commons Attribution 3.0 Unported">CC BY 3.0 license</a></small>
+			<small>Version 1.0.0</small>
 		</footer>
 	</article>
 </template>
