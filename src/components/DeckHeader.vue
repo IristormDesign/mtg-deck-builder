@@ -66,28 +66,21 @@ export default {
 			function existingDeckName () {
 				for (let i = 0; i < decks.length; i++) {
 					if (pendingName.toUpperCase() === decks[i].name.toUpperCase()) {
-						// Return deck name in original capitalization
+						// Return deck name in its original letter case.
 						return decks[i].name
 					}
 				}
 			}
-			function applyNewDeckName (vue, deck) {
-				deck.name = pendingName
-				vue.$emit('renamed-tab', deck)
-				deck.editDate = new Date()
-			}
 
 			if (pendingName) {
-				if (existingDeckName()) {
-					if (pendingName.toUpperCase() === deck.name.toUpperCase()) {
-						applyNewDeckName(this, deck)
-					} else {
-						alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
+				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
+					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
 
-						this.renameDeck(deck, decks)
-					}
-				} else {
-					applyNewDeckName(this, deck)
+					this.renameDeck(deck, decks)
+				} else { // Apply the new name to the deck.
+					deck.name = pendingName
+					deck.editDate = new Date()
+					this.$emit('renamed-tab', deck)
 				}
 			}
 		},
