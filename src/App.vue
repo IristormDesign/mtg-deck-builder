@@ -170,7 +170,7 @@ export default {
 			this.activeTab = deck.name
 		},
 		createDeck () {
-			const newDeckName = prompt('Give this new deck a name:')
+			const newDeckName = prompt('Name this new deck:')
 
 			if (newDeckName) {
 				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
@@ -218,14 +218,13 @@ export default {
 			}
 		},
 		deleteDeck (deletedDeckName) {
-			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')
+			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
 
-			this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
-
-			if (confirmDeletion) {
+			if (deletionConfirmed) {
 				this.decks = this.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
+				this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
 			}
 		},
 		setupCardProps (card, deck) {

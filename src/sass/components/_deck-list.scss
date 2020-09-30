@@ -2,7 +2,8 @@
 	grid-column: span 3;
 
 	.no-cards {
-		margin: 1.5em;
+		margin: 3em;
+		text-align: center;
 	}
 	.labels {
 		@include heading-font;
