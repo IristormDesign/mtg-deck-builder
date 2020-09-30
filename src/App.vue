@@ -5,15 +5,14 @@
 			<nav>
 				<tabs
 					:decks="decks" :activeTab="activeTab"
-					@create-deck="createDeck"
-					@activated-tab="assignActiveTab"
+					@create-deck="createDeck" @activated-tab="assignActiveTab"
 				/>
 			</nav>
 		</header>
 		<main>
 			<tab-contents
 				v-for="(deck, i) in decks" :key="i" :name="deck.name"
-				v-show="activeTab == deck.name"
+				v-show="activeTab == deck.name" :deck="deck"
 			>
 				<div class="tab-contents-main">
 					<deck-header
@@ -28,6 +27,9 @@
 					@deck-deleted="deleteDeck"
 					@setup-new-card="setupCardProps"
 				/>
+			</tab-contents>
+			<tab-contents v-show="deletedDeckMessage">
+				<p class="deleted-deck-message">{{ deletedDeckMessage }}</p>
 			</tab-contents>
 
 			<welcome v-if="activeTab == null"></welcome>
@@ -61,6 +63,7 @@ export default {
 	data () {
 		return {
 			activeTab: null,
+			deletedDeckMessage: null,
 			decks: [
 				{
 					name: 'Mana Overload',
@@ -163,6 +166,7 @@ export default {
 	},
 	methods: {
 		assignActiveTab (deck) {
+			this.deletedDeckMessage = null
 			this.activeTab = deck.name
 		},
 		createDeck () {
@@ -201,6 +205,8 @@ export default {
 			}
 		},
 		switchToNewDeck (newDeckName) {
+			this.deletedDeckMessage = null
+
 			for (let i = 0; i < this.decks.length; i++) {
 				const deck = this.decks[i]
 
@@ -213,6 +219,8 @@ export default {
 		},
 		deleteDeck (deletedDeckName) {
 			const confirmDeletion = confirm('Are you sure you want to delete the deck “' + deletedDeckName + '”?')
+
+			this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
 
 			if (confirmDeletion) {
 				this.decks = this.decks.filter(deck =>
