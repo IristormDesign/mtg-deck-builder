@@ -114,7 +114,7 @@ export default {
 							qty: 2
 						}
 					],
-					defaultCard: 'Nyxbloom Ancient'
+					lastViewedCard: 'Nyxbloom Ancient'
 				},
 				{
 					name: 'Air Force',
@@ -156,7 +156,7 @@ export default {
 							qty: 1
 						}
 					],
-					defaultCard: 'Baneslayer Angel'
+					lastViewedCard: 'Baneslayer Angel'
 				}
 			]
 		}
@@ -307,7 +307,7 @@ export default {
 			deck.cards.forEach(card => {
 				this.setupCardProps(card, deck)
 
-				if (deck.defaultCard === card.name) {
+				if (deck.lastViewedCard === card.name) {
 					card.showCard = true
 				}
 			})

@@ -26,23 +26,6 @@ export default {
 			deck.cards.push(newCard)
 			deck.editDate = new Date()
 		}
-		// setDefaultCard (deck) {
-		// 	deck.cachedDefaultCard = deck.defaultCard
-		// 	this.editingDefaultCard = deck.name
-		// },
-		// saveDefaultCard (deck) {
-		// 	const selectedDefaultCard = document.getElementById('defaultCardOptions')
-
-		// 	deck.defaultCard = selectedDefaultCard.options[selectedDefaultCard.selectedIndex].value
-
-		// 	this.editingDefaultCard = null
-
-		// 	deck.editDate = new Date()
-		// },
-		// cancelDefaultCard (deck) {
-		// 	deck.defaultCard = deck.cachedDefaultCard
-		// 	this.editingDefaultCard = null
-		// }
 	}
 }
 </script>

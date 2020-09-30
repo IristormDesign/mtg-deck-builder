@@ -44,6 +44,7 @@ export default {
 	methods: {
 		selectedCard (card, deck) {
 			this.setShowCardToFalse(deck)
+			deck.lastViewedCard = card
 			card.showCard = true
 		},
 		setShowCardToFalse (deck) {
