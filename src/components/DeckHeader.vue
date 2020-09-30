@@ -10,6 +10,7 @@
 
 		<div class="sorter">
 			<h3>Sort Cards By</h3>
+
 			<select v-model="sort">
 				<option>Name</option>
 				<option>Converted mana cost</option>
@@ -22,7 +23,8 @@
 			<h3>Last Edited On</h3>
 
 			<div class="date">
-				{{ dateEdited(deck) }}
+				{{ dateEdited(deck).date }}<br>
+				{{ dateEdited(deck).time }}
 			</div>
 		</div>
 
@@ -152,7 +154,12 @@ export default {
 					second = '0' + second
 				}
 
-				return `${month} ${day}, ${year}, ${hour}:${minute}:${second} ${meridiem}`
+				const output = {
+					date: `${month} ${day}, ${year}`,
+					time: `${hour}:${minute}:${second} ${meridiem}`
+				}
+
+				return output
 			} else {
 				return '—'
 			}
