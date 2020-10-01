@@ -117,6 +117,7 @@ export default {
 							qty: 2
 						}
 					],
+					editDate: new Date(),
 					lastViewedCard: 'Nyxbloom Ancient'
 				},
 				{
@@ -159,6 +160,7 @@ export default {
 							qty: 1
 						}
 					],
+					editDate: new Date(),
 					lastViewedCard: 'Baneslayer Angel'
 				}
 			]

@@ -54,13 +54,6 @@ export default {
 		deck: Object,
 		decks: Array
 	},
-	directives: {
-		focus: {
-			inserted: function (el) {
-				el.focus()
-			}
-		}
-	},
 	methods: {
 		renameDeck (deck, decks) {
 			const pendingName = prompt('Change the name of this deck:', deck.name)
@@ -95,7 +88,6 @@ export default {
 				const year = date.getFullYear()
 				let hour = date.getHours()
 				let minute = date.getMinutes()
-				let second = date.getSeconds()
 				let meridiem
 
 				switch (month) {
@@ -150,18 +142,15 @@ export default {
 				if (minute < 10) {
 					minute = '0' + minute
 				}
-				if (second < 10) {
-					second = '0' + second
-				}
 
 				const output = {
 					date: `${month} ${day}, ${year}`,
-					time: `${hour}:${minute}:${second} ${meridiem}`
+					time: `${hour}:${minute} ${meridiem}`
 				}
 
 				return output
 			} else {
-				return '—'
+				return false
 			}
 		}
 	},
