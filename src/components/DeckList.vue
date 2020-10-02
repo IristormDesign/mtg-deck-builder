@@ -62,10 +62,23 @@ export default {
 				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
 
 				this.$nextTick(function () {
-					if (confirmRemoval === true) {
+					if (confirmRemoval) {
+						let cardIndex = deck.cards.indexOf(card)
+
+						// Remove the card from the deck.
 						deck.cards = deck.cards.filter(
 							eachCard => eachCard.name !== card.name
 						)
+
+						const numOfCards = deck.cards.length
+
+						// If the removed card happens to be the currently viewed card, then view another card instead.
+						if (deck.viewedCard === card.name && numOfCards > 0) {
+							if (cardIndex >= numOfCards) {
+								cardIndex = numOfCards - 1
+							}
+							deck.viewedCard = deck.cards[cardIndex].name
+						}
 					} else {
 						card.qty = 1
 					}
