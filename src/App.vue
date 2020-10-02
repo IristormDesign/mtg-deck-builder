@@ -12,25 +12,25 @@
 		<main>
 			<welcome v-if="activeTab == null"></welcome>
 
-			<tab-contents
-				v-for="(deck, i) in decks" :key="i"
-				:deck="deck" :name="deck.name"
-				v-show="activeTab == deck.name"
-			>
-				<div class="tab-contents-main">
-					<deck-header
-						:deck="deck" :decks="decks"
-						@sort-cards="sortCards" @renamed-tab="assignActiveTab"
+			<div v-for="(deck, i) in decks" :key="i">
+				<tab-contents
+					:deck="deck" :name="deck.name"
+					v-if="activeTab == deck.name"
+				>
+					<div class="tab-contents-main">
+						<deck-header
+							:deck="deck" :decks="decks"
+							@sort-cards="sortCards" @renamed-tab="assignActiveTab"
+						/>
+						<deck-list :deck="deck" :decks="decks" />
+						<card-display :deck="deck" />
+					</div>
+					<deck-footer
+						:deck="deck" @deck-deleted="deleteDeck"
+						@setup-new-card="setupCardProps"
 					/>
-					<deck-list :deck="deck" :decks="decks" />
-					<card-display :deck="deck" />
-				</div>
-				<deck-footer
-					:deck="deck"
-					@deck-deleted="deleteDeck"
-					@setup-new-card="setupCardProps"
-				/>
-			</tab-contents>
+				</tab-contents>
+			</div>
 
 			<tab-contents v-if="deletedDeckMessage">
 				<p class="deleted-deck-message">{{ deletedDeckMessage }}</p>
@@ -110,7 +110,7 @@ export default {
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
-							qty: 3
+							qty: 4
 						},
 						{
 							name: 'Stonecoil Serpent',
@@ -120,7 +120,7 @@ export default {
 						}
 					],
 					editDate: new Date(),
-					lastViewedCard: 'Nyxbloom Ancient'
+					viewedCard: 'Nyxbloom Ancient'
 				},
 				{
 					name: 'Air Force',
@@ -163,7 +163,7 @@ export default {
 						}
 					],
 					editDate: new Date(),
-					lastViewedCard: 'Baneslayer Angel'
+					viewedCard: 'Baneslayer Angel'
 				}
 			]
 		}
@@ -172,15 +172,6 @@ export default {
 		assignActiveTab (deck) {
 			this.deletedDeckMessage = null
 			this.activeTab = deck.name
-
-			for (let i = 0; i < deck.cards.length; i++) {
-				const card = deck.cards[i]
-
-				if (card.name === deck.lastViewedCard) {
-					card.showCard = true
-					break
-				}
-			}
 		},
 		createDeck () {
 			const newDeckName = prompt('Name this new deck:')
@@ -326,10 +317,6 @@ export default {
 
 			deck.cards.forEach(card => {
 				this.setupCardProps(card, deck)
-
-				if (deck.lastViewedCard === card.name) {
-					card.showCard = true
-				}
 			})
 		})
 	}

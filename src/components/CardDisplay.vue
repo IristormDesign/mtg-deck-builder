@@ -2,7 +2,7 @@
 	<div class="card-display">
 		<div v-for="card in deck.cards" :key="card.name">
 			<img
-				v-if="card.showCard == true"
+				v-show="deck.viewedCard == card.name"
 				:src="'img/cards/' + card.img"
 				width="336" height="468" :alt="card.name"
 			>

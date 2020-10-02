@@ -43,14 +43,7 @@ export default {
 	},
 	methods: {
 		selectedCard (card, deck) {
-			this.setShowCardToFalse(deck)
-			deck.lastViewedCard = card.name
-			card.showCard = true
-		},
-		setShowCardToFalse (deck) {
-			deck.cards.forEach(card => {
-				this.$set(card, 'showCard', false)
-			})
+			deck.viewedCard = card.name
 		},
 		validateQty: function (card, deck) {
 			card.qty = Math.round(card.qty)
@@ -81,11 +74,6 @@ export default {
 
 			deck.editDate = new Date()
 		}
-	},
-	mounted () {
-		this.decks.forEach(deck => {
-			this.setShowCardToFalse(deck)
-		})
 	}
 }
 </script>
