@@ -18,16 +18,20 @@
 
 		&:hover,
 		&:focus {
-			color: orangered;
-
+			span {
+				color: orangered;
+				text-decoration: underline;
+			}
 			small {
 				opacity: 1;
 			}	
 		}
+		span,
 		small {
 			transition: all .25s ease;
+		}
+		small {
 			opacity: 0;
-			color: orangered;
 			font-size: .667em;
 			font-family: $font-family-standard;
 			padding-left: .5em;

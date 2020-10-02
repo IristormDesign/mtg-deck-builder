@@ -5,7 +5,7 @@
 				@click="renameDeck(deck, decks)"
 				class="rename-btn"
 				title="Change the name of this deck"
-			>{{ deck.name }} <small>Rename</small></button>
+			><span>{{ deck.name }}</span> <small>Rename</small></button>
 		</h2>
 
 		<div class="sorter">
