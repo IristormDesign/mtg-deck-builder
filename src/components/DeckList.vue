@@ -42,10 +42,28 @@ export default {
 		decks: Array
 	},
 	methods: {
+		removeCard (card, deck) {
+			let cardIndex = deck.cards.indexOf(card)
+
+			// Remove the card from the deck.
+			deck.cards = deck.cards.filter(
+				eachCard => eachCard.name !== card.name
+			)
+
+			const numOfCards = deck.cards.length
+
+			// If the removed card happens to be the currently viewed card, then view another card instead.
+			if (deck.viewedCard === card.name && numOfCards > 0) {
+				if (cardIndex >= numOfCards) {
+					cardIndex = numOfCards - 1
+				}
+				deck.viewedCard = deck.cards[cardIndex].name
+			}
+		},
 		selectedCard (card, deck) {
 			deck.viewedCard = card.name
 		},
-		validateQty: function (card, deck) {
+		validateQty (card, deck) {
 			card.qty = Math.round(card.qty)
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
@@ -63,22 +81,7 @@ export default {
 
 				this.$nextTick(function () {
 					if (confirmRemoval) {
-						let cardIndex = deck.cards.indexOf(card)
-
-						// Remove the card from the deck.
-						deck.cards = deck.cards.filter(
-							eachCard => eachCard.name !== card.name
-						)
-
-						const numOfCards = deck.cards.length
-
-						// If the removed card happens to be the currently viewed card, then view another card instead.
-						if (deck.viewedCard === card.name && numOfCards > 0) {
-							if (cardIndex >= numOfCards) {
-								cardIndex = numOfCards - 1
-							}
-							deck.viewedCard = deck.cards[cardIndex].name
-						}
+						this.removeCard(card, deck)
 					} else {
 						card.qty = 1
 					}
