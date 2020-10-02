@@ -10,9 +10,12 @@
 			</nav>
 		</header>
 		<main>
+			<welcome v-if="activeTab == null"></welcome>
+
 			<tab-contents
-				v-for="(deck, i) in decks" :key="i" :name="deck.name"
-				v-show="activeTab == deck.name" :deck="deck"
+				v-for="(deck, i) in decks" :key="i"
+				:deck="deck" :name="deck.name"
+				v-show="activeTab == deck.name"
 			>
 				<div class="tab-contents-main">
 					<deck-header
@@ -28,11 +31,10 @@
 					@setup-new-card="setupCardProps"
 				/>
 			</tab-contents>
-			<tab-contents v-show="deletedDeckMessage">
+
+			<tab-contents v-if="deletedDeckMessage">
 				<p class="deleted-deck-message">{{ deletedDeckMessage }}</p>
 			</tab-contents>
-
-			<welcome v-if="activeTab == null"></welcome>
 		</main>
 		<site-footer />
 	</div>
@@ -170,6 +172,15 @@ export default {
 		assignActiveTab (deck) {
 			this.deletedDeckMessage = null
 			this.activeTab = deck.name
+
+			for (let i = 0; i < deck.cards.length; i++) {
+				const card = deck.cards[i]
+
+				if (card.name === deck.lastViewedCard) {
+					card.showCard = true
+					break
+				}
+			}
 		},
 		createDeck () {
 			const newDeckName = prompt('Name this new deck:')
@@ -215,7 +226,7 @@ export default {
 				if (deck.name === newDeckName) {
 					this.activeTab = newDeckName
 					deck.editDate = new Date()
-					return
+					break
 				}
 			}
 		},
