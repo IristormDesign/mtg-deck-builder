@@ -32,9 +32,9 @@
 			<h3>Total Cards</h3>
 
 			<div class="amount">
-				{{ totalCards }}
+				{{ totalCards() }}
 				<span
-					class="warning-symbol" v-show="totalCards < 60"
+					class="warning-symbol" v-show="totalCards() < 60"
 					title="The minimum card limit is 60."
 				>⚠</span>
 			</div>
@@ -55,30 +55,6 @@ export default {
 		decks: Array
 	},
 	methods: {
-		renameDeck (deck, decks) {
-			const pendingName = prompt('Change the name of this deck:', deck.name)
-
-			function existingDeckName () {
-				for (let i = 0; i < decks.length; i++) {
-					if (pendingName.toUpperCase() === decks[i].name.toUpperCase()) {
-						// Return deck name in its original letter case.
-						return decks[i].name
-					}
-				}
-			}
-
-			if (pendingName) {
-				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
-					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
-
-					this.renameDeck(deck, decks)
-				} else { // Apply the new name to the deck.
-					deck.name = pendingName
-					deck.editDate = new Date()
-					this.$emit('renamed-tab', deck)
-				}
-			}
-		},
 		dateEdited (deck) {
 			const date = deck.editDate
 
@@ -152,9 +128,31 @@ export default {
 			} else {
 				return false
 			}
-		}
-	},
-	computed: {
+		},
+		renameDeck (deck, decks) {
+			const pendingName = prompt('Change the name of this deck:', deck.name)
+
+			function existingDeckName () {
+				for (let i = 0; i < decks.length; i++) {
+					if (pendingName.toUpperCase() === decks[i].name.toUpperCase()) {
+						// Return deck name in its original letter case.
+						return decks[i].name
+					}
+				}
+			}
+
+			if (pendingName) {
+				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
+					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
+
+					this.renameDeck(deck, decks)
+				} else { // Apply the new name to the deck.
+					deck.name = pendingName
+					deck.editDate = new Date()
+					this.$emit('renamed-tab', deck)
+				}
+			}
+		},
 		totalCards () {
 			let total = 0
 
@@ -165,8 +163,9 @@ export default {
 			})
 
 			return total
-		},
-
+		}
+	},
+	computed: {
 		// The Vue 2 `watch` feature doesn't work with multiple parameters, so this is a workaround.
 		parametersForSorting () {
 			return [this.sort, this.deck]
