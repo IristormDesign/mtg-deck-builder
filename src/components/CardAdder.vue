@@ -78,18 +78,18 @@ export default {
 
 			const deck = this.deck
 			const newCard = this.newCard
-			const existingCard = deck.cards.find(eachCard => newCard.name === eachCard.name)
+			const existingCard = deck.cards.find(eachCard => newCard.name.toUpperCase() === eachCard.name.toUpperCase())
 
 			if (existingCard) {
-				alert('A card named “' + existingCard.name + '” already exists in this deck. Its quantity will increase by 1 instead.')
+				deck.viewedCard = existingCard.name
 
-				existingCard.qty++
+				setTimeout(() => {
+					alert('The card “' + existingCard.name + '” is already in this deck.')
+				}, 0)
 			} else {
 				this.$emit('card-added', newCard, deck)
+				this.success = true
 			}
-
-			deck.editDate = new Date()
-			deck.viewedCard = newCard.name
 
 			this.$refs.first.focus()
 			this.newCard = {
@@ -98,7 +98,6 @@ export default {
 				type: ''
 			}
 			this.error = false
-			this.success = true
 			this.submitting = false
 		},
 		clearStatus () {
