@@ -76,7 +76,9 @@ export default {
 				return
 			}
 
-			function cardExists (thisCard, cards) {
+			function cardExists (thisCard, deck) {
+				const cards = deck.cards
+
 				for (let i = 0; i < cards.length; i++) {
 					const card = cards[i]
 
@@ -84,6 +86,7 @@ export default {
 						alert('A card named “' + card.name + '” already exists in this deck. Its quantity will increase by 1 instead.')
 
 						card.qty++
+						deck.editDate = new Date()
 
 						return true
 					}
@@ -92,7 +95,7 @@ export default {
 			}
 
 			// If the submitted card already exists in the deck, don't add another instance (because the existing card's quantity has increased by 1 instead).
-			if (!cardExists(this.card, this.deck.cards)) {
+			if (!cardExists(this.card, this.deck)) {
 				this.$emit('card-added', this.card, this.deck)
 			}
 
