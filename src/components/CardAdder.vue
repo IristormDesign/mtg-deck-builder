@@ -5,7 +5,7 @@
 			<label>
 				Name:
 				<input
-					type="text" v-model="card.name" ref="first"
+					type="text" v-model="newCard.name" ref="first"
 					@focus="clearStatus" @keypress="clearStatus"
 					:class="{ 'has-error': submitting && invalidName }"
 				>
@@ -14,14 +14,14 @@
 				Mana Cost:
 				<input
 					type="text" pattern="\d*[WUBRGXwubrgx]*"
-					v-model="card.mana" @focus="clearStatus"
+					v-model="newCard.mana" @focus="clearStatus"
 					:class="{ 'has-error': submitting && invalidMana }"
 				>
 			</label>
 			<label>
 				Type:
 				<input
-					type="text" v-model="card.type" @focus="clearStatus"
+					type="text" v-model="newCard.type" @focus="clearStatus"
 					:class="{ 'has-error': submitting && invalidType }"
 				>
 			</label>
@@ -48,7 +48,7 @@ export default {
 			submitting: false,
 			error: false,
 			success: false,
-			card: {
+			newCard: {
 				name: '',
 				mana: '',
 				type: ''
@@ -57,13 +57,13 @@ export default {
 	},
 	computed: {
 		invalidName () {
-			return this.card.name === ''
+			return this.newCard.name === ''
 		},
 		invalidMana () {
-			return this.card.mana === ''
+			return this.newCard.mana === ''
 		},
 		invalidType () {
-			return this.card.type === ''
+			return this.newCard.type === ''
 		}
 	},
 	methods: {
@@ -76,31 +76,23 @@ export default {
 				return
 			}
 
-			function cardExists (thisCard, deck) {
-				const cards = deck.cards
+			const deck = this.deck
+			const newCard = this.newCard
+			const existingCard = deck.cards.find(eachCard => newCard.name === eachCard.name)
 
-				for (let i = 0; i < cards.length; i++) {
-					const card = cards[i]
+			if (existingCard) {
+				alert('A card named “' + existingCard.name + '” already exists in this deck. Its quantity will increase by 1 instead.')
 
-					if (thisCard.name === card.name) {
-						alert('A card named “' + card.name + '” already exists in this deck. Its quantity will increase by 1 instead.')
-
-						card.qty++
-						deck.editDate = new Date()
-
-						return true
-					}
-				}
-				return false
+				existingCard.qty++
+			} else {
+				this.$emit('card-added', newCard, deck)
 			}
 
-			// If the submitted card already exists in the deck, don't add another instance (because the existing card's quantity has increased by 1 instead).
-			if (!cardExists(this.card, this.deck)) {
-				this.$emit('card-added', this.card, this.deck)
-			}
+			deck.editDate = new Date()
+			deck.viewedCard = newCard.name
 
 			this.$refs.first.focus()
-			this.card = {
+			this.newCard = {
 				name: '',
 				mana: '',
 				type: ''

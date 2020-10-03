@@ -24,8 +24,6 @@ export default {
 		addCard (newCard, deck) {
 			this.$emit('setup-new-card', newCard)
 			deck.cards.push(newCard)
-			deck.editDate = new Date()
-			deck.viewedCard = newCard.name
 		}
 	}
 }
