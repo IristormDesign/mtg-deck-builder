@@ -14,8 +14,7 @@
 
 			<div v-for="(deck, i) in decks" :key="i">
 				<tab-contents
-					:deck="deck" :name="deck.name"
-					v-if="activeTab == deck.name"
+					:deck="deck" v-if="activeTab == deck.name"
 				>
 					<div class="tab-contents-main">
 						<deck-header
