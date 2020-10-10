@@ -1,11 +1,42 @@
 .card-display {
-	grid-column: 4 / 5;
+	grid-column: 6 / 8;
 	grid-row: 1 / 4;
+	position: relative;
+	height: 535px;
 
 	img {
+		position: absolute;
 		display: block;
-		width: 100%;
-		max-width: 672px;
-		height: auto;
+		width: auto;
+		height: 100%;
+		backface-visibility: hidden;
+		opacity: 1;
+	}
+}
+.card-browse-enter-active {
+	z-index: 1;
+	animation: card-slide-in .375s ease;
+}
+.card-browse-leave-active {
+	animation: overshadowed .375s ease;
+}
+@keyframes card-slide-in {
+	0% {
+		opacity: 0;
+		transform: rotate(1.40625deg) translateX(2em) translateY(-.125em);
+	}
+	50% {
+		opacity: 100%;
+	}
+	100% {
+		transform: none;
+	}
+}
+@keyframes overshadowed {
+	0% {
+		filter: brightness(100%);
+	}
+	100% {
+		filter: brightness(50%);
 	}
 }

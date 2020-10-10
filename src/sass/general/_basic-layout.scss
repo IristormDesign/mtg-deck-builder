@@ -5,8 +5,9 @@
 }
 body {
 	font: 18px/1.5 $font-family-standard;
-	background: linear-gradient(slategray, #333);
+	background: linear-gradient(darken(slategray, 8.33%), #222);
 	color: #ddd;
+	overflow-x: hidden;
 }
 #app {
 	display: flex;
@@ -18,7 +19,7 @@ body {
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
-	max-width: 1280px;
+	max-width: 1440px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 1.5em;
@@ -41,7 +42,7 @@ body {
 	}
 }
 main {
-	max-width: 1280px;
+	max-width: 1440px;
 	margin: 0 auto;
 	height: 100%;
 	flex-grow: 1;
@@ -52,7 +53,7 @@ main {
 	background: $color-content-bg;
 	color: #000;
 	border: 6px solid orangered;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.5em;	
 }
 .contents {
 	padding: .75em;
@@ -60,6 +61,6 @@ main {
 .tab-contents-main {
 	display: grid;
 	grid-gap: .75em;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 	padding: .75em 1.5em;
 }
