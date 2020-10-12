@@ -1,14 +1,6 @@
 .welcome {
 	.contents {
-		background-image:
-			radial-gradient(
-				circle at 85% 10em,
-				rgba(linen, .75) (13em * .625),
-				rgba(linen, 0) 13em
-			),
-			url('../public/img/welcome.jpg')
-		;
-		background-color: tan;
+		background: url('../public/img/welcome.jpg') tan;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center center;
@@ -17,14 +9,23 @@
 		align-items: flex-end;
 		margin-bottom: 0;
 		min-height: 75vh;
+		overflow: hidden;
 	}
 	.text-box {
+		box-sizing: content-box;
 		font-size: 1.125em;
 		color: #000;
 		max-width: 22.5rem;
-		margin: .75em;
 		line-height: 1.5;
 		text-shadow: 0 0 .5em linen;
+		background: radial-gradient(
+			circle,
+			rgba(linen, .75) (13em * .625),
+			rgba(linen, 0) 13em
+		);
+		padding: 6em;
+		margin-top: -4.5em;
+		margin-right: -3.5em;
 	}
 	h2 {
 		font-size: 1.25em;
