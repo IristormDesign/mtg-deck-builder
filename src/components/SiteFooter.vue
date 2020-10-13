@@ -1,6 +1,6 @@
 <template>
 	<footer class="site-footer">
-		<p>MTG Deck List Organizer – Version 1.0.0</p>
+		<p><strong>MTG Deck List Organizer</strong> Version 1.0.0</p>
 		<p>Website design and development by Damian Schmidt / <a href="https://iristormdesign.com">Iristorm Design</a>.</p>
 		<p><i>Magic: The Gathering</i> material is TM and &copy; by Wizards of the Coast. This web app is not affiliated with Wizards of the Coast.</p>
 	</footer>

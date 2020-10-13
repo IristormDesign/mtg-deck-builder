@@ -7,6 +7,12 @@
 	
 	p {
 		margin: .375em .75em;
+
+		strong {
+			font-family: 'Goblin One', $font-family-standard;
+			font-weight: normal;
+			font-size: 83.33%;
+		}
 	}
 	a {
 		&:active {

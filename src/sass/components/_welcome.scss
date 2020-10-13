@@ -32,6 +32,12 @@
 		margin-top: .375em;
 		line-height: 1.25;
 	}
+	strong i {
+		font-family: 'Goblin One', $font-family-standard;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 83.33%;
+	}
 	footer {
 		margin: 0 6px .75em; // Horizontal equal to content border width
 

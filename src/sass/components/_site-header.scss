@@ -1,0 +1,30 @@
+.site-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 1.5em;
+
+	h1 {
+		margin: .5em 0;
+		line-height: 1;
+		font-size: 1.5em;
+		font-family: 'Goblin One', $font-family-standard;
+		letter-spacing: normal;
+		font-weight: normal;
+		text-shadow: 0 0 .125em #000;
+		
+
+		a {
+			color: #fff;
+
+			&,
+			&:hover,
+			&:focus {
+				text-decoration: none
+			}
+		}
+	}
+}
