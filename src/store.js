@@ -5,9 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-
+		deletedDeckMessage: null
 	},
 	getters: {},
-	mutations: {},
+	mutations: {
+		mutateDeletedDeckMessage (state, payload) {
+			state.deletedDeckMessage = payload
+		}
+	},
 	actions: {}
 })

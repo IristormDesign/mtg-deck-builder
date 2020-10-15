@@ -31,8 +31,8 @@
 				</tab-contents>
 			</div>
 
-			<tab-contents v-if="deletedDeckMessage">
-				<p class="deleted-deck-message">{{ deletedDeckMessage }}</p>
+			<tab-contents v-if="$store.state.deletedDeckMessage">
+				<p class="deleted-deck-message">{{ $store.state.deletedDeckMessage }}</p>
 			</tab-contents>
 		</main>
 		<site-footer />
@@ -64,7 +64,6 @@ export default {
 	data () {
 		return {
 			activeTab: null,
-			deletedDeckMessage: null,
 			decks: [
 				{
 					name: 'Mana Overload',
@@ -169,7 +168,7 @@ export default {
 	},
 	methods: {
 		assignActiveTab (deck) {
-			this.deletedDeckMessage = null
+			this.$store.commit('mutateDeletedDeckMessage', null)
 			this.activeTab = deck.name
 		},
 		createDeck () {
@@ -208,7 +207,7 @@ export default {
 			}
 		},
 		switchToNewDeck (newDeckName) {
-			this.deletedDeckMessage = null
+			this.$store.commit('mutateDeletedDeckMessage', null)
 
 			for (let i = 0; i < this.decks.length; i++) {
 				const deck = this.decks[i]
@@ -227,7 +226,8 @@ export default {
 				this.decks = this.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
-				this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
+				// this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
+				this.$store.commit('mutateDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
 			}
 		},
 		setupCardProps (card, deck) {
