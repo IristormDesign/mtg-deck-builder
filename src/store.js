@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
+		activeTab: null,
 		deletedDeckMessage: null
 	},
 	getters: {},
 	mutations: {
-		mutateDeletedDeckMessage (state, payload) {
+		changeActiveTab (state, payload) {
+			state.activeTab = payload
+		},
+		changeDeletedDeckMessage (state, payload) {
 			state.deletedDeckMessage = payload
 		}
 	},

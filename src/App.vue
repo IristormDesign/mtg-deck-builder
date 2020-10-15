@@ -4,17 +4,18 @@
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
 				<tabs
-					:decks="decks" :activeTab="activeTab"
+					:decks="decks" :activeTab="$store.state.activeTab"
 					@create-deck="createDeck" @activated-tab="assignActiveTab"
 				/>
 			</nav>
 		</header>
 		<main>
-			<welcome v-if="activeTab == null"></welcome>
+			<welcome v-if="$store.state.activeTab == null"></welcome>
 
 			<div v-for="(deck, i) in decks" :key="i">
 				<tab-contents
-					:deck="deck" v-show="activeTab == deck.name"
+					:deck="deck"
+					v-show="$store.state.activeTab == deck.name"
 				>
 					<div class="tab-contents-main">
 						<deck-header
@@ -63,7 +64,6 @@ export default {
 	},
 	data () {
 		return {
-			activeTab: null,
 			decks: [
 				{
 					name: 'Mana Overload',
@@ -168,8 +168,8 @@ export default {
 	},
 	methods: {
 		assignActiveTab (deck) {
-			this.$store.commit('mutateDeletedDeckMessage', null)
-			this.activeTab = deck.name
+			this.$store.commit('changeDeletedDeckMessage', null)
+			this.$store.commit('changeActiveTab', deck.name)
 		},
 		createDeck () {
 			const newDeckName = prompt('Name this new deck:')
@@ -207,13 +207,13 @@ export default {
 			}
 		},
 		switchToNewDeck (newDeckName) {
-			this.$store.commit('mutateDeletedDeckMessage', null)
+			this.$store.commit('changeDeletedDeckMessage', null)
 
 			for (let i = 0; i < this.decks.length; i++) {
 				const deck = this.decks[i]
 
 				if (deck.name === newDeckName) {
-					this.activeTab = newDeckName
+					this.$store.commit('changeActiveTab', newDeckName)
 					deck.editDate = new Date()
 					break
 				}
@@ -226,8 +226,7 @@ export default {
 				this.decks = this.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
-				// this.deletedDeckMessage = `“${deletedDeckName}” is now deleted.`
-				this.$store.commit('mutateDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
+				this.$store.commit('changeDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
 			}
 		},
 		setupCardProps (card, deck) {
