@@ -152,6 +152,72 @@ export default {
 				}
 			}
 		},
+		sortCards (prop, deck) {
+			deck.cards.sort((a, b) => {
+				let reverseOrder = false
+
+				if (prop === 'qty') {
+					reverseOrder = true
+				}
+
+				let cardA = a[prop]
+				let cardB = b[prop]
+
+				// If prop is a card name, mana cost, or type...
+				if (a[prop] instanceof String) {
+					cardA = cardA.toUpperCase()
+					cardB = cardB.toUpperCase()
+				}
+
+				if (cardA < cardB) {
+					if (reverseOrder) {
+						return 1
+					} else {
+						return -1
+					}
+				} else if (cardA > cardB) {
+					if (reverseOrder) {
+						return -1
+					} else {
+						return 1
+					}
+				}
+
+				const prevProp = deck.previousSortProp
+				let prevReverseOrder = false
+
+				if (prevProp === 'qty') {
+					prevReverseOrder = true
+				}
+
+				if (a[prevProp] < b[prevProp]) {
+					if (prevReverseOrder) {
+						return 1
+					} else {
+						return -1
+					}
+				} else if (a[prevProp] > b[prevProp]) {
+					if (prevReverseOrder) {
+						return -1
+					} else {
+						return 1
+					}
+				}
+
+				// Sort by name as a last resort (if name isn't the previously selected property).
+				if (prevProp !== 'name') {
+					if (a.name < b.name) {
+						return -1
+					} else if (a.name > b.name) {
+						return 1
+					}
+				}
+
+				return 0
+			})
+
+			deck.previousSortProp = prop
+		},
 		totalCards () {
 			let total = 0
 
@@ -163,6 +229,11 @@ export default {
 
 			return total
 		}
+	},
+	mounted () {
+		this.$store.state.decks.forEach(deck => {
+			this.sortCards('type', deck)
+		})
 	},
 	computed: {
 		// The Vue 2 `watch` feature doesn't work with multiple parameters, so this is a workaround.
@@ -177,16 +248,16 @@ export default {
 
 			switch (sortOption) {
 			case 'Name':
-				this.$emit('sort-cards', 'name', deck)
+				this.sortCards('name', deck)
 				break
 			case 'Converted mana cost':
-				this.$emit('sort-cards', 'mana', deck)
+				this.sortCards('mana', deck)
 				break
 			case 'Type':
-				this.$emit('sort-cards', 'type', deck)
+				this.sortCards('type', deck)
 				break
 			case 'Quantity':
-				this.$emit('sort-cards', 'qty', deck)
+				this.sortCards('qty', deck)
 				break
 			}
 		}
