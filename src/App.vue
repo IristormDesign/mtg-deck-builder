@@ -3,28 +3,24 @@
 		<header class="site-header">
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
-				<tabs @activated-tab="assignActiveTab" />
+				<tabs />
 			</nav>
 		</header>
 		<main>
-			<welcome v-if="$store.state.activeTab == null"></welcome>
-
+			<welcome v-if="$store.state.activeTab == null" />
 			<div v-for="(deck, i) in $store.state.decks" :key="i">
 				<tab-contents
 					:deck="deck"
 					v-show="$store.state.activeTab == deck.name"
 				>
 					<div class="tab-contents-main">
-						<deck-header
-							:deck="deck" @renamed-tab="assignActiveTab"
-						/>
+						<deck-header :deck="deck" />
 						<deck-list :deck="deck" />
 						<card-display :deck="deck" />
 					</div>
 					<deck-footer :deck="deck" />
 				</tab-contents>
 			</div>
-
 			<tab-contents v-if="$store.state.deletedDeckMessage">
 				<p class="deleted-deck-message">{{ $store.state.deletedDeckMessage }}</p>
 			</tab-contents>
@@ -54,12 +50,6 @@ export default {
 		CardDisplay,
 		DeckFooter,
 		SiteFooter
-	},
-	methods: {
-		assignActiveTab (deck) {
-			this.$store.commit('changeDeletedDeckMessage', null)
-			this.$store.commit('changeActiveTab', deck.name)
-		}
 	}
 }
 </script>

@@ -74,7 +74,8 @@ export default {
 			}
 		},
 		selectTab (deck) {
-			this.$emit('activated-tab', deck)
+			this.$store.commit('changeActiveTab', deck.name)
+			this.$store.commit('changeDeletedDeckMessage', null)
 		},
 		tabHref (deck) {
 			return '#' + deck.name.toLowerCase().replace(/ /g, '-')
