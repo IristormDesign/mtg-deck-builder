@@ -1,22 +1,24 @@
 <template>
-	<ul class="tabs">
-		<li v-for="(deck, i) in $store.state.decks" :key="i">
-			<div v-if="$store.state.activeTab == deck.name">
-				{{ deck.name || '?' }}
-			</div>
-			<a v-else
-				@click="selectTab(deck)" :href="tabHref(deck)"
-			>
-				{{ deck.name || '?' }}
-			</a>
-		</li>
-		<li class="add-new-deck">
-			<a
-				href="#" title="Create a new deck list"
-				@click="createDeck()"
-			><span>+</span></a>
-		</li>
-	</ul>
+	<nav>
+		<ul class="tabs">
+			<li v-for="(deck, i) in $store.state.decks" :key="i">
+				<div v-if="$store.state.activeTab == deck.name">
+					{{ deck.name || '?' }}
+				</div>
+				<a v-else
+					@click="selectTab(deck)" :href="tabHref(deck)"
+				>
+					{{ deck.name || '?' }}
+				</a>
+			</li>
+			<li class="add-new-deck">
+				<a
+					href="#" title="Create a new deck list"
+					@click="createDeck()"
+				><span>+</span></a>
+			</li>
+		</ul>
+	</nav>
 </template>
 
 <script>

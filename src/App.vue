@@ -2,9 +2,7 @@
 	<div id="app">
 		<header class="site-header">
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
-			<nav>
-				<tabs />
-			</nav>
+			<tabs />
 		</header>
 		<main>
 			<welcome v-if="$store.state.activeTab == null" />
