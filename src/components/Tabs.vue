@@ -59,7 +59,7 @@ export default {
 
 				// Switch to the new deck.
 				this.$nextTick(function () {
-					this.$store.commit('changeDeletedDeckMessage', null)
+					this.$store.commit('changeDeletedDeck', null)
 
 					const decks = this.$store.state.decks
 
@@ -77,7 +77,7 @@ export default {
 		},
 		selectTab (deck) {
 			this.$store.commit('changeActiveTab', deck.name)
-			this.$store.commit('changeDeletedDeckMessage', null)
+			this.$store.commit('changeDeletedDeck', null)
 		},
 		tabHref (deck) {
 			return '#' + deck.name.toLowerCase().replace(/ /g, '-')

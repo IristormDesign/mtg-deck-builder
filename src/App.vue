@@ -19,8 +19,8 @@
 					<deck-footer :deck="deck" />
 				</tab-contents>
 			</div>
-			<tab-contents v-if="$store.state.deletedDeckMessage">
-				<p class="deleted-deck-message">{{ $store.state.deletedDeckMessage }}</p>
+			<tab-contents v-if="$store.state.justDeletedDeck">
+				<p class="deleted-deck-message">“{{ $store.state.justDeletedDeck }}” is now deleted.</p>
 			</tab-contents>
 		</main>
 		<site-footer />

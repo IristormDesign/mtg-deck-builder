@@ -106,15 +106,15 @@ export default new Vuex.Store({
 				viewedCard: 'Baneslayer Angel'
 			}
 		],
-		deletedDeckMessage: null
+		justDeletedDeck: null
 	},
 	getters: {},
 	mutations: {
 		changeActiveTab (state, payload) {
 			state.activeTab = payload
 		},
-		changeDeletedDeckMessage (state, payload) {
-			state.deletedDeckMessage = payload
+		changeDeletedDeck (state, payload) {
+			state.justDeletedDeck = payload
 		}
 	},
 	actions: {}

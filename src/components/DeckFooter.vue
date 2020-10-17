@@ -33,7 +33,7 @@ export default {
 				this.$store.state.decks = this.$store.state.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
-				this.$store.commit('changeDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
+				this.$store.commit('changeDeletedDeck', deletedDeckName)
 			}
 		},
 		setupCardProps (card, deck) {
