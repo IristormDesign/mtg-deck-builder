@@ -38,8 +38,7 @@
 export default {
 	name: 'deck-list',
 	props: {
-		deck: Object,
-		decks: Array
+		deck: Object
 	},
 	methods: {
 		removeCard (card, deck) {

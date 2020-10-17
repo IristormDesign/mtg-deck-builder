@@ -1,6 +1,6 @@
 <template>
 	<ul class="tabs">
-		<li v-for="(deck, i) in decks" :key="i">
+		<li v-for="(deck, i) in $store.state.decks" :key="i">
 			<div v-if="activeTab == deck.name">
 				{{ deck.name || '?' }}
 			</div>
@@ -31,8 +31,7 @@ export default {
 		}
 	},
 	props: {
-		activeTab: String,
-		decks: Array
+		activeTab: String
 	}
 }
 </script>

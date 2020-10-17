@@ -4,7 +4,7 @@
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
 				<tabs
-					:decks="decks" :activeTab="$store.state.activeTab"
+					:activeTab="$store.state.activeTab"
 					@create-deck="createDeck" @activated-tab="assignActiveTab"
 				/>
 			</nav>
@@ -12,17 +12,17 @@
 		<main>
 			<welcome v-if="$store.state.activeTab == null"></welcome>
 
-			<div v-for="(deck, i) in decks" :key="i">
+			<div v-for="(deck, i) in $store.state.decks" :key="i">
 				<tab-contents
 					:deck="deck"
 					v-show="$store.state.activeTab == deck.name"
 				>
 					<div class="tab-contents-main">
 						<deck-header
-							:deck="deck" :decks="decks"
-							@sort-cards="sortCards" @renamed-tab="assignActiveTab"
+							:deck="deck" @sort-cards="sortCards"
+							@renamed-tab="assignActiveTab"
 						/>
-						<deck-list :deck="deck" :decks="decks" />
+						<deck-list :deck="deck" />
 						<card-display :deck="deck" />
 					</div>
 					<deck-footer
@@ -62,110 +62,6 @@ export default {
 		DeckFooter,
 		SiteFooter
 	},
-	data () {
-		return {
-			decks: [
-				{
-					name: 'Mana Overload',
-					cards: [
-						{
-							name: 'Forest',
-							type: 'Basic Land — Forest',
-							mana: '0',
-							qty: 12
-						},
-						{
-							name: 'Mountain',
-							type: 'Basic Land — Mountain',
-							mana: '0',
-							qty: 10
-						},
-						{
-							name: 'Almighty Bushwagg',
-							type: 'Creature — Bushwagg',
-							mana: '🟢',
-							qty: 1
-						},
-						{
-							name: 'Jaya’s Greeting',
-							type: 'Instant',
-							mana: '1 🔴',
-							qty: 3
-						},
-						{
-							name: 'Leafkin Avenger',
-							type: 'Creature — Elemental',
-							mana: '2 🔴🟢',
-							qty: 3
-						},
-						{
-							name: 'Shivan Dragon',
-							type: 'Creature — Dragon',
-							mana: '4 🔴🔴',
-							qty: 2
-						},
-						{
-							name: 'Nyxbloom Ancient',
-							type: 'Creature — Elemental',
-							mana: '4 🟢🟢🟢',
-							qty: 4
-						},
-						{
-							name: 'Stonecoil Serpent',
-							type: 'Artifact Creature — Snake',
-							mana: 'X',
-							qty: 2
-						}
-					],
-					editDate: new Date(),
-					viewedCard: 'Nyxbloom Ancient'
-				},
-				{
-					name: 'Air Force',
-					cards: [
-						{
-							name: 'Plains',
-							type: 'Basic Land — Plains',
-							mana: '0',
-							qty: 13
-						},
-						{
-							name: 'Island',
-							type: 'Basic Land — Island',
-							mana: '0',
-							qty: 10
-						},
-						{
-							name: 'Azorious Guildgate',
-							type: 'Land – Gate',
-							mana: '0',
-							qty: 2
-						},
-						{
-							name: 'Healer’s Hawk',
-							type: 'Creature — Bird',
-							mana: '⚪',
-							qty: 2
-						},
-						{
-							name: 'Tide Skimmer',
-							type: 'Creature — Drake',
-							mana: '2 🔵🔵',
-							qty: 2
-						},
-						{
-							name: 'Baneslayer Angel',
-							type: 'Creature — Angel',
-							mana: '3 ⚪⚪',
-							qty: 1
-						}
-					],
-					editDate: new Date(),
-					viewedCard: 'Baneslayer Angel'
-				}
-			]
-		}
-	},
 	methods: {
 		assignActiveTab (deck) {
 			this.$store.commit('changeDeletedDeckMessage', null)
@@ -183,8 +79,10 @@ export default {
 			}
 		},
 		checkExistingDeckNames (newDeckName) {
-			for (let i = 0; i < this.decks.length; i++) {
-				if (newDeckName.toUpperCase() === this.decks[i].name.toUpperCase()) {
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				if (newDeckName.toUpperCase() === decks[i].name.toUpperCase()) {
 					return true
 				}
 			}
@@ -198,7 +96,7 @@ export default {
 					this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 				}
 			} else {
-				this.decks.push({
+				this.$store.state.decks.push({
 					name: newDeckName,
 					cards: [],
 					editDate: new Date(),
@@ -209,8 +107,10 @@ export default {
 		switchToNewDeck (newDeckName) {
 			this.$store.commit('changeDeletedDeckMessage', null)
 
-			for (let i = 0; i < this.decks.length; i++) {
-				const deck = this.decks[i]
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				const deck = decks[i]
 
 				if (deck.name === newDeckName) {
 					this.$store.commit('changeActiveTab', newDeckName)
@@ -223,7 +123,7 @@ export default {
 			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
 
 			if (deletionConfirmed) {
-				this.decks = this.decks.filter(deck =>
+				this.$store.state.decks = this.$store.state.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
 				this.$store.commit('changeDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
@@ -310,7 +210,7 @@ export default {
 		}
 	},
 	mounted () {
-		this.decks.forEach(deck => {
+		this.$store.state.decks.forEach(deck => {
 			this.sortCards('type', deck)
 
 			deck.cards.forEach(card => {

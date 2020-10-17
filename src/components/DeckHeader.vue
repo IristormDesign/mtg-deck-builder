@@ -2,7 +2,7 @@
 	<header class="deck-header">
 		<h2>
 			<button
-				@click="renameDeck(deck, decks)"
+				@click="renameDeck(deck, $store.state.decks)"
 				class="rename-btn"
 				title="Change the name of this deck"
 			><span>{{ deck.name }}</span> <small>Rename</small></button>
@@ -51,8 +51,7 @@ export default {
 		}
 	},
 	props: {
-		deck: Object,
-		decks: Array
+		deck: Object
 	},
 	methods: {
 		dateEdited (deck) {
