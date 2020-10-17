@@ -21,9 +21,7 @@
 						<deck-list :deck="deck" />
 						<card-display :deck="deck" />
 					</div>
-					<deck-footer
-						:deck="deck" @setup-new-card="setupCardProps"
-					/>
+					<deck-footer :deck="deck" />
 				</tab-contents>
 			</div>
 
@@ -61,27 +59,7 @@ export default {
 		assignActiveTab (deck) {
 			this.$store.commit('changeDeletedDeckMessage', null)
 			this.$store.commit('changeActiveTab', deck.name)
-		},
-		setupCardProps (card, deck) {
-			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
-
-			if (card.qty === undefined) {
-				card.qty = 1
-			}
-
-			if (RegExp(/^Basic Land\b/).test(card.type)) {
-				card.maxQty = 99
-			} else {
-				card.maxQty = 4
-			}
 		}
-	},
-	mounted () {
-		this.$store.state.decks.forEach(deck => {
-			deck.cards.forEach(card => {
-				this.setupCardProps(card, deck)
-			})
-		})
 	}
 }
 </script>
