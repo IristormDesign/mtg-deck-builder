@@ -3,10 +3,7 @@
 		<header class="site-header">
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
-				<tabs
-					@create-deck="createDeck"
-					@activated-tab="assignActiveTab"
-				/>
+				<tabs @activated-tab="assignActiveTab" />
 			</nav>
 		</header>
 		<main>
@@ -65,58 +62,6 @@ export default {
 		assignActiveTab (deck) {
 			this.$store.commit('changeDeletedDeckMessage', null)
 			this.$store.commit('changeActiveTab', deck.name)
-		},
-		createDeck () {
-			const newDeckName = prompt('Name this new deck:')
-
-			if (newDeckName) {
-				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
-
-				this.$nextTick(function () {
-					this.switchToNewDeck(newDeckName)
-				})
-			}
-		},
-		checkExistingDeckNames (newDeckName) {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				if (newDeckName.toUpperCase() === decks[i].name.toUpperCase()) {
-					return true
-				}
-			}
-			return false
-		},
-		applyNewDeckName (newDeckName, existingDeckName) {
-			if (existingDeckName) {
-				newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
-
-				if (newDeckName) {
-					this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
-				}
-			} else {
-				this.$store.state.decks.push({
-					name: newDeckName,
-					cards: [],
-					editDate: new Date(),
-					previousSortProp: 'type'
-				})
-			}
-		},
-		switchToNewDeck (newDeckName) {
-			this.$store.commit('changeDeletedDeckMessage', null)
-
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				const deck = decks[i]
-
-				if (deck.name === newDeckName) {
-					this.$store.commit('changeActiveTab', newDeckName)
-					deck.editDate = new Date()
-					break
-				}
-			}
 		},
 		setupCardProps (card, deck) {
 			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
