@@ -1,7 +1,7 @@
 <template>
 	<ul class="tabs">
 		<li v-for="(deck, i) in $store.state.decks" :key="i">
-			<div v-if="activeTab == deck.name">
+			<div v-if="$store.state.activeTab == deck.name">
 				{{ deck.name || '?' }}
 			</div>
 			<a v-else
@@ -29,9 +29,6 @@ export default {
 		tabHref (deck) {
 			return '#' + deck.name.toLowerCase().replace(/ /g, '-')
 		}
-	},
-	props: {
-		activeTab: String
 	}
 }
 </script>

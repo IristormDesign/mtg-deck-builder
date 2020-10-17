@@ -4,8 +4,8 @@
 			<h1><a href="/">MTG Deck List Organizer</a></h1>
 			<nav>
 				<tabs
-					:activeTab="$store.state.activeTab"
-					@create-deck="createDeck" @activated-tab="assignActiveTab"
+					@create-deck="createDeck"
+					@activated-tab="assignActiveTab"
 				/>
 			</nav>
 		</header>
