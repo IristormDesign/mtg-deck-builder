@@ -3,8 +3,7 @@
 		<card-adder :deck="deck" @card-added="addCard" />
 
 		<button
-			title="Delete this deck"
-			@click="$emit('deck-deleted', deck.name)"
+			title="Delete this deck" @click="deleteDeck(deck.name)"
 		>Delete Deck</button>
 	</footer>
 </template>
@@ -26,6 +25,16 @@ export default {
 			deck.cards.push(newCard)
 			deck.viewedCard = newCard.name
 			deck.editDate = new Date()
+		},
+		deleteDeck (deletedDeckName) {
+			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
+
+			if (deletionConfirmed) {
+				this.$store.state.decks = this.$store.state.decks.filter(deck =>
+					deck.name !== deletedDeckName
+				)
+				this.$store.commit('changeDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
+			}
 		}
 	}
 }

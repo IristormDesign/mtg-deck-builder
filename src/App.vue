@@ -26,8 +26,7 @@
 						<card-display :deck="deck" />
 					</div>
 					<deck-footer
-						:deck="deck" @deck-deleted="deleteDeck"
-						@setup-new-card="setupCardProps"
+						:deck="deck" @setup-new-card="setupCardProps"
 					/>
 				</tab-contents>
 			</div>
@@ -117,16 +116,6 @@ export default {
 					deck.editDate = new Date()
 					break
 				}
-			}
-		},
-		deleteDeck (deletedDeckName) {
-			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
-
-			if (deletionConfirmed) {
-				this.$store.state.decks = this.$store.state.decks.filter(deck =>
-					deck.name !== deletedDeckName
-				)
-				this.$store.commit('changeDeletedDeckMessage', `“${deletedDeckName}” is now deleted.`)
 			}
 		},
 		setupCardProps (card, deck) {
