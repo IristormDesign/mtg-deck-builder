@@ -116,6 +116,10 @@ export default new Vuex.Store({
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
 		}
+		// convertDeckNameToURL (state, payload) {
+		// 	console.log(payload)
+		// 	return payload.toLowerCase().replace(/ /g, '-')
+		// }
 	},
 	actions: {}
 })

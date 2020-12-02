@@ -4,7 +4,7 @@
 			<transition name="card-browse">
 				<img
 					v-show="deck.viewedCard == card.name"
-					:src="'img/cards/' + card.img" :key="card.name"
+					:src="'/img/cards/' + card.img" :key="card.name"
 					width="336" height="468" :alt="card.name"
 				>
 			</transition>
