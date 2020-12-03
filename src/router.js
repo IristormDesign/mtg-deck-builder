@@ -18,13 +18,13 @@ export default new VueRouter({
 		},
 		{
 			name: 'deck',
-			path: '/deck/:deckName',
+			path: '/deck/:deckPath',
 			component: TabContents,
-
-			// Check that the deck name used in the path is actually valid before going to that path. If it's invalid, go to the "notFound" route instead.
 			beforeEnter: (to, from, next) => {
+				// Check that the deck name used in the path is actually valid before going to that path. If it's invalid, go to the "notFound" route instead.
+
 				const deckExists = store.state.decks.find(
-					deck => deck.name === to.params.deckName
+					deck => deck.path === to.params.deckPath
 				)
 
 				if (deckExists) {

@@ -1,7 +1,7 @@
 <template>
 	<div class="tab-contents">
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
-			<article v-if="$route.params.deckName == deck.name">
+			<article v-if="$route.params.deckPath == deck.path">
 				<div class="tab-contents-main">
 					<deck-header :deck="deck" />
 					<deck-list :deck="deck" />

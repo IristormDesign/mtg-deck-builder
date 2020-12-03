@@ -2,20 +2,18 @@
 	<nav>
 		<ul class="tabs">
 			<li v-for="(deck, i) in $store.state.decks" :key="i">
-				<div v-if="$store.state.activeTab == deck.name">
+				<div v-if="$route.params.deckPath == deck.path">
 					{{ deck.name || '?' }}
 				</div>
 				<router-link
 					v-else  @click.native="selectTab(deck)"
-					:to="{name: 'deck', params: {deckName: deck.name}}"
+					:to="{
+						name: 'deck',
+						params: { deckPath: deck.name.toLowerCase().replace(/ /g, '-') }
+					}"
 				>
 					{{ deck.name || '?' }}
 				</router-link>
-				<!-- <a v-else
-					@click="selectTab(deck)" :href="deckURL(deck)"
-				>
-					{{ deck.name || '?' }}
-				</a> -->
 			</li>
 			<li class="add-new-deck">
 				<a
@@ -74,12 +72,13 @@ export default {
 
 						if (deck.name === newDeckName) {
 							this.selectTab(deck)
+							this.$store.commit('makeDeckPath', deck)
 							this.$router.push({
 								name: 'deck',
-								params: { deckName: newDeckName }
-								// params: { deckName: this.$store.commit('convertDeckNameToURL', newDeckName) }
+								params: { deckPath: deck.path }
 							})
 							deck.editDate = new Date()
+
 							break
 						}
 					}
@@ -90,9 +89,6 @@ export default {
 			this.$store.commit('changeActiveTab', deck.name)
 			this.$store.commit('changeDeletedDeck', null)
 		}
-		// deckURL (deck) {
-		// return deck.name.toLowerCase().replace(/ /g, '-')
-		// }
 	}
 }
 </script>

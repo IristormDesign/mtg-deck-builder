@@ -9,6 +9,7 @@ export default new Vuex.Store({
 		decks: [
 			{
 				name: 'Mana Overload',
+				path: 'mana-overload',
 				cards: [
 					{
 						name: 'Forest',
@@ -64,6 +65,7 @@ export default new Vuex.Store({
 			},
 			{
 				name: 'Air Force',
+				path: 'air-force',
 				cards: [
 					{
 						name: 'Plains',
@@ -108,18 +110,26 @@ export default new Vuex.Store({
 		],
 		justDeletedDeck: null
 	},
-	getters: {},
+	getters: {
+	},
 	mutations: {
 		changeActiveTab (state, payload) {
 			state.activeTab = payload
 		},
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
+		},
+		makeDeckPath (state, payload) {
+			for (let i = 0; i < state.decks.length; i++) {
+				const deck = state.decks[i]
+
+				if (deck.name === payload.name) {
+					deck.path = payload.name.toLowerCase().replace(/ /g, '-')
+					break
+				}
+			}
 		}
-		// convertDeckNameToURL (state, payload) {
-		// 	console.log(payload)
-		// 	return payload.toLowerCase().replace(/ /g, '-')
-		// }
 	},
-	actions: {}
+	actions: {
+	}
 })
