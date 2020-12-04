@@ -118,16 +118,6 @@ export default new Vuex.Store({
 		},
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
-		},
-		makeDeckPath (state, payload) {
-			for (let i = 0; i < state.decks.length; i++) {
-				const deck = state.decks[i]
-
-				if (deck.name === payload.name) {
-					deck.path = payload.name.toLowerCase().replace(/ /g, '-')
-					break
-				}
-			}
 		}
 	},
 	actions: {

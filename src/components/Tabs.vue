@@ -9,7 +9,7 @@
 					v-else  @click.native="selectTab(deck)"
 					:to="{
 						name: 'deck',
-						params: { deckPath: deck.name.toLowerCase().replace(/ /g, '-') }
+						params: { deckPath: deck.path }
 					}"
 				>
 					{{ deck.name || '?' }}
@@ -29,8 +29,8 @@
 export default {
 	name: 'tabs',
 	methods: {
-		applyNewDeckName (newDeckName, existingDeckName) {
-			if (existingDeckName) {
+		applyNewDeckName (newDeckName, deckNameExists) {
+			if (deckNameExists) {
 				newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
 
 				if (newDeckName) {
@@ -39,6 +39,7 @@ export default {
 			} else {
 				this.$store.state.decks.push({
 					name: newDeckName,
+					path: newDeckName.toLowerCase().replace(/ /g, '-'),
 					cards: [],
 					editDate: new Date(),
 					previousSortProp: 'type'
@@ -61,28 +62,24 @@ export default {
 			if (newDeckName) {
 				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 
-				// Switch to the new deck.
-				this.$nextTick(function () {
-					this.$store.commit('changeDeletedDeck', null)
+				this.$store.commit('changeDeletedDeck', null)
 
-					const decks = this.$store.state.decks
+				const decks = this.$store.state.decks
 
-					for (let i = 0; i < decks.length; i++) {
-						const deck = decks[i]
+				for (let i = 0; i < decks.length; i++) {
+					const deck = decks[i]
 
-						if (deck.name === newDeckName) {
-							this.selectTab(deck)
-							this.$store.commit('makeDeckPath', deck)
-							this.$router.push({
-								name: 'deck',
-								params: { deckPath: deck.path }
-							})
-							deck.editDate = new Date()
+					if (deck.name === newDeckName) {
+						this.selectTab(deck)
 
-							break
-						}
+						this.$router.push({
+							name: 'deck',
+							params: { deckPath: deck.path }
+						})
+
+						break
 					}
-				})
+				}
 			}
 		},
 		selectTab (deck) {
