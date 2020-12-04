@@ -64,22 +64,15 @@ export default {
 
 				this.$store.commit('changeDeletedDeck', null)
 
-				const decks = this.$store.state.decks
-
-				for (let i = 0; i < decks.length; i++) {
-					const deck = decks[i]
-
+				this.$store.state.decks.find((deck) => {
 					if (deck.name === newDeckName) {
 						this.selectTab(deck)
-
 						this.$router.push({
 							name: 'deck',
 							params: { deckPath: deck.path }
 						})
-
-						break
 					}
-				}
+				})
 			}
 		},
 		selectTab (deck) {
