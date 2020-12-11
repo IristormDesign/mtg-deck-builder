@@ -40,6 +40,10 @@
 	h2 {
 		margin: 0;
 		flex-grow: 1;
+
+		span {
+			@include heading-font;
+		}
 	}
 	> div {
 		line-height: 1;
