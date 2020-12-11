@@ -2,11 +2,11 @@
 	<div class="sorter">
 		<h3>Sort Cards By</h3>
 
-		<select v-model="sort">
-			<option>Name</option>
-			<option>Converted mana cost</option>
-			<option>Type</option>
-			<option>Quantity</option>
+		<select v-model="sortBy" @change="sortCards(sortBy)">
+			<option value="name">Name</option>
+			<option value="mana">Converted mana cost</option>
+			<option value="type">Type</option>
+			<option value="qty">Quantity</option>
 		</select>
 	</div>
 </template>
@@ -16,7 +16,7 @@ export default {
 	name: 'card-sorter',
 	data () {
 		return {
-			sort: 'Type'
+			sortBy: this.$store.state.sortBy
 		}
 	},
 	props: {
@@ -24,38 +24,15 @@ export default {
 	},
 	mounted () {
 		this.$store.state.decks.forEach(deck => {
-			this.sortCards('type', deck)
+			this.sortCards(this.sortBy)
 		})
 	},
-	computed: {
-		// The Vue 2 `watch` feature doesn't work with multiple parameters, so this is a workaround.
-		parametersForSorting () {
-			return [this.sort, this.deck]
-		}
-	},
-	watch: {
-		parametersForSorting: function (p) {
-			const sortOption = p[0]
-			const deck = p[1]
-
-			switch (sortOption) {
-			case 'Name':
-				this.sortCards('name', deck)
-				break
-			case 'Converted mana cost':
-				this.sortCards('mana', deck)
-				break
-			case 'Type':
-				this.sortCards('type', deck)
-				break
-			case 'Quantity':
-				this.sortCards('qty', deck)
-				break
-			}
-		}
-	},
 	methods: {
-		sortCards (prop, deck) {
+		sortCards (prop) {
+			this.$store.commit('changeCardSorting', prop)
+
+			const deck = this.deck
+
 			deck.cards.sort((a, b) => {
 				let reverseOrder = false
 

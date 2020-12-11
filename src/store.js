@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		activeTab: null,
+		sortBy: 'type',
 		decks: [
 			{
 				name: 'Mana Overload',
@@ -118,6 +119,9 @@ export default new Vuex.Store({
 		},
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
+		},
+		changeCardSorting (state, payload) {
+			state.sortBy = payload
 		}
 	},
 	actions: {
