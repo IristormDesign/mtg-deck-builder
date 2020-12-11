@@ -22,13 +22,13 @@
 </template>
 
 <script>
-import DeckName from './deck-header/DeckName.vue'
-import CardSorter from './deck-header/CardSorter.vue'
-import DateEdited from './deck-header/DateEdited.vue'
-import CardTotal from './deck-header/CardTotal.vue'
-import DeckList from './DeckList.vue'
-import CardDisplay from './CardDisplay.vue'
-import DeckFooter from './DeckFooter.vue'
+import DeckName from './tab-contents/DeckName.vue'
+import CardSorter from './tab-contents/CardSorter.vue'
+import DateEdited from './tab-contents/DateEdited.vue'
+import CardTotal from './tab-contents/CardTotal.vue'
+import DeckList from './tab-contents/DeckList.vue'
+import CardDisplay from './tab-contents/CardDisplay.vue'
+import DeckFooter from './tab-contents/DeckFooter.vue'
 
 export default {
 	name: 'tab-contents',
