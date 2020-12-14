@@ -34,7 +34,6 @@ export default {
 					this.renameDeck(deck, decks)
 				} else { // Apply the new name to the deck.
 					deck.name = pendingName
-					this.$store.commit('changeActiveTab', deck.name)
 					deck.editDate = new Date()
 				}
 			}

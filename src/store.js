@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		activeTab: null,
 		cardSorting: {
 			cur: 'type',
 			prev: 'qty'
@@ -117,9 +116,6 @@ export default new Vuex.Store({
 	getters: {
 	},
 	mutations: {
-		changeActiveTab (state, payload) {
-			state.activeTab = payload
-		},
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
 		}

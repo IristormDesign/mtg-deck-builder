@@ -76,7 +76,6 @@ export default {
 			}
 		},
 		selectTab (deck) {
-			this.$store.commit('changeActiveTab', deck.name)
 			this.$store.commit('changeDeletedDeck', null)
 		}
 	}
