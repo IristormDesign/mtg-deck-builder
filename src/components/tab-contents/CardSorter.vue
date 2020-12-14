@@ -2,7 +2,7 @@
 	<div class="sorter">
 		<h3>Sort Cards By</h3>
 
-		<select v-model="sortBy" @change="sortCards(sortBy)">
+		<select v-model="curProp" @change="sortCards()">
 			<option value="name">Name</option>
 			<option value="mana">Converted mana cost</option>
 			<option value="type">Type</option>
@@ -16,87 +16,101 @@ export default {
 	name: 'card-sorter',
 	data () {
 		return {
-			sortBy: this.$store.state.sortBy
+			curProp: this.$store.state.cardSorting.cur
 		}
 	},
 	props: {
 		deck: Object
 	},
 	mounted () {
-		this.$store.state.decks.forEach(deck => {
-			this.sortCards(this.sortBy)
-		})
+		this.sortCards()
 	},
 	methods: {
-		sortCards (prop) {
-			this.$store.commit('changeCardSorting', prop)
+		sortCards () {
+			const cards = this.deck.cards
+			const curProp = this.curProp
+			const prevProp = this.$store.state.cardSorting.prev
+			let curReversed = false
+			let prevReversed = false
+			this.$store.state.cardSorting.cur = curProp
 
-			const deck = this.deck
+			cards.sort((a, b) => {
+				let cardA = a[curProp]
+				let cardB = b[curProp]
 
-			deck.cards.sort((a, b) => {
-				let reverseOrder = false
-
-				if (prop === 'qty') {
-					reverseOrder = true
-				}
-
-				let cardA = a[prop]
-				let cardB = b[prop]
-
-				// If prop is a card name, mana cost, or type...
-				if (a[prop] instanceof String) {
+				// If curProp uses a string (e.g., card name), make it case insensitive.
+				if (cardA instanceof String) {
 					cardA = cardA.toUpperCase()
 					cardB = cardB.toUpperCase()
 				}
+				if (curProp === 'qty') {
+					curReversed = true
+				}
 
 				if (cardA < cardB) {
-					if (reverseOrder) {
+					if (curReversed) {
 						return 1
 					} else {
 						return -1
 					}
 				} else if (cardA > cardB) {
-					if (reverseOrder) {
+					if (curReversed) {
 						return -1
 					} else {
 						return 1
 					}
+				} else {
+					// Do a secondary level of sorting using the previously selected property.
+					cards.sort((c, d) => {
+						let cardC = c[prevProp]
+						let cardD = d[prevProp]
+
+						if (cardC instanceof String) {
+							cardC = cardC.toUpperCase()
+							cardD = cardD.toUpperCase()
+						}
+						if (prevProp === 'qty') {
+							prevReversed = true
+						}
+
+						if (cardC < cardD) {
+							if (prevReversed) {
+								return 1
+							} else {
+								return -1
+							}
+						} else if (cardC > cardD) {
+							if (prevReversed) {
+								return -1
+							} else {
+								return 1
+							}
+						} else {
+							// Sort by card name as a last resort (if card name wasn't the previously selected property).
+							if (prevProp !== 'name') {
+								cards.sort((e, f) => {
+									curReversed = false
+									prevReversed = false
+
+									const cardEName = e.name.toUpperCase()
+									const cardFName = f.name.toUpperCase()
+
+									if (cardEName < cardFName) {
+										return -1
+									} else if (cardEName > cardFName) {
+										return 1
+									}
+								})
+							}
+
+							return 0
+						}
+					})
 				}
-
-				const prevProp = deck.previousSortProp
-				let prevReverseOrder = false
-
-				if (prevProp === 'qty') {
-					prevReverseOrder = true
-				}
-
-				if (a[prevProp] < b[prevProp]) {
-					if (prevReverseOrder) {
-						return 1
-					} else {
-						return -1
-					}
-				} else if (a[prevProp] > b[prevProp]) {
-					if (prevReverseOrder) {
-						return -1
-					} else {
-						return 1
-					}
-				}
-
-				// Sort by name as a last resort (if name isn't the previously selected property).
-				if (prevProp !== 'name') {
-					if (a.name < b.name) {
-						return -1
-					} else if (a.name > b.name) {
-						return 1
-					}
-				}
-
-				return 0
 			})
 
-			deck.previousSortProp = prop
+			// The current property is now the new previous property.
+			this.$store.state.cardSorting.prev = this.$store.state.cardSorting.cur
 		}
 	}
 }

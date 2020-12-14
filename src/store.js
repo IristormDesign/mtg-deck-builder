@@ -6,7 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		activeTab: null,
-		sortBy: 'type',
+		cardSorting: {
+			cur: 'type',
+			prev: 'qty'
+		},
 		decks: [
 			{
 				name: 'Mana Overload',
@@ -16,13 +19,13 @@ export default new Vuex.Store({
 						name: 'Forest',
 						type: 'Basic Land — Forest',
 						mana: '0',
-						qty: 12
+						qty: 10
 					},
 					{
 						name: 'Mountain',
 						type: 'Basic Land — Mountain',
 						mana: '0',
-						qty: 10
+						qty: 12
 					},
 					{
 						name: 'Almighty Bushwagg',
@@ -39,7 +42,7 @@ export default new Vuex.Store({
 					{
 						name: 'Leafkin Avenger',
 						type: 'Creature — Elemental',
-						mana: '2 🔴🟢',
+						mana: '772 🔴🟢',
 						qty: 3
 					},
 					{
@@ -52,7 +55,7 @@ export default new Vuex.Store({
 						name: 'Nyxbloom Ancient',
 						type: 'Creature — Elemental',
 						mana: '4 🟢🟢🟢',
-						qty: 4
+						qty: 3
 					},
 					{
 						name: 'Stonecoil Serpent',
@@ -119,9 +122,6 @@ export default new Vuex.Store({
 		},
 		changeDeletedDeck (state, payload) {
 			state.justDeletedDeck = payload
-		},
-		changeCardSorting (state, payload) {
-			state.sortBy = payload
 		}
 	},
 	actions: {
