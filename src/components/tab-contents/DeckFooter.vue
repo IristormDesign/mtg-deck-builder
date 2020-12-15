@@ -50,7 +50,7 @@ export default {
 
 				this.$store.state.decks.push({
 					name: dupDeckName,
-					path: dupDeckName.toLowerCase().replace(/ /g, '-'),
+					path: this.$store.getters.pathFromDeckName(dupDeckName),
 					cards: srcDeck.cards,
 					editDate: new Date(),
 					viewedCard: srcDeck.viewedCard
@@ -66,7 +66,7 @@ export default {
 			}
 		},
 		setupCardProps (card) {
-			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
+			card.img = this.$store.getters.stringToPath(card.name) + '.png'
 
 			if (card.qty === undefined) {
 				card.qty = 1

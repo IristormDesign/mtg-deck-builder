@@ -114,6 +114,9 @@ export default new Vuex.Store({
 		deletedDeckName: null
 	},
 	getters: {
+		stringToPath: () => (string) => {
+			return string.toLowerCase().replace(/ /g, '-')
+		}
 	},
 	mutations: {
 		mutateDeletedDeckName (state, payload) {

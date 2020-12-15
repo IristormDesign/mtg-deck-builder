@@ -34,7 +34,7 @@ export default {
 					this.renameDeck()
 				} else { // Apply the new name to the deck.
 					deck.name = pendingName
-					deck.path = deck.name.toLowerCase().replace(/ /g, '-')
+					deck.path = this.$store.getters.stringToPath(deck.name)
 					deck.editDate = new Date()
 
 					this.$router.replace({

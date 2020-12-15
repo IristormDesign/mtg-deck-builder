@@ -38,7 +38,7 @@ export default {
 			} else {
 				this.$store.state.decks.push({
 					name: newDeckName,
-					path: newDeckName.toLowerCase().replace(/ /g, '-'),
+					path: this.$store.getters.stringToPath(newDeckName),
 					cards: [],
 					editDate: new Date()
 				})
