@@ -2,9 +2,10 @@
 	<footer class="deck-footer">
 		<card-adder :deck="deck" @card-added="addCard" />
 
-		<button
-			title="Delete this deck" @click="deleteDeck(deck.name)"
-		>Delete Deck</button>
+		<div class="deck-actions">
+			<button @click="duplicateDeck">Duplicate Deck</button>
+			<button @click="deleteDeck">Delete Deck</button>
+		</div>
 	</footer>
 </template>
 
@@ -20,13 +21,14 @@ export default {
 		deck: Object
 	},
 	methods: {
-		addCard (newCard, deck) {
-			this.setupCardProps(newCard)
-			deck.cards.push(newCard)
-			deck.viewedCard = newCard.name
-			deck.editDate = new Date()
+		addCard (card) {
+			this.setupCardProps(card)
+			this.deck.cards.push(card)
+			this.deck.viewedCard = card.name
+			this.deck.editDate = new Date()
 		},
-		deleteDeck (deletedDeckName) {
+		deleteDeck () {
+			const deletedDeckName = this.deck.name
 			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
 
 			if (deletionConfirmed) {
@@ -39,7 +41,31 @@ export default {
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},
-		setupCardProps (card, deck) {
+		duplicateDeck () {
+			const srcDeck = this.deck
+			const duplicate = confirm(`Make a new deck that’s a copy of “${srcDeck.name}”?`)
+
+			if (duplicate) {
+				const dupDeckName = srcDeck.name + ' (copy)'
+
+				this.$store.state.decks.push({
+					name: dupDeckName,
+					path: dupDeckName.toLowerCase().replace(/ /g, '-'),
+					cards: srcDeck.cards,
+					editDate: new Date(),
+					viewedCard: srcDeck.viewedCard
+				})
+				this.$store.state.decks.find((deck) => {
+					if (deck.name === dupDeckName) {
+						this.$router.push({
+							name: 'deck',
+							params: { deckPath: deck.path }
+						})
+					}
+				})
+			}
+		},
+		setupCardProps (card) {
 			card.img = card.name.toLowerCase().replace(/ /g, '-') + '.png'
 
 			if (card.qty === undefined) {

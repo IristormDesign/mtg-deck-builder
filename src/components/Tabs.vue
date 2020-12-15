@@ -40,8 +40,7 @@ export default {
 					name: newDeckName,
 					path: newDeckName.toLowerCase().replace(/ /g, '-'),
 					cards: [],
-					editDate: new Date(),
-					previousSortProp: 'type'
+					editDate: new Date()
 				})
 			}
 		},
