@@ -14,7 +14,7 @@
 			</div>
 			<ul>
 				<li v-for="card in deck.cards" :key="card.name">
-					<button @click="selectedCard(card, deck)">
+					<button @click="selectedCard(card)">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
@@ -25,7 +25,7 @@
 						<input
 							type="number" v-model="card.qty"
 							min="0" :max="card.maxQty"
-							@input="validateQty(card, deck)"
+							@input="validateQty(card)"
 						/>
 					</div>
 				</li>
@@ -41,28 +41,30 @@ export default {
 		deck: Object
 	},
 	methods: {
-		removeCard (card, deck) {
-			let cardIndex = deck.cards.indexOf(card)
+		removeCard (rmvCard) {
+			const deck = this.deck
+			const cards = deck.cards
+			let cardIndex = cards.indexOf(rmvCard)
 
 			// Remove the card from the deck.
-			deck.cards = deck.cards.filter(
-				eachCard => eachCard.name !== card.name
+			deck.cards = cards.filter(
+				eachCard => eachCard.name !== rmvCard.name
 			)
 
-			const numOfCards = deck.cards.length
+			const numOfCards = cards.length
 
 			// If the removed card happens to be the currently viewed card, then view another card instead.
-			if (deck.viewedCard === card.name && numOfCards > 0) {
+			if (deck.viewedCard === rmvCard.name && numOfCards > 0) {
 				if (cardIndex >= numOfCards) {
 					cardIndex = numOfCards - 1
 				}
-				deck.viewedCard = deck.cards[cardIndex].name
+				deck.viewedCard = cards[cardIndex].name
 			}
 		},
-		selectedCard (card, deck) {
-			deck.viewedCard = card.name
+		selectedCard (card) {
+			this.deck.viewedCard = card.name
 		},
-		validateQty (card, deck) {
+		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
@@ -80,14 +82,14 @@ export default {
 
 				this.$nextTick(function () {
 					if (confirmRemoval) {
-						this.removeCard(card, deck)
+						this.removeCard(card)
 					} else {
 						card.qty = 1
 					}
 				})
 			}
 
-			deck.editDate = new Date()
+			this.deck.editDate = new Date()
 		}
 	}
 }

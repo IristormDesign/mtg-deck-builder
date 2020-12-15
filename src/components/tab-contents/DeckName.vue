@@ -1,8 +1,7 @@
 <template>
 	<h2>
 		<button
-			@click="renameDeck(deck, $store.state.decks)"
-			class="rename-btn"
+			@click="renameDeck()" class="rename-btn"
 			title="Change the name of this deck"
 		><span>{{ deck.name }}</span> <small>Rename</small></button>
 	</h2>
@@ -15,23 +14,24 @@ export default {
 		deck: Object
 	},
 	methods: {
-		renameDeck (deck, decks) {
+		renameDeck () {
+			const decks = this.$store.state.decks
+			const deck = this.deck
 			const pendingName = prompt('Change the name of this deck:', deck.name)
 
 			function existingDeckName () {
-				for (let i = 0; i < decks.length; i++) {
-					if (pendingName.toUpperCase() === decks[i].name.toUpperCase()) {
-						// Return deck name in its original letter case.
-						return decks[i].name
-					}
-				}
+				// Try searching for a deck whose name matches the pending deck's name, ignoring letter case. If a match exists, then return that deck's name (in its original letter case).
+				const found = decks.find(deck =>
+					pendingName.toUpperCase() === deck.name.toUpperCase()
+				)
+				if (found) return found.name
 			}
 
 			if (pendingName) {
 				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
 					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
 
-					this.renameDeck(deck, decks)
+					this.renameDeck()
 				} else { // Apply the new name to the deck.
 					deck.name = pendingName
 					deck.editDate = new Date()
