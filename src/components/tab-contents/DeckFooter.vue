@@ -33,7 +33,10 @@ export default {
 				this.$store.state.decks = this.$store.state.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
-				this.$store.commit('changeDeletedDeck', deletedDeckName)
+
+				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
+
+				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},
 		setupCardProps (card, deck) {

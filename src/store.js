@@ -111,13 +111,13 @@ export default new Vuex.Store({
 				viewedCard: 'Baneslayer Angel'
 			}
 		],
-		justDeletedDeck: null
+		deletedDeckName: null
 	},
 	getters: {
 	},
 	mutations: {
-		changeDeletedDeck (state, payload) {
-			state.justDeletedDeck = payload
+		mutateDeletedDeckName (state, payload) {
+			state.deletedDeckName = payload
 		}
 	},
 	actions: {

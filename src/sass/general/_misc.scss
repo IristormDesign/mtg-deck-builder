@@ -3,7 +3,10 @@
 	display: inline-block;
 	cursor: default;
 }
-.deleted-deck-message {
-	margin: 12em 1.5em;
-	text-align: center;
+.deck-deleted {
+	p {
+		margin: 3em 1.5em;
+		font-size: 1.125em;
+		text-align: center;
+	}
 }

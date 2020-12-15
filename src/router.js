@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import store from './store.js'
 
 import Welcome from '@/components/Welcome.vue'
+import DeckDeleted from '@/components/tab-contents/DeckDeleted.vue'
 import TabContents from '@/components/TabContents.vue'
 import NotFound from '@/components/NotFound.vue'
 
@@ -15,6 +16,19 @@ export default new VueRouter({
 			name: 'home',
 			path: '/',
 			component: Welcome
+		},
+		{
+			name: 'deckDeleted',
+			path: '/deck-deleted',
+			component: DeckDeleted,
+			beforeEnter: (to, from, next) => {
+				if (store.state.deletedDeckName) {
+					next()
+				} else {
+					// This page could be accessed at times when it shouldn't, such as via the browser back button or directly entering the URL.
+					next({ name: 'notFound', replace: true })
+				}
+			}
 		},
 		{
 			name: 'deck',

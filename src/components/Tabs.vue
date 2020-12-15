@@ -6,8 +6,7 @@
 					{{ deck.name || '?' }}
 				</div>
 				<router-link
-					v-else  @click.native="selectTab(deck)"
-					:to="{
+					v-else  :to="{
 						name: 'deck',
 						params: { deckPath: deck.path }
 					}"
@@ -62,11 +61,8 @@ export default {
 			if (newDeckName) {
 				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
 
-				this.$store.commit('changeDeletedDeck', null)
-
 				this.$store.state.decks.find((deck) => {
 					if (deck.name === newDeckName) {
-						this.selectTab(deck)
 						this.$router.push({
 							name: 'deck',
 							params: { deckPath: deck.path }
@@ -74,9 +70,6 @@ export default {
 					}
 				})
 			}
-		},
-		selectTab (deck) {
-			this.$store.commit('changeDeletedDeck', null)
 		}
 	}
 }
