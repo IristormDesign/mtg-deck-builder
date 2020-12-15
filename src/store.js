@@ -12,6 +12,7 @@ export default new Vuex.Store({
 		decks: [
 			{
 				name: 'Mana Overload',
+				path: 'mana-overload',
 				cards: [
 					{
 						name: 'Forest',
@@ -67,6 +68,7 @@ export default new Vuex.Store({
 			},
 			{
 				name: 'Air Force',
+				path: 'air-force',
 				cards: [
 					{
 						name: 'Plains',

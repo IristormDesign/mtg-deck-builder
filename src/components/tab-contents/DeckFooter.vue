@@ -50,7 +50,7 @@ export default {
 
 				this.$store.state.decks.push({
 					name: dupDeckName,
-					path: this.$store.getters.pathFromDeckName(dupDeckName),
+					path: this.$store.getters.stringToPath(dupDeckName),
 					cards: srcDeck.cards,
 					editDate: new Date(),
 					viewedCard: srcDeck.viewedCard

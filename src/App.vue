@@ -22,11 +22,6 @@ export default {
 	components: {
 		Tabs,
 		SiteFooter
-	},
-	created () {
-		this.$store.state.decks.forEach(deck => {
-			deck.path = this.$store.getters.stringToPath(deck.name)
-		})
 	}
 }
 </script>
