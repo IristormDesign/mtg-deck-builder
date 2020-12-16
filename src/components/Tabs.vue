@@ -45,14 +45,9 @@ export default {
 			}
 		},
 		checkExistingDeckNames (newDeckName) {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				if (newDeckName.toUpperCase() === decks[i].name.toUpperCase()) {
-					return true
-				}
-			}
-			return false
+			return this.$store.state.decks.find((deck) =>
+				this.$store.getters.stringToPath(newDeckName) === deck.path
+			)
 		},
 		createDeck () {
 			const newDeckName = prompt('Name this new deck:')

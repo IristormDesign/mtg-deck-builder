@@ -115,7 +115,9 @@ export default new Vuex.Store({
 	},
 	getters: {
 		stringToPath: () => (string) => {
-			return string.toLowerCase().replace(/ /g, '-')
+			return string.toLowerCase()
+				.replace(/\s/g, '-') // Replace whitespace characters with hyphens.
+				.replace(/-{2,}/g, '-') // Replace multiple hyphens in a row with a single hyphen.
 		}
 	},
 	mutations: {
