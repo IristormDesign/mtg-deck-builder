@@ -28,35 +28,35 @@
 export default {
 	name: 'tabs',
 	methods: {
-		applyNewDeckName (newDeckName, deckNameExists) {
-			if (deckNameExists) {
-				newDeckName = prompt('Another deck already has the name “' + newDeckName + '.” Please give a different name.')
+		checkExistingDeckNames (name) {
+			return this.$store.state.decks.find((deck) =>
+				this.$store.getters.stringToPath(name) === deck.path
+			)
+		},
+		applyNewDeckName (name, nameExists) {
+			if (nameExists) {
+				const differentName = prompt(this.$store.getters.alertNameExists(name))
 
-				if (newDeckName) {
-					this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
+				if (differentName) {
+					this.applyNewDeckName(name, this.checkExistingDeckNames(name))
 				}
 			} else {
 				this.$store.state.decks.push({
-					name: newDeckName,
-					path: this.$store.getters.stringToPath(newDeckName),
+					name: name,
+					path: this.$store.getters.stringToPath(name),
 					cards: [],
 					editDate: new Date()
 				})
 			}
 		},
-		checkExistingDeckNames (newDeckName) {
-			return this.$store.state.decks.find((deck) =>
-				this.$store.getters.stringToPath(newDeckName) === deck.path
-			)
-		},
 		createDeck () {
-			const newDeckName = prompt('Name this new deck:')
+			const name = prompt('Name this new deck:')
 
-			if (newDeckName) {
-				this.applyNewDeckName(newDeckName, this.checkExistingDeckNames(newDeckName))
+			if (name) {
+				this.applyNewDeckName(name, this.checkExistingDeckNames(name))
 
 				this.$store.state.decks.find((deck) => {
-					if (deck.name === newDeckName) {
+					if (deck.name === name) {
 						this.$router.push({
 							name: 'deck',
 							params: { deckPath: deck.path }

@@ -29,7 +29,7 @@ export default {
 
 			if (pendingName) {
 				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
-					alert(`⚠ Another deck is already named “${existingDeckName()}.” Please give a different name.`)
+					alert(this.$store.getters.alertNameExists(existingDeckName()))
 
 					this.renameDeck()
 				} else { // Apply the new name to the deck.

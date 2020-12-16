@@ -118,6 +118,9 @@ export default new Vuex.Store({
 			return string.toLowerCase()
 				.replace(/\s/g, '-') // Replace whitespace characters with hyphens.
 				.replace(/-{2,}/g, '-') // Replace multiple hyphens in a row with a single hyphen.
+		},
+		alertNameExists: () => (name) => {
+			return `⚠ Another deck is already named “${name}.” Please give a different name.`
 		}
 	},
 	mutations: {
