@@ -40,7 +40,7 @@ export default {
 
 			if (name) { // If the user entered any name...
 				const newDeckPath = getters.stringToPath(name)
-				const existingDeck = decks.find((deck) =>
+				const existingDeck = decks.find(deck =>
 					newDeckPath === deck.path
 				)
 				if (existingDeck) {

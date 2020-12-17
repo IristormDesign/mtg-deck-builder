@@ -17,6 +17,8 @@ export default {
 		renameDeck () {
 			const decks = this.$store.state.decks
 			const deck = this.deck
+			const getters = this.$store.getters
+
 			const pendingName = prompt('Change the name of this deck:', deck.name)
 
 			function existingDeckName () {
@@ -29,12 +31,12 @@ export default {
 
 			if (pendingName) {
 				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
-					alert(this.$store.getters.alertNameExists(existingDeckName()))
+					alert(getters.alertNameExists(existingDeckName()))
 
 					this.renameDeck()
 				} else { // Apply the new name to the deck.
 					deck.name = pendingName
-					deck.path = this.$store.getters.stringToPath(deck.name)
+					deck.path = getters.stringToPath(deck.name)
 					deck.editDate = new Date()
 
 					this.$router.replace({
