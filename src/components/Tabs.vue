@@ -28,42 +28,36 @@
 export default {
 	name: 'tabs',
 	methods: {
-		checkExistingDeckNames (name) {
-			return this.$store.state.decks.find((deck) =>
-				this.$store.getters.stringToPath(name) === deck.path
-			)
-		},
-		applyNewDeckName (name, nameExists) {
-			if (nameExists) {
-				const differentName = prompt(this.$store.getters.alertNameExists(name))
+		createDeck (existingName) {
+			const getters = this.$store.getters
+			const decks = this.$store.state.decks
 
-				if (differentName) {
-					this.applyNewDeckName(name, this.checkExistingDeckNames(name))
+			let message = 'Name this new deck:'
+			if (existingName) {
+				message = getters.alertNameExists(existingName)
+			}
+			const name = prompt(message)
+
+			if (name) { // If the user entered any name...
+				const newDeckPath = getters.stringToPath(name)
+				const existingDeck = decks.find((deck) =>
+					newDeckPath === deck.path
+				)
+				if (existingDeck) {
+					this.createDeck(existingDeck.name) // Restart this method from the beginning.
+				} else { // Now create the new deck and switch to it.
+					decks.push({
+						name: name,
+						path: newDeckPath,
+						cards: [],
+						editDate: new Date()
+					})
+					this.$router.push({
+						name: 'deck',
+						params: { deckPath: newDeckPath }
+					})
 				}
-			} else {
-				this.$store.state.decks.push({
-					name: name,
-					path: this.$store.getters.stringToPath(name),
-					cards: [],
-					editDate: new Date()
-				})
-			}
-		},
-		createDeck () {
-			const name = prompt('Name this new deck:')
-
-			if (name) {
-				this.applyNewDeckName(name, this.checkExistingDeckNames(name))
-
-				this.$store.state.decks.find((deck) => {
-					if (deck.name === name) {
-						this.$router.push({
-							name: 'deck',
-							params: { deckPath: deck.path }
-						})
-					}
-				})
-			}
+			} // Else, if the user left the prompt blank, do nothing.
 		}
 	}
 }
