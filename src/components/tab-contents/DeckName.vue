@@ -14,35 +14,33 @@ export default {
 		deck: Object
 	},
 	methods: {
-		renameDeck () {
-			const decks = this.$store.state.decks
+		renameDeck (redo) {
 			const deck = this.deck
-			const getters = this.$store.getters
+			const get = this.$store.getters
 
-			const pendingName = prompt('Change the name of this deck:', deck.name)
-
-			function existingDeckName () {
-				// Try searching for a deck whose name matches the pending deck's name, ignoring letter case. If a match exists, then return that deck's name (in its original letter case).
-				const found = decks.find(deck =>
-					pendingName.toUpperCase() === deck.name.toUpperCase()
-				)
-				if (found) return found.name
+			let message = 'Change the name of this deck:'
+			if (redo) {
+				message = get.alertNameExists(redo)
 			}
+			const name = prompt(message, deck.name)
 
-			if (pendingName) {
-				if (existingDeckName() && pendingName.toUpperCase() !== deck.name.toUpperCase()) {
-					alert(getters.alertNameExists(existingDeckName()))
+			if (name) {
+				const path = get.stringToPath(name)
+				const deckExists = get.existingDeck(path)
 
-					this.renameDeck()
-				} else { // Apply the new name to the deck.
-					deck.name = pendingName
-					deck.path = getters.stringToPath(deck.name)
+				if (deckExists && name !== deck.name) { // If the given deck name already exists, AND if the letter casing of the name WASN'T modified...
+					this.renameDeck(deckExists.name)
+				} else {
+					deck.name = name
+					deck.path = path
 					deck.editDate = new Date()
 
-					this.$router.replace({
-						name: 'deck',
-						params: { deckPath: deck.path }
-					})
+					if (path !== this.$route.params.deckPath) {
+						this.$router.replace({
+							name: 'deck',
+							params: { deckPath: path }
+						})
+					}
 				}
 			}
 		}
