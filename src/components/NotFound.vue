@@ -1,10 +1,9 @@
 <template>
-	<div class="not-found tab-contents">
-		<article>
-			<h2>No Page Found</h2>
-			<p>There’s nothing at the current URL. <router-link :to="{name: 'home'}">Return to the home page?</router-link></p>
-		</article>
-	</div>
+	<article class="not-found contents">
+		<h2>Error: Page Not Found</h2>
+		<p>You tried to go to a web page that doesn’t exist. Perhaps the page once existed but it’s been removed.</p>
+		<p><router-link :to="{name: 'home'}"><strong>Go to the home page?</strong></router-link></p>
+	</article>
 </template>
 
 <script>
