@@ -17,30 +17,30 @@ export default {
 		renameDeck (redo) {
 			const deck = this.deck
 			const get = this.$store.getters
-
 			let message = 'Change the name of this deck:'
 			if (redo) {
 				message = get.alertNameExists(redo)
 			}
-			const name = prompt(message, deck.name)
+			const newName = prompt(message, deck.name)
 
-			if (name) {
-				const path = get.stringToPath(name)
-				const deckExists = get.existingDeck(path)
+			if (newName) { // If the user provided any name...
+				const newPath = get.stringToPath(newName)
+				const deckExists = get.existingDeck(newPath)
+				const theActiveDeck = () => newPath === this.$route.params.deckPath
 
-				if (deckExists && name !== deck.name) { // If the given deck name already exists, AND if the letter casing of the name WASN'T modified...
-					this.renameDeck(deckExists.name)
-				} else {
-					deck.name = name
-					deck.path = path
+				if (!deckExists || theActiveDeck()) {
+					deck.name = newName
+					deck.path = newPath
 					deck.editDate = new Date()
 
-					if (path !== this.$route.params.deckPath) {
+					if (!theActiveDeck()) {
 						this.$router.replace({
 							name: 'deck',
-							params: { deckPath: path }
+							params: { deckPath: newPath }
 						})
 					}
+				} else {
+					this.renameDeck(deckExists.name) // Start over this method.
 				}
 			}
 		}
