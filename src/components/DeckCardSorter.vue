@@ -13,7 +13,7 @@
 
 <script>
 export default {
-	name: 'card-sorter',
+	name: 'deck-card-sorter',
 	data () {
 		return {
 			curProp: this.$store.state.cardSorting.cur

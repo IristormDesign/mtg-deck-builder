@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CardAdder from './CardAdder.vue'
+import CardAdder from './DeckCardAdder.vue'
 
 export default {
 	name: 'deck-footer',

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-	name: 'date-edited',
+	name: 'deck-date-edited',
 	props: {
 		deck: Object
 	},

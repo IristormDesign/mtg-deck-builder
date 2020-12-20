@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 import store from './store.js'
 
 import Welcome from '@/components/Welcome.vue'
-import DeckDeleted from '@/components/tab-contents/DeckDeleted.vue'
-import TabContents from '@/components/TabContents.vue'
+import Deck from '@/components/Deck.vue'
+import DeckDeleted from '@/components/DeckDeleted.vue'
 import NotFound from '@/components/NotFound.vue'
 
 Vue.use(VueRouter)
@@ -33,7 +33,7 @@ export default new VueRouter({
 		{
 			name: 'deck',
 			path: '/deck/:deckPath',
-			component: TabContents,
+			component: Deck,
 			beforeEnter: (to, from, next) => {
 				// Check that the deck name used in the path is actually valid before going to that path. If it's invalid, go to the "notFound" route instead.
 

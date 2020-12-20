@@ -11,7 +11,7 @@
 
 <script>
 export default {
-	name: 'deck-description',
+	name: 'deck-deck-description',
 	props: {
 		deck: Object
 	},

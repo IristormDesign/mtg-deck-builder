@@ -23,7 +23,7 @@ main {
 	width: 100%;
 }
 .contents,
-.tab-contents {
+.deck {
 	background: $color-content-bg;
 	color: #000;
 	border: 6px solid orangered;
@@ -32,7 +32,7 @@ main {
 .contents {
 	padding: .75em;
 }
-.tab-contents-main {
+.deck-contents-main {
 	display: grid;
 	grid-gap: .75em;
 	grid-template-columns: repeat(7, 1fr);
