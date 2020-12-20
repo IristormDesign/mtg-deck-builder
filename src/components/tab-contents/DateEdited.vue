@@ -25,6 +25,7 @@ export default {
 				const year = date.getFullYear()
 				let hour = date.getHours()
 				let minute = date.getMinutes()
+				let second = date.getSeconds()
 				let meridiem
 
 				switch (month) {
@@ -79,10 +80,13 @@ export default {
 				if (minute < 10) {
 					minute = '0' + minute
 				}
+				if (second < 10) {
+					second = '0' + second
+				}
 
 				const output = {
 					date: `${month} ${day}, ${year}`,
-					time: `${hour}:${minute} ${meridiem}`
+					time: `${hour}:${minute}:${second} ${meridiem}`
 				}
 
 				return output

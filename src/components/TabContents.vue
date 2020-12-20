@@ -10,6 +10,7 @@
 						<date-edited :deck="deck" />
 						<card-total :deck="deck" />
 					</header>
+					<deck-description :deck="deck" />
 					<deck-list :deck="deck" />
 					<card-display :deck="deck" />
 				</div>
@@ -25,6 +26,7 @@ import DeckName from './tab-contents/DeckName.vue'
 import CardSorter from './tab-contents/CardSorter.vue'
 import DateEdited from './tab-contents/DateEdited.vue'
 import CardTotal from './tab-contents/CardTotal.vue'
+import DeckDescription from './tab-contents/DeckDescription.vue'
 import DeckList from './tab-contents/DeckList.vue'
 import CardDisplay from './tab-contents/CardDisplay.vue'
 import DeckFooter from './tab-contents/DeckFooter.vue'
@@ -36,6 +38,7 @@ export default {
 		CardSorter,
 		DateEdited,
 		CardTotal,
+		DeckDescription,
 		DeckList,
 		CardDisplay,
 		DeckFooter

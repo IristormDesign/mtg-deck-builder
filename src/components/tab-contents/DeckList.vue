@@ -1,7 +1,7 @@
 <template>
 	<div class="deck-list">
 		<div v-if="deck.cards.length == 0" class="no-cards">
-			<p>This deck currently has no cards.</p>
+			<p>This deck currently has no cards. (Add a card to start building.)</p>
 		</div>
 		<div v-else>
 			<div class="labels">

@@ -64,6 +64,7 @@ export default new Vuex.Store({
 					}
 				],
 				editDate: new Date(),
+				description: 'One advanced diverted domestic repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should.',
 				viewedCard: 'Nyxbloom Ancient'
 			},
 			{
@@ -108,6 +109,7 @@ export default new Vuex.Store({
 					}
 				],
 				editDate: new Date(),
+				description: 'Gravity letters it herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy.',
 				viewedCard: 'Baneslayer Angel'
 			}
 		],

@@ -43,6 +43,9 @@
 <script>
 export default {
 	name: 'card-adder',
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			submitting: false,
@@ -104,9 +107,6 @@ export default {
 			this.success = false
 			this.error = false
 		}
-	},
-	props: {
-		deck: Object
 	}
 }
 </script>

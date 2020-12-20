@@ -2,8 +2,11 @@
 	grid-column: 1 / 6;
 
 	.no-cards {
-		margin: 6em 1.5em;
+		padding: 6em 1.5em;
 		text-align: center;
+		background: rgba(tan, .25);
+		border-radius: .375em;
+		font-style: italic;
 	}
 	.labels {
 		@include heading-font;

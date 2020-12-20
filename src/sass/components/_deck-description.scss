@@ -1,0 +1,36 @@
+.deck-description {
+	grid-column: span 5;
+		
+	h3 {
+		font-size: .6667em;
+		letter-spacing: 0;
+		text-transform: uppercase;
+		margin: 0;
+		margin-bottom: -1.5em;
+		margin-left: .375em;
+		z-index: 2;
+		position: relative;
+	}
+	textarea {
+		display: block;
+		overflow-y: hidden;
+		background: rgba(#fff, 0);
+		border: 1px solid transparent;
+		padding: .75em;
+		margin: 0;
+		width: 100%;
+		height: auto;
+		border-radius: 0 .375em .375em .375em;
+		transition: background, border-color .25s ease; 
+
+		&:hover,
+		&:focus {
+			background: rgba(#fff, .5);
+			border-color: orangered;
+		}
+		&::placeholder {
+			color: rgba(#000, .667);
+			font-style: italic;
+		}
+	}
+}
