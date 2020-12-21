@@ -53,6 +53,7 @@ export default {
 					path: this.$store.getters.stringToPath(dupDeckName),
 					cards: srcDeck.cards,
 					editDate: new Date(),
+					description: srcDeck.description,
 					viewedCard: srcDeck.viewedCard
 				})
 				this.$store.state.decks.find((deck) => {

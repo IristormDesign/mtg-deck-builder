@@ -6,21 +6,17 @@
 		letter-spacing: 0;
 		text-transform: uppercase;
 		margin: 0;
-		margin-bottom: -1.5em;
-		margin-left: .375em;
-		z-index: 2;
-		position: relative;
 	}
 	textarea {
 		display: block;
 		overflow-y: hidden;
 		background: rgba(#fff, 0);
 		border: 1px solid transparent;
-		padding: .75em;
+		padding: (.375em / 2) .375em;
 		margin: 0;
 		width: 100%;
-		height: auto;
-		border-radius: 0 .375em .375em .375em;
+		height: 1.5em;
+		border-radius: .375em;
 		transition: background, border-color .25s ease; 
 
 		&:hover,
@@ -29,7 +25,7 @@
 			border-color: orangered;
 		}
 		&::placeholder {
-			color: rgba(#000, .667);
+			color: rgba(#000, .75);
 			font-style: italic;
 		}
 	}

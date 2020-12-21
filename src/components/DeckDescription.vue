@@ -2,7 +2,7 @@
 	<div class="deck-description">
 		<h3>Deck Description</h3>
 		<textarea
-			v-model="deck.description" maxlength="500"
+			v-model="deck.description" maxlength="999"
 			@input="deck.editDate = new Date()"
 			placeholder="(Write a brief explanation about this deck here.)"
 		></textarea>
