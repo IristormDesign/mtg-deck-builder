@@ -67,8 +67,6 @@ export default {
 			}
 		},
 		setupCardProps (card) {
-			card.img = this.$store.getters.stringToPath(card.name) + '.png'
-
 			if (card.qty === undefined) {
 				card.qty = 1
 			}

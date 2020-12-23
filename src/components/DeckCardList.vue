@@ -62,7 +62,25 @@ export default {
 			}
 		},
 		selectedCard (card) {
-			this.deck.viewedCard = card.name
+			if (!card.img) { // If the image file hasn't been downloaded yet...
+				console.log('> Requesting image from Scryfall.')
+
+				require('axios')
+					.get(
+						'https://api.scryfall.com/cards/named?fuzzy=' + card.name.replace(/\s/g, '+')
+					)
+					.then(response => {
+						this.deck.viewedCard = card.name
+						card.img = response.data.image_uris.normal
+					})
+					.catch(error => {
+						console.log(error)
+						card.img = null
+					})
+			} else {
+				console.log('> Loaded cached image.')
+				this.deck.viewedCard = card.name
+			}
 		},
 		validateQty (card) {
 			card.qty = Math.round(card.qty)

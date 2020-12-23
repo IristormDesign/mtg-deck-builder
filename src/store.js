@@ -54,7 +54,8 @@ export default new Vuex.Store({
 						name: 'Nyxbloom Ancient',
 						type: 'Creature — Elemental',
 						mana: '4 🟢🟢🟢',
-						qty: 3
+						qty: 3,
+						img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/a/3/a391da36-0b40-46ea-b771-50d2b920207e.jpg?1581480808'
 					},
 					{
 						name: 'Stonecoil Serpent',
@@ -105,7 +106,8 @@ export default new Vuex.Store({
 						name: 'Baneslayer Angel',
 						type: 'Creature — Angel',
 						mana: '3 ⚪⚪',
-						qty: 1
+						qty: 1,
+						img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/4/b/4bd3014b-94bb-4a9f-92cf-239a2dcc7e97.jpg?1594734758'
 					}
 				],
 				editDate: new Date(),
