@@ -2,6 +2,8 @@ $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
 $color-content-bg: linen;
 
+$width-site: 1280px;
+
 @mixin heading-font {
 	font-family: 'Asul', $font-family-standard;
 	letter-spacing: -(1/32) * 1em;

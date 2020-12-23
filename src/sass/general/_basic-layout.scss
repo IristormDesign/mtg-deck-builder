@@ -7,7 +7,6 @@ body {
 	font: 20px/1.5 $font-family-standard;
 	background: linear-gradient(darken(slategray, 8.33%), #222);
 	color: #ddd;
-	overflow-x: hidden;
 }
 #app {
 	display: flex;
@@ -16,11 +15,10 @@ body {
 	margin: 0 auto;
 }
 main {
-	max-width: 1440px;
+	width: $width-site;
 	margin: 0 auto;
 	height: 100%;
 	flex-grow: 1;
-	width: 100%;
 }
 .contents,
 .deck {
@@ -32,9 +30,15 @@ main {
 .contents {
 	padding: .75em;
 }
-.deck-contents-main {
-	display: grid;
-	grid-gap: .75em;
-	grid-template-columns: repeat(7, 1fr);
-	padding: .75em 1.5em;
+.deck {
+	article {
+		display: grid;
+		grid-gap: .75em;
+		grid-template-columns: repeat(7, 1fr);
+		padding: .75em 1.5em;
+		overflow-x: hidden;
+	}
+	.deck-main {
+		grid-column: span 5;
+	}
 }

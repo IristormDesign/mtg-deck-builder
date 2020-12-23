@@ -1,5 +1,6 @@
 .deck-list {
-	grid-column: 1 / 6;
+	grid-column: span 5;
+	align-self: flex-start;
 
 	.no-cards {
 		padding: 6em 1.5em;

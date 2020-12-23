@@ -1,14 +1,14 @@
 .card-display {
 	grid-column: 6 / 8;
-	grid-row: 1 / 4;
+	// grid-row: 2 / 4;
 	position: relative;
-	height: 535px;
+	height: 466px;
 
 	img {
 		position: absolute;
 		display: block;
-		width: auto;
-		height: 100%;
+		width: 334px;
+		height: auto;
 		backface-visibility: hidden;
 		opacity: 1;
 	}

@@ -75,7 +75,6 @@ export default {
 					})
 					.catch(error => {
 						console.log(error)
-						card.img = null
 					})
 			} else {
 				console.log('> Loaded cached image.')

@@ -14,17 +14,17 @@
 	.text-box {
 		box-sizing: content-box;
 		color: #000;
-		max-width: 22.5rem;
+		max-width: 22rem;
 		line-height: 1.5;
 		text-shadow: 0 0 .5em linen;
 		background: radial-gradient(
 			circle,
-			rgba(linen, .75) (13em * .625),
-			rgba(linen, 0) 13em
+			rgba(linen, .833) (16em * .625),
+			rgba(linen, 0) 16em
 		);
-		padding: 6em;
-		margin-top: -4.5em;
-		margin-right: -3.5em;
+		padding: 8em;
+		margin-top: -6.5em;
+		margin-right: -7em;
 	}
 	h2 {
 		font-size: 1.25em;

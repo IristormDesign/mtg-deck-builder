@@ -3,17 +3,17 @@
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
 			<article v-if="$route.params.deckPath == deck.path">
 
-				<div class="deck-contents-main">
-					<header class="deck-header">
-						<deck-name :deck="deck" />
-						<deck-card-sorter :deck="deck" />
-						<deck-date-edited :deck="deck" />
-						<deck-card-total :deck="deck" />
-					</header>
+				<header class="deck-header">
+					<deck-name :deck="deck" />
+					<deck-card-sorter :deck="deck" />
+					<deck-date-edited :deck="deck" />
+					<deck-card-total :deck="deck" />
+				</header>
+				<div class="deck-main">
 					<deck-description :deck="deck" />
 					<deck-card-list :deck="deck" />
-					<deck-card-display :deck="deck" />
 				</div>
+				<deck-card-display :deck="deck" />
 				<deck-footer :deck="deck" />
 
 			</article>
