@@ -147,15 +147,15 @@ export default {
 		}
 	},
 	watch: {
-		cardSortingLocalStorage: {
-			handler: function (val) {
-				localStorage.setItem('cardSorting', JSON.stringify(val))
-			},
-			deep: true
-		},
 		decksLocalStorage: {
 			handler: function (val) {
 				localStorage.setItem('decks', JSON.stringify(val))
+			},
+			deep: true
+		},
+		cardSortingLocalStorage: {
+			handler: function (val) {
+				localStorage.setItem('cardSorting', JSON.stringify(val))
 			},
 			deep: true
 		}
