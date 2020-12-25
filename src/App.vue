@@ -25,7 +25,13 @@ export default {
 	},
 	data () {
 		return {
-			decksDefault: [
+			decksLocalStorage: this.$store.state.decks,
+			cardSortingLocalStorage: this.$store.state.cardSorting
+		}
+	},
+	created () {
+		if (!this.decksLocalStorage) {
+			const defaultDecks = [
 				{
 					name: 'Mana Overload',
 					path: 'mana-overload',
@@ -130,16 +136,23 @@ export default {
 					description: 'Gravity letters it herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy.',
 					viewedCard: 'Baneslayer Angel'
 				}
-			],
-			decksLocalStorage: this.$store.state.decks
+			]
+			this.decksLocalStorage = defaultDecks
 		}
-	},
-	created () {
-		if (this.decksLocalStorage === null) {
-			this.decksLocalStorage = this.decksDefault
+		if (!this.cardSortingLocalStorage) {
+			this.cardSortingLocalStorage = {
+				cur: 'type',
+				prev: 'qty'
+			}
 		}
 	},
 	watch: {
+		cardSortingLocalStorage: {
+			handler: function (val) {
+				localStorage.setItem('cardSorting', JSON.stringify(val))
+			},
+			deep: true
+		},
 		decksLocalStorage: {
 			handler: function (val) {
 				localStorage.setItem('decks', JSON.stringify(val))
