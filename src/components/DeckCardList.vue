@@ -44,13 +44,13 @@ export default {
 		removeCard (rmvCard) {
 			const deck = this.deck
 			const cards = deck.cards
-			let cardIndex = cards.indexOf(rmvCard)
 
 			// Remove the card from the deck.
 			deck.cards = cards.filter(
 				eachCard => eachCard.name !== rmvCard.name
 			)
 
+			let cardIndex = cards.indexOf(rmvCard)
 			const numOfCards = cards.length
 
 			// If the removed card happens to be the currently viewed card, then view another card instead.
