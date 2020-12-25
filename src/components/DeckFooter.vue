@@ -3,7 +3,7 @@
 		<card-adder :deck="deck" @card-added="addCard" />
 
 		<div class="deck-actions">
-			<button @click="duplicateDeck">Duplicate Deck</button>
+			<button @click="copyDeck">Copy Deck</button>
 			<button @click="deleteDeck">Delete Deck</button>
 		</div>
 	</footer>
@@ -22,8 +22,8 @@ export default {
 	},
 	methods: {
 		addCard (card) {
-			this.setupCardProps(card)
 			this.deck.cards.push(card)
+			card.qty = 1
 			this.deck.viewedCard = card.name
 			this.deck.editDate = new Date()
 		},
@@ -35,15 +35,18 @@ export default {
 				this.$store.state.decks = this.$store.state.decks.filter(deck =>
 					deck.name !== deletedDeckName
 				)
+				localStorage.setItem('decks',
+					JSON.stringify(this.$store.state.decks)
+				)
 
 				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
 
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},
-		duplicateDeck () {
+		copyDeck () {
 			const srcDeck = this.deck
-			const duplicate = confirm(`Make a new deck that’s a copy of “${srcDeck.name}”?`)
+			const duplicate = confirm(`Create a new deck that’s a copy of “${srcDeck.name}”?`)
 
 			if (duplicate) {
 				const dupDeckName = srcDeck.name + ' (copy)'
@@ -65,25 +68,7 @@ export default {
 					}
 				})
 			}
-		},
-		setupCardProps (card) {
-			if (card.qty === undefined) {
-				card.qty = 1
-			}
-
-			if (RegExp(/^Basic Land\b/).test(card.type)) {
-				card.maxQty = 99
-			} else {
-				card.maxQty = 4
-			}
 		}
-	},
-	mounted () {
-		this.$store.state.decks.forEach(deck => {
-			deck.cards.forEach(card => {
-				this.setupCardProps(card, deck)
-			})
-		})
 	}
 }
 </script>
