@@ -30,6 +30,8 @@ export default {
 		}
 	},
 	created () {
+		const state = this.$store.state
+
 		if (!this.decksLocalStorage) {
 			const defaultDecks = [
 				{
@@ -137,13 +139,16 @@ export default {
 					viewedCard: 'Baneslayer Angel'
 				}
 			]
-			this.decksLocalStorage = defaultDecks
+			state.decks = defaultDecks
+			this.decksLocalStorage = state.decks
 		}
 		if (!this.cardSortingLocalStorage) {
-			this.cardSortingLocalStorage = {
+			const defaultCardSorting = {
 				cur: 'type',
 				prev: 'qty'
 			}
+			state.cardSorting = defaultCardSorting
+			this.cardSortingLocalStorage = state.cardSorting
 		}
 	},
 	watch: {
