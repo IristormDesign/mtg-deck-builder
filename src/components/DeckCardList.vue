@@ -95,9 +95,9 @@ export default {
 			}
 
 			if (card.qty <= 0) {
-				const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
+				setTimeout(() => {
+					const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
 
-				this.$nextTick(function () {
 					if (confirmRemoval) {
 						this.removeCard(card)
 					} else {
