@@ -42,50 +42,57 @@ export default {
 							name: 'Forest',
 							type: 'Basic Land — Forest',
 							mana: '0',
-							qty: 10
+							qty: 10,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/8/4/845057a1-4da1-4a32-9bb2-bbf8502acd37.jpg'
 						},
 						{
 							name: 'Mountain',
 							type: 'Basic Land — Mountain',
 							mana: '0',
-							qty: 12
+							qty: 12,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/c/1/c1baebba-a975-45b1-bbcb-f4ce1ba682b5.jpg'
 						},
 						{
 							name: 'Almighty Bushwagg',
 							type: 'Creature — Bushwagg',
 							mana: '🟢',
-							qty: 1
+							qty: 1,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/7/1/71f2b7ac-8742-468d-b6a3-87881cb522ff.jpg'
 						},
 						{
 							name: 'Jaya’s Greeting',
 							type: 'Instant',
 							mana: '1 🔴',
-							qty: 3
+							qty: 3,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/e/c/ec66f169-5cf9-4d7c-a5ab-c64fc4801358.jpg'
 						},
 						{
 							name: 'Leafkin Avenger',
 							type: 'Creature — Elemental',
 							mana: '772 🔴🟢',
-							qty: 3
+							qty: 3,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/7/b/7bd3a903-23e0-4b5a-9c7e-390d5ced8371.jpg'
 						},
 						{
 							name: 'Shivan Dragon',
 							type: 'Creature — Dragon',
 							mana: '4 🔴🔴',
-							qty: 2
+							qty: 2,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/2/2/227cf1b5-f85b-41fe-be98-66e383652039.jpg'
 						},
 						{
 							name: 'Nyxbloom Ancient',
 							type: 'Creature — Elemental',
 							mana: '4 🟢🟢🟢',
 							qty: 3,
-							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/a/3/a391da36-0b40-46ea-b771-50d2b920207e.jpg?1581480808'
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/a/3/a391da36-0b40-46ea-b771-50d2b920207e.jpg'
 						},
 						{
 							name: 'Stonecoil Serpent',
 							type: 'Artifact Creature — Snake',
 							mana: 'X',
-							qty: 2
+							qty: 2,
+							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/b/3/b34bf7fd-9fe3-43e2-8cfe-7ce7cff08afe.jpg'
 						}
 					],
 					editDate: new Date(),

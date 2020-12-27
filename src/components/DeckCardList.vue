@@ -41,26 +41,6 @@ export default {
 		deck: Object
 	},
 	methods: {
-		removeCard (rmvCard) {
-			const deck = this.deck
-			const cards = deck.cards
-
-			// Remove the card from the deck.
-			deck.cards = cards.filter(
-				eachCard => eachCard.name !== rmvCard.name
-			)
-
-			let cardIndex = cards.indexOf(rmvCard)
-			const numOfCards = cards.length
-
-			// If the removed card happens to be the currently viewed card, then view another card instead.
-			if (deck.viewedCard === rmvCard.name && numOfCards > 0) {
-				if (cardIndex >= numOfCards) {
-					cardIndex = numOfCards - 1
-				}
-				deck.viewedCard = cards[cardIndex].name
-			}
-		},
 		selectedCard (card) {
 			if (!card.img) { // If the image file hasn't been downloaded yet...
 				console.log('> Requesting image from Scryfall.')
@@ -96,10 +76,26 @@ export default {
 
 			if (card.qty <= 0) {
 				setTimeout(() => {
-					const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
+					const cardName = card.name
+					const confirmRemoval = confirm(`Are you sure you want to remove ${cardName} from the deck?`)
 
 					if (confirmRemoval) {
-						this.removeCard(card)
+						const deck = this.deck
+						const cards = deck.cards
+						const cardIndex = cards.indexOf(card)
+						const totalCards = cards.length - 1
+
+						// If the removed card happens to be the currently displayed card, then display the next card in the list.
+						if (deck.viewedCard === cardName && totalCards > 0) {
+							if (cardIndex === totalCards) { // If the card is last in the list...
+								deck.viewedCard = cards[cardIndex - 1].name
+							} else {
+								deck.viewedCard = cards[cardIndex + 1].name
+							}
+						}
+
+						// Now remove the card from the deck.
+						cards.splice(cardIndex, 1)
 					} else {
 						card.qty = 1
 					}
