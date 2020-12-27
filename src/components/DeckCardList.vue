@@ -85,12 +85,12 @@ export default {
 						const cardIndex = cards.indexOf(card)
 						const totalCards = cards.length - 1
 
-						// If the removed card happens to be the currently displayed card, then display the next card in the list.
+						// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
 						if (deck.viewedCard === cardName && totalCards > 0) {
-							if (cardIndex === totalCards) { // If the card is last in the list...
-								deck.viewedCard = cards[cardIndex - 1].name
+							if (cardIndex === totalCards) { // If this card is last in the list...
+								this.selectedCard(cards[cardIndex - 1])
 							} else {
-								deck.viewedCard = cards[cardIndex + 1].name
+								this.selectedCard(cards[cardIndex + 1])
 							}
 						}
 
