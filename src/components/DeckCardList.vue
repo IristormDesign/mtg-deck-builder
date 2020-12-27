@@ -43,7 +43,7 @@ export default {
 	methods: {
 		selectedCard (card) {
 			if (!card.img) { // If the image file hasn't been downloaded yet...
-				console.log('> Requesting image from Scryfall.')
+				console.log('🎴 Requesting image from Scryfall.')
 
 				require('axios')
 					.get(
@@ -57,8 +57,8 @@ export default {
 						console.log(error)
 					})
 			} else {
-				console.log('> Loaded cached image.')
 				this.deck.viewedCard = card.name
+				console.log('🎴 Loaded image from cache.')
 			}
 		},
 		validateQty (card) {
