@@ -94,8 +94,8 @@ export default {
 				}
 			}
 
-			if (card.qty < 1) {
-				const confirmRemoval = confirm('Are you sure you want to remove ' + card.name + ' from the deck?')
+			if (card.qty <= 0) {
+				const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
 
 				this.$nextTick(function () {
 					if (confirmRemoval) {
