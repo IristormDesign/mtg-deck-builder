@@ -45,22 +45,26 @@ export default {
 	},
 	methods: {
 		getCardData (cardName) {
+			console.log(`Requested Scryfall for '${cardName}'.`)
+
 			require('axios')
 				.get(
 					'https://api.scryfall.com/cards/named?fuzzy=' + cardName.replace(/\s/g, '+')
 				)
 				.then(response => {
-					this.deck.cards.unshift({
-						name: response.data.name,
-						type: response.data.type_line,
-						mana: response.data.mana_cost,
-						cmc: response.data.cmc,
-						colors: response.data.colors,
-						img: response.data.image_uris.normal,
-						scryfallURI: response.data.scryfall_uri,
+					const rd = response.data
+					const newCard = {
+						name: rd.name,
+						type: rd.type_line,
+						mana: rd.mana_cost,
+						cmc: rd.cmc,
+						colors: rd.colors,
+						img: rd.image_uris.normal,
+						scryfallLink: rd.scryfall_uri,
 						qty: 1
-					})
-					this.deck.viewedCard = response.data.name
+					}
+					this.deck.cards.unshift(newCard)
+					this.deck.viewedCard = newCard.name
 					this.success = true
 				})
 				.catch(error => {

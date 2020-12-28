@@ -14,7 +14,7 @@
 			</div>
 			<ul>
 				<li v-for="card in deck.cards" :key="card.name">
-					<button @click="selectedCard(card)">
+					<button @click="deck.viewedCard = card.name">
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana">{{ card.mana }}</div>
 						<div class="type">{{ card.type }}</div>
@@ -41,26 +41,6 @@ export default {
 		deck: Object
 	},
 	methods: {
-		selectedCard (card) {
-			if (!card.img) { // If the image file hasn't been downloaded yet...
-				console.log('🎴 Requesting image from Scryfall.')
-
-				require('axios')
-					.get(
-						'https://api.scryfall.com/cards/named?fuzzy=' + card.name.replace(/\s/g, '+')
-					)
-					.then(response => {
-						this.deck.viewedCard = card.name
-						card.img = response.data.image_uris.normal
-					})
-					.catch(error => {
-						console.log(error)
-					})
-			} else {
-				this.deck.viewedCard = card.name
-				console.log('🎴 Loaded image from cache.')
-			}
-		},
 		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
@@ -88,9 +68,9 @@ export default {
 						// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
 						if (deck.viewedCard === cardName && totalCards > 0) {
 							if (cardIndex === totalCards) { // If this card is last in the list...
-								this.selectedCard(cards[cardIndex - 1])
+								deck.viewedCard = cards[cardIndex - 1].name
 							} else {
-								this.selectedCard(cards[cardIndex + 1])
+								deck.viewedCard = cards[cardIndex + 1].name
 							}
 						}
 
