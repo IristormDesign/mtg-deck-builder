@@ -37,6 +37,9 @@ export default {
 				{
 					name: 'Mana Overload',
 					path: 'mana-overload',
+					editDate: new Date(),
+					viewedCard: 'Nyxbloom Ancient',
+					description: 'One advanced diverted domestic repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should.',
 					cards: [
 						{
 							name: 'Forest',
@@ -94,14 +97,14 @@ export default {
 							qty: 2,
 							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/b/3/b34bf7fd-9fe3-43e2-8cfe-7ce7cff08afe.jpg'
 						}
-					],
-					editDate: new Date(),
-					description: 'One advanced diverted domestic repeated bringing you old. Possible procured her trifling laughter thoughts property she met way. Companions shy had solicitude own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should.',
-					viewedCard: 'Nyxbloom Ancient'
+					]
 				},
 				{
 					name: 'Air Force',
 					path: 'air-force',
+					editDate: new Date(),
+					viewedCard: 'Baneslayer Angel',
+					description: 'Gravity letters it herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy.',
 					cards: [
 						{
 							name: 'Plains',
@@ -140,10 +143,7 @@ export default {
 							qty: 1,
 							img: 'https://c1.scryfall.com/file/scryfall-cards/normal/front/4/b/4bd3014b-94bb-4a9f-92cf-239a2dcc7e97.jpg?1594734758'
 						}
-					],
-					editDate: new Date(),
-					description: 'Gravity letters it herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy.',
-					viewedCard: 'Baneslayer Angel'
+					]
 				}
 			]
 			state.decks = defaultDecks

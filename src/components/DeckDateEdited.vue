@@ -3,8 +3,8 @@
 		<h3>Last Edited On</h3>
 
 		<div class="date">
-			{{ dateEdited(deck).date }}<br>
-			{{ dateEdited(deck).time }}
+			{{ dateEdited().date }}<br>
+			{{ dateEdited().time }}
 		</div>
 	</div>
 </template>
@@ -16,8 +16,8 @@ export default {
 		deck: Object
 	},
 	methods: {
-		dateEdited (deck) {
-			const date = deck.editDate
+		dateEdited () {
+			const date = this.deck.editDate
 
 			if (date instanceof Date) {
 				let month = date.getMonth() + 1
