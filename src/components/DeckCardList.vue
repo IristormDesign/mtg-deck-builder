@@ -23,9 +23,9 @@
 					<div class="qty">
 						<span>&times;</span>
 						<input
-							type="number" v-model="card.qty"
+							type="number" v-model.lazy="card.qty"
 							min="0" :max="card.maxQty"
-							@input="validateQty(card)"
+							@change="validateQty(card)"
 						/>
 					</div>
 				</li>
