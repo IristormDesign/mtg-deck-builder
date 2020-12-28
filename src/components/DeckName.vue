@@ -21,7 +21,7 @@ export default {
 			if (redo) {
 				message = get.alertNameExists(redo)
 			}
-			const newName = prompt(message, deck.name)
+			const newName = prompt(message, deck.name).trim()
 
 			if (newName) { // If the user provided any name...
 				const newPath = get.stringToPath(newName)

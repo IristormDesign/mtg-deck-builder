@@ -36,7 +36,7 @@ export default {
 			if (redo) {
 				message = get.alertNameExists(redo)
 			}
-			const name = prompt(message)
+			const name = prompt(message).trim()
 
 			if (name) { // If the user entered any name...
 				const path = get.stringToPath(name)
