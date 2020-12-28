@@ -5,7 +5,7 @@
 		<p><i>Magic: The Gathering</i> material is TM and &copy; by Wizards of the Coast. This web app is not affiliated with Wizards of the Coast.</p>
 
 		<div class="app-options">
-			<button class="app-reset" @click="clearLocalStorage()">Reset</button>
+			<button class="app-reset primary-btn" @click="clearLocalStorage()">Reset</button>
 		</div>
 	</footer>
 </template>

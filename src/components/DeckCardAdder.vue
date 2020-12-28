@@ -81,13 +81,15 @@ export default {
 
 			const deck = this.deck
 			const newCard = this.newCard
-			const existingCard = deck.cards.find(eachCard => newCard.name.toUpperCase() === eachCard.name.toUpperCase())
+			const existingCard = deck.cards.find(anyCard =>
+				newCard.name.toUpperCase() === anyCard.name.toUpperCase()
+			)
 
 			if (existingCard) {
 				deck.viewedCard = existingCard.name
 
 				setTimeout(() => {
-					alert('The card “' + existingCard.name + '” is already in this deck.')
+					alert(`The card “${existingCard.name}” is already in this deck.`)
 				}, 0)
 			} else {
 				this.$emit('card-added', newCard, deck)
