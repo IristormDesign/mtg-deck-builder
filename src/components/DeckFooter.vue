@@ -1,6 +1,6 @@
 <template>
 	<footer class="deck-footer">
-		<card-adder :deck="deck" @card-added="addCard" />
+		<card-adder :deck="deck" />
 
 		<div class="deck-actions">
 			<button @click="copyDeck">Copy Deck</button>
@@ -21,12 +21,6 @@ export default {
 		deck: Object
 	},
 	methods: {
-		addCard (card) {
-			this.deck.cards.push(card)
-			card.qty = 1
-			this.deck.viewedCard = card.name
-			this.deck.editDate = new Date()
-		},
 		deleteDeck () {
 			const deletedDeckName = this.deck.name
 			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
