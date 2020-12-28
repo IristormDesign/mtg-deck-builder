@@ -17,10 +17,10 @@ export default {
 	},
 	computed: {
 		dateEdited: function () {
-			const dateAndTime = this.deck.editDate
-			let month = dateAndTime.getMonth() + 1
-			const day = dateAndTime.getDate()
-			const year = dateAndTime.getFullYear()
+			const dateTime = new Date(this.deck.editDate)
+			let month = dateTime.getMonth() + 1
+			const day = dateTime.getDate()
+			const year = dateTime.getFullYear()
 
 			switch (month) {
 			case 1:
@@ -64,10 +64,10 @@ export default {
 			return `${month} ${day}, ${year}`
 		},
 		timeEdited: function () {
-			const dateAndTime = this.deck.editDate
-			let hour = dateAndTime.getHours()
-			let minute = dateAndTime.getMinutes()
-			let second = dateAndTime.getSeconds()
+			const dateTime = new Date(this.deck.editDate)
+			let hour = dateTime.getHours()
+			let minute = dateTime.getMinutes()
+			let second = dateTime.getSeconds()
 			let meridiem
 
 			if (hour < 12) {
