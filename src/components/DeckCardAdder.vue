@@ -45,14 +45,12 @@ export default {
 	},
 	methods: {
 		getCardData (cardName) {
-			console.log(`getCardData(${cardName})`)
-
 			require('axios')
 				.get(
 					'https://api.scryfall.com/cards/named?fuzzy=' + cardName.replace(/\s/g, '+')
 				)
 				.then(response => {
-					this.deck.cards.push({
+					this.deck.cards.unshift({
 						name: response.data.name,
 						type: response.data.type_line,
 						mana: response.data.mana_cost,
