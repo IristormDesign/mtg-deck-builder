@@ -4,7 +4,8 @@
 
 		<select v-model="curProp" @change="sortCards()">
 			<option value="name">Name</option>
-			<option value="mana">Converted mana cost</option>
+			<option value="cmc">Converted mana cost</option>
+			<option value="colors">Mana colors</option>
 			<option value="type">Type</option>
 			<option value="qty">Quantity</option>
 		</select>
