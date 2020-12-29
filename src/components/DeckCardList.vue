@@ -16,7 +16,7 @@
 				<li v-for="card in deck.cards" :key="card.name">
 					<button @click="deck.viewedCard = card.name">
 						<h3 class="name">{{ card.name }}</h3>
-						<div class="mana">{{ card.mana }}</div>
+						<div class="mana" v-html="styleManaSymbols(card)"></div>
 						<div class="type">{{ card.type }}</div>
 					</button>
 
@@ -41,6 +41,37 @@ export default {
 		deck: Object
 	},
 	methods: {
+		styleManaSymbols (card) {
+			return card.mana
+				.replaceAll(
+					RegExp('{W}', 'g'),
+					'<span class="mana-symbol white">W</span>'
+				)
+				.replaceAll(
+					RegExp('{U}', 'g'),
+					'<span class="mana-symbol blue">U</span>'
+				)
+				.replaceAll(
+					RegExp('{B}', 'g'),
+					'<span class="mana-symbol black">B</span>'
+				)
+				.replaceAll(
+					RegExp('{R}', 'g'),
+					'<span class="mana-symbol red">R</span>'
+				)
+				.replaceAll(
+					RegExp('{G}', 'g'),
+					'<span class="mana-symbol green">G</span>'
+				)
+				.replaceAll(
+					RegExp('{(./.)}', 'g'), // Find hybrid mana symbols (like `{G/W}`). The parentheses in the regex mark the variable `$1`.
+					'<span class="mana-symbol generic hybrid">$1</span>'
+				)
+				.replaceAll(
+					RegExp('{(.)}', 'g'), // Find any single character directly between a pair of curly brackets. This catches all other mana symbols that the previous regex replacements have missed.
+					'<span class="mana-symbol generic">$1</span>'
+				)
+		},
 		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
