@@ -44,35 +44,6 @@ export default {
 		}
 	},
 	methods: {
-		getCardData (cardName) {
-			console.log(`Requested Scryfall for '${cardName}'.`)
-
-			require('axios')
-				.get(
-					'https://api.scryfall.com/cards/named?fuzzy=' + cardName.replace(/\s/g, '+')
-				)
-				.then(response => {
-					const rd = response.data
-					const newCard = {
-						name: rd.name,
-						type: rd.type_line,
-						mana: rd.mana_cost,
-						cmc: rd.cmc,
-						colors: rd.colors,
-						img: rd.image_uris.normal,
-						scryfallLink: rd.scryfall_uri,
-						qty: 1
-					}
-					this.deck.cards.unshift(newCard)
-					this.deck.viewedCard = newCard.name
-					this.success = true
-				})
-				.catch(error => {
-					this.error = true
-					alert(error)
-					console.log(error)
-				})
-		},
 		handleSubmit () {
 			this.clearStatus()
 			this.submitting = true
@@ -95,7 +66,34 @@ export default {
 					alert(`“${cardExists.name}” is already in this deck.`)
 				})
 			} else {
-				this.getCardData(cardName)
+				console.log(`Requested Scryfall for '${cardName}'.`)
+
+				require('axios')
+					.get(
+						'https://api.scryfall.com/cards/named?fuzzy=' + cardName.replace(/\s/g, '+')
+					)
+					.then(response => {
+						const rd = response.data
+						const newCard = {
+							name: rd.name,
+							type: rd.type_line,
+							mana: rd.mana_cost,
+							cmc: rd.cmc,
+							colors: rd.colors,
+							img: rd.image_uris.normal,
+							scryfallLink: rd.scryfall_uri,
+							qty: 1
+						}
+						this.deck.cards.unshift(newCard)
+						this.deck.viewedCard = newCard.name
+						this.success = true
+					})
+					.catch(error => {
+						this.error = true
+						alert(error)
+						console.log(error)
+					})
+
 				deck.editDate = new Date()
 			}
 
