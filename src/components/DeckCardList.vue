@@ -14,7 +14,10 @@
 			</div>
 			<ul>
 				<li v-for="card in deck.cards" :key="card.name">
-					<button @click="deck.viewedCard = card.name">
+					<button
+						@click="deck.viewedCard = card.name"
+						:class="colorButton(card)"
+					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana" v-html="styleManaSymbols(card)"></div>
 						<div class="type">{{ card.type }}</div>
@@ -41,6 +44,21 @@ export default {
 		deck: Object
 	},
 	methods: {
+		colorButton (card) {
+			const colors = card.colors
+			const w = colors.find((c) => c === 'W')
+			const u = colors.find((c) => c === 'U')
+			const b = colors.find((c) => c === 'B')
+			const r = colors.find((c) => c === 'R')
+			const g = colors.find((c) => c === 'G')
+
+			if (colors.length > 1) return 'multicolored'
+			else if (w) return 'white'
+			else if (u) return 'blue'
+			else if (b) return 'black'
+			else if (r) return 'red'
+			else if (g) return 'green'
+		},
 		styleManaSymbols (card) {
 			return card.mana
 				.replaceAll(

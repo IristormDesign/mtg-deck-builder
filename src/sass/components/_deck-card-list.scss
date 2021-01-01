@@ -55,21 +55,24 @@
 				background: #fff;
 			}
 			> button {
-				background: #eee;
+				filter: brightness(112.5%) contrast(112.5%);
 				transition-duration: 0s;
 				outline: 0;
 			}
 		}
 		> button {
-			background: #dfdfdf;
+			background: #ccc;
 			display: flex;
 			grid-column: span 8;
 			justify-content: space-between;
-			margin: 1px 0;
+			margin: 0 0 1px 0;
 			padding: 0 .375em;
 			border-radius: .5em / 50%;
-			border: 3px outset #bbb;
-			transition: all .125s ease-out;
+			border: 3px solid rgba(#000, .5);
+			border-top-color: rgba(#fff, .333);
+			border-right-color: rgba(#fff, .1667);
+			border-left-color: rgba(#000, .25);
+			transition: all .2s ease-out;
 			width: 100%;
 			text-align: left;
 			align-items: center;
@@ -79,6 +82,24 @@
 
 			&:active {
 				background: orangered;
+			}
+			&.multicolored {
+				background: gold;
+			}
+			&.white {
+				background: floralwhite;
+			}
+			&.blue {
+				background: skyblue
+			}
+			&.black {
+				background: #889
+			}
+			&.red {
+				background: salmon;
+			}
+			&.green {
+				background: darkseagreen
 			}
 		}
 	}
