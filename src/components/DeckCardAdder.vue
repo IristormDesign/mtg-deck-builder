@@ -1,16 +1,16 @@
 <template>
 	<div class="card-adder">
-		<form @submit.prevent="handleSubmit">
+		<form @submit.prevent="handleSubmit()">
 			<label>
 				Add a new card to this deck:
 				<input
 					type="text" v-model="cardName" ref="first"
-					@focus="clearStatus" @keypress="clearStatus"
+					@focus="clearStatus()" @keypress="clearStatus()"
 					:class="{ 'has-error': submitting && invalidName }"
 				>
 			</label>
 
-			<button class="primary-btn">Add Card</button>
+			<button class="primary-btn" :disabled="delay">Add Card</button>
 
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
@@ -35,7 +35,8 @@ export default {
 			submitting: false,
 			error: false,
 			success: false,
-			cardName: ''
+			cardName: '',
+			delay: false
 		}
 	},
 	computed: {
@@ -47,6 +48,7 @@ export default {
 		handleSubmit () {
 			this.clearStatus()
 			this.submitting = true
+			this.delay = true
 
 			if (this.invalidName) {
 				this.error = true
@@ -101,10 +103,15 @@ export default {
 			this.cardName = ''
 			this.error = false
 			this.submitting = false
+
+			setTimeout(() => {
+				this.delay = false
+			}, 250) // Scryfall staff doesn't want too many server requests sent too quickly.
 		},
 		clearStatus () {
 			this.success = false
 			this.error = false
+			this.delay = false
 		}
 	}
 }

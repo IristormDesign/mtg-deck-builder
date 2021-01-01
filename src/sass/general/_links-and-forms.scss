@@ -20,6 +20,7 @@ button {
 	border-radius: 12.5% / 1.5em;
 	padding: .375em .375em;
 	min-width: 4.5em;
+	transition: filter, opacity .2s ease;
 
 	&:hover,
 	&:focus {
@@ -39,6 +40,11 @@ button {
 		&:focus {
 			background: darken(orangered, 8.33%);
 		}
+	}
+	&:disabled {
+		filter: grayscale(.25);
+		opacity: .75;
+		cursor: default;
 	}
 }
 input {
