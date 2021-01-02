@@ -78,6 +78,10 @@ export default {
 							scryfallLink: rd.scryfall_uri,
 							qty: 1
 						}
+
+						if (newCard.colors.length >= 2) {
+							newCard.colors.unshift('multicolor')
+						}
 						deck.cards.unshift(newCard)
 						deck.viewedCard = newCard.name
 						this.success = true

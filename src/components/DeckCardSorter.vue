@@ -5,7 +5,7 @@
 		<select v-model="curProp" @change="sortCards()">
 			<option value="name">Name</option>
 			<option value="cmc">Converted mana cost</option>
-			<option value="colors">Mana colors</option>
+			<option value="colors">Mana color</option>
 			<option value="type">Type</option>
 			<option value="qty">Quantity</option>
 		</select>
@@ -35,77 +35,87 @@ export default {
 				let cards = deck.cards
 
 				cards = cards.sort((a, b) => {
-					let cardA = a[curProp]
-					let cardB = b[curProp]
+					const cardA = a[curProp]
+					const cardB = b[curProp]
 
-					// If curProp uses a string (e.g., card name), make it case insensitive.
-					if (cardA instanceof String) {
-						cardA = cardA.toUpperCase()
-						cardB = cardB.toUpperCase()
-					}
 					if (curProp === 'qty') {
 						curReversed = true
 					}
+					if (curProp === 'colors') {
+						const colorOrder = [
+							'W', 'U', 'B', 'R', 'G',
+							'multicolor',
+							undefined // `undefined` means colorless
+						]
+						const aColor = colorOrder.indexOf(a.colors[0])
+						const bColor = colorOrder.indexOf(b.colors[0])
 
-					if (cardA < cardB) {
-						if (curReversed) {
+						if (aColor > bColor) {
 							return 1
-						} else {
+						} else if (aColor < bColor) {
 							return -1
-						}
-					} else if (cardA > cardB) {
-						if (curReversed) {
-							return -1
-						} else {
-							return 1
 						}
 					} else {
-					// Do a secondary level of sorting using the previously selected property.
-						cards.sort((c, d) => {
-							let cardC = c[prevProp]
-							let cardD = d[prevProp]
-
-							if (cardC instanceof String) {
-								cardC = cardC.toUpperCase()
-								cardD = cardD.toUpperCase()
-							}
-							if (prevProp === 'qty') {
-								prevReversed = true
-							}
-
-							if (cardC < cardD) {
-								if (prevReversed) {
-									return 1
-								} else {
-									return -1
-								}
-							} else if (cardC > cardD) {
-								if (prevReversed) {
-									return -1
-								} else {
-									return 1
-								}
+						if (cardA < cardB) {
+							if (curReversed) {
+								return 1
 							} else {
-							// Sort by card name as a last resort (if card name wasn't the previously selected property).
-								if (prevProp !== 'name') {
-									cards.sort((e, f) => {
-										curReversed = false
-										prevReversed = false
+								return -1
+							}
+						} else if (cardA > cardB) {
+							if (curReversed) {
+								return -1
+							} else {
+								return 1
+							}
+						} else {
+						// Do a secondary level of sorting using the previously selected property.
+							cards.sort((c, d) => {
+								let cardC = c[prevProp]
+								let cardD = d[prevProp]
 
-										const cardEName = e.name.toUpperCase()
-										const cardFName = f.name.toUpperCase()
-
-										if (cardEName < cardFName) {
-											return -1
-										} else if (cardEName > cardFName) {
-											return 1
-										}
-									})
+								if (cardC instanceof String) {
+									cardC = cardC.toUpperCase()
+									cardD = cardD.toUpperCase()
+								}
+								if (prevProp === 'qty') {
+									prevReversed = true
 								}
 
-								return 0
-							}
-						})
+								if (cardC < cardD) {
+									if (prevReversed) {
+										return 1
+									} else {
+										return -1
+									}
+								} else if (cardC > cardD) {
+									if (prevReversed) {
+										return -1
+									} else {
+										return 1
+									}
+								} else {
+								// Sort by card name as a last resort (if card name wasn't the previously selected property).
+									if (prevProp !== 'name') {
+										cards.sort((e, f) => {
+											curReversed = false
+											prevReversed = false
+
+											const cardEName = e.name.toUpperCase()
+											const cardFName = f.name.toUpperCase()
+
+											if (cardEName < cardFName) {
+												return -1
+											} else if (cardEName > cardFName) {
+												return 1
+											}
+										})
+									}
+
+									return 0
+								}
+							})
+						}
 					}
 				})
 			})
