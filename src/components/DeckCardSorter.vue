@@ -71,13 +71,9 @@ export default {
 						} else {
 						// Do a secondary level of sorting using the previously selected property.
 							cards.sort((c, d) => {
-								let cardC = c[prevProp]
-								let cardD = d[prevProp]
+								const cardC = c[prevProp]
+								const cardD = d[prevProp]
 
-								if (cardC instanceof String) {
-									cardC = cardC.toUpperCase()
-									cardD = cardD.toUpperCase()
-								}
 								if (prevProp === 'qty') {
 									prevReversed = true
 								}
