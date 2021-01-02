@@ -7,6 +7,7 @@
 					type="text" v-model="cardName" ref="first"
 					@focus="clearStatus()" @keypress="clearStatus()"
 					:class="{ 'has-error': submitting && invalidName }"
+					title="Tip: Enter the code “[random]” to add a randomly selected Magic card."
 				>
 			</label>
 
@@ -36,7 +37,8 @@ export default {
 			error: false,
 			success: false,
 			cardName: '',
-			delay: false
+			delay: false,
+			axios: require('axios')
 		}
 	},
 	computed: {
@@ -45,18 +47,8 @@ export default {
 		}
 	},
 	methods: {
-		handleSubmit () {
-			this.clearStatus()
-			this.submitting = true
-			this.delay = true
-
-			if (this.invalidName) {
-				this.error = true
-				return
-			}
-
+		getTheCard (cardName) {
 			const deck = this.deck
-			const cardName = this.cardName
 			const cardExists = deck.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
 			)
@@ -68,12 +60,12 @@ export default {
 					alert(`“${cardExists.name}” is already in this deck.`)
 				})
 			} else {
+				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
+
 				console.log(`Requested Scryfall for '${cardName}'.`)
 
-				require('axios')
-					.get(
-						'https://api.scryfall.com/cards/named?fuzzy=' + cardName.replace(/\s/g, '+')
-					)
+				this.axios
+					.get('https://api.scryfall.com/cards/named?fuzzy=' + cardQuery)
 					.then(response => {
 						const rd = response.data
 						const newCard = {
@@ -86,17 +78,39 @@ export default {
 							scryfallLink: rd.scryfall_uri,
 							qty: 1
 						}
-						this.deck.cards.unshift(newCard)
-						this.deck.viewedCard = newCard.name
+						deck.cards.unshift(newCard)
+						deck.viewedCard = newCard.name
 						this.success = true
 					})
 					.catch(error => {
 						this.error = true
-						alert(error)
 						console.log(error)
 					})
 
 				deck.editDate = new Date()
+			}
+		},
+		handleSubmit () {
+			this.clearStatus()
+			this.submitting = true
+			this.delay = true
+
+			if (this.invalidName) {
+				this.error = true
+				return
+			}
+
+			if (this.cardName.toLowerCase() === '[random]') {
+				this.axios
+					.get('https://api.scryfall.com/cards/random')
+					.then(response => {
+						this.getTheCard(response.data.name)
+					})
+					.catch(error => {
+						console.log(error)
+					})
+			} else {
+				this.getTheCard(this.cardName)
 			}
 
 			this.$refs.first.focus()
