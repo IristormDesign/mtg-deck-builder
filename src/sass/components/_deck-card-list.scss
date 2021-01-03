@@ -47,60 +47,57 @@
 	li {
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
-		
-		&:hover {
-			input {
-				outline: 1px solid tan;
-				color: #000;
-				background: #fff;
-			}
-			> button {
-				filter: brightness(112.5%) contrast(112.5%);
-				transition-duration: 0s;
-				outline: 0;
-			}
-		}
-		> button {
-			background: $color-frame-generic;
-			display: flex;
-			grid-column: span 8;
-			justify-content: space-between;
-			margin: 0 0 1px 0;
-			padding: 0 .375em;
-			border-radius: .5em / 50%;
-			border: 3px solid rgba(#000, .5);
-			border-top-color: rgba(#fff, .333);
-			border-right-color: rgba(#fff, .1667);
-			border-left-color: rgba(#000, .25);
-			transition: all .2s ease-out;
-			width: 100%;
-			text-align: left;
-			align-items: center;
-			line-height: 1.375;
-			color: $color-black-label;
-			box-shadow: none;
+	}
+	.card-button {
+		background: $color-frame-generic;
+		box-shadow: 0 0 0 2px lighten($color-mana-generic, 12.5%);
+		display: flex;
+		grid-column: span 8;
+		justify-content: space-between;
+		margin: 2.5px 0;
+		padding: 0 .375em;
+		border-radius: .5em / 50%;
+		border: 2px solid rgba(#000, .625);
+		border-top-color: rgba(#fff, .5);
+		border-right-color: rgba(#fff, .1667);
+		border-left-color: rgba(#000, .25);
+		transition: all .125s ease-out;
+		width: 100%;
+		text-align: left;
+		align-items: center;
+		line-height: 1.375;
+		color: $color-black-label;
+		outline: 0;
 
-			&:active {
-				background: orangered;
-			}
-			&.white {
-				background: $color-frame-white;
-			}
-			&.blue {
-				background: $color-frame-blue;
-			}
-			&.black {
-				background: $color-frame-black;
-			}
-			&.red {
-				background: $color-frame-red;
-			}
-			&.green {
-				background: $color-frame-green;
-			}
-			&.multicolored {
-				background: moccasin;
-			}
+		&:hover,
+		&:focus {
+			position: relative;
+			z-index: 1;
+			filter: contrast(112.5%) saturate(125%);
+			transition-duration: 0s;
+		}
+		&:active {
+			filter: brightness(125%);
+			transform: scale(.99);
+		}
+		&.white {
+			@include card-button-styles($color-frame-white);
+			box-shadow: 0 0 0 2px $color-frame-white;
+		}
+		&.blue {
+			@include card-button-styles($color-frame-blue);
+		}
+		&.black {
+			@include card-button-styles($color-frame-black);
+		}
+		&.red {
+			@include card-button-styles($color-frame-red);
+		}
+		&.green {
+			@include card-button-styles($color-frame-green);
+		}
+		&.multicolored {
+			@include card-button-styles($color-frame-multicolor);
 		}
 	}
 	.name {
@@ -188,7 +185,7 @@
 		background: $color-mana-green;
 	}
 	&.hybrid {
-		background: gold;
+		background: $color-mana-hybrid;
 		font-size: .667em;
 	}
 }

@@ -16,7 +16,7 @@
 				<li v-for="card in deck.cards" :key="card.name">
 					<button
 						@click="deck.viewedCard = card.name"
-						:class="colorButton(card)"
+						:class="colorButton(card) + ' card-button'"
 					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana" v-html="styleManaSymbols(card)"></div>

@@ -3,30 +3,32 @@ $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 $color-content-bg: darken(linen, 1%);
 $color-black-label: #0d0f0f;
 
-$color-mana-white: #f8f6d8;
-$color-mana-blue: #c1d7e9;
-$color-mana-black: #bab1ab;
-$color-mana-red: #e49977;
-$color-mana-green: #a3c095;
-$color-mana-generic: #cac5c0;
+$color-mana-white: #f8f6d8; // Actual
+$color-mana-blue: #c1d7e9; // Actual
+$color-mana-black: #bab1ab; // Actual
+$color-mana-red: #e49977; // Actual
+$color-mana-green: #a3c095; // Actual
+$color-mana-hybrid: #f7d264;
+$color-mana-generic: #cac5c0; // Actual
 
-@function paler-frame($mana-color) {
-	@return desaturate(lighten($mana-color, 6.25%), 12.5%);
-}
-
-$color-frame-white: paler-frame($color-mana-white);
-$color-frame-blue: paler-frame($color-mana-blue);
-$color-frame-black: paler-frame($color-mana-black);
-$color-frame-red: paler-frame($color-mana-red);
-$color-frame-green: paler-frame($color-mana-green);
-$color-frame-generic: paler-frame($color-mana-generic);
+$color-frame-white: lighten($color-mana-white, 6.25%);
+$color-frame-blue: lighten($color-mana-blue, 8.33%);
+$color-frame-black: lighten($color-mana-black, 6.25%);
+$color-frame-red: lighten($color-mana-red, 16.67%);
+$color-frame-green: lighten($color-mana-green, 16.67%);
+$color-frame-multicolor: lighten($color-mana-hybrid, 16.67%);
+$color-frame-generic: lighten($color-mana-generic, 8.33%);
 
 $width-site: 1280px;
+
+$x: 2px dashed rgba(#c0f, .75);
 
 @mixin heading-font {
 	font-family: 'Asul', $font-family-standard;
 	letter-spacing: -(1/32) * 1em;
 	font-weight: bold;
 }
-
-$x: 2px dashed rgba(#c0f, .75)
+@mixin card-button-styles($color-frame) {
+	background: $color-frame;
+	box-shadow: 0 0 0 2px saturate(darken($color-frame, 58.33%), 37.5%);
+}
