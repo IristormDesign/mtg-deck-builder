@@ -25,13 +25,10 @@ export default {
 	},
 	data () {
 		return {
-			decksLocalStorage: this.$store.state.decks,
-			cardSortingLocalStorage: this.$store.state.cardSorting
+			decksLocalStorage: this.$store.state.decks
 		}
 	},
 	created () {
-		const state = this.$store.state
-
 		if (!this.decksLocalStorage) {
 			const defaultDecks = [
 				{
@@ -146,28 +143,17 @@ export default {
 					]
 				}
 			]
-			state.decks = defaultDecks
-			this.decksLocalStorage = state.decks
+			this.$store.state.decks = defaultDecks
+			this.decksLocalStorage = this.$store.state.decks
 		}
-		if (!this.cardSortingLocalStorage) {
-			const defaultCardSorting = {
-				cur: 'type',
-				prev: 'qty'
-			}
-			state.cardSorting = defaultCardSorting
-			this.cardSortingLocalStorage = state.cardSorting
+		if (!localStorage.getItem('sortProperty')) {
+			localStorage.setItem('sortProperty', 'type')
 		}
 	},
 	watch: {
 		decksLocalStorage: {
 			handler: function (val) {
 				localStorage.setItem('decks', JSON.stringify(val))
-			},
-			deep: true
-		},
-		cardSortingLocalStorage: {
-			handler: function (val) {
-				localStorage.setItem('cardSorting', JSON.stringify(val))
 			},
 			deep: true
 		}

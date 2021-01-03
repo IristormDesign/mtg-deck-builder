@@ -6,7 +6,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		decks: JSON.parse(localStorage.getItem('decks')),
-		cardSorting: JSON.parse(localStorage.getItem('cardSorting')),
 		deletedDeckName: null
 	},
 	getters: {
