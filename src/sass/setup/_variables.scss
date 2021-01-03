@@ -1,6 +1,25 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
-$color-content-bg: linen;
+$color-content-bg: darken(linen, 1%);
+$color-black-label: #0d0f0f;
+
+$color-mana-white: #f8f6d8;
+$color-mana-blue: #c1d7e9;
+$color-mana-black: #bab1ab;
+$color-mana-red: #e49977;
+$color-mana-green: #a3c095;
+$color-mana-generic: #cac5c0;
+
+@function paler-frame($mana-color) {
+	@return desaturate(lighten($mana-color, 6.25%), 12.5%);
+}
+
+$color-frame-white: paler-frame($color-mana-white);
+$color-frame-blue: paler-frame($color-mana-blue);
+$color-frame-black: paler-frame($color-mana-black);
+$color-frame-red: paler-frame($color-mana-red);
+$color-frame-green: paler-frame($color-mana-green);
+$color-frame-generic: paler-frame($color-mana-generic);
 
 $width-site: 1280px;
 

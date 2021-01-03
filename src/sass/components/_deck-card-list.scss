@@ -61,7 +61,7 @@
 			}
 		}
 		> button {
-			background: #ccc;
+			background: $color-frame-generic;
 			display: flex;
 			grid-column: span 8;
 			justify-content: space-between;
@@ -77,26 +77,26 @@
 			text-align: left;
 			align-items: center;
 			line-height: 1.375;
-			color: #111;
+			color: $color-black-label;
 			box-shadow: none;
 
 			&:active {
 				background: orangered;
 			}
 			&.white {
-				background: floralwhite;
+				background: $color-frame-white;
 			}
 			&.blue {
-				background: lighten(skyblue, 12.5%)
+				background: $color-frame-blue;
 			}
 			&.black {
-				background: #aaa
+				background: $color-frame-black;
 			}
 			&.red {
-				background: lighten(lightcoral, 12.5%);
+				background: $color-frame-red;
 			}
 			&.green {
-				background: lighten(darkseagreen, 12.5%);
+				background: $color-frame-green;
 			}
 			&.multicolored {
 				background: moccasin;
@@ -164,28 +164,28 @@
 	height: $common-mana-symbol-size;
 	line-height: $common-mana-symbol-size*.875;
 	display: inline-block;
-	margin-right: 1px;
+	margin-right: 1.5px;
 	text-align: center;
-	box-shadow: inset 0 -1px 0px 0.5px rgba(#000, .667);
+	box-shadow: inset .25px -1px 0px 0.5px rgba(#000, .667);
 	font-size: 1.167em;
 	font-weight: 500;
-	background: #ccc;
+	background: $color-mana-generic;
 	overflow: hidden;
 
 	&.white {
-		background: floralwhite;
+		background: $color-mana-white;
 	}
 	&.blue {
-		background: lightskyblue
+		background: $color-mana-blue;
 	}
 	&.black {
-		background: #aaa;
+		background: $color-mana-black;
 	}
 	&.red {
-		background: lightcoral
+		background: $color-mana-red;
 	}
 	&.green {
-		background: darkseagreen;
+		background: $color-mana-green;
 	}
 	&.hybrid {
 		background: gold;
