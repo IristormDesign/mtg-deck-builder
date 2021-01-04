@@ -1,18 +1,18 @@
 <template>
 	<div class="card-adder">
-		<form @submit.prevent="handleSubmit()">
+		<form
+			@submit.prevent="handleSubmit()"
+			title="Tip: You can add a randomly selected card by entering “[random]” as the card name."
+		>
 			<label>
 				Add a new card to this deck:
 				<input
 					type="text" v-model="cardName" ref="first"
 					@focus="clearStatus()" @keypress="clearStatus()"
 					:class="{ 'has-error': submitting && invalidName }"
-					title="Tip: Enter the code “[random]” to add a randomly selected Magic card."
 				>
 			</label>
-
 			<button class="primary-btn" :disabled="delay">Add Card</button>
-
 			<div class="message">
 				<span v-if="error && submitting" class="error-message">
 					🛑 One or more form fields are invalid.
@@ -75,10 +75,9 @@ export default {
 							cmc: rd.cmc,
 							colors: rd.colors,
 							img: rd.image_uris.normal,
-							scryfallLink: rd.scryfall_uri,
+							link: rd.scryfall_uri,
 							qty: 1
 						}
-
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')
 						}

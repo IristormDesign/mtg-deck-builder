@@ -46,13 +46,14 @@ export default {
 	methods: {
 		colorButton (card) {
 			const colors = card.colors
+			const mc = colors.find((c) => c === 'multicolor')
 			const w = colors.find((c) => c === 'W')
 			const u = colors.find((c) => c === 'U')
 			const b = colors.find((c) => c === 'B')
 			const r = colors.find((c) => c === 'R')
 			const g = colors.find((c) => c === 'G')
 
-			if (colors.length > 1) return 'multicolored'
+			if (mc) return 'multicolor'
 			else if (w) return 'white'
 			else if (u) return 'blue'
 			else if (b) return 'black'
@@ -83,11 +84,11 @@ export default {
 				)
 				.replaceAll(
 					RegExp('{(./.)}', 'g'), // Find hybrid mana symbols (like `{G/W}`). The parentheses in the regex mark the variable `$1`.
-					'<span class="mana-symbol generic hybrid">$1</span>'
+					'<span class="mana-symbol hybrid">$1</span>'
 				)
 				.replaceAll(
 					RegExp('{(.)}', 'g'), // Find any single character directly between a pair of curly brackets. This catches all other mana symbols that the previous regex replacements have missed.
-					'<span class="mana-symbol generic">$1</span>'
+					'<span class="mana-symbol">$1</span>'
 				)
 		},
 		validateQty (card) {
