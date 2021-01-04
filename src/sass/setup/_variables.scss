@@ -24,7 +24,6 @@ $width-site: 1280px;
 $x: 2px dashed rgba(#c0f, .75);
 
 @mixin heading-font {
-	font-family: 'Asul', $font-family-standard;
-	letter-spacing: -(1/32) * 1em;
+	font-family: 'Philosopher', $font-family-standard;
 	font-weight: bold;
 }
