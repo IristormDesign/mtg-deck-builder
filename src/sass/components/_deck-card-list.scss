@@ -47,25 +47,26 @@
 	li {
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
+		margin: 1px 0;
 	}
 	.card-button {
 		background: $color-frame-generic;
-		box-shadow: 0 0 0 2px lighten($color-mana-generic, 12.5%);
+		box-shadow: none;
 		display: flex;
 		grid-column: span 8;
 		justify-content: space-between;
-		margin: 2.5px 0;
+		margin: 0;
 		padding: 0 .375em;
 		border-radius: .5em / 50%;
 		border: 2px solid rgba(#000, .625);
 		border-top-color: rgba(#fff, .5);
 		border-right-color: rgba(#fff, .1667);
 		border-left-color: rgba(#000, .25);
-		transition: all .125s ease-out;
+		transition: all .2s ease-out;
 		width: 100%;
 		text-align: left;
 		align-items: center;
-		line-height: 1.375;
+		line-height: 1;
 		color: $color-black-label;
 		outline: 0;
 
@@ -73,31 +74,30 @@
 		&:focus {
 			position: relative;
 			z-index: 1;
-			filter: contrast(112.5%) saturate(125%);
+			filter: saturate(116.67%) brightness(108.33%);
 			transition-duration: 0s;
+			box-shadow: 0 .125em .75em rgba(#000, .5);
 		}
 		&:active {
-			filter: brightness(125%);
 			transform: scale(.99);
 		}
 		&.white {
-			@include card-button-styles($color-frame-white);
-			box-shadow: 0 0 0 2px $color-frame-white;
+			background: $color-frame-white;
 		}
 		&.blue {
-			@include card-button-styles($color-frame-blue);
+			background: $color-frame-blue;
 		}
 		&.black {
-			@include card-button-styles($color-frame-black);
+			background: $color-frame-black;
 		}
 		&.red {
-			@include card-button-styles($color-frame-red);
+			background: $color-frame-red;
 		}
 		&.green {
-			@include card-button-styles($color-frame-green);
+			background: $color-frame-green;
 		}
 		&.multicolored {
-			@include card-button-styles($color-frame-multicolor);
+			background: $color-frame-multicolor;
 		}
 	}
 	.name {
@@ -159,7 +159,7 @@
 	border-radius: 50%;
 	min-width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
-	line-height: $common-mana-symbol-size*.875;
+	line-height: $common-mana-symbol-size;
 	display: inline-block;
 	margin-right: 1.5px;
 	text-align: center;
@@ -168,7 +168,7 @@
 	font-weight: 500;
 	background: $color-mana-generic;
 	overflow: hidden;
-
+	
 	&.white {
 		background: $color-mana-white;
 	}

@@ -28,7 +28,3 @@ $x: 2px dashed rgba(#c0f, .75);
 	letter-spacing: -(1/32) * 1em;
 	font-weight: bold;
 }
-@mixin card-button-styles($color-frame) {
-	background: $color-frame;
-	box-shadow: 0 0 0 2px saturate(darken($color-frame, 58.33%), 37.5%);
-}
