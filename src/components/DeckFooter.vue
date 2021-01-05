@@ -26,15 +26,14 @@ export default {
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
-				this.$store.state.decks = this.$store.state.decks.filter(deck =>
-					deck.name !== deletedDeckName
+				const remainingDecks = this.$store.state.decks.filter(
+					deck => deck.name !== deletedDeckName
 				)
-				localStorage.setItem('decks',
-					JSON.stringify(this.$store.state.decks)
+				this.$store.state.decks = remainingDecks // Triggers watcher of decksLocalStorage.
+				localStorage.setItem(
+					'decks', JSON.stringify(this.$store.state.decks)
 				)
-
 				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
-
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},
