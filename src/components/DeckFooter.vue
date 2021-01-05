@@ -23,7 +23,7 @@ export default {
 	methods: {
 		deleteDeck () {
 			const deletedDeckName = this.deck.name
-			const deletionConfirmed = confirm('Are you sure you want to permanently delete the deck “' + deletedDeckName + '”?')
+			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
 				this.$store.state.decks = this.$store.state.decks.filter(deck =>
@@ -43,7 +43,7 @@ export default {
 			const duplicate = confirm(`Create a new deck that’s a copy of “${srcDeck.name}”?`)
 
 			if (duplicate) {
-				const dupDeckName = srcDeck.name + ' (copy)'
+				const dupDeckName = `${srcDeck.name} (copy)`
 
 				this.$store.state.decks.push({
 					name: dupDeckName,
