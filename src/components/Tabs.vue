@@ -52,16 +52,15 @@ export default {
 						name: name,
 						path: path,
 						cards: [],
-						editDate: new Date()
+						editDate: new Date(),
+						viewedCard: ''
 					})
 					this.$router.push({
 						name: 'deck',
 						params: { deckPath: path }
 					})
 				}
-			} else {
-				return false // Else, if the user left the prompt blank, do nothing.
-			}
+			} // Else, if the user left the prompt blank, do nothing.
 		}
 	}
 }
