@@ -80,6 +80,9 @@ export default {
 			if (hour < 10) {
 				hour = '0' + hour
 			}
+			if (hour === '00') {
+				hour = '12'
+			}
 			if (minute < 10) {
 				minute = '0' + minute
 			}
