@@ -23,7 +23,7 @@ main {
 .contents,
 .deck {
 	background: $color-content-bg;
-	color: #000;
+	color: $color-black-label;
 	border: 6px solid orangered;
 	margin-bottom: 1.5em;	
 }
@@ -37,8 +37,5 @@ main {
 		grid-template-columns: repeat(7, 1fr);
 		padding: .75em 1.5em;
 		overflow-x: hidden;
-	}
-	.deck-main {
-		grid-column: span 5;
 	}
 }

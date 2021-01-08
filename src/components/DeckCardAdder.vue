@@ -4,24 +4,27 @@
 			@submit.prevent="handleSubmit()"
 			title="Tip: You can add a randomly selected card by entering “[random]” as the card name."
 		>
-			<label>
-				Add a new card to this deck:
-				<input
-					type="text" v-model="cardName" ref="first"
-					@focus="clearStatus()" @keypress="clearStatus()"
-					:class="{ 'has-error': submitting && invalidName }"
-				>
-			</label>
+			<label for="card-input">Add a new card to this deck:</label>
+			<input
+				type="text"
+				id="card-input"
+				ref="first"
+				v-model="cardName"
+				@focus="clearStatus()"
+				@keypress="clearStatus()"
+				:class="{ 'has-error': submitting && invalidName }"
+				placeholder="(Enter a card’s name.)"
+			>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
-			<div class="message">
-				<span v-if="error && submitting" class="error-message">
-					🛑 One or more form fields are invalid.
-				</span>
-				<span v-if="success" class="success-message">
-					✅ The card is now added to the deck.
-				</span>
-			</div>
 		</form>
+		<div class="message">
+			<span v-if="error && submitting" class="error-message">
+				🛑 One or more form fields are invalid.
+			</span>
+			<span v-if="success" class="success-message">
+				✅ The card is now added to the deck.
+			</span>
+		</div>
 	</div>
 </template>
 
@@ -81,7 +84,7 @@ export default {
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')
 						}
-						deck.cards.unshift(newCard)
+						deck.cards.push(newCard)
 						deck.viewedCard = newCard.name
 						this.success = true
 					})

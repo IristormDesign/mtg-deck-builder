@@ -1,7 +1,7 @@
 <template>
-	<div class="sorter">
-		<h3>Sort Cards By</h3>
-		<select v-model="property" @change="sortCards()">
+	<div class="card-sorter">
+		<label for="propSelect">Sort cards by:</label>
+		<select v-model="property" @change="sortCards()" id="propSelect">
 			<option value="name">Name</option>
 			<option value="cmc">Converted mana cost</option>
 			<option value="colors">Mana color</option>

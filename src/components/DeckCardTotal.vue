@@ -1,7 +1,6 @@
 <template>
 	<div class="card-total">
-		<h3>Total Cards</h3>
-
+		<h3>Total cards:</h3>
 		<div class="amount">
 			{{ totalCards() }}
 			<span

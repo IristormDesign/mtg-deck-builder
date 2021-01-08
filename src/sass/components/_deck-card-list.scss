@@ -75,7 +75,7 @@
 			z-index: 1;
 			filter: saturate(116.67%) brightness(108.33%);
 			transition-duration: 0s;
-			box-shadow: 0 .125em .75em rgba(#000, .5);
+			box-shadow: 0 .125em .75em rgba(#000, .25);
 		}
 		&:active {
 			transform: scale(.99);
