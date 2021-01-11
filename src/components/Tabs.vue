@@ -32,13 +32,13 @@
 export default {
 	name: 'tabs',
 	methods: {
-		createDeck (redo) {
+		createDeck (failedName, existingDeckName) {
 			const get = this.$store.getters
 			let message = 'Name this new deck:'
-			if (redo) {
-				message = get.alertNameExists(redo)
+			if (existingDeckName) {
+				message = get.alertNameExists(existingDeckName)
 			}
-			let name = prompt(message)
+			let name = prompt(message, failedName)
 
 			// First edit the given name to remove any excess white space.
 			if (name) {
@@ -49,7 +49,10 @@ export default {
 				const deckExists = get.existingDeck(path)
 
 				if (deckExists) {
-					this.createDeck(deckExists.name) // Restart this method from the beginning with an added parameter.
+					this.createDeck(failedName, deckExists.name) // Restart.
+				} else if (name.length > 50) {
+					alert(this.$store.state.alertNameTooLong)
+					this.createDeck(name) // Restart.
 				} else {
 					this.$store.state.decks.push({
 						name: name,

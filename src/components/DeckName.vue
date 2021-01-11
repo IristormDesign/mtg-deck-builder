@@ -14,14 +14,14 @@ export default {
 		deck: Object
 	},
 	methods: {
-		renameDeck (redo) {
+		renameDeck (failedName, deckNameExists) {
 			const deck = this.deck
 			const get = this.$store.getters
 			let message = 'Change the name of this deck:'
-			if (redo) {
-				message = get.alertNameExists(redo)
+			if (deckNameExists) {
+				message = get.alertNameExists(deckNameExists)
 			}
-			let newName = prompt(message, deck.name)
+			let newName = prompt(message, failedName)
 
 			if (newName) {
 				newName = newName.trim()
@@ -31,7 +31,10 @@ export default {
 				const deckExists = get.existingDeck(newPath)
 				const theActiveDeck = () => newPath === this.$route.params.deckPath
 
-				if (!deckExists || theActiveDeck()) {
+				if (newName.length > 50) {
+					alert(this.$store.state.alertNameTooLong)
+					this.renameDeck(newName)
+				} else if (!deckExists || theActiveDeck()) {
 					deck.name = newName
 					deck.path = newPath
 					deck.editDate = new Date()
@@ -43,7 +46,7 @@ export default {
 						})
 					}
 				} else {
-					this.renameDeck(deckExists.name) // Start over this method.
+					this.renameDeck(newName, deckExists.name) // Start over this method.
 				}
 			}
 		}

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		decks: JSON.parse(localStorage.getItem('decks')),
-		deletedDeckName: null
+		deletedDeckName: null,
+		alertNameTooLong: '⚠ That deck name is too long. Please make it fewer than 50 characters.'
 	},
 	getters: {
 		alertNameExists: () => (name) => {
