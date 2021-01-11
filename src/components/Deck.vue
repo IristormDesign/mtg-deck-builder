@@ -2,20 +2,21 @@
 	<div class="deck">
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
 			<article v-if="$route.params.deckPath == deck.path">
-
 				<header class="deck-header">
 					<deck-name :deck="deck" />
 					<deck-date-edited :deck="deck" />
 					<button class="deck-action" @click="copyDeck(deck)">Copy Deck</button>
 					<button class="deck-action" @click="deleteDeck(deck)">Delete Deck</button>
 				</header>
-				<deck-card-list :deck="deck" />
-				<div class="card-list-controls">
-					<deck-card-adder :deck="deck" />
-					<deck-card-sorter :deck="deck" />
-					<deck-card-total :deck="deck" />
-				</div>
 				<deck-card-display :deck="deck" />
+				<div class="deck-main">
+					<deck-card-list :deck="deck" />
+					<div class="card-list-controls">
+						<deck-card-adder :deck="deck" />
+						<deck-card-sorter :deck="deck" />
+						<deck-card-total :deck="deck" />
+					</div>
+				</div>
 				<deck-description :deck="deck" />
 			</article>
 		</div>

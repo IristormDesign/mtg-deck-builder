@@ -67,7 +67,6 @@ export default {
 			const dateTime = new Date(this.deck.editDate)
 			let hour = dateTime.getHours()
 			let minute = dateTime.getMinutes()
-			let second = dateTime.getSeconds()
 			let meridiem
 
 			if (hour < 12) {
@@ -77,20 +76,14 @@ export default {
 				meridiem = 'p.m.'
 			}
 
-			if (hour < 10) {
-				hour = '0' + hour
-			}
-			if (hour === '00') {
+			if (hour === '0') {
 				hour = '12'
 			}
 			if (minute < 10) {
 				minute = '0' + minute
 			}
-			if (second < 10) {
-				second = '0' + second
-			}
 
-			return `${hour}:${minute}:${second} ${meridiem}`
+			return `${hour}:${minute} ${meridiem}`
 		}
 	}
 }

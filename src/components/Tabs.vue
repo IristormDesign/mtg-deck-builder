@@ -2,7 +2,10 @@
 	<nav>
 		<ul class="tabs">
 			<li v-for="(deck, i) in $store.state.decks" :key="i">
-				<div v-if="$route.params.deckPath === deck.path">
+				<div
+					v-if="$route.params.deckPath === deck.path"
+					class="active-tab"
+				>
 					{{ deck.name }}
 				</div>
 				<router-link
@@ -17,7 +20,7 @@
 			</li>
 			<li class="add-new-deck">
 				<a
-					href="#new-deck" title="Create a new deck list"
+					href="#new-deck" title="Create a new deck"
 					@click.prevent="createDeck()"
 				><span>+</span></a>
 			</li>

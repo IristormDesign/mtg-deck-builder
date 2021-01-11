@@ -1,6 +1,7 @@
 .deck-list {
-	grid-column: span 5;
-	align-self: flex-start;
+	height: 375px;
+	overflow-y: scroll;
+	padding-bottom: .375em;
 
 	.no-cards {
 		padding: 6em 1.5em;
@@ -75,7 +76,7 @@
 			z-index: 1;
 			filter: saturate(116.67%) brightness(108.33%);
 			transition-duration: 0s;
-			box-shadow: 0 .125em .75em rgba(#000, .25);
+			box-shadow: 0 0 .5em rgba(#000, .333);
 		}
 		&:active {
 			transform: scale(.99);
