@@ -111,7 +111,9 @@
 		text-align: left;
 		width: 20%;
 		display: flex;
-		align-items: center
+		align-items: center;
+		font-weight: 500;
+		font-size: 1.167em;
 	}
 	.type {
 		@include heading-font;
@@ -160,12 +162,9 @@
 	min-width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
 	line-height: $common-mana-symbol-size;
-	display: inline-block;
-	margin-right: 1.5px;
+	margin: 0 .75px;
 	text-align: center;
 	box-shadow: inset .25px -1px 0px 0.5px rgba(#000, .667);
-	font-size: 1.167em;
-	font-weight: 500;
 	background: $color-mana-generic;
 	overflow: hidden;
 	
