@@ -1,8 +1,10 @@
 .card-display {
 	grid-column: span 2;
-	position: relative;
 	height: 466px;
-
+	position: sticky;
+	top: .375em;
+	margin-top: .75em;
+	
 	img {
 		position: absolute;
 		display: block;

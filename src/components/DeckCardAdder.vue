@@ -13,7 +13,7 @@
 				@focus="clearStatus()"
 				@keypress="clearStatus()"
 				:class="{ 'has-error': submitting && invalidName }"
-				placeholder="(Enter a card’s name.)"
+				placeholder="(Enter a card’s name here.)"
 			>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
 		</form>

@@ -1,3 +1,21 @@
+@mixin button-style($color) {
+	background: linear-gradient(
+		$color 0%,
+		darken($color, 8.33%) 95%,
+		lighten($color, 12.5%) 100%
+	);
+	border-color: darken($color, 8.33%);
+}
+* {
+	transition: outline .25s ease;
+	outline: 2px solid rgba(orangered, 0);
+}
+*:focus {
+	outline: 0;
+}
+*:focus-visible {
+	outline: 2px solid orangered;
+}
 a {
 	color: orangered;
 	text-decoration: none;
@@ -10,35 +28,36 @@ a {
 	}
 }
 button {
+	@include button-style(desaturate(peru, 16.7%));
 	cursor: pointer;
-	box-shadow: 0 1px 0 1px rgba(#000, .875);
-	background: linear-gradient(peru, darken(peru, 8.33%));
-	border: 1px outset peru;
+	box-shadow: 0 1px 0 1px rgba(#000, .75);
+	border-width: 0px;
+	border-style: outset;
 	border-top-width: 0;
 	border-bottom-width: 2px;
-	color: #fff;
+	color: rgba(#fff, .875);
 	border-radius: 12.5% / 1.5em;
-	padding: .375em .375em;
+	padding: .375em ;
 	min-width: 4.5em;
-	transition: filter, opacity .2s ease;
 
 	&:hover,
 	&:focus {
-		background: darken(peru, 8.33%);
+		@include button-style(peru);
 	}
 	&:active {
-		border-style: inset;
+		border-top-width: 2px;
+		border-bottom-width: 0;
 	}
 	&[type="submit"],
 	&.primary-btn {
-		background: peru;
-		background: linear-gradient(orangered, darken(orangered, 8.33%));
-		border-color: orangered;
-		color: #fff;
+		@include button-style(desaturate(orangered, 16.7%));
 
 		&:hover,
 		&:focus {
-			background: darken(orangered, 8.33%);
+			@include button-style(orangered);
+		}
+		&:active {
+			@include button-style(darken(orangered, 8.33%));
 		}
 	}
 	&:disabled {
@@ -51,6 +70,6 @@ input {
 	&[type="text"],
 	&[type="number"] {
 		background-color: #fff;
-		color: #000
+		color: $color-black-label;
 	}
 }

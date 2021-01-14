@@ -8,8 +8,8 @@
 					<button class="deck-action" @click="copyDeck(deck)">Copy Deck</button>
 					<button class="deck-action" @click="deleteDeck(deck)">Delete Deck</button>
 				</header>
-				<deck-card-display :deck="deck" />
 				<div class="deck-main">
+					<deck-card-display :deck="deck" />
 					<deck-card-list :deck="deck" />
 					<div class="card-list-controls">
 						<deck-card-adder :deck="deck" />

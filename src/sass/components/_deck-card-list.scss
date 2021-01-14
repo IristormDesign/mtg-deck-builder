@@ -1,7 +1,6 @@
 .deck-list {
-	height: 375px;
-	overflow-y: scroll;
-	padding-bottom: .375em;
+	grid-column:  3 / 8;
+	padding-top: .375em;
 
 	.no-cards {
 		padding: 6em 1.5em;
@@ -17,7 +16,7 @@
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
 		padding: 0 .5em;
-	
+
 		.button-group {
 			display: flex;
 			grid-column: span 8;

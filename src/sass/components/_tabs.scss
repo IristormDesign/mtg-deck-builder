@@ -33,28 +33,23 @@
 	}
 	a {
 		background: linear-gradient(
-			desaturate(darken($color-content-bg, 8.33%), 8.33%) 80%,
+			desaturate(darken($color-content-bg, 8.3%), 8.3%) 80%,
 			desaturate(darken($color-content-bg, 16.7%), 16.7%)
 		);
 		z-index: 0;
+		color: #000;
 
 		&:hover,
 		&:focus {
-			// background: linear-gradient(
-			// 	desaturate(darken(orangered, 12.5%), 8.33%) 75%,
-			// 	desaturate(darken(orangered, 25%), 16.7%)
-			// );
 			padding-bottom: .125em;
 			margin-top: -.125em;
 			color: orangered;
 		}
 		&:active {
-			// background: linear-gradient(
-			// 	lighten(orangered, 12.5%) 25%,
-			// 	orangered 75%,
-			// 	desaturate(darken(orangered, 25%), 16.7%)
-			// );
-			// color: #fff;
+			background: linear-gradient(
+				$color-content-bg 80%,
+				desaturate(darken($color-content-bg, 8.3%), 8.3%)
+			);
 		}
 	}
 	.active-tab {
