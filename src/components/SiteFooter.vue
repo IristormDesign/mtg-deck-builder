@@ -1,6 +1,6 @@
 <template>
 	<footer class="site-footer">
-		<p><strong>MTG Deck List Organizer</strong> — Version 1.0.0</p>
+		<p><strong>MTG Deck Organizer</strong> — Version 1.0.0</p>
 		<p>Web design and development by Damian Schmidt of <a href="https://iristormdesign.com">Iristorm Design</a>.</p>
 		<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This web app is not affiliated with or  endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy. The Scryfall API provides the data and images of cards. This web app is not affiliated with or endorsed by Scryfall.</p>
 		<div class="app-options">

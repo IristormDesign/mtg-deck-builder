@@ -2,7 +2,7 @@
 	<div id="app">
 		<header class="site-header">
 			<h1>
-				<router-link :to="{name: 'home'}">MTG Deck List Organizer</router-link>
+				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
 			<tabs />
 		</header>
