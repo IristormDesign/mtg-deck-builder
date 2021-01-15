@@ -141,7 +141,7 @@ export default {
 
 			if (this.cardName.toLowerCase() === '[random]') {
 				this.axios
-					.get('https://api.scryfall.com/cards/random')
+					.get('https://api.scryfall.com/cards/random?q=legal%3Avintage') // Get a random card that's legal in Vintage tournaments (which is almost all cards printed in Magic history, but excludes tokens and non-standard game formats).
 					.then(response => {
 						this.getTheCard(response.data.name)
 					})
