@@ -51,6 +51,8 @@ export default {
 	},
 	methods: {
 		getTheCard (cardName) {
+			cardName = this.$store.getters.curlApostrophes(cardName)
+
 			const deck = this.deck
 			const cardExists = deck.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
@@ -109,6 +111,8 @@ export default {
 							newCard.colors = rd.colors
 							newCard.img = rd.image_uris.normal
 						}
+
+						newCard.name = this.$store.getters.curlApostrophes(newCard.name)
 
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')

@@ -25,6 +25,7 @@ export default {
 
 			if (newName) {
 				newName = newName.trim()
+				newName = get.curlApostrophes(newName)
 			}
 			if (newName) { // If the user provided any name...
 				const newPath = get.stringToPath(newName)

@@ -20,9 +20,13 @@ export default new Vuex.Store({
 			)
 		},
 		stringToPath: () => (string) => {
-			return string.toLowerCase()
+			return string
+				.toLowerCase()
 				.replace(/\s/g, '-') // Replace whitespace characters with hyphens.
 				.replace(/-{2,}/g, '-') // Replace multiple hyphens in a row with a single hyphen.
+		},
+		curlApostrophes: () => (string) => {
+			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one instead.
 		}
 	},
 	mutations: {

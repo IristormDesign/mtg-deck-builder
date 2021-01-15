@@ -43,6 +43,7 @@ export default {
 			// First edit the given name to remove any excess white space.
 			if (name) {
 				name = name.trim()
+				name = get.curlApostrophes(name)
 			}
 			if (name) { // If the user entered any name...
 				const path = get.stringToPath(name)
