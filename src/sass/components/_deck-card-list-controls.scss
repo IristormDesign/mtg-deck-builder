@@ -49,8 +49,10 @@
 	}
 	button {
 		grid-column: span 1;
-		height: calc(100% - 2px); // The pixel subtraction is to compensate for the button's box shadow which makes the button seem slightly taller.
+		height: 100%; // The pixel subtraction is to compensate for the button's box shadow which makes the button seem slightly taller.
 		border-radius: .167em;
+		margin-left: 1px;
+
 	}
 	.message {
 		margin-left: .75em;
