@@ -1,17 +1,20 @@
-@import 'setup/normalize';
-@import 'setup/variables';
+// SETUP
+@import 'normalize';
+@import 'variables';
 
-@import 'general/basic-layout';
-@import 'general/links-and-forms';
-@import 'general/misc';
-@import 'general/typography';
+// GENERAL
+@import 'basic-layout';
+@import 'links-and-forms';
+@import 'misc';
+@import 'typography';
 
-@import 'components/deck-card-display';
-@import 'components/deck-card-list-controls';
-@import 'components/deck-description';
-@import 'components/deck-header';
-@import 'components/deck-card-list';
-@import 'components/site-footer';
-@import 'components/site-header';
-@import 'components/tabs';
-@import 'components/welcome';
+// COMPONENTS
+@import 'deck-card-display';
+@import 'deck-card-list-controls';
+@import 'deck-description';
+@import 'deck-header';
+@import 'deck-card-list';
+@import 'site-footer';
+@import 'site-header';
+@import 'tabs';
+@import 'welcome';
