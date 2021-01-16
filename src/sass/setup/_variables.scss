@@ -11,13 +11,13 @@ $color-mana-green: #a3c095; // Actual
 $color-mana-hybrid: #f7d264;
 $color-mana-generic: #cac5c0; // Actual
 
-$color-frame-white: lighten($color-mana-white, 6.25%);
-$color-frame-blue: lighten($color-mana-blue, 8.33%);
+$color-frame-white: lighten($color-mana-white, 8.33%);
+$color-frame-blue: lighten($color-mana-blue, 10%);
 $color-frame-black: lighten($color-mana-black, 6.25%);
-$color-frame-red: lighten($color-mana-red, 16.67%);
-$color-frame-green: lighten($color-mana-green, 16.67%);
-$color-frame-multicolor: lighten($color-mana-hybrid, 16.67%);
-$color-frame-generic: lighten($color-mana-generic, 8.33%);
+$color-frame-red: lighten($color-mana-red, 20%);
+$color-frame-green: lighten($color-mana-green, 20%);
+$color-frame-multicolor: lighten($color-mana-hybrid, 20%);
+$color-frame-generic: lighten($color-mana-generic, 12.5%);
 
 $width-site: 1280px;
 
