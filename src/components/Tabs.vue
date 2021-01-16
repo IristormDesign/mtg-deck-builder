@@ -1,6 +1,6 @@
 <template>
-	<nav>
-		<ul class="tabs">
+	<nav class="tabs">
+		<ul>
 			<li v-for="(deck, i) in $store.state.decks" :key="i">
 				<div
 					v-if="$route.params.deckPath === deck.path"
