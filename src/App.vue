@@ -4,12 +4,13 @@
 			<h1>
 				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
-			<tabs />
+			<tabs @toggleOverlay="toggleOverlay()" />
 		</header>
 		<main>
 			<router-view />
 		</main>
 		<site-footer />
+		<div class="bg-overlay" @click="toggleOverlay(true)"></div>
 	</div>
 </template>
 
@@ -148,6 +149,18 @@ export default {
 		}
 		if (!localStorage.getItem('sortProperty')) {
 			localStorage.setItem('sortProperty', 'type')
+		}
+	},
+	methods: {
+		toggleOverlay (directClick) {
+			const overlay = document.querySelector('.bg-overlay')
+			const deckMenu = document.querySelector('.deck-menu ul')
+
+			overlay.classList.toggle('show')
+
+			if (directClick) {
+				deckMenu.classList.remove('show')
+			}
 		}
 	},
 	watch: {

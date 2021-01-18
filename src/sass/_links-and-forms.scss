@@ -39,8 +39,10 @@ button {
 	border-bottom-width: 2px;
 	color: rgba(#fff, .875);
 	border-radius: 12.5% / 1.5em;
-	padding: .375em ;
+	padding: .375em .5em ;
 	min-width: 4.5em;
+	margin-top: -2px;
+	margin-bottom: 2px;
 
 	&:hover,
 	&:focus {
@@ -49,15 +51,13 @@ button {
 	&:active {
 		border-top-width: 2px;
 		border-bottom-width: 0;
-		margin-top: 1px;
-		margin-bottom: -1px;
 		box-shadow: 0 0 0 1px rgba(#000, .75);
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 	&[type="submit"],
 	&.primary-btn {
 		@include button-style(desaturate(orangered, 16.7%));
-		margin-top: -2px;
-		margin-bottom: 2px;
 
 		&:hover,
 		&:focus {
@@ -65,8 +65,6 @@ button {
 		}
 		&:active {
 			@include button-style(darken(orangered, 6.25%));
-			margin-top: 0;
-			margin-bottom: 0;
 		}
 	}
 	&:disabled {

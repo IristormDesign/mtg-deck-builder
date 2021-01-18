@@ -1,87 +1,61 @@
-.tabs {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+.deck-menu {
+	display: flex;
+	align-items: center;
 
-	ul {
-		display: flex;
-		margin: 0;
+	.deck-selector {
+		font-size: 1em;
+		position: relative;
+		z-index: 4;		
 	}
-	li {
-		display: block;
-		margin: 0 .1875em;
-		height: 2.25em;
+	ul {
+		list-style: none;
+		display: none;
+		margin: 0;
+		padding: 0;
+		border: 3px solid orangered;
+		overflow: hidden;
+		position: absolute;
+		top: 3.5em;
+		right: 1em;
+		z-index: 4;
+		box-shadow: -.125em .5em .75em rgba(#000, .333);
+		background: $color-content-bg;
+
+		&.show {
+			display: block;
+		}
 	}
 	a,
 	.active-tab {
-		border-radius: .75em .75em 0 0 / 50% 50% 0 0;
-		padding: 0 .5em;
+		@include heading-font;
+		padding: .375em;
 		display: block;
-		line-height: 2.25em;
-		text-decoration: none;
-		text-align: center;
-		min-width: 3em;
-		max-width: 9em;
-		white-space: nowrap;
-		overflow: hidden;
+		width: 24em;
 		text-overflow: ellipsis;
-		box-shadow: inset 0 1px 0px rgba(#fff, .25);
-		color: $color-black-label;
-		box-sizing: content-box;
+		overflow-x: hidden;
+		white-space: nowrap;
 		transition: all .125s ease;
-		height: 2.25em;
-		font-weight: 500;
-		position: relative;
-		bottom: -2px;
 	}
 	a {
-		background: linear-gradient(
-			desaturate(darken($color-content-bg, 8.3%), 8.3%) 80%,
-			desaturate(darken($color-content-bg, 16.7%), 16.7%)
-		);
-		z-index: 0;
-		color: #000;
+		color: orangered;
 
 		&:hover,
 		&:focus {
-			padding-bottom: .125em;
-			margin-top: -.125em;
-			color: orangered;
+			text-decoration: none;
+			background: #fff;
 		}
 		&:active {
-			background: linear-gradient(
-				$color-content-bg 80%,
-				desaturate(darken($color-content-bg, 8.3%), 8.3%)
-			);
+			background: orangered;
+			color: #fff;
 		}
 	}
 	.active-tab {
-		background: $color-content-bg;
+		color: $color-black-label;
+		background: darken($color-content-bg, 12.5%);
 		cursor: default;
-		position: relative;
-		z-index: 2;
 	}
 	.add-new-deck {
-		a {
-			color: darken(#fff, 8.33%);
-			background: linear-gradient(
-				desaturate(darken(orangered, 8.33%), 8.33%) 80%,
-				desaturate(darken(orangered, 16.7%), 16.7%)
-			);
-			
-			&:hover,
-			&:focus {
-				color: #fff;
-				background: linear-gradient(
-					orangered 80%,
-					darken(orangered, 8.33%)
-				);
-			}
-		}
-		span {
-			font-size: 2em;
-			position: relative;
-			top: -.0833em;
-		}
+		margin-left: .75em;
+		position: relative;
 	}
 }

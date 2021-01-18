@@ -1,37 +1,51 @@
 <template>
-	<nav class="tabs">
-		<ul>
-			<li v-for="(deck, i) in $store.state.decks" :key="i">
-				<div
-					v-if="$route.params.deckPath === deck.path"
-					class="active-tab"
-				>
-					{{ deck.name }}
-				</div>
-				<router-link
-					v-else
-					:to="{
-						name: 'deck',
-						params: { deckPath: deck.path }
-					}"
-				>
-					{{ deck.name }}
-				</router-link>
-			</li>
-			<li class="add-new-deck">
-				<a
-					href="#new-deck" title="Create a new deck"
-					@click.prevent="createDeck()"
-				><span>+</span></a>
-			</li>
-		</ul>
+	<nav class="deck-menu">
+		<div v-if="$store.state.decks.length > 0">
+			<button
+				class="deck-selector primary-btn" @click="toggleDeckMenu()"
+			>Select a Deck to View</button>
+			<ul>
+				<li v-for="(deck, i) in $store.state.decks" :key="i" @click="toggleDeckMenu()" @blur="toggleDeckMenu()">
+					<div
+						v-if="$route.params.deckPath === deck.path"
+						class="active-tab"
+					>{{ deck.name }}</div>
+					<router-link
+						v-else
+						:to="{ name: 'deck', params: { deckPath: deck.path } }"
+					>{{ deck.name }}</router-link>
+				</li>
+			</ul>
+		</div>
+		<button class="add-new-deck" @click="createDeck()">
+			Create a New Deck
+		</button>
 	</nav>
 </template>
 
 <script>
 export default {
 	name: 'tabs',
+	mounted () {
+		document.addEventListener('keyup', (event) => {
+			const keyEvent = event.key
+			const deckMenu = document.querySelector('.deck-menu ul')
+
+			if (keyEvent === 'Escape' || keyEvent === 'Esc') {
+				if (deckMenu.classList.contains('show')) {
+					this.toggleDeckMenu()
+				}
+			}
+		}, false)
+	},
 	methods: {
+		toggleDeckMenu () {
+			const deckMenu = document.querySelector('.deck-menu ul')
+
+			deckMenu.classList.toggle('show')
+
+			this.$emit('toggleOverlay')
+		},
 		createDeck (failedName, existingDeckName) {
 			const get = this.$store.getters
 			let message = 'Name this new deck:'

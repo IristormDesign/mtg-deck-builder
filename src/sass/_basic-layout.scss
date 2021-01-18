@@ -13,6 +13,7 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0 auto;
+	position: relative;
 }
 main {
 	width: $width-site;
@@ -43,4 +44,18 @@ main {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	grid-gap: .75em;
+}
+.bg-overlay {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	transition: opacity .5s ease;
+	opacity: 0;
+	background: rgba(lighten(#000, 12.5%), .25); 
+	z-index: -1;
+
+	&.show {
+		z-index: 3;
+		opacity: 1;
+	}
 }
