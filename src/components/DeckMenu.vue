@@ -25,7 +25,7 @@
 
 <script>
 export default {
-	name: 'tabs',
+	name: 'deck-menu',
 	mounted () {
 		document.addEventListener('keyup', (event) => {
 			const keyEvent = event.key

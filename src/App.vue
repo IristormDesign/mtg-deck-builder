@@ -4,7 +4,7 @@
 			<h1>
 				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
-			<tabs @toggleOverlay="toggleOverlay()" />
+			<deck-menu @toggleOverlay="toggleOverlay()" />
 		</header>
 		<main>
 			<router-view />
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import Tabs from '@/components/Tabs.vue'
+import DeckMenu from '@/components/DeckMenu.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
 	name: 'App',
 	components: {
-		Tabs,
+		DeckMenu,
 		SiteFooter
 	},
 	data () {
