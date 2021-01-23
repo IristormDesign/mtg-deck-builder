@@ -5,6 +5,8 @@
 	color: #999;
 	text-align: center;
 	position: relative;
+	max-width: $width-site;
+	margin: 0 auto;
 
 	p {
 		margin: .375em .75em;
