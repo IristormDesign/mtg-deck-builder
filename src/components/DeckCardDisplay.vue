@@ -1,10 +1,10 @@
 <template>
 	<div class="card-display">
 		<div v-for="card in deck.cards" :key="card.name">
-				<a
-					:href="card.link" target="_blank"
-					title="Click to view this card’s page on Scryfall"
-				>
+			<a
+				:href="card.link" target="_blank"
+				title="Click to view this card’s page on Scryfall"
+			>
 				<transition name="card-browse">
 					<img
 						v-show="deck.viewedCard == card.name"
