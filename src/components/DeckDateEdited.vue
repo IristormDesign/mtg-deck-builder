@@ -3,8 +3,7 @@
 		<h3>Last Edited On</h3>
 
 		<div class="date">
-			{{ dateEdited }}<br>
-			{{ timeEdited }}
+			{{ dateEdited }}, {{ timeEdited }}
 		</div>
 	</div>
 </template>

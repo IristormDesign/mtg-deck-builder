@@ -5,6 +5,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	text-align: center;
 	
 	.rename-btn {
 		padding: 0;
@@ -46,25 +47,22 @@
 			text-align: left;
 		}
 	}
-	> div {
-		line-height: 1;
-		text-align: center;
-		margin-left: 2em;
-		height: 2.5em;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;;
-	}
 	h3 {
-		margin: .125em 0 -.125em;
+		margin: 0;
 		text-transform: uppercase;
 		font-size: .667em;
+		line-height: 1;
 	}
 	.date {
-		line-height: 1.5 * .667;
+		line-height: 1.5 * .75;
 		font-size: .875em;
 	}
-	.deck-action {
+}
+.deck-actions {
+	display: flex;
+	margin-left: 1em;
+
+	button {
 		margin-left: 1em;
 		font-size: .875em;
 	}
