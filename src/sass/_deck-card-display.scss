@@ -6,9 +6,10 @@
 	margin-top: .75em;
 	
 	img {
+		mask-image: url(/img/card-mask.svg);
 		position: absolute;
 		display: block;
-		width: 334px;
+		width: 100%;
 		height: auto;
 		backface-visibility: hidden;
 		opacity: 1;
@@ -16,12 +17,12 @@
 }
 .card-browse-enter-active {
 	z-index: 3;
-	animation: card-slide-in .375s ease;
+	animation: card-fan-in .375s ease;
 }
 .card-browse-leave-active {
-	animation: overshadowed .375s ease;
+	animation: overshadowed .375s ease-out;
 }
-@keyframes card-slide-in {
+@keyframes card-fan-in {
 	0% {
 		opacity: 0;
 		transform: rotate(-1.40625deg) translateX(-2em) translateY(-.125em);
@@ -38,6 +39,6 @@
 		filter: brightness(100%);
 	}
 	100% {
-		filter: brightness(50%);
+		filter: brightness(25%);
 	}
 }

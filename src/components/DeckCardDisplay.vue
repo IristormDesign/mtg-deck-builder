@@ -10,7 +10,7 @@
 						v-show="deck.viewedCard == card.name"
 						:src="card.img" :key="card.name"
 						width="488" height="680" :alt="card.name"
-					>
+					/>
 				</transition>
 			</a>
 		</div>
