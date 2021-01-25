@@ -18,6 +18,7 @@ export default {
 			if (toCopyConfirmed) {
 				const store = this.$store
 				const srcDeckName = srcDeck.name
+				const copySuffixRegex = new RegExp(/\(\d+\)$/, 'g') // A string that ends with `(N)`, where N is any number.
 				let dupDeckName = srcDeckName
 				let dupDeckPath
 
@@ -34,13 +35,11 @@ export default {
 					}
 				}
 
-				const copySuffixRegex = new RegExp(/\(\d+\)$/, 'g') // A string that ends with `(N)`, where N is any number.
-
-				if (copySuffixRegex.test(srcDeckName)) { // If the deck name has a copy suffix (such as `(2)`)...
+				if (copySuffixRegex.test(srcDeckName)) { // If the deck name has the copy suffix...
 					const suffix = srcDeckName.match(copySuffixRegex) // From the deck name, get the copy suffix alone.
 					let copyNum = suffix[0].match(/\d+/) // From the suffix, get the number alone.
 
-					copyNum = Number(copyNum[0]) + 1 // Convert `copyNum[0]` from a string into a number type, then add 1.
+					copyNum = Number(copyNum[0]) + 1 // Convert `copyNum[0]` from a string into a number type, then increase it by 1.
 
 					dupDeckName = dupDeckName.replace(copySuffixRegex, `(${copyNum})`)
 
