@@ -78,6 +78,7 @@ export default {
 						path: path,
 						cards: [],
 						editDate: new Date(),
+						description: '',
 						viewedCard: ''
 					})
 					this.$router.push({
