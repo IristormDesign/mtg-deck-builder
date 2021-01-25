@@ -3,13 +3,10 @@
 		<div v-if="$store.state.decks.length > 0">
 			<button
 				class="deck-selector primary-btn"
-				@mouseover="toggleDeckMenu()"
 				@click="toggleDeckMenu()"
-				@focus="toggleDeckMenu()"
-				@blur="toggleDeckMenu()"
 			>Select a Deck to View</button>
-			<ul>
-				<li v-for="(deck, i) in $store.state.decks" :key="i" @click="toggleDeckMenu()" @blur="toggleDeckMenu()">
+			<ul @blur="toggleDeckMenu()">
+				<li v-for="(deck, i) in $store.state.decks" :key="i">
 					<div
 						v-if="$route.params.deckPath === deck.path"
 						class="active-tab"
@@ -17,6 +14,7 @@
 					<router-link
 						v-else
 						:to="{ name: 'deck', params: { deckPath: deck.path } }"
+						@click.native="toggleDeckMenu()"
 					>{{ deck.name }}</router-link>
 				</li>
 			</ul>
