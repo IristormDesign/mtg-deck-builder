@@ -53,6 +53,7 @@ main {
 	opacity: 0;
 	background: rgba(lighten(#000, 12.5%), .25); 
 	z-index: -1;
+	cursor: pointer;
 
 	&.show {
 		z-index: 3;

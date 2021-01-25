@@ -2,7 +2,11 @@
 	<nav class="deck-menu">
 		<div v-if="$store.state.decks.length > 0">
 			<button
-				class="deck-selector primary-btn" @click="toggleDeckMenu()"
+				class="deck-selector primary-btn"
+				@mouseover="toggleDeckMenu()"
+				@click="toggleDeckMenu()"
+				@focus="toggleDeckMenu()"
+				@blur="toggleDeckMenu()"
 			>Select a Deck to View</button>
 			<ul>
 				<li v-for="(deck, i) in $store.state.decks" :key="i" @click="toggleDeckMenu()" @blur="toggleDeckMenu()">
