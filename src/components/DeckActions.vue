@@ -57,6 +57,9 @@ export default {
 					description: srcDeck.description,
 					viewedCard: srcDeck.viewedCard
 				})
+				localStorage.setItem(
+					'decks', JSON.stringify(store.state.decks)
+				)
 				store.state.decks.find((deck) => {
 					if (deck.name === dupDeckName) {
 						this.$router.push({
@@ -68,17 +71,20 @@ export default {
 			}
 		},
 		deleteDeck (deck) {
+			const state = this.$store.state
 			const deletedDeckName = deck.name
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
-				const remainingDecks = this.$store.state.decks.filter(
+				const remainingDecks = state.decks.filter(
 					deck => deck.name !== deletedDeckName
 				)
-				this.$store.state.decks = remainingDecks // Triggers watcher of decksLocalStorage.
-				localStorage.setItem(
-					'decks', JSON.stringify(this.$store.state.decks)
-				)
+				state.decks = remainingDecks
+				this.$nextTick(() => {
+					localStorage.setItem(
+						'decks', JSON.stringify(state.decks)
+					)
+				})
 				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
 				this.$router.replace({ name: 'deckDeleted' })
 			}
