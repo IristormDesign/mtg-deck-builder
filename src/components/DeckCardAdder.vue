@@ -120,6 +120,7 @@ export default {
 						deck.cards.push(newCard)
 						deck.viewedCard = newCard.name
 						this.success = true
+						this.$store.commit('setSortProperty', '')
 					})
 					.catch(error => {
 						this.error = true

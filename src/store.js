@@ -7,7 +7,8 @@ export default new Vuex.Store({
 	state: {
 		decks: JSON.parse(localStorage.getItem('decks')),
 		deletedDeckName: null,
-		alertNameTooLong: '⚠ That deck name is too long. Please make it fewer than 50 characters.'
+		alertNameTooLong: '⚠ That deck name is too long. Please make it have fewer than 50 characters.',
+		sortProperty: localStorage.getItem('sortProperty')
 	},
 	getters: {
 		alertNameExists: () => (name) => {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
 	mutations: {
 		mutateDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
+		},
+		setSortProperty (state, payload) {
+			state.sortProperty = payload
 		}
 	},
 	actions: {

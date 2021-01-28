@@ -93,6 +93,8 @@ export default {
 		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
+			this.$store.commit('setSortProperty', '')
+
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
 				if (card.qty > 99) {
 					card.qty = 99

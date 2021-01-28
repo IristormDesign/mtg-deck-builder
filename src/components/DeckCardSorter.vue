@@ -1,7 +1,9 @@
 <template>
 	<div class="card-sorter">
 		<label for="propSelect">Sort cards by:</label>
-		<select v-model="property" @change="sortCards()" id="propSelect">
+		<select
+			v-model="sortProperty" @change="sortCards()" id="propSelect"
+		>
 			<option value="name">Name</option>
 			<option value="cmc">Converted mana cost</option>
 			<option value="colors">Mana color</option>
@@ -16,7 +18,7 @@ export default {
 	name: 'deck-card-sorter',
 	data () {
 		return {
-			property: localStorage.getItem('sortProperty')
+			sortProperty: this.$store.state.sortProperty
 		}
 	},
 	props: {
@@ -24,7 +26,7 @@ export default {
 	},
 	methods: {
 		sortCards () {
-			const property = this.property
+			const property = this.sortProperty
 			localStorage.setItem('sortProperty', property)
 
 			this.$store.state.decks.forEach(deck => {
@@ -53,6 +55,16 @@ export default {
 				})
 			})
 		}
+	},
+	mounted () {
+		// Using `$store.subscribe` seems to be the only way that gets the <select> element to change its value other than clicking its options.
+		this.$store.subscribe((mutation) => {
+			// `$store.subscribe` will activate when anything in the store is mutated; this `if` statement narrows down to the relevant type and payload.
+			if (mutation.type === 'setSortProperty' && mutation.payload === '') {
+				localStorage.setItem('sortProperty', mutation.payload)
+				this.sortProperty = mutation.payload
+			}
+		})
 	}
 }
 </script>
