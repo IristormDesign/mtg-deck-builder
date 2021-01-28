@@ -78,6 +78,27 @@
 			filter: saturate(116.67%) brightness(106.25%);
 			transition-duration: 0s;
 			box-shadow: 0 0 .5em rgba(#000, .333);
+			transform: translate(0,-2px);
+			perspective: 1000;
+
+			&.white {
+				box-shadow: 0 0 .5em 1px lighten($color-mana-white, 50%);
+			}
+			&.blue {
+				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-blue, 25%), 25%);
+			}
+			&.black {
+				box-shadow: 0 0 .5em 1px desaturate(darken(invert($color-mana-hybrid, 100%), 0%), 25%);
+			}
+			&.red {
+				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-red, 25%), 25%);
+			}
+			&.green {
+				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-green, 25%), 25%);
+			}
+			&.multicolor {
+				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-hybrid, 25%), 25%);
+			}
 		}
 		&:active {
 			transform: scale(.99);
@@ -154,38 +175,5 @@
 				outline: 2px solid orangered;
 			}
 		}
-	}
-}
-.mana-symbol {
-	$common-mana-symbol-size: 1.375rem;
-
-	border-radius: 50%;
-	min-width: $common-mana-symbol-size;
-	height: $common-mana-symbol-size;
-	line-height: $common-mana-symbol-size;
-	margin: 0 .75px;
-	text-align: center;
-	box-shadow: inset .25px -1px 0px 0.5px rgba(#000, .667);
-	background: $color-mana-generic;
-	overflow: hidden;
-	
-	&.white {
-		background: $color-mana-white;
-	}
-	&.blue {
-		background: $color-mana-blue;
-	}
-	&.black {
-		background: $color-mana-black;
-	}
-	&.red {
-		background: $color-mana-red;
-	}
-	&.green {
-		background: $color-mana-green;
-	}
-	&.hybrid {
-		background: $color-mana-hybrid;
-		font-size: .667em;
 	}
 }
