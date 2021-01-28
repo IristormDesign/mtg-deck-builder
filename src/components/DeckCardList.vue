@@ -93,7 +93,9 @@ export default {
 		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
-			this.$store.commit('setSortProperty', '')
+			if (localStorage.getItem('sortProperty') === 'qty') {
+				this.$store.commit('setSortProperty', '')
+			}
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
 				if (card.qty > 99) {

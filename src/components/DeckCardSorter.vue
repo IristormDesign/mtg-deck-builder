@@ -4,6 +4,9 @@
 		<select
 			v-model="sortProperty" @change="sortCards()" id="propSelect"
 		>
+			<option v-if="sortProperty == ''" value="">
+				(Select a property)
+			</option>
 			<option value="name">Name</option>
 			<option value="cmc">Converted mana cost</option>
 			<option value="colors">Mana color</option>
