@@ -52,19 +52,15 @@
 	}
 	.card-button {
 		background: $color-frame-generic;
-		box-shadow: none;
 		display: flex;
 		grid-column: span 8;
 		justify-content: space-between;
 		margin: 0;
-		padding: 0 .375em;
+		padding: 0 .5em;
 		border-radius: .5em / 50%;
-		border: 2px solid rgba(#000, .625);
-		border-top-color: rgba(#fff, .5);
-		border-right-color: rgba(#fff, .1667);
-		border-left-color: rgba(#000, .25);
+		border: none;
+		box-shadow: $box-shadows-card-button;
 		transition: all .2s ease-out;
-		width: 100%;
 		text-align: left;
 		align-items: center;
 		line-height: 1;
@@ -73,31 +69,37 @@
 
 		&:hover,
 		&:focus {
+			@include box-shadow-hover-card-button(
+				darken($color-mana-generic, 25%));
 			position: relative;
 			z-index: 1;
-			filter: saturate(116.67%) brightness(106.25%);
+			filter: contrast(108.33%);
 			transition-duration: 0s;
-			box-shadow: 0 0 .5em rgba(#000, .333);
 			transform: translate(0,-2px);
-			perspective: 1000;
 
 			&.white {
-				box-shadow: 0 0 .5em 1px lighten($color-mana-white, 50%);
+				@include box-shadow-hover-card-button(
+					$color-mana-white);
 			}
 			&.blue {
-				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-blue, 25%), 25%);
+				@include box-shadow-hover-card-button(
+					saturate(darken($color-mana-blue, 25%), 12.5%));
 			}
 			&.black {
-				box-shadow: 0 0 .5em 1px desaturate(darken(invert($color-mana-hybrid, 100%), 0%), 25%);
+				@include box-shadow-hover-card-button(
+					invert($color-mana-white, 100%));
 			}
 			&.red {
-				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-red, 25%), 25%);
+				@include box-shadow-hover-card-button(
+					saturate(darken($color-mana-red, 25%), 12.5%));
 			}
 			&.green {
-				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-green, 25%), 25%);
+				@include box-shadow-hover-card-button(
+					saturate(darken($color-mana-green, 25%), 12.5%));
 			}
 			&.multicolor {
-				box-shadow: 0 0 .5em 1px saturate(darken($color-mana-hybrid, 25%), 25%);
+				@include box-shadow-hover-card-button(
+					saturate(darken($color-mana-hybrid, 25%), 12.5%));
 			}
 		}
 		&:active {
@@ -154,6 +156,7 @@
 			margin: 0 2px 0 .375em;
 		}
 		input {
+			color: #fff;
 			background: transparent;
 			border: 0;
 			font-size: 1.5em;
@@ -167,7 +170,8 @@
 
 			&:hover,
 			&:focus {
-				background: #fff;
+				background: rgba(#000, .667);
+				color: #fff;
 				outline-color: tan;
 				transition-duration: 0s;
 			}

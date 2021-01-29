@@ -8,16 +8,20 @@ $color-mana-blue: #c1d7e9; // Actual
 $color-mana-black: #bab1ab; // Actual
 $color-mana-red: #e49977; // Actual
 $color-mana-green: #a3c095; // Actual
-$color-mana-hybrid: #f7d264;
+$color-mana-hybrid: #f7d264; // Sampled
 $color-mana-generic: #cac5c0; // Actual
 
-$color-frame-white: lighten($color-mana-white, 8.33%);
-$color-frame-blue: lighten($color-mana-blue, 10%);
-$color-frame-black: lighten($color-mana-black, 6.25%);
-$color-frame-red: lighten($color-mana-red, 20%);
-$color-frame-green: lighten($color-mana-green, 20%);
-$color-frame-multicolor: lighten($color-mana-hybrid, 20%);
-$color-frame-generic: lighten($color-mana-generic, 12.5%);
+$color-frame-white: desaturate(lighten($color-mana-white, 5%), 12.5%);
+$color-frame-blue: desaturate(lighten($color-mana-blue, 5%), 12.5%);
+$color-frame-black: desaturate(lighten($color-mana-black, 5%), 12.5%);
+$color-frame-red: desaturate(lighten($color-mana-red, 20%), 12.5%);
+$color-frame-green: desaturate(lighten($color-mana-green, 15%), 12.5%);
+$color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 20%), 12.5%);
+$color-frame-generic: desaturate(lighten($color-mana-generic, 12.5%), 12.5%);
+
+$box-shadows-card-button:
+	inset 1px -1px 1px 2px rgba(#000, .667),
+	inset -1px 1px 1px 2px rgba(#fff, .667);
 
 $width-site: 1280px;
 
@@ -26,4 +30,7 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin heading-font {
 	font-family: 'Philosopher', $font-family-standard;
 	font-weight: bold;
+}
+@mixin box-shadow-hover-card-button($color) {
+  box-shadow: $box-shadows-card-button, 0 0 .75em 1px $color;
 }
