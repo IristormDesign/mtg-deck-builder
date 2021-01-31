@@ -11,16 +11,9 @@
 		margin: .5em 0;
 		line-height: 1;
 		font-size: 1.5em;
-		text-shadow: 0 0 .75em rgba(#000, .6667);
 		
 		a {
 			color: #fff;
-
-			&,
-			&:hover,
-			&:focus {
-				text-decoration: none
-			}
 		}
 	}
 }

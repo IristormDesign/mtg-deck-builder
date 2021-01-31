@@ -12,7 +12,7 @@ b {
 	@include heading-font;
 }
 ::selection {
-	background: orangered;
+	background: $color-magic-orange;
 	color: #fff;
 	text-shadow: none;
 }

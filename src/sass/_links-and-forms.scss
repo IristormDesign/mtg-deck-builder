@@ -8,16 +8,16 @@
 }
 * {
 	transition: outline .25s ease;
-	outline: 2px solid rgba(orangered, 0);
+	outline: 2px solid rgba($color-magic-orange, 0);
 }
 *:focus {
 	outline: 0;
 }
 *:focus-visible {
-	outline: 2px solid orangered;
+	outline: 2px solid $color-magic-orange;
 }
 a {
-	color: orangered;
+	color: $color-magic-orange;
 	text-decoration: none;
 
 	&:hover {
@@ -57,14 +57,14 @@ button {
 	}
 	&[type="submit"],
 	&.primary-btn {
-		@include button-style(desaturate(orangered, 16.7%));
+		@include button-style(desaturate($color-magic-orange, 16.7%));
 
 		&:hover,
 		&:focus {
-			@include button-style(orangered);
+			@include button-style($color-magic-orange);
 		}
 		&:active {
-			@include button-style(darken(orangered, 6.25%));
+			@include button-style(darken($color-magic-orange, 6.25%));
 		}
 	}
 	&:disabled {

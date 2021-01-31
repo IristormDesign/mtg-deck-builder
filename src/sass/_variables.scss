@@ -1,29 +1,41 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
-$color-black-label: #0d0f0f;
-$color-content-bg: lighten(tan, 25%);
+// $color-magic-orange: #c7371b; // Actual
+$color-magic-orange: #ea4b12; // Actual
+$color-black-label: #0d0f0f; // Actual
+$color-content-bg: darken(desaturate(invert($color-magic-orange, 100%), 75%), 8.33%);
+// $color-content-bg: desaturate(darken($color-magic-orange, 12.5%), 66.67%);
 
 $color-mana-white: #f8f6d8; // Actual
-$color-mana-blue: #c1d7e9; // Actual
-$color-mana-black: #bab1ab; // Actual
-$color-mana-red: #e49977; // Actual
-$color-mana-green: #a3c095; // Actual
-$color-mana-hybrid: #f7d264; // Sampled
+$color-mana-blue: saturate(#c1d7e9, 25%); // Actual
+// $color-mana-black: saturate(#bab1ab, 8.33%); // Actual
+$color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 62.5%);
+$color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 6.25%); // From Paletton, compliment to white mana.
+$color-mana-red: saturate(#e49977, 8.33%); // Actual
+$color-mana-green: saturate(#a3c095, 8.33%); // Actual
 $color-mana-generic: #cac5c0; // Actual
+$color-mana-hybrid: saturate(#ffdb7a, 8.33%);
 
-$color-frame-white: desaturate(lighten($color-mana-white, 5%), 12.5%);
-$color-frame-blue: desaturate(lighten($color-mana-blue, 5%), 12.5%);
-$color-frame-black: desaturate(lighten($color-mana-black, 5%), 12.5%);
-$color-frame-red: desaturate(lighten($color-mana-red, 20%), 12.5%);
-$color-frame-green: desaturate(lighten($color-mana-green, 15%), 12.5%);
-$color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 20%), 12.5%);
-$color-frame-generic: desaturate(lighten($color-mana-generic, 12.5%), 12.5%);
+$color-frame-white:
+	desaturate(lighten($color-mana-white, 6.25%), 6.25%);
+$color-frame-blue:
+	desaturate(lighten($color-mana-blue, 6.25%), 0%);
+$color-frame-black:
+	desaturate(darken($color-mana-black, 6.25%), 8.33%);
+$color-frame-red:
+	desaturate(lighten($color-mana-red, 12.5%), 6.25%);
+$color-frame-green:
+	desaturate(lighten($color-mana-green, 12.5%), 6.25%);
+$color-frame-multicolor:
+	desaturate(lighten($color-mana-hybrid, 8.33%), 16.67%);
+$color-frame-generic:
+	desaturate(lighten($color-mana-generic, 8.33%), 16.67%);
 
 $box-shadows-card-button:
-	inset 1px -1px 1px 2px rgba(#000, .667),
-	inset -1px 1px 1px 2px rgba(#fff, .667);
+	inset .75px -1.5px .75px 1px rgba(#000, .667),
+	inset -.75px 1.5px .75px 1px rgba(#fff, .667);
 
-$width-site: 1280px;
+$width-site: 1440px;
 
 $x: 2px dashed rgba(#c0f, .75);
 

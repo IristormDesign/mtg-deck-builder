@@ -22,7 +22,7 @@
 		&:hover,
 		&:focus {
 			background: rgba(#fff, .5);
-			border-color: orangered;
+			border-color: $color-magic-orange;
 		}
 		&::placeholder {
 			color: rgba(#000, .75);

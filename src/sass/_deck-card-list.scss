@@ -64,7 +64,7 @@
 		text-align: left;
 		align-items: center;
 		line-height: 1;
-		color: $color-black-label;
+		color: #000;
 		outline: 0;
 
 		&:hover,
@@ -73,7 +73,7 @@
 				darken($color-mana-generic, 25%));
 			position: relative;
 			z-index: 1;
-			filter: contrast(108.33%);
+			filter: contrast(112.5%);
 			transition-duration: 0s;
 			transform: translate(0,-2px);
 
@@ -83,23 +83,28 @@
 			}
 			&.blue {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-blue, 25%), 12.5%));
+					saturate(darken($color-mana-blue, 25%), 12.5%)
+				);
 			}
 			&.black {
 				@include box-shadow-hover-card-button(
-					invert($color-mana-white, 100%));
+					darken($color-mana-black, 50%)
+				);
 			}
 			&.red {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-red, 25%), 12.5%));
+					saturate(darken($color-mana-red, 25%), 12.5%)
+				);
 			}
 			&.green {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-green, 25%), 12.5%));
+					saturate(darken($color-mana-green, 25%), 12.5%)
+				);
 			}
 			&.multicolor {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-hybrid, 25%), 12.5%));
+					saturate(darken($color-mana-hybrid, 25%), 12.5%)
+				);
 			}
 		}
 		&:active {
@@ -162,7 +167,7 @@
 			font-size: 1.5em;
 			width: 1.75em;
 			text-align: center;
-			caret-color: orangered;
+			caret-color: $color-magic-orange;
 			outline: 1px solid rgba(tan, 0);
 			transition: all .25s ease-out;
 			padding: 0;
@@ -176,7 +181,7 @@
 				transition-duration: 0s;
 			}
 			&:focus {
-				outline: 2px solid orangered;
+				outline: 2px solid $color-magic-orange;
 			}
 		}
 	}
