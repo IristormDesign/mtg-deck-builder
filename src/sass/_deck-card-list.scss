@@ -7,7 +7,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: rgba(tan, .25);
+		background: rgba(#fff, .2);
 		font-style: italic;
 	}
 	.labels {
@@ -88,7 +88,7 @@
 			}
 			&.black {
 				@include box-shadow-hover-card-button(
-					darken($color-mana-black, 50%)
+					saturate(darken($color-mana-black, 50%), 12.5%)
 				);
 			}
 			&.red {
@@ -108,7 +108,7 @@
 			}
 		}
 		&:active {
-			transform: scale(.99);
+			transform: scale(1);
 		}
 		&.white {
 			background: $color-frame-white;
@@ -161,27 +161,25 @@
 			margin: 0 2px 0 .375em;
 		}
 		input {
-			color: #fff;
+			color: $color-text;
 			background: transparent;
 			border: 0;
 			font-size: 1.5em;
 			width: 1.75em;
 			text-align: center;
-			caret-color: $color-magic-orange;
-			outline: 1px solid rgba(tan, 0);
-			transition: all .25s ease-out;
+			outline: 1px solid rgba($color-mythic-orange, 0);
+			transition: all .2s ease-out;
 			padding: 0;
 			font-weight: 500;
 
 			&:hover,
 			&:focus {
-				background: rgba(#000, .667);
+				background: rgba(#000, .5);
 				color: #fff;
-				outline-color: tan;
 				transition-duration: 0s;
 			}
 			&:focus {
-				outline: 2px solid $color-magic-orange;
+				outline: 2px solid $color-mythic-orange;
 			}
 		}
 	}

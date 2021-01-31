@@ -12,7 +12,7 @@
 		display: none;
 		margin: 0;
 		padding: 0;
-		border: 3px solid $color-magic-orange;
+		border: 3px solid $color-mythic-orange;
 		overflow: hidden;
 		position: absolute;
 		top: 3.5em;
@@ -37,7 +37,7 @@
 		transition: all .125s ease;
 	}
 	a {
-		color: $color-magic-orange;
+		color: $color-mythic-orange;
 
 		&:hover,
 		&:focus {
@@ -45,7 +45,7 @@
 			background: #fff;
 		}
 		&:active {
-			background: $color-magic-orange;
+			background: $color-mythic-orange;
 			color: #fff;
 		}
 	}

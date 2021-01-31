@@ -8,16 +8,16 @@
 }
 * {
 	transition: outline .25s ease;
-	outline: 2px solid rgba($color-magic-orange, 0);
+	outline: 2px solid rgba($color-mythic-orange, 0);
 }
 *:focus {
 	outline: 0;
 }
 *:focus-visible {
-	outline: 2px solid $color-magic-orange;
+	outline: 2px solid $color-mythic-orange;
 }
 a {
-	color: $color-magic-orange;
+	color: $color-mythic-orange;
 	text-decoration: none;
 
 	&:hover {
@@ -28,7 +28,7 @@ a {
 	}
 }
 button {
-	@include button-style(desaturate(peru, 16.7%));
+	@include button-style(lighten($color-content-bg, 20%));
 	cursor: pointer;
 	box-shadow:
 		0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
@@ -46,7 +46,7 @@ button {
 
 	&:hover,
 	&:focus {
-		@include button-style(peru);
+		@include button-style(lighten($color-content-bg, 10%));
 	}
 	&:active {
 		border-top-width: 2px;
@@ -57,20 +57,29 @@ button {
 	}
 	&[type="submit"],
 	&.primary-btn {
-		@include button-style(desaturate($color-magic-orange, 16.7%));
+		@include button-style(desaturate($color-mythic-orange, 16.7%));
 
 		&:hover,
 		&:focus {
-			@include button-style($color-magic-orange);
+			@include button-style($color-mythic-orange);
 		}
 		&:active {
-			@include button-style(darken($color-magic-orange, 6.25%));
+			@include button-style(darken($color-mythic-orange, 6.25%));
 		}
 	}
 	&:disabled {
 		filter: grayscale(.25);
 		opacity: .75;
 		cursor: default;
+	}
+}
+input,
+textarea {
+	caret-color: $color-mythic-orange;
+
+	&::placeholder {
+		color: darken($color-text, 25%);
+		font-style: italic;
 	}
 }
 input {

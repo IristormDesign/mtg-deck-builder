@@ -1,19 +1,28 @@
 .site-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	max-width: $width-site;
 	width: 100%;
-	margin: 0 auto;
-	padding: 0 1.5em;
+	background:
+		radial-gradient(
+			farthest-corner at 20% 100%,
+			lighten($color-mythic-orange, 8.33%) 0%,
+			darken($color-mythic-orange, 16.67%) 100%
+		);
+	border-bottom: 2px solid darken($color-mythic-orange, 16.67%);
 
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1.5em;
+	}
 	h1 {
 		margin: .5em 0;
 		line-height: 1;
 		font-size: 1.5em;
 		
 		a {
-			color: #fff;
+			color: lighten($color-mythic-orange, 37.5%);
+			text-shadow: 0 0 8px rgba(#000, 1);
+			filter: contrast(150%);
 		}
 	}
 }

@@ -1,10 +1,12 @@
 <template>
 	<div id="app">
 		<header class="site-header">
-			<h1>
-				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
-			</h1>
-			<deck-menu @toggleOverlay="toggleOverlay()" />
+			<div class="wrap">
+				<h1>
+					<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
+				</h1>
+				<deck-menu @toggleOverlay="toggleOverlay()" />
+			</div>
 		</header>
 		<main>
 			<router-view />

@@ -1,10 +1,11 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
-// $color-magic-orange: #c7371b; // Actual
-$color-magic-orange: #ea4b12; // Actual
+// $color-mythic-orange: #c7371b; // Actual
+$color-mythic-orange: #ea4b12; // Actual
+$color-mythic-complement: #0CA25E; // From Paletton
 $color-black-label: #0d0f0f; // Actual
-$color-content-bg: darken(desaturate(invert($color-magic-orange, 100%), 75%), 8.33%);
-// $color-content-bg: desaturate(darken($color-magic-orange, 12.5%), 66.67%);
+$color-content-bg: desaturate(darken($color-mythic-complement, 0%), 80%);
+$color-text: lighten($color-content-bg, 62.5%);
 
 $color-mana-white: #f8f6d8; // Actual
 $color-mana-blue: saturate(#c1d7e9, 25%); // Actual
@@ -19,9 +20,9 @@ $color-mana-hybrid: saturate(#ffdb7a, 8.33%);
 $color-frame-white:
 	desaturate(lighten($color-mana-white, 6.25%), 6.25%);
 $color-frame-blue:
-	desaturate(lighten($color-mana-blue, 6.25%), 0%);
+	desaturate(lighten($color-mana-blue, 6.25%), 8.33%);
 $color-frame-black:
-	desaturate(darken($color-mana-black, 6.25%), 8.33%);
+	desaturate(darken($color-mana-black, 6.25%), 6.25%);
 $color-frame-red:
 	desaturate(lighten($color-mana-red, 12.5%), 6.25%);
 $color-frame-green:

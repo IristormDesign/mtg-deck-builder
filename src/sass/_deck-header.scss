@@ -1,7 +1,7 @@
 .deck-header {
 	grid-column: span 7;
 	padding-bottom: .75em;
-	border-bottom: 1px solid tan;
+	border-bottom: 2px solid lighten($color-content-bg, 25%);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -19,7 +19,7 @@
 		&:hover,
 		&:focus {
 			span {
-				color: $color-magic-orange;
+				color: $color-mythic-orange;
 				text-decoration: underline;
 			}
 			small {
