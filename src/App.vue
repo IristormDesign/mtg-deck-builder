@@ -1,29 +1,25 @@
 <template>
 	<div id="app">
-		<header class="site-header">
-			<div class="wrap">
-				<h1>
-					<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
-				</h1>
-				<deck-menu @toggleOverlay="toggleOverlay()" />
-			</div>
-		</header>
+		<site-header />
+
 		<main>
 			<router-view />
 		</main>
+
 		<site-footer />
+
 		<div class="bg-overlay" @click="toggleOverlay(true)"></div>
 	</div>
 </template>
 
 <script>
-import DeckMenu from '@/components/DeckMenu.vue'
+import SiteHeader from '@/components/SiteHeader.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
 	name: 'App',
 	components: {
-		DeckMenu,
+		SiteHeader,
 		SiteFooter
 	},
 	data () {
