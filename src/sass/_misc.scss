@@ -14,7 +14,7 @@
 	$common-mana-symbol-size: 1.375rem;
 
 	border-radius: 50%;
-	min-width: $common-mana-symbol-size;
+	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
 	line-height: .833;
 	margin: 0 .75px;
@@ -40,6 +40,8 @@
 	}
 	&.hybrid {
 		background: $color-mana-hybrid;
-		font-size: .667em;
+		font-size: .625em;
+		line-height: .833 * 1.375;
+		letter-spacing: -0.0625em;
 	}
 }

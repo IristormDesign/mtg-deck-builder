@@ -1,4 +1,4 @@
-@mixin button-style($color) {
+@mixin button-colors($color) {
 	background: linear-gradient(
 		$color 0%,
 		darken($color, 8.33%) 95%,
@@ -28,16 +28,16 @@ a {
 	}
 }
 button {
-	@include button-style(lighten($color-content-bg, 20%));
+	@include button-colors($color-button-default);
 	cursor: pointer;
 	box-shadow:
 		0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
-		-1px .167em .167em rgba(#000, .5); // The shadow of the button
+		-1px .167em .125em 1px rgba(#000, .333); // The shadow of the button
 	border-width: 0px;
 	border-style: outset;
 	border-top-width: 0;
 	border-bottom-width: 2px;
-	color: rgba(#fff, .875);
+	color: #000;
 	border-radius: 12.5% / 1.5em;
 	padding: .375em .5em ;
 	min-width: 4.5em;
@@ -46,7 +46,7 @@ button {
 
 	&:hover,
 	&:focus {
-		@include button-style(lighten($color-content-bg, 10%));
+		@include button-colors(darken($color-button-default, 8.33%));
 	}
 	&:active {
 		border-top-width: 2px;
@@ -57,14 +57,11 @@ button {
 	}
 	&[type="submit"],
 	&.primary-btn {
-		@include button-style(desaturate($color-mythic-orange, 16.7%));
+		@include button-colors($color-button-primary);
 
 		&:hover,
 		&:focus {
-			@include button-style($color-mythic-orange);
-		}
-		&:active {
-			@include button-style(darken($color-mythic-orange, 6.25%));
+			@include button-colors(darken($color-button-primary, 8.33%));
 		}
 	}
 	&:disabled {

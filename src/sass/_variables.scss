@@ -6,6 +6,8 @@ $color-mythic-complement: #0CA25E; // From Paletton
 $color-black-label: #0d0f0f; // Actual
 $color-content-bg: desaturate(darken($color-mythic-complement, 6.25%), 80%);
 $color-text: lighten($color-content-bg, 62.5%);
+$color-button-default: lighten($color-content-bg, 50%);
+$color-button-primary: lighten($color-mythic-orange, 12.5%);
 
 $color-mana-white: #f8f6d8; // Actual
 $color-mana-blue: saturate(#c1d7e9, 25%); // Actual
