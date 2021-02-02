@@ -51,8 +51,10 @@ main {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
-	transition: opacity .5s ease;
-	background: rgba(lighten(#000, 12.5%), .3820); 
+	transition: opacity .25s ease-out;
+	background: rgba(lighten(#000, 12.5%), .5);
 	z-index: 3;
-	cursor: pointer;
+}
+.overlay-enter, .overlay-leave-to {
+  opacity: 0;
 }
