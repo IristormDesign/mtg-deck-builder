@@ -5,7 +5,7 @@
 				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
 
-			<deck-menu @toggleOverlay="toggleOverlay()" />
+			<deck-menu @click="store.commit('toggleOverlay')" />
 		</div>
 	</header>
 </template>

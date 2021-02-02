@@ -8,7 +8,9 @@
 
 		<site-footer />
 
-		<div class="bg-overlay" @click="toggleOverlay(true)"></div>
+		<div
+			v-show="$store.state.showOverlay" class="bg-overlay" @click="$store.commit('toggleOverlay', false)"
+		></div>
 	</div>
 </template>
 
@@ -147,18 +149,6 @@ export default {
 		}
 		if (!localStorage.getItem('sortProperty')) {
 			localStorage.setItem('sortProperty', 'type')
-		}
-	},
-	methods: {
-		toggleOverlay (directClick) {
-			const overlay = document.querySelector('.bg-overlay')
-			const deckMenu = document.querySelector('.deck-menu ul')
-
-			overlay.classList.toggle('show')
-
-			if (directClick) {
-				deckMenu.classList.remove('show')
-			}
 		}
 	},
 	watch: {

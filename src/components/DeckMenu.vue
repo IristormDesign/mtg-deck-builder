@@ -46,7 +46,8 @@ export default {
 
 			deckMenu.classList.toggle('show')
 
-			this.$emit('toggleOverlay')
+			// this.$emit('toggleOverlay')
+			this.$store.commit('toggleOverlay')
 		},
 		createDeck (failedName, existingDeckName) {
 			const get = this.$store.getters

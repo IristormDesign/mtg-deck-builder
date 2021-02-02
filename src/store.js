@@ -8,7 +8,8 @@ export default new Vuex.Store({
 		decks: JSON.parse(localStorage.getItem('decks')),
 		deletedDeckName: null,
 		alertNameTooLong: '⚠ That deck name is too long. Please make it have fewer than 50 characters.',
-		sortProperty: localStorage.getItem('sortProperty')
+		sortProperty: localStorage.getItem('sortProperty'),
+		showOverlay: false
 	},
 	getters: {
 		alertNameExists: () => (name) => {
@@ -36,6 +37,23 @@ export default new Vuex.Store({
 		},
 		setSortProperty (state, payload) {
 			state.sortProperty = payload
+		},
+		toggleOverlay (state, payload) {
+			if (payload) { // Should be a boolean
+				state.showOverlay = payload
+			} else {
+				if (state.showOverlay === true) {
+					state.showOverlay = false
+				} else {
+					state.showOverlay = true
+				}
+			}
+
+			if (state.showOverlay === false) {
+				const deckMenu = document.querySelector('.deck-menu ul')
+
+				deckMenu.classList.remove('show')
+			}
 		}
 	},
 	actions: {

@@ -52,13 +52,7 @@ main {
 	height: 100vh;
 	position: fixed;
 	transition: opacity .5s ease;
-	opacity: 0;
-	background: rgba(lighten(#000, 12.5%), .25); 
-	z-index: -1;
+	background: rgba(lighten(#000, 12.5%), .3820); 
+	z-index: 3;
 	cursor: pointer;
-
-	&.show {
-		z-index: 3;
-		opacity: 1;
-	}
 }
