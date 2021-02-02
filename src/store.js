@@ -7,7 +7,7 @@ export default new Vuex.Store({
 	state: {
 		decks: JSON.parse(localStorage.getItem('decks')),
 		deletedDeckName: null,
-		alertNameTooLong: '⚠ That deck name is too long. Please make it have fewer than 50 characters.',
+		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		sortProperty: localStorage.getItem('sortProperty'),
 		showOverlay: false
 	},
@@ -28,7 +28,7 @@ export default new Vuex.Store({
 				.replace(/-{2,}/g, '-') // Replace multiple hyphens in a row with a single hyphen.
 		},
 		curlApostrophes: () => (string) => {
-			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one instead.
+			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one.
 		}
 	},
 	mutations: {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
 			state.sortProperty = payload
 		},
 		toggleOverlay (state, payload) {
-			if (payload) { // Should be a boolean
+			if (payload) { // Payload should be a boolean
 				state.showOverlay = payload
 			} else {
 				if (state.showOverlay === true) {
@@ -48,10 +48,8 @@ export default new Vuex.Store({
 					state.showOverlay = true
 				}
 			}
-
 			if (state.showOverlay === false) {
 				const deckMenu = document.querySelector('.deck-menu ul')
-
 				deckMenu.classList.remove('show')
 			}
 		}
