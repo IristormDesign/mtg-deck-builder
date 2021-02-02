@@ -71,8 +71,11 @@ export default {
 			if (hour < 12) {
 				meridiem = 'a.m.'
 			} else {
-				hour = hour - 12
 				meridiem = 'p.m.'
+
+				if (hour > 12) {
+					hour -= 12
+				}
 			}
 
 			if (hour === '0') {
