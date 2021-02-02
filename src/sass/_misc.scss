@@ -40,8 +40,9 @@
 	}
 	&.hybrid {
 		background: $color-mana-hybrid;
-		font-size: .625em;
-		line-height: .833 * 1.375;
+		font-size: .5em;
+		line-height: 1.75;
 		letter-spacing: -0.0625em;
+		text-align: center;
 	}
 }
