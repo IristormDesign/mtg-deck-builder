@@ -67,3 +67,18 @@
 		font-size: .875em;
 	}
 }
+.average-cmc {
+	display: flex;
+	align-items: center;
+	margin: 0 1.5em;
+	
+	h3 {
+		text-align: right;
+		margin-right: .5em;
+		line-height: 1.125;
+	}
+	.amount {
+		font-size: 2em;
+		line-height: 1;
+	}
+}

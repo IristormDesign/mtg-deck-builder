@@ -4,6 +4,7 @@
 			<article v-if="$route.params.deckPath == deck.path">
 				<header class="deck-header">
 					<deck-name :deck="deck" />
+					<deck-average-cmc :deck="deck" />
 					<deck-date-edited :deck="deck" />
 					<deck-actions :deck="deck" />
 				</header>
@@ -24,6 +25,7 @@
 
 <script>
 import DeckName from './DeckName.vue'
+import DeckAverageCmc from './DeckAverageCmc.vue'
 import DeckDateEdited from './DeckDateEdited.vue'
 import DeckActions from './DeckActions.vue'
 
@@ -39,6 +41,7 @@ export default {
 	name: 'deck',
 	components: {
 		DeckName,
+		DeckAverageCmc,
 		DeckDateEdited,
 		DeckActions,
 		DeckCardDisplay,
