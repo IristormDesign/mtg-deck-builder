@@ -1,9 +1,11 @@
 <template>
-	<h2>
+	<h2 class="deck-name">
 		<button
-			@click="renameDeck(deck.name)" class="rename-btn"
+			@click="renameDeck(deck.name)"
 			title="Change the name of this deck"
-		><span>{{ deck.name }}</span> <small>Rename</small></button>
+		>
+			<span>{{ deck.name }}</span> <small>Rename</small>
+		</button>
 	</h2>
 </template>
 

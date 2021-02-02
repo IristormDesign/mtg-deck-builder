@@ -6,8 +6,23 @@
 	align-items: center;
 	justify-content: space-between;
 	text-align: center;
-	
-	.rename-btn {
+
+	h3 {
+		margin: 0;
+		text-transform: uppercase;
+		font-size: .667em;
+		line-height: 1;
+	}
+	.date {
+		line-height: 1.5 * .75;
+		font-size: .875em;
+	}
+}
+.deck-name {
+	margin: 0;
+	flex-grow: 1;
+
+	button {
 		padding: 0;
 		background: none;
 		border: 0;
@@ -30,31 +45,16 @@
 		small {
 			transition: all .25s ease;
 		}
+		span {
+			@include heading-font;
+			text-align: left;
+		}
 		small {
 			opacity: 0;
 			font-size: .667em;
 			font-family: $font-family-standard;
 			padding-left: .5em;
 		}	
-	}
-	h2 {
-		margin: 0;
-		flex-grow: 1;
-
-		span {
-			@include heading-font;
-			text-align: left;
-		}
-	}
-	h3 {
-		margin: 0;
-		text-transform: uppercase;
-		font-size: .667em;
-		line-height: 1;
-	}
-	.date {
-		line-height: 1.5 * .75;
-		font-size: .875em;
 	}
 }
 .deck-actions {
