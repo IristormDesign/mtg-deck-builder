@@ -60,30 +60,17 @@ export default {
 			else if (g) return 'green'
 		},
 		styleManaSymbols (card) {
+			const symbol = this.$store.state.manaSymbol
+
 			return card.mana
-				.replaceAll(
-					RegExp('{W}', 'g'),
-					'<span class="mana-symbol white">W</span>'
-				)
-				.replaceAll(
-					RegExp('{U}', 'g'),
-					'<span class="mana-symbol blue">U</span>'
-				)
-				.replaceAll(
-					RegExp('{B}', 'g'),
-					'<span class="mana-symbol black">B</span>'
-				)
-				.replaceAll(
-					RegExp('{R}', 'g'),
-					'<span class="mana-symbol red">R</span>'
-				)
-				.replaceAll(
-					RegExp('{G}', 'g'),
-					'<span class="mana-symbol green">G</span>'
-				)
+				.replaceAll(RegExp('{W}', 'g'), symbol.w)
+				.replaceAll(RegExp('{U}', 'g'), symbol.u)
+				.replaceAll(RegExp('{B}', 'g'), symbol.b)
+				.replaceAll(RegExp('{R}', 'g'), symbol.r)
+				.replaceAll(RegExp('{G}', 'g'), symbol.g)
 				.replaceAll(
 					RegExp('{(./.)}', 'g'), // Find hybrid mana symbols (like `{G/W}`). The parentheses in the regex mark the variable `$1`.
-					'<span class="mana-symbol hybrid">$1</span>'
+					'<span class="mana-symbol hybrid" title="Hybrid mana">$1</span>'
 				)
 				.replaceAll(
 					RegExp('{(.)}', 'g'), // Find any single character directly between a pair of curly brackets. This catches all other mana symbols that the previous regex replacements have missed.

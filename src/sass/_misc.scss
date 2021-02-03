@@ -11,17 +11,19 @@
 	}
 }
 .mana-symbol {
-	$common-mana-symbol-size: 1.375rem;
+	$common-mana-symbol-size: 1em;
 
 	border-radius: 50%;
 	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
-	line-height: .833;
-	margin: 0 .75px;
+	line-height: 1.5 * .625;
+	margin: 0 (1em/32);
 	text-align: center;
 	box-shadow: inset .25px -1px 0px 0.5px rgba(#000, .75);
 	background: $color-mana-generic;
-	overflow: hidden;
+	color: #000;
+	display: inline-block;
+	cursor: default;
 	
 	&.white {
 		background: $color-mana-white;
@@ -41,8 +43,9 @@
 	&.hybrid {
 		background: $color-mana-hybrid;
 		font-size: .5em;
-		line-height: 1.75;
-		letter-spacing: -0.0625em;
+		width: 2em;
+		height: 2em;
+		line-height: 2;
 		text-align: center;
 	}
 }

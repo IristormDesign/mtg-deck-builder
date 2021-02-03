@@ -1,0 +1,59 @@
+<template>
+	<div class="deck-colors">
+		<h3>Using colors</h3>
+		<div class="output" v-html="deckColors()"></div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: 'deck-colors',
+	props: {
+		deck: Object
+	},
+	methods: {
+		deckColors () {
+			const deckColors = []
+
+			this.deck.cards.forEach(card => {
+				card.colors.forEach(color => {
+					if (!deckColors.includes(color)) { // Don't repeat colors already counted.
+						deckColors.push(color)
+					}
+				})
+			})
+			deckColors.sort((a, b) => {
+				const colorOrder = ['W', 'U', 'B', 'R', 'G']
+				const colorA = colorOrder.indexOf(a)
+				const colorB = colorOrder.indexOf(b)
+
+				if (colorA > colorB) return 1
+				else if (colorA < colorB) return -1
+			})
+
+			let htmlOutput = ''
+			const symbol = this.$store.state.manaSymbol
+
+			deckColors.forEach(color => {
+				if (color === 'W') {
+					htmlOutput += symbol.w
+				} else if (color === 'U') {
+					htmlOutput += symbol.u
+				} else if (color === 'B') {
+					htmlOutput += symbol.b
+				} else if (color === 'R') {
+					htmlOutput += symbol.r
+				} else if (color === 'G') {
+					htmlOutput += symbol.g
+				}
+			})
+
+			if (htmlOutput === '') {
+				htmlOutput = '0'
+			}
+
+			return htmlOutput
+		}
+	}
+}
+</script>

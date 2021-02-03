@@ -82,3 +82,20 @@
 		line-height: 1;
 	}
 }
+.deck-colors {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 0 .75em;
+	
+	h3 {
+		text-align: right;
+		margin-bottom: .375em;
+	}
+	.output {
+		font-size: 1.5em;
+		line-height: 1;
+		height: 1em; // Needed to maintain height in case no mana symbols are present.
+	}
+}

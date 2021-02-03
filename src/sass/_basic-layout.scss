@@ -55,6 +55,7 @@ main {
 	background: rgba(lighten(#000, 12.5%), .5);
 	z-index: 3;
 }
-.overlay-enter, .overlay-leave-to {
+.overlay-enter,
+.overlay-leave-to {
   opacity: 0;
 }

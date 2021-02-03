@@ -9,7 +9,14 @@ export default new Vuex.Store({
 		deletedDeckName: null,
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		sortProperty: localStorage.getItem('sortProperty'),
-		showOverlay: false
+		showOverlay: false,
+		manaSymbol: {
+			w: '<span class="mana-symbol white" title="White mana">W</span>',
+			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
+			b: '<div class="mana-symbol black" title="Black mana">B</div>',
+			r: '<div class="mana-symbol red" title="Red mana">R</div>',
+			g: '<div class="mana-symbol green" title="Green mana">G</div>'
+		}
 	},
 	getters: {
 		alertNameExists: () => (name) => {
