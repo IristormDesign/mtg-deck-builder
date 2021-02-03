@@ -17,6 +17,7 @@
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
 		padding: 0 .5em;
+		color: #fff;
 
 		.button-group {
 			display: flex;
@@ -87,7 +88,7 @@
 			}
 			&.black {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-black, 50%), 12.5%)
+					saturate(darken($color-mana-black, 50%), 25%)
 				);
 			}
 			&.red {

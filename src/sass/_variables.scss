@@ -9,18 +9,17 @@ $color-text: lighten($color-content-bg, 62.5%);
 $color-button-default: lighten($color-content-bg, 50%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 
-$color-mana-white: #f8f6d8; // Actual
+$color-mana-white: lighten(#f8f6d8, 6.25%); // Actual
 $color-mana-blue: saturate(#c1d7e9, 25%); // Actual
-// $color-mana-black: saturate(#bab1ab, 8.33%); // Actual
-$color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 62.5%);
-$color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 6.25%); // From Paletton, compliment to white mana.
+// $color-mana-black: #bab1ab; // Actual
+$color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 8.33%); // From Paletton, compliment to white mana.
 $color-mana-red: saturate(#e49977, 8.33%); // Actual
-$color-mana-green: saturate(#a3c095, 8.33%); // Actual
+$color-mana-green: saturate(#a3c095, 12.5%); // Actual
 $color-mana-generic: #cac5c0; // Actual
-$color-mana-hybrid: saturate(#ffdb7a, 8.33%);
+$color-mana-hybrid: saturate(#ffdb7a, 12.5%);
 
 $color-frame-white:
-	desaturate(lighten($color-mana-white, 6.25%), 6.25%);
+	saturate(lighten($color-mana-white, 0%), 75%);
 $color-frame-blue:
 	desaturate(lighten($color-mana-blue, 6.25%), 8.33%);
 $color-frame-black:

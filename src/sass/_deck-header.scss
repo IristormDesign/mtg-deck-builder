@@ -98,4 +98,7 @@
 		line-height: 1;
 		height: 1em; // Needed to maintain height in case no mana symbols are present.
 	}
+	.mana-symbol {
+		cursor: default;
+	}
 }
