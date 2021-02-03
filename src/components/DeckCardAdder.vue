@@ -6,15 +6,11 @@
 		>
 			<label for="card-input">Add a new card to this deck:</label>
 			<input
-				type="text"
-				id="card-input"
-				ref="first"
-				v-model="cardName"
-				@focus="clearStatus()"
-				@keypress="clearStatus()"
+				type="text" id="card-input" ref="first" v-model="cardName"
+				@focus="clearStatus()" @keypress="clearStatus()"
 				:class="{ 'has-error': submitting && invalidName }"
 				placeholder="(Enter a card’s name here.)"
-			>
+			/>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
 		</form>
 		<div class="message">
