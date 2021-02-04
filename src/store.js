@@ -11,7 +11,7 @@ export default new Vuex.Store({
 		sortProperty: localStorage.getItem('sortProperty'),
 		showOverlay: false,
 		manaSymbol: {
-			w: '<span class="mana-symbol white" title="White mana">W</span>',
+			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
 			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
 			b: '<div class="mana-symbol black" title="Black mana">B</div>',
 			r: '<div class="mana-symbol red" title="Red mana">R</div>',

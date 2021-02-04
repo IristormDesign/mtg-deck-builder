@@ -29,6 +29,8 @@
 				}
 				&:nth-of-type(2) {
 					width: 20%;
+					text-align: right;
+					padding-right: 3.5em;
 				}
 				&:nth-of-type(3) {
 					width: 40%;
@@ -49,6 +51,16 @@
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
 		margin: 1px 0;
+
+		&:hover {
+			.qty {
+				input {
+					transition: none;
+					color: lighten($color-mythic-orange, 6.25%);
+					text-shadow: 0 0 2px rgba(#000, .75);
+				}
+			}
+		}
 	}
 	.card-button {
 		background: $color-frame-generic;
@@ -137,11 +149,11 @@
 		color: inherit;
 	}
 	.mana {
-		text-align: left;
-		width: 20%;
+		width: 15%;
+		padding-right: 1em;
 		display: flex;
 		align-items: center;
-		font-weight: 500;
+		justify-content: flex-end;
 		font-size: 1.25em;
 	}
 	.type {
@@ -154,14 +166,14 @@
 		display: flex;
 		align-items: center;
 		line-height: 1;
-		
+
 		> span {
 			font-size: 1.25em;
 			margin-right: -.125em;
 			margin: 0 2px 0 .375em;
 		}
 		input {
-			color: $color-text;
+			color: #fff;
 			background: transparent;
 			border: 0;
 			font-size: 1.5em;
