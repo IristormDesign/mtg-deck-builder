@@ -1,7 +1,8 @@
 <template>
 	<div class="card-total">
-		<h3>Total cards:</h3>
-		<div class="amount">
+		<h3>Total cards</h3>
+
+		<div class="output">
 			{{ totalCards() }}
 			<span
 				class="warning-symbol" v-show="totalCards() < 60"

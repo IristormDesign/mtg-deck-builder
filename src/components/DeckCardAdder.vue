@@ -1,18 +1,16 @@
 <template>
-	<div class="card-adder">
-		<form
-			@submit.prevent="handleSubmit()"
-			title="Tip: You can add a randomly selected card by entering “[random]” as the card name."
-		>
-			<label for="card-input">Add a new card to this deck:</label>
-			<input
-				type="text" id="card-input" ref="first" v-model="cardName"
-				@focus="clearStatus()" @keypress="clearStatus()"
-				:class="{ 'has-error': submitting && invalidName }"
-				placeholder="(Enter a card’s name here.)"
-			/>
-			<button class="primary-btn" :disabled="delay">Add Card</button>
-		</form>
+	<form
+		class="card-adder" @submit.prevent="handleSubmit()"
+		title="Tip: You can add a randomly selected card by entering “[random]” as the card name."
+	>
+		<label for="card-input">Add a new card to this deck:</label>
+		<input
+			type="text" id="card-input" ref="first" v-model="cardName"
+			@focus="clearStatus()" @keypress="clearStatus()"
+			:class="{ 'has-error': submitting && invalidName }"
+			placeholder="(Enter a card’s name here.)"
+		/>
+		<button class="primary-btn" :disabled="delay">Add Card</button>
 		<div class="message">
 			<span v-if="error && submitting" class="error-message">
 				🛑 One or more form fields are invalid.
@@ -21,7 +19,7 @@
 				✅ The card is now added to the deck.
 			</span>
 		</div>
-	</div>
+	</form>
 </template>
 
 <script>

@@ -13,9 +13,9 @@ export default new Vuex.Store({
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
 			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
-			b: '<div class="mana-symbol black" title="Black mana">B</div>',
-			r: '<div class="mana-symbol red" title="Red mana">R</div>',
-			g: '<div class="mana-symbol green" title="Green mana">G</div>'
+			b: '<span class="mana-symbol black" title="Black mana">B</span>',
+			r: '<span class="mana-symbol red" title="Red mana">R</span>',
+			g: '<span class="mana-symbol green" title="Green mana">G</span>'
 		}
 	},
 	getters: {

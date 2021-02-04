@@ -1,6 +1,5 @@
 .deck-list {
 	grid-column:  3 / 8;
-	padding-top: .375em;
 
 	.no-cards {
 		height: 100%;
@@ -69,7 +68,7 @@
 		justify-content: space-between;
 		margin: 0;
 		padding: 0 .5em;
-		border-radius: .5em / 50%;
+		border-radius: 1.5em / 3em;
 		border: none;
 		box-shadow: $box-shadows-card-button;
 		transition: all .2s ease-out;

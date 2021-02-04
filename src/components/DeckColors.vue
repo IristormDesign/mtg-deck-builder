@@ -49,7 +49,7 @@ export default {
 			})
 
 			if (htmlOutput === '') {
-				htmlOutput = '0'
+				htmlOutput = '<span class="no-colors">0</span>'
 			}
 
 			return htmlOutput

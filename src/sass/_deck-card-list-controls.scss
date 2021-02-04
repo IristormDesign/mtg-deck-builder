@@ -1,7 +1,7 @@
 .card-list-controls {
 	grid-column: 3 / 8;
 	display: flex;
-	padding: 0 .75em .167em;
+	padding: 0 .75em;
 	background: darken($color-content-bg, 12.5%);
 	height: 4.5em;
 	align-items: center;
@@ -23,13 +23,10 @@
 	}
 }
 .card-adder {
-	form {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-gap: 0 1px;
-		margin-right: 1.5em;
-		width: 100%;
-	}
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 0 1px;
+	
 	label {
 		grid-column: span 3;
 	}
@@ -77,20 +74,12 @@
 		cursor: pointer;
 	}
 }
-.card-total {
-	text-align: center;
+.deck-actions {
+	display: flex;
 
-	h3 {
-		margin: 0;
-		font-size: .833em;
-	}
-	.amount {
-		font-size: 1.75em;
-		font-weight: 500;
-		line-height: 1;
-
-		span {
-			font-size: .833em;
-		}
+	button {
+		height: 2em;
+		margin-left: 1em;
+		font-size: .875em;
 	}
 }

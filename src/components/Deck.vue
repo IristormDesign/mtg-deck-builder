@@ -7,7 +7,7 @@
 					<deck-colors :deck="deck" />
 					<deck-average-cmc :deck="deck" />
 					<deck-date-edited :deck="deck" />
-					<deck-actions :deck="deck" />
+					<deck-card-total :deck="deck" />
 				</header>
 				<div class="deck-main">
 					<deck-card-display :deck="deck" />
@@ -15,7 +15,7 @@
 					<div class="card-list-controls">
 						<deck-card-adder :deck="deck" />
 						<deck-card-sorter :deck="deck" />
-						<deck-card-total :deck="deck" />
+						<deck-actions :deck="deck" />
 					</div>
 				</div>
 				<deck-description :deck="deck" />

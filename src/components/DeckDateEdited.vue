@@ -1,9 +1,9 @@
 <template>
 	<div class="date-edited">
-		<h3>Last Edited On</h3>
+		<h3>Last edited on</h3>
 
-		<div class="date">
-			{{ dateEdited }}, {{ timeEdited }}
+		<div class="output">
+			{{ dateEdited }}<br>{{ timeEdited }}
 		</div>
 	</div>
 </template>

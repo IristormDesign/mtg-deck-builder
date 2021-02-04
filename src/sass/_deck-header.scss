@@ -1,25 +1,41 @@
 .deck-header {
 	grid-column: span 7;
-	padding: .375em 0 1em;
-	border-bottom: 2px solid darken($color-text, 33.33%);
+	padding: .375em 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	text-align: center;
+	margin-bottom: .75em;
+	> div {
+		margin: 0 .5em;
+		display: flex;
+		height: 2.5em;
+		padding: 0 .75em;
+		align-items: center;
+		border-radius: 1.5em / 3em;
+		background: rgba(#000, .25);
 
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 	h3 {
 		margin: 0;
+		margin-right: .75em;
 		text-transform: uppercase;
-		font-size: .667em;
+		font-size: .75em;
 		line-height: 1;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		text-align: right;
 	}
-	.date {
-		line-height: 1.5 * .75;
-		font-size: .875em;
+	.output {
+		line-height: 1;
+		text-align: left;
 	}
 }
 .deck-name {
-	margin: 0;
+	margin: 0 1.5em 0 0;
 	flex-grow: 1;
 
 	button {
@@ -58,47 +74,33 @@
 		}	
 	}
 }
-.deck-actions {
-	display: flex;
-	margin-left: 1em;
-
-	button {
-		margin-left: 1em;
-		font-size: .875em;
+.deck-colors {
+	.output {
+		display: flex;
+	}
+	.no-colors {
+		font-size: 2em;
+	}
+	.mana-symbol {
+		font-size: 1.667em;
+		cursor: default;
 	}
 }
 .average-cmc {
-	display: flex;
-	align-items: center;
-	margin: 0 1.5em;
-	
 	h3 {
-		text-align: right;
-		margin-right: .5em;
-		line-height: 1.125;
-	}
-	.amount {
-		font-size: 2em;
-		line-height: 1;
-	}
-}
-.deck-colors {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-start;
-	margin: 0 .75em;
-	
-	h3 {
-		text-align: right;
-		margin-bottom: .375em;
+		margin-bottom: 0;
 	}
 	.output {
-		font-size: 1.5em;
-		line-height: 1;
-		height: 1em; // Needed to maintain height in case no mana symbols are present.
+		font-size: 2em;
 	}
-	.mana-symbol {
-		cursor: default;
+}
+.date-edited {
+	.output {
+		font-size: .875em;
+	}
+}
+.card-total {
+	.output {
+		font-size: 2em;
 	}
 }
