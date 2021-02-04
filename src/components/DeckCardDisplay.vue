@@ -7,9 +7,9 @@
 			>
 				<transition name="card-browse">
 					<img
-						v-show="deck.viewedCard == card.name"
-						:src="card.img" :key="card.name"
-						width="488" height="680" :alt="card.name"
+						v-if="deck.viewedCard == card.name" :key="card.name"
+						:src="card.img" :alt="card.name"
+						width="488" height="680"
 					/>
 				</transition>
 			</a>

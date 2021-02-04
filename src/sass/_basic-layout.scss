@@ -6,8 +6,8 @@
 body {
 	font: 20px/1.5 $font-family-standard;
 	background: linear-gradient(
-		lighten($color-content-bg, 12.5%) 0%,
-		darken($color-content-bg, 12.5%) 100%
+		lighten($color-content-bg, 8.33%) 0%,
+		darken($color-content-bg, 8.33%) 100%
 	) fixed $color-content-bg;
 	color: $color-text;
 }

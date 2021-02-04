@@ -1,10 +1,10 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
-// $color-mythic-orange: #c7371b; // Actual
 $color-mythic-orange: #ea4b12; // Actual
 $color-mythic-complement: #0CA25E; // From Paletton
 $color-black-label: #0d0f0f; // Actual
-$color-content-bg: desaturate(darken($color-mythic-complement, 6.25%), 80%);
+
+$color-content-bg: desaturate($color-mythic-complement, 80%);
 $color-text: lighten($color-content-bg, 62.5%);
 $color-button-default: lighten($color-content-bg, 50%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
@@ -16,18 +16,18 @@ $color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 8.33%); // From Paletton,
 $color-mana-red: saturate(#e49977, 8.33%); // Actual
 $color-mana-green: saturate(#a3c095, 12.5%); // Actual
 $color-mana-generic: #cac5c0; // Actual
-$color-mana-hybrid: saturate(#ffdb7a, 12.5%);
+$color-mana-hybrid: saturate(#eecb6b, 12.5%);
 
 $color-frame-white:
-	saturate(lighten($color-mana-white, 0%), 75%);
+	desaturate($color-mana-white, 8.33%);
 $color-frame-blue:
-	desaturate(lighten($color-mana-blue, 6.25%), 8.33%);
+	desaturate(lighten($color-mana-blue, 6.25%), 12.5%);
 $color-frame-black:
 	desaturate(darken($color-mana-black, 6.25%), 6.25%);
 $color-frame-red:
 	desaturate(lighten($color-mana-red, 12.5%), 6.25%);
 $color-frame-green:
-	desaturate(lighten($color-mana-green, 12.5%), 6.25%);
+	desaturate(lighten($color-mana-green, 12.5%), 8.33%);
 $color-frame-multicolor:
 	desaturate(lighten($color-mana-hybrid, 8.33%), 16.67%);
 $color-frame-generic:

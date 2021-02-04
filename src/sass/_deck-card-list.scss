@@ -91,11 +91,12 @@
 
 			&.white {
 				@include box-shadow-hover-card-button(
-					$color-mana-white);
+					$color-mana-white
+				);
 			}
 			&.blue {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-blue, 25%), 12.5%)
+					saturate(darken($color-mana-blue, 25%), 25%)
 				);
 			}
 			&.black {
@@ -105,17 +106,17 @@
 			}
 			&.red {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-red, 25%), 12.5%)
+					saturate(darken($color-mana-red, 25%), 25%)
 				);
 			}
 			&.green {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-green, 25%), 12.5%)
+					saturate(darken($color-mana-green, 25%), 25%)
 				);
 			}
 			&.multicolor {
 				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-hybrid, 25%), 12.5%)
+					saturate(darken($color-mana-hybrid, 25%), 25%)
 				);
 			}
 		}
