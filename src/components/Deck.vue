@@ -9,16 +9,18 @@
 					<deck-date-edited :deck="deck" />
 					<deck-card-total :deck="deck" />
 				</header>
-				<div class="deck-main">
+				<div class="card-display-scroll-view">
 					<deck-card-display :deck="deck" />
-					<deck-card-list :deck="deck" />
-					<div class="card-list-controls">
-						<deck-card-adder :deck="deck" />
-						<deck-card-sorter :deck="deck" />
-						<deck-actions :deck="deck" />
+					<div class="deck-main">
+						<deck-description :deck="deck" />
+						<deck-card-list :deck="deck" />
+						<div class="card-list-controls">
+							<deck-card-adder :deck="deck" />
+							<deck-card-sorter :deck="deck" />
+							<deck-actions :deck="deck" />
+						</div>
 					</div>
 				</div>
-				<deck-description :deck="deck" />
 			</article>
 		</div>
 	</div>

@@ -42,14 +42,15 @@ main {
 		position: relative;
 	}
 }
-.deck-main {
+.card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	grid-gap: .75em;
-	border: 2px solid darken($color-text, 33.33%);
-	border-right: 0;
-	border-left: 0;
+	border-top: 2px solid darken($color-text, 33.33%);
 	padding: .75em 0;
+}
+.deck-main {
+	grid-column: 3 / 8;
 }
 .bg-overlay {
 	width: 100vw;

@@ -1,6 +1,7 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
 $color-mythic-orange: #ea4b12; // Actual
+$color-mythic-orange-lighter: saturate(lighten($color-mythic-orange, 8.33%), 50%);
 $color-mythic-complement: #0CA25E; // From Paletton
 $color-black-label: #0d0f0f; // Actual
 
@@ -36,6 +37,7 @@ $color-frame-generic:
 $box-shadows-card-button:
 	inset .75px -1.5px .75px 1px rgba(#000, .667),
 	inset -.75px 1.5px .75px 1px rgba(#fff, .667);
+$text-shadow-colored-text: 0 0 2px rgba(#000, .75);
 
 $width-site: 1440px;
 

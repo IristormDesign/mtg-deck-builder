@@ -1,5 +1,5 @@
 .deck-list {
-	grid-column:  3 / 8;
+	margin-bottom: .75em;
 
 	.no-cards {
 		height: 100%;
@@ -55,8 +55,8 @@
 			.qty {
 				input {
 					transition: none;
-					color: lighten($color-mythic-orange, 6.25%);
-					text-shadow: 0 0 2px rgba(#000, .75);
+					color: $color-mythic-orange-lighter;
+					text-shadow: $text-shadow-colored-text;
 				}
 			}
 		}

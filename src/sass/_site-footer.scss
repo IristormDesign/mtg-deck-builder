@@ -2,7 +2,7 @@
 	font-size: .75em;
 	letter-spacing: (1/256)*1em;
 	background: rgba(#000, .625);
-	color: darken($color-text, 37.5%);
+	color: desaturate(darken($color-text, 37.5%), 6.25%);
 	position: relative;
 	padding: 1.5em 0;
 	margin-top: 1.5em;
