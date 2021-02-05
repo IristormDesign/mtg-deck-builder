@@ -7,7 +7,10 @@
 		<input
 			type="text" id="card-input" ref="first" v-model="cardName"
 			@focus="clearStatus()" @keypress="clearStatus()"
-			:class="{ 'has-error': submitting && invalidName }"
+			:class="{
+				'has-error': submitting && invalidName,
+				'attention': noCards
+			}"
 			placeholder="(Enter a card’s name here.)"
 		/>
 		<button class="primary-btn" :disabled="delay">Add Card</button>
@@ -41,6 +44,9 @@ export default {
 	computed: {
 		invalidName () {
 			return this.cardName === ''
+		},
+		noCards () {
+			return this.deck.cards.length === 0
 		}
 	},
 	methods: {

@@ -40,6 +40,25 @@
 		padding: .125em .25em;
 		width: 100%;
 		height: 100%;
+
+		&.attention:not(:focus) {
+			@keyframes pulsate-input {
+				33.33% {
+					background: darken($color-content-bg, 25%);
+				}
+				100% {
+					background: darken($color-mythic-orange, 25%)
+				}
+			}
+			outline-width: 2px;
+			outline-style: solid;
+			animation-name: pulsate-input;
+			animation-duration: .5s;
+			animation-iteration-count: 20;
+			animation-direction: alternate;
+			animation-timing-function: ease;
+			animation-delay: 5s;
+		}
 	}
 	button {
 		grid-column: span 1;
