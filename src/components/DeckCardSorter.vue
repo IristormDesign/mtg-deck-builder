@@ -1,5 +1,5 @@
 <template>
-	<div class="card-sorter" v-show="deck.cards.length > 0">
+	<div class="card-sorter" v-show="deck.cards.length >= 2">
 		<label for="propSelect">Sort cards by:</label>
 		<select
 			v-model="sortProperty" @change="sortCards()" id="propSelect"

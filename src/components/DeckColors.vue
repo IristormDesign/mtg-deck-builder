@@ -1,5 +1,5 @@
 <template>
-	<div class="deck-colors" v-show="deck.cards.length > 0">
+	<div class="deck-colors">
 		<h3>Using colors</h3>
 		<div class="output" v-html="deckColors()"></div>
 	</div>
