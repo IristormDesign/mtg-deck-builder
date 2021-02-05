@@ -1,5 +1,5 @@
 <template>
-	<div class="card-total">
+	<div class="card-total" v-show="deck.cards.length > 0">
 		<h3>Total cards</h3>
 
 		<div class="output">

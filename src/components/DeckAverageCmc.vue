@@ -1,5 +1,5 @@
 <template>
-	<div class="average-cmc">
+	<div class="average-cmc" v-show="deck.cards.length > 0">
 		<h3>Average conv. <br>mana cost</h3>
 
 		<div class="output">
