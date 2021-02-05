@@ -112,9 +112,12 @@ export default {
 							newCard.colors.unshift('multicolor')
 						}
 						deck.cards.push(newCard)
-						deck.viewedCard = newCard.name
 						this.success = true
 						this.$store.commit('setSortProperty', '')
+
+						this.$nextTick(() => {
+							deck.viewedCard = newCard.name
+						})
 					})
 					.catch(error => {
 						this.error = true
