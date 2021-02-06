@@ -117,20 +117,24 @@ export default {
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')
 						}
+
 						deck.cards.push(newCard)
-						this.success = true
-						this.$store.commit('setSortProperty', '')
 
 						this.$nextTick(() => {
 							deck.viewedCard = newCard.name
+							deck.editDate = new Date()
+							localStorage.setItem(
+								'decks', JSON.stringify(this.$store.state.getDecks)
+							)
+							this.$store.commit('setSortProperty', '')
 						})
+
+						this.success = true
 					})
 					.catch(error => {
 						this.error = true
 						console.log(error)
 					})
-
-				deck.editDate = new Date()
 			}
 		},
 		handleSubmit () {

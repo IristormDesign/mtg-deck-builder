@@ -36,7 +36,7 @@ export default new VueRouter({
 			component: Deck,
 			beforeEnter: (to, from, next) => {
 				// Check that the deck name used in the path is actually valid before going to that path. If it's invalid, go to the "notFound" route instead.
-				const deckExists = store.state.decks.find(
+				const deckExists = store.state.getDecks.find(
 					deck => deck.path === to.params.deckPath
 				)
 				if (deckExists) next()

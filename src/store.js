@@ -5,18 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		decks: JSON.parse(localStorage.getItem('decks')),
-		deletedDeckName: null,
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
-		sortProperty: localStorage.getItem('sortProperty'),
-		showOverlay: false,
+		deletedDeckName: null,
+		getDecks: JSON.parse(localStorage.getItem('decks')),
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
 			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
 			b: '<span class="mana-symbol black" title="Black mana">B</span>',
 			r: '<span class="mana-symbol red" title="Red mana">R</span>',
 			g: '<span class="mana-symbol green" title="Green mana">G</span>'
-		}
+		},
+		showOverlay: false,
+		sortProperty: localStorage.getItem('sortProperty')
 	},
 	getters: {
 		alertNameExists: () => (name) => {
@@ -24,7 +24,7 @@ export default new Vuex.Store({
 		},
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
 		existingDeck: (state) => (testPath) => {
-			return state.decks.find(deck =>
+			return state.getDecks.find(deck =>
 				testPath === deck.path
 			)
 		},

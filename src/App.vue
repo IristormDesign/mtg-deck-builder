@@ -28,7 +28,7 @@ export default {
 	},
 	data () {
 		return {
-			decksLocalStorage: this.$store.state.decks
+			decksLocalStorage: this.$store.state.getDecks
 		}
 	},
 	created () {
@@ -146,8 +146,8 @@ export default {
 					]
 				}
 			]
-			this.$store.state.decks = defaultDecks
-			this.decksLocalStorage = this.$store.state.decks
+			localStorage.setItem('decks', JSON.stringify(defaultDecks))
+			this.$store.state.getDecks = defaultDecks
 		}
 		if (!localStorage.getItem('sortProperty')) {
 			localStorage.setItem('sortProperty', 'type')

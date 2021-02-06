@@ -1,12 +1,12 @@
 <template>
 	<nav class="deck-menu">
-		<div v-if="$store.state.decks.length > 0">
+		<div v-show="$store.state.getDecks.length > 0">
 			<button
 				class="deck-selector primary-btn"
 				@click="toggleDeckMenu()"
 			>Select a Deck to View</button>
 			<ul @blur="toggleDeckMenu()">
-				<li v-for="(deck, i) in $store.state.decks" :key="i">
+				<li v-for="(deck, i) in $store.state.getDecks" :key="i">
 					<div
 						v-if="$route.params.deckPath === deck.path"
 						class="active-tab"
@@ -50,29 +50,30 @@ export default {
 			this.$store.commit('toggleOverlay')
 		},
 		createDeck (failedName, existingDeckName) {
-			const get = this.$store.getters
+			const state = this.$store.state
+			const getters = this.$store.getters
 			let message = 'Name this new deck:'
 			if (existingDeckName) {
-				message = get.alertNameExists(existingDeckName)
+				message = getters.alertNameExists(existingDeckName)
 			}
 			let name = prompt(message, failedName)
 
 			// First edit the given name to remove any excess white space.
 			if (name) {
 				name = name.trim()
-				name = get.curlApostrophes(name)
+				name = getters.curlApostrophes(name)
 			}
 			if (name) { // If the user entered any name...
-				const path = get.stringToPath(name)
-				const deckExists = get.existingDeck(path)
+				const path = getters.stringToPath(name)
+				const deckExists = getters.existingDeck(path)
 
 				if (deckExists) {
 					this.createDeck(failedName, deckExists.name) // Restart.
 				} else if (name.length > 50) {
-					alert(this.$store.state.alertNameTooLong)
+					alert(state.alertNameTooLong)
 					this.createDeck(name) // Restart.
 				} else {
-					this.$store.state.decks.push({
+					state.getDecks.push({
 						name: name,
 						path: path,
 						cards: [],
@@ -80,6 +81,9 @@ export default {
 						description: '',
 						viewedCard: ''
 					})
+					localStorage.setItem(
+						'decks', JSON.stringify(state.getDecks)
+					)
 					this.$router.push({
 						name: 'deck',
 						params: { deckPath: path }

@@ -1,6 +1,6 @@
 <template>
 	<div class="deck">
-		<div v-for="(deck, i) in $store.state.decks" :key="i">
+		<div v-for="(deck, i) in $store.state.getDecks" :key="i">
 			<article v-if="$route.params.deckPath == deck.path">
 				<header class="deck-header">
 					<deck-name :deck="deck" />

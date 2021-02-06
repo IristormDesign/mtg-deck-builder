@@ -49,7 +49,7 @@ export default {
 					makeUniqueDeckName(2)
 				}
 
-				store.state.decks.push({
+				store.state.getDecks.push({
 					name: dupDeckName,
 					path: dupDeckPath,
 					cards: srcDeck.cards,
@@ -58,9 +58,9 @@ export default {
 					viewedCard: srcDeck.viewedCard
 				})
 				localStorage.setItem(
-					'decks', JSON.stringify(store.state.decks)
+					'decks', JSON.stringify(store.state.getDecks)
 				)
-				store.state.decks.find((deck) => {
+				store.state.getDecks.find((deck) => {
 					if (deck.name === dupDeckName) {
 						this.$router.push({
 							name: 'deck',
@@ -76,13 +76,12 @@ export default {
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
-				const remainingDecks = state.decks.filter(
+				const remainingDecks = state.getDecks.filter(
 					deck => deck.name !== deletedDeckName
 				)
-				state.decks = remainingDecks
 				this.$nextTick(() => {
 					localStorage.setItem(
-						'decks', JSON.stringify(state.decks)
+						'decks', JSON.stringify(remainingDecks)
 					)
 				})
 				this.$store.commit('mutateDeletedDeckName', deletedDeckName)

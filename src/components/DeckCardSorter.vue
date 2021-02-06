@@ -32,7 +32,7 @@ export default {
 			const property = this.sortProperty
 			localStorage.setItem('sortProperty', property)
 
-			this.$store.state.decks.forEach(deck => {
+			this.$store.state.getDecks.forEach(deck => {
 				deck.cards.sort((a, b) => {
 					const cardA = a[property]
 					const cardB = b[property]
