@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+	strict: process.env.NODE_ENV !== 'production',
 	state: {
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		deletedDeckName: null,
