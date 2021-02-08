@@ -74,10 +74,7 @@ export default {
 					.get('https://api.scryfall.com/cards/named?fuzzy=' + cardQuery)
 					.then(response => {
 						const rd = response.data
-						const newCard = {
-							link: rd.scryfall_uri,
-							qty: 1
-						}
+						const newCard = {}
 
 						if (rd.card_faces) { // If the card is a double-faced or split card...
 							const rdFace1 = rd.card_faces[0]
@@ -114,22 +111,18 @@ export default {
 						}
 
 						newCard.name = store.state.curlApostrophes(newCard.name)
+						newCard.link = rd.scryfall_uri
+						newCard.qty = 1
 
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')
 						}
 
 						deck.cards.push(newCard)
-
-						this.$nextTick(() => {
-							deck.viewedCard = newCard.name
-							deck.editDate = new Date()
-							store.commit(
-								'setDecks', store.state.getDecks
-							)
-							store.commit('setSortProperty', '')
-						})
-
+						deck.viewedCard = newCard.name
+						deck.editDate = new Date()
+						store.commit('setDecks', store.state.getDecks)
+						store.commit('setSortProperty', '')
 						this.success = true
 					})
 					.catch(error => {
