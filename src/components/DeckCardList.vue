@@ -83,52 +83,57 @@ export default {
 		},
 		validateQty (card) {
 			const store = this.$store
+			const deck = this.deck
 			card.qty = Math.round(card.qty)
 
 			if (store.state.sortProperty === 'qty') {
-				store.commit('setSortProperty', '')
-			}
-
-			if (RegExp(/^Basic Land\b/).test(card.type)) {
-				if (card.qty > 99) {
-					card.qty = 99
-				}
-			} else {
-				if (card.qty > 4) {
-					card.qty = 4
-				}
+				store.commit('setSortProperty', '') // Reset the sort-by select box.
 			}
 
 			if (card.qty <= 0) {
-				setTimeout(() => {
-					const cardName = card.name
-					const confirmRemoval = confirm(`Are you sure you want to remove ${cardName} from the deck?`)
+				const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
 
-					if (confirmRemoval) {
-						const deck = this.deck
-						const cards = deck.cards
-						const cardIndex = cards.indexOf(card)
-						const totalCards = cards.length - 1
+				if (confirmRemoval) {
+					const cards = deck.cards
+					const cardIndex = cards.indexOf(card)
+					const totalCards = cards.length - 1
 
-						// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-						if (deck.viewedCard === cardName && totalCards > 0) {
-							if (cardIndex === totalCards) { // If this card is last in the list...
-								deck.viewedCard = cards[cardIndex - 1].name
-							} else {
-								deck.viewedCard = cards[cardIndex + 1].name
-							}
+					// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
+					if (deck.viewedCard === card.name && totalCards > 0) {
+						if (cardIndex === totalCards) { // If this card is last in the list...
+							deck.viewedCard = cards[cardIndex - 1].name
+						} else {
+							deck.viewedCard = cards[cardIndex + 1].name
 						}
-
-						// Now remove the card from the deck.
-						cards.splice(cardIndex, 1)
-					} else {
-						card.qty = 1
 					}
-				})
+
+					// Now remove the card from the deck.
+					setTimeout(() => {
+						cards.splice(cardIndex, 1)
+						saveChanges() // Needed here when inside `setTimeout()`.
+					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card.
+				} else {
+					card.qty = 1
+				}
+			} else {
+				if (RegExp(/^Basic Land\b/).test(card.type)) {
+					if (card.qty > 99) {
+						card.qty = 99
+						alert('⚠ Having 99 of one type of land is more than plenty, don’t you think?')
+					}
+				} else {
+					if (card.qty > 4) {
+						card.qty = 4
+						alert('⚠ A card cannot have a quantity larger than 4, unless it’s a basic land card.')
+					}
+				}
+				saveChanges()
 			}
 
-			this.deck.editDate = new Date()
-			store.commit('setDecks', store.state.getDecks)
+			function saveChanges () {
+				deck.editDate = new Date()
+				store.commit('setDecks', store.state.getDecks)
+			}
 		}
 	}
 }
