@@ -68,11 +68,11 @@ export default new Vuex.Store({
 				const deckMenu = document.querySelector('.deck-menu ul')
 				deckMenu.classList.remove('show')
 			}
-		},
-		RESTORE_MUTATION: vuexLocalStorage.RESTORE_MUTATION // This is required for vuex-persist.
+		}
+		// RESTORE_MUTATION: vuexLocalStorage.RESTORE_MUTATION // This is required for strict mode in vuex-persist.
 	},
 	actions: {
 	},
-	// strict: process.env.NODE_ENV !== 'production',
 	plugins: [vuexLocalStorage.plugin]
+	// strict: process.env.NODE_ENV !== 'production'
 })
