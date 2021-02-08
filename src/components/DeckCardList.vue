@@ -80,7 +80,7 @@ export default {
 		validateQty (card) {
 			card.qty = Math.round(card.qty)
 
-			if (localStorage.getItem('sortProperty') === 'qty') {
+			if (this.$store.state.sortProperty === 'qty') {
 				this.$store.commit('setSortProperty', '')
 			}
 

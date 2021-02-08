@@ -123,8 +123,8 @@ export default {
 						this.$nextTick(() => {
 							deck.viewedCard = newCard.name
 							deck.editDate = new Date()
-							localStorage.setItem(
-								'decks', JSON.stringify(this.$store.state.getDecks)
+							this.$store.commit(
+								'setDecks', this.$store.state.getDecks
 							)
 							this.$store.commit('setSortProperty', '')
 						})

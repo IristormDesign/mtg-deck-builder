@@ -45,8 +45,6 @@ export default {
 			const deckMenu = document.querySelector('.deck-menu ul')
 
 			deckMenu.classList.toggle('show')
-
-			// this.$emit('toggleOverlay')
 			this.$store.commit('toggleOverlay')
 		},
 		createDeck (failedName, existingDeckName) {
@@ -73,7 +71,8 @@ export default {
 					alert(state.alertNameTooLong)
 					this.createDeck(name) // Restart.
 				} else {
-					state.getDecks.push({
+					const updatedDecks = state.getDecks
+					updatedDecks.push({
 						name: name,
 						path: path,
 						cards: [],
@@ -81,9 +80,8 @@ export default {
 						description: '',
 						viewedCard: ''
 					})
-					localStorage.setItem(
-						'decks', JSON.stringify(state.getDecks)
-					)
+					this.$store.commit('setDecks', updatedDecks)
+
 					this.$router.push({
 						name: 'deck',
 						params: { deckPath: path }

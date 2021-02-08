@@ -10,7 +10,8 @@
 
 		<transition name="overlay">
 			<div
-				v-show="$store.state.showOverlay" class="bg-overlay" @click="$store.commit('toggleOverlay', false)"
+				v-show="$store.state.showOverlay" class="bg-overlay"
+				@click="$store.commit('toggleOverlay', false)"
 			></div>
 		</transition>
 	</div>
@@ -26,13 +27,8 @@ export default {
 		SiteHeader,
 		SiteFooter
 	},
-	data () {
-		return {
-			decksLocalStorage: this.$store.state.getDecks
-		}
-	},
 	created () {
-		if (!this.decksLocalStorage) {
+		if (this.$store.state.getDecks === null) {
 			const defaultDecks = [
 				{
 					name: 'Mana Overload',
@@ -146,20 +142,11 @@ export default {
 					]
 				}
 			]
-			localStorage.setItem('decks', JSON.stringify(defaultDecks))
-			this.$store.state.getDecks = defaultDecks
+			this.$store.commit('setDecks', defaultDecks)
 		}
-		if (!localStorage.getItem('sortProperty')) {
-			localStorage.setItem('sortProperty', 'type')
-		}
-	},
-	watch: {
-		decksLocalStorage: {
-			handler: function (val) {
-				localStorage.setItem('decks', JSON.stringify(val))
-			},
-			deep: true
-		}
+		// if (!localStorage.getItem('sortProperty')) {
+		// 	localStorage.setItem('sortProperty', 'type')
+		// }
 	}
 }
 </script>

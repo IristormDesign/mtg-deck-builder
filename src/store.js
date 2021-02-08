@@ -1,14 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
+const vuexLocalStorage = new VuexPersist({
+	key: 'vuex',
+	storage: window.localStorage
+	// strictMode: true
+})
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	strict: process.env.NODE_ENV !== 'production',
 	state: {
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		deletedDeckName: null,
-		getDecks: JSON.parse(localStorage.getItem('decks')),
+		getDecks: null,
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
 			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
@@ -17,7 +22,7 @@ export default new Vuex.Store({
 			g: '<span class="mana-symbol green" title="Green mana">G</span>'
 		},
 		showOverlay: false,
-		sortProperty: localStorage.getItem('sortProperty')
+		sortProperty: 'type'
 	},
 	getters: {
 		alertNameExists: () => (name) => {
@@ -43,6 +48,9 @@ export default new Vuex.Store({
 		mutateDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
 		},
+		setDecks (state, payload) {
+			state.getDecks = payload
+		},
 		setSortProperty (state, payload) {
 			state.sortProperty = payload
 		},
@@ -60,8 +68,11 @@ export default new Vuex.Store({
 				const deckMenu = document.querySelector('.deck-menu ul')
 				deckMenu.classList.remove('show')
 			}
-		}
+		},
+		RESTORE_MUTATION: vuexLocalStorage.RESTORE_MUTATION // This is required for vuex-persist.
 	},
 	actions: {
-	}
+	},
+	// strict: process.env.NODE_ENV !== 'production',
+	plugins: [vuexLocalStorage.plugin]
 })

@@ -30,7 +30,7 @@ export default {
 	methods: {
 		sortCards () {
 			const property = this.sortProperty
-			localStorage.setItem('sortProperty', property)
+			this.$store.commit('setSortProperty', property)
 
 			this.$store.state.getDecks.forEach(deck => {
 				deck.cards.sort((a, b) => {
@@ -63,8 +63,8 @@ export default {
 		// Using `$store.subscribe` seems to be the only way that gets the <select> element to change its value other than clicking its options.
 		this.$store.subscribe((mutation) => {
 			// `$store.subscribe` will activate when anything in the store is mutated; this `if` statement narrows down to the relevant type and payload.
-			if (mutation.type === 'setSortProperty' && mutation.payload === '') {
-				localStorage.setItem('sortProperty', mutation.payload)
+			if (mutation.type === 'setSortProperty' &&
+				mutation.payload === '') {
 				this.sortProperty = mutation.payload
 			}
 		})

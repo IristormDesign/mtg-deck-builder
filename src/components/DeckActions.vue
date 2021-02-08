@@ -49,7 +49,8 @@ export default {
 					makeUniqueDeckName(2)
 				}
 
-				store.state.getDecks.push({
+				const updatedDecks = store.state.getDecks
+				updatedDecks.push({
 					name: dupDeckName,
 					path: dupDeckPath,
 					cards: srcDeck.cards,
@@ -57,9 +58,8 @@ export default {
 					description: srcDeck.description,
 					viewedCard: srcDeck.viewedCard
 				})
-				localStorage.setItem(
-					'decks', JSON.stringify(store.state.getDecks)
-				)
+				store.commit('setDecks', updatedDecks)
+
 				store.state.getDecks.find((deck) => {
 					if (deck.name === dupDeckName) {
 						this.$router.push({
@@ -80,9 +80,7 @@ export default {
 					deck => deck.name !== deletedDeckName
 				)
 				this.$nextTick(() => {
-					localStorage.setItem(
-						'decks', JSON.stringify(remainingDecks)
-					)
+					this.$store.commit('setDecks', remainingDecks)
 				})
 				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
 				this.$router.replace({ name: 'deckDeleted' })
