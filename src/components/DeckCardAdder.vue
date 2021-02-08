@@ -118,9 +118,11 @@ export default {
 						}
 
 						deck.cards.push(newCard)
-						deck.viewedCard = newCard.name
 						deck.editDate = new Date()
-						store.commit('setDecks', store.state.getDecks)
+						this.$nextTick(() => {
+							deck.viewedCard = newCard.name
+							store.commit('setDecks', store.state.getDecks)
+						})
 						store.commit('setSortProperty', '')
 						this.success = true
 					})
