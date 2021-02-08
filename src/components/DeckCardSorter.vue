@@ -44,11 +44,11 @@ export default {
 							'multicolor',
 							undefined // `undefined` means colorless
 						]
-						const aColor = colorOrder.indexOf(a.colors[0])
-						const bColor = colorOrder.indexOf(b.colors[0])
+						const colorA = colorOrder.indexOf(a.colors[0])
+						const colorB = colorOrder.indexOf(b.colors[0])
 
-						if (aColor > bColor) return 1
-						else if (aColor < bColor) return -1
+						if (colorA > colorB) return 1
+						else if (colorA < colorB) return -1
 					} else if (property === 'qty') {
 						if (cardA > cardB) return -1
 						else if (cardA < cardB) return 1
