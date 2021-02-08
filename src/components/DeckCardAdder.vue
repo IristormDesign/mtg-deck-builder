@@ -52,9 +52,8 @@ export default {
 	methods: {
 		getTheCard (cardName) {
 			const store = this.$store
-			cardName = store.state.curlApostrophes(cardName)
-
 			const deck = this.deck
+			cardName = store.state.curlApostrophes(cardName)
 			const cardExists = deck.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
 			)
