@@ -51,17 +51,17 @@ export default {
 			const store = this.$store
 			let message = 'Name this new deck:'
 			if (existingDeckName) {
-				message = store.getters.alertNameExists(existingDeckName)
+				message = store.state.alertNameExists(existingDeckName)
 			}
 			let name = prompt(message, failedName)
 
 			// First edit the given name to remove any excess white space.
 			if (name) {
 				name = name.trim()
-				name = store.getters.curlApostrophes(name)
+				name = store.state.curlApostrophes(name)
 			}
 			if (name) { // If the user entered any name...
-				const path = store.getters.stringToPath(name)
+				const path = store.state.stringToPath(name)
 				const deckExists = store.getters.existingDeck(path)
 
 				if (deckExists) {

@@ -52,7 +52,7 @@ export default {
 	methods: {
 		getTheCard (cardName) {
 			const store = this.$store
-			cardName = store.getters.curlApostrophes(cardName)
+			cardName = store.state.curlApostrophes(cardName)
 
 			const deck = this.deck
 			const cardExists = deck.cards.find(anyCard =>
@@ -113,7 +113,7 @@ export default {
 							newCard.img = rd.image_uris.normal
 						}
 
-						newCard.name = store.getters.curlApostrophes(newCard.name)
+						newCard.name = store.state.curlApostrophes(newCard.name)
 
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')

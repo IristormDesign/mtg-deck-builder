@@ -24,7 +24,7 @@ export default {
 
 				// It's possible that this copied deck's name could match an existing deck's name. In this case, keep increasing the copy suffix's number by 1 until it no longer matches another deck's name.
 				const makeUniqueDeckName = (copyNum) => {
-					dupDeckPath = store.getters.stringToPath(dupDeckName)
+					dupDeckPath = store.state.stringToPath(dupDeckName)
 
 					if (store.getters.existingDeck(dupDeckPath)) {
 						copyNum++

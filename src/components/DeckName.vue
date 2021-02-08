@@ -17,20 +17,19 @@ export default {
 	},
 	methods: {
 		renameDeck (failedName, deckNameExists) {
-			const deck = this.deck
 			const store = this.$store
 			let message = 'Change the name of this deck:'
 			if (deckNameExists) {
-				message = store.getters.alertNameExists(deckNameExists)
+				message = store.state.alertNameExists(deckNameExists)
 			}
 			let newName = prompt(message, failedName)
 
 			if (newName) {
 				newName = newName.trim()
-				newName = store.getters.curlApostrophes(newName)
+				newName = store.state.curlApostrophes(newName)
 			}
 			if (newName) { // If the user provided any name...
-				const newPath = store.getters.stringToPath(newName)
+				const newPath = store.state.stringToPath(newName)
 				const deckExists = store.getters.existingDeck(newPath)
 				const theActiveDeck = () =>
 					newPath === this.$route.params.deckPath
@@ -39,6 +38,8 @@ export default {
 					alert(store.state.alertNameTooLong)
 					this.renameDeck(newName)
 				} else if (!deckExists || theActiveDeck()) {
+					const deck = this.deck
+
 					deck.name = newName
 					deck.path = newPath
 					deck.editDate = new Date()
