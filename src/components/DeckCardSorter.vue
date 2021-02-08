@@ -29,10 +29,11 @@ export default {
 	},
 	methods: {
 		sortCards () {
+			const store = this.$store
 			const property = this.sortProperty
-			this.$store.commit('setSortProperty', property)
+			store.commit('setSortProperty', property)
 
-			this.$store.state.getDecks.forEach(deck => {
+			store.state.getDecks.forEach(deck => {
 				deck.cards.sort((a, b) => {
 					const cardA = a[property]
 					const cardB = b[property]
@@ -57,6 +58,8 @@ export default {
 					}
 				})
 			})
+
+			store.commit('setDecks', store.state.getDecks)
 		}
 	},
 	mounted () {

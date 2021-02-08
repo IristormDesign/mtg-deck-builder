@@ -15,7 +15,7 @@
 			<ul>
 				<li v-for="card in deck.cards" :key="card.name">
 					<button
-						@click="deck.viewedCard = card.name"
+						@click="viewCard(card)"
 						:class="colorButton(card) + ' card-button'"
 					>
 						<h3 class="name">{{ card.name }}</h3>
@@ -43,6 +43,10 @@ export default {
 		deck: Object
 	},
 	methods: {
+		viewCard (card) {
+			this.deck.viewedCard = card.name
+			this.$store.commit('setDecks', this.$store.state.getDecks)
+		},
 		colorButton (card) {
 			const colors = card.colors
 			const mc = colors.find((c) => c === 'multicolor')
@@ -78,10 +82,11 @@ export default {
 				)
 		},
 		validateQty (card) {
+			const store = this.$store
 			card.qty = Math.round(card.qty)
 
-			if (this.$store.state.sortProperty === 'qty') {
-				this.$store.commit('setSortProperty', '')
+			if (store.state.sortProperty === 'qty') {
+				store.commit('setSortProperty', '')
 			}
 
 			if (RegExp(/^Basic Land\b/).test(card.type)) {
@@ -123,6 +128,7 @@ export default {
 			}
 
 			this.deck.editDate = new Date()
+			store.commit('setDecks', store.state.getDecks)
 		}
 	}
 }

@@ -2,9 +2,8 @@
 	<div class="deck-description">
 		<h3>Deck Description</h3>
 		<textarea
-			v-model="deck.description" maxlength="999"
-			@input="deck.editDate = new Date()"
-			placeholder="(Write a brief explanation about this deck here.)"
+			v-model="deck.description" @change="editedDescription()"
+			maxlength="999" placeholder="(Write a brief explanation about this deck here.)"
 		></textarea>
 	</div>
 </template>
@@ -25,6 +24,13 @@ export default {
 			this.style.height = 'auto'
 			this.style.height = (this.scrollHeight) + 'px'
 		})
+	},
+	methods: {
+		editedDescription () {
+			this.deck.editDate = new Date()
+
+			this.$store.commit('setDecks', this.$store.state.getDecks)
+		}
 	}
 }
 </script>

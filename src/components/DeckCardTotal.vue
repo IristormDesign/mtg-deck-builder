@@ -3,9 +3,9 @@
 		<h3>Total cards</h3>
 
 		<div class="output">
-			{{ totalCards() }}
+			{{ totalCards }}
 			<span
-				class="warning-symbol" v-show="totalCards() < 60"
+				class="warning-symbol" v-show="totalCards < 60"
 				title="The minimum card limit is 60."
 			>⚠</span>
 		</div>
@@ -18,7 +18,7 @@ export default {
 	props: {
 		deck: Object
 	},
-	methods: {
+	computed: {
 		totalCards () {
 			let total = 0
 
@@ -27,7 +27,6 @@ export default {
 					total++
 				}
 			})
-
 			return total
 		}
 	}

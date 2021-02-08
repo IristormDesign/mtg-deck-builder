@@ -48,31 +48,31 @@ export default {
 			this.$store.commit('toggleOverlay')
 		},
 		createDeck (failedName, existingDeckName) {
-			const state = this.$store.state
-			const getters = this.$store.getters
+			const store = this.$store
 			let message = 'Name this new deck:'
 			if (existingDeckName) {
-				message = getters.alertNameExists(existingDeckName)
+				message = store.getters.alertNameExists(existingDeckName)
 			}
 			let name = prompt(message, failedName)
 
 			// First edit the given name to remove any excess white space.
 			if (name) {
 				name = name.trim()
-				name = getters.curlApostrophes(name)
+				name = store.getters.curlApostrophes(name)
 			}
 			if (name) { // If the user entered any name...
-				const path = getters.stringToPath(name)
-				const deckExists = getters.existingDeck(path)
+				const path = store.getters.stringToPath(name)
+				const deckExists = store.getters.existingDeck(path)
 
 				if (deckExists) {
 					this.createDeck(failedName, deckExists.name) // Restart.
 				} else if (name.length > 50) {
-					alert(state.alertNameTooLong)
+					alert(store.state.alertNameTooLong)
 					this.createDeck(name) // Restart.
 				} else {
-					const updatedDecks = state.getDecks
-					updatedDecks.push({
+					const updatedDecksArray = store.state.getDecks
+
+					updatedDecksArray.push({
 						name: name,
 						path: path,
 						cards: [],
@@ -80,7 +80,7 @@ export default {
 						description: '',
 						viewedCard: ''
 					})
-					this.$store.commit('setDecks', updatedDecks)
+					store.commit('setDecks', updatedDecksArray)
 
 					this.$router.push({
 						name: 'deck',

@@ -51,7 +51,8 @@ export default {
 	},
 	methods: {
 		getTheCard (cardName) {
-			cardName = this.$store.getters.curlApostrophes(cardName)
+			const store = this.$store
+			cardName = store.getters.curlApostrophes(cardName)
 
 			const deck = this.deck
 			const cardExists = deck.cards.find(anyCard =>
@@ -112,7 +113,7 @@ export default {
 							newCard.img = rd.image_uris.normal
 						}
 
-						newCard.name = this.$store.getters.curlApostrophes(newCard.name)
+						newCard.name = store.getters.curlApostrophes(newCard.name)
 
 						if (newCard.colors.length >= 2) {
 							newCard.colors.unshift('multicolor')
@@ -123,10 +124,10 @@ export default {
 						this.$nextTick(() => {
 							deck.viewedCard = newCard.name
 							deck.editDate = new Date()
-							this.$store.commit(
-								'setDecks', this.$store.state.getDecks
+							store.commit(
+								'setDecks', store.state.getDecks
 							)
-							this.$store.commit('setSortProperty', '')
+							store.commit('setSortProperty', '')
 						})
 
 						this.success = true
@@ -140,7 +141,7 @@ export default {
 		handleSubmit () {
 			this.clearStatus()
 			this.submitting = true
-			this.delay = true
+			this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 
 			if (this.invalidName) {
 				this.error = true
@@ -167,7 +168,7 @@ export default {
 
 			setTimeout(() => {
 				this.delay = false
-			}, 250) // Scryfall staff doesn't want too many server requests sent too quickly.
+			}, 250)
 		},
 		clearStatus () {
 			this.success = false

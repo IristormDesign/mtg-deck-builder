@@ -29,8 +29,9 @@ export default {
 					if (store.getters.existingDeck(dupDeckPath)) {
 						copyNum++
 
-						dupDeckName = dupDeckName.replace(copySuffixRegex, `(${copyNum})`)
-
+						dupDeckName = dupDeckName.replace(
+							copySuffixRegex, `(${copyNum})`
+						)
 						makeUniqueDeckName(copyNum)
 					}
 				}
@@ -41,16 +42,18 @@ export default {
 
 					copyNum = Number(copyNum[0]) + 1 // Convert `copyNum[0]` from a string into a number type, then increase it by 1.
 
-					dupDeckName = dupDeckName.replace(copySuffixRegex, `(${copyNum})`)
-
+					dupDeckName = dupDeckName.replace(
+						copySuffixRegex, `(${copyNum})`
+					)
 					makeUniqueDeckName(copyNum)
 				} else {
 					dupDeckName += ' (2)'
 					makeUniqueDeckName(2)
 				}
 
-				const updatedDecks = store.state.getDecks
-				updatedDecks.push({
+				const updatedDecksArray = store.state.getDecks
+
+				updatedDecksArray.push({
 					name: dupDeckName,
 					path: dupDeckPath,
 					cards: srcDeck.cards,
@@ -58,7 +61,7 @@ export default {
 					description: srcDeck.description,
 					viewedCard: srcDeck.viewedCard
 				})
-				store.commit('setDecks', updatedDecks)
+				store.commit('setDecks', updatedDecksArray)
 
 				store.state.getDecks.find((deck) => {
 					if (deck.name === dupDeckName) {
@@ -71,18 +74,18 @@ export default {
 			}
 		},
 		deleteDeck (deck) {
-			const state = this.$store.state
+			const store = this.$store
 			const deletedDeckName = deck.name
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
-				const remainingDecks = state.getDecks.filter(
+				const remainingDecks = store.state.getDecks.filter(
 					deck => deck.name !== deletedDeckName
 				)
 				this.$nextTick(() => {
-					this.$store.commit('setDecks', remainingDecks)
+					store.commit('setDecks', remainingDecks)
 				})
-				this.$store.commit('mutateDeletedDeckName', deletedDeckName)
+				store.commit('mutateDeletedDeckName', deletedDeckName)
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		}

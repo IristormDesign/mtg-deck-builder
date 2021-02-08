@@ -3,7 +3,7 @@
 		<h3>Average conv. <br>mana cost</h3>
 
 		<div class="output">
-			{{ averageCmc() }}
+			{{ averageCmc }}
 		</div>
 	</div>
 </template>
@@ -14,7 +14,7 @@ export default {
 	props: {
 		deck: Object
 	},
-	methods: {
+	computed: {
 		averageCmc () {
 			// Any card with a mana cost counts as a spell.
 			const spellsOnly = this.deck.cards.filter(card => card.mana)
