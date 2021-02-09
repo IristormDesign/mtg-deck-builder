@@ -44,7 +44,7 @@ export default {
 					deck.path = newPath
 					deck.editDate = new Date()
 
-					store.commit('setDecks', store.state.getDecks)
+					store.commit('setDecks', store.state.decks)
 
 					if (!theActiveDeck()) {
 						this.$router.replace({

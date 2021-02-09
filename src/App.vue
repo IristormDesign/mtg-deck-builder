@@ -28,7 +28,7 @@ export default {
 		SiteFooter
 	},
 	created () {
-		if (this.$store.state.getDecks === null) {
+		if (this.$store.state.decks === null) {
 			const defaultDecks = [
 				{
 					name: 'Mana Overload',

@@ -51,7 +51,7 @@ export default {
 					makeUniqueDeckName(2)
 				}
 
-				const updatedDecksArray = store.state.getDecks
+				const updatedDecksArray = store.state.decks
 
 				updatedDecksArray.push({
 					name: dupDeckName,
@@ -63,7 +63,7 @@ export default {
 				})
 				store.commit('setDecks', updatedDecksArray)
 
-				store.state.getDecks.find((deck) => {
+				store.state.decks.find((deck) => {
 					if (deck.name === dupDeckName) {
 						this.$router.push({
 							name: 'deck',
@@ -79,7 +79,7 @@ export default {
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
 
 			if (deletionConfirmed) {
-				const remainingDecks = store.state.getDecks.filter(
+				const remainingDecks = store.state.decks.filter(
 					deck => deck.name !== deletedDeckName
 				)
 				this.$nextTick(() => {

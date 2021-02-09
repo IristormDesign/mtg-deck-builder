@@ -45,7 +45,7 @@ export default {
 	methods: {
 		viewCard (card) {
 			this.deck.viewedCard = card.name
-			this.$store.commit('setDecks', this.$store.state.getDecks)
+			this.$store.commit('setDecks', this.$store.state.decks)
 		},
 		colorButton (card) {
 			const colors = card.colors
@@ -132,7 +132,7 @@ export default {
 
 			function saveChanges () {
 				deck.editDate = new Date()
-				store.commit('setDecks', store.state.getDecks)
+				store.commit('setDecks', store.state.decks)
 			}
 		}
 	}

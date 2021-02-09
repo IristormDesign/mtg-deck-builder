@@ -5,7 +5,7 @@ import VuexPersist from 'vuex-persist'
 const vuexLocalStorage = new VuexPersist({
 	storage: window.localStorage,
 	reducer: (state) => ({
-		getDecks: state.getDecks,
+		decks: state.decks,
 		sortProperty: state.sortProperty
 	})
 })
@@ -15,7 +15,7 @@ export default new Vuex.Store({
 	state: {
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		deletedDeckName: null,
-		getDecks: null,
+		decks: null,
 		showOverlay: false,
 		sortProperty: 'type',
 		manaSymbol: {
@@ -41,7 +41,7 @@ export default new Vuex.Store({
 	getters: {
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
 		existingDeck: (state) => (testPath) => {
-			return state.getDecks.find(deck =>
+			return state.decks.find(deck =>
 				testPath === deck.path
 			)
 		}
@@ -51,7 +51,7 @@ export default new Vuex.Store({
 			state.deletedDeckName = payload
 		},
 		setDecks (state, payload) {
-			state.getDecks = payload
+			state.decks = payload
 		},
 		setSortProperty (state, payload) {
 			state.sortProperty = payload

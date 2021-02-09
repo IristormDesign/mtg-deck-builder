@@ -29,7 +29,7 @@ export default {
 		editedDescription () {
 			this.deck.editDate = new Date()
 
-			this.$store.commit('setDecks', this.$store.state.getDecks)
+			this.$store.commit('setDecks', this.$store.state.decks)
 		}
 	}
 }

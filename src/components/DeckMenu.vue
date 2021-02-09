@@ -1,12 +1,12 @@
 <template>
 	<nav class="deck-menu">
-		<div v-show="$store.state.getDecks.length > 0">
+		<div v-show="$store.state.decks.length > 0">
 			<button
 				class="deck-selector primary-btn"
 				@click="toggleDeckMenu()"
 			>Select a Deck to View</button>
 			<ul @blur="toggleDeckMenu()">
-				<li v-for="(deck, i) in $store.state.getDecks" :key="i">
+				<li v-for="(deck, i) in $store.state.decks" :key="i">
 					<div
 						v-if="$route.params.deckPath === deck.path"
 						class="active-tab"
@@ -70,7 +70,7 @@ export default {
 					alert(store.state.alertNameTooLong)
 					this.createDeck(name) // Restart.
 				} else {
-					const updatedDecksArray = store.state.getDecks
+					const updatedDecksArray = store.state.decks
 
 					updatedDecksArray.push({
 						name: name,
