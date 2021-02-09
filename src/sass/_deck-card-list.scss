@@ -5,9 +5,8 @@
 		height: 100%;
 		display: flex;
 		justify-content: center;
-		background: rgba(#fff, .5);
+		background: rgba($color-text, .6667);
 		color: #000;
-		font-size: 1.083em;
 		padding: 3em;
 	}
 	.labels {
@@ -79,7 +78,8 @@
 		line-height: 1;
 		color: #000;
 		outline: 0;
-
+		will-change: transform;
+		
 		&:hover,
 		&:focus {
 			@include box-shadow-hover-card-button(

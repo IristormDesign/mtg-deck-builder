@@ -8,8 +8,7 @@
 			type="text" id="card-input" ref="first" v-model="cardName"
 			@focus="clearStatus()" @keypress="clearStatus()"
 			:class="{
-				'has-error': submitting && invalidName,
-				'attention': noCards
+				'has-error': submitting && invalidName
 			}"
 			placeholder="(Enter a card’s name here.)"
 		/>
@@ -44,10 +43,10 @@ export default {
 	computed: {
 		invalidName () {
 			return this.cardName === ''
-		},
-		noCards () {
-			return this.deck.cards.length === 0
 		}
+		// noCards () {
+		// return this.deck.cards.length === 0
+		// }
 	},
 	methods: {
 		getTheCard (cardName) {

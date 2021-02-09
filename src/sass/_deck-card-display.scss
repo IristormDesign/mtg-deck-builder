@@ -20,14 +20,14 @@
 	animation: card-fan-in .375s ease;
 }
 .card-browse-leave-active {
-	animation: overshadowed .375s ease-out;
+	animation: overshadowed .375s ease;
 }
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
-		transform: rotate(-2.8125deg) translateX(-4.5em) translateY(-.5em);
+		transform: rotate(-5.625deg) translateX(-4.5em) translateY(-.75em);
 	}
-	38.20% {
+	50% {
 		opacity: 1;
 	}
 }
@@ -36,6 +36,6 @@
 		filter: brightness(100%);
 	}
 	100% {
-		filter: brightness(25%);
+		filter: brightness(33.33%);
 	}
 }

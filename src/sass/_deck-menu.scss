@@ -1,61 +1,58 @@
 .deck-menu {
 	display: flex;
 	align-items: center;
+}
+.deck-menu-group {
+	position: relative;
 
-	.deck-selector {
-		font-size: 1em;
-		position: relative;
-		z-index: 4;		
-	}
 	ul {
 		list-style: none;
 		display: none;
 		margin: 0;
 		padding: 0;
-		border: 3px solid $color-mythic-orange;
+		border: 3px solid $color-content-bg;
 		overflow: hidden;
 		position: absolute;
-		top: 3.5em;
-		right: 1em;
+		top: 2.25em;
+		right: 0;
 		z-index: 4;
 		box-shadow: -.125em .5em .75em rgba(#000, .333);
-		background: $color-content-bg;
+		background: darken($color-content-bg, 16.67%);
+		background: darken(desaturate($color-mythic-orange, 25%), 25%);
+		min-width: 100%;
+		border-radius: .75em / 3em;
 
 		&.show {
 			display: block;
 		}
 	}
-	a,
-	.active-tab {
+	a {
 		@include heading-font;
-		padding: .375em;
+		padding: .375em .75em;
 		display: block;
-		width: 24em;
+		max-width: 24em;
 		text-overflow: ellipsis;
 		overflow-x: hidden;
 		white-space: nowrap;
 		transition: all .125s ease;
-	}
-	a {
-		color: $color-mythic-orange;
+		color: $color-text;
 
 		&:hover,
 		&:focus {
 			text-decoration: none;
-			background: #fff;
+			background: darken($color-mythic-orange, 12.5%);
+			color: #fff;
 		}
 		&:active {
 			background: $color-mythic-orange;
-			color: #fff;
+			color: $color-text;
 		}
 	}
-	.active-tab {
-		color: $color-black-label;
-		background: darken($color-content-bg, 12.5%);
-		cursor: default;
-	}
-	.add-new-deck {
-		margin-left: .75em;
-		position: relative;
-	}
+}
+.deck-selector {
+	position: relative;
+	z-index: 4;		
+}
+.add-new-deck {
+	margin-left: 1em;
 }

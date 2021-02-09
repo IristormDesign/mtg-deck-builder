@@ -1,6 +1,7 @@
 <template>
 	<div class="deck-description">
 		<h3>Deck Description</h3>
+
 		<textarea
 			v-model="deck.description" @change="editedDescription()"
 			maxlength="999" placeholder="(Write a brief explanation about this deck here.)"

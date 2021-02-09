@@ -1,18 +1,17 @@
 <template>
 	<nav class="deck-menu">
-		<div v-show="$store.state.decks.length > 0">
+		<div
+			class="deck-menu-group"
+			v-show="$store.state.decks.length >= 1"
+		>
 			<button
-				class="deck-selector primary-btn"
-				@click="toggleDeckMenu()"
-			>Select a Deck to View</button>
+				class="deck-selector" @click="toggleDeckMenu()"
+			>📂 Open Deck</button>
+
 			<ul @blur="toggleDeckMenu()">
 				<li v-for="(deck, i) in $store.state.decks" :key="i">
-					<div
-						v-if="$route.params.deckPath === deck.path"
-						class="active-tab"
-					>{{ deck.name }}</div>
 					<router-link
-						v-else
+						v-if="$route.params.deckPath !== deck.path"
 						:to="{ name: 'deck', params: { deckPath: deck.path } }"
 						@click.native="toggleDeckMenu()"
 					>{{ deck.name }}</router-link>
@@ -20,7 +19,7 @@
 			</ul>
 		</div>
 		<button class="add-new-deck" @click="createDeck()">
-			Create a New Deck
+			➕ New Deck
 		</button>
 	</nav>
 </template>

@@ -5,21 +5,18 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: .75em;
+}
+.deck-info {
+	display: flex;
+	height: 2.5em;
+	padding: 0 .75em;
+	margin-left: .375em;
+	align-items: center;
+	border-radius: 1.5em / 3em;
+	background: rgba(#000, .25);
+	white-space: nowrap;
+	cursor: default;
 
-	> div {
-		margin: 0 .5em;
-		display: flex;
-		height: 2.5em;
-		padding: 0 .75em;
-		align-items: center;
-		border-radius: 1.5em / 3em;
-		background: rgba(#000, .25);
-		white-space: nowrap;
-
-		&:last-child {
-			margin-right: 0;
-		}
-	}
 	h3 {
 		margin: 0;
 		margin-right: .75em;
@@ -33,7 +30,6 @@
 	}
 	.output {
 		line-height: 1;
-		text-align: left;
 	}
 }
 .deck-name {

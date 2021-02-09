@@ -41,30 +41,26 @@
 		width: 100%;
 		height: 100%;
 
-		&.attention:not(:focus) {
+		&.attention {
 			@keyframes pulsate-input {
-				33.33% {
+				0% {
 					background: darken($color-content-bg, 25%);
 				}
 				100% {
-					background: darken($color-mythic-orange, 25%)
+					background: darken($color-mythic-orange, 12.5%);
 				}
 			}
-			outline-width: 2px;
-			outline-style: solid;
 			animation-name: pulsate-input;
 			animation-duration: .5s;
-			animation-iteration-count: 20;
+			animation-iteration-count: 16;
 			animation-direction: alternate;
-			animation-timing-function: ease;
-			animation-delay: 5s;
+			animation-timing-function: ease-in;
 		}
 	}
 	button {
 		grid-column: span 1;
 		height: 100%; // The pixel subtraction is to compensate for the button's box shadow which makes the button seem slightly taller.
-		border-radius: .167em;
-		margin-left: 1px;
+		margin-left: -.375em;
 	}
 	.message {
 		margin-left: .75em;

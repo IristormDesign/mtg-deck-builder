@@ -1,12 +1,12 @@
 <template>
-	<div class="card-total">
+	<div class="deck-info card-total">
 		<h3>Total cards</h3>
 
 		<div class="output">
 			{{ totalCards }}
 			<span
 				class="warning-symbol" v-show="totalCards < 60"
-				title="The minimum card limit is 60."
+				title="The minimum card limit of a deck is 60."
 			>⚠</span>
 		</div>
 	</div>

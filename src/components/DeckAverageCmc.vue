@@ -1,5 +1,5 @@
 <template>
-	<div class="average-cmc">
+	<div class="deck-info average-cmc">
 		<h3>Average conv. <br>mana cost</h3>
 
 		<div class="output">

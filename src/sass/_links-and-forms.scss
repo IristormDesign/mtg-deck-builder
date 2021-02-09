@@ -6,13 +6,6 @@
 	);
 	border-color: $color;
 }
-* {
-	transition: outline .25s ease;
-	outline: 2px solid rgba($color-mythic-orange, 0);
-}
-*:focus {
-	outline: 0;
-}
 *:focus-visible {
 	outline: 2px solid $color-mythic-orange;
 }
@@ -73,7 +66,7 @@ button {
 input,
 textarea {
 	caret-color: $color-mythic-orange;
-
+	
 	&::placeholder {
 		color: darken($color-text, 25%);
 		font-style: italic;

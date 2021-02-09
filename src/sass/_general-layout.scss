@@ -5,9 +5,10 @@
 }
 body {
 	font: 20px/1.5 $font-family-standard;
-	background: linear-gradient(
-		lighten($color-content-bg, 8.33%) 0%,
-		adjust_hue(darken($color-content-bg, 8.33%), 30deg) 100%
+	background: radial-gradient(
+		farthest-corner,
+		lighten($color-content-bg, 12.5%) 0%,
+		adjust_hue(darken($color-content-bg, 12.5%), 30deg) 100%
 	) fixed $color-content-bg;
 	color: $color-text;
 }
@@ -61,7 +62,7 @@ main {
 	height: 100vh;
 	position: fixed;
 	transition: opacity .25s ease-out;
-	background: rgba(darken($color-content-bg, 16.67%), .5);
+	background: rgba(darken($color-content-bg, 25%), .5);
 	z-index: 3;
 }
 .overlay-enter,

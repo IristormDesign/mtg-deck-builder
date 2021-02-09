@@ -1,6 +1,10 @@
 <template>
 	<div class="deck-list">
-		<div v-if="deck.cards.length == 0" class="no-cards">
+		<div
+			v-if="deck.cards.length == 0" class="no-cards"
+			@mouseover="attentionAddCard(true)"
+			@mouseleave="attentionAddCard(false)"
+		>
 			<p>This deck has no cards. (Add a card to start building.)</p>
 		</div>
 		<div v-else>
@@ -46,6 +50,17 @@ export default {
 		viewCard (card) {
 			this.deck.viewedCard = card.name
 			this.$store.commit('setDecks', this.$store.state.decks)
+		},
+		attentionAddCard (doIt) {
+			const cardAdderInput = document.querySelector('#card-input')
+
+			if (doIt) {
+				cardAdderInput.classList.add('attention')
+			} else {
+				setTimeout(() => {
+					cardAdderInput.classList.remove('attention')
+				}, 500)
+			}
 		},
 		colorButton (card) {
 			const colors = card.colors
@@ -119,7 +134,7 @@ export default {
 				if (RegExp(/^Basic Land\b/).test(card.type)) {
 					if (card.qty > 99) {
 						card.qty = 99
-						alert('⚠ Having 99 of one type of land is more than plenty, don’t you think?')
+						alert('⚠ 99 is more than plenty, don’t you think?')
 					}
 				} else {
 					if (card.qty > 4) {
