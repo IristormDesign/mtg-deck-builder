@@ -3,9 +3,11 @@ import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 
 const vuexLocalStorage = new VuexPersist({
-	key: 'vuex',
-	storage: window.localStorage
-	// strictMode: true
+	storage: window.localStorage,
+	reducer: (state) => ({
+		getDecks: state.getDecks,
+		sortProperty: state.sortProperty
+	})
 })
 Vue.use(Vuex)
 
@@ -69,10 +71,8 @@ export default new Vuex.Store({
 				deckMenu.classList.remove('show')
 			}
 		}
-		// RESTORE_MUTATION: vuexLocalStorage.RESTORE_MUTATION // This is required for strict mode in vuex-persist.
 	},
 	actions: {
 	},
 	plugins: [vuexLocalStorage.plugin]
-	// strict: process.env.NODE_ENV !== 'production'
 })
