@@ -11,7 +11,7 @@ export default {
 	name: 'deck-deleted',
 	destroyed () {
 		// When leaving this page, reset the store variable `deletedDeckName` so that router functions work properly.
-		this.$store.commit('mutateDeletedDeckName', null)
+		this.$store.commit('setDeletedDeckName', null)
 	}
 }
 </script>

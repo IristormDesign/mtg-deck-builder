@@ -85,7 +85,7 @@ export default {
 				this.$nextTick(() => {
 					store.commit('setDecks', remainingDecks)
 				})
-				store.commit('mutateDeletedDeckName', deletedDeckName)
+				store.commit('setDeletedDeckName', deletedDeckName)
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		}
