@@ -13,7 +13,8 @@ a {
 	color: $color-mythic-orange;
 	text-decoration: none;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: underline;
 	}
 	&:active {
@@ -40,6 +41,7 @@ button {
 	&:hover,
 	&:focus {
 		@include button-colors(darken($color-button-default, 8.33%));
+		outline: none;
 	}
 	&:active {
 		border-top-width: 2px;

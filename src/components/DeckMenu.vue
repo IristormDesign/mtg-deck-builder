@@ -1,11 +1,10 @@
 <template>
 	<nav class="deck-menu">
-		<div
-			class="deck-menu-group"
-			v-show="$store.state.decks.length >= 1"
-		>
+		<div class="deck-menu-group">
 			<button
 				class="deck-selector" @click="toggleDeckMenu()"
+				:disabled="disableMenuButton"
+				:title="disabledMenuButtonTitle"
 			>📂 Open Deck</button>
 
 			<ul @blur="toggleDeckMenu()">
@@ -18,6 +17,7 @@
 				</li>
 			</ul>
 		</div>
+
 		<button class="add-new-deck" @click="createDeck()">
 			➕ New Deck
 		</button>
@@ -38,6 +38,31 @@ export default {
 				}
 			}
 		}, false)
+	},
+	computed: {
+		disableMenuButton () {
+			if (
+				this.$store.state.decks.length <= 1 &&
+				this.$route.params.deckPath
+			) {
+				return true
+			} else if (this.$store.state.decks.length <= 0) {
+				return true
+			} else {
+				return false
+			}
+		},
+		disabledMenuButtonTitle () {
+			if (this.disableMenuButton) {
+				if (this.$store.state.decks.length <= 0) {
+					return 'You have no more decks. Create a new one!'
+				} else {
+					return 'You currently don’t have another deck.'
+				}
+			} else {
+				return null
+			}
+		}
 	},
 	methods: {
 		toggleDeckMenu () {
