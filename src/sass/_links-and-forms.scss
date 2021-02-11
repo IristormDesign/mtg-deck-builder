@@ -68,6 +68,7 @@ button {
 input,
 textarea {
 	caret-color: $color-mythic-orange;
+	line-height: 1.5;
 	
 	&::placeholder {
 		color: darken($color-text, 25%);
