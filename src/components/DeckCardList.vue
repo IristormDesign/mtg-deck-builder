@@ -16,11 +16,12 @@
 				</div>
 				<div class="qty-group">Quantity</div>
 			</div>
-			<ul>
+
+			<transition-group tag="ul">
 				<li v-for="card in deck.cards" :key="card.name">
 					<button
 						@click="viewCard(card)"
-						:class="colorButton(card) + ' card-button'"
+						:class="[colorButton(card), 'card-button']"
 					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana" v-html="styleManaSymbols(card)"></div>
@@ -35,7 +36,7 @@
 						/>
 					</div>
 				</li>
-			</ul>
+			</transition-group>
 		</div>
 	</div>
 </template>

@@ -51,8 +51,10 @@
 		display: grid;
 		grid-template-columns: repeat(9, 1fr);
 		margin: 2px 0;
+		transition: all .3333s ease;
 
-		&:hover {
+		&:hover,
+		&:focus-within {
 			.qty {
 				input {
 					transition: none;

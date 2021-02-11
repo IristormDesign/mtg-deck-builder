@@ -10,11 +10,11 @@
 	}
 }
 .mana-symbol {
-	$common-mana-symbol-size: 1em;
+	$common-mana-symbol-size: .875em;
 
 	border-radius: 50%;
-	width: $common-mana-symbol-size*.875;
-	height: $common-mana-symbol-size*.875;
+	width: $common-mana-symbol-size;
+	height: $common-mana-symbol-size;
 	line-height: 1;
 	margin: 0 (1em/24);
 	box-shadow: inset .25px -1px 0px 0.5px rgba(#000, .75);
@@ -47,10 +47,10 @@
 	}
 	&.hybrid {
 		background: $color-mana-hybrid;
-		font-size: .5em;
-		width: 2em;
-		height: 2em;
-		line-height: 2;
+		font-size: 50%;
+		line-height: 1.875;
+		width: $common-mana-symbol-size * 2;
+		height: $common-mana-symbol-size * 2;
 		text-align: center;
 	}
 }
