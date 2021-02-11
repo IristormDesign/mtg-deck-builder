@@ -5,7 +5,7 @@
 				:href="card.link" target="_blank"
 				title="Click to open this card’s page on Scryfall"
 			>
-				<transition name="card-browse">
+				<transition name="card-browse" appear>
 					<img
 						v-if="deck.viewedCard == card.name" :key="card.name"
 						:src="card.img" :alt="card.name"
