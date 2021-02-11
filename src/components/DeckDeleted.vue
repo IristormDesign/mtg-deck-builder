@@ -1,8 +1,6 @@
 <template>
-	<article class="deck-deleted">
-		<div class="contents">
-			<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>
-		</div>
+	<article class="deck-deleted wrap">
+		<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>
 	</article>
 </template>
 

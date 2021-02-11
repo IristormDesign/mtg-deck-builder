@@ -1,13 +1,12 @@
 <template>
 	<article class="welcome">
-		<div class="contents">
+		<div class="wrap">
 			<div class="text-box">
 				<header>
 					<h2>Greetings, planeswalker.</h2>
 				</header>
-				<p>This is a web app where you can create and manage deck lists for <a href="https://magic.wizards.com" target="_blank" rel="noopener"><strong><i>Magic: The Gathering</i></strong></a> (a collectible strategy card game).</p>
-				<p>To view a pre-made deck list, click on one of the tabs by the top-right corner.</p>
-				<p>To make a new deck list, click on the “+” tab.</p>
+				<p>This is a web app where you can create and manage decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener"><strong><i>Magic: The Gathering</i></strong></a>.</p>
+				<p>To view a pre-made deck, click on the “Open Deck” button above. To make a new deck, click on the “New Deck” button above.</p>
 			</div>
 		</div>
 		<footer>

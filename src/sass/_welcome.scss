@@ -1,32 +1,33 @@
+.welcome-bg {
+	background-image: url('../public/img/welcome.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top 55% center;
+	background-color: #000;
+	align-items: flex-start;
+}
 .welcome {
-	width: 100%;
-	
-	.contents {
-		background: url('../public/img/welcome.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center center;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		margin-bottom: 0;
-		min-height: 75vh;
-		overflow: hidden;
+	margin: 0 auto;
+
+	.wrap {
+		min-height: 32em;
+		position: relative;
 	}
 	.text-box {
 		box-sizing: content-box;
 		color: #000;
 		max-width: 22rem;
 		line-height: 1.5;
-		text-shadow: 0 0 .5em linen;
+		text-shadow: 0 0 .5em $color-text;
 		background: radial-gradient(
 			circle,
-			rgba(linen, .833) (16em * .625),
-			rgba(linen, 0) 16em
+			rgba($color-text, .833) (16em * .625),
+			rgba($color-text, 0) 16em
 		);
-		padding: 8em;
-		margin-top: -6.5em;
-		margin-right: -7em;
+		padding: 8.5em;
+		position: absolute;
+		top: -6em;
+		right: -6.5em;
 	}
 	h2 {
 		font-size: 1.25em;
@@ -37,10 +38,16 @@
 		font-family: $font-family-standard;
 	}
 	footer {
-		margin: 0 6px .75em; // Horizontal equal to content border width
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		font-style: italic;
 
 		small {
-			font-size: 83.33%;
+			background: rgba(#000, .75);
+			font-size: 75%;
+			padding: .375em .75em;
+			color: $color-button-default;
 		}
 		a {
 			&:active {

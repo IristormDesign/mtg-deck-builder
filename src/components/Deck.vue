@@ -1,5 +1,5 @@
 <template>
-	<div class="deck">
+	<div class="deck wrap">
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
 			<article v-if="$route.params.deckPath == deck.path">
 				<header class="deck-header">

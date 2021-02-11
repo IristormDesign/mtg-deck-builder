@@ -2,7 +2,7 @@
 	<div id="app">
 		<site-header />
 
-		<main>
+		<main :class="{ 'welcome-bg': $route.path == '/' }">
 			<router-view />
 		</main>
 
