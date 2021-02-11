@@ -132,7 +132,9 @@ export default {
 					card.qty = 1
 				}
 			} else {
-				if (RegExp(/^Basic Land\b/).test(card.type)) {
+				const basicLandType = RegExp(/^Basic (\w* )?Land\b/) // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
+
+				if (basicLandType.test(card.type)) {
 					if (card.qty > 99) {
 						card.qty = 99
 						alert('⚠ 99 is more than plenty, don’t you think?')
