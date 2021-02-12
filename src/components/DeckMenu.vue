@@ -105,6 +105,7 @@ export default {
 						viewedCard: ''
 					})
 					store.commit('setDecks', updatedDecksArray)
+					store.commit('sortDeckMenu')
 
 					this.$router.push({
 						name: 'deck',

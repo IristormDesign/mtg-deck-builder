@@ -45,6 +45,7 @@ export default {
 					deck.editDate = new Date()
 
 					store.commit('setDecks', store.state.decks)
+					store.commit('sortDeckMenu')
 
 					if (!theActiveDeck()) {
 						this.$router.replace({
