@@ -42,7 +42,6 @@
 		}
 	}
 	ul {
-		line-height: 1.25;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -69,6 +68,7 @@
 		display: flex;
 		grid-column: span 8;
 		justify-content: space-between;
+		align-items: center;
 		margin: 0;
 		padding: 0 .5em;
 		border-radius: 1.5em / 3em;
@@ -76,22 +76,25 @@
 		box-shadow: $box-shadows-card-button;
 		transition: all .2s ease-out;
 		text-align: left;
-		align-items: center;
-		line-height: 1;
 		color: #000;
-		outline: 0;
 		will-change: transform;
 		
 		&:hover,
 		&:focus {
-			@include box-shadow-hover-card-button(
-				darken($color-mana-generic, 25%));
+			@include box-shadow-hover-card-button(rgba(#000, .333));
 			position: relative;
 			z-index: 1;
-			filter: contrast(112.5%);
-			transition-duration: 0s;
-			transform: translate(0,-2px);
+			filter: contrast(125%);
+			animation: flash .75s ease;
 
+			@keyframes flash {
+				0% {
+					filter: contrast(100%)
+				}
+				12.5% {
+					filter: contrast(150%);
+				}
+			}
 			&.white {
 				@include box-shadow-hover-card-button(
 					$color-mana-white
@@ -124,7 +127,8 @@
 			}
 		}
 		&:active {
-			transform: scale(1);
+			transform: scale(.995) translate(0, .5px);
+			transition-duration: 0s;
 		}
 		&.white {
 			background: $color-frame-white;

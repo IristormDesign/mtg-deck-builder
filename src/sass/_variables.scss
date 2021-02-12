@@ -20,7 +20,7 @@ $color-mana-generic: #cac5c0; // Actual
 $color-mana-hybrid: saturate(#eecb6b, 12.5%);
 
 $color-frame-white:
-	desaturate($color-mana-white, 8.33%);
+	desaturate(darken($color-mana-white, 3.125%), 33.33%);
 $color-frame-blue:
 	desaturate(lighten($color-mana-blue, 6.25%), 12.5%);
 $color-frame-black:
@@ -48,5 +48,5 @@ $x: 2px dashed rgba(#c0f, .75);
 	font-weight: bold;
 }
 @mixin box-shadow-hover-card-button($color) {
-  box-shadow: $box-shadows-card-button, 0 0 .75em 1px $color;
+  box-shadow: $box-shadows-card-button, 0 0 .75em 2px $color;
 }

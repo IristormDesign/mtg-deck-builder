@@ -142,7 +142,7 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						card.qty = 4
-						alert('⚠ A card cannot have a quantity larger than 4, unless it’s a basic land card.')
+						alert('⚠ A deck can have no more than four of any card with a particular name other than basic land cards.')
 					}
 				}
 				saveChanges()
