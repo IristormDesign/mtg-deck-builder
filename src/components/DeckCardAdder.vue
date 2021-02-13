@@ -5,22 +5,10 @@
 	>
 		<label for="card-input">Add a new card to this deck:</label>
 		<input
-			type="text" id="card-input" ref="first" v-model="cardName"
-			@focus="clearStatus()" @keypress="clearStatus()"
-			:class="{
-				'has-error': submitting && invalidName
-			}"
+			type="text" id="card-input" ref="focus" v-model="cardName"
 			placeholder="(Enter a card’s name here.)"
 		/>
 		<button class="primary-btn" :disabled="delay">Add Card</button>
-		<div class="message">
-			<span v-if="error && submitting" class="error-message">
-				🛑 One or more form fields are invalid.
-			</span>
-			<span v-if="success" class="success-message">
-				✅ The card is now added to the deck.
-			</span>
-		</div>
 	</form>
 </template>
 
@@ -32,21 +20,10 @@ export default {
 	},
 	data () {
 		return {
-			submitting: false,
-			error: false,
-			success: false,
 			cardName: '',
 			delay: false,
 			axios: require('axios')
 		}
-	},
-	computed: {
-		invalidName () {
-			return this.cardName === ''
-		}
-		// noCards () {
-		// return this.deck.cards.length === 0
-		// }
 	},
 	methods: {
 		getTheCard (cardName) {
@@ -107,7 +84,6 @@ export default {
 							newCard.colors = rd.colors
 							newCard.img = rd.image_uris.normal
 						}
-
 						newCard.name = store.state.curlApostrophes(newCard.name)
 						newCard.link = rd.scryfall_uri
 						newCard.qty = 1
@@ -123,7 +99,6 @@ export default {
 							store.commit('setDecks', store.state.decks)
 						})
 						store.commit('setSortProperty', '')
-						this.success = true
 					})
 					.catch(error => {
 						this.error = true
@@ -132,41 +107,33 @@ export default {
 			}
 		},
 		handleSubmit () {
-			this.clearStatus()
-			this.submitting = true
-			this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
+			const cardName = this.cardName
+			this.$refs.focus.focus()
 
-			if (this.invalidName) {
-				this.error = true
+			if (cardName === '') {
+				// No name was submitted, so do nothing.
 				return
-			}
-
-			if (this.cardName.toLowerCase() === '[random]') {
-				this.axios
-					.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
-					.then(response => {
-						this.getTheCard(response.data.name)
-					})
-					.catch(error => {
-						console.log(error)
-					})
 			} else {
-				this.getTheCard(this.cardName)
-			}
+				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 
-			this.$refs.first.focus()
+				if (cardName.toLowerCase() === '[random]') {
+					this.axios
+						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
+						.then(response => {
+							this.getTheCard(response.data.name)
+						})
+						.catch(error => {
+							console.log(error)
+						})
+				} else {
+					this.getTheCard(cardName)
+				}
+			}
 			this.cardName = ''
-			this.error = false
-			this.submitting = false
 
 			setTimeout(() => {
 				this.delay = false
 			}, 250)
-		},
-		clearStatus () {
-			this.success = false
-			this.error = false
-			this.delay = false
 		}
 	}
 }

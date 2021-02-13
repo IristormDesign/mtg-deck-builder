@@ -62,21 +62,6 @@
 		height: 100%; // The pixel subtraction is to compensate for the button's box shadow which makes the button seem slightly taller.
 		margin-left: -.375em;
 	}
-	.message {
-		margin-left: .75em;
-		font-size: .875em;
-		margin: 0 1.5em;
-		clear: both;
-	}
-	.error-message {
-		color: #d33c40;
-	}
-	.success-message {
-		color: #32a95d;
-	}
-	.has-error {
-		background: #d33c40;
-	}
 }
 .card-sorter {
 	select {
