@@ -74,27 +74,20 @@
 		border-radius: 1.5em / 3em;
 		border: none;
 		box-shadow: $box-shadows-card-button;
-		transition: all .25s ease-out;
+		transition: all .625s ease;
 		text-align: left;
 		color: #000;
 		will-change: transform;
-		
+		filter: contrast(100%);
+
 		&:hover,
 		&:focus {
 			@include box-shadow-hover-card-button(rgba(#000, .333));
 			position: relative;
 			z-index: 1;
 			filter: contrast(125%);
-			animation: flash .75s ease;
+			transition: all .0833s ease;
 
-			@keyframes flash {
-				0% {
-					filter: contrast(100%)
-				}
-				12.5% {
-					filter: contrast(150%);
-				}
-			}
 			&.white {
 				@include box-shadow-hover-card-button(
 					$color-mana-white
