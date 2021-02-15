@@ -1,5 +1,8 @@
-.deck-list {
+.card-list {
 	margin-bottom: .75em;
+	background: rgba(#000, .3333);
+	border-radius: .75em;
+	padding: .375em;
 
 	.no-cards {
 		height: 100%;
@@ -9,36 +12,53 @@
 		color: #000;
 		padding: 3em;
 	}
+	.labels .button-group,
+	.card-button {
+		display: grid;
+		grid-template-columns: repeat(9, 1fr);
+		grid-gap: 1.5rem;
+		width: 91.67%;
+	}
+	.labels,
+	li {
+		.name {
+			grid-column: span 3;
+		}
+		.mana {
+			grid-column: span 2;
+		}
+		.type {
+			grid-column: span 4;
+		}
+		.qty {
+			width: 8.33%;
+		}
+	}
 	.labels {
 		@include heading-font;
 		text-transform: uppercase;
-		justify-content: space-between;
 		font-size: .75em;
-		display: grid;
-		grid-template-columns: repeat(9, 1fr);
-		padding: 0 .5em;
-		color: #fff;
-
+		line-height: 1;
+		margin-bottom: .5em;
+		display: flex;
+		
 		.button-group {
-			display: flex;
-			grid-column: span 8;
-	
-			div {
-				&:nth-of-type(1) {
-					width: 40%;
-				}
-				&:nth-of-type(2) {
-					width: 20%;
-					text-align: right;
-					padding-right: 3.5em;
-				}
-				&:nth-of-type(3) {
-					width: 40%;
-				}
+			display: grid;
+			width: 100%;
+
+			.name {
+				padding-left: .75em;
+			}
+			.mana {
+				text-align: right;
 			}
 		}
-		.qty-group {
-			grid-column: span 1;
+		.qty {
+			text-align: right;
+			padding-right: 1.25em;
+		}
+		strong {
+			display: block;
 		}
 	}
 	ul {
@@ -47,13 +67,50 @@
 		list-style: none;
 	}
 	li {
-		display: grid;
-		grid-template-columns: repeat(9, 1fr);
+		display: flex;
 		margin: 2px 0;
 		transition: all .3333s ease;
 
 		&:hover,
 		&:focus-within {
+			.card-button {
+					@include box-shadow-hover-card-button(rgba(#000, .333));
+					position: relative;
+					z-index: 1;
+					filter: contrast(125%);
+					transition: all .0833s ease;
+		
+					&.white {
+						@include box-shadow-hover-card-button(
+							$color-mana-white
+						);
+					}
+					&.blue {
+						@include box-shadow-hover-card-button(
+							saturate(darken($color-mana-blue, 25%), 25%)
+						);
+					}
+					&.black {
+						@include box-shadow-hover-card-button(
+							saturate(darken($color-mana-black, 50%), 25%)
+						);
+					}
+					&.red {
+						@include box-shadow-hover-card-button(
+							saturate(darken($color-mana-red, 25%), 25%)
+						);
+					}
+					&.green {
+						@include box-shadow-hover-card-button(
+							saturate(darken($color-mana-green, 25%), 25%)
+						);
+					}
+					&.multicolor {
+						@include box-shadow-hover-card-button(
+							saturate(darken($color-mana-hybrid, 25%), 25%)
+						);
+				}
+			}
 			.qty {
 				input {
 					transition: none;
@@ -62,12 +119,56 @@
 				}
 			}
 		}
+		.name {
+			margin: 0;
+			font-size: 1em;
+		}
+		.mana {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			font-size: 1.25em;
+		}
+		.type {
+			@include heading-font;
+			font-size: .833em;
+		}
+		.qty {
+			display: flex;
+			align-items: center;
+			line-height: 1;
+	
+			> span {
+				margin: 0 2px 0 .375em;
+				color: darken($color-text, 12.5%);
+			}
+			input {
+				color: $color-text;
+				background: transparent;
+				border: 0;
+				font-size: 1.5em;
+				width: 1.75em;
+				text-align: center;
+				outline: 1px solid rgba($color-mythic-orange, 0);
+				transition: all .2s ease-out;
+				padding: 0;
+				font-weight: 500;
+				line-height: 1;
+	
+				&:hover,
+				&:focus {
+					background: rgba(#000, .5);
+					color: #fff;
+					transition-duration: 0s;
+				}
+				&:focus {
+					outline: 2px solid $color-mythic-orange;
+				}
+			}
+		}
 	}
 	.card-button {
 		background: $color-frame-generic;
-		display: flex;
-		grid-column: span 8;
-		justify-content: space-between;
 		align-items: center;
 		margin: 0;
 		padding: 0 .5em;
@@ -79,46 +180,9 @@
 		color: #000;
 		will-change: transform;
 		filter: contrast(100%);
+		width: 100%;
 
-		&:hover,
-		&:focus {
-			@include box-shadow-hover-card-button(rgba(#000, .333));
-			position: relative;
-			z-index: 1;
-			filter: contrast(125%);
-			transition: all .0833s ease;
-
-			&.white {
-				@include box-shadow-hover-card-button(
-					$color-mana-white
-				);
-			}
-			&.blue {
-				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-blue, 25%), 25%)
-				);
-			}
-			&.black {
-				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-black, 50%), 25%)
-				);
-			}
-			&.red {
-				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-red, 25%), 25%)
-				);
-			}
-			&.green {
-				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-green, 25%), 25%)
-				);
-			}
-			&.multicolor {
-				@include box-shadow-hover-card-button(
-					saturate(darken($color-mana-hybrid, 25%), 25%)
-				);
-			}
-		}
+	
 		&:active {
 			transform: scale(.995) translate(0, .5px);
 			transition-duration: 0s;
@@ -140,61 +204,6 @@
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
-		}
-	}
-	.name {
-		font-size: 1em;
-		line-height: 1;
-		margin: 0;
-		width: 40%;
-		color: inherit;
-	}
-	.mana {
-		width: 15%;
-		padding-right: 1em;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		font-size: 1.25em;
-	}
-	.type {
-		@include heading-font;
-		font-size: .833em;
-		width: 40%;
-	}
-	.qty {
-		grid-column: span 1;
-		display: flex;
-		align-items: center;
-		line-height: 1;
-
-		> span {
-			font-size: 1.25em;
-			margin-right: -.125em;
-			margin: 0 2px 0 .375em;
-		}
-		input {
-			color: #fff;
-			background: transparent;
-			border: 0;
-			font-size: 1.5em;
-			width: 1.75em;
-			text-align: center;
-			outline: 1px solid rgba($color-mythic-orange, 0);
-			transition: all .2s ease-out;
-			padding: 0;
-			font-weight: 500;
-			line-height: 1;
-
-			&:hover,
-			&:focus {
-				background: rgba(#000, .5);
-				color: #fff;
-				transition-duration: 0s;
-			}
-			&:focus {
-				outline: 2px solid $color-mythic-orange;
-			}
 		}
 	}
 }

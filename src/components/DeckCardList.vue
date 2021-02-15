@@ -1,33 +1,31 @@
 <template>
-	<div class="deck-list">
+	<div class="card-list">
 		<div
-			v-if="deck.cards.length == 0" class="no-cards"
+			v-if="deck.cards.length <= 0" class="no-cards"
 			@mouseover="attentionAddCard(true)"
 			@mouseleave="attentionAddCard(false)"
 		>
 			<p>This deck has no cards yet. (Add a card to start building.)</p>
 		</div>
 		<div v-else>
-			<div class="labels">
+			<header class="labels">
 				<div class="button-group">
-					<div>Name</div>
-					<div>Mana Cost</div>
-					<div>Type</div>
+					<strong class="name">Name</strong>
+					<strong class="mana">Mana Cost</strong>
+					<strong class="type">Type</strong>
 				</div>
-				<div class="qty-group">Quantity</div>
-			</div>
-
+				<strong class="qty" title="Quantity">Qty.</strong>
+			</header>
 			<transition-group tag="ul">
 				<li v-for="card in deck.cards" :key="card.name">
 					<button
 						@click="viewCard(card)"
-						:class="[colorButton(card), 'card-button']"
+						:class="['card-button', colorButton(card)]"
 					>
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana" v-html="styleManaSymbols(card)"></div>
 						<div class="type">{{ card.type }}</div>
 					</button>
-
 					<div class="qty">
 						<span>&times;</span>
 						<input
@@ -101,6 +99,7 @@ export default {
 			const store = this.$store
 			const deck = this.deck
 			card.qty = Math.round(card.qty)
+			deck.viewedCard = card.name
 
 			if (store.state.sortProperty === 'qty') {
 				store.commit('setSortProperty', '') // Reset the sort-by select box.
@@ -147,7 +146,6 @@ export default {
 				}
 				saveChanges()
 			}
-
 			function saveChanges () {
 				deck.editDate = new Date()
 				store.commit('setDecks', store.state.decks)
