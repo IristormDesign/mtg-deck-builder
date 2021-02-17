@@ -1,7 +1,7 @@
 <template>
 	<form
 		class="card-adder" @submit.prevent="handleSubmit()"
-		title="Tip: You can add a randomly selected card by entering “[random]” as the card name."
+		title="Tip: You can add a random card by entering “random” as the card name."
 	>
 		<label for="card-input">Add a new card to this deck:</label>
 		<input
@@ -116,7 +116,7 @@ export default {
 			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 
-				if (cardName.toLowerCase() === '[random]') {
+				if (cardName.toLowerCase() === 'random') {
 					this.axios
 						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
 						.then(response => {

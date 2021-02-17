@@ -1,11 +1,3 @@
-@mixin button-colors($color) {
-	background: linear-gradient(
-		$color 0%,
-		darken($color, 8.33%) 95%,
-		lighten($color, 16.7%) 100%
-	);
-	border-color: $color;
-}
 *:focus-visible {
 	outline: 2px solid $color-mythic-orange;
 }
@@ -22,7 +14,12 @@ a {
 	}
 }
 button {
-	@include button-colors($color-button-default);
+	background: linear-gradient(
+		$color-button-default 0%,
+		darken($color-button-default, 12.5%) 96%,
+		lighten($color-button-default, 6.25%) 100%
+	);
+	border-color: $color-button-default;
 	cursor: pointer;
 	box-shadow:
 		0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
@@ -37,10 +34,12 @@ button {
 	min-width: 4.5em;
 	margin-top: -2px;
 	margin-bottom: 2px;
+	filter: brightness(1) contrast(1);
+	transition: filter .25s ease;
 
 	&:hover,
 	&:focus {
-		@include button-colors(darken($color-button-default, 8.33%));
+		filter: brightness(.833) contrast(1.33);
 		outline: none;
 	}
 	&:active {
@@ -52,11 +51,22 @@ button {
 	}
 	&[type="submit"],
 	&.primary-btn {
-		@include button-colors($color-button-primary);
+		background:
+			radial-gradient((
+				rgba($color-mythic-lighter, 1) 0%,
+				rgba($color-mythic-lighter, 0) 100%,
+			)),
+			linear-gradient(
+				$color-button-primary 0%,
+				darken($color-button-primary, 16.67%) 96%,
+				lighten($color-button-primary, 16.67%) 100%
+			);
+		border-color: $color-button-primary;
+		filter: saturate(.875) brightness(1) contrast(1);
 
 		&:hover,
 		&:focus {
-			@include button-colors(darken($color-button-primary, 8.33%));
+			filter: saturate(1) brightness(.833) contrast(1.167);
 		}
 	}
 	&:disabled {

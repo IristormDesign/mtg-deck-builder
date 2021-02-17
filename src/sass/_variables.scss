@@ -1,13 +1,16 @@
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 
 $color-mythic-orange: #ea4b12; // Actual
-$color-mythic-orange-lighter: saturate(lighten($color-mythic-orange, 8.33%), 50%);
+$color-mythic-lighter: saturate(lighten(#EA7212, 12.5%), 12.5%); // From Paletton
 $color-mythic-complement: #0CA25E; // From Paletton
+$color-mythic-bluer: #0B8E89; // From Paletton
+$color-mythic-orange-lighter: saturate(lighten($color-mythic-orange, 8.33%), 50%);
 $color-black-label: #0d0f0f; // Actual
 
-$color-content-bg: lighten(desaturate($color-mythic-complement, 80%), 6.25%);
-$color-text: lighten($color-content-bg, 56.25%);
-$color-button-default: lighten($color-content-bg, 50%);
+$color-content-bg: lighten(desaturate($color-mythic-complement, 83.33%), 8.33%);
+$color-content-bg-bluer: desaturate($color-mythic-bluer, 83.33%);
+$color-text: lighten($color-content-bg, 50%);
+$color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 
 $color-mana-white: lighten(#f8f6d8, 6.25%); // Actual

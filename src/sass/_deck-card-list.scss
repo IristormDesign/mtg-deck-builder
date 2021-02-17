@@ -8,8 +8,7 @@
 		height: 100%;
 		display: flex;
 		justify-content: center;
-		background: rgba($color-text, .6667);
-		color: #000;
+		color: $color-text;
 		padding: 3em;
 	}
 	.labels .button-group,
@@ -39,7 +38,7 @@
 		text-transform: uppercase;
 		font-size: .75em;
 		line-height: 1;
-		margin-bottom: .5em;
+		margin-bottom: .375em;
 		display: flex;
 		
 		.button-group {
