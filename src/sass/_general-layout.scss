@@ -59,10 +59,10 @@ main {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
-	transition: opacity .25s ease-out;
+	transition: all .5s ease;
 	background: rgba(darken($color-content-bg, 25%), .5);
-	z-index: 3;
-	backdrop-filter: blur(3px);
+	z-index: index($layers, bg-overlay);
+	backdrop-filter: blur(7px);
 }
 .overlay-enter,
 .overlay-leave-to {

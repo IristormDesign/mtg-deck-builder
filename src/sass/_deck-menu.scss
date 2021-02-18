@@ -10,17 +10,15 @@
 		display: none;
 		margin: 0;
 		padding: 0;
-		border: 3px solid $color-content-bg;
+		border: 3px solid darken($color-text, 25%);
 		overflow: hidden;
 		position: absolute;
 		top: 2.25em;
 		right: 0;
-		z-index: 4;
-		box-shadow: -.125em .5em .75em rgba(#000, .333);
-		background: darken($color-content-bg, 16.67%);
-		background: darken(desaturate($color-mythic-orange, 25%), 25%);
+		z-index: index($layers, deck-menu-group);
+		box-shadow: -.125em .25em .5em rgba(#000, .5);
+		background: darken($color-content-bg-bluer, 8.33%);
 		min-width: 100%;
-		border-radius: .75em / 3em;
 
 		&.show {
 			display: block;
@@ -35,13 +33,13 @@
 		overflow-x: hidden;
 		white-space: nowrap;
 		transition: all .125s ease;
-		color: $color-text;
 
 		&:hover,
 		&:focus {
 			text-decoration: none;
 			background: darken($color-mythic-orange, 12.5%);
 			color: #fff;
+			transition-duration: 0;
 		}
 		&:active {
 			background: $color-mythic-orange;
@@ -51,7 +49,7 @@
 }
 .deck-selector {
 	position: relative;
-	z-index: 4;		
+	z-index: index($layers, deck-menu-group);
 }
 .add-new-deck {
 	margin-left: 1em;

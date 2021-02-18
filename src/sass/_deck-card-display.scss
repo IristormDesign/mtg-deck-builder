@@ -3,6 +3,7 @@
 	height: 534px; // Actual height of card as it appears in the app.
 	position: sticky;
 	top: 1.5em;
+	filter: drop-shadow(-1px 2px 2px rgba(#000, .5));
 	
 	img {
 		mask-image: url('/img/card-mask.svg');
@@ -16,7 +17,7 @@
 	}
 }
 .card-browse-enter-active {
-	z-index: 3;
+	z-index: 1;
 	animation: card-fan-in .375s ease;
 }
 .card-browse-leave-active {

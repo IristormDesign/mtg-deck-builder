@@ -8,7 +8,7 @@
 			$color-mythic-lighter 100%,
 		);
 	border-bottom: 1px solid darken($color-mythic-orange, 25%);
-	z-index: 4;
+	position: relative;
 	
 	.wrap {
 		display: flex;

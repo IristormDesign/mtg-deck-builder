@@ -44,6 +44,8 @@ $text-shadow-colored-text: 0 0 2px rgba(#000, .75);
 
 $width-site: 1440px;
 
+$layers: bg-overlay, deck-menu-group;
+
 $x: 2px dashed rgba(#c0f, .75);
 
 @mixin heading-font {

@@ -19,7 +19,7 @@
 		</div>
 
 		<button class="add-new-deck" @click="createDeck()">
-			➕ New Deck
+			➕ Create Deck
 		</button>
 	</nav>
 </template>
