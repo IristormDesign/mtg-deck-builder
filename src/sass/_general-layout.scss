@@ -12,8 +12,8 @@ body {
   body {
 		background:
 			radial-gradient(ellipse at 62.5% 25%,
-				desaturate(lighten($color-content-bg, 12.5%), 33.33%),
-				desaturate($color-content-bg-bluer, 0%)
+				lighten($color-content-bg, 12.5%),
+				$color-content-bg-bluer
 			) fixed no-repeat,
 			url('/img/bg-texture.jpg') repeat,
 			$color-content-bg;
