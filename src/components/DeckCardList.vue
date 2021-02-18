@@ -13,6 +13,7 @@
 					<strong class="name">Name</strong>
 					<strong class="mana">Mana Cost</strong>
 					<strong class="type">Type</strong>
+					<strong class="rarity">Rarity</strong>
 				</div>
 				<strong class="qty" title="Quantity">Qty.</strong>
 			</header>
@@ -25,6 +26,18 @@
 						<h3 class="name">{{ card.name }}</h3>
 						<div class="mana" v-html="styleManaSymbols(card)"></div>
 						<div class="type">{{ card.type }}</div>
+						<div v-if="card.rarity === 'common'"
+							class="rarity common" title="Common">C
+						</div>
+						<div v-else-if="card.rarity === 'uncommon'"
+							class="rarity uncommon" title="Uncommon">U
+						</div>
+						<div v-else-if="card.rarity === 'rare'"
+							class="rarity rare" title="Rare">R
+						</div>
+						<div v-else-if="card.rarity === 'mythic'"
+							class="rarity mythic" title="Mythic rare">M
+						</div>
 					</button>
 					<div class="qty">
 						<span>&times;</span>

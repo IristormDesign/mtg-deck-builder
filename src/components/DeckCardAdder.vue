@@ -85,6 +85,7 @@ export default {
 							newCard.img = rd.image_uris.normal
 						}
 						newCard.name = store.state.curlApostrophes(newCard.name)
+						newCard.rarity = rd.rarity
 						newCard.link = rd.scryfall_uri
 						newCard.qty = 1
 

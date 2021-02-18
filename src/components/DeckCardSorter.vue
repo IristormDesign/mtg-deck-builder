@@ -11,6 +11,7 @@
 			<option value="cmc">Converted mana cost</option>
 			<option value="colors">Mana color</option>
 			<option value="type">Type</option>
+			<option value="rarity">Rarity</option>
 			<option value="qty">Quantity</option>
 		</select>
 	</div>
@@ -49,6 +50,15 @@ export default {
 
 						if (colorA > colorB) return 1
 						else if (colorA < colorB) return -1
+					} else if (property === 'rarity') {
+						const rarityOrder = [
+							'mythic', 'rare', 'uncommon', 'common'
+						]
+						const rarityA = rarityOrder.indexOf(a.rarity)
+						const rarityB = rarityOrder.indexOf(b.rarity)
+
+						if (rarityA > rarityB) return 1
+						else if (rarityA < rarityB) return -1
 					} else if (property === 'qty') {
 						if (cardA > cardB) return -1
 						else if (cardA < cardB) return 1
