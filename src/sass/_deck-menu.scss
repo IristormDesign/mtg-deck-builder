@@ -32,14 +32,12 @@
 		text-overflow: ellipsis;
 		overflow-x: hidden;
 		white-space: nowrap;
-		transition: all .125s ease;
 
 		&:hover,
 		&:focus {
 			text-decoration: none;
 			background: darken($color-mythic-orange, 12.5%);
 			color: #fff;
-			transition-duration: 0;
 		}
 		&:active {
 			background: $color-mythic-orange;

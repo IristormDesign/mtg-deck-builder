@@ -59,7 +59,7 @@ main {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
-	transition: all .5s ease;
+	transition: all $transition-duration-standard*2 ease;
 	background: rgba(darken($color-content-bg, 25%), .5);
 	z-index: index($layers, bg-overlay);
 	backdrop-filter: blur(7px);

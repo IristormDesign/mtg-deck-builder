@@ -60,7 +60,7 @@
 		}
 		span,
 		small {
-			transition: all .25s ease;
+			transition: all $transition-duration-standard ease;
 		}
 		span {
 			@include heading-font;

@@ -35,7 +35,7 @@ button {
 	margin-top: -2px;
 	margin-bottom: 2px;
 	filter: brightness(1) contrast(1);
-	transition: filter .25s ease;
+	transition: filter $transition-duration-standard ease;
 
 	&:hover,
 	&:focus {

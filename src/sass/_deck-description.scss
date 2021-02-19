@@ -17,7 +17,7 @@
 		margin: 0;
 		width: 100%;
 		height: $lhse;
-		transition: background, border .25s ease; 
+		transition: background, border $transition-duration-standard ease; 
 
 		&:hover,
 		&:focus {
