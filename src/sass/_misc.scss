@@ -2,11 +2,11 @@
 	color: $color-mana-hybrid;
 	display: inline-block;
 	cursor: default;
-	font-size: .833em;
+	font-size: 83.33%;
 }
 .deck-deleted {
 	p {
-		font-size: 1.125em;
+		font-size: 112.5%;
 	}
 }
 .mana-symbol {
@@ -56,4 +56,7 @@
 		height: $common-mana-symbol-size * 2;
 		text-align: center;
 	}
+}
+*[title]:not(a) {
+	cursor: help;
 }

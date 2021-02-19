@@ -31,7 +31,7 @@ body {
 .wrap {
 	width: $width-site;
 	margin: 0 auto;
-	padding: 0 1.5em;
+	padding: 0 $lhse;
 }
 main {
 	flex-grow: 1;
@@ -41,16 +41,16 @@ main {
 }
 .deck {
 	article {
-		margin: .75em 0;
+		margin: $lhse/2 0;
 		position: relative;
 	}
 }
 .card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-gap: .75em;
+	grid-gap: $lhse/2;
 	border-top: 2px solid darken($color-text, 33.33%);
-	padding: .75em 0;
+	padding: $lhse/2 0;
 }
 .deck-main {
 	grid-column: 3 / 8;

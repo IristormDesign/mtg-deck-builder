@@ -30,8 +30,8 @@
 		right: -6.5em;
 	}
 	h2 {
-		font-size: 1.25em;
-		margin-top: .375em;
+		font-size: 125%;
+		margin-top: $lhse/4;
 		line-height: 1.25;
 	}
 	strong i {
@@ -46,7 +46,7 @@
 		small {
 			background: rgba(#000, .75);
 			font-size: 75%;
-			padding: .375em .75em;
+			padding: $lhse/4 $lhse/2;
 			color: $color-button-default;
 		}
 		a {

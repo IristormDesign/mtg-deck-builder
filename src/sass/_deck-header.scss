@@ -1,27 +1,27 @@
 .deck-header {
 	grid-column: span 7;
-	padding: .375em 0;
+	padding: $lhse/4 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: .75em;
+	margin-bottom: $lhse/2;
 }
 .deck-info {
 	display: flex;
-	height: 2.5em;
-	padding: 0 .75em;
-	margin-left: .375em;
+	height: $lhse*1.5;
+	padding: 0 $lhse/2;
+	margin-left: $lhse/4;
 	align-items: center;
-	border-radius: 1.5em / 3em;
+	border-radius: $border-radius-button;
 	background: rgba(#000, .3333);
 	white-space: nowrap;
 	cursor: default;
 
 	h3 {
 		margin: 0;
-		margin-right: .75em;
+		margin-right: $lhse/2;
 		text-transform: uppercase;
-		font-size: .75em;
+		font-size: $lhse/2;
 		line-height: 1;
 		display: flex;
 		align-items: center;
@@ -67,7 +67,7 @@
 		}
 		small {
 			opacity: 0;
-			font-size: .667em;
+			font-size: 66.67%;
 			font-family: $font-family-standard;
 			padding-left: .5em;
 		}	
@@ -78,10 +78,10 @@
 		display: flex;
 	}
 	.no-colors {
-		font-size: 2em;
+		font-size: 200%;
 	}
 	.mana-symbol {
-		font-size: 1.667em;
+		font-size: 166.67%;
 		cursor: default;
 	}
 }
@@ -90,16 +90,16 @@
 		margin-bottom: 0;
 	}
 	.output {
-		font-size: 2em;
+		font-size: 200%;
 	}
 }
 .date-edited {
 	.output {
-		font-size: .875em;
+		font-size: 87.5%;
 	}
 }
 .card-total {
 	.output {
-		font-size: 2em;
+		font-size: 200%;
 	}
 }

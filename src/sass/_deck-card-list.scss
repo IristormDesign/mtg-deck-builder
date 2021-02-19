@@ -1,15 +1,15 @@
 .card-list {
-	margin-bottom: .75em;
+	margin-bottom: $lhse/2;
 	background: rgba(#000, .3333);
-	border-radius: .75em;
-	padding: .375em;
+	border-radius: $lhse/2;
+	padding: $lhse/4;
 
 	.no-cards {
 		height: 100%;
 		display: flex;
 		justify-content: center;
 		color: $color-text;
-		padding: 3em;
+		padding: $lhse*2;
 	}
 	.labels .button-group,
 	.card-button {
@@ -39,9 +39,9 @@
 	.labels {
 		@include heading-font;
 		text-transform: uppercase;
-		font-size: .75em;
+		font-size: $lhse/2;
 		line-height: 1;
-		margin-bottom: .375em;
+		margin-bottom: $lhse/4;
 		display: flex;
 		
 		.button-group {
@@ -49,7 +49,7 @@
 			width: 100%;
 
 			.name {
-				padding-left: .75em;
+				padding-left: $lhse/2;
 			}
 			.mana {
 				text-align: right;
@@ -70,20 +70,22 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+		position: relative;
 	}
 	li {
 		display: flex;
 		margin: 2px 0;
-		transition: all .3333s ease;
+		transition: all .3333s ease; // For card sorting
+		position: relative;
 
 		&:hover,
 		&:focus-within {
+			z-index: 1;
+
 			.card-button {
 					@include box-shadow-hover-card-button(rgba(#000, .333));
-					position: relative;
-					z-index: 1;
 					filter: contrast(125%);
-					transition: all .0833s ease;
+					transition-duration: 0s;
 		
 					&.white {
 						@include box-shadow-hover-card-button(
@@ -116,6 +118,9 @@
 						);
 				}
 			}
+			&:hover {
+				z-index: 2;
+			}
 			.qty {
 				input {
 					transition: none;
@@ -126,26 +131,27 @@
 		}
 		.name {
 			margin: 0;
-			font-size: 1em;
+			font-size: 100%;
 		}
 		.mana {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			font-size: 1.25em;
+			font-size: 125%;
 		}
 		.type {
 			@include heading-font;
-			font-size: .833em;
+			font-size: 83.33%;
 		}
 		.rarity {
-			border-radius: 50% / 1.5em;
-			width: 1.667em;
+			border-radius: $border-radius-button;
+			width: $lhse;
 			text-align: center;
 			box-shadow: inset 0 0 1px .5px #000;
 			margin-right: -.167em;
-			font: bold .75em/1.375 sans-serif;
+			font: bold 75%/1.375 sans-serif;
 			color: #000;
+			text-shadow: 0 0 1.5px #fff;
 
 			&.common {
 				background: #000;
@@ -173,6 +179,7 @@
 					saturate(lighten($color-mythic-lighter, 12.5%), 25%),
 					darken($color-mythic-orange, 6.25%)
 				) $color-mythic-orange;
+				text-shadow: 0 0 1.5px saturate(lighten($color-mythic-lighter, 25%), 25%);
 			}
 		}
 		.qty {
@@ -181,14 +188,14 @@
 			line-height: 1;
 	
 			> span {
-				margin: 0 2px 0 .375em;
+				margin: 0 2px 0 $lhse/4;
 				color: darken($color-text, 12.5%);
 			}
 			input {
 				color: $color-text;
 				background: transparent;
 				border: 0;
-				font-size: 1.5em;
+				font-size: $lhse;
 				width: 1.75em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
@@ -214,7 +221,7 @@
 		align-items: center;
 		margin: 0;
 		padding: 0 .5em;
-		border-radius: 1.5em / 3em;
+		border-radius: $border-radius-button;
 		border: none;
 		box-shadow: $box-shadows-card-button;
 		transition: all .625s ease;

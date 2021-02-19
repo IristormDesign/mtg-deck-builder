@@ -29,8 +29,8 @@ button {
 	border-top-width: 0;
 	border-bottom-width: 2px;
 	color: #000;
-	border-radius: 1.5em / 3em;
-	padding: .375em .5em ;
+	border-radius: $border-radius-button;
+	padding: $lhse/4 .5em;
 	min-width: 4.5em;
 	margin-top: -2px;
 	margin-bottom: 2px;
@@ -91,4 +91,7 @@ input {
 		background-color: #fff;
 		color: $color-black-label;
 	}
+}
+select {
+	cursor: pointer;
 }
