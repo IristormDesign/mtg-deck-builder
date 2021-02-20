@@ -26,7 +26,7 @@ $color-mana-hybrid: saturate(#eecb6b, 12.5%);
 $color-frame-white:
 	desaturate(darken($color-mana-white, 3.125%), 33.33%);
 $color-frame-blue:
-	desaturate(lighten($color-mana-blue, 6.25%), 12.5%);
+	desaturate(lighten($color-mana-blue, 3.125%), 25%);
 $color-frame-black:
 	desaturate(darken($color-mana-black, 6.25%), 6.25%);
 $color-frame-red:
@@ -36,7 +36,9 @@ $color-frame-green:
 $color-frame-multicolor:
 	desaturate(lighten($color-mana-hybrid, 8.33%), 16.67%);
 $color-frame-generic:
-	desaturate(lighten($color-mana-generic, 8.33%), 16.67%);
+	desaturate(lighten($color-mana-generic, 6.25%), 16.67%);
+
+$color-group-bg: rgba(#000, .333);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
