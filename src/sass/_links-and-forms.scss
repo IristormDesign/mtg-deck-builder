@@ -39,7 +39,7 @@ button {
 
 	&:hover,
 	&:focus {
-		filter: brightness(.833) contrast(1.33);
+		filter: brightness(.833) contrast(1.25);
 		outline: none;
 	}
 	&:active {
@@ -62,11 +62,11 @@ button {
 				lighten($color-button-primary, 16.67%) 100%
 			);
 		border-color: $color-button-primary;
-		filter: saturate(.875) brightness(1) contrast(1);
+		filter: brightness(1) contrast(1);
 
 		&:hover,
 		&:focus {
-			filter: saturate(1) brightness(.833) contrast(1.167);
+			filter: brightness(.875) contrast(1.25);
 		}
 	}
 	&:disabled {
@@ -75,21 +75,28 @@ button {
 		cursor: default;
 	}
 }
+label {
+	@include heading-font;
+	line-height: 1;
+}
 input,
-textarea {
+textarea,
+select {
 	caret-color: $color-mythic-orange;
 	line-height: 1.5;
-	
+	background: desaturate(lighten($color-mythic-complement, 50%), 66.67%);
+	color: #000;
+	border: 2px inset $color-content-bg;
+	padding: $lhse/8 .25em;
+
 	&::placeholder {
-		color: darken($color-text, 25%);
+		color: darken($color-content-bg, 12.5%);
 		font-style: italic;
 	}
-}
-input {
-	&[type="text"],
-	&[type="number"] {
-		background-color: #fff;
-		color: $color-black-label;
+	&:hover,
+	&:focus {
+		border-style: solid;
+		border-color: $color-mythic-orange;
 	}
 }
 select {

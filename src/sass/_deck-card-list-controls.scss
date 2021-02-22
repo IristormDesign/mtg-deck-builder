@@ -16,21 +16,11 @@
 			margin-right: 0;
 		}
 	}
-
 	label {
-		@include heading-font;
 		display: block;
 		font-size: 83.33%;
-		line-height: 1;
-		margin-bottom: $lhse/4;
-	}
-	input,
-	select {
-		&:hover,
-		&:focus {
-			border-style: solid;
-			border-color: $color-mythic-orange;
-		}
+		padding-bottom: $lhse/4;
+		margin-left: .5em;
 	}
 }
 .card-adder {
@@ -44,11 +34,9 @@
 	}
 	input {
 		grid-column: span 3;
-		background: darken($color-content-bg, 25%);
-		color: $color-text;
-		border: 2px inset $color-content-bg;
-		padding: $lhse/8 .25em;
 		width: 100%;
+		border-radius: $border-radius-button;
+		padding-right: .75em;
 
 		&.attention {
 			@keyframes pulsate-input {
@@ -68,18 +56,15 @@
 	}
 	button {
 		grid-column: span 1;
-		margin-left: -$lhse/4;
-		height: 100%;
+		margin-left: -$lhse/2;
 	}
 }
 .card-sorter {
 	display: block;
 
 	select {
-		border: 2px inset $color-content-bg;
 		padding: $lhse/4 .25em;
-		background: darken($color-content-bg, 25%);
-		color: $color-text;
+		border-radius: $border-radius-button;
 	}
 }
 .deck-actions {
