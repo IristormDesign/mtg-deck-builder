@@ -1,15 +1,15 @@
 .site-header {
 	width: 100%;
 	background:
-		radial-gradient(
-			farthest-corner at 20% 100%,
+		radial-gradient(farthest-corner at 20% 100%,
 			$color-mythic-lighter 0%,
 			darken($color-mythic-orange, 16.67%) 50%,
 			$color-mythic-lighter 100%,
 		);
-	border-bottom: 1px solid darken($color-mythic-orange, 25%);
+	border-bottom: 1px solid darken($color-mythic-orange, 20%);
 	position: relative;
-	
+	z-index: index($layers, site-header);
+
 	.wrap {
 		display: flex;
 		align-items: center;

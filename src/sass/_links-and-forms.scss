@@ -49,6 +49,9 @@ button {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+	&:focus-visible {
+		outline: 2px solid $color-mythic-orange;
+	}
 	&[type="submit"],
 	&.primary-btn {
 		background:
@@ -70,9 +73,10 @@ button {
 		}
 	}
 	&:disabled {
-		filter: grayscale(.25);
-		opacity: .75;
+		filter: grayscale(.333) brightness(.75) !important;
 		cursor: default;
+		box-shadow: none;
+		margin: 0;
 	}
 }
 label {
@@ -84,21 +88,33 @@ textarea,
 select {
 	caret-color: $color-mythic-orange;
 	line-height: 1.5;
-	background: desaturate(lighten($color-mythic-complement, 50%), 66.67%);
+	background: $color-input-bg;
 	color: #000;
 	border: 2px inset $color-content-bg;
 	padding: $lhse/8 .25em;
+	transition: all $transition-duration-standard ease;
 
-	&::placeholder {
-		color: darken($color-content-bg, 12.5%);
-		font-style: italic;
-	}
 	&:hover,
 	&:focus {
 		border-style: solid;
 		border-color: $color-mythic-orange;
+		background: lighten($color-input-bg, 8.33%);
 	}
+	&:focus-visible {
+		outline: none;
+	}
+	&::placeholder {
+		color: darken($color-content-bg, 12.5%);
+		font-style: italic;
+	}
+}
+input {
+	height: 100%;
 }
 select {
 	cursor: pointer;
+	line-height: 1;
+}
+option {
+	font-weight: normal;
 }

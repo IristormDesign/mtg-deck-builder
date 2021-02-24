@@ -20,7 +20,7 @@
 		display: block;
 		font-size: 83.33%;
 		padding-bottom: $lhse/4;
-		margin-left: .5em;
+		margin-left: .375em;
 	}
 }
 .card-adder {
@@ -40,16 +40,16 @@
 
 		&.attention {
 			@keyframes pulsate-input {
-				0% {
-					background: darken($color-content-bg, 25%);
-				}
 				100% {
-					background: darken($color-mythic-orange, 12.5%);
+					background: #fff;
+					border-color: $color-mythic-orange;
+					border-style: solid;
+					box-shadow: 0 0 1em 1px $color-mythic-orange;
 				}
 			}
 			animation-name: pulsate-input;
-			animation-duration: .5s;
-			animation-iteration-count: 16;
+			animation-duration: .25s;
+			animation-iteration-count: 40;
 			animation-direction: alternate;
 			animation-timing-function: ease-in;
 		}
@@ -72,7 +72,8 @@
 	padding-left: $lhse/3;
 
 	button {
-		margin: $lhse/4;
+		margin-right: $lhse/4;
+		margin-left: $lhse/4;
 		font-size: 87.5%;
 	}
 }

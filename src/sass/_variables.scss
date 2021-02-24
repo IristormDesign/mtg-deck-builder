@@ -1,25 +1,24 @@
 // COLORS
 $color-mythic-orange: #ea4b12; // Actual
 $color-mythic-lighter: saturate(lighten(#EA7212, 12.5%), 12.5%); // From Paletton
-$color-mythic-complement: #0CA25E; // From Paletton
-$color-mythic-bluer: #0B8E89; // From Paletton
+$color-mythic-complement: #12B1EA; // From Canva Colors
 $color-mythic-orange-lighter: saturate(lighten($color-mythic-orange, 8.33%), 50%);
 $color-black-label: #0d0f0f; // Actual
 $color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%);
 $color-rarity-silver: lighten(#778899, 16.67%);
 
-$color-content-bg: lighten(desaturate($color-mythic-complement, 83.33%), 8.33%);
-$color-content-bg-bluer: desaturate($color-mythic-bluer, 83.33%);
-$color-text: lighten($color-content-bg, 50%);
+$color-content-bg: darken(desaturate($color-mythic-complement, 80%), 8.33%);
+$color-text: lighten($color-content-bg, 56.25%);
 $color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
+$color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
 $color-mana-white: lighten(#f8f6d8, 6.25%); // Actual
 $color-mana-blue: saturate(#c1d7e9, 25%); // Actual
 // $color-mana-black: #bab1ab; // Actual
 $color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 8.33%); // From Paletton, compliment to white mana.
 $color-mana-red: saturate(#e49977, 8.33%); // Actual
-$color-mana-green: saturate(#a3c095, 12.5%); // Actual
+$color-mana-green: saturate(#a3c095, 8.33%); // Actual
 $color-mana-generic: #cac5c0; // Actual
 $color-mana-hybrid: saturate(#eecb6b, 12.5%);
 
@@ -52,7 +51,7 @@ $box-shadows-card-button:
 $text-shadow-colored-text: 0 0 2px rgba(#000, .75);
 $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$layers: bg-overlay, deck-menu-group;
+$layers: bg-overlay, site-header, deck-menu-group;
 $transition-duration-standard: .25s;
 
 $x: 2px dashed rgba(#c0f, .75);

@@ -10,14 +10,14 @@
 		display: none;
 		margin: 0;
 		padding: 0;
-		border: 3px solid darken($color-text, 25%);
+		border: 2px solid $color-mythic-orange;
+		background: desaturate(darken($color-mythic-orange, 25%), 12.5%);
 		overflow: hidden;
 		position: absolute;
 		top: 2.25em;
 		right: 0;
 		z-index: index($layers, deck-menu-group);
 		box-shadow: -.125em .25em .5em rgba(#000, .5);
-		background: darken($color-content-bg-bluer, 8.33%);
 		min-width: 100%;
 
 		&.show {
@@ -32,15 +32,16 @@
 		text-overflow: ellipsis;
 		overflow-x: hidden;
 		white-space: nowrap;
+		color: $color-text;
 
 		&:hover,
 		&:focus {
 			text-decoration: none;
-			background: darken($color-mythic-orange, 12.5%);
+			background: $color-mythic-orange;
 			color: #fff;
 		}
 		&:active {
-			background: $color-mythic-orange;
+			background: $color-mythic-orange-lighter;
 			color: $color-text;
 		}
 	}
