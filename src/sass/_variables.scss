@@ -51,7 +51,7 @@ $box-shadows-card-button:
 $text-shadow-colored-text: 0 0 2px rgba(#000, .75);
 $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$layers: bg-overlay, site-header, deck-menu-group;
+$layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
 
 $x: 2px dashed rgba(#c0f, .75);

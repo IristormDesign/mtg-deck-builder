@@ -7,13 +7,6 @@
 		</main>
 
 		<site-footer />
-
-		<transition name="overlay">
-			<div
-				v-show="$store.state.showOverlay" class="bg-overlay"
-				@click="$store.commit('toggleOverlay', false)"
-			></div>
-		</transition>
 	</div>
 </template>
 

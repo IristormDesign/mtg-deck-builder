@@ -21,6 +21,13 @@
 		<button class="add-new-deck" @click="createDeck()">
 			➕ Create Deck
 		</button>
+
+		<transition name="overlay">
+			<div
+				v-show="$store.state.showOverlay" class="bg-overlay"
+				@click="$store.commit('toggleOverlay', false)"
+			></div>
+		</transition>
 	</nav>
 </template>
 

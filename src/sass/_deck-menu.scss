@@ -4,6 +4,7 @@
 }
 .deck-menu-group {
 	position: relative;
+	z-index: index($layers, deck-menu-group);
 
 	ul {
 		list-style: none;
@@ -16,7 +17,6 @@
 		position: absolute;
 		top: 2.25em;
 		right: 0;
-		z-index: index($layers, deck-menu-group);
 		box-shadow: -.125em .25em .5em rgba(#000, .5);
 		min-width: 100%;
 
