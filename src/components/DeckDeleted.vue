@@ -1,5 +1,5 @@
 <template>
-	<article class="deck-deleted wrap">
+	<article class="deck-deleted solo-message wrap">
 		<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>
 	</article>
 </template>
