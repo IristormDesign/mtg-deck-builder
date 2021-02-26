@@ -3,18 +3,19 @@
 @import 'variables';
 
 // GENERAL
-@import 'general-layout';
+@import 'general';
 @import 'links-and-forms';
-@import 'misc';
-@import 'typography';
-
-// COMPONENTS
-@import 'deck-card-display';
-@import 'deck-card-list-controls';
-@import 'deck-description';
-@import 'deck-header';
-@import 'deck-menu';
-@import 'deck-card-list';
-@import 'site-footer';
 @import 'site-header';
-@import 'welcome';
+@import 'site-footer';
+
+// DECK PAGES
+@import 'page-deck';
+@import 'deck-header';
+@import 'card-display';
+@import 'deck-description';
+@import 'card-list';
+@import 'card-list-controls';
+
+// OTHER PAGES
+@import 'page-welcome';
+@import 'misc';

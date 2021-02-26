@@ -45,3 +45,58 @@
 		}
 	}
 }
+.deck-menu {
+	display: flex;
+	align-items: center;
+}
+.deck-menu-group {
+	position: relative;
+	z-index: index($layers, deck-menu-group);
+
+	ul {
+		list-style: none;
+		display: none;
+		margin: 0;
+		padding: 0;
+		border: 2px solid $color-mythic-orange;
+		background: desaturate(darken($color-mythic-orange, 25%), 12.5%);
+		overflow: hidden;
+		position: absolute;
+		top: 2.25em;
+		right: 0;
+		box-shadow: -.125em .25em .5em rgba(#000, .5);
+		min-width: 100%;
+
+		&.show {
+			display: block;
+		}
+	}
+	a {
+		@include heading-font;
+		padding: $lhse/4 $lhse/2;
+		display: block;
+		max-width: 24em;
+		text-overflow: ellipsis;
+		overflow-x: hidden;
+		white-space: nowrap;
+		color: $color-text;
+
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			background: $color-mythic-orange;
+			color: #fff;
+		}
+		&:active {
+			background: $color-mythic-lighter;
+			color: $color-text;
+		}
+	}
+}
+.deck-selector {
+	position: relative;
+	z-index: index($layers, deck-menu-group);
+}
+.add-new-deck {
+	margin-left: 1em;
+}

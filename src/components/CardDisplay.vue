@@ -19,7 +19,7 @@
 
 <script>
 export default {
-	name: 'deck-card-display',
+	name: 'card-display',
 	props: {
 		deck: Object
 	}

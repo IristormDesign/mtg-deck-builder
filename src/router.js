@@ -2,10 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
 
-import Welcome from '@/components/Welcome.vue'
-import Deck from '@/components/Deck.vue'
-import DeckDeleted from '@/components/DeckDeleted.vue'
-import NotFound from '@/components/NotFound.vue'
+import Welcome from '@/components/PageWelcome.vue'
+import Deck from '@/components/PageDeck.vue'
+import DeckDeleted from '@/components/PageDeckDeleted.vue'
+import NotFound from '@/components/PageNotFound.vue'
 
 Vue.use(VueRouter)
 

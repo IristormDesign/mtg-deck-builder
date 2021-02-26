@@ -1,0 +1,16 @@
+.deck {
+	article {
+		margin: $lhse/2 0;
+		position: relative;
+	}
+}
+.card-display-scroll-view {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-gap: $lhse/2;
+	border-top: 2px solid darken($color-text, 33.33%);
+	padding: $lhse/2 0;
+}
+.deck-main {
+	grid-column: 3 / 8;
+}

@@ -8,6 +8,6 @@
 
 <script>
 export default {
-	name: 'notFound'
+	name: 'page-not-found'
 }
 </script>

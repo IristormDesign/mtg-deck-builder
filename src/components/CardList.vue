@@ -54,7 +54,7 @@
 
 <script>
 export default {
-	name: 'deck-card-list',
+	name: 'card-list',
 	props: {
 		deck: Object
 	},

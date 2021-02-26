@@ -39,22 +39,6 @@ main {
 	align-items: center;
 	position: relative;
 }
-.deck {
-	article {
-		margin: $lhse/2 0;
-		position: relative;
-	}
-}
-.card-display-scroll-view {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	grid-gap: $lhse/2;
-	border-top: 2px solid darken($color-text, 33.33%);
-	padding: $lhse/2 0;
-}
-.deck-main {
-	grid-column: 3 / 8;
-}
 .bg-overlay {
 	width: 100vw;
 	height: 100vh;
@@ -71,4 +55,23 @@ main {
 .overlay-enter,
 .overlay-leave-to {
   opacity: 0;
+}
+h1,
+h2,
+h3,
+h4 {
+	@include heading-font;
+	line-height: 1;
+}
+p {
+	margin: $lhse/2 0;
+}
+strong,
+b {
+	@include heading-font;
+}
+::selection {
+	background: $color-mythic-orange;
+	color: #fff;
+	text-shadow: none;
 }

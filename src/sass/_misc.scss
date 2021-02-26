@@ -1,23 +1,8 @@
 .warning-symbol {
-	color: $color-mana-hybrid;
+	color: $color-mythic-lighter;
 	display: inline-block;
 	cursor: default;
 	font-size: 83.33%;
-}
-.solo-message {
-	background: $color-group-bg;
-	border-radius: $border-radius-button;
-	max-width: 32em;
-
-	h2 {
-		margin-top: $lhse/4;
-	}
-}
-.deck-deleted {
-	p {
-		font-size: 116.67%;
-		text-align: center;
-	}
 }
 .mana-symbol {
 	$common-mana-symbol-size: .875em;
@@ -64,6 +49,21 @@
 		line-height: 1.875;
 		width: $common-mana-symbol-size * 2;
 		height: $common-mana-symbol-size * 2;
+		text-align: center;
+	}
+}
+.solo-message {
+	background: $color-group-bg;
+	border-radius: $border-radius-button;
+	max-width: 32em;
+
+	h2 {
+		margin-top: $lhse/4;
+	}
+}
+.deck-deleted {
+	p {
+		font-size: 116.67%;
 		text-align: center;
 	}
 }
