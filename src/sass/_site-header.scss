@@ -3,12 +3,15 @@
 	background:
 		radial-gradient(farthest-corner at 20% 100%,
 			$color-mythic-lighter 0%,
+			desaturate($color-mythic-orange, 20) 25%,
 			darken($color-mythic-orange, 16.67%) 50%,
-			$color-mythic-lighter 100%,
+			darken($color-mythic-orange, 16.67%) 66.67%,
+			$color-mythic-orange 100%,
 		);
-	border-bottom: 1px solid darken($color-mythic-orange, 20%);
+	border-bottom: 1px solid darken($color-mythic-orange, 25%);
 	position: relative;
 	z-index: index($layers, site-header);
+	box-shadow: 0 0 $lhse/6 rgba(#000, .333);
 
 	.wrap {
 		display: flex;
@@ -17,15 +20,20 @@
 		padding: 0 $lhse;
 	}
 	h1 {
-		margin: .5em 0;
-		line-height: 1;
+		margin: $lhse/4 0;
 		font-size: 1.5em;
 		position: relative;
 
 		a {
-			color: lighten($color-mythic-orange, 37.5%);
+			color: saturate(lighten($color-mythic-lighter, 37.5%), 50%);
 			text-shadow: 0 0 4px darken($color-mythic-orange, 25%);
-			filter: contrast(150%);
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				color: #fff;
+				text-shadow: 0 0 .25em $color-mythic-lighter;
+			}
 		}
 	}
 	button {

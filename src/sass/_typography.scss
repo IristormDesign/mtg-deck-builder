@@ -3,6 +3,7 @@ h2,
 h3,
 h4 {
 	@include heading-font;
+	line-height: 1;
 }
 p {
 	margin: $lhse/2 0;

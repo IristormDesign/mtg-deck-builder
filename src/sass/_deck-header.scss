@@ -4,7 +4,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: $lhse/2;
+	margin-bottom: $lhse/4;
 }
 .deck-info {
 	display: flex;
@@ -21,8 +21,7 @@
 		margin: 0;
 		margin-right: $lhse/2;
 		text-transform: uppercase;
-		font-size: $lhse/2;
-		line-height: 1;
+		font-size: 75%;
 		display: flex;
 		align-items: center;
 		text-align: right;
@@ -50,13 +49,18 @@
 		&:hover,
 		&:focus {
 			span {
-				color: $color-mythic-orange-lighter;
-				text-shadow: $text-shadow-colored-text;
-				text-decoration: underline;
+				text-shadow:
+					0 0 .375em $color-mythic-orange,
+					0 0 .75em $color-mythic-orange;
 			}
 			small {
 				opacity: 1;
 			}	
+		}
+		&:active {
+			span {
+				color: #fff;
+			}
 		}
 		span,
 		small {
@@ -64,6 +68,7 @@
 		}
 		span {
 			@include heading-font;
+			color: lighten($color-mythic-lighter, 16.67%);
 		}
 		small {
 			opacity: 0;

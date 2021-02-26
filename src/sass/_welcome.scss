@@ -16,7 +16,6 @@
 		box-sizing: content-box;
 		color: #000;
 		max-width: 22rem;
-		line-height: 1.5;
 		text-shadow: 0 0 .5em $color-text;
 		background: radial-gradient(
 			circle,
@@ -31,7 +30,6 @@
 	h2 {
 		font-size: 125%;
 		margin-top: $lhse/4;
-		line-height: 1.25;
 	}
 	strong i {
 		font-family: $font-family-standard;

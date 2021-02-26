@@ -1,5 +1,5 @@
 .card-list {
-	margin-bottom: $lhse/2;
+	margin: $lhse/4 0;
 	background: $color-group-bg;
 	border-radius: $lhse/2;
 	padding: $lhse/4;
@@ -124,8 +124,7 @@
 			.qty {
 				input {
 					transition: none;
-					color: $color-mythic-orange-lighter;
-					text-shadow: $text-shadow-colored-text;
+					color: $color-mythic-orange;
 				}
 			}
 		}
@@ -149,7 +148,7 @@
 			text-align: center;
 			box-shadow: inset 0 0 1px .5px #000;
 			margin-right: -.167em;
-			font: bold 75%/1.375 sans-serif;
+			font: bold 75%/1.25 sans-serif;
 			color: #000;
 			text-shadow: 0 0 1.5px #fff;
 

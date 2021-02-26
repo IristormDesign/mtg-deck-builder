@@ -1,9 +1,8 @@
 // COLORS
-$color-mythic-orange: #ea4b12; // Actual
-$color-mythic-lighter: saturate(lighten(#EA7212, 12.5%), 12.5%); // From Paletton
-$color-mythic-complement: #12B1EA; // From Canva Colors
-$color-mythic-orange-lighter: saturate(lighten($color-mythic-orange, 8.33%), 50%);
-$color-black-label: #0d0f0f; // Actual
+$color-mythic-orange: #ea4b12; // Sampled
+$color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
+$color-mythic-complement: #15b4ed; // Inverted mythic-orange
+$color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 $color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%);
 $color-rarity-silver: lighten(#778899, 16.67%);
 
@@ -13,13 +12,13 @@ $color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
-$color-mana-white: lighten(#f8f6d8, 6.25%); // Actual
-$color-mana-blue: saturate(#c1d7e9, 25%); // Actual
-// $color-mana-black: #bab1ab; // Actual
-$color-mana-black: desaturate(lighten(#9D93A7, 6.25%), 8.33%); // From Paletton, compliment to white mana.
-$color-mana-red: saturate(#e49977, 8.33%); // Actual
-$color-mana-green: saturate(#a3c095, 8.33%); // Actual
-$color-mana-generic: #cac5c0; // Actual
+$color-mana-white: lighten(#f8f6d8, 6.25%); // Sampled
+$color-mana-blue: saturate(#c1d7e9, 25%); // Sampled
+// $color-mana-black: #bab1ab; // Sampled
+$color-mana-black: desaturate(lighten(#070927, 58.33%), 62.5%); // Inverted mana-white
+$color-mana-red: saturate(#e49977, 8.33%); // Sampled
+$color-mana-green: saturate(#a3c095, 8.33%); // Sampled
+$color-mana-generic: #cac5c0; // Sampled
 $color-mana-hybrid: saturate(#eecb6b, 12.5%);
 
 $color-frame-white:
@@ -31,7 +30,7 @@ $color-frame-black:
 $color-frame-red:
 	desaturate(lighten($color-mana-red, 12.5%), 6.25%);
 $color-frame-green:
-	desaturate(lighten($color-mana-green, 12.5%), 8.33%);
+	desaturate(lighten($color-mana-green, 12.5%), 6.25%);
 $color-frame-multicolor:
 	desaturate(lighten($color-mana-hybrid, 8.33%), 16.67%);
 $color-frame-generic:
@@ -46,9 +45,8 @@ $lhse: $line-height-standard * 1em;
 
 // MISCELLANEOUS
 $box-shadows-card-button:
-	inset .75px -1.5px .5px 1px rgba(#000, .375),
-	inset -.75px 1.5px .5px 1px rgba(#fff, .625);
-$text-shadow-colored-text: 0 0 2px rgba(#000, .75);
+	inset .75px -1.5px 0 1px rgba(#000, .375),
+	inset -.75px 1.5px 0 1px rgba(#fff, .625);
 $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $layers: site-header, bg-overlay, deck-menu-group;

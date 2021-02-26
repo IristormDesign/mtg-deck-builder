@@ -4,6 +4,7 @@
 a {
 	color: $color-mythic-orange;
 	text-decoration: none;
+	transition: all $transition-duration-standard ease;
 
 	&:hover,
 	&:focus {
@@ -11,6 +12,7 @@ a {
 	}
 	&:active {
 		color: #000;
+		transition-duration: 0s;
 	}
 }
 button {
