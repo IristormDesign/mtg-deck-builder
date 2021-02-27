@@ -3,8 +3,8 @@ $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
-$color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%);
-$color-rarity-silver: lighten(#778899, 16.67%);
+$color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%); // From `gold` named color
+$color-rarity-silver: lighten(#778899, 16.67%); // From `lightslategray` named color
 
 $color-content-bg: darken(desaturate($color-mythic-complement, 80%), 8.33%);
 $color-text: lighten($color-content-bg, 56.25%);
@@ -14,12 +14,11 @@ $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
 $color-mana-white: lighten(#f8f6d8, 6.25%); // Sampled
 $color-mana-blue: saturate(#c1d7e9, 25%); // Sampled
-// $color-mana-black: #bab1ab; // Sampled
 $color-mana-black: desaturate(lighten(#070927, 56.25%), 66.67%); // Inverted mana-white
 $color-mana-red: saturate(#e49977, 8.33%); // Sampled
 $color-mana-green: saturate(#a3c095, 8.33%); // Sampled
 $color-mana-generic: #cac5c0; // Sampled
-$color-mana-hybrid: saturate(#eecb6b, 12.5%);
+$color-mana-hybrid: desaturate(lighten(#ffd700, 20%), 12.5%); // From `gold` named color
 
 $color-frame-white:
 	desaturate(darken($color-mana-white, 3.125%), 33.33%);
@@ -32,7 +31,7 @@ $color-frame-red:
 $color-frame-green:
 	desaturate(lighten($color-mana-green, 12.5%), 6.25%);
 $color-frame-multicolor:
-	desaturate(lighten($color-mana-hybrid, 8.33%), 16.67%);
+	desaturate(lighten($color-mana-hybrid, 6.25%), 16.67%);
 $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 16.67%);
 
