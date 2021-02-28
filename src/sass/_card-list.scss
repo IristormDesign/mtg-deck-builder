@@ -1,5 +1,6 @@
 .card-list {
-	margin: $margin-standard-sections 0;
+	border: $border-sections;
+	border-bottom: 0;
 	background: $color-group-bg;
 	padding: $lhse/4;
 	min-height: $lhse*7.5;
@@ -76,7 +77,7 @@
 	}
 	li {
 		display: flex;
-		margin: $margin-standard-sections 0;
+		margin: 3px 0;
 		transition: all .3333s ease; // For card sorting
 		position: relative;
 

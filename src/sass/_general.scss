@@ -12,8 +12,8 @@ body {
   body {
 		background:
 			radial-gradient(ellipse at 62.5% 25%,
-				rgba(#fff, .25),
-				rgba(#000, .25)
+				rgba(#fff, .333),
+				rgba(#000, .333)
 			) fixed no-repeat,
 			url('/img/topography.svg') repeat, // From http://www.heropatterns.com/
 			$color-content-bg;

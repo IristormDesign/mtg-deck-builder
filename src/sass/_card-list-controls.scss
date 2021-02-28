@@ -2,20 +2,20 @@
 	grid-column: 3 / 8;
 	display: flex;
 	justify-content: space-between;
-	margin: $margin-standard-sections 0;
 
 	> * {
 		background: $color-group-bg;
 		padding: $lhse/2 $lhse/2;
 		display: flex;
-		margin-right: $margin-standard-sections;
 		align-items: center;
-
+		border: $border-sections;
+		border-right: 0;
+		
 		&:first-child {
 			border-bottom-left-radius: $lhse/2;
 		}
 		&:last-child {
-			margin-right: 0;
+			border-right: $border-sections;
 			border-bottom-right-radius: $lhse/2;
 		}
 	}

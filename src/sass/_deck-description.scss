@@ -1,6 +1,7 @@
 .deck-description {
 	grid-column: span 7;
-	margin: 0 0 $margin-standard-sections;
+	border: $border-sections;
+	border-bottom: 0;
 	background: $color-group-bg;
 	padding: $lhse/2;
 	border-top-left-radius: $lhse/2;
