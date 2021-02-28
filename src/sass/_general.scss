@@ -15,7 +15,7 @@ body {
 				rgba(#fff, .25),
 				rgba(#000, .25)
 			) fixed no-repeat,
-			url('/img/bg-texture.jpg') repeat,
+			url('/img/topography.svg') repeat, // From http://www.heropatterns.com/
 			$color-content-bg;
 		background-blend-mode: overlay;
 	}
