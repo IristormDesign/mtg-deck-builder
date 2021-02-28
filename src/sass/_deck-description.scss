@@ -29,7 +29,7 @@
 			border-color: $color-mythic-orange;
 		}
 		&::placeholder {
-			color: darken($color-text, 33.33%);
+			color: desaturate(darken($color-text, 25%), 12.5%);
 		}
 	}
 }

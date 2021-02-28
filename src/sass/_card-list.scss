@@ -2,13 +2,16 @@
 	margin: $margin-standard-sections 0;
 	background: $color-group-bg;
 	padding: $lhse/4;
+	min-height: $lhse*7.5;
+	display: flex;
 
 	.no-cards {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		color: $color-text;
-		padding: $lhse*2;
+		align-self: center;
+		text-align: center;
+		width: 100%;
+	}
+	.card-list-container {
+		width: 100%;
 	}
 	.labels .button-group,
 	.card-button {
