@@ -1,7 +1,6 @@
 .card-list {
-	margin: $lhse/4 0;
+	margin: $margin-standard-sections 0;
 	background: $color-group-bg;
-	border-radius: $lhse/2;
 	padding: $lhse/4;
 
 	.no-cards {
@@ -74,7 +73,7 @@
 	}
 	li {
 		display: flex;
-		margin: 2px 0;
+		margin: $margin-standard-sections 0;
 		transition: all .3333s ease; // For card sorting
 		position: relative;
 
@@ -148,7 +147,8 @@
 			text-align: center;
 			box-shadow: inset 0 0 1px .5px #000;
 			margin-right: -.167em;
-			font: bold 75%/1.25 sans-serif;
+			font: bold 15px/#{$line-height-standard*.75} sans-serif;
+			padding: 1px 0;
 			color: #000;
 			text-shadow: 0 0 1.5px #fff;
 
@@ -219,17 +219,21 @@
 		background: $color-frame-generic;
 		align-items: center;
 		margin: 0;
-		padding: 0 .5em;
+		padding: 0 .3333em;
 		border-radius: $border-radius-button;
-		border: none;
-		box-shadow: $box-shadows-card-button;
+		border: 3px outset $color-frame-generic;
+		border-top-color: rgba(#fff, .5);
+		border-right-color: rgba(#fff, .375);
+		border-bottom-color: rgba(#000, .375);
+		border-left-color: rgba(#000, .25);
+		box-shadow: none;
 		transition: all $transition-duration-standard ease;
 		text-align: left;
 		color: #000;
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
-	
+		
 		&:active {
 			transform: scale(.995) translate(0, .5px);
 			transition-duration: 0s;

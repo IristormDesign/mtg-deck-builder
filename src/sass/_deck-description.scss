@@ -1,9 +1,10 @@
 .deck-description {
 	grid-column: span 7;
-	margin-bottom: $lhse/4;
+	margin: 0 0 $margin-standard-sections;
 	background: $color-group-bg;
 	padding: $lhse/2;
-	border-radius: $lhse/2;
+	border-top-left-radius: $lhse/2;
+	border-top-right-radius: $lhse/2;
 
 	h3 {
 		font-size: 75%;

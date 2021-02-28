@@ -12,12 +12,12 @@
 	position: relative;
 	z-index: index($layers, site-header);
 	box-shadow: 0 0 $lhse/6 rgba(#000, .333);
+	margin-bottom: $lhse/4;
 
 	.wrap {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 $lhse;
 	}
 	h1 {
 		margin: $lhse/4 0;

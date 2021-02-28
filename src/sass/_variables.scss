@@ -36,6 +36,7 @@ $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 16.67%);
 
 $color-group-bg: rgba(#000, .333);
+$color-group-bg: darken($color-content-bg, 20%);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
@@ -44,12 +45,13 @@ $lhse: $line-height-standard * 1em;
 
 // MISCELLANEOUS
 $box-shadows-card-button:
-	inset .75px -1.5px 0 1px rgba(#000, .375),
-	inset -.75px 1.5px 0 1px rgba(#fff, .625);
+	inset -.75px 1.5px 0 1px rgba(#fff, .5),
+	inset .75px -1.5px 0 1px rgba(#000, .5);
 $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
+$margin-standard-sections: 3px;
 
 $x: 2px dashed rgba(#c0f, .75);
 
@@ -58,5 +60,5 @@ $x: 2px dashed rgba(#c0f, .75);
 	font-weight: bold;
 }
 @mixin box-shadow-hover-card-button($color) {
-  box-shadow: $box-shadows-card-button, 0 0 $lhse/2 2px $color;
+	box-shadow: 0 0 $lhse/2 3px $color;
 }

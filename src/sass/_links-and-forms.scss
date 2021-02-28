@@ -9,6 +9,7 @@ a {
 	&:hover,
 	&:focus {
 		text-decoration: underline;
+		transition-duration: 0s;
 	}
 	&:active {
 		color: #000;
@@ -29,7 +30,7 @@ button {
 	border-width: 0px;
 	border-style: outset;
 	border-top-width: 0;
-	border-bottom-width: 2px;
+	border-bottom-width: 3px;
 	color: #000;
 	border-radius: $border-radius-button;
 	padding: $lhse/4 .5em;
@@ -38,6 +39,7 @@ button {
 	margin-bottom: 2px;
 	filter: brightness(1) contrast(1);
 	transition: filter $transition-duration-standard ease;
+	line-height: 1;
 
 	&:hover,
 	&:focus {
@@ -45,8 +47,8 @@ button {
 		outline: none;
 	}
 	&:active {
-		border-top-width: 2px;
-		border-bottom-width: 0;
+		border-top-width: 1.5px;
+		border-bottom-width: 1.5px;
 		box-shadow: 0 0 0 1px rgba(#000, .75);
 		margin-top: 0;
 		margin-bottom: 0;

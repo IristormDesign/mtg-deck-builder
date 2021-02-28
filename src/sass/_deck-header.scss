@@ -1,22 +1,30 @@
 .deck-header {
 	grid-column: span 7;
-	padding: $lhse/4 0;
+	padding: $lhse/2 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: $lhse/4;
 }
 .deck-info {
 	display: flex;
 	height: $lhse*1.5;
-	padding: 0 $lhse/2;
-	margin-left: $lhse/4;
+	padding: $lhse/2;
+	margin-left: $margin-standard-sections;
 	align-items: center;
-	border-radius: $border-radius-button;
 	background: $color-group-bg;
 	white-space: nowrap;
 	cursor: default;
 
+	&:first-of-type {
+		border-radius: $border-radius-button;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	&:last-of-type {
+		border-radius: $border-radius-button;
+		border-bottom-left-radius: 0;
+		border-top-left-radius: 0;
+	}
 	h3 {
 		margin: 0;
 		margin-right: $lhse/2;
@@ -33,7 +41,8 @@
 .deck-name {
 	margin: 0;
 	flex-grow: 1;
-	max-width: 33.33%;
+	min-width: 25%;
+	width: 100%;
 
 	button {
 		padding: 0;
@@ -42,13 +51,14 @@
 		border: 0;
 		box-shadow: none;
 		min-width: auto;
-		color:$color-text;
+		color: $color-text;
 		border-radius: 0;
 		text-align: left;
 
 		&:hover,
 		&:focus {
 			span {
+				color: lighten($color-mythic-lighter, 25%);
 				text-shadow:
 					0 0 .375em $color-mythic-orange,
 					0 0 .75em $color-mythic-orange;
@@ -68,7 +78,7 @@
 		}
 		span {
 			@include heading-font;
-			color: lighten($color-mythic-lighter, 16.67%);
+			color: $color-text;
 		}
 		small {
 			opacity: 0;

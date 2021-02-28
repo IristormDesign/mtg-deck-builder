@@ -1,14 +1,14 @@
 .deck {
 	article {
-		margin: $lhse/2 0;
+		margin: 0 0 $lhse/2;
 		position: relative;
 	}
 }
 .card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-gap: $lhse/2;
-	border-top: 2px solid darken($color-text, 33.33%);
+	grid-gap: $lhse/1.5;
+	border-top: $margin-standard-sections solid darken($color-text, 20%);
 	padding: $lhse/2 0;
 }
 .deck-main {
