@@ -1,54 +1,53 @@
 <template>
-	<div class="card-list">
-		<div
-			v-if="deck.cards.length <= 0" class="no-cards"
-			@mouseover="attentionAddCard(true)"
-			@mouseleave="attentionAddCard(false)"
-		>
-			<p>This deck has no cards yet. (Add a card to start building.)</p>
-		</div>
-		<div v-else class="card-list-container">
-			<header class="labels">
-				<div class="button-group">
-					<strong class="name">Name</strong>
-					<strong class="mana">Mana Cost</strong>
-					<strong class="type">Type</strong>
-					<strong class="rarity">Rarity</strong>
-				</div>
-				<strong class="qty" title="Quantity">Qty.</strong>
-			</header>
-			<transition-group tag="ul">
-				<li v-for="card in deck.cards" :key="card.name">
-					<button
-						@click="viewCard(card)"
-						:class="['card-button', colorButton(card)]"
-					>
-						<h3 class="name">{{ card.name }}</h3>
-						<div class="mana" v-html="styleManaSymbols(card)"></div>
-						<div class="type">{{ card.type }}</div>
-						<div v-if="card.rarity === 'common'"
-							class="rarity common" title="Common">C
-						</div>
-						<div v-else-if="card.rarity === 'uncommon'"
-							class="rarity uncommon" title="Uncommon">U
-						</div>
-						<div v-else-if="card.rarity === 'rare'"
-							class="rarity rare" title="Rare">R
-						</div>
-						<div v-else-if="card.rarity === 'mythic'"
-							class="rarity mythic" title="Mythic rare">M
-						</div>
-					</button>
-					<div class="qty">
-						<span>&times;</span>
-						<input
-							type="number" min="0" :max="card.maxQty"
-							v-model.lazy="card.qty" @change="validateQty(card)"
-						/>
+	<div
+		v-if="deck.cards.length <= 0"
+		class="card-list no-cards"
+		@mouseover="attentionAddCard(true)"
+		@mouseleave="attentionAddCard(false)"
+	>
+		<p>This deck has no cards yet. (Add a card to start building.)</p>
+	</div>
+	<div v-else class="card-list">
+		<header class="labels">
+			<div class="button-group">
+				<strong class="name">Name</strong>
+				<strong class="mana">Mana Cost</strong>
+				<strong class="type">Type</strong>
+				<strong class="rarity">Rarity</strong>
+			</div>
+			<strong class="qty" title="Quantity">Qty.</strong>
+		</header>
+		<transition-group tag="ul">
+			<li v-for="card in deck.cards" :key="card.name">
+				<button
+					@click="viewCard(card)"
+					:class="['card-button', colorButton(card)]"
+				>
+					<h3 class="name">{{ card.name }}</h3>
+					<div class="mana" v-html="styleManaSymbols(card)"></div>
+					<div class="type">{{ card.type }}</div>
+					<div v-if="card.rarity === 'common'"
+						class="rarity common" title="Common">C
 					</div>
-				</li>
-			</transition-group>
-		</div>
+					<div v-else-if="card.rarity === 'uncommon'"
+						class="rarity uncommon" title="Uncommon">U
+					</div>
+					<div v-else-if="card.rarity === 'rare'"
+						class="rarity rare" title="Rare">R
+					</div>
+					<div v-else-if="card.rarity === 'mythic'"
+						class="rarity mythic" title="Mythic rare">M
+					</div>
+				</button>
+				<div class="qty">
+					<span>&times;</span>
+					<input
+						type="number" min="0" :max="card.maxQty"
+						v-model.lazy="card.qty" @change="validateQty(card)"
+					/>
+				</div>
+			</li>
+		</transition-group>
 	</div>
 </template>
 

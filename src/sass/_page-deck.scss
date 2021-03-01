@@ -8,7 +8,7 @@
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	grid-gap: $lhse/1.5;
-	border-top: 3px solid darken($color-text, 20%);
+	border-top: 2px solid darken($color-text, 20%);
 	padding: $lhse/2 0;
 }
 .deck-main {

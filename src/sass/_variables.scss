@@ -51,7 +51,7 @@ $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
-$border-sections: 3px solid lighten($color-content-bg, 12.5%);
+$border-sections: 2px solid lighten($color-content-bg, 12.5%);
 
 $x: 2px dashed rgba(#c0f, .75);
 
