@@ -102,7 +102,6 @@ export default {
 						store.commit('setSortProperty', '')
 					})
 					.catch(error => {
-						this.error = true
 						console.log(error)
 					})
 			}
