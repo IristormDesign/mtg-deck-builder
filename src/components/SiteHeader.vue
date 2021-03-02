@@ -5,7 +5,7 @@
 				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
 
-			<nav class="deck-menu" @click="store.commit('toggleOverlay')">
+			<nav class="deck-menu">
 				<div class="deck-menu-group">
 					<button
 						class="deck-selector" @click="toggleDeckMenu()"
