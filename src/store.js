@@ -177,19 +177,11 @@ export default new Vuex.Store({
 				else if (deckA < deckB) return -1
 			})
 		},
-		toggleOverlay (state, payload) {
-			if (payload) { // Payload should be a boolean
-				state.showOverlay = payload
+		toggleOverlay (state) {
+			if (state.showOverlay === true) {
+				state.showOverlay = false
 			} else {
-				if (state.showOverlay === true) {
-					state.showOverlay = false
-				} else {
-					state.showOverlay = true
-				}
-			}
-			if (state.showOverlay === false) {
-				const deckMenu = document.querySelector('.deck-menu ul')
-				deckMenu.classList.remove('show')
+				state.showOverlay = true
 			}
 		}
 	},

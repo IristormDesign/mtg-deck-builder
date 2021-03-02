@@ -5,15 +5,15 @@
 				<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
 			</h1>
 
-			<nav class="deck-menu">
-				<div class="deck-menu-group">
+			<nav class="site-menu">
+				<div class="deck-menu">
 					<button
 						class="deck-selector" @click="toggleDeckMenu()"
 						:disabled="disableMenuButton"
 						:title="disabledMenuButtonTitle"
 					>📂 Open Deck</button>
 
-					<ul @blur="toggleDeckMenu()">
+					<ul v-show="showDeckMenu">
 						<li v-for="(deck, i) in $store.state.decks" :key="i">
 							<router-link
 								v-if="$route.params.deckPath !== deck.path"
@@ -30,8 +30,8 @@
 
 				<transition name="overlay">
 					<div
-						v-show="$store.state.showOverlay" class="bg-overlay"
-						@click="$store.commit('toggleOverlay', false)"
+						v-show="$store.state.showOverlay"
+						class="bg-overlay" @click="toggleDeckMenu()"
 					></div>
 				</transition>
 			</nav>
@@ -42,13 +42,17 @@
 <script>
 export default {
 	name: 'site-header',
+	data () {
+		return {
+			showDeckMenu: false
+		}
+	},
 	mounted () {
 		document.addEventListener('keyup', (event) => {
 			const keyEvent = event.key
-			const deckMenu = document.querySelector('.deck-menu ul')
 
 			if (keyEvent === 'Escape' || keyEvent === 'Esc') {
-				if (deckMenu.classList.contains('show')) {
+				if (this.showDeckMenu) {
 					this.toggleDeckMenu()
 				}
 			}
@@ -81,9 +85,12 @@ export default {
 	},
 	methods: {
 		toggleDeckMenu () {
-			const deckMenu = document.querySelector('.deck-menu ul')
+			if (this.showDeckMenu) {
+				this.showDeckMenu = false
+			} else {
+				this.showDeckMenu = true
+			}
 
-			deckMenu.classList.toggle('show')
 			this.$store.commit('toggleOverlay')
 		},
 		createDeck (failedName, existingDeckName) {

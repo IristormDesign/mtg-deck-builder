@@ -45,17 +45,17 @@
 		}
 	}
 }
-.deck-menu {
+.site-menu {
 	display: flex;
 	align-items: center;
 }
-.deck-menu-group {
+.deck-menu {
 	position: relative;
 	z-index: index($layers, deck-menu-group);
 
 	ul {
 		list-style: none;
-		display: none;
+		// display: none;
 		margin: 0;
 		padding: 0;
 		border: 2px solid $color-mythic-orange;
