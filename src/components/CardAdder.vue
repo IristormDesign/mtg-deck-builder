@@ -36,10 +36,7 @@ export default {
 
 			if (cardExists) {
 				deck.viewedCard = cardExists.name
-
-				setTimeout(() => {
-					alert(`“${cardExists.name}” is already in this deck.`)
-				})
+				alert(`“${cardExists.name}” is already in this deck.`)
 			} else {
 				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
 
@@ -102,7 +99,7 @@ export default {
 						store.commit('setSortProperty', '')
 					})
 					.catch(error => {
-						alert(`⚠ Error: ${error.response.data.details}.`)
+						alert(`⚠ Error: ${error.response.data.details}`)
 						console.log(error)
 					})
 			}
