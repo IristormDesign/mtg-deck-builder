@@ -14,7 +14,7 @@ $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
 $color-mana-white: lighten(#f8f6d8, 6.25%); // Sampled
 $color-mana-blue: saturate(#c1d7e9, 25%); // Sampled
-$color-mana-black: desaturate(lighten(#070927, 56.25%), 66.67%); // Inverted mana-white
+$color-mana-black: desaturate(lighten(#070927, 60%), 66.67%); // Inverted mana-white
 $color-mana-red: saturate(#e49977, 8.33%); // Sampled
 $color-mana-green: saturate(#a3c095, 12.5%); // Sampled
 $color-mana-generic: #cac5c0; // Sampled
