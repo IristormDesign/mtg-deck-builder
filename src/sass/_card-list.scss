@@ -83,39 +83,39 @@
 			z-index: 1;
 
 			.card-button {
-					@include box-shadow-hover-card-button(rgba(#000, .333));
-					filter: contrast(125%);
-					transition-duration: 0s;
-		
-					&.white {
-						@include box-shadow-hover-card-button(
-							$color-mana-white
-						);
-					}
-					&.blue {
-						@include box-shadow-hover-card-button(
-							saturate(darken($color-mana-blue, 25%), 25%)
-						);
-					}
-					&.black {
-						@include box-shadow-hover-card-button(
-							saturate(darken($color-mana-black, 37.5%), 37.5%)
-						);
-					}
-					&.red {
-						@include box-shadow-hover-card-button(
-							saturate(darken($color-mana-red, 25%), 25%)
-						);
-					}
-					&.green {
-						@include box-shadow-hover-card-button(
-							saturate(darken($color-mana-green, 25%), 25%)
-						);
-					}
-					&.multicolor {
-						@include box-shadow-hover-card-button(
-							saturate(darken($color-mana-hybrid, 25%), 25%)
-						);
+				@include box-shadow-hover-card-button(rgba(#000, .333));
+				filter: contrast(125%);
+				transition-duration: 0s;
+	
+				&.white {
+					@include box-shadow-hover-card-button(
+						$color-mana-white
+					);
+				}
+				&.blue {
+					@include box-shadow-hover-card-button(
+						saturate(darken($color-mana-blue, 25%), 25%)
+					);
+				}
+				&.black {
+					@include box-shadow-hover-card-button(
+						saturate(darken($color-mana-black, 37.5%), 37.5%)
+					);
+				}
+				&.red {
+					@include box-shadow-hover-card-button(
+						saturate(darken($color-mana-red, 25%), 25%)
+					);
+				}
+				&.green {
+					@include box-shadow-hover-card-button(
+						saturate(darken($color-mana-green, 25%), 25%)
+					);
+				}
+				&.multicolor {
+					@include box-shadow-hover-card-button(
+						saturate(darken($color-mana-hybrid, 25%), 25%)
+					);
 				}
 			}
 			&:hover {

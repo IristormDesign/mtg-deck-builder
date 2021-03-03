@@ -55,7 +55,6 @@
 
 	ul {
 		list-style: none;
-		// display: none;
 		margin: 0;
 		padding: 0;
 		border: 2px solid $color-mythic-orange;
@@ -66,10 +65,6 @@
 		right: 0;
 		box-shadow: -.125em .25em .5em rgba(#000, .5);
 		min-width: 100%;
-
-		&.show {
-			display: block;
-		}
 	}
 	a {
 		@include heading-font;
@@ -80,6 +75,7 @@
 		overflow-x: hidden;
 		white-space: nowrap;
 		color: $color-text;
+		transition-duration: 0s;
 
 		&:hover,
 		&:focus {
