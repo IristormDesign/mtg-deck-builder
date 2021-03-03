@@ -102,6 +102,7 @@ export default {
 						store.commit('setSortProperty', '')
 					})
 					.catch(error => {
+						alert(`⚠ Error: ${error.response.data.details}.`)
 						console.log(error)
 					})
 			}
@@ -133,7 +134,7 @@ export default {
 
 			setTimeout(() => {
 				this.delay = false
-			}, 250)
+			}, 500)
 		}
 	}
 }
