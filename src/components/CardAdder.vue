@@ -1,24 +1,18 @@
 <template>
-	<form class="card-adder" @submit.prevent="handleSubmit()">
-		<div
-			v-if="loadingCard" class="loading-indicator">
+	<div class="card-adder">
+		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
+			<label for="card-input">Add a new card to this deck:</label>
+			<input
+				type="text" id="card-input" ref="focus" v-model="cardName"
+				title="Tip: You can add a random card by entering “random” as the card name."
+				placeholder="(Enter a card’s name here.)"
+			/>
+			<button class="primary-btn" :disabled="delay">Add Card</button>
+		</form>
+		<div v-else class="loading-indicator">
 			Loading card&hellip;
 		</div>
-		<label
-			v-show="!loadingCard" for="card-input">
-			Add a new card to this deck:
-		</label>
-		<input
-			v-show="!loadingCard"
-			type="text" id="card-input" ref="focus" v-model="cardName"
-			title="Tip: You can add a random card by entering “random” as the card name."
-			placeholder="(Enter a card’s name here.)"
-		/>
-		<button
-			v-show="!loadingCard"
-			class="primary-btn" :disabled="delay">Add Card
-		</button>
-	</form>
+	</div>
 </template>
 
 <script>
@@ -114,6 +108,10 @@ export default {
 					})
 					.finally(() => {
 						this.loadingCard = false
+
+						this.$nextTick(() => {
+							this.$refs.focus.focus()
+						})
 					})
 			}
 		},

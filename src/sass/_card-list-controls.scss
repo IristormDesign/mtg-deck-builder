@@ -27,11 +27,14 @@
 	}
 }
 .card-adder {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
 	align-items: center;
 	width: 100%;
-	
+
+	form {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		width: 100%;
+	}
 	label {
 		grid-column: span 3;
 	}
@@ -64,17 +67,15 @@
 		height: 100%;
 	}
 	.loading-indicator {
-		grid-row: span 2;
-		grid-column: span 5;
-		align-self: center;
-		justify-self: center;
-		font-style: italic;
-		padding: 0 $lhse/4;
 		animation: pulse .5s ease-out;
 		animation-direction: alternate-reverse;
 		animation-iteration-count: infinite;
-		color: lighten(desaturate($color-mythic-complement, 25%), 25%);
+		color: lighten(desaturate($color-mythic-complement, 37.5%), 25%);
+		font-style: italic;
 		font-size: 112.5%;
+		width: 100%;
+		text-align: center;
+		cursor: default;
 
 		@keyframes pulse {
 			0% {
