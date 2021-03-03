@@ -18,7 +18,7 @@ $color-mana-black: desaturate(lighten(#070927, 60%), 66.67%); // Inverted mana-w
 $color-mana-red: saturate(#e49977, 8.33%); // Sampled
 $color-mana-green: saturate(#a3c095, 12.5%); // Sampled
 $color-mana-generic: #cac5c0; // Sampled
-$color-mana-hybrid: desaturate(lighten(#ffd700, 16.67%), 20%); // From `gold` named color
+$color-mana-hybrid: desaturate(lighten(#ffd700, 12.5%), 20%); // From `gold` named color
 
 $color-frame-white:
 	desaturate(darken($color-mana-white, 3.125%), 33.33%);
