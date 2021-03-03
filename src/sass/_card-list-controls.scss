@@ -61,7 +61,29 @@
 	button {
 		grid-column: span 1;
 		margin-left: -$lhse/2;
-		line-height: $line-height-standard*.75;
+		height: 100%;
+	}
+	.loading-indicator {
+		grid-row: span 2;
+		grid-column: span 5;
+		align-self: center;
+		justify-self: center;
+		font-style: italic;
+		padding: 0 $lhse/4;
+		animation: pulse .5s ease-out;
+		animation-direction: alternate-reverse;
+		animation-iteration-count: infinite;
+		color: lighten(desaturate($color-mythic-complement, 25%), 25%);
+		font-size: 112.5%;
+
+		@keyframes pulse {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
 	}
 }
 .card-sorter {
