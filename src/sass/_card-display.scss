@@ -5,30 +5,31 @@
 	top: $lhse;
 	filter: drop-shadow(-1px 2px 2px rgba(#000, .5));
 	
+	a {
+		position: absolute;
+		display: block;
+	}
 	img {
 		mask-image: url('/img/card-mask.svg');
-		position: absolute;
 		display: block;
 		width: 100%;
 		height: auto;
-		backface-visibility: hidden;
-		opacity: 1;
 		will-change: transform;
 	}
 }
 .card-browse-enter-active {
 	z-index: 1;
-	animation: card-fan-in .375s ease;
+	animation: card-fan-in .5s ease;
 }
 .card-browse-leave-active {
-	animation: overshadowed .375s ease;
+	animation: overshadowed .5s ease-out;
 }
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*3) translateY(-$lhse/2);
+		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.0625);
 	}
-	50% {
+	37.5% {
 		opacity: 1;
 	}
 }
@@ -37,6 +38,6 @@
 		filter: brightness(100%);
 	}
 	100% {
-		filter: brightness(33.33%);
+		filter: brightness(25%);
 	}
 }
