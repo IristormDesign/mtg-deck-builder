@@ -43,11 +43,20 @@ export default {
 				alert(`“${cardExists.name}” is already in this deck.`)
 			} else {
 				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
+				const cancelTokenSource = this.axios.CancelToken.source()
+
+				// Cancel when 10 seconds have passed.
+				setTimeout(() => {
+					cancelTokenSource.cancel()
+				}, 10000)
 
 				console.log(`Requested Scryfall for '${cardName}'.`)
 
 				this.axios
-					.get('https://api.scryfall.com/cards/named?fuzzy=' + cardQuery)
+					.get(
+						'https://api.scryfall.com/cards/named?fuzzy=' + cardQuery,
+						{ cancelToken: cancelTokenSource.token }
+					)
 					.then(response => {
 						const rd = response.data
 						const newCard = {}
@@ -103,8 +112,12 @@ export default {
 						store.commit('setSortProperty', '')
 					})
 					.catch(error => {
-						alert(`⚠ Error: ${error.response.data.details}`)
-						console.log(error)
+						if (this.axios.isCancel(error)) {
+							alert('⚠ The Scryfall server is taking too long to respond. Try again later.')
+						} else {
+							alert(`⚠ Error: ${error.response.data.details}`)
+							console.log(error)
+						}
 					})
 					.finally(() => {
 						this.loadingCard = false
@@ -133,6 +146,7 @@ export default {
 							this.getTheCard(response.data.name)
 						})
 						.catch(error => {
+							alert(`⚠ Error: ${error.response.data.details}`)
 							console.log(error)
 						})
 				} else {

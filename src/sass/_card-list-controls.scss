@@ -1,3 +1,5 @@
+$height-card-list-controls: $lhse * 1.25;
+
 .card-list-controls {
 	grid-column: 3 / 8;
 	display: flex;
@@ -44,7 +46,8 @@
 		border-radius: $border-radius-button;
 		padding-right: .75em;
 		padding-left: .375em;
-		
+		height: $height-card-list-controls;
+
 		&.attention {
 			@keyframes pulsate-input {
 				100% {
@@ -64,7 +67,7 @@
 	button {
 		grid-column: span 1;
 		margin-left: -$lhse/2;
-		height: 100%;
+		height: $height-card-list-controls;
 	}
 	.loading-indicator {
 		animation: pulse .5s ease-out;
@@ -91,8 +94,9 @@
 	display: block;
 
 	select {
-		padding: $lhse/4 .25em;
+		padding: 0 .25em;
 		border-radius: $border-radius-button;
+		height: $height-card-list-controls;
 	}
 }
 .deck-actions {
