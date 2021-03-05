@@ -50,18 +50,29 @@ export default {
 
 						if (colorA > colorB) return 1
 						else if (colorA < colorB) return -1
+					//
+					} else if (property === 'type') {
+						const cardAType = determineMainType(cardA)
+						const cardBType = determineMainType(cardB)
+						const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
+						const typeA = typeOrder.indexOf(cardAType)
+						const typeB = typeOrder.indexOf(cardBType)
+
+						if (typeA > typeB) return 1
+						else if (typeA < typeB) return -1
+					//
 					} else if (property === 'rarity') {
-						const rarityOrder = [
-							'mythic', 'rare', 'uncommon', 'common'
-						]
+						const rarityOrder = ['mythic', 'rare', 'uncommon', 'common']
 						const rarityA = rarityOrder.indexOf(a.rarity)
 						const rarityB = rarityOrder.indexOf(b.rarity)
 
 						if (rarityA > rarityB) return 1
 						else if (rarityA < rarityB) return -1
+					//
 					} else if (property === 'qty') {
 						if (cardA > cardB) return -1
 						else if (cardA < cardB) return 1
+					//
 					} else {
 						if (cardA > cardB) return 1
 						else if (cardA < cardB) return -1
@@ -70,6 +81,25 @@ export default {
 			})
 
 			store.commit('setDecks', store.state.decks)
+
+			function determineMainType (card) {
+				const regexCreature = RegExp('Creature')
+				const regexPlaneswalker = RegExp('Planeswalker')
+				const regexEnchantment = RegExp('Enchantment')
+				const regexArtifact = RegExp('Artifact')
+				const regexSorcery = RegExp('Sorcery')
+				const regexInstant = RegExp('Instant')
+				const regexLand = RegExp('Land')
+
+				if (regexCreature.test(card)) return 'creature'
+				else if (regexPlaneswalker.test(card)) return 'planeswalker'
+				else if (regexEnchantment.test(card)) return 'enchantment'
+				else if (regexArtifact.test(card)) return 'artifact'
+				else if (regexSorcery.test(card)) return 'sorcery'
+				else if (regexInstant.test(card)) return 'instant'
+				else if (regexLand.test(card)) return 'land'
+				else return 'other'
+			}
 		}
 	},
 	mounted () {
