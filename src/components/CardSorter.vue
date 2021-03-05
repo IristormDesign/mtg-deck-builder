@@ -11,6 +11,7 @@
 			<option value="cmc">Converted mana cost</option>
 			<option value="colors">Mana color</option>
 			<option value="type">Type</option>
+			<option value="subtype">Subtype</option>
 			<option value="rarity">Rarity</option>
 			<option value="qty">Quantity</option>
 		</select>
@@ -52,14 +53,15 @@ export default {
 						else if (colorA < colorB) return -1
 					//
 					} else if (property === 'type') {
-						const cardAType = determineMainType(cardA)
-						const cardBType = determineMainType(cardB)
-						const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
-						const typeA = typeOrder.indexOf(cardAType)
-						const typeB = typeOrder.indexOf(cardBType)
+						return sortByType(cardA, cardB)
+					//
+					} else if (property === 'subtype') {
+						const regexSubtypeMarker = RegExp(/\s—\s\w*/) // Finds ` — [word]`
+						const subtypeA = a.type.match(regexSubtypeMarker)
+						const subtypeB = b.type.match(regexSubtypeMarker)
 
-						if (typeA > typeB) return 1
-						else if (typeA < typeB) return -1
+						if (subtypeA > subtypeB || subtypeA === null) return 1
+						else if (subtypeA < subtypeB || subtypeB === null) return -1
 					//
 					} else if (property === 'rarity') {
 						const rarityOrder = ['mythic', 'rare', 'uncommon', 'common']
@@ -82,7 +84,17 @@ export default {
 
 			store.commit('setDecks', store.state.decks)
 
-			function determineMainType (card) {
+			function sortByType (cardA, cardB) {
+				const cardAType = determineType(cardA)
+				const cardBType = determineType(cardB)
+				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
+				const typeA = typeOrder.indexOf(cardAType)
+				const typeB = typeOrder.indexOf(cardBType)
+
+				if (typeA > typeB) return 1
+				else if (typeA < typeB) return -1
+			}
+			function determineType (card) {
 				const regexCreature = RegExp('Creature')
 				const regexPlaneswalker = RegExp('Planeswalker')
 				const regexEnchantment = RegExp('Enchantment')
