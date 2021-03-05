@@ -37,80 +37,97 @@ export default {
 
 			store.state.decks.forEach(deck => {
 				deck.cards.sort((a, b) => {
-					const cardA = a[property]
-					const cardB = b[property]
-
-					if (property === 'colors') {
-						const colorOrder = [
-							'W', 'U', 'B', 'R', 'G',
-							'multicolor',
-							undefined // `undefined` means colorless
-						]
-						const colorA = colorOrder.indexOf(a.colors[0])
-						const colorB = colorOrder.indexOf(b.colors[0])
-
-						if (colorA > colorB) return 1
-						else if (colorA < colorB) return -1
-					//
-					} else if (property === 'type') {
-						return sortByType(cardA, cardB)
-					//
-					} else if (property === 'subtype') {
-						const regexSubtypeMarker = RegExp(/\s—\s\w*/) // Finds ` — [word]`
-						const subtypeA = a.type.match(regexSubtypeMarker)
-						const subtypeB = b.type.match(regexSubtypeMarker)
-
-						if (subtypeA > subtypeB || subtypeA === null) return 1
-						else if (subtypeA < subtypeB || subtypeB === null) return -1
-					//
-					} else if (property === 'rarity') {
-						const rarityOrder = ['mythic', 'rare', 'uncommon', 'common']
-						const rarityA = rarityOrder.indexOf(a.rarity)
-						const rarityB = rarityOrder.indexOf(b.rarity)
-
-						if (rarityA > rarityB) return 1
-						else if (rarityA < rarityB) return -1
-					//
-					} else if (property === 'qty') {
-						if (cardA > cardB) return -1
-						else if (cardA < cardB) return 1
-					//
-					} else {
-						if (cardA > cardB) return 1
-						else if (cardA < cardB) return -1
+					switch (property) {
+					case 'colors': return sortByColor(a, b)
+					case 'type': return sortByType(a, b)
+					case 'subtype': return sortBySubtype(a, b)
+					case 'rarity': return sortByRarity(a, b)
+					case 'qty': return sortByQuantity(a, b)
+					default: return defaultSorting(a, b)
 					}
 				})
 			})
-
 			store.commit('setDecks', store.state.decks)
 
-			function sortByType (cardA, cardB) {
-				const cardAType = determineType(cardA)
-				const cardBType = determineType(cardB)
-				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
-				const typeA = typeOrder.indexOf(cardAType)
-				const typeB = typeOrder.indexOf(cardBType)
+			function sortByColor (a, b) {
+				const colorOrder = [
+					'W', 'U', 'B', 'R', 'G', 'multicolor',
+					undefined // `undefined` means colorless
+				]
+				const colorA = colorOrder.indexOf(a.colors[0])
+				const colorB = colorOrder.indexOf(b.colors[0])
 
-				if (typeA > typeB) return 1
-				else if (typeA < typeB) return -1
+				if (colorA > colorB) {
+					return 1
+				} else if (colorA < colorB) {
+					return -1
+				}
 			}
-			function determineType (card) {
-				const regexCreature = RegExp('Creature')
-				const regexPlaneswalker = RegExp('Planeswalker')
-				const regexEnchantment = RegExp('Enchantment')
-				const regexArtifact = RegExp('Artifact')
-				const regexSorcery = RegExp('Sorcery')
-				const regexInstant = RegExp('Instant')
-				const regexLand = RegExp('Land')
+			function sortByType (a, b) {
+				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
+				const typeA = typeOrder.indexOf(determineType(a.type))
+				const typeB = typeOrder.indexOf(determineType(b.type))
 
-				if (regexCreature.test(card)) return 'creature'
-				else if (regexPlaneswalker.test(card)) return 'planeswalker'
-				else if (regexEnchantment.test(card)) return 'enchantment'
-				else if (regexArtifact.test(card)) return 'artifact'
-				else if (regexSorcery.test(card)) return 'sorcery'
-				else if (regexInstant.test(card)) return 'instant'
-				else if (regexLand.test(card)) return 'land'
-				else return 'other'
+				if (typeA > typeB) {
+					return 1
+				} else if (typeA < typeB) {
+					return -1
+				}
+
+				function determineType (card) {
+					const regexCreature = RegExp('Creature')
+					const regexPlaneswalker = RegExp('Planeswalker')
+					const regexEnchantment = RegExp('Enchantment')
+					const regexArtifact = RegExp('Artifact')
+					const regexSorcery = RegExp('Sorcery')
+					const regexInstant = RegExp('Instant')
+					const regexLand = RegExp('Land')
+
+					if (regexCreature.test(card)) return 'creature'
+					else if (regexPlaneswalker.test(card)) return 'planeswalker'
+					else if (regexEnchantment.test(card)) return 'enchantment'
+					else if (regexArtifact.test(card)) return 'artifact'
+					else if (regexSorcery.test(card)) return 'sorcery'
+					else if (regexInstant.test(card)) return 'instant'
+					else if (regexLand.test(card)) return 'land'
+					else return 'other'
+				}
+			}
+			function sortBySubtype (a, b) {
+				const regexSubtypeMarker = RegExp(/\s—\s\w*/) // Finds ` — [word]`
+				const subtypeA = a.type.match(regexSubtypeMarker)
+				const subtypeB = b.type.match(regexSubtypeMarker)
+
+				if (subtypeA > subtypeB || subtypeA === null) {
+					return 1
+				} else if (subtypeA < subtypeB || subtypeB === null) {
+					return -1
+				}
+			}
+			function sortByRarity (a, b) {
+				const rarityOrder = ['mythic', 'rare', 'uncommon', 'common']
+				const rarityA = rarityOrder.indexOf(a.rarity)
+				const rarityB = rarityOrder.indexOf(b.rarity)
+
+				if (rarityA > rarityB) {
+					return 1
+				} else if (rarityA < rarityB) {
+					return -1
+				}
+			}
+			function sortByQuantity (a, b) {
+				if (a.qty > b.qty) {
+					return -1
+				} else if (a.qty < b.qty) {
+					return 1
+				}
+			}
+			function defaultSorting (a, b) { // For card name and CMC
+				if (a[property] > b[property]) {
+					return 1
+				} else if (a[property] < b[property]) {
+					return -1
+				}
 			}
 		}
 	},
