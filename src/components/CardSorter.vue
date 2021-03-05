@@ -57,10 +57,10 @@ export default {
 				const colorA = colorOrder.indexOf(a.colors[0])
 				const colorB = colorOrder.indexOf(b.colors[0])
 
-				if (colorA > colorB) {
-					return 1
-				} else if (colorA < colorB) {
+				if (colorA < colorB) {
 					return -1
+				} else if (colorA > colorB) {
+					return 1
 				}
 			}
 			function sortByType (a, b) {
@@ -68,20 +68,14 @@ export default {
 				const typeA = typeOrder.indexOf(determineType(a.type))
 				const typeB = typeOrder.indexOf(determineType(b.type))
 
-				if (typeA > typeB) {
-					return 1
-				} else if (typeA < typeB) {
-					return -1
-				}
-
 				function determineType (card) {
-					const regexCreature = RegExp('Creature')
-					const regexPlaneswalker = RegExp('Planeswalker')
-					const regexEnchantment = RegExp('Enchantment')
-					const regexArtifact = RegExp('Artifact')
-					const regexSorcery = RegExp('Sorcery')
-					const regexInstant = RegExp('Instant')
-					const regexLand = RegExp('Land')
+					const regexCreature = RegExp(/\bCreature\b/)
+					const regexPlaneswalker = RegExp(/\bPlaneswalker\b/)
+					const regexEnchantment = RegExp(/\bEnchantment\b/)
+					const regexArtifact = RegExp(/\bArtifact\b/)
+					const regexSorcery = RegExp(/\bSorcery\b/)
+					const regexInstant = RegExp(/\bInstant\b/)
+					const regexLand = RegExp(/\bLand\b/)
 
 					if (regexCreature.test(card)) return 'creature'
 					else if (regexPlaneswalker.test(card)) return 'planeswalker'
@@ -92,16 +86,22 @@ export default {
 					else if (regexLand.test(card)) return 'land'
 					else return 'other'
 				}
+
+				if (typeA < typeB) {
+					return -1
+				} else if (typeA > typeB) {
+					return 1
+				}
 			}
 			function sortBySubtype (a, b) {
-				const regexSubtypeMarker = RegExp(/\s—\s\w*/) // Finds ` — [word]`
+				const regexSubtypeMarker = RegExp(/\s—\s\w+/) // Finds ` — ` followed by at least one word
 				const subtypeA = a.type.match(regexSubtypeMarker)
 				const subtypeB = b.type.match(regexSubtypeMarker)
 
-				if (subtypeA > subtypeB || subtypeA === null) {
-					return 1
-				} else if (subtypeA < subtypeB || subtypeB === null) {
+				if (subtypeA < subtypeB || subtypeB === null) {
 					return -1
+				} else if (subtypeA > subtypeB || subtypeA === null) {
+					return 1
 				}
 			}
 			function sortByRarity (a, b) {
@@ -109,24 +109,24 @@ export default {
 				const rarityA = rarityOrder.indexOf(a.rarity)
 				const rarityB = rarityOrder.indexOf(b.rarity)
 
-				if (rarityA > rarityB) {
-					return 1
-				} else if (rarityA < rarityB) {
+				if (rarityA < rarityB) {
 					return -1
+				} else if (rarityA > rarityB) {
+					return 1
 				}
 			}
 			function sortByQuantity (a, b) {
-				if (a.qty > b.qty) {
-					return -1
-				} else if (a.qty < b.qty) {
+				if (a.qty < b.qty) {
 					return 1
+				} else if (a.qty > b.qty) {
+					return -1
 				}
 			}
 			function defaultSorting (a, b) { // For card name and CMC
-				if (a[property] > b[property]) {
-					return 1
-				} else if (a[property] < b[property]) {
+				if (a[property] < b[property]) {
 					return -1
+				} else if (a[property] > b[property]) {
+					return 1
 				}
 			}
 		}
