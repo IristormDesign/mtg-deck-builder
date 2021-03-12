@@ -8,13 +8,15 @@
 	a {
 		position: absolute;
 		display: block;
+		backface-visibility: hidden;
+		will-change: transform;
+		mask-image: url('/img/card-mask.svg');
+		background: #000;
 	}
 	img {
-		mask-image: url('/img/card-mask.svg');
 		display: block;
 		width: 100%;
 		height: auto;
-		will-change: transform;
 	}
 }
 .card-browse-enter-active {
@@ -27,7 +29,7 @@
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.03125);
+		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.03);
 	}
 	37.5% {
 		opacity: 1;
