@@ -11,7 +11,29 @@
 		backface-visibility: hidden;
 		will-change: transform;
 		mask-image: url('/img/card-mask.svg');
-		background: #000;
+		width: 100%;
+		height: auto;
+		box-shadow: inset 0 0 0 16px #000;
+		background: desaturate(darken($color-mana-generic, 16.67%), 25%);
+
+		&.W {
+			background: desaturate(darken($color-mana-white, 8.33%), 50%);
+		}
+		&.U {
+			background: desaturate(darken($color-mana-blue, 25%), 12.5%);
+		}
+		&.B {
+			background: darken($color-mana-black, 33.33%);
+		}
+		&.R {
+			background: desaturate(darken($color-mana-red, 25%), 12.5%);
+		}
+		&.G {
+			background: desaturate(darken($color-mana-green, 25%), 12.5%);
+		}
+		&.multicolor {
+			background: desaturate(darken($color-mana-hybrid, 16.67%), 16.67%);
+		}
 	}
 	img {
 		display: block;

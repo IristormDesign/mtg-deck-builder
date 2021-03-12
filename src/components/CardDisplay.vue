@@ -3,8 +3,9 @@
 		<div v-for="card in deck.cards" :key="card.name">
 			<transition name="card-browse" appear>
 				<a
-					v-if="deck.viewedCard == card.name"
-					:key="card.name" :href="card.link" target="_blank"
+					v-if="deck.viewedCard === card.name"
+					:key="card.name" :class="card.colors[0]"
+					:href="card.link" target="_blank"
 					title="Click to open this card’s page on Scryfall"
 				>
 					<img
