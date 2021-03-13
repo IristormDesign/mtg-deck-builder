@@ -7,7 +7,7 @@ $color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%); // From `gold` name
 $color-rarity-silver: lighten(#778899, 16.67%); // From `lightslategray` named color
 
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 8.33%);
-$color-text: lighten($color-content-bg, 56.25%);
+$color-text: lighten($color-content-bg, 50%);
 $color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);

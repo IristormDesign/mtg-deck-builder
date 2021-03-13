@@ -38,7 +38,10 @@ main {
 	display: flex;
 	align-items: center;
 	position: relative;
-	padding: $lhse/4 0;
+
+	> article {
+		margin: $lhse/2 auto;
+	}
 }
 .bg-overlay {
 	width: 100vw;
@@ -70,6 +73,9 @@ p {
 strong,
 b {
 	@include heading-font;
+}
+small {
+	font-size: 75%;
 }
 ::selection {
 	background: $color-mythic-orange;

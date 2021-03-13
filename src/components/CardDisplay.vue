@@ -4,8 +4,8 @@
 			<transition name="card-browse" appear>
 				<a
 					v-if="deck.viewedCard === card.name"
-					:key="card.name" :class="card.colors[0]"
-					:href="card.link" target="_blank"
+					:key="card.name" :class="card.colors[0]" :href="card.link"
+					target="_blank" rel="noopener noreferrer"
 					title="Click to open this card’s page on Scryfall"
 				>
 					<div class="loading-indicator">

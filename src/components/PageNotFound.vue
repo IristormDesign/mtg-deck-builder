@@ -1,8 +1,12 @@
 <template>
-	<article class="solo-message wrap">
-		<h2>Error: Page Not Found</h2>
+	<article class="page-not-found solo-message wrap">
+		<img src="/img/sok-84-one-with-nothing.jpg" width="616" height="412" alt="One with Nothing" />
 
-		<p>Your web browser tried to go to a page that doesn’t exist. Perhaps that page had existed before but was later removed.</p>
+		<h2>Page Not Found</h2>
+
+		<p>Your web browser tried to go to a page that doesn’t exist. Maybe that page had existed before but was later removed.</p>
+
+		<p><small>ILLUSTRATION: “<a href="https://scryfall.com/card/sok/84/one-with-nothing" target="_blank" rel="noopener noreferrer">One with Nothing</a>” by Jim Nelson</small></p>
 	</article>
 </template>
 
