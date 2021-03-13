@@ -99,7 +99,7 @@
 				}
 				&.black {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-black, 37.5%), 25%)
+						saturate(darken($color-mana-black, 50%), 25%)
 					);
 				}
 				&.red {

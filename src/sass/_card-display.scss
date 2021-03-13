@@ -14,29 +14,29 @@
 		width: 100%;
 		height: auto;
 		box-shadow: inset 0 0 0 16px #000;
-		background: desaturate(darken($color-frame-generic, 16.67%), 25%);
+		background: desaturate(darken($color-frame-generic, 25%), 25%);
 
 		&.W {
 			background: desaturate(darken($color-frame-white, 12.5%), 66.67%);
 		}
 		&.U {
-			background: desaturate(darken($color-frame-blue, 16.67%), 33.33%);
+			background: desaturate(darken($color-frame-blue, 25%), 25%);
 		}
 		&.B {
-			background: desaturate(darken($color-frame-black, 16.67%), 25%);
+			background: desaturate(darken($color-frame-black, 25%), 25%);
 
 			.loading-indicator {
 				color: #fff;
 			}
 		}
 		&.R {
-			background: desaturate(darken($color-frame-red, 16.67%), 41.67%);
+			background: desaturate(darken($color-frame-red, 25%), 25%);
 		}
 		&.G {
-			background: desaturate(darken($color-frame-green, 16.67%), 16.67%);
+			background: desaturate(darken($color-frame-green, 25%), 16.67%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 16.67%), 41.67%);
+			background: desaturate(darken($color-frame-multicolor, 25%), 33.33%);
 		}
 	}
 	.loading-indicator {
