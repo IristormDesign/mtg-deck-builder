@@ -19,7 +19,7 @@ $color-mana-black: desaturate(lighten(#00032a, 60%), 93.75%); // Inverted mana-w
 $color-mana-red: saturate(#f9aa8f, 6.25%); // Sampled
 $color-mana-green: saturate(#9bd3ae, 8.33%); // Sampled
 $color-mana-generic: #ccc2c0; // Sampled
-$color-mana-hybrid: desaturate(lighten(#ffd700, 16.67%), 16.67%); // From `gold` named color
+$color-mana-hybrid: desaturate(lighten(#ffd700, 25%), 16.67%); // From `gold` named color
 
 $color-frame-white:
 	desaturate(lighten($color-mana-white, 3.125%), 0%);
@@ -32,7 +32,7 @@ $color-frame-red:
 $color-frame-green:
 	desaturate(lighten($color-mana-green, 12.5%), 8.33%);
 $color-frame-multicolor:
-	desaturate(lighten($color-mana-hybrid, 12.5%), 6.25%);
+	desaturate(lighten($color-mana-hybrid, 8.33%), 6.25%);
 $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 8.33%);
 

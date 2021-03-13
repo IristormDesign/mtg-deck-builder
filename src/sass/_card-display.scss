@@ -14,31 +14,62 @@
 		width: 100%;
 		height: auto;
 		box-shadow: inset 0 0 0 16px #000;
-		background: desaturate(darken($color-mana-generic, 16.67%), 25%);
+		background: desaturate(darken($color-frame-generic, 16.67%), 25%);
 
 		&.W {
-			background: desaturate(darken($color-mana-white, 8.33%), 50%);
+			background: desaturate(darken($color-frame-white, 12.5%), 66.67%);
 		}
 		&.U {
-			background: desaturate(darken($color-mana-blue, 25%), 12.5%);
+			background: desaturate(darken($color-frame-blue, 16.67%), 33.33%);
 		}
 		&.B {
-			background: darken($color-mana-black, 33.33%);
+			background: desaturate(darken($color-frame-black, 16.67%), 25%);
+
+			.loading-indicator {
+				color: #fff;
+			}
 		}
 		&.R {
-			background: desaturate(darken($color-mana-red, 25%), 12.5%);
+			background: desaturate(darken($color-frame-red, 16.67%), 41.67%);
 		}
 		&.G {
-			background: desaturate(darken($color-mana-green, 25%), 12.5%);
+			background: desaturate(darken($color-frame-green, 16.67%), 16.67%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-mana-hybrid, 16.67%), 16.67%);
+			background: desaturate(darken($color-frame-multicolor, 16.67%), 41.67%);
+		}
+	}
+	.loading-indicator {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		animation: fade-in 2s ease;
+		position: absolute;
+		top: 0;
+		font-style: italic;
+		color: #000;
+		font-size: 112.5%;
+		backface-visibility: hidden;
+
+		@keyframes fade-in {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
 		}
 	}
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
+		position: relative;
 	}
 }
 .card-browse-enter-active {
@@ -51,7 +82,7 @@
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.03);
+		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.02);
 	}
 	37.5% {
 		opacity: 1;

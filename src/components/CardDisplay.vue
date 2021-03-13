@@ -8,6 +8,9 @@
 					:href="card.link" target="_blank"
 					title="Click to open this card’s page on Scryfall"
 				>
+					<div class="loading-indicator">
+						Loading image&hellip;
+					</div>
 					<img
 						:src="card.img" :alt="card.name"
 						width="488" height="680"
