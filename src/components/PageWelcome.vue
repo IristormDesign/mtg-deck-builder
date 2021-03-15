@@ -12,9 +12,8 @@
 				<header>
 					<h2>Greetings, planeswalker.</h2>
 				</header>
-				<p>On this web app, you can create and manage decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><strong><i>Magic: The Gathering</i></strong></a>.</p>
-				<p>To view a pre-made deck, click on the “Open Deck” button above.</p>
-				<p>To make a new deck, click on the “Create Deck” button above.</p>
+				<p>This is web app where you can create and manage decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><strong><i>Magic: The Gathering</i></strong></a>.</p>
+				<p>To view a pre-made deck, click on the “Open Deck” button above, or to make a new deck, click on the “Create Deck” button above.</p>
 			</div>
 		</div>
 	</article>

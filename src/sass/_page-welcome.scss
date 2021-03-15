@@ -2,30 +2,19 @@
 	border-radius: $border-radius-group;
 	border: $border-sections;
 	overflow: hidden;
+	// padding: $lhse/2;
+	background: $color-group-bg;
 
 	.wrap {
 		display: flex;
 		align-items: center;
-		background: $color-group-bg;
-		background: radial-gradient(87.5% 50%,
-			darken($color-mythic-orange, 16.67%),
-			darken($color-mythic-orange, 33.33%)
-		);
-		background: radial-gradient(87.5% 50%,
-			darken($color-mythic-complement, 16.67%),
-			darken($color-mythic-complement, 33.33%)
-		);
 		padding: 0;
-		// border-radius: #{$lhse*4} / 50%;
-		// border-radius: 25%;
-		// overflow: hidden;
-		// width: 75vmax;
 	}
 	.illustration {
 		position: relative;
 		width: 75%;
-		overflow: hidden;
-		border-right: 2px solid #000;
+		border-right: 1px solid #000;
+		background: #000;
 
 		img {
 			display: block;
