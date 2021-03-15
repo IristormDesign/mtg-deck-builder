@@ -1,55 +1,66 @@
-.welcome-bg {
-	background-image: url('../public/img/welcome.jpg');
-	background-color: #68664f; // Average color of background-image
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top 55% center;
-	align-items: flex-start;
-}
 .welcome {
-	margin: 0 auto;
+	border-radius: $border-radius-group;
+	border: $border-sections;
+	overflow: hidden;
 
 	.wrap {
-		min-height: 32em;
+		display: flex;
+		align-items: center;
+		background: $color-group-bg;
+		background: radial-gradient(87.5% 50%,
+			darken($color-mythic-orange, 16.67%),
+			darken($color-mythic-orange, 33.33%)
+		);
+		background: radial-gradient(87.5% 50%,
+			darken($color-mythic-complement, 16.67%),
+			darken($color-mythic-complement, 33.33%)
+		);
+		padding: 0;
+		// border-radius: #{$lhse*4} / 50%;
+		// border-radius: 25%;
+		// overflow: hidden;
+		// width: 75vmax;
+	}
+	.illustration {
 		position: relative;
+		width: 75%;
+		overflow: hidden;
+		border-right: 2px solid #000;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+		footer {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			font-style: italic;
+	
+			small {
+				background: rgba(#000, .75);
+				padding: $lhse/4 $lhse/2;
+				color: $color-button-default;
+			}
+			a {
+				&:active {
+					color: #fff;
+				}
+			}
+		}
 	}
 	.text-box {
-		box-sizing: content-box;
-		color: #000;
-		max-width: 22rem;
-		text-shadow: 0 0 .5em $color-text;
-		background: radial-gradient(
-			circle,
-			rgba($color-text, .833) (16em * .625),
-			rgba($color-text, 0) 16em
-		);
-		padding: 8.5em;
-		position: absolute;
-		top: -6em;
-		right: -6.5em;
-	}
-	h2 {
-		font-size: 125%;
-		margin-top: $lhse/4;
-	}
-	strong i {
-		font-family: $font-family-standard;
-	}
-	footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		font-style: italic;
+		width: 25%;
+		font-size: 108.33%;
+		padding: ($line-height-standard*1rem);
 
-		small {
-			background: rgba(#000, .75);
-			padding: $lhse/4 $lhse/2;
-			color: $color-button-default;
+		h2 {
+			font-size: 125%;
+			margin-top: $lhse/4;
 		}
-		a {
-			&:active {
-				color: #fff;
-			}
+		strong i {
+			font-family: $font-family-standard;
 		}
 	}
 }

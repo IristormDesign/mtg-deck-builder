@@ -43,7 +43,8 @@
 		line-height: 1;
 		margin-bottom: $lhse/4;
 		display: flex;
-		
+		color: $color-text-brighter;
+
 		.button-group {
 			display: grid;
 			width: 100%;
@@ -83,8 +84,10 @@
 			z-index: 1;
 
 			.card-button {
-				@include box-shadow-hover-card-button(rgba(#000, .333));
-				filter: contrast(125%);
+				@include box-shadow-hover-card-button(
+					desaturate(darken($color-mana-generic, 37.5%), 25%)
+				);
+				filter: contrast(116.67%);
 				transition-duration: 0s;
 	
 				&.white {
@@ -131,6 +134,7 @@
 		.name {
 			margin: 0;
 			font-size: 100%;
+			color: #000;
 		}
 		.mana {
 			display: flex;

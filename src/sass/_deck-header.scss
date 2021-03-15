@@ -53,7 +53,7 @@
 		border: 0;
 		box-shadow: none;
 		min-width: auto;
-		color: $color-text;
+		color: $color-text-brighter;
 		border-radius: 0;
 		text-align: left;
 
@@ -80,7 +80,6 @@
 		}
 		span {
 			@include heading-font;
-			color: $color-text;
 		}
 		small {
 			opacity: 0;

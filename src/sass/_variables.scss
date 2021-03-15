@@ -8,6 +8,7 @@ $color-rarity-silver: lighten(#778899, 16.67%); // From `lightslategray` named c
 
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 8.33%);
 $color-text: lighten($color-content-bg, 50%);
+$color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
@@ -50,6 +51,7 @@ $box-shadows-card-button:
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
+$border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
 $border-sections: 2px solid lighten($color-content-bg, 12.5%);

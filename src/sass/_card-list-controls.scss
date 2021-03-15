@@ -14,11 +14,11 @@ $height-card-list-controls: $lhse * 1.25;
 		border-right: 0;
 		
 		&:first-child {
-			border-bottom-left-radius: $lhse/2;
+			border-bottom-left-radius: $border-radius-group;
 		}
 		&:last-child {
 			border-right: $border-sections;
-			border-bottom-right-radius: $lhse/2;
+			border-bottom-right-radius: $border-radius-group;
 		}
 	}
 	label {

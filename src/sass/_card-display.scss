@@ -52,7 +52,7 @@
 		color: #000;
 		font-size: 112.5%;
 		backface-visibility: hidden;
-
+		
 		@keyframes fade-in {
 			0% {
 				opacity: 0;
@@ -70,6 +70,7 @@
 		width: 100%;
 		height: auto;
 		position: relative;
+		backface-visibility: hidden;
 	}
 }
 .card-browse-enter-active {
