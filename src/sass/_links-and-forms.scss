@@ -2,7 +2,7 @@
 	outline: 2px solid $color-mythic-orange;
 }
 a {
-	color: $color-mythic-orange;
+	color: saturate(lighten($color-mythic-orange, 6.25%), 12.5%);
 	text-decoration: none;
 	transition: all $transition-duration-standard ease;
 

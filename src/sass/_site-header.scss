@@ -1,10 +1,10 @@
 .site-header {
 	width: 100%;
-	background: desaturate(darken($color-mythic-orange, 8.33%), 16.67%);
-	border-bottom: 1px solid darken($color-mythic-orange, 25%);
+	box-shadow: 0 0 $lhse/6 rgba(#000, .375);
+	background: rgba($color-group-bg, 1);
+	border-bottom: 4px solid $color-mythic-orange;
 	position: relative;
 	z-index: index($layers, site-header);
-	box-shadow: 0 0 3px rgba(#000, .375);
 	
 	.wrap {
 		display: flex;
@@ -14,31 +14,16 @@
 	h1 {
 		margin: $lhse/4 0;
 		font-size: 1.375em;
-		position: relative;
-		
-		&::before {
-			content: '';
-			display: block;
-			width: 166.67%;
-			height: 175%;
-			left: -33.33%;
-			top: -37.5%;
-			position: absolute;
-			background: radial-gradient(closest-side,
-				rgba($color-mythic-lighter, .75),
-				rgba($color-mythic-lighter, 0)
-			);
-			z-index: -1;
-		}
+
 		a {
-			color: lighten($color-mythic-lighter, 33.33%);
 			text-decoration: none;
-			text-shadow: 0 0 3px darken($color-mythic-lighter, 25%);
 
 			&:hover,
-			&:focus,
+			&:focus {
+				text-shadow: 0 0 $lhse/4 $color-mythic-orange;
+			}
 			&:active {
-				color: #fff;
+				text-shadow: 0 0 $lhse/4 $color-mythic-lighter;
 			}
 		}
 	}
@@ -57,7 +42,7 @@
 			list-style: none;
 
 			display: grid;
-			grid-template-columns: 1fr 1fr $lhse 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
 			grid-gap: $lhse/2;
 			align-items: center;
 		}
@@ -71,6 +56,7 @@
 		margin-left: 0;
 		display: block;
 		width: 100%;
+		text-decoration: none;
 	}
 	.deck-selector {
 		position: relative;
@@ -115,8 +101,5 @@
 				color: $color-text;
 			}
 		}
-	}
-	.contact-link {
-		grid-column: 4 / 5;
 	}
 }

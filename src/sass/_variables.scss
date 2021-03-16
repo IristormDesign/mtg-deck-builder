@@ -37,8 +37,7 @@ $color-frame-multicolor:
 $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 8.33%);
 
-$color-group-bg: rgba(#000, .333);
-$color-group-bg: darken($color-content-bg, 20%);
+$color-group-bg: saturate(darken($color-content-bg, 20%), 8.33%);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;

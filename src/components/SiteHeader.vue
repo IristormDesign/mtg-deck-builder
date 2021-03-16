@@ -13,7 +13,9 @@
 							@click="toggleDeckMenu()"
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
-						>📂 Open Deck</button>
+						>
+							📂 Open Deck
+						</button>
 						<ul v-show="showDeckMenu">
 							<li v-for="(deck, i) in $store.state.decks" :key="i">
 								<router-link
@@ -25,12 +27,15 @@
 						</ul>
 					</li>
 					<li class="add-new-deck">
-						<button class="site-header-link primary-btn" @click="createDeck()">➕ Create Deck</button>
+						<button class="site-header-link primary-btn" @click="createDeck()">
+							➕ Create Deck
+						</button>
 					</li>
 					<li class="contact-link">
-						<a href="/contact" class="site-header-link primary-btn">📧 Contact</a>
+						<a href="/contact" class="site-header-link">📧 Contact</a>
 					</li>
 				</ul>
+
 				<transition name="overlay">
 					<div
 						v-show="$store.state.showOverlay"
