@@ -1,8 +1,8 @@
 .site-header {
 	width: 100%;
 	box-shadow: 0 0 $lhse/6 rgba(#000, .375);
-	background: rgba($color-group-bg, 1);
-	border-bottom: 4px solid $color-mythic-orange;
+	background: $color-group-bg;
+	border-bottom: $lhse/8 solid $color-mythic-orange;
 	position: relative;
 	z-index: index($layers, site-header);
 	
@@ -14,16 +14,19 @@
 	h1 {
 		margin: $lhse/4 0;
 		font-size: 1.375em;
-
+		
 		a {
 			text-decoration: none;
+			color: $color-text;
+			transition-duration: $transition-duration-standard;
 
 			&:hover,
 			&:focus {
-				text-shadow: 0 0 $lhse/4 $color-mythic-orange;
+				color: $color-mythic-orange;
 			}
 			&:active {
-				text-shadow: 0 0 $lhse/4 $color-mythic-lighter;
+				color: $color-mythic-lighter;
+				text-shadow: 0 0 $lhse/4 $color-mythic-orange;
 			}
 		}
 	}
