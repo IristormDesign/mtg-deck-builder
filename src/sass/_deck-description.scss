@@ -23,7 +23,8 @@
 		width: 100%;
 		height: $lhse;
 		transition: background, border $transition-duration-standard ease; 
-
+		resize: vertical;
+		
 		&:hover,
 		&:focus {
 			background: rgba(#000, .5);
