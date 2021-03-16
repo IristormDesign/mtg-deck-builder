@@ -54,18 +54,14 @@
 }
 .solo-message {
 	background: $color-group-bg;
-	max-width: 64ch;
 	border: $border-sections;
 	border-radius: $border-radius-group;
-	padding-top: $lhse/4;
-	padding-bottom: $lhse/4;
+	padding: $lhse/4 $lhse;
 	margin: $lhse/2 auto;
-
-	h2 {
-		margin-top: $lhse/3;
-	}
 }
 .page-not-found {
+	max-width: 64ch;
+
 	img {
 		display: block;
 		margin: $lhse/2 auto $lhse;
@@ -76,6 +72,9 @@
 	h2 {
 		text-align: center;
 	}
+}
+.contact-page {
+	max-width: 64ch;
 }
 .deck-deleted {
 	p {

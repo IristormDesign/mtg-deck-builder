@@ -6,28 +6,31 @@
 			</h1>
 
 			<nav class="site-menu">
-				<div class="deck-menu">
-					<button
-						class="deck-selector" @click="toggleDeckMenu()"
-						:disabled="disableMenuButton"
-						:title="disabledMenuButtonTitle"
-					>📂 Open Deck</button>
-
-					<ul v-show="showDeckMenu">
-						<li v-for="(deck, i) in $store.state.decks" :key="i">
-							<router-link
-								v-if="$route.params.deckPath !== deck.path"
-								:to="{ name: 'deck', params: { deckPath: deck.path } }"
-								@click.native="toggleDeckMenu()"
-							>{{ deck.name }}</router-link>
-						</li>
-					</ul>
-				</div>
-
-				<button class="add-new-deck" @click="createDeck()">
-					➕ Create Deck
-				</button>
-
+				<ul>
+					<li class="deck-menu">
+						<button
+							class="deck-selector site-header-link primary-btn"
+							@click="toggleDeckMenu()"
+							:disabled="disableMenuButton"
+							:title="disabledMenuButtonTitle"
+						>📂 Open Deck</button>
+						<ul v-show="showDeckMenu">
+							<li v-for="(deck, i) in $store.state.decks" :key="i">
+								<router-link
+									v-if="$route.params.deckPath !== deck.path"
+									:to="{ name: 'deck', params: { deckPath: deck.path } }"
+									@click.native="toggleDeckMenu()"
+								>{{ deck.name }}</router-link>
+							</li>
+						</ul>
+					</li>
+					<li class="add-new-deck">
+						<button class="site-header-link primary-btn" @click="createDeck()">➕ Create Deck</button>
+					</li>
+					<li class="contact-link">
+						<a href="/contact" class="site-header-link primary-btn">📧 Contact</a>
+					</li>
+				</ul>
 				<transition name="overlay">
 					<div
 						v-show="$store.state.showOverlay"

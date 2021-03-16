@@ -5,6 +5,7 @@ import store from './store.js'
 import Welcome from '@/components/PageWelcome.vue'
 import Deck from '@/components/PageDeck.vue'
 import DeckDeleted from '@/components/PageDeckDeleted.vue'
+import Contact from '@/components/PageContact.vue'
 import NotFound from '@/components/PageNotFound.vue'
 
 Vue.use(VueRouter)
@@ -42,6 +43,11 @@ export default new VueRouter({
 				if (deckExists) next()
 				else next({ name: 'notFound' })
 			}
+		},
+		{
+			name: 'contact',
+			path: '/contact',
+			component: Contact
 		},
 		{
 			// This route with the `*` path should always be the last item in the `routes` array.

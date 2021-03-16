@@ -3,7 +3,9 @@
 		<div class="wrap">
 			<p><strong>MTG Deck Organizer</strong> — Version 1.0.0</p>
 			<p>Web design and development by Damian Schmidt of <a href="https://iristormdesign.com">Iristorm Design</a>.</p>
-			<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This web app is not affiliated with or  endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy. <br>The data and images of cards are provided by the Scryfall API. This web app is not affiliated with or endorsed by Scryfall.</p>
+			<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This web app is not affiliated with or endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy.</p>
+			<p>Data and images of <i>Magic</i> cards are provided via the Scryfall API. This web app is not affiliated with or endorsed by Scryfall.</p>
+			<p>All other content, except where indicated otherwise, is copyright &copy; 2021 by Damian Schmidt.
 			<div class="app-options">
 				<button class="app-reset" @click="clearLocalStorage()">Reset</button>
 			</div>

@@ -10,10 +10,12 @@ a {
 	&:focus {
 		text-decoration: underline;
 		transition-duration: 0s;
+		color: $color-mythic-lighter;
+		text-decoration-color: $color-mythic-orange;
 	}
 	&:active {
 		color: #fff;
-		transition-duration: 0s;
+		text-decoration-color: $color-mythic-lighter;
 	}
 }
 button {
@@ -40,7 +42,8 @@ button {
 	filter: brightness(1) contrast(1);
 	transition: filter $transition-duration-standard ease;
 	line-height: 1;
-
+	text-align: center;
+	
 	&:hover,
 	&:focus {
 		filter: brightness(.833) contrast(1.25);
