@@ -58,10 +58,9 @@
 	border-radius: $border-radius-group;
 	padding: $lhse/4 $lhse;
 	margin: $lhse/2 auto;
+	max-width: 64ch;
 }
 .page-not-found {
-	max-width: 64ch;
-
 	img {
 		display: block;
 		margin: $lhse/2 auto $lhse;
@@ -72,9 +71,6 @@
 	h2 {
 		text-align: center;
 	}
-}
-.contact-page {
-	max-width: 64ch;
 }
 .deck-deleted {
 	p {
