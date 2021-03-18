@@ -2,7 +2,6 @@
 	border-radius: $border-radius-group;
 	border: $border-sections;
 	overflow: hidden;
-	// padding: $lhse/2;
 	background: $color-group-bg;
 
 	.wrap {
@@ -14,7 +13,7 @@
 		position: relative;
 		width: 75%;
 		border-right: 1px solid #000;
-		background: #000;
+		background-color: #68664f; // The average color of the illustration
 
 		img {
 			display: block;
