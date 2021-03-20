@@ -16,7 +16,7 @@
 		width: 100%;
 		height: auto;
 		margin: 0 auto;
-		background: #28333f; // Illustration's average color.
+		background: #32404e; // The illustration's average color.
 		min-width: $min-width-site;
 	}
 	.text-box {
@@ -34,9 +34,6 @@
 		h2 {
 			font-size: 125%;
 			margin-top: $lhse/2;
-		}
-		strong i {
-			font-family: $font-family-standard;
 		}
 	}
 }
