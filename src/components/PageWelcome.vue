@@ -1,9 +1,7 @@
 <template>
 	<article class="welcome">
+		<img class="illustration" src="/img/welcome.jpg" width="1920" height="1080" alt="Fantasy illustration" />
 		<div class="wrap">
-			<div class="illustration">
-				<img src="/img/welcome.jpg" width="1920" height="1080" alt="Fantasy illustration" />
-			</div>
 			<div class="text-box">
 				<header>
 					<h2>Greetings, planeswalker.</h2>
