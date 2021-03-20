@@ -25,9 +25,11 @@
 		position: absolute;
 		top: 8.333vh;
 		right: $lhse;
-		background: rgba(#000, .6667);
+		background: rgba($color-group-bg, .75);
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
+		border: $border-sections;
+		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
 
 		h2 {
 			font-size: 125%;

@@ -67,11 +67,11 @@ button {
 				rgba($color-mythic-lighter, 0) 100%,
 			)),
 			linear-gradient(
-				$color-button-primary 0%,
-				darken($color-button-primary, 16.67%) 96%,
-				lighten($color-button-primary, 16.67%) 100%
+				$color-link 0%,
+				darken($color-link, 16.67%) 96%,
+				lighten($color-link, 16.67%) 100%
 			);
-		border-color: $color-button-primary;
+		border-color: $color-link;
 		filter: brightness(1) contrast(1);
 
 		&:hover,
