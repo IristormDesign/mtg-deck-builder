@@ -2,12 +2,8 @@
 	<article class="welcome">
 		<div class="wrap">
 			<div class="illustration">
-				<img src="/img/welcome.jpg" width="1280" height="798" alt="Fantasy illustration" />
-				<footer>
-					<small>ILLUSTRATION: “Lezard” by <a href="https://www.davidrevoy.com/article24/video-timelapse-lezard" target="_blank" rel="noopener noreferrer">David Revoy</a>. Used with <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer" title="Creative Commons Attribution 3.0 Unported">CC BY 3.0 license</a>.</small>
-				</footer>
+				<img src="/img/welcome.jpg" width="1920" height="1080" alt="Fantasy illustration" />
 			</div>
-
 			<div class="text-box">
 				<header>
 					<h2>Greetings, planeswalker.</h2>

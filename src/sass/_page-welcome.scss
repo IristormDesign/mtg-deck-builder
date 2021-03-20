@@ -2,7 +2,7 @@
 	border-radius: $border-radius-group;
 	border: $border-sections;
 	overflow: hidden;
-	background: $color-group-bg;
+	background: #28333f; // Illustration's average color.
 	
 	.wrap {
 		display: flex;
@@ -10,38 +10,18 @@
 		padding: 0;
 	}
 	.illustration {
-		position: relative;
 		width: 75%;
-		border-right: 1px solid #000;
-		background-color: #68664f; // The average color of the illustration
 
 		img {
 			display: block;
 			width: 100%;
 			height: auto;
 		}
-		footer {
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			font-style: italic;
-	
-			small {
-				background: rgba(#000, .75);
-				padding: $lhse/4 $lhse/2;
-				color: $color-button-default;
-			}
-			a {
-				&:active {
-					color: #fff;
-				}
-			}
-		}
 	}
 	.text-box {
 		width: 25%;
 		font-size: 108.33%;
-		padding: ($line-height-standard*1rem);
+		padding: $lhse/2;
 
 		h2 {
 			font-size: 125%;
@@ -66,10 +46,6 @@
 		.illustration {
 			width: auto;
 			border: 0;
-
-			footer {
-				left: 0;
-			}
 		}
 		.text-box {
 			width: 30%;
@@ -77,38 +53,11 @@
 			right: 0;
 			top: 0;
 			bottom: 0;
-			background: rgba(darken($color-group-bg, 8.33%), .8333);
+			background: rgba(#000, .6667);
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			padding: $lhse/2;
 			font-size: 1em;
-			border-left: 1px solid darken($color-group-bg, 8.33%);
 		}
-
-		// .wrap {
-		// 	// display: block;
-		// 	flex-direction: column;
-		// }
-		// .illustration {
-		// 	width: 100%;
-		// 	order: 2;
-		// }
-		// .text-box {
-		// 	width: 100%;
-		// 	order: 1;
-		// 	// background: linear-gradient(to bottom,
-		// 	// 	$color-group-bg,
-		// 	// 	$color-group-bg 66.67%,
-		// 	// 	rgba($color-group-bg, 0)
-		// 	// );
-		// 	// position: relative;
-		// 	// padding-bottom: $lhse*2;
-		// 	// margin-bottom: -$lhse*5;
-
-		// 	// h2 {
-		// 	// 	margin-top: 0;
-		// 	// }
-		// }
 	}
 }
