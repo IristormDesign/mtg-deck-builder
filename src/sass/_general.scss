@@ -5,11 +5,19 @@
 }
 body {
 	font: 20px/1.5 $font-family-standard;
-	background: $color-content-bg;
+	background: #000;
 	color: $color-text;
 }
+#app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0 auto;
+	position: relative;
+	max-width: 1920px;
+}
 @supports (background-blend-mode: overlay) {
-  body {
+  #app {
 		background:
 			radial-gradient(ellipse at 62.5% 25%,
 				rgba(#fff, .333),
@@ -20,16 +28,9 @@ body {
 		background-blend-mode: overlay;
 	}
 }
-#app {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	margin: 0 auto;
-	position: relative;
-	max-width: 1920px;
-}
 .wrap {
-	width: $width-site;
+	max-width: $max-width-site;
+	min-width: $min-width-site;
 	margin: 0 auto;
 	padding: 0 $lhse;
 }
@@ -38,7 +39,7 @@ main {
 	display: flex;
 	align-items: center;
 	position: relative;
-
+	
 	> article {
 		margin: $lhse/2 auto;
 	}
@@ -83,4 +84,10 @@ small {
 	background: $color-mythic-orange;
 	color: #fff;
 	text-shadow: none;
+}
+
+@media (max-width: $width-site-breakpoint) {
+	.wrap {
+		padding: 0 $lhse/2;
+	}
 }

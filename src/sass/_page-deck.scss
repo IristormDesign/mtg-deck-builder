@@ -3,11 +3,12 @@
 		margin: 0 0 $lhse/2;
 		position: relative;
 	}
+	width: 100%;
 }
 .card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-gap: $lhse/1.5;
+	grid-gap: $lhse/2;
 	margin-bottom: $lhse;
 }
 .deck-main {

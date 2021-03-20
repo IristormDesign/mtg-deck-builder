@@ -12,14 +12,6 @@ $height-card-list-controls: $lhse * 1.25;
 		align-items: center;
 		border: $border-sections;
 		border-right: 0;
-		
-		&:first-child {
-			border-bottom-left-radius: $border-radius-group;
-		}
-		&:last-child {
-			border-right: $border-sections;
-			border-bottom-right-radius: $border-radius-group;
-		}
 	}
 	label {
 		display: block;
@@ -30,19 +22,18 @@ $height-card-list-controls: $lhse * 1.25;
 }
 .card-adder {
 	align-items: center;
-	width: 100%;
+	flex-grow: 1;
+	border-bottom-left-radius: $border-radius-group;
 
 	form {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: 4fr 1fr;
 		width: 100%;
 	}
 	label {
-		grid-column: span 3;
+		grid-column: span 2;
 	}
 	input {
-		grid-column: span 4;
-		width: 100%;
 		border-radius: $border-radius-button;
 		padding-right: .75em;
 		padding-left: .375em;
@@ -65,7 +56,6 @@ $height-card-list-controls: $lhse * 1.25;
 		}
 	}
 	button {
-		grid-column: span 1;
 		margin-left: -$lhse/2;
 		height: $height-card-list-controls;
 	}
@@ -91,18 +81,44 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 .card-sorter {
-	display: block;
-
 	select {
-		padding: 0 .25em;
-		border-radius: $border-radius-button;
 		height: $height-card-list-controls;
 	}
 }
 .deck-actions {
 	grid-gap: $lhse/2;
+	display: flex;
+	flex-direction: column;
+	border-right: $border-sections;
+	border-bottom-right-radius: $border-radius-group;
 
 	button {
 		font-size: 83.33%;
+		width: 100%;
+	}
+}
+
+@media (max-width: $width-site-breakpoint) {
+	.card-list-controls {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.card-adder {
+		grid-column: span 2;
+		border-right: $border-sections;
+		border-bottom-width: 0;
+		border-bottom-left-radius: 0;
+	}
+	.card-sorter {
+		justify-content: center;
+		border-bottom-left-radius: $border-radius-group;
+	}
+	.deck-actions {
+		flex-direction: row;
+
+		button {
+			margin-right: $lhse/3;
+			margin-left: $lhse/3;
+		}
 	}
 }

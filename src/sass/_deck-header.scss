@@ -1,17 +1,19 @@
 .deck-header {
 	grid-column: span 7;
 	margin: $lhse auto $lhse/2;
-	display: flex;
+	display: grid;
+	grid-template-columns: 2fr repeat(4, min-content);
 	align-items: center;
 	justify-content: space-between;
 }
 .deck-info {
 	display: flex;
-	height: $lhse*2;
-	padding: $lhse/2;
+	height: 100%;
+	padding: $lhse/4 $lhse/2;
 	border: $border-sections;
-	border-left: 0;
+	border-left-width: 0;
 	align-items: center;
+	justify-content: center;
 	background: $color-group-bg;
 	white-space: nowrap;
 	cursor: default;
@@ -41,9 +43,7 @@
 	}
 }
 .deck-name {
-	flex-grow: 1;
-	min-width: 25%;
-	width: 100%;
+	padding-left: $lhse/2;
 
 	button {
 		padding: 0;
@@ -55,6 +55,7 @@
 		color: $color-text-brighter;
 		border-radius: 0;
 		text-align: left;
+		width: 100%;
 
 		&:hover,
 		&:focus {
@@ -64,33 +65,25 @@
 					0 0 .375em $color-mythic-orange,
 					0 0 .75em $color-mythic-orange;
 			}
-			span {
-				opacity: 1;
-			}	
 		}
 		&:active {
 			h2 {
 				color: #fff;
 			}
 		}
-		h2,
-		span {
-			transition: all $transition-duration-standard ease;
-		}
 		h2 {
 			@include heading-font;
+			transition: all $transition-duration-standard ease;
 			margin: 0;
-			display: inline-block;
 			color: $color-link;
+			white-space: normal;
 		}
-		span {
-			opacity: 0;
-			font-family: $font-family-standard;
-			padding-left: .5em;
-		}	
 	}
 }
 .deck-colors {
+	h3 {
+		white-space: normal;
+	}
 	.output {
 		display: flex;
 	}
@@ -103,20 +96,55 @@
 	}
 }
 .average-cmc {
-	h3 {
-		margin-bottom: 0;
-	}
 	.output {
 		font-size: 200%;
 	}
 }
 .date-edited {
+	h3 {
+		white-space: normal;
+	}
 	.output {
 		font-size: 87.5%;
 	}
 }
 .card-total {
+	h3 {
+		white-space: normal;
+	}
 	.output {
 		font-size: 200%;
+	}
+}
+
+@media (max-width: $width-site-breakpoint) {
+	.deck-header {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		border: $border-sections;
+		border-radius: $border-radius-button;
+		overflow: hidden;
+
+		.deck-info {
+			border-radius: 0;
+			border-bottom-width: 0;
+
+			&:nth-of-type(2) {
+				border-left-width: 0;
+			}
+			&:last-of-type() {
+				border-right-width: 0;
+			}
+		}
+	}
+	.deck-name {
+		grid-column: span 4;
+		border-top-width: 0;
+		border-right-width: 0;
+		border-left-width: 0 !important;
+
+		button {
+			text-align: center;
+		}
 	}
 }

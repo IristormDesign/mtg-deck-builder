@@ -13,6 +13,7 @@ $color-link: saturate(lighten($color-mythic-orange, 6.25%), 12.5%);
 $color-button-default: lighten($color-content-bg, 41.67%);
 $color-button-primary: lighten($color-mythic-orange, 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
+$color-group-bg: saturate(darken($color-content-bg, 20%), 8.33%);
 
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 6.25%); // Sampled
 $color-mana-blue: saturate(#aae1fa, 6.25%); // Sampled
@@ -38,8 +39,6 @@ $color-frame-multicolor:
 $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 8.33%);
 
-$color-group-bg: saturate(darken($color-content-bg, 20%), 8.33%);
-
 // TEXT
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
 $line-height-standard: 1.5;
@@ -49,7 +48,9 @@ $lhse: $line-height-standard * 1em;
 $box-shadows-card-button:
 	inset -.75px 1.5px 0 1px rgba(#fff, .5),
 	inset .75px -1.5px 0 1px rgba(#000, .5);
-$width-site: 1440px;
+$min-width-site: 960px;
+$width-site-breakpoint: $min-width-site*1.25;
+$max-width-site: 1440px;
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;

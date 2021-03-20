@@ -1,20 +1,22 @@
 <template>
 	<div class="card-sorter" v-show="deck.cards.length >= 2">
-		<label for="propSelect">Sort cards by:</label>
-		<select
-			v-model="sortProperty" @change="sortCards()" id="propSelect"
-		>
-			<option v-if="sortProperty == ''" value="">
-				(Select a property)
-			</option>
-			<option value="name">Name</option>
-			<option value="cmc">Converted mana cost</option>
-			<option value="colors">Mana color</option>
-			<option value="type">Type</option>
-			<option value="subtype">Subtype</option>
-			<option value="rarity">Rarity</option>
-			<option value="qty">Quantity</option>
-		</select>
+		<form>
+			<label for="propSelect">Sort cards by:</label>
+			<select
+				v-model="sortProperty" @change="sortCards()" id="propSelect"
+			>
+				<option v-if="sortProperty == ''" value="">
+					(Select a property)
+				</option>
+				<option value="name">Name</option>
+				<option value="cmc">Converted mana cost</option>
+				<option value="colors">Mana color</option>
+				<option value="type">Type</option>
+				<option value="subtype">Subtype</option>
+				<option value="rarity">Rarity</option>
+				<option value="qty">Quantity</option>
+			</select>
+		</form>
 	</div>
 </template>
 
