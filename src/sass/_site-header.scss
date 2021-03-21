@@ -82,18 +82,16 @@
 		z-index: index($layers, deck-menu-group);
 
 		&.attention:not(:disabled) {
-			animation: flash .125s ease;
-			animation-iteration-count: 4;
+			animation: flash .1667s linear;
+			animation-iteration-count: 6;
 			animation-direction: alternate;
 
 			@keyframes flash {
-				0% {
-				}
-				33.3% {
+				33.33% {
 					filter: brightness(100%);
 				}
 				100% {
-					filter: brightness(125%);
+					filter: brightness(200%);
 				}
 			}
 		}

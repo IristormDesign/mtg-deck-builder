@@ -25,7 +25,7 @@ export default {
 
 			setTimeout(() => {
 				openDeckButton.classList.remove('attention')
-			}, 500)
+			}, 1000)
 		}
 	}
 }

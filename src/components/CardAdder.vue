@@ -45,10 +45,10 @@ export default {
 				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
 				const cancelTokenSource = this.axios.CancelToken.source()
 
-				// Cancel when 10 seconds have passed.
+				// Cancel when 15 seconds have passed.
 				setTimeout(() => {
 					cancelTokenSource.cancel()
-				}, 10000)
+				}, 15000)
 
 				console.log(`Requested Scryfall for '${cardName}'.`)
 

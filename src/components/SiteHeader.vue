@@ -35,7 +35,9 @@
 						</button>
 					</li>
 					<li class="contact-link">
-						<a href="/contact" class="site-header-link">📧 Contact</a>
+						<router-link :to="{name: 'contact'}" class="site-header-link">
+							📧 Contact
+						</router-link>
 					</li>
 				</ul>
 
