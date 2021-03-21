@@ -11,6 +11,7 @@ $color-text: lighten($color-content-bg, 50%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-link: saturate(lighten($color-mythic-orange, 6.25%), 12.5%);
 $color-button-default: lighten($color-content-bg, 41.67%);
+$color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 37.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 $color-group-bg: saturate(darken($color-content-bg, 20%), 8.33%);
 

@@ -43,6 +43,8 @@ button {
 	transition: filter $transition-duration-standard ease;
 	line-height: 1;
 	text-align: center;
+	text-shadow: -.5px 1px 1px rgba(#fff, .333);
+	font-weight: 500;
 	
 	&:hover,
 	&:focus {
@@ -67,8 +69,8 @@ button {
 				rgba($color-mythic-lighter, 0) 100%,
 			)),
 			linear-gradient(
-				$color-link 0%,
-				darken($color-link, 16.67%) 96%,
+				lighten($color-link, 12.5%) 0%,
+				darken($color-link, 12.5%) 96%,
 				lighten($color-link, 16.67%) 100%
 			);
 		border-color: $color-link;

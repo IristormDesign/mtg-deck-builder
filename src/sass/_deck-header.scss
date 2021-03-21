@@ -46,36 +46,22 @@
 	padding-left: $lhse/2;
 
 	button {
+		@extend a;
 		padding: 0;
 		margin: 0;
 		background: none;
 		border: 0;
 		box-shadow: none;
 		min-width: auto;
-		color: $color-text-brighter;
 		border-radius: 0;
 		text-align: left;
 		width: 100%;
+		text-shadow: none;
 
-		&:hover,
-		&:focus {
-			h2 {
-				color: lighten($color-mythic-lighter, 25%);
-				text-shadow:
-					0 0 .375em $color-mythic-orange,
-					0 0 .75em $color-mythic-orange;
-			}
-		}
-		&:active {
-			h2 {
-				color: #fff;
-			}
-		}
 		h2 {
 			@include heading-font;
-			transition: all $transition-duration-standard ease;
 			margin: 0;
-			color: $color-link;
+			color: inherit;
 			white-space: normal;
 		}
 	}
