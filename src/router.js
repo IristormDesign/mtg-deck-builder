@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
-
-import Welcome from '@/components/PageWelcome.vue'
-import Deck from '@/components/PageDeck.vue'
-import DeckDeleted from '@/components/PageDeckDeleted.vue'
-import Contact from '@/components/PageContact.vue'
-import NotFound from '@/components/PageNotFound.vue'
+const Welcome = () => import(/* webpackChunkName: "welcome" */ './pages/Welcome.vue')
+const Deck = () => import(/* webpackChunkName: "deck" */ './pages/Deck.vue')
+const DeckDeleted = () => import(/* webpackChunkName: "deck-deleted" */ './pages/DeckDeleted.vue')
+const Contact = () => import(/* webpackChunkName: "contact" */ './pages/Contact.vue')
+const NotFound = () => import(/* webpackChunkName: "not-found" */ './pages/NotFound.vue')
 
 Vue.use(VueRouter)
 

@@ -27,19 +27,19 @@
 </template>
 
 <script>
-import DeckName from './DeckName.vue'
-import DeckColors from './DeckColors.vue'
-import AverageCmc from './AverageCmc.vue'
-import DateEdited from './DateEdited.vue'
-import DeckActions from './DeckActions.vue'
+import DeckName from '../components/DeckName.vue'
+import DeckColors from '../components/DeckColors.vue'
+import AverageCmc from '../components/AverageCmc.vue'
+import DateEdited from '../components/DateEdited.vue'
+import DeckActions from '../components/DeckActions.vue'
 
-import CardDisplay from './CardDisplay.vue'
-import CardList from './CardList.vue'
-import CardAdder from './CardAdder.vue'
-import CardSorter from './CardSorter.vue'
-import CardTotal from './CardTotal.vue'
+import CardDisplay from '../components/CardDisplay.vue'
+import CardList from '../components/CardList.vue'
+import CardAdder from '../components/CardAdder.vue'
+import CardSorter from '../components/CardSorter.vue'
+import CardTotal from '../components/CardTotal.vue'
 
-import DeckDescription from './DeckDescription.vue'
+import DeckDescription from '../components/DeckDescription.vue'
 
 export default {
 	name: 'page-deck',
