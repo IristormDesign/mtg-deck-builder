@@ -20,7 +20,7 @@ a {
 }
 button {
 	background: linear-gradient(
-		$color-button-default 0%,
+		lighten($color-button-default, 12.5%) 0%,
 		darken($color-button-default, 12.5%) 96%,
 		lighten($color-button-default, 6.25%) 100%
 	);
@@ -69,11 +69,12 @@ button {
 				rgba($color-mythic-lighter, 0) 100%,
 			)),
 			linear-gradient(
-				lighten($color-link, 12.5%) 0%,
-				darken($color-link, 12.5%) 96%,
-				lighten($color-link, 16.67%) 100%
+				lighten($color-link, 25%) 0%,
+				darken($color-link, 16.67%) 96%,
+				lighten($color-link, 8.33%) 100%
 			);
-		border-color: $color-link;
+		border-color: desaturate(darken($color-link, 8.33%), 16.67%);
+		border-top-color: desaturate($color-link, 37.5%);
 		filter: brightness(1) contrast(1);
 
 		&:hover,
