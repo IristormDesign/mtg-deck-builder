@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style lang="scss">
-	/* CSS gets inserted here. Don't remove this line. */
+	@import '@/sass/index.scss';
 </style>
