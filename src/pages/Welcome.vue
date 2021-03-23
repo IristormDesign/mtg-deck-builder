@@ -2,11 +2,11 @@
 	<article class="welcome">
 		<img @click="attentionOpenDeckButton"
 			srcset="
-				/img/welcome-2560.jpg 2560w,
-				/img/welcome-1920.jpg 1920w,
-				/img/welcome-1440.jpg 1440w,
-				/img/welcome-1080.jpg 1080w"
-			src="/img/welcome-1920.jpg"
+				@/img/welcome-2560.jpg 2560w,
+				@/img/welcome-1920.jpg 1920w,
+				@/img/welcome-1440.jpg 1440w,
+				@/img/welcome-1080.jpg 1080w"
+			src="@/img/welcome-1920.jpg"
 			width="1920" height="1080" alt="Fantasy illustration"
 		/>
 		<div class="wrap">
