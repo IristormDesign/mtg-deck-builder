@@ -10,7 +10,7 @@ a {
 	&:focus {
 		text-decoration: underline;
 		transition-duration: 0s;
-		color: $color-mythic-lighter;
+		color: $color-link-focus;
 		text-decoration-color: $color-mythic-orange;
 	}
 	&:active {
@@ -65,8 +65,8 @@ button {
 	&.primary-btn {
 		background:
 			radial-gradient((
-				rgba($color-mythic-lighter, 1) 0%,
-				rgba($color-mythic-lighter, 0) 100%,
+				rgba($color-link-focus, 1) 0%,
+				rgba($color-link-focus, 0) 100%,
 			)),
 			linear-gradient(
 				lighten($color-link, 25%) 0%,

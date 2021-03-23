@@ -2,6 +2,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	backface-visibility: hidden;
 }
 body {
 	font: 20px/1.5 $font-family-standard;
@@ -81,9 +82,19 @@ small {
 	letter-spacing: (1/256)*1em;
 }
 ::selection {
-	background: $color-mythic-orange;
+	background: saturate(darken($color-mythic-complement, 25%), 25%);
 	color: #fff;
 	text-shadow: none;
+}
+.fade-enter-active {
+  transition: all .75s ease;
+}
+.fade-leave-active {
+  transition: all .25s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 @media (max-width: $width-site-breakpoint) {

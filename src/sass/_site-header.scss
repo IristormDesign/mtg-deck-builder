@@ -12,15 +12,28 @@
 		justify-content: space-between;
 	}
 	.site-title {
+		a {
+			text-decoration: none;
+			color: $color-text-brighter;
+			transition-duration: $transition-duration-standard;
+	
+			&:hover,
+			&:focus {
+				color: $color-link-focus;
+			}
+			&:active {
+				color: $color-link;
+			}
+		}
 		span {
 			display: inline-block;
-			color: darken($color-text, 16.67%);
+			color: darken($color-text, 12.5%);
+			font-size: 87.5%;
 
 			a {
 				@include heading-font;
 				display: inline-block;
 				text-transform: uppercase;
-				font-size: 87.5%;
 				letter-spacing: (1/48)*1em;
 				padding: $lhse/6 0;
 				margin: 0 .125ch;
@@ -28,23 +41,9 @@
 		}
 	}
 	h1 {
-		margin: $lhse/4 1.5ch $lhse/4 0;
+		margin: $lhse/4 1ch $lhse/4 0;
 		font-size: 1.375em;
 		display: inline-block;
-
-		a {
-			text-decoration: none;
-			color: $color-text;
-			transition-duration: $transition-duration-standard;
-
-			&:hover,
-			&:focus {
-				@extend a:hover;
-			}
-			&:active {
-				@extend a:active;
-			}
-		}
 	}
 	button {
 		&:disabled {
@@ -120,7 +119,7 @@
 			text-overflow: ellipsis;
 			overflow-x: hidden;
 			white-space: nowrap;
-			color: $color-text;
+			color: $color-text-brighter;
 			transition-duration: 0s;
 	
 			&:hover,
@@ -130,7 +129,7 @@
 				color: #fff;
 			}
 			&:active {
-				background: $color-mythic-lighter;
+				background: $color-link-focus;
 				color: $color-text;
 			}
 		}
