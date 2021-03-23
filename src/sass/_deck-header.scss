@@ -44,6 +44,7 @@
 }
 .deck-name {
 	padding-left: $lhse/2;
+	justify-content: left;
 
 	button {
 		@extend a;
@@ -54,9 +55,8 @@
 		box-shadow: none;
 		min-width: auto;
 		border-radius: 0;
-		text-align: left;
-		width: 100%;
 		text-shadow: none;
+		display: inline-block;
 
 		h2 {
 			@include heading-font;

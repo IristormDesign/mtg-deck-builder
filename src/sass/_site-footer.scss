@@ -1,8 +1,8 @@
 .site-footer {
-	font-size: .75em;
+	font-size: 75%;
 	letter-spacing: (1/256)*1em;
-	background: rgba(#000, .833);
-	color: desaturate(darken($color-text, 37.5%), 6.25%);
+	background: #000;
+	color: desaturate(darken($color-text, 41.67%), 6.25%);
 	position: relative;
 	padding: $lhse 0;
 

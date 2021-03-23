@@ -39,11 +39,10 @@
 
 			&:hover,
 			&:focus {
-				color: $color-mythic-orange;
+				@extend a:hover;
 			}
 			&:active {
-				color: $color-mythic-lighter;
-				text-shadow: 0 0 $lhse/4 $color-mythic-orange;
+				@extend a:active;
 			}
 		}
 	}
