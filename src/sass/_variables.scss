@@ -7,7 +7,7 @@ $color-rarity-gold: lighten(desaturate(#ffd700, 0%), 12.5%); // From `gold` name
 $color-rarity-silver: lighten(#778899, 16.67%); // From `lightslategray` named color
 
 $color-link: saturate(lighten($color-mythic-orange, 8.33%), 16.67%);
-$color-link-focus: $color-mythic-lighter;
+$color-link-focus: saturate(lighten($color-mythic-lighter, 8.33%), 16.67%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 8.33%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 75%);
 $color-text: lighten($color-group-bg, 66.67%);
@@ -55,7 +55,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
-$border-sections: 2px solid lighten($color-content-bg, 12.5%);
+$border-sections: 2px solid lighten($color-group-bg, 37.5%);
 
 $x: 2px dashed rgba(#c0f, .75);
 
