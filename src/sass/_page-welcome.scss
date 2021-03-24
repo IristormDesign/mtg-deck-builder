@@ -3,7 +3,8 @@
 	max-width: 1920px;
 	margin: 0 auto;
 	position: relative;
-	
+	overflow: hidden;
+
 	.wrap {
 		position: absolute;
 		margin: 0 auto;
@@ -18,6 +19,19 @@
 		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
 		min-width: $min-width-site;
+		animation: cinematic-fade-in 2.5s ease-out;
+		
+		@keyframes cinematic-fade-in {
+			0%,
+			8.33% {
+				filter: brightness(0%) blur(8px);
+				transform: scale(1.125);
+			}
+			100% {
+				filter: brightness(100%) blur(0px);
+				transform: scale(1);
+			}
+		}
 	}
 	.text-box {
 		width: 25%;
@@ -30,7 +44,20 @@
 		border-radius: $border-radius-group;
 		border: $border-sections;
 		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
+		animation: animate-text-box .75s ease-out;
+		animation-fill-mode: forwards;
+		animation-delay: 3s;
+		opacity: 0;
 
+		@keyframes animate-text-box {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+	
 		h2 {
 			font-size: 125%;
 			margin-top: 0;

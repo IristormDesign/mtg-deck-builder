@@ -57,7 +57,8 @@
 		border-radius: 0;
 		text-shadow: none;
 		display: inline-block;
-
+		text-align: left;
+		
 		h2 {
 			@include heading-font;
 			margin: 0;

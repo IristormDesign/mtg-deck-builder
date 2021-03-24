@@ -16,6 +16,7 @@ body {
 	margin: 0 auto;
 	position: relative;
 	max-width: 1920px;
+	background: $color-content-bg;
 }
 @supports (background-blend-mode: overlay) {
   #app {
@@ -86,15 +87,17 @@ small {
 	color: #fff;
 	text-shadow: none;
 }
-.fade-enter-active {
-  transition: all .75s ease;
-}
-.fade-leave-active {
-  transition: all .25s ease;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.fade-to {
+	&-enter-active {
+		transition: opacity .5s ease;
+	}
+	&-leave-active {
+		transition: opacity .25s ease;
+	}
+	&-enter,
+	&-leave-to {
+		opacity: 0;
+	}
 }
 
 @media (max-width: $width-site-breakpoint) {

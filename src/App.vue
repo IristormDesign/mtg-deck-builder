@@ -3,7 +3,7 @@
 		<site-header />
 
 		<main>
-			<transition name="fade" mode="out-in">
+			<transition name="fade-to" mode="out-in">
 				<router-view />
 			</transition>
 		</main>

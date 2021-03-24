@@ -73,13 +73,16 @@
 		backface-visibility: hidden;
 	}
 }
-.card-browse-enter-active {
-	z-index: 1;
-	animation: card-fan-in .5s ease;
+.card-browse {
+	&-enter-active {
+		z-index: 1;
+		animation: card-fan-in .5s ease;
+	}
+	&-leave-active {
+		animation: overshadowed .5s ease-out;
+	}
 }
-.card-browse-leave-active {
-	animation: overshadowed .5s ease-out;
-}
+
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
