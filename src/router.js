@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
-const Welcome = () =>
-	import(/* webpackChunkName: "welcome" */ './pages/Welcome.vue')
+const Home = () =>
+	import(/* webpackChunkName: "home" */ './pages/Home.vue')
 const Deck = () =>
 	import(/* webpackChunkName: "deck" */ './pages/Deck.vue')
 const DeckDeleted = () =>
@@ -24,7 +24,7 @@ export default new VueRouter({
 		{
 			name: 'home',
 			path: '/',
-			component: Welcome
+			component: Home
 		},
 		{
 			name: 'deckDeleted',

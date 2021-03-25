@@ -1,4 +1,4 @@
-.welcome {
+.home-page {
 	width: 100%;
 	max-width: 1920px;
 	margin: 0 auto;
@@ -63,16 +63,11 @@
 			font-size: 125%;
 			margin-top: $lhse/2;
 		}
-		p {
-			&:last-child {
-				// margin-bottom: 0;
-			}
-		}
 	}
 }
 
 @media (max-width: $width-site-breakpoint) {
-	.welcome {
+	.home-page {
 		.text-box {
 			top: $lhse;
 			font-size: 1em;

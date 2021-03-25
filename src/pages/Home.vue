@@ -1,5 +1,5 @@
 <template>
-	<article class="welcome">
+	<article class="home-page">
 		<img @click="attentionOpenDeckButton"
 			srcset="
 				@/img/welcome-2560.jpg 2560w,
