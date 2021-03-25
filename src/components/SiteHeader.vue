@@ -54,7 +54,6 @@
 
 <script>
 export default {
-	name: 'site-header',
 	data () {
 		return {
 			showDeckMenu: false

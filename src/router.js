@@ -11,6 +11,10 @@ const Contact = () =>
 	import(/* webpackChunkName: "contact" */ './pages/Contact.vue')
 const NotFound = () =>
 	import(/* webpackChunkName: "not-found" */ './pages/NotFound.vue')
+const Terms = () =>
+	import(/* webpackChunkName: "terms" */ './pages/Terms.vue')
+const Privacy = () =>
+	import(/* webpackChunkName: "privacy" */ './pages/Privacy.vue')
 
 Vue.use(VueRouter)
 
@@ -52,6 +56,16 @@ export default new VueRouter({
 			name: 'contact',
 			path: '/contact',
 			component: Contact
+		},
+		{
+			name: 'terms',
+			path: '/terms',
+			component: Terms
+		},
+		{
+			name: 'privacy',
+			path: '/privacy',
+			component: Privacy
 		},
 		{
 			// This route with the `*` path should always be the last item in the `routes` array.

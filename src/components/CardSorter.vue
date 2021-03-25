@@ -22,7 +22,6 @@
 
 <script>
 export default {
-	name: 'card-sorter',
 	data () {
 		return {
 			sortProperty: this.$store.state.sortProperty

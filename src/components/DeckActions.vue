@@ -7,7 +7,6 @@
 
 <script>
 export default {
-	name: 'deck-actions',
 	props: {
 		deck: Object
 	},

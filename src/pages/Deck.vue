@@ -40,19 +40,18 @@ import CardSorter from '@/components/CardSorter.vue'
 import DeckActions from '@/components/DeckActions.vue'
 
 export default {
-	name: 'page-deck',
 	components: {
 		DeckName,
 		DeckColors,
 		AverageCmc,
 		DateEdited,
-		DeckActions,
+		CardTotal,
 		CardDisplay,
+		DeckDescription,
 		CardList,
 		CardAdder,
 		CardSorter,
-		CardTotal,
-		DeckDescription
+		DeckActions
 	}
 }
 </script>

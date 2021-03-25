@@ -17,7 +17,6 @@
 
 <script>
 export default {
-	name: 'card-adder',
 	props: {
 		deck: Object
 	},

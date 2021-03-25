@@ -11,9 +11,3 @@
 		<p>To discover how this app was built, you can read about it in the <a href="https://iristormdesign.com/portfolio/mtg-deck-organizer">article on Iristorm Design</a>.</p>
 	</article>
 </template>
-
-<script>
-export default {
-	name: 'page-deck'
-}
-</script>

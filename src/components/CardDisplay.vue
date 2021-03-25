@@ -23,7 +23,6 @@
 
 <script>
 export default {
-	name: 'card-display',
 	props: {
 		deck: Object
 	}

@@ -53,7 +53,6 @@
 
 <script>
 export default {
-	name: 'card-list',
 	props: {
 		deck: Object
 	},

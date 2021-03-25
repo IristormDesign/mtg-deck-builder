@@ -10,7 +10,6 @@
 
 <script>
 export default {
-	name: 'average-cmc',
 	props: {
 		deck: Object
 	},

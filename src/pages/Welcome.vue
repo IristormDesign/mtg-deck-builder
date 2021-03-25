@@ -23,7 +23,6 @@
 
 <script>
 export default {
-	name: 'page-welcome',
 	methods: {
 		attentionOpenDeckButton () {
 			const openDeckButton = document.querySelector('button.deck-selector')

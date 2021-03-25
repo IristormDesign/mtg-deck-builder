@@ -14,7 +14,6 @@
 
 <script>
 export default {
-	name: 'card-total',
 	props: {
 		deck: Object
 	},

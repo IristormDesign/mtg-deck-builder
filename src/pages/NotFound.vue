@@ -9,9 +9,3 @@
 		<p><small>ILLUSTRATION: “<a href="https://scryfall.com/card/sok/84/one-with-nothing" target="_blank" rel="noopener noreferrer">One with Nothing</a>” by Jim Nelson</small></p>
 	</article>
 </template>
-
-<script>
-export default {
-	name: 'page-not-found'
-}
-</script>

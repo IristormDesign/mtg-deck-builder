@@ -8,7 +8,6 @@
 
 <script>
 export default {
-	name: 'deck-colors',
 	props: {
 		deck: Object
 	},

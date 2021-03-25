@@ -6,18 +6,20 @@
 	position: relative;
 	padding: $lhse 0;
 
-	.wrap {
-		padding: 0 $lhse;
-		position: relative;
+	span {
+		margin: 0 .5ch;
 	}
-	p {
-		margin: $lhse/4 $lhse/2;
-	}
-	.app-reset {
-		position: absolute;
-		bottom: 0;
-		right: $lhse;
-		text-transform: uppercase;
-		opacity: .75;
+	a {
+		&:link,
+		&:visited {
+			color: desaturate($color-mythic-orange, 25%);
+		}
+		&:hover,
+		&:focus {
+			color: $color-mythic-lighter;
+		}
+		&:active {
+			color: #fff;
+		}
 	}
 }
