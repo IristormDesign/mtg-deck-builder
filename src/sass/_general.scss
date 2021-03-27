@@ -76,7 +76,7 @@ p {
 }
 strong,
 b {
-	@include heading-font;
+	font-weight: $font-weight-semibold;
 }
 small {
 	font-size: 75%;
