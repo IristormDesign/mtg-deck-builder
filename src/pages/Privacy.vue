@@ -13,6 +13,6 @@
 		<p>The data includes technical information such as the web browser name and version, operating system name and version, device screen resolution, and country/state of access. It also includes behavioral information such as the pages on MDO that people visit, the dates of their visits, and the time spent on pages.</p>
 
 		<h3>Changes to This Privacy Policy</h3>
-		<p>This privacy policy is currently in effect, and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to change this privacy policy at any time.</p>
+		<p>This privacy policy is in effect since the date of its last update indicated above, and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to change this privacy policy at any time.</p>
 	</article>
 </template>
