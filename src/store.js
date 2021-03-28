@@ -6,7 +6,7 @@ const vuexLocalStorage = new VuexPersist({
 	storage: window.localStorage,
 	reducer: (state) => ({
 		decks: state.decks,
-		sortProperty: state.sortProperty
+		sortAttribute: state.sortAttribute
 	})
 })
 Vue.use(Vuex)
@@ -19,7 +19,7 @@ export default new Vuex.Store({
 		],
 		deletedDeckName: null,
 		showOverlay: false,
-		sortProperty: 'type',
+		sortAttribute: 'type',
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
 			u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
@@ -55,8 +55,8 @@ export default new Vuex.Store({
 		setDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
 		},
-		setSortProperty (state, payload) {
-			state.sortProperty = payload
+		setSortAttribute (state, payload) {
+			state.sortAttribute = payload
 		},
 		sortDeckMenu: (state) => {
 			state.decks.sort((a, b) => {

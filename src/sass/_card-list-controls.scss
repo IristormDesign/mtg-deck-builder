@@ -84,6 +84,9 @@ $height-card-list-controls: $lhse * 1.25;
 	select {
 		height: $height-card-list-controls;
 	}
+	option[value=""] {
+		font-style: italic;
+	}
 }
 .deck-actions {
 	grid-gap: $lhse/2;

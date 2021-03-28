@@ -1,12 +1,10 @@
 <template>
-	<div class="card-sorter" v-show="deck.cards.length >= 2">
+	<div class="card-sorter">
 		<form>
-			<label for="propSelect">Sort cards by:</label>
-			<select
-				v-model="sortProperty" @change="sortCards()" id="propSelect"
-			>
-				<option v-if="sortProperty == ''" value="">
-					(Select a property)
+			<label for="attributeSelect">Sort cards by:</label>
+			<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
+				<option v-if="sortAttribute == ''" value="">
+					(Select an attribute)
 				</option>
 				<option value="name">Name</option>
 				<option value="cmc">Converted mana cost</option>
@@ -24,7 +22,7 @@
 export default {
 	data () {
 		return {
-			sortProperty: this.$store.state.sortProperty
+			sortAttribute: this.$store.state.sortAttribute
 		}
 	},
 	props: {
@@ -33,12 +31,12 @@ export default {
 	methods: {
 		sortCards () {
 			const store = this.$store
-			const property = this.sortProperty
-			store.commit('setSortProperty', property)
+			const attribute = this.sortAttribute
+			store.commit('setSortAttribute', attribute)
 
 			store.state.decks.forEach(deck => {
 				deck.cards.sort((a, b) => {
-					switch (property) {
+					switch (attribute) {
 					case 'colors': return sortByColor(a, b)
 					case 'type': return sortByType(a, b)
 					case 'subtype': return sortBySubtype(a, b)
@@ -124,9 +122,9 @@ export default {
 				}
 			}
 			function defaultSorting (a, b) { // For card name and CMC
-				if (a[property] < b[property]) {
+				if (a[attribute] < b[attribute]) {
 					return -1
-				} else if (a[property] > b[property]) {
+				} else if (a[attribute] > b[attribute]) {
 					return 1
 				}
 			}
@@ -136,9 +134,9 @@ export default {
 		// Using `$store.subscribe` seems to be the only way that gets the <select> element to change its value other than clicking its options.
 		this.$store.subscribe((mutation) => {
 			// `$store.subscribe` will activate when anything in the store is mutated; this `if` statement narrows down to the relevant type and payload.
-			if (mutation.type === 'setSortProperty' &&
+			if (mutation.type === 'setSortAttribute' &&
 				mutation.payload === '') {
-				this.sortProperty = mutation.payload
+				this.sortAttribute = mutation.payload
 			}
 		})
 	}

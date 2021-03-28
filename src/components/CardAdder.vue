@@ -108,7 +108,7 @@ export default {
 							deck.viewedCard = newCard.name
 							store.commit('setDecks', store.state.decks)
 						})
-						store.commit('setSortProperty', '')
+						store.commit('setSortAttribute', '')
 					})
 					.catch(error => {
 						if (this.axios.isCancel(error)) {

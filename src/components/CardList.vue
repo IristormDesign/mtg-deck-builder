@@ -112,8 +112,8 @@ export default {
 			card.qty = Math.round(card.qty)
 			deck.viewedCard = card.name
 
-			if (store.state.sortProperty === 'qty') {
-				store.commit('setSortProperty', '') // Reset the sort-by select box.
+			if (store.state.sortAttribute === 'qty') {
+				store.commit('setSortAttribute', '') // Reset the sort-by select box.
 			}
 
 			if (card.qty <= 0) {
