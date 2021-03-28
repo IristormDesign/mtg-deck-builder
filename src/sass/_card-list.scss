@@ -194,6 +194,9 @@
 				margin: 0 2px 0 $lhse/4;
 				color: darken($color-text, 12.5%);
 			}
+			label {
+				@extend .screen-readers-only;
+			}
 			input {
 				color: $color-text;
 				background: transparent;

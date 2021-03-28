@@ -18,7 +18,7 @@
 			<strong class="qty" title="Quantity">Qty.</strong>
 		</header>
 		<transition-group tag="ul">
-			<li v-for="card in deck.cards" :key="card.name">
+			<li v-for="(card, i) in deck.cards" :key="card.name">
 				<button
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
@@ -40,9 +40,10 @@
 					</div>
 				</button>
 				<div class="qty">
+					<label :for="`qty-c${i}`">Quantity</label>
 					<span>&times;</span>
 					<input
-						type="number" min="0" :max="card.maxQty"
+						type="number" min="0" :max="card.maxQty" :id="`qty-c${i}`"
 						v-model.lazy="card.qty" @change="validateQty(card)"
 					/>
 				</div>
