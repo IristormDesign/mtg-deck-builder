@@ -6,7 +6,8 @@
 		<p>Iristorm Design (“we,” “us,” “our”) operates this website, MTG Deck Organizer (“MDO”). This document explains how we collect and handle personal information received from users of MDO. By continuing to use MDO, you agree to this privacy policy.</p>
 
 		<h3>Stored Browser Data</h3>
-		<p>MDO uses web browser cookies and local web storage for storing personalized user data. Local storage is required in order for MDO to fully function. If you want to delete all of your MDO data in your browser’s local storage, click the “Clear Stored Data” link in the footer of this site.</p>
+		<p>MDO uses web browser cookies and local web storage for storing personalized user data. Local storage is required in order for MDO to fully function.</p>
+		<p>To delete at once all of your customized MDO data in your browser’s local storage, click the “Clear Stored Data” link located in the footer of this site.</p>
 
 		<h3>Statistical Data</h3>
 		<p>We use Google Analytics to collect and analyze aggregated statistical data sent by people’s web browsers whenever they visit MDO. This data helps us better decide on how to improve the website.</p>
