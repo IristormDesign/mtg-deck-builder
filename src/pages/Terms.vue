@@ -5,7 +5,7 @@
 		<p><i>Last revised on March 27, 2021</i></p>
 
 		<p>Please read these terms of service before using this website, MTG Deck Organizer (“MDO”), operated by Iristorm Design (“us,” “we,” “our”).</p>
-		<p>By using MDO, you agree to be bound by the terms of service and the <router-link to="/privacy">privacy policy</router-link>. If you disagree with any part of the terms of service, do not use MDO.</p>
+		<p>By using MDO, you agree to be bound by the terms of service and to the <router-link to="/privacy">privacy policy</router-link>. If you disagree with any part of the terms of service, do not use MDO.</p>
 
 		<h3>Limitations of Liability</h3>
 		<p>MDO is provided “as-is.” We may change or remove any aspect of the site at any time without warning.</p>
@@ -16,7 +16,7 @@
 
 		<h3>Unacceptable Use</h3>
 		<p>Do not attempt to disrupt, tamper with, or place undue burden on MDO’s web servers, whether manually or via automation.</p>
-		<p>If you breach any provision of these terms of service, we may terminate your access to MDO without warning or liability.</p>
+		<p>If you breach any provision of the terms of service, we may terminate your access to MDO without warning or liability.</p>
 
 		<h3>Revisions</h3>
 		<p>We reserve the right to revise the terms of service at our sole discretion at any time.</p>
