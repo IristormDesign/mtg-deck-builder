@@ -1,19 +1,21 @@
 <template>
 	<div class="card-sorter">
 		<form>
-			<label for="attributeSelect">Sort cards by:</label>
-			<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
-				<option v-if="sortAttribute == ''" value="">
-					(Select an attribute)
-				</option>
-				<option value="name">Name</option>
-				<option value="cmc">Converted mana cost</option>
-				<option value="colors">Mana color</option>
-				<option value="type">Type</option>
-				<option value="subtype">Subtype</option>
-				<option value="rarity">Rarity</option>
-				<option value="qty">Quantity</option>
-			</select>
+			<fieldset :disabled="(deck.cards.length <= 1)">
+				<label for="attributeSelect">Sort cards by:</label>
+				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
+					<option v-if="sortAttribute == ''" value="">
+						(Select an attribute)
+					</option>
+					<option value="name">Name</option>
+					<option value="cmc">Converted mana cost</option>
+					<option value="colors">Mana color</option>
+					<option value="type">Type</option>
+					<option value="subtype">Subtype</option>
+					<option value="rarity">Rarity</option>
+					<option value="qty">Quantity</option>
+				</select>
+			</fieldset>
 		</form>
 	</div>
 </template>

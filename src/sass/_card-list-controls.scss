@@ -81,6 +81,21 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 .card-sorter {
+	fieldset {
+		padding: 0;
+		border: 0;
+		margin: 0;
+		transition: opacity $transition-duration-standard ease;
+
+		&:disabled {
+			opacity: .25;
+
+			select {
+				opacity: 1;
+				cursor: not-allowed;
+			}
+		}
+	}
 	select {
 		height: $height-card-list-controls;
 	}
