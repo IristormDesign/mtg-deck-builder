@@ -4,11 +4,10 @@
 	position: sticky;
 	top: $lhse;
 	filter: drop-shadow(-1px 2px 2px rgba(#000, .5));
-	
+		
 	a {
 		position: absolute;
 		display: block;
-		backface-visibility: hidden;
 		will-change: transform;
 		mask-image: url('~@/img/card-mask.svg');
 		width: 100%;
@@ -16,6 +15,9 @@
 		box-shadow: inset 0 0 0 16px #000;
 		background: desaturate(darken($color-frame-generic, 25%), 25%);
 
+		&:focus-visible {
+			filter: brightness(125%);
+		}
 		&.W {
 			background: desaturate(darken($color-frame-white, 12.5%), 66.67%);
 		}
@@ -51,7 +53,6 @@
 		font-style: italic;
 		color: #000;
 		font-size: 112.5%;
-		backface-visibility: hidden;
 		
 		@keyframes fade-in {
 			0% {
@@ -70,7 +71,6 @@
 		width: 100%;
 		height: auto;
 		position: relative;
-		backface-visibility: hidden;
 	}
 }
 .card-browse {
