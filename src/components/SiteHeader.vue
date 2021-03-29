@@ -13,19 +13,20 @@
 					<li class="deck-menu">
 						<button
 							class="deck-selector site-header-link primary-btn"
-							@click="toggleDeckMenu()"
-							:disabled="disableMenuButton"
+							@click="toggleDeckMenu()" :disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
 						>
 							📂 Open Deck
 						</button>
 						<ul v-show="showDeckMenu">
-							<li v-for="(deck, i) in $store.state.decks" :key="i">
+							<li v-for="deck in $store.state.decks" :key="deck.name">
 								<router-link
 									v-if="$route.params.deckPath !== deck.path"
 									:to="{ name: 'deck', params: { deckPath: deck.path } }"
 									@click.native="toggleDeckMenu()"
-								>{{ deck.name }}</router-link>
+								>
+									{{ deck.name }}
+								</router-link>
 							</li>
 						</ul>
 					</li>
@@ -35,7 +36,7 @@
 						</button>
 					</li>
 					<li class="contact-link">
-						<router-link to="/contact" class="site-header-link">
+						<router-link :to="{name: 'contact'}" class="site-header-link">
 							📧 Contact
 						</router-link>
 					</li>
@@ -88,7 +89,7 @@ export default {
 				if (this.$store.state.decks.length <= 0) {
 					return 'You have no more decks. Create a new one!'
 				} else {
-					return 'You currently don’t have another deck.'
+					return 'You currently have no other deck to open.'
 				}
 			} else {
 				return null
