@@ -188,13 +188,11 @@
 				text-shadow: 0 0 1.5px saturate(lighten($color-mythic-lighter, 25%), 25%);
 			}
 			&.special {
-				$color-special-rarity: #905D98; // Sampled from Scryfall
-
 				background: linear-gradient(-60deg,
-					darken($color-special-rarity, 25%),
-					saturate(lighten($color-special-rarity, 25%), 25%),
-					darken($color-special-rarity, 25%)
-				) $color-special-rarity;
+					darken($color-rarity-special, 25%),
+					saturate(lighten($color-rarity-special, 25%), 25%),
+					darken($color-rarity-special, 25%)
+				) $color-rarity-special;
 				color: #fff;
 				text-shadow: 0 0 1.5px #000;
 			}
