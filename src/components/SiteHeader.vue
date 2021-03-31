@@ -70,6 +70,18 @@ export default {
 				}
 			}
 		}, false)
+
+		const headerLinks = document.querySelectorAll('.site-title a, .site-header-link')
+
+		// If the Open Deck menu is open and if the user tab focuses onto another link or button in the site header, then close the Open Deck menu.
+		headerLinks.forEach((link) => {
+			link.addEventListener('focus', (event) => {
+				if (this.showDeckMenu && link === event.target) {
+					this.showDeckMenu = false
+					this.$store.commit('toggleOverlay')
+				}
+			})
+		})
 	},
 	computed: {
 		disableMenuButton () {
