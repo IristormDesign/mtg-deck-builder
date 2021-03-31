@@ -8,6 +8,7 @@
 		<p>This deck has no cards yet. (Add a card to start building.)</p>
 	</div>
 	<div v-else class="card-list">
+		<h3>Card List</h3>
 		<header class="labels">
 			<div class="button-group">
 				<strong class="name">Name</strong>
@@ -23,7 +24,7 @@
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
 				>
-					<h3 class="name">{{ card.name }}</h3>
+					<h4 class="name">{{ card.name }}</h4>
 					<div class="mana" v-html="styleManaSymbols(card)"></div>
 					<div class="type">{{ card.type }}</div>
 					<div v-if="card.rarity === 'common'"

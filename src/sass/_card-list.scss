@@ -11,6 +11,9 @@
 		justify-content: center;
 		text-align: center;
 	}
+	h3 {
+		@extend .screen-readers-only
+	}
 	.labels .button-group,
 	.card-button {
 		display: grid;
