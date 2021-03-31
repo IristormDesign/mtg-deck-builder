@@ -39,6 +39,9 @@
 					<div v-else-if="card.rarity === 'mythic'"
 						class="rarity mythic" title="Mythic rare">M
 					</div>
+					<div v-else
+						class="rarity special" title="Special">S
+					</div>
 				</button>
 				<div class="qty">
 					<label :for="`qty-c${i}`">Quantity</label>
