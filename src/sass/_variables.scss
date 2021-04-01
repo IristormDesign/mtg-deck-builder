@@ -39,6 +39,8 @@ $color-frame-multicolor:
 	desaturate(lighten($color-mana-hybrid, 8.33%), 6.25%);
 $color-frame-generic:
 	desaturate(lighten($color-mana-generic, 6.25%), 8.33%);
+$color-frame-generic:
+	desaturate(lighten($color-rarity-silver, 16.67%), 8.33%);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
