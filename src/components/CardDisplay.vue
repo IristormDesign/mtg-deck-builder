@@ -1,7 +1,11 @@
 <template>
 	<div class="card-display">
 		<div v-for="card in deck.cards" :key="card.name">
-			<transition name="card-browse" appear>
+			<transition
+				name="card-browse"
+				appear
+				appear-active-class="card-browse-appear-active"
+			>
 				<a
 					v-if="deck.viewedCard === card.name"
 					:key="card.name" :class="card.colors[0]" :href="card.link"

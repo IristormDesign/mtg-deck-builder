@@ -74,13 +74,20 @@
 	}
 }
 .card-browse {
+	$animation-duration-card-browse: .4167s;
+
 	&-enter-active {
 		z-index: 1;
-		animation: card-fan-in .5s ease;
+		animation: card-fan-in $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
 	}
 	&-leave-active {
-		animation: overshadowed .5s ease-out;
+		animation: overshadowed $animation-duration-card-browse ease-out;
 	}
+}
+.card-browse-appear-active {
+	@extend .card-browse-enter-active;
+	animation-delay: $transition-duration-standard*2;
+	animation-fill-mode: backwards;
 }
 
 @keyframes card-fan-in {

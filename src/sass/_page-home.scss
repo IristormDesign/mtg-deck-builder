@@ -19,7 +19,7 @@
 		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
 		min-width: $min-width-site;
-		animation: cinematic-fade-in 2.5s ease-out;
+		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
 		
 		@keyframes cinematic-fade-in {
 			0%,
@@ -47,7 +47,7 @@
 		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;
-		animation-delay: 3s;
+		animation-delay: 2.5s;
 		opacity: 0;
 
 		@keyframes animate-text-box {
