@@ -3,7 +3,7 @@
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
 			<label for="card-input">Add a new card to this deck:</label>
 			<input
-				type="text" id="card-input" ref="focus" v-model="cardName"
+				type="text" id="card-input" ref="focus" v-model="cardNameInput"
 				title="Tip: You can add a random card by entering “random” as the card name."
 				placeholder="(Enter a card’s name here.)"
 			/>
@@ -23,12 +23,43 @@ export default {
 	data () {
 		return {
 			axios: require('axios'),
-			cardName: '',
+			cardNameInput: '',
 			delay: false,
 			loadingCard: false
 		}
 	},
 	methods: {
+		handleSubmit () {
+			const cardNameInput = this.cardNameInput
+			this.$refs.focus.focus()
+
+			if (cardNameInput === '') {
+				// No name was submitted, so do nothing.
+				return
+			} else {
+				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
+				this.loadingCard = true
+
+				if (cardNameInput.toLowerCase() === 'random') {
+					this.axios
+						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
+						.then(response => {
+							this.getTheCard(response.data.name)
+						})
+						.catch(error => {
+							alert(`⚠ Error: ${error.response.data.details}`)
+							console.log(error)
+						})
+				} else {
+					this.getTheCard(cardNameInput)
+				}
+			}
+			this.cardNameInput = ''
+
+			setTimeout(() => {
+				this.delay = false
+			}, 500)
+		},
 		getTheCard (cardName) {
 			const store = this.$store
 			const deck = this.deck
@@ -126,37 +157,6 @@ export default {
 						})
 					})
 			}
-		},
-		handleSubmit () {
-			const cardName = this.cardName
-			this.$refs.focus.focus()
-
-			if (cardName === '') {
-				// No name was submitted, so do nothing.
-				return
-			} else {
-				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
-				this.loadingCard = true
-
-				if (cardName.toLowerCase() === 'random') {
-					this.axios
-						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
-						.then(response => {
-							this.getTheCard(response.data.name)
-						})
-						.catch(error => {
-							alert(`⚠ Error: ${error.response.data.details}`)
-							console.log(error)
-						})
-				} else {
-					this.getTheCard(cardName)
-				}
-			}
-			this.cardName = ''
-
-			setTimeout(() => {
-				this.delay = false
-			}, 500)
 		}
 	}
 }
