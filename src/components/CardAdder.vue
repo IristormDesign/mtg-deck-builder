@@ -49,6 +49,7 @@ export default {
 						.catch(error => {
 							alert(`⚠ Error: ${error.response.data.details}`)
 							console.log(error)
+							this.loadingCard = false
 						})
 				} else {
 					this.getTheCard(cardNameInput)
@@ -62,8 +63,8 @@ export default {
 		},
 		getTheCard (cardName) {
 			const store = this.$store
-			const deck = this.deck
 			cardName = store.state.curlApostrophes(cardName)
+			const deck = this.deck
 			const cardExists = deck.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
 			)
@@ -71,8 +72,10 @@ export default {
 			if (cardExists) {
 				deck.viewedCard = cardExists.name
 				alert(`“${cardExists.name}” is already in this deck.`)
+
+				this.loadingCard = false
+				this.delay = false
 			} else {
-				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
 				const cancelTokenSource = this.axios.CancelToken.source()
 
 				// Cancel when 15 seconds have passed.
@@ -80,7 +83,9 @@ export default {
 					cancelTokenSource.cancel()
 				}, 15000)
 
-				console.log(`Requested Scryfall for '${cardName}'.`)
+				console.log(`Requested Scryfall API for "${cardName}".`)
+
+				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
 
 				this.axios
 					.get(
