@@ -27,21 +27,11 @@
 					<h4 class="name">{{ card.name }}</h4>
 					<div class="mana" v-html="styleManaSymbols(card)"></div>
 					<div class="type">{{ card.type }}</div>
-					<div v-if="card.rarity === 'common'"
-						class="rarity common" title="Common">C
-					</div>
-					<div v-else-if="card.rarity === 'uncommon'"
-						class="rarity uncommon" title="Uncommon">U
-					</div>
-					<div v-else-if="card.rarity === 'rare'"
-						class="rarity rare" title="Rare">R
-					</div>
-					<div v-else-if="card.rarity === 'mythic'"
-						class="rarity mythic" title="Mythic rare">M
-					</div>
-					<div v-else
-						class="rarity special" title="Special">S
-					</div>
+					<div
+						:class="`rarity ${card.rarity}`"
+						:title="setRarityTitle(card.rarity)"
+						v-text="setRaritySymbol(card.rarity)"
+					></div>
 				</button>
 				<div class="qty">
 					<label :for="`qty-c${i}`">Quantity</label>
@@ -62,6 +52,34 @@ export default {
 		deck: Object
 	},
 	methods: {
+		setRarityTitle (cardRarity) {
+			switch (cardRarity) {
+			case 'common':
+				return 'Common'
+			case 'uncommon':
+				return 'Uncommon'
+			case 'rare':
+				return 'Rare'
+			case 'mythic':
+				return 'Mythic rare'
+			default:
+				return 'Special'
+			}
+		},
+		setRaritySymbol (cardRarity) {
+			switch (cardRarity) {
+			case 'common':
+				return 'C'
+			case 'uncommon':
+				return 'U'
+			case 'rare':
+				return 'R'
+			case 'mythic':
+				return 'M'
+			default:
+				return 'S'
+			}
+		},
 		viewCard (card) {
 			this.deck.viewedCard = card.name
 			this.$store.commit('setDecks', this.$store.state.decks)
