@@ -29,8 +29,8 @@
 					<div class="type">{{ card.type }}</div>
 					<div
 						:class="`rarity ${card.rarity}`"
-						:title="setRarityTitle(card.rarity)"
-						v-text="setRaritySymbol(card.rarity)"
+						:title="setRarityTitle(card)"
+						v-text="setRaritySymbol(card)"
 					></div>
 				</button>
 				<div class="qty">
@@ -52,38 +52,6 @@ export default {
 		deck: Object
 	},
 	methods: {
-		setRarityTitle (cardRarity) {
-			switch (cardRarity) {
-			case 'common':
-				return 'Common'
-			case 'uncommon':
-				return 'Uncommon'
-			case 'rare':
-				return 'Rare'
-			case 'mythic':
-				return 'Mythic rare'
-			default:
-				return 'Special'
-			}
-		},
-		setRaritySymbol (cardRarity) {
-			switch (cardRarity) {
-			case 'common':
-				return 'C'
-			case 'uncommon':
-				return 'U'
-			case 'rare':
-				return 'R'
-			case 'mythic':
-				return 'M'
-			default:
-				return 'S'
-			}
-		},
-		viewCard (card) {
-			this.deck.viewedCard = card.name
-			this.$store.commit('setDecks', this.$store.state.decks)
-		},
 		attentionAddCard (doIt) {
 			const cardAdderInput = document.querySelector('#card-input')
 
@@ -94,6 +62,10 @@ export default {
 					cardAdderInput.classList.remove('attention')
 				}, 500)
 			}
+		},
+		viewCard (card) {
+			this.deck.viewedCard = card.name
+			this.$store.commit('setDecks', this.$store.state.decks)
 		},
 		colorButton (card) {
 			const colors = card.colors
@@ -128,6 +100,24 @@ export default {
 					RegExp('{(.)}', 'g'), // Find any single character directly between a pair of curly brackets. This catches all other mana symbols that the previous regex replacements have missed.
 					'<span class="mana-symbol">$1</span>'
 				)
+		},
+		setRarityTitle (card) {
+			switch (card.rarity) {
+			case 'common': return 'Common'
+			case 'uncommon': return 'Uncommon'
+			case 'rare': return 'Rare'
+			case 'mythic': return 'Mythic rare'
+			default: return 'Special'
+			}
+		},
+		setRaritySymbol (card) {
+			switch (card.rarity) {
+			case 'common': return 'C'
+			case 'uncommon': return 'U'
+			case 'rare': return 'R'
+			case 'mythic': return 'M'
+			default: return 'S'
+			}
 		},
 		validateQty (card) {
 			const store = this.$store
