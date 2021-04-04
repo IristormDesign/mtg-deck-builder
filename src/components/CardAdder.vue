@@ -65,16 +65,12 @@ export default {
 			const store = this.$store
 			cardName = store.state.curlApostrophes(cardName)
 			const deck = this.deck
-			const cardExists = deck.cards.find(anyCard =>
+			const existingCard = deck.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
 			)
 
-			if (cardExists) {
-				deck.viewedCard = cardExists.name
-
-				setTimeout(() => {
-					alert(`“${cardExists.name}” is already in this deck.`)
-				}, 0)
+			if (existingCard) {
+				this.cardExistsEffect(existingCard.name)
 
 				this.loadingCard = false
 				this.delay = false
@@ -141,13 +137,21 @@ export default {
 							newCard.colors.unshift('multicolor')
 						}
 
-						deck.cards.push(newCard)
-						deck.editDate = new Date()
-						this.$nextTick(() => {
-							deck.viewedCard = newCard.name
-							store.commit('setDecks', store.state.decks)
-						})
-						store.commit('setSortAttribute', '')
+						// The card's name needs to be checked in the deck a second time. This is because it's possible for the Scryfall API's "fuzzy" search, which can correct misspelled names or assume full names from partial queries, to return a slightly different name than what the user originally submitted.
+						const doubleCheckExistingCard = deck.cards.find(anyCard =>
+							newCard.name.toUpperCase() === anyCard.name.toUpperCase()
+						)
+						if (doubleCheckExistingCard) {
+							this.cardExistsEffect(doubleCheckExistingCard.name)
+						} else {
+							deck.cards.push(newCard)
+							deck.editDate = new Date()
+							this.$nextTick(() => {
+								deck.viewedCard = newCard.name
+								store.commit('setDecks', store.state.decks)
+							})
+							store.commit('setSortAttribute', '')
+						}
 					})
 					.catch(error => {
 						if (this.axios.isCancel(error)) {
@@ -165,6 +169,13 @@ export default {
 						})
 					})
 			}
+		},
+		cardExistsEffect (cardName) {
+			this.deck.viewedCard = cardName
+
+			setTimeout(() => {
+				alert(`“${cardName}” is already in this deck.`)
+			}, 0)
 		}
 	}
 }
