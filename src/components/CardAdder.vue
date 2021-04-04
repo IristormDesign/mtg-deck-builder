@@ -61,34 +61,30 @@ export default {
 				this.delay = false
 			}, 500)
 		},
-		getTheCard (cardName) {
+		getTheCard (query) {
 			const store = this.$store
-			cardName = store.state.curlApostrophes(cardName)
 			const deck = this.deck
-			const existingCard = deck.cards.find(anyCard =>
-				cardName.toUpperCase() === anyCard.name.toUpperCase()
-			)
+			query = store.state.curlApostrophes(query)
 
-			if (existingCard) {
-				this.cardExistsEffect(existingCard.name)
-
+			if (this.findExistingCard(query)) {
+				this.cardExistsNotice(query)
 				this.loadingCard = false
 				this.delay = false
 			} else {
+				console.log(`Requested Scryfall API for "${query}".`)
+
 				const cancelTokenSource = this.axios.CancelToken.source()
 
-				// Cancel when 15 seconds have passed.
+				// Cancel when 15 seconds pass.
 				setTimeout(() => {
 					cancelTokenSource.cancel()
 				}, 15000)
 
-				console.log(`Requested Scryfall API for "${cardName}".`)
-
-				const cardQuery = cardName.replace(/\s/g, '+') // Turn any spaces into plusses from the card's name.
+				query = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
 				this.axios
 					.get(
-						'https://api.scryfall.com/cards/named?fuzzy=' + cardQuery,
+						'https://api.scryfall.com/cards/named?fuzzy=' + query,
 						{ cancelToken: cancelTokenSource.token }
 					)
 					.then(response => {
@@ -137,17 +133,16 @@ export default {
 							newCard.colors.unshift('multicolor')
 						}
 
+						const newCardName = newCard.name
+
 						// The card's name needs to be checked in the deck a second time. This is because it's possible for the Scryfall API's "fuzzy" search, which can correct misspelled names or assume full names from partial queries, to return a slightly different name than what the user originally submitted.
-						const doubleCheckExistingCard = deck.cards.find(anyCard =>
-							newCard.name.toUpperCase() === anyCard.name.toUpperCase()
-						)
-						if (doubleCheckExistingCard) {
-							this.cardExistsEffect(doubleCheckExistingCard.name)
+						if (this.findExistingCard(newCardName)) {
+							this.cardExistsNotice(newCardName)
 						} else {
 							deck.cards.push(newCard)
 							deck.editDate = new Date()
 							this.$nextTick(() => {
-								deck.viewedCard = newCard.name
+								deck.viewedCard = newCardName
 								store.commit('setDecks', store.state.decks)
 							})
 							store.commit('setSortAttribute', '')
@@ -170,11 +165,18 @@ export default {
 					})
 			}
 		},
-		cardExistsEffect (cardName) {
+		findExistingCard (cardName) {
+			return this.deck.cards.find(anyCard =>
+				cardName.toUpperCase() === anyCard.name.toUpperCase()
+			)
+		},
+		cardExistsNotice (cardName) {
+			cardName = this.findExistingCard(cardName).name // This gets the card's full, correctly spelled name from the deck's existing card (rather than taking the user's possibly misspelled or incomplete query).
+
 			this.deck.viewedCard = cardName
 
 			setTimeout(() => {
-				alert(`“${cardName}” is already in this deck.`)
+				alert(`You already have ${cardName} in this deck.`)
 			}, 0)
 		}
 	}
