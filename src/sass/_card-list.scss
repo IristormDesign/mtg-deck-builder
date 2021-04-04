@@ -137,6 +137,8 @@
 			margin: 0;
 			font-size: 100%;
 			color: #000;
+			height: 1.25em;
+			line-height: 1.25;
 		}
 		.mana {
 			display: flex;
@@ -147,6 +149,7 @@
 		.type {
 			@include heading-font;
 			font-size: 83.33%;
+			line-height: 1.5;
 		}
 		.rarity {
 			border-radius: $border-radius-button;
@@ -275,6 +278,11 @@
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
+		}
+		> * {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 	}
 }
