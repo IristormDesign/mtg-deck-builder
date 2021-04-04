@@ -1,11 +1,11 @@
 <template>
 	<div class="card-adder">
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
-			<label for="card-input">Add a new card to this deck:</label>
+			<label for="card-input">Add a card to this deck:</label>
 			<input
 				type="text" id="card-input" ref="focus" v-model="cardNameInput"
 				title="Tip: You can add a random card by entering “random” as the card name."
-				placeholder="(Enter a card’s name here.)"
+				:placeholder="inputPlaceholder"
 			/>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
 		</form>
@@ -26,6 +26,14 @@ export default {
 			cardNameInput: '',
 			delay: false,
 			loadingCard: false
+		}
+	},
+	computed: {
+		inputPlaceholder () {
+			if (this.deck.cards.length === 0) {
+				return '(Enter the name of a card here.)'
+			}
+			return null
 		}
 	},
 	methods: {
