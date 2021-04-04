@@ -115,7 +115,7 @@ select {
 		outline: none;
 	}
 	&::placeholder {
-		color: darken($color-content-bg, 12.5%);
+		color: desaturate(darken($color-mythic-complement, 16.67%), 33.33%);
 		font-style: italic;
 	}
 }
