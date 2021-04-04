@@ -71,7 +71,10 @@ export default {
 
 			if (cardExists) {
 				deck.viewedCard = cardExists.name
-				alert(`“${cardExists.name}” is already in this deck.`)
+
+				setTimeout(() => {
+					alert(`“${cardExists.name}” is already in this deck.`)
+				}, 0)
 
 				this.loadingCard = false
 				this.delay = false
