@@ -14,3 +14,9 @@
 .deck-main {
 	grid-column: 3 / 8;
 }
+
+@media (max-width: $width-site-breakpoint-tablet) {
+	.deck-main {
+		grid-column: 4 / 8;
+	}
+}

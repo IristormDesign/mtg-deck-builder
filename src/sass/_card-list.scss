@@ -281,11 +281,33 @@
 
 @media (max-width: $width-site-breakpoint) {
 	.card-list {
-		ul {
-			font-size: 87.5%;
+		li {
+			.name {
+				font-size: 87.5%;
+			}
+			.type {
+				font-size: 75%;
+			}
+		}
+	}
+}
+@media (max-width: $width-site-breakpoint-tablet) {
+	.card-list {
+		.list-headings {
+			display: none;
 		}
 		.card-button {
-			min-height: $lhse*1.25;
+			display: block;
+
+			.card-label-group {
+				width: 100%;
+				padding: 0 $lhse/3;
+
+				&:last-of-type {
+					border-top: 1px solid rgba(#000, .25);
+					margin-top: 2px;
+				}
+			}
 		}
 	}
 }

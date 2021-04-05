@@ -107,3 +107,9 @@
 		filter: brightness(25%);
 	}
 }
+
+@media (max-width: $width-site-breakpoint-tablet) {
+	.card-display {
+		grid-column: span 3;
+	}
+}
