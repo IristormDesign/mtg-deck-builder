@@ -14,59 +14,42 @@
 	h3 {
 		@extend .screen-readers-only
 	}
-	.labels .button-group,
+	.list-headings
 	.card-button {
-		display: grid;
-		grid-template-columns: repeat(9, 1fr) min-content;
-		grid-gap: 1.5rem;
-		width: 91.67%;
-	}
-	.labels,
-	li {
-		.name {
-			grid-column: span 3;
-		}
-		.mana {
-			grid-column: span 2;
-		}
-		.type {
-			grid-column: span 4;
-		}
-		.rarity {
-			grid-column: span 1;
-		}
-		.qty {
-			width: 8.33%;
-		}
-	}
-	.labels {
-		@include heading-font;
-		text-transform: uppercase;
-		font-size: $lhse/2;
-		line-height: 1;
-		margin-bottom: $lhse/4;
 		display: flex;
-		color: $color-text-brighter;
+	}
+	.card-label-group {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 $lhse/5;
 
-		.button-group {
-			display: grid;
-			width: 100%;
+		&:last-of-type {
+			padding-left: $lhse/2;
+		}
+	}
+	.list-headings,
+	li {
+		.qty {
+			width: 4.5rem;
+			margin-right: -$lhse/4;
+		}
+	}
+	.list-headings {
+		@include heading-font;
+		display: flex;
 
-			.name {
-				padding-left: $lhse/2;
-			}
-			.mana {
-				text-align: right;
-			}
-			.rarity {
-				margin-left: -2em;
-			}
+		strong {
+			display: block;
+			font-size: $lhse/2;
+			line-height: 1;
+			margin-bottom: $lhse/8;
+			text-transform: uppercase;
+			color: $color-text-brighter;
 		}
 		.qty {
 			text-align: center;
-		}
-		strong {
-			display: block;
 		}
 	}
 	ul {
@@ -77,7 +60,7 @@
 	}
 	li {
 		display: flex;
-		margin: 3px 0;
+		margin: 4px 0;
 		transition: all .3333s ease; // For card sorting
 		position: relative;
 
@@ -133,12 +116,25 @@
 				}
 			}
 		}
+		.name,
+		.mana,
+		.type {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.mana,
+		.rarity {
+			margin-left: .5ch;
+		}
 		.name {
 			margin: 0;
 			font-size: 100%;
 			color: #000;
 			height: 1.25em;
 			line-height: 1.25;
+			min-width: 33.33%;
+			text-align: left;
 		}
 		.mana {
 			display: flex;
@@ -154,6 +150,7 @@
 		.rarity {
 			border-radius: $border-radius-button;
 			width: $lhse;
+			min-width: $lhse; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 			text-align: center;
 			box-shadow: inset 0 0 1px 1px rgba(#000, .5);
 			margin-right: -.167em;
@@ -206,8 +203,8 @@
 			line-height: 1;
 	
 			> span {
-				margin: 0 2px 0 $lhse/4;
-				color: darken($color-text, 12.5%);
+				margin: 0 2px 0 .5ch;
+				color: darken($color-text, 16.67%);
 			}
 			label {
 				@extend .screen-readers-only;
@@ -217,7 +214,7 @@
 				background: transparent;
 				border: 0;
 				font-size: $lhse;
-				width: 1.75em;
+				width: 1.5em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
@@ -239,9 +236,8 @@
 	}
 	.card-button {
 		background: $color-frame-generic;
-		align-items: center;
 		margin: 0;
-		padding: 0 .3333em;
+		padding: 0;
 		border-radius: $border-radius-button;
 		border: 3px outset $color-frame-generic;
 		border-top-color: rgba(#fff, .5);
@@ -251,11 +247,12 @@
 		box-shadow: none;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		text-align: left;
 		color: #000;
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
+		display: flex;
+		align-items: center;
 		
 		&:active {
 			transform: scale(.995) translate(0, .5px);
@@ -278,11 +275,6 @@
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
-		}
-		> * {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 		}
 	}
 }

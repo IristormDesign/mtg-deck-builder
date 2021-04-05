@@ -9,10 +9,12 @@
 	</div>
 	<div v-else class="card-list">
 		<h3>Card List</h3>
-		<header class="labels">
-			<div class="button-group">
+		<header class="list-headings">
+			<div class="card-label-group">
 				<strong class="name">Name</strong>
 				<strong class="mana">Mana Cost</strong>
+			</div>
+			<div class="card-label-group">
 				<strong class="type">Type</strong>
 				<strong class="rarity">Rarity</strong>
 			</div>
@@ -24,14 +26,18 @@
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
 				>
-					<h4 class="name">{{ card.name }}</h4>
-					<div class="mana" v-html="styleManaSymbols(card)"></div>
-					<div class="type">{{ card.type }}</div>
-					<div
-						:class="`rarity ${card.rarity}`"
-						:title="setRarityTitle(card)"
-						v-text="setRaritySymbol(card)"
-					></div>
+					<div class="card-label-group">
+						<h4 class="name">{{ card.name }}</h4>
+						<div class="mana" v-html="styleManaSymbols(card)"></div>
+					</div>
+					<div class="card-label-group">
+						<div class="type">{{ card.type }}</div>
+						<div
+							:class="`rarity ${card.rarity}`"
+							:title="setRarityTitle(card)"
+							v-text="setRaritySymbol(card)"
+						></div>
+					</div>
 				</button>
 				<div class="qty">
 					<label :for="`qty-c${i}`">Quantity</label>
