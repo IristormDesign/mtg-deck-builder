@@ -3,7 +3,7 @@
 		<div class="wrap">
 			<div class="site-title">
 				<h1>
-					<router-link :to="{name: 'home'}">MTG Deck Organizer</router-link>
+					<router-link :to="{name: 'home'}">MTG Deck Builder</router-link>
 				</h1>
 				<span>by <a href="https://iristormdesign.com/">Iristorm Design</a></span>
 			</div>

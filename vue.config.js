@@ -5,7 +5,7 @@ module.exports = {
 		}
 	},
 	pwa: {
-		name: 'MTG Deck Organizer',
+		name: 'MTG Deck Builder',
 		themeColor: '#ea4b12',
 		msTileColor: '#272e31',
 		appleMobileWebAppCapable: 'yes',
