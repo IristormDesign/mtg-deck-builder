@@ -73,8 +73,10 @@
 		position: relative;
 	}
 }
+
+$animation-duration-card-browse: .375s;
+
 .card-browse {
-	$animation-duration-card-browse: .4167s;
 
 	&-enter-active {
 		z-index: 1;
@@ -87,13 +89,14 @@
 .card-browse-appear-active {
 	@extend .card-browse-enter-active;
 	animation-delay: $transition-duration-standard*2;
+	animation-duration: $animation-duration-card-browse*1.5;
 	animation-fill-mode: backwards;
 }
 
 @keyframes card-fan-in {
 	0% {
 		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*4) translateY(-$lhse/2) scale(1.03125);
+		transform: rotate(-5.625deg) translateX(-$lhse*5) translateY(-$lhse/2) scale(1.0625);
 	}
 	37.5% {
 		opacity: 1;

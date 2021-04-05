@@ -60,7 +60,7 @@
 	}
 	li {
 		display: flex;
-		margin: 4px 0;
+		margin: 2px 0;
 		transition: all .3333s ease; // For card sorting
 		position: relative;
 
@@ -131,8 +131,7 @@
 			margin: 0;
 			font-size: 100%;
 			color: #000;
-			height: 1.25em;
-			line-height: 1.25;
+			line-height: 1.375;
 			min-width: 33.33%;
 			text-align: left;
 		}
@@ -285,6 +284,9 @@
 			.name {
 				font-size: 87.5%;
 			}
+			.mana {
+				font-size: 112.5%;
+			}
 			.type {
 				font-size: 75%;
 			}
@@ -298,7 +300,7 @@
 		}
 		.card-button {
 			display: block;
-
+			
 			.card-label-group {
 				width: 100%;
 				padding: 0 $lhse/3;

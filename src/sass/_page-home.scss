@@ -47,7 +47,7 @@
 		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;
-		animation-delay: 2.5s;
+		animation-delay: 2s;
 		opacity: 0;
 
 		@keyframes animate-text-box {
