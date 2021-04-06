@@ -1,13 +1,13 @@
 <template>
-	<div
+	<section
 		v-if="deck.cards.length <= 0"
 		class="card-list no-cards"
 		@mouseover="attentionAddCard(true)"
 		@mouseleave="attentionAddCard(false)"
 	>
 		<p>This deck has no cards yet. (Add a card to start building.)</p>
-	</div>
-	<div v-else class="card-list">
+	</section>
+	<section v-else class="card-list">
 		<h3>Card List</h3>
 		<header class="list-headings">
 			<div class="card-label-group">
@@ -49,7 +49,7 @@
 				</div>
 			</li>
 		</transition-group>
-	</div>
+	</section>
 </template>
 
 <script>

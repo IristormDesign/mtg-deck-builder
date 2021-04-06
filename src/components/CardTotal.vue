@@ -1,5 +1,5 @@
 <template>
-	<div class="deck-info card-total">
+	<section class="deck-info card-total">
 		<h3>Total cards</h3>
 
 		<div class="output">
@@ -9,7 +9,7 @@
 				title="The minimum card limit of a deck is 60."
 			>⚠</span>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

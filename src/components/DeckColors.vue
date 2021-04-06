@@ -1,9 +1,9 @@
 <template>
-	<div class="deck-info deck-colors">
+	<section class="deck-info deck-colors">
 		<h3>Using colors</h3>
 
 		<div class="output" v-html="deckColors()"></div>
-	</div>
+	</section>
 </template>
 
 <script>

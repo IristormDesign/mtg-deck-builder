@@ -1,11 +1,11 @@
 <template>
-	<div class="deck-info average-cmc">
+	<section class="deck-info average-cmc">
 		<h3>Average conv. <br>mana cost</h3>
 
 		<div class="output">
 			{{ averageCmc }}
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

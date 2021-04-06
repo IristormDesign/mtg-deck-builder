@@ -1,12 +1,12 @@
 <template>
-	<div class="deck-info deck-name">
+	<section class="deck-info deck-name">
 		<button
 			@click="renameDeck(deck.name)"
 			title="Change the name of this deck"
 		>
 			<h2>{{ deck.name }}</h2>
 		</button>
-	</div>
+	</section>
 </template>
 
 <script>

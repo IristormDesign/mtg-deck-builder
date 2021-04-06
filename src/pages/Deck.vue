@@ -14,11 +14,11 @@
 					<div class="deck-main">
 						<deck-description :deck="deck" />
 						<card-list :deck="deck" />
-						<div class="card-list-controls">
+						<section class="card-list-controls">
 							<card-adder :deck="deck" />
 							<card-sorter :deck="deck" />
 							<deck-actions :deck="deck" />
-						</div>
+						</section>
 					</div>
 				</div>
 			</article>

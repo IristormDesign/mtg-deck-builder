@@ -1,5 +1,5 @@
 <template>
-	<div class="card-display">
+	<section class="card-display">
 		<div v-for="card in deck.cards" :key="card.name">
 			<transition
 				name="card-browse"
@@ -22,7 +22,7 @@
 				</a>
 			</transition>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
