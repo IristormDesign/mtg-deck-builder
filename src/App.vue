@@ -1,15 +1,17 @@
 <template>
-	<div id="app">
-		<site-header />
+	<transition appear name="fade-from-black">
+		<div id="app">
+			<site-header />
 
-		<main>
-			<transition name="fade-to" mode="out-in">
-				<router-view />
-			</transition>
-		</main>
+				<main>
+					<transition name="fade-to" mode="out-in">
+						<router-view />
+					</transition>
+				</main>
 
-		<site-footer />
-	</div>
+			<site-footer />
+		</div>
+	</transition>
 </template>
 
 <script>

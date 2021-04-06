@@ -87,6 +87,14 @@ small {
 	color: #fff;
 	text-shadow: none;
 }
+.fade-from-black {
+	&-enter-active {
+		transition: all 1s ease;
+	}
+	&-enter {
+		filter: brightness(0);
+	}
+}
 .fade-to {
 	&-enter-active {
 		transition: opacity .5s ease;
