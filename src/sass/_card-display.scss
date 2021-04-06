@@ -13,32 +13,32 @@
 		width: 100%;
 		height: auto;
 		box-shadow: inset 0 0 0 16px #000;
-		background: desaturate(darken($color-frame-generic, 25%), 25%);
+		background: desaturate(darken($color-frame-generic, 50%), 0%);
 
 		&:focus-visible {
 			filter: brightness(125%);
 		}
 		&.W {
-			background: desaturate(darken($color-frame-white, 12.5%), 66.67%);
+			background: desaturate(darken($color-frame-white, 33.33%), 83.33%);
 		}
 		&.U {
-			background: desaturate(darken($color-frame-blue, 25%), 25%);
+			background: desaturate(darken($color-frame-blue, 50%), 37.5%);
 		}
 		&.B {
-			background: desaturate(darken($color-frame-black, 25%), 25%);
+			background: desaturate(darken($color-frame-black, 50%), 0%);
 
 			.loading-indicator {
-				color: #fff;
+				color: $color-text;
 			}
 		}
 		&.R {
-			background: desaturate(darken($color-frame-red, 25%), 25%);
+			background: desaturate(darken($color-frame-red, 50%), 41.67%);
 		}
 		&.G {
-			background: desaturate(darken($color-frame-green, 25%), 16.67%);
+			background: desaturate(darken($color-frame-green, 50%), 12.5%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 25%), 33.33%);
+			background: desaturate(darken($color-frame-multicolor, 50%), 50%);
 		}
 	}
 	.loading-indicator {
