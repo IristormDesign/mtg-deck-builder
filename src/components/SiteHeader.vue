@@ -5,7 +5,7 @@
 				<h1>
 					<router-link :to="{name: 'home'}">MTG Deck Builder</router-link>
 				</h1>
-				<span>by <a href="https://iristormdesign.com/">Iristorm Design</a></span>
+				<span>by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
 			</div>
 
 			<nav class="site-menu">
