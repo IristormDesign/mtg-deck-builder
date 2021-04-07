@@ -19,11 +19,16 @@ a {
 	}
 }
 button {
-	background: linear-gradient(
-		lighten($color-button-default, 16.67%) 0%,
-		darken($color-button-default, 16.67%) 98%,
-		lighten($color-button-default, 6.25%) 100%
-	);
+	background:
+		radial-gradient(
+			rgba(#fff, .667) 0%,
+			rgba(#fff, 0) 100%,
+		),
+		linear-gradient(
+			lighten($color-button-default, 25%) 0%,
+			darken($color-button-default, 25%) 98%,
+			lighten($color-button-default, 8.33%) 100%
+		);
 	border-color: $color-button-default;
 	cursor: pointer;
 	box-shadow:
@@ -64,10 +69,10 @@ button {
 	&[type="submit"],
 	&.primary-btn {
 		background:
-			radial-gradient((
+			radial-gradient(
 				rgba($color-link-focus, 1) 0%,
 				rgba($color-link-focus, 0) 100%,
-			)),
+			),
 			linear-gradient(
 				lighten($color-link, 25%) 0%,
 				$color-link,

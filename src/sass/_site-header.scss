@@ -2,7 +2,7 @@
 	width: 100%;
 	box-shadow: 0 0 $lhse/6 rgba(#000, .375);
 	background: $color-group-bg;
-	border-bottom: $lhse/8 solid $color-mythic-orange;
+	border-bottom: $lhse/4 solid desaturate(darken($color-mythic-orange, 6.25%), 8.33%);
 	position: relative;
 	z-index: index($layers, site-header);
 	
@@ -104,8 +104,9 @@
 			list-style: none;
 			margin: 0;
 			padding: 0;
-			border: 2px solid $color-mythic-orange;
+			border: $border-sections;
 			background: desaturate(darken($color-mythic-orange, 25%), 12.5%);
+			background: $color-group-bg;
 			overflow: hidden;
 			position: absolute;
 			top: 2.25em;
@@ -121,19 +122,8 @@
 			text-overflow: ellipsis;
 			overflow-x: hidden;
 			white-space: nowrap;
-			color: $color-text-brighter;
 			transition-duration: 0s;
-	
-			&:hover,
-			&:focus {
-				text-decoration: none;
-				background: $color-mythic-orange;
-				color: #fff;
-			}
-			&:active {
-				background: $color-link-focus;
-				color: $color-text;
-			}
+			text-decoration: none;
 		}
 	}
 }
