@@ -55,11 +55,11 @@ export default {
 	},
 	watch: {
 		cardNameInput: function () {
-			this.debouncedOutput()
+			this.debouncedAutocomplete()
 		}
 	},
 	created () {
-		this.debouncedOutput = debounce(this.autocompleteName, 500)
+		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
 	},
 	methods: {
 		autocompleteName () {
