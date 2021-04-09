@@ -77,7 +77,6 @@
 $animation-duration-card-browse: .375s;
 
 .card-browse {
-
 	&-enter-active {
 		z-index: 1;
 		animation: card-fan-in $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);

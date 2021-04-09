@@ -3,20 +3,24 @@
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
 			<label for="card-input">Add a card to this deck:</label>
 			<input
-				type="text" id="card-input" ref="focus" v-model="cardNameInput"
-				title="💡 Tip: You can add a random card by entering “random” as the card name."
-				:placeholder="inputPlaceholder" autocomplete="off" required
+				@input="submitSuggestion()"
+				:placeholder="inputPlaceholder"
+				autocomplete="off"
+				id="card-input"
+				list="card-suggestions"
+				ref="focus"
+				required
+				type="text"
+				v-model="cardNameInput"
 			/>
-			<div class="card-autocomplete">
-				<datalist v-if="showCardSuggestions">
-					<option
-						v-for="name in cardSuggestions" :key="name"
-						@click="takeSuggestion(name)"
-					>
-						{{ name }}
-					</option>
-				</datalist>
-			</div>
+			<datalist id="card-suggestions">
+				<option v-for="name in cardSuggestions" :key="name">
+					{{ name }}
+				</option>
+				<option value="[random]">
+					(🎲 Add a randomly selected card)
+				</option>
+			</datalist>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
 		</form>
 		<div v-else class="loading-indicator">
@@ -38,8 +42,7 @@ export default {
 			cardNameInput: '',
 			delay: false,
 			loadingCard: false,
-			cardSuggestions: null,
-			showCardSuggestions: false
+			cardSuggestions: null
 		}
 	},
 	computed: {
@@ -58,61 +61,41 @@ export default {
 	created () {
 		this.debouncedOutput = debounce(this.autocompleteName, 500)
 	},
-	mounted () {
-		// document.addEventListener('keyup', (event) => {
-		// 	const keyEvent = event.key
-
-		// 	if (keyEvent === 'ArrowDown' && this.showCardSuggestions) {
-		// 		if (
-		// 			document.activeElement === document.querySelector('#card-input') ||
-		// 			document.activeElement === document.querySelectorAll('.card-autocomplete a')) {
-		// 			event.preventDefault()
-		// 			console.log('You pressed the down-arrow key.')
-
-		// 			const focusable = Array.prototype.filter.call(
-		// 				document.activeElement.querySelectorAll('.card-autocomplete a'),
-		// 				function (element) {
-		// 					// Check for visibility while always including the current activeElement
-		// 					return element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement
-		// 				}
-		// 			)
-		// 			const index = focusable.indexOf(document.activeElement)
-
-		// 			if (index > -1) {
-		// 				var nextElement = focusable[index + 1] || focusable[0]
-		// 				nextElement.focus()
-		// 			}
-		// 		}
-		// 	} else if (keyEvent === 'Escape' || keyEvent === 'Esc') {
-		// 		if (this.showCardSuggestions) {
-		// 			this.showCardSuggestions = false
-		// 		}
-		// 	}
-		// })
-	},
 	methods: {
 		autocompleteName () {
 			const query = this.cardNameInput
 
-			axios
-				.get(`https://api.scryfall.com/cards/autocomplete?q=${query}`)
-				.then(response => {
-					console.log(`Requested Scryfall API for autocomplete of "${query}".`)
-					this.cardSuggestions = response.data.data
+			if (query !== '' && query !== '[random]') {
+				console.log(`Request Scryfall API for autocomplete from "${query}".`)
 
-					if (this.cardSuggestions.length > 0) {
-						this.showCardSuggestions = true
-					} else {
-						this.showCardSuggestions = false
-					}
-				})
-				.catch(error => {
-					console.log(`⚠ Error: ${error.response.data.details}`)
-				})
+				axios
+					.get(`https://api.scryfall.com/cards/autocomplete?q=${query}`)
+					.then(response => {
+						const data = response.data.data
+
+						// Limit the number of autocomplete suggestions to 5.
+						while (data.length > 5) {
+							data.pop()
+						}
+
+						this.cardSuggestions = data
+					})
+					.catch(error => {
+						console.log(`⚠ Error: ${error.response.data.details}`)
+					})
+			} else if (query === '') {
+				this.cardSuggestions = []
+			}
 		},
-		takeSuggestion (name) {
-			this.cardNameInput = name
-			this.handleSubmit()
+		submitSuggestion () {
+			const options = document.getElementById('card-suggestions').childNodes
+
+			for (let i = 0; i < options.length; i++) {
+				if (this.cardNameInput === options[i].value) {
+					this.handleSubmit()
+					break
+				}
+			}
 		},
 		handleSubmit () {
 			const cardNameInput = this.cardNameInput
@@ -125,7 +108,7 @@ export default {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
-				if (cardNameInput.toLowerCase() === 'random') {
+				if (cardNameInput.toLowerCase() === '[random]') {
 					axios
 						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
 						.then(response => {
@@ -156,14 +139,14 @@ export default {
 				this.loadingCard = false
 				this.delay = false
 			} else {
-				console.log(`Requested Scryfall API for "${query}".`)
-
 				const cancelTokenSource = axios.CancelToken.source()
 
 				// Cancel when 15 seconds pass.
 				setTimeout(() => {
 					cancelTokenSource.cancel()
 				}, 15000)
+
+				console.log(`Request Scryfall API for "${query}" data.`)
 
 				query = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 

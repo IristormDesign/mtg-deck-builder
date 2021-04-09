@@ -59,7 +59,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
-$border-sections: 2px solid darken($color-text, 25%);
+$border-sections: 1px solid darken($color-text, 25%);
 
 $x: 2px dashed rgba(#c0f, .75);
 
