@@ -33,7 +33,7 @@
 					<div class="card-label-group">
 						<div class="type">{{ card.type }}</div>
 						<div
-							:class="`rarity ${card.rarity}`"
+							:class="`rarity ${setRaritySymbol(card)}`"
 							:title="setRarityTitle(card)"
 							v-text="setRaritySymbol(card)"
 						></div>

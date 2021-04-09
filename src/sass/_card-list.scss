@@ -74,19 +74,20 @@
 
 			.card-button {
 				@include box-shadow-hover-card-button(
-					desaturate(darken($color-mana-generic, 37.5%), 25%)
+					desaturate(darken($color-mana-generic, 12.5%), 25%)
 				);
 				filter: contrast(116.67%);
 				transition-duration: 0s;
+				transition-property: filter;
 	
 				&.white {
 					@include box-shadow-hover-card-button(
-						lighten($color-mana-white, 25%)
+						$color-mana-white
 					);
 				}
 				&.blue {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-blue, 37.5%), 25%)
+						saturate(darken($color-mana-blue, 50%), 25%)
 					);
 				}
 				&.black {
@@ -96,17 +97,17 @@
 				}
 				&.red {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-red, 33.33%), 25%)
+						saturate(darken($color-mana-red, 41.67%), 25%)
 					);
 				}
 				&.green {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-green, 37.5%), 25%)
+						saturate(darken($color-mana-green, 50%), 25%)
 					);
 				}
 				&.multicolor {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-hybrid, 25%), 25%)
+						saturate(darken($color-mana-hybrid, 33.33%), 25%)
 					);
 				}
 			}
@@ -162,27 +163,27 @@
 			color: #000;
 			text-shadow: 0 0 1.5px #fff;
 
-			&.common {
+			&.C {
 				background: #000;
 				box-shadow: inset 0 0 0 1.5px #eee;
 				color: #eee;
 				text-shadow: none;
 			}
-			&.uncommon {
+			&.U {
 				background: linear-gradient(-60deg,
 					darken($color-rarity-silver, 25%),
 					lighten($color-rarity-silver, 25%),
 					darken($color-rarity-silver, 25%)
 				) $color-rarity-silver;
 			}
-			&.rare {
+			&.R {
 				background: linear-gradient(-60deg,
 					darken($color-rarity-gold, 25%),
 					lighten($color-rarity-gold, 25%),
 					darken($color-rarity-gold, 25%)
 				) $color-rarity-gold;
 			}
-			&.mythic {
+			&.M {
 				background: linear-gradient(-60deg,
 					darken($color-mythic-orange, 6.25%),
 					saturate(lighten($color-mythic-lighter, 12.5%), 25%),
@@ -190,7 +191,7 @@
 				) $color-mythic-orange;
 				text-shadow: 0 0 1.5px saturate(lighten($color-mythic-lighter, 25%), 25%);
 			}
-			&.special {
+			&.S {
 				background: linear-gradient(-60deg,
 					darken($color-rarity-special, 25%),
 					saturate(lighten($color-rarity-special, 25%), 25%),
