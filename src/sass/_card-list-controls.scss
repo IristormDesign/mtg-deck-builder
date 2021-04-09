@@ -82,6 +82,47 @@ $height-card-list-controls: $lhse * 1.25;
 			}
 		}
 	}
+	.card-autocomplete {
+		position: relative;
+		grid-column: span 1;
+		grid-row: 3;
+
+		datalist {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			background: $color-text;
+			max-height: $lhse*5;
+			overflow-y: scroll;
+			margin: -2px $lhse/2 0 $lhse/4;
+			padding: 0;
+			list-style: none;
+			box-shadow: -$lhse/4 $lhse/2 $lhse/2 rgba(#000, .333);
+			border: 2px solid $color-mythic-orange;
+			font-style: italic;
+			box-sizing: content-box;
+			display: block;
+		}
+		option {
+			color: #000;
+			background: none;
+			padding: 0 $lhse/4;
+			cursor: pointer;
+			line-height: $line-height-standard;
+
+			&:hover,
+			&:focus {
+				background: #fff;
+				color: $color-mythic-orange
+			}
+			&:active {
+				background: $color-mythic-orange;
+				color: #fff;
+			}
+		}
+	}
 }
 .card-sorter {
 	fieldset {

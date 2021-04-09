@@ -69,7 +69,7 @@ export default {
 					this.toggleDeckMenu()
 				}
 			}
-		}, false)
+		})
 
 		const headerLinks = document.querySelectorAll('.site-title a, .site-header-link')
 

@@ -4,9 +4,19 @@
 			<label for="card-input">Add a card to this deck:</label>
 			<input
 				type="text" id="card-input" ref="focus" v-model="cardNameInput"
-				title="Tip: You can add a random card by entering “random” as the card name."
-				:placeholder="inputPlaceholder"
+				title="💡 Tip: You can add a random card by entering “random” as the card name."
+				:placeholder="inputPlaceholder" autocomplete="off" required
 			/>
+			<div class="card-autocomplete">
+				<datalist v-if="showCardSuggestions">
+					<option
+						v-for="name in cardSuggestions" :key="name"
+						@click="takeSuggestion(name)"
+					>
+						{{ name }}
+					</option>
+				</datalist>
+			</div>
 			<button class="primary-btn" :disabled="delay">Add Card</button>
 		</form>
 		<div v-else class="loading-indicator">
@@ -16,16 +26,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+import debounce from 'debounce'
+
 export default {
 	props: {
 		deck: Object
 	},
 	data () {
 		return {
-			axios: require('axios'),
 			cardNameInput: '',
 			delay: false,
-			loadingCard: false
+			loadingCard: false,
+			cardSuggestions: null,
+			showCardSuggestions: false
 		}
 	},
 	computed: {
@@ -36,7 +50,70 @@ export default {
 			return null
 		}
 	},
+	watch: {
+		cardNameInput: function () {
+			this.debouncedOutput()
+		}
+	},
+	created () {
+		this.debouncedOutput = debounce(this.autocompleteName, 500)
+	},
+	mounted () {
+		// document.addEventListener('keyup', (event) => {
+		// 	const keyEvent = event.key
+
+		// 	if (keyEvent === 'ArrowDown' && this.showCardSuggestions) {
+		// 		if (
+		// 			document.activeElement === document.querySelector('#card-input') ||
+		// 			document.activeElement === document.querySelectorAll('.card-autocomplete a')) {
+		// 			event.preventDefault()
+		// 			console.log('You pressed the down-arrow key.')
+
+		// 			const focusable = Array.prototype.filter.call(
+		// 				document.activeElement.querySelectorAll('.card-autocomplete a'),
+		// 				function (element) {
+		// 					// Check for visibility while always including the current activeElement
+		// 					return element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement
+		// 				}
+		// 			)
+		// 			const index = focusable.indexOf(document.activeElement)
+
+		// 			if (index > -1) {
+		// 				var nextElement = focusable[index + 1] || focusable[0]
+		// 				nextElement.focus()
+		// 			}
+		// 		}
+		// 	} else if (keyEvent === 'Escape' || keyEvent === 'Esc') {
+		// 		if (this.showCardSuggestions) {
+		// 			this.showCardSuggestions = false
+		// 		}
+		// 	}
+		// })
+	},
 	methods: {
+		autocompleteName () {
+			const query = this.cardNameInput
+
+			axios
+				.get(`https://api.scryfall.com/cards/autocomplete?q=${query}`)
+				.then(response => {
+					console.log(`Requested Scryfall API for autocomplete of "${query}".`)
+					this.cardSuggestions = response.data.data
+
+					if (this.cardSuggestions.length > 0) {
+						this.showCardSuggestions = true
+					} else {
+						this.showCardSuggestions = false
+					}
+				})
+				.catch(error => {
+					console.log(`⚠ Error: ${error.response.data.details}`)
+				})
+		},
+		takeSuggestion (name) {
+			this.cardNameInput = name
+			this.handleSubmit()
+		},
 		handleSubmit () {
 			const cardNameInput = this.cardNameInput
 			this.$refs.focus.focus()
@@ -49,7 +126,7 @@ export default {
 				this.loadingCard = true
 
 				if (cardNameInput.toLowerCase() === 'random') {
-					this.axios
+					axios
 						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
 						.then(response => {
 							this.getTheCard(response.data.name)
@@ -81,7 +158,7 @@ export default {
 			} else {
 				console.log(`Requested Scryfall API for "${query}".`)
 
-				const cancelTokenSource = this.axios.CancelToken.source()
+				const cancelTokenSource = axios.CancelToken.source()
 
 				// Cancel when 15 seconds pass.
 				setTimeout(() => {
@@ -90,7 +167,7 @@ export default {
 
 				query = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
-				this.axios
+				axios
 					.get(
 						'https://api.scryfall.com/cards/named?fuzzy=' + query,
 						{ cancelToken: cancelTokenSource.token }
@@ -157,7 +234,7 @@ export default {
 						}
 					})
 					.catch(error => {
-						if (this.axios.isCancel(error)) {
+						if (axios.isCancel(error)) {
 							alert('⚠ The Scryfall server is taking too long to respond. Try again later.')
 						} else {
 							alert(`⚠ Error: ${error.response.data.details}`)
