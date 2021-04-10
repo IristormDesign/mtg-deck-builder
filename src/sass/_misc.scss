@@ -68,6 +68,7 @@
 	padding: $lhse/4 $lhse;
 	margin: $lhse/2 auto;
 	max-width: 64ch;
+	min-width: 0;
 }
 .page-not-found {
 	img {
@@ -75,10 +76,14 @@
 		margin: $lhse/2 auto $lhse;
 		width: $lhse*16;
 		height: auto;
-		border: 1px solid darken($color-group-bg, 8.33%);
+		padding: $lhse/3;
+		background: darken($color-group-bg, 8.33%);
 	}
 	h2 {
 		text-align: center;
+	}
+	small {
+		font-style: italic;
 	}
 }
 .deck-deleted {
