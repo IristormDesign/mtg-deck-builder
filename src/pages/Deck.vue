@@ -12,7 +12,6 @@
 				<div class="card-display-scroll-view">
 					<card-display :deck="deck" />
 					<div class="deck-main">
-						<deck-description :deck="deck" />
 						<card-list :deck="deck" />
 						<section class="card-list-controls">
 							<card-adder :deck="deck" />
@@ -33,7 +32,6 @@ import AverageCmc from '@/components/AverageCmc.vue'
 import DateEdited from '@/components/DateEdited.vue'
 import CardTotal from '@/components/CardTotal.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
-import DeckDescription from '@/components/DeckDescription.vue'
 import CardList from '@/components/CardList.vue'
 import CardAdder from '@/components/CardAdder.vue'
 import CardSorter from '@/components/CardSorter.vue'
@@ -47,7 +45,6 @@ export default {
 		DateEdited,
 		CardTotal,
 		CardDisplay,
-		DeckDescription,
 		CardList,
 		CardAdder,
 		CardSorter,

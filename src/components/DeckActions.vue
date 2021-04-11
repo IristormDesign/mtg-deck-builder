@@ -57,7 +57,6 @@ export default {
 					path: dupDeckPath,
 					cards: srcDeck.cards,
 					editDate: new Date(),
-					description: srcDeck.description,
 					viewedCard: srcDeck.viewedCard
 				})
 				store.commit('setDecks', updatedDecksArray)

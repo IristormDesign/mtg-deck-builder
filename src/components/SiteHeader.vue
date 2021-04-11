@@ -148,7 +148,6 @@ export default {
 						path: path,
 						cards: [],
 						editDate: new Date(),
-						description: '',
 						viewedCard: ''
 					})
 					store.commit('setDecks', updatedDecksArray)
