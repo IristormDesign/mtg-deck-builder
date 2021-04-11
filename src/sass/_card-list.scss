@@ -38,7 +38,7 @@
 	.list-headings,
 	li {
 		.qty {
-			width: 4.5rem;
+			width: 4.25rem;
 			margin-right: -$lhse/4;
 		}
 	}
@@ -219,7 +219,7 @@
 				color: $color-text;
 				background: transparent;
 				border: 0;
-				font-size: $lhse;
+				font-size: $lhse*.875;
 				width: 1.5em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
@@ -245,11 +245,11 @@
 		margin: 0;
 		padding: 0;
 		border-radius: $border-radius-button;
-		border: 3px outset $color-frame-generic;
-		border-top-color: rgba(#fff, .5);
-		border-right-color: rgba(#fff, .375);
-		border-bottom-color: rgba(#000, .5);
-		border-left-color: rgba(#000, .375);
+		border: 2px solid $color-frame-generic;
+		border-top-color: rgba(#fff, .667);
+		border-right-color: rgba(#fff, .5);
+		border-bottom-color: desaturate(darken($color-frame-generic, 50%), 0%);
+		border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
 		box-shadow: none;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
@@ -266,21 +266,33 @@
 		}
 		&.white {
 			background: $color-frame-white;
+			border-bottom-color: desaturate(darken($color-frame-white, 50%), 83.33%);
+			border-left-color: desaturate(darken($color-frame-white, 25%), 66.67%);
 		}
 		&.blue {
 			background: $color-frame-blue;
+			border-bottom-color: desaturate(darken($color-frame-blue, 50%), 50%);
+			border-left-color: desaturate(darken($color-frame-blue, 25%), 37.5%);
 		}
 		&.black {
 			background: $color-frame-black;
+			border-bottom-color: desaturate(darken($color-frame-black, 41.67%), 0%);
+			border-left-color: desaturate(darken($color-frame-black, 16.67%), 0%);
 		}
 		&.red {
 			background: $color-frame-red;
+			border-bottom-color: desaturate(darken($color-frame-red, 50%), 62.5%);
+			border-left-color: desaturate(darken($color-frame-red, 25%), 50%);
 		}
 		&.green {
 			background: $color-frame-green;
+			border-bottom-color: desaturate(darken($color-frame-green, 50%), 16.67%);
+			border-left-color: desaturate(darken($color-frame-green, 25%), 16.67%);
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
+			border-bottom-color: desaturate(darken($color-frame-multicolor, 50%), 37.5%);
+			border-left-color: desaturate(darken($color-frame-multicolor, 25%), 37.5%);
 		}
 	}
 }
