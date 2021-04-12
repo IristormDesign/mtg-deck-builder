@@ -93,18 +93,18 @@ export default {
 			const symbol = this.$store.state.manaSymbol
 
 			return card.mana
-				.replaceAll(RegExp('{W}', 'g'), symbol.w)
-				.replaceAll(RegExp('{U}', 'g'), symbol.u)
-				.replaceAll(RegExp('{B}', 'g'), symbol.b)
-				.replaceAll(RegExp('{R}', 'g'), symbol.r)
-				.replaceAll(RegExp('{G}', 'g'), symbol.g)
+				.replaceAll(RegExp(/{W}/, 'g'), symbol.w)
+				.replaceAll(RegExp(/{U}/, 'g'), symbol.u)
+				.replaceAll(RegExp(/{B}/, 'g'), symbol.b)
+				.replaceAll(RegExp(/{R}/, 'g'), symbol.r)
+				.replaceAll(RegExp(/{G}/, 'g'), symbol.g)
 				.replaceAll(
-					RegExp('{(./.)}', 'g'), // Find hybrid mana symbols (like `{G/W}`). The parentheses in the regex mark the variable `$1`.
-					'<span class="mana-symbol hybrid" title="Hybrid mana">$1</span>'
+					RegExp(/{(\w+)}/, 'g'), // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
+					'<span class="mana-symbol">$1</span>' // `$1` is a variable referring to the characters within the parentheses in the regex.
 				)
 				.replaceAll(
-					RegExp('{(.)}', 'g'), // Find any single character directly between a pair of curly brackets. This catches all other mana symbols that the previous regex replacements have missed.
-					'<span class="mana-symbol">$1</span>'
+					RegExp(/{(\w+\/\w+)}/, 'g'), // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
+					'<span class="mana-symbol hybrid" title="Hybrid mana">$1</span>'
 				)
 		},
 		setRarityTitle (card) {
