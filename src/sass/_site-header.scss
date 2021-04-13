@@ -124,6 +124,12 @@
 			white-space: nowrap;
 			transition-duration: 0s;
 			text-decoration: none;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background: darken($color-group-bg, 6.25%);
+			}
 		}
 	}
 }

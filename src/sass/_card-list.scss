@@ -1,21 +1,18 @@
 @mixin box-shadow-hover-card-button($color) {
-	box-shadow:  0 0 $lhse/2 $color, 0 0 0 2px $color;
+	box-shadow:  0 0 $lhse/2 $color, 0 0 0 2.5px $color;
 }
 
 .card-list {
-	border: $border-sections;
-	border-bottom: 0;
-	background: $color-group-bg;
-	padding: $lhse/4;
+	margin-bottom: $lhse/4;
 	min-height: $lhse*7.5;
 	display: flex;
 	flex-direction: column;
-	border-top-left-radius: $border-radius-group;
-	border-top-right-radius: $border-radius-group;
 	
 	&.no-cards {
 		justify-content: center;
 		text-align: center;
+		color: #fff;
+		text-shadow: $text-shadow-over-light-bg;
 	}
 	h3 {
 		@extend .screen-readers-only
@@ -52,7 +49,8 @@
 			line-height: 1;
 			margin-bottom: $lhse/8;
 			text-transform: uppercase;
-			color: $color-text-brighter;
+			color: #fff;
+			text-shadow: $text-shadow-over-light-bg;
 		}
 		.qty {
 			text-align: center;
@@ -76,7 +74,7 @@
 
 			.card-button {
 				@include box-shadow-hover-card-button(
-					desaturate(darken($color-mana-generic, 12.5%), 25%)
+					darken($color-frame-generic, 12.5%)
 				);
 				filter: contrast(116.67%);
 				transition-duration: 0s;
@@ -99,7 +97,7 @@
 				}
 				&.red {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-red, 41.67%), 25%)
+						desaturate(darken($color-mana-red, 37.5%), 25%)
 					);
 				}
 				&.green {
@@ -109,7 +107,7 @@
 				}
 				&.multicolor {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-hybrid, 33.33%), 25%)
+						desaturate(darken($color-mana-hybrid, 12.5%), 25%)
 					);
 				}
 			}
@@ -119,7 +117,7 @@
 			.qty {
 				input {
 					transition: none;
-					color: $color-mythic-orange;
+					color: $color-link;
 				}
 			}
 		}
@@ -210,13 +208,14 @@
 	
 			> span {
 				margin: 0 2px 0 .5ch;
-				color: darken($color-text, 16.67%);
+				color: $color-text;
 			}
 			label {
 				@extend .screen-readers-only;
 			}
 			input {
-				color: $color-text;
+				color: #fff;
+				text-shadow: $text-shadow-over-light-bg;
 				background: transparent;
 				border: 0;
 				font-size: $lhse*.875;
@@ -245,7 +244,8 @@
 		margin: 0;
 		padding: 0;
 		border-radius: $border-radius-button;
-		border: 2px solid $color-frame-generic;
+		border: 3px solid $color-frame-generic;
+		border-top-width: 2px;
 		border-top-color: rgba(#fff, .667);
 		border-right-color: rgba(#fff, .5);
 		border-bottom-color: desaturate(darken($color-frame-generic, 50%), 0%);
