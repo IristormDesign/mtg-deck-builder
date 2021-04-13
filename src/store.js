@@ -40,6 +40,17 @@ export default new Vuex.Store({
 		}
 	},
 	getters: {
+		attentionOpenDeckButton: (state) => () => {
+			if (state.decks.length > 0) {
+				const openDeckButton = document.querySelector('button.deck-selector')
+
+				openDeckButton.classList.add('attention')
+
+				setTimeout(() => {
+					openDeckButton.classList.remove('attention')
+				}, 1000)
+			}
+		},
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
 		existingDeck: (state) => (testPath) => {
 			return state.decks.find(deck =>

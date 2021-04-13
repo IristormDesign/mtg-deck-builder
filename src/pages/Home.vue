@@ -1,6 +1,7 @@
 <template>
 	<article class="home-page">
-		<img @click="attentionOpenDeckButton"
+		<img
+			@click="$store.getters.attentionOpenDeckButton"
 			srcset="
 				@/img/welcome-2560.jpg 2560w,
 				@/img/welcome-1920.jpg 1920w,
@@ -21,19 +22,3 @@
 		</div>
 	</article>
 </template>
-
-<script>
-export default {
-	methods: {
-		attentionOpenDeckButton () {
-			const openDeckButton = document.querySelector('button.deck-selector')
-
-			openDeckButton.classList.add('attention')
-
-			setTimeout(() => {
-				openDeckButton.classList.remove('attention')
-			}, 1000)
-		}
-	}
-}
-</script>

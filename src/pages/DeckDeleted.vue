@@ -1,5 +1,8 @@
 <template>
-	<article class="deck-deleted solo-message wrap">
+	<article
+		class="deck-deleted solo-message wrap"
+		@click="$store.getters.attentionOpenDeckButton"
+	>
 		<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>
 	</article>
 </template>
