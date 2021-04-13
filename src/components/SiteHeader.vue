@@ -10,6 +10,11 @@
 
 			<nav class="site-menu">
 				<ul>
+					<li class="add-new-deck">
+						<button class="site-header-link primary-btn" @click="createDeck()">
+							➕ Create Deck
+						</button>
+					</li>
 					<li class="deck-menu">
 						<button
 							class="deck-selector site-header-link primary-btn"
@@ -29,11 +34,6 @@
 								</router-link>
 							</li>
 						</ul>
-					</li>
-					<li class="add-new-deck">
-						<button class="site-header-link primary-btn" @click="createDeck()">
-							➕ Create Deck
-						</button>
 					</li>
 					<li class="contact-link">
 						<router-link :to="{name: 'contact'}" class="site-header-link">
