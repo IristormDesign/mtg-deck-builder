@@ -1,7 +1,7 @@
 <template>
 	<article class="home-page">
 		<img
-			@click="$store.getters.attentionOpenDeckButton"
+			@click="$store.getters.attentionHeaderButton"
 			srcset="
 				@/img/welcome-2560.jpg 2560w,
 				@/img/welcome-1920.jpg 1920w,

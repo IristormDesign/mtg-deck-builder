@@ -68,6 +68,22 @@
 		li {
 			display: block;
 		}
+		button {
+			&.attention:not(:disabled) {
+				animation: flash .1667s linear;
+				animation-iteration-count: 6;
+				animation-direction: alternate;
+	
+				@keyframes flash {
+					33.33% {
+						filter: brightness(100%);
+					}
+					100% {
+						filter: brightness(200%);
+					}
+				}
+			}
+		}
 	}
 	.site-header-link {
 		@extend button;
@@ -80,21 +96,6 @@
 	.deck-selector {
 		position: relative;
 		z-index: index($layers, deck-menu-group);
-
-		&.attention:not(:disabled) {
-			animation: flash .1667s linear;
-			animation-iteration-count: 6;
-			animation-direction: alternate;
-
-			@keyframes flash {
-				33.33% {
-					filter: brightness(100%);
-				}
-				100% {
-					filter: brightness(200%);
-				}
-			}
-		}
 	}
 	.deck-menu {
 		position: relative;
