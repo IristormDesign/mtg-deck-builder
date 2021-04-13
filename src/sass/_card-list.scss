@@ -135,10 +135,10 @@
 		.name {
 			margin: 0;
 			font-size: 100%;
-			color: #000;
 			line-height: 1.375;
 			min-width: 33.33%;
 			text-align: left;
+			color: inherit;
 		}
 		.mana {
 			display: flex;
@@ -253,7 +253,7 @@
 		box-shadow: none;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		color: #000;
+		color: lighten(#000, 8.33%);
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
