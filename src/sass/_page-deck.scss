@@ -13,6 +13,7 @@
 }
 .deck-main {
 	grid-column: 3 / 8;
+	max-width: 100%;
 }
 
 @media (max-width: $width-site-breakpoint-tablet) {
