@@ -12,7 +12,7 @@
 				<ul>
 					<li class="add-new-deck">
 						<button class="site-header-link primary-btn" @click="createDeck()">
-							➕ Create Deck
+							Create Deck
 						</button>
 					</li>
 					<li class="deck-menu">
@@ -21,7 +21,7 @@
 							@click="toggleDeckMenu()" :disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
 						>
-							📂 Open Deck
+							Open Deck
 						</button>
 						<ul v-show="showDeckMenu">
 							<li v-for="deck in $store.state.decks" :key="deck.name">
@@ -37,7 +37,7 @@
 					</li>
 					<li class="contact-link">
 						<router-link :to="{name: 'contact'}" class="site-header-link">
-							✉ Contact
+							Contact
 						</router-link>
 					</li>
 				</ul>
