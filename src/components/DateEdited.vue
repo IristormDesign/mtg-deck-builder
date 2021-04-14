@@ -13,6 +13,12 @@ export default {
 	props: {
 		deck: Object
 	},
+	created () {
+		if (this.deck.editDate === null) { // This happens when a default deck is opened for the first time on the user's device.
+			this.deck.editDate = new Date()
+			this.$store.commit('setDecks', this.$store.state.decks)
+		}
+	},
 	computed: {
 		dateEdited: function () {
 			const dateTime = new Date(this.deck.editDate)
