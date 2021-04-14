@@ -2,19 +2,19 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
 const Home = () =>
-	import(/* webpackChunkName: "home" */ './pages/Home.vue')
+	import(/* webpackChunkName: "home" */ '../pages/Home.vue')
 const Deck = () =>
-	import(/* webpackChunkName: "deck" */ './pages/Deck.vue')
+	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
 const DeckDeleted = () =>
-	import(/* webpackChunkName: "deck-deleted" */ './pages/DeckDeleted.vue')
+	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
 const Contact = () =>
-	import(/* webpackChunkName: "contact" */ './pages/Contact.vue')
+	import(/* webpackChunkName: "contact" */ '../pages/Contact.vue')
 const NotFound = () =>
-	import(/* webpackChunkName: "not-found" */ './pages/NotFound.vue')
+	import(/* webpackChunkName: "not-found" */ '../pages/NotFound.vue')
 const Terms = () =>
-	import(/* webpackChunkName: "terms" */ './pages/Terms.vue')
+	import(/* webpackChunkName: "terms" */ '../pages/Terms.vue')
 const Privacy = () =>
-	import(/* webpackChunkName: "privacy" */ './pages/Privacy.vue')
+	import(/* webpackChunkName: "privacy" */ '../pages/Privacy.vue')
 
 Vue.use(VueRouter)
 
