@@ -42,7 +42,7 @@ $color-frame-generic:
 	desaturate(lighten($color-rarity-silver, 16.67%), 8.33%);
 
 // TEXT
-$font-family-standard: 'Crimson Pro', 'Palatino Linotype', serif;
+$font-family-standard: 'Crimson Pro', serif;
 $line-height-standard: 1.5;
 $lhse: $line-height-standard * 1em;
 $font-weight-semibold: 500;
@@ -66,5 +66,27 @@ $x: 2px dashed rgba(#c0f, .75);
 
 @mixin heading-font {
 	font-family: 'Philosopher', $font-family-standard;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("fonts/CrimsonPro-Light.ttf") format("truetype");
+	font-weight: 300;
+}
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("fonts/CrimsonPro-LightItalic.ttf") format("truetype");
+	font-weight: 300;
+	font-style: italic;
+}
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("fonts/CrimsonPro-Medium.ttf") format("truetype");
+	font-weight: 500;
+}
+@font-face {
+	font-family: "Philosopher";
+	src: url("fonts/Philosopher-Bold.ttf") format("truetype");
 	font-weight: bold;
 }
