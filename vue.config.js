@@ -23,6 +23,11 @@ module.exports = {
 				}
 			]
 		},
+		workboxOptions: {
+			exclude: [
+				/^\.htaccess$/
+			]
+		},
 		iconPaths: {
 			appleTouchIcon: 'img/icons/apple-touch-icon.png',
 			maskIcon: null,
