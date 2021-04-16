@@ -8,7 +8,7 @@
 </IfModule>
 
 
-# Apache Server Configs v4.1.0 | MIT License
+# Apache Server Configs v4.1.0 (MODIFIED) | MIT License
 # https://github.com/h5bp/server-configs-apache
 
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have
@@ -226,31 +226,6 @@ AddDefaultCharset utf-8
 					 .webmanifest \
 					 .xloc
 </IfModule>
-
-# ----------------------------------------------------------------------
-# | Forcing `https://`                                                 |
-# ----------------------------------------------------------------------
-
-# Redirect from the `http://` to the `https://` version of the URL.
-#
-# https://wiki.apache.org/httpd/RewriteHTTPToHTTPS
-
-# (1) If you're using cPanel AutoSSL or the Let's Encrypt webroot method it
-#     will fail to validate the certificate if validation requests are
-#     redirected to HTTPS. Turn on the condition(s) you need.
-#
-#     https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml
-#     https://tools.ietf.org/html/draft-ietf-acme-acme-12
-
-# <IfModule mod_rewrite.c>
-#    RewriteEngine On
-#    RewriteCond %{HTTPS} !=on
-#    # (1)
-#    # RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
-#    # RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
-#    # RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-#    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-# </IfModule>
 
 # ######################################################################
 # # SECURITY                                                           #
@@ -834,38 +809,6 @@ ServerSignature Off
 # </IfModule>
 
 # ----------------------------------------------------------------------
-# | Content transformation                                             |
-# ----------------------------------------------------------------------
-
-# Prevent intermediate caches or proxies (such as those used by mobile
-# network providers) and browsers data-saving features from modifying
-# the website's content using the `cache-control: no-transform` directive.
-#
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
-# https://tools.ietf.org/html/rfc7234#section-5.2.2.4
-#
-# (!) Carefully consider the impact on your visitors before disabling
-#     content transformation. These transformations are performed to
-#     improve the experience for data- and cost-constrained users
-#     (e.g. users on a 2G connection).
-#
-#     You can test the effects of content transformation applied by
-#     Google's Lite Mode by visiting: https://googleweblight.com/i?u=https://www.example.com
-#
-#     https://support.google.com/webmasters/answer/6211428
-#
-# (!) If you are using `mod_pagespeed`, note that disabling this will
-#     prevent `PageSpeed` from rewriting HTML files, and, if the
-#     `ModPagespeedDisableRewriteOnNoTransform` directive isn't set to
-#     `off`, also from rewriting other resources.
-#
-#     https://developers.google.com/speed/pagespeed/module/configuration#notransform
-
-# <IfModule mod_headers.c>
-#     Header merge Cache-Control "no-transform"
-# </IfModule>
-
-# ----------------------------------------------------------------------
 # | ETags                                                              |
 # ----------------------------------------------------------------------
 
@@ -1003,35 +946,3 @@ FileETag None
 	ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
 
 </IfModule>
-
-# ----------------------------------------------------------------------
-# | File concatenation                                                 |
-# ----------------------------------------------------------------------
-
-# Allow concatenation from within specific files.
-#
-# If you have the following lines in a file called, for example,
-# `main.combined.js`:
-#
-#     <!--#include file="js/jquery.js" -->
-#     <!--#include file="js/jquery.timer.js" -->
-#
-# Apache will replace those lines with the content of the specified files.
-
-# <IfModule mod_include.c>
-
-#     <FilesMatch "\.combined\.js$">
-#         Options +Includes
-#         AddOutputFilterByType INCLUDES application/javascript \
-#                                        application/x-javascript \
-#                                        text/javascript
-#         SetOutputFilter INCLUDES
-#     </FilesMatch>
-
-#     <FilesMatch "\.combined\.css$">
-#         Options +Includes
-#         AddOutputFilterByType INCLUDES text/css
-#         SetOutputFilter INCLUDES
-#     </FilesMatch>
-
-# </IfModule>
