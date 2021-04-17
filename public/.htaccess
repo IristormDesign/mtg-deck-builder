@@ -865,8 +865,8 @@ FileETag None
 
   # Favicon (cannot be renamed!) and cursor images
 
-	ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
-	ExpiresByType image/x-icon                          "access plus 1 week"
+	ExpiresByType image/vnd.microsoft.icon              "access plus 1 month"
+	ExpiresByType image/x-icon                          "access plus 1 month"
 
   # HTML
 
@@ -894,19 +894,19 @@ FileETag None
 
   # Media files
 
-	ExpiresByType audio/ogg                             "access plus 1 month"
-	ExpiresByType image/apng                            "access plus 1 month"
-	ExpiresByType image/avif                            "access plus 1 month"
-	ExpiresByType image/avif-sequence                   "access plus 1 month"
-	ExpiresByType image/bmp                             "access plus 1 month"
-	ExpiresByType image/gif                             "access plus 1 month"
-	ExpiresByType image/jpeg                            "access plus 1 month"
-	ExpiresByType image/png                             "access plus 1 month"
-	ExpiresByType image/svg+xml                         "access plus 1 month"
-	ExpiresByType image/webp                            "access plus 1 month"
-	ExpiresByType video/mp4                             "access plus 1 month"
-	ExpiresByType video/ogg                             "access plus 1 month"
-	ExpiresByType video/webm                            "access plus 1 month"
+	ExpiresByType audio/ogg                             "access plus 1 year"
+	ExpiresByType image/apng                            "access plus 1 year"
+	ExpiresByType image/avif                            "access plus 1 year"
+	ExpiresByType image/avif-sequence                   "access plus 1 year"
+	ExpiresByType image/bmp                             "access plus 1 year"
+	ExpiresByType image/gif                             "access plus 1 year"
+	ExpiresByType image/jpeg                            "access plus 1 year"
+	ExpiresByType image/png                             "access plus 1 year"
+	ExpiresByType image/svg+xml                         "access plus 1 year"
+	ExpiresByType image/webp                            "access plus 1 year"
+	ExpiresByType video/mp4                             "access plus 1 year"
+	ExpiresByType video/ogg                             "access plus 1 year"
+	ExpiresByType video/webm                            "access plus 1 year"
 
 
   # WebAssembly
@@ -916,29 +916,18 @@ FileETag None
 
   # Web fonts
 
-	# Collection
-	ExpiresByType font/collection                       "access plus 1 month"
-
-	# Embedded OpenType (EOT)
-	ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-	ExpiresByType font/eot                              "access plus 1 month"
-
-	# OpenType
-	ExpiresByType font/opentype                         "access plus 1 month"
-	ExpiresByType font/otf                              "access plus 1 month"
-
-	# TrueType
-	ExpiresByType application/x-font-ttf                "access plus 1 month"
-	ExpiresByType font/ttf                              "access plus 1 month"
-
-	# Web Open Font Format (WOFF) 1.0
-	ExpiresByType application/font-woff                 "access plus 1 month"
-	ExpiresByType application/x-font-woff               "access plus 1 month"
-	ExpiresByType font/woff                             "access plus 1 month"
-
-	# Web Open Font Format (WOFF) 2.0
-	ExpiresByType application/font-woff2                "access plus 1 month"
-	ExpiresByType font/woff2                            "access plus 1 month"
+	ExpiresByType font/collection                       "access plus 1 year"
+	ExpiresByType application/vnd.ms-fontobject         "access plus 1 year"
+	ExpiresByType font/eot                              "access plus 1 year"
+	ExpiresByType font/opentype                         "access plus 1 year"
+	ExpiresByType font/otf                              "access plus 1 year"
+	ExpiresByType application/x-font-ttf                "access plus 1 year"
+	ExpiresByType font/ttf                              "access plus 1 year"
+	ExpiresByType application/font-woff                 "access plus 1 year"
+	ExpiresByType application/x-font-woff               "access plus 1 year"
+	ExpiresByType font/woff                             "access plus 1 year"
+	ExpiresByType application/font-woff2                "access plus 1 year"
+	ExpiresByType font/woff2                            "access plus 1 year"
 
 
   # Other
