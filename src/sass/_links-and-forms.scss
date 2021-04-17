@@ -4,8 +4,9 @@
 a {
 	color: $color-link;
 	text-decoration: none;
-	transition: all $transition-duration-standard ease;
-
+	transition: $transition-duration-standard ease;
+	transition-property: color, text-decoration-color;
+	
 	&:hover,
 	&:focus {
 		text-decoration: underline;
@@ -108,7 +109,8 @@ select {
 	color: #000;
 	border: 2px inset $color-content-bg;
 	padding: $lhse/8 .25em;
-	transition: all $transition-duration-standard ease;
+	transition: $transition-duration-standard ease;
+	transition-duration: border, background, box-shadow;
 
 	&:hover,
 	&:focus {
