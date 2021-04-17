@@ -11,6 +11,11 @@
 # Apache Server Configs v4.1.0 (MODIFIED) | MIT License
 # https://github.com/h5bp/server-configs-apache
 
+# MY MODIFICATIONS:
+# - Deleted some unwanted parts.
+# - Changed the cache expiry time of some formats.
+# - Added SVG to the list of media types to have the UTF-8 charset.
+
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have
 # access to the main server configuration file (which is usually called
 # `httpd.conf`), you should add this logic there.
@@ -208,24 +213,25 @@ AddDefaultCharset utf-8
 
 <IfModule mod_mime.c>
 	AddCharset utf-8 .appcache \
-					 .bbaw \
-					 .css \
-					 .htc \
-					 .ics \
-					 .js \
-					 .json \
-					 .manifest \
-					 .map \
-					 .markdown \
-					 .md \
-					 .mjs \
-					 .topojson \
-					 .vtt \
-					 .vcard \
-					 .vcf \
-					 .webmanifest \
-					 .xloc
-</IfModule>
+		.bbaw \
+		.css \
+		.htc \
+		.ics \
+		.js \
+		.json \
+		.manifest \
+		.map \
+		.markdown \
+		.md \
+		.mjs \
+		.topojson \
+		.vtt \
+		.vcard \
+		.vcf \
+		.webmanifest \
+		.xloc \
+		.svg
+	</IfModule>
 
 # ######################################################################
 # # SECURITY                                                           #
