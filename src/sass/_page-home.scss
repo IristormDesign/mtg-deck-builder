@@ -1,26 +1,17 @@
 .home-page {
-	width: 100%;
-	max-width: 1920px;
-	margin: 0 auto;
+	margin: 0;
 	position: relative;
 	overflow: hidden;
 
-	.wrap {
-		position: absolute;
-		margin: 0 auto;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
-		margin: 0 auto;
+		margin: 0;
 		background: #2f3d4b; // The illustration's average color.
 		min-width: $min-width-site;
 		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
-		
+				
 		@keyframes cinematic-fade-in {
 			0%,
 			8.33% {
@@ -32,6 +23,13 @@
 				transform: scale(1);
 			}
 		}
+	}
+	.wrap {
+		position: absolute;
+		margin: 0 auto;
+		top: 0;
+		left: 0;
+		right: 0;
 	}
 	.text-box {
 		width: 25%;
@@ -58,7 +56,6 @@
 				opacity: 1;
 			}
 		}
-	
 		h2 {
 			font-size: 125%;
 			margin-top: $lhse/2;

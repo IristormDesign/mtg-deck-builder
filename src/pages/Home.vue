@@ -15,7 +15,7 @@
 				<header>
 					<h2>Greetings, planeswalker.</h2>
 				</header>
-				<p>In this app, you can create and manage your decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>.</p>
+				<p>This app lets you create and manage your decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>.</p>
 				<p>To start building, click on the Create Deck button above.</p>
 				<p>To see a pre-made deck, click on the Open Deck button above.</p>
 			</div>
