@@ -52,6 +52,9 @@
 			color: #fff;
 			text-shadow: $text-shadow-over-light-bg;
 		}
+		.rarity {
+			margin-right: -$lhse/4;
+		}
 		.qty {
 			text-align: center;
 		}
@@ -300,15 +303,8 @@
 @media (max-width: $width-site-breakpoint) {
 	.card-list {
 		li {
-			.name {
-				font-size: 87.5%;
-			}
-			.mana {
-				font-size: 112.5%;
-			}
-			.type {
-				font-size: 75%;
-			}
+			font-size: 83.33%;
+			min-height: 33px; // This is 75% of the WCAG's AAA recommendation for button heights.
 		}
 	}
 }

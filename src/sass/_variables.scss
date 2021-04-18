@@ -3,6 +3,7 @@ $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 8.33%), 8.33%);
 $color-rarity-gold: lighten(#C19C00, 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 20%); // Sampled from Scryfall
 $color-rarity-special: #905D98; // Sampled from Scryfall
@@ -49,14 +50,17 @@ $font-weight-normal: 300;
 $font-weight-semibold: 500;
 $text-shadow-over-light-bg: -.5px 1px 1px rgba(#000, .5);
 
-// MISCELLANEOUS
-$box-shadows-card-button:
-	inset -.75px 1.5px 0 1px rgba(#fff, .5),
-	inset .75px -1.5px 0 1px rgba(#000, .5);
+// WIDTHS
 $min-width-site: 960px;
 $width-site-breakpoint: $min-width-site*1.25;
 $width-site-breakpoint-tablet: 1024px;
 $max-width-site: 1440px;
+$max-width-site: 1536px;
+
+// MISCELLANEOUS
+$box-shadows-card-button:
+	inset -.75px 1.5px 0 1px rgba(#fff, .5),
+	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;

@@ -1,7 +1,7 @@
 .site-header {
 	box-shadow: 0 0 $lhse/6 rgba(#000, .375);
 	background: $color-group-bg;
-	border-bottom: $lhse/4 solid desaturate(darken($color-mythic-orange, 6.25%), 8.33%);
+	border-bottom: $lhse/4 solid $color-mythic-dim;
 	position: relative;
 	z-index: index($layers, site-header);
 	height: $lhse*2;

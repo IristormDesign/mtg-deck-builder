@@ -1,9 +1,8 @@
 .card-display {
 	grid-column: span 2;
-	height: 534px; // Actual height of card as it appears in the app.
+	height: 573px; // Actual maximum height of card as it appears in the app.
 	position: sticky;
 	top: $lhse;
-	filter: drop-shadow(-1px 2px 2px rgba(#000, .5));
 		
 	a {
 		position: absolute;
