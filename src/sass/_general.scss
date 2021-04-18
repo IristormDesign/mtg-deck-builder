@@ -70,6 +70,10 @@ h4 {
 	@include heading-font;
 	line-height: 1;
 	color: $color-text-brighter;
+	margin-top: $lhse;
+}
+h2 {
+	margin-top: $line-height-standard * .5rem;
 }
 p {
 	margin: $lhse/2 0;

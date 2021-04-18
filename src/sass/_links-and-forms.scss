@@ -107,6 +107,7 @@ select {
 	line-height: 1.5;
 	background: $color-input-bg;
 	color: #000;
+	font-weight: $font-weight-normal;
 	border: 2px inset $color-content-bg;
 	padding: $lhse/8 .25em;
 	transition: $transition-duration-standard ease;
@@ -135,5 +136,5 @@ select {
 	border-radius: $border-radius-button;
 }
 option {
-	font-weight: normal;
+	font-weight: $font-weight-normal;
 }

@@ -45,6 +45,7 @@ $color-frame-generic:
 $font-family-standard: 'Crimson Pro', serif;
 $line-height-standard: 1.5;
 $lhse: $line-height-standard * 1em;
+$font-weight-normal: 300;
 $font-weight-semibold: 500;
 $text-shadow-over-light-bg: -.5px 1px 1px rgba(#000, .5);
 
@@ -71,14 +72,14 @@ $x: 2px dashed rgba(#c0f, .75);
 
 @font-face {
 	font-family: "Crimson Pro";
-	src: url("fonts/CrimsonPro-Light.ttf") format("truetype");
-	font-weight: 300;
+	src: url("fonts/CrimsonPro-Regular.ttf") format("truetype");
+	font-weight: 400;
 	font-display: swap;
 }
 @font-face {
 	font-family: "Crimson Pro";
-	src: url("fonts/CrimsonPro-LightItalic.ttf") format("truetype");
-	font-weight: 300;
+	src: url("fonts/CrimsonPro-Italic.ttf") format("truetype");
+	font-weight: 400;
 	font-style: italic;
 	font-display: swap;
 }
