@@ -1,15 +1,18 @@
 .site-header {
-	width: 100%;
 	box-shadow: 0 0 $lhse/6 rgba(#000, .375);
 	background: $color-group-bg;
 	border-bottom: $lhse/4 solid desaturate(darken($color-mythic-orange, 6.25%), 8.33%);
 	position: relative;
 	z-index: index($layers, site-header);
-	
+	height: $lhse*2;
+	display: flex;
+	align-items: center;
+
 	.wrap {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		width: 100%;
 	}
 	.site-title {
 		a {
@@ -27,15 +30,12 @@
 		}
 		span {
 			display: inline-block;
-			color: darken($color-text, 12.5%);
+			color: darken($color-text, 8.33%);
 			font-size: 87.5%;
 
 			a {
 				@include heading-font;
 				display: inline-block;
-				text-transform: uppercase;
-				letter-spacing: (1/48)*1em;
-				padding: $lhse/6 0;
 				margin: 0 .125ch;
 			}
 		}
