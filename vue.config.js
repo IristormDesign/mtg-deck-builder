@@ -7,7 +7,7 @@ module.exports = {
 	pwa: {
 		name: 'MTG Deck Builder',
 		themeColor: '#ba4218', // The color of the site header's bottom border.
-		msTileColor: '#272e31',
+		msTileColor: '#1a2529',
 		appleMobileWebAppCapable: 'yes',
 		manifestOptions: {
 			icons: [
