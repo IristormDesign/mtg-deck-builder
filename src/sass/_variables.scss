@@ -10,10 +10,10 @@ $color-rarity-special: #905D98; // Sampled from Scryfall
 
 $color-link: saturate(lighten($color-mythic-orange, 8.33%), 16.67%);
 $color-link-focus: saturate($color-mythic-lighter, 25%);
-$color-content-bg: darken(desaturate($color-mythic-complement, 75%), 8.33%);
-$color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 75%);
+$color-content-bg: darken(desaturate($color-mythic-complement, 66.67%), 16.67%);
+$color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 62.5%);
 $color-text: lighten($color-group-bg, 66.67%);
-$color-text-brighter: lighten($color-text, 6.25%);
+$color-text-brighter: lighten($color-text, 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
@@ -65,7 +65,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
 $layers: site-header, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
-$border-sections: 1px solid darken($color-text, 25%);
+$border-sections: 1px solid desaturate(lighten($color-group-bg, 41.67%), 6.25%);
 
 $x: 2px dashed rgba(#c0f, .75);
 

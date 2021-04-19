@@ -2,12 +2,13 @@
 	margin: 0;
 	position: relative;
 	overflow: hidden;
+	background: #000;
 
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
-		margin: 0;
+		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
 		min-width: $min-width-site;
 		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
@@ -38,7 +39,7 @@
 		position: absolute;
 		top: 8.333vh;
 		right: $lhse;
-		background: rgba(#000, .75);
+		background: rgba(#000, .8);
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
 		border: $border-sections;

@@ -11,8 +11,7 @@
 	&.no-cards {
 		justify-content: center;
 		text-align: center;
-		color: #fff;
-		text-shadow: $text-shadow-over-light-bg;
+		color: $color-text-brighter;
 	}
 	h3 {
 		@extend .screen-readers-only
@@ -49,8 +48,7 @@
 			line-height: 1;
 			margin-bottom: $lhse/8;
 			text-transform: uppercase;
-			color: #fff;
-			text-shadow: $text-shadow-over-light-bg;
+			color: $color-text-brighter;
 		}
 		.rarity {
 			margin-right: -$lhse/4;
@@ -121,6 +119,7 @@
 				input {
 					transition: none;
 					color: $color-link;
+					text-shadow: $text-shadow-over-light-bg;
 				}
 			}
 		}
@@ -217,8 +216,7 @@
 				@extend .screen-readers-only;
 			}
 			input {
-				color: #fff;
-				text-shadow: $text-shadow-over-light-bg;
+				color: $color-text-brighter;
 				background: transparent;
 				border: 0;
 				font-size: $lhse*.875;

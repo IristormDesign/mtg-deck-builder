@@ -2,12 +2,12 @@
 	font-size: 75%;
 	letter-spacing: (1/256)*1em;
 	background: #000;
-	color: darken($color-text, 25%);
+	color: desaturate(darken($color-text, 25%), 12.5%);
 	position: relative;
 	padding: $lhse 0;
 
 	span {
-		margin: 0 1ch;
+		margin: 0 .5em;
 	}
 	a {
 		&:link,

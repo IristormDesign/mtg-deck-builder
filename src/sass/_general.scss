@@ -6,8 +6,8 @@
 }
 body {
 	font: 20px/1.5 $font-family-standard;
-	background: #000;
 	color: $color-text;
+	background: $color-content-bg;
 }
 #app {
 	display: flex;
@@ -15,21 +15,12 @@ body {
 	min-height: 100vh;
 	margin: 0 auto;
 	position: relative;
-	max-width: 1920px;
 	min-width: $min-width-site;
-	background: $color-content-bg;
-}
-@supports (background-blend-mode: overlay) {
-  #app {
-		background:
-			radial-gradient(ellipse at 62.5% 25%,
-				rgba(#fff, .333),
-				rgba(#000, .333)
-			) fixed no-repeat,
-			url('~@/img/topography.svg') repeat, // From http://www.heropatterns.com/
-			$color-content-bg;
-		background-blend-mode: overlay;
-	}
+	background: radial-gradient(ellipse at 62.5% 25%,
+		lighten($color-content-bg, 12.5%),
+		$color-content-bg,
+		darken($color-content-bg, 12.5%)
+	) fixed no-repeat;
 }
 .wrap {
 	max-width: $max-width-site;
@@ -93,7 +84,7 @@ small {
 }
 .fade-from-black {
 	&-enter-active {
-		transition: all 1s ease;
+		transition: filter 1s ease;
 	}
 	&-enter {
 		filter: brightness(0);
