@@ -1,7 +1,10 @@
 <template>
 	<aside v-if="updateExists" class="update-notif">
-		<p>✨ This app has been <strong>updated</strong>! Reload the page now to get the newest version.</p>
-		<button @click="refreshApp">Reload</button>
+		<template v-if="!refreshing">
+			<p>✨ This app has an <strong>update available</strong>! Reload the page now to use the newest version.</p>
+			<button @click="refreshApp">Reload</button>
+		</template>
+		<p class="reloading" v-else>Reloading the page now&hellip;</p>
 	</aside>
 </template>
 
@@ -9,6 +12,7 @@
 export default {
 	data () {
 		return {
+			refreshing: false,
 			registration: null,
 			updateExists: false
 		}
@@ -28,10 +32,8 @@ export default {
 		updateAvailable (event) {
 			this.registration = event.detail
 			this.updateExists = true
-			this.refreshApp()
 		},
 		refreshApp () {
-			this.updateExists = false
 			// Make sure we only send a 'skip waiting' message if the SW is waiting
 			if (!this.registration || !this.registration.waiting) return
 

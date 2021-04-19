@@ -100,7 +100,7 @@
 	background: $color-mythic-lighter;
 	border-bottom: 1px solid darken(desaturate($color-mythic-lighter, 16.67%), 16.67%);
 	padding: 0 $lhse/2;
-	height: $lhse*1.667;
+	height: $lhse*1.75;
 	color: #000;
 	text-align: center;
 	display: flex;
@@ -115,5 +115,8 @@
 		margin-left: 1ch;
 		display: inline-block;
 		min-width: $lhse*4;
+	}
+	.reloading {
+		font-style: italic;
 	}
 }
