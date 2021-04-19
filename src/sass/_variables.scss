@@ -48,7 +48,7 @@ $line-height-standard: 1.5;
 $lhse: $line-height-standard * 1em;
 $font-weight-normal: 300;
 $font-weight-semibold: 500;
-$text-shadow-over-light-bg: -.5px 1px 1px rgba(#000, .5);
+$text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .333);
 
 // WIDTHS
 $min-width-site: 960px;

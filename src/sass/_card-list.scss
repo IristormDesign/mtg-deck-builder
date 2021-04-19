@@ -4,7 +4,7 @@
 
 .card-list {
 	margin-bottom: $lhse/4;
-	min-height: $lhse*7.5;
+	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
 	
@@ -12,9 +12,10 @@
 		justify-content: center;
 		text-align: center;
 		color: $color-text-brighter;
+		text-shadow: $text-shadow-over-light-bg;
 	}
 	h3 {
-		@extend .screen-readers-only
+		@extend .screen-readers-only;
 	}
 	.list-headings
 	.card-button {
@@ -41,6 +42,7 @@
 	.list-headings {
 		@include heading-font;
 		display: flex;
+		text-shadow: $text-shadow-over-light-bg;
 
 		strong {
 			display: block;
@@ -119,7 +121,6 @@
 				input {
 					transition: none;
 					color: $color-link;
-					text-shadow: $text-shadow-over-light-bg;
 				}
 			}
 		}
@@ -227,7 +228,8 @@
 				padding: 0;
 				font-weight: $font-weight-semibold;
 				line-height: 1;
-	
+				text-shadow: $text-shadow-over-light-bg;
+
 				&:hover,
 				&:focus {
 					background: rgba(#000, .5);
