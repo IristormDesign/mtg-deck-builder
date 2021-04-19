@@ -1,5 +1,5 @@
 .home-page {
-	margin: 0;
+	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
 	background: #000;
@@ -39,7 +39,7 @@
 		position: absolute;
 		top: 8.333vh;
 		right: $lhse;
-		background: rgba(#000, .8);
+		background: rgba(#000, .75);
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
 		border: $border-sections;

@@ -63,7 +63,7 @@ $box-shadows-card-button:
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
-$layers: site-header, bg-overlay, deck-menu-group;
+$layers: site-header, bg-overlay, update-notif, deck-menu-group;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid desaturate(lighten($color-group-bg, 41.67%), 6.25%);
 

@@ -92,3 +92,29 @@
 		text-align: center;
 	}
 }
+.update-notif {
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: index($layers, update-notif);
+	background: $color-mythic-lighter;
+	border-bottom: 1px solid darken(desaturate($color-mythic-lighter, 16.67%), 16.67%);
+	padding: 0 $lhse/2;
+	height: $lhse*1.667;
+	color: #000;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 $lhse/4 #000;
+
+	p {
+		margin: 0;
+	}
+	button {
+		margin-left: 1ch;
+		display: inline-block;
+		min-width: $lhse*4;
+	}
+}
