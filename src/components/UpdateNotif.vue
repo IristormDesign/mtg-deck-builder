@@ -4,7 +4,7 @@
 			<p>✨ This app has an <strong>update available</strong>! Reload the page now to use the newest version.</p>
 			<button @click="refreshApp">Reload</button>
 		</template>
-		<p class="reloading" v-else>Reloading the page now&hellip;</p>
+		<p class="reloading" v-else>Reloading&hellip;</p>
 	</aside>
 </template>
 
