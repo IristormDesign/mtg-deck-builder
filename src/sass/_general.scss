@@ -16,11 +16,11 @@ body {
 	margin: 0 auto;
 	position: relative;
 	min-width: $min-width-site;
-	background: radial-gradient(ellipse at 62.5% 25%,
-		lighten($color-content-bg, 12.5%),
-		$color-content-bg,
-		darken($color-content-bg, 12.5%)
-	) fixed no-repeat;
+	background: radial-gradient(circle at 62.5% $lhse*6,
+		lighten($color-content-bg, 12.5%) 0,
+		$color-content-bg 50vw,
+		darken($color-content-bg, 12.5%) 100vw
+	) no-repeat;
 }
 .wrap {
 	max-width: $max-width-site;
@@ -100,11 +100,5 @@ small {
 	&-enter,
 	&-leave-to {
 		opacity: 0;
-	}
-}
-
-@media (max-width: $width-site-breakpoint) {
-	.wrap {
-		padding: 0 $lhse/2;
 	}
 }
