@@ -6,7 +6,7 @@ import VueGtag from 'vue-gtag'
 import './registerServiceWorker.js'
 
 Vue.use(VueGtag, {
-	config: { id: 'UA-60677306-1' }
+	config: { id: 'G-SVXNP4LLL4' }
 }, router)
 
 new Vue({

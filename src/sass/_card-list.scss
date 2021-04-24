@@ -68,7 +68,7 @@
 	li {
 		display: flex;
 		margin: 2px 1px;
-		transition: all .3333s ease; // For card sorting
+		transition: transform .3333s ease; // For card sorting
 		position: relative;
 
 		&:hover,
