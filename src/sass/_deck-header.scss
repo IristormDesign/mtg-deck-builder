@@ -1,6 +1,6 @@
 .deck-header {
 	grid-column: span 7;
-	margin: $lhse auto $lhse/2;
+	margin: $lhse auto $lhse*.75;
 	display: grid;
 	grid-template-columns: 2fr repeat(4, min-content);
 	align-items: center;

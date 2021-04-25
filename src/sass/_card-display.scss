@@ -37,7 +37,7 @@
 			background: desaturate(darken($color-frame-green, 50%), 12.5%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 50%), 50%);
+			background: desaturate(darken($color-frame-multicolor, 50%), 12.5%);
 		}
 	}
 	.loading-indicator {
