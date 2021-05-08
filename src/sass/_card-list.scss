@@ -73,7 +73,7 @@
 
 		&:hover,
 		&:focus-within {
-			z-index: 1;
+			z-index: index($layers, card-list-item);
 
 			.card-button {
 				@include box-shadow-hover-card-button(
@@ -113,9 +113,6 @@
 						desaturate(darken($color-mana-hybrid, 12.5%), 25%)
 					);
 				}
-			}
-			&:hover {
-				z-index: 2;
 			}
 			.qty {
 				input {
@@ -262,7 +259,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		box-shadow: -.5px 1px 2px 1px rgba(#000, .3333);
+		box-shadow: -.75px 2px 2px 1px rgba(#000, .3333);
 		
 		&:active {
 			transform: scale(.995) translate(0, .5px);

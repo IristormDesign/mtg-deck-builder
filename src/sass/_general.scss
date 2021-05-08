@@ -18,9 +18,9 @@ body {
 	min-width: $min-width-site;
 	background: radial-gradient(circle at 62.5% $lhse*6,
 		lighten($color-content-bg, 12.5%) 0,
-		$color-content-bg 50vw,
 		darken($color-content-bg, 12.5%) 100vw
 	) no-repeat;
+	padding-top: $height-site-header;
 }
 .wrap {
 	max-width: $max-width-site;

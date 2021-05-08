@@ -6,6 +6,6 @@
 
 		<p>To learn about how MTG Deck Builder was made, <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">read the article about it</a> at Iristorm Design.</p>
 
-		<p>This web app’s <a href="https://github.com/IristormDesign/mtg-deck-builder" target="_blank" rel="noopener">source code is on GitHub</a>.</p>
+		<p>This app’s <a href="https://github.com/IristormDesign/mtg-deck-builder" target="_blank" rel="noopener">source code is on GitHub</a>.</p>
 	</article>
 </template>

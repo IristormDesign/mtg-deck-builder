@@ -1,7 +1,9 @@
 <template>
-	<article class="home-page">
+	<article
+		class="home-page"
+		@click="$store.getters.attentionHeaderButton"
+	>
 		<img
-			@click="$store.getters.attentionHeaderButton"
 			srcset="
 				@/img/welcome-2560.jpg 2560w,
 				@/img/welcome-1920.jpg 1920w,
@@ -15,9 +17,9 @@
 				<header>
 					<h2>Greetings, planeswalker.</h2>
 				</header>
-				<p>This app lets you create and manage your decks for the collectible strategy card game <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>.</p>
-				<p>To start building, click on the Create Deck button above.</p>
-				<p>To see a pre-made deck, click on the Open Deck button above.</p>
+				<p>This app lets you <strong>build and organize your decks</strong> for <i>Magic: The Gathering</i>.</p>
+				<p>Click on the <strong>Open Deck</strong> button above to <strong>view a pre-made deck</strong>.</p>
+				<p>Or, click on the <strong>Create Deck</strong> button above to <strong>start a new deck</strong>!</p>
 			</div>
 		</div>
 	</article>

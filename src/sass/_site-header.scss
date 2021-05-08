@@ -1,11 +1,15 @@
 .site-header {
 	background: $color-group-bg;
 	border-bottom: $lhse/4 solid $color-mythic-dim;
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	z-index: index($layers, site-header);
-	height: $lhse*2;
+	height: $height-site-header;
 	display: flex;
 	align-items: center;
+	box-shadow: 0 0 $lhse/3 rgba(#000, .5);
 
 	.wrap {
 		display: flex;

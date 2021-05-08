@@ -48,6 +48,7 @@
 		animation-fill-mode: forwards;
 		animation-delay: 2s;
 		opacity: 0;
+		color: $color-text-brighter;
 
 		@keyframes animate-text-box {
 			0% {
