@@ -254,7 +254,6 @@
 		border-right-color: rgba(#fff, .5);
 		border-bottom-color: desaturate(darken($color-frame-generic, 50%), 0%);
 		border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
-		box-shadow: none;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
 		color: lighten(#000, 8.33%);
@@ -263,6 +262,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
+		box-shadow: -.5px 1px 2px 1px rgba(#000, .3333);
 		
 		&:active {
 			transform: scale(.995) translate(0, .5px);
