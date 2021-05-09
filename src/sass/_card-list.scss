@@ -73,7 +73,7 @@
 
 		&:hover,
 		&:focus-within {
-			z-index: index($layers, card-list-item);
+			z-index: index($layers, card-list-item-focus-within);
 
 			.card-button {
 				@include box-shadow-hover-card-button(
@@ -113,6 +113,9 @@
 						desaturate(darken($color-mana-hybrid, 12.5%), 25%)
 					);
 				}
+			}
+			&:hover {
+				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button. 
 			}
 			.qty {
 				input {
