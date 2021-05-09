@@ -48,7 +48,6 @@
 		animation-fill-mode: forwards;
 		animation-delay: 2s;
 		opacity: 0;
-		color: $color-text-brighter;
 
 		@keyframes animate-text-box {
 			0% {
@@ -61,6 +60,9 @@
 		h2 {
 			font-size: 125%;
 			margin-top: $lhse/2;
+		}
+		strong {
+			color: $color-text-brighter;
 		}
 	}
 }

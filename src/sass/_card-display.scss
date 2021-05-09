@@ -3,6 +3,7 @@
 	height: 573px; // Actual maximum height of card as it appears in the app.
 	position: sticky;
 	top: $lhse + $height-site-header;
+	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
 		
 	a {
 		position: absolute;

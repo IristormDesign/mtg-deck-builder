@@ -1,3 +1,15 @@
+@mixin app-bg($image-url) {
+	background:
+		radial-gradient(circle at 62.5% $lhse*6,
+			rgba(#fff, .2) 0vh,
+			rgba(#fff, 0) 33.33vh,
+			rgba(#000, 0) 66.67vh,
+			rgba(#000, .2) 100vh
+		) top $height-site-header center fixed no-repeat,
+		url($image-url) top $height-site-header center no-repeat,
+		$color-content-bg;
+}
+
 *,
 *::before,
 *::after {
@@ -10,16 +22,13 @@ body {
 	background: $color-content-bg;
 }
 #app {
+	@include app-bg('img/marble-texture-1080.jpg');
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0 auto;
 	position: relative;
 	min-width: $min-width-site;
-	background: radial-gradient(circle at 62.5% $lhse*6,
-		lighten($color-content-bg, 12.5%) 0,
-		darken($color-content-bg, 12.5%) 100vw
-	) no-repeat;
 	padding-top: $height-site-header;
 }
 .wrap {
@@ -100,5 +109,26 @@ small {
 	&-enter,
 	&-leave-to {
 		opacity: 0;
+	}
+}
+
+@media (min-width: 1081px) {
+	#app {
+		@include app-bg('img/marble-texture-1440.jpg')
+	}
+}
+@media (min-width: 1441px) {
+	#app {
+		@include app-bg('img/marble-texture-1920.jpg')
+	}
+}
+@media (min-width: 1921px) {
+	#app {
+		@include app-bg('img/marble-texture-2880.jpg')
+	}
+}
+@media (min-width: 2881px) {
+	#app {
+		@include app-bg('img/marble-texture-3840.jpg')
 	}
 }
