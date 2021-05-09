@@ -22,7 +22,7 @@ body {
 	background: $color-content-bg;
 }
 #app {
-	@include app-bg('img/marble-texture-1080.jpg');
+	background: $color-content-bg;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -30,6 +30,10 @@ body {
 	position: relative;
 	min-width: $min-width-site;
 	padding-top: $height-site-header;
+
+	&.texture-bg {
+		@include app-bg('img/marble-texture-1080.jpg');
+	}
 }
 .wrap {
 	max-width: $max-width-site;
@@ -114,21 +118,29 @@ small {
 
 @media (min-width: 1081px) {
 	#app {
-		@include app-bg('img/marble-texture-1440.jpg')
+		&.texture-bg {
+			@include app-bg('img/marble-texture-1440.jpg')
+		}
 	}
 }
 @media (min-width: 1441px) {
 	#app {
-		@include app-bg('img/marble-texture-1920.jpg')
+		&.texture-bg {
+			@include app-bg('img/marble-texture-1920.jpg')
+		}
 	}
 }
 @media (min-width: 1921px) {
 	#app {
-		@include app-bg('img/marble-texture-2880.jpg')
+		&.texture-bg {
+			@include app-bg('img/marble-texture-2880.jpg')
+		}
 	}
 }
 @media (min-width: 2881px) {
 	#app {
-		@include app-bg('img/marble-texture-3840.jpg')
+		&.texture-bg {
+			@include app-bg('img/marble-texture-3840.jpg')
+		}
 	}
 }

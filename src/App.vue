@@ -23,6 +23,16 @@ export default {
 		UpdateNotif,
 		SiteHeader,
 		SiteFooter
+	},
+	created () {
+		this.$watch(function () {
+			const appEl = document.querySelector('#app')
+
+			// For better performance, don't let the background texture image load on the home page.
+			if (this.$route.name !== 'home') {
+				appEl.classList.add('texture-bg')
+			}
+		})
 	}
 }
 </script>
