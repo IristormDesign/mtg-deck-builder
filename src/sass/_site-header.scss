@@ -10,6 +10,7 @@
 	display: flex;
 	align-items: center;
 	box-shadow: 0 0 $lhse/2 rgba(#000, .5);
+	min-width: $min-width-site;
 
 	.wrap {
 		display: flex;
