@@ -19,7 +19,7 @@
 				</header>
 				<p>This app lets you <strong>build and organize your decks</strong> for <i>Magic: The Gathering</i>.</p>
 				<p>Click on the <strong>Open Deck</strong> button above to <strong>view a pre-made deck</strong>.</p>
-				<p>Or, click on the <strong>Create Deck</strong> button above to <strong>start a new deck</strong>!</p>
+				<p>Or, click on the <strong>Create Deck</strong> button above to <strong>start a new one</strong>!</p>
 			</div>
 		</div>
 	</article>
