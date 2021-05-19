@@ -35,7 +35,12 @@
 							</li>
 						</ul>
 					</li>
-					<li class="contact-link">
+					<li>
+						<router-link :to="{name: 'manual'}" class="site-header-link">
+							Manual
+						</router-link>
+					</li>
+					<li>
 						<router-link :to="{name: 'contact'}" class="site-header-link">
 							Contact
 						</router-link>

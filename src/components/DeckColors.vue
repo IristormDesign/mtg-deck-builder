@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-info deck-colors">
-		<h3>Using colors</h3>
+		<h3>Using Colors</h3>
 
 		<div class="output" v-html="deckColors()"></div>
 	</section>

@@ -68,6 +68,7 @@
 	li {
 		display: flex;
 		margin: 2px 1px;
+		padding: 0;
 		transition: transform .3333s ease; // For card sorting
 		position: relative;
 
@@ -189,11 +190,10 @@
 			}
 			&.M {
 				background: linear-gradient(-60deg,
-					darken($color-mythic-orange, 6.25%),
-					saturate(lighten($color-mythic-lighter, 12.5%), 25%),
-					darken($color-mythic-orange, 6.25%)
+					saturate(darken($color-mythic-orange, 8.33%), 16.67%),
+					saturate(lighten($color-mythic-lighter, 16.67%), 16.67%),
+					saturate(darken($color-mythic-orange, 8.33%), 16.67%)
 				) $color-mythic-orange;
-				text-shadow: 0 0 1.5px saturate(lighten($color-mythic-lighter, 25%), 25%);
 			}
 			&.S {
 				background: linear-gradient(-60deg,
@@ -282,6 +282,7 @@
 			background: $color-frame-black;
 			border-bottom-color: desaturate(darken($color-frame-black, 41.67%), 0%);
 			border-left-color: desaturate(darken($color-frame-black, 16.67%), 0%);
+			color: #000;
 		}
 		&.red {
 			background: $color-frame-red;

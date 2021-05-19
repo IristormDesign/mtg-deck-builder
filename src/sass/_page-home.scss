@@ -44,7 +44,7 @@
 		background: rgba(#000, .75);
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
-		border: 3px solid $color-mythic-dim;
+		border: $border-special;
 		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;

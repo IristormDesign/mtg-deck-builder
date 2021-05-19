@@ -1,7 +1,7 @@
 .site-header {
 	background: $color-group-bg;
-	border-bottom: $lhse/4 solid $color-mythic-dim;
-	position: fixed;
+	border-bottom: $border-special;
+	position: sticky;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -9,7 +9,7 @@
 	height: $height-site-header;
 	display: flex;
 	align-items: center;
-	box-shadow: 0 0 $lhse/4 1px rgba(#000, .6667);
+	box-shadow: 0 1px $lhse/4 rgba(#000, .5);
 	min-width: $min-width-site;
 
 	.wrap {
@@ -46,7 +46,7 @@
 	}
 	h1 {
 		margin: $lhse/4 1ch $lhse/4 0;
-		font-size: 1.375em;
+		font-size: 1.25em;
 		display: inline-block;
 	}
 	button {
@@ -65,12 +65,14 @@
 			padding: 0;
 			list-style: none;
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: repeat(4, 1fr);
 			grid-gap: $lhse/2;
 			align-items: center;
 		}
 		li {
 			display: block;
+			margin: 0;
+			padding: 0;
 		}
 		button {
 			&.attention:not(:disabled) {
@@ -118,6 +120,9 @@
 			right: 0;
 			box-shadow: -.125em .25em .5em rgba(#000, .5);
 			min-width: 100%;
+		}
+		li {
+			padding: 0;
 		}
 		a {
 			@include heading-font;

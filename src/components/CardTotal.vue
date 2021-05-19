@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-info card-total">
-		<h3>Total cards</h3>
+		<h3>Total Cards</h3>
 
 		<div class="output">
 			{{ totalCards }}

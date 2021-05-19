@@ -7,6 +7,8 @@ const Deck = () =>
 	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
 const DeckDeleted = () =>
 	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
+const Manual = () =>
+	import(/* webpackChunkName: "manual" */ '../pages/Manual.vue')
 const Contact = () =>
 	import(/* webpackChunkName: "contact" */ '../pages/Contact.vue')
 const NotFound = () =>
@@ -51,6 +53,11 @@ export default new VueRouter({
 				if (deckExists) next()
 				else next({ name: 'notFound' })
 			}
+		},
+		{
+			name: 'manual',
+			path: '/manual',
+			component: Manual
 		},
 		{
 			name: 'contact',

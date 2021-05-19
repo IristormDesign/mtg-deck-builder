@@ -1,6 +1,6 @@
 <template>
 	<transition appear name="fade-from-black">
-		<div id="app">
+		<div class="fade-bg">
 			<update-notif />
 			<site-header />
 			<main>
@@ -8,6 +8,9 @@
 					<router-view />
 				</transition>
 			</main>
+			<!-- <div class="scroll-to-top">
+				<a href="#" title="Scroll to top">↑</a>
+			</div> -->
 			<site-footer />
 		</div>
 	</transition>
@@ -24,9 +27,9 @@ export default {
 		SiteHeader,
 		SiteFooter
 	},
-	created () {
+	mounted () {
 		this.$watch(function () {
-			const appEl = document.querySelector('#app')
+			const appEl = document.querySelector('.fade-bg')
 
 			// For better performance, don't let the background texture image load on the home page.
 			if (this.$route.name !== 'home') {

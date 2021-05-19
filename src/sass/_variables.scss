@@ -14,7 +14,7 @@ $color-content-bg: darken(desaturate($color-mythic-complement, 68.75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 60%);
 $color-text: lighten($color-group-bg, 68.75%);
 $color-text-brighter: lighten($color-text, 6.25%);
-$color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 12.5%);
+$color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 6.25%); // Sampled
@@ -30,7 +30,7 @@ $color-frame-white:
 $color-frame-blue:
 	desaturate(lighten($color-mana-blue, 6.25%), 20%);
 $color-frame-black:
-	desaturate(darken($color-mana-black, 6.25%), 6.25%);
+	desaturate(darken($color-mana-black, 3.125%), 3.125%);
 $color-frame-red:
 	desaturate(lighten($color-mana-red, 12.5%), 8.33%);
 $color-frame-green:
@@ -62,10 +62,11 @@ $box-shadows-card-button:
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
-$layers: card-list-item-focus-within, card-list-item-hover, update-notif, site-header, bg-overlay, deck-menu-group;
+$layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, deck-menu-group;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid desaturate(lighten($color-group-bg, 37.5%), 12.5%);
-$height-site-header: $lhse*2;
+$border-special: 3px solid $color-mythic-dim;
+$height-site-header: $lhse*1.6667;
 
 $x: 2px dashed rgba(#c0f, .75);
 

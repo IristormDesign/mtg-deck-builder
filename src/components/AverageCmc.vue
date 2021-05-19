@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-info average-cmc">
-		<h3>Average conv. <br>mana cost</h3>
+		<h3>Average Conv. <br>Mana Cost</h3>
 
 		<div class="output">
 			{{ averageCmc }}

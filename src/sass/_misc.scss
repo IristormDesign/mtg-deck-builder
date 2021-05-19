@@ -98,9 +98,8 @@
 	left: 0;
 	z-index: index($layers, update-notif);
 	background: $color-mythic-lighter;
-	border-bottom: 1px solid darken(desaturate($color-mythic-lighter, 16.67%), 16.67%);
 	padding: 0 $lhse/2;
-	height: $lhse*1.75;
+	height: $height-site-header;
 	color: #000;
 	text-align: center;
 	display: flex;
@@ -111,6 +110,9 @@
 	p {
 		margin: 0;
 	}
+	strong {
+		color: inherit;
+	}
 	button {
 		margin-left: 1ch;
 		display: inline-block;
@@ -120,3 +122,15 @@
 		font-style: italic;
 	}
 }
+// .scroll-to-top {
+// 	background: darken($color-group-bg, 8.33%);
+// 	position: fixed;
+// 	bottom: $lhse/2;
+// 	right: $lhse/2;
+// 	z-index: 9;
+
+// 	a {
+// 		font-size: 125%;
+// 		width: 2em;
+// 	}
+// }

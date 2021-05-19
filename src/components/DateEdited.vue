@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-info date-edited">
-		<h3>Last edited</h3>
+		<h3>Last Edited</h3>
 
 		<div class="output">
 			{{ dateEdited }}<br>{{ timeEdited }}
