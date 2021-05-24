@@ -60,37 +60,6 @@
   white-space: nowrap;
   width: 1px;
 }
-.solo-message {
-	background: $color-group-bg;
-	border: $border-sections;
-	border-radius: $border-radius-group;
-	padding: $lhse/2 $lhse;
-	margin: $lhse auto;
-	max-width: 64ch;
-	min-width: 0;
-}
-.page-not-found {
-	img {
-		display: block;
-		margin: $lhse/2 auto $lhse;
-		width: $lhse*16;
-		height: auto;
-		padding: $lhse/3;
-		background: darken($color-group-bg, 8.33%);
-	}
-	h2 {
-		text-align: center;
-	}
-	small {
-		font-style: italic;
-	}
-}
-.deck-deleted {
-	p {
-		font-size: 116.67%;
-		text-align: center;
-	}
-}
 .update-notif {
 	position: sticky;
 	top: 0;
