@@ -150,7 +150,7 @@
 		</section>
 
 		<h3>App Data Storage</h3>
-		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t need to set up a user account to use this app. It also means other users of the app can’t see your decks, or you theirs, and deck data can’t be transferred between web browsers.</p>
+		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app can’t see your decks, or you theirs, and deck data can’t be transferred between web browsers.</p>
 		<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”) which you may edit as you like or delete them.</p>
 		<p>To delete all of your data in this app, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
 
