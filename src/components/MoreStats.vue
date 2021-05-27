@@ -14,47 +14,47 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr :class="dimRow(countCmc(0))">
 							<th>0 mana</th>
 							<td>{{ countCmc(0) }}</td>
 							<td>{{ calculatePercentage(countCmc(0)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(1))">
 							<th>1 mana</th>
 							<td>{{ countCmc(1) }}</td>
 							<td>{{ calculatePercentage(countCmc(1)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(2))">
 							<th>2 mana</th>
 							<td>{{ countCmc(2) }}</td>
 							<td>{{ calculatePercentage(countCmc(2)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(3))">
 							<th>3 mana</th>
 							<td>{{ countCmc(3) }}</td>
 							<td>{{ calculatePercentage(countCmc(3)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(4))">
 							<th>4 mana</th>
 							<td>{{ countCmc(4) }}</td>
 							<td>{{ calculatePercentage(countCmc(4)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(5))">
 							<th>5 mana</th>
 							<td>{{ countCmc(5) }}</td>
 							<td>{{ calculatePercentage(countCmc(5)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(6))">
 							<th>6 mana</th>
 							<td>{{ countCmc(6) }}</td>
 							<td>{{ calculatePercentage(countCmc(6)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(7))">
 							<th>7 mana</th>
 							<td>{{ countCmc(7) }}</td>
 							<td>{{ calculatePercentage(countCmc(7)) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countCmc(8))">
 							<th>8 or more mana</th>
 							<td>{{ countCmc(8) }}</td>
 							<td>{{ calculatePercentage(countCmc(8)) }}</td>
@@ -74,7 +74,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr :class="dimRow(countColor('white'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>White</small>
@@ -84,7 +84,7 @@
 							<td>{{ countColor('white') }}</td>
 							<td>{{ calculatePercentage(countColor('white')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countColor('blue'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Blue</small>
@@ -94,7 +94,7 @@
 							<td>{{ countColor('blue') }}</td>
 							<td>{{ calculatePercentage(countColor('blue')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countColor('black'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Black</small>
@@ -104,7 +104,7 @@
 							<td>{{ countColor('black') }}</td>
 							<td>{{ calculatePercentage(countColor('black')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countColor('red'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Red</small>
@@ -114,7 +114,7 @@
 							<td>{{ countColor('red') }}</td>
 							<td>{{ calculatePercentage(countColor('red')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countColor('green'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Green</small>
@@ -124,7 +124,7 @@
 							<td>{{ countColor('green') }}</td>
 							<td>{{ calculatePercentage(countColor('green')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countColor('colorless'))">
 							<th>Colorless</th>
 							<td>{{ countColor('colorless') }}</td>
 							<td>{{ calculatePercentage(countColor('colorless')) }}</td>
@@ -144,37 +144,37 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr :class="dimRow(countTypes('creature'))">
 							<th>Creature</th>
 							<td>{{ countTypes('creature') }}</td>
 							<td>{{ calculatePercentage(countTypes('creature')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('planeswalker'))">
 							<th>Planeswalker</th>
 							<td>{{ countTypes('planeswalker') }}</td>
 							<td>{{ calculatePercentage(countTypes('planeswalker')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('enchantment'))">
 							<th>Enchantment</th>
 							<td>{{ countTypes('enchantment') }}</td>
 							<td>{{ calculatePercentage(countTypes('enchantment')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('artifact'))">
 							<th>Artifact</th>
 							<td>{{ countTypes('artifact') }}</td>
 							<td>{{ calculatePercentage(countTypes('artifact')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('sorcery'))">
 							<th>Sorcery</th>
 							<td>{{ countTypes('sorcery') }}</td>
 							<td>{{ calculatePercentage(countTypes('sorcery')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('instant'))">
 							<th>Instant</th>
 							<td>{{ countTypes('instant') }}</td>
 							<td>{{ calculatePercentage(countTypes('instant')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countTypes('land'))">
 							<th>Land</th>
 							<td>{{ countTypes('land') }}</td>
 							<td>{{ calculatePercentage(countTypes('land')) }}</td>
@@ -185,7 +185,7 @@
 
 			<section>
 				<h4>Subtypes</h4>
-				<table>
+				<table v-if="subtypeNames.length > 0">
 					<thead>
 						<tr>
 							<th></th>
@@ -201,6 +201,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<p v-else class="note">(None)</p>
 			</section>
 
 			<section>
@@ -214,7 +215,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr :class="dimRow(countRarities('c'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Common</small>
@@ -224,7 +225,7 @@
 							<td>{{ countRarities('c') }}</td>
 							<td>{{ calculatePercentage(countRarities('c')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countRarities('u'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Uncommon</small>
@@ -234,7 +235,7 @@
 							<td>{{ countRarities('u') }}</td>
 							<td>{{ calculatePercentage(countRarities('u')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countRarities('r'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Rare</small>
@@ -244,7 +245,7 @@
 							<td>{{ countRarities('r') }}</td>
 							<td>{{ calculatePercentage(countRarities('r')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countRarities('m'))">
 							<th>
 								<div class="vert-center-cell">
 									<small>Mythic rare</small>
@@ -254,7 +255,7 @@
 							<td>{{ countRarities('m') }}</td>
 							<td>{{ calculatePercentage(countRarities('m')) }}</td>
 						</tr>
-						<tr>
+						<tr v-show="countRarities('s')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Special</small>
@@ -279,32 +280,30 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th>Monocolored</th>
-							<td>{{ countMisc('monocolored') }}</td>
-							<td>{{ calculatePercentage(countMisc('monocolored')) }}</td>
-						</tr>
-						<tr>
-							<th>Multicolored</th>
-							<td>{{ countMisc('multicolored') }}</td>
-							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
-						</tr>
-						<tr>
+						<tr :class="dimRow(countMisc('basic land'))">
 							<th>Basic Land</th>
 							<td>{{ countMisc('basic land') }}</td>
 							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
 						</tr>
-						<tr>
+						<tr :class="dimRow(countMisc('legendary'))">
 							<th>Legendary</th>
 							<td>{{ countMisc('legendary') }}</td>
 							<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
+						</tr>
+						<tr :class="dimRow(countMisc('monocolored'))">
+							<th>Monocolored</th>
+							<td>{{ countMisc('monocolored') }}</td>
+							<td>{{ calculatePercentage(countMisc('monocolored')) }}</td>
+						</tr>
+						<tr :class="dimRow(countMisc('multicolored'))">
+							<th>Multicolored</th>
+							<td>{{ countMisc('multicolored') }}</td>
+							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
 						</tr>
 					</tbody>
 				</table>
 			</section>
 		</div>
-
-		<p>(In some of these charts, some cards may belong to multiple categories. For example, a singular card that has the type of “artifact creature” adds the counts of both creature and artifact types. As a result, the count of each category may be larger than the total cards in the deck, and the sum of the percentages of all categories may be beyond 100%.)</p>
 	</div>
 </template>
 
@@ -323,6 +322,13 @@ export default {
 		this.displaySubtypes()
 	},
 	methods: {
+		dimRow (row) {
+			if (row === 0) {
+				return 'dim-row'
+			} else {
+				return null
+			}
+		},
 		countCmc (givenCmc) {
 			const counts = {
 				cmc0: 0,
@@ -656,9 +662,13 @@ export default {
 				}
 			})
 
-			const percentage = ((givenValue / deckTotal) * 100).toFixed(1) + '%'
+			let percentage = ((givenValue / deckTotal) * 100).toFixed(1)
 
-			return percentage
+			if (isNaN(percentage)) {
+				percentage = '0.0'
+			}
+
+			return percentage + '%'
 		}
 	}
 }

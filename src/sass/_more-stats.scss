@@ -7,11 +7,15 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		grid-gap: $lhse/2 $lhse;
+		grid-gap: $lhse*.75 $lhse;
 		
 		section {
 			grid-column: span 1;
 		}
+	}
+	.note {
+		font-style: italic;
+		color: desaturate(darken($color-text, 12.5%), 12.5%);
 	}
 	h3 {
 		margin-top: $lhse/2;
@@ -41,6 +45,9 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 					position: relative;
 					z-index: 1;
 				}
+			}
+			.dim-row {
+				color: desaturate(darken($color-text, 41.67%), 16.67%);
 			}
 		}
 		th,
