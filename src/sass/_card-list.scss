@@ -156,55 +156,6 @@
 			font-size: 83.33%;
 			line-height: 1.5;
 		}
-		.rarity {
-			border-radius: $border-radius-button;
-			width: $lhse;
-			min-width: $lhse; // Needed so that the .rarity element doesn't get squished by a very long .type element.
-			text-align: center;
-			box-shadow: inset 0 0 1px 1px rgba(#000, .5);
-			margin-right: -.167em;
-			font: bold 75%/#{$line-height-standard*.75} sans-serif;
-			padding: 1px 0;
-			color: #000;
-			text-shadow: 0 0 1.5px #fff;
-
-			&.C {
-				background: #000;
-				box-shadow: inset 0 0 0 1.5px #eee;
-				color: #eee;
-				text-shadow: none;
-			}
-			&.U {
-				background: linear-gradient(-60deg,
-					darken($color-rarity-silver, 25%),
-					lighten($color-rarity-silver, 25%),
-					darken($color-rarity-silver, 25%)
-				) $color-rarity-silver;
-			}
-			&.R {
-				background: linear-gradient(-60deg,
-					darken($color-rarity-gold, 25%),
-					lighten($color-rarity-gold, 25%),
-					darken($color-rarity-gold, 25%)
-				) $color-rarity-gold;
-			}
-			&.M {
-				background: linear-gradient(-60deg,
-					saturate(darken($color-mythic-orange, 8.33%), 16.67%),
-					saturate(lighten($color-mythic-lighter, 16.67%), 16.67%),
-					saturate(darken($color-mythic-orange, 8.33%), 16.67%)
-				) $color-mythic-orange;
-			}
-			&.S {
-				background: linear-gradient(-60deg,
-					darken($color-rarity-special, 25%),
-					saturate(lighten($color-rarity-special, 25%), 25%),
-					darken($color-rarity-special, 25%)
-				) $color-rarity-special;
-				color: #fff;
-				text-shadow: 0 0 1.5px #000;
-			}
-		}
 		.qty {
 			display: flex;
 			align-items: center;

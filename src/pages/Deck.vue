@@ -20,6 +20,7 @@
 						</section>
 					</div>
 				</div>
+				<more-stats :deck="deck" />
 			</article>
 		</div>
 	</div>
@@ -36,6 +37,7 @@ import CardList from '@/components/CardList.vue'
 import CardAdder from '@/components/CardAdder.vue'
 import CardSorter from '@/components/CardSorter.vue'
 import DeckActions from '@/components/DeckActions.vue'
+import MoreStats from '@/components/MoreStats.vue'
 
 export default {
 	components: {
@@ -48,7 +50,8 @@ export default {
 		CardList,
 		CardAdder,
 		CardSorter,
-		DeckActions
+		DeckActions,
+		MoreStats
 	}
 }
 </script>

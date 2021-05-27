@@ -72,9 +72,12 @@ h4 {
 }
 h2 {
 	margin-top: $line-height-standard * .5rem;
+	font-size: 150%;
+}
+h3 {
+	font-size: 125%;
 }
 h4 {
-	margin-bottom: 0;
 	font-size: 100%;
 }
 p,
@@ -83,7 +86,8 @@ ol {
 	margin: $lhse/2 0;
 }
 strong,
-b {
+b,
+th {
 	font-weight: $font-weight-semibold;
 
 	*:not(a) > & {

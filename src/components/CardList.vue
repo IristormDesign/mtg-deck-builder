@@ -32,11 +32,7 @@
 					</div>
 					<div class="card-label-group">
 						<div class="type">{{ card.type }}</div>
-						<div
-							:class="`rarity ${setRaritySymbol(card)}`"
-							:title="setRarityTitle(card)"
-							v-text="setRaritySymbol(card)"
-						></div>
+						<div class="rarity" v-html="setRaritySymbol(card)"></div>
 					</div>
 				</button>
 				<div class="qty">
@@ -107,22 +103,15 @@ export default {
 					'<span class="mana-symbol hybrid" title="Hybrid mana">$1</span>'
 				)
 		},
-		setRarityTitle (card) {
-			switch (card.rarity) {
-			case 'common': return 'Common'
-			case 'uncommon': return 'Uncommon'
-			case 'rare': return 'Rare'
-			case 'mythic': return 'Mythic rare'
-			default: return 'Special'
-			}
-		},
 		setRaritySymbol (card) {
+			const symbol = this.$store.state.raritySymbol
+
 			switch (card.rarity) {
-			case 'common': return 'C'
-			case 'uncommon': return 'U'
-			case 'rare': return 'R'
-			case 'mythic': return 'M'
-			default: return 'S'
+			case 'common': return symbol.c
+			case 'uncommon': return symbol.u
+			case 'rare': return symbol.r
+			case 'mythic': return symbol.m
+			default: return symbol.s
 			}
 		},
 		validateQty (card) {

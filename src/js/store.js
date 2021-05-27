@@ -26,6 +26,13 @@ export default new Vuex.Store({
 			r: '<span class="mana-symbol red" title="Red mana">R</span>',
 			g: '<span class="mana-symbol green" title="Green mana">G</span>'
 		},
+		raritySymbol: {
+			c: '<div class="rarity-symbol common" title="Common">C</div>',
+			u: '<div class="rarity-symbol uncommon" title="Uncommon">U</div>',
+			r: '<div class="rarity-symbol rare" title="Rare">R</div>',
+			m: '<div class="rarity-symbol mythic" title="Mythic rare">M</div>',
+			s: '<div class="rarity-symbol special" title="Special">S</div>'
+		},
 		alertNameExists: (name) => {
 			return `⚠ Another deck is already named “${name}.” Please give a different name.`
 		},
