@@ -131,7 +131,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<p><small>Some cards may be multicolored. As a result, the count of each color may be larger than the total cards in the deck, and the percentages of each color may add up beyond 100%.</small></p>
 			</section>
 
 			<section>
@@ -182,7 +181,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<p><small>Some cards may have multiple types. As a result, the count of each type may be larger than the total cards in the deck, and the percentages of each type may add up beyond 100%.</small></p>
 			</section>
 
 			<section>
@@ -203,7 +201,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<p><small>Some cards may have multiple subtypes. As a result, the count of each subtype may be larger than the total cards in the deck, and the percentages of each subtype may add up beyond 100%.</small></p>
 			</section>
 
 			<section>
@@ -270,7 +267,44 @@
 					</tbody>
 				</table>
 			</section>
+
+			<section>
+				<h4>Miscellaneous</h4>
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Count</th>
+							<th>Percent</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Monocolored</th>
+							<td>{{ countMisc('monocolored') }}</td>
+							<td>{{ calculatePercentage(countMisc('monocolored')) }}</td>
+						</tr>
+						<tr>
+							<th>Multicolored</th>
+							<td>{{ countMisc('multicolored') }}</td>
+							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
+						</tr>
+						<tr>
+							<th>Basic Land</th>
+							<td>{{ countMisc('basic land') }}</td>
+							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
+						</tr>
+						<tr>
+							<th>Legendary</th>
+							<td>{{ countMisc('legendary') }}</td>
+							<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
 		</div>
+
+		<p>(In some of these charts, some cards may belong to multiple categories. For example, a singular card that has the type of “artifact creature” adds the counts of both creature and artifact types. As a result, the count of each category may be larger than the total cards in the deck, and the sum of the percentages of all categories may be beyond 100%.)</p>
 	</div>
 </template>
 
@@ -442,10 +476,6 @@ export default {
 				}
 			})
 
-			if (givenType === 'creature') return counts.creature
-			if (givenType === 'planeswalker') return counts.planeswalker
-			if (givenType === 'enchantment') return counts.enchantment
-
 			switch (givenType) {
 			case 'creature':
 				return counts.creature
@@ -578,6 +608,44 @@ export default {
 					}
 				}
 			})
+		},
+		countMisc (givenValue) {
+			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
+			const regexLegendary = RegExp(/\bLegendary\b/)
+			const counts = {
+				monocolored: 0,
+				multicolored: 0,
+				basicLand: 0,
+				legendary: 0
+			}
+
+			this.deck.cards.forEach(card => {
+				for (let i = 0; i < card.qty; i++) {
+					if (card.colors.length === 1) {
+						counts.monocolored++
+					}
+					if (card.colors[0] === 'multicolor') {
+						counts.multicolored++
+					}
+					if (regexBasicLand.test(card.type)) {
+						counts.basicLand++
+					}
+					if (regexLegendary.test(card.type)) {
+						counts.legendary++
+					}
+				}
+			})
+
+			switch (givenValue) {
+			case 'monocolored':
+				return counts.monocolored
+			case 'multicolored':
+				return counts.multicolored
+			case 'basic land':
+				return counts.basicLand
+			case 'legendary':
+				return counts.legendary
+			}
 		},
 		calculatePercentage (givenValue) {
 			let deckTotal = 0
