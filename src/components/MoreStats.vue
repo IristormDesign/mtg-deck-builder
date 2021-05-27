@@ -506,20 +506,21 @@ export default {
 		displaySubtypes () {
 			const subtypeNames = this.subtypeNames
 			const subtypeCounts = this.subtypeCounts
-
-			// Collect the subtype lines from every card, including duplicate cards.
 			const allSubtypes = []
 
-			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					// In each card's type line, get only the part that indicates the subtype.
-					const subtypesPattern = card.type.match(RegExp(/\s—\s.*/))
+			function getSubtypesPerFace (cardType) {
+				// In each card's type line, get only the part that indicates the subtype: the em dash and all characters after it.
+				const subtypesPattern = cardType.match(RegExp(/\s—\s.*/))
 
-					// Ignore the following if the card has no subtype.
-					if (subtypesPattern !== null) {
-						// The card's line of subtypes, which may have only a single subtype or multiple of them.
-						const subtypeLine = subtypesPattern[0]
+				// Ignore the following only if the card has no subtype.
+				if (subtypesPattern !== null) {
+					// The card's line of subtypes, which may have only a single subtype or multiple of them.
+					const subtypeLine = subtypesPattern[0]
 
+					// Within the string, get everything up to a slash character, indicating the beginning of the type line of a double-faced card's second face.
+					// subtypeLine = subtypeLine.match(RegExp(/[^/]*/))[0]
+
+					if (subtypeLine !== null) {
 						// Delete the " — " (em dash) part that came from the collected subtype pattern.
 						subtypeLine.replace(' — ', '')
 
@@ -530,6 +531,26 @@ export default {
 						isolatedSubtypes.forEach(subtype => {
 							allSubtypes.push(subtype)
 						})
+					}
+				}
+			}
+
+			this.deck.cards.forEach(card => {
+				for (let i = 0; i < card.qty; i++) {
+					const typeLine = card.type
+
+					// In each card's type line, find the pattern that indicates a double-faced card, which is a space, a slash, a space, and any characters after.
+					const secondFace = typeLine.match(RegExp(/\s\/\s.*/))
+
+					// If the card is double-faced...
+					if (secondFace !== null) {
+						// From the double-faced card's type line, get all of the part of the string that precedes the slash character.
+						const firstFace = typeLine.match(RegExp(/[^/]*/))
+
+						getSubtypesPerFace(firstFace[0])
+						getSubtypesPerFace(secondFace[0])
+					} else { // A regular single-face card.
+						getSubtypesPerFace(typeLine)
 					}
 				}
 			})
