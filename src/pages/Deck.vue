@@ -5,9 +5,10 @@
 				<header class="deck-header">
 					<deck-name :deck="deck" />
 					<deck-colors :deck="deck" />
-					<average-cmc :deck="deck" />
+					<average-mana-value :deck="deck" />
 					<date-edited :deck="deck" />
 					<card-total :deck="deck" />
+					<more-stats-button :deck="deck" />
 				</header>
 				<div class="card-display-scroll-view">
 					<card-display :deck="deck" />
@@ -20,7 +21,6 @@
 						</section>
 					</div>
 				</div>
-				<more-stats :deck="deck" />
 			</article>
 		</div>
 	</div>
@@ -29,29 +29,29 @@
 <script>
 import DeckName from '@/components/DeckName.vue'
 import DeckColors from '@/components/DeckColors.vue'
-import AverageCmc from '@/components/AverageCmc.vue'
+import AverageManaValue from '@/components/AverageManaValue.vue'
 import DateEdited from '@/components/DateEdited.vue'
+import MoreStatsButton from '@/components/MoreStatsButton.vue'
 import CardTotal from '@/components/CardTotal.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
 import CardList from '@/components/CardList.vue'
 import CardAdder from '@/components/CardAdder.vue'
 import CardSorter from '@/components/CardSorter.vue'
 import DeckActions from '@/components/DeckActions.vue'
-import MoreStats from '@/components/MoreStats.vue'
 
 export default {
 	components: {
 		DeckName,
 		DeckColors,
-		AverageCmc,
+		AverageManaValue,
 		DateEdited,
+		MoreStatsButton,
 		CardTotal,
 		CardDisplay,
 		CardList,
 		CardAdder,
 		CardSorter,
-		DeckActions,
-		MoreStats
+		DeckActions
 	}
 }
 </script>

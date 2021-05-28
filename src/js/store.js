@@ -17,6 +17,7 @@ export default new Vuex.Store({
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
 		decks: defaultDecks,
 		deletedDeckName: null,
+		moreStatsDeck: null,
 		showOverlay: false,
 		sortAttribute: 'type',
 		manaSymbol: {
@@ -75,6 +76,9 @@ export default new Vuex.Store({
 		},
 		setDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
+		},
+		setMoreStatsDeck (state, payload) {
+			state.moreStatsDeck = payload
 		},
 		setSortAttribute (state, payload) {
 			state.sortAttribute = payload

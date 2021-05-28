@@ -103,6 +103,7 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 	select {
 		height: $height-card-list-controls;
+		min-width: $lhse*7; // Longer than "(Select an attribute)"
 	}
 	option[value=""] {
 		font-style: italic;

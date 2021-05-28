@@ -2,13 +2,14 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 
 .more-stats {
 	&.solo-message {
-		max-width: $max-width-site*.6667;
+		// max-width: $max-width-site*.6667;
+		max-width: none;
 	}
 	.tables {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 		grid-gap: $lhse*.75 $lhse;
-		
+
 		section {
 			grid-column: span 1;
 		}
@@ -21,7 +22,7 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 		margin-top: $lhse/2;
 	}
 	h4 {
-		margin: $lhse/2 0;
+		margin: $lhse/2 0 $lhse/3;
 	}
 	table {
 		border-collapse: collapse;
@@ -61,9 +62,10 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 			border-color: desaturate(lighten($color-group-bg, 16.67%), 8.33%);
 		}
 	}
-	p > small {
-		line-height: $line-height-standard*.875;
-		display: block;
+	p {
+		&.return-link {
+			text-align: right;
+		}
 	}
 	.mana-symbol {
 		font-size: 137.5%;

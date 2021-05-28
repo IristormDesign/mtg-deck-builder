@@ -33,9 +33,9 @@
 						<li>No account registration needed</li>
 						<li>Add <i>Magic</i> cards to your decks via the card search feature (powered by Scryfall)</li>
 						<li>Decks show each card’s name, mana cost, type, and rarity</li>
+						<li>See various statistics about the deck, such as which mana colors it’s using, the average mana value, the amount of cards by certain attributes, and more</li>
 						<li>The order of cards in lists can be automatically rearranged by a variety of sorting options</li>
-						<li>See the image of any card</li>
-						<li>See statistics about each deck’s mana colors, average converted mana cost, total cards, and last edited date</li>
+						<li>View the image of any card</li>
 						<li>Attractive, easy-to-use graphical user interface</li>
 					</ul>
 				</div>

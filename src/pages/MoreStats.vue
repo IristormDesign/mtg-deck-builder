@@ -1,10 +1,13 @@
 <template>
 	<div class="more-stats solo-message">
-		<h3>More Statistics on “{{ deck.name }}”</h3>
+		<h3>More Statistics on “<router-link :to="{
+				name: 'deck',
+				params: { deckPath: deck.path }
+			}">{{ deck.name }}</router-link>”</h3>
 
 		<div class="tables">
 			<section>
-				<h4>Converted Mana Costs</h4>
+				<h4>Mana Values of Spells</h4>
 				<table>
 					<thead>
 						<tr>
@@ -270,7 +273,7 @@
 			</section>
 
 			<section>
-				<h4>Miscellaneous</h4>
+				<h4>Miscellaneous Attributes</h4>
 				<table>
 					<thead>
 						<tr>
@@ -280,15 +283,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr :class="dimRow(countMisc('basic land'))">
-							<th>Basic Land</th>
-							<td>{{ countMisc('basic land') }}</td>
-							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
-						</tr>
 						<tr :class="dimRow(countMisc('legendary'))">
 							<th>Legendary</th>
 							<td>{{ countMisc('legendary') }}</td>
 							<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
+						</tr>
+						<tr :class="dimRow(countMisc('basic land'))">
+							<th>Basic land</th>
+							<td>{{ countMisc('basic land') }}</td>
+							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
 						</tr>
 						<tr :class="dimRow(countMisc('monocolored'))">
 							<th>Monocolored</th>
@@ -300,20 +303,34 @@
 							<td>{{ countMisc('multicolored') }}</td>
 							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
 						</tr>
+						<tr :class="dimRow(countMisc('double-faced'))">
+							<th>Double-faced</th>
+							<td>{{ countMisc('double-faced') }}</td>
+							<td>{{ calculatePercentage(countMisc('double-faced')) }}</td>
+						</tr>
 					</tbody>
 				</table>
 			</section>
 		</div>
+
+		<p class="return-link">
+			<router-link :to="{
+				name: 'deck',
+				params: { deckPath: deck.path }
+			}">
+				◂ Back to main deck page
+			</router-link>
+		</p>
 	</div>
 </template>
 
 <script>
 export default {
-	props: {
-		deck: Object
-	},
 	data: function () {
 		return {
+			deck: this.$store.state.decks.find(
+				deck => deck.path === this.$store.state.moreStatsDeck
+			),
 			subtypeNames: [],
 			subtypeCounts: {}
 		}
@@ -576,7 +593,7 @@ export default {
 					const typeLine = card.type
 
 					// In each card's type line, find the pattern that indicates a double-faced card, which is a space, a slash, a space, and any characters after.
-					const secondFace = typeLine.match(RegExp(/\s\/\s.*/))
+					const secondFace = typeLine.match(RegExp(/\s\/\s\w*/))
 
 					// If the card is double-faced...
 					if (secondFace !== null) {
@@ -618,11 +635,13 @@ export default {
 		countMisc (givenValue) {
 			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
 			const regexLegendary = RegExp(/\bLegendary\b/)
+			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 			const counts = {
 				monocolored: 0,
 				multicolored: 0,
 				basicLand: 0,
-				legendary: 0
+				legendary: 0,
+				doubleFaced: 0
 			}
 
 			this.deck.cards.forEach(card => {
@@ -639,6 +658,9 @@ export default {
 					if (regexLegendary.test(card.type)) {
 						counts.legendary++
 					}
+					if (regexDoubleFaced.test(card.name)) {
+						counts.doubleFaced++
+					}
 				}
 			})
 
@@ -651,6 +673,8 @@ export default {
 				return counts.basicLand
 			case 'legendary':
 				return counts.legendary
+			case 'double-faced':
+				return counts.doubleFaced
 			}
 		},
 		calculatePercentage (givenValue) {

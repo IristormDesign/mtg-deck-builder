@@ -12,8 +12,8 @@
 		</p>
 		<p>The app’s header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
 		<ul>
-			<li><strong>Create Deck</strong>: When you click this button, a prompt appears asking you to enter a name for your new deck, and then you’ll be taken to the page for that deck. If you give a name that another deck in the app already has, you’ll be asked to give a different name instead.</li>
-			<li><strong>Open Deck</strong>: When you click this button, a menu will appear with an alphabetically ordered list of the names of your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button will be temporarily disabled.)</li>
+			<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the deck page of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
+			<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button will be temporarily disabled.)</li>
 		</ul>
 
 		<h3>Deck Pages</h3>
@@ -43,12 +43,12 @@
 					src="@/img/manual-deck-statistics.jpg" width="658" height="81"
 					alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 			</p>
-			<p>This section displays various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The statistics include:</p>
+			<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. These statistics include:</p>
 			<ul>
-				<li><strong>Using Colors</strong>: Indicates which of any of the five mana colors are required by casting costs in the deck. The symbols of the mana colors are represented as their initial letters instead of their usual graphical symbols—except for blue mana, which, in following <i>Magic</i> writing convention, is abbreviated as “U” rather than “B” (which is black mana’s abbreviation).</li>
-				<li><strong>Average Conv. Mana Cost</strong>: Indicates the average converted mana cost among all cards that are spells (non-lands) in the deck. The calcuation does involve cards’ quantities.</li>
-				<li><strong>Last Edited</strong>: Indicates the date and time when the deck was most recently modified. A modification counts as adding a new card to the deck, changing a card’s quantity, renaming the deck, and creating a deck. (Viewing another card and sorting cards don’t count as modifications.)</li>
-				<li><strong>Total Cards</strong>: Indicates the deck’s total number of cards. If a deck contains fewer than 60 cards—which is the minimum limit a deck may have according to <i>Magic</i>’s standard rules—then a warning symbol appears beside the number.</li>
+				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing the symbols: W is white, U is blue, B is black, R is red, and G is green.</li>
+				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (also known as the older term “converted mana cost”) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
+				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified. A modification counts as adding a new card to the deck, changing a card’s quantity, renaming the deck, and creating a deck. (Viewing another card and sorting cards don’t count as modifications.)</li>
+				<li><strong>Total Cards</strong>—Shows the deck’s total number of cards. If a deck contains fewer than 60 cards, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
 			</ul>
 		</section>
 		<section>
@@ -76,7 +76,7 @@
 				<li>Name</li>
 				<li>Mana cost (if any)</li>
 				<li>Type (including subtype, if any)</li>
-				<li>Rarity: The name and symbol of each rarity level are:
+				<li>Rarity—The name and symbol of each rarity level are:
 					<ol>
 						<li>Common—black C</li>
 						<li>Uncommon—silver U</li>
@@ -120,18 +120,18 @@
 					src="@/img/manual-card-sorter.jpg" width="265" height="140"
 					alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 			</p>
-			<p>This is a selection menu with options for sorting the card list by certain characteristics of the cards:</p>
+			<p>This is a selection menu with options for sorting the card list by various attributes of <i>Magic</i> cards, including:</p>
 			<ul>
-				<li><strong>Name</strong>: Sorts alphabetically.</li>
-				<li><strong>Converted mana cost</strong>: Sorts from cheapest to most expensive.</li>
-				<li><strong>Mana color</strong>: Sorts from monocolored, to multicolored, to colorless. Among the monocolored cards, this option sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
-				<li><strong>Type</strong>: Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
-				<li><strong>Subtype</strong>: Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
-				<li><strong>Rarity</strong>: Sorts from highest to lowest in level of rarity.</li>
-				<li><strong>Quantity</strong>: Sorts from most to fewest.</li>
+				<li><strong>Name</strong>—Sorts alphabetically.</li>
+				<li><strong>Mana Value</strong>—Sorts from least to most.</li>
+				<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored cards, sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
+				<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
+				<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
+				<li><strong>Rarity</strong>—Sorts from highest to lowest in level of rarity.</li>
+				<li><strong>Quantity</strong>—Sorts from most to fewest.</li>
 			</ul>
-			<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first choose to sort cards by rarity, and then you choose to sort by type. In effect, the card list will become sorted primarily by type, and within each group of types (the creatures group, the sorceries group, etc.), the cards will be sorted by rarity.</p>
-			<p>Name is the most distinguishable sorting option. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other card characteristics.</p>
+			<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creatures group, the sorceries group, etc.), the cards are sorted by rarity.</p>
+			<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
 			<p>Sorting affects all of your decks alike, not only the deck you’re currently viewing.</p>
 		</section>
 		<section>
@@ -143,8 +143,8 @@
 			</p>
 			<p>There are two buttons on a deck page for doing special actions:</p>
 			<ul>
-				<li><strong>Copy Deck</strong>: Click this button to create a new deck that has an identical list of cards as the deck you’re currently viewing. The duplicate deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can rename it afterward if you want).</li>
-				<li><strong>Delete Deck</strong>: Click this button to erase the data of the deck you’re currently viewing. If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.</li>
+				<li><strong>Copy Deck</strong>—Click this button to create a new deck that has an identical list of cards as the deck you’re currently viewing. The duplicate deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can rename it afterward if you want).</li>
+				<li><strong>Delete Deck</strong>—Click this button to erase the data of the deck you’re currently viewing. If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.</li>
 			</ul>
 			<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
 		</section>

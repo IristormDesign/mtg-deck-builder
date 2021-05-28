@@ -2,14 +2,14 @@
 	grid-column: span 7;
 	margin: $lhse auto $lhse*.75;
 	display: grid;
-	grid-template-columns: 2fr repeat(4, min-content);
+	grid-template-columns: 2fr repeat(5, min-content);
 	align-items: center;
 	justify-content: space-between;
 }
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: $lhse/4 $lhse/2;
+	padding: $lhse/4 $lhse/3;
 	border: $border-sections;
 	border-left-width: 0;
 	align-items: center;
@@ -46,6 +46,8 @@
 .deck-name {
 	padding-left: $lhse/2;
 	justify-content: left;
+	max-width: 100%; // Needed for extremely long names with no spaces
+	overflow: hidden;
 
 	button {
 		@extend a;
@@ -82,7 +84,7 @@
 		font-size: 166.67%;
 	}
 }
-.average-cmc {
+.average-mana-value {
 	.output {
 		font-size: 200%;
 	}
@@ -103,10 +105,15 @@
 		font-size: 200%;
 	}
 }
+.more-stats-button {
+	a {
+		@extend button, .primary-btn;
+	}
+}
 
 @media (max-width: $width-site-breakpoint) {
 	.deck-header {
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(2, 1fr);
 		border: $border-sections;
 		border-radius: $border-radius-button;
@@ -115,24 +122,26 @@
 		.deck-info {
 			border-radius: 0;
 			border-bottom-width: 0;
+			grid-column: span 3;
 
-			&:nth-of-type(2) {
-				border-left-width: 0;
-			}
 			&:last-of-type() {
 				border-right-width: 0;
 			}
 		}
-	}
-	.deck-name {
-		grid-column: span 4;
-		border-top-width: 0;
-		border-right-width: 0;
-		border-left-width: 0 !important;
-		justify-content: center;
-		
-		button {
-			text-align: center;
+		.deck-name {
+			grid-column: span 8;
+			border-top-width: 0;
+			border-left-width: 0 !important;
+			justify-content: center;
+
+			button {
+				text-align: center;
+			}
+		}
+		.deck-colors {
+			grid-column: span 4;
+			border-top-width: 0;
+			border-right-width: 0;
 		}
 	}
 }

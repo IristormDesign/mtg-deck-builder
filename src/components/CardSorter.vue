@@ -8,8 +8,8 @@
 						(Select an attribute)
 					</option>
 					<option value="name">Name</option>
-					<option value="cmc">Converted mana cost</option>
-					<option value="colors">Mana color</option>
+					<option value="cmc">Mana Value</option>
+					<option value="colors">Mana Color</option>
 					<option value="type">Type</option>
 					<option value="subtype">Subtype</option>
 					<option value="rarity">Rarity</option>

@@ -5,6 +5,8 @@ const Home = () =>
 	import(/* webpackChunkName: "home" */ '../pages/Home.vue')
 const Deck = () =>
 	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
+const MoreStats = () =>
+	import(/* webpackChunkName: "more-stats" */ '../pages/MoreStats.vue')
 const DeckDeleted = () =>
 	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
 const Manual = () =>
@@ -52,6 +54,26 @@ export default new VueRouter({
 				)
 				if (deckExists) next()
 				else next({ name: 'notFound' })
+			}
+		},
+		{
+			name: 'moreStats',
+			path: '/deck/:deckPath/more-stats',
+			component: MoreStats,
+			beforeEnter: (to, from, next) => {
+				const relevantDeck = store.state.decks.find(
+					deck => deck.path === from.params.deckPath
+				)
+
+				if (relevantDeck) {
+					store.commit('setMoreStatsDeck', relevantDeck.path)
+					next()
+				} else {
+					next({
+						path: '/deck/' + to.params.deckPath,
+						replace: true
+					})
+				}
 			}
 		},
 		{
