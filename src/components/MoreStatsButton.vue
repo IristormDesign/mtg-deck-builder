@@ -5,7 +5,7 @@
 				name: 'moreStats',
 				params: { deckPath: deck.path },
 			}"
-		>More Stats</router-link>
+		>See More Stats</router-link>
 	</section>
 </template>
 

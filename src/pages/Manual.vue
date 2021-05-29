@@ -45,10 +45,10 @@
 			</p>
 			<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. These statistics include:</p>
 			<ul>
-				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing the symbols: W is white, U is blue, B is black, R is red, and G is green.</li>
-				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (also known as the older term “converted mana cost”) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
-				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified. A modification counts as adding a new card to the deck, changing a card’s quantity, renaming the deck, and creating a deck. (Viewing another card and sorting cards don’t count as modifications.)</li>
-				<li><strong>Total Cards</strong>—Shows the deck’s total number of cards. If a deck contains fewer than 60 cards, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
+				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: W is white, U is blue, B is black, R is red, and G is green.</li>
+				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
+				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). A modification counts as adding a new card to the deck, changing a card’s quantity, and renaming the deck. (Viewing another card and sorting cards don’t count as modifications.)</li>
+				<li><strong>Total Cards</strong>—Shows the deck’s total number of cards. If the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
 			</ul>
 		</section>
 		<section>
@@ -123,7 +123,7 @@
 			<p>This is a selection menu with options for sorting the card list by various attributes of <i>Magic</i> cards, including:</p>
 			<ul>
 				<li><strong>Name</strong>—Sorts alphabetically.</li>
-				<li><strong>Mana Value</strong>—Sorts from least to most.</li>
+				<li><strong>Mana Value</strong>—Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 				<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored cards, sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
 				<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 				<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
@@ -149,10 +149,10 @@
 			<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
 		</section>
 
-		<h3>App Data Storage</h3>
-		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app can’t see your decks, or you theirs, and deck data can’t be transferred between web browsers.</p>
-		<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”) which you may edit as you like or delete them.</p>
-		<p>To delete all of your data in this app, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
+		<h3>Storage of App Data</h3>
+		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app on their own browsers can’t see your decks, or you theirs, and deck data can’t be transferred between browsers.</p>
+		<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit as you like or delete them.</p>
+		<p>To delete all of your data in MTG Deck Builder, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
 
 		<!-- <h3>Development Info</h3> -->
 		<!-- <p>To learn about the nuts and bolts of this MTG Deck Builder app, <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">read the article about it</a> at Iristorm Design.</p> -->

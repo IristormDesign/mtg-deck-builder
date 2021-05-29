@@ -378,7 +378,7 @@ export default {
 							counts.cmc6++
 						} else if (card.cmc === 7) {
 							counts.cmc7++
-						} else if (card.cmc === 8) {
+						} else if (card.cmc >= 8) {
 							counts.cmc8Plus++
 						}
 					}
