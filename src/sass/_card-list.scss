@@ -1,5 +1,5 @@
-@mixin box-shadow-hover-card-button($color) {
-	box-shadow: 0 0 $lhse/2 $color, 0 0 0 2.5px $color;
+@mixin box-shadow-hover-card-button($color, $width: 0) {
+	box-shadow: 0 0 $width $color, 0 0 0 2.5px $color;
 }
 
 .card-list {
@@ -78,25 +78,28 @@
 
 			.card-button {
 				@include box-shadow-hover-card-button(
-					darken($color-frame-generic, 12.5%)
+					darken($color-frame-generic, 12.5%),
+					0
 				);
-				filter: contrast(116.67%);
+				filter: contrast(112.5%) saturate(112.5%);
 				transition-duration: 0s;
 				transition-property: filter;
 	
 				&.white {
 					@include box-shadow-hover-card-button(
-						$color-mana-white
+						$color-mana-white,
+						$lhse/2
 					);
 				}
 				&.blue {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-blue, 50%), 25%)
+						saturate(darken($color-mana-blue, 50%), 25%),
 					);
 				}
 				&.black {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-black, 50%), 25%)
+						saturate(darken($color-mana-black, 50%), 25%),
+						$lhse/3
 					);
 				}
 				&.red {

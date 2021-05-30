@@ -47,7 +47,7 @@
 			<ul>
 				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: W is white, U is blue, B is black, R is red, and G is green.</li>
 				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
-				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). A modification counts as adding a new card to the deck, changing a card’s quantity, and renaming the deck. (Viewing another card and sorting cards don’t count as modifications.)</li>
+				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
 				<li><strong>Total Cards</strong>—Shows the deck’s total number of cards. If the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
 			</ul>
 		</section>
@@ -87,7 +87,7 @@
 				</li>
 			</ul>
 			<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-			<p>The surface color of each card button represents the mana colors of that card’s casting cost. (For example, a button for a card that requires only green mana is colored green.) Just like the frames depicted on <i>Magic</i> cards, the buttons for multicolored cards are golden yellow, and the buttons for colorless cards are gray.</p>
+			<p>The surface color of each card button represents the mana colors of that card’s casting cost. (For example, a button for a card that requires only green mana is colored green.) Just like the frames depicted on <i>Magic</i> cards, the buttons for multicolored cards are golden yellow, and for colorless cards are gray.</p>
 		</section>
 		<section>
 			<h4>Card Quantities</h4>
@@ -128,7 +128,7 @@
 				<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 				<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
 				<li><strong>Rarity</strong>—Sorts from highest to lowest in level of rarity.</li>
-				<li><strong>Quantity</strong>—Sorts from most to fewest.</li>
+				<li><strong>Quantity</strong>—Sorts from largest to smallest.</li>
 			</ul>
 			<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creatures group, the sorceries group, etc.), the cards are sorted by rarity.</p>
 			<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
