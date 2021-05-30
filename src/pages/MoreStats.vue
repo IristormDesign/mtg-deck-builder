@@ -188,7 +188,7 @@
 
 			<section>
 				<h4>Subtypes</h4>
-				<table v-if="subtypeNames.length > 0">
+				<table>
 					<thead>
 						<tr>
 							<th></th>
@@ -196,15 +196,21 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody v-if="subtypeNames.length > 0">
 						<tr v-for="subtype in subtypeNames" :key="subtype">
 							<th>{{ subtype }}</th>
 							<td>{{ subtypeCounts[subtype] }}</td>
 							<td>{{ calculatePercentage(subtypeCounts[subtype]) }}</td>
 						</tr>
 					</tbody>
+					<tbody v-else>
+						<tr class="dim-row">
+							<th><i>(None)</i></th>
+							<td>0</td>
+							<td>0.0%</td>
+						</tr>
+					</tbody>
 				</table>
-				<p v-else class="note">(None)</p>
 			</section>
 
 			<section>
@@ -273,7 +279,7 @@
 			</section>
 
 			<section>
-				<h4>Miscellaneous Attributes</h4>
+				<h4>Miscellaneous</h4>
 				<table>
 					<thead>
 						<tr>
@@ -283,6 +289,11 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr :class="dimRow(countMisc('unique names'))">
+							<th>Card names</th>
+							<td>{{ countMisc('unique names') }}</td>
+							<td class="dim-row">—</td>
+						</tr>
 						<tr :class="dimRow(countMisc('legendary'))">
 							<th>Legendary</th>
 							<td>{{ countMisc('legendary') }}</td>
@@ -637,6 +648,7 @@ export default {
 			const regexLegendary = RegExp(/\bLegendary\b/)
 			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 			const counts = {
+				uniqueNames: 0,
 				monocolored: 0,
 				multicolored: 0,
 				basicLand: 0,
@@ -646,6 +658,8 @@ export default {
 
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
+					counts.uniqueNames = this.deck.cards.length
+
 					if (card.colors.length === 1) {
 						counts.monocolored++
 					}
@@ -665,6 +679,8 @@ export default {
 			})
 
 			switch (givenValue) {
+			case 'unique names':
+				return counts.uniqueNames
 			case 'monocolored':
 				return counts.monocolored
 			case 'multicolored':
