@@ -29,20 +29,20 @@
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
-						<li>Free of charge and no advertisements</li>
-						<li>No account registration needed</li>
 						<li>Add <i>Magic</i> cards to your decks via the card search feature (powered by Scryfall)</li>
-						<li>Decks show each card’s name, mana cost, type, and rarity</li>
-						<li>See various statistics about the deck, such as which mana colors it’s using, the average mana value, the amount of cards by certain attributes, and more</li>
-						<li>The order of cards in lists can be automatically rearranged by a variety of sorting options</li>
-						<li>View the image of any card</li>
+						<li>Decks show each card’s name, mana cost, type, rarity, and quantity</li>
+						<li>See statistics about the deck, such as which mana colors it’s using, the average mana value of cards, the amount of cards by certain attributes, and more</li>
+						<li>The order of the cards in card lists can be automatically rearranged by a variety of sorting options</li>
+						<li>View the image of any card in your decks</li>
+						<li>App is free of charge and has no advertisements</li>
+						<li>No account registration needed</li>
 						<li>Attractive, easy-to-use graphical user interface</li>
 					</ul>
 				</div>
-				<img class="screenshot"
+				<img
 					srcset="@/img/deck-page-screenshot.jpg 1x, @/img/deck-page-screenshot-2x.jpg 2x"
-					src="@/img/deck-page-screenshot.jpg" width="661" height="493"
-					alt="Screenshot of a deck page on MTG Deck Builder" loading="lazy" />
+					src="@/img/deck-page-screenshot.jpg" width="668" height="575"
+					alt="Screenshot of MTG Deck Builder" loading="lazy" />
 				<p class="centered-p">Click on the “Open Deck” button at the top to begin, or the “Manual” button for more info!</p>
 			</div>
 		</section>

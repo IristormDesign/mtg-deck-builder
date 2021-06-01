@@ -206,8 +206,8 @@
 					<tbody v-else>
 						<tr class="dim-row">
 							<th><i>(None)</i></th>
-							<td>0</td>
-							<td>0.0%</td>
+							<td>—</td>
+							<td>—</td>
 						</tr>
 					</tbody>
 				</table>
@@ -289,11 +289,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr :class="dimRow(countMisc('unique names'))">
-							<th>Card names</th>
-							<td>{{ countMisc('unique names') }}</td>
-							<td class="dim-row">—</td>
-						</tr>
 						<tr :class="dimRow(countMisc('legendary'))">
 							<th>Legendary</th>
 							<td>{{ countMisc('legendary') }}</td>
@@ -648,7 +643,6 @@ export default {
 			const regexLegendary = RegExp(/\bLegendary\b/)
 			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 			const counts = {
-				uniqueNames: 0,
 				monocolored: 0,
 				multicolored: 0,
 				basicLand: 0,
@@ -658,8 +652,6 @@ export default {
 
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
-					counts.uniqueNames = this.deck.cards.length
-
 					if (card.colors.length === 1) {
 						counts.monocolored++
 					}
@@ -679,8 +671,6 @@ export default {
 			})
 
 			switch (givenValue) {
-			case 'unique names':
-				return counts.uniqueNames
 			case 'monocolored':
 				return counts.monocolored
 			case 'multicolored':

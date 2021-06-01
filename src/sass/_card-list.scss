@@ -81,7 +81,7 @@
 					darken($color-frame-generic, 12.5%),
 					0
 				);
-				filter: contrast(112.5%) saturate(112.5%);
+				filter: contrast(116.67%) saturate(116.67%);
 				transition-duration: 0s;
 				transition-property: filter;
 	
@@ -224,8 +224,8 @@
 		}
 		&.white {
 			background: $color-frame-white;
-			border-bottom-color: desaturate(darken($color-frame-white, 50%), 83.33%);
-			border-left-color: desaturate(darken($color-frame-white, 25%), 66.67%);
+			border-bottom-color: desaturate(darken($color-frame-white, 50%), 50%);
+			border-left-color: desaturate(darken($color-frame-white, 25%), 50%);
 		}
 		&.blue {
 			background: $color-frame-blue;

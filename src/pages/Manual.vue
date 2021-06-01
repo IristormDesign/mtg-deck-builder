@@ -1,7 +1,7 @@
 <template>
 	<article class="solo-message">
 		<h2>User Manual</h2>
-		<p>MTG Deck Builder by Iristorm Design is a web app on which you can create and manage your decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use the app.</p>
+		<p>MTG Deck Builder by Iristorm Design is a web app on which you can create and manage your decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
 
 		<h3>App Header</h3>
 		<p>
@@ -13,14 +13,14 @@
 		<p>The app’s header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
 		<ul>
 			<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the deck page of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
-			<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button will be temporarily disabled.)</li>
+			<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
 		</ul>
 
 		<h3>Deck Pages</h3>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 2x"
-				src="@/img/manual-deck-page.jpg" width="658" height="467"
+				src="@/img/manual-deck-page.jpg" width="658" height="471"
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
 		<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
@@ -40,15 +40,18 @@
 			<h4>Deck Statistics</h4>
 			<p>
 				<img class="screenshot"
-					src="@/img/manual-deck-statistics.jpg" width="658" height="81"
+					srcset="@/img/manual-deck-statistics.jpg 1x, @/img/manual-deck-statistics-2x.jpg 2x"
+					src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 					alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 			</p>
-			<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. These statistics include:</p>
+			<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 			<ul>
 				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: W is white, U is blue, B is black, R is red, and G is green.</li>
 				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
 				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
-				<li><strong>Total Cards</strong>—Shows the deck’s total number of cards. If the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
+				<li><strong>Card Names</strong>—Shows the number of cards by each single particular name in the deck.</li>
+				<li><strong>Total Cards</strong>—Shows the total number of cards in the deck. If the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
+				<li><strong>More Statistics</strong>—Click on this button to see the deck’s More Statistics page where you can inspect even more data. See the “More Statistics Pages” section of this manual for further information about that type of page.</li>
 			</ul>
 		</section>
 		<section>
@@ -66,8 +69,8 @@
 			<h4>Card List</h4>
 			<p>
 				<img class="screenshot"
-					srcset="@/img/manual-card-buttons.jpg 1x, @/img/manual-card-buttons-2x.jpg 2x"
-					src="@/img/manual-card-buttons.jpg" width="658" height="271"
+					srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 2x"
+					src="@/img/manual-card-list.jpg" width="658" height="219"
 					alt="Snippet of card list" title="Screenshot" loading="lazy" />
 			</p>
 			<p>This is the list of the cards in the deck. Each card is represented by a wide button, which you can click on to have that represented card displayed in the card image section.</p>
@@ -93,7 +96,7 @@
 			<h4>Card Quantities</h4>
 			<p>
 				<img class="screenshot float-right"
-					src="@/img/manual-card-quantities.jpg" width="96" height="275"
+					src="@/img/manual-card-quantities.jpg" width="88" height="238"
 					alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
 			</p>
 			<p>Adjacent to each card button in the card list is a number representing the quantity (“Qty.”) of that card in the deck.</p>
@@ -109,9 +112,9 @@
 					alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 			</p>
 			<p>This form contains a text input where you can enter a card’s name, and an “Add Card” button to insert that card into the deck. Newly added cards are always put at the bottom of the card list (but they can be rearranged by the card sorter).</p>
-			<p>When you start typing a couple letters of a name, an auto-complete list appears with card suggestions.</p>
-			<p>The card adder won’t add a card that already exists in the deck. If you’d want to add duplicates of a card of a particular name, increase that card’s quantity in the card list.</p>
+			<p>When you start typing a couple letters of a name, an auto-complete list appears with card suggestions based on those initial letters.</p>
 			<p>(Tip: You can enter the code “<code>[random]</code>” as the card name to add any randomly chosen Modern-legal card.)</p>
+			<p>The card adder won’t add a card that already exists in the deck. If you’d want to add duplicates of a card of a particular name, increase that card’s quantity in the card list.</p>
 		</section>
 		<section>
 			<h4>Card Sorter</h4>
@@ -148,6 +151,26 @@
 			</ul>
 			<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
 		</section>
+
+		<h3>More Statistics Pages</h3>
+		<p>By clicking the More Statistics button in the deck page’s header, you’ll be taken to that deck’s More Statistics page. This page shows data tables of various categories of measurement of the deck’s cards.</p>
+		<p>
+			<img class="screenshot"
+				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 2x"
+				src="@/img/manual-more-stats-page.jpg" width="530" height="565"
+				alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
+		</p>
+		<p>The categories include:</p>
+		<ul>
+			<li>Mana value of spells (mana curve)</li>
+			<li>Colors of spells</li>
+			<li>Types</li>
+			<li>Subtypes</li>
+			<li>Rarities</li>
+			<li>Miscellaneous attributes</li>
+		</ul>
+		<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
+		<p>In some of these categories, the combined values of a table may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. This can happen when any cards have multiple properties within a single category. For example, the Types table would count a card that has the type “artifact creature” as both a creature and an artifact.</p>
 
 		<h3>Storage of App Data</h3>
 		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app on their own browsers can’t see your decks, or you theirs, and deck data can’t be transferred between browsers.</p>

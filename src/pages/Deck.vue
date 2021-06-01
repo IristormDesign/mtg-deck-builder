@@ -7,6 +7,7 @@
 					<deck-colors :deck="deck" />
 					<average-mana-value :deck="deck" />
 					<date-edited :deck="deck" />
+					<card-names :deck="deck" />
 					<card-total :deck="deck" />
 					<more-stats-button :deck="deck" />
 				</header>
@@ -31,8 +32,9 @@ import DeckName from '@/components/DeckName.vue'
 import DeckColors from '@/components/DeckColors.vue'
 import AverageManaValue from '@/components/AverageManaValue.vue'
 import DateEdited from '@/components/DateEdited.vue'
-import MoreStatsButton from '@/components/MoreStatsButton.vue'
+import CardNames from '@/components/CardNames.vue'
 import CardTotal from '@/components/CardTotal.vue'
+import MoreStatsButton from '@/components/MoreStatsButton.vue'
 import CardDisplay from '@/components/CardDisplay.vue'
 import CardList from '@/components/CardList.vue'
 import CardAdder from '@/components/CardAdder.vue'
@@ -45,8 +47,9 @@ export default {
 		DeckColors,
 		AverageManaValue,
 		DateEdited,
-		MoreStatsButton,
+		CardNames,
 		CardTotal,
+		MoreStatsButton,
 		CardDisplay,
 		CardList,
 		CardAdder,

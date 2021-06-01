@@ -17,16 +17,16 @@ $color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
 
-$color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 33.33%); // Sampled
+$color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 37.5%); // Sampled
 $color-mana-blue: saturate(#aae1fa, 6.25%); // Sampled
 $color-mana-black: desaturate(lighten(#00032a, 60%), 93.75%); // Inverted mana-white
 $color-mana-red: saturate(#f9aa8f, 6.25%); // Sampled
 $color-mana-green: saturate(#9bd3ae, 8.33%); // Sampled
 $color-mana-generic: #ccc2c0; // Sampled
-$color-mana-hybrid: desaturate(lighten($color-rarity-gold, 16.67%), 12.5%); // From `gold` named color
+$color-mana-hybrid: desaturate(lighten($color-rarity-gold, 16.67%), 12.5%);
 
 $color-frame-white:
-	desaturate(lighten($color-mana-white, 3.125%), 0%);
+	desaturate(lighten($color-mana-white, 3.125%), 3.125%);
 $color-frame-blue:
 	desaturate(lighten($color-mana-blue, 6.25%), 20%);
 $color-frame-black:
@@ -52,7 +52,7 @@ $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .333);
 
 // WIDTHS
 $min-width-site: 960px;
-$width-site-breakpoint: $min-width-site*1.25;
+$width-site-breakpoint: $min-width-site*1.375;
 $width-site-breakpoint-tablet: 1024px;
 $max-width-site: 1440px;
 

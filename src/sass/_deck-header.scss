@@ -2,7 +2,7 @@
 	grid-column: span 7;
 	margin: $lhse auto $lhse*.75;
 	display: grid;
-	grid-template-columns: 2fr repeat(5, min-content);
+	grid-template-columns: 2fr repeat(6, min-content);
 	align-items: center;
 	justify-content: space-between;
 }
@@ -97,6 +97,7 @@
 		font-size: 87.5%;
 	}
 }
+.card-names,
 .card-total {
 	h3 {
 		white-space: normal;
@@ -113,7 +114,7 @@
 
 @media (max-width: $width-site-breakpoint) {
 	.deck-header {
-		grid-template-columns: repeat(12, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(2, 1fr);
 		border: $border-sections;
 		border-radius: $border-radius-button;
@@ -122,26 +123,32 @@
 		.deck-info {
 			border-radius: 0;
 			border-bottom-width: 0;
-			grid-column: span 3;
+			grid-column: span 1;
 
+			&:nth-of-type(1),
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				border-top-width: 0;
+			}
+			&:nth-of-type(3),
 			&:last-of-type() {
 				border-right-width: 0;
 			}
 		}
 		.deck-name {
-			grid-column: span 8;
-			border-top-width: 0;
-			border-left-width: 0 !important;
+			grid-column: span 2;
+			border-left-width: 0;
 			justify-content: center;
 
 			button {
 				text-align: center;
 			}
 		}
-		.deck-colors {
-			grid-column: span 4;
-			border-top-width: 0;
-			border-right-width: 0;
+		.more-stats-button {
+			button {
+				min-width: 66.67%;
+				display: block;
+			}
 		}
 	}
 }
