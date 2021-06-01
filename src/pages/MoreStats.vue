@@ -6,65 +6,6 @@
 			}">{{ deck.name }}</router-link>”</h3>
 
 		<div class="tables">
-			<section>
-				<h4>Mana Values of Spells</h4>
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Count</th>
-							<th>Percent</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr :class="dimRow(countCmc(0))">
-							<th>0 mana</th>
-							<td>{{ countCmc(0) }}</td>
-							<td>{{ calculatePercentage(countCmc(0)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(1))">
-							<th>1 mana</th>
-							<td>{{ countCmc(1) }}</td>
-							<td>{{ calculatePercentage(countCmc(1)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(2))">
-							<th>2 mana</th>
-							<td>{{ countCmc(2) }}</td>
-							<td>{{ calculatePercentage(countCmc(2)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(3))">
-							<th>3 mana</th>
-							<td>{{ countCmc(3) }}</td>
-							<td>{{ calculatePercentage(countCmc(3)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(4))">
-							<th>4 mana</th>
-							<td>{{ countCmc(4) }}</td>
-							<td>{{ calculatePercentage(countCmc(4)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(5))">
-							<th>5 mana</th>
-							<td>{{ countCmc(5) }}</td>
-							<td>{{ calculatePercentage(countCmc(5)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(6))">
-							<th>6 mana</th>
-							<td>{{ countCmc(6) }}</td>
-							<td>{{ calculatePercentage(countCmc(6)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(7))">
-							<th>7 mana</th>
-							<td>{{ countCmc(7) }}</td>
-							<td>{{ calculatePercentage(countCmc(7)) }}</td>
-						</tr>
-						<tr :class="dimRow(countCmc(8))">
-							<th>8 or more mana</th>
-							<td>{{ countCmc(8) }}</td>
-							<td>{{ calculatePercentage(countCmc(8)) }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
 
 			<section>
 				<h4>Colors of Spells</h4>
@@ -131,6 +72,66 @@
 							<th>Colorless</th>
 							<td>{{ countColor('colorless') }}</td>
 							<td>{{ calculatePercentage(countColor('colorless')) }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<h4>Mana Values of Spells</h4>
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Count</th>
+							<th>Percent</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr :class="dimRow(countCmc(0))">
+							<th>0 mana</th>
+							<td>{{ countCmc(0) }}</td>
+							<td>{{ calculatePercentage(countCmc(0)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(1))">
+							<th>1 mana</th>
+							<td>{{ countCmc(1) }}</td>
+							<td>{{ calculatePercentage(countCmc(1)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(2))">
+							<th>2 mana</th>
+							<td>{{ countCmc(2) }}</td>
+							<td>{{ calculatePercentage(countCmc(2)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(3))">
+							<th>3 mana</th>
+							<td>{{ countCmc(3) }}</td>
+							<td>{{ calculatePercentage(countCmc(3)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(4))">
+							<th>4 mana</th>
+							<td>{{ countCmc(4) }}</td>
+							<td>{{ calculatePercentage(countCmc(4)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(5))">
+							<th>5 mana</th>
+							<td>{{ countCmc(5) }}</td>
+							<td>{{ calculatePercentage(countCmc(5)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(6))">
+							<th>6 mana</th>
+							<td>{{ countCmc(6) }}</td>
+							<td>{{ calculatePercentage(countCmc(6)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(7))">
+							<th>7 mana</th>
+							<td>{{ countCmc(7) }}</td>
+							<td>{{ calculatePercentage(countCmc(7)) }}</td>
+						</tr>
+						<tr :class="dimRow(countCmc(8))">
+							<th>8 or more mana</th>
+							<td>{{ countCmc(8) }}</td>
+							<td>{{ calculatePercentage(countCmc(8)) }}</td>
 						</tr>
 					</tbody>
 				</table>

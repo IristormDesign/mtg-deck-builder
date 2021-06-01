@@ -1,7 +1,7 @@
 <template>
 	<footer class="site-footer">
 		<div class="wrap">
-			<p><router-link to="/"><strong>MTG Deck Builder</strong></router-link> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.0 <span>|</span> <router-link to="/terms">Terms of Service</router-link> <span>|</span> <router-link to="/privacy">Privacy Policy</router-link> <span>|</span> <a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a></p>
+			<p><router-link to="/"><strong>MTG Deck Builder</strong></router-link> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.1 <span>|</span> <router-link to="/terms">Terms of Service</router-link> <span>|</span> <router-link to="/privacy">Privacy Policy</router-link> <span>|</span> <a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a></p>
 
 			<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This app is not affiliated with or endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided by the Scryfall API. This app is not affiliated with or endorsed by Scryfall. All other content, unless indicated otherwise, is copyright &copy; 2021 by Damian Schmidt.</p>
 		</div>

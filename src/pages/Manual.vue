@@ -126,8 +126,8 @@
 			<p>This is a selection menu with options for sorting the card list by various attributes of <i>Magic</i> cards, including:</p>
 			<ul>
 				<li><strong>Name</strong>—Sorts alphabetically.</li>
-				<li><strong>Mana Value</strong>—Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 				<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored cards, sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
+				<li><strong>Mana Value</strong>—Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 				<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 				<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
 				<li><strong>Rarity</strong>—Sorts from highest to lowest in level of rarity.</li>
@@ -162,8 +162,8 @@
 		</p>
 		<p>The categories include:</p>
 		<ul>
-			<li>Mana value of spells (mana curve)</li>
 			<li>Colors of spells</li>
+			<li>Mana value of spells (mana curve)</li>
 			<li>Types</li>
 			<li>Subtypes</li>
 			<li>Rarities</li>
