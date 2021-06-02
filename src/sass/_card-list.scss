@@ -48,7 +48,7 @@
 			display: block;
 			font-size: $lhse/2;
 			line-height: 1;
-			margin-bottom: $lhse/8;
+			margin-bottom: $lhse/4;
 			text-transform: uppercase;
 			color: $color-text-brighter;
 		}
@@ -79,7 +79,6 @@
 			.card-button {
 				@include box-shadow-hover-card-button(
 					darken($color-frame-generic, 12.5%),
-					0
 				);
 				filter: contrast(116.67%) saturate(116.67%);
 				transition-duration: 0s;
@@ -99,7 +98,7 @@
 				&.black {
 					@include box-shadow-hover-card-button(
 						saturate(darken($color-mana-black, 50%), 25%),
-						$lhse/3
+						$lhse/4
 					);
 				}
 				&.red {
@@ -127,6 +126,15 @@
 					color: $color-link;
 				}
 			}
+		}
+		&:first-child {
+			margin-top: 0;
+		}
+		&.gap-after {
+			margin-bottom: $lhse/3;
+		}
+		&:last-child {
+			margin-bottom: 0;
 		}
 		.name,
 		.mana,
@@ -216,7 +224,7 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		box-shadow: 0 2px 0 1px rgba(#000, .3333);
+		box-shadow: 0 1px 0 1px rgba(#000, .6667);
 		
 		&:active {
 			transform: scale(.995) translate(0, .5px);

@@ -135,6 +135,7 @@
 			</ul>
 			<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creatures group, the sorceries group, etc.), the cards are sorted by rarity.</p>
 			<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
+			<p>To make the card list easier to inspect at a glance, the sorting options for the attributes of mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any newly added cards to the list that haven’t been sorted yet.</p>
 			<p>Sorting affects all of your decks alike, not only the deck you’re currently viewing.</p>
 		</section>
 		<section>

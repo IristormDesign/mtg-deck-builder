@@ -21,7 +21,10 @@
 			<strong class="qty" title="Quantity">Qty.</strong>
 		</header>
 		<transition-group tag="ul">
-			<li v-for="(card, i) in deck.cards" :key="card.name">
+			<li
+				v-for="(card, i) in deck.cards" :key="card.name"
+				:class="(card.gapAfter) ? 'gap-after' : null"
+			>
 				<button
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
