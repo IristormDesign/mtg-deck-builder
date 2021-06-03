@@ -123,10 +123,10 @@
 					src="@/img/manual-card-sorter.jpg" width="265" height="140"
 					alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 			</p>
-			<p>This is a selection menu with options for sorting the card list by various attributes of <i>Magic</i> cards, including:</p>
+			<p>This is a selection menu with various options for sorting the card list by certain attributes of <i>Magic</i> cards, including:</p>
 			<ul>
 				<li><strong>Name</strong>—Sorts alphabetically.</li>
-				<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored cards, sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
+				<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
 				<li><strong>Mana Value</strong>—Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 				<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 				<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
@@ -135,7 +135,7 @@
 			</ul>
 			<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creatures group, the sorceries group, etc.), the cards are sorted by rarity.</p>
 			<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
-			<p>To make the card list easier to inspect at a glance, the sorting options for the attributes of mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any newly added cards to the list that haven’t been sorted yet.</p>
+			<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any newly added cards to the list that haven’t been sorted yet.</p>
 			<p>Sorting affects all of your decks alike, not only the deck you’re currently viewing.</p>
 		</section>
 		<section>

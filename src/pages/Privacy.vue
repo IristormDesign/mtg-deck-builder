@@ -5,7 +5,7 @@
 		<p><i>Last revised on March 27, 2021</i></p>
 
 		<p>Iristorm Design (“we,” “us,” “our”) operates this website, MTG Deck Builder (“MDB”). This document explains how we collect and handle personal information received from users of MDB.</p>
-		<p>By using MDB, you agree to this privacy policy and the <router-link to="/terms">terms of service</router-link>.</p>
+		<p>By using MDB, you agree to this privacy policy and the <span @auxclick.prevent.stop="goto"><router-link to="/terms">terms of service</router-link></span>.</p>
 
 		<h3>Stored Browser Data</h3>
 		<p>MDB uses web browser cookies and local web storage for storing personalized user data. Local storage is required in order for MDB to fully function.</p>

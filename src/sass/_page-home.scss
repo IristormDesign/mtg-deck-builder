@@ -73,6 +73,10 @@
 	padding: $lhse*1.5 0;
 	position: relative;
 	background: desaturate(lighten($color-mythic-lighter, 20%), 66.67%);
+	background: radial-gradient(farthest-corner at 50% 0,
+		desaturate(lighten($color-mythic-lighter, 33.33%), 66.67%),
+		desaturate(lighten($color-mythic-lighter, 16.67%), 66.67%)
+	);
 
 	h2,
 	p,

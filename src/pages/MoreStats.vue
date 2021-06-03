@@ -1,9 +1,11 @@
 <template>
 	<div class="more-stats solo-message">
-		<h3>More Statistics on “<router-link :to="{
+		<h3 @auxclick.prevent.stop="goto">
+			More Statistics on “<router-link :to="{
 				name: 'deck',
 				params: { deckPath: deck.path }
-			}">{{ deck.name }}</router-link>”</h3>
+			}">{{ deck.name }}</router-link>”
+		</h3>
 
 		<div class="tables">
 
@@ -320,7 +322,7 @@
 			</section>
 		</div>
 
-		<p class="return-link">
+		<p class="return-link" @auxclick.prevent.stop="goto">
 			<router-link :to="{
 				name: 'deck',
 				params: { deckPath: deck.path }
