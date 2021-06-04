@@ -68,7 +68,8 @@
 export default {
 	data () {
 		return {
-			showDeckMenu: false
+			showDeckMenu: false,
+			overlayTransitionActive: false
 		}
 	},
 	mounted () {
@@ -124,13 +125,21 @@ export default {
 			window.scrollTo(0, 0)
 		},
 		toggleDeckMenu () {
-			if (this.showDeckMenu) {
-				this.showDeckMenu = false
-			} else {
-				this.showDeckMenu = true
-			}
+			if (!this.overlayTransitionActive) {
+				this.overlayTransitionActive = true
 
-			this.$store.commit('toggleOverlay')
+				if (this.showDeckMenu) {
+					this.showDeckMenu = false
+				} else {
+					this.showDeckMenu = true
+				}
+
+				this.$store.commit('toggleOverlay')
+
+				setTimeout(() => {
+					this.overlayTransitionActive = false
+				}, 250) // Equal to transition's duration
+			}
 		},
 		createDeck (failedName, existingDeckName) {
 			const store = this.$store

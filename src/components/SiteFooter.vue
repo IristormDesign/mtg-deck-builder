@@ -4,7 +4,7 @@
 			<p>
 				<span @auxclick.prevent.stop="goto">
 					<router-link to="/"><strong>MTG Deck Builder</strong></router-link>
-				</span> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.2
+				</span> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.3
 				<span class="divider">|</span>
 				<span @auxclick.prevent.stop="goto">
 					<router-link to="/terms">Terms of Service</router-link>
