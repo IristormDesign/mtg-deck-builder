@@ -42,7 +42,7 @@
 					<label :for="`qty-c${i}`">Quantity</label>
 					<span>&times;</span>
 					<input
-						type="number" min="0" :max="card.maxQty" :id="`qty-c${i}`"
+						type="number" min="0" :id="`qty-c${i}`"
 						v-model.lazy="card.qty" @change="validateQty(card)"
 					/>
 				</div>
@@ -120,15 +120,16 @@ export default {
 		validateQty (card) {
 			const store = this.$store
 			const deck = this.deck
+			const cardName = card.name
 			card.qty = Math.round(card.qty)
-			deck.viewedCard = card.name
+			deck.viewedCard = cardName
 
 			if (store.state.sortAttribute === 'qty') {
 				store.commit('setSortAttribute', '') // Reset the sort-by select box.
 			}
 
 			if (card.qty <= 0) {
-				const confirmRemoval = confirm(`Are you sure you want to remove ${card.name} from the deck?`)
+				const confirmRemoval = confirm(`Are you sure you want to remove ${cardName} from the deck?`)
 
 				if (confirmRemoval) {
 					const cards = deck.cards
@@ -136,7 +137,7 @@ export default {
 					const totalCards = cards.length - 1
 
 					// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-					if (deck.viewedCard === card.name && totalCards > 0) {
+					if (deck.viewedCard === cardName && totalCards > 0) {
 						if (cardIndex === totalCards) { // If this card is last in the list...
 							deck.viewedCard = cards[cardIndex - 1].name
 						} else {
@@ -155,7 +156,15 @@ export default {
 			} else {
 				const basicLandType = RegExp(/^Basic (\w* )?Land\b/) // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
 
-				if (basicLandType.test(card.type)) {
+				if (
+					basicLandType.test(card.type) ||
+					cardName === 'Dragon’s Approach' ||
+					cardName === 'Persistent Petitioners' ||
+					cardName === 'Rat Colony' ||
+					cardName === 'Relentless Rats' ||
+					cardName === 'Seven Dwarves' ||
+					cardName === 'Shadowborn Apostle'
+				) {
 					if (card.qty > 99) {
 						card.qty = 99
 						alert('⚠ 99 is more than plenty, don’t you think?')
