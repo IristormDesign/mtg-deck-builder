@@ -10,14 +10,14 @@
 
 			<nav class="site-menu">
 				<ul>
-					<li class="add-new-deck">
+					<li class="add-new-deck site-header-link">
 						<button class="site-header-link primary-btn" @click="createDeck()">
 							Create Deck
 						</button>
 					</li>
-					<li class="deck-menu">
+					<li class="deck-menu site-header-link">
 						<button
-							class="deck-selector site-header-link primary-btn"
+							class="deck-selector primary-btn"
 							@click="toggleDeckMenu()" :disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
 						>
@@ -38,13 +38,16 @@
 							</li>
 						</ul>
 					</li>
-					<li @auxclick.prevent.stop="goto">
-						<router-link :to="{name: 'manual'}" class="site-header-link" >
-							Manual
-						</router-link>
+					<li @auxclick.prevent.stop="goto" class="site-header-link">
+						<button
+							v-if="$router.currentRoute.name === 'manual'" @click="scrollToTop()"
+						>Manual</button>
+						<router-link
+							v-else :to="{name: 'manual'}"
+						>Manual</router-link>
 					</li>
-					<li @auxclick.prevent.stop="goto">
-						<router-link :to="{name: 'contact'}" class="site-header-link">
+					<li @auxclick.prevent.stop="goto" class="site-header-link">
+						<router-link :to="{name: 'contact'}">
 							Contact
 						</router-link>
 					</li>
@@ -117,6 +120,9 @@ export default {
 		}
 	},
 	methods: {
+		scrollToTop () {
+			window.scrollTo(0, 0)
+		},
 		toggleDeckMenu () {
 			if (this.showDeckMenu) {
 				this.showDeckMenu = false

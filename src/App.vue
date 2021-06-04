@@ -8,9 +8,7 @@
 					<router-view />
 				</transition>
 			</main>
-			<!-- <div class="scroll-to-top">
-				<a href="#" title="Scroll to top">↑</a>
-			</div> -->
+			<scroll-to-top />
 			<site-footer />
 		</div>
 	</transition>
@@ -19,13 +17,15 @@
 <script>
 import UpdateNotif from '@/components/UpdateNotif.vue'
 import SiteHeader from '@/components/SiteHeader.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
 	components: {
 		UpdateNotif,
 		SiteHeader,
-		SiteFooter
+		SiteFooter,
+		ScrollToTop
 	},
 	mounted () {
 		this.$watch(function () {

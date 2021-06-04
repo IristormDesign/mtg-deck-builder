@@ -92,11 +92,14 @@
 		}
 	}
 	.site-header-link {
-		@extend button;
-		margin-right: 0;
-		margin-left: 0;
-		display: block;
-		width: 100%;
+		> a,
+		> button {
+			@extend button;
+			margin-right: 0;
+			margin-left: 0;
+			display: block;
+			width: 100%;
+		}
 	}
 	.deck-selector {
 		position: relative;

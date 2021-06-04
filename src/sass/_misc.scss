@@ -145,16 +145,21 @@
 		font-style: italic;
 	}
 }
+.scroll-to-top {
+	position: fixed;
+	bottom: $lhse/2;
+	right: $lhse/2;
+	z-index: 9;
 
-// .scroll-to-top {
-// 	background: darken($color-group-bg, 8.33%);
-// 	position: fixed;
-// 	bottom: $lhse/2;
-// 	right: $lhse/2;
-// 	z-index: 9;
-
-// 	a {
-// 		font-size: 125%;
-// 		width: 2em;
-// 	}
-// }
+	button {
+		min-width: $lhse;
+	}
+}
+.stt-fade-enter-active,
+.stt-fade-leave-active {
+  transition: opacity .25s ease-out;
+}
+.stt-fade-enter,
+.stt-fade-leave-to {
+  opacity: 0;
+}
