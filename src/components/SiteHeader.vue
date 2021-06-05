@@ -10,6 +10,14 @@
 
 			<nav class="site-menu">
 				<ul>
+					<li @auxclick.prevent.stop="goto" class="site-header-link">
+						<button
+							v-if="$router.currentRoute.name === 'manual'" @click="scrollToTop()"
+						>Manual</button>
+						<router-link
+							v-else :to="{name: 'manual'}"
+						>Manual</router-link>
+					</li>
 					<li class="add-new-deck site-header-link">
 						<button class="site-header-link primary-btn" @click="createDeck()">
 							Create Deck
@@ -37,14 +45,6 @@
 								</router-link>
 							</li>
 						</ul>
-					</li>
-					<li @auxclick.prevent.stop="goto" class="site-header-link">
-						<button
-							v-if="$router.currentRoute.name === 'manual'" @click="scrollToTop()"
-						>Manual</button>
-						<router-link
-							v-else :to="{name: 'manual'}"
-						>Manual</router-link>
 					</li>
 					<li @auxclick.prevent.stop="goto" class="site-header-link">
 						<router-link :to="{name: 'contact'}">
