@@ -47,11 +47,11 @@
 			<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 			<ul>
 				<li><strong>Using Colors</strong>—Shows which of any of the five mana colors are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: W is white, U is blue, B is black, R is red, and G is green.</li>
-				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among all spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
+				<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
 				<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
-				<li><strong>Card Names</strong>—Shows the number of cards by each single particular name in the deck.</li>
-				<li><strong>Total Cards</strong>—Shows the total number of cards in the deck. If the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal this.</li>
-				<li><strong>More Statistics</strong>—Click on this button to see the deck’s More Statistics page where you can inspect even more data. See the “More Statistics Pages” section of this manual for further information about that type of page.</li>
+				<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
+				<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal that.</li>
+				<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. See the “More Statistics Pages” section of this manual for further explanation.</li>
 			</ul>
 		</section>
 		<section>
