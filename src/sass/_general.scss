@@ -16,6 +16,7 @@ body {
 	font: 20px/1.5 $font-family-standard;
 	color: $color-text;
 	background: $color-content-bg;
+	min-width: 320px;
 }
 .fade-bg {
 	background: $color-content-bg;
@@ -23,7 +24,6 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	position: relative;
-	min-width: $min-width-site;
 
 	&.texture-bg {
 		@include app-bg('img/abstract-bg-1080.jpg');
@@ -172,5 +172,11 @@ img {
 		&.texture-bg {
 			@include app-bg('img/abstract-bg-3840.jpg')
 		}
+	}
+}
+
+@media (max-width: $min-width-site*.625) {
+	.wrap {
+		padding: 0 $lhse/2;
 	}
 }

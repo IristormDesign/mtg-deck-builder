@@ -5,10 +5,12 @@
 				<h1 @auxclick.prevent.stop="goto">
 					<router-link :to="{name: 'home'}">MTG Deck Builder</router-link>
 				</h1>
-				<span>by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
+				<span class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
 			</div>
 
-			<nav class="site-menu">
+			<button class="toggler primary-btn" @click="toggleSiteMenu()">Menu</button>
+
+			<nav v-show="showSiteMenu" class="site-menu">
 				<ul>
 					<li @auxclick.prevent.stop="goto" class="site-header-link">
 						<button
@@ -19,7 +21,7 @@
 						>Manual</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<button class="site-header-link primary-btn" @click="createDeck()">
+						<button class="primary-btn" @click="createDeck()">
 							Create Deck
 						</button>
 					</li>
@@ -31,6 +33,9 @@
 						>
 							Open Deck
 						</button>
+
+						<div class="open-deck-heading">Open Deck:</div>
+
 						<ul v-show="showDeckMenu">
 							<li
 								v-for="deck in $store.state.decks" :key="deck.name"
@@ -68,6 +73,7 @@
 export default {
 	data () {
 		return {
+			showSiteMenu: false,
 			showDeckMenu: false,
 			overlayTransitionActive: false
 		}
@@ -85,13 +91,20 @@ export default {
 
 		const headerLinks = document.querySelectorAll('.site-title a, .site-header-link')
 
-		// If the Open Deck menu is open and if the user tab focuses onto another link or button in the site header, then close the Open Deck menu.
 		headerLinks.forEach((link) => {
+			// If the Open Deck menu is open and if the user tab focuses onto another link or button in the site header, then close the Open Deck menu.
 			link.addEventListener('focus', (event) => {
 				if (this.showDeckMenu && link === event.target) {
 					this.showDeckMenu = false
 					this.$store.commit('toggleOverlay')
 				}
+			})
+
+			link.addEventListener('click', (event) => {
+				setTimeout(() => {
+					this.showSiteMenu = false
+				}, 125)
+				// this.$store.commit('toggleOverlay')
 			})
 		})
 	},
@@ -123,6 +136,13 @@ export default {
 	methods: {
 		scrollToTop () {
 			window.scrollTo(0, 0)
+		},
+		toggleSiteMenu () {
+			if (this.showSiteMenu) {
+				this.showSiteMenu = false
+			} else {
+				this.showSiteMenu = true
+			}
 		},
 		toggleDeckMenu () {
 			if (!this.overlayTransitionActive) {

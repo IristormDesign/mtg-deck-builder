@@ -13,7 +13,6 @@
 		height: auto;
 		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
-		min-width: $min-width-site;
 		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
 				
 		@keyframes cinematic-fade-in {

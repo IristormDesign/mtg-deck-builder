@@ -16,6 +16,7 @@ $color-text: lighten($color-group-bg, 68.75%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 37.5%), 66.67%);
+$color-hover-bg: lighten($color-group-bg, 6.25%);
 
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 37.5%); // Sampled
 $color-mana-blue: saturate(#aae1fa, 6.25%); // Sampled

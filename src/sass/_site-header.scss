@@ -10,7 +10,6 @@
 	display: flex;
 	align-items: center;
 	box-shadow: 0 1px $lhse/4 rgba(#000, .5);
-	min-width: $min-width-site;
 
 	.wrap {
 		display: flex;
@@ -32,16 +31,16 @@
 				color: $color-link;
 			}
 		}
-		span {
-			display: inline-block;
-			color: darken($color-text, 8.33%);
-			font-size: 87.5%;
+	}
+	.by-iristorm {
+		display: inline-block;
+		color: darken($color-text, 8.33%);
+		font-size: 87.5%;
 
-			a {
-				@include heading-font;
-				display: inline-block;
-				margin: 0 .125ch;
-			}
+		a {
+			@include heading-font;
+			display: inline-block;
+			margin: 0 .125ch;
 		}
 	}
 	h1 {
@@ -99,7 +98,15 @@
 			margin-left: 0;
 			display: block;
 			width: 100%;
+
+			&:hover,
+			&:focus {
+				@extend button:hover
+			}
 		}
+	}
+	.open-deck-heading {
+		display: none;
 	}
 	.deck-selector {
 		position: relative;
@@ -139,9 +146,11 @@
 			text-decoration: none;
 
 			&:hover,
-			&:focus,
+			&:focus {
+				background: $color-hover-bg;
+			}
 			&:active {
-				background: lighten($color-group-bg, 6.25%);
+				background: $color-mythic-orange;
 			}
 		}
 	}
@@ -152,6 +161,164 @@
 		.site-menu {
 			> ul {
 				grid-gap: $lhse/3;
+			}
+		}
+	}
+}
+@media (max-width: $min-width-site) {
+	.site-header {
+		.wrap {
+			display: flex;
+		}
+		.site-title {
+			white-space: nowrap;
+			margin-right: $lhse/2;
+		}
+		.by-iristorm {
+			display: none;
+		}
+		.site-menu {
+			> ul {
+				// display: flex;
+				// justify-content: flex-end;
+				width: 100%;
+			}
+		}
+	}
+}
+@media (max-width: $min-width-site*.875) {
+	.site-header {
+		height: auto;
+
+		.wrap {
+			display: block;
+		}
+		.site-title {
+			width: 100%;
+			text-align: center;
+		}
+		.by-iristorm {
+			display: inline-block;
+		}
+		.site-menu {
+			padding-bottom: $lhse/4;
+		}
+	}
+}
+@media (min-width: ($min-width-site*.625 + 1)) {
+	.site-header {
+		.toggler {
+			display: none;
+		}
+		.site-menu {
+			display: block !important; // Needs "!important" because of JavaScript effect.
+		}
+	}
+}
+
+@media (max-width: $min-width-site*.625) {
+	.site-header {
+		.wrap {
+			display: flex;
+		}
+		.site-title {
+			text-align: left;
+			width: auto;
+			display: inline-block;
+		}
+		.by-iristorm {
+			display: none;
+		}
+		.site-menu {
+			position: absolute;
+			right: $lhse/2;
+			top: $height-site-header;
+			background: $color-group-bg;
+			width: auto;
+			border: $border-sections;
+			padding-bottom: 0;
+			box-shadow: -$lhse/12 $lhse/12 $lhse/4 rgba(#000, .5);
+			margin: -$lhse/8 0 0;
+			overflow-y: auto;
+			max-height: 75vh;
+			max-width: $lhse*9;
+
+			ul {
+				display: block;
+				background: none;
+
+				li {
+					display: block;
+					
+					&.site-header-link {
+						a,
+						button {
+							display: block;
+							height: auto;
+							min-width: auto;
+							padding: $lhse/4 $lhse/2;
+							background: none;
+							border: none;
+							color: $color-mythic-orange;
+							text-shadow: none;
+							box-shadow: none;
+							margin: 0;
+							filter: none;
+							border-radius: 0;
+							transition: none;
+							text-align: right;
+							font-size: 100%;
+							line-height: $line-height-standard;
+
+							&:hover,
+							&:focus {
+								color: $color-mythic-lighter;
+								background: $color-hover-bg;
+								filter: none;
+							}
+							&:active {
+								color: #fff;
+								background: $color-mythic-orange;
+							}
+						}
+					}
+				}
+				.deck-menu {
+					background: #000;
+				}
+			}
+		}
+		.open-deck-heading {
+			@include heading-font;
+			display: block;
+			text-align: right;
+			padding: $lhse/8 $lhse/2;
+			color: desaturate(darken($color-text, 25%), 12.5%);
+			font-size: 75%;
+			text-transform: uppercase;
+		}
+		.deck-menu {
+			border: 1px solid darken($color-text, 62.5%);
+			border-right-width: 0;
+			border-left-width: 0;
+
+			> button {
+				display: none !important;
+			}
+			ul {
+				display: block !important;
+				position: static;
+				border: 0;
+				box-shadow: none;
+				overflow: visible;
+			}
+			li {
+				text-align: right;
+
+				a {
+					font-family: $font-family-standard;
+					font-weight: $font-weight-normal;
+				}
 			}
 		}
 	}
