@@ -73,6 +73,14 @@
 			margin: 0;
 			padding: 0;
 		}
+		a,
+		button {
+			&:hover,
+			&:focus {
+				position: relative;
+				z-index: index($layers, above-overlay);
+			}
+		}
 		button {
 			&.attention:not(:disabled) {
 				animation: flash .1667s linear;
@@ -108,13 +116,12 @@
 	.open-deck-heading {
 		display: none;
 	}
-	.deck-selector {
+	.deck-menu-toggler {
 		position: relative;
-		z-index: index($layers, deck-menu-group);
 	}
 	.deck-menu {
 		position: relative;
-		z-index: index($layers, deck-menu-group);
+		z-index: index($layers, above-overlay);
 
 		ul {
 			list-style: none;
@@ -179,8 +186,6 @@
 		}
 		.site-menu {
 			> ul {
-				// display: flex;
-				// justify-content: flex-end;
 				width: 100%;
 			}
 		}
@@ -207,7 +212,7 @@
 }
 @media (min-width: ($min-width-site*.625 + 1)) {
 	.site-header {
-		.toggler {
+		.site-menu-toggler {
 			display: none;
 		}
 		.site-menu {
@@ -229,9 +234,12 @@
 		.by-iristorm {
 			display: none;
 		}
+		.site-menu-toggler {
+			z-index: index($layers, above-overlay);
+		}
 		.site-menu {
 			position: absolute;
-			right: $lhse/2;
+			right: $lhse/4;
 			top: $height-site-header;
 			background: $color-group-bg;
 			width: auto;
@@ -242,6 +250,7 @@
 			overflow-y: auto;
 			max-height: 75vh;
 			max-width: $lhse*9;
+			z-index: index($layers, above-overlay);
 
 			ul {
 				display: block;
@@ -269,6 +278,7 @@
 							text-align: right;
 							font-size: 100%;
 							line-height: $line-height-standard;
+							font-weight: $font-weight-semibold;
 
 							&:hover,
 							&:focus {
@@ -289,22 +299,25 @@
 			}
 		}
 		.open-deck-heading {
-			@include heading-font;
 			display: block;
 			text-align: right;
-			padding: $lhse/8 $lhse/2;
-			color: desaturate(darken($color-text, 25%), 12.5%);
-			font-size: 75%;
-			text-transform: uppercase;
+
+			strong {
+				@include heading-font;
+				padding: $lhse/8 $lhse/2;
+				color: desaturate(darken($color-text, 25%), 16.67%);
+				font-size: 75%;
+				text-transform: uppercase;
+			}
+		}
+		.deck-menu-toggler {
+			display: none !important;
 		}
 		.deck-menu {
 			border: 1px solid darken($color-text, 62.5%);
 			border-right-width: 0;
 			border-left-width: 0;
 
-			> button {
-				display: none !important;
-			}
 			ul {
 				display: block !important;
 				position: static;
@@ -322,4 +335,21 @@
 			}
 		}
 	}
+}
+.bg-overlay {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	transition: all $transition-duration-standard ease;
+	background: rgba(darken($color-content-bg, 33.33%), .5);
+	z-index: index($layers, bg-overlay);
+	backdrop-filter: blur(4px);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.overlay-enter,
+.overlay-leave-to {
+  opacity: 0;
 }

@@ -24,8 +24,8 @@ export default {
 	components: {
 		UpdateNotif,
 		SiteHeader,
-		SiteFooter,
-		ScrollToTop
+		ScrollToTop,
+		SiteFooter
 	},
 	mounted () {
 		this.$watch(function () {

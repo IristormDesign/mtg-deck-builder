@@ -18,7 +18,6 @@ export default new Vuex.Store({
 		decks: defaultDecks,
 		deletedDeckName: null,
 		moreStatsDeck: null,
-		showOverlay: false,
 		sortAttribute: 'type',
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
@@ -91,13 +90,6 @@ export default new Vuex.Store({
 				if (deckA > deckB) return 1
 				else if (deckA < deckB) return -1
 			})
-		},
-		toggleOverlay (state) {
-			if (state.showOverlay === true) {
-				state.showOverlay = false
-			} else {
-				state.showOverlay = true
-			}
 		}
 	},
 	actions: {

@@ -8,16 +8,19 @@
 				<span class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
 			</div>
 
-			<button class="toggler primary-btn" @click="toggleSiteMenu()">Menu</button>
+			<button
+				class="site-menu-toggler primary-btn" @click="toggleSiteMenu()"
+			>Menu</button>
 
 			<nav v-show="showSiteMenu" class="site-menu">
 				<ul>
 					<li @auxclick.prevent.stop="goto" class="site-header-link">
-						<button
-							v-if="$router.currentRoute.name === 'manual'" @click="scrollToTop()"
-						>Manual</button>
+						<!-- <button
+							v-if="$router.currentRoute.name === 'manual'"
+							@click="scrollToTop()"
+						>Manual</button> -->
 						<router-link
-							v-else :to="{name: 'manual'}"
+							:to="{name: 'manual'}"
 						>Manual</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
@@ -27,15 +30,17 @@
 					</li>
 					<li class="deck-menu site-header-link">
 						<button
-							class="deck-selector primary-btn"
-							@click="toggleDeckMenu()" :disabled="disableMenuButton"
+							class="deck-menu-toggler primary-btn"
+							@click="toggleDeckMenu()"
+							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
 						>
 							Open Deck
 						</button>
 
-						<div class="open-deck-heading">Open Deck:</div>
-
+						<div class="open-deck-heading">
+							<strong>Open Deck:</strong>
+						</div>
 						<ul v-show="showDeckMenu">
 							<li
 								v-for="deck in $store.state.decks" :key="deck.name"
@@ -43,8 +48,11 @@
 							>
 								<router-link
 									v-if="$route.params.deckPath !== deck.path"
-									:to="{ name: 'deck', params: { deckPath: deck.path } }"
-									@click.native="toggleDeckMenu()"
+									:to="{
+										name: 'deck',
+										params: { deckPath: deck.path }
+									}"
+									@click.native="closeAllPopups()"
 								>
 									{{ deck.name }}
 								</router-link>
@@ -57,25 +65,24 @@
 						</router-link>
 					</li>
 				</ul>
-
-				<transition name="overlay">
-					<div
-						v-show="$store.state.showOverlay"
-						class="bg-overlay" @click="toggleDeckMenu()"
-					></div>
-				</transition>
 			</nav>
 		</div>
+
+		<bg-overlay :popup="showingAnyPopup" @closePopups="closeAllPopups()" />
 	</header>
 </template>
 
 <script>
+import BgOverlay from '@/components/BgOverlay.vue'
+
 export default {
+	components: {
+		BgOverlay
+	},
 	data () {
 		return {
 			showSiteMenu: false,
-			showDeckMenu: false,
-			overlayTransitionActive: false
+			showDeckMenu: false
 		}
 	},
 	mounted () {
@@ -83,30 +90,13 @@ export default {
 			const keyEvent = event.key
 
 			if (keyEvent === 'Escape' || keyEvent === 'Esc') {
-				if (this.showDeckMenu) {
-					this.toggleDeckMenu()
+				if (this.showingAnyPopup) {
+					this.closeAllPopups()
 				}
 			}
 		})
 
-		const headerLinks = document.querySelectorAll('.site-title a, .site-header-link')
-
-		headerLinks.forEach((link) => {
-			// If the Open Deck menu is open and if the user tab focuses onto another link or button in the site header, then close the Open Deck menu.
-			link.addEventListener('focus', (event) => {
-				if (this.showDeckMenu && link === event.target) {
-					this.showDeckMenu = false
-					this.$store.commit('toggleOverlay')
-				}
-			})
-
-			link.addEventListener('click', (event) => {
-				setTimeout(() => {
-					this.showSiteMenu = false
-				}, 125)
-				// this.$store.commit('toggleOverlay')
-			})
-		})
+		this.setMenuAccessibility()
 	},
 	computed: {
 		disableMenuButton () {
@@ -131,35 +121,95 @@ export default {
 			} else {
 				return null
 			}
+		},
+		showingAnyPopup () {
+			if (this.showSiteMenu || this.showDeckMenu) {
+				return true
+			} else {
+				return false
+			}
 		}
 	},
 	methods: {
-		scrollToTop () {
-			window.scrollTo(0, 0)
-		},
+		// scrollToTop () {
+		// 	window.scrollTo(0, 0)
+		// 	this.closeAllPopups()
+		// },
 		toggleSiteMenu () {
 			if (this.showSiteMenu) {
 				this.showSiteMenu = false
 			} else {
 				this.showSiteMenu = true
 			}
+
+			this.setMenuAccessibility()
 		},
 		toggleDeckMenu () {
-			if (!this.overlayTransitionActive) {
-				this.overlayTransitionActive = true
-
-				if (this.showDeckMenu) {
-					this.showDeckMenu = false
-				} else {
-					this.showDeckMenu = true
-				}
-
-				this.$store.commit('toggleOverlay')
-
-				setTimeout(() => {
-					this.overlayTransitionActive = false
-				}, 250) // Equal to transition's duration
+			if (this.showDeckMenu) {
+				this.showDeckMenu = false
+			} else {
+				this.showDeckMenu = true
 			}
+
+			this.setMenuAccessibility()
+		},
+		closeAllPopups () {
+			this.showDeckMenu = false
+			this.showSiteMenu = false
+		},
+		setMenuAccessibility () {
+			const headerLinks = document.querySelectorAll('.site-title a, .site-header-link > a, .add-new-deck button')
+
+			// When the mobile menu or the deck menu is opened, close it when any of its contained links are clicked.
+			headerLinks.forEach((headerLink) => {
+				headerLink.addEventListener('click', (event) => {
+					this.closeAllPopups()
+				})
+			})
+
+			// If the Open Deck menu is open and if the user tab-focuses onto another link or button in the site header, then close the Open Deck menu.
+			headerLinks.forEach((headerLink) => {
+				headerLink.addEventListener('focus', () => {
+					if (this.showDeckMenu) {
+						this.closeAllPopups()
+					}
+				})
+			})
+
+			// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu (whether before or after it), then close the menu.
+			const siteMenuLinks = document.querySelectorAll('.site-menu a, .site-menu button, .site-menu-toggler')
+
+			for (let i = 0; i < siteMenuLinks.length; i++) {
+				const linkBeforeMenu = siteMenuLinks[0].previousElementSibling.querySelector('a, button')
+
+				linkBeforeMenu.addEventListener('focus', () => {
+					if (this.showSiteMenu) {
+						this.closeAllPopups()
+					}
+				})
+			}
+
+			const secondLastMenuLink = siteMenuLinks[siteMenuLinks.length - 2]
+			let secondLastMenuLinkFocused = false
+
+			secondLastMenuLink.addEventListener('focus', () => {
+				secondLastMenuLinkFocused = true
+			})
+
+			const lastMenuLink = siteMenuLinks[siteMenuLinks.length - 1]
+
+			lastMenuLink.addEventListener('focus', () => {
+				secondLastMenuLinkFocused = false
+			})
+			lastMenuLink.addEventListener('blur', () => {
+				setTimeout(() => {
+					if (!secondLastMenuLinkFocused) {
+						if (this.showSiteMenu) {
+							this.closeAllPopups()
+						}
+					}
+				}, 0)
+			})
 		},
 		createDeck (failedName, existingDeckName) {
 			const store = this.$store
@@ -200,6 +250,8 @@ export default {
 						name: 'deck',
 						params: { deckPath: path }
 					})
+
+					this.setMenuAccessibility()
 				}
 			} // Else, if the user left the prompt blank, do nothing.
 		}

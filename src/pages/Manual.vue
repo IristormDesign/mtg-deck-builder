@@ -17,14 +17,25 @@
 		</ul>
 
 		<h3>Deck Pages</h3>
+		<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 2x"
 				src="@/img/manual-deck-page.jpg" width="658" height="471"
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
-		<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
 		<p>A deck page contains the following components, listed in the order of their position on the page from left to right, top to bottom:</p>
+		<ul>
+			<li>Deck name</li>
+			<li>Deck statistics</li>
+			<li>Card image</li>
+			<li>Card list</li>
+			<li>Card quantities</li>
+			<li>Card adder</li>
+			<li>Card sorter</li>
+			<li>Deck actions</li>
+		</ul>
+		<p>Each of those components will be explained in greater detail.</p>
 
 		<section>
 			<p>

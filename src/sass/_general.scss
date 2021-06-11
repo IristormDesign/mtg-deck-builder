@@ -45,23 +45,6 @@ main {
 		margin: $lhse/2 auto;
 	}
 }
-.bg-overlay {
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	transition: all $transition-duration-standard ease;
-	background: rgba(darken($color-content-bg, 25%), .5);
-	z-index: index($layers, bg-overlay);
-	backdrop-filter: blur(4px);
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
-.overlay-enter,
-.overlay-leave-to {
-  opacity: 0;
-}
 h1,
 h2,
 h3,
