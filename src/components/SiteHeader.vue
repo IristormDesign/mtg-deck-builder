@@ -160,15 +160,13 @@ export default {
 		setMenuAccessibility () {
 			const headerLinks = document.querySelectorAll('.site-title a, .site-header-link > a, .add-new-deck button')
 
-			// When the mobile menu or the deck menu is opened, close it when any of its contained links are clicked.
 			headerLinks.forEach((headerLink) => {
-				headerLink.addEventListener('click', (event) => {
+				// When the mobile menu or the deck menu is opened, close it when any of its contained links are clicked.
+				headerLink.addEventListener('click', () => {
 					this.closeAllPopups()
 				})
-			})
 
-			// If the Open Deck menu is open and if the user tab-focuses onto another link or button in the site header, then close the Open Deck menu.
-			headerLinks.forEach((headerLink) => {
+				// If the Open Deck menu is open and if the user tab-focuses onto another link or button in the site header, then close the Open Deck menu.
 				headerLink.addEventListener('focus', () => {
 					if (this.showDeckMenu) {
 						this.closeAllPopups()
@@ -179,15 +177,13 @@ export default {
 			// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu (whether before or after it), then close the menu.
 			const siteMenuLinks = document.querySelectorAll('.site-menu a, .site-menu button, .site-menu-toggler')
 
-			for (let i = 0; i < siteMenuLinks.length; i++) {
-				const linkBeforeMenu = siteMenuLinks[0].previousElementSibling.querySelector('a, button')
+			const linkBeforeMenu = siteMenuLinks[0].previousElementSibling.querySelector('a, button')
 
-				linkBeforeMenu.addEventListener('focus', () => {
-					if (this.showSiteMenu) {
-						this.closeAllPopups()
-					}
-				})
-			}
+			linkBeforeMenu.addEventListener('focus', () => {
+				if (this.showSiteMenu) {
+					this.closeAllPopups()
+				}
+			})
 
 			const secondLastMenuLink = siteMenuLinks[siteMenuLinks.length - 2]
 			let secondLastMenuLinkFocused = false
