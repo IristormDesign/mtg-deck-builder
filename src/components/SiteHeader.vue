@@ -9,7 +9,8 @@
 			</div>
 
 			<button
-				class="site-menu-toggler primary-btn" @click="toggleSiteMenu()"
+				class="site-menu-toggler primary-btn tabbable"
+				@click="toggleSiteMenu()"
 			>Menu</button>
 
 			<nav v-show="showSiteMenu" class="site-menu">
@@ -21,16 +22,17 @@
 						>Manual</button> -->
 						<router-link
 							:to="{name: 'manual'}"
+							:class="'tabbable'"
 						>Manual</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<button class="primary-btn" @click="createDeck()">
+						<button class="primary-btn tabbable" @click="createDeck()">
 							Create Deck
 						</button>
 					</li>
 					<li class="deck-menu site-header-link">
 						<button
-							class="deck-menu-toggler primary-btn"
+							class="deck-menu-toggler primary-btn tabbable"
 							@click="toggleDeckMenu()"
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
@@ -47,11 +49,12 @@
 								@auxclick.prevent.stop="goto"
 							>
 								<router-link
-									v-if="$route.params.deckPath !== deck.path"
+									v-show="$route.params.deckPath !== deck.path"
 									:to="{
 										name: 'deck',
 										params: { deckPath: deck.path }
 									}"
+									:class="'tabbable'"
 									@click.native="closeAllPopups()"
 								>
 									{{ deck.name }}
@@ -59,8 +62,8 @@
 							</li>
 						</ul>
 					</li>
-					<li @auxclick.prevent.stop="goto" class="site-header-link">
-						<router-link :to="{name: 'contact'}">
+					<li @auxclick.prevent.stop="goto" class="site-header-link contains-tabbable">
+						<router-link :to="{name: 'contact'}" :class="'tabbable'">
 							Contact
 						</router-link>
 					</li>
@@ -95,8 +98,6 @@ export default {
 				}
 			}
 		})
-
-		this.setMenuAccessibility()
 	},
 	computed: {
 		disableMenuButton () {
@@ -166,7 +167,7 @@ export default {
 					this.closeAllPopups()
 				})
 
-				// If the Open Deck menu is open and if the user tab-focuses onto another link or button in the site header, then close the Open Deck menu.
+				// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
 				headerLink.addEventListener('focus', () => {
 					if (this.showDeckMenu) {
 						this.closeAllPopups()
@@ -174,37 +175,26 @@ export default {
 				})
 			})
 
-			// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu (whether before or after it), then close the menu.
-			const siteMenuLinks = document.querySelectorAll('.site-menu a, .site-menu button, .site-menu-toggler')
+			// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
+			const siteMenuLinksArray = Array.prototype.slice.call(
+				document.querySelectorAll('.site-header .tabbable')
+			)
+			const allLinks = document.querySelectorAll('a, button')
 
-			const linkBeforeMenu = siteMenuLinks[0].previousElementSibling.querySelector('a, button')
+			allLinks.forEach(link => {
+				link.addEventListener('focus', () => {
+					const anyFocus = siteMenuLinksArray.find(
+						link => link === document.activeElement
+					)
 
-			linkBeforeMenu.addEventListener('focus', () => {
-				if (this.showSiteMenu) {
-					this.closeAllPopups()
-				}
-			})
+					console.log(anyFocus)
 
-			const secondLastMenuLink = siteMenuLinks[siteMenuLinks.length - 2]
-			let secondLastMenuLinkFocused = false
-
-			secondLastMenuLink.addEventListener('focus', () => {
-				secondLastMenuLinkFocused = true
-			})
-
-			const lastMenuLink = siteMenuLinks[siteMenuLinks.length - 1]
-
-			lastMenuLink.addEventListener('focus', () => {
-				secondLastMenuLinkFocused = false
-			})
-			lastMenuLink.addEventListener('blur', () => {
-				setTimeout(() => {
-					if (!secondLastMenuLinkFocused) {
-						if (this.showSiteMenu) {
+					if (this.showSiteMenu) {
+						if (anyFocus === undefined) {
 							this.closeAllPopups()
 						}
 					}
-				}, 0)
+				})
 			})
 		},
 		createDeck (failedName, existingDeckName) {
@@ -246,8 +236,6 @@ export default {
 						name: 'deck',
 						params: { deckPath: path }
 					})
-
-					this.setMenuAccessibility()
 				}
 			} // Else, if the user left the prompt blank, do nothing.
 		}
