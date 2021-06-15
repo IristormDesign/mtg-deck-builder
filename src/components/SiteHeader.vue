@@ -2,7 +2,7 @@
 	<header class="site-header">
 		<div class="wrap">
 			<div class="site-title">
-				<h1 @auxclick.prevent.stop="goto">
+				<h1 @auxclick.prevent>
 					<router-link :to="{name: 'home'}">MTG Deck Builder</router-link>
 				</h1>
 				<span class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
@@ -15,7 +15,7 @@
 
 			<nav v-show="showSiteMenu" class="site-menu">
 				<ul>
-					<li @auxclick.prevent.stop="goto" class="site-header-link">
+					<li @auxclick.prevent class="site-header-link">
 						<router-link
 							:to="{name: 'manual'}"
 						>Manual</router-link>
@@ -41,7 +41,7 @@
 						<ul v-show="showDeckMenu">
 							<li
 								v-for="deck in $store.state.decks" :key="deck.name"
-								@auxclick.prevent.stop="goto"
+								@auxclick.prevent
 							>
 								<router-link
 									v-show="$route.params.deckPath !== deck.path"
@@ -56,7 +56,7 @@
 							</li>
 						</ul>
 					</li>
-					<li @auxclick.prevent.stop="goto" class="site-header-link">
+					<li @auxclick.prevent class="site-header-link">
 						<router-link :to="{name: 'contact'}">
 							Contact
 						</router-link>
