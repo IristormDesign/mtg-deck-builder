@@ -9,7 +9,7 @@
 			</div>
 
 			<button
-				class="site-menu-toggler primary-btn tabbable"
+				class="site-menu-toggler primary-btn"
 				@click="toggleSiteMenu()"
 			>Menu</button>
 
@@ -22,17 +22,16 @@
 						>Manual</button> -->
 						<router-link
 							:to="{name: 'manual'}"
-							:class="'tabbable'"
 						>Manual</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<button class="primary-btn tabbable" @click="createDeck()">
+						<button class="primary-btn" @click="createDeck()">
 							Create Deck
 						</button>
 					</li>
 					<li class="deck-menu site-header-link">
 						<button
-							class="deck-menu-toggler primary-btn tabbable"
+							class="deck-menu-toggler primary-btn"
 							@click="toggleDeckMenu()"
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
@@ -54,7 +53,6 @@
 										name: 'deck',
 										params: { deckPath: deck.path }
 									}"
-									:class="'tabbable'"
 									@click.native="closeAllPopups()"
 								>
 									{{ deck.name }}
@@ -62,8 +60,8 @@
 							</li>
 						</ul>
 					</li>
-					<li @auxclick.prevent.stop="goto" class="site-header-link contains-tabbable">
-						<router-link :to="{name: 'contact'}" :class="'tabbable'">
+					<li @auxclick.prevent.stop="goto" class="site-header-link">
+						<router-link :to="{name: 'contact'}">
 							Contact
 						</router-link>
 					</li>
@@ -97,6 +95,23 @@ export default {
 					this.closeAllPopups()
 				}
 			}
+		})
+
+		const headerLinks = document.querySelectorAll(
+			'.site-title a, .site-header-link > a, .add-new-deck button')
+
+		headerLinks.forEach((headerLink) => {
+			// Close the mobile or deck menu when any of their contained links are clicked.
+			headerLink.addEventListener('click', () => {
+				this.closeAllPopups()
+			})
+
+			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
+			headerLink.addEventListener('focus', () => {
+				if (this.showDeckMenu) {
+					this.closeAllPopups()
+				}
+			})
 		})
 	},
 	computed: {
@@ -141,9 +156,14 @@ export default {
 				this.showSiteMenu = false
 			} else {
 				this.showSiteMenu = true
-			}
 
-			this.setMenuAccessibility()
+				// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
+				const allLinks = document.querySelectorAll('a, button')
+
+				allLinks.forEach(link => {
+					link.addEventListener('focus', this.closeSiteMenuWhenFocusLost)
+				})
+			}
 		},
 		toggleDeckMenu () {
 			if (this.showDeckMenu) {
@@ -151,51 +171,26 @@ export default {
 			} else {
 				this.showDeckMenu = true
 			}
-
-			this.setMenuAccessibility()
 		},
 		closeAllPopups () {
 			this.showDeckMenu = false
 			this.showSiteMenu = false
 		},
-		setMenuAccessibility () {
-			const headerLinks = document.querySelectorAll('.site-title a, .site-header-link > a, .add-new-deck button')
+		closeSiteMenuWhenFocusLost () {
+			const siteMenuLinks = document.querySelectorAll(
+				'.site-menu-toggler, .site-menu a, .site-menu button')
 
-			headerLinks.forEach((headerLink) => {
-				// When the mobile menu or the deck menu is opened, close it when any of its contained links are clicked.
-				headerLink.addEventListener('click', () => {
-					this.closeAllPopups()
-				})
+			function anyFocus () {
+				for (let i = 0; i < siteMenuLinks.length; i++) {
+					const link = siteMenuLinks[i]
 
-				// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
-				headerLink.addEventListener('focus', () => {
-					if (this.showDeckMenu) {
-						this.closeAllPopups()
+					if (link === document.activeElement) {
+						return true
 					}
-				})
-			})
+				}
+			}
 
-			// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
-			const siteMenuLinksArray = Array.prototype.slice.call(
-				document.querySelectorAll('.site-header .tabbable')
-			)
-			const allLinks = document.querySelectorAll('a, button')
-
-			allLinks.forEach(link => {
-				link.addEventListener('focus', () => {
-					const anyFocus = siteMenuLinksArray.find(
-						link => link === document.activeElement
-					)
-
-					console.log(anyFocus)
-
-					if (this.showSiteMenu) {
-						if (anyFocus === undefined) {
-							this.closeAllPopups()
-						}
-					}
-				})
-			})
+			if (!anyFocus()) this.closeAllPopups()
 		},
 		createDeck (failedName, existingDeckName) {
 			const store = this.$store
