@@ -16,10 +16,6 @@
 			<nav v-show="showSiteMenu" class="site-menu">
 				<ul>
 					<li @auxclick.prevent.stop="goto" class="site-header-link">
-						<!-- <button
-							v-if="$router.currentRoute.name === 'manual'"
-							@click="scrollToTop()"
-						>Manual</button> -->
 						<router-link
 							:to="{name: 'manual'}"
 						>Manual</router-link>
@@ -147,10 +143,6 @@ export default {
 		}
 	},
 	methods: {
-		// scrollToTop () {
-		// 	window.scrollTo(0, 0)
-		// 	this.closeAllPopups()
-		// },
 		toggleSiteMenu () {
 			if (this.showSiteMenu) {
 				this.showSiteMenu = false
