@@ -29,11 +29,19 @@ export default {
 	},
 	mounted () {
 		this.$watch(function () {
-			const appEl = document.querySelector('.fade-bg')
-
 			// For better performance, don't let the background texture image load on the home page.
 			if (this.$route.name !== 'home') {
-				appEl.classList.add('texture-bg')
+				document.querySelector('.fade-bg').classList.add('texture-bg')
+			}
+		})
+
+		// Prevent all links from opening a new tab via middle-click, with the exception of the links that are always set to open in a new tab.
+		document.addEventListener('auxclick', (event) => {
+			function conditions (el) {
+				return (el.matches('a') && el.getAttribute('target') !== '_blank')
+			}
+			if (conditions(event.target) || conditions(event.target.closest('a'))) {
+				event.preventDefault()
 			}
 		})
 	}

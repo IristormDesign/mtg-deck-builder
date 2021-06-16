@@ -1,8 +1,5 @@
 <template>
-	<section
-		class="deck-info more-stats-button"
-		@auxclick.prevent.stop="goto"
-	>
+	<section class="deck-info more-stats-button">
 		<router-link
 			:to="{
 				name: 'moreStats',

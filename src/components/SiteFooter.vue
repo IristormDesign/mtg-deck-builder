@@ -2,21 +2,16 @@
 	<footer class="site-footer">
 		<div class="wrap">
 			<p>
-				<span @auxclick.prevent.stop="goto">
-					<router-link to="/"><strong>MTG Deck Builder</strong></router-link>
-				</span> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.3
+				<router-link to="/"><strong>MTG Deck Builder</strong></router-link> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — Version 1.4.3
+
 				<span class="divider">|</span>
-				<span @auxclick.prevent.stop="goto">
-					<router-link to="/terms">Terms of Service</router-link>
-				</span>
+				<router-link to="/terms">Terms of Service</router-link>
+
 				<span class="divider">|</span>
-				<span @auxclick.prevent.stop="goto">
-					<router-link to="/privacy">Privacy Policy</router-link>
-				</span>
+				<router-link to="/privacy">Privacy Policy</router-link>
+
 				<span class="divider">|</span>
-				<span @auxclick.prevent.stop="goto">
-					<a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a>
-				</span>
+				<a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a>
 			</p>
 			<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This app is not affiliated with or endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided by the Scryfall API. This app is not affiliated with or endorsed by Scryfall. All other content, unless indicated otherwise, is copyright &copy; 2021 by Damian Schmidt.</p>
 		</div>
