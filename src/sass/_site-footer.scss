@@ -23,3 +23,31 @@
 		}
 	}
 }
+
+
+@media (max-width: $min-width-site*.75) {
+	.site-footer {
+		p {
+			&:first-of-type {
+				line-height: $line-height-standard*1.5;
+			}
+		}
+		a {
+			display: inline-block;
+			// min-height: 33px;
+		}
+		.group {
+			display: block;
+			text-align: center;
+
+			span {
+				white-space: nowrap;
+			}
+		}
+		.divider {
+			&:first-of-type {
+				display: none;
+			}
+		}
+	}
+}
