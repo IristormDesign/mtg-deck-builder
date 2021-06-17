@@ -1,5 +1,5 @@
 <template>
-	<article class="contact-page solo-message">
+	<article class="contact-page content-box">
 		<h2>Contact</h2>
 
 		<p>You can email the developer of this web app, Damian Schmidt, at <a href="mailto:damian@iristormdesign.com">damian@iristormdesign.com</a>. Any comments or questions are appreciated.</p>

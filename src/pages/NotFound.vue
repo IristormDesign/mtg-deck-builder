@@ -1,5 +1,5 @@
 <template>
-	<article class="page-not-found solo-message wrap">
+	<article class="page-not-found content-box wrap">
 		<img src="~@/img/sok-84-one-with-nothing.jpg" width="616" height="412" alt="One with Nothing" />
 
 		<h2>Page Not Found</h2>

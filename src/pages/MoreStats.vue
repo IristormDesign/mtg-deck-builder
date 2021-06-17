@@ -1,5 +1,5 @@
 <template>
-	<div class="more-stats solo-message">
+	<div class="more-stats content-box">
 		<h3>
 			More Statistics on “<router-link :to="{
 				name: 'deck',

@@ -1,5 +1,5 @@
 <template>
-	<article class="solo-message">
+	<article class="content-box">
 		<h2>Terms of Service</h2>
 
 		<p><i>Last revised on March 27, 2021</i></p>

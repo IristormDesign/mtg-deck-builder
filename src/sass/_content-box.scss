@@ -1,4 +1,4 @@
-.solo-message {
+.content-box {
 	background: $color-group-bg;
 	border: $border-sections;
 	border-radius: $border-radius-group;
@@ -60,4 +60,8 @@ img {
 .float-right {
 	float: right;
 	margin-left: 1em;
+}
+
+@media (max-width: $min-width-site*.625) {
+	
 }

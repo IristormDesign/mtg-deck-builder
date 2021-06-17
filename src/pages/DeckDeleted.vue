@@ -1,6 +1,6 @@
 <template>
 	<article
-		class="deck-deleted solo-message wrap"
+		class="deck-deleted content-box wrap"
 		@click="$store.getters.attentionHeaderButton"
 	>
 		<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>

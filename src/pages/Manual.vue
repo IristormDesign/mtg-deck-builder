@@ -1,5 +1,5 @@
 <template>
-	<article class="solo-message">
+	<article class="content-box">
 		<h2>User Manual</h2>
 		<p>MTG Deck Builder by Iristorm Design is a web app on which you can create and manage your decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
 

@@ -1,7 +1,7 @@
 $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%); 
 
 .more-stats {
-	&.solo-message {
+	&.content-box {
 		max-width: none;
 		margin: $lhse;
 	}
