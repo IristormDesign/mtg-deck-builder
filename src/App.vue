@@ -38,8 +38,11 @@ export default {
 		// Prevent all links from opening a new tab via middle-click, with the exception of the links that are always set to open in a new tab.
 		document.addEventListener('auxclick', (event) => {
 			function conditions (el) {
-				return (el.matches('a') && el.getAttribute('target') !== '_blank')
+				if (el !== null) {
+					return (el.matches('a') && el.getAttribute('target') !== '_blank')
+				}
 			}
+
 			if (conditions(event.target) || conditions(event.target.closest('a'))) {
 				event.preventDefault()
 			}
