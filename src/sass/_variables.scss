@@ -53,6 +53,7 @@ $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .333);
 
 // WIDTHS
 $min-width-site: 960px;
+$width-mobile-breakpoint: $min-width-site * .625;
 $width-site-breakpoint: $min-width-site*1.375;
 $width-site-breakpoint-tablet: 1024px;
 $max-width-site: 1440px;
@@ -74,6 +75,11 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin heading-font {
 	font-family: 'Philosopher', $font-family-standard;
 	font-weight: bold;
+}
+@mixin popup {
+	border: $border-sections;
+	box-shadow: -.125em .25em .5em rgba(#000, .5);
+	background: $color-group-bg;
 }
 
 @font-face {

@@ -82,6 +82,12 @@
 	}
 	.mana-symbol {
 		font-size: 166.67%;
+		margin-bottom: -2px;
+	}
+	.four-or-more-colors {
+		.mana-symbol {
+			font-size: 125%;
+		}
 	}
 }
 .average-mana-value {
@@ -109,6 +115,7 @@
 .more-stats-button {
 	a {
 		@extend button, .primary-btn;
+		font-size: 87.5%;
 	}
 }
 
@@ -119,36 +126,174 @@
 		border: $border-sections;
 		border-radius: $border-radius-button;
 		overflow: hidden;
+	}
+	.deck-info {
+		border-radius: 0;
+		border-bottom-width: 0;
+		grid-column: span 1;
 
-		.deck-info {
-			border-radius: 0;
-			border-bottom-width: 0;
-			grid-column: span 1;
-
-			&:nth-of-type(1),
-			&:nth-of-type(2),
-			&:nth-of-type(3) {
-				border-top-width: 0;
-			}
-			&:nth-of-type(3),
-			&:last-of-type() {
-				border-right-width: 0;
-			}
+		&:nth-of-type(1),
+		&:nth-of-type(2),
+		&:nth-of-type(3) {
+			border-top-width: 0;
 		}
-		.deck-name {
-			grid-column: span 2;
-			border-left-width: 0;
-			justify-content: center;
-
-			button {
-				text-align: center;
-			}
+		&:nth-of-type(3),
+		&:last-of-type() {
+			border-right-width: 0;
 		}
-		.more-stats-button {
-			button {
-				min-width: 66.67%;
-				display: block;
-			}
+	}
+	.deck-name {
+		grid-column: span 2;
+		border-left-width: 0 !important;
+		justify-content: center;
+		border-radius: 0 !important;
+
+		button {
+			text-align: center;
+		}
+	}
+	.more-stats-button {
+		border-radius: 0 !important;
+		border-right-width: 0;
+
+		button {
+			min-width: 66.67%;
+			display: block;
+		}
+	}
+}
+@media (max-width: $min-width-site) {
+	.deck-header {
+		display: flex;
+		flex-wrap: wrap;
+		border-radius: $lhse/2;
+		align-items: stretch;
+		background: $color-group-bg;
+	}
+	.deck-info {
+		flex-direction: column;
+		order: 2;
+		justify-content: space-around;
+		flex-grow: 1;
+		text-align: center;
+		border-top-width: 0px !important;
+		border-right-width: 1px !important;
+		border-left-width: 0 !important;
+		border-bottom-width: 0 !important;
+		
+		&:nth-last-of-type(2) {
+			border-right-width: 0 !important;
+		}
+		h3 {
+			text-align: center;
+			margin: 0;
+			max-width: 6.125em;
+		}
+		.output {
+			display: flex;
+			height: $line-height-standard * 1.75rem;
+			align-items: center;
+		}
+	}
+	.deck-name,
+	.more-stats-button {
+		border-top-width: 0 !important;
+		border-bottom-width: 1px !important;
+		height: auto;
+	}
+	.deck-name {
+		order: 0;
+		flex-grow: 1;
+		flex-basis: calc(100% - 7.5em);
+		border-right-width: 0 !important;
+	}
+	.more-stats-button {
+		border-right-width: 0 !important;
+		order: 1;
+	}
+	.card-total {
+		.warning-symbol {
+			margin-left: .125em;
+			margin-bottom: -.2em;
+		}
+	}
+}
+@media (max-width: $min-width-site * .75) {
+	.deck-header {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto 1fr 1fr;
+	}
+	.deck-name {
+		grid-column: span 3;
+	}
+	.deck-info,
+	.more-stats-button {
+		order: 1;
+	}
+	.deck-info {
+		border-top-width: 0 !important;
+		border-right-width: 0 !important;
+		border-bottom-width: 1px !important;
+		border-left-width: 1px !important;
+
+		&:last-of-type(),
+		&:nth-last-of-type(2),
+		&:nth-last-of-type(3) {
+			border-bottom-width: 0 !important;
+		}
+		&:first-of-type,
+		&:nth-of-type(2),
+		&:nth-of-type(5) {
+			border-left-width: 0 !important;
+		}
+		.output {
+			height: auto;
+		}
+		h3 {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	.more-stats-button {
+		a {
+			white-space: normal;
+		}
+	}
+}
+@media (max-width: $min-width-site * .5) {
+	.deck-header {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(4, 1fr);
+	}
+	.deck-info {
+		border-top-width: 0 !important;
+		border-right-width: 0 !important;
+		border-bottom-width: 1px !important;
+		border-left-width: 1px !important;
+		justify-content: center;
+
+		&:nth-of-type(4),
+		&:nth-last-of-type(2) {
+			border-left-width: 0 !important;
+		}
+		&:nth-last-of-type(3) {
+			border-left-width: 1px !important;
+			border-bottom-width: 1px !important;
+		}
+
+	}
+	.deck-name {
+		grid-column: span 2;
+	}
+	.deck-colors {
+		.output {
+			margin-top: $lhse/3;
+		}
+	}
+	.date-edited {
+		.output {
+			margin-top: $lhse/4;
 		}
 	}
 }

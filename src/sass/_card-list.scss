@@ -86,19 +86,17 @@
 	
 				&.white {
 					@include box-shadow-hover-card-button(
-						$color-mana-white,
-						$lhse/2
+						$color-mana-white
 					);
 				}
 				&.blue {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-blue, 50%), 25%),
+						saturate(darken($color-mana-blue, 50%), 25%)
 					);
 				}
 				&.black {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-black, 50%), 25%),
-						$lhse/4
+						saturate(darken($color-mana-black, 50%), 25%)
 					);
 				}
 				&.red {

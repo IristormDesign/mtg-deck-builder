@@ -2,7 +2,10 @@
 	<section class="deck-info deck-colors">
 		<h3>Using Colors</h3>
 
-		<div class="output" v-html="deckColors()"></div>
+		<div
+			class="output"
+			:class="(lotsOfColors) ? 'four-or-more-colors' : null"
+			v-html="getDeckColors()"></div>
 	</section>
 </template>
 
@@ -11,8 +14,13 @@ export default {
 	props: {
 		deck: Object
 	},
+	data () {
+		return {
+			lotsOfColors: false
+		}
+	},
 	methods: {
-		deckColors () {
+		getDeckColors () {
 			const deckColors = []
 
 			this.deck.cards.forEach(card => {
@@ -32,24 +40,35 @@ export default {
 			})
 
 			let htmlOutput = ''
-			const symbol = this.$store.state.manaSymbol
 
-			deckColors.forEach(color => {
-				if (color === 'W') {
-					htmlOutput += symbol.w
-				} else if (color === 'U') {
-					htmlOutput += symbol.u
-				} else if (color === 'B') {
-					htmlOutput += symbol.b
-				} else if (color === 'R') {
-					htmlOutput += symbol.r
-				} else if (color === 'G') {
-					htmlOutput += symbol.g
-				}
-			})
-
-			if (htmlOutput === '') {
+			if (deckColors.length === 0) {
 				htmlOutput = '<span class="no-colors">0</span>'
+			} else {
+				const symbol = this.$store.state.manaSymbol
+
+				deckColors.forEach(color => {
+					if (color === 'W') {
+						htmlOutput += symbol.w
+					} else if (color === 'U') {
+						htmlOutput += symbol.u
+					} else if (color === 'B') {
+						htmlOutput += symbol.b
+					} else if (color === 'R') {
+						htmlOutput += symbol.r
+					} else if (color === 'G') {
+						htmlOutput += symbol.g
+					}
+				})
+
+				if (deckColors.length >= 3) {
+					const excludeMulticolorItem = deckColors.filter(
+						value => value !== 'multicolor'
+					)
+
+					if (excludeMulticolorItem.length >= 4) {
+						this.lotsOfColors = true
+					}
+				}
 			}
 
 			return htmlOutput
