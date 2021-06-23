@@ -1,6 +1,46 @@
 @mixin box-shadow-hover-card-button($color, $width: 0) {
 	box-shadow: 0 0 $width $color, 0 0 0 2.5px $color;
 }
+@mixin long-card-buttons {
+	.card-list {
+		.list-headings {
+			display: flex;
+		}
+		.card-button {
+			display: flex;
+		}
+		.card-label-group {
+			width: 50%;
+			padding: 0 $lhse/5;
+
+			&:last-of-type {
+				border-top: none;
+				margin-top: 0;
+			}
+		}
+	}
+}
+@mixin condensed-card-buttons {
+	.card-list {
+		.list-headings {
+			display: none;
+		}
+		.card-button {
+			display: block;
+		}
+		.card-label-group {
+			width: 100%;
+			padding: 0 $lhse/3;
+
+			&:last-of-type {
+				border-top: 1px solid rgba(#000, .25);
+				margin-top: 2px;
+			}
+		}
+	}
+}
+
+@include long-card-buttons;
 
 .card-list {
 	margin-bottom: $lhse/4;
@@ -17,16 +57,10 @@
 	h3 {
 		@extend .screen-readers-only;
 	}
-	.list-headings
-	.card-button {
-		display: flex;
-	}
 	.card-label-group {
-		width: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 $lhse/5;
 
 		&:last-of-type {
 			padding-left: (1/48) * 100%;
@@ -220,7 +254,6 @@
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
-		display: flex;
 		align-items: center;
 		box-shadow: 0 1px 0 1px rgba(#000, .6667);
 		
@@ -270,24 +303,13 @@
 	}
 }
 @media (max-width: $width-site-breakpoint-tablet) {
-	.card-list {
-		.list-headings {
-			display: none;
-		}
-		.card-button {
-			display: block;
-			
-			.card-label-group {
-				width: 100%;
-				padding: 0 $lhse/3;
-
-				&:last-of-type {
-					border-top: 1px solid rgba(#000, .25);
-					margin-top: 2px;
-				}
-			}
-		}
-	}
+	@include condensed-card-buttons();
+}
+@media (max-width: $min-width-site * .8) {
+	@include long-card-buttons();
+}
+@media (max-width: $min-width-site * .6667) {
+	@include condensed-card-buttons();
 }
 @media (pointer: coarse) {
 	.card-list {

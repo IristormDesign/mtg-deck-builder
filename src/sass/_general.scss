@@ -158,13 +158,15 @@ img {
 	}
 }
 
+@media (max-width: $min-width-site*.875) {
+	.wrap {
+		padding: 0 $lhse/2;
+	}
+}
 @media (max-width: $min-width-site*.625) {
 	.fade-bg {
 		&.texture-bg {
 			background-image: none;
 		}
-	}
-	.wrap {
-		padding: 0 $lhse/2;
 	}
 }

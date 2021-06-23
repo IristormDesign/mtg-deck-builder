@@ -115,3 +115,11 @@ $animation-duration-card-browse: .375s;
 		grid-column: span 3;
 	}
 }
+@media (max-width: $min-width-site * .8) {
+	.card-display {
+		position: static;
+		max-width: (672px / 2);
+		max-height: (936px / 2);
+		margin: 0 auto $lhse/2;
+	}
+}

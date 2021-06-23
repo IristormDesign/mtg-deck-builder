@@ -21,3 +21,9 @@
 		grid-column: 4 / 8;
 	}
 }
+
+@media (max-width: $min-width-site * .8) {
+	.card-display-scroll-view {
+		display: block;
+	}
+}

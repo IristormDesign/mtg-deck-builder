@@ -113,7 +113,7 @@
 			<p>Adjacent to each card button in the card list is a number representing the quantity (“Qty.”) of that card in the deck.</p>
 			<p>Click on a card’s quantity to make an input box appear in which you can change the number. On most web browsers, the input box also has a pair of arrow buttons that let you increase or decrease the number by one.</p>
 			<p>To remove a card from the deck, lower its quantity to zero. You’ll then be prompted to confirm you want to remove that card. If not, then the quantity resets to one.</p>
-			<p>In accordance to <i>Magic</i>’s rules, a deck may not have a quantity of a card of a particular name greater than four, with the exception of the cards of the “basic land” type which are unlimited.</p>
+			<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except the cards of the “basic land” type which can have any quantity.</p>
 		</section>
 		<section>
 			<h4>Card Adder</h4>
