@@ -62,6 +62,9 @@ export default {
 		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
 	},
 	methods: {
+		alertTooLong () {
+			alert('⚠ The Scryfall web server seems to be taking too long to respond. Please try again at a later time.')
+		},
 		autocompleteName () {
 			const query = this.cardNameInput
 
@@ -108,9 +111,20 @@ export default {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
+				// Cancel when 15 seconds pass.
+				setTimeout(() => {
+					this.alertTooLong()
+					axios.CancelToken.source().cancel()
+					this.loadingCard = false
+					this.delay = false
+				}, 15000)
+
 				if (cardNameInput.toLowerCase() === '[random]') {
 					axios
-						.get('https://api.scryfall.com/cards/random?q=legal%3Amodern') // Get a random card that's legal in Modern tournaments.
+						.get(
+							'https://api.scryfall.com/cards/random?q=legal%3Amodern', // Get a random card that's legal in Modern tournaments.
+							{ cancelToken: axios.CancelToken.source().token }
+						)
 						.then(response => {
 							this.getTheCard(response.data.name)
 						})
@@ -139,13 +153,6 @@ export default {
 				this.loadingCard = false
 				this.delay = false
 			} else {
-				const cancelTokenSource = axios.CancelToken.source()
-
-				// Cancel when 15 seconds pass.
-				setTimeout(() => {
-					cancelTokenSource.cancel()
-				}, 15000)
-
 				console.log(`Request Scryfall API for "${query}" data.`)
 
 				query = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -153,7 +160,7 @@ export default {
 				axios
 					.get(
 						'https://api.scryfall.com/cards/named?fuzzy=' + query,
-						{ cancelToken: cancelTokenSource.token }
+						{ cancelToken: axios.CancelToken.source().token }
 					)
 					.then(response => {
 						const rd = response.data
@@ -218,7 +225,7 @@ export default {
 					})
 					.catch(error => {
 						if (axios.isCancel(error)) {
-							alert('⚠ The Scryfall server is taking too long to respond. Try again later.')
+							this.alertTooLong()
 						} else {
 							alert(`⚠ Error: ${error.response.data.details}`)
 							console.log(error)
