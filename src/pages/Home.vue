@@ -26,6 +26,10 @@
 		</section>
 		<section class="app-features">
 			<div class="wrap">
+				<img
+					srcset="@/img/deck-page-screenshot.jpg 1x, @/img/deck-page-screenshot-2x.jpg 2x"
+					src="@/img/deck-page-screenshot.jpg" width="668" height="575"
+					alt="Screenshot of MTG Deck Builder" loading="lazy" />
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
@@ -39,10 +43,6 @@
 						<li>Attractive, easy-to-use graphical user interface</li>
 					</ul>
 				</div>
-				<img
-					srcset="@/img/deck-page-screenshot.jpg 1x, @/img/deck-page-screenshot-2x.jpg 2x"
-					src="@/img/deck-page-screenshot.jpg" width="668" height="575"
-					alt="Screenshot of MTG Deck Builder" loading="lazy" />
 				<p class="centered-p">Click on the “Open Deck” button at the top to begin, or the “Manual” button for more info!</p>
 			</div>
 		</section>

@@ -4,7 +4,7 @@
 	border-radius: $border-radius-group;
 	padding: $lhse/2 $lhse;
 	margin: $lhse;
-	max-width: 64ch;
+	max-width: $max-width-content;
 	min-width: 0;
 
 	section {
