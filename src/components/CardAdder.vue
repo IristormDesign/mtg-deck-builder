@@ -113,10 +113,12 @@ export default {
 
 				// Cancel when 15 seconds pass.
 				setTimeout(() => {
-					this.alertTooLong()
-					axios.CancelToken.source().cancel()
-					this.loadingCard = false
-					this.delay = false
+					if (this.loadingCard) {
+						this.alertTooLong()
+						axios.CancelToken.source().cancel()
+						this.loadingCard = false
+						this.delay = false
+					}
 				}, 15000)
 
 				if (cardNameInput.toLowerCase() === '[random]') {
