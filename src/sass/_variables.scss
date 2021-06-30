@@ -65,7 +65,7 @@ $box-shadows-card-button:
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse/2;
-$layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay;
+$layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid desaturate(lighten($color-group-bg, 37.5%), 12.5%);
 $border-special: 3px solid $color-mythic-dim;
@@ -81,6 +81,18 @@ $x: 2px dashed rgba(#c0f, .75);
 	border: $border-sections;
 	box-shadow: -.125em .25em .5em rgba(#000, .5);
 	background: $color-group-bg;
+}
+@mixin overlay-bg {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(darken($color-content-bg, 25%), .6667);
+	z-index: index($layers, bg-overlay);
+	backdrop-filter: blur(4px);
 }
 
 @font-face {

@@ -329,17 +329,8 @@
 	}
 }
 .bg-overlay {
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
+	@include overlay-bg;
 	transition: all $transition-duration-standard ease;
-	background: rgba(darken($color-content-bg, 33.33%), .5);
-	z-index: index($layers, bg-overlay);
-	backdrop-filter: blur(4px);
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
 }
 .overlay-enter,
 .overlay-leave-to {

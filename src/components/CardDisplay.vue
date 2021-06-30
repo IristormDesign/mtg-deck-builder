@@ -1,31 +1,46 @@
 <template>
-	<section class="card-display">
-		<transition
-			v-for="card in deck.cards" :key="card.name"
-			name="card-browse" appear appear-active-class="card-browse-appear-active"
+	<transition name="cdo-fade">
+		<section
+			class="card-display" v-show="$store.state.showCard" @click="hideCDOverlay()"
 		>
-			<a
-				v-if="deck.viewedCard === card.name"
-				:key="card.name" :class="card.colors[0]" :href="card.link"
-				target="_blank" rel="noopener noreferrer"
-				title="Click to open this card’s page on Scryfall"
+			<transition
+				v-for="card in deck.cards" :key="card.name"
+				name="card-browse" appear appear-active-class="card-browse-appear-active"
 			>
-				<div class="loading-indicator">
-					Loading image&hellip;
-				</div>
-				<img
-					:src="card.img" :alt="card.name"
-					width="488" height="680"
-				/>
-			</a>
-		</transition>
-	</section>
+				<a
+					v-if="deck.viewedCard === card.name" :class="card.colors[0]"
+					:href="card.link" target="_blank" rel="noopener noreferrer"
+					:key="card.name" title="Click to open this card’s page on Scryfall"
+				>
+					<div class="loading-indicator">
+						Loading image&hellip;
+					</div>
+					<img :src="card.img" width="488" height="680" :alt="card.name" />
+				</a>
+			</transition>
+			<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
+				×
+			</button>
+		</section>
+	</transition>
 </template>
 
 <script>
 export default {
 	props: {
 		deck: Object
+	},
+	mounted () {
+		if (window.innerWidth > 768) { // Must match media query width in CSS.
+			this.$store.commit('setShowCard', true)
+		} else {
+			this.$store.commit('setShowCard', false)
+		}
+	},
+	methods: {
+		hideCDOverlay () {
+			this.$store.commit('setShowCard', false)
+		}
 	}
 }
 </script>

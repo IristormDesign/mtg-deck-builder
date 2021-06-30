@@ -4,7 +4,7 @@
 	position: sticky;
 	top: $lhse + $height-site-header;
 	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
-		
+	
 	a {
 		position: absolute;
 		display: block;
@@ -72,6 +72,9 @@
 		height: auto;
 		position: relative;
 	}
+	.close {
+		display: none;
+	}
 }
 
 $animation-duration-card-browse: .375s;
@@ -115,11 +118,44 @@ $animation-duration-card-browse: .375s;
 		grid-column: span 3;
 	}
 }
-@media (max-width: $min-width-site * .8) {
+@media (max-width: 768px) { // Must match window width in JavaScript.
 	.card-display {
-		position: static;
-		max-width: (672px / 2);
-		max-height: (936px / 2);
-		margin: 0 auto $lhse/2;
+		@include overlay-bg;
+		z-index: index($layers, card-overlay);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		will-change: opacity;
+
+		a {
+			max-width: (488px * .6667);
+			max-height: (680px * .6667);
+		}
+		.card-browse-leave-active {
+			display: none;
+		}
+		.close {
+			display: block;
+			position: absolute;
+			top: $lhse/4;
+			right: $lhse/4;
+			min-width: $lhse*.75;
+			font-size: 133.33%;
+			padding: 0;
+			padding-bottom: 2px;
+		}
+	}
+	.cdo-fade {
+		&-enter-active,
+		&-leave-active {
+			transition: opacity $animation-duration-card-browse ease-out;
+		}
+		&-leave-active {
+			transition-duration: $animation-duration-card-browse/2;
+		}
+		&-enter,
+		&-leave-to {
+			opacity: 0;
+		}
 	}
 }

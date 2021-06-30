@@ -71,6 +71,7 @@ export default {
 		viewCard (card) {
 			this.deck.viewedCard = card.name
 			this.$store.commit('setDecks', this.$store.state.decks)
+			this.$store.commit('setShowCard', true)
 		},
 		colorButton (card) {
 			const colors = card.colors
@@ -172,7 +173,7 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						card.qty = 4
-						alert('⚠ A deck can have no more than four of any card with a particular name other than basic land cards.')
+						alert('⚠ A deck can have no more than 4 of any card with a particular name other than basic land cards.')
 					}
 				}
 				saveChanges()

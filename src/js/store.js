@@ -18,6 +18,7 @@ export default new Vuex.Store({
 		decks: defaultDecks,
 		deletedDeckName: null,
 		moreStatsDeck: null,
+		showCard: false,
 		sortAttribute: 'type',
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
@@ -81,6 +82,9 @@ export default new Vuex.Store({
 		},
 		setSortAttribute (state, payload) {
 			state.sortAttribute = payload
+		},
+		setShowCard (state, payload) {
+			state.showCard = payload
 		},
 		sortDeckMenu: (state) => {
 			state.decks.sort((a, b) => {
