@@ -90,7 +90,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(darken($color-content-bg, 25%), .6667);
+	background: rgba(darken($color-content-bg, 33.33%), .6667);
 	z-index: index($layers, bg-overlay);
 	backdrop-filter: blur(4px);
 }

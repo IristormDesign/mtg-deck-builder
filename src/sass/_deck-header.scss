@@ -205,6 +205,7 @@
 }
 @media (max-width: $min-width-site * .75) {
 	.deck-header {
+		margin-top: $lhse/2;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto 1fr 1fr;

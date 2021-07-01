@@ -8,9 +8,10 @@
 				name="card-browse" appear appear-active-class="card-browse-appear-active"
 			>
 				<a
-					v-if="deck.viewedCard === card.name" :class="card.colors[0]"
-					:href="card.link" target="_blank" rel="noopener noreferrer"
-					:key="card.name" title="Click to open this card’s page on Scryfall"
+					v-if="deck.viewedCard === card.name" :key="card.name"
+					:class="card.colors[0]" :href="card.link"
+					target="_blank" rel="noopener noreferrer"
+					title="Click to open this card’s page on Scryfall"
 				>
 					<div class="loading-indicator">
 						Loading image&hellip;
@@ -31,15 +32,20 @@ export default {
 		deck: Object
 	},
 	mounted () {
-		if (window.innerWidth > 768) { // Must match media query width in CSS.
-			this.$store.commit('setShowCard', true)
-		} else {
+		if (this.mobileBreakpoint()) {
 			this.$store.commit('setShowCard', false)
+		} else {
+			this.$store.commit('setShowCard', true)
 		}
 	},
 	methods: {
+		mobileBreakpoint () {
+			return window.innerWidth <= 768 // Must match media query's width in CSS.
+		},
 		hideCDOverlay () {
-			this.$store.commit('setShowCard', false)
+			if (this.mobileBreakpoint()) {
+				this.$store.commit('setShowCard', false)
+			}
 		}
 	}
 }

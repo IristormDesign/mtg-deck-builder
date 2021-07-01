@@ -171,15 +171,14 @@
 }
 @media (max-width: $min-width-site) {
 	.site-header {
+		font-size: 87.5%;
+
 		.wrap {
 			display: flex;
 		}
 		.site-title {
 			white-space: nowrap;
 			margin-right: $lhse/2;
-		}
-		.by-iristorm {
-			display: none;
 		}
 		.site-menu {
 			> ul {
@@ -190,25 +189,12 @@
 }
 @media (max-width: $min-width-site*.875) {
 	.site-header {
-		height: auto;
-
-		.wrap {
-			display: block;
-		}
-		.site-title {
-			width: 100%;
-			text-align: center;
-			font-size: 87.5%;
-		}
 		.by-iristorm {
-			display: inline-block;
-		}
-		.site-menu {
-			padding-bottom: $lhse/4;
+			display: none;
 		}
 	}
 }
-@media (min-width: ($width-mobile-breakpoint + 1px)) {
+@media (min-width: ($min-width-site * .75)) {
 	.site-header {
 		.site-menu-toggler {
 			display: none;
@@ -218,12 +204,8 @@
 		}
 	}
 }
-
-@media (max-width: $width-mobile-breakpoint) {
+@media (max-width: $min-width-site * .75) {
 	.site-header {
-		.wrap {
-			display: flex;
-		}
 		.site-title {
 			text-align: left;
 			width: auto;
@@ -235,6 +217,7 @@
 		.site-menu-toggler {
 			z-index: index($layers, above-overlay);
 			font-size: 87.5%;
+			display: block;
 		}
 		.site-menu {
 			@include popup;
@@ -242,7 +225,6 @@
 			right: $lhse/4;
 			top: $height-site-header;
 			width: auto;
-			padding-bottom: 0;
 			margin: -$lhse/8 0 0;
 			overflow-y: auto;
 			max-height: 75vh;
