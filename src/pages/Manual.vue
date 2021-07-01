@@ -179,10 +179,10 @@
 			<li>Types</li>
 			<li>Subtypes</li>
 			<li>Rarities</li>
-			<li>Miscellaneous attributes</li>
+			<li>Other attributes—This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
 		</ul>
 		<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
-		<p>In some of these categories, the combined values of a table may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. This can happen when any cards have multiple properties within a single category. For example, the Types table would count a card that has the type “artifact creature” as both a creature and an artifact.</p>
+		<p>Cards can have multiple properties within a single category table. For example, the Types table would count a card that has the type “artifact creature” as both a creature <em>and</em> an artifact. Therefore, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 		<h3>Storage of App Data</h3>
 		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app on their own browsers can’t see your decks, or you theirs, and deck data can’t be transferred between browsers.</p>

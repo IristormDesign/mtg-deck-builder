@@ -8,7 +8,6 @@
 		</h3>
 
 		<div class="tables">
-
 			<section>
 				<h4>Colors of Spells</h4>
 				<table>
@@ -19,8 +18,8 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr :class="dimRow(countColor('white'))">
+					<tbody v-if="!emptyTable('color')">
+						<tr v-show="countColor('white')">
 							<th>
 								<div class="vert-center-cell">
 									<small>White</small>
@@ -30,7 +29,7 @@
 							<td>{{ countColor('white') }}</td>
 							<td>{{ calculatePercentage(countColor('white')) }}</td>
 						</tr>
-						<tr :class="dimRow(countColor('blue'))">
+						<tr v-show="countColor('blue')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Blue</small>
@@ -40,7 +39,7 @@
 							<td>{{ countColor('blue') }}</td>
 							<td>{{ calculatePercentage(countColor('blue')) }}</td>
 						</tr>
-						<tr :class="dimRow(countColor('black'))">
+						<tr v-show="countColor('black')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Black</small>
@@ -50,7 +49,7 @@
 							<td>{{ countColor('black') }}</td>
 							<td>{{ calculatePercentage(countColor('black')) }}</td>
 						</tr>
-						<tr :class="dimRow(countColor('red'))">
+						<tr v-show="countColor('red')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Red</small>
@@ -60,7 +59,7 @@
 							<td>{{ countColor('red') }}</td>
 							<td>{{ calculatePercentage(countColor('red')) }}</td>
 						</tr>
-						<tr :class="dimRow(countColor('green'))">
+						<tr v-show="countColor('green')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Green</small>
@@ -70,10 +69,17 @@
 							<td>{{ countColor('green') }}</td>
 							<td>{{ calculatePercentage(countColor('green')) }}</td>
 						</tr>
-						<tr :class="dimRow(countColor('colorless'))">
+						<tr v-show="countColor('colorless')">
 							<th>Colorless</th>
 							<td>{{ countColor('colorless') }}</td>
 							<td>{{ calculatePercentage(countColor('colorless')) }}</td>
+						</tr>
+					</tbody>
+					<tbody v-else>
+						<tr>
+							<th><i>(None)</i></th>
+							<td>—</td>
+							<td>—</td>
 						</tr>
 					</tbody>
 				</table>
@@ -89,51 +95,58 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr :class="dimRow(countCmc(0))">
+					<tbody v-if="!emptyTable('cmc')">
+						<tr v-show="countCmc(0)">
 							<th>0</th>
 							<td>{{ countCmc(0) }}</td>
 							<td>{{ calculatePercentage(countCmc(0)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(1))">
+						<tr v-show="countCmc(1)">
 							<th>1</th>
 							<td>{{ countCmc(1) }}</td>
 							<td>{{ calculatePercentage(countCmc(1)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(2))">
+						<tr v-show="countCmc(2)">
 							<th>2</th>
 							<td>{{ countCmc(2) }}</td>
 							<td>{{ calculatePercentage(countCmc(2)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(3))">
+						<tr v-show="countCmc(3)">
 							<th>3</th>
 							<td>{{ countCmc(3) }}</td>
 							<td>{{ calculatePercentage(countCmc(3)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(4))">
+						<tr v-show="countCmc(4)">
 							<th>4</th>
 							<td>{{ countCmc(4) }}</td>
 							<td>{{ calculatePercentage(countCmc(4)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(5))">
+						<tr v-show="countCmc(5)">
 							<th>5</th>
 							<td>{{ countCmc(5) }}</td>
 							<td>{{ calculatePercentage(countCmc(5)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(6))">
+						<tr v-show="countCmc(6)">
 							<th>6</th>
 							<td>{{ countCmc(6) }}</td>
 							<td>{{ calculatePercentage(countCmc(6)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(7))">
+						<tr v-show="countCmc(7)">
 							<th>7</th>
 							<td>{{ countCmc(7) }}</td>
 							<td>{{ calculatePercentage(countCmc(7)) }}</td>
 						</tr>
-						<tr :class="dimRow(countCmc(8))">
+						<tr v-show="countCmc(8)">
 							<th>8+</th>
 							<td>{{ countCmc(8) }}</td>
 							<td>{{ calculatePercentage(countCmc(8)) }}</td>
+						</tr>
+					</tbody>
+					<tbody v-else>
+						<tr>
+							<th><i>(None)</i></th>
+							<td>—</td>
+							<td>—</td>
 						</tr>
 					</tbody>
 				</table>
@@ -149,41 +162,53 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr :class="dimRow(countTypes('creature'))">
+					<tbody v-if="!emptyTable('type')">
+						<tr v-show="countTypes('creature')">
 							<th>Creature</th>
 							<td>{{ countTypes('creature') }}</td>
 							<td>{{ calculatePercentage(countTypes('creature')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('planeswalker'))">
+						<tr v-show="countTypes('planeswalker')">
 							<th>Planeswalker</th>
 							<td>{{ countTypes('planeswalker') }}</td>
 							<td>{{ calculatePercentage(countTypes('planeswalker')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('enchantment'))">
+						<tr v-show="countTypes('enchantment')">
 							<th>Enchantment</th>
 							<td>{{ countTypes('enchantment') }}</td>
 							<td>{{ calculatePercentage(countTypes('enchantment')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('artifact'))">
+						<tr v-show="countTypes('artifact')">
 							<th>Artifact</th>
 							<td>{{ countTypes('artifact') }}</td>
 							<td>{{ calculatePercentage(countTypes('artifact')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('sorcery'))">
+						<tr v-show="countTypes('sorcery')">
 							<th>Sorcery</th>
 							<td>{{ countTypes('sorcery') }}</td>
 							<td>{{ calculatePercentage(countTypes('sorcery')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('instant'))">
+						<tr v-show="countTypes('instant')">
 							<th>Instant</th>
 							<td>{{ countTypes('instant') }}</td>
 							<td>{{ calculatePercentage(countTypes('instant')) }}</td>
 						</tr>
-						<tr :class="dimRow(countTypes('land'))">
+						<tr v-show="countTypes('land')">
 							<th>Land</th>
 							<td>{{ countTypes('land') }}</td>
 							<td>{{ calculatePercentage(countTypes('land')) }}</td>
+						</tr>
+						<tr v-show="countTypes('other')">
+							<th>Other</th>
+							<td>{{ countTypes('other') }}</td>
+							<td>{{ calculatePercentage(countTypes('other')) }}</td>
+						</tr>
+					</tbody>
+					<tbody v-else>
+						<tr>
+							<th><i>(None)</i></th>
+							<td>—</td>
+							<td>—</td>
 						</tr>
 					</tbody>
 				</table>
@@ -207,7 +232,7 @@
 						</tr>
 					</tbody>
 					<tbody v-else>
-						<tr class="dim-row">
+						<tr>
 							<th><i>(None)</i></th>
 							<td>—</td>
 							<td>—</td>
@@ -226,8 +251,8 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr :class="dimRow(countRarities('c'))">
+					<tbody v-if="!emptyTable('rarity')">
+						<tr v-show="countRarities('c')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Common</small>
@@ -237,7 +262,7 @@
 							<td>{{ countRarities('c') }}</td>
 							<td>{{ calculatePercentage(countRarities('c')) }}</td>
 						</tr>
-						<tr :class="dimRow(countRarities('u'))">
+						<tr v-show="countRarities('u')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Uncommon</small>
@@ -247,7 +272,7 @@
 							<td>{{ countRarities('u') }}</td>
 							<td>{{ calculatePercentage(countRarities('u')) }}</td>
 						</tr>
-						<tr :class="dimRow(countRarities('r'))">
+						<tr v-show="countRarities('r')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Rare</small>
@@ -257,7 +282,7 @@
 							<td>{{ countRarities('r') }}</td>
 							<td>{{ calculatePercentage(countRarities('r')) }}</td>
 						</tr>
-						<tr :class="dimRow(countRarities('m'))">
+						<tr v-show="countRarities('m')">
 							<th>
 								<div class="vert-center-cell">
 									<small>Mythic Rare</small>
@@ -278,6 +303,13 @@
 							<td>{{ calculatePercentage(countRarities('s')) }}</td>
 						</tr>
 					</tbody>
+					<tbody v-else>
+						<tr>
+							<th><i>(None)</i></th>
+							<td>—</td>
+							<td>—</td>
+						</tr>
+					</tbody>
 				</table>
 			</section>
 
@@ -291,31 +323,38 @@
 							<th>Percent</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr :class="dimRow(countMisc('legendary'))">
+					<tbody v-if="!emptyTable('misc')">
+						<tr v-show="countMisc('legendary')">
 							<th>Legendary</th>
 							<td>{{ countMisc('legendary') }}</td>
 							<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
 						</tr>
-						<tr :class="dimRow(countMisc('basic land'))">
+						<tr v-show="countMisc('basic land')">
 							<th>Basic Land</th>
 							<td>{{ countMisc('basic land') }}</td>
 							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
 						</tr>
-						<tr :class="dimRow(countMisc('monocolored'))">
+						<tr v-show="countMisc('monocolored')">
 							<th>Monocolored</th>
 							<td>{{ countMisc('monocolored') }}</td>
 							<td>{{ calculatePercentage(countMisc('monocolored')) }}</td>
 						</tr>
-						<tr :class="dimRow(countMisc('multicolored'))">
+						<tr v-show="countMisc('multicolored')">
 							<th>Multicolored</th>
 							<td>{{ countMisc('multicolored') }}</td>
 							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
 						</tr>
-						<tr :class="dimRow(countMisc('double-faced'))">
+						<tr v-show="countMisc('double-faced')">
 							<th>Double-Faced</th>
 							<td>{{ countMisc('double-faced') }}</td>
 							<td>{{ calculatePercentage(countMisc('double-faced')) }}</td>
+						</tr>
+					</tbody>
+					<tbody v-else>
+						<tr>
+							<th><i>(None)</i></th>
+							<td>—</td>
+							<td>—</td>
 						</tr>
 					</tbody>
 				</table>
@@ -348,13 +387,6 @@ export default {
 		this.displaySubtypes()
 	},
 	methods: {
-		dimRow (row) {
-			if (row === 0) {
-				return 'dim-row'
-			} else {
-				return null
-			}
-		},
 		countCmc (givenCmc) {
 			const counts = {
 				cmc0: 0,
@@ -465,13 +497,6 @@ export default {
 			}
 		},
 		countTypes (givenType) {
-			const regexCreature = RegExp(/\bCreature\b/)
-			const regexPlaneswalker = RegExp(/\bPlaneswalker\b/)
-			const regexEnchantment = RegExp(/\bEnchantment\b/)
-			const regexArtifact = RegExp(/\bArtifact\b/)
-			const regexSorcery = RegExp(/\bSorcery\b/)
-			const regexInstant = RegExp(/\bInstant\b/)
-			const regexLand = RegExp(/\bLand\b/)
 			const counts = {
 				creature: 0,
 				planeswalker: 0,
@@ -479,31 +504,58 @@ export default {
 				artifact: 0,
 				sorcery: 0,
 				instant: 0,
-				land: 0
+				land: 0,
+				other: 0
+			}
+			const regexCreature = RegExp(/\bCreature\b/)
+			const regexPlaneswalker = RegExp(/\bPlaneswalker\b/)
+			const regexEnchantment = RegExp(/\bEnchantment\b/)
+			const regexArtifact = RegExp(/\bArtifact\b/)
+			const regexSorcery = RegExp(/\bSorcery\b/)
+			const regexInstant = RegExp(/\bInstant\b/)
+			const regexLand = RegExp(/\bLand\b/)
+
+			function otherType (cardType) {
+				if (
+					!regexCreature.test(cardType) &&
+					!regexPlaneswalker.test(cardType) &&
+					!regexEnchantment.test(cardType) &&
+					!regexArtifact.test(cardType) &&
+					!regexSorcery.test(cardType) &&
+					!regexInstant.test(cardType) &&
+					!regexLand.test(cardType)
+				) {
+					return true
+				}
 			}
 
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
-					if (regexCreature.test(card.type)) {
+					const cardType = card.type
+
+					if (regexCreature.test(cardType)) {
 						counts.creature++
 					}
-					if (regexPlaneswalker.test(card.type)) {
+					if (regexPlaneswalker.test(cardType)) {
 						counts.planeswalker++
 					}
-					if (regexEnchantment.test(card.type)) {
+					if (regexEnchantment.test(cardType)) {
 						counts.enchantment++
 					}
-					if (regexArtifact.test(card.type)) {
+					if (regexArtifact.test(cardType)) {
 						counts.artifact++
 					}
-					if (regexSorcery.test(card.type)) {
+					if (regexSorcery.test(cardType)) {
 						counts.sorcery++
 					}
-					if (regexInstant.test(card.type)) {
+					if (regexInstant.test(cardType)) {
 						counts.instant++
 					}
-					if (regexLand.test(card.type)) {
+					if (regexLand.test(cardType)) {
 						counts.land++
+					}
+					if (otherType(cardType)) {
+						counts.other++
 					}
 				}
 			})
@@ -523,8 +575,8 @@ export default {
 				return counts.instant
 			case 'land':
 				return counts.land
-			case 'others':
-				return counts.others
+			case 'other':
+				return counts.other
 			}
 		},
 		countRarities (givenRarity) {
@@ -642,9 +694,6 @@ export default {
 			})
 		},
 		countMisc (givenValue) {
-			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
-			const regexLegendary = RegExp(/\bLegendary\b/)
-			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 			const counts = {
 				monocolored: 0,
 				multicolored: 0,
@@ -652,6 +701,9 @@ export default {
 				legendary: 0,
 				doubleFaced: 0
 			}
+			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
+			const regexLegendary = RegExp(/\bLegendary\b/)
+			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
@@ -695,13 +747,69 @@ export default {
 				}
 			})
 
-			let percentage = ((givenValue / deckTotal) * 100).toFixed(1)
-
-			if (isNaN(percentage)) {
-				percentage = '0.0'
-			}
+			const percentage = ((givenValue / deckTotal) * 100).toFixed(1)
 
 			return percentage + '%'
+		},
+		emptyTable (category) {
+			if (category === 'color') {
+				if (
+					this.countColor('white') === 0 &&
+					this.countColor('blue') === 0 &&
+					this.countColor('black') === 0 &&
+					this.countColor('red') === 0 &&
+					this.countColor('green') === 0
+				) {
+					return true
+				}
+			} else if (category === 'cmc') {
+				if (
+					this.countCmc(0) === 0 &&
+					this.countCmc(1) === 0 &&
+					this.countCmc(2) === 0 &&
+					this.countCmc(3) === 0 &&
+					this.countCmc(4) === 0 &&
+					this.countCmc(5) === 0 &&
+					this.countCmc(6) === 0 &&
+					this.countCmc(7) === 0 &&
+					this.countCmc(8) === 0
+				) {
+					return true
+				}
+			} else if (category === 'type') {
+				if (
+					this.countTypes('creature') === 0 &&
+					this.countTypes('planeswalker') === 0 &&
+					this.countTypes('enchantment') === 0 &&
+					this.countTypes('artifact') === 0 &&
+					this.countTypes('sorcery') === 0 &&
+					this.countTypes('instant') === 0 &&
+					this.countTypes('land') === 0 &&
+					this.countTypes('other') === 0
+				) {
+					return true
+				}
+			} else if (category === 'rarity') {
+				if (
+					this.countRarities('c') === 0 &&
+					this.countRarities('u') === 0 &&
+					this.countRarities('r') === 0 &&
+					this.countRarities('m') === 0 &&
+					this.countRarities('s') === 0
+				) {
+					return true
+				}
+			} else if (category === 'misc') {
+				if (
+					this.countMisc('monocolored') === 0 &&
+					this.countMisc('multicolored') === 0 &&
+					this.countMisc('basic land') === 0 &&
+					this.countMisc('legendary') === 0 &&
+					this.countMisc('double-faced') === 0
+				) {
+					return true
+				}
+			}
 		}
 	}
 }

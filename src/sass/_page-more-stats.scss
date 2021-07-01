@@ -38,13 +38,10 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 		tbody {
 			tr {
 				&:hover {
-					outline: 1px solid rgba($color-mythic-orange, .6667);
+					outline: 1px solid rgba($color-mythic-orange, .75);
 					position: relative;
 					z-index: 1;
 				}
-			}
-			.dim-row {
-				color: desaturate(darken($color-text, 41.67%), 16.67%);
 			}
 		}
 		th,
