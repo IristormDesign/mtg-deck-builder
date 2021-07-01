@@ -91,47 +91,47 @@
 					</thead>
 					<tbody>
 						<tr :class="dimRow(countCmc(0))">
-							<th>0 mana</th>
+							<th>0</th>
 							<td>{{ countCmc(0) }}</td>
 							<td>{{ calculatePercentage(countCmc(0)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(1))">
-							<th>1 mana</th>
+							<th>1</th>
 							<td>{{ countCmc(1) }}</td>
 							<td>{{ calculatePercentage(countCmc(1)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(2))">
-							<th>2 mana</th>
+							<th>2</th>
 							<td>{{ countCmc(2) }}</td>
 							<td>{{ calculatePercentage(countCmc(2)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(3))">
-							<th>3 mana</th>
+							<th>3</th>
 							<td>{{ countCmc(3) }}</td>
 							<td>{{ calculatePercentage(countCmc(3)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(4))">
-							<th>4 mana</th>
+							<th>4</th>
 							<td>{{ countCmc(4) }}</td>
 							<td>{{ calculatePercentage(countCmc(4)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(5))">
-							<th>5 mana</th>
+							<th>5</th>
 							<td>{{ countCmc(5) }}</td>
 							<td>{{ calculatePercentage(countCmc(5)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(6))">
-							<th>6 mana</th>
+							<th>6</th>
 							<td>{{ countCmc(6) }}</td>
 							<td>{{ calculatePercentage(countCmc(6)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(7))">
-							<th>7 mana</th>
+							<th>7</th>
 							<td>{{ countCmc(7) }}</td>
 							<td>{{ calculatePercentage(countCmc(7)) }}</td>
 						</tr>
 						<tr :class="dimRow(countCmc(8))">
-							<th>8 or more mana</th>
+							<th>8+</th>
 							<td>{{ countCmc(8) }}</td>
 							<td>{{ calculatePercentage(countCmc(8)) }}</td>
 						</tr>
@@ -260,7 +260,7 @@
 						<tr :class="dimRow(countRarities('m'))">
 							<th>
 								<div class="vert-center-cell">
-									<small>Mythic rare</small>
+									<small>Mythic Rare</small>
 									<div v-html="$store.state.raritySymbol.m"></div>
 								</div>
 							</th>
@@ -282,7 +282,7 @@
 			</section>
 
 			<section>
-				<h4>Miscellaneous</h4>
+				<h4>Other Attributes</h4>
 				<table>
 					<thead>
 						<tr>
@@ -298,7 +298,7 @@
 							<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
 						</tr>
 						<tr :class="dimRow(countMisc('basic land'))">
-							<th>Basic land</th>
+							<th>Basic Land</th>
 							<td>{{ countMisc('basic land') }}</td>
 							<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
 						</tr>
@@ -313,7 +313,7 @@
 							<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
 						</tr>
 						<tr :class="dimRow(countMisc('double-faced'))">
-							<th>Double-faced</th>
+							<th>Double-Faced</th>
 							<td>{{ countMisc('double-faced') }}</td>
 							<td>{{ calculatePercentage(countMisc('double-faced')) }}</td>
 						</tr>
