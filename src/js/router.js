@@ -70,7 +70,7 @@ export default new VueRouter({
 					next()
 				} else {
 					next({
-						path: to.params.deckPath
+						path: '/deck/' + to.params.deckPath
 					})
 				}
 			}
