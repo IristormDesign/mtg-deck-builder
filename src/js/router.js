@@ -60,18 +60,17 @@ export default new VueRouter({
 			name: 'moreStats',
 			path: '/deck/:deckPath/more-stats',
 			component: MoreStats,
+			props: true,
 			beforeEnter: (to, from, next) => {
-				const relevantDeck = store.state.decks.find(
-					deck => deck.path === from.params.deckPath
-				)
+				// const relevantDeck = store.state.decks.find(
+				// 	deck => deck.path === from.params.deckPath
+				// )
 
-				if (relevantDeck) {
-					store.commit('setMoreStatsDeck', relevantDeck.path)
+				if (to.params.deck) {
 					next()
 				} else {
 					next({
-						path: '/deck/' + to.params.deckPath,
-						replace: true
+						path: to.params.deckPath
 					})
 				}
 			}

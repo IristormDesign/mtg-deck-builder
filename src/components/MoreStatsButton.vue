@@ -3,7 +3,10 @@
 		<router-link
 			:to="{
 				name: 'moreStats',
-				params: { deckPath: deck.path },
+				params: {
+					deckPath: deck.path,
+					deck: deck
+				},
 			}"
 		>More Statistics</router-link>
 	</section>

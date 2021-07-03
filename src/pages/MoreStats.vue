@@ -374,11 +374,11 @@
 
 <script>
 export default {
-	data: function () {
+	props: {
+		deck: Object
+	},
+	data () {
 		return {
-			deck: this.$store.state.decks.find(
-				deck => deck.path === this.$store.state.moreStatsDeck
-			),
 			subtypeNames: [],
 			subtypeCounts: {}
 		}
