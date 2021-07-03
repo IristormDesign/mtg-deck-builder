@@ -67,6 +67,8 @@ export default {
 
 					if (excludeMulticolorItem.length >= 4) {
 						this.lotsOfColors = true
+					} else {
+						this.lotsOfColors = false
 					}
 				}
 			}
