@@ -20,7 +20,7 @@
 			filter: brightness(125%);
 		}
 		&.W {
-			background: desaturate(darken($color-frame-white, 33.33%), 83.33%);
+			background: desaturate(darken($color-frame-white, 25%), 50%);
 		}
 		&.U {
 			background: desaturate(darken($color-frame-blue, 50%), 37.5%);
