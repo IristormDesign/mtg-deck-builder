@@ -62,15 +62,20 @@ export default new VueRouter({
 			component: MoreStats,
 			props: true,
 			beforeEnter: (to, from, next) => {
-				// const relevantDeck = store.state.decks.find(
-				// 	deck => deck.path === from.params.deckPath
-				// )
-
 				if (to.params.deck) {
 					next()
 				} else {
+					const relevantDeck = store.state.decks.find(
+						deck => deck.path === to.params.deckPath
+					)
+
 					next({
-						path: '/deck/' + to.params.deckPath
+						name: 'moreStats',
+						params: {
+							deckPath: relevantDeck.path,
+							deck: relevantDeck
+						},
+						replace: true
 					})
 				}
 			}
