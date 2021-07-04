@@ -71,6 +71,11 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 @mixin clc-triple-layer {
+	.card-list-controls {
+		> div {
+			min-height: $lhse*3.25;
+		}
+	}
 	.card-adder {
 		form {
 			flex-wrap: wrap;
@@ -110,6 +115,7 @@ $height-card-list-controls: $lhse * 1.25;
 		padding: $lhse/2;
 		display: flex;
 		align-items: center;
+		min-height: $lhse*2.333;
 	}
 	label {
 		display: block;
