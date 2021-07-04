@@ -69,14 +69,21 @@ export default new VueRouter({
 						deck => deck.path === to.params.deckPath
 					)
 
-					next({
-						name: 'moreStats',
-						params: {
-							deckPath: relevantDeck.path,
-							deck: relevantDeck
-						},
-						replace: true
-					})
+					if (relevantDeck) {
+						next({
+							name: 'moreStats',
+							params: {
+								deckPath: relevantDeck.path,
+								deck: relevantDeck
+							},
+							replace: true
+						})
+					} else {
+						next({
+							name: 'notFound',
+							replace: true
+						})
+					}
 				}
 			}
 		},
