@@ -1,8 +1,3 @@
-@mixin app-bg($image-url) {
-	background: url($image-url) center center no-repeat fixed $color-content-bg;
-	background-size: cover;
-}
-
 *,
 *::before,
 *::after {
@@ -26,7 +21,9 @@ body {
 	position: relative;
 
 	&.texture-bg {
-		@include app-bg('img/abstract-bg-1080.jpg');
+		background: center center no-repeat fixed $color-content-bg;
+		background-size: cover;
+		background-image: url('img/abstract-bg-3840.jpg');
 	}
 }
 .wrap {
@@ -129,35 +126,34 @@ img {
 	}
 }
 
-@media (min-width: 1081px) {
+@media (max-width: 2880px) {
 	.fade-bg {
 		&.texture-bg {
-			@include app-bg('img/abstract-bg-1440.jpg')
+			background-image: url('img/abstract-bg-2880.jpg');
 		}
 	}
 }
-@media (min-width: 1441px) {
+@media (max-width: 1920px) {
 	.fade-bg {
 		&.texture-bg {
-			@include app-bg('img/abstract-bg-1920.jpg')
+			background-image: url('img/abstract-bg-1920.jpg');
 		}
 	}
 }
-@media (min-width: 1921px) {
+@media (max-width: 1440px) {
 	.fade-bg {
 		&.texture-bg {
-			@include app-bg('img/abstract-bg-2880.jpg')
+			background-image: url('img/abstract-bg-1440.jpg');
 		}
 	}
 }
-@media (min-width: 2881px) {
+@media (max-width: 1080px) {
 	.fade-bg {
 		&.texture-bg {
-			@include app-bg('img/abstract-bg-3840.jpg')
+			background-image: url('img/abstract-bg-1080.jpg');
 		}
 	}
 }
-
 @media (max-width: $min-width-site*.875) {
 	.wrap {
 		padding: 0 $lhse/2;
