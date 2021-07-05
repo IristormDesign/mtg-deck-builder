@@ -194,7 +194,8 @@
 		}
 	}
 }
-@media (min-width: ($min-width-site * .75)) {
+// @media (min-width: $min-width-site * .75) {
+@media (min-width: 721px) {
 	.site-header {
 		.site-menu-toggler {
 			display: none;
@@ -204,7 +205,8 @@
 		}
 	}
 }
-@media (max-width: $min-width-site * .75) {
+// @media (max-width: $min-width-site * .75) {
+@media (max-width: 720px) {
 	.site-header {
 		.site-title {
 			text-align: left;
