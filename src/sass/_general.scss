@@ -154,6 +154,13 @@ img {
 		}
 	}
 }
+@media (max-width: 810px) {
+	.fade-bg {
+		&.texture-bg {
+			background-image: url('img/abstract-bg-810.jpg');
+		}
+	}
+}
 @media (max-width: $min-width-site*.875) {
 	.wrap {
 		padding: 0 $lhse/2;
