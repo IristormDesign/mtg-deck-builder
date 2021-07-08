@@ -27,24 +27,38 @@
 </template>
 
 <script>
+import debounce from 'debounce'
+
 export default {
 	props: {
 		deck: Object
 	},
+	created () {
+		this.debouncedResize = debounce(this.resizingViewport, 125)
+	},
 	mounted () {
-		if (this.mobileBreakpoint()) {
+		if (this.mobileView()) {
 			this.$store.commit('setShowCard', false)
 		} else {
 			this.$store.commit('setShowCard', true)
 		}
+
+		window.addEventListener('resize', this.debouncedResize, false)
 	},
 	methods: {
-		mobileBreakpoint () {
+		mobileView () {
 			return window.innerWidth <= 768 // Must match media query's width in CSS.
 		},
 		hideCDOverlay () {
-			if (this.mobileBreakpoint()) {
+			if (this.mobileView()) {
 				this.$store.commit('setShowCard', false)
+			}
+		},
+		resizingViewport () {
+			if (this.mobileView()) {
+				this.hideCDOverlay()
+			} else {
+				this.$store.commit('setShowCard', true)
 			}
 		}
 	}

@@ -56,9 +56,12 @@
 			cursor: not-allowed;
 		}
 	}
+	.site-menu-toggler {
+		display: none;
+	}
 	.site-menu {
 		margin-bottom: -2px;
-		
+
 		> ul {
 			margin: 0;
 			padding: 0;
@@ -194,19 +197,7 @@
 		}
 	}
 }
-// @media (min-width: $min-width-site * .75) {
-@media (min-width: 721px) {
-	.site-header {
-		.site-menu-toggler {
-			display: none;
-		}
-		.site-menu {
-			display: block !important; // Needs "!important" because of JavaScript effect.
-		}
-	}
-}
-// @media (max-width: $min-width-site * .75) {
-@media (max-width: 720px) {
+@media (max-width: 720px) { // Must match JavaScript
 	.site-header {
 		.site-title {
 			text-align: left;

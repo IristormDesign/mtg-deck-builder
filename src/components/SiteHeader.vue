@@ -62,12 +62,13 @@
 			</nav>
 		</div>
 
-		<bg-overlay :popup="showingAnyPopup" @closePopups="closeAllPopups()" />
+		<bg-overlay :popup="showingAnyPopup()" @closePopups="closeAllPopups()" />
 	</header>
 </template>
 
 <script>
 import BgOverlay from '@/components/BgOverlay.vue'
+import debounce from 'debounce'
 
 export default {
 	components: {
@@ -75,8 +76,15 @@ export default {
 	},
 	data () {
 		return {
-			showSiteMenu: false,
+			showSiteMenu: true,
 			showDeckMenu: false
+		}
+	},
+	created () {
+		this.debouncedResize = debounce(this.resizingViewport, 125)
+
+		if (this.mobileView()) {
+			this.showSiteMenu = false
 		}
 	},
 	mounted () {
@@ -84,11 +92,11 @@ export default {
 			const keyEvent = event.key
 
 			if (keyEvent === 'Escape' || keyEvent === 'Esc') {
-				if (this.showingAnyPopup) {
+				if (this.showingAnyPopup()) {
 					this.closeAllPopups()
 				}
 			}
-		})
+		}, false)
 
 		const headerLinks = document.querySelectorAll(
 			'.site-title a, .site-header-link > a, .add-new-deck button')
@@ -97,15 +105,17 @@ export default {
 			// Close the mobile or deck menu when any of their contained links are clicked.
 			headerLink.addEventListener('click', () => {
 				this.closeAllPopups()
-			})
+			}, false)
 
 			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
 			headerLink.addEventListener('focus', () => {
 				if (this.showDeckMenu) {
 					this.closeAllPopups()
 				}
-			})
+			}, false)
 		})
+
+		window.addEventListener('resize', this.debouncedResize, false)
 	},
 	computed: {
 		disableMenuButton () {
@@ -129,13 +139,6 @@ export default {
 				}
 			} else {
 				return null
-			}
-		},
-		showingAnyPopup () {
-			if (this.showSiteMenu || this.showDeckMenu) {
-				return true
-			} else {
-				return false
 			}
 		}
 	},
@@ -163,7 +166,10 @@ export default {
 		},
 		closeAllPopups () {
 			this.showDeckMenu = false
-			this.showSiteMenu = false
+
+			if (this.mobileView()) {
+				this.showSiteMenu = false
+			}
 		},
 		closeSiteMenuWhenFocusLost () {
 			const siteMenuLinks = document.querySelectorAll(
@@ -222,6 +228,25 @@ export default {
 					})
 				}
 			} // Else, if the user left the prompt blank, do nothing.
+		},
+		mobileView () {
+			return window.innerWidth <= 720 // Number must match the CSS media query width.
+		},
+		showingAnyPopup () {
+			if (this.showDeckMenu) {
+				return true
+			} else if (this.mobileView() && this.showSiteMenu) {
+				return true
+			} else {
+				return false
+			}
+		},
+		resizingViewport () {
+			if (this.mobileView()) {
+				this.showSiteMenu = false
+			} else {
+				this.showSiteMenu = true
+			}
 		}
 	}
 }
