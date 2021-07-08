@@ -45,6 +45,9 @@ export default {
 			cardSuggestions: null
 		}
 	},
+	created () {
+		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
+	},
 	computed: {
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
@@ -57,9 +60,6 @@ export default {
 		cardNameInput: function () {
 			this.debouncedAutocomplete()
 		}
-	},
-	created () {
-		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
 	},
 	methods: {
 		alertTooLong () {

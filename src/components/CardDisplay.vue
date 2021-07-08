@@ -33,9 +33,6 @@ export default {
 	props: {
 		deck: Object
 	},
-	created () {
-		this.debouncedResize = debounce(this.resizingViewport, 125)
-	},
 	mounted () {
 		if (this.mobileView()) {
 			this.$store.commit('setShowCard', false)
@@ -43,7 +40,7 @@ export default {
 			this.$store.commit('setShowCard', true)
 		}
 
-		window.addEventListener('resize', this.debouncedResize, false)
+		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 	},
 	methods: {
 		mobileView () {

@@ -81,8 +81,6 @@ export default {
 		}
 	},
 	created () {
-		this.debouncedResize = debounce(this.resizingViewport, 125)
-
 		if (this.mobileView()) {
 			this.showSiteMenu = false
 		}
@@ -115,7 +113,7 @@ export default {
 			}, false)
 		})
 
-		window.addEventListener('resize', this.debouncedResize, false)
+		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 	},
 	computed: {
 		disableMenuButton () {
