@@ -3,22 +3,21 @@
 		<section
 			class="card-display" v-show="$store.state.showCard" @click="hideCDOverlay()"
 		>
-			<transition
-				v-for="card in deck.cards" :key="card.name"
-				name="card-browse" appear appear-active-class="card-browse-appear-active"
-			>
-				<a
-					v-if="deck.viewedCard === card.name" :key="card.name"
-					:class="card.colors[0]" :href="card.link"
-					target="_blank" rel="noopener noreferrer"
-					title="Click to open this card’s page on Scryfall"
-				>
-					<div class="loading-indicator">
-						Loading image&hellip;
-					</div>
-					<img :src="card.img" width="488" height="680" :alt="card.name" />
-				</a>
-			</transition>
+			<div v-for="card in deck.cards" :key="card.name">
+				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
+					<a
+						v-if="deck.viewedCard === card.name" :key="card.name"
+						:class="card.colors[0]" :href="card.link"
+						target="_blank" rel="noopener noreferrer"
+						title="Click to open this card’s page on Scryfall"
+					>
+						<div class="loading-indicator">
+							Loading image&hellip;
+						</div>
+						<img :src="card.img" width="488" height="680" :alt="card.name" />
+					</a>
+				</transition>
+			</div>
 			<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
 				×
 			</button>
