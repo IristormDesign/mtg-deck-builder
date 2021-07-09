@@ -163,3 +163,23 @@
 .stt-fade-leave-to {
   opacity: 0;
 }
+.table-of-contents {
+	border: 1px solid $color-text;
+	padding: $lhse*.75;
+	display: block;
+	color: darken($color-text, 12.5%);
+	margin: $lhse/2 auto;
+	width: max-content;
+
+	h3 {
+		margin: 0 0 $lhse/2;
+	}
+	ol,
+	li {
+		margin: 0;
+	}
+	a {
+		display: block;
+		padding: $lhse/16 0;
+	}
+}

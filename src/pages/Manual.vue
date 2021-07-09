@@ -3,7 +3,27 @@
 		<h2>User Manual</h2>
 		<p>MTG Deck Builder by Iristorm Design is a web app on which you can create and manage your decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
 
-		<h3>App Header</h3>
+		<section class="table-of-contents">
+			<h3>Table of Contents</h3>
+			<ol>
+				<li><a href="#s-app-header">App Header</a></li>
+				<li><a href="#s-deck-pages">Deck Pages</a></li>
+				<ol>
+					<li><a href="#s-deck-name">Deck Name</a></li>
+					<li><a href="#s-deck-statistics">Deck Statistics</a></li>
+					<li><a href="#s-card-image">Card Image</a></li>
+					<li><a href="#s-card-list">Card List</a></li>
+					<li><a href="#s-card-quantities">Card Quantities</a></li>
+					<li><a href="#s-card-adder">Card Adder</a></li>
+					<li><a href="#s-card-sorter">Card Sorter</a></li>
+					<li><a href="#s-deck-actions">Deck Actions</a></li>
+				</ol>
+				<li><a href="#s-more-statistics-pages">More Statistics Pages</a></li>
+				<li><a href="#s-storage-of-app-data">Storage of App Data</a></li>
+			</ol>
+		</section>
+
+		<h3 id="s-app-header">App Header</h3>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-app-header.jpg 1x, @/img/manual-app-header.jpg 2x"
@@ -16,7 +36,7 @@
 			<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
 		</ul>
 
-		<h3>Deck Pages</h3>
+		<h3 id="s-deck-pages">Deck Pages</h3>
 		<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
 		<p>
 			<img class="screenshot"
@@ -37,7 +57,7 @@
 		</ul>
 		<p>Each of those components will be explained in greater detail.</p>
 
-		<section>
+		<section id="s-deck-name">
 			<p>
 				<img class="screenshot float-left"
 					srcset="@/img/manual-deck-name.jpg 1x, @/img/manual-deck-name-2x.jpg 2x"
@@ -47,7 +67,7 @@
 			<h4>Deck Name</h4>
 			<p>You can click on this to rename the deck to something else.</p>
 		</section>
-		<section>
+		<section id="s-deck-statistics">
 			<h4>Deck Statistics</h4>
 			<p>
 				<img class="screenshot"
@@ -65,7 +85,7 @@
 				<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. See the “More Statistics Pages” section of this manual for further explanation.</li>
 			</ul>
 		</section>
-		<section>
+		<section id="s-card-image">
 			<p>
 				<img class="screenshot float-left"
 					srcset="@/img/manual-card-image.jpg 1x, @/img/manual-card-image-2x.jpg 2x"
@@ -76,7 +96,7 @@
 			<p>This is a scanned image of the last selected card from the deck’s card list. If you click on the image, it’ll open in a new tab that card’s page on Scryfall which gives more information about the card.</p>
 			<p>(<a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a> is an advanced database and search engine for <i>Magic</i> cards, and it provides the card images and data for MTG Deck Builder.)</p>
 		</section>
-		<section>
+		<section id="s-card-list">
 			<h4>Card List</h4>
 			<p>
 				<img class="screenshot"
@@ -103,7 +123,7 @@
 			<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
 			<p>The surface color of each card button represents the mana colors of that card’s casting cost. (For example, a button for a card that requires only green mana is colored green.) Just like the frames depicted on <i>Magic</i> cards, the buttons for multicolored cards are golden yellow, and for colorless cards are gray.</p>
 		</section>
-		<section>
+		<section id="s-card-quantities">
 			<h4>Card Quantities</h4>
 			<p>
 				<img class="screenshot float-right"
@@ -115,7 +135,7 @@
 			<p>To remove a card from the deck, lower its quantity to zero. You’ll then be prompted to confirm you want to remove that card. If not, then the quantity resets to one.</p>
 			<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except the cards of the “basic land” type which can have any quantity.</p>
 		</section>
-		<section>
+		<section id="s-card-adder">
 			<h4>Card Adder</h4>
 			<p>
 				<img class="screenshot"
@@ -127,7 +147,7 @@
 			<p>(Tip: You can enter the code “<code>[random]</code>” as the card name to add any randomly chosen Modern-legal card.)</p>
 			<p>The card adder won’t add a card that already exists in the deck. If you’d want to add duplicates of a card of a particular name, increase that card’s quantity in the card list.</p>
 		</section>
-		<section>
+		<section id="s-card-sorter">
 			<h4>Card Sorter</h4>
 			<p>
 				<img class="screenshot float-right"
@@ -149,7 +169,7 @@
 			<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any newly added cards to the list that haven’t been sorted yet.</p>
 			<p>Sorting affects all of your decks alike, not only the deck you’re currently viewing.</p>
 		</section>
-		<section>
+		<section id="s-deck-actions">
 			<h4>Deck Actions</h4>
 			<p>
 				<img class="screenshot float-right"
@@ -164,7 +184,7 @@
 			<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
 		</section>
 
-		<h3>More Statistics Pages</h3>
+		<h3 id="s-more-statistics-pages">More Statistics Pages</h3>
 		<p>By clicking the More Statistics button in the deck page’s header, you’ll be taken to that deck’s More Statistics page. This page shows data tables of various categories of measurement of the deck’s cards.</p>
 		<p>
 			<img class="screenshot"
@@ -184,7 +204,7 @@
 		<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
 		<p>Cards can have multiple properties within a single category table. For example, the Types table would count a card that has the type “artifact creature” as both a creature <em>and</em> an artifact. Therefore, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
-		<h3>Storage of App Data</h3>
+		<h3 id="s-storage-of-app-data">Storage of App Data</h3>
 		<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app on their own browsers can’t see your decks, or you theirs, and deck data can’t be transferred between browsers.</p>
 		<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit as you like or delete them.</p>
 		<p>To delete all of your data in MTG Deck Builder, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
