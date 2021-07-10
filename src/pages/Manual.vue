@@ -3,7 +3,7 @@
 		<h2>User Manual</h2>
 		<p>MTG Deck Builder by Iristorm Design is a web app on which you can create and manage your decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
 
-		<section class="table-of-contents">
+		<nav class="table-of-contents">
 			<h3>Table of Contents</h3>
 			<ol>
 				<li><a href="#m-app-header">App Header</a></li>
@@ -21,7 +21,7 @@
 				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
 				<li><a href="#m-storage-of-app-data">Storage of App Data</a></li>
 			</ol>
-		</section>
+		</nav>
 
 		<h3 id="m-app-header">App Header</h3>
 		<p>
@@ -46,14 +46,14 @@
 		</p>
 		<p>A deck page contains the following components, listed in the order of their position on the page from left to right, top to bottom:</p>
 		<ul>
-			<li>Deck name</li>
-			<li>Deck statistics</li>
-			<li>Card image</li>
-			<li>Card list</li>
-			<li>Card quantities</li>
-			<li>Card adder</li>
-			<li>Card sorter</li>
-			<li>Deck actions</li>
+			<li><a href="#m-deck-name">Deck name</a></li>
+			<li><a href="#m-deck-statistics">Deck statistics</a></li>
+			<li><a href="#m-card-image">Card image</a></li>
+			<li><a href="#m-card-list">Card list</a></li>
+			<li><a href="#m-card-quantities">Card quantities</a></li>
+			<li><a href="#m-card-adder">Card adder</a></li>
+			<li><a href="#m-card-sorter">Card sorter</a></li>
+			<li><a href="#m-deck-actions">Deck actions</a></li>
 		</ul>
 		<p>Each of those components will be explained in greater detail.</p>
 
@@ -94,7 +94,8 @@
 			</p>
 			<h4>Card Image</h4>
 			<p>This is a scanned image of the last selected card from the deck’s card list. If you click on the image, it’ll open in a new tab that card’s page on Scryfall which gives more information about the card.</p>
-			<p>(<a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a> is an advanced database and search engine for <i>Magic</i> cards, and it provides the card images and data for MTG Deck Builder.)</p>
+			<p>(<a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a> is an advanced database and search engine for <i>Magic</i> cards. It provides the card images and data for MTG Deck Builder.)</p>
+			<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
 		</section>
 		<section id="m-card-list">
 			<h4>Card List</h4>
@@ -104,7 +105,7 @@
 					src="@/img/manual-card-list.jpg" width="658" height="219"
 					alt="Snippet of card list" title="Screenshot" loading="lazy" />
 			</p>
-			<p>This is the list of the cards in the deck. Each card is represented by a wide button, which you can click on to have that represented card displayed in the card image section.</p>
+			<p>This is the list of the cards contained in the currently open deck. Each card is represented by a wide button, which you can click on to have that represented card displayed in the card image section.</p>
 			<p>Labeled on each of the card buttons are the following card characteristics:</p>
 			<ul>
 				<li>Name</li>
