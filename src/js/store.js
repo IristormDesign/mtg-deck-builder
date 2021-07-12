@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 import defaultDecks from './default-decks'
+import router from './router.js'
 
 const vuexLocalStorage = new VuexPersist({
 	storage: window.localStorage,
@@ -18,6 +19,7 @@ export default new Vuex.Store({
 		decks: defaultDecks,
 		deletedDeckName: null,
 		showCard: false,
+		showDeckMenu: false,
 		sortAttribute: 'type',
 		manaSymbol: {
 			w: '<span class="mana-symbol white" title="White mana"><div>W</div></span>',
@@ -82,7 +84,10 @@ export default new Vuex.Store({
 		setShowCard (state, payload) {
 			state.showCard = payload
 		},
-		sortDeckMenu: (state) => {
+		setShowDeckMenu (state, payload) {
+			state.showDeckMenu = payload
+		},
+		sortDeckMenu (state) {
 			state.decks.sort((a, b) => {
 				const deckA = a.name.toUpperCase()
 				const deckB = b.name.toUpperCase()
@@ -93,6 +98,51 @@ export default new Vuex.Store({
 		}
 	},
 	actions: {
+		createDeck ({ state, getters, commit }) {
+			function createDeck (failedName, existingDeckName) {
+				let message = 'Name this new deck:'
+				if (existingDeckName) {
+					message = state.alertNameExists(existingDeckName)
+				}
+
+				let name = prompt(message, failedName)
+
+				// First edit the given name to remove any excess white space.
+				if (name) {
+					name = name.trim()
+					name = state.curlApostrophes(name)
+				}
+				if (name) { // If the user entered any name...
+					const path = state.stringToPath(name)
+					const deckExists = getters.existingDeck(path)
+
+					if (deckExists) {
+						createDeck(failedName, deckExists.name) // Restart.
+					} else if (name.length > 50) {
+						alert(state.alertNameTooLong)
+						createDeck(name) // Restart.
+					} else {
+						const updatedDecksArray = state.decks
+
+						updatedDecksArray.push({
+							name: name,
+							path: path,
+							cards: [],
+							editDate: new Date(),
+							viewedCard: ''
+						})
+						commit('setDecks', updatedDecksArray)
+						commit('sortDeckMenu')
+
+						router.push({
+							name: 'deck',
+							params: { deckPath: path }
+						})
+					}
+				} // Else, if the user left the prompt blank, do nothing.
+			}
+			createDeck()
+		}
 	},
 	plugins: [vuexLocalStorage.plugin]
 })

@@ -21,7 +21,7 @@
 						>Manual</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<button class="primary-btn" @click="createDeck()">
+						<button class="primary-btn" @click="$store.dispatch('createDeck')">
 							Create Deck
 						</button>
 					</li>
@@ -38,7 +38,7 @@
 						<div class="open-deck-heading">
 							<strong>Open Deck:</strong>
 						</div>
-						<ul v-show="showDeckMenu">
+						<ul v-show="$store.state.showDeckMenu">
 							<li v-for="deck in $store.state.decks" :key="deck.name">
 								<router-link
 									v-show="$route.params.deckPath !== deck.path"
@@ -76,8 +76,7 @@ export default {
 	},
 	data () {
 		return {
-			showSiteMenu: true,
-			showDeckMenu: false
+			showSiteMenu: true
 		}
 	},
 	created () {
@@ -107,7 +106,7 @@ export default {
 
 			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
 			headerLink.addEventListener('focus', () => {
-				if (this.showDeckMenu) {
+				if (this.$store.state.showDeckMenu) {
 					this.closeAllPopups()
 				}
 			}, false)
@@ -156,14 +155,14 @@ export default {
 			}
 		},
 		toggleDeckMenu () {
-			if (this.showDeckMenu) {
-				this.showDeckMenu = false
+			if (this.$store.state.showDeckMenu) {
+				this.$store.commit('setShowDeckMenu', false)
 			} else {
-				this.showDeckMenu = true
+				this.$store.commit('setShowDeckMenu', true)
 			}
 		},
 		closeAllPopups () {
-			this.showDeckMenu = false
+			this.$store.commit('setShowDeckMenu', false)
 
 			if (this.mobileView()) {
 				this.showSiteMenu = false
@@ -185,53 +184,11 @@ export default {
 
 			if (!anyFocus()) this.closeAllPopups()
 		},
-		createDeck (failedName, existingDeckName) {
-			const store = this.$store
-			let message = 'Name this new deck:'
-			if (existingDeckName) {
-				message = store.state.alertNameExists(existingDeckName)
-			}
-			let name = prompt(message, failedName)
-
-			// First edit the given name to remove any excess white space.
-			if (name) {
-				name = name.trim()
-				name = store.state.curlApostrophes(name)
-			}
-			if (name) { // If the user entered any name...
-				const path = store.state.stringToPath(name)
-				const deckExists = store.getters.existingDeck(path)
-
-				if (deckExists) {
-					this.createDeck(failedName, deckExists.name) // Restart.
-				} else if (name.length > 50) {
-					alert(store.state.alertNameTooLong)
-					this.createDeck(name) // Restart.
-				} else {
-					const updatedDecksArray = store.state.decks
-
-					updatedDecksArray.push({
-						name: name,
-						path: path,
-						cards: [],
-						editDate: new Date(),
-						viewedCard: ''
-					})
-					store.commit('setDecks', updatedDecksArray)
-					store.commit('sortDeckMenu')
-
-					this.$router.push({
-						name: 'deck',
-						params: { deckPath: path }
-					})
-				}
-			} // Else, if the user left the prompt blank, do nothing.
-		},
 		mobileView () {
 			return window.innerWidth <= 720 // Number must match the CSS media query width.
 		},
 		showingAnyPopup () {
-			if (this.showDeckMenu) {
+			if (this.$store.state.showDeckMenu) {
 				return true
 			} else if (this.mobileView() && this.showSiteMenu) {
 				return true

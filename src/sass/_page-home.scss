@@ -37,7 +37,7 @@
 	.text-box {
 		width: 25%;
 		box-sizing: content-box;
-		font-size: 108.33%;
+		font-size: 116.67%;
 		position: absolute;
 		top: 8.333vh;
 		right: $lhse;
@@ -50,6 +50,7 @@
 		animation-fill-mode: forwards;
 		animation-delay: 2s;
 		opacity: 0;
+		color: $color-text-brighter;
 
 		@keyframes animate-text-box {
 			0% {
@@ -60,11 +61,26 @@
 			}
 		}
 		h2 {
-			font-size: 125%;
+			font-size: 112.5%;
 			margin-top: $lhse/2;
 		}
-		strong {
-			color: $color-text-brighter;
+		.button-group {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: $lhse;
+			justify-content: space-between;
+			align-items: center;
+			max-width: $lhse*12;
+			margin: $lhse*.75 auto $lhse/2;
+
+			button,
+			.button {
+				height: 100%;
+				min-height: $lhse*1.5;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 		}
 	}
 }
@@ -72,8 +88,8 @@
 	padding: $lhse*1.5 0;
 	position: relative;
 	background: radial-gradient(farthest-corner at 50% 0,
-		desaturate(lighten($color-mythic-lighter, 16.67%), 62.5%),
-		desaturate(lighten($color-mythic-lighter, 8.33%), 62.5%)
+		desaturate(lighten($color-mythic-lighter, 25%), 62.5%),
+		desaturate(lighten($color-mythic-lighter, 12.5%), 62.5%)
 	);
 	border-top: $border-special;
 

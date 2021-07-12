@@ -20,7 +20,8 @@ a {
 		text-decoration-color: $color-mythic-lighter;
 	}
 }
-button {
+button,
+.button {
 	background:
 		radial-gradient(
 			rgba(#fff, .667) 0%,
@@ -53,11 +54,15 @@ button {
 	text-shadow: -.5px 1px .5px rgba(#fff, .333);
 	font-weight: $font-weight-semibold;
 	text-decoration: none;
-	
+	display: inline-block;
+
 	&:hover,
 	&:focus {
 		filter: brightness(.833) contrast(1.25);
 		outline: none;
+		color: #000;
+		transition: filter $transition-duration-standard ease;
+		text-decoration: none;
 	}
 	&:active {
 		border-top-width: 1px;

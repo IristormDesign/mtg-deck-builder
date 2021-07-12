@@ -147,8 +147,8 @@
 }
 .scroll-to-top {
 	position: fixed;
-	bottom: $lhse/4;
-	right: $lhse/4;
+	bottom: $lhse/3;
+	right: $lhse/3;
 	z-index: index($layers, above-overlay);
 
 	button {
