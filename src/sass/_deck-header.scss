@@ -61,6 +61,7 @@
 		text-shadow: none;
 		display: inline-block;
 		text-align: left;
+		filter: none;
 		
 		h2 {
 			@include heading-font;
@@ -114,8 +115,17 @@
 }
 .more-stats-button {
 	a {
-		@extend button, .primary-btn;
+		@extend button;
+	}
+	a,
+	button {
+		@extend .primary-btn;
 		font-size: 87.5%;
+	}
+	button {
+		&[disabled] {
+			cursor: not-allowed;
+		}
 	}
 }
 
@@ -169,7 +179,8 @@
 		border-right-width: 0;
 		order: 1;
 
-		a {
+		a,
+		button {
 			min-width: 66.67%;
 			display: block;
 		}
@@ -241,7 +252,8 @@
 		}
 	}
 	.more-stats-button {
-		a {
+		a,
+		button {
 			white-space: normal;
 		}
 	}
