@@ -38,7 +38,7 @@
 						<div class="open-deck-heading">
 							<strong>Open Deck:</strong>
 						</div>
-						<ul v-show="$store.state.showDeckMenu">
+						<ul v-show="showDeckMenu">
 							<li v-for="deck in $store.state.decks" :key="deck.name">
 								<router-link
 									v-show="$route.params.deckPath !== deck.path"
@@ -106,7 +106,7 @@ export default {
 
 			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
 			headerLink.addEventListener('focus', () => {
-				if (this.$store.state.showDeckMenu) {
+				if (this.showDeckMenu) {
 					this.closeAllPopups()
 				}
 			}, false)
@@ -115,6 +115,9 @@ export default {
 		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 	},
 	computed: {
+		showDeckMenu () {
+			return this.$store.state.showDeckMenu
+		},
 		disableMenuButton () {
 			if (
 				this.$store.state.decks.length <= 1 &&
@@ -139,6 +142,14 @@ export default {
 			}
 		}
 	},
+	watch: {
+		showDeckMenu: function (val) {
+			if (val) {
+				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
+				this.showSiteMenu = true
+			}
+		}
+	},
 	methods: {
 		toggleSiteMenu () {
 			if (this.showSiteMenu) {
@@ -155,7 +166,7 @@ export default {
 			}
 		},
 		toggleDeckMenu () {
-			if (this.$store.state.showDeckMenu) {
+			if (this.showDeckMenu) {
 				this.$store.commit('setShowDeckMenu', false)
 			} else {
 				this.$store.commit('setShowDeckMenu', true)
@@ -188,7 +199,7 @@ export default {
 			return window.innerWidth <= 720 // Number must match the CSS media query width.
 		},
 		showingAnyPopup () {
-			if (this.$store.state.showDeckMenu) {
+			if (this.showDeckMenu) {
 				return true
 			} else if (this.mobileView() && this.showSiteMenu) {
 				return true
