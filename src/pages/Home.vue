@@ -1,8 +1,5 @@
 <template>
-	<article
-		class="home-page"
-		@click="$store.getters.attentionHeaderButton"
-	>
+	<article class="home-page">
 		<section class="intro">
 			<img
 				srcset="
@@ -13,19 +10,21 @@
 				src="@/img/welcome-1920.jpg"
 				width="1920" height="1080"
 				alt="Fantasy illustration from Magic: The Gathering"
+				@click="$store.getters.attentionHeaderButton"
 			/>
 			<div class="wrap">
 				<div class="text-box">
 					<header>
 						<h2>Greetings, planeswalker.</h2>
 					</header>
-					<p>This is an app that lets you build and organize your decks for <i>Magic: The Gathering</i>.</p>
+					<p>This app lets you build and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
 						<a href="#app-features" class="button">Learn More</a>
+
 						<button
 							v-if="$store.state.decks.length > 0"
 							class="primary-btn"
-							@click="$store.state.showDeckMenu = true"
+							@click="$store.commit('setShowDeckMenu', true)"
 						>
 							Open Deck
 						</button>

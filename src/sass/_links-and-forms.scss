@@ -47,7 +47,7 @@ button,
 	min-width: 4.5em;
 	margin-top: -2px;
 	margin-bottom: 2px;
-	filter: brightness(1) contrast(1);
+	filter: brightness(1);
 	transition: filter $transition-duration-standard ease;
 	line-height: 1;
 	text-align: center;
@@ -58,7 +58,7 @@ button,
 
 	&:hover,
 	&:focus {
-		filter: brightness(.833) contrast(1.25);
+		filter: brightness(1.25);
 		outline: none;
 		color: #000;
 		transition: filter $transition-duration-standard ease;
@@ -89,12 +89,6 @@ button,
 			);
 		border-color: desaturate(darken($color-link, 8.33%), 16.67%);
 		border-top-color: desaturate($color-link, 37.5%);
-		filter: brightness(1) contrast(1);
-
-		&:hover,
-		&:focus {
-			filter: brightness(.875) contrast(1.25);
-		}
 	}
 	&:disabled {
 		filter: grayscale(.333) brightness(.75) !important;
