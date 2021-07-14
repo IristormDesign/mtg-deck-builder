@@ -6,7 +6,11 @@
 					@/img/welcome-2560.jpg 2560w,
 					@/img/welcome-1920.jpg 1920w,
 					@/img/welcome-1440.jpg 1440w,
-					@/img/welcome-1080.jpg 1080w"
+					@/img/welcome-1080.jpg 1080w,
+					@/img/welcome-810.jpg  810w,
+					@/img/welcome-608.jpg  608w,
+					@/img/welcome-456.jpg  456w,
+					@/img/welcome-341.jpg  341w"
 				src="@/img/welcome-1920.jpg"
 				width="1920" height="1080"
 				alt="Fantasy illustration from Magic: The Gathering"

@@ -162,6 +162,7 @@
 			box-shadow: none;
 			opacity: 1;
 			animation: none;
+			text-align: center;
 		}
 	}
 	.app-features {
@@ -171,6 +172,11 @@
 	}
 }
 @media (max-width: $min-width-site*.875) {
+	.intro {
+		img {
+			margin-bottom: 0;
+		}
+	}
 	.app-features {
 		padding-top: $lhse;
 		padding-bottom: $lhse;
