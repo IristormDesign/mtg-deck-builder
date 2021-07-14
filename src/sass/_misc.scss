@@ -121,14 +121,15 @@
 	left: 0;
 	z-index: index($layers, update-notif);
 	background: $color-mythic-lighter;
-	padding: 0 $lhse/2;
-	height: $height-site-header;
+	padding: $lhse/8 $lhse/2;
+	min-height: $height-site-header;
 	color: #000;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	box-shadow: 0 0 $lhse/4 #000;
+	line-height: $line-height-standard*.75;
 
 	p {
 		margin: 0;
@@ -181,5 +182,19 @@
 	a {
 		display: block;
 		padding: $lhse/16 0;
+	}
+}
+
+@media (max-width: $min-width-site*.5) {
+	.update-notif {
+		display: block;
+		padding: $lhse/8 $lhse/4;
+
+		p {
+			margin: 0;
+		}
+		button {
+			margin: $lhse/4 0 $lhse/8;
+		}
 	}
 }
