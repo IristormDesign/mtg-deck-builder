@@ -171,7 +171,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site*.875) {
+@media (max-width: 840px) { // Max-width must match the "sizes" media query in the img element.
 	.intro {
 		img {
 			margin-bottom: 0;

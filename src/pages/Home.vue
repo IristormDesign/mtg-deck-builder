@@ -45,9 +45,18 @@
 		<section id="app-features" class="app-features">
 			<div class="wrap">
 				<img
-					srcset="@/img/deck-page-screenshot.jpg 1x, @/img/deck-page-screenshot-2x.jpg 2x"
-					src="@/img/deck-page-screenshot.jpg" width="668" height="575"
-					alt="Screenshot of MTG Deck Builder" loading="lazy" />
+					srcset="
+						@/img/deck-page-screenshot-1366.jpg 1366w,
+						@/img/deck-page-screenshot-1024.jpg 1024w,
+						@/img/deck-page-screenshot-768.jpg  768w,
+						@/img/deck-page-screenshot-576.jpg  576w,
+						@/img/deck-page-screenshot-432.jpg  432w"
+					sizes="(max-width: 840px) 100vw, 49vw"
+					src="@/img/deck-page-screenshot-1366.jpg"
+					width="1366" height="1125"
+					alt="Screenshot of MTG Deck Builder"
+					loading="lazy"
+				/>
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
