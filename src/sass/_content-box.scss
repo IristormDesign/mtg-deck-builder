@@ -71,3 +71,9 @@ img {
 		padding-left: $lhse/2;
 	}
 }
+@media (max-width: $min-width-site*.5) {
+	.content-box {
+		padding-right: $lhse/4;
+		padding-left: $lhse/4;
+	}
+}

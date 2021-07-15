@@ -4,6 +4,7 @@ $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 8.33%), 8.33%);
+$color-mythic-dark: darken($color-mythic-orange, 16.67%);
 $color-rarity-gold: lighten(#C19C00, 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 20%); // Sampled from Scryfall
 $color-rarity-special: #905D98; // Sampled from Scryfall
@@ -70,6 +71,12 @@ $transition-duration-standard: .25s;
 $border-sections: 1px solid desaturate(lighten($color-group-bg, 37.5%), 12.5%);
 $border-special: 3px solid $color-mythic-dim;
 $height-site-header: $lhse*1.6667;
+$background-light-gradient:
+	radial-gradient(farthest-corner at 50% 0,
+		desaturate(lighten($color-mythic-lighter, 25%), 62.5%),
+		desaturate(lighten($color-mythic-lighter, 12.5%), 62.5%)
+	)
+	desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
 
 $x: 2px dashed rgba(#c0f, .75);
 
@@ -78,9 +85,9 @@ $x: 2px dashed rgba(#c0f, .75);
 	font-weight: bold;
 }
 @mixin popup {
-	border: $border-sections;
 	box-shadow: -.125em .25em .5em rgba(#000, .5);
-	background: $color-group-bg;
+	border: $border-special;
+	background: $background-light-gradient;
 }
 @mixin overlay-bg {
 	position: fixed;

@@ -135,7 +135,7 @@
 			top: 2.25em;
 			right: 0;
 			min-width: 100%;
-			max-height: calc(75vh);
+			max-height: 75vh;
 			overflow-y: auto;
 		}
 		li {
@@ -151,13 +151,15 @@
 			transition-duration: 0s;
 			text-decoration: none;
 			font-weight: $font-weight-semibold;
-
+			color: #000;
+		
 			&:hover,
 			&:focus {
-				background: $color-hover-bg;
+				background: rgba(#fff, .375)
 			}
 			&:active {
 				background: $color-mythic-orange;
+				color: #fff;
 			}
 		}
 	}
@@ -239,8 +241,8 @@
 							min-width: auto;
 							padding: $lhse/4 $lhse/2;
 							background: none;
+							color: #000;
 							border: none;
-							color: $color-mythic-orange;
 							text-shadow: none;
 							box-shadow: none;
 							margin: 0;
@@ -251,33 +253,36 @@
 							font-size: 100%;
 							line-height: $line-height-standard;
 							font-weight: $font-weight-semibold;
-
+							
 							&:hover,
 							&:focus {
-								color: $color-mythic-lighter;
-								background: $color-hover-bg;
+								background: rgba(#fff, .375);
 								filter: none;
 							}
 							&:active {
-								color: #fff;
 								background: $color-mythic-orange;
+								color: #fff;
 							}
 						}
 					}
 				}
 				.deck-menu {
-					background: #000;
+					background: rgba($color-mythic-lighter, .25);
+					border: 1px solid $color-mythic-lighter;
+					border-right-width: 0;
+					border-left-width: 0;
 				}
 			}
 		}
 		.open-deck-heading {
 			display: block;
 			text-align: right;
-
+			cursor: default;
+			
 			strong {
 				@include heading-font;
 				padding: $lhse/8 $lhse/2;
-				color: desaturate(darken($color-text, 25%), 16.67%);
+				color: $color-mythic-dim;
 				font-size: 75%;
 				text-transform: uppercase;
 			}
@@ -286,10 +291,6 @@
 			display: none !important;
 		}
 		.deck-menu {
-			border: 1px solid darken($color-text, 62.5%);
-			border-right-width: 0;
-			border-left-width: 0;
-
 			ul {
 				display: block !important;
 				position: static;

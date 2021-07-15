@@ -42,8 +42,8 @@
 				</div>
 			</div>
 		</section>
-		<section id="app-features" class="app-features">
-			<div class="wrap">
+		<section class="app-features">
+			<div class="wrap" id="app-features">
 				<img
 					srcset="
 						@/img/deck-page-screenshot-1366.jpg 1366w,

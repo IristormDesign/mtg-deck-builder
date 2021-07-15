@@ -85,12 +85,9 @@
 	}
 }
 .app-features {
-	padding: $lhse*1.5 0;
+	padding: $lhse 0;
 	position: relative;
-	background: radial-gradient(farthest-corner at 50% 0,
-		desaturate(lighten($color-mythic-lighter, 25%), 62.5%),
-		desaturate(lighten($color-mythic-lighter, 12.5%), 62.5%)
-	);
+	background: $background-light-gradient;
 	border-top: $border-special;
 
 	h2,
@@ -105,7 +102,7 @@
 	.wrap {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-gap: $lhse*1.5;
+		grid-gap: $lhse;
 	}
 	.app-features-text {
 		line-height: $line-height-standard*.875;
@@ -167,7 +164,7 @@
 	}
 	.app-features {
 		.wrap {
-			grid-gap: $lhse;
+			grid-gap: $lhse*.75;
 		}
 	}
 }
