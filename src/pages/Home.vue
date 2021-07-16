@@ -71,7 +71,7 @@
 					</ul>
 				</div>
 				<p class="button-group">
-					<router-link to="Manual" :class="'button'">
+					<router-link to="manual" :class="'button'">
 						Read the User Manual
 					</router-link>
 

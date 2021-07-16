@@ -16,9 +16,17 @@
 			<nav v-show="showSiteMenu" class="site-menu">
 				<ul>
 					<li class="site-header-link">
+						<button
+							v-if="$router.currentRoute.name === 'manual'"
+							@click="$store.state.scrollToTop()"
+						>
+							Manual
+						</button>
 						<router-link
-							:to="{name: 'manual'}"
-						>Manual</router-link>
+							v-else :to="{name: 'manual'}"
+						>
+							Manual
+						</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
 						<button class="primary-btn" @click="$store.dispatch('createDeck')">

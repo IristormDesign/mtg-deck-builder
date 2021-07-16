@@ -85,7 +85,7 @@
 	}
 }
 .app-features {
-	padding: $lhse 0;
+	padding: $lhse*1.5 0 $lhse;
 	position: relative;
 	background: $background-light-gradient;
 	border-top: $border-special;
@@ -147,6 +147,8 @@
 		}
 	}
 	.app-features {
+		padding-top: $lhse;
+		
 		.app-features-text {
 			ul {
 				font-size: 100%;
