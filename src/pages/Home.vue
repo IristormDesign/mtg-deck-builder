@@ -70,7 +70,25 @@
 						<li>Attractive, easy-to-use graphical user interface</li>
 					</ul>
 				</div>
-				<p class="centered-p">Click on the “Open Deck” button at the top to view a pre-made deck. Or, click the “Manual” button for more info!</p>
+				<p class="button-group">
+					<router-link to="Manual" :class="'button'">
+						Read the User Manual
+					</router-link>
+
+					<button
+						v-if="$store.state.decks.length > 0"
+						class="primary-btn"
+						@click="$store.commit('setShowDeckMenu', true)"
+					>
+						Open a Deck
+					</button>
+					<button
+						v-else class="primary-btn"
+						@click="$store.dispatch('createDeck')"
+					>
+						Create a Deck
+					</button>
+				</p>
 			</div>
 		</section>
 	</article>

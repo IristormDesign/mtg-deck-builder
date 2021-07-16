@@ -268,7 +268,7 @@
 				}
 				.deck-menu {
 					background: rgba($color-mythic-lighter, .25);
-					border: 1px solid $color-mythic-lighter;
+					border: 1px solid desaturate($color-mythic-lighter, 33.33%);
 					border-right-width: 0;
 					border-left-width: 0;
 				}
