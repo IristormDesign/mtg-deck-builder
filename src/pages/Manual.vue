@@ -7,17 +7,19 @@
 			<h3>Table of Contents</h3>
 			<ol>
 				<li><a href="#m-app-header">App Header</a></li>
-				<li><a href="#m-deck-pages">Deck Pages</a></li>
-				<ol>
-					<li><a href="#m-deck-name">Deck Name</a></li>
-					<li><a href="#m-deck-statistics">Deck Statistics</a></li>
-					<li><a href="#m-card-image">Card Image</a></li>
-					<li><a href="#m-card-list">Card List</a></li>
-					<li><a href="#m-card-quantities">Card Quantities</a></li>
-					<li><a href="#m-card-adder">Card Adder</a></li>
-					<li><a href="#m-card-sorter">Card Sorter</a></li>
-					<li><a href="#m-deck-actions">Deck Actions</a></li>
-				</ol>
+				<li>
+					<a href="#m-deck-pages">Deck Pages</a>
+					<ol>
+						<li><a href="#m-deck-name">Deck Name</a></li>
+						<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+						<li><a href="#m-card-image">Card Image</a></li>
+						<li><a href="#m-card-list">Card List</a></li>
+						<li><a href="#m-card-quantities">Card Quantities</a></li>
+						<li><a href="#m-card-adder">Card Adder</a></li>
+						<li><a href="#m-card-sorter">Card Sorter</a></li>
+						<li><a href="#m-deck-actions">Deck Actions</a></li>
+					</ol>
+				</li>
 				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
 				<li><a href="#m-storage-of-app-data">Storage of App Data</a></li>
 			</ol>
