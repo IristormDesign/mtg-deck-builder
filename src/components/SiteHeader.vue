@@ -18,12 +18,14 @@
 					<li class="site-header-link">
 						<button
 							v-if="$router.currentRoute.name === 'manual'"
-							@click="$store.state.scrollToTop()"
+							@click="manualButtonClicked()"
 						>
 							Manual
 						</button>
 						<router-link
-							v-else :to="{name: 'manual'}"
+							v-else
+							:to="{name: 'manual'}"
+							@click.native="closeAllPopups()"
 						>
 							Manual
 						</router-link>
@@ -221,6 +223,10 @@ export default {
 			} else {
 				this.showSiteMenu = true
 			}
+		},
+		manualButtonClicked () {
+			this.$store.state.scrollToTop()
+			this.closeAllPopups()
 		}
 	}
 }
