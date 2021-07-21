@@ -50,7 +50,7 @@
 	overflow: hidden;
 
 	button {
-		@extend a;
+		@include link;
 		padding: 0;
 		margin: 0;
 		background: none;
@@ -115,11 +115,11 @@
 }
 .more-stats-button {
 	a {
-		@extend button;
+		@include button;
 	}
 	a,
 	button {
-		@extend .primary-btn;
+		@include primary-btn;
 		font-size: 87.5%;
 	}
 	button {

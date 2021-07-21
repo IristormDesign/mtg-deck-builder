@@ -222,3 +222,7 @@
 		</div>
 	</article>
 </template>
+
+<style lang="scss">
+	@import '@/sass/page-manual.scss';
+</style>

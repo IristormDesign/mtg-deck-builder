@@ -3,99 +3,11 @@
 	outline-offset: 2px;
 }
 a {
-	color: $color-link;
-	text-decoration: none;
-	transition: $transition-duration-standard ease;
-	transition-property: color, text-decoration-color;
-	
-	&:hover,
-	&:focus {
-		text-decoration: underline;
-		transition-duration: 0s;
-		color: $color-link-focus;
-		text-decoration-color: $color-mythic-orange;
-	}
-	&:active {
-		color: #fff;
-		text-decoration-color: $color-mythic-lighter;
-	}
+	@include link;
 }
 button,
 .button {
-	background:
-		radial-gradient(
-			rgba(#fff, .667) 0%,
-			rgba(#fff, 0) 100%,
-		),
-		linear-gradient(
-			lighten($color-button-default, 25%) 0%,
-			darken($color-button-default, 25%) 98%,
-			lighten($color-button-default, 8.33%) 100%
-		);
-	border-color: $color-button-default;
-	cursor: pointer;
-	box-shadow:
-		0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
-		-1px .167em .125em 1px rgba(#000, .333); // The shadow of the button
-	border-width: 0px;
-	border-style: outset;
-	border-top-width: 0;
-	border-bottom-width: 2px;
-	color: #000;
-	border-radius: $border-radius-button;
-	padding: $lhse/4 .5em;
-	min-width: 4.5em;
-	margin-top: -2px;
-	margin-bottom: 2px;
-	filter: brightness(1);
-	transition: filter $transition-duration-standard ease;
-	line-height: 1;
-	text-align: center;
-	text-shadow: -.5px 1px .5px rgba(#fff, .333);
-	font-weight: $font-weight-semibold;
-	text-decoration: none;
-	display: inline-block;
-
-	&:hover,
-	&:focus {
-		filter: brightness(1.25);
-		outline: none;
-		color: #000;
-		transition: filter $transition-duration-standard ease;
-		text-decoration: none;
-	}
-	&:active {
-		border-top-width: 1px;
-		border-bottom-width: 1px;
-		box-shadow: 0 0 0 1px rgba(#000, .75);
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-	&:focus-visible {
-		outline: 2px solid $color-mythic-orange;
-	}
-	&[type="submit"],
-	&.primary-btn {
-		background:
-			radial-gradient(
-				rgba($color-link-focus, 1) 0%,
-				rgba($color-link-focus, 0) 100%,
-			),
-			linear-gradient(
-				lighten($color-link, 25%) 0%,
-				$color-link,
-				darken($color-link, 25%) 98%,
-				lighten($color-link, 8.33%) 100%
-			);
-		border-color: desaturate(darken($color-link, 8.33%), 16.67%);
-		border-top-color: desaturate($color-link, 37.5%);
-	}
-	&:disabled {
-		filter: grayscale(.333) brightness(.75) !important;
-		cursor: default;
-		box-shadow: none;
-		margin: 0;
-	}
+	@include button;
 }
 label {
 	@include heading-font;

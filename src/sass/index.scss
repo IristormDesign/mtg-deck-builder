@@ -1,23 +1,9 @@
-// SETUP
 @import 'normalize';
 @import 'variables';
 
-// GENERAL
 @import 'general';
 @import 'links-and-forms';
 @import 'site-header';
 @import 'site-footer';
-
-// DECK PAGES
-@import 'page-deck';
-@import 'deck-header';
-@import 'card-display';
-@import 'card-list';
-@import 'card-list-controls';
-
-// OTHER PAGES
-@import 'page-home';
 @import 'content-box';
-@import 'page-more-stats';
-@import 'page-manual';
 @import 'misc';

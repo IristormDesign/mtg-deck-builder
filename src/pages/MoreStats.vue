@@ -814,3 +814,7 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/page-more-stats.scss';
+</style>

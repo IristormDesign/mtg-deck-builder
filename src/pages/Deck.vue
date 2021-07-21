@@ -58,3 +58,7 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/page-deck.scss';
+</style>

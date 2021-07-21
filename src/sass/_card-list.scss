@@ -55,7 +55,7 @@
 		text-shadow: $text-shadow-over-light-bg;
 	}
 	h3 {
-		@extend .screen-readers-only;
+		@include screen-readers-only;
 	}
 	.card-label-group {
 		display: flex;
@@ -209,7 +209,7 @@
 				color: $color-text;
 			}
 			label {
-				@extend .screen-readers-only;
+				@include screen-readers-only;
 			}
 			input {
 				color: $color-text-brighter;

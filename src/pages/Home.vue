@@ -93,3 +93,7 @@
 		</section>
 	</article>
 </template>
+
+<style lang="scss">
+	@import '@/sass/page-home.scss';
+</style>
