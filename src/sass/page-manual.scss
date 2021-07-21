@@ -3,11 +3,11 @@
 .manual-page {
 	display: grid;
 	grid-template-columns: auto auto;
-	grid-gap: $lhse/2;
+	gap: $lhse/2;
 	position: relative;
-
+	
 	&.content-box {
-		max-width: $max-width-content*1.5;
+		max-width: 100%;
 		background: none;
 		border: 0;
 		padding: 0;
@@ -58,6 +58,7 @@
 		}
 	}
 	.the-manual {
+		width: 100%;
 		padding-top: 0;
 		padding-bottom: $lhse/2;
 		max-width: $max-width-content;

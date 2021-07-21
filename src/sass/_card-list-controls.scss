@@ -212,7 +212,7 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 .deck-actions {
-	grid-gap: $lhse/2;
+	gap: $lhse/2;
 	display: flex;
 	border-left: $border-sections;
 	justify-content: space-around;

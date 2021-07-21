@@ -14,7 +14,7 @@
 .card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	grid-gap: $lhse/2;
+	gap: $lhse/2;
 	margin-bottom: $lhse;
 }
 .deck-main {

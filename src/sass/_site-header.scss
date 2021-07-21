@@ -68,7 +68,7 @@
 			list-style: none;
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
-			grid-gap: $lhse/2;
+			gap: $lhse/2;
 			align-items: center;
 		}
 		li {
@@ -164,7 +164,7 @@
 	.site-header {
 		.site-menu {
 			> ul {
-				grid-gap: $lhse/3;
+				gap: $lhse/3;
 			}
 		}
 	}

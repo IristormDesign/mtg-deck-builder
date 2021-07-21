@@ -10,7 +10,7 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
-		grid-gap: $lhse*.75 $lhse;
+		gap: $lhse*.75 $lhse;
 
 		section {
 			grid-column: span 1;
