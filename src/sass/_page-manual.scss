@@ -1,0 +1,101 @@
+.manual-page {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: $lhse/2;
+	position: relative;
+
+	&.content-box {
+		max-width: $max-width-content*1.5;
+		background: none;
+		border: 0;
+		padding: 0;
+	}
+	header,
+	.table-of-contents,
+	.the-manual {
+		background: $color-group-bg;
+		padding: $lhse;
+		border: $border-sections;
+		border-radius: $border-radius-group;
+	}
+	header {
+		grid-column: span 2;
+		text-align: center;
+		padding: $lhse*.75;
+
+		h2 {
+			margin: 0;
+		}
+	}
+	.table-of-contents {
+		padding: $lhse/2 $lhse/2 $lhse/4;
+		color: desaturate(darken($color-text, 12.5%), 8.33%);
+		height: min-content;
+		max-width: 25vw;
+		max-height: calc(100vh - #{$height-site-header + ($lhse)});
+		overflow-y: auto;
+		position: sticky;
+		top: $height-site-header + ($lhse / 2);
+		left: 0;
+		line-height: $line-height-standard*.6667;
+
+		h3 {
+			margin: 0 0 $lhse/4;
+			font-size: 100%;
+		}
+		ol,
+		li {
+			margin: 0;
+		}
+		ol {
+			padding-left: $lhse*.75;
+		}
+		a {
+			display: block;
+			padding: $lhse/4 0;
+		}
+	}
+	.the-manual {
+		padding-top: 0;
+		padding-bottom: $lhse/2;
+		max-width: $max-width-content;
+	}
+}
+
+@media (max-width: $min-width-site) {
+	.manual-page {
+		display: block;
+
+		header,
+		.table-of-contents {
+			margin-bottom: $lhse/4;
+		}
+		.table-of-contents {
+			position: static;
+			width: max-content;
+			max-width: 100%;
+			margin-right: auto;
+			margin-left: auto;
+			padding: $lhse/2 $lhse;
+		}
+	}
+}
+@media (max-width: $width-mobile-breakpoint) {
+	.manual-page {
+		header,
+		.the-manual {
+			display: block;
+			border: 0;
+			border-radius: 0;
+			padding-right: $lhse/2;
+			padding-left: $lhse/2;
+		}
+		header {
+			border-bottom: $border-sections;
+		}
+		.the-manual {
+			padding-top: $lhse/4;
+			border-top: $border-sections;
+		}
+	}
+}
