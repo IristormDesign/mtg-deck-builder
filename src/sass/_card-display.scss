@@ -1,6 +1,7 @@
 .card-display {
 	grid-column: span 2;
-	height: 573px; // Actual maximum height of card as it appears in the app.
+	height: 534px; // Actual maximum height of card as it appears in the app.
+	width: auto;
 	position: sticky;
 	top: $lhse/2 + $height-site-header;
 	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
@@ -15,7 +16,7 @@
 		will-change: transform;
 		mask-image: url('~@/img/card-mask.svg');
 		background: desaturate(darken($color-frame-generic, 37.5%), 0%);
-		outline: $x;
+		box-shadow: inset 0 0 0 16px #000; // Black card border without card image
 
 		&:focus-visible {
 			filter: brightness(125%);
@@ -28,10 +29,6 @@
 		}
 		&.B {
 			background: desaturate(darken($color-frame-black, 50%), 0%);
-
-			.loading-indicator {
-				color: $color-text;
-			}
 		}
 		&.R {
 			background: desaturate(darken($color-frame-red, 50%), 41.67%);
@@ -53,7 +50,7 @@
 		position: absolute;
 		top: 0;
 		font-style: italic;
-		color: #000;
+		color: #fff;
 		font-size: 112.5%;
 		
 		@keyframes fade-in {
