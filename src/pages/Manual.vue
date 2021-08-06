@@ -1,29 +1,29 @@
 <template>
 	<article class="manual-page content-box">
-		<header>
+		<header id="m-intro">
 			<h2>User Manual</h2>
 		</header>
 
 		<nav class="table-of-contents">
 			<h3>Table of Contents</h3>
 			<ol>
-				<li><a href="#">Introduction</a></li>
-				<li><a href="#m-app-header">App Header</a></li>
+				<li><router-link replace to="#m-intro">Introduction</router-link></li>
+				<li><router-link replace to="#m-app-header">App Header</router-link></li>
 				<li>
-					<a href="#m-deck-pages">Deck Pages</a>
+					<router-link replace to="#m-deck-pages">Deck Pages</router-link>
 					<ol>
-						<li><a href="#m-deck-name">Deck Name</a></li>
-						<li><a href="#m-deck-statistics">Deck Statistics</a></li>
-						<li><a href="#m-card-image">Card Image</a></li>
-						<li><a href="#m-card-list">Card List</a></li>
-						<li><a href="#m-card-quantities">Card Quantities</a></li>
-						<li><a href="#m-card-adder">Card Adder</a></li>
-						<li><a href="#m-card-sorter">Card Sorter</a></li>
-						<li><a href="#m-deck-actions">Deck Actions</a></li>
+						<li><router-link replace to="#m-deck-name">Deck Name</router-link></li>
+						<li><router-link replace to="#m-deck-statistics">Deck Statistics</router-link></li>
+						<li><router-link replace to="#m-card-image">Card Image</router-link></li>
+						<li><router-link replace to="#m-card-list">Card List</router-link></li>
+						<li><router-link replace to="#m-card-quantities">Card Quantities</router-link></li>
+						<li><router-link replace to="#m-card-adder">Card Adder</router-link></li>
+						<li><router-link replace to="#m-card-sorter">Card Sorter</router-link></li>
+						<li><router-link replace to="#m-deck-actions">Deck Actions</router-link></li>
 					</ol>
 				</li>
-				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
-				<li><a href="#m-storage-of-app-data">Storage of App Data</a></li>
+				<li><router-link replace to="#m-more-statistics-pages">More Statistics Pages</router-link></li>
+				<li><router-link replace to="#m-storage-of-app-data">Storage of App Data</router-link></li>
 			</ol>
 		</nav>
 
@@ -53,14 +53,14 @@
 			</p>
 			<p>A deck page contains the following components, listed in the order of their position on the page from left to right, top to bottom:</p>
 			<ul>
-				<li><a href="#m-deck-name">Deck name</a></li>
-				<li><a href="#m-deck-statistics">Deck statistics</a></li>
-				<li><a href="#m-card-image">Card image</a></li>
-				<li><a href="#m-card-list">Card list</a></li>
-				<li><a href="#m-card-quantities">Card quantities</a></li>
-				<li><a href="#m-card-adder">Card adder</a></li>
-				<li><a href="#m-card-sorter">Card sorter</a></li>
-				<li><a href="#m-deck-actions">Deck actions</a></li>
+				<li><router-link replace to="#m-deck-name">Deck name</router-link></li>
+				<li><router-link replace to="#m-deck-statistics">Deck statistics</router-link></li>
+				<li><router-link replace to="#m-card-image">Card image</router-link></li>
+				<li><router-link replace to="#m-card-list">Card list</router-link></li>
+				<li><router-link replace to="#m-card-quantities">Card quantities</router-link></li>
+				<li><router-link replace to="#m-card-adder">Card adder</router-link></li>
+				<li><router-link replace to="#m-card-sorter">Card sorter</router-link></li>
+				<li><router-link replace to="#m-deck-actions">Deck actions</router-link></li>
 			</ul>
 			<p>Each of those components will be explained in greater detail.</p>
 
@@ -88,7 +88,7 @@
 					<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calcuation includes cards’ quantities, and excludes lands.</li>
 					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
 					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
-					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60, which is the minimum card limit a deck may have according to <i>Magic</i>’s standard rules, then a warning symbol appears beside the number to signal that.</li>
+					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol appears beside the number to signal this.</li>
 					<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
 				</ul>
 			</section>
@@ -173,7 +173,7 @@
 					<li><strong>Quantity</strong>—Sorts from largest to smallest.</li>
 				</ul>
 				<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creatures group, the sorceries group, etc.), the cards are sorted by rarity.</p>
-				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
+				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a list must have a unique name, which isn’t necessarily true for the other card attributes.</p>
 				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any newly added cards to the list that haven’t been sorted yet.</p>
 				<p>Sorting affects all of your decks alike, not only the deck you’re currently viewing.</p>
 			</section>

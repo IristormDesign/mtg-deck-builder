@@ -23,7 +23,7 @@
 					</header>
 					<p>This app lets you build and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
-						<a href="#app-features" class="button">Learn More</a>
+						<router-link replace to="#app-features" class="button">Learn More</router-link>
 
 						<button
 							v-if="$store.state.decks.length > 0"

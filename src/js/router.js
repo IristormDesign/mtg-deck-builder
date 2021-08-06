@@ -115,7 +115,13 @@ export default new VueRouter({
 		}
 	],
 	scrollBehavior (to, from, savedPosition) {
-		if (savedPosition) {
+		if (to.hash) {
+			return {
+				selector: to.hash,
+				offset: { y: 80 },
+				behavior: 'smooth'
+			}
+		} else if (savedPosition) {
 			return savedPosition
 		} else {
 			return {
