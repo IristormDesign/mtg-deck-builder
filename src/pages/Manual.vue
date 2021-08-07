@@ -89,7 +89,7 @@
 					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
 					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
 					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol appears beside the number to signal this.</li>
-					<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
+					<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. For further explanation, see the “<router-link replace to="#m-more-statistics-pages">More Statistics Pages</router-link>” section of this manual.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">

@@ -118,7 +118,7 @@ export default new VueRouter({
 		if (to.hash) {
 			return {
 				selector: to.hash,
-				offset: { y: 80 },
+				offset: { y: 70 },
 				behavior: 'smooth'
 			}
 		} else if (savedPosition) {
