@@ -30,16 +30,17 @@
 		}
 	}
 	.table-of-contents {
-		padding: $lhse/2 $lhse/2 $lhse/4;
+		padding-bottom: $lhse*.75;
 		color: desaturate(darken($color-text, 12.5%), 8.33%);
 		height: min-content;
 		max-width: 25vw;
 		max-height: calc(100vh - #{$height-site-header + ($lhse)});
 		overflow-y: auto;
 		position: sticky;
-		top: $height-site-header + ($lhse / 2);
+		top: $height-site-header + ($lhse * .75);
 		left: 0;
 		line-height: $line-height-standard*.6667;
+		font-size: 87.5%;
 
 		h3 {
 			margin: 0 0 $lhse/4;
