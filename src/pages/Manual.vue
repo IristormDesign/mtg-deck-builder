@@ -33,7 +33,7 @@
 			<h3 id="m-app-header">App Header</h3>
 			<p>
 				<img class="screenshot"
-					srcset="@/img/manual-app-header.jpg 1x, @/img/manual-app-header.jpg 2x"
+					srcset="@/img/manual-app-header.jpg 1x, @/img/manual-app-header-2x.jpg 2x"
 					src="@/img/manual-app-header.jpg" width="658" height="23"
 					alt="Snippet of app header" title="Screenshot" />
 			</p>
