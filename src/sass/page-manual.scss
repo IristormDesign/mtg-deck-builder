@@ -53,9 +53,11 @@
 		ol {
 			padding-left: $lhse*.75;
 		}
-		a {
+		button {
+			@include link;
 			display: block;
 			padding: $lhse/4 0;
+			width: 100%;
 		}
 	}
 	.the-manual {
@@ -63,6 +65,15 @@
 		padding-top: 0;
 		padding-bottom: $lhse/2;
 		max-width: $max-width-content;
+
+		p {
+			&:first-child {
+				font-size: 108.33%;
+			}
+		}
+		button {
+			@include link;
+		}
 	}
 }
 

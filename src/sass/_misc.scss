@@ -155,6 +155,9 @@
 .stt-fade-leave-to {
   opacity: 0;
 }
+.inline {
+	display: inline;
+}
 
 @media (max-width: $min-width-site*.5) {
 	.update-notif {

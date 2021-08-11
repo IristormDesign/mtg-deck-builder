@@ -51,17 +51,6 @@
 
 	button {
 		@include link;
-		padding: 0;
-		margin: 0;
-		background: none;
-		border: 0;
-		box-shadow: none;
-		min-width: min-content;
-		border-radius: 0;
-		text-shadow: none;
-		display: inline-block;
-		text-align: left;
-		filter: none;
 		
 		h2 {
 			@include heading-font;

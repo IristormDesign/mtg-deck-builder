@@ -170,6 +170,18 @@ $x: 2px dashed rgba(#c0f, .75);
 	text-decoration: none;
 	transition: $transition-duration-standard ease;
 	transition-property: color, text-decoration-color;
+	padding: 0;
+	margin: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	min-width: min-content;
+	border-radius: 0;
+	text-shadow: none;
+	display: inline-block;
+	text-align: left;
+	filter: none;
+	font-weight: normal;
 	
 	&:hover,
 	&:focus {

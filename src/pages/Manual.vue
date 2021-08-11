@@ -7,28 +7,28 @@
 		<nav class="table-of-contents">
 			<h3>Table of Contents</h3>
 			<ol>
-				<li><router-link replace to="#m-intro">Introduction</router-link></li>
-				<li><router-link replace to="#m-app-header">App Header</router-link></li>
+				<li><button @click="scrollToSection('m-intro')">Introduction</button></li>
+				<li><button @click="scrollToSection('m-app-header')">App Header</button></li>
 				<li>
-					<router-link replace to="#m-deck-pages">Deck Pages</router-link>
+					<button @click="scrollToSection('m-deck-pages')">Deck Pages</button>
 					<ol>
-						<li><router-link replace to="#m-deck-name">Deck Name</router-link></li>
-						<li><router-link replace to="#m-deck-statistics">Deck Statistics</router-link></li>
-						<li><router-link replace to="#m-card-image">Card Image</router-link></li>
-						<li><router-link replace to="#m-card-list">Card List</router-link></li>
-						<li><router-link replace to="#m-card-quantities">Card Quantities</router-link></li>
-						<li><router-link replace to="#m-card-adder">Card Adder</router-link></li>
-						<li><router-link replace to="#m-card-sorter">Card Sorter</router-link></li>
-						<li><router-link replace to="#m-deck-actions">Deck Actions</router-link></li>
+						<li><button @click="scrollToSection('m-deck-name')">Deck Name</button></li>
+						<li><button @click="scrollToSection('m-deck-statistics')">Deck Statistics</button></li>
+						<li><button @click="scrollToSection('m-card-image')">Card Image</button></li>
+						<li><button @click="scrollToSection('m-card-list')">Card List</button></li>
+						<li><button @click="scrollToSection('m-card-quantities')">Card Quantities</button></li>
+						<li><button @click="scrollToSection('m-card-adder')">Card Adder</button></li>
+						<li><button @click="scrollToSection('m-card-sorter')">Card Sorter</button></li>
+						<li><button @click="scrollToSection('m-deck-actions')">Deck Actions</button></li>
 					</ol>
 				</li>
-				<li><router-link replace to="#m-more-statistics-pages">More Statistics Pages</router-link></li>
-				<li><router-link replace to="#m-storage-of-app-data">Storage of App Data</router-link></li>
+				<li><button @click="scrollToSection('m-more-statistics-pages')">More Statistics Pages</button></li>
+				<li><button @click="scrollToSection('m-storage-of-app-data')">Storage of App Data</button></li>
 			</ol>
 		</nav>
 
 		<div class="the-manual">
-			<p><strong>MTG Deck Builder by Iristorm Design</strong> is a web app where you can create and manage your custom decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
+			<p>MTG Deck Builder by Iristorm Design is a web app where you can create and manage your custom decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This article will teach you how to use this app.</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>
@@ -52,15 +52,15 @@
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
 			<p>A deck page contains the following components, listed in the order of their position on the page from left to right, top to bottom:</p>
-			<ul>
-				<li><router-link replace to="#m-deck-name">Deck name</router-link></li>
-				<li><router-link replace to="#m-deck-statistics">Deck statistics</router-link></li>
-				<li><router-link replace to="#m-card-image">Card image</router-link></li>
-				<li><router-link replace to="#m-card-list">Card list</router-link></li>
-				<li><router-link replace to="#m-card-quantities">Card quantities</router-link></li>
-				<li><router-link replace to="#m-card-adder">Card adder</router-link></li>
-				<li><router-link replace to="#m-card-sorter">Card sorter</router-link></li>
-				<li><router-link replace to="#m-deck-actions">Deck actions</router-link></li>
+			<ul class="deck-page-components-links">
+				<li><button @click="scrollToSection('m-deck-name')">Deck Name</button></li>
+				<li><button @click="scrollToSection('m-deck-statistics')">Deck Statistics</button></li>
+				<li><button @click="scrollToSection('m-card-image')">Card Image</button></li>
+				<li><button @click="scrollToSection('m-card-list')">Card List</button></li>
+				<li><button @click="scrollToSection('m-card-quantities')">Card Quantities</button></li>
+				<li><button @click="scrollToSection('m-card-adder')">Card Adder</button></li>
+				<li><button @click="scrollToSection('m-card-sorter')">Card Sorter</button></li>
+				<li><button @click="scrollToSection('m-deck-actions')">Deck Actions</button></li>
 			</ul>
 			<p>Each of those components will be explained in greater detail.</p>
 
@@ -89,7 +89,7 @@
 					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
 					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
 					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol appears beside the number to signal this.</li>
-					<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. For further explanation, see the “<router-link replace to="#m-more-statistics-pages">More Statistics Pages</router-link>” section of this manual.</li>
+					<li><strong>More Statistics</strong>—Click this button to inspect even more data about the deck. For further explanation, see the “<button class="inline" @click="scrollToSection('m-more-statistics-pages')">More Statistics Pages</button>” section of this manual.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -150,9 +150,9 @@
 						src="@/img/manual-card-adder.jpg" width="658" height="141"
 						alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This form contains a text input where you can enter a card’s name, and an “Add Card” button to insert that card into the deck. Newly added cards are always put at the bottom of the card list (but they can be rearranged by the card sorter).</p>
-				<p>When you start typing a couple letters of a name, an auto-complete list appears with card suggestions based on those initial letters.</p>
+				<p>This form contains a text input where you can enter a card’s name. Click the “Add Card” button to insert that card into the deck. (If the card name you entered is invalid, you’ll be notified.) When you start typing a couple letters of a name, an auto-complete list appears with card suggestions based on those initial letters.</p>
 				<p>(Tip: You can enter the code “<code>[random]</code>” as the card name to add any randomly chosen Modern-legal card.)</p>
+				<p>Newly added cards are always put at the bottom of the card list, though you can rearrange them later with the card sorter feature.</p>
 				<p>The card adder won’t add a card that already exists in the deck. If you’d want to add duplicates of a card of a particular name, increase that card’s quantity in the card list.</p>
 			</section>
 			<section id="m-card-sorter">
@@ -222,6 +222,18 @@
 		</div>
 	</article>
 </template>
+
+<script>
+export default {
+	methods: {
+		scrollToSection (id) {
+			const section = document.getElementById(id)
+
+			section.scrollIntoView(true)
+		}
+	}
+}
+</script>
 
 <style lang="scss">
 	@import '@/sass/page-manual.scss';
