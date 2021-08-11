@@ -1,21 +1,23 @@
 <template>
 	<article class="home-page">
 		<section class="intro">
-			<img
-				srcset="
-					@/img/welcome-2560.jpg 2560w,
-					@/img/welcome-1920.jpg 1920w,
-					@/img/welcome-1440.jpg 1440w,
-					@/img/welcome-1080.jpg 1080w,
-					@/img/welcome-810.jpg  810w,
-					@/img/welcome-608.jpg  608w,
-					@/img/welcome-456.jpg  456w,
-					@/img/welcome-341.jpg  341w"
-				src="@/img/welcome-1920.jpg"
-				width="1920" height="1080"
-				alt="Fantasy illustration from Magic: The Gathering"
-				@click="$store.getters.attentionHeaderButton"
-			/>
+			<div class="parallax" data-rellax-speed="-9" data-rellax-xs-speed="0" data-rellax-mobile-speed="0">
+				<img
+					srcset="
+						@/img/welcome-2560.jpg 2560w,
+						@/img/welcome-1920.jpg 1920w,
+						@/img/welcome-1440.jpg 1440w,
+						@/img/welcome-1080.jpg 1080w,
+						@/img/welcome-810.jpg  810w,
+						@/img/welcome-608.jpg  608w,
+						@/img/welcome-456.jpg  456w,
+						@/img/welcome-341.jpg  341w"
+					src="@/img/welcome-1920.jpg"
+					width="1920" height="1080"
+					alt="Fantasy illustration from Magic: The Gathering"
+					@click="$store.getters.attentionHeaderButton"
+				/>
+			</div>
 			<div class="wrap">
 				<div class="text-box">
 					<header>
@@ -23,7 +25,7 @@
 					</header>
 					<p>This app lets you build and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
-						<router-link replace to="#app-features" class="button">Learn More</router-link>
+						<button @click="scrollToAppFeaturesSection()">Learn More</button>
 
 						<button
 							v-if="$store.state.decks.length > 0"
@@ -93,6 +95,23 @@
 		</section>
 	</article>
 </template>
+
+<script>
+import Rellax from 'rellax'
+
+export default {
+	mounted () {
+		Rellax('.parallax')
+	},
+	methods: {
+		scrollToAppFeaturesSection () {
+			const appFeaturesSection = document.getElementById('app-features')
+
+			appFeaturesSection.scrollIntoView(true)
+		}
+	}
+}
+</script>
 
 <style lang="scss">
 	@import '@/sass/page-home.scss';
