@@ -16,7 +16,8 @@
 		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
 		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
-				
+		margin-bottom: -$height-site-header*2;
+
 		@keyframes cinematic-fade-in {
 			0%,
 			8.33% {
