@@ -121,14 +121,31 @@
 		position: relative;
 		z-index: index($layers, above-overlay);
 
+		.up-pointing-triangle {
+			position: absolute;
+			top: 2.25em;
+			right: 0;
+			z-index: index($layers, above-overlay);
+
+			&::before {
+				position: absolute;
+				bottom: 100%;
+				right: $lhse*1.6667;
+				border: solid transparent;
+				content: "";
+				height: 0;
+				width: 0;
+				pointer-events: none;
+				border-color: transparent;
+				border-bottom-color: $color-mythic-dim;
+				border-width: $lhse/4;
+			}
+		}
 		ul {
 			@include popup;
 			list-style: none;
 			margin: 0;
 			padding: 0;
-			position: absolute;
-			top: 2.25em;
-			right: 0;
 			min-width: 100%;
 			max-height: 75vh;
 			overflow-y: auto;
@@ -192,6 +209,22 @@
 		.by-iristorm {
 			display: none;
 		}
+		.site-menu {
+			&::before {
+				position: absolute;
+				bottom: 100%;
+				right: $lhse*.75;
+				right: $lhse;
+				border: solid transparent;
+				content: "";
+				height: 0;
+				width: 0;
+				pointer-events: none;
+				border-color: transparent;
+				border-bottom-color: $color-mythic-dim;
+				border-width: $lhse/3;
+			}
+		}
 	}
 }
 @media (max-width: 720px) { // Must match JavaScript
@@ -214,13 +247,15 @@
 			position: absolute;
 			right: $lhse/4;
 			top: $height-site-header;
-			width: auto;
 			margin: -$lhse/8 0 0;
-			overflow-y: auto;
-			max-height: 75vh;
-			max-width: $lhse*9;
 			z-index: index($layers, above-overlay);
-			
+
+			> ul {
+				overflow-y: auto;
+				max-height: 75vh;
+				max-width: $lhse*9;
+				width: auto;
+			}
 			ul {
 				display: block;
 				background: none;
@@ -286,9 +321,15 @@
 			display: none !important;
 		}
 		.deck-menu {
-			ul {
+			.up-pointing-triangle {
 				display: block !important;
 				position: static;
+
+				&::before {
+					display: none;
+				}
+			}
+			ul {
 				border: 0;
 				box-shadow: none;
 				overflow: visible;
@@ -306,4 +347,13 @@
 .overlay-enter,
 .overlay-leave-to {
   opacity: 0;
+}
+@media (max-width: $min-width-site/2) {
+	.site-header {
+		.site-menu {
+			&::before {
+				right: $lhse*.75;
+			}
+		}
+	}
 }

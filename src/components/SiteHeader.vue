@@ -48,20 +48,22 @@
 						<div class="open-deck-heading">
 							<strong>Open Deck:</strong>
 						</div>
-						<ul v-show="showDeckMenu">
-							<li v-for="deck in $store.state.decks" :key="deck.name">
-								<router-link
-									v-show="$route.params.deckPath !== deck.path"
-									:to="{
-										name: 'deck',
-										params: { deckPath: deck.path }
-									}"
-									@click.native="closeAllPopups()"
-								>
-									{{ deck.name }}
-								</router-link>
-							</li>
-						</ul>
+						<div v-show="showDeckMenu" class="up-pointing-triangle">
+							<ul>
+								<li v-for="deck in $store.state.decks" :key="deck.name">
+									<router-link
+										v-show="$route.params.deckPath !== deck.path"
+										:to="{
+											name: 'deck',
+											params: { deckPath: deck.path }
+										}"
+										@click.native="closeAllPopups()"
+									>
+										{{ deck.name }}
+									</router-link>
+								</li>
+							</ul>
+						</div>
 					</li>
 					<li class="site-header-link">
 						<router-link :to="{name: 'contact'}">
