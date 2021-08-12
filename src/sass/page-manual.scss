@@ -55,7 +55,7 @@
 		}
 		button {
 			@include link;
-			display: block;
+			display: inline-block;
 			padding: $lhse/4 0;
 			width: 100%;
 		}
