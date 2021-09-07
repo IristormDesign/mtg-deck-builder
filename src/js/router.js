@@ -5,14 +5,14 @@ const Home = () =>
 	import(/* webpackChunkName: "home" */ '../pages/Home.vue')
 const Deck = () =>
 	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
-const MoreStats = () =>
-	import(/* webpackChunkName: "more-stats" */ '../pages/MoreStats.vue')
-const DeckDeleted = () =>
-	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
 const Manual = () =>
 	import(/* webpackChunkName: "manual" */ '../pages/Manual.vue')
 const Contact = () =>
 	import(/* webpackChunkName: "contact" */ '../pages/Contact.vue')
+const MoreStats = () =>
+	import(/* webpackChunkName: "more-stats" */ '../pages/MoreStats.vue')
+const DeckDeleted = () =>
+	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
 const NotFound = () =>
 	import(/* webpackChunkName: "not-found" */ '../pages/NotFound.vue')
 const Terms = () =>
