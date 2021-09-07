@@ -6,7 +6,10 @@ import VueGtag from 'vue-gtag'
 import './registerServiceWorker.js'
 
 Vue.use(VueGtag, {
-	config: { id: 'G-SVXNP4LLL4' }
+	config: {
+		id: 'G-SVXNP4LLL4'
+	},
+	deferScriptLoad: true
 }, router)
 
 new Vue({
