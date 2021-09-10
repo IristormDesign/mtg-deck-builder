@@ -24,6 +24,7 @@
 				</li>
 				<li><button @click="scrollToSection('m-more-statistics-pages')">More Statistics Pages</button></li>
 				<li><button @click="scrollToSection('m-storage-of-app-data')">Storage of App Data</button></li>
+				<li><button @click="scrollToSection('m-app-dev-info')">App Development Info</button></li>
 			</ol>
 		</nav>
 
@@ -154,6 +155,7 @@
 				<p>(Tip: You can enter the code “<code>[random]</code>” as the card name to add any randomly chosen Modern-legal card.)</p>
 				<p>Newly added cards are always put at the bottom of the card list, though you can rearrange them later with the card sorter feature.</p>
 				<p>The card adder won’t add a card that already exists in the deck. If you’d want to add duplicates of a card of a particular name, increase that card’s quantity in the card list.</p>
+				<p>When submitting a card name in the card adder, if that card has been printed in multiple <i>Magic</i> sets, then the newest print will always be the one taken.</p>
 			</section>
 			<section id="m-card-sorter">
 				<h4>Card Sorter</h4>
@@ -217,8 +219,8 @@
 			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit as you like or delete them.</p>
 			<p>To permanently delete all of your data in MTG Deck Builder, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
 
-			<!-- <h3>Development Info</h3> -->
-			<!-- <p>To learn about the nuts and bolts of this MTG Deck Builder app, <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">read the article about it</a> at Iristorm Design.</p> -->
+			<h3 id="m-app-dev-info">App Development Info</h3>
+			<p>If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the design and development</a> behind MTG Deck Builder.</p>
 		</div>
 	</article>
 </template>
