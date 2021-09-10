@@ -2,21 +2,35 @@
 	<article class="home-page">
 		<section class="intro">
 			<div class="parallax" data-rellax-speed="-9" data-rellax-xs-speed="0" data-rellax-mobile-speed="0">
-				<img
-					srcset="
-						@/img/welcome-2560.jpg 2560w,
-						@/img/welcome-1920.jpg 1920w,
-						@/img/welcome-1440.jpg 1440w,
-						@/img/welcome-1080.jpg 1080w,
-						@/img/welcome-810.jpg  810w,
-						@/img/welcome-608.jpg  608w,
-						@/img/welcome-456.jpg  456w,
-						@/img/welcome-341.jpg  341w"
-					src="@/img/welcome-1920.jpg"
-					width="1920" height="1080"
-					alt="Fantasy illustration from Magic: The Gathering"
-					@click="$store.getters.attentionHeaderButton"
-				/>
+				<picture>
+					<source
+						type="image/webp"
+						media="(max-width: 810px)"
+						srcset="
+							@/img/welcome-810.webp 810w,
+							@/img/welcome-608.webp 608w,
+							@/img/welcome-456.webp 456w,
+							@/img/welcome-341.webp 341w"
+					/>
+					<source
+						type="image/webp"
+						media="(max-width: 1920px)"
+						srcset="
+							@/img/welcome-1920.webp 1920w,
+							@/img/welcome-1440.webp 1440w,
+							@/img/welcome-1080.webp 1080w"
+					/>
+					<source
+						type="image/webp"
+						srcset="@/img/welcome-2560.webp 2560w"
+					/>
+					<img
+						src="@/img/welcome-1920.jpg"
+						width="1920" height="1080"
+						alt="Fantasy illustration from Magic: The Gathering"
+						@click="$store.getters.attentionHeaderButton"
+					/>
+				</picture>
 			</div>
 			<div class="wrap">
 				<div class="text-box">
@@ -46,19 +60,27 @@
 		</section>
 		<section class="app-features">
 			<div class="wrap" id="app-features">
-				<img
-					srcset="
-						@/img/deck-page-screenshot-1366.jpg 1366w,
-						@/img/deck-page-screenshot-1024.jpg 1024w,
-						@/img/deck-page-screenshot-768.jpg  768w,
-						@/img/deck-page-screenshot-576.jpg  576w,
-						@/img/deck-page-screenshot-432.jpg  432w"
-					sizes="(max-width: 840px) 100vw, 49vw"
-					src="@/img/deck-page-screenshot-1366.jpg"
-					width="1366" height="1125"
-					alt="Screenshot of MTG Deck Builder"
-					loading="lazy"
-				/>
+				<picture>
+					<source
+						type="image/webp"
+						srcset="
+							@/img/deck-page-screenshot-1366.webp 1366w,
+							@/img/deck-page-screenshot-1024.webp 1024w,
+							@/img/deck-page-screenshot-768.webp  768w,
+							@/img/deck-page-screenshot-576.webp  576w,
+							@/img/deck-page-screenshot-432.webp  432w"
+						sizes="
+							(max-width: 840px) 99.9vw,
+							(max-width: 1440px) 49.9vw,
+							675px"
+					/>
+					<img
+						src="@/img/deck-page-screenshot-1024.jpg"
+						width="1366" height="1125"
+						alt="Screenshot of MTG Deck Builder"
+						loading="lazy"
+					/>
+				</picture>
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
