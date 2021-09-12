@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import defaultDecks from './default-decks'
+import defaultDecks from './default-decks.json'
 import router from './router.js'
 
 const vuexLocalStorage = new VuexPersist({
@@ -16,7 +16,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		alertNameTooLong: '⚠ That deck name is too long. Please shorten it to fewer than 50 characters.',
-		decks: defaultDecks,
+		decks: defaultDecks.decks,
 		deletedDeckName: null,
 		showCard: false,
 		showDeckMenu: false,
