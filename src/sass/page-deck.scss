@@ -27,6 +27,11 @@
 		grid-column: 4 / 8;
 	}
 }
+@media (max-width: $min-width-site*.875) {
+	.deck.wrap {
+		padding: 0 $lhse/4;
+	}
+}
 @media (max-width: $min-width-site * .8) {
 	.card-display-scroll-view {
 		display: block;

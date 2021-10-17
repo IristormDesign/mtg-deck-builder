@@ -71,9 +71,11 @@ img {
 		padding-left: $lhse/2;
 	}
 }
-@media (max-width: $min-width-site*.5) {
+@media (max-width: 24em) {
 	.content-box {
-		padding-right: $lhse/4;
-		padding-left: $lhse/4;
+		p,
+		li {
+			hyphens: auto;
+		}
 	}
 }

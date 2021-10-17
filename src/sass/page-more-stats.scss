@@ -5,7 +5,6 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 .more-stats {
 	&.content-box {
 		max-width: none;
-		// margin: $lhse;
 	}
 	.tables {
 		display: grid;
@@ -38,6 +37,8 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 			}
 		}
 		tbody {
+			position: relative;
+
 			tr {
 				&:hover {
 					outline: 1px solid rgba($color-mythic-orange, .75);

@@ -1,10 +1,10 @@
 <template>
 	<div class="more-stats content-box">
 		<h3>
-			More Statistics on “<router-link :to="{
+			More Statistics on <router-link :to="{
 				name: 'deck',
 				params: { deckPath: deck.path }
-			}">{{ deck.name }}</router-link>”
+			}">{{ deck.name }}</router-link>
 		</h3>
 
 		<div class="tables">

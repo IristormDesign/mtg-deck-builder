@@ -58,6 +58,7 @@
 			display: inline-block;
 			padding: $lhse/4 0;
 			width: 100%;
+			line-height: 1;
 		}
 	}
 	.the-manual {
@@ -74,6 +75,10 @@
 		button {
 			@include link;
 		}
+	}
+	.deck-page-components-links {
+		column-count: 3;
+		column-gap: $lhse;
 	}
 }
 
@@ -95,6 +100,13 @@
 		}
 	}
 }
+@media (max-width: $min-width-site * .75) {
+	.manual-page {
+		.deck-page-components-links {
+			column-count: 2;
+		}
+	}
+}
 @media (max-width: $width-mobile-breakpoint) {
 	.manual-page {
 		header,
@@ -112,5 +124,6 @@
 			padding-top: $lhse/4;
 			border-top: $border-sections;
 		}
+		
 	}
 }

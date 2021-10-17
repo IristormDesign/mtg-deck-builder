@@ -1,11 +1,13 @@
 .site-footer {
-	font-size: 75%;
 	letter-spacing: (1/256)*1em;
 	background: darken($color-group-bg, 8.33%);
 	color: desaturate(darken($color-text, 25%), 12.5%);
 	position: relative;
 	padding: $lhse 0;
 
+	p {
+		font-size: 75%;
+	}
 	.divider {
 		margin: 0 .5ch;
 	}
@@ -24,7 +26,6 @@
 	}
 }
 
-
 @media (max-width: $min-width-site*.75) {
 	.site-footer {
 		p {
@@ -34,7 +35,6 @@
 		}
 		a {
 			display: inline-block;
-			// min-height: 33px;
 		}
 		.group {
 			display: block;

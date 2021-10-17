@@ -179,6 +179,13 @@
 
 @media (max-width: $width-site-breakpoint) {
 	.site-header {
+		height: $height-site-header * .875; // Equal to percentage of font-size change.
+
+		.wrap {
+			> * {
+				font-size: 87.5%;
+			}
+		}
 		.site-menu {
 			> ul {
 				gap: $lhse/3;
@@ -188,8 +195,6 @@
 }
 @media (max-width: $min-width-site) {
 	.site-header {
-		font-size: 87.5%;
-
 		.wrap {
 			display: flex;
 		}
@@ -352,7 +357,7 @@
 	.site-header {
 		.site-menu {
 			&::before {
-				right: $lhse*.75;
+				right: $lhse;
 			}
 		}
 	}

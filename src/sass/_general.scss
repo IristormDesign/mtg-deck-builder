@@ -174,11 +174,6 @@ img {
 		}
 	}
 }
-@media (max-width: $min-width-site*.5) {
-	.wrap {
-		padding: 0 $lhse/4;
-	}
-}
 
 /* Remove all animations and transitions for people who prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
