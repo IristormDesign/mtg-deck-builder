@@ -109,6 +109,10 @@
 			margin-left: 0;
 			display: block;
 			width: 100%;
+			
+			> span {
+				display: none
+			}
 		}
 	}
 	.open-deck-heading {
@@ -218,8 +222,7 @@
 			&::before {
 				position: absolute;
 				bottom: 100%;
-				right: $lhse*.75;
-				right: $lhse;
+				right: $lhse*1.3333;
 				border: solid transparent;
 				content: "";
 				height: 0;
@@ -228,6 +231,14 @@
 				border-color: transparent;
 				border-bottom-color: $color-mythic-dim;
 				border-width: $lhse/3;
+			}
+		}
+		.site-header-link {
+			> a,
+			> button {
+				> span {
+					display: inline;
+				}
 			}
 		}
 	}
@@ -352,13 +363,4 @@
 .overlay-enter,
 .overlay-leave-to {
   opacity: 0;
-}
-@media (max-width: $min-width-site/2) {
-	.site-header {
-		.site-menu {
-			&::before {
-				right: $lhse;
-			}
-		}
-	}
 }

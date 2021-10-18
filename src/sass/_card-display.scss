@@ -133,7 +133,7 @@ $animation-duration-card-browse: .375s;
 		a {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
-			margin: 0 $lhse/2;
+			width: 93.75vw;
 		}
 		img {
 			max-height: calc(100vh - #{$lhse / 2});
