@@ -41,7 +41,7 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 
 			tr {
 				&:hover {
-					outline: 1px solid rgba($color-mythic-orange, .75);
+					box-shadow: 0 0 0 1px rgba($color-mythic-orange, .75);
 					position: relative;
 					z-index: 1;
 				}

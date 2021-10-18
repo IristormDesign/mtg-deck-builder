@@ -87,14 +87,13 @@ ol {
 li {
 	margin-bottom: $lhse/4;
 	padding-left: .25em;
-}
-ol ol {
+
 	li {
-		list-style: lower-alpha;
+		margin: 0;
 	}
 }
-li li {
-	margin: 0;
+ol ol {
+	list-style-type: lower-alpha;
 }
 img {
 	max-width: 100%;
