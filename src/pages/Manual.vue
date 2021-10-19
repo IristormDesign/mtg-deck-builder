@@ -1,35 +1,35 @@
 <template>
 	<article class="manual-page content-box">
-		<header id="m-intro">
+		<header>
 			<h2>User Manual</h2>
 		</header>
 
 		<nav class="table-of-contents">
 			<h3>Table of Contents</h3>
 			<ol>
-				<li><button @click="scrollToSection('m-intro')">Introduction</button></li>
-				<li><button @click="scrollToSection('m-app-header')">App Header</button></li>
+				<li><a @click.prevent="$store.state.scrollToTop()" href="#m-intro">Introduction</a></li>
+				<li><a href="#m-app-header">App Header</a></li>
 				<li>
-					<button @click="scrollToSection('m-deck-pages')">Deck Pages</button>
+					<a href="#m-deck-pages">Deck Pages</a>
 					<ol>
-						<li><button @click="scrollToSection('m-deck-name')">Deck Name</button></li>
-						<li><button @click="scrollToSection('m-deck-statistics')">Deck Statistics</button></li>
-						<li><button @click="scrollToSection('m-card-image')">Card Image</button></li>
-						<li><button @click="scrollToSection('m-card-list')">Card List</button></li>
-						<li><button @click="scrollToSection('m-card-quantities')">Card Quantities</button></li>
-						<li><button @click="scrollToSection('m-card-adder')">Card Adder</button></li>
-						<li><button @click="scrollToSection('m-card-sorter')">Card Sorter</button></li>
-						<li><button @click="scrollToSection('m-deck-actions')">Deck Actions</button></li>
+						<li><a href="#m-deck-name">Deck Name</a></li>
+						<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+						<li><a href="#m-card-image">Card Image</a></li>
+						<li><a href="#m-card-list">Card List</a></li>
+						<li><a href="#m-card-quantities">Card Quantities</a></li>
+						<li><a href="#m-card-adder">Card Adder</a></li>
+						<li><a href="#m-card-sorter">Card Sorter</a></li>
+						<li><a href="#m-deck-actions">Deck Actions</a></li>
 					</ol>
 				</li>
-				<li><button @click="scrollToSection('m-more-statistics-pages')">More Statistics Pages</button></li>
-				<li><button @click="scrollToSection('m-storage-of-app-data')">Storage of App Data</button></li>
-				<li><button @click="scrollToSection('m-app-dev-info')">App Development Info</button></li>
+				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
+				<li><a href="#m-storage-of-app-data">Storage of App Data</a></li>
+				<li><a href="#m-app-dev-info">App Development Info</a></li>
 			</ol>
 		</nav>
 
-		<div class="the-manual">
-			<p>MTG Deck Builder by Iristorm Design is a web app where you can create and manage your custom decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>. This document explains how to use this app.</p>
+		<div id="m-intro" class="the-manual">
+			<p>This document explains how to use MTG Deck Builder by Iristorm Design, which is a free web app where you can create and manage your own decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>.</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>
@@ -38,9 +38,9 @@
 					src="@/img/manual-app-header.jpg" width="658" height="23"
 					alt="Snippet of app header" title="Screenshot" />
 			</p>
-			<p>The app’s header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
+			<p>The app header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
 			<ul>
-				<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the <button class="inline" @click="scrollToSection('m-deck-pages')">deck page</button> of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
+				<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the <a href="#m-deck-pages">deck page</a> of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
 				<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
 			</ul>
 
@@ -54,14 +54,14 @@
 			</p>
 			<p>A deck page contains the following components, listed here in the order of their position on the page from left to right, top to bottom:</p>
 			<ol class="deck-page-components-links">
-				<li><button @click="scrollToSection('m-deck-name')">Deck Name</button></li>
-				<li><button @click="scrollToSection('m-deck-statistics')">Deck Statistics</button></li>
-				<li><button @click="scrollToSection('m-card-image')">Card Image</button></li>
-				<li><button @click="scrollToSection('m-card-list')">Card List</button></li>
-				<li><button @click="scrollToSection('m-card-quantities')">Card Quantities</button></li>
-				<li><button @click="scrollToSection('m-card-adder')">Card Adder</button></li>
-				<li><button @click="scrollToSection('m-card-sorter')">Card Sorter</button></li>
-				<li><button @click="scrollToSection('m-deck-actions')">Deck Actions</button></li>
+				<li><a href="#m-deck-name">Deck Name</a></li>
+				<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+				<li><a href="#m-card-image">Card Image</a></li>
+				<li><a href="#m-card-list">Card List</a></li>
+				<li><a href="#m-card-quantities">Card Quantities</a></li>
+				<li><a href="#m-card-adder">Card Adder</a></li>
+				<li><a href="#m-card-sorter">Card Sorter</a></li>
+				<li><a href="#m-deck-actions">Deck Actions</a></li>
 			</ol>
 			<p>Each of those components is going be explained in greater detail.</p>
 
@@ -90,7 +90,7 @@
 					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
 					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
 					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Statistics Button</strong>—Click this to inspect even more data about the deck. For further explanation, see the “<button class="inline" @click="scrollToSection('m-more-statistics-pages')">More Statistics Pages</button>” section of this manual.</li>
+					<li><strong>More Statistics Button</strong>—Click this to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -101,7 +101,7 @@
 						alt="Snippet of card image" title="Screenshot" loading="lazy" />
 				</p>
 				<h4>Card Image</h4>
-				<p>This is a scanned image of the last selected card from the deck’s <button class="inline" @click="scrollToSection('m-card-list')">card list</button>. If you click on the image, it’ll open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which provides more information about <i>Magic</i> cards.</p>
+				<p>This is a scanned image of the last selected card from the deck’s <a href="#m-card-list">card list</a>. If you click on the image, it’ll open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which provides more information about <i>Magic</i> cards.</p>
 				<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
 			</section>
 			<section id="m-card-list">
@@ -112,7 +112,7 @@
 						src="@/img/manual-card-list.jpg" width="658" height="219"
 						alt="Snippet of card list" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This is the list of the cards contained in the currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <button class="inline" @click="scrollToSection('m-card-image')">card image</button> section.</p>
+				<p>This is the list of the cards contained in the currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
 				<p>Labeled on each of the card buttons are the following card characteristics:</p>
 				<ul>
 					<li>Name</li>
@@ -138,7 +138,7 @@
 						src="@/img/manual-card-quantities.jpg" width="88" height="238"
 						alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
 				</p>
-				<p>Adjacent to each card button in the <button class="inline" @click="scrollToSection('m-card-list')">card list</button> is a number representing the quantity (“QTY.”) of that card in the deck.</p>
+				<p>Adjacent to each card button in the <a href="#m-card-list">card list</a> is a number representing the quantity (“QTY.”) of that card in the deck.</p>
 				<p>Click on a card’s quantity to make an input box appear in which you can change the number. On most web browsers, the input box also has a pair of arrow buttons that let you increase or decrease the number by one.</p>
 				<p>To remove a card from the deck, lower its quantity to zero. You’ll then be prompted to confirm you want to remove that card. If not, then the quantity resets to one.</p>
 				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards of the “basic land” type which may have any quantity.</p>
@@ -154,9 +154,9 @@
 				<ul>
 					<li>When you start typing a couple of letters of a name in the card adder, an auto-complete list appears with card suggestions based on those initial letters.</li>
 					<li>If the card name you entered is invalid, you’ll be notified.</li>
-					<li>The card adder won’t add a card that already exists by that name in the deck. If you’d want to add duplicates of a card of a particular name, instead increase that card’s <button class="inline" @click="scrollToSection('m-card-quantities')">quantity</button>.</li>
+					<li>The card adder won’t add a card that already exists by that name in the deck. If you’d want to add duplicates of a card of a particular name, instead increase that card’s <a href="#m-card-quantities">quantity</a>.</li>
 					<li>When submitting a card name in the card adder, if that card has been printed in multiple <i>Magic</i> sets, the newest print will always be the one taken.</li>
-					<li>Newly added cards are put at the bottom of the card list, though they can be rearranged later with the <button class="inline" @click="scrollToSection('m-card-sorter')">card sorter</button>.</li>
+					<li>Newly added cards are put at the bottom of the card list, though they can be rearranged later with the <a href="#m-card-sorter">card sorter</a>.</li>
 					<li>To add any randomly chosen Modern-legal card, enter the code <code>[random]</code> as the card name. (Depending on the web browser you’re using, “[random]” may also appear as an option when the card adder input has focus.)</li>
 				</ul>
 			</section>
@@ -167,7 +167,7 @@
 						src="@/img/manual-card-sorter.jpg" width="265" height="140"
 						alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This is a selection menu with various options for sorting the <button class="inline" @click="scrollToSection('m-card-list')">card list</button> by certain attributes of <i>Magic</i> cards, including:</p>
+				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
 				<ul>
 					<li><strong>Name</strong>—Sorts alphabetically.</li>
 					<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
@@ -179,7 +179,7 @@
 				</ul>
 				<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
 				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other card attributes.</p>
-				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <button class="inline" @click="scrollToSection('m-card-adder')">newly added cards</button> to the list that haven’t been sorted yet.</p>
+				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 				<p>Applying any sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
 			</section>
 			<section id="m-deck-actions">
@@ -191,14 +191,14 @@
 				</p>
 				<p>There are two buttons on a deck page for doing special actions:</p>
 				<ul>
-					<li><strong>Copy Deck</strong>—Click this button to create a new deck that has an identical list of cards as the deck you’re currently viewing. The duplicate deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <button class="inline" @click="scrollToSection('m-deck-name')">rename</button> it afterward if you want).</li>
+					<li><strong>Copy Deck</strong>—Click this button to create a new deck that has an identical list of cards as the deck you’re currently viewing. The duplicate deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
 					<li><strong>Delete Deck</strong>—Click this button to erase the data of the deck you’re currently viewing. If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.</li>
 				</ul>
 				<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
 			</section>
 
 			<h3 id="m-more-statistics-pages">More Statistics Pages</h3>
-			<p>By clicking the More Statistics button in the <button class="inline" @click="scrollToSection('m-deck-statistics')">deck page’s header</button>, you’ll be taken to that deck’s More Statistics page. This page shows data tables about various categories of measurement of the deck’s cards.</p>
+			<p>By clicking the More Statistics button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Statistics page. This page shows data tables about various categories of measurement of the deck’s cards.</p>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 2x"
@@ -232,9 +232,9 @@
 export default {
 	methods: {
 		scrollToSection (id) {
-			const section = document.getElementById(id)
+			// const section = document.getElementById(id)
 
-			section.scrollIntoView(true)
+			// section.scrollIntoView(true)
 		}
 	}
 }

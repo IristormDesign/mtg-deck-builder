@@ -39,7 +39,6 @@
 		position: sticky;
 		top: $height-site-header + ($lhse * .75);
 		left: 0;
-		line-height: $line-height-standard*.6667;
 		font-size: 87.5%;
 
 		h3 {
@@ -53,10 +52,9 @@
 		ol {
 			padding-left: $lhse*.75;
 		}
-		button {
-			@include link;
-			display: inline-block;
-			padding: $lhse/4 0;
+		a {
+			display: block;
+			padding: $lhse/6 0;
 			width: 100%;
 			line-height: 1;
 		}
@@ -125,5 +123,14 @@
 			border-top: $border-sections;
 		}
 		
+	}
+}
+@media (pointer: coarse) {
+	.manual-page {
+		.table-of-contents {
+			a {
+				padding: $lhse/3 0;
+			}
+		}
 	}
 }

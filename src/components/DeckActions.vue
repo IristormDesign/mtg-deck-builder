@@ -12,11 +12,11 @@ export default {
 	},
 	methods: {
 		copyDeck (srcDeck) {
-			const toCopyConfirmed = confirm(`Create a new deck that’s a copy of “${srcDeck.name}”?`)
+			const srcDeckName = srcDeck.name
+			const toCopyConfirmed = confirm(`Create a new deck that’s a copy of “${srcDeckName}”?`)
 
 			if (toCopyConfirmed) {
 				const store = this.$store
-				const srcDeckName = srcDeck.name
 				const copySuffixRegex = new RegExp(/\(\d+\)$/, 'g') // A string that ends with `(N)`, where N is any number.
 				let dupDeckName = srcDeckName
 				let dupDeckPath
