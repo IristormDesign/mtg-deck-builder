@@ -7,7 +7,7 @@
 		<nav class="table-of-contents">
 			<h3>Table of Contents</h3>
 			<ol>
-				<li><a @click.prevent="$store.state.scrollToTop()" href="#m-intro">Introduction</a></li>
+				<li><a href="#m-intro">Introduction</a></li>
 				<li><a href="#m-app-header">App Header</a></li>
 				<li>
 					<a href="#m-deck-pages">Deck Pages</a>
