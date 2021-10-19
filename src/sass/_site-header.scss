@@ -213,33 +213,10 @@
 		}
 	}
 }
-@media (max-width: $min-width-site*.875) {
+@media (max-width: $min-width-site*.9167) {
 	.site-header {
 		.by-iristorm {
 			display: none;
-		}
-		.site-menu {
-			&::before {
-				position: absolute;
-				bottom: 100%;
-				right: $lhse*1.3333;
-				border: solid transparent;
-				content: "";
-				height: 0;
-				width: 0;
-				pointer-events: none;
-				border-color: transparent;
-				border-bottom-color: $color-mythic-dim;
-				border-width: $lhse/3;
-			}
-		}
-		.site-header-link {
-			> a,
-			> button {
-				> span {
-					display: inline;
-				}
-			}
 		}
 	}
 }
@@ -266,6 +243,19 @@
 			margin: -$lhse/8 0 0;
 			z-index: index($layers, above-overlay);
 
+			&::before {
+				position: absolute;
+				bottom: 100%;
+				right: $lhse*1.3333;
+				border: solid transparent;
+				content: "";
+				height: 0;
+				width: 0;
+				pointer-events: none;
+				border-color: transparent;
+				border-bottom-color: $color-mythic-dim;
+				border-width: $lhse/3;
+			}
 			> ul {
 				overflow-y: auto;
 				max-height: 75vh;

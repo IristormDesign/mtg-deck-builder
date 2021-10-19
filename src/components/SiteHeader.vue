@@ -20,14 +20,14 @@
 							v-if="$router.currentRoute.name === 'manual'"
 							@click="manualButtonClicked()"
 						>
-							<span>User </span>Manual
+							User Manual
 						</button>
 						<router-link
 							v-else
 							:to="{name: 'manual'}"
 							@click.native="closeAllPopups()"
 						>
-							<span>User </span>Manual
+							User Manual
 						</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
