@@ -41,7 +41,7 @@
 			<p>The app header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
 			<ul>
 				<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the <a href="#m-deck-pages">deck page</a> of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
-				<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your decks stored in the app that aren’t currently open. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
+				<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
 			</ul>
 
 			<h3 id="m-deck-pages">Deck Pages</h3>
@@ -87,7 +87,7 @@
 				<ul>
 					<li><strong>Using Colors</strong>—Shows whichever of the five mana colors that are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
 					<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calculation includes cards’ quantities, and excludes lands.</li>
-					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of adding a new card, increasing or decreasing a card’s quantity, and renaming the deck count as modifications. (Viewing another card and sorting the card list don’t count.)</li>
+					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
 					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol (⚠) appears beside the number to signal this.</li>
 					<li><strong>More Statistics Button</strong>—Click this to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
@@ -157,7 +157,7 @@
 					<li>The card adder won’t add a card that already exists by that name in the deck. If you’d want to add duplicates of a card of a particular name, instead increase that card’s <a href="#m-card-quantities">quantity</a>.</li>
 					<li>When submitting a card name in the card adder, if that card has been printed in multiple <i>Magic</i> sets, the newest print will always be the one taken.</li>
 					<li>Newly added cards are put at the bottom of the card list, though they can be rearranged later with the <a href="#m-card-sorter">card sorter</a>.</li>
-					<li>To add any randomly chosen Modern-legal card, enter the code <code>[random]</code> as the card name. (Depending on the web browser you’re using, “[random]” may also appear as an option when the card adder input has focus.)</li>
+					<li>If you want to add a randomly chosen card to your deck, enter the code <code>[random]</code> (including the square brackets) as the card name. Depending on the web browser you’re using, “[random]” may also appear as a selectable option when the card adder input has focus.</li>
 				</ul>
 			</section>
 			<section id="m-card-sorter">
