@@ -1,7 +1,8 @@
 <template>
 	<div class="deck-actions">
-		<button @click="copyDeck(deck)">Copy Deck</button>
-		<button @click="deleteDeck(deck)">Delete Deck</button>
+		<button @click="copyDeck(deck)">Copy</button>
+		<button @click="deleteDeck(deck)">Delete</button>
+		<button @click="exportDeck(deck)">Export</button>
 	</div>
 </template>
 
@@ -60,6 +61,7 @@ export default {
 					viewedCard: srcDeck.viewedCard
 				})
 				store.commit('setDecks', updatedDecksArray)
+				store.commit('sortDeckMenu')
 
 				store.state.decks.find((deck) => {
 					if (deck.name === dupDeckName) {
@@ -85,6 +87,23 @@ export default {
 				})
 				store.commit('setDeletedDeckName', deletedDeckName)
 				this.$router.replace({ name: 'deckDeleted' })
+			}
+		},
+		exportDeck (deck) {
+			const deckName = deck.name
+			const toExportConfirmed = confirm(`Export the data of the deck “${deckName}”? (You can use the exported data file as a backup copy, or have MTG Deck Builder on another device import that data.)`)
+
+			if (toExportConfirmed) {
+				const deckData = JSON.stringify(deck)
+				const transitoryLink = document.createElement('a')
+
+				transitoryLink.style.display = 'none'
+				transitoryLink.setAttribute('href', `data:text/plain;charset=utf-8,${deckData}`)
+				transitoryLink.setAttribute('download', `${deckName}.json`)
+
+				document.body.appendChild(transitoryLink)
+				transitoryLink.click()
+				document.body.removeChild(transitoryLink)
 			}
 		}
 	}

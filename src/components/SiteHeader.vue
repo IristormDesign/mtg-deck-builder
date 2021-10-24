@@ -31,9 +31,16 @@
 						</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<button class="primary-btn" @click="$store.dispatch('createDeck')">
+						<!-- <button class="primary-btn" @click="$store.dispatch('createDeck')">
 							Create Deck
-						</button>
+						</button> -->
+						<router-link
+							:to="{name: 'createDeck'}"
+							class="primary-btn"
+							@click.native="closeAllPopups()"
+						>
+							Create Deck
+						</router-link>
 					</li>
 					<li class="deck-menu site-header-link">
 						<button

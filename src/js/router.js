@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import store from './store.js'
 const Home = () =>
 	import(/* webpackChunkName: "home" */ '../pages/Home.vue')
+const CreateDeck = () =>
+	import(/* webpackChunkName: "create-deck" */ '../pages/CreateDeck.vue')
 const Deck = () =>
 	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
 const Manual = () =>
@@ -42,6 +44,11 @@ export default new VueRouter({
 					next({ name: 'notFound', replace: true })
 				}
 			}
+		},
+		{
+			name: 'createDeck',
+			path: '/create-deck',
+			component: CreateDeck
 		},
 		{
 			name: 'deck',
