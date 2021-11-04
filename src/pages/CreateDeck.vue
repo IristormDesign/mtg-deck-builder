@@ -1,5 +1,5 @@
 <template>
-	<article class="content-box">
+	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
 		<p>To create a deck, you can either start on an empty deck page and add any cards you want, or import a deck data file (if you have one) to see a pre-made deck.</p>
 
@@ -18,15 +18,15 @@
 
 			<p><em>—or—</em></p>
 
-			<form @submit.prevent="importDeckData()">
+			<div class="import-data">
 				<h3>Import Deck Data</h3>
-				<label for="data-file">Select a deck data file:</label>
 				<input
 					id="data-file"
-					type="file" accept=".json"
+					type="file" accept=".deck"
+					style="display: none"
 				/>
-				<button class="primary-btn">Import</button>
-			</form>
+				<button id="file-btn" class="primary-btn">Open a Deck Data File</button>
+			</div>
 		</div>
 	</article>
 </template>
@@ -40,6 +40,15 @@ export default {
 	},
 	mounted () {
 		this.$refs.focus.focus()
+
+		// Hide the file input element and make the Open File button gain its functionality.
+		const openFileButton = document.getElementById('file-btn')
+		const fileInput = document.getElementById('data-file')
+
+		openFileButton.addEventListener('click', () => {
+			fileInput.click()
+		}, false)
+		fileInput.addEventListener('change', this.importDeckData, false)
 	},
 	methods: {
 		submitDeckName () {
@@ -82,7 +91,8 @@ export default {
 			}
 		},
 		importDeckData () {
-			const importedFile = document.getElementById('data-file').files[0]
+			const fileInputEl = document.getElementById('data-file')
+			const importedFile = fileInputEl.files[0]
 
 			if (importedFile) {
 				const fileReader = new FileReader()
@@ -91,7 +101,7 @@ export default {
 				fileReader.onload = () => {
 					const fileReaderResult = fileReader.result
 
-					if (isValidJSON(fileReaderResult)) {
+					if (this.isValidDeckData(importedFile, fileReaderResult)) {
 						const store = this.$store
 						const deckData = JSON.parse(fileReaderResult)
 						const updatedDecksArray = store.state.decks
@@ -169,27 +179,46 @@ export default {
 								params: { deckPath: deckData.path }
 							})
 						}
-					}
-
-					function isValidJSON (text) {
-						try {
-							JSON.parse(text)
-							return true
-						} catch (error) {
-							if (error instanceof SyntaxError && importedFile.type === 'application/json') {
-								alert('⚠ File Import Error\n\nSorry, the deck data file you’ve selected couldn’t be imported because the data in it is invalid or corrupted.')
-							} else if (error instanceof SyntaxError) {
-								alert(`⚠ File Import Error\n\nThe file you’ve selected (${importedFile.name}) is not a deck data file for MTG Deck Builder. Deck data files are in the JSON file format.`)
-							} else {
-								alert(error)
-								throw error
-							}
-							return false
-						}
+					} else {
+						// Clear the deck file input in case the user tries to load a file of the same name again.
+						fileInputEl.value = null
 					}
 				}
+			}
+		},
+		isValidDeckData (file, string) {
+			try {
+				const deckData = JSON.parse(string)
+
+				if (
+					deckData.name && deckData.path && deckData.cards && deckData.editDate
+				) {
+					return true
+				} else {
+					throw new SyntaxError()
+				}
+			} catch (error) {
+				if (error instanceof SyntaxError) {
+					const deckExtRegex = new RegExp(/\.deck$/, 'i')
+					const fileName = file.name
+
+					if (deckExtRegex.test(fileName)) {
+						alert(`⚠ File Import Error\n\nSorry, the deck data file you’ve selected (${fileName}) couldn’t be imported because the data contained in it is invalid or corrupted.`)
+					} else {
+						alert(`⚠ File Import Error\n\nThe file you’ve selected (${fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`)
+					}
+				} else {
+					alert(error)
+					throw error
+				}
+
+				return false
 			}
 		}
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/page-create-deck.scss';
+</style>

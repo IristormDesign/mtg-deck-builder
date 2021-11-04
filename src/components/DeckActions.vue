@@ -14,7 +14,7 @@ export default {
 	methods: {
 		copyDeck (srcDeck) {
 			const srcDeckName = srcDeck.name
-			const toCopyConfirmed = confirm(`Create a new deck that’s a copy of “${srcDeckName}”?`)
+			const toCopyConfirmed = confirm(`Create a new deck that’s a duplicate of “${srcDeckName}”?`)
 
 			if (toCopyConfirmed) {
 				const store = this.$store
@@ -91,7 +91,7 @@ export default {
 		},
 		exportDeck (deck) {
 			const deckName = deck.name
-			const toExportConfirmed = confirm(`Export the data of the deck “${deckName}”? (You can use the exported data file as a backup copy, or have MTG Deck Builder on another device import that data.)`)
+			const toExportConfirmed = confirm(`Export a deck data file for “${deckName}”?`)
 
 			if (toExportConfirmed) {
 				const deckData = JSON.stringify(deck)
@@ -99,7 +99,7 @@ export default {
 
 				transitoryLink.style.display = 'none'
 				transitoryLink.setAttribute('href', `data:text/plain;charset=utf-8,${deckData}`)
-				transitoryLink.setAttribute('download', `${deckName}.json`)
+				transitoryLink.setAttribute('download', `${deckName}.deck`)
 
 				document.body.appendChild(transitoryLink)
 				transitoryLink.click()
