@@ -2,10 +2,24 @@ $height-card-list-controls: $lhse * 1.25;
 
 @mixin clc-single-layer {
 	.card-list-controls {
-		flex-wrap: nowrap;
+		display: grid;
+		grid-template-columns: minmax(min-content, 3fr) minmax(min-content, 1fr) minmax(min-content, 1fr);
+
+		> div {
+			justify-content: center;
+		}
 	}
 	.card-adder {
 		border-bottom: 0;
+		padding-right: 0;
+		padding-left: 0;
+
+		form {
+			padding: 0 3.125%;
+		}
+		label {
+			grid-column: span 2;
+		}
 	}
 	.card-sorter {
 		border-left: $border-sections;
@@ -16,23 +30,25 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 	.deck-actions {
 		flex-direction: column;
-
-		button {
-			margin: 0;
-		}
 	}
 }
 @mixin clc-double-layer {
 	.card-list-controls {
+		display: flex;
 		flex-wrap: wrap;
+
+		> div {
+			height: $lhse*2.5;
+		}
 	}
 	.card-adder {
 		grid-column: span 2;
 		border-bottom: $border-sections;
 		width: 100%;
-
+		
 		form {
 			display: flex;
+			justify-content: center;
 			align-items: center;
 		}
 		label {
@@ -41,32 +57,34 @@ $height-card-list-controls: $lhse * 1.25;
 			width: auto;
 		}
 		input {
-			flex-grow: 4;
+			max-width: 16em;
+			width: 100%;
 		}
-		button {
-			flex-grow: 1;
+	}
+	.card-sorter,
+	.deck-actions {
+		width: 50%;
+		
+		label {
+			margin: 0;
+			padding: 0 $lhse/4 0 0;
 		}
 	}
 	.card-sorter {
-		justify-content: center;
 		border-left: 0;
-		flex-grow: 2;
 
 		fieldset {
 			display: flex;
 			align-items: center;
 		}
-		label {
-			padding: 0 $lhse/3 0 0;
-		}
 	}
 	.deck-actions {
-		flex-direction: row;
-		flex-grow: 1;
-
-		button {
-			margin-right: $lhse/3;
-			margin-left: $lhse/3;
+		form {
+			display: flex;
+			align-items: center;
+		}
+		label {
+			white-space: nowrap;			
 		}
 	}
 }
@@ -75,15 +93,20 @@ $height-card-list-controls: $lhse * 1.25;
 		> div {
 			min-height: $lhse*3.25;
 		}
+		label {
+			padding: 0 0 $lhse/4 0;
+			margin-right: .375em;
+			margin-left: .375em;
+		}
 	}
 	.card-adder {
 		form {
-			flex-wrap: wrap;
+			display: grid;
+			padding: 0;
 		}
-		label {
+		input {
 			width: 100%;
-			padding-bottom: $lhse/4;
-			margin-left: .375em;
+			max-width: 100%;
 		}
 	}
 	.card-sorter {
@@ -91,12 +114,12 @@ $height-card-list-controls: $lhse * 1.25;
 			flex-direction: column;
 			align-items: flex-start;
 		}
-		label {
-			padding-bottom: $lhse/4;
-		}
 	}
 	.deck-actions {
-		flex-direction: column;
+		form {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 }
 
@@ -104,7 +127,6 @@ $height-card-list-controls: $lhse * 1.25;
 
 .card-list-controls {
 	grid-column: 3 / 8;
-	display: flex;
 	justify-content: space-between;
 	border-radius: $border-radius-group;
 	overflow: hidden;
@@ -115,36 +137,35 @@ $height-card-list-controls: $lhse * 1.25;
 		padding: $lhse/2;
 		display: flex;
 		align-items: center;
-		min-height: $lhse*2.333;
+		height: $lhse*3.25;
 	}
 	label {
 		display: block;
 		font-size: 83.33%;
 		padding-bottom: $lhse/4;
+		margin-right: .375em;
 		margin-left: .375em;
 		color: $color-text-brighter;
 	}
-	button {
-		white-space: nowrap;
+	option[value=""] {
+		font-style: italic;
 	}
 }
 .card-adder {
 	align-items: center;
 	flex-grow: 1;
-
+	
 	form {
 		display: grid;
 		grid-template-columns: 3fr minmax(min-content, 1fr);
 		width: 100%;
 	}
-	label {
-		grid-column: span 2;
-	}
 	input {
 		border-radius: $border-radius-button;
-		padding-right: .75em;
-		padding-left: .375em;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
 		height: $height-card-list-controls;
+		font-weight: $font-weight-semibold;
 
 		&.attention {
 			@keyframes pulsate-input {
@@ -163,8 +184,10 @@ $height-card-list-controls: $lhse * 1.25;
 		}
 	}
 	button {
-		margin-left: -$lhse/2;
-		height: $height-card-list-controls;
+		height: calc(#{$height-card-list-controls} + 2px);
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		white-space: nowrap;
 	}
 	.loading-indicator {
 		animation: pulse .5s ease-out;
@@ -205,10 +228,7 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 	select {
 		height: $height-card-list-controls;
-		min-width: $lhse*7; // Longer than "(Select an attribute)"
-	}
-	option[value=""] {
-		font-style: italic;
+		font-weight: $font-weight-semibold;
 	}
 }
 .deck-actions {
@@ -222,37 +242,47 @@ $height-card-list-controls: $lhse * 1.25;
 		width: 100%;
 		max-width: $lhse*4.5;
 	}
+	select {
+		width: 100%;
+		height: $height-card-list-controls;
+		font-weight: $font-weight-semibold;
+	}
 }
 
-@media (max-width: $width-site-breakpoint) {
+@media (max-width: ($width-site-breakpoint * .875)) {
 	@include clc-double-layer;
 }
 @media (max-width: $width-site-breakpoint-tablet) {
 	@include clc-triple-layer;
 }
-@media (max-width: $min-width-site * .5) {
-	.card-list-controls {
-		> div {
-			flex-wrap: nowrap;
-		}
-	}
+@media (max-width: ($width-site-breakpoint-tablet * .75)) {
 	.card-adder {
 		form {
-			input {
-				margin-bottom: $lhse/4;
-				width: 100%;
-			}
-			button {
-				margin-left: auto;
-				max-width: $lhse*4.5;
+			padding: 0 3.125%;
+		}
+	}
+}
+@media (max-width: ($min-width-site * .5)) {
+	.card-adder {
+		form {
+			padding: 0;
+		}
+		button {
+			min-width: 0;
+
+			span {
+				display: none;
 			}
 		}
+	}
+	.card-sorter,
+	.deck-actions {
+		width: 100%;
 	}
 	.card-sorter {
 		border-bottom: $border-sections;
 	}
 	.deck-actions {
-		border-left: 0;
-		flex-direction: row;
+		border-left-width: 0;
 	}
 }

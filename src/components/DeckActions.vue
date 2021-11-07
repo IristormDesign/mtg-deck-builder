@@ -1,17 +1,44 @@
 <template>
 	<div class="deck-actions">
-		<button @click="copyDeck(deck)">Copy</button>
-		<button @click="deleteDeck(deck)">Delete</button>
-		<button @click="exportDeck(deck)">Export</button>
+		<form>
+			<label for="deckActionSelect">Deck actions:</label>
+			<select v-model="deckAction" @change="doDeckAction()" id="deckActionSelect">
+				<option value="">(Select)</option>
+				<option value="copy">Copy</option>
+				<option value="export">Export</option>
+				<option value="delete">Delete</option>
+			</select>
+		</form>
 	</div>
 </template>
 
 <script>
 export default {
+	data () {
+		return {
+			deckAction: ''
+		}
+	},
 	props: {
 		deck: Object
 	},
 	methods: {
+		doDeckAction () {
+			const deck = this.deck
+
+			setTimeout(() => {
+				switch (this.deckAction) {
+				case 'copy':
+					this.copyDeck(deck); break
+				case 'export':
+					this.exportDeck(deck); break
+				case 'delete':
+					this.deleteDeck(deck); break
+				}
+
+				this.deckAction = ''
+			})
+		},
 		copyDeck (srcDeck) {
 			const srcDeckName = srcDeck.name
 			const toCopyConfirmed = confirm(`Create a new deck that’s a duplicate of “${srcDeckName}”?`)
@@ -76,7 +103,7 @@ export default {
 		deleteDeck (deck) {
 			const store = this.$store
 			const deletedDeckName = deck.name
-			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deletedDeckName}”?`)
+			const deletionConfirmed = confirm('Are you sure you want to permanently erase this deck?')
 
 			if (deletionConfirmed) {
 				const remainingDecks = store.state.decks.filter(
@@ -91,7 +118,7 @@ export default {
 		},
 		exportDeck (deck) {
 			const deckName = deck.name
-			const toExportConfirmed = confirm(`Export a deck data file for “${deckName}”?`)
+			const toExportConfirmed = confirm(`Export a deck data file of “${deckName}”?`)
 
 			if (toExportConfirmed) {
 				const deckData = JSON.stringify(deck)

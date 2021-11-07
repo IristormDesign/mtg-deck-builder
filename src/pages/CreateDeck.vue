@@ -1,31 +1,32 @@
 <template>
 	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
-		<p>To create a deck, you can either start on an empty deck page and add any cards you want, or import a deck data file (if you have one) to see a pre-made deck.</p>
+		<p>To create a deck, either you can start on an empty deck page and add cards as you want, or you can import a deck data file to load a pre-made deck.</p>
 
 		<div class="columns">
-			<form @submit.prevent="submitDeckName()">
+			<div class="new-deck">
 				<h3>Start a New Deck</h3>
-				<label for="deck-name">Give a name for your deck:</label>
-				<input
-					id="deck-name"
-					ref="focus"
-					type="text"
-					v-model="deckNameInput"
-				/>
-				<button class="primary-btn">Go</button>
-			</form>
-
-			<p><em>—or—</em></p>
-
+				<form @submit.prevent="submitDeckName()">
+					<label for="deck-name">Give your deck a name:</label>
+					<input
+						id="deck-name"
+						ref="focus"
+						type="text"
+						v-model="deckNameInput"
+						required="required"
+						maxlength="50"
+					/>
+					<button class="primary-btn">Submit</button>
+				</form>
+			</div>
 			<div class="import-data">
-				<h3>Import Deck Data</h3>
+				<h3>Import a Deck</h3>
 				<input
 					id="data-file"
 					type="file" accept=".deck"
 					style="display: none"
 				/>
-				<button id="file-btn" class="primary-btn">Open a Deck Data File</button>
+				<button id="file-btn" class="primary-btn">Open Deck<br> Data File</button>
 			</div>
 		</div>
 	</article>

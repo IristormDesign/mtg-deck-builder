@@ -36,7 +36,7 @@ export default new Vuex.Store({
 			s: '<div class="rarity-symbol special" title="Special">S</div>'
 		},
 		alertNameExists: (name) => {
-			return `⚠ Another deck is already named “${name}.” Please give a different name.`
+			return `⚠ You already have another deck named “${name}.” Please give a different name.`
 		},
 		curlApostrophes: (string) => {
 			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one.

@@ -5,7 +5,7 @@
 				<label for="attributeSelect">Sort cards by:</label>
 				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
 					<option v-if="sortAttribute == ''" value="">
-						(Select an attribute)
+						(Select)
 					</option>
 					<option value="name">Name</option>
 					<option value="colors">Mana Color</option>

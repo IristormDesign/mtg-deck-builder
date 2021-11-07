@@ -1,5 +1,94 @@
 @import 'variables';
 
 .create-deck-page {
-	
+	.columns {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: $lhse/2;
+		margin: $lhse 0 $lhse/2;
+	}
+	.new-deck,
+	.import-data {
+		border: 1px solid $color-section-border;
+		padding: $lhse/2;
+		border-radius: $border-radius-group/2;
+	}
+	.new-deck {
+		form {
+			display: grid;
+			grid-template-columns: 4fr 1fr;
+			grid-template-rows: min-content $lhse;
+			gap: $lhse/3 0;
+			align-items: center;
+			margin: $lhse/4 0;
+		}
+		label {
+			font-family: $font-family-standard;
+			font-weight: normal;
+			grid-column: span 2;
+			padding-left: $lhse/6;
+		}
+		input {
+			height: $lhse*1.25;
+			font-weight: $font-weight-semibold;
+			font-size: 112.5%;
+			border-radius: $border-radius-button;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		button {
+			min-width: auto;
+			font-size: 112.5%;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			height: calc(#{$lhse}*1.25 + 2px);
+		}
+	}
+	.import-data {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	h3 {
+		margin-top: 0;
+	}
+}
+
+@media (max-width: ($min-width-site * .75)) {
+	.create-deck-page {
+		.columns {
+			display: block;
+		}
+		.new-deck,
+		.import-data {
+			margin: $lhse/2 auto;
+		}
+	}
+}
+@media (max-width: ($min-width-site * .5)) {
+	.create-deck-page {
+		.new-deck {
+			form {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 0;
+				row-gap: $lhse/6;
+			}
+			label {
+				align-self: flex-start;
+				margin-bottom: 0;
+				padding-bottom: 0;
+			}
+			input {
+				width: 100%;
+				border-radius: $border-radius-button;
+			}
+			button {
+				align-self: flex-end;
+				margin-left: 0;
+				border-radius: $border-radius-button;
+			}
+		}
+	}
 }

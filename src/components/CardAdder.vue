@@ -21,7 +21,7 @@
 					(🎲 Add a randomly selected card)
 				</option>
 			</datalist>
-			<button class="primary-btn" :disabled="delay">Add Card</button>
+			<button class="primary-btn" :disabled="delay">Add<span> Card</span></button>
 		</form>
 		<div v-else class="loading-indicator">
 			Loading card&hellip;
