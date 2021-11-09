@@ -17,18 +17,10 @@
 }
 .page-not-found {
 	img {
-		display: block;
-		margin: $lhse/2 auto $lhse;
-		width: $lhse*16;
-		height: auto;
-		padding: $lhse/3;
-		background: darken($color-group-bg, 8.33%);
+		margin: $lhse/2 auto;
 	}
 	h2 {
 		text-align: center;
-	}
-	small {
-		font-style: italic;
 	}
 }
 .deck-deleted {

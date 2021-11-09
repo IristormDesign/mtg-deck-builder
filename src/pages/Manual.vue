@@ -2,6 +2,8 @@
 	<article class="manual-page content-box">
 		<header>
 			<h2>User Manual</h2>
+			<img class="screenshot" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
+			<small>(Illustration: “<a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a>” by Aaron Miller)</small>
 		</header>
 
 		<nav class="table-of-contents">
@@ -33,14 +35,14 @@
 		</nav>
 
 		<div id="m-intro" class="the-manual">
-			<p>This document explains how to use MTG Deck Builder by Iristorm Design, which is a free web app where you can create and manage your own decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer"><i>Magic: The Gathering</i></a>.</p>
+			<p>This document explains how to use MTG Deck Builder by Iristorm Design, which is a free web app where you can create and manage your own decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer" loading="lazy"><i>Magic: The Gathering</i></a>.</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-app-header.jpg 1x, @/img/manual-app-header-2x.jpg 2x"
 					src="@/img/manual-app-header.jpg" width="658" height="23"
-					alt="Snippet of app header" title="Screenshot" />
+					alt="Snippet of app header" title="Screenshot" loading="lazy" />
 			</p>
 			<p>The app header appears at the top of any page on MTG Deck Builder. It includes the following buttons:</p>
 			<ul>
@@ -195,11 +197,11 @@
 			</section>
 			<section id="m-deck-actions">
 				<h4>Deck Actions</h4>
-				<p>Beside the card sorter section on a deck page is the deck actions section. Here is a selection menu from which you can choose to do special actions to the current deck:</p>
+				<p>On a deck page beside the card sorter section is the deck actions section. It has a selection menu from which you can choose to perform special actions to the deck that you’re currently viewing. These actions include the following:</p>
 				<ul>
-					<li><strong>Copy</strong>—Creates a new deck that has an identical list of cards as the deck you’re currently viewing. The copied deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
-					<li><strong>Export</strong>—Generates and downloads to your computer or device a <a href="#m-deck-data-files">deck data file</a> of the deck you’re currently viewing. The file is named after the deck’s name and has the “<code>.deck</code>” file extension.</li>
-					<li><strong>Delete</strong>—Fully erases the deck you’re currently viewing. (If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
+					<li><strong>Copy</strong>—Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
+					<li><strong>Export</strong>—Generates and downloads to your computer or device a <a href="#m-deck-data-files">deck data file</a> of the deck. The file is named after the deck’s name and has the “<code>.deck</code>” file extension.</li>
+					<li><strong>Delete</strong>—Fully removes the deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
 				</ul>
 				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>
 			</section>
