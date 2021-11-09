@@ -9,6 +9,7 @@
 			<ol>
 				<li><a href="#m-intro">Introduction</a></li>
 				<li><a href="#m-app-header">App Header</a></li>
+				<li><a href="#m-create-deck">Create Deck Page</a></li>
 				<li>
 					<a href="#m-deck-pages">Deck Pages</a>
 					<ol>
@@ -23,7 +24,10 @@
 					</ol>
 				</li>
 				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
-				<li><a href="#m-storage-of-app-data">Storage of App Data</a></li>
+				<li><a href="#m-storage-of-deck-data">Storage of Deck Data</a></li>
+					<ol>
+						<li><a href="#m-deck-data-files">Deck Data Files</a></li>
+					</ol>
 				<li><a href="#m-app-dev-info">App Development Info</a></li>
 			</ol>
 		</nav>
@@ -38,11 +42,18 @@
 					src="@/img/manual-app-header.jpg" width="658" height="23"
 					alt="Snippet of app header" title="Screenshot" />
 			</p>
-			<p>The app header appears at the top of any page on MTG Deck Builder. The most important buttons on it are the two orange ones, as follows:</p>
+			<p>The app header appears at the top of any page on MTG Deck Builder. It includes the following buttons:</p>
 			<ul>
-				<li><strong>Create Deck</strong>—When you click this button, a prompt appears asking you to give the new deck a name, and then you’ll be taken to the <a href="#m-deck-pages">deck page</a> of that deck. If you happen to give a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.</li>
-				<li><strong>Open Deck</strong>—When you click this button, a menu appears with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that deck’s page. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
+				<li><strong>User Manual</strong>—Takes you to this page you’re reading right now.</li>
+				<li><strong>Create Deck</strong>—Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
+				<li><strong>Open Deck</strong>—Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
+				<li><strong>Contact</strong>—Takes you to the Contact page.</li>
 			</ul>
+
+			<h3 id="m-create-deck">Create Deck Page</h3>
+			<p>The Create Deck page is where you can start on a new deck or import a deck data file. Either of these methods will add the deck to the menu that lists all of your decks stored in the app, accessible from the Open Deck button in the <a href="#m-app-header">app header</a>.</p>
+			<p>If you choose to start a new deck, you first have to enter a name for it, and then you’ll be taken to an empty <a href="#m-deck-pages">deck page</a> for it. If you happen to submit a deck name that another one of your decks in the app already has, you’ll be asked to enter a different name instead.</p>
+			<p>Alternatively, if you have a <a href="#m-deck-data-files">deck data file</a> for MTG Deck Builder, you can open it through the app to import its deck data, and then a deck page will be instantly produced from that data.</p>
 
 			<h3 id="m-deck-pages">Deck Pages</h3>
 			<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
@@ -184,17 +195,13 @@
 			</section>
 			<section id="m-deck-actions">
 				<h4>Deck Actions</h4>
-				<p>
-					<img class="screenshot float-right"
-						src="@/img/manual-deck-actions.jpg" width="206" height="176"
-						alt="Snippet of deck action buttons" title="Screenshot" loading="lazy" />
-				</p>
-				<p>There are two buttons on a deck page for doing special actions:</p>
+				<p>Beside the card sorter section on a deck page is the deck actions section. Here is a selection menu from which you can choose to do special actions to the current deck:</p>
 				<ul>
-					<li><strong>Copy Deck</strong>—Click this button to create a new deck that has an identical list of cards as the deck you’re currently viewing. The duplicate deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
-					<li><strong>Delete Deck</strong>—Click this button to erase the data of the deck you’re currently viewing. If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.</li>
+					<li><strong>Copy</strong>—Creates a new deck that has an identical list of cards as the deck you’re currently viewing. The copied deck’s name will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
+					<li><strong>Export</strong>—Generates and downloads to your computer or device a <a href="#m-deck-data-files">deck data file</a> of the deck you’re currently viewing. The file is named after the deck’s name and has the “<code>.deck</code>” file extension.</li>
+					<li><strong>Delete</strong>—Fully erases the deck you’re currently viewing. (If you’d later try to access the page of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
 				</ul>
-				<p>Both the Copy Deck and Delete Deck buttons ask you to confirm the action before committing to it, giving you the choice to cancel.</p>
+				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>
 			</section>
 
 			<h3 id="m-more-statistics-pages">More Statistics Pages</h3>
@@ -217,28 +224,26 @@
 			<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
 			<p>Cards can have multiple properties within a single category table. For example, a card that has the type line “artifact creature” would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
-			<h3 id="m-storage-of-app-data">Storage of App Data</h3>
-			<p>The data for any of your decks in MTG Deck Builder are stored only locally in the web browser you’re using. This means you don’t have to register for a user account to use this app. It also means other users of the app on their own browsers can’t see your decks, or you theirs, and deck data can’t be transferred between browsers.</p>
-			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit as you like or delete them.</p>
-			<p>To permanently delete all of your data in MTG Deck Builder, click the “Clear Stored Data” link in the app’s footer on any page. After clearing the app data, the two default decks will be restored.</p>
+			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
+			<p>The data for your decks in MTG Deck Builder is stored locally in the web browser you’re using (not on any internet cloud service). This means there’s no need to log onto a personal user account to save your custom decks in this app. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
+			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit however you like or delete.</p>
+			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel it. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
+
+			<h4 id="m-deck-data-files">Deck Data Files</h4>
+			<p>MTG Deck Builder has the abilities to export and import deck data via a deck data file, which is a file that contains the app data for a particular deck. You might want to export a deck data file for one of these reasons:</p>
+			<ul>
+				<li>Send the file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
+				<li>Keep the file as an isolated backup copy of your deck in case something goes wrong with your computer or device which causes you to lose access to your main deck data.</li>
+				<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
+			</ul>
+			<p>To export data, go to the deck’s <a href="#m-deck-pages">deck page</a>, and from the <a href="#m-deck-actions">deck actions</a> menu, select “Export.”</p>
+			<p>To import data, go to the <a href="#m-create-deck">Create Deck page</a>, and click the button in the “Import a Deck” section to find and open the deck data file.</p>
 
 			<h3 id="m-app-dev-info">App Development Info</h3>
 			<p>If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the design and development</a> behind MTG Deck Builder.</p>
 		</div>
 	</article>
 </template>
-
-<script>
-export default {
-	methods: {
-		scrollToSection (id) {
-			// const section = document.getElementById(id)
-
-			// section.scrollIntoView(true)
-		}
-	}
-}
-</script>
 
 <style lang="scss">
 	@import '@/sass/page-manual.scss';
