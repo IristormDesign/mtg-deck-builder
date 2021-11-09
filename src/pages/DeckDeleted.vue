@@ -3,7 +3,7 @@
 		class="deck-deleted content-box wrap"
 		@click="$store.getters.attentionHeaderButton"
 	>
-		<p>“{{ $store.state.deletedDeckName }}” is now deleted.</p>
+		<p>“{{ $store.state.deletedDeckName }}” is now exiled.</p>
 	</article>
 </template>
 
