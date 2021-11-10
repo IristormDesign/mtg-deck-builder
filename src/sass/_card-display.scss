@@ -13,7 +13,6 @@
 	a {
 		position: absolute;
 		display: block;
-		will-change: transform;
 		mask-image: url('~@/img/card-mask.svg');
 		background: desaturate(darken($color-frame-generic, 37.5%), 0%);
 		box-shadow: inset 0 0 0 16px #000; // Black card border without card image
@@ -70,6 +69,7 @@
 		width: auto;
 		max-height: calc(100vh - #{$height-site-header} - #{$lhse});
 		position: relative;
+		will-change: transform;
 	}
 	.close {
 		display: none;
