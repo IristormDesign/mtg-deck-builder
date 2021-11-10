@@ -622,19 +622,16 @@ export default {
 			const subtypeCounts = this.subtypeCounts
 			const allSubtypes = []
 
-			function getSubtypesPerFace (cardType) {
+			function getSubtypesPerFace (cardFace) {
 				// In each card's type line, get only the part that indicates the subtype: the em dash and all characters after it.
-				const subtypesPattern = cardType.match(RegExp(/\s—\s.*/))
+				const subtypesPattern = cardFace.match(RegExp(/\s—\s.*/))
 
 				// Ignore the following only if the card has no subtype.
-				if (subtypesPattern !== null) {
+				if (subtypesPattern) {
 					// The card's line of subtypes, which may have only a single subtype or multiple of them.
 					const subtypeLine = subtypesPattern[0]
 
-					// Within the string, get everything up to a slash character, indicating the beginning of the type line of a double-faced card's second face.
-					// subtypeLine = subtypeLine.match(RegExp(/[^/]*/))[0]
-
-					if (subtypeLine !== null) {
+					if (subtypeLine) {
 						// Delete the " — " (em dash) part that came from the collected subtype pattern.
 						subtypeLine.replace(' — ', '')
 
@@ -653,16 +650,18 @@ export default {
 				for (let i = 0; i < card.qty; i++) {
 					const typeLine = card.type
 
-					// In each card's type line, find the pattern that indicates a double-faced card, which is a space, a slash, a space, and any characters after.
-					const secondFace = typeLine.match(RegExp(/\s\/\s\w*/))
+					// Find the pattern that indicates the card is double-faced, which is a space, a slash, a space, and any characters afterward in the card's type line. (This doesn't look at the second face's entire type line.)
+					const isDoubleFaced = typeLine.match(RegExp(/\s\/\s\w*/))
 
-					// If the card is double-faced...
-					if (secondFace !== null) {
-						// From the double-faced card's type line, get all of the part of the string that precedes the slash character.
-						const firstFace = typeLine.match(RegExp(/[^/]*/))
+					if (isDoubleFaced) {
+						// Get the part of the string that precedes the slash character.
+						const firstFace = typeLine.match(RegExp(/[^/]*/))[0]
 
-						getSubtypesPerFace(firstFace[0])
-						getSubtypesPerFace(secondFace[0])
+						// Get the part of the string that follows the slash character.
+						const secondFace = typeLine.match(RegExp(/\/.*/))[0]
+
+						getSubtypesPerFace(firstFace)
+						getSubtypesPerFace(secondFace)
 					} else { // A regular single-face card.
 						getSubtypesPerFace(typeLine)
 					}
