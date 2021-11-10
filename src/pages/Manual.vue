@@ -2,8 +2,8 @@
 	<article class="manual-page content-box">
 		<header>
 			<h2>User Manual</h2>
-			<img class="screenshot" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-			<small>(Illustration: “<a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a>” by Aaron Miller)</small>
+			<img class="intro-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
+			<small>(Illustration: <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a></i> by Aaron Miller)</small>
 		</header>
 
 		<nav class="table-of-contents">
@@ -232,7 +232,7 @@
 			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel it. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
-			<p>MTG Deck Builder has the abilities to export and import deck data via a deck data file, which is a file that contains the app data for a particular deck. You might want to export a deck data file for one of these reasons:</p>
+			<p>MTG Deck Builder can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
 			<ul>
 				<li>Send the file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
 				<li>Keep the file as an isolated backup copy of your deck in case something goes wrong with your computer or device which causes you to lose access to your main deck data.</li>

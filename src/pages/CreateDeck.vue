@@ -1,6 +1,7 @@
 <template>
 	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
+		<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
 		<p>To create a deck, either you can start on an empty deck page and add cards as you want, or you can import a deck data file to load a pre-made deck.</p>
 
 		<div class="columns">
@@ -10,7 +11,6 @@
 					<label for="deck-name">Give your deck a name:</label>
 					<input
 						id="deck-name"
-						ref="focus"
 						type="text"
 						v-model="deckNameInput"
 						required="required"
@@ -29,6 +29,7 @@
 				<button id="file-btn" class="primary-btn">Open Deck<br> Data File</button>
 			</div>
 		</div>
+		<small>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank" rel="noopener noreferrer">Armillary Sphere</a></i> by Franz Vohwinkel)</small>
 	</article>
 </template>
 
@@ -40,8 +41,6 @@ export default {
 		}
 	},
 	mounted () {
-		this.$refs.focus.focus()
-
 		// Hide the file input element and make the Open File button gain its functionality.
 		const openFileButton = document.getElementById('file-btn')
 		const fileInput = document.getElementById('data-file')

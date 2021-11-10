@@ -1,6 +1,9 @@
 @import 'variables';
 
 .create-deck-page {
+	h2 {
+		text-align: center;
+	}
 	.columns {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
@@ -9,7 +12,7 @@
 	}
 	.new-deck,
 	.import-data {
-		border: 1px solid $color-section-border;
+		border: $border-special;
 		padding: $lhse/2;
 		border-radius: $border-radius-group/2;
 	}
@@ -52,6 +55,10 @@
 	}
 	h3 {
 		margin-top: 0;
+	}
+	small {
+		text-align: center;
+		width: 100%;
 	}
 }
 
