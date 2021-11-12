@@ -757,7 +757,8 @@ export default {
 					this.countColor('blue') === 0 &&
 					this.countColor('black') === 0 &&
 					this.countColor('red') === 0 &&
-					this.countColor('green') === 0
+					this.countColor('green') === 0 &&
+					this.countColor('colorless') === 0
 				) {
 					return true
 				}
