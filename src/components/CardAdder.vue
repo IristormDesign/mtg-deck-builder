@@ -63,7 +63,7 @@ export default {
 	},
 	methods: {
 		alertTooLong () {
-			alert('⚠ The Scryfall web server seems to be taking too long to respond. Please try again at a later time.')
+			alert('⚠ The Scryfall web server seems to be taking too long to respond right now. Please try again at a later time.')
 		},
 		autocompleteName () {
 			const query = this.cardNameInput
@@ -253,8 +253,8 @@ export default {
 			this.deck.viewedCard = cardName
 
 			setTimeout(() => {
-				alert(`You already have ${cardName} in this deck.`)
-			}, 0)
+				alert(`”${cardName}” is already in this deck. If you want duplicates of a certain card, increase its quantity from the card list.`)
+			}, 1)
 		}
 	}
 }

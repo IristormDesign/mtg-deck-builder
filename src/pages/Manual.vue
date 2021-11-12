@@ -55,7 +55,7 @@
 			<h3 id="m-create-deck">Create Deck Page</h3>
 			<p>The Create Deck page is where you can start on a new deck or import a deck data file. Either of these methods will add the deck to the menu that lists all of your decks stored in the app, accessible from the Open Deck button in the <a href="#m-app-header">app header</a>.</p>
 			<p>If you choose to start a new deck, you first have to enter a name for it, and then you’ll be taken to an empty <a href="#m-deck-pages">deck page</a> for it. If you happen to submit a deck name that another one of your decks in the app already has, you’ll be asked to enter a different name instead.</p>
-			<p>Alternatively, if you have a <a href="#m-deck-data-files">deck data file</a> for MTG Deck Builder, you can open it through the app to import its deck data, and then a deck page will be instantly produced from that data.</p>
+			<p>Alternatively, if you have a <a href="#m-deck-data-files">deck data file</a> for MTG Deck Builder, you can open it through the app to import its deck data, and then a deck page will be instantly produced from it.</p>
 
 			<h3 id="m-deck-pages">Deck Pages</h3>
 			<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>

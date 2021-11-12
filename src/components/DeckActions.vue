@@ -45,7 +45,7 @@ export default {
 
 			if (toCopyConfirmed) {
 				const store = this.$store
-				const copySuffixRegex = new RegExp(/\(\d+\)$/, 'g') // A string that ends with `(N)`, where N is any number.
+				const copySuffixRegex = new RegExp(/\(\d+\)$/, 'g') // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
 				let dupDeckName = srcDeckName
 				let dupDeckPath
 
@@ -63,7 +63,7 @@ export default {
 					}
 				}
 
-				if (copySuffixRegex.test(srcDeckName)) { // If the deck name has the copy suffix...
+				if (copySuffixRegex.test(srcDeckName)) { // If the source deck's name has the copy suffix...
 					const suffix = srcDeckName.match(copySuffixRegex) // From the deck name, get the copy suffix alone.
 					let copyNum = suffix[0].match(/\d+/) // From the suffix, get the number alone.
 
@@ -79,14 +79,13 @@ export default {
 				}
 
 				const updatedDecksArray = store.state.decks
+				const dupDeck = JSON.parse(JSON.stringify(srcDeck)) // Technique for deep-cloning objects, which is necessary here.
 
-				updatedDecksArray.push({
-					name: dupDeckName,
-					path: dupDeckPath,
-					cards: srcDeck.cards,
-					editDate: new Date(),
-					viewedCard: srcDeck.viewedCard
-				})
+				dupDeck.name = dupDeckName
+				dupDeck.path = dupDeckPath
+				dupDeck.editDate = new Date()
+
+				updatedDecksArray.push(dupDeck)
 				store.commit('setDecks', updatedDecksArray)
 				store.commit('sortDeckMenu')
 

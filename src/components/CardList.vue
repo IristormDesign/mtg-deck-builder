@@ -130,7 +130,7 @@ export default {
 			}
 
 			if (card.qty <= 0) {
-				const confirmRemoval = confirm(`Are you sure you want to remove ${cardName} from the deck?`)
+				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)
 
 				if (confirmRemoval) {
 					const cards = deck.cards
@@ -168,7 +168,7 @@ export default {
 				) {
 					if (card.qty > 99) {
 						card.qty = 99
-						alert('⚠ 99 is more than plenty, don’t you think?')
+						alert('⚠ 99 is plenty, don’t you think?')
 					}
 				} else {
 					if (card.qty > 4) {
