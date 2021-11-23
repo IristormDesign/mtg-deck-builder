@@ -190,7 +190,7 @@
 					<li><strong>Rarity</strong>—Sorts from highest to lowest in level of rarity.</li>
 					<li><strong>Quantity</strong>—Sorts from most to fewest.</li>
 				</ul>
-				<p>The card list can be the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the card list becomes sorted primarily by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
+				<p>The card list can become the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the cards are sorted primarily by type, and within each sorted group of types (the creature group, the land group, etc.), the cards are sorted by rarity.</p>
 				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other card attributes.</p>
 				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 				<p>Applying any sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>

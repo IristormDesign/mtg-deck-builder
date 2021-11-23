@@ -1,5 +1,5 @@
-@mixin box-shadow-hover-card-button($color, $width: 0) {
-	box-shadow: 0 0 $width $color, 0 0 0 2.5px $color;
+@mixin box-shadow-hover-card-button($color) {
+	box-shadow: 0 0 0 3px $color, 0 0 $lhse/3 #000;
 }
 @mixin long-card-buttons {
 	.card-list {
@@ -8,6 +8,11 @@
 		}
 		.card-button {
 			display: flex;
+			height: $lhse;
+
+			.rarity {
+				margin-right: -1px;
+			}
 		}
 		.card-label-group {
 			width: 50%;
@@ -27,6 +32,11 @@
 		}
 		.card-button {
 			display: block;
+			height: auto;
+
+			.rarity {
+				margin-right: 0;
+			}
 		}
 		.card-label-group {
 			width: 100%;
@@ -87,7 +97,7 @@
 			color: $color-text-brighter;
 		}
 		.rarity {
-			margin-right: -$lhse/4;
+			margin-right: -$lhse/3;
 		}
 		.qty {
 			text-align: center;
@@ -112,41 +122,49 @@
 
 			.card-button {
 				@include box-shadow-hover-card-button(
-					darken($color-frame-generic, 12.5%),
+					darken($color-frame-generic, 3.125%),
 				);
-				filter: contrast(116.67%) saturate(116.67%);
+				filter: contrast(112.5%);
 				transition-duration: 0s;
-				transition-property: filter;
-	
+				transition-property: filter, box-shadow;
+				background: darken($color-frame-generic, 12.5%);
+
 				&.white {
 					@include box-shadow-hover-card-button(
 						$color-mana-white
 					);
+					background: lighten($color-mana-white, 12.5%);
 				}
 				&.blue {
 					@include box-shadow-hover-card-button(
 						saturate(darken($color-mana-blue, 50%), 25%)
 					);
+					background: saturate(darken($color-frame-blue, 12.5%), 16.67%);
 				}
-				&.black {
+				&.black {					
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-black, 50%), 25%)
+						darken($color-mana-black, 50%)
 					);
+					background: darken($color-frame-black, 20%);
+					color: lighten($color-frame-black, 33.33%);
 				}
 				&.red {
 					@include box-shadow-hover-card-button(
 						desaturate(darken($color-mana-red, 37.5%), 25%)
 					);
+					background: saturate(darken($color-frame-red, 12.5%), 25%);
 				}
 				&.green {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-green, 50%), 25%)
+						saturate(darken($color-mana-green, 50%), 50%)
 					);
+					background: saturate(darken($color-frame-green, 20%), 20%);
 				}
 				&.multicolor {
 					@include box-shadow-hover-card-button(
-						desaturate(darken($color-mana-hybrid, 12.5%), 25%)
+						saturate(darken($color-mana-hybrid, 0%), 12.5%)
 					);
+					background: saturate(darken($color-frame-multicolor, 6.25%), 12.5%);
 				}
 			}
 			&:hover {
@@ -242,20 +260,19 @@
 		margin: 0;
 		padding: 0;
 		border-radius: $border-radius-button;
-		border: 3px solid $color-frame-generic;
-		border-top-width: 2px;
-		border-top-color: rgba(#fff, .667);
-		border-right-color: rgba(#fff, .5);
-		border-bottom-color: desaturate(darken($color-frame-generic, 50%), 0%);
+		border: 2px solid $color-frame-generic;
+		border-top-color: rgba(#fff, .5);
+		border-right-color: rgba(#fff, .25);
+		border-bottom-color: desaturate(darken($color-frame-generic, 37.5%), 0%);
 		border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		color: lighten(#000, 8.33%);
+		color: $color-text-card-button;
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
 		align-items: center;
-		box-shadow: 0 1px 0 1px rgba(#000, .6667);
+		box-shadow: 0 1px 0 1px rgba(#000, .75);
 		
 		&:active {
 			transform: scale(.995) translate(0, .5px);
@@ -263,33 +280,33 @@
 		}
 		&.white {
 			background: $color-frame-white;
-			border-bottom-color: desaturate(darken($color-frame-white, 50%), 50%);
+			border-bottom-color: desaturate(darken($color-frame-white, 37.5%), 50%);
 			border-left-color: desaturate(darken($color-frame-white, 25%), 50%);
 		}
 		&.blue {
 			background: $color-frame-blue;
-			border-bottom-color: desaturate(darken($color-frame-blue, 50%), 50%);
+			border-bottom-color: desaturate(darken($color-frame-blue, 37.5%), 50%);
 			border-left-color: desaturate(darken($color-frame-blue, 25%), 37.5%);
 		}
 		&.black {
 			background: $color-frame-black;
-			border-bottom-color: desaturate(darken($color-frame-black, 41.67%), 0%);
-			border-left-color: desaturate(darken($color-frame-black, 16.67%), 0%);
+			border-bottom-color: desaturate(darken($color-frame-black, 37.5%), 0%);
+			border-left-color: desaturate(darken($color-frame-black, 25%), 0%);
 			color: #000;
 		}
 		&.red {
 			background: $color-frame-red;
-			border-bottom-color: desaturate(darken($color-frame-red, 50%), 62.5%);
-			border-left-color: desaturate(darken($color-frame-red, 25%), 50%);
+			border-bottom-color: desaturate(darken($color-frame-red, 37.5%), 41.67%);
+			border-left-color: desaturate(darken($color-frame-red, 25%), 41.67%);
 		}
 		&.green {
 			background: $color-frame-green;
-			border-bottom-color: desaturate(darken($color-frame-green, 50%), 16.67%);
+			border-bottom-color: desaturate(darken($color-frame-green, 37.5%), 16.67%);
 			border-left-color: desaturate(darken($color-frame-green, 25%), 16.67%);
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
-			border-bottom-color: desaturate(darken($color-frame-multicolor, 50%), 37.5%);
+			border-bottom-color: desaturate(darken($color-frame-multicolor, 37.5%), 37.5%);
 			border-left-color: desaturate(darken($color-frame-multicolor, 25%), 37.5%);
 		}
 	}
@@ -305,15 +322,15 @@
 @media (max-width: $width-site-breakpoint-tablet) {
 	@include condensed-card-buttons();
 }
-@media (max-width: $min-width-site * .8) {
+@media (max-width: ($min-width-site * .8)) {
 	@include long-card-buttons();
 }
-@media (max-width: $min-width-site * .6667) {
+@media (max-width: ($min-width-site * .6667)) {
 	@include condensed-card-buttons();
 }
 @media (pointer: coarse) {
 	.card-list {
-		li {
+		.card-button {
 			min-height: 35px; // This is 80% of the WCAG's AAA recommendation for button heights.
 		}
 	}

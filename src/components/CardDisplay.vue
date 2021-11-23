@@ -12,7 +12,7 @@
 						title="Click to open this card’s page on Scryfall"
 					>
 						<div class="loading-indicator">
-							Loading image&hellip;
+							Loading&hellip;
 						</div>
 						<img :src="card.img" width="488" height="680" :alt="card.name" />
 					</a>

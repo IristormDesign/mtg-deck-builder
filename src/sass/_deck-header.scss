@@ -10,8 +10,8 @@
 	display: flex;
 	height: 100%;
 	padding: $lhse/4 $lhse/3;
-	border: $border-sections;
-	border-left-width: 0;
+	border: 0 solid $color-section-border;
+	border-right-width: 1px;
 	align-items: center;
 	justify-content: center;
 	background: $color-group-bg;
@@ -22,12 +22,12 @@
 		border-radius: $border-radius-button;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		border-left: $border-sections;
 	}
 	&:last-of-type {
 		border-radius: $border-radius-button;
 		border-bottom-left-radius: 0;
 		border-top-left-radius: 0;
+		border-right-width: 0;
 	}
 	h3 {
 		margin: 0;
@@ -121,10 +121,9 @@
 
 @media (max-width: $width-site-breakpoint) {
 	.deck-header {
-		border: $border-sections;
 		overflow: hidden;
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(5, minmax(auto, 1fr));
 		grid-template-rows: repeat(2, 1fr);
 		border-radius: $border-radius-group;
 		background: $color-group-bg;
@@ -186,7 +185,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site*1.25) {
+@media (max-width: ($min-width-site*1.25)) {
 	.deck-info {
 		justify-content: center;
 
@@ -218,7 +217,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site * .75) {
+@media (max-width: ($min-width-site * .75)) {
 	.deck-header {
 		margin-top: $lhse/2;
 		display: grid;
@@ -274,7 +273,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site * .5) {
+@media (max-width: ($min-width-site * .5)) {
 	.deck-header {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: min-content repeat(3, 1fr);

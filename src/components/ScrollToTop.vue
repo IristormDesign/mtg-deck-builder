@@ -1,6 +1,6 @@
 <template>
 	<transition name="stt-fade">
-		<div v-show="!atTop" class="scroll-to-top">
+		<div v-show="!atTop && $route.name !== 'home'" class="scroll-to-top">
 			<button @click="$store.state.scrollToTop()" title="Scroll up to the top">▲</button>
 		</div>
 	</transition>

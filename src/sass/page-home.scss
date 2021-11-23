@@ -44,10 +44,10 @@
 		position: absolute;
 		top: 8.333vh;
 		right: $lhse;
-		background: rgba(#000, .75);
+		background: $color-group-bg;
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
-		border: $border-sections;
+		border: 2px solid $color-mythic-dim;
 		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;
@@ -91,7 +91,7 @@
 	padding: $lhse*1.5 0 $lhse;
 	position: relative;
 	background: $background-light-gradient;
-	border-top: $border-special;
+	border-top: $lhse/6 solid $color-mythic-dim;
 
 	h2,
 	p,
@@ -164,7 +164,6 @@
 		.wrap {
 			position: relative;
 			background: $color-group-bg;
-			border-top: $border-sections;
 		}
 		img {
 			margin-bottom: -12.5%;
@@ -215,7 +214,7 @@
 		}
 	}
 }
-@media (max-width: $width-site-breakpoint-tablet/2) {
+@media (max-width: ($width-site-breakpoint-tablet/2)) {
 	.app-features {
 		.button-group {
 			display: block;

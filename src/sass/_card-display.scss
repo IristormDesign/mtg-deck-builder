@@ -3,7 +3,7 @@
 	height: 534px; // Actual maximum height of card as it appears in the app.
 	width: auto;
 	position: sticky;
-	top: $lhse/2 + $height-site-header;
+	top: $lhse/2;
 	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
 	
 	> div {
@@ -15,28 +15,32 @@
 		display: block;
 		mask-image: url('~@/img/card-mask.svg');
 		background: desaturate(darken($color-frame-generic, 37.5%), 0%);
-		box-shadow: inset 0 0 0 16px #000; // Black card border without card image
+		box-shadow: inset 0 0 0 12px #000; // Black card border without card image
 
 		&:focus-visible {
 			filter: brightness(125%);
 		}
 		&.W {
-			background: desaturate(darken($color-frame-white, 25%), 50%);
+			background: desaturate(darken($color-frame-white, 20%), 20%);
+			
+			.loading-indicator {
+				color: #000;
+			}
 		}
 		&.U {
-			background: desaturate(darken($color-frame-blue, 50%), 37.5%);
+			background: desaturate(darken($color-frame-blue, 58.33%), 0%);
 		}
 		&.B {
-			background: desaturate(darken($color-frame-black, 50%), 0%);
+			background: desaturate(darken($color-frame-black, 41.67%), 0%);
 		}
 		&.R {
-			background: desaturate(darken($color-frame-red, 50%), 41.67%);
+			background: desaturate(darken($color-frame-red, 50%), 16.67%);
 		}
 		&.G {
-			background: desaturate(darken($color-frame-green, 50%), 12.5%);
+			background: desaturate(darken($color-frame-green, 50%), 6.25%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 50%), 12.5%);
+			background: desaturate(darken($color-frame-multicolor, 41.67%), 25%);
 		}
 	}
 	.loading-indicator {

@@ -122,8 +122,18 @@
 import Rellax from 'rellax'
 
 export default {
+	data () {
+		return {
+			siteHeaderStyle: document.querySelector('.site-header').style
+		}
+	},
 	mounted () {
 		Rellax('.parallax')
+
+		this.siteHeaderStyle.position = 'sticky'
+	},
+	destroyed () {
+		this.siteHeaderStyle.position = 'static'
 	},
 	methods: {
 		scrollToAppFeaturesSection () {

@@ -6,7 +6,7 @@
 }
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: $height-site-header + $lhse*1.5;
+	scroll-padding-top: $lhse*1.25;
 }
 body {
 	font: 20px/1.5 $font-family-standard;
@@ -101,7 +101,7 @@ img {
 	display: block;
 }
 ::selection {
-	background: saturate(darken($color-mythic-complement, 25%), 25%);
+	background: saturate(darken($color-mythic-complement, 31.25%), 33.33%);
 	color: #fff;
 	text-shadow: none;
 }

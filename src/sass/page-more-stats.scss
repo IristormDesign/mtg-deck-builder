@@ -80,21 +80,21 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 	}
 }
 
-@media (max-width: 1920px * .9375) {
+@media (max-width: (1920px * .9375)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 }
-@media (max-width: $width-site-breakpoint-tablet*.875) {
+@media (max-width: ($width-site-breakpoint-tablet*.875)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 }
-@media (max-width: $width-site-breakpoint-tablet*.6667) {
+@media (max-width: ($width-site-breakpoint-tablet*.6667)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(1, 1fr);

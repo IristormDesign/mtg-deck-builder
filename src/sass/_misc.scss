@@ -1,5 +1,5 @@
 .intro-illustration {
-	width: $max-width-content*.6667;
+	width: $max-width-content*.6180;
 	margin: 0 auto;
 	border: 1px solid #000;
 }
@@ -19,12 +19,13 @@
 	margin: 0 0 0 2px;
 	box-shadow: inset .75px -1.5px 0px .5px rgba(#000, .75);
 	background: $color-mana-generic;
-	color: #000;
+	color: $color-text-card-button;
 	font-weight: $font-weight-semibold;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 	cursor: default;
+	overflow: hidden;
 
 	&:first-of-type {
 		margin-left: 0;
@@ -62,8 +63,8 @@
 }
 .rarity-symbol {
 	border-radius: $border-radius-button;
-	width: $lhse;
-	min-width: $lhse; // Needed so that the .rarity element doesn't get squished by a very long .type element.
+	width: 1.3820em;
+	min-width: 1.3820em; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
 	box-shadow: inset 0 0 1px 1px rgba(#000, .5);
 	margin-right: -.167em;
@@ -82,28 +83,28 @@
 	&.uncommon {
 		background: linear-gradient(-60deg,
 			darken($color-rarity-silver, 25%),
-			lighten($color-rarity-silver, 25%),
+			lighten($color-rarity-silver, 20%),
 			darken($color-rarity-silver, 25%)
 		) $color-rarity-silver;
 	}
 	&.rare {
 		background: linear-gradient(-60deg,
 			darken($color-rarity-gold, 25%),
-			lighten($color-rarity-gold, 25%),
+			lighten($color-rarity-gold, 20%),
 			darken($color-rarity-gold, 25%)
 		) $color-rarity-gold;
 	}
 	&.mythic {
 		background: linear-gradient(-60deg,
-			saturate(darken($color-mythic-orange, 8.33%), 16.67%),
-			saturate(lighten($color-mythic-lighter, 16.67%), 16.67%),
-			saturate(darken($color-mythic-orange, 8.33%), 16.67%)
-		) $color-mythic-orange;
+			saturate(darken($color-mythic-orange, 6.25%), 16.67%),
+			saturate(lighten($color-mythic-lighter, 12.5%), 33.33%),
+			saturate(darken($color-mythic-orange, 6.25%), 16.67%)
+		) $color-mythic-lighter;
 	}
 	&.special {
 		background: linear-gradient(-60deg,
 			darken($color-rarity-special, 25%),
-			saturate(lighten($color-rarity-special, 25%), 25%),
+			saturate(lighten($color-rarity-special, 20%), 25%),
 			darken($color-rarity-special, 25%)
 		) $color-rarity-special;
 		color: #fff;

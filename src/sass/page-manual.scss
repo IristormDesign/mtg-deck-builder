@@ -3,7 +3,7 @@
 .manual-page {
 	display: grid;
 	grid-template-columns: auto auto;
-	gap: $lhse/2;
+	gap: $lhse/6 $lhse/2;
 	position: relative;
 	
 	&.content-box {
@@ -17,7 +17,6 @@
 	.the-manual {
 		background: $color-group-bg;
 		padding: $lhse;
-		border: $border-sections;
 		border-radius: $border-radius-group;
 	}
 	header {
@@ -37,7 +36,7 @@
 		max-height: calc(100vh - #{$height-site-header + ($lhse)});
 		overflow-y: auto;
 		position: sticky;
-		top: $height-site-header + ($lhse * .75);
+		top: $lhse/2;
 		left: 0;
 		font-size: 87.5%;
 
@@ -61,7 +60,7 @@
 	}
 	.the-manual {
 		width: 100%;
-		padding-top: 0;
+		padding-top: $lhse/6;
 		padding-bottom: $lhse/2;
 		max-width: $max-width-content;
 

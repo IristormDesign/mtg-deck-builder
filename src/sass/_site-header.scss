@@ -1,15 +1,14 @@
 .site-header {
-	background: lighten($color-group-bg, 8.33%);
-	border-bottom: $border-special;
-	position: sticky;
-	top: 0;
-	left: 0;
-	right: 0;
+	background-blend-mode: overlay;
+	background: $color-mythic-dim;
+	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
+	box-shadow: 0 0 $lhse/4 rgba(#000, .5);
+	color: desaturate(lighten($color-mythic-orange, 20%), 33.33%);
 	z-index: index($layers, site-header);
 	height: $height-site-header;
 	display: flex;
 	align-items: center;
-	box-shadow: 0 1px $lhse/4 rgba(#000, .5);
+	top: 0;
 
 	.wrap {
 		display: flex;
@@ -20,21 +19,20 @@
 	.site-title {
 		a {
 			text-decoration: none;
-			color: $color-text-brighter;
+			color: saturate(lighten($color-mythic-lighter, 33.33%), 8.33%);
 			transition-duration: $transition-duration-standard;
 	
 			&:hover,
 			&:focus {
-				color: $color-link-focus;
+				color: #fff;
 			}
 			&:active {
-				color: $color-link;
+				color: $color-link-focus;
 			}
 		}
 	}
 	.by-iristorm {
 		display: inline-block;
-		color: darken($color-text, 8.33%);
 		font-size: 87.5%;
 
 		a {
@@ -48,7 +46,7 @@
 		font-size: 1.25em;
 		display: inline-block;
 	}
-	button {
+	button {		
 		&:disabled {
 			opacity: .5;
 			box-shadow: none;
@@ -78,6 +76,8 @@
 		}
 		a,
 		button {
+			@extend .primary-btn;
+
 			&:hover,
 			&:focus {
 				position: relative;
@@ -134,14 +134,14 @@
 			&::before {
 				position: absolute;
 				bottom: 100%;
-				right: $lhse*1.6667;
+				right: $lhse*1.75;
 				border: solid transparent;
 				content: "";
 				height: 0;
 				width: 0;
 				pointer-events: none;
 				border-color: transparent;
-				border-bottom-color: $color-mythic-dim;
+				border-bottom-color: $color-mythic-orange;
 				border-width: $lhse/4;
 			}
 		}
@@ -213,7 +213,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site*.9167) {
+@media (max-width: ($min-width-site*.9167)) {
 	.site-header {
 		.by-iristorm {
 			display: none;
@@ -240,7 +240,7 @@
 			position: absolute;
 			right: $lhse/4;
 			top: $height-site-header;
-			margin: -$lhse/8 0 0;
+			margin: 0;
 			z-index: index($layers, above-overlay);
 
 			&::before {
@@ -253,7 +253,7 @@
 				width: 0;
 				pointer-events: none;
 				border-color: transparent;
-				border-bottom-color: $color-mythic-dim;
+				border-bottom-color: $color-mythic-orange;
 				border-width: $lhse/3;
 			}
 			> ul {

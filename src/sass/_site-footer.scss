@@ -9,7 +9,7 @@
 		font-size: 75%;
 	}
 	.divider {
-		margin: 0 .5ch;
+		margin: 0 .5em;
 	}
 	a {
 		&:link,
@@ -26,7 +26,7 @@
 	}
 }
 
-@media (max-width: $min-width-site*.75) {
+@media (max-width: ($min-width-site*.75)) {
 	.site-footer {
 		p {
 			&:first-of-type {

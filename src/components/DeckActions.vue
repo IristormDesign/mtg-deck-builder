@@ -101,17 +101,17 @@ export default {
 		},
 		deleteDeck (deck) {
 			const store = this.$store
-			const deletedDeckName = deck.name
-			const deletionConfirmed = confirm('Are you sure you want to permanently erase this deck?')
+			const deckName = deck.name
+			const deletionConfirmed = confirm(`Are you sure you want to permanently erase “${deckName}”?`)
 
 			if (deletionConfirmed) {
 				const remainingDecks = store.state.decks.filter(
-					deck => deck.name !== deletedDeckName
+					deck => deck.name !== deckName
 				)
 				this.$nextTick(() => {
 					store.commit('setDecks', remainingDecks)
 				})
-				store.commit('setDeletedDeckName', deletedDeckName)
+				store.commit('setDeletedDeckName', deckName)
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},

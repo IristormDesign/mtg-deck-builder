@@ -9,7 +9,7 @@
 			</div>
 
 			<button
-				class="site-menu-toggler primary-btn"
+				class="site-menu-toggler"
 				@click="toggleSiteMenu()"
 			>Menu</button>
 
@@ -31,12 +31,8 @@
 						</router-link>
 					</li>
 					<li class="add-new-deck site-header-link">
-						<!-- <button class="primary-btn" @click="$store.dispatch('createDeck')">
-							Create Deck
-						</button> -->
 						<router-link
 							:to="{name: 'createDeck'}"
-							class="primary-btn"
 							@click.native="closeAllPopups()"
 						>
 							Create Deck
@@ -44,7 +40,7 @@
 					</li>
 					<li class="deck-menu site-header-link">
 						<button
-							class="deck-menu-toggler primary-btn"
+							class="deck-menu-toggler"
 							@click="toggleDeckMenu()"
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
