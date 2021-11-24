@@ -129,11 +129,6 @@ export default {
 	},
 	mounted () {
 		Rellax('.parallax')
-
-		this.siteHeaderStyle.position = 'sticky'
-	},
-	destroyed () {
-		this.siteHeaderStyle.position = 'static'
 	},
 	methods: {
 		scrollToAppFeaturesSection () {

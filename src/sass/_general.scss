@@ -6,7 +6,7 @@
 }
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: $lhse*1.25;
+	scroll-padding-top: $height-site-header + $lhse*1.25;
 }
 body {
 	font: 20px/1.5 $font-family-standard;

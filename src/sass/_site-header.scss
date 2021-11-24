@@ -1,5 +1,4 @@
 .site-header {
-	background-blend-mode: overlay;
 	background: $color-mythic-dim;
 	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
 	box-shadow: 0 0 $lhse/4 rgba(#000, .5);
@@ -8,6 +7,7 @@
 	height: $height-site-header;
 	display: flex;
 	align-items: center;
+	position: sticky;
 	top: 0;
 
 	.wrap {

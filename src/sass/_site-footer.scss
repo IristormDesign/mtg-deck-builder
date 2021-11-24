@@ -1,6 +1,6 @@
 .site-footer {
 	letter-spacing: (1/256)*1em;
-	background: darken($color-group-bg, 8.33%);
+	background: #000;
 	color: desaturate(darken($color-text, 25%), 12.5%);
 	position: relative;
 	padding: $lhse 0;
@@ -14,7 +14,7 @@
 	a {
 		&:link,
 		&:visited {
-			color: desaturate($color-mythic-orange, 25%);
+			color: darken(desaturate($color-mythic-orange, 12.5%), 8.33%);
 		}
 		&:hover,
 		&:focus {
