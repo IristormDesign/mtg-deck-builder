@@ -78,15 +78,14 @@ export default {
 					makeUniqueDeckName(2)
 				}
 
-				const updatedDecksArray = store.state.decks
 				const dupDeck = JSON.parse(JSON.stringify(srcDeck)) // Technique for deep-cloning objects, which is necessary here.
 
 				dupDeck.name = dupDeckName
 				dupDeck.path = dupDeckPath
 				dupDeck.editDate = new Date()
 
-				updatedDecksArray.push(dupDeck)
-				store.commit('setDecks', updatedDecksArray)
+				store.state.decks.push(dupDeck)
+				store.commit('setDecks', store.state.decks)
 				store.commit('sortDeckMenu')
 
 				store.state.decks.find((deck) => {
