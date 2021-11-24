@@ -156,7 +156,7 @@
 				}
 				&.green {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-green, 50%), 50%)
+						saturate(darken($color-mana-green, 50%), 25%)
 					);
 					background: saturate(darken($color-frame-green, 20%), 20%);
 				}
