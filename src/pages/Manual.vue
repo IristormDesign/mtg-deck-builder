@@ -227,19 +227,19 @@
 			<p>Cards can have multiple properties within a single category table. For example, a card that has the type line “artifact creature” would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
-			<p>The data for your decks in MTG Deck Builder is stored locally in the web browser you’re using (not on any internet cloud service). This means there’s no need to log onto a personal user account to save your custom decks in this app. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
+			<p>The data for your decks in MTG Deck Builder are stored locally in the web browser you’re using (not on any internet cloud service). This means there’s no need to log onto a personal user account to save your custom decks in this app. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
 			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit however you like or delete.</p>
 			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel it. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
-			<p>MTG Deck Builder can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
+			<p>You can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
 			<ul>
 				<li>Send the file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
 				<li>Keep the file as an isolated backup copy of your deck in case something goes wrong with your computer or device which causes you to lose access to your main deck data.</li>
 				<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
 			</ul>
-			<p>To export data, go to the deck’s <a href="#m-deck-pages">deck page</a>, and from the <a href="#m-deck-actions">deck actions</a> menu, select “Export.”</p>
-			<p>To import data, go to the <a href="#m-create-deck">Create Deck page</a>, and click the button in the “Import a Deck” section to find and open the deck data file.</p>
+			<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the “Export” option.</p>
+			<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
 
 			<h3 id="m-app-dev-info">App Development Info</h3>
 			<p>If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the design and development</a> behind MTG Deck Builder.</p>
