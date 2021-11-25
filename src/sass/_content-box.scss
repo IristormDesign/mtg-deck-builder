@@ -20,9 +20,12 @@
 	}
 }
 .deck-deleted {
+	text-align: center;
+
 	p {
-		font-size: 108.33%;
-		text-align: center;
+		&:first-of-type {
+			font-size: 112.5%;
+		}
 	}
 }
 .screenshot {
