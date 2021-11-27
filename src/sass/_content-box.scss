@@ -29,7 +29,7 @@
 	}
 }
 .screenshot {
-	border: 2px solid darken($color-group-bg, 6.25%);
+	border: $border-image;
 	margin: 0 auto;
 	box-sizing: content-box;
 }

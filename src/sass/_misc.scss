@@ -1,7 +1,7 @@
 .intro-illustration {
 	width: $max-width-content*.6180;
 	margin: 0 auto;
-	border: 1px solid #000;
+	border: $border-image;
 }
 .warning-symbol {
 	color: $color-mythic-lighter;

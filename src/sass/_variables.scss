@@ -62,6 +62,7 @@ $border-radius-group: $lhse/2;
 $layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;
+$border-image: 2px solid darken($color-group-bg, 6.25%);
 $height-site-header: $lhse*1.6667;
 $background-light-gradient:
 	radial-gradient(farthest-corner at 50% 0,
