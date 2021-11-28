@@ -126,16 +126,14 @@ export default new Vuex.Store({
 						alert(state.alertNameTooLong)
 						createDeck(name) // Restart.
 					} else {
-						const updatedDecksArray = state.decks
-
-						updatedDecksArray.push({
+						state.decks.push({
 							name: name,
 							path: path,
 							cards: [],
 							editDate: new Date(),
 							viewedCard: ''
 						})
-						commit('setDecks', updatedDecksArray)
+						commit('setDecks', state.decks)
 						commit('sortDeckMenu')
 
 						router.push({
