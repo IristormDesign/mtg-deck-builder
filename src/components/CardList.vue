@@ -104,7 +104,7 @@ export default {
 				)
 				.replaceAll(
 					RegExp(/{(\w+\/\w+)}/, 'g'), // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
-					'<span class="mana-symbol hybrid" title="Hybrid mana">$1</span>'
+					'<span class="mana-symbol hybrid" title="Hybrid mana symbol">$1</span>'
 				)
 		},
 		setRaritySymbol (card) {
