@@ -1,6 +1,9 @@
+import store from '@/js/store.js'
+import router from '@/js/router.js'
+
 export const methodsDupDeck = {
 	methods: {
-		amendDupDeckName: (store, srcDeck) => {
+		amendDupDeckName: (srcDeck) => {
 			const copySuffixRegex = new RegExp(/\(\d+\)$/) // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
 			const srcDeckName = srcDeck.name
 			let dupDeckName = srcDeckName
@@ -37,7 +40,7 @@ export const methodsDupDeck = {
 				}
 			}
 		},
-		storeDupDeckPageAndRedirect (store, dupDeck, dupDeckData) {
+		storeDupDeckAndRedirect (dupDeck, dupDeckData) {
 			dupDeck.name = dupDeckData[0]
 			dupDeck.path = dupDeckData[1]
 			dupDeck.editDate = new Date()
@@ -46,13 +49,9 @@ export const methodsDupDeck = {
 			store.commit('setDecks', store.state.decks)
 			store.commit('sortDeckMenu')
 
-			store.state.decks.find((deck) => {
-				if (deck.name === dupDeck.name) {
-					this.$router.push({
-						name: 'deck',
-						params: { deckPath: deck.path }
-					})
-				}
+			router.push({
+				name: 'deck',
+				params: { deckPath: dupDeck.path }
 			})
 		}
 	}

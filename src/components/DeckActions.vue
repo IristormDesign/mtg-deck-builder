@@ -46,11 +46,10 @@ export default {
 			const toCopyConfirmed = confirm(`Create a new deck that’s a duplicate of “${srcDeck.name}”?`)
 
 			if (toCopyConfirmed) {
-				const store = this.$store
-				const dupDeckData = this.amendDupDeckName(store, srcDeck)
+				const dupDeckData = this.amendDupDeckName(srcDeck)
 				const dupDeck = JSON.parse(JSON.stringify(srcDeck)) // Technique for deep-cloning objects, which is necessary here.
 
-				this.storeDupDeckPageAndRedirect(store, dupDeck, dupDeckData)
+				this.storeDupDeckAndRedirect(dupDeck, dupDeckData)
 			}
 		},
 		deleteDeck (deck) {

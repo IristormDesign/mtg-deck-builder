@@ -110,12 +110,11 @@ export default {
 						const updatedDecksArray = store.state.decks
 
 						if (store.getters.existingDeck(deckData.path)) {
-							const dupDeckData = this.amendDupDeckName(store, deckData)
-							const dupDeckName = dupDeckData[0]
+							const dupDeckData = this.amendDupDeckName(deckData)
 
-							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckName}” instead.`)
+							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}” instead.`)
 
-							this.storeDupDeckPageAndRedirect(store, deckData, dupDeckData)
+							this.storeDupDeckAndRedirect(deckData, dupDeckData)
 						} else {
 							updatedDecksArray.push({
 								name: deckData.name,
