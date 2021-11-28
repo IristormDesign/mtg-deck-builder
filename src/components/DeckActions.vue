@@ -47,19 +47,10 @@ export default {
 
 			if (toCopyConfirmed) {
 				const store = this.$store
-				const dupDeckData = this.fixDupDeckName(store, srcDeck)
-				const dupDeckName = dupDeckData[0]
-				const dupDeckPath = dupDeckData[1]
+				const dupDeckData = this.amendDupDeckName(store, srcDeck)
 				const dupDeck = JSON.parse(JSON.stringify(srcDeck)) // Technique for deep-cloning objects, which is necessary here.
 
-				dupDeck.name = dupDeckName
-				dupDeck.path = dupDeckPath
-				dupDeck.editDate = new Date()
-
-				store.state.decks.push(dupDeck)
-				store.commit('setDecks', store.state.decks)
-				store.commit('sortDeckMenu')
-				this.redirectToDupDeckPage(store, dupDeckName)
+				this.storeDupDeckPageAndRedirect(store, dupDeck, dupDeckData)
 			}
 		},
 		deleteDeck (deck) {

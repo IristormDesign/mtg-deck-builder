@@ -110,23 +110,12 @@ export default {
 						const updatedDecksArray = store.state.decks
 
 						if (store.getters.existingDeck(deckData.path)) {
-							const dupDeckData = this.fixDupDeckName(store, deckData)
+							const dupDeckData = this.amendDupDeckName(store, deckData)
 							const dupDeckName = dupDeckData[0]
-							const dupDeckPath = dupDeckData[1]
-
-							updatedDecksArray.push({
-								name: dupDeckName,
-								path: dupDeckPath,
-								cards: deckData.cards,
-								editDate: new Date(),
-								viewedCard: deckData.viewedCard
-							})
-							store.commit('setDecks', updatedDecksArray)
-							store.commit('sortDeckMenu')
 
 							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckName}” instead.`)
 
-							this.redirectToDupDeckPage(store, dupDeckName)
+							this.storeDupDeckPageAndRedirect(store, deckData, dupDeckData)
 						} else {
 							updatedDecksArray.push({
 								name: deckData.name,

@@ -1,6 +1,6 @@
 export const methodsDupDeck = {
 	methods: {
-		fixDupDeckName: (store, srcDeck) => {
+		amendDupDeckName: (store, srcDeck) => {
 			const copySuffixRegex = new RegExp(/\(\d+\)$/) // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
 			const srcDeckName = srcDeck.name
 			let dupDeckName = srcDeckName
@@ -37,9 +37,17 @@ export const methodsDupDeck = {
 				}
 			}
 		},
-		redirectToDupDeckPage (store, dupDeckName) {
+		storeDupDeckPageAndRedirect (store, dupDeck, dupDeckData) {
+			dupDeck.name = dupDeckData[0]
+			dupDeck.path = dupDeckData[1]
+			dupDeck.editDate = new Date()
+
+			store.state.decks.push(dupDeck)
+			store.commit('setDecks', store.state.decks)
+			store.commit('sortDeckMenu')
+
 			store.state.decks.find((deck) => {
-				if (deck.name === dupDeckName) {
+				if (deck.name === dupDeck.name) {
 					this.$router.push({
 						name: 'deck',
 						params: { deckPath: deck.path }
