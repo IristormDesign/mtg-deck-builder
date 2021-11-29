@@ -23,7 +23,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>White</small>
-									<div v-html="this.$store.state.manaSymbol.w"></div>
+									<div v-html="manaSymbol.w"></div>
 								</div>
 							</th>
 							<td>{{ countColor('white') }}</td>
@@ -33,7 +33,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Blue</small>
-									<div v-html="this.$store.state.manaSymbol.u"></div>
+									<div v-html="manaSymbol.u"></div>
 								</div>
 							</th>
 							<td>{{ countColor('blue') }}</td>
@@ -43,7 +43,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Black</small>
-									<div v-html="this.$store.state.manaSymbol.b"></div>
+									<div v-html="manaSymbol.b"></div>
 								</div>
 							</th>
 							<td>{{ countColor('black') }}</td>
@@ -53,7 +53,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Red</small>
-									<div v-html="this.$store.state.manaSymbol.r"></div>
+									<div v-html="manaSymbol.r"></div>
 								</div>
 							</th>
 							<td>{{ countColor('red') }}</td>
@@ -63,7 +63,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Green</small>
-									<div v-html="this.$store.state.manaSymbol.g"></div>
+									<div v-html="manaSymbol.g"></div>
 								</div>
 							</th>
 							<td>{{ countColor('green') }}</td>
@@ -256,7 +256,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Common</small>
-									<div v-html="$store.state.raritySymbol.c"></div>
+									<div v-html="raritySymbol.c"></div>
 								</div>
 							</th>
 							<td>{{ countRarities('c') }}</td>
@@ -266,7 +266,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Uncommon</small>
-									<div v-html="$store.state.raritySymbol.u"></div>
+									<div v-html="raritySymbol.u"></div>
 								</div>
 							</th>
 							<td>{{ countRarities('u') }}</td>
@@ -276,7 +276,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Rare</small>
-									<div v-html="$store.state.raritySymbol.r"></div>
+									<div v-html="raritySymbol.r"></div>
 								</div>
 							</th>
 							<td>{{ countRarities('r') }}</td>
@@ -286,7 +286,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Mythic Rare</small>
-									<div v-html="$store.state.raritySymbol.m"></div>
+									<div v-html="raritySymbol.m"></div>
 								</div>
 							</th>
 							<td>{{ countRarities('m') }}</td>
@@ -296,7 +296,7 @@
 							<th>
 								<div class="vert-center-cell">
 									<small>Special</small>
-									<div v-html="$store.state.raritySymbol.s"></div>
+									<div v-html="raritySymbol.s"></div>
 								</div>
 							</th>
 							<td>{{ countRarities('s') }}</td>
@@ -373,7 +373,10 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
+
 export default {
+	mixins: [reusableAssets],
 	props: {
 		deck: Object
 	},

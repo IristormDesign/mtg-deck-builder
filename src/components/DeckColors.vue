@@ -10,7 +10,10 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
+
 export default {
+	mixins: [reusableAssets],
 	props: {
 		deck: Object
 	},
@@ -44,7 +47,7 @@ export default {
 			if (deckColors.length === 0) {
 				htmlOutput = '<span class="no-colors">0</span>'
 			} else {
-				const symbol = this.$store.state.manaSymbol
+				const symbol = this.manaSymbol
 
 				deckColors.forEach(color => {
 					if (color === 'W') {

@@ -52,7 +52,10 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
+
 export default {
+	mixins: [reusableAssets],
 	props: {
 		deck: Object
 	},
@@ -90,7 +93,7 @@ export default {
 			else if (g) return 'green'
 		},
 		styleManaSymbols (card) {
-			const symbol = this.$store.state.manaSymbol
+			const symbol = this.manaSymbol
 
 			return card.mana
 				.replaceAll(RegExp(/{W}/, 'g'), symbol.w)
@@ -108,7 +111,7 @@ export default {
 				)
 		},
 		setRaritySymbol (card) {
-			const symbol = this.$store.state.raritySymbol
+			const symbol = this.raritySymbol
 
 			switch (card.rarity) {
 			case 'common': return symbol.c

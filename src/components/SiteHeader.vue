@@ -82,10 +82,12 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 import debounce from 'debounce'
 
 export default {
+	mixins: [reusableAssets],
 	components: {
 		BgOverlay
 	},
@@ -230,7 +232,7 @@ export default {
 			}
 		},
 		manualButtonClicked () {
-			this.$store.state.scrollToTop()
+			this.scrollToTop()
 			this.closeAllPopups()
 		}
 	}

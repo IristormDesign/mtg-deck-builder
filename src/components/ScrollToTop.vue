@@ -1,13 +1,16 @@
 <template>
 	<transition name="stt-fade">
 		<div v-show="!atTop && $route.name !== 'home'" class="scroll-to-top">
-			<button @click="$store.state.scrollToTop()" title="Scroll up to the top">▲</button>
+			<button @click="scrollToTop()" title="Scroll up to the top">▲</button>
 		</div>
 	</transition>
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
+
 export default {
+	mixins: [reusableAssets],
 	data () {
 		return {
 			atTop: true

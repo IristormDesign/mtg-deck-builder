@@ -30,10 +30,12 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
+	mixins: [reusableAssets],
 	props: {
 		deck: Object
 	},
@@ -146,9 +148,8 @@ export default {
 			}, 500)
 		},
 		getTheCard (query) {
-			const store = this.$store
 			const deck = this.deck
-			query = store.state.curlApostrophes(query)
+			query = this.curlApostrophes(query)
 
 			if (this.findExistingCard(query)) {
 				this.cardExistsNotice(query)
@@ -201,7 +202,7 @@ export default {
 							newCard.colors = rd.colors
 							newCard.img = rd.image_uris.normal
 						}
-						newCard.name = store.state.curlApostrophes(newCard.name)
+						newCard.name = this.curlApostrophes(newCard.name)
 						newCard.rarity = rd.rarity
 						newCard.link = rd.scryfall_uri
 						newCard.qty = 1
@@ -211,6 +212,7 @@ export default {
 						}
 
 						const newCardName = newCard.name
+						const store = this.$store
 
 						// The card's name needs to be checked in the deck a second time. This is because it's possible for the Scryfall API's "fuzzy" search, which can correct misspelled names or assume full names from partial queries, to return a slightly different name than what the user originally submitted.
 						if (this.findExistingCard(newCardName)) {

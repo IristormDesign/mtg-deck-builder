@@ -10,31 +10,34 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
+
 export default {
+	mixins: [reusableAssets],
 	props: {
 		deck: Object
 	},
 	methods: {
 		renameDeck (failedName, deckNameExists) {
-			const store = this.$store
 			let message = 'Change the name of this deck:'
 			if (deckNameExists) {
-				message = store.state.alertNameExists(deckNameExists)
+				message = this.alertNameExists(deckNameExists)
 			}
 			let newName = prompt(message, failedName)
 
 			if (newName) {
 				newName = newName.trim()
-				newName = store.state.curlApostrophes(newName)
+				newName = this.curlApostrophes(newName)
 			}
 			if (newName) { // If the user provided any name...
-				const newPath = store.state.stringToPath(newName)
+				const store = this.$store
+				const newPath = this.stringToPath(newName)
 				const deckExists = store.getters.existingDeck(newPath)
 				const theActiveDeck = () =>
 					newPath === this.$route.params.deckPath
 
 				if (newName.length > 50) {
-					alert(store.state.alertNameTooLong)
+					alert('⚠ That deck name is too long. Please shorten it to fewer than 50 characters.')
 					this.renameDeck(newName)
 				} else if (!deckExists || theActiveDeck()) {
 					const deck = this.deck

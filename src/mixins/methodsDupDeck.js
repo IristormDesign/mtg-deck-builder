@@ -1,7 +1,9 @@
+import { reusableAssets } from '@/mixins/reusableAssets.js'
 import store from '@/js/store.js'
 import router from '@/js/router.js'
 
 export const methodsDupDeck = {
+	mixins: [reusableAssets],
 	methods: {
 		amendDupDeckName: (srcDeck) => {
 			const copySuffixRegex = new RegExp(/\(\d+\)$/) // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
@@ -28,7 +30,7 @@ export const methodsDupDeck = {
 
 			// It's possible that this copied deck's name could match an existing deck's name. In this case, keep increasing the copy suffix's number by 1 until it no longer matches another deck's name.
 			function makeUniqueDeckName (copyNum) {
-				dupDeckPath = store.state.stringToPath(dupDeckName)
+				dupDeckPath = this.stringToPath(dupDeckName)
 
 				if (store.getters.existingDeck(dupDeckPath)) {
 					copyNum++

@@ -34,10 +34,11 @@
 </template>
 
 <script>
+import { reusableAssets } from '@/mixins/reusableAssets.js'
 import { methodsDupDeck } from '@/mixins/methodsDupDeck.js'
 
 export default {
-	mixins: [methodsDupDeck],
+	mixins: [reusableAssets, methodsDupDeck],
 	data () {
 		return {
 			deckNameInput: ''
@@ -55,22 +56,20 @@ export default {
 	},
 	methods: {
 		submitDeckName () {
-			const store = this.$store
 			let name = this.deckNameInput
 
 			// First edit the given name to remove any excess white space.
 			if (name) {
 				name = name.trim()
-				name = store.state.curlApostrophes(name)
+				name = this.curlApostrophes(name)
 			}
 			if (name) { // If the user entered any name...
-				const path = store.state.stringToPath(name)
+				const store = this.$store
+				const path = this.stringToPath(name)
 				const deckExists = store.getters.existingDeck(path)
 
 				if (deckExists) {
-					alert(store.state.alertNameExists(name))
-				} else if (name.length > 50) {
-					alert(store.state.alertNameTooLong)
+					alert(this.alertNameExists(name))
 				} else {
 					const updatedDecksArray = store.state.decks
 
