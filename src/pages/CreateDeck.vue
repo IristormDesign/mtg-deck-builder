@@ -13,8 +13,8 @@
 						id="deck-name"
 						type="text"
 						v-model="deckNameInput"
-						required="required"
 						maxlength="50"
+						ref="focus"
 					/>
 					<button class="primary-btn">Submit</button>
 				</form>

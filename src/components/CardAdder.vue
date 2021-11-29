@@ -9,7 +9,6 @@
 				id="card-input"
 				list="card-suggestions"
 				ref="focus"
-				required
 				type="text"
 				v-model="cardNameInput"
 			/>
