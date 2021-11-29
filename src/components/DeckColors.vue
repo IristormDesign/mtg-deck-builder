@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import { reusableAssets } from '@/mixins/reusableAssets.js'
+import { symbolsMarkup } from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [reusableAssets],
+	mixins: [symbolsMarkup],
 	props: {
 		deck: Object
 	},

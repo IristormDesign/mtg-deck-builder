@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import { reusableAssets } from '@/mixins/reusableAssets.js'
+import { reusableMethods } from '@/mixins/reusableMethods.js'
 
 export default {
-	mixins: [reusableAssets],
+	mixins: [reusableMethods],
 	props: {
 		deck: Object
 	},

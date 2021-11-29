@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import { reusableAssets } from '@/mixins/reusableAssets.js'
+import { reusableMethods } from '@/mixins/reusableMethods.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
-	mixins: [reusableAssets],
+	mixins: [reusableMethods],
 	props: {
 		deck: Object
 	},

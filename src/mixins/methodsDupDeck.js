@@ -1,9 +1,9 @@
-import { reusableAssets } from '@/mixins/reusableAssets.js'
+import { reusableMethods } from '@/mixins/reusableMethods.js'
 import store from '@/js/store.js'
 import router from '@/js/router.js'
 
 export const methodsDupDeck = {
-	mixins: [reusableAssets],
+	mixins: [reusableMethods],
 	methods: {
 		amendDupDeckName: (srcDeck) => {
 			const copySuffixRegex = new RegExp(/\(\d+\)$/) // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.

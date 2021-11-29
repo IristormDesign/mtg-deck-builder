@@ -82,12 +82,12 @@
 </template>
 
 <script>
-import { reusableAssets } from '@/mixins/reusableAssets.js'
+import { reusableMethods } from '@/mixins/reusableMethods.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 import debounce from 'debounce'
 
 export default {
-	mixins: [reusableAssets],
+	mixins: [reusableMethods],
 	components: {
 		BgOverlay
 	},
