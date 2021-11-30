@@ -111,7 +111,7 @@ export default {
 						if (store.getters.existingDeck(deckData.path)) {
 							const dupDeckData = this.amendDupDeckName(deckData)
 
-							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}” instead.`)
+							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be named “${dupDeckData[0]}” instead.`)
 
 							this.storeDupDeckAndRedirect(deckData, dupDeckData)
 						} else {
@@ -130,6 +130,8 @@ export default {
 								params: { deckPath: deckData.path }
 							})
 						}
+
+						store.commit('setSortAttribute', '')
 					} else {
 						// Clear the deck file input in case the user tries to load a file of the same name again.
 						fileInputEl.value = null
