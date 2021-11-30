@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { methodsDupDeck } from '@/mixins/methodsDupDeck.js'
+import methodsDupDeck from '@/mixins/methodsDupDeck.js'
 
 export default {
 	mixins: [methodsDupDeck],

@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { reusableMethods } from '@/mixins/reusableMethods.js'
+import reusableMethods from '@/mixins/reusableMethods.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 import debounce from 'debounce'
 

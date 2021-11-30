@@ -373,7 +373,7 @@
 </template>
 
 <script>
-import { symbolsMarkup } from '@/mixins/symbolsMarkup.js'
+import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
 	mixins: [symbolsMarkup],

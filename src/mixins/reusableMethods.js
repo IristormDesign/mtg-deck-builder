@@ -1,16 +1,16 @@
-export const reusableMethods = {
+export default {
 	methods: {
-		alertNameExists: (name) => {
+		alertNameExists (name) {
 			return `⚠ You already have another deck named “${name}.” Please give a different name.`
 		},
-		curlApostrophes: (string) => {
+		curlApostrophes (string) {
 			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one.
 		},
-		scrollToTop: () => {
+		scrollToTop () {
 			window.scrollTo(0, 0)
 			history.replaceState('', document.title, window.location.pathname)
 		},
-		stringToPath: (string) => {
+		stringToPath (string) {
 			return string
 				.toLowerCase()
 				.replace(/\s/g, '-') // Replace whitespace characters with hyphens.

@@ -1,4 +1,4 @@
-export const symbolsMarkup = {
+export default {
 	data () {
 		return {
 			manaSymbol: {

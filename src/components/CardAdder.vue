@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { reusableMethods } from '@/mixins/reusableMethods.js'
+import reusableMethods from '@/mixins/reusableMethods.js'
 import axios from 'axios'
 import debounce from 'debounce'
 

@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import { reusableMethods } from '@/mixins/reusableMethods.js'
-import { methodsDupDeck } from '@/mixins/methodsDupDeck.js'
+import reusableMethods from '@/mixins/reusableMethods.js'
+import methodsDupDeck from '@/mixins/methodsDupDeck.js'
 
 export default {
 	mixins: [reusableMethods, methodsDupDeck],

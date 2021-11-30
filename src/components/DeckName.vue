@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { reusableMethods } from '@/mixins/reusableMethods.js'
+import reusableMethods from '@/mixins/reusableMethods.js'
 
 export default {
 	mixins: [reusableMethods],
