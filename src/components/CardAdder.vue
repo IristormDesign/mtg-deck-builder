@@ -104,12 +104,8 @@ export default {
 		},
 		handleSubmit () {
 			const cardNameInput = this.cardNameInput
-			this.$refs.focus.focus()
 
-			if (cardNameInput === '') {
-				// No name was submitted, so do nothing.
-				return
-			} else {
+			if (cardNameInput !== '') {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
@@ -141,6 +137,8 @@ export default {
 					this.getTheCard(cardNameInput)
 				}
 			}
+
+			this.$refs.focus.focus()
 			this.cardNameInput = ''
 
 			setTimeout(() => {
@@ -220,12 +218,13 @@ export default {
 						} else {
 							deck.cards.push(newCard)
 							deck.editDate = new Date()
+
 							this.$nextTick(() => {
 								deck.viewedCard = newCardName
 								store.commit('setDecks', store.state.decks)
 							})
+
 							store.commit('setSortAttribute', '')
-							this.addSectionalGaps(deck, store.state.sortAttribute)
 						}
 					})
 					.catch(error => {
