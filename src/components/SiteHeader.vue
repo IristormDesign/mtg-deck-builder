@@ -150,9 +150,9 @@ export default {
 		disabledMenuButtonTitle () {
 			if (this.disableMenuButton) {
 				if (this.$store.state.decks.length <= 0) {
-					return 'You have no more decks. Create a new one!'
+					return 'You currently have no decks. Create a new one!'
 				} else {
-					return 'You currently have no other deck to open.'
+					return 'You currently have no other decks.'
 				}
 			} else {
 				return null

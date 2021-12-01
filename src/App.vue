@@ -47,6 +47,15 @@ export default {
 				event.preventDefault()
 			}
 		})
+
+		// Load the two default decks if needed.
+		if (this.$store.state.loadDefaultDecks) {
+			import('@/js/default-decks.json')
+				.then(data => {
+					this.$store.commit('setDecks', data.decks)
+					this.$store.commit('setLoadDefaultDecks', false)
+				})
+		}
 	}
 }
 </script>

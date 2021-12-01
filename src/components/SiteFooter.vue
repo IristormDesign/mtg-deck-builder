@@ -25,7 +25,7 @@
 export default {
 	methods: {
 		clearLocalStorage () {
-			const confirmed = confirm('⚠ You’re about to permanently delete all of your data stored in this app, which includes the customized decks you’ve made.\n\nAre you sure you want to do this?')
+			const confirmed = confirm('⚠ WARNING\n\nYou’re about to permanently delete all of your data stored in this app, including the decks you’ve made. Are you sure you want to do this?')
 
 			if (confirmed) {
 				localStorage.clear()

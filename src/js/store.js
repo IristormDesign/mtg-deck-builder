@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import defaultDecks from './default-decks.json'
 
 const vuexLocalStorage = new VuexPersist({
 	storage: window.localStorage,
 	reducer: (state) => ({
 		decks: state.decks,
+		loadDefaultDecks: state.loadDefaultDecks,
 		sortAttribute: state.sortAttribute
 	})
 })
@@ -14,8 +14,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		decks: defaultDecks.decks,
+		decks: [],
 		deletedDeckName: null,
+		loadDefaultDecks: true,
 		showCard: false,
 		showDeckMenu: false,
 		sortAttribute: 'type'
@@ -49,6 +50,9 @@ export default new Vuex.Store({
 		},
 		setDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
+		},
+		setLoadDefaultDecks (state, payload) {
+			state.loadDefaultDecks = payload
 		},
 		setSortAttribute (state, payload) {
 			state.sortAttribute = payload
