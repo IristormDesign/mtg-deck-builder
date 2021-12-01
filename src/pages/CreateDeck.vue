@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import reusableMethods from '@/mixins/reusableMethods.js'
+import stringMethods from '@/mixins/stringMethods.js'
 import methodsDupDeck from '@/mixins/methodsDupDeck.js'
 
 export default {
-	mixins: [reusableMethods, methodsDupDeck],
+	mixins: [stringMethods, methodsDupDeck],
 	data () {
 		return {
 			deckNameInput: ''

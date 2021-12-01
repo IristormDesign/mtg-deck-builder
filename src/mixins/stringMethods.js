@@ -6,10 +6,6 @@ export default {
 		curlApostrophes (string) {
 			return string.replace(/'/g, '’') // Convert every straight apostrophe (or single right quotation mark) into a curly one.
 		},
-		scrollToTop () {
-			window.scrollTo(0, 0)
-			history.replaceState('', document.title, window.location.pathname)
-		},
 		stringToPath (string) {
 			return string
 				.toLowerCase()

@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import reusableMethods from '@/mixins/reusableMethods.js'
+import scrollToTop from '@/mixins/scrollToTop.js'
 
 export default {
-	mixins: [reusableMethods],
+	mixins: [scrollToTop],
 	data () {
 		return {
 			atTop: true

@@ -82,12 +82,12 @@
 </template>
 
 <script>
-import reusableMethods from '@/mixins/reusableMethods.js'
+import scrollToTop from '@/mixins/scrollToTop.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 import debounce from 'debounce'
 
 export default {
-	mixins: [reusableMethods],
+	mixins: [scrollToTop],
 	components: {
 		BgOverlay
 	},

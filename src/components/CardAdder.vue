@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import reusableMethods from '@/mixins/reusableMethods.js'
+import stringMethods from '@/mixins/stringMethods.js'
 import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
-	mixins: [reusableMethods, cardListSectionalGaps],
+	mixins: [stringMethods, cardListSectionalGaps],
 	props: {
 		deck: Object
 	},
