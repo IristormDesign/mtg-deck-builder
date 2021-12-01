@@ -30,11 +30,12 @@
 
 <script>
 import reusableMethods from '@/mixins/reusableMethods.js'
+import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
-	mixins: [reusableMethods],
+	mixins: [reusableMethods, cardListSectionalGaps],
 	props: {
 		deck: Object
 	},
@@ -224,6 +225,7 @@ export default {
 								store.commit('setDecks', store.state.decks)
 							})
 							store.commit('setSortAttribute', '')
+							this.addSectionalGaps(deck, store.state.sortAttribute)
 						}
 					})
 					.catch(error => {

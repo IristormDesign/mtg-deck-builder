@@ -53,9 +53,10 @@
 
 <script>
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
+import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
 
 export default {
-	mixins: [symbolsMarkup],
+	mixins: [symbolsMarkup, cardListSectionalGaps],
 	props: {
 		deck: Object
 	},
@@ -152,8 +153,13 @@ export default {
 					// Now remove the card from the deck.
 					setTimeout(() => {
 						cards.splice(cardIndex, 1)
+
+						if (store.state.sortAttribute !== '') {
+							this.addSectionalGaps(deck, store.state.sortAttribute)
+						}
+
 						saveChanges() // Needed here when inside `setTimeout()`.
-					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card.
+					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card in the card display.
 				} else {
 					card.qty = 1
 				}
