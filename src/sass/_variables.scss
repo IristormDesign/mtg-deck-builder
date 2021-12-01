@@ -80,6 +80,8 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin popup {
 	box-shadow: -.125em .25em .5em rgba(#000, .5);
 	background: $background-light-gradient;
+	border: 2px solid $color-mythic-orange;
+	border-radius: $lhse/4;
 }
 @mixin overlay-bg {
 	position: fixed;

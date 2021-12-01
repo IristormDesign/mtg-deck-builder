@@ -159,6 +159,7 @@
 		a {
 			padding: $lhse/4 $lhse/2;
 			display: block;
+			min-width: 6em;
 			max-width: 24em;
 			text-overflow: ellipsis;
 			overflow-x: hidden;
