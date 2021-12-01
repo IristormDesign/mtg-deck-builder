@@ -4,6 +4,7 @@
 			v-show="popup"
 			class="bg-overlay"
 			@click="hideOverlay()"
+			@mouseover="hideOverlay()"
 		></div>
 	</transition>
 </template>

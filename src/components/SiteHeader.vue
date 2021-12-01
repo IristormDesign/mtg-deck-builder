@@ -9,7 +9,7 @@
 			</div>
 
 			<button
-				class="site-menu-toggler"
+				class="site-menu-toggler primary-btn"
 				@click="toggleSiteMenu()"
 			>Menu</button>
 
@@ -42,30 +42,35 @@
 						<button
 							class="deck-menu-toggler"
 							@click="toggleDeckMenu()"
+
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTitle"
 						>
-							Open Deck
+							Open Deck <span>▼</span>
+
+							<div class="mouseover-area" @mouseover="toggleDeckMenu()"></div>
 						</button>
 
 						<div class="open-deck-heading">
 							<strong>Open Deck:</strong>
 						</div>
-						<div v-show="showDeckMenu" class="up-pointing-triangle">
-							<ul>
-								<li v-for="deck in $store.state.decks" :key="deck.name">
-									<router-link
-										v-show="$route.params.deckPath !== deck.path"
-										:to="{
-											name: 'deck',
-											params: { deckPath: deck.path }
-										}"
-										@click.native="closeAllPopups()"
-									>
-										{{ deck.name }}
-									</router-link>
-								</li>
-							</ul>
+						<div v-show="showDeckMenu" class="hover-shield">
+							<div class="up-pointing-triangle">
+								<ul>
+									<li v-for="deck in $store.state.decks" :key="deck.name">
+										<router-link
+											v-show="$route.params.deckPath !== deck.path"
+											:to="{
+												name: 'deck',
+												params: { deckPath: deck.path }
+											}"
+											@click.native="closeAllPopups()"
+										>
+											{{ deck.name }}
+										</router-link>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</li>
 					<li class="site-header-link">
