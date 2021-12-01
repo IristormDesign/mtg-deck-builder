@@ -57,11 +57,11 @@
 	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
-	
+
 	&.no-cards {
 		justify-content: center;
 		text-align: center;
-		color: $color-text-brighter;
+		color: #fff;
 		text-shadow: $text-shadow-over-light-bg;
 	}
 	h3 {
@@ -145,7 +145,7 @@
 					@include box-shadow-hover-card-button(
 						darken($color-mana-black, 50%)
 					);
-					background: darken($color-frame-black, 20%);
+					background: darken($color-frame-black, 25%);
 					color: lighten($color-frame-black, 33.33%);
 				}
 				&.red {

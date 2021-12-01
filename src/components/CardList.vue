@@ -5,7 +5,7 @@
 		@mouseover="attentionAddCard(true)"
 		@mouseleave="attentionAddCard(false)"
 	>
-		<p>This deck has no cards yet. (Add a card to start building.)</p>
+		<p>This deck has no cards yet. (Add cards to start building.)</p>
 	</section>
 	<section v-else class="card-list">
 		<h3>Card List</h3>
