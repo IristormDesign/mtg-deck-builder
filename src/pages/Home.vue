@@ -37,7 +37,7 @@
 					<header>
 						<h2>Greetings, planeswalker.</h2>
 					</header>
-					<p>This app lets you build and organize your decks for <i>Magic: The Gathering</i>.</p>
+					<p>This is a free web app that lets you create and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
 						<button @click="scrollToAppFeaturesSection()">Learn More</button>
 

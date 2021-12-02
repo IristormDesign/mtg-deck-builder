@@ -35,7 +35,8 @@
 		</nav>
 
 		<div id="m-intro" class="the-manual">
-			<p>This document explains how to use MTG Deck Builder by Iristorm Design, which is a free web app where you can create and manage your own decks for <a href="https://magic.wizards.com" target="_blank" rel="noopener noreferrer" loading="lazy"><i>Magic: The Gathering</i></a>.</p>
+			<p>This document explains how to use this app, <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>.</p>
+			<p>If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">MTG Wiki</a>.</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>
@@ -44,7 +45,7 @@
 					src="@/img/manual-app-header.jpg" width="658" height="23"
 					alt="Snippet of app header" title="Screenshot" loading="lazy" />
 			</p>
-			<p>The app header appears at the top of any page on MTG Deck Builder. It includes the following buttons:</p>
+			<p>At the top of any page on MTG Deck Builder is the app header, which includes the following buttons:</p>
 			<ul>
 				<li><strong>User Manual</strong>—Takes you to this page you’re reading right now.</li>
 				<li><strong>Create Deck</strong>—Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
@@ -65,8 +66,8 @@
 					src="@/img/manual-deck-page.jpg" width="658" height="471"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
-			<p>A deck page contains the following components, listed here in the order of their position on the page from left to right, top to bottom:</p>
-			<ol class="deck-page-components-links">
+			<p>A deck page contains the following parts, listed here in the order of their position on the page from top to bottom, left to right:</p>
+			<ol>
 				<li><a href="#m-deck-name">Deck Name</a></li>
 				<li><a href="#m-deck-statistics">Deck Statistics</a></li>
 				<li><a href="#m-card-image">Card Image</a></li>
@@ -227,9 +228,9 @@
 			<p>Cards can have multiple properties within a single category table. For example, a card that has the type line “artifact creature” would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
-			<p>The data for your decks in MTG Deck Builder are stored locally in the web browser you’re using (not on any internet cloud service). This means there’s no need to log onto a personal user account to save your custom decks in this app. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
+			<p>The data for your customized decks in MTG Deck Builder are stored locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
 			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit however you like or delete.</p>
-			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel it. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
+			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
 			<p>You can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
@@ -242,7 +243,7 @@
 			<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
 
 			<h3 id="m-app-dev-info">App Development Info</h3>
-			<p>If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the design and development</a> behind MTG Deck Builder.</p>
+			<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
 		</div>
 	</article>
 </template>

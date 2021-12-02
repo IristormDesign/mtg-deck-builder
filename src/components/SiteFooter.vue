@@ -16,7 +16,7 @@
 					<a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a>
 				</span>
 			</p>
-			<p><i>Magic: The Gathering</i> content is TM and &copy; by Wizards of the Coast. This app is not affiliated with or endorsed by Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided by the Scryfall API. This app is not affiliated with or endorsed by Scryfall. All other content, unless indicated otherwise, is copyright &copy; 2021 by Damian Schmidt.</p>
+			<p><a href="https://magic.wizards.com" target="_blank" rel="noopener"><i>Magic: The Gathering</i></a> content is TM and &copy; by Wizards of the Coast. This app is not affiliated with Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided via the public API of <a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>. This app is not affiliated with Scryfall. All other content, unless indicated otherwise, is copyright &copy; 2021 by Damian Schmidt.</p>
 		</div>
 	</footer>
 </template>

@@ -64,18 +64,9 @@
 		padding-bottom: $lhse/2;
 		max-width: $max-width-content;
 
-		p {
-			&:first-child {
-				font-size: 108.33%;
-			}
-		}
 		button {
 			@include link;
 		}
-	}
-	.deck-page-components-links {
-		column-count: 3;
-		column-gap: $lhse;
 	}
 }
 
@@ -95,13 +86,6 @@
 			margin-right: auto;
 			margin-left: auto;
 			padding: $lhse/2 $lhse;
-		}
-	}
-}
-@media (max-width: ($min-width-site * .75)) {
-	.manual-page {
-		.deck-page-components-links {
-			column-count: 2;
 		}
 	}
 }
