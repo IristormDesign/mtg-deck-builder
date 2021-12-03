@@ -17,6 +17,7 @@ export default new Vuex.Store({
 		decks: [],
 		deletedDeckName: null,
 		loadDefaultDecks: true,
+		mouseoutEventActive: true,
 		showCard: false,
 		showDeckMenu: false,
 		sortAttribute: 'type'
@@ -53,6 +54,9 @@ export default new Vuex.Store({
 		},
 		setLoadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
+		},
+		setMouseoutEventActive (state, payload) {
+			state.mouseoutEventActive = payload
 		},
 		setSortAttribute (state, payload) {
 			state.sortAttribute = payload

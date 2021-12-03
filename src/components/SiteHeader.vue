@@ -48,7 +48,7 @@
 						>
 							Open Deck <span>▼</span>
 
-							<div class="mouseover-area" @mouseover="toggleDeckMenu()"></div>
+							<div class="mouseover-area"></div>
 						</button>
 
 						<div class="open-deck-heading">
@@ -56,7 +56,7 @@
 						</div>
 						<div v-show="showDeckMenu" class="hover-shield">
 							<div class="up-pointing-triangle">
-								<ul>
+								<ul @mouseover="mouseoutEventActiveEffect">
 									<li v-for="deck in $store.state.decks" :key="deck.name">
 										<router-link
 											v-show="$route.params.deckPath !== deck.path"
@@ -98,6 +98,7 @@ export default {
 	},
 	data () {
 		return {
+			freezeDeckMenu: false,
 			showSiteMenu: true
 		}
 	},
@@ -135,6 +136,19 @@ export default {
 		})
 
 		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
+
+		// Delay deck menu opening by mouse-pointer hovering.
+		const deckMenuMOArea = document.querySelector('.deck-menu-toggler .mouseover-area')
+		let deckMenuMOTimer
+
+		deckMenuMOArea.addEventListener('mouseover', () => {
+			deckMenuMOTimer = setTimeout(() => {
+				this.toggleDeckMenu()
+			}, 250)
+		})
+		deckMenuMOArea.addEventListener('mouseout', () => {
+			clearTimeout(deckMenuMOTimer)
+		})
 	},
 	computed: {
 		showDeckMenu () {
@@ -165,7 +179,7 @@ export default {
 		}
 	},
 	watch: {
-		showDeckMenu: function (val) {
+		showDeckMenu (val) {
 			if (val) {
 				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
 				this.showSiteMenu = true
@@ -188,14 +202,25 @@ export default {
 			}
 		},
 		toggleDeckMenu () {
-			if (this.showDeckMenu) {
-				this.$store.commit('setShowDeckMenu', false)
-			} else {
-				this.$store.commit('setShowDeckMenu', true)
+			console.log('toggleDeckMenu()')
+
+			if (!this.freezeDeckMenu) {
+				if (this.showDeckMenu) {
+					this.$store.commit('setShowDeckMenu', false)
+					this.$store.commit('setMouseoutEventActive', true)
+				} else {
+					this.$store.commit('setShowDeckMenu', true)
+				}
+
+				this.freezeDeckMenu = true
+				setTimeout(() => {
+					this.freezeDeckMenu = false
+				}, 500)
 			}
 		},
 		closeAllPopups () {
 			this.$store.commit('setShowDeckMenu', false)
+			this.$store.commit('setMouseoutEventActive', true)
 
 			if (this.mobileView()) {
 				this.showSiteMenu = false
@@ -216,6 +241,11 @@ export default {
 			}
 
 			if (!anyFocus()) this.closeAllPopups()
+		},
+		mouseoutEventActiveEffect () {
+			if (!this.$store.state.mouseoutEventActive) {
+				this.$store.commit('setMouseoutEventActive', true)
+			}
 		},
 		mobileView () {
 			return window.innerWidth <= 720 // Number must match the CSS media query width.

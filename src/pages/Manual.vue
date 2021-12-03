@@ -35,8 +35,8 @@
 		</nav>
 
 		<div id="m-intro" class="the-manual">
-			<p>This document explains how to use this app, <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>.</p>
-			<p>If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">MTG Wiki</a>.</p>
+			<p>This page explains how to use this app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
+			<p>(If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">MTG Wiki</a>.)</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>

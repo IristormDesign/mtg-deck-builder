@@ -44,7 +44,7 @@
 						<button
 							v-if="$store.state.decks.length > 0"
 							class="primary-btn"
-							@click="$store.commit('setShowDeckMenu', true)"
+							@click="this.homeOpenDeckButton"
 						>
 							Open Deck
 						</button>
@@ -102,7 +102,7 @@
 					<button
 						v-if="$store.state.decks.length > 0"
 						class="primary-btn"
-						@click="$store.commit('setShowDeckMenu', true)"
+						@click="this.homeOpenDeckButton"
 					>
 						Open a Deck
 					</button>
@@ -135,6 +135,10 @@ export default {
 			const appFeaturesSection = document.getElementById('app-features')
 
 			appFeaturesSection.scrollIntoView(true)
+		},
+		homeOpenDeckButton () {
+			this.$store.commit('setMouseoutEventActive', false)
+			this.$store.commit('setShowDeckMenu', true)
 		}
 	}
 }

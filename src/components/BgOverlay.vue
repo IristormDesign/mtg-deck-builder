@@ -3,7 +3,7 @@
 		<div
 			v-show="popup"
 			class="bg-overlay"
-			@click="hideOverlay()"
+			@click="hideOverlay(true)"
 			@mouseover="hideOverlay()"
 		></div>
 	</transition>
@@ -20,14 +20,17 @@ export default {
 		}
 	},
 	methods: {
-		hideOverlay () {
+		hideOverlay (triggeredByClick) {
 			if (!this.transitionActive) {
-				this.transitionActive = true
-				this.$emit('closePopups', true)
+				// In this context, mouseout means the mouse pointer is hovering out of a menu, over the overlay. Thus, if the mouseout event is active, then hide the overlay. (And clicking the overlay hides it too.)
+				if (triggeredByClick || this.$store.state.mouseoutEventActive) {
+					this.transitionActive = true
+					this.$emit('closePopups', true)
 
-				setTimeout(() => {
-					this.transitionActive = false
-				}, 250) // Equal to transition's duration
+					setTimeout(() => {
+						this.transitionActive = false
+					}, 250) // Equal to transition's duration
+				}
 			}
 		}
 	}
