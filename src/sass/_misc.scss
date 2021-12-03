@@ -162,6 +162,11 @@
 .stt-fade-leave-to {
   opacity: 0;
 }
+.no-gap-list {
+	li {
+		margin: 0;
+	}
+}
 
 @media (max-width: ($min-width-site*.5)) {
 	.update-notif {

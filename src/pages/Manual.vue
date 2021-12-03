@@ -47,10 +47,10 @@
 			</p>
 			<p>At the top of any page on MTG Deck Builder is the app header, which includes the following buttons:</p>
 			<ul>
-				<li><strong>User Manual</strong>—Takes you to this page you’re reading right now.</li>
-				<li><strong>Create Deck</strong>—Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
-				<li><strong>Open Deck</strong>—Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
-				<li><strong>Contact</strong>—Takes you to the Contact page.</li>
+				<li><strong>User Manual</strong> — Takes you to this page you’re reading right now.</li>
+				<li><strong>Create Deck</strong> — Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
+				<li><strong>Open Deck</strong> — Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
+				<li><strong>Contact</strong> — Takes you to the Contact page.</li>
 			</ul>
 
 			<h3 id="m-create-deck">Create Deck Page</h3>
@@ -67,7 +67,7 @@
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
 			<p>A deck page contains the following parts, listed here in the order of their position on the page from top to bottom, left to right:</p>
-			<ol>
+			<ol class="no-gap-list">
 				<li><a href="#m-deck-name">Deck Name</a></li>
 				<li><a href="#m-deck-statistics">Deck Statistics</a></li>
 				<li><a href="#m-card-image">Card Image</a></li>
@@ -99,12 +99,12 @@
 				</p>
 				<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 				<ul>
-					<li><strong>Using Colors</strong>—Shows whichever of the five mana colors that are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
-					<li><strong>Average Mana Value</strong>—Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calculation includes cards’ quantities, and excludes lands.</li>
-					<li><strong>Last Edited</strong>—Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
-					<li><strong>Card Names</strong>—Shows the number of cards by each particular name contained in the deck.</li>
-					<li><strong>Total Cards</strong>—Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Statistics Button</strong>—Click this to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
+					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors that are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
+					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calculation includes cards’ quantities, and excludes lands.</li>
+					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
+					<li><strong>Card Names</strong> — Shows the number of cards by each particular name contained in the deck.</li>
+					<li><strong>Total Cards</strong> — Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol (⚠) appears beside the number to signal this.</li>
+					<li><strong>More Statistics Button</strong> — Click this to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -132,13 +132,13 @@
 					<li>Name</li>
 					<li>Mana cost (if any)</li>
 					<li>Type (including subtype, if any)</li>
-					<li>Rarity—The name and symbol of each rarity level are:
+					<li>Rarity — The name and symbol of each rarity level are:
 						<ul>
-							<li>Common—black C</li>
-							<li>Uncommon—silver U</li>
-							<li>Rare—golden R</li>
-							<li>Mythic rare—orange M</li>
-							<li>Special—purple S</li>
+							<li>Common — black C</li>
+							<li>Uncommon — silver U</li>
+							<li>Rare — golden R</li>
+							<li>Mythic rare — orange M</li>
+							<li>Special — purple S</li>
 						</ul>
 					</li>
 				</ul>
@@ -183,15 +183,15 @@
 				</p>
 				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
 				<ul>
-					<li><strong>Name</strong>—Sorts alphabetically.</li>
-					<li><strong>Mana Color</strong>—Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
-					<li><strong>Mana Value</strong>—Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
-					<li><strong>Type</strong>—Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
-					<li><strong>Subtype</strong>—Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
-					<li><strong>Rarity</strong>—Sorts from highest to lowest in level of rarity.</li>
-					<li><strong>Quantity</strong>—Sorts from most to fewest.</li>
+					<li><strong>Name</strong> — Sorts alphabetically.</li>
+					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
+					<li><strong>Mana Value</strong> — Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
+					<li><strong>Type</strong> — Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
+					<li><strong>Subtype</strong> — Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
+					<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
+					<li><strong>Quantity</strong> — Sorts from most to fewest.</li>
 				</ul>
-				<p>The card list can become the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the card list by rarity, and then you sort by type. In effect, the cards are sorted primarily by type, and within each sorted group of types (the creature group, the land group, etc.), the cards are sorted by rarity.</p>
+				<p>The card list can become the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the cards by rarity, and then you sort by type. In effect, the cards are sorted primarily by type, and within each sorted group of types (the creature group, the land group, etc.), the cards are sorted by rarity.</p>
 				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other card attributes.</p>
 				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 				<p>Applying any sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
@@ -200,15 +200,15 @@
 				<h4>Deck Actions</h4>
 				<p>On a deck page beside the card sorter section is the deck actions section. It has a selection menu from which you can choose to perform special actions to the deck that you’re currently viewing. These actions include the following:</p>
 				<ul>
-					<li><strong>Copy</strong>—Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
-					<li><strong>Export</strong>—Generates and downloads to your computer or device a <a href="#m-deck-data-files">deck data file</a> of the deck. The file is named after the deck’s name and has the “<code>.deck</code>” file extension.</li>
-					<li><strong>Delete</strong>—Fully removes the deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
+					<li><strong>Copy</strong> — Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
+					<li><strong>Export</strong> — Generates and downloads to your computer or device a <a href="#m-deck-data-files">data file of the deck</a>. The file is named after the deck’s name and has “.deck” as its file extension.</li>
+					<li><strong>Delete</strong> — Fully removes the deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
 				</ul>
 				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>
 			</section>
 
 			<h3 id="m-more-statistics-pages">More Statistics Pages</h3>
-			<p>By clicking the More Statistics button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Statistics page. This page shows data tables about various categories of measurement of the deck’s cards.</p>
+			<p>By clicking the More Statistics button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Statistics page. This type of page shows data tables about various categories of measurement of the deck’s cards.</p>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 2x"
@@ -222,28 +222,29 @@
 				<li>Types</li>
 				<li>Subtypes</li>
 				<li>Rarities</li>
-				<li>Other attributes—This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
+				<li>Other attributes — This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
 			</ul>
 			<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
-			<p>Cards can have multiple properties within a single category table. For example, a card that has the type line “artifact creature” would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
+			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
-			<p>The data for your customized decks in MTG Deck Builder are stored locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
+			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
 			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit however you like or delete.</p>
-			<p>To delete all of your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app’s footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. If not, you can cancel. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
+			<p>To delete all your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
 			<p>You can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
 			<ul>
 				<li>Send the file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
-				<li>Keep the file as an isolated backup copy of your deck in case something goes wrong with your computer or device which causes you to lose access to your main deck data.</li>
 				<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
+				<li>Store the file as a backup copy of your deck in case of an event that your computer/device or browser somehow causes you to lose access to your main deck data in the app.</li>
+
 			</ul>
 			<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the “Export” option.</p>
 			<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
 
 			<h3 id="m-app-dev-info">App Development Info</h3>
-			<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
+			<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
 		</div>
 	</article>
 </template>
