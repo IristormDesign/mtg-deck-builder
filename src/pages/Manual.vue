@@ -66,7 +66,7 @@
 					src="@/img/manual-deck-page.jpg" width="658" height="471"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
-			<p>A deck page contains the following sections, listed in the order of their position on the page (as displayed on large computer screens) from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these sections is going to be explained in greater detail.</p>
+			<p>A deck page contains the following sections, listed in the order of their position on the page from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these sections is going to be explained in greater detail.</p>
 
 			<section id="m-deck-name">
 				<p>

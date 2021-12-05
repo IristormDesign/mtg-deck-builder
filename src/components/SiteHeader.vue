@@ -130,7 +130,7 @@ export default {
 
 			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the site header, then close the Open Deck menu.
 			headerLink.addEventListener('focus', () => {
-				if (this.showDeckMenu) {
+				if (this.showDeckMenu && !this.mobileView()) {
 					this.closeAllPopups()
 				}
 			}, false)
@@ -196,8 +196,8 @@ export default {
 			if (this.showSiteMenu) {
 				this.showSiteMenu = false
 			} else {
-				this.$store.commit('setShowDeckMenu', true)
 				this.showSiteMenu = true
+				this.$store.commit('setShowDeckMenu', true)
 
 				// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
 				const allLinks = document.querySelectorAll('a, button')
