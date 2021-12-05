@@ -60,8 +60,6 @@
 			grid-template-columns: repeat(4, minmax(max-content, 1fr));
 			gap: $lhse/2;
 			align-items: center;
-			position: relative;
-			z-index: index($layers, above-overlay);
 		}
 		li {
 			display: block;
@@ -112,9 +110,9 @@
 	.deck-menu-toggler {
 		position: relative;
 		z-index: index($layers, above-overlay);
-		
+
 		span {
-			font-size: 75%;
+			font-size: 66.67%;
 		}
 	}
 	.deck-menu {

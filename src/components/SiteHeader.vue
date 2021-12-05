@@ -119,8 +119,7 @@ export default {
 			}
 		}, false)
 
-		const headerLinks = document.querySelectorAll(
-			'.site-title a, .site-header-link > a, .add-new-deck button')
+		const headerLinks = document.querySelectorAll('.site-title a, .site-header-link > a, .add-new-deck button')
 
 		headerLinks.forEach((headerLink) => {
 			// Close the mobile or deck menu when any of their contained links are clicked.

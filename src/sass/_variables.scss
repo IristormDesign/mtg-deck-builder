@@ -58,7 +58,7 @@ $box-shadows-card-button:
 	inset -.75px 1.5px 0 1px rgba(#fff, .5),
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$border-radius-group: $lhse/2;
+$border-radius-group: $lhse/3;
 $layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, site-menu-toggler, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;

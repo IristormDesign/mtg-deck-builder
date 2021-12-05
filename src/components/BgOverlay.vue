@@ -21,7 +21,19 @@ export default {
 	},
 	methods: {
 		hideOverlay (triggeredByClick) {
-			if (!this.transitionActive) {
+			function focusedDeckLink () {
+				const deckMenuLinks = document.querySelector('.site-header .deck-menu a')
+
+				for (let i = 0; i < deckMenuLinks.length; i++) {
+					const link = deckMenuLinks[i]
+
+					if (link === document.activeElement) {
+						return true
+					}
+				}
+			}
+
+			if (!this.transitionActive && !focusedDeckLink) {
 				// In this context, mouseout means the mouse pointer is hovering out of a menu, over the overlay. Thus, if the mouseout event is active, then hide the overlay. (And clicking the overlay hides it too.)
 				if (triggeredByClick || this.$store.state.mouseoutEventActive) {
 					this.transitionActive = true
