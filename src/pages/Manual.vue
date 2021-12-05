@@ -66,18 +66,7 @@
 					src="@/img/manual-deck-page.jpg" width="658" height="471"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
-			<p>A deck page contains the following parts, listed here in the order of their position on the page from top to bottom, left to right:</p>
-			<ol class="no-gap-list">
-				<li><a href="#m-deck-name">Deck Name</a></li>
-				<li><a href="#m-deck-statistics">Deck Statistics</a></li>
-				<li><a href="#m-card-image">Card Image</a></li>
-				<li><a href="#m-card-list">Card List</a></li>
-				<li><a href="#m-card-quantities">Card Quantities</a></li>
-				<li><a href="#m-card-adder">Card Adder</a></li>
-				<li><a href="#m-card-sorter">Card Sorter</a></li>
-				<li><a href="#m-deck-actions">Deck Actions</a></li>
-			</ol>
-			<p>Each of those components is going be explained in greater detail.</p>
+			<p>A deck page contains the following sections, listed in the order of their position on the page (as displayed on large computer screens) from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these sections is going to be explained in greater detail.</p>
 
 			<section id="m-deck-name">
 				<p>
@@ -87,7 +76,7 @@
 						alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 				</p>
 				<h4>Deck Name</h4>
-				<p>You can click on this to rename the deck to something else.</p>
+				<p>In this section, the deck’s name itself is a link that you can click on to rename the deck to something else.</p>
 			</section>
 			<section id="m-deck-statistics">
 				<h4>Deck Statistics</h4>
@@ -198,10 +187,10 @@
 			</section>
 			<section id="m-deck-actions">
 				<h4>Deck Actions</h4>
-				<p>On a deck page beside the card sorter section is the deck actions section. It has a selection menu from which you can choose to perform special actions to the deck that you’re currently viewing. These actions include the following:</p>
+				<p>Beside the card sorter section on a deck page is the deck actions section. It has a selection menu from which you can choose to perform special actions to the deck you’re currently viewing. These deck actions include the following:</p>
 				<ul>
-					<li><strong>Copy</strong> — Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it afterward if you want).</li>
-					<li><strong>Export</strong> — Generates and downloads to your computer or device a <a href="#m-deck-data-files">data file of the deck</a>. The file is named after the deck’s name and has “.deck” as its file extension.</li>
+					<li><strong>Copy</strong> — Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it later if you want).</li>
+					<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a> which gets saved on your computer or device to wherever your web browser puts downloads. The data file is named after the deck’s name and has “.deck” as its file extension.</li>
 					<li><strong>Delete</strong> — Fully removes the deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
 				</ul>
 				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>

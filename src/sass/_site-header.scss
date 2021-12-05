@@ -46,13 +46,6 @@
 		font-size: 1.25em;
 		display: inline-block;
 	}
-	button {		
-		&:disabled {
-			box-shadow: none;
-			margin: 0;
-			cursor: not-allowed;
-		}
-	}
 	.site-menu-toggler {
 		display: none;
 	}
@@ -64,9 +57,11 @@
 			padding: 0;
 			list-style: none;
 			display: grid;
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(4, minmax(max-content, 1fr));
 			gap: $lhse/2;
 			align-items: center;
+			position: relative;
+			z-index: index($layers, above-overlay);
 		}
 		li {
 			display: block;
@@ -76,6 +71,7 @@
 		a,
 		button {
 			@extend .primary-btn;
+			white-space: nowrap;
 
 			&:hover,
 			&:focus {
@@ -120,28 +116,17 @@
 		span {
 			font-size: 75%;
 		}
-		.mouseover-area {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			top: 0;
-			height: calc(100% + 2px);
-			width: 100%;
-			display: block;
-			border-radius: $border-radius-button;
-		}
 	}
 	.deck-menu {
 		position: relative;
 		z-index: index($layers, above-overlay);
 
 		.hover-shield {
-			height: calc(100% + 2px);
 			width: 100%;
+			height: calc(100% + 2px);
 			position: absolute;
 			top: -2px;
-			padding-bottom: 2.5em;
+			padding-bottom: 3em;
 		}
 		.up-pointing-triangle {
 			position: absolute;
@@ -198,6 +183,17 @@
 			}
 		}
 	}
+	.mouseover-area {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		top: 0;
+		height: calc(100% + 2px);
+		width: 100%;
+		display: block;
+		border-radius: $border-radius-button;
+	}
 }
 
 @media (max-width: $width-site-breakpoint) {
@@ -250,7 +246,8 @@
 			display: none;
 		}
 		.site-menu-toggler {
-			z-index: index($layers, above-overlay);
+			position: relative;
+			z-index: index($layers, site-menu-toggler);
 			font-size: 87.5%;
 			display: block;
 		}
@@ -274,6 +271,12 @@
 				border-color: transparent;
 				border-bottom-color: $color-mythic-orange;
 				border-width: $lhse/3;
+			}
+			> .hover-shield {
+				width: 100%;
+				height: $lhse;
+				position: absolute;
+				top: -$lhse/2;
 			}
 			> ul {
 				overflow-y: auto;
@@ -346,8 +349,13 @@
 			display: none !important;
 		}
 		.deck-menu {
+			.hover-shield {
+				height: auto;
+				position: static;
+				padding-bottom: 0;
+			}
 			.up-pointing-triangle {
-				display: block !important;
+				display: block;
 				position: static;
 
 				&::before {

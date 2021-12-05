@@ -16,7 +16,7 @@
 						maxlength="50"
 						ref="focus"
 					/>
-					<button class="primary-btn">Submit</button>
+					<button class="primary-btn">Go</button>
 				</form>
 			</div>
 			<div class="import-data">

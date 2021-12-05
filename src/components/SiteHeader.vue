@@ -11,9 +11,12 @@
 			<button
 				class="site-menu-toggler primary-btn"
 				@click="toggleSiteMenu()"
-			>Menu</button>
+			>
+				Menu
+			</button>
 
 			<nav v-show="showSiteMenu" class="site-menu">
+				<div class="hover-shield"></div>
 				<ul>
 					<li class="site-header-link">
 						<button
@@ -42,12 +45,10 @@
 						<button
 							class="deck-menu-toggler"
 							@click="toggleDeckMenu()"
-
 							:disabled="disableMenuButton"
-							:title="disabledMenuButtonTitle"
+							:title="disabledMenuButtonTooltip"
 						>
 							Open Deck <span>▼</span>
-
 							<div class="mouseover-area"></div>
 						</button>
 
@@ -135,16 +136,20 @@ export default {
 			}, false)
 		})
 
+		// Debounce window resizing.
 		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 
-		// Delay deck menu opening by mouse-pointer hovering.
-		const deckMenuMOArea = document.querySelector('.deck-menu-toggler .mouseover-area')
+		// Add hover interaction with the Open Deck button.
+		const deckMenuToggler = document.querySelector('.deck-menu-toggler')
+		const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
 		let deckMenuMOTimer
 
 		deckMenuMOArea.addEventListener('mouseover', () => {
-			deckMenuMOTimer = setTimeout(() => {
-				this.toggleDeckMenu()
-			}, 250)
+			if (!deckMenuToggler.hasAttribute('disabled')) {
+				deckMenuMOTimer = setTimeout(() => {
+					this.toggleDeckMenu()
+				}, 250)
+			}
 		})
 		deckMenuMOArea.addEventListener('mouseout', () => {
 			clearTimeout(deckMenuMOTimer)
@@ -166,10 +171,10 @@ export default {
 				return false
 			}
 		},
-		disabledMenuButtonTitle () {
+		disabledMenuButtonTooltip () {
 			if (this.disableMenuButton) {
 				if (this.$store.state.decks.length <= 0) {
-					return 'You currently have no decks. Create a new one!'
+					return 'You have no more decks. Create one!'
 				} else {
 					return 'You currently have no other decks.'
 				}
@@ -191,6 +196,7 @@ export default {
 			if (this.showSiteMenu) {
 				this.showSiteMenu = false
 			} else {
+				this.$store.commit('setShowDeckMenu', true)
 				this.showSiteMenu = true
 
 				// If the mobile site menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
@@ -202,8 +208,6 @@ export default {
 			}
 		},
 		toggleDeckMenu () {
-			console.log('toggleDeckMenu()')
-
 			if (!this.freezeDeckMenu) {
 				if (this.showDeckMenu) {
 					this.$store.commit('setShowDeckMenu', false)
