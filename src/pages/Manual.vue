@@ -88,12 +88,12 @@
 				</p>
 				<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 				<ul>
-					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors that are required by the mana costs among spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
-					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value (formerly known as “converted mana cost” before 2021) among spells in the deck. This calculation includes cards’ quantities, and excludes lands.</li>
-					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
-					<li><strong>Card Names</strong> — Shows the number of cards by each particular name contained in the deck.</li>
-					<li><strong>Total Cards</strong> — Shows the total number of cards contained in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Statistics Button</strong> — Click this to inspect even more data about the deck. For further explanation, see the “<a href="#m-more-statistics-pages">More Statistics Pages</a>” section of this manual.</li>
+					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
+					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value was formerly known as “converted mana cost” before 2021.) This calculation includes cards’ quantities, and excludes land cards.</li>
+					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
+					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
+					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
+					<li><strong>More Statistics</strong> — Clicking this button takes you to the deck’s <a href="#m-more-statistics-pages">“More Statistics” page</a> where you can analyze even more data about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
