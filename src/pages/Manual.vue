@@ -36,7 +36,7 @@
 
 		<div id="m-intro" class="the-manual">
 			<p>This page explains how to use this app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
-			<p>(If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">MTG Wiki</a>.)</p>
+			<p>(If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>
@@ -132,7 +132,7 @@
 					</li>
 				</ul>
 				<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-				<p>The surface color of each card button represents the mana colors of that card’s casting cost. (For example, a button for a card that requires only green mana is colored green.) Buttons for multicolored cards are yellow and for colorless cards are gray.</p>
+				<p>The surface color of each card button represents the mana colors of that card’s casting cost. For example, a button for a card that requires only green mana is colored green. Additionally, buttons for multicolored cards are golden, for colorless spell cards are gray, and for land cards are brown.</p>
 			</section>
 			<section id="m-card-quantities">
 				<h4>Card Quantities</h4>
@@ -173,7 +173,7 @@
 				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
 				<ul>
 					<li><strong>Name</strong> — Sorts alphabetically.</li>
-					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green.</li>
+					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between colorless spells and lands.</li>
 					<li><strong>Mana Value</strong> — Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 					<li><strong>Type</strong> — Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 					<li><strong>Subtype</strong> — Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>

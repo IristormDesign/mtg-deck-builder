@@ -11,7 +11,7 @@ $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 37.5%); // Sampled
 $color-mana-blue: adjust_hue(saturate(#aae1fa, 6.25%), 5.625deg); // Sampled
-$color-mana-black: desaturate(lighten(#00032a, 58.33%), 93.75%); // Inverted mana-white
+$color-mana-black: desaturate(lighten(#00032a, 58.33%), 95.83%); // Inverted mana-white
 $color-mana-red: adjust_hue(saturate(#f9aa8f, 6.25%), -2.8125deg); // Sampled
 $color-mana-green: saturate(#9bd3ae, 12.5%); // Sampled
 $color-mana-generic: #ccc2c0; // Sampled
@@ -23,14 +23,15 @@ $color-content-bg: darken(desaturate($color-mythic-complement, 68.75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 66.67%);
 $color-text: lighten($color-group-bg, 68.75%);
 $color-text-brighter: lighten($color-text, 6.25%);
-$color-text-card-button: lighten(#000, 6.25%);
+$color-text-card-button: #000;
 $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
 $color-hover-bg: lighten($color-group-bg, 6.25%);
 $color-section-border: desaturate(lighten($color-group-bg, 33.33%), 6.25%);
 
+$color-frame-land: desaturate(lighten($color-mythic-lighter, 12.5%), 75%);
 $color-frame-white: desaturate(darken($color-mana-white, 1%), 33.33%);
-$color-frame-blue: desaturate(lighten($color-mana-blue, 6.25%), 25%);
+$color-frame-blue: desaturate(lighten($color-mana-blue, 3.125%), 20%);
 $color-frame-black: desaturate(darken($color-mana-black, 8.33%), 3.125%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 33.33%);
 $color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 12.5%);

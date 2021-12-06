@@ -85,6 +85,7 @@ export default {
 			const b = colors.find((c) => c === 'B')
 			const r = colors.find((c) => c === 'R')
 			const g = colors.find((c) => c === 'G')
+			const land = RegExp(/\bLand\b/).test(card.type)
 
 			if (mc) return 'multicolor'
 			else if (w) return 'white'
@@ -92,6 +93,7 @@ export default {
 			else if (b) return 'black'
 			else if (r) return 'red'
 			else if (g) return 'green'
+			else if (land) return 'land'
 		},
 		styleManaSymbols (card) {
 			const symbol = this.manaSymbol

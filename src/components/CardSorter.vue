@@ -57,12 +57,22 @@ export default {
 			store.commit('setDecks', store.state.decks)
 
 			function sortByColor (a, b) {
+				function isColorlessLand (card) {
+					const hasLandType = RegExp(/\bLand\b/).test(card.type)
+					const isColorless = !card.colors[0]
+
+					return (hasLandType && isColorless)
+				}
 				const colorOrder = [
-					'W', 'U', 'B', 'R', 'G', 'multicolor',
+					'W', 'U', 'B', 'R', 'G',
+					'multicolor',
 					undefined // `undefined` means colorless
 				]
-				const colorA = colorOrder.indexOf(a.colors[0])
-				const colorB = colorOrder.indexOf(b.colors[0])
+				let colorA = colorOrder.indexOf(a.colors[0])
+				let colorB = colorOrder.indexOf(b.colors[0])
+
+				if (isColorlessLand(a)) colorA++
+				if (isColorlessLand(b)) colorB++
 
 				if (colorA < colorB) {
 					return -1
