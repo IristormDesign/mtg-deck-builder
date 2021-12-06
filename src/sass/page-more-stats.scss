@@ -101,3 +101,13 @@ $table-borders: 1px solid desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 		}
 	}
 }
+@media (max-width: ($min-width-site*.625)) {
+	.more-stats {
+		width: 100%;
+
+		.tables {
+			width: max-content;
+			margin: 0 auto;
+		}
+	}
+}
