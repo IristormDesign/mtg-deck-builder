@@ -48,12 +48,10 @@
 						>
 							Open Deck
 						</button>
-						<button
-							v-else class="primary-btn"
-							@click="$store.dispatch('createDeck')"
-						>
+						<router-link
+							v-else to="create-deck" :class="'button primary-btn'">
 							Create Deck
-						</button>
+						</router-link>
 					</p>
 				</div>
 			</div>
@@ -106,12 +104,10 @@
 					>
 						Open a Deck
 					</button>
-					<button
-						v-else class="primary-btn"
-						@click="$store.dispatch('createDeck')"
-					>
-						Create a Deck
-					</button>
+					<router-link
+						v-else to="create-deck" :class="'button primary-btn'">
+						Create Deck
+					</router-link>
 				</p>
 			</div>
 		</section>
