@@ -228,12 +228,8 @@ export default {
 						}
 					})
 					.catch(error => {
-						if (axios.isCancel(error)) {
-							this.alertTooLong()
-						} else {
-							alert(`⚠ Error: ${error.response.data.details}`)
-							console.log(error)
-						}
+						alert(`⚠ Error: ${error.response.data.details}`)
+						console.log(error)
 					})
 					.finally(() => {
 						this.loadingCard = false

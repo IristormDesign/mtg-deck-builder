@@ -66,7 +66,7 @@
 					src="@/img/manual-deck-page.jpg" width="658" height="471"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
-			<p>A deck page contains the following sections, listed in the order of their position on the page from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these sections is going to be explained in greater detail.</p>
+			<p>A deck page contains the following sections, listed in the order of their position on the page from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these is going to be explained in greater detail.</p>
 
 			<section id="m-deck-name">
 				<p>
@@ -173,7 +173,7 @@
 				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
 				<ul>
 					<li><strong>Name</strong> — Sorts alphabetically.</li>
-					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between colorless spells and lands.</li>
+					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
 					<li><strong>Mana Value</strong> — Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
 					<li><strong>Type</strong> — Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 					<li><strong>Subtype</strong> — Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
