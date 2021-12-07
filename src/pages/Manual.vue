@@ -160,7 +160,7 @@
 					<li>The card adder won’t add a card that already exists by that name in the deck. If you’d want to add duplicates of a card of a particular name, instead increase that card’s <a href="#m-card-quantities">quantity</a>.</li>
 					<li>When submitting a card name in the card adder, if that card has been printed in multiple <i>Magic</i> sets, the newest print will always be the one taken.</li>
 					<li>Newly added cards are put at the bottom of the card list, though they can be rearranged later with the <a href="#m-card-sorter">card sorter</a>.</li>
-					<li>If you want to add a randomly chosen card to your deck, enter the code <code>[random]</code> (including the square brackets) as the card name. Depending on the web browser you’re using, “[random]” may also appear as a selectable option when the card adder input has focus.</li>
+					<li>If you want to add a randomly chosen card to your deck, enter the code <code>(random)</code> (including the parentheses) as the card name. Depending on the web browser you’re using, “(random)” may also appear as a selectable option when the card adder input has focus.</li>
 				</ul>
 			</section>
 			<section id="m-card-sorter">
