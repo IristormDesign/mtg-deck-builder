@@ -30,9 +30,10 @@ $color-hover-bg: lighten($color-group-bg, 6.25%);
 $color-section-border: desaturate(lighten($color-group-bg, 33.33%), 6.25%);
 
 $color-frame-land: desaturate(lighten($color-mythic-lighter, 12.5%), 75%);
+$color-frame-land: desaturate(lighten($color-mythic-lighter, 16.67%), 75%);
 $color-frame-white: desaturate(darken($color-mana-white, 1%), 33.33%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 3.125%), 20%);
-$color-frame-black: desaturate(darken($color-mana-black, 8.33%), 3.125%);
+$color-frame-black: desaturate(darken($color-mana-black, 8.33%), 0%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 33.33%);
 $color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 12.5%);
 $color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 0%), 25%);

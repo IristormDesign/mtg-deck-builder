@@ -133,7 +133,7 @@
 					@include box-shadow-hover-card-button(
 						saturate(darken($color-frame-land, 50%), 25%)
 					);
-					background: saturate(darken($color-frame-land, 16.67%), 8.33%);	
+					background: saturate(darken($color-frame-land, 20%), 6.25%);	
 				}
 				&.white {
 					@include box-shadow-hover-card-button(
