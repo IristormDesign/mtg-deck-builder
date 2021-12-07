@@ -7,7 +7,7 @@
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<a
 						v-if="deck.viewedCard === card.name" :key="card.name"
-						:class="card.colors[0]" :href="card.link"
+						:class="cardColorClass(card)" :href="card.link"
 						target="_blank" rel="noopener noreferrer"
 						title="Click to open this card’s page on Scryfall"
 					>
@@ -42,6 +42,15 @@ export default {
 		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 	},
 	methods: {
+		cardColorClass (card) {
+			const color = card.colors[0]
+
+			if (!color && RegExp(/\bLand\b/).test(card.type)) {
+				return 'land'
+			} else {
+				return color
+			}
+		},
 		mobileView () {
 			return window.innerWidth <= 768 // Must match media query's width in CSS.
 		},

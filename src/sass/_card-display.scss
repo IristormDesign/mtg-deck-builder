@@ -20,6 +20,9 @@
 		&:focus-visible {
 			filter: brightness(125%);
 		}
+		&.land {
+			background: desaturate(darken($color-frame-land, 40%), 0%);
+		}
 		&.W {
 			background: desaturate(darken($color-frame-white, 20%), 20%);
 			
@@ -28,19 +31,19 @@
 			}
 		}
 		&.U {
-			background: desaturate(darken($color-frame-blue, 58.33%), 0%);
+			background: desaturate(darken($color-frame-blue, 50%), 16.67%);
 		}
 		&.B {
 			background: desaturate(darken($color-frame-black, 41.67%), 0%);
 		}
 		&.R {
-			background: desaturate(darken($color-frame-red, 50%), 16.67%);
+			background: desaturate(darken($color-frame-red, 50%), 8.33%);
 		}
 		&.G {
-			background: desaturate(darken($color-frame-green, 50%), 6.25%);
+			background: desaturate(darken($color-frame-green, 50%), 8.33%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 41.67%), 25%);
+			background: desaturate(darken($color-frame-multicolor, 37.5%), 25%);
 		}
 	}
 	.loading-indicator {
