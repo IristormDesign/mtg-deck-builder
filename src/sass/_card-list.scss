@@ -151,8 +151,8 @@
 					@include box-shadow-hover-card-button(
 						darken($color-mana-black, 56.25%)
 					);
-					background: darken($color-frame-black, 33.33%);
-					color: lighten($color-frame-black, 33.33%);
+					background: darken($color-frame-black, 37.5%);
+					color: lighten($color-frame-black, 25%);
 					border-bottom-color: darken($color-frame-black, 50%);
 				}
 				&.red {
