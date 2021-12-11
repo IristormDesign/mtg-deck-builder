@@ -111,7 +111,7 @@
 	}
 	li {
 		display: flex;
-		margin: 2px 1px;
+		margin: 2px 0;
 		padding: 0;
 		transition: transform .5s ease; // For card sorting
 		position: relative;
@@ -128,50 +128,69 @@
 				transition-duration: 0s;
 				transition-property: filter, box-shadow;
 				background: darken($color-frame-generic, 12.5%);
+				border-top-color: rgba(#fff, .5);
+				border-right-color: rgba(#fff, .25);
+				border-bottom-color: desaturate(darken($color-frame-generic, 37.5%), 0%);
+				border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
 
 				&.land {
 					@include box-shadow-hover-card-button(
 						saturate(darken($color-frame-land, 50%), 25%)
 					);
-					background: saturate(darken($color-frame-land, 20%), 6.25%);	
+					background: saturate(darken($color-frame-land, 20%), 8.33%);	
+					border-bottom-color: desaturate(darken($color-frame-land, 37.5%), 8.33%);
+					border-left-color: desaturate(darken($color-frame-land, 25%), 8.33%);
 				}
 				&.white {
 					@include box-shadow-hover-card-button(
 						$color-mana-white
 					);
 					background: lighten($color-mana-white, 12.5%);
+					border-bottom-color: desaturate(darken($color-frame-white, 37.5%), 50%);
+					border-left-color: desaturate(darken($color-frame-white, 25%), 50%);
 				}
 				&.blue {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-blue, 50%), 25%)
+						saturate(darken($color-mana-blue, 41.67%), 25%)
 					);
-					background: saturate(darken($color-frame-blue, 12.5%), 16.67%);
+					background: saturate(darken($color-frame-blue, 16.67%), 8.33%);
+					border-bottom-color: desaturate(darken($color-frame-blue, 37.5%), 50%);
+					border-left-color: desaturate(darken($color-frame-blue, 25%), 37.5%);
 				}
 				&.black {					
 					@include box-shadow-hover-card-button(
 						darken($color-mana-black, 56.25%)
 					);
-					background: darken($color-frame-black, 37.5%);
-					color: lighten($color-frame-black, 25%);
-					border-bottom-color: darken($color-frame-black, 50%);
+					background: saturate(darken($color-frame-black, 43.75%), 6.25%);
+					color: lighten($color-frame-black, 16.67%);
+					border-top-color: rgba(#fff, .3333);
+					border-right-color: rgba(#fff, .1667);
+					border-bottom-color: #000;
+					border-left-color: darken($color-frame-black, 56.25%);
 				}
 				&.red {
 					@include box-shadow-hover-card-button(
 						desaturate(darken($color-mana-red, 37.5%), 25%)
 					);
-					background: saturate(darken($color-frame-red, 12.5%), 25%);
+					background: saturate(darken($color-frame-red, 16.67%), 8.33%);
+					border-bottom-color: desaturate(darken($color-frame-red, 37.5%), 37.5%);
+					border-left-color: desaturate(darken($color-frame-red, 25%), 37.5%);
 				}
 				&.green {
 					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-green, 50%), 25%)
+						saturate(darken($color-mana-green, 50%), 50%)
 					);
-					background: saturate(darken($color-frame-green, 20%), 8.33%);
+					background: saturate(darken($color-frame-green, 25%), 6.25%);
+					border-bottom-color: desaturate(darken($color-frame-green, 37.5%), 16.67%);
+					border-left-color: desaturate(darken($color-frame-green, 25%), 16.67%);
 				}
 				&.multicolor {
 					@include box-shadow-hover-card-button(
 						saturate(darken($color-mana-hybrid, 0%), 12.5%)
 					);
-					background: saturate(darken($color-frame-multicolor, 6.25%), 12.5%);
+					background: saturate(darken($color-frame-multicolor, 12.5%), 8.33%);
+					border-bottom-color: desaturate(darken($color-frame-multicolor, 37.5%), 37.5%);
+					border-left-color: desaturate(darken($color-frame-multicolor, 25%), 37.5%);
 				}
 			}
 			&:hover {
@@ -267,11 +286,7 @@
 		margin: 0;
 		padding: 0;
 		border-radius: $border-radius-button;
-		border: 2px solid $color-frame-generic;
-		border-top-color: rgba(#fff, .5);
-		border-right-color: rgba(#fff, .25);
-		border-bottom-color: desaturate(darken($color-frame-generic, 37.5%), 0%);
-		border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
+		border: 2px solid transparent;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
 		color: $color-text-card-button;
@@ -279,47 +294,33 @@
 		filter: contrast(100%);
 		width: 100%;
 		align-items: center;
-		box-shadow: 0 1px 0 1px rgba(#000, .75);
-		
+		box-shadow: -0.5px 1px 1px 1px rgba(#000, .25);
+
 		&:active {
 			transform: scale(.995) translate(0, .5px);
 			transition-duration: 0s;
 		}
 		&.land {
 			background: $color-frame-land;
-			border-bottom-color: desaturate(darken($color-frame-land, 37.5%), 8.33%);
-			border-left-color: desaturate(darken($color-frame-land, 25%), 8.33%);
 		}
 		&.white {
 			background: $color-frame-white;
-			border-bottom-color: desaturate(darken($color-frame-white, 37.5%), 50%);
-			border-left-color: desaturate(darken($color-frame-white, 25%), 50%);
 			color: lighten(#000, 8.33%)
 		}
 		&.blue {
 			background: $color-frame-blue;
-			border-bottom-color: desaturate(darken($color-frame-blue, 37.5%), 50%);
-			border-left-color: desaturate(darken($color-frame-blue, 25%), 37.5%);
 		}
 		&.black {
 			background: $color-frame-black;
-			border-bottom-color: desaturate(darken($color-frame-black, 37.5%), 0%);
-			border-left-color: desaturate(darken($color-frame-black, 25%), 0%);
 		}
 		&.red {
 			background: $color-frame-red;
-			border-bottom-color: desaturate(darken($color-frame-red, 37.5%), 37.5%);
-			border-left-color: desaturate(darken($color-frame-red, 25%), 37.5%);
 		}
 		&.green {
 			background: $color-frame-green;
-			border-bottom-color: desaturate(darken($color-frame-green, 37.5%), 16.67%);
-			border-left-color: desaturate(darken($color-frame-green, 25%), 16.67%);
 		}
 		&.multicolor {
 			background: $color-frame-multicolor;
-			border-bottom-color: desaturate(darken($color-frame-multicolor, 37.5%), 37.5%);
-			border-left-color: desaturate(darken($color-frame-multicolor, 25%), 37.5%);
 		}
 	}
 }
