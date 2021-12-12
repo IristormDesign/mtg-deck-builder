@@ -1,5 +1,8 @@
 @mixin box-shadow-hover-card-button($color) {
-	box-shadow: 0 0 0 3px $color, 0 0 $lhse/3 rgba(#000, .75);
+	box-shadow:
+		0 0 0 1px rgba(#000, .3333),
+		0 0 0 3px $color,
+		0 -1px $lhse/4 4px rgba(#000, .5);
 }
 @mixin long-card-buttons {
 	.card-list {
@@ -121,76 +124,44 @@
 			z-index: index($layers, card-list-item-focus-within);
 
 			.card-button {
-				@include box-shadow-hover-card-button(
-					darken($color-frame-generic, 3.125%),
-				);
+				@include box-shadow-hover-card-button($color-frame-generic);
 				filter: contrast(112.5%);
 				transition-duration: 0s;
-				transition-property: filter, box-shadow;
+				transition-property: filter, box-shadow, background, border-color;
 				background: darken($color-frame-generic, 12.5%);
 				border-top-color: rgba(#fff, .5);
 				border-right-color: rgba(#fff, .25);
-				border-bottom-color: desaturate(darken($color-frame-generic, 37.5%), 0%);
-				border-left-color: desaturate(darken($color-frame-generic, 25%), 25%);
+				border-bottom-color: rgba(#000, .67);
+				border-left-color: rgba(#000, .33);
 
 				&.land {
-					@include box-shadow-hover-card-button(
-						saturate(darken($color-frame-land, 50%), 25%)
-					);
-					background: saturate(darken($color-frame-land, 20%), 8.33%);	
-					border-bottom-color: desaturate(darken($color-frame-land, 37.5%), 8.33%);
-					border-left-color: desaturate(darken($color-frame-land, 25%), 8.33%);
+					@include box-shadow-hover-card-button(darken($color-frame-land, 3.125%));
+					background: darken($color-frame-land, 12.5%);
 				}
 				&.white {
-					@include box-shadow-hover-card-button(
-						$color-mana-white
-					);
+					@include box-shadow-hover-card-button($color-mana-white);
 					background: lighten($color-mana-white, 12.5%);
-					border-bottom-color: desaturate(darken($color-frame-white, 37.5%), 50%);
-					border-left-color: desaturate(darken($color-frame-white, 25%), 50%);
 				}
 				&.blue {
-					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-blue, 41.67%), 25%)
-					);
-					background: saturate(darken($color-frame-blue, 16.67%), 8.33%);
-					border-bottom-color: desaturate(darken($color-frame-blue, 37.5%), 50%);
-					border-left-color: desaturate(darken($color-frame-blue, 25%), 37.5%);
+					@include box-shadow-hover-card-button(desaturate(darken($color-mana-blue, 41.67%), 0%));
+					background: darken($color-frame-blue, 12.5%);
 				}
-				&.black {					
-					@include box-shadow-hover-card-button(
-						darken($color-mana-black, 56.25%)
-					);
-					background: saturate(darken($color-frame-black, 43.75%), 6.25%);
-					color: lighten($color-frame-black, 16.67%);
-					border-top-color: rgba(#fff, .3333);
-					border-right-color: rgba(#fff, .1667);
-					border-bottom-color: #000;
-					border-left-color: darken($color-frame-black, 56.25%);
+				&.black {
+					@include box-shadow-hover-card-button(darken($color-mana-black, 56.25%));
+					background: darken($color-frame-black, 40%);
+					color: lighten($color-frame-black, 20%);
 				}
 				&.red {
-					@include box-shadow-hover-card-button(
-						desaturate(darken($color-mana-red, 37.5%), 25%)
-					);
-					background: saturate(darken($color-frame-red, 16.67%), 8.33%);
-					border-bottom-color: desaturate(darken($color-frame-red, 37.5%), 37.5%);
-					border-left-color: desaturate(darken($color-frame-red, 25%), 37.5%);
+					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 33.33%), 25%));
+					background: darken($color-frame-red, 8.33%);
 				}
 				&.green {
-					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-green, 50%), 50%)
-					);
-					background: saturate(darken($color-frame-green, 25%), 6.25%);
-					border-bottom-color: desaturate(darken($color-frame-green, 37.5%), 16.67%);
-					border-left-color: desaturate(darken($color-frame-green, 25%), 16.67%);
+					@include box-shadow-hover-card-button(darken($color-mana-green, 41.67%));
+					background: darken($color-frame-green, 16.67%);
 				}
 				&.multicolor {
-					@include box-shadow-hover-card-button(
-						saturate(darken($color-mana-hybrid, 0%), 12.5%)
-					);
-					background: saturate(darken($color-frame-multicolor, 12.5%), 8.33%);
-					border-bottom-color: desaturate(darken($color-frame-multicolor, 37.5%), 37.5%);
-					border-left-color: desaturate(darken($color-frame-multicolor, 25%), 37.5%);
+					@include box-shadow-hover-card-button(saturate(darken($color-mana-hybrid, 0%), 12.5%));
+					background: darken($color-frame-multicolor, 12.5%);
 				}
 			}
 			&:hover {
