@@ -213,7 +213,7 @@
 				<li>Rarities</li>
 				<li>Other attributes — This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
 			</ul>
-			<p>Each row of each table indicates the absolute number as well as the percentage of the cards to the related property.</p>
+			<p>Each row of each table indicates the quantity of the cards as well as the percentage of the cards among all in the deck to the related property.</p>
 			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
