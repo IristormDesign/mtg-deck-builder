@@ -3,21 +3,18 @@
 		<section
 			class="card-display" v-show="$store.state.showCard" @click="hideCDOverlay()"
 		>
-			<div v-for="card in deck.cards" :key="card.name">
-				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
-					<a
-						v-if="deck.viewedCard === card.name" :key="card.name"
-						:class="cardColorClass(card)" :href="card.link"
-						target="_blank" rel="noopener noreferrer"
-						title="Click to open this card’s page on Scryfall"
-					>
-						<div class="loading-indicator">
-							Loading&hellip;
-						</div>
-						<img :src="card.img" width="488" height="680" :alt="card.name" />
-					</a>
-				</transition>
-			</div>
+			<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
+				<a
+					:key="card.name" :class="cardColorClass" :href="card.link"
+					target="_blank" rel="noopener noreferrer"
+					title="Click to open this card’s page on Scryfall"
+				>
+					<div class="loading-indicator">
+						Loading&hellip;
+					</div>
+					<img :src="card.img" width="488" height="680" :alt="card.name" />
+				</a>
+			</transition>
 			<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
 				×
 			</button>
@@ -32,6 +29,22 @@ export default {
 	props: {
 		deck: Object
 	},
+	computed: {
+		card () {
+			return this.deck.cards.find(card => {
+				return card.name === this.deck.viewedCard
+			})
+		},
+		cardColorClass () {
+			const color = this.card.colors[0]
+
+			if (!color && RegExp(/\bLand\b/).test(this.card.type)) {
+				return 'land'
+			} else {
+				return color
+			}
+		}
+	},
 	mounted () {
 		if (this.mobileView()) {
 			this.$store.commit('setShowCard', false)
@@ -42,15 +55,6 @@ export default {
 		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
 	},
 	methods: {
-		cardColorClass (card) {
-			const color = card.colors[0]
-
-			if (!color && RegExp(/\bLand\b/).test(card.type)) {
-				return 'land'
-			} else {
-				return color
-			}
-		},
 		mobileView () {
 			return window.innerWidth <= 768 // Must match media query's width in CSS.
 		},

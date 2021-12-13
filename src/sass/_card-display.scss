@@ -5,11 +5,7 @@
 	position: sticky;
 	top: $height-site-header + $lhse/4;
 	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
-	
-	> div {
-		display: flex;
-		justify-content: center;
-	}
+
 	a {
 		position: absolute;
 		display: block;
@@ -130,13 +126,13 @@ $animation-duration-card-browse: .375s;
 		z-index: index($layers, card-overlay);
 		will-change: opacity;
 		filter: none;
-		
-		> div {
-			align-items: center;
-			width: 100%;
-			height: 100%;
-			position: fixed;
-		}
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+
 		a {
 			max-width: (488px * .75);
 			max-height: (680px * .75);

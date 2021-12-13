@@ -2,7 +2,7 @@
 	box-shadow:
 		0 0 0 1px rgba(#000, .3333),
 		0 0 0 3px $color,
-		0 -1px $lhse/4 4px rgba(#000, .5);
+		0 -1px $lhse/4 4px rgba(#000, .25);
 }
 @mixin long-card-buttons {
 	.card-list {
@@ -135,7 +135,7 @@
 				border-left-color: rgba(#000, .33);
 
 				&.land {
-					@include box-shadow-hover-card-button(darken($color-frame-land, 3.125%));
+					@include box-shadow-hover-card-button($color-frame-land);
 					background: darken($color-frame-land, 12.5%);
 				}
 				&.white {
@@ -148,8 +148,8 @@
 				}
 				&.black {
 					@include box-shadow-hover-card-button(darken($color-mana-black, 56.25%));
-					background: darken($color-frame-black, 40%);
-					color: lighten($color-frame-black, 20%);
+					background: darken($color-frame-black, 37.5%);
+					color: desaturate(lighten($color-frame-black, 25%), 50%);
 				}
 				&.red {
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 33.33%), 25%));
