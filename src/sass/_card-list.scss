@@ -181,7 +181,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
 				}
 				&.blue {
-					@include box-shadow-hover-card-button(darken($color-mana-blue, 37.5%));
+					@include box-shadow-hover-card-button(darken($color-mana-blue, 41.67%));
 				}
 				&.black {
 					@include box-shadow-hover-card-button(darken($color-mana-black, 56.25%));
