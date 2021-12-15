@@ -63,7 +63,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
-
+	
 	&.no-cards {
 		justify-content: center;
 		text-align: center;
@@ -155,7 +155,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 					background: darken($color-frame-green, 16.67%);
 				}
 				&.multicolor {
-					background: darken($color-frame-multicolor, 12.5%);
+					background: desaturate(darken($color-frame-multicolor, 16.67%), 8.33%);
 				}
 			}
 			&:hover {
@@ -181,7 +181,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
 				}
 				&.blue {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-blue, 37.5%), 0%));
+					@include box-shadow-hover-card-button(darken($color-mana-blue, 37.5%));
 				}
 				&.black {
 					@include box-shadow-hover-card-button(darken($color-mana-black, 56.25%));
@@ -299,7 +299,6 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 		}
 		&.white {
 			background: $color-frame-white;
-			color: lighten(#000, 8.33%)
 		}
 		&.blue {
 			background: $color-frame-blue;
