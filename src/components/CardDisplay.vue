@@ -1,7 +1,9 @@
 <template>
 	<transition name="cdo-fade">
 		<section
-			class="card-display" v-show="$store.state.showCard" @click="hideCDOverlay()"
+			class="card-display"
+			v-if="displayCardConditions"
+			@click="hideCDOverlay()"
 		>
 			<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 				<a
@@ -32,7 +34,9 @@ export default {
 	computed: {
 		card () {
 			return this.deck.cards.find(card => {
-				return card.name === this.deck.viewedCard
+				if (card) {
+					return card.name === this.deck.viewedCard
+				}
 			})
 		},
 		cardColorClass () {
@@ -43,6 +47,10 @@ export default {
 			} else {
 				return color
 			}
+		},
+		displayCardConditions () {
+			if (this.$store.state.showCard && this.card) return true
+			else return false
 		}
 	},
 	mounted () {
