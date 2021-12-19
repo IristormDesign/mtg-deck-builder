@@ -62,8 +62,11 @@
 										<router-link
 											v-show="$route.params.deckPath !== deck.path"
 											:to="{
-												name: 'deck',
-												params: { deckPath: deck.path }
+												name: 'deckMain',
+												params: {
+													deck: deck,
+													deckPath: deck.path
+												}
 											}"
 											@click.native="closeAllPopups()"
 										>

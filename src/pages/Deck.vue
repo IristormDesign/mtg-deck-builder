@@ -1,7 +1,7 @@
 <template>
-	<div class="deck wrap">
+	<article>
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
-			<article v-if="$route.params.deckPath == deck.path">
+			<article v-if="$route.params.deckPath === deck.path">
 				<header class="deck-header">
 					<deck-name :deck="deck" />
 					<deck-colors :deck="deck" />
@@ -11,20 +11,11 @@
 					<card-total :deck="deck" />
 					<more-stats-button :deck="deck" />
 				</header>
-				<div class="card-display-scroll-view">
-					<card-display :deck="deck" />
-					<div class="deck-main">
-						<card-list :deck="deck" />
-						<section class="card-list-controls">
-							<card-adder :deck="deck" />
-							<card-sorter :deck="deck" />
-							<deck-actions :deck="deck" />
-						</section>
-					</div>
-				</div>
+
+				<router-view />
 			</article>
 		</div>
-	</div>
+	</article>
 </template>
 
 <script>
@@ -35,11 +26,6 @@ import DateEdited from '@/components/DateEdited.vue'
 import CardNames from '@/components/CardNames.vue'
 import CardTotal from '@/components/CardTotal.vue'
 import MoreStatsButton from '@/components/MoreStatsButton.vue'
-import CardDisplay from '@/components/CardDisplay.vue'
-import CardList from '@/components/CardList.vue'
-import CardAdder from '@/components/CardAdder.vue'
-import CardSorter from '@/components/CardSorter.vue'
-import DeckActions from '@/components/DeckActions.vue'
 
 export default {
 	components: {
@@ -49,12 +35,7 @@ export default {
 		DateEdited,
 		CardNames,
 		CardTotal,
-		MoreStatsButton,
-		CardDisplay,
-		CardList,
-		CardAdder,
-		CardSorter,
-		DeckActions
+		MoreStatsButton
 	}
 }
 </script>

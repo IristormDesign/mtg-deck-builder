@@ -51,7 +51,7 @@ export default {
 
 					if (!theActiveDeck()) {
 						this.$router.replace({
-							name: 'deck',
+							name: 'deckMain',
 							params: { deckPath: newPath }
 						})
 					}

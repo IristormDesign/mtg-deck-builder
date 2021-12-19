@@ -49,7 +49,10 @@
 							Open Deck
 						</button>
 						<router-link
-							v-else to="create-deck" :class="'button primary-btn'">
+							v-else
+							:to="{name: 'createDeck'}"
+							:class="'button primary-btn'"
+						>
 							Create Deck
 						</router-link>
 					</p>
@@ -105,7 +108,10 @@
 						Open a Deck
 					</button>
 					<router-link
-						v-else to="create-deck" :class="'button primary-btn'">
+						v-else
+						:to="{name: 'createDeck'}"
+						:class="'button primary-btn'"
+					>
 						Create Deck
 					</router-link>
 				</p>

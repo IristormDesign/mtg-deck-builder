@@ -52,7 +52,7 @@ export default {
 			store.commit('sortDeckMenu')
 
 			router.push({
-				name: 'deck',
+				name: 'deckMain',
 				params: { deckPath: dupDeck.path }
 			})
 		}

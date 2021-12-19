@@ -1,11 +1,6 @@
 <template>
 	<div class="more-stats content-box">
-		<h3>
-			More Statistics on <router-link :to="{
-				name: 'deck',
-				params: { deckPath: deck.path }
-			}">{{ deck.name }}</router-link>
-		</h3>
+		<h3>More Deck Statistics</h3>
 
 		<div class="tables">
 			<section>
@@ -362,24 +357,19 @@
 		</div>
 
 		<p class="return-link">
-			<router-link :to="{
-				name: 'deck',
-				params: { deckPath: deck.path }
-			}">
-				◂ Back to main deck page
+			<router-link :to="{ name: 'deckMain' }">
+				◂ Return to main deck page
 			</router-link>
 		</p>
 	</div>
 </template>
 
 <script>
+import findRelevantDeck from '@/mixins/findRelevantDeck.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [symbolsMarkup],
-	props: {
-		deck: Object
-	},
+	mixins: [findRelevantDeck, symbolsMarkup],
 	data () {
 		return {
 			subtypeNames: [],

@@ -84,7 +84,7 @@ export default {
 					store.commit('sortDeckMenu')
 
 					this.$router.push({
-						name: 'deck',
+						name: 'deckMain',
 						params: { deckPath: path }
 					})
 				}
@@ -126,7 +126,7 @@ export default {
 							store.commit('sortDeckMenu')
 
 							this.$router.push({
-								name: 'deck',
+								name: 'deckMain',
 								params: { deckPath: deckData.path }
 							})
 						}
