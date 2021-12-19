@@ -21,12 +21,7 @@ import ScrollToTop from '@/components/ScrollToTop.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
-	components: {
-		UpdateNotif,
-		SiteHeader,
-		ScrollToTop,
-		SiteFooter
-	},
+	components: { UpdateNotif, SiteHeader, ScrollToTop, SiteFooter },
 	mounted () {
 		this.$watch(function () {
 			// For better performance, don't let the background texture image load on the home page.

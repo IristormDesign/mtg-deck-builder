@@ -97,9 +97,7 @@ import debounce from 'debounce'
 
 export default {
 	mixins: [scrollToTop],
-	components: {
-		BgOverlay
-	},
+	components: { BgOverlay },
 	data () {
 		return {
 			freezeDeckMenu: false,

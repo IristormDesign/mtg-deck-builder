@@ -28,15 +28,7 @@ import CardTotal from '@/components/CardTotal.vue'
 import MoreStatsButton from '@/components/MoreStatsButton.vue'
 
 export default {
-	components: {
-		DeckName,
-		DeckColors,
-		AverageManaValue,
-		DateEdited,
-		CardNames,
-		CardTotal,
-		MoreStatsButton
-	}
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton }
 }
 </script>
 

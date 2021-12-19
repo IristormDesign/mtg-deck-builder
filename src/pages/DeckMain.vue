@@ -24,9 +24,7 @@ import DeckActions from '@/components/DeckActions.vue'
 
 export default {
 	mixins: [findRelevantDeck],
-	components: {
-		CardDisplay, CardList, CardAdder, CardSorter, DeckActions
-	},
+	components: { CardDisplay, CardList, CardAdder, CardSorter, DeckActions },
 	computed: {
 		deck () {
 			return this.$store.state.decks.find(deck =>
