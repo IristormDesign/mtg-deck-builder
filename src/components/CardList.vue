@@ -18,7 +18,9 @@
 				<strong class="type">Type</strong>
 				<strong class="rarity">Rarity</strong>
 			</div>
-			<strong class="qty" title="Quantity">Qty.</strong>
+			<div class="qty-label-group">
+				<strong class="qty" title="Quantity">Qty.</strong>
+			</div>
 		</header>
 		<transition-group tag="ul">
 			<li

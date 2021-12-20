@@ -1,4 +1,5 @@
 $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
+$width-qty-column: 2.5em;
 
 @mixin box-shadow-hover-card-button($color) {
 	box-shadow:
@@ -11,18 +12,23 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 	.card-list {
 		.list-headings {
 			display: flex;
+
+			.card-label-group {
+				&:first-of-type {
+					padding-right: $lhse/4;
+				}
+				&:nth-of-type(2) {
+					padding-left: 1em;
+				}
+			}
 		}
 		.card-button {
 			display: flex;
 			height: $lhse;
-
-			.rarity {
-				margin-right: -1px;
-			}
 		}
 		.card-label-group {
 			width: 50%;
-			padding: 0 $lhse/5;
+			padding: 0 $lhse/6;
 
 			&:last-of-type {
 				border-top: none;
@@ -39,10 +45,6 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 		.card-button {
 			display: block;
 			height: auto;
-
-			.rarity {
-				margin-right: 0;
-			}
 		}
 		.card-label-group {
 			width: 100%;
@@ -59,7 +61,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 @include long-card-buttons;
 
 .card-list {
-	margin-bottom: $lhse/4;
+	margin-bottom: $lhse/3;
 	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
@@ -73,22 +75,6 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 	h3 {
 		@include screen-readers-only;
 	}
-	.card-label-group {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		&:last-of-type {
-			padding-left: (1/48) * 100%;
-		}
-	}
-	.list-headings,
-	li {
-		.qty {
-			width: 4.25rem;
-			margin-right: -$lhse/4;
-		}
-	}
 	.list-headings {
 		@include heading-font;
 		display: flex;
@@ -96,18 +82,31 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 
 		strong {
 			display: block;
-			font-size: $lhse/2;
+			font-size: 75%;
 			line-height: 1;
 			margin-bottom: $lhse/4;
 			text-transform: uppercase;
 			color: $color-text-brighter;
 		}
 		.rarity {
-			margin-right: -$lhse/3;
+			margin-right: -$lhse/12;
 		}
 		.qty {
 			text-align: center;
+			margin-right: -$lhse/4;
 		}
+	}
+	.card-label-group {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&:last-of-type {
+			padding-left: 1em;
+		}
+	}
+	.qty-label-group {
+		width: $width-qty-column;
 	}
 	ul {
 		margin: 0;
@@ -120,10 +119,16 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 		margin: 2px 0;
 		padding: 0;
 		transition: transform .5s ease; // For card sorting
+		transition-property: transform, background-color;
 		position: relative;
+		background: rgba($color-group-bg, .6667);
+		border-radius: $border-radius-button;
 
 		&:hover,
 		&:focus-within {
+			background: rgba($color-group-bg, 1);
+			transition-duration: 0s;
+
 			.card-button {
 				filter: contrast(112.5%);
 				transition-duration: 0s;
@@ -241,36 +246,36 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 			display: flex;
 			align-items: center;
 			line-height: 1;
-	
+			width: $width-qty-column;
+
 			> span {
-				margin: 0 2px 0 .5ch;
-				color: $color-text;
+				margin: 0 0 0 $lhse/8;
+				color: desaturate(darken($color-text, 25%), 12.5%);
 			}
 			label {
 				@include screen-readers-only;
 			}
 			input {
-				color: $color-text-brighter;
+				color: $color-text;
 				background: transparent;
 				border: 0;
-				font-size: $lhse*.875;
-				width: 1.5em;
+				font-size: 133.33%;
+				width: 1.6667em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
 				padding: 0;
 				font-weight: $font-weight-semibold;
 				line-height: 1;
-				text-shadow: $text-shadow-over-light-bg;
+				border-radius: $border-radius-button;
 
 				&:hover,
 				&:focus {
-					background: rgba(#000, .5);
-					color: #fff;
+					color: $color-link-focus;
 					transition-duration: 0s;
 				}
 				&:focus {
-					outline: 2px solid $color-mythic-orange;
+					outline: 2px solid $color-link;
 				}
 			}
 		}
@@ -320,9 +325,7 @@ $box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
 
 @media (max-width: $width-site-breakpoint) {
 	.card-list {
-		li {
-			font-size: 83.33%;
-		}
+		font-size: 83.33%;
 	}
 }
 @media (max-width: $width-site-breakpoint-tablet) {
