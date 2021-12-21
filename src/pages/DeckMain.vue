@@ -14,11 +14,11 @@
 
 <script>
 import findRelevantDeck from '@/mixins/findRelevantDeck.js'
-import CardDisplay from '@/components/CardDisplay.vue'
-import CardList from '@/components/CardList.vue'
-import CardAdder from '@/components/CardAdder.vue'
-import CardSorter from '@/components/CardSorter.vue'
-import DeckActions from '@/components/DeckActions.vue'
+import CardDisplay from '@/components/DeckCardDisplay.vue'
+import CardList from '@/components/DeckCardList.vue'
+import CardAdder from '@/components/DeckCardAdder.vue'
+import CardSorter from '@/components/DeckCardSorter.vue'
+import DeckActions from '@/components/DeckDeckActions.vue'
 
 export default {
 	mixins: [findRelevantDeck],

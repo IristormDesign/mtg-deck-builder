@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import DeckName from '@/components/DeckName.vue'
-import DeckColors from '@/components/DeckColors.vue'
-import AverageManaValue from '@/components/AverageManaValue.vue'
-import DateEdited from '@/components/DateEdited.vue'
-import CardNames from '@/components/CardNames.vue'
-import CardTotal from '@/components/CardTotal.vue'
-import MoreStatsButton from '@/components/MoreStatsButton.vue'
+import DeckName from '@/components/DeckHeaderDeckName.vue'
+import DeckColors from '@/components/DeckHeaderDeckColors.vue'
+import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
+import DateEdited from '@/components/DeckHeaderDateEdited.vue'
+import CardNames from '@/components/DeckHeaderCardNames.vue'
+import CardTotal from '@/components/DeckHeaderCardTotal.vue'
+import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 
 export default {
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton }

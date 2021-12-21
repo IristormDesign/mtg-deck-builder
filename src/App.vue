@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import UpdateNotif from '@/components/UpdateNotif.vue'
-import SiteHeader from '@/components/SiteHeader.vue'
-import ScrollToTop from '@/components/ScrollToTop.vue'
-import SiteFooter from '@/components/SiteFooter.vue'
+import UpdateNotif from '@/components/AppUpdateNotif.vue'
+import SiteHeader from '@/components/AppHeader.vue'
+import ScrollToTop from '@/components/AppScrollToTop.vue'
+import SiteFooter from '@/components/AppFooter.vue'
 
 export default {
 	components: { UpdateNotif, SiteHeader, ScrollToTop, SiteFooter },
