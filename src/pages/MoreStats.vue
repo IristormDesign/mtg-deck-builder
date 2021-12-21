@@ -358,7 +358,7 @@
 
 		<p class="return-link">
 			<router-link :to="{ name: 'deckMain' }">
-				◂ Return to main deck page
+				◂ Return to the card list
 			</router-link>
 		</p>
 	</div>

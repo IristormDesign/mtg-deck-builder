@@ -28,6 +28,7 @@ $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25
 $color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
 $color-hover-bg: lighten($color-group-bg, 6.25%);
 $color-section-border: desaturate(lighten($color-group-bg, 33.33%), 6.25%);
+$color-heading-bg: darken($color-content-bg, 16.67%);
 
 $color-frame-land: desaturate(lighten($color-mythic-lighter, 16.67%), 66.67%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
@@ -59,7 +60,7 @@ $box-shadows-card-button:
 	inset -.75px 1.5px 0 1px rgba(#fff, .5),
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$border-radius-group: $lhse/3;
+$border-radius-group: $lhse/2;
 $layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, site-menu-toggler, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;
@@ -221,6 +222,12 @@ $x: 2px dashed rgba(#c0f, .75);
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+@mixin pronounced-heading {
+	background: $color-heading-bg;
+	padding: $lhse/3 $lhse/3;
+	margin: $lhse (-$lhse/3) ($lhse/2); 
+	border-radius: $border-radius-button;
 }
 
 @font-face {

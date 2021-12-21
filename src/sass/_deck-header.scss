@@ -111,6 +111,7 @@
 	button {
 		@include primary-btn;
 		font-size: 87.5%;
+		min-width: 5.5em;
 	}
 	button {
 		&[disabled] {
