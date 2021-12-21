@@ -1,15 +1,13 @@
 <template>
-	<div class="deck wrap">
-		<div class="card-display-scroll-view">
-			<card-display :deck="deck" />
-			<div class="deck-main">
-				<card-list :deck="deck" />
-				<section class="card-list-controls">
-					<card-adder :deck="deck" />
-					<card-sorter :deck="deck" />
-					<deck-actions :deck="deck" />
-				</section>
-			</div>
+	<div class="card-display-scroll-view wrap">
+		<card-display :deck="deck" />
+		<div class="deck-main">
+			<card-list :deck="deck" />
+			<section class="card-list-controls">
+				<card-adder :deck="deck" />
+				<card-sorter :deck="deck" />
+				<deck-actions :deck="deck" />
+			</section>
 		</div>
 	</div>
 </template>

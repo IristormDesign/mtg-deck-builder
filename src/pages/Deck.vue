@@ -1,21 +1,23 @@
 <template>
-	<article>
+	<div class="deck">
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
-			<article v-if="$route.params.deckPath === deck.path">
-				<header class="deck-header">
-					<deck-name :deck="deck" />
-					<deck-colors :deck="deck" />
-					<average-mana-value :deck="deck" />
-					<date-edited :deck="deck" />
-					<card-names :deck="deck" />
-					<card-total :deck="deck" />
-					<more-stats-button :deck="deck" />
-				</header>
+			<article v-if="deck.path === $route.params.deckPath">
+				<div class="wrap">
+					<header class="deck-header">
+						<deck-name :deck="deck" />
+						<deck-colors :deck="deck" />
+						<average-mana-value :deck="deck" />
+						<date-edited :deck="deck" />
+						<card-names :deck="deck" />
+						<card-total :deck="deck" />
+						<more-stats-button :deck="deck" />
+					</header>
+				</div>
 
 				<router-view />
 			</article>
 		</div>
-	</article>
+	</div>
 </template>
 
 <script>
