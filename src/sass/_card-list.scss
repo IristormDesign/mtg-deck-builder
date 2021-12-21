@@ -79,7 +79,8 @@ $width-qty-column: 2.5em;
 		@include heading-font;
 		display: flex;
 		text-shadow: $text-shadow-over-light-bg;
-
+		cursor: default;
+		
 		strong {
 			display: block;
 			font-size: 75%;
@@ -88,12 +89,12 @@ $width-qty-column: 2.5em;
 			text-transform: uppercase;
 			color: $color-text-brighter;
 		}
-		.rarity {
-			margin-right: -$lhse/12;
-		}
 		.qty {
 			text-align: center;
 			margin-right: -$lhse/4;
+		}
+		[title] {
+			cursor: help;
 		}
 	}
 	.card-label-group {
@@ -247,7 +248,7 @@ $width-qty-column: 2.5em;
 			align-items: center;
 			line-height: 1;
 			width: $width-qty-column;
-
+			
 			> span {
 				margin: 0 0 0 $lhse/8;
 				color: desaturate(darken($color-text, 25%), 12.5%);
@@ -264,11 +265,18 @@ $width-qty-column: 2.5em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
-				padding: 0;
+				padding: 0 0 0 0;
+				margin-left: -$lhse/8;
 				font-weight: $font-weight-semibold;
 				line-height: 1;
 				border-radius: $border-radius-button;
+				-moz-appearance: textfield;
+				appearance: textfield;
 
+				&::-webkit-inner-spin-button,
+				&::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+				}
 				&:hover,
 				&:focus {
 					color: $color-link-focus;

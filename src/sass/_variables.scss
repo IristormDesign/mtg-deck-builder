@@ -14,7 +14,7 @@ $color-mana-blue: adjust_hue(saturate(#aae1fa, 6.25%), 5.625deg); // Sampled
 $color-mana-black: adjust_hue(desaturate(lighten(#00032a, 62.5%), 93.75%), 22.5deg); // Inverted mana-white
 $color-mana-red: adjust_hue(saturate(#f9aa8f, 6.25%), -2.8125deg); // Sampled
 $color-mana-green: adjust_hue(saturate(#9bd3ae, 8.33%), -5.625deg); // Sampled
-$color-mana-generic: #ccc2c0; // Sampled
+$color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
 $color-mana-hybrid: desaturate(lighten($color-rarity-gold, 12.5%), 12.5%);
 
 $color-link: saturate(lighten($color-mythic-orange, 8.33%), 16.67%);
@@ -36,7 +36,7 @@ $color-frame-black: desaturate(darken($color-mana-black, 6.25%), 3.125%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 8.33%);
 $color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 0%);
 $color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 3.125%), 12.5%);
-$color-frame-generic: desaturate(lighten($color-rarity-silver, 8.33%), 6.25%);
+$color-frame-generic: desaturate(lighten($color-rarity-silver, 8.33%), 8.33%);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', serif;
