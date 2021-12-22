@@ -207,14 +207,15 @@
 			<p>The categories include:</p>
 			<ul>
 				<li>Colors of spells</li>
-				<li>Mana value of spells (mana curve)</li>
+				<li>Mana values of spells (mana curve)</li>
 				<li>Types</li>
-				<li>Subtypes</li>
+				<li>Subtypes of creatures</li>
+				<li>Subtypes of other cards</li>
 				<li>Rarities</li>
 				<li>Other attributes — This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
 			</ul>
 			<p>Each row of each table indicates the quantity of the cards as well as the percentage of the cards among all in the deck to the related property.</p>
-			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted in the Types table as both a creature <em>and</em> an artifact. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
+			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted as both a creature <em>and</em> an artifact in the Types table. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
