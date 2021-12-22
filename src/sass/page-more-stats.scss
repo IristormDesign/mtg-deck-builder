@@ -26,18 +26,21 @@ $table-borders: 1px solid $color-heading-bg;
 		border-collapse: collapse;
 		border-spacing: 0;
 		border: $table-borders;
-		border-width: 2px;
+		border-width: 3px;
 		border-top-width: 0px;
-		line-height: 1;
 		width: 100%;
 		max-width: $lhse*9;
 
 		thead {
 			th {
-				font-size: 75%;
+				@include heading-font;
+				font-size: 60%;
+				text-transform: uppercase;
 				text-align: right;
 				background: $color-heading-bg;
 				cursor: default;
+				padding-top: 0;
+				padding-bottom: 0;
 			}
 		}
 		tbody {
@@ -54,9 +57,16 @@ $table-borders: 1px solid $color-heading-bg;
 		}
 		th,
 		td {
-			padding: $lhse/4;
+			padding: 1px $lhse/4;
 			border: $table-borders;
 			text-align: right;
+		}
+		th {
+			text-align: right;
+
+			.mana-symbol {
+				margin-left: auto;
+			}
 		}
 	}
 	p {

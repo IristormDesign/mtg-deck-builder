@@ -59,6 +59,28 @@ export default {
 			const allSubtypesCreatures = []
 			const allSubtypesOther = []
 
+			this.deck.cards.forEach(card => {
+				for (let i = 0; i < card.qty; i++) {
+					const typeLine = card.type
+
+					// Find the pattern that indicates the card is double-faced, which is a space, a slash, a space, and any characters afterward in the card's type line. (This doesn't look at the second face's entire type line.)
+					const isDoubleFaced = typeLine.match(RegExp(/\s\/\s\w*/))
+
+					if (isDoubleFaced) {
+						// Get the part of the string that precedes the slash character.
+						const firstFace = typeLine.match(RegExp(/[^/]*/))[0]
+
+						// Get the part of the string that follows the slash character.
+						const secondFace = typeLine.match(RegExp(/\/.*/))[0]
+
+						getSubtypesPerFace(firstFace)
+						getSubtypesPerFace(secondFace)
+					} else { // A regular single-face card.
+						getSubtypesPerFace(typeLine)
+					}
+				}
+			})
+
 			function getSubtypesPerFace (cardFace) {
 				// In each card's type line, get only the part that indicates the subtype: the em dash and all characters after it.
 				const subtypesPattern = cardFace.match(RegExp(/\s—\s.*/))
@@ -88,28 +110,6 @@ export default {
 					}
 				}
 			}
-
-			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					const typeLine = card.type
-
-					// Find the pattern that indicates the card is double-faced, which is a space, a slash, a space, and any characters afterward in the card's type line. (This doesn't look at the second face's entire type line.)
-					const isDoubleFaced = typeLine.match(RegExp(/\s\/\s\w*/))
-
-					if (isDoubleFaced) {
-						// Get the part of the string that precedes the slash character.
-						const firstFace = typeLine.match(RegExp(/[^/]*/))[0]
-
-						// Get the part of the string that follows the slash character.
-						const secondFace = typeLine.match(RegExp(/\/.*/))[0]
-
-						getSubtypesPerFace(firstFace)
-						getSubtypesPerFace(secondFace)
-					} else { // A regular single-face card.
-						getSubtypesPerFace(typeLine)
-					}
-				}
-			})
 
 			// Make an array containing only the UNIQUE names among all the deck's subtypes.
 			allSubtypesCreatures.forEach(subtype => {
