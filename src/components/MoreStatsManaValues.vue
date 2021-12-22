@@ -50,8 +50,8 @@ export default {
 		const cmcCounts = this.cmcCounts
 
 		this.deck.cards.forEach(card => {
-			for (let i = 0; i < card.qty; i++) {
-				if (card.mana !== '') { // Excludes land cards
+			if (card.mana !== '') { // Exclude land cards
+				for (let i = 0; i < card.qty; i++) {
 					allCmc.push(card.cmc)
 				}
 			}

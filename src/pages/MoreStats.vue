@@ -53,11 +53,9 @@ export default {
 	},
 	methods: {
 		displaySubtypes () {
-			const subtypeCreaturesNames = this.subtypeCreaturesNames
-			const subtypeOtherNames = this.subtypeOtherNames
-			const subtypeCounts = this.subtypeCounts
 			const allSubtypesCreatures = []
 			const allSubtypesOther = []
+			const subtypeCounts = this.subtypeCounts
 
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
@@ -111,45 +109,34 @@ export default {
 				}
 			}
 
-			// Make an array containing only the UNIQUE names among all the deck's subtypes.
-			allSubtypesCreatures.forEach(subtype => {
-				if (subtypeCreaturesNames.indexOf(subtype) < 0) {
-					subtypeCreaturesNames.push(subtype)
-				}
-			})
-			allSubtypesOther.forEach(subtype => {
-				if (subtypeOtherNames.indexOf(subtype) < 0) {
-					subtypeOtherNames.push(subtype)
-				}
-			})
+			prepareSubtypesTable(allSubtypesCreatures, this.subtypeCreaturesNames)
+			prepareSubtypesTable(allSubtypesOther, this.subtypeOtherNames)
 
-			// Alphabetize the subtypes.
-			subtypeCreaturesNames.sort()
-			subtypeOtherNames.sort()
-
-			// Set up an object having properties of the unique names of each subtype, with the count of each initially set to 0.
-			subtypeCreaturesNames.forEach(name => {
-				subtypeCounts[name] = 0
-			})
-			subtypeOtherNames.forEach(name => {
-				subtypeCounts[name] = 0
-			})
-
-			// Apply the counts of each subtype.
-			allSubtypesCreatures.forEach(subtype => {
-				for (const name in subtypeCounts) {
-					if (subtype === name) {
-						subtypeCounts[subtype]++
+			function prepareSubtypesTable (allSubtypes, subtypeNames) {
+				// Make an array containing only the UNIQUE names among all the deck's subtypes.
+				allSubtypes.forEach(subtype => {
+					if (subtypeNames.indexOf(subtype) < 0) {
+						subtypeNames.push(subtype)
 					}
-				}
-			})
-			allSubtypesOther.forEach(subtype => {
-				for (const name in subtypeCounts) {
-					if (subtype === name) {
-						subtypeCounts[subtype]++
+				})
+
+				// Alphabetize the subtypes.
+				subtypeNames.sort()
+
+				// Set up an object having properties of the unique names of each subtype, with the count of each initially set to 0.
+				subtypeNames.forEach(name => {
+					subtypeCounts[name] = 0
+				})
+
+				// Apply the counts of each subtype.
+				allSubtypes.forEach(subtype => {
+					for (const name in subtypeCounts) {
+						if (subtype === name) {
+							subtypeCounts[subtype]++
+						}
 					}
-				}
-			})
+				})
+			}
 		}
 	}
 }

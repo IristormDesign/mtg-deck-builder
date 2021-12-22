@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h4>Other Attributes</h4>
+		<h4>Miscellaneous</h4>
 		<table>
 			<thead>
 				<tr>
