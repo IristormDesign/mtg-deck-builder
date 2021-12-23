@@ -12,18 +12,18 @@
 			<tbody>
 				<tr>
 					<th>Average</th>
-					<td>{{ calculateAveragePT('power') }}</td>
-					<td>{{ calculateAveragePT('toughness') }}</td>
+					<td>{{ power.average }}</td>
+					<td>{{ toughness.average }}</td>
 				</tr>
 				<tr>
 					<th>Greatest</th>
-					<td>{{ getSuperlativePT('power')['greatest'] }}</td>
-					<td>{{ getSuperlativePT('toughness')['greatest'] }}</td>
+					<td>{{ power.greatest }}</td>
+					<td>{{ toughness.greatest }}</td>
 				</tr>
 				<tr>
 					<th>Least</th>
-					<td>{{ getSuperlativePT('power')['least'] }}</td>
-					<td>{{ getSuperlativePT('toughness')['least'] }}</td>
+					<td>{{ power.least }}</td>
+					<td>{{ toughness.least }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -36,56 +36,73 @@ export default {
 	props: {
 		deck: Object
 	},
-	methods: {
-		onlyCardsWithPT (pt) {
-			// Get only the cards that have a power or toughness property.
-			return this.deck.cards.filter(card => card[pt])
-		},
-		calculateAveragePT (pt) {
-			let avg = 0
-			let total = 0
+	data () {
+		return {
+			power: {
+				average: '—',
+				greatest: '—',
+				least: '—',
+				total: 0
+			},
+			toughness: {
+				average: '—',
+				greatest: '—',
+				least: '—',
+				total: 0
+			}
+		}
+	},
+	mounted () {
+		const onlyCardsWithPT = this.deck.cards.filter(
+			card => card.toughness // Get only the cards that have power/toughness properties, but specifically toughness. If a card has the toughness property then it's assumed to have the power property too.
+		)
 
-			this.onlyCardsWithPT(pt).forEach(card => {
-				const ptAsNum = Number(card[pt]) // The power/toughness data is originally received as a string type, so covert it to a number type.
+		if (onlyCardsWithPT.length > 0) {
+			const power = this.power
+			const toughness = this.toughness
 
-				if (!isNaN(ptAsNum)) { // The card's power/toughness value should be an actual number rather than `NaN`. If it is `NaN`, that means it's a variable symbol, and thus it should be ignored for calculating the average.
-					for (let i = 0; i < card.qty; i++) {
-						avg += ptAsNum
-						total++
-					}
-				}
+			power.average = 0
+			toughness.average = 0
+			power.greatest = 0
+			toughness.greatest = 0
+			power.least = Infinity
+			toughness.least = Infinity
+
+			onlyCardsWithPT.forEach(card => {
+				this.determinePTStats(card, 'power')
+				this.determinePTStats(card, 'toughness')
 			})
 
-			if (total > 0) {
-				avg /= total
+			this.calculateAverage('power')
+			this.calculateAverage('toughness')
+		}
+	},
+	methods: {
+		determinePTStats (card, pT) {
+			const pTNum = Number(card[pT]) // The power/toughness data is originally received as a string type, so covert it to a number type.
+			const pTData = this[pT]
+
+			if (!isNaN(pTNum)) { // The card's power/toughness value should be an actual number rather than `NaN`. If it is `NaN`, that means it's a variable symbol, and thus it should be ignored for calculating the average.
+				for (let i = 0; i < card.qty; i++) {
+					pTData.average += pTNum
+					pTData.total++
+				}
+
+				if (pTNum > pTData.greatest) {
+					pTData.greatest = pTNum
+				}
+				if (pTNum < pTData.least) {
+					pTData.least = pTNum
+				}
 			}
-
-			avg = avg.toFixed(1)
-
-			return avg
 		},
-		getSuperlativePT (pt) {
-			const onlyCardsWithPT = this.onlyCardsWithPT(pt)
-			let greatest = '—'
-			let least = '—'
+		calculateAverage (pT) {
+			const pTData = this[pT]
 
-			if (onlyCardsWithPT.length > 0) {
-				greatest = 0
-				least = Infinity
-
-				onlyCardsWithPT.forEach(card => {
-					const ptNum = Number(card[pt])
-
-					if (ptNum > greatest) {
-						greatest = ptNum
-					}
-					if (ptNum < least) {
-						least = ptNum
-					}
-				})
+			if (pTData.total > 0) {
+				pTData.average /= pTData.total
 			}
-
-			return { greatest, least }
+			pTData.average = pTData.average.toFixed(1)
 		}
 	}
 }
