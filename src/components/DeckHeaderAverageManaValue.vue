@@ -29,7 +29,7 @@ export default {
 			})
 
 			if (totalSpells > 0) {
-				avg /= (totalSpells)
+				avg /= totalSpells
 			}
 
 			avg = avg.toFixed(1)

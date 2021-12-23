@@ -164,45 +164,60 @@ export default {
 						{ cancelToken: axios.CancelToken.source().token }
 					)
 					.then(response => {
-						const rd = response.data
+						const data = response.data
 						const newCard = {}
 
-						if (rd.card_faces) { // If the card is a double-faced or split card...
-							const rdFace1 = rd.card_faces[0]
-							const rdFace2 = rd.card_faces[1]
+						if (data.card_faces) { // If the card is a double-faced or split card...
+							const dataFace1 = data.card_faces[0]
+							const dataFace2 = data.card_faces[1]
 
-							newCard.name = `${rdFace1.name} / ${rdFace2.name}`
+							newCard.name = `${dataFace1.name} / ${dataFace2.name}`
 
-							newCard.mana = `${rdFace1.mana_cost}`
-							if (rdFace2.mana_cost !== '') { // If the card's second face has its own mana cost, add it onto the mana cost string with a slash before it.
-								newCard.mana += '/' + rdFace2.mana_cost
+							newCard.mana = `${dataFace1.mana_cost}`
+							if (dataFace2.mana_cost !== '') { // If the card's second face has its own mana cost, add it onto the mana cost string with a slash before it.
+								newCard.mana += '/' + dataFace2.mana_cost
 							}
 
-							newCard.type = `${rdFace1.type_line} / ${rdFace2.type_line}`
-							newCard.cmc = rd.cmc
+							newCard.type = `${dataFace1.type_line} / ${dataFace2.type_line}`
+							newCard.cmc = data.cmc
 
-							if (rd.colors) {
-								newCard.colors = rd.colors
+							if (data.colors) {
+								newCard.colors = data.colors
 							} else {
-								newCard.colors = rdFace1.colors
+								newCard.colors = dataFace1.colors
 							}
 
-							if (rd.image_uris) {
-								newCard.img = rd.image_uris.normal
+							if (data.image_uris) {
+								newCard.img = data.image_uris.normal
 							} else {
-								newCard.img = rdFace1.image_uris.normal
+								newCard.img = dataFace1.image_uris.normal
+							}
+
+							if (data.power) {
+								newCard.power = data.power
+							} else {
+								newCard.power = dataFace1.power
+							}
+
+							if (data.toughness) {
+								newCard.toughness = data.toughness
+							} else {
+								newCard.toughness = dataFace1.toughness
 							}
 						} else { // Else the card is a single-faced card.
-							newCard.name = rd.name
-							newCard.mana = rd.mana_cost
-							newCard.type = rd.type_line
-							newCard.cmc = rd.cmc
-							newCard.colors = rd.colors
-							newCard.img = rd.image_uris.normal
+							newCard.name = data.name
+							newCard.mana = data.mana_cost
+							newCard.type = data.type_line
+							newCard.cmc = data.cmc
+							newCard.colors = data.colors
+							newCard.img = data.image_uris.normal
+							newCard.power = data.power
+							newCard.toughness = data.toughness
 						}
 						newCard.name = this.curlApostrophes(newCard.name)
-						newCard.rarity = rd.rarity
-						newCard.link = rd.scryfall_uri
+						newCard.rarity = data.rarity
+						newCard.keywords = data.keywords
+						newCard.link = data.scryfall_uri
 						newCard.qty = 1
 
 						if (newCard.colors.length >= 2) {

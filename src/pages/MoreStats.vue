@@ -17,6 +17,8 @@
 				:subtypeCounts="subtypeCounts"
 			>Other Cards</more-stats-subtypes>
 			<more-stats-rarities :deck="deck" :raritySymbol="raritySymbol" />
+			<more-stats-power-toughness :deck="deck" />
+			<more-stats-keywords :deck="deck" />
 			<more-stats-misc :deck="deck" />
 		</div>
 
@@ -37,10 +39,12 @@ import MoreStatsTypes from '@/components/MoreStatsTypes.vue'
 import MoreStatsSubtypes from '@/components/MoreStatsSubtypes.vue'
 import MoreStatsRarities from '@/components/MoreStatsRarities.vue'
 import MoreStatsMisc from '@/components/MoreStatsMisc.vue'
+import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
+import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 
 export default {
 	mixins: [findRelevantDeck, symbolsMarkup],
-	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc },
+	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsPowerToughness, MoreStatsKeywords },
 	data () {
 		return {
 			subtypeCreaturesNames: [],

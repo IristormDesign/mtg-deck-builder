@@ -20,7 +20,9 @@ $table-borders: 1px solid $color-heading-bg;
 		text-align: center;
 	}
 	h4 {
-		margin: $lhse/2 0 $lhse/3;
+		margin: $lhse/2 0 1px;
+		padding: $lhse/4 $lhse/4;
+		background: $color-heading-bg;
 	}
 	table {
 		border-collapse: collapse;

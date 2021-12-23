@@ -113,8 +113,8 @@ export default {
 			}
 
 			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					if (card.mana !== '') { // Excludes land
+				if (card.mana !== '') { // Exclude land cards
+					for (let i = 0; i < card.qty; i++) {
 						if (card.colors[0] === undefined) {
 							counts.colorless++
 						} else {
