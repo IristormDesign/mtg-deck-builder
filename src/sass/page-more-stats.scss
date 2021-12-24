@@ -1,5 +1,6 @@
 @import 'variables';
 $table-borders: 1px solid $color-heading-bg;
+$color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
 	max-width: max-content;
@@ -19,8 +20,14 @@ $table-borders: 1px solid $color-heading-bg;
 		margin-top: 0;
 		text-align: center;
 	}
+	section {
+		> table,
+		> .height-limiter {
+			border-bottom: 4px solid $color-heading-bg;
+		}
+	}
 	h4 {
-		margin: $lhse/2 0 1px;
+		margin: $lhse/2 0 2px;
 		padding: $lhse/4 $lhse/4;
 		background: $color-heading-bg;
 	}
@@ -29,8 +36,8 @@ $table-borders: 1px solid $color-heading-bg;
 		border-spacing: 0;
 		border: $table-borders;
 		border-width: 1px;
-		border-top-width: 0px;
-		border-bottom-width: $lhse/6;
+		border-top-width: 0;
+		border-bottom-width: 0;
 		width: 100%;
 		max-width: $lhse*9;
 
@@ -48,13 +55,18 @@ $table-borders: 1px solid $color-heading-bg;
 		}
 		tbody {
 			position: relative;
+		}
+		tr {
+			transition: background-color .125s ease-out;
 
-			tr {
-				transition: background-color .125s ease-out;
-
-				&:hover {
-					background: rgba(#000, .375);
-					transition-duration: 0s;
+			&:hover {
+				background: rgba(#000, .375);
+				transition-duration: 0s;
+			}
+			&:last-child {
+				th,
+				td {
+					border-bottom-width: 0;
 				}
 			}
 		}
@@ -74,7 +86,36 @@ $table-borders: 1px solid $color-heading-bg;
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse*11.25;
+		max-height: $lhse * 10.25;
+		background:
+			/* Top shadow cover */
+			linear-gradient(
+				$color-group-bg 33.33%,
+				rgba($color-group-bg, 0)
+			) center top,
+
+			/* Bottom shadow cover */
+			linear-gradient(
+				rgba($color-group-bg, 0), 
+				$color-group-bg 66.67%
+			) center bottom,
+			
+			/* Top shadow */
+			radial-gradient(farthest-side at 50% 0,
+				rgba($color-scroll-limiter-shadow, .25),
+				rgba($color-scroll-limiter-shadow, 0)
+			) center top,
+			
+			/* Bottom shadow */
+			radial-gradient(farthest-side at 50% 100%,
+				rgba($color-scroll-limiter-shadow, .25),
+				rgba($color-scroll-limiter-shadow, 0)
+			) center bottom;
+		background-repeat: no-repeat;
+		background-size:
+			100% $lhse*1.75, 100% $lhse*1.75,
+			100% $lhse*.875, 100% $lhse*.875;
+		background-attachment: local, local, scroll, scroll;
 	}
 	p {
 		margin: $lhse 0 0;
