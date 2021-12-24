@@ -1,29 +1,31 @@
 <template>
 	<section>
 		<h4>Keyword Abilities</h4>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="keywordNames.length > 0">
-				<tr v-for="keyword in keywordNames" :key="keyword">
-					<th>{{ keyword }}</th>
-					<td>{{ keywordCounts[keyword] }}</td>
-					<td>{{ calculatePercentage(keywordCounts[keyword]) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="height-limiter">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Count</th>
+						<th>Percent</th>
+					</tr>
+				</thead>
+				<tbody v-if="keywordNames.length > 0">
+					<tr v-for="keyword in keywordNames" :key="keyword">
+						<th>{{ keyword }}</th>
+						<td>{{ keywordCounts[keyword] }}</td>
+						<td>{{ calculatePercentage(keywordCounts[keyword]) }}</td>
+					</tr>
+				</tbody>
+				<tbody v-else>
+					<tr>
+						<th><i>(None)</i></th>
+						<td>—</td>
+						<td>—</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 </template>
 

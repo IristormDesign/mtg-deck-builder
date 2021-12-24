@@ -28,8 +28,9 @@ $table-borders: 1px solid $color-heading-bg;
 		border-collapse: collapse;
 		border-spacing: 0;
 		border: $table-borders;
-		border-width: 3px;
+		border-width: 1px;
 		border-top-width: 0px;
+		border-bottom-width: $lhse/6;
 		width: 100%;
 		max-width: $lhse*9;
 
@@ -70,6 +71,10 @@ $table-borders: 1px solid $color-heading-bg;
 				margin-left: auto;
 			}
 		}
+	}
+	.height-limiter {
+		overflow-y: auto;
+		max-height: $lhse*11.25;
 	}
 	p {
 		margin: $lhse 0 0;

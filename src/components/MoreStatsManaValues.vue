@@ -1,31 +1,33 @@
 <template>
 	<section>
 		<h4>Mana Values of Spells</h4>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="cmcItems.length > 0">
-				<tr v-for="cmc in cmcItems" :key="cmc">
-					<th>
-						<span class="mana-symbol">{{ cmc }}</span>
-					</th>
-					<td>{{ cmcCounts[cmc] }}</td>
-					<td>{{ calculatePercentage(cmcCounts[cmc]) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="height-limiter">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Count</th>
+						<th>Percent</th>
+					</tr>
+				</thead>
+				<tbody v-if="cmcItems.length > 0">
+					<tr v-for="cmc in cmcItems" :key="cmc">
+						<th>
+							<span class="mana-symbol">{{ cmc }}</span>
+						</th>
+						<td>{{ cmcCounts[cmc] }}</td>
+						<td>{{ calculatePercentage(cmcCounts[cmc]) }}</td>
+					</tr>
+				</tbody>
+				<tbody v-else>
+					<tr>
+						<th><i>(None)</i></th>
+						<td>—</td>
+						<td>—</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 </template>
 
