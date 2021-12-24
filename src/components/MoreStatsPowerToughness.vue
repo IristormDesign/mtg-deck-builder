@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h4>Power & Toughness</h4>
+		<h4>Power/Toughness</h4>
 		<table>
 			<thead>
 				<tr>

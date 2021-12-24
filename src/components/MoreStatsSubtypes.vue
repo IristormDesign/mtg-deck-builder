@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h4>Subtypes of <slot></slot></h4>
+		<h4><slot /> Subtypes</h4>
 		<table>
 			<thead>
 				<tr>

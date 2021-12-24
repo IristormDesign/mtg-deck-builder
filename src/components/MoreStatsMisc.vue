@@ -16,7 +16,7 @@
 					<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
 				</tr>
 				<tr v-show="countMisc('basic land')">
-					<th>Basic Land</th>
+					<th>Basic land</th>
 					<td>{{ countMisc('basic land') }}</td>
 					<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
 				</tr>
@@ -31,7 +31,7 @@
 					<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
 				</tr>
 				<tr v-show="countMisc('double-faced')">
-					<th>Double-Faced</th>
+					<th>Double-faced</th>
 					<td>{{ countMisc('double-faced') }}</td>
 					<td>{{ calculatePercentage(countMisc('double-faced')) }}</td>
 				</tr>

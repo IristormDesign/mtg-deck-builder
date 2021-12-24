@@ -43,7 +43,7 @@
 				<tr v-show="countRarities('m')">
 					<th>
 						<div class="vert-center-cell">
-							<small>Mythic Rare</small>
+							<small>Mythic rare</small>
 							<div v-html="raritySymbol.m"></div>
 						</div>
 					</th>

@@ -10,12 +10,12 @@
 				:deck="deck"
 				:subtypeNames="subtypeCreaturesNames"
 				:subtypeCounts="subtypeCounts"
-			>Creatures</more-stats-subtypes>
+			>Creature</more-stats-subtypes>
 			<more-stats-subtypes
 				:deck="deck"
 				:subtypeNames="subtypeOtherNames"
 				:subtypeCounts="subtypeCounts"
-			>Other Cards</more-stats-subtypes>
+			>Other</more-stats-subtypes>
 			<more-stats-rarities :deck="deck" :raritySymbol="raritySymbol" />
 			<more-stats-power-toughness :deck="deck" />
 			<more-stats-keywords :deck="deck" />

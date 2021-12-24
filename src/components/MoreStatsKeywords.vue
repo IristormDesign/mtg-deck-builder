@@ -48,9 +48,11 @@ export default {
 		const keywordCounts = this.keywordCounts
 
 		this.deck.cards.forEach(card => {
-			for (let i = 0; i < card.qty; i++) {
-				allKeywords.push(card.keyword)
-			}
+			card.keywords.forEach(keyword => {
+				for (let i = 0; i < card.qty; i++) {
+					allKeywords.push(keyword)
+				}
+			})
 		})
 
 		allKeywords.forEach(keyword => {
