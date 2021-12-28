@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<h4>Mana Values of Spells</h4>
-		<div class="height-limiter">
+		<div class="height-limiter" tabindex="0">
 			<table>
 				<thead>
 					<tr>

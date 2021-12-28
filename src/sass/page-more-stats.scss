@@ -126,7 +126,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			border-radius: $lhse;
 		}
 		&:hover,
-		&:focus {
+		&:focus-within {
 			&::-webkit-scrollbar-thumb {
 				background: rgba($color-mythic-orange, .3333);
 			}
