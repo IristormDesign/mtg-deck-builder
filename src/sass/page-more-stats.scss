@@ -8,7 +8,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	
 	.tables {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		gap: $lhse*.75 $lhse;
 		
 		section {
@@ -27,7 +27,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h4 {
-		margin: $lhse/2 0 2px;
+		margin: $lhse/4 0 2px;
 		padding: $lhse/4 $lhse/4;
 		background: $color-heading-bg;
 	}
@@ -86,7 +86,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 10.25;
+		max-height: $lhse * 10.2;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
@@ -116,6 +116,26 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			100% $lhse*1.75, 100% $lhse*1.75,
 			100% $lhse*.875, 100% $lhse*.875;
 		background-attachment: local, local, scroll, scroll;
+
+		&::-webkit-scrollbar {
+			width: $lhse/3;
+			border-right: 1px solid $color-heading-bg;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: none;
+			border-radius: $lhse;
+		}
+		&:hover,
+		&:focus {
+			&::-webkit-scrollbar-thumb {
+				background: rgba($color-mythic-orange, .3333);
+			}
+		}
+		&:active {
+			&::-webkit-scrollbar-thumb {
+				background: rgba($color-mythic-orange, .6667);
+			}
+		}
 	}
 	p {
 		margin: $lhse 0 0;
@@ -139,14 +159,14 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 }
 
-@media (max-width: (1920px * .9375)) {
+@media (max-width: (1920px * .8333)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 }
-@media (max-width: ($width-site-breakpoint-tablet*.875)) {
+@media (max-width: ($width-site-breakpoint-tablet)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
@@ -163,6 +183,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: ($min-width-site*.625)) {
 	.more-stats {
 		max-width: 100%;
+		margin-bottom: 0;
 
 		.tables {
 			width: max-content;
