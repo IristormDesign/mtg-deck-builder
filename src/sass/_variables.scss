@@ -5,6 +5,7 @@ $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 25%);
 $color-mythic-dark: darken($color-mythic-orange, 16.67%);
+$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 28%); // Darkened to match brightness level of $color-heading-bg.
 
 $color-rarity-gold: lighten(#C19C00, 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall

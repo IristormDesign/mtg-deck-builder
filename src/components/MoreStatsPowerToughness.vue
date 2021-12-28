@@ -2,7 +2,7 @@
 	<section>
 		<h4>Power/Toughness</h4>
 		<table>
-			<thead>
+			<thead class="distinct-head">
 				<tr>
 					<th></th>
 					<th>Power</th>

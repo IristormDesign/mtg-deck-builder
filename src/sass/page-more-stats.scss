@@ -83,6 +83,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				margin-left: auto;
 			}
 		}
+		.distinct-head {
+			th {
+				background: $color-mythic-very-dim;
+				border-color: $color-mythic-very-dim;
+				color: desaturate(lighten($color-mythic-very-dim, 62.5%), 8.33%);
+			}
+		}
 	}
 	.height-limiter {
 		overflow-y: auto;
