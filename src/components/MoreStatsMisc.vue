@@ -3,10 +3,7 @@
 		<h4>Miscellaneous</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-
-			<tbody v-html="markupTableRows([
-				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Double-faced'
-			])" />
+			<tbody v-html="markupTableRows()" />
 		</table>
 	</section>
 </template>
@@ -19,29 +16,33 @@ export default {
 	props: {
 		deck: Object
 	},
+	data () {
+		return {
+			miscProperties: [
+				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Double-faced'
+			]
+		}
+	},
 	computed: {
 		emptyTable () {
-			if (
-				this.countMisc('basic land') === 0 &&
-				this.countMisc('legendary') === 0 &&
-				this.countMisc('monocolored') === 0 &&
-				this.countMisc('multicolored') === 0 &&
-				this.countMisc('variable cost') === 0 &&
-				this.countMisc('double-faced') === 0
-			) {
-				return true
+			for (let i = 0; i < this.miscProperties.length; i++) {
+				const prop = this.miscProperties[i].toLowerCase()
+
+				if (this.countMisc(prop) > 0) {
+					return false
+				}
 			}
-			return false
+			return true
 		}
 	},
 	methods: {
-		markupTableRows (headings) {
+		markupTableRows () {
 			let markup = ''
 
 			if (this.emptyTable) {
 				markup += this.tableBodyEmpty
 			} else {
-				headings.forEach(heading => {
+				this.miscProperties.forEach(heading => {
 					const count = this.countMisc(heading.toLowerCase())
 
 					if (count > 0) {
@@ -58,58 +59,32 @@ export default {
 
 			return markup
 		},
-		countMisc (givenValue) {
-			const counts = {
-				basicLand: 0,
-				legendary: 0,
-				monocolored: 0,
-				multicolored: 0,
-				variableCost: 0,
-				variablePT: 0,
-				doubleFaced: 0
-			}
-			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
-			const regexLegendary = RegExp(/\bLegendary\b/)
-			const regexVariableCost = RegExp(/\{X\}/)
-			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
+		countMisc (prop) {
+			let count = 0
 
 			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					if (card.colors.length === 1) {
-						counts.monocolored++
-					}
-					if (card.colors[0] === 'multicolor') {
-						counts.multicolored++
-					}
-					if (regexBasicLand.test(card.type)) {
-						counts.basicLand++
-					}
-					if (regexLegendary.test(card.type)) {
-						counts.legendary++
-					}
-					if (regexVariableCost.test(card.mana)) {
-						counts.variableCost++
-					}
-					if (regexDoubleFaced.test(card.name)) {
-						counts.doubleFaced++
+				const testBasicLand = RegExp(/\bBasic (\w* )?Land\b/).test(card.type)
+				const testLegendary = RegExp(/\bLegendary\b/).test(card.type)
+				const testMonocolored = card.colors.length === 1
+				const testMulticolored = card.colors[0] === 'multicolor'
+				const testVariableCost = RegExp(/\{X\}/).test(card.mana)
+				const testDoubleFaced = RegExp(/\w\s\/\s\w/).test(card.name)
+
+				if (
+					(prop === 'basic land' && testBasicLand) ||
+					(prop === 'legendary' && testLegendary) ||
+					(prop === 'monocolored' && testMonocolored) ||
+					(prop === 'multicolored' && testMulticolored) ||
+					(prop === 'variable cost' && testVariableCost) ||
+					(prop === 'double-faced' && testDoubleFaced)
+				) {
+					for (let i = 0; i < card.qty; i++) {
+						count++
 					}
 				}
 			})
 
-			switch (givenValue) {
-			case 'basic land':
-				return counts.basicLand
-			case 'legendary':
-				return counts.legendary
-			case 'monocolored':
-				return counts.monocolored
-			case 'multicolored':
-				return counts.multicolored
-			case 'variable cost':
-				return counts.variableCost
-			case 'double-faced':
-				return counts.doubleFaced
-			}
+			return count
 		}
 	}
 }
