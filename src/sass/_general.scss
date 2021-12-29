@@ -102,6 +102,7 @@ img {
 }
 ::selection {
 	background: saturate(darken($color-mythic-complement, 31.25%), 33.33%);
+	background: darken($color-mythic-orange, 20%);
 	color: #fff;
 	text-shadow: none;
 }

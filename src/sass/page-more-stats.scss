@@ -5,12 +5,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 .more-stats {
 	max-width: max-content;
 	margin: 0 auto $lhse;
-	
+
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		gap: $lhse*.75 $lhse;
-		
+		gap: $lhse;
+		margin: $lhse 0;
+
 		section {
 			grid-column: span 1;
 		}
@@ -27,7 +28,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h4 {
-		margin: $lhse/4 0 2px;
+		margin: 0 0 2px;
 		padding: $lhse/4 $lhse/4;
 		background: $color-heading-bg;
 	}
@@ -93,7 +94,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 10.2;
+		max-height: $lhse * 9.25;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
@@ -139,6 +140,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			}
 		}
 		&:active {
+			&::-webkit-scrollbar {
+				background: rgba(#000, .25);
+			}
 			&::-webkit-scrollbar-thumb {
 				background: rgba($color-mythic-orange, .6667);
 			}

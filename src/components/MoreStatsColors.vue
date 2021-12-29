@@ -2,86 +2,25 @@
 	<section>
 		<h4>Colors of Spells</h4>
 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="!emptyTable">
-				<tr v-show="countColor('white')">
-					<th>
-						<div class="vert-center-cell">
-							<small>White</small>
-							<div v-html="manaSymbol.w"></div>
-						</div>
-					</th>
-					<td>{{ countColor('white') }}</td>
-					<td>{{ calculatePercentage(countColor('white')) }}</td>
-				</tr>
-				<tr v-show="countColor('blue')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Blue</small>
-							<div v-html="manaSymbol.u"></div>
-						</div>
-					</th>
-					<td>{{ countColor('blue') }}</td>
-					<td>{{ calculatePercentage(countColor('blue')) }}</td>
-				</tr>
-				<tr v-show="countColor('black')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Black</small>
-							<div v-html="manaSymbol.b"></div>
-						</div>
-					</th>
-					<td>{{ countColor('black') }}</td>
-					<td>{{ calculatePercentage(countColor('black')) }}</td>
-				</tr>
-				<tr v-show="countColor('red')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Red</small>
-							<div v-html="manaSymbol.r"></div>
-						</div>
-					</th>
-					<td>{{ countColor('red') }}</td>
-					<td>{{ calculatePercentage(countColor('red')) }}</td>
-				</tr>
-				<tr v-show="countColor('green')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Green</small>
-							<div v-html="manaSymbol.g"></div>
-						</div>
-					</th>
-					<td>{{ countColor('green') }}</td>
-					<td>{{ calculatePercentage(countColor('green')) }}</td>
-				</tr>
-				<tr v-show="countColor('colorless')">
-					<th>Colorless</th>
-					<td>{{ countColor('colorless') }}</td>
-					<td>{{ calculatePercentage(countColor('colorless')) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
+			<thead v-html="tableHeadCommon" />
+
+			<tbody v-html="markupTableRows([
+				['White', 'w'],
+				['Blue', 'u'],
+				['Black', 'b'],
+				['Red', 'r'],
+				['Green', 'g'],
+				['Colorless', ''],
+			])" />
 		</table>
 	</section>
 </template>
 
 <script>
-import calculatePercentage from '@/mixins/calculatePercentage.js'
+import moreStatsMixins from '@/mixins/moreStatsMixins.js'
 
 export default {
-	mixins: [calculatePercentage],
+	mixins: [moreStatsMixins],
 	props: {
 		deck: Object,
 		manaSymbol: Object
@@ -102,6 +41,43 @@ export default {
 		}
 	},
 	methods: {
+		markupTableRows (params) {
+			let markup = ''
+
+			if (this.emptyTable) {
+				markup += this.tableBodyEmpty
+			} else {
+				params.forEach(param => {
+					const heading = param[0]
+					const manaSymbol = this.manaSymbol[param[1]]
+					const count = this.countColor(heading.toLowerCase())
+
+					if (count > 0) {
+						markup += `
+						<tr>
+							<th>`
+						if (manaSymbol) {
+							markup += `
+							<div class="vert-center-cell">
+								<small>${heading}</small>
+								<div>${manaSymbol}</div>
+							</div>
+						`
+						} else {
+							markup += heading
+						}
+						markup += `
+							</th>
+							<td>${count}</td>
+							<td>${this.calculatePercentage(count)}</td>
+						</tr>
+					`
+					}
+				})
+			}
+
+			return markup
+		},
 		countColor (givenColor) {
 			const counts = {
 				white: 0,
@@ -119,16 +95,12 @@ export default {
 							counts.colorless++
 						} else {
 							card.colors.forEach(color => {
-								if (color === 'W') {
-									counts.white++
-								} else if (color === 'U') {
-									counts.blue++
-								} else if (color === 'B') {
-									counts.black++
-								} else if (color === 'R') {
-									counts.red++
-								} else if (color === 'G') {
-									counts.green++
+								switch (color) {
+								case 'W': counts.white++; break
+								case 'U': counts.blue++; break
+								case 'B': counts.black++; break
+								case 'R': counts.red++; break
+								case 'G': counts.green++; break
 								}
 							})
 						}

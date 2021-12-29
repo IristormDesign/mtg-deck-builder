@@ -2,81 +2,20 @@
 	<section>
 		<h4>Rarities</h4>
 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="!emptyTable">
-				<tr v-show="countRarities('c')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Common</small>
-							<div v-html="raritySymbol.c"></div>
-						</div>
-					</th>
-					<td>{{ countRarities('c') }}</td>
-					<td>{{ calculatePercentage(countRarities('c')) }}</td>
-				</tr>
-				<tr v-show="countRarities('u')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Uncommon</small>
-							<div v-html="raritySymbol.u"></div>
-						</div>
-					</th>
-					<td>{{ countRarities('u') }}</td>
-					<td>{{ calculatePercentage(countRarities('u')) }}</td>
-				</tr>
-				<tr v-show="countRarities('r')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Rare</small>
-							<div v-html="raritySymbol.r"></div>
-						</div>
-					</th>
-					<td>{{ countRarities('r') }}</td>
-					<td>{{ calculatePercentage(countRarities('r')) }}</td>
-				</tr>
-				<tr v-show="countRarities('m')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Mythic rare</small>
-							<div v-html="raritySymbol.m"></div>
-						</div>
-					</th>
-					<td>{{ countRarities('m') }}</td>
-					<td>{{ calculatePercentage(countRarities('m')) }}</td>
-				</tr>
-				<tr v-show="countRarities('s')">
-					<th>
-						<div class="vert-center-cell">
-							<small>Special</small>
-							<div v-html="raritySymbol.s"></div>
-						</div>
-					</th>
-					<td>{{ countRarities('s') }}</td>
-					<td>{{ calculatePercentage(countRarities('s')) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
+			<thead v-html="tableHeadCommon" />
+
+			<tbody v-html="markupTableRows([
+				'Common', 'Uncommon', 'Rare', 'Mythic rare', 'Special'
+			])" />
 		</table>
 	</section>
 </template>
 
 <script>
-import calculatePercentage from '@/mixins/calculatePercentage.js'
+import moreStatsMixins from '@/mixins/moreStatsMixins.js'
 
 export default {
-	mixins: [calculatePercentage],
+	mixins: [moreStatsMixins],
 	props: {
 		deck: Object,
 		raritySymbol: Object
@@ -96,6 +35,36 @@ export default {
 		}
 	},
 	methods: {
+		markupTableRows (headings) {
+			let markup = ''
+
+			if (this.emptyTable) {
+				markup += this.tableBodyEmpty
+			} else {
+				headings.forEach(heading => {
+					const rarityVar = heading.charAt(0).toLowerCase()
+					const raritySymbol = this.raritySymbol[rarityVar]
+					const count = this.countRarities(rarityVar)
+
+					if (count > 0) {
+						markup += `
+							<tr>
+								<th>
+									<div class="vert-center-cell">
+										<small>${heading}</small>
+										<div>${raritySymbol}</div>
+									</div>
+								</th>
+								<td>${count}</td>
+								<td>${this.calculatePercentage(count)}</td>
+							</tr>
+						`
+					}
+				})
+			}
+
+			return markup
+		},
 		countRarities (givenRarity) {
 			const counts = {
 				c: 0,

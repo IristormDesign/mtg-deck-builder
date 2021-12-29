@@ -3,25 +3,14 @@
 		<h4>Keyword Abilities</h4>
 		<div class="height-limiter" tabindex="0">
 			<table>
-				<thead>
-					<tr>
-						<th></th>
-						<th>Count</th>
-						<th>Percent</th>
-					</tr>
-				</thead>
-				<tbody v-if="keywordNames.length > 0">
+				<thead v-html="tableHeadCommon" />
+
+				<tbody v-if="keywordNames.length <= 0" v-html="tableBodyEmpty" />
+				<tbody v-else>
 					<tr v-for="keyword in keywordNames" :key="keyword">
 						<th>{{ keyword }}</th>
 						<td>{{ keywordCounts[keyword] }}</td>
 						<td>{{ calculatePercentage(keywordCounts[keyword]) }}</td>
-					</tr>
-				</tbody>
-				<tbody v-else>
-					<tr>
-						<th><i>(None)</i></th>
-						<td>—</td>
-						<td>—</td>
 					</tr>
 				</tbody>
 			</table>
@@ -30,10 +19,10 @@
 </template>
 
 <script>
-import calculatePercentage from '@/mixins/calculatePercentage.js'
+import moreStatsMixins from '@/mixins/moreStatsMixins.js'
 
 export default {
-	mixins: [calculatePercentage],
+	mixins: [moreStatsMixins],
 	props: {
 		deck: Object
 	},

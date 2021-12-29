@@ -2,56 +2,20 @@
 	<section>
 		<h4>Miscellaneous</h4>
 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="!emptyTable">
-				<tr v-show="countMisc('legendary')">
-					<th>Legendary</th>
-					<td>{{ countMisc('legendary') }}</td>
-					<td>{{ calculatePercentage(countMisc('legendary')) }}</td>
-				</tr>
-				<tr v-show="countMisc('basic land')">
-					<th>Basic land</th>
-					<td>{{ countMisc('basic land') }}</td>
-					<td>{{ calculatePercentage(countMisc('basic land')) }}</td>
-				</tr>
-				<tr v-show="countMisc('monocolored')">
-					<th>Monocolored</th>
-					<td>{{ countMisc('monocolored') }}</td>
-					<td>{{ calculatePercentage(countMisc('monocolored')) }}</td>
-				</tr>
-				<tr v-show="countMisc('multicolored')">
-					<th>Multicolored</th>
-					<td>{{ countMisc('multicolored') }}</td>
-					<td>{{ calculatePercentage(countMisc('multicolored')) }}</td>
-				</tr>
-				<tr v-show="countMisc('double-faced')">
-					<th>Double-faced</th>
-					<td>{{ countMisc('double-faced') }}</td>
-					<td>{{ calculatePercentage(countMisc('double-faced')) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
+			<thead v-html="tableHeadCommon" />
+
+			<tbody v-html="markupTableRows([
+				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Double-faced'
+			])" />
 		</table>
 	</section>
 </template>
 
 <script>
-import calculatePercentage from '@/mixins/calculatePercentage.js'
+import moreStatsMixins from '@/mixins/moreStatsMixins.js'
 
 export default {
-	mixins: [calculatePercentage],
+	mixins: [moreStatsMixins],
 	props: {
 		deck: Object
 	},
@@ -70,6 +34,29 @@ export default {
 		}
 	},
 	methods: {
+		markupTableRows (headings) {
+			let markup = ''
+
+			if (this.emptyTable) {
+				markup += this.tableBodyEmpty
+			} else {
+				headings.forEach(heading => {
+					const count = this.countMisc(heading.toLowerCase())
+
+					if (count > 0) {
+						markup += `
+							<tr>
+								<th>${heading}</th>
+								<td>${count}</td>
+								<td>${this.calculatePercentage(count)}</td>
+							</tr>
+						`
+					}
+				})
+			}
+
+			return markup
+		},
 		countMisc (givenValue) {
 			const counts = {
 				monocolored: 0,

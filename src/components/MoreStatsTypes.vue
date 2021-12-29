@@ -2,71 +2,20 @@
 	<section>
 		<h4>Types</h4>
 		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Count</th>
-					<th>Percent</th>
-				</tr>
-			</thead>
-			<tbody v-if="!emptyTable">
-				<tr v-show="countTypes('creature')">
-					<th>Creature</th>
-					<td>{{ countTypes('creature') }}</td>
-					<td>{{ calculatePercentage(countTypes('creature')) }}</td>
-				</tr>
-				<tr v-show="countTypes('planeswalker')">
-					<th>Planeswalker</th>
-					<td>{{ countTypes('planeswalker') }}</td>
-					<td>{{ calculatePercentage(countTypes('planeswalker')) }}</td>
-				</tr>
-				<tr v-show="countTypes('enchantment')">
-					<th>Enchantment</th>
-					<td>{{ countTypes('enchantment') }}</td>
-					<td>{{ calculatePercentage(countTypes('enchantment')) }}</td>
-				</tr>
-				<tr v-show="countTypes('artifact')">
-					<th>Artifact</th>
-					<td>{{ countTypes('artifact') }}</td>
-					<td>{{ calculatePercentage(countTypes('artifact')) }}</td>
-				</tr>
-				<tr v-show="countTypes('sorcery')">
-					<th>Sorcery</th>
-					<td>{{ countTypes('sorcery') }}</td>
-					<td>{{ calculatePercentage(countTypes('sorcery')) }}</td>
-				</tr>
-				<tr v-show="countTypes('instant')">
-					<th>Instant</th>
-					<td>{{ countTypes('instant') }}</td>
-					<td>{{ calculatePercentage(countTypes('instant')) }}</td>
-				</tr>
-				<tr v-show="countTypes('land')">
-					<th>Land</th>
-					<td>{{ countTypes('land') }}</td>
-					<td>{{ calculatePercentage(countTypes('land')) }}</td>
-				</tr>
-				<tr v-show="countTypes('other')">
-					<th>Other</th>
-					<td>{{ countTypes('other') }}</td>
-					<td>{{ calculatePercentage(countTypes('other')) }}</td>
-				</tr>
-			</tbody>
-			<tbody v-else>
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			</tbody>
+			<thead v-html="tableHeadCommon" />
+
+			<tbody v-html="markupTableRows([
+				'Creature', 'Planeswalker', 'Enchantment', 'Artifact', 'Sorcery', 'Instant', 'Other', 'Land'
+			])" />
 		</table>
 	</section>
 </template>
 
 <script>
-import calculatePercentage from '@/mixins/calculatePercentage.js'
+import moreStatsMixins from '@/mixins/moreStatsMixins.js'
 
 export default {
-	mixins: [calculatePercentage],
+	mixins: [moreStatsMixins],
 	props: {
 		deck: Object
 	},
@@ -88,6 +37,29 @@ export default {
 		}
 	},
 	methods: {
+		markupTableRows (headings) {
+			let markup = ''
+
+			if (this.emptyTable) {
+				markup += this.tableBodyEmpty
+			} else {
+				headings.forEach(heading => {
+					const count = this.countTypes(heading.toLowerCase())
+
+					if (count > 0) {
+						markup += `
+							<tr>
+								<th>${heading}</th>
+								<td>${count}</td>
+								<td>${this.calculatePercentage(count)}</td>
+							</tr>
+						`
+					}
+				})
+			}
+
+			return markup
+		},
 		countTypes (givenType) {
 			const counts = {
 				creature: 0,
