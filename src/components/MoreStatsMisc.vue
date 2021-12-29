@@ -5,7 +5,7 @@
 			<thead v-html="tableHeadCommon" />
 
 			<tbody v-html="markupTableRows([
-				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Double-faced'
+				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Double-faced'
 			])" />
 		</table>
 	</section>
@@ -22,10 +22,11 @@ export default {
 	computed: {
 		emptyTable () {
 			if (
-				this.countMisc('monocolored') === 0 &&
-				this.countMisc('multicolored') === 0 &&
 				this.countMisc('basic land') === 0 &&
 				this.countMisc('legendary') === 0 &&
+				this.countMisc('monocolored') === 0 &&
+				this.countMisc('multicolored') === 0 &&
+				this.countMisc('variable cost') === 0 &&
 				this.countMisc('double-faced') === 0
 			) {
 				return true
@@ -59,14 +60,17 @@ export default {
 		},
 		countMisc (givenValue) {
 			const counts = {
-				monocolored: 0,
-				multicolored: 0,
 				basicLand: 0,
 				legendary: 0,
+				monocolored: 0,
+				multicolored: 0,
+				variableCost: 0,
+				variablePT: 0,
 				doubleFaced: 0
 			}
 			const regexBasicLand = RegExp(/\bBasic (\w* )?Land\b/)
 			const regexLegendary = RegExp(/\bLegendary\b/)
+			const regexVariableCost = RegExp(/\{X\}/)
 			const regexDoubleFaced = RegExp(/\w\s\/\s\w/)
 
 			this.deck.cards.forEach(card => {
@@ -83,6 +87,9 @@ export default {
 					if (regexLegendary.test(card.type)) {
 						counts.legendary++
 					}
+					if (regexVariableCost.test(card.mana)) {
+						counts.variableCost++
+					}
 					if (regexDoubleFaced.test(card.name)) {
 						counts.doubleFaced++
 					}
@@ -90,14 +97,16 @@ export default {
 			})
 
 			switch (givenValue) {
-			case 'monocolored':
-				return counts.monocolored
-			case 'multicolored':
-				return counts.multicolored
 			case 'basic land':
 				return counts.basicLand
 			case 'legendary':
 				return counts.legendary
+			case 'monocolored':
+				return counts.monocolored
+			case 'multicolored':
+				return counts.multicolored
+			case 'variable cost':
+				return counts.variableCost
 			case 'double-faced':
 				return counts.doubleFaced
 			}

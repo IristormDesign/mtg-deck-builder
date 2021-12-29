@@ -17,11 +17,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h3 {
-		@include pronounced-heading;
-		margin-top: 0;
+		margin-top: $lhse/2;
+		margin-bottom: $lhse;
 		text-align: center;
 	}
 	section {
+		cursor: default;
+
 		> table,
 		> .height-limiter {
 			border-bottom: 4px solid $color-heading-bg;
@@ -41,7 +43,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		border-bottom-width: 0;
 		width: 100%;
 		max-width: $lhse*9;
-
+		
 		thead {
 			th {
 				@include heading-font;
@@ -49,7 +51,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				text-transform: uppercase;
 				text-align: right;
 				background: $color-heading-bg;
-				cursor: default;
 				padding-top: 0;
 				padding-bottom: 0;
 			}
@@ -73,9 +74,11 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th,
 		td {
-			padding: 1px $lhse/4;
+			padding: 0 $lhse/4;
 			border: $table-borders;
 			text-align: right;
+			line-height: 1;
+			height: 1.5em;
 		}
 		th {
 			text-align: right;
