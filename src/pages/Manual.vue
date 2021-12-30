@@ -142,7 +142,7 @@
 						alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
 				</p>
 				<p>Adjacent to each card button in the <a href="#m-card-list">card list</a> is a number representing the quantity (“QTY.”) of that card in the deck.</p>
-				<p>Click on a card’s quantity to make an input box appear in which you can change the number. On most web browsers, the input box also has a pair of arrow buttons that let you increase or decrease the number by one.</p>
+				<p>Click on a card’s quantity to make an input box appear in which you can change the number. <!--On most web browsers, the input box also has a pair of arrow buttons that let you increase or decrease the number by one. --></p>
 				<p>To remove a card from the deck, lower its quantity to zero. You’ll then be prompted to confirm you want to remove that card. If not, then the quantity resets to one.</p>
 				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards of the “basic land” type which may have any quantity.</p>
 			</section>
@@ -212,10 +212,23 @@
 				<li>Subtypes of creatures</li>
 				<li>Subtypes of other cards</li>
 				<li>Rarities</li>
-				<li>Other attributes — This miscellaneous category tallies any cards that have the “legendary” or “basic land” supertypes, or that are monocolored, multicolored, or double-faced.</li>
+				<li>Keyword abilities</li>
+				<li>Power/toughness</li>
+				<li>Miscellaneous — This category tallies up any cards that have the following characteristics:
+					<ul>
+						<li>Basic land — Land cards that have the “basic” supertype.</li>
+						<li>Legendary — Cards that have the “legendary” supertype.</li>
+						<li>Monocolored — Cards that are exactly one mana color.</li>
+						<li>Multicolored — Cards that are two or more mana colors.</li>
+						<li>Variable cost — Cards whose mana costs include a letter X.</li>
+						<li>Variable P/T — Cards whose power (P) or toughness (T) is a star symbol.</li>
+						<li>Double-faced — Cards that have a second card frame on their back side instead of the usual card back, <em>or</em> cards that are split (have two small card frames on the front side).</li>
+					</ul>
+				</li>
 			</ul>
-			<p>Each row of each table indicates the quantity of the cards as well as the percentage of the cards among all in the deck to the related property.</p>
-			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted as both a creature <em>and</em> an artifact in the Types table. Thus, the combined values of a category may potentially sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%. </p>
+
+			<p>For almost every data table, each row indicates the count (“CT.”) of the cards in one column, and the percentage of the cards in the deck in another column. The only exception to this is the “Power/Toughness” table, which instead has columns for power and toughness.</p>
+			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted as both a creature <em>and</em> an artifact in the Types table. Thus, the combined values of a category could sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
