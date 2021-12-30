@@ -25,7 +25,7 @@
 						<li><a href="#m-deck-actions">Deck Actions</a></li>
 					</ol>
 				</li>
-				<li><a href="#m-more-statistics-pages">More Statistics Pages</a></li>
+				<li><a href="#m-more-stats-pages">“More Stats” Pages</a></li>
 				<li><a href="#m-storage-of-deck-data">Storage of Deck Data</a></li>
 					<ol>
 						<li><a href="#m-deck-data-files">Deck Data Files</a></li>
@@ -93,7 +93,7 @@
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
 					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Statistics</strong> — Clicking this button takes you to the deck’s <a href="#m-more-statistics-pages">“More Statistics” page</a> where you can analyze even more data about your deck.</li>
+					<li><strong>More Statistics</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Statistics” page</a> where you can analyze even more data about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -196,39 +196,28 @@
 				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>
 			</section>
 
-			<h3 id="m-more-statistics-pages">More Statistics Pages</h3>
-			<p>By clicking the More Statistics button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Statistics page. This type of page shows data tables about various categories of measurement of the deck’s cards.</p>
+			<h3 id="m-more-stats-pages">“More Stats” Pages</h3>
+			<p>By clicking the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Deck Statistics page. This type of page displays many tabular data in various categories of measurement about the cards in the deck.</p>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 2x"
 					src="@/img/manual-more-stats-page.jpg" width="530" height="565"
 					alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
 			</p>
-			<p>The categories include:</p>
-			<ul>
-				<li>Colors of spells</li>
-				<li>Mana values of spells (mana curve)</li>
-				<li>Types</li>
-				<li>Subtypes of creatures</li>
-				<li>Subtypes of other cards</li>
-				<li>Rarities</li>
-				<li>Keyword abilities</li>
-				<li>Power/toughness</li>
-				<li>Miscellaneous — This category tallies up any cards that have the following characteristics:
-					<ul>
-						<li>Basic land — Land cards that have the “basic” supertype.</li>
-						<li>Legendary — Cards that have the “legendary” supertype.</li>
-						<li>Monocolored — Cards that are exactly one mana color.</li>
-						<li>Multicolored — Cards that are two or more mana colors.</li>
-						<li>Variable cost — Cards whose mana costs include a letter X.</li>
-						<li>Variable P/T — Cards whose power (P) or toughness (T) is a star symbol.</li>
-						<li>Double-faced — Cards that have a second card frame on their back side instead of the usual card back, <em>or</em> cards that are split (have two small card frames on the front side).</li>
-					</ul>
-				</li>
-			</ul>
-
-			<p>For almost every data table, each row indicates the count (“CT.”) of the cards in one column, and the percentage of the cards in the deck in another column. The only exception to this is the “Power/Toughness” table, which instead has columns for power and toughness.</p>
-			<p>Cards can have multiple properties within a single category table. For example, a card that has “Artifact Creature” printed as its type would be counted as both a creature <em>and</em> an artifact in the Types table. Thus, the combined values of a category could sum up to a number greater than the total number of cards in the deck and to a percentage beyond 100%.</p>
+			<p>The data categories include: Colors of Spells, Mana Values of Spells (a.k.a. mana curve), Types, Creature Subtypes, Other Subtypes, Rarities, Keyword Abilities, Power/Toughness, and Miscellaneous.</p>
+			<p>For almost every category’s table, each row indicates the count (“CT.”) of the cards in one column, and the percentage of the cards in the deck in another column. The exception is the Power/Toughness table which has columns for power and toughness instead of count and percentage.</p>
+			<p>The Miscellaneous category tallies up cards that have any of the following characteristics:
+				<ul>
+					<li>Basic land — Land cards that have the “basic” supertype.</li>
+					<li>Legendary — Cards that have the “legendary” supertype.</li>
+					<li>Monocolored — Cards that are exactly one mana color.</li>
+					<li>Multicolored — Cards that are two or more mana colors.</li>
+					<li>Variable cost — Cards whose mana costs include a letter X.</li>
+					<li>Variable P/T — Cards whose power (P) or toughness (T) is a star symbol.</li>
+					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
+				</ul>
+			</p>
+			<p>Cards may count toward multiple properties within a category. For example, a single card whose type is “Artifact Creature” is considered both a creature <em>and</em> an artifact in the Types category. Thus, the combined values of a category could sum up to a number greater than the deck’s total cards and to a percentage beyond 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
