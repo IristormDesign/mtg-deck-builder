@@ -19,7 +19,7 @@ export default {
 	data () {
 		return {
 			miscProperties: [
-				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Double-faced'
+				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Variable P/T', 'Double-faced'
 			]
 		}
 	},
@@ -68,6 +68,7 @@ export default {
 				const testMonocolored = card.colors.length === 1
 				const testMulticolored = card.colors[0] === 'multicolor'
 				const testVariableCost = RegExp(/\{X\}/).test(card.mana)
+				const testVariablePT = card.power === '*' || card.toughness === '*'
 				const testDoubleFaced = RegExp(/\w\s\/\s\w/).test(card.name)
 
 				if (
@@ -76,6 +77,7 @@ export default {
 					(prop === 'monocolored' && testMonocolored) ||
 					(prop === 'multicolored' && testMulticolored) ||
 					(prop === 'variable cost' && testVariableCost) ||
+					(prop === 'variable p/t' && testVariablePT) ||
 					(prop === 'double-faced' && testDoubleFaced)
 				) {
 					for (let i = 0; i < card.qty; i++) {
