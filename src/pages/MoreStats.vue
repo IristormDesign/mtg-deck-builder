@@ -24,6 +24,11 @@
 			<more-stats-misc :deck="deck" />
 		</div>
 
+		<aside v-if="!showNewStats">
+			<p>This deck contains an outdated set of card data. You may update it now to see additional deck statistics.</p>
+			<button @click="updateDeckData">Update Data</button>
+		</aside>
+
 		<p class="return-link">
 			<router-link :to="{ name: 'deckMain' }">
 				◂ Return to the card list
@@ -33,7 +38,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 import findRelevantDeck from '@/mixins/findRelevantDeck.js'
+import requestScryfallData from '@/mixins/requestScryfallData.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import MoreStatsColors from '@/components/MoreStatsColors.vue'
 import MoreStatsManaValues from '@/components/MoreStatsManaValues.vue'
@@ -45,7 +52,7 @@ import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
 
 export default {
-	mixins: [findRelevantDeck, symbolsMarkup],
+	mixins: [findRelevantDeck, requestScryfallData, symbolsMarkup],
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
 	data () {
 		return {
@@ -152,6 +159,30 @@ export default {
 						}
 					}
 				})
+			}
+		},
+		updateDeckData () {
+			const cards = this.deck.cards
+			function timingPerCard () {
+				// A deck with fewer total card names should load faster because the number of requests to Scryfall's servers within a short amount of time is relatively small.
+				if (cards.length <= 50) return 75
+				return 150
+			}
+
+			if (cards.length > 200) {
+				alert('⚠ Sorry, this deck has too many cards, so its data cannot be updated.')
+			} else {
+				for (let i = 0; i < cards.length; i++) {
+					const card = cards[i]
+
+					setTimeout(() => {
+						this.requestScryfallData(card.name, axios, this.deck, card)
+					}, timingPerCard() * i)
+				}
+
+				setTimeout(() => {
+					this.$router.go(0)
+				}, (timingPerCard() * cards.length) + 1)
 			}
 		}
 	}

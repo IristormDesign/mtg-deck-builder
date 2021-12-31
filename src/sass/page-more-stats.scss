@@ -197,7 +197,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: ($min-width-site*.625)) {
 	.more-stats {
 		max-width: 100%;
-		margin-bottom: 0;
+		margin-bottom: -($lhse/2);
 
 		.tables {
 			width: max-content;
