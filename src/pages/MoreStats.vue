@@ -24,9 +24,14 @@
 			<more-stats-misc :deck="deck" />
 		</div>
 
-		<aside v-if="!showNewStats">
-			<p>This deck contains an outdated set of card data. You may update it now to see additional deck statistics.</p>
-			<button @click="updateDeckData">Update Data</button>
+		<aside v-if="!showNewStats" class="outdated-data-notice">
+			<p>⚠ The version of this deck’s card data is outdated. You can update it to the current version to see additional deck statistics.</p>
+			<p v-if="!updatingDeckData" class="update-button-cont">
+				<button @click="updateDeckData" class="primary-btn">Update Data</button>
+			</p>
+			<p v-else class="update-button-cont loading-indicator">
+				<em>Updating now&hellip;</em>
+			</p>
 		</aside>
 
 		<p class="return-link">
@@ -59,7 +64,8 @@ export default {
 			showNewStats: true,
 			subtypeCreaturesNames: [],
 			subtypeOtherNames: [],
-			subtypeCounts: {}
+			subtypeCounts: {},
+			updatingDeckData: false
 		}
 	},
 	created () {
@@ -163,26 +169,32 @@ export default {
 		},
 		updateDeckData () {
 			const cards = this.deck.cards
-			function timingPerCard () {
-				// A deck with fewer total card names should load faster because the number of requests to Scryfall's servers within a short amount of time is relatively small.
-				if (cards.length <= 50) return 75
-				return 150
+			let cardUpdatesDone = 0
+
+			function callback () {
+				cardUpdatesDone++
 			}
 
 			if (cards.length > 200) {
-				alert('⚠ Sorry, this deck has too many cards, so its data cannot be updated.')
+				alert('⚠ Sorry, this deck cannot be updated because it has too many cards.')
 			} else {
+				this.updatingDeckData = true
+
 				for (let i = 0; i < cards.length; i++) {
 					const card = cards[i]
 
 					setTimeout(() => {
-						this.requestScryfallData(card.name, axios, this.deck, card)
-					}, timingPerCard() * i)
-				}
+						this.requestScryfallData(
+							card.name, axios, this.deck, card, callback()
+						)
 
-				setTimeout(() => {
-					this.$router.go(0)
-				}, (timingPerCard() * cards.length) + 1)
+						if (cardUpdatesDone === cards.length) {
+							setTimeout(() => {
+								this.$router.go(0) // Reload the page
+							}, 100) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
+						}
+					}, 100 * i)
+				}
 			}
 		}
 	}

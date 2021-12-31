@@ -161,6 +161,42 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	.mana-symbol {
 		font-size: 137.5%;
 	}
+	.outdated-data-notice {
+		border: $border-sections;
+		border-radius: $border-radius-group;
+		padding: $lhse*.75;
+		max-width: $max-width-content*.8;
+		margin: $lhse auto;
+		
+		p {
+			margin: 0;
+		}
+		.update-button-cont {
+			text-align: center;
+			height: $lhse*1.75;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			margin: 0;
+		}
+		.loading-indicator {
+			animation: pulse .5s ease-out;
+			animation-direction: alternate-reverse;
+			animation-iteration-count: infinite;
+			font-style: italic;
+			width: 100%;
+			cursor: progress;
+			
+			@keyframes pulse {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 .vert-center-cell {
 	display: flex;

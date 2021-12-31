@@ -17,7 +17,7 @@ export default {
 				alert(`”${cardName}” is already in this deck. If you want duplicates of a certain card, increase its quantity from the card list.`)
 			}, 1)
 		},
-		requestScryfallData (cardQuery, axios, deck, oldCard) {
+		requestScryfallData (cardQuery, axios, deck, oldCard, callback) {
 			console.log(`Request Scryfall API for "${cardQuery}" data.`)
 
 			cardQuery = cardQuery.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -127,6 +127,9 @@ export default {
 				.catch(error => {
 					alert(`⚠ Error: ${error.response.data.details}`)
 					console.log(error)
+				})
+				.finally(() => {
+					return callback
 				})
 		}
 	}
