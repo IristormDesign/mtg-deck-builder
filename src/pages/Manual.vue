@@ -217,7 +217,7 @@
 					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 			</p>
-			<p>Cards may count toward multiple properties within a category. For example, a single card whose type is “Artifact Creature” is considered both a creature <em>and</em> an artifact in the Types category. Thus, the combined values of a category could sum up to a number greater than the deck’s total cards and to a percentage beyond 100%.</p>
+			<p>Single cards can be in multiple properties within a category. For example, a card that has the type “artifact creature” counts as both a creature <em>and</em> an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
