@@ -40,7 +40,7 @@ main {
 	position: relative;
 	
 	> article {
-		margin: $lhse/2 auto;
+		margin: $lhse*.5 auto;
 	}
 }
 h1,
@@ -65,7 +65,7 @@ h4 {
 p,
 ul,
 ol {
-	margin: $lhse/2 0;
+	margin: $lhse*.5 0;
 }
 strong,
 b,
@@ -85,7 +85,7 @@ ol {
 	padding-left: $lhse;
 }
 li {
-	margin-bottom: $lhse/4;
+	margin-bottom: $lhse*.25;
 	padding-left: .25em;
 
 	li {
@@ -164,7 +164,7 @@ img {
 }
 @media (max-width: ($min-width-site*.875)) {
 	.wrap {
-		padding: 0 $lhse/2;
+		padding: 0 $lhse*.5;
 	}
 }
 @media (max-width: ($min-width-site*.625)) {

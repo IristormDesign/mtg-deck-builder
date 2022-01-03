@@ -1,3 +1,9 @@
+@use "sass:math";
+
+@function divide($a, $b) {
+	@return math.div($a, $b)
+}
+
 // COLORS
 $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
@@ -60,7 +66,7 @@ $box-shadows-card-button:
 	inset -.75px 1.5px 0 1px rgba(#fff, .5),
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$border-radius-group: $lhse/2;
+$border-radius-group: $lhse*.5;
 $layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, site-menu-toggler, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;
@@ -85,7 +91,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	box-shadow: -.125em .25em .5em rgba(#000, .5);
 	background: $background-light-gradient;
 	border: 2px solid $color-mythic-orange;
-	border-radius: $lhse/4;
+	border-radius: $lhse*.25;
 }
 @mixin overlay-bg {
 	position: fixed;
@@ -121,7 +127,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	border-bottom-width: $border-bottom-width-button;
 	color: #000;
 	border-radius: $border-radius-button;
-	padding: $lhse/4 .5em;
+	padding: $lhse*.25 .5em;
 	min-width: 4.5em;
 	margin-top: -2px;
 	margin-bottom: 2px;
@@ -225,8 +231,8 @@ $x: 2px dashed rgba(#c0f, .75);
 }
 @mixin pronounced-heading {
 	background: $color-heading-bg;
-	padding: $lhse/3 $lhse/3;
-	margin: $lhse (-$lhse/3) ($lhse/2); 
+	padding: divide($lhse, 3) divide($lhse, 3);
+	margin: $lhse divide(-$lhse, 3) $lhse*.5; 
 	border-radius: $border-radius-button;
 }
 

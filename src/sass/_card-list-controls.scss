@@ -53,7 +53,7 @@ $height-card-list-controls: $lhse * 1.25;
 		}
 		label {
 			margin: 0;
-			padding: 0 $lhse/4 0 0;
+			padding: 0 $lhse*.25 0 0;
 			width: auto;
 		}
 		input {
@@ -67,7 +67,7 @@ $height-card-list-controls: $lhse * 1.25;
 		
 		label {
 			margin: 0;
-			padding: 0 $lhse/4 0 0;
+			padding: 0 $lhse*.25 0 0;
 		}
 	}
 	.card-sorter {
@@ -94,7 +94,7 @@ $height-card-list-controls: $lhse * 1.25;
 			min-height: $lhse*3.25;
 		}
 		label {
-			padding: 0 0 $lhse/4 0;
+			padding: 0 0 $lhse*.25 0;
 			margin-right: .375em;
 			margin-left: .375em;
 		}
@@ -133,7 +133,7 @@ $height-card-list-controls: $lhse * 1.25;
 	
 	> div {
 		background: $color-group-bg;
-		padding: $lhse/2;
+		padding: $lhse*.5;
 		display: flex;
 		align-items: center;
 		height: $lhse*3.25;
@@ -141,7 +141,7 @@ $height-card-list-controls: $lhse * 1.25;
 	label {
 		display: block;
 		font-size: 83.33%;
-		padding-bottom: $lhse/4;
+		padding-bottom: $lhse*.25;
 		margin-right: .375em;
 		margin-left: .375em;
 		color: $color-text-brighter;
@@ -231,7 +231,7 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 .deck-actions {
-	gap: $lhse/2;
+	gap: $lhse*.5;
 	display: flex;
 	border-left: $border-sections;
 	justify-content: space-around;

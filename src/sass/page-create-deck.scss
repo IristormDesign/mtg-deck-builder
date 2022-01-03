@@ -7,29 +7,29 @@
 	.columns {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
-		gap: $lhse/2;
-		margin: $lhse 0 $lhse/2;
+		gap: $lhse*.5;
+		margin: $lhse 0 $lhse*.5;
 	}
 	.new-deck,
 	.import-data {
 		border: $border-sections;
-		padding: $lhse/2;
-		border-radius: $border-radius-group/2;
+		padding: $lhse*.5;
+		border-radius: $border-radius-group*.5;
 	}
 	.new-deck {
 		form {
 			display: grid;
 			grid-template-columns: 4fr 1fr;
 			grid-template-rows: min-content $lhse;
-			gap: $lhse/3 0;
+			gap: divide($lhse, 3) 0;
 			align-items: center;
-			margin: $lhse/4 0;
+			margin: $lhse*.25 0;
 		}
 		label {
 			font-family: $font-family-standard;
 			font-weight: normal;
 			grid-column: span 2;
-			padding-left: $lhse/6;
+			padding-left: divide($lhse, 6);
 		}
 		input {
 			height: $lhse*1.25;
@@ -70,7 +70,7 @@
 		}
 		.new-deck,
 		.import-data {
-			margin: $lhse/2 auto;
+			margin: $lhse*.5 auto;
 		}
 	}
 }

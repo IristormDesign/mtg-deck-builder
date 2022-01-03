@@ -48,7 +48,7 @@
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
 		border: 2px solid $color-mythic-dim;
-		box-shadow: -$lhse/8 $lhse/4 $lhse rgba(#000, .5);
+		box-shadow: -divide($lhse, 8) $lhse*.25 $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;
 		animation-delay: 2s;
@@ -65,7 +65,7 @@
 		}
 		h2 {
 			font-size: 112.5%;
-			margin-top: $lhse/2;
+			margin-top: $lhse*.5;
 		}
 		.button-group {
 			display: grid;
@@ -74,7 +74,7 @@
 			justify-content: space-between;
 			align-items: center;
 			max-width: $lhse*12;
-			margin: $lhse*.75 auto $lhse/2;
+			margin: $lhse*.75 auto $lhse*.5;
 
 			button,
 			.button {
@@ -91,7 +91,7 @@
 	padding: $lhse*1.5 0 $lhse;
 	position: relative;
 	background: $background-light-gradient;
-	border-top: $lhse/6 solid $color-mythic-dim;
+	border-top: divide($lhse, 6) solid $color-mythic-dim;
 
 	h2,
 	p,
@@ -174,7 +174,7 @@
 			width: 100%;
 			max-width: $max-width-content;
 			margin: 0 auto;
-			padding: $lhse/4 0;
+			padding: $lhse*.25 0;
 			background: none;
 			border: 0;
 			border-radius: 0;
@@ -214,15 +214,15 @@
 		}
 	}
 }
-@media (max-width: ($width-site-breakpoint-tablet/2)) {
+@media (max-width: divide($width-site-breakpoint-tablet, 2)) {
 	.app-features {
 		.button-group {
 			display: block;
-			margin-top: $lhse/2;
+			margin-top: $lhse*.5;
 
 			button,
 			.button {
-				margin: 0 auto $lhse/2;
+				margin: 0 auto $lhse*.5;
 			}
 		}
 	}

@@ -17,7 +17,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h3 {
-		margin-top: $lhse/2;
+		margin-top: $lhse*.5;
 		margin-bottom: $lhse;
 		text-align: center;
 	}
@@ -31,7 +31,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	h4 {
 		margin: 0 0 2px;
-		padding: $lhse/4 $lhse/4;
+		padding: $lhse*.25;
 		background: $color-heading-bg;
 	}
 	table {
@@ -74,7 +74,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th,
 		td {
-			padding: 0 $lhse/4;
+			padding: 0 $lhse*.25;
 			border: $table-borders;
 			text-align: right;
 			line-height: 1;
@@ -129,7 +129,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		background-attachment: local, local, scroll, scroll;
 
 		&::-webkit-scrollbar {
-			width: $lhse/3;
+			width: divide($lhse, 3);
 			border-right: 1px solid $color-heading-bg;
 		}
 		&::-webkit-scrollbar-thumb {
@@ -233,7 +233,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: ($min-width-site*.625)) {
 	.more-stats {
 		max-width: 100%;
-		margin-bottom: -($lhse/2);
+		margin-bottom: -$lhse*.5;
 
 		.tables {
 			width: max-content;

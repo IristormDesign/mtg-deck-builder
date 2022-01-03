@@ -1,7 +1,7 @@
 .content-box {
 	background: $color-group-bg;
 	border-radius: $border-radius-group;
-	padding: $lhse/2 $lhse;
+	padding: $lhse*.5 $lhse;
 	margin: $lhse;
 	max-width: $max-width-content;
 	min-width: 0;
@@ -58,8 +58,8 @@ img {
 		margin: 0;
 		border: 0;
 		border-radius: 0;
-		padding-right: $lhse/2;
-		padding-left: $lhse/2;
+		padding-right: $lhse*.5;
+		padding-left: $lhse*.5;
 	}
 }
 @media (max-width: 24em) {

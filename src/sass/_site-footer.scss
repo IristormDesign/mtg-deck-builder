@@ -1,5 +1,5 @@
 .site-footer {
-	letter-spacing: (1/256)*1em;
+	letter-spacing: divide(1, 256)*1em;
 	background: #000;
 	color: desaturate(darken($color-text, 25%), 12.5%);
 	position: relative;

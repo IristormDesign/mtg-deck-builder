@@ -1,4 +1,4 @@
-$box-shadow-card-button: 0 -1px $lhse/3 3px rgba(#000, .3333);
+$box-shadow-card-button: 0 -1px divide($lhse, 3) 3px rgba(#000, .3333);
 $width-qty-column: 2.5em;
 
 @mixin box-shadow-hover-card-button($color) {
@@ -15,7 +15,7 @@ $width-qty-column: 2.5em;
 
 			.card-label-group {
 				&:first-of-type {
-					padding-right: $lhse/4;
+					padding-right: $lhse*.25;
 				}
 				&:nth-of-type(2) {
 					padding-left: 1em;
@@ -28,7 +28,7 @@ $width-qty-column: 2.5em;
 		}
 		.card-label-group {
 			width: 50%;
-			padding: 0 $lhse/6;
+			padding: 0 divide($lhse, 6);
 
 			&:last-of-type {
 				border-top: none;
@@ -48,7 +48,7 @@ $width-qty-column: 2.5em;
 		}
 		.card-label-group {
 			width: 100%;
-			padding: 0 $lhse/3;
+			padding: 0 divide($lhse, 3);
 
 			&:last-of-type {
 				border-top: 1px solid rgba(#000, .25);
@@ -61,7 +61,7 @@ $width-qty-column: 2.5em;
 @include long-card-buttons;
 
 .card-list {
-	margin-bottom: $lhse/3;
+	margin-bottom: divide($lhse, 3);
 	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
@@ -85,13 +85,13 @@ $width-qty-column: 2.5em;
 			display: block;
 			font-size: 75%;
 			line-height: 1;
-			margin-bottom: $lhse/4;
+			margin-bottom: $lhse*.25;
 			text-transform: uppercase;
 			color: $color-text-brighter;
 		}
 		.qty {
 			text-align: center;
-			margin-right: -$lhse/4;
+			margin-right: -$lhse*.25;
 		}
 		[title] {
 			cursor: help;
@@ -207,7 +207,7 @@ $width-qty-column: 2.5em;
 			margin-top: 0;
 		}
 		&.gap-after {
-			margin-bottom: $lhse/3;
+			margin-bottom: divide($lhse, 3);
 		}
 		&:last-child {
 			margin-bottom: 0;
@@ -250,7 +250,7 @@ $width-qty-column: 2.5em;
 			width: $width-qty-column;
 			
 			> span {
-				margin: 0 0 0 $lhse/8;
+				margin: 0 0 0 divide($lhse, 8);
 				color: desaturate(darken($color-text, 25%), 12.5%);
 			}
 			label {
@@ -266,7 +266,7 @@ $width-qty-column: 2.5em;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
 				padding: 0 0 0 0;
-				margin-left: -$lhse/8;
+				margin-left: -divide($lhse, 8);
 				font-weight: $font-weight-semibold;
 				line-height: 1;
 				border-radius: $border-radius-button;

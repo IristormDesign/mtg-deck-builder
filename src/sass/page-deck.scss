@@ -6,7 +6,7 @@
 
 .deck {
 	article {
-		margin: 0 0 $lhse/2;
+		margin: 0 0 $lhse*.5;
 		position: relative;
 	}
 	width: 100%;
@@ -14,7 +14,7 @@
 .card-display-scroll-view {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: $lhse/2;
+	gap: $lhse*.5;
 	margin-bottom: $lhse;
 }
 .deck-main {
@@ -29,7 +29,7 @@
 }
 @media (max-width: ($min-width-site*.875)) {
 	.deck.wrap {
-		padding: 0 $lhse/4;
+		padding: 0 $lhse*.25;
 	}
 }
 @media (max-width: ($min-width-site * .8)) {

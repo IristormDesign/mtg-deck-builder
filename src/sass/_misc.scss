@@ -26,8 +26,8 @@
 	justify-content: center;
 	cursor: default;
 	overflow: hidden;
-	letter-spacing: -(1em/12);
-	padding-right: (1em/12);
+	letter-spacing: divide(-1em, 12);
+	padding-right: divide(1em, 12);
 
 	&:first-of-type {
 		margin-left: 0;
@@ -120,14 +120,14 @@
 	left: 0;
 	z-index: index($layers, update-notif);
 	background: $color-mythic-lighter;
-	padding: $lhse/8 $lhse/2;
+	padding: divide($lhse, 8) $lhse*.5;
 	min-height: $height-site-header;
 	color: #000;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 0 $lhse/4 #000;
+	box-shadow: 0 0 $lhse*.25 #000;
 	line-height: $line-height-standard*.75;
 
 	p {
@@ -147,8 +147,8 @@
 }
 .scroll-to-top {
 	position: fixed;
-	bottom: $lhse/3;
-	right: $lhse/3;
+	bottom: divide($lhse, 3);
+	right: divide($lhse, 3);
 	z-index: index($layers, above-overlay);
 
 	button {
@@ -167,13 +167,13 @@
 @media (max-width: ($min-width-site*.5)) {
 	.update-notif {
 		display: block;
-		padding: $lhse/8 $lhse/4;
+		padding: divide($lhse, 8) $lhse*.25;
 
 		p {
 			margin: 0;
 		}
 		button {
-			margin: $lhse/4 0 $lhse/8;
+			margin: $lhse*.25 0 divide($lhse, 8);
 		}
 	}
 }

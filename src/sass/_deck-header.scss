@@ -9,7 +9,7 @@
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: $lhse/4 $lhse/3;
+	padding: $lhse*.25 divide($lhse, 3);
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;
@@ -31,7 +31,7 @@
 	}
 	h3 {
 		margin: 0;
-		margin-right: $lhse/2;
+		margin-right: $lhse*.5;
 		text-transform: uppercase;
 		font-size: 75%;
 		display: flex;
@@ -44,7 +44,7 @@
 	}
 }
 .deck-name {
-	padding-left: $lhse/2;
+	padding-left: $lhse*.5;
 	justify-content: left;
 	max-width: 100%; // Needed for extremely long names with no spaces
 	overflow: hidden;
@@ -220,15 +220,15 @@
 }
 @media (max-width: ($min-width-site * .75)) {
 	.deck-header {
-		margin-top: $lhse/2;
+		margin-top: $lhse*.5;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto 1fr 1fr;
 	}
 	.deck-name {
 		grid-column: span 3;
-		padding-top: $lhse/3;
-		padding-bottom: $lhse/3;
+		padding-top: divide($lhse, 3);
+		padding-bottom: divide($lhse, 3);
 	}
 	.deck-info,
 	.more-stats-button {
@@ -270,7 +270,7 @@
 	}
 	.deck-colors {
 		.output {
-			margin-top: $lhse/3;
+			margin-top: divide($lhse, 3);
 		}
 	}
 }
@@ -302,7 +302,7 @@
 	}
 	.date-edited {
 		.output {
-			margin-top: $lhse/4;
+			margin-top: $lhse*.25;
 		}
 	}
 }

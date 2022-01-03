@@ -1,7 +1,7 @@
 .site-header {
 	background: $color-mythic-dim;
 	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
-	box-shadow: 0 0 $lhse/4 rgba(#000, .5);
+	box-shadow: 0 0 $lhse*.25 rgba(#000, .5);
 	color: desaturate(lighten($color-mythic-orange, 20%), 33.33%);
 	z-index: index($layers, site-header);
 	height: $height-site-header;
@@ -42,7 +42,7 @@
 		}
 	}
 	h1 {
-		margin: $lhse/4 1ch $lhse/4 0;
+		margin: $lhse*.25 1ch $lhse*.25 0;
 		font-size: 1.25em;
 		display: inline-block;
 	}
@@ -58,7 +58,7 @@
 			list-style: none;
 			display: grid;
 			grid-template-columns: repeat(4, minmax(max-content, 1fr));
-			gap: $lhse/2;
+			gap: $lhse*.5;
 			align-items: center;
 		}
 		li {
@@ -143,7 +143,7 @@
 				pointer-events: none;
 				border-color: transparent;
 				border-bottom-color: $color-mythic-orange;
-				border-width: $lhse/4;
+				border-width: $lhse*.25;
 			}
 		}
 		ul {
@@ -159,7 +159,7 @@
 			padding: 0;
 		}
 		a {
-			padding: $lhse/4 $lhse/2;
+			padding: $lhse*.25 $lhse*.5;
 			display: block;
 			min-width: 6em;
 			max-width: 24em;
@@ -205,7 +205,7 @@
 		}
 		.site-menu {
 			> ul {
-				gap: $lhse/3;
+				gap: divide($lhse, 3);
 			}
 		}
 	}
@@ -217,7 +217,7 @@
 		}
 		.site-title {
 			white-space: nowrap;
-			margin-right: $lhse/2;
+			margin-right: $lhse*.5;
 		}
 		.site-menu {
 			> ul {
@@ -252,7 +252,7 @@
 		.site-menu {
 			@include popup;
 			position: absolute;
-			right: $lhse/4;
+			right: $lhse*.25;
 			top: $height-site-header;
 			margin: 0;
 			z-index: index($layers, above-overlay);
@@ -268,13 +268,13 @@
 				pointer-events: none;
 				border-color: transparent;
 				border-bottom-color: $color-mythic-orange;
-				border-width: $lhse/3;
+				border-width: divide($lhse, 3);
 			}
 			> .hover-shield {
 				width: 100%;
 				height: $lhse;
 				position: absolute;
-				top: -$lhse/2;
+				top: -$lhse*.5;
 			}
 			> ul {
 				overflow-y: auto;
@@ -295,7 +295,7 @@
 							display: block;
 							height: auto;
 							min-width: auto;
-							padding: $lhse/4 $lhse/2;
+							padding: $lhse*.25 $lhse*.5;
 							background: none;
 							color: #000;
 							border: none;
@@ -337,7 +337,7 @@
 			
 			strong {
 				@include heading-font;
-				padding: $lhse/8 $lhse/2;
+				padding: divide($lhse, 8) $lhse*.5;
 				color: $color-mythic-dim;
 				font-size: 75%;
 				text-transform: uppercase;
