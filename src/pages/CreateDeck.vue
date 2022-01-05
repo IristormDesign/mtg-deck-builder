@@ -78,7 +78,8 @@ export default {
 						path: path,
 						cards: [],
 						editDate: new Date(),
-						viewedCard: ''
+						viewedCard: '',
+						colors: []
 					})
 					store.commit('setDecks', updatedDecksArray)
 					store.commit('sortDeckMenu')

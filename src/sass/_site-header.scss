@@ -65,6 +65,11 @@
 			display: block;
 			margin: 0;
 			padding: 0;
+			border-top: 1px solid rgba(#000, .0625);
+
+			> &:first-child {
+				border-top-width: 0;
+			}
 		}
 		a,
 		button {
@@ -159,18 +164,21 @@
 			padding: 0;
 		}
 		a {
-			padding: $lhse*.25 $lhse*.5;
-			display: block;
 			min-width: 6em;
 			max-width: 24em;
 			text-overflow: ellipsis;
 			overflow-x: hidden;
 			white-space: nowrap;
+			padding: 0 divide($lhse, 3);
+			height: $lhse*1.25;
 			transition-duration: 0s;
 			text-decoration: none;
-			font-weight: $font-weight-semibold;
 			color: #000;
-		
+			text-align: right;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			
 			&:hover,
 			&:focus {
 				background: rgba(#fff, .375)
@@ -191,6 +199,28 @@
 		width: 100%;
 		display: block;
 		border-radius: $border-radius-button;
+	}
+	.deck-menu-deck-name {
+		font-weight: $font-weight-semibold;
+		min-width: 6em;
+		width: max-content;
+		max-width: 14em;
+		text-overflow: ellipsis;
+		white-space: normal;
+		line-height: .875;
+		margin: divide($lhse, 8) 0;
+	}
+	.deck-menu-deck-colors {
+		display: flex;
+		font-size: 66.67%;
+		margin-left: .5em;
+
+		.mana-symbol {
+			display: flex;
+			cursor: inherit;
+			box-shadow: 0 0 0 1px rgba(#000, .2);
+			opacity: .8;
+		}
 	}
 }
 
@@ -292,10 +322,13 @@
 					&.site-header-link {
 						a,
 						button {
-							display: block;
-							height: auto;
+							display: flex;
+							align-items: center;
+							justify-content: flex-end;
 							min-width: auto;
-							padding: $lhse*.25 $lhse*.5;
+							padding: divide($lhse, 4);
+							min-height: $lhse*1.5;
+							height: auto;
 							background: none;
 							color: #000;
 							border: none;
@@ -334,12 +367,13 @@
 			display: block;
 			text-align: right;
 			cursor: default;
-			
+			font-size: 66.67%;
+
 			strong {
 				@include heading-font;
-				padding: divide($lhse, 8) $lhse*.5;
+				display: block;
+				padding: 0 divide($lhse, 3);
 				color: $color-mythic-dim;
-				font-size: 75%;
 				text-transform: uppercase;
 			}
 		}

@@ -33,6 +33,7 @@ $width-qty-column: 2.5em;
 			&:last-of-type {
 				border-top: none;
 				margin-top: 0;
+				padding-left: 1em;
 			}
 		}
 	}
@@ -53,6 +54,7 @@ $width-qty-column: 2.5em;
 			&:last-of-type {
 				border-top: 1px solid rgba(#000, .25);
 				margin-top: 2px;
+				padding-left: divide($lhse, 3);
 			}
 		}
 	}
@@ -101,10 +103,6 @@ $width-qty-column: 2.5em;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-
-		&:last-of-type {
-			padding-left: 1em;
-		}
 	}
 	.qty-label-group {
 		width: $width-qty-column;

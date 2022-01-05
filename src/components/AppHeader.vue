@@ -70,7 +70,12 @@
 											}"
 											@click.native="closeAllPopups()"
 										>
-											{{ deck.name }}
+											<span class="deck-menu-deck-name">{{ deck.name }}</span>
+											<div
+												class="deck-menu-deck-colors"
+												:class="resizeManaSymbols(deck)"
+												v-html="renderManaSymbols(deck)"
+											/>
 										</router-link>
 									</li>
 								</ul>
@@ -91,12 +96,14 @@
 </template>
 
 <script>
-import scrollToTop from '@/mixins/scrollToTop.js'
-import BgOverlay from '@/components/BgOverlay.vue'
 import debounce from 'debounce'
+import scrollToTop from '@/mixins/scrollToTop.js'
+import deckColorMixins from '@/mixins/deckColorMixins.js'
+import symbolsMarkup from '@/mixins/symbolsMarkup.js'
+import BgOverlay from '@/components/BgOverlay.vue'
 
 export default {
-	mixins: [scrollToTop],
+	mixins: [scrollToTop, deckColorMixins, symbolsMarkup],
 	components: { BgOverlay },
 	data () {
 		return {

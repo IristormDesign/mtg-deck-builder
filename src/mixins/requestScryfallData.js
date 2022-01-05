@@ -1,7 +1,8 @@
 import stringMethods from '@/mixins/stringMethods.js'
+import deckColorMixins from '@/mixins/deckColorMixins.js'
 
 export default {
-	mixins: [stringMethods],
+	mixins: [stringMethods, deckColorMixins],
 	methods: {
 		findExistingCard (cardName) {
 			return this.deck.cards.find(anyCard =>
@@ -119,6 +120,8 @@ export default {
 								deck.viewedCard = newCardName
 								store.commit('setDecks', store.state.decks)
 							})
+
+							this.determineDeckColors(this.deck)
 
 							store.commit('setSortAttribute', '')
 						}

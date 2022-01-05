@@ -9,7 +9,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		gap: $lhse;
+		gap: $lhse*.75;
 		margin: $lhse 0;
 
 		section {
@@ -26,7 +26,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 		> table,
 		> .height-limiter {
-			border-bottom: 4px solid $color-heading-bg;
+			border-bottom: 3px solid $color-heading-bg;
 		}
 	}
 	h4 {
@@ -159,7 +159,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	.mana-symbol {
-		font-size: 137.5%;
+		font-size: 133.33%;
 	}
 	.outdated-data-notice {
 		border: $border-sections;
