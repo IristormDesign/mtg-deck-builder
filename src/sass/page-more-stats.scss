@@ -216,21 +216,21 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 }
-@media (max-width: ($width-site-breakpoint-tablet)) {
+@media (max-width: ($width-app-breakpoint-tablet)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 }
-@media (max-width: ($width-site-breakpoint-tablet*.6667)) {
+@media (max-width: ($width-app-breakpoint-tablet*.6667)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}
 }
-@media (max-width: ($min-width-site*.625)) {
+@media (max-width: ($min-width-app*.625)) {
 	.more-stats {
 		max-width: 100%;
 		margin-bottom: -$lhse*.5;

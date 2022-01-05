@@ -55,11 +55,11 @@ $font-weight-semibold: 500;
 $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .333);
 
 // WIDTHS
-$min-width-site: 960px;
-$width-mobile-breakpoint: $min-width-site * .625;
-$width-site-breakpoint: $min-width-site*1.375;
-$width-site-breakpoint-tablet: 1024px;
-$max-width-site: 1440px;
+$min-width-app: 960px;
+$width-mobile-breakpoint: $min-width-app * .625;
+$width-app-breakpoint: $min-width-app*1.375;
+$width-app-breakpoint-tablet: 1024px;
+$max-width-app: 1440px;
 $max-width-content: 64ch;
 
 // MISCELLANEOUS
@@ -68,13 +68,13 @@ $box-shadows-card-button:
 	inset .75px -1.5px 0 1px rgba(#000, .5);
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
-$layers: card-list-item-focus-within, card-list-item-hover, site-header, update-notif, bg-overlay, above-overlay, site-menu-toggler, card-overlay;
+$layers: card-list-item-focus-within, card-list-item-hover, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;
 $border-image: 2px solid darken($color-group-bg, 6.25%);
 $border-top-width-button: 0;
 $border-bottom-width-button: 2px;
-$height-site-header: $lhse*1.6667;
+$height-app-header: $lhse*1.6667;
 $background-light-gradient:
 	radial-gradient(farthest-corner at 50% 0,
 		desaturate(lighten($color-mythic-lighter, 25%), 62.5%),

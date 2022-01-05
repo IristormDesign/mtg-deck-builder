@@ -3,7 +3,7 @@
 	height: 534px; // Actual maximum height of card as it appears in the app.
 	width: auto;
 	position: sticky;
-	top: $height-site-header + $lhse*.25;
+	top: $height-app-header + $lhse*.25;
 	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
 
 	a {
@@ -70,7 +70,7 @@
 	img {
 		display: block;
 		width: auto;
-		max-height: calc(100vh - #{$height-site-header} - #{$lhse});
+		max-height: calc(100vh - #{$height-app-header} - #{$lhse});
 		position: relative;
 		will-change: transform;
 	}
@@ -115,7 +115,7 @@ $animation-duration-card-browse: .375s;
 	}
 }
 
-@media (max-width: $width-site-breakpoint-tablet) {
+@media (max-width: $width-app-breakpoint-tablet) {
 	.card-display {
 		grid-column: span 3;
 	}

@@ -16,7 +16,7 @@
 		margin: 0 auto;
 		background: #2f3d4b; // The illustration's average color.
 		animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
-		margin-bottom: -$height-site-header*2;
+		margin-bottom: -$height-app-header*2;
 
 		@keyframes cinematic-fade-in {
 			0%,
@@ -142,7 +142,7 @@
 	}
 }
 
-@media (max-width: $width-site-breakpoint) {
+@media (max-width: $width-app-breakpoint) {
 	.intro {
 		.text-box {
 			top: $lhse;
@@ -159,7 +159,7 @@
 		}
 	}
 }
-@media (max-width: $width-site-breakpoint-tablet) {
+@media (max-width: $width-app-breakpoint-tablet) {
 	.intro {
 		.wrap {
 			position: relative;
@@ -214,7 +214,7 @@
 		}
 	}
 }
-@media (max-width: divide($width-site-breakpoint-tablet, 2)) {
+@media (max-width: divide($width-app-breakpoint-tablet, 2)) {
 	.app-features {
 		.button-group {
 			display: block;

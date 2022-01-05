@@ -1,4 +1,4 @@
-.site-footer {
+.app-footer {
 	letter-spacing: divide(1, 256)*1em;
 	background: #000;
 	color: desaturate(darken($color-text, 25%), 12.5%);
@@ -26,8 +26,8 @@
 	}
 }
 
-@media (max-width: ($min-width-site*.75)) {
-	.site-footer {
+@media (max-width: ($min-width-app*.75)) {
+	.app-footer {
 		p {
 			&:first-of-type {
 				line-height: $line-height-standard*1.5;

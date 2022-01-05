@@ -121,7 +121,7 @@
 	z-index: index($layers, update-notif);
 	background: $color-mythic-lighter;
 	padding: divide($lhse, 8) $lhse*.5;
-	min-height: $height-site-header;
+	min-height: $height-app-header;
 	color: #000;
 	text-align: center;
 	display: flex;
@@ -234,7 +234,7 @@
 	}
 }
 
-@media (max-width: ($min-width-site*.5)) {
+@media (max-width: ($min-width-app*.5)) {
 	.update-notif {
 		display: block;
 		padding: divide($lhse, 8) $lhse*.25;

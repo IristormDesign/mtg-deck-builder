@@ -1,5 +1,5 @@
 <template>
-	<footer class="site-footer">
+	<footer class="app-footer">
 		<div class="wrap">
 			<p>
 				<span class="group">

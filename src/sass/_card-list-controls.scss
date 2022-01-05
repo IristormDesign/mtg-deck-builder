@@ -248,20 +248,20 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 
-@media (max-width: ($width-site-breakpoint * .875)) {
+@media (max-width: ($width-app-breakpoint * .875)) {
 	@include clc-double-layer;
 }
-@media (max-width: $width-site-breakpoint-tablet) {
+@media (max-width: $width-app-breakpoint-tablet) {
 	@include clc-triple-layer;
 }
-@media (max-width: ($width-site-breakpoint-tablet * .75)) {
+@media (max-width: ($width-app-breakpoint-tablet * .75)) {
 	.card-adder {
 		form {
 			padding: 0 3.125%;
 		}
 	}
 }
-@media (max-width: ($min-width-site * .5)) {
+@media (max-width: ($min-width-app * .5)) {
 	.card-adder {
 		form {
 			padding: 0;

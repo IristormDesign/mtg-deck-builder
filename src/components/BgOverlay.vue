@@ -22,7 +22,7 @@ export default {
 	methods: {
 		hideOverlay (triggeredByClick) {
 			function anyFocusedDeckLink () {
-				const deckMenuLinks = document.querySelector('.site-header .deck-menu').querySelectorAll('a, button')
+				const deckMenuLinks = document.querySelector('.app-header .deck-menu').querySelectorAll('a, button')
 
 				for (let i = 0; i < deckMenuLinks.length; i++) {
 					const link = deckMenuLinks[i]

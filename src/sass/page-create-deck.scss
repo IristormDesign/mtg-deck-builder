@@ -63,7 +63,7 @@
 	}
 }
 
-@media (max-width: ($min-width-site * .75)) {
+@media (max-width: ($min-width-app * .75)) {
 	.create-deck-page {
 		.columns {
 			display: block;

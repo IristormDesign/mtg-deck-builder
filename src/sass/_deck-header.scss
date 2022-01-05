@@ -117,7 +117,7 @@
 	}
 }
 
-@media (max-width: $width-site-breakpoint) {
+@media (max-width: $width-app-breakpoint) {
 	.deck-header {
 		overflow: hidden;
 		display: grid;
@@ -188,7 +188,7 @@
 		}
 	}
 }
-@media (max-width: ($min-width-site*1.25)) {
+@media (max-width: ($min-width-app*1.25)) {
 	.deck-info {
 		justify-content: center;
 
@@ -197,7 +197,7 @@
 		}
 	}
 }
-@media (max-width: $min-width-site) {
+@media (max-width: $min-width-app) {
 	.deck-header {
 		grid-template-rows: repeat(2, min-content);
 	}
@@ -220,7 +220,7 @@
 		}
 	}
 }
-@media (max-width: ($min-width-site * .75)) {
+@media (max-width: ($min-width-app * .75)) {
 	.deck-header {
 		margin-top: $lhse*.5;
 		display: grid;
@@ -276,7 +276,7 @@
 		}
 	}
 }
-@media (max-width: ($min-width-site * .5)) {
+@media (max-width: ($min-width-app * .5)) {
 	.deck-header {
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: min-content repeat(3, 1fr);

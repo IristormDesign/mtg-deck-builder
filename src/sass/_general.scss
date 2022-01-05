@@ -6,7 +6,7 @@
 }
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: $height-site-header + $lhse*1.25;
+	scroll-padding-top: $height-app-header + $lhse*1.25;
 }
 body {
 	font: 20px/1.5 $font-family-standard;
@@ -28,7 +28,7 @@ body {
 	}
 }
 .wrap {
-	max-width: $max-width-site;
+	max-width: $max-width-app;
 	margin: 0 auto;
 	padding: 0 $lhse;
 }
@@ -162,12 +162,12 @@ img {
 		}
 	}
 }
-@media (max-width: ($min-width-site*.875)) {
+@media (max-width: ($min-width-app*.875)) {
 	.wrap {
 		padding: 0 $lhse*.5;
 	}
 }
-@media (max-width: ($min-width-site*.625)) {
+@media (max-width: ($min-width-app*.625)) {
 	.fade-bg {
 		&.texture-bg {
 			background-image: none;

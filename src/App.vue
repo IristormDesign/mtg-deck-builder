@@ -2,26 +2,26 @@
 	<transition appear name="fade-from-black">
 		<div class="fade-bg">
 			<update-notif />
-			<site-header />
+			<app-header />
 			<main>
 				<transition name="fade-to" mode="out-in">
 					<router-view />
 				</transition>
 			</main>
 			<scroll-to-top />
-			<site-footer />
+			<app-footer />
 		</div>
 	</transition>
 </template>
 
 <script>
 import UpdateNotif from '@/components/AppUpdateNotif.vue'
-import SiteHeader from '@/components/AppHeader.vue'
+import AppHeader from '@/components/AppHeader.vue'
 import ScrollToTop from '@/components/AppScrollToTop.vue'
-import SiteFooter from '@/components/AppFooter.vue'
+import AppFooter from '@/components/AppFooter.vue'
 
 export default {
-	components: { UpdateNotif, SiteHeader, ScrollToTop, SiteFooter },
+	components: { UpdateNotif, AppHeader, ScrollToTop, AppFooter },
 	mounted () {
 		this.$watch(function () {
 			// For better performance, don't let the background texture image load on the home page.

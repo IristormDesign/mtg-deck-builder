@@ -126,7 +126,7 @@ import Rellax from 'rellax'
 export default {
 	data () {
 		return {
-			siteHeaderStyle: document.querySelector('.site-header').style
+			appHeaderStyle: document.querySelector('.app-header').style
 		}
 	},
 	mounted () {

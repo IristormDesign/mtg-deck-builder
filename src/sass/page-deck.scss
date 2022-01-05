@@ -22,17 +22,17 @@
 	max-width: 100%;
 }
 
-@media (max-width: $width-site-breakpoint-tablet) {
+@media (max-width: $width-app-breakpoint-tablet) {
 	.deck-main {
 		grid-column: 4 / 8;
 	}
 }
-@media (max-width: ($min-width-site*.875)) {
+@media (max-width: ($min-width-app*.875)) {
 	.deck.wrap {
 		padding: 0 $lhse*.25;
 	}
 }
-@media (max-width: ($min-width-site * .8)) {
+@media (max-width: ($min-width-app * .8)) {
 	.card-display-scroll-view {
 		display: block;
 	}
