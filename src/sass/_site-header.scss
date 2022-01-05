@@ -75,6 +75,7 @@
 		button {
 			@extend .primary-btn;
 			white-space: nowrap;
+			overflow: hidden;
 
 			&:hover,
 			&:focus {
@@ -214,12 +215,15 @@
 		display: flex;
 		font-size: 66.67%;
 		margin-left: .5em;
+		min-width: $lhse*2;
+		justify-content: center;
+		align-items: center;
 
 		.mana-symbol {
 			display: flex;
 			cursor: inherit;
-			box-shadow: 0 0 0 1px rgba(#000, .2);
-			opacity: .8;
+			box-shadow: 0 0 0 1px rgba(#000, .125);
+			opacity: .875;
 		}
 	}
 }

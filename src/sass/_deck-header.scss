@@ -61,12 +61,18 @@
 	}
 }
 .deck-colors {
+	padding-top: 2px;
+	padding-bottom: 2px;
+
 	h3 {
 		white-space: normal;
 		width: min-content;
 	}
 	.output {
-		display: flex;
+		.mana-symbol {
+			box-shadow: none;
+			line-height: .875;
+		}
 	}
 	.no-colors {
 		font-size: 200%;
@@ -156,6 +162,11 @@
 
 		h2 {
 			text-align: center;
+		}
+	}
+	.deck-colors {
+		.output {
+			display: grid;
 		}
 	}
 	.more-stats-button {
@@ -261,7 +272,7 @@
 	}
 	.deck-colors {
 		.output {
-			margin-top: divide($lhse, 3);
+			margin-top: divide($lhse, 4);
 		}
 	}
 }

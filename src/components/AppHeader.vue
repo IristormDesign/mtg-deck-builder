@@ -71,11 +71,12 @@
 											@click.native="closeAllPopups()"
 										>
 											<span class="deck-menu-deck-name">{{ deck.name }}</span>
-											<div
-												class="deck-menu-deck-colors"
-												:class="resizeManaSymbols(deck)"
-												v-html="renderManaSymbols(deck)"
-											/>
+											<div class="deck-menu-deck-colors">
+												<div
+													:class="resizeManaSymbols(deck)"
+													v-html="renderManaSymbols(deck)"
+												/>
+											</div>
 										</router-link>
 									</li>
 								</ul>

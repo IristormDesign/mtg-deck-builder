@@ -164,8 +164,11 @@
   opacity: 0;
 }
 .resize-mana-symbols {
+	grid-gap: 0 2px;
+	justify-items: center;
+
 	.mana-symbol {
-		margin-bottom: -2px;
+		margin: 0;
 	}
 	&.one-mana {
 		.mana-symbol {
@@ -173,23 +176,60 @@
 		}
 	}
 	&.two-mana {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr;
+
 		.mana-symbol {
-			font-size: 175%;
+			font-size: 150%;
 		}
 	}
 	&.three-mana {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: 1fr 1fr;
+
 		.mana-symbol {
-			font-size: 137.5%
+			font-size: 125%;
+			grid-row: 2;
+			grid-column: span 3;
+
+			&:first-of-type {
+				grid-row: 1;
+				grid-column: span 6;
+			}
 		}
 	}
 	&.four-mana {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr 1fr;
+		grid-gap: 2px;
+
 		.mana-symbol {
-			font-size: 112.5%
+			font-size: 104.1667%;
 		}
 	}
 	&.five-mana {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 1fr 1fr;
+
 		.mana-symbol {
-			font-size: 100%;
+			font-size: 86.8056%;
+			grid-row: 2;
+			grid-column: span 4;
+			
+			&:first-of-type {
+				grid-row: 1;
+				grid-column: span 6;
+				justify-self: flex-end;
+			}
+			&:nth-of-type(2) {
+				grid-row: 1;
+				grid-column: span 6;
+				justify-self: flex-start;
+			}
 		}
 	}
 }
