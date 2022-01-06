@@ -1,9 +1,7 @@
 export default {
 	methods: {
 		determineDeckColors (deck) {
-			let deckColors = deck.colors
-
-			deckColors = [] // For older versions of deck data that lack the `colors` array.
+			let deckColors = []
 
 			deck.cards.forEach(card => {
 				card.colors.forEach(color => {
@@ -28,46 +26,43 @@ export default {
 				)
 			}
 
-			this.deck.colors = deckColors
+			deck.colors = deckColors
 			this.$store.commit('setDecks', this.$store.state.decks)
 		},
 		renderManaSymbols (deck) {
-			let htmlOutput = ''
-			const symbol = this.manaSymbol
+			if (deck.colors) {
+				let html = ''
+				const sym = this.manaSymbol
 
-			deck.colors.forEach(color => {
-				switch (color) {
-				case 'W':
-					htmlOutput += symbol.w; break
-				case 'U':
-					htmlOutput += symbol.u; break
-				case 'B':
-					htmlOutput += symbol.b; break
-				case 'R':
-					htmlOutput += symbol.r; break
-				case 'G':
-					htmlOutput += symbol.g; break
-				}
-			})
+				deck.colors.forEach(color => {
+					switch (color) {
+					case 'W': html += sym.w; break
+					case 'U': html += sym.u; break
+					case 'B': html += sym.b; break
+					case 'R': html += sym.r; break
+					case 'G': html += sym.g; break
+					}
+				})
 
-			return htmlOutput
+				return html
+			} else {
+				this.determineDeckColors(deck)
+			}
 		},
 		resizeManaSymbols (deck) {
-			const className = 'resize-mana-symbols '
+			if (deck.colors) {
+				const className = 'resize-mana-symbols '
 
-			switch (deck.colors.length) {
-			case 1:
-				return className + ' one-mana'
-			case 2:
-				return className + ' two-mana'
-			case 3:
-				return className + ' three-mana'
-			case 4:
-				return className + ' four-mana'
-			case 5:
-				return className + ' five-mana'
-			default:
-				return className
+				switch (deck.colors.length) {
+				case 1: return className + ' one-mana'
+				case 2: return className + ' two-mana'
+				case 3: return className + ' three-mana'
+				case 4: return className + ' four-mana'
+				case 5: return className + ' five-mana'
+				default: return className
+				}
+			} else {
+				this.determineDeckColors(deck)
 			}
 		}
 	}

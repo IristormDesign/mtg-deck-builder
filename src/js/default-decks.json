@@ -358,7 +358,8 @@
         }
       ],
       "editDate": null,
-      "viewedCard": "Champion of the Flame"
+      "viewedCard": "Champion of the Flame",
+      "colors": ["W", "R"]
     },
     {
       "name": "Sultai Ultimatum",
@@ -750,7 +751,8 @@
         }
       ],
       "editDate": null,
-      "viewedCard": "Sublime Epiphany"
+      "viewedCard": "Sublime Epiphany",
+      "colors": ["U", "B", "G"]
     }
   ]
 }
