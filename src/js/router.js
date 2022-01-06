@@ -2,27 +2,27 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
 const Home = () =>
-	import(/* webpackChunkName: "home" */ '../pages/Home.vue')
+	import(/* webpackChunkName: "home" */ '../views/Home.vue')
 const Manual = () =>
-	import(/* webpackChunkName: "manual" */ '../pages/Manual.vue')
+	import(/* webpackChunkName: "manual" */ '../views/Manual.vue')
 const CreateDeck = () =>
-	import(/* webpackChunkName: "create-deck" */ '../pages/CreateDeck.vue')
+	import(/* webpackChunkName: "create-deck" */ '../views/CreateDeck.vue')
 const Deck = () =>
-	import(/* webpackChunkName: "deck" */ '../pages/Deck.vue')
+	import(/* webpackChunkName: "deck" */ '../views/Deck.vue')
 const DeckMain = () =>
-	import(/* webpackChunkName: "deck-main" */ '../pages/DeckMain.vue')
+	import(/* webpackChunkName: "deck-main" */ '../views/DeckMain.vue')
 const MoreStats = () =>
-	import(/* webpackChunkName: "more-stats" */ '../pages/MoreStats.vue')
+	import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue')
 const DeckDeleted = () =>
-	import(/* webpackChunkName: "deck-deleted" */ '../pages/DeckDeleted.vue')
+	import(/* webpackChunkName: "deck-deleted" */ '../views/DeckDeleted.vue')
 const Contact = () =>
-	import(/* webpackChunkName: "contact" */ '../pages/Contact.vue')
+	import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
 const Terms = () =>
-	import(/* webpackChunkName: "terms" */ '../pages/Terms.vue')
+	import(/* webpackChunkName: "terms" */ '../views/Terms.vue')
 const Privacy = () =>
-	import(/* webpackChunkName: "privacy" */ '../pages/Privacy.vue')
+	import(/* webpackChunkName: "privacy" */ '../views/Privacy.vue')
 const NotFound = () =>
-	import(/* webpackChunkName: "not-found" */ '../pages/NotFound.vue')
+	import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue')
 
 Vue.use(VueRouter)
 
