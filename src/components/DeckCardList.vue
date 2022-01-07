@@ -44,10 +44,11 @@
 					<label :for="`qty-c${i}`">Quantity</label>
 					<span>&times;</span>
 					<input
-						type="number" min="0" :id="`qty-c${i}`"
+						type="number" min="0"
+						:id="`qty-c${i}`"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
-						@focus="$event.target.select()"
+						@focus="qtyInputFocused($event, card)"
 					/>
 					<div class="qty-buttons">
 						<button
@@ -210,6 +211,10 @@ export default {
 				deck.editDate = new Date()
 				store.commit('setDecks', store.state.decks)
 			}
+		},
+		qtyInputFocused (event, card) {
+			event.target.select()
+			this.viewCard(card)
 		},
 		increaseQty (card) {
 			card.qty++
