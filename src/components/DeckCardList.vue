@@ -47,6 +47,7 @@
 						type="number" min="0" :id="`qty-c${i}`"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
+						@focus="$event.target.select()"
 					/>
 					<div class="qty-buttons">
 						<button
