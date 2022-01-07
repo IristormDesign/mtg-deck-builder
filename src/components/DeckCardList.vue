@@ -223,7 +223,10 @@ export default {
 		},
 		qtyInputFocused (event, card) {
 			event.target.select()
-			this.viewCard(card)
+
+			if (window.innerWidth > 768) {
+				this.viewCard(card)
+			}
 		},
 		increaseQty (card) {
 			card.qty++

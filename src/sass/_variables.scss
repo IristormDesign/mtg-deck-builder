@@ -164,7 +164,8 @@ $x: 2px dashed rgba(#c0f, .75);
 		@include primary-btn;	
 	}
 	&:disabled {
-		filter: grayscale(.333) brightness(.75) !important;
+		filter: grayscale(.6667) brightness(.6667) !important;
+		color: rgba(#000, .6667);
 		cursor: not-allowed;
 		box-shadow: none;
 		margin: 0;
