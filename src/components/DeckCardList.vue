@@ -45,8 +45,19 @@
 					<span>&times;</span>
 					<input
 						type="number" min="0" :id="`qty-c${i}`"
-						v-model.lazy="card.qty" @change="validateQty(card)"
+						v-model.lazy="card.qty"
+						@change="validateQty(card)"
 					/>
+					<div class="qty-buttons">
+						<button
+							class="increment" title="Increase quantity"
+							@click="increaseQty(card)"
+						>▲</button>
+						<button
+							class="decrement" title="Decrease quantity"
+							@click="decreaseQty(card)"
+						>▼</button>
+					</div>
 				</div>
 			</li>
 		</transition-group>
@@ -198,6 +209,14 @@ export default {
 				deck.editDate = new Date()
 				store.commit('setDecks', store.state.decks)
 			}
+		},
+		increaseQty (card) {
+			card.qty++
+			this.validateQty(card)
+		},
+		decreaseQty (card) {
+			card.qty--
+			this.validateQty(card)
 		}
 	}
 }

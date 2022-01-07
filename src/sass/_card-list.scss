@@ -36,6 +36,13 @@ $width-qty-column: 2.5em;
 				padding-left: 1em;
 			}
 		}
+		li {
+			.qty {
+				.qty-buttons {
+					height: $lhse*1.5;
+				}
+			}
+		}
 	}
 }
 @mixin condensed-card-buttons {
@@ -55,6 +62,13 @@ $width-qty-column: 2.5em;
 				border-top: 1px solid rgba(#000, .25);
 				margin-top: 2px;
 				padding-left: divide($lhse, 3);
+			}
+		}
+		li {
+			.qty {
+				.qty-buttons {
+					height: $lhse*2;
+				}
 			}
 		}
 	}
@@ -165,6 +179,15 @@ $width-qty-column: 2.5em;
 			&:hover {
 				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button. 
 			}
+			&:not(:hover) {
+				.qty {
+					&:focus-within {
+						.qty-buttons {
+							display: none;
+						}
+					}
+				}
+			}
 			.qty {
 				input {
 					transition: none;
@@ -250,6 +273,7 @@ $width-qty-column: 2.5em;
 			> span {
 				margin: 0 0 0 divide($lhse, 8);
 				color: desaturate(darken($color-text, 25%), 12.5%);
+				cursor: default;
 			}
 			label {
 				@include screen-readers-only;
@@ -259,12 +283,12 @@ $width-qty-column: 2.5em;
 				background: transparent;
 				border: 0;
 				font-size: 133.33%;
-				width: 1.6667em;
+				width: 1.5em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
-				padding: 0 0 0 0;
-				margin-left: -divide($lhse, 8);
+				padding: 0 divide($lhse, 8) 0 0;
+				margin: 0;
 				font-weight: $font-weight-semibold;
 				line-height: 1;
 				border-radius: $border-radius-button;
@@ -282,7 +306,46 @@ $width-qty-column: 2.5em;
 				}
 				&:focus {
 					outline: 2px solid $color-link;
+					background: $color-group-bg;
 				}
+			}
+			&:focus-within,
+			&:hover {
+				.qty-buttons {
+					display: flex;
+				}
+			}
+			.qty-buttons {
+				position: absolute;
+				right: -1.125em;
+				z-index: 8;
+				display: none;
+				flex-direction: column;
+			}
+			button {
+				@include primary-btn;
+				font-size: 75%;
+				min-width: auto;
+				width: $lhse*1.125;
+				padding: 0;
+				margin: 0;
+				height: 50%;
+				box-shadow:
+					inset -.5px 1px 0 rgba(#fff, .25),
+					$box-shadow-buttons,
+					inset 0 .25em .5em $color-mythic-lighter;
+				border-radius: 50%;
+				line-height: 1.5 !important;
+			}
+			.increment {
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				background: lighten($color-link, 6.25%);
+			}
+			.decrement {
+				border-top-right-radius: 0;
+				border-top-left-radius: 0;
+				background: desaturate($color-link, 12.5%);
 			}
 		}
 	}
@@ -336,6 +399,16 @@ $width-qty-column: 2.5em;
 }
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include condensed-card-buttons();
+
+	.card-list {
+		li {
+			.qty {
+				.qty-buttons {
+					display: none !important;
+				}
+			}
+		}
+	}
 }
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-buttons();

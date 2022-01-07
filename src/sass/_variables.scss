@@ -1,7 +1,6 @@
 @use "sass:math";
-
-@function divide($a, $b) {
-	@return math.div($a, $b)
+@function divide($dividend, $divisor) {
+	@return math.div($dividend, $divisor)
 }
 
 // COLORS
@@ -81,6 +80,9 @@ $background-light-gradient:
 		desaturate(lighten($color-mythic-lighter, 12.5%), 62.5%)
 	)
 	$color-mythic-pale;
+$box-shadow-buttons:
+	0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
+	-1px .167em .125em 1px rgba(#000, .333); // The shadow of the button
 
 $x: 2px dashed rgba(#c0f, .75);
 
@@ -119,9 +121,7 @@ $x: 2px dashed rgba(#c0f, .75);
 		);
 	border-color: $color-button-default;
 	cursor: pointer;
-	box-shadow:
-		0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
-		-1px .167em .125em 1px rgba(#000, .333); // The shadow of the button
+	box-shadow: $box-shadow-buttons;
 	border-width: 0px;
 	border-style: outset;
 	border-top-width: $border-top-width-button;
@@ -136,7 +136,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	transition: filter $transition-duration-standard ease;
 	line-height: 1;
 	text-align: center;
-	text-shadow: -.5px 1px .5px rgba(#fff, .333);
+	text-shadow: -.5px 1px .5px rgba(#fff, .25);
 	font-weight: $font-weight-semibold;
 	text-decoration: none;
 	display: inline-block;
