@@ -44,8 +44,8 @@
 					<label :for="`qty-c${i}`">Quantity</label>
 					<span>&times;</span>
 					<input
-						type="number" min="0"
-						:id="`qty-c${i}`"
+						type="number" :id="`qty-c${i}`"
+						min="0" :max="maxQty(card)"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
 						@focus="qtyInputFocused($event, card)"
@@ -54,6 +54,7 @@
 						<button
 							class="increment" title="Increase quantity"
 							@click="increaseQty(card)"
+							:disabled="disableIncreaseQtyBtn(card)"
 						>▲</button>
 						<button
 							class="decrement" title="Decrease quantity"
@@ -140,6 +141,24 @@ export default {
 			default: return symbol.s
 			}
 		},
+		maxQty (card) {
+			const basicLandType = RegExp(/^Basic (\w* )?Land\b/) // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
+			const cardName = card.name
+
+			if (
+				basicLandType.test(card.type) ||
+				cardName === 'Dragon’s Approach' ||
+				cardName === 'Persistent Petitioners' ||
+				cardName === 'Rat Colony' ||
+				cardName === 'Relentless Rats' ||
+				cardName === 'Seven Dwarves' ||
+				cardName === 'Shadowborn Apostle'
+			) {
+				return 99
+			} else {
+				return 4
+			}
+		},
 		validateQty (card) {
 			const store = this.$store
 			const deck = this.deck
@@ -184,25 +203,15 @@ export default {
 					card.qty = 1
 				}
 			} else {
-				const basicLandType = RegExp(/^Basic (\w* )?Land\b/) // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
-
-				if (
-					basicLandType.test(card.type) ||
-					cardName === 'Dragon’s Approach' ||
-					cardName === 'Persistent Petitioners' ||
-					cardName === 'Rat Colony' ||
-					cardName === 'Relentless Rats' ||
-					cardName === 'Seven Dwarves' ||
-					cardName === 'Shadowborn Apostle'
-				) {
+				if (this.maxQty(card) === 99) {
 					if (card.qty > 99) {
-						card.qty = 99
 						alert('⚠ 99 is plenty, don’t you think?')
+						card.qty = 99
 					}
 				} else {
 					if (card.qty > 4) {
-						card.qty = 4
 						alert('⚠ A deck can have no more than 4 of any card with a particular name other than basic land cards.')
+						card.qty = 4
 					}
 				}
 				saveChanges()
@@ -223,6 +232,13 @@ export default {
 		decreaseQty (card) {
 			card.qty--
 			this.validateQty(card)
+		},
+		disableIncreaseQtyBtn (card) {
+			if (card.qty === this.maxQty(card)) {
+				return true
+			} else {
+				return false
+			}
 		}
 	}
 }
