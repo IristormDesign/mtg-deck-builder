@@ -10,6 +10,7 @@
 				list="card-suggestions"
 				type="text"
 				v-model="cardNameInput"
+				ref="focus"
 			/>
 			<datalist id="card-suggestions">
 				<option v-for="name in cardSuggestions" :key="name">
@@ -60,8 +61,15 @@ export default {
 		}
 	},
 	watch: {
-		cardNameInput: function () {
+		cardNameInput () {
 			this.debouncedAutocomplete()
+		},
+		loadingCard (loading) {
+			if (!loading) {
+				this.$nextTick(() => {
+					this.$refs.focus.focus()
+				})
+			}
 		}
 	},
 	methods: {
@@ -106,7 +114,9 @@ export default {
 		handleSubmit () {
 			const cardNameInput = this.cardNameInput
 
-			if (cardNameInput !== '') {
+			if (cardNameInput === '') {
+				this.$refs.focus.focus()
+			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
