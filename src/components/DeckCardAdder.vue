@@ -65,7 +65,7 @@ export default {
 			this.debouncedAutocomplete()
 		},
 		loadingCard (loading) {
-			if (!loading) {
+			if (window.innerWidth > 768 && !loading) {
 				this.$nextTick(() => {
 					this.$refs.focus.focus()
 				})
