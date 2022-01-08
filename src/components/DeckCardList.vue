@@ -234,7 +234,10 @@ export default {
 		},
 		decreaseQty (card) {
 			card.qty--
-			this.validateQty(card)
+
+			setTimeout(() => {
+				this.validateQty(card)
+			}, 100)
 		},
 		disableIncreaseQtyBtn (card) {
 			if (card.qty === this.maxQty(card)) {
