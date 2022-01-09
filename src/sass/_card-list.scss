@@ -85,7 +85,7 @@ $width-qty-column: 2.5em;
 	&.no-cards {
 		justify-content: center;
 		text-align: center;
-		color: #fff;
+		color: $color-text-brighter;
 		text-shadow: $text-shadow-over-light-bg;
 	}
 	h3 {
