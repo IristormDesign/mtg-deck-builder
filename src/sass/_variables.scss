@@ -200,11 +200,9 @@ $x: 2px dashed rgba(#c0f, .75);
 		text-decoration: underline;
 		transition-duration: 0s;
 		color: $color-link-focus;
-		text-decoration-color: $color-mythic-orange;
 	}
 	&:active {
 		color: #fff;
-		text-decoration-color: $color-mythic-lighter;
 	}
 }
 @mixin primary-btn {

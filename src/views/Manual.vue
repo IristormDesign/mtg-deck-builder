@@ -88,7 +88,7 @@
 				</p>
 				<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 				<ul>
-					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” is white, “U” is blue, “B” is black, “R” is red, and “G” is green.</li>
+					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” for white, “U” for blue, “B” for black, “R” for red, and “G” for green.</li>
 					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value has been formerly known as “converted mana cost” before 2021.) This calculation includes cards’ quantities, and excludes land cards.</li>
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
@@ -132,7 +132,7 @@
 					</li>
 				</ul>
 				<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-				<p>The surface color of each card button represents the mana colors of that card’s casting cost. For example, a button for a card that requires only green mana is colored green. Additionally, buttons for multicolored cards are golden, for colorless spell cards are gray, and for land cards are brown.</p>
+				<p>The surface color of each card button represents the mana color of that card’s casting cost. For example, the card button color for mono-blue spells is blue. Additionally, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 			</section>
 			<section id="m-card-quantities">
 				<h4>Card Quantities</h4>
@@ -145,10 +145,10 @@
 				<p>To change a card’s quantity, you can do any of the following:</p>
 				<ul>
 					<li>Click on the quantity number, then use your keyboard to type in a new number.</li>
-					<li>If you’re on a larger screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear to the right of it. Of that pair of buttons, click on “▲” (up arrow) to increase the card’s quantity, or “▼” (down arrow) to decrease.</li>
+					<li>If you’re on a larger screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear beside it. Of that pair of buttons, click on “▲” (up arrow) to increase the card’s quantity, or “▼” (down arrow) to decrease.</li>
 					<li>Click on the quantity number, then press your keyboard’s up-arrow or down-arrow keys.</li>
 				</ul>
-				<p>To remove a card from the deck, lower the card’s quantity to 0 (zero). You’ll be asked to confirm you want that card deleted. If not, then it’ll remain in the deck with its quantity reset to 1.</p>
+				<p>To remove a card from the deck, decrease the card’s quantity to 0 (zero). You’ll be asked to confirm you want that card deleted. If not, then it’ll remain in the deck with its quantity reset to 1.</p>
 				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards of the “basic land” type which may have any quantity.</p>
 			</section>
 			<section id="m-card-adder">
