@@ -3,13 +3,16 @@ $table-borders: 1px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
-	max-width: max-content;
+	max-width: calc(100% - $lhse*2);
+	width: max-content;
 	margin: 0 auto $lhse;
+	display: flex; // This prevents a weird CSS margin-shifting glitch when clicking the "Card List" button.
+	flex-direction: column;
 
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		gap: $lhse*.75;
+		gap: $lhse;
 		margin: $lhse 0;
 
 		section {
@@ -18,7 +21,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	h3 {
 		margin-top: $lhse*.5;
-		margin-bottom: $lhse;
+		margin-bottom: divide($lhse, 8);
 		text-align: center;
 	}
 	section {
@@ -151,12 +154,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			}
 		}
 	}
-	p {
-		margin: $lhse 0 0;
-		
-		&.return-link {
-			text-align: center;
-		}
+	.return-link {
+		margin: 0;
+		text-align: center;
 	}
 	.mana-symbol {
 		font-size: 133.33%;
@@ -233,11 +233,11 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: ($min-width-app*.625)) {
 	.more-stats {
 		max-width: 100%;
-		margin-bottom: -$lhse*.5;
+		width: 100%;
+		margin: 0;
 
 		.tables {
-			width: max-content;
-			margin: 0 auto;
+			margin: $lhse auto;
 		}
 	}
 }

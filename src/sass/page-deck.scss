@@ -5,11 +5,12 @@
 @import 'card-list-controls';
 
 .deck {
+	width: 100%;
+	
 	article {
 		margin: 0 0 $lhse*.5;
 		position: relative;
 	}
-	width: 100%;
 }
 .card-display-scroll-view {
 	display: grid;

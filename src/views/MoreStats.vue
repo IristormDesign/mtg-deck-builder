@@ -1,5 +1,5 @@
 <template>
-	<div class="more-stats content-box">
+	<div class="more-stats content-box wrap">
 		<h3>More Deck Statistics</h3>
 
 		<div class="tables">
