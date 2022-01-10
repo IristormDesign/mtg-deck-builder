@@ -154,7 +154,7 @@ $width-qty-column: 2.5em;
 				box-shadow: $box-shadow-card-button;
 
 				&.land {
-					background: darken($color-frame-land, 16.67%);
+					background: darken($color-frame-land, 12.5%);
 				}
 				&.white {
 					background: lighten($color-mana-white, 12.5%);
@@ -170,10 +170,10 @@ $width-qty-column: 2.5em;
 					background: darken($color-frame-red, 8.33%);
 				}
 				&.green {
-					background: darken($color-frame-green, 16.67%);
+					background: darken($color-frame-green, 12.5%);
 				}
 				&.multicolor {
-					background: desaturate(darken($color-frame-multicolor, 16.67%), 8.33%);
+					background: darken($color-frame-multicolor, 12.5%);
 				}
 			}
 			&:hover {

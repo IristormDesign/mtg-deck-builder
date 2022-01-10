@@ -77,18 +77,18 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th,
 		td {
-			padding: 0 $lhse*.25;
+			padding: 0 divide($lhse, 4);
 			border: $table-borders;
 			text-align: right;
 			line-height: 1;
 			height: 1.5em;
 		}
+		td {
+			padding-top: divide($lhse, 5);
+			padding-bottom: divide($lhse, 5);
+		}
 		th {
 			text-align: right;
-
-			.mana-symbol {
-				margin-left: auto;
-			}
 		}
 		.distinct-head {
 			th {
@@ -97,10 +97,15 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				color: desaturate(lighten($color-mythic-very-dim, 62.5%), 8.33%);
 			}
 		}
+		.mana-symbol {
+			margin-left: auto;
+			box-shadow: none;
+			line-height: .9375;
+		}
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 9.25;
+		max-height: $lhse * 10.125;
 		background:
 			/* Top shadow cover */
 			linear-gradient(

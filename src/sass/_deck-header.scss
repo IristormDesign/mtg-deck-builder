@@ -145,7 +145,7 @@
 		}
 		.output {
 			display: flex;
-			height: $line-height-standard * 1.75rem;
+			max-height: $line-height-standard * 1.75rem;
 			align-items: center;
 		}
 	}
