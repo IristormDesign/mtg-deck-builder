@@ -210,8 +210,14 @@
 					alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
 			</p>
 			<p>The data categories include: Colors of Spells, Mana Values of Spells (a.k.a. mana curve), Types, Creature Subtypes, Other Subtypes, Rarities, Keyword Abilities, Power/Toughness, and Miscellaneous.</p>
-			<p>For almost every category’s table, each row indicates the count (“CT.”) of the cards in one column, and the percentage of the cards in the deck in another column. The exception is the Power/Toughness table which has columns for power and toughness instead of count and percentage.</p>
-			<p>The Miscellaneous category tallies up cards that have any of the following characteristics:
+			<p>In almost every category’s table, each row indicates the following:</p>
+			<ul>
+				<li>The name of a certain property in the first column.</li>
+				<li>The count (“CT.”) of the cards of the given property in the second column.</li>
+				<li>The percentage of cards of the given property relative to the total deck in the third column.</li>
+			</ul>
+			<p>The exception to this table layout is the Power/Toughness category, which has columns for cards’ power and toughness instead of count and percentage.</p>
+			<p>The Miscellaneous category table tallies up cards that have any of the following characteristics:
 				<ul>
 					<li>Basic land — Land cards that have the “basic” supertype.</li>
 					<li>Legendary — Cards that have the “legendary” supertype.</li>
@@ -222,12 +228,12 @@
 					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 			</p>
-			<p>Single cards can be in multiple properties within a category. For example, a card that has the type “artifact creature” counts as both a creature <em>and</em> an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
+			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature <em>and</em> an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
-			<p>By default, the app comes with two pre-made decks (“Boros Equipment” and “Sultai Ultimatum”), which you may edit however you like or delete.</p>
-			<p>To delete all your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the app’s data has been cleared, the two default decks will be restored in their original states.</p>
+			<p>When you’ve opened the app for the first time, you’ll find it comes with two sample decks (“Boros Equipment” and “Sultai Ramp”). You may modify these decks as you like or delete them.</p>
+			<p>To delete all your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
 			<p>You can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
