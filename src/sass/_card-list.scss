@@ -136,7 +136,8 @@ $width-qty-column: 2.5em;
 		position: relative;
 		background: rgba($color-group-bg, .75);
 		border-radius: $border-radius-button;
-
+		// filter: saturate(0);
+		
 		&:hover,
 		&:focus-within {
 			background: rgba($color-group-bg, 1);
@@ -150,30 +151,30 @@ $width-qty-column: 2.5em;
 				border-right-color: rgba(#fff, .25);
 				border-bottom-color: rgba(#000, .5);
 				border-left-color: rgba(#000, .25);
-				background: darken($color-frame-generic, 12.5%);
+				background: lighten($color-frame-generic, 3.125%);
 				box-shadow: $box-shadow-card-button;
 
 				&.land {
-					background: darken($color-frame-land, 12.5%);
+					background: saturate(darken($color-frame-land, 16.67%), 6.25%);
 				}
 				&.white {
-					background: lighten($color-mana-white, 12.5%);
+					background: lighten($color-mana-white, 16.67%);
 				}
 				&.blue {
-					background: darken($color-frame-blue, 12.5%);
+					background: saturate(darken($color-frame-blue, 16.67%), 6.25%);
 				}
 				&.black {
-					background: darken($color-frame-black, 40%);
-					color: desaturate(lighten($color-frame-black, 20%), 50%);
+					background: darken($color-frame-black, 41.67%);
+					color: desaturate(lighten($color-frame-black, 16.67%), 41.67%);
 				}
 				&.red {
-					background: darken($color-frame-red, 8.33%);
+					background: saturate(darken($color-frame-red, 16.67%), 6.25%);
 				}
 				&.green {
-					background: darken($color-frame-green, 12.5%);
+					background: saturate(darken($color-frame-green, 16.67%), 6.25%);
 				}
 				&.multicolor {
-					background: darken($color-frame-multicolor, 12.5%);
+					background: saturate(darken($color-frame-multicolor, 12.5%), 6.25%);
 				}
 			}
 			&:hover {
@@ -202,7 +203,7 @@ $width-qty-column: 2.5em;
 				@include box-shadow-hover-card-button($color-frame-generic);
 				
 				&.land {
-					@include box-shadow-hover-card-button($color-frame-land);
+					@include box-shadow-hover-card-button(darken($color-frame-land, 8.33%));
 				}
 				&.white {
 					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
