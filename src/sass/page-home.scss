@@ -113,7 +113,7 @@
 		margin: 0 auto;
 
 		ul {
-			font-size: 120%;
+			font-size: 112.5%;
 			margin-bottom: 0;
 		}
 	}
@@ -152,6 +152,10 @@
 	.app-features {
 		padding-top: $lhse;
 		
+		img {
+			max-width: 675px;
+			width: 100%;
+		}
 		.app-features-text {
 			ul {
 				font-size: 100%;

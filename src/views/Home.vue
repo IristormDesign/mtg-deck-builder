@@ -61,33 +61,17 @@
 		</section>
 		<section class="app-features">
 			<div class="wrap" id="app-features">
-				<picture>
-					<source
-						type="image/webp"
-						srcset="
-							@/img/deck-page-screenshot-1366.webp 1366w,
-							@/img/deck-page-screenshot-1024.webp 1024w,
-							@/img/deck-page-screenshot-768.webp  768w,
-							@/img/deck-page-screenshot-576.webp  576w,
-							@/img/deck-page-screenshot-432.webp  432w"
-						sizes="
-							(max-width: 840px) 99.9vw,
-							(max-width: 1440px) 49.9vw,
-							675px"
-					/>
-					<img
-						src="@/img/deck-page-screenshot-1024.jpg"
-						width="1366" height="1125"
-						alt="Screenshot of MTG Deck Builder"
-						loading="lazy"
-					/>
-				</picture>
+				<img
+					srcset="@/img/home-deck-page-675.webp 1x, @/img/home-deck-page-1350.webp 2x"
+					src="@/img/home-deck-page-675.jpg" width="675" height="466"
+					alt="Screenshot of MTG Deck Builder" loading="lazy"
+				/>
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
 						<li>Add <i>Magic</i> cards to your decks via the card search feature (powered by Scryfall)</li>
 						<li>Decks show each card’s name, mana cost, type, rarity, and quantity</li>
-						<li>Analyze various statistics about the deck, such as which mana colors it uses, the average mana value of cards, the percentages of cards by certain attributes, and more</li>
+						<li>Analyze various statistics about your decks, such as which mana colors they use, the average mana values of cards, the percentages of cards by certain attributes, and more</li>
 						<li>The order of the cards in card lists can be automatically rearranged by multiple sorting options</li>
 						<li>View the image of any card in your decks</li>
 						<li>App is free of charge and has no advertisements</li>
