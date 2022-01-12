@@ -9,7 +9,7 @@ $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 25%);
-$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 68.75%), 26%); // Darkened to match brightness level of $color-heading-bg.
+$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 25%); // Darkened to match brightness level of $color-heading-bg.
 $color-mythic-pale: desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
 
 $color-rarity-gold: lighten(#C19C00, 20%); // Sampled from Scryfall
