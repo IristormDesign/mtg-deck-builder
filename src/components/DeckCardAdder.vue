@@ -16,7 +16,7 @@
 				<option v-for="name in cardSuggestions" :key="name">
 					{{ name }}
 				</option>
-				<option value="(random)">
+				<option value="#Random">
 					🎲 Add a randomly selected Magic card
 				</option>
 			</datalist>
@@ -79,7 +79,7 @@ export default {
 		autocompleteName () {
 			const query = this.cardNameInput
 
-			if (query !== '' && query !== '(random)') {
+			if (query !== '' && query !== '#random') {
 				console.log(`Request Scryfall API for autocomplete from "${query}".`)
 
 				axios
@@ -130,7 +130,7 @@ export default {
 					}
 				}, 15000)
 
-				if (cardNameInput.toLowerCase() === '(random)') {
+				if (cardNameInput.toLowerCase() === '#random') {
 					axios
 						.get(
 							'https://api.scryfall.com/cards/random?q=legal%3Amodern', // Get a random card that's legal in Modern tournaments.

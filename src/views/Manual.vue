@@ -159,8 +159,8 @@
 					<li>Newly added cards will be put at the bottom of the <a href="#m-card-list">card list</a>, though you can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.</li>
 					<li>When submitting a card name, if that card has been printed in multiple <i>Magic</i> sets, the one from the newest set will be retrieved.</li>
 					<li>The card adder won’t add a card of a certain name that already exists by that name in the deck. If you’d want to add duplicates of a card, increase that card’s <a href="#m-card-quantities">quantity</a> instead.</li>
-					<li>Only valid names of <i>Magic</i> cards can add cards to the deck. If a name you submit is invalid, you’ll be notified of that.</li>
-					<li>If you want to add a randomly chosen Modern-tournament-legal card, enter the code “(random)” (notice the parentheses) as the card name. On most web browsers, “(random)” will also appear as an option you can click on when the card adder’s text box has focus.</li>
+					<li>Only valid names of <i>Magic</i> cards can be used to add cards to the deck. If a name you submit turns out to be invalid, you’ll be notified of it.</li>
+					<li>To add any Modern-legal <i>Magic</i> card at random, enter the code “<strong>#random</strong>” as the card name. On most web browsers, “#random” also appears as an option you can click on when the card adder’s text box has focus.</li>
 				</ul>
 			</section>
 			<section id="m-card-sorter">
