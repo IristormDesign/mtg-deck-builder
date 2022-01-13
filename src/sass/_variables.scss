@@ -70,7 +70,7 @@ $border-radius-group: $lhse*.5;
 $layers: card-list-item-focus-within, card-list-item-hover, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler, card-overlay;
 $transition-duration-standard: .25s;
 $border-sections: 1px solid $color-section-border;
-$border-image: 2px solid darken($color-group-bg, 6.25%);
+$border-image: 2px solid $color-heading-bg;
 $border-top-width-button: 0;
 $border-bottom-width-button: 2px;
 $height-app-header: $lhse*1.6667;

@@ -11,7 +11,7 @@
 			<ol>
 				<li><a href="#m-intro">Introduction</a></li>
 				<li><a href="#m-app-header">App Header</a></li>
-				<li><a href="#m-create-deck">Create Deck Page</a></li>
+				<li><a href="#m-create-deck">“Create Deck” Page</a></li>
 				<li>
 					<a href="#m-deck-pages">Deck Pages</a>
 					<ol>
@@ -35,35 +35,30 @@
 		</nav>
 
 		<div id="m-intro" class="the-manual">
-			<p>This page explains how to use this app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
+			<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
 			<p>(If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
+			<p>Note that some of the screenshots in this user manual show old versions of MTG Deck Builder which may look slightly different from the current version, but look similar enough to keep those screenshots in use here.</p>
 
 			<h3 id="m-app-header">App Header</h3>
-			<p>
-				<img class="screenshot"
-					srcset="@/img/manual-app-header.jpg 1x, @/img/manual-app-header-2x.jpg 2x"
-					src="@/img/manual-app-header.jpg" width="658" height="23"
-					alt="Snippet of app header" title="Screenshot" loading="lazy" />
-			</p>
 			<p>At the top of any page on MTG Deck Builder is the app header, which includes the following buttons:</p>
 			<ul>
-				<li><strong>User Manual</strong> — Takes you to this page you’re reading right now.</li>
+				<li><strong>User Manual</strong> — Takes you to the page you’re reading right now.</li>
 				<li><strong>Create Deck</strong> — Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
-				<li><strong>Open Deck</strong> — Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Click any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If you’ve deleted all decks in the app, the Open Deck button becomes temporarily disabled.)</li>
+				<li><strong>Open Deck</strong> — Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Beside each deck name are that deck’s mana colors. Click on any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If all decks in the app have been deleted, the Open Deck button becomes temporarily disabled.)</li>
 				<li><strong>Contact</strong> — Takes you to the Contact page.</li>
 			</ul>
 
-			<h3 id="m-create-deck">Create Deck Page</h3>
-			<p>The Create Deck page is where you can start on a new deck or import a deck data file. Either of these methods will add the deck to the menu that lists all of your decks stored in the app, accessible from the Open Deck button in the <a href="#m-app-header">app header</a>.</p>
-			<p>If you choose to start a new deck, you first have to enter a name for it, and then you’ll be taken to an empty <a href="#m-deck-pages">deck page</a> for it. If you happen to submit a deck name that another one of your decks in the app already has, you’ll be asked to enter a different name instead.</p>
-			<p>Alternatively, if you have a <a href="#m-deck-data-files">deck data file</a> for MTG Deck Builder, you can open it through the app to import its deck data, and then a deck page will be instantly produced from it.</p>
+			<h3 id="m-create-deck">“Create Deck” Page</h3>
+			<p>The Create Deck page is where you can start on a new deck or import a <a href="#m-deck-data-files">deck data file</a>. Either method will add the deck to the menu that lists all your decks stored in the app, accessible from the Open Deck button in the <a href="#m-app-header">app header</a>.</p>
+			<p>If you choose to start a new deck, you first give it a name, and then you’ll be taken to an empty <a href="#m-deck-pages">deck page</a> for that deck. (If you happen to submit a name that another one of your decks in the app already has, you’ll be asked to give a different name instead.)</p>
+			<p>Alternatively, if you have a deck data file for MTG Deck Builder, you can open it on the Create Deck page to import its data, and then a deck page will be instantly produced from it.</p>
 
 			<h3 id="m-deck-pages">Deck Pages</h3>
 			<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 2x"
-					src="@/img/manual-deck-page.jpg" width="658" height="471"
+					src="@/img/manual-deck-page.jpg" width="658" height="444"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
 			<p>A deck page contains the following sections, listed in the order of their position on the page from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these is going to be explained in greater detail.</p>
@@ -72,7 +67,7 @@
 				<p>
 					<img class="screenshot float-left"
 						srcset="@/img/manual-deck-name.jpg 1x, @/img/manual-deck-name-2x.jpg 2x"
-						src="@/img/manual-deck-name.jpg" width="265" height="113"
+						src="@/img/manual-deck-name.jpg" width="266" height="117"
 						alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 				</p>
 				<h4>Deck Name</h4>
@@ -93,7 +88,7 @@
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
 					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Statistics</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Statistics” page</a> where you can analyze even more data about your deck.</li>
+					<li><strong>More Stats</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Statistics” page</a> where you can analyze even more information about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -112,7 +107,7 @@
 				<p>
 					<img class="screenshot"
 						srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 2x"
-						src="@/img/manual-card-list.jpg" width="658" height="219"
+						src="@/img/manual-card-list.jpg" width="658" height="339"
 						alt="Snippet of card list" title="Screenshot" loading="lazy" />
 				</p>
 				<p>This is the list of the cards contained in the currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
@@ -158,14 +153,14 @@
 						src="@/img/manual-card-adder.jpg" width="658" height="141"
 						alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This is a simple form that contains a text input where you can enter a card’s name, and then you click the “Add Card” button to insert that card into the deck.</p>
+				<p>This is a basic form where you can enter a card’s name in the text box, then click on the Add Card button to insert that card into your deck. Things of note about the card adder:</p>
 				<ul>
-					<li>When you start typing a couple of letters of a name in the card adder, an auto-complete list appears with card suggestions based on those initial letters.</li>
-					<li>If the card name you entered is invalid, you’ll be notified.</li>
-					<li>The card adder won’t add a card that already exists by that name in the deck. If you’d want to add duplicates of a card of a particular name, instead increase that card’s <a href="#m-card-quantities">quantity</a>.</li>
-					<li>When submitting a card name in the card adder, if that card has been printed in multiple <i>Magic</i> sets, the newest print will always be the one taken.</li>
-					<li>Newly added cards are put at the bottom of the card list, though they can be rearranged later with the <a href="#m-card-sorter">card sorter</a>.</li>
-					<li>If you want to add a randomly chosen card to your deck, enter the code <code>(random)</code> (including the parentheses) as the card name. Depending on the web browser you’re using, “(random)” may also appear as a selectable option when the card adder input has focus.</li>
+					<li>Whenever you start typing letters of a card’s name into the text box, a small list of card suggestions based on those initial letters will appear.</li>
+					<li>Newly added cards will be put at the bottom of the <a href="#m-card-list">card list</a>, though you can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.</li>
+					<li>When submitting a card name, if that card has been printed in multiple <i>Magic</i> sets, the one from the newest set will be retrieved.</li>
+					<li>The card adder won’t add a card of a certain name that already exists by that name in the deck. If you’d want to add duplicates of a card, increase that card’s <a href="#m-card-quantities">quantity</a> instead.</li>
+					<li>Only valid names of <i>Magic</i> cards can add cards to the deck. If a name you submit is invalid, you’ll be notified of that.</li>
+					<li>If you want to add a randomly chosen Modern-tournament-legal card, enter the code “(random)” (notice the parentheses) as the card name. On most web browsers, “(random)” will also appear as an option you can click on when the card adder’s text box has focus.</li>
 				</ul>
 			</section>
 			<section id="m-card-sorter">
@@ -213,8 +208,8 @@
 			<p>In almost every category’s table, each row indicates the following:</p>
 			<ul>
 				<li>The name of a certain property in the first column.</li>
-				<li>The count (“CT.”) of the cards of the given property in the second column.</li>
-				<li>The percentage of cards of the given property relative to the total deck in the third column.</li>
+				<li>The count (“CT.”) of cards of the given property in the second column.</li>
+				<li>The percentage of cards of the given property from the total deck in the third column.</li>
 			</ul>
 			<p>The exception to this table layout is the Power/Toughness category, which has columns for cards’ power and toughness instead of count and percentage.</p>
 			<p>The Miscellaneous category table tallies up cards that have any of the following characteristics:
@@ -228,7 +223,7 @@
 					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 			</p>
-			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature <em>and</em> an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
+			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature and an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
@@ -236,11 +231,11 @@
 			<p>To delete all your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
 
 			<h4 id="m-deck-data-files">Deck Data Files</h4>
-			<p>You can export and import deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
+			<p>MTG Deck Builder has functions for exporting and importing deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
 			<ul>
-				<li>Send the file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
+				<li>Send the data file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
 				<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
-				<li>Store the file as a backup copy of your deck in case of an event that your computer/device or browser somehow causes you to lose access to your main deck data in the app.</li>
+				<li>Store the data file as a backup copy of your deck in case your computer/device or browser somehow causes you to lose your main deck data in the app.</li>
 
 			</ul>
 			<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the “Export” option.</p>
