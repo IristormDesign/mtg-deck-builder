@@ -9,7 +9,7 @@
 		<button
 			v-else-if="this.deck.cards.length <= 0"
 			disabled
-			title="Add at least one card to the deck to view more statistics."
+			title="First add cards to this deck to see more deck statistics."
 		>
 			More Stats
 		</button>

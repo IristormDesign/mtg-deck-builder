@@ -1,5 +1,5 @@
 <template>
-	<section class="deck-info average-mana-value">
+	<section v-show="spellsOnly.length > 0" class="deck-info average-mana-value">
 		<h3>Average<br>Mana Value</h3>
 
 		<div class="output">
@@ -14,14 +14,15 @@ export default {
 		deck: Object
 	},
 	computed: {
+		spellsOnly () {
+			return this.deck.cards.filter(card => card.mana)
+		},
 		averageManaValue () {
 			// Any card with a mana cost counts as a spell.
-			const spellsOnly = this.deck.cards.filter(card => card.mana)
-
 			let avg = 0
 			let totalSpells = 0
 
-			spellsOnly.forEach(card => {
+			this.spellsOnly.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
 					avg += card.cmc
 					totalSpells++
