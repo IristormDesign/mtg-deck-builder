@@ -35,12 +35,12 @@
 		</nav>
 
 		<div id="m-intro" class="the-manual">
-			<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
-			<p>(If you need help on how to play <i>Magic</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
+			<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>.</p>
+			<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
 			<p>Note that some of the screenshots in this user manual show old versions of MTG Deck Builder which may look slightly different from the current version, but look similar enough to keep those screenshots in use here.</p>
 
 			<h3 id="m-app-header">App Header</h3>
-			<p>At the top of any page on MTG Deck Builder is the app header, which includes the following buttons:</p>
+			<p>At the top of every page of MTG Deck Builder is the app header, which includes the following buttons:</p>
 			<ul>
 				<li><strong>User Manual</strong> — Takes you to the page you’re reading right now.</li>
 				<li><strong>Create Deck</strong> — Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
@@ -54,10 +54,10 @@
 			<p>Alternatively, if you have a deck data file for MTG Deck Builder, you can open it on the Create Deck page to import its data, and then a deck page will be instantly produced from it.</p>
 
 			<h3 id="m-deck-pages">Deck Pages</h3>
-			<p>Deck pages are where you view and edit the contents of your <i>Magic</i> decks, the main focus of MTG Deck Builder. Every deck you have in the app has its own deck page.</p>
+			<p>Deck pages are the central focus of MTG Deck Builder: They’re where you inspect and modify the contents of your <i>Magic</i> decks. Each deck you create in the app has its own deck page.</p>
 			<p>
 				<img class="screenshot"
-					srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 2x"
+					srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"
 					src="@/img/manual-deck-page.jpg" width="658" height="444"
 					alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 			</p>
@@ -66,7 +66,7 @@
 			<section id="m-deck-name">
 				<p>
 					<img class="screenshot float-left"
-						srcset="@/img/manual-deck-name.jpg 1x, @/img/manual-deck-name-2x.jpg 2x"
+						srcset="@/img/manual-deck-name.jpg 1x, @/img/manual-deck-name-2x.jpg 1.5x"
 						src="@/img/manual-deck-name.jpg" width="266" height="117"
 						alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 				</p>
@@ -77,7 +77,7 @@
 				<h4>Deck Statistics</h4>
 				<p>
 					<img class="screenshot"
-						srcset="@/img/manual-deck-statistics.jpg 1x, @/img/manual-deck-statistics-2x.jpg 2x"
+						srcset="@/img/manual-deck-statistics.jpg 1x, @/img/manual-deck-statistics-2x.jpg 1.5x"
 						src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 						alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 				</p>
@@ -94,8 +94,8 @@
 			<section id="m-card-image">
 				<p>
 					<img class="screenshot float-left"
-						srcset="@/img/manual-card-image.jpg 1x, @/img/manual-card-image-2x.jpg 2x"
-						src="@/img/manual-card-image.jpg" width="530" height="712"
+						srcset="@/img/manual-card-image.jpg 1x, @/img/manual-card-image-2x.jpg 1.5x"
+						src="@/img/manual-card-image.jpg" width="265" height="356"
 						alt="Snippet of card image" title="Screenshot" loading="lazy" />
 				</p>
 				<h4>Card Image</h4>
@@ -106,11 +106,11 @@
 				<h4>Card List</h4>
 				<p>
 					<img class="screenshot"
-						srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 2x"
+						srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 1.5x"
 						src="@/img/manual-card-list.jpg" width="658" height="339"
 						alt="Snippet of card list" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This is the list of the cards contained in the currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
+				<p>This is the list of cards contained in the currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
 				<p>Labeled on each of the card buttons are the following card characteristics:</p>
 				<ul>
 					<li>Name</li>
@@ -133,7 +133,7 @@
 				<h4>Card Quantities</h4>
 				<p>
 					<img class="screenshot float-right"
-						src="@/img/manual-card-quantities.jpg" width="88" height="238"
+						src="@/img/manual-card-quantities.jpg" width="118" height="256"
 						alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
 				</p>
 				<p>Next to each card button in the <a href="#m-card-list">card list</a> is a number representing the quantity (“QTY.”) of that card in the currently viewed deck.</p>
@@ -150,7 +150,7 @@
 				<h4>Card Adder</h4>
 				<p>
 					<img class="screenshot"
-						src="@/img/manual-card-adder.jpg" width="658" height="141"
+						src="@/img/manual-card-adder.jpg" width="810" height="173"
 						alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 				</p>
 				<p>This is a basic form where you can enter a card’s name in the text box, then click on the Add Card button to insert that card into your deck. Things of note about the card adder:</p>
@@ -159,7 +159,7 @@
 					<li>Newly added cards will be put at the bottom of the <a href="#m-card-list">card list</a>, though you can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.</li>
 					<li>When submitting a card name, if that card has been printed in multiple <i>Magic</i> sets, the one from the newest set will be retrieved.</li>
 					<li>The card adder won’t add a card of a certain name that already exists by that name in the deck. If you’d want to add duplicates of a card, increase that card’s <a href="#m-card-quantities">quantity</a> instead.</li>
-					<li>Only valid names of <i>Magic</i> cards can be used to add cards to the deck. If a name you submit turns out to be invalid, you’ll be notified of it.</li>
+					<li>Only valid names of <i>Magic</i> cards can add cards to the deck. If a name you submit turns out to be invalid, nothing will be added to the deck, but you’ll be notified of the error.</li>
 					<li>To add any Modern-legal <i>Magic</i> card at random, enter the code “<strong>#random</strong>” as the card name. On most web browsers, “#random” also appears as an option you can click on when the card adder’s text box has focus.</li>
 				</ul>
 			</section>
@@ -167,7 +167,7 @@
 				<h4>Card Sorter</h4>
 				<p>
 					<img class="screenshot float-right"
-						src="@/img/manual-card-sorter.jpg" width="265" height="140"
+						src="@/img/manual-card-sorter.jpg" width="350" height="185"
 						alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 				</p>
 				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
@@ -200,8 +200,8 @@
 			<p>By clicking the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Deck Statistics page. This type of page displays many tabular data in various categories of measurement about the cards in the deck.</p>
 			<p>
 				<img class="screenshot"
-					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 2x"
-					src="@/img/manual-more-stats-page.jpg" width="530" height="565"
+					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
+					src="@/img/manual-more-stats-page.jpg" width="530" height="441"
 					alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
 			</p>
 			<p>The data categories include: Colors of Spells, Mana Values of Spells (a.k.a. mana curve), Types, Creature Subtypes, Other Subtypes, Rarities, Keyword Abilities, Power/Toughness, and Miscellaneous.</p>
