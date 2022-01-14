@@ -62,7 +62,7 @@
 		<section class="app-features">
 			<div class="wrap" id="app-features">
 				<img
-					srcset="@/img/home-deck-page-675.webp 1x, @/img/home-deck-page-1350.webp 2x"
+					srcset="@/img/home-deck-page-675.jpg 1x, @/img/home-deck-page-1350.jpg 2x"
 					src="@/img/home-deck-page-675.jpg" width="675" height="466"
 					alt="Screenshot of MTG Deck Builder" loading="lazy"
 				/>
