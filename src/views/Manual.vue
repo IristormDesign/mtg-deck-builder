@@ -88,7 +88,7 @@
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
 					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Stats</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Deck Statistics” page</a> where you can analyze even more information about your deck.</li>
+					<li><strong>More Stats</strong> — Clicking this button takes you to the <a href="#m-more-stats-pages">More Deck Statistics page</a> where you can inspect even more information about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -183,7 +183,7 @@
 				</ul>
 				<p>The card list can become the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort the cards by rarity, and then you sort by type. In effect, the cards are sorted primarily by type, and within each sorted group of types (the creature group, the land group, etc.), the cards are sorted by rarity.</p>
 				<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other card attributes.</p>
-				<p>To make the card list easier to inspect at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
+				<p>To make the card list easier to skim at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 				<p>Applying any sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
 			</section>
 			<section id="m-deck-actions">
