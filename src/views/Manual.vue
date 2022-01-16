@@ -84,11 +84,11 @@
 				<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 				<ul>
 					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” for white, “U” for blue, “B” for black, “R” for red, and “G” for green.</li>
-					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value has been formerly known as “converted mana cost” before 2021.) This calculation includes cards’ quantities, and excludes land cards.</li>
+					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
 					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Stats</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Statistics” page</a> where you can analyze even more information about your deck.</li>
+					<li><strong>More Stats</strong> — Clicking this button takes you to the deck’s <a href="#m-more-stats-pages">“More Deck Statistics” page</a> where you can analyze even more information about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -99,7 +99,8 @@
 						alt="Snippet of card image" title="Screenshot" loading="lazy" />
 				</p>
 				<h4>Card Image</h4>
-				<p>This is a scanned image of the last selected card from the deck’s <a href="#m-card-list">card list</a>. If you click on the image, it’ll open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which provides more information about <i>Magic</i> cards.</p>
+				<p>This is a scanned image of the last selected card from the deck’s <a href="#m-card-list">card list</a>.</p>
+				<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, a website which provides more information about <i>Magic</i> cards.</p>
 				<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
 			</section>
 			<section id="m-card-list">
@@ -127,7 +128,7 @@
 					</li>
 				</ul>
 				<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-				<p>The surface color of each card button represents the mana color of that card’s casting cost. For example, the card button color for mono-blue spells is blue. Additionally, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
+				<p>The surface color of each card button represents the mana color of that card. For example, the card button color for mono-blue spells is blue. Additionally, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 			</section>
 			<section id="m-card-quantities">
 				<h4>Card Quantities</h4>
@@ -144,7 +145,7 @@
 					<li>Click on the quantity number, then press your keyboard’s up-arrow or down-arrow keys.</li>
 				</ul>
 				<p>To remove a card from the deck, decrease the card’s quantity to 0 (zero). You’ll be asked to confirm you want that card deleted. If not, then it’ll remain in the deck with its quantity reset to 1.</p>
-				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards of the “basic land” type which may have any quantity.</p>
+				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards with the “basic land” type which may have any quantity.</p>
 			</section>
 			<section id="m-card-adder">
 				<h4>Card Adder</h4>
@@ -159,7 +160,7 @@
 					<li>Newly added cards will be put at the bottom of the <a href="#m-card-list">card list</a>, though you can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.</li>
 					<li>When submitting a card name, if that card has been printed in multiple <i>Magic</i> sets, the one from the newest set will be retrieved.</li>
 					<li>The card adder won’t add a card of a certain name that already exists by that name in the deck. If you’d want to add duplicates of a card, increase that card’s <a href="#m-card-quantities">quantity</a> instead.</li>
-					<li>Only valid names of <i>Magic</i> cards can add cards to the deck. If a name you submit turns out to be invalid, nothing will be added to the deck, but you’ll be notified of the error.</li>
+					<li>Only valid names of <i>Magic</i> cards can add cards to a deck. If a name you submit happens to be invalid, nothing will be added, but you’ll be notified of the error.</li>
 					<li>To add any Modern-legal <i>Magic</i> card at random, enter the code “<strong>#random</strong>” as the card name. On most web browsers, “#random” also appears as an option you can click on when the card adder’s text box has focus.</li>
 				</ul>
 			</section>
@@ -170,11 +171,11 @@
 						src="@/img/manual-card-sorter.jpg" width="350" height="185"
 						alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This is a selection menu with various options for sorting the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
+				<p>This is a selection menu with various options for sorting the cards in the <a href="#m-card-list">card list</a> by certain attributes of <i>Magic</i> cards, including:</p>
 				<ul>
 					<li><strong>Name</strong> — Sorts alphabetically.</li>
 					<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
-					<li><strong>Mana Value</strong> — Sorts from least to most. (Mana value is also known by the older term “converted mana cost.”)</li>
+					<li><strong>Mana Value</strong> — Sorts from least to most.</li>
 					<li><strong>Type</strong> — Sorts in this order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 					<li><strong>Subtype</strong> — Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
 					<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
@@ -197,7 +198,7 @@
 			</section>
 
 			<h3 id="m-more-stats-pages">“More Stats” Pages</h3>
-			<p>By clicking the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a>, you’ll be taken to that deck’s More Deck Statistics page. This type of page displays many tabular data in various categories of measurement about the cards in the deck.</p>
+			<p>Clicking the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a> will direct you to that deck’s More Deck Statistics page. This type of page displays tabular data in various categories of measurement about the cards in the current deck.</p>
 			<p>
 				<img class="screenshot"
 					srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
@@ -223,7 +224,7 @@
 					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 			</p>
-			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature and an artifact in the Types category table. Therefore, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
+			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
