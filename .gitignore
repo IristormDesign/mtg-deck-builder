@@ -21,3 +21,7 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Google Drive directories
+.tmp.drivedownload
+.tmp.driveupload
