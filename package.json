@@ -51,7 +51,10 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "indent": ["warn", "tab"],
+      "indent": [
+        "warn",
+        "tab"
+      ],
       "no-tabs": "off"
     }
   },
