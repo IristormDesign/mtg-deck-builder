@@ -108,11 +108,6 @@
 import Rellax from 'rellax'
 
 export default {
-	data () {
-		return {
-			appHeaderStyle: document.querySelector('.app-header').style
-		}
-	},
 	mounted () {
 		Rellax('.parallax')
 	},
