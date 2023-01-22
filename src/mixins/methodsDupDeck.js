@@ -6,7 +6,7 @@ export default {
 	mixins: [stringMethods],
 	methods: {
 		amendDupDeckName (srcDeck) {
-			const copySuffixRegex = new RegExp(/\(\d+\)$/) // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
+			const copySuffixRegex = /\(\d+\)$/ // The sign of a copied deck suffix, which is a string ending with `(N)`, where N is any number.
 			const srcDeckName = srcDeck.name
 			let dupDeckName = srcDeckName
 			let dupDeckPath

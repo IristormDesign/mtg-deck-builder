@@ -17,6 +17,7 @@ export default {
 
 				if (colorA > colorB) return 1
 				else if (colorA < colorB) return -1
+				else return 0
 			})
 
 			// Remove the `multicolor` array item if it exists.

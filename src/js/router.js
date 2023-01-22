@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store.js'
-import Home from '../views/Home.vue'
+import HomePage from '../views/HomePage.vue'
 
 Vue.use(VueRouter)
 
@@ -9,12 +9,12 @@ const routes = [
 	{
 		name: 'home',
 		path: '/',
-		component: Home
+		component: HomePage
 	},
 	{
 		name: 'manual',
 		path: '/manual',
-		component: () => import(/* webpackChunkName: "manual" */ '../views/Manual.vue')
+		component: () => import(/* webpackChunkName: "manual" */ '../views/ManualPage.vue')
 	},
 	{
 		name: 'createDeck',
@@ -23,7 +23,7 @@ const routes = [
 	},
 	{
 		path: '/deck/:deckPath',
-		component: () => import(/* webpackChunkName: "deck" */ '../views/Deck.vue'),
+		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
 		beforeEnter: (to, from, next) => {
 			const validDeck = store.state.decks.find(deck =>
 				regexDeckPage(`/deck/${deck.path}`).test(to.path)
@@ -71,17 +71,17 @@ const routes = [
 	{
 		name: 'contact',
 		path: '/contact',
-		component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
+		component: () => import(/* webpackChunkName: "contact" */ '../views/ContactPage.vue')
 	},
 	{
 		name: 'terms',
 		path: '/terms',
-		component: () => import(/* webpackChunkName: "terms" */ '../views/Terms.vue')
+		component: () => import(/* webpackChunkName: "terms" */ '../views/TermsPage.vue')
 	},
 	{
 		name: 'privacy',
 		path: '/privacy',
-		component: () => import(/* webpackChunkName: "privacy" */ '../views/Privacy.vue')
+		component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyPage.vue')
 	},
 	{
 		// This route with the `*` path should always be the last item in the `routes` array.

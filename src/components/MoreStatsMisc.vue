@@ -63,13 +63,13 @@ export default {
 			let count = 0
 
 			this.deck.cards.forEach(card => {
-				const testBasicLand = RegExp(/\bBasic (\w* )?Land\b/).test(card.type)
-				const testLegendary = RegExp(/\bLegendary\b/).test(card.type)
+				const testBasicLand = /\bBasic (\w* )?Land\b/.test(card.type)
+				const testLegendary = /\bLegendary\b/.test(card.type)
 				const testMonocolored = card.colors.length === 1
 				const testMulticolored = card.colors[0] === 'multicolor'
-				const testVariableCost = RegExp(/\{X\}/).test(card.mana)
+				const testVariableCost = /\{X\}/.test(card.mana)
 				const testVariablePT = card.power === '*' || card.toughness === '*'
-				const testDoubleFaced = RegExp(/\w\s\/\s\w/).test(card.name)
+				const testDoubleFaced = /\w\s\/\s\w/.test(card.name)
 
 				if (
 					(prop === 'basic land' && testBasicLand) ||

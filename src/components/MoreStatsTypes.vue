@@ -71,13 +71,13 @@ export default {
 				land: 0,
 				other: 0
 			}
-			const regexCreature = RegExp(/\bCreature\b/)
-			const regexPlaneswalker = RegExp(/\bPlaneswalker\b/)
-			const regexEnchantment = RegExp(/\bEnchantment\b/)
-			const regexArtifact = RegExp(/\bArtifact\b/)
-			const regexSorcery = RegExp(/\bSorcery\b/)
-			const regexInstant = RegExp(/\bInstant\b/)
-			const regexLand = RegExp(/\bLand\b/)
+			const regexCreature = /\bCreature\b/
+			const regexPlaneswalker = /\bPlaneswalker\b/
+			const regexEnchantment = /\bEnchantment\b/
+			const regexArtifact = /\bArtifact\b/
+			const regexSorcery = /\bSorcery\b/
+			const regexInstant = /\bInstant\b/
+			const regexLand = /\bLand\b/
 
 			function otherType (cardType) {
 				if (

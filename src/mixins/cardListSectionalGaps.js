@@ -2,25 +2,25 @@ export default {
 	methods: {
 		addSectionalGaps (deck, sortAttribute) {
 			function isCreature (string) {
-				return RegExp(/\bCreature\b/).test(string)
+				return /\bCreature\b/.test(string)
 			}
 			function isPlaneswalker (string) {
-				return RegExp(/\bPlaneswalker\b/).test(string)
+				return /\bPlaneswalker\b/.test(string)
 			}
 			function isEnchantment (string) {
-				return RegExp(/\bEnchantment\b/).test(string)
+				return /\bEnchantment\b/.test(string)
 			}
 			function isArtifact (string) {
-				return RegExp(/\bArtifact\b/).test(string)
+				return /\bArtifact\b/.test(string)
 			}
 			function isSorcery (string) {
-				return RegExp(/\bSorcery\b/).test(string)
+				return /\bSorcery\b/.test(string)
 			}
 			function isInstant (string) {
-				return RegExp(/\bInstant\b/).test(string)
+				return /\bInstant\b/.test(string)
 			}
 			function isLand (string) {
-				return RegExp(/\bLand\b/).test(string)
+				return /\bLand\b/.test(string)
 			}
 
 			for (let i = 0; i < deck.cards.length; i++) {
@@ -37,7 +37,7 @@ export default {
 					} else if (sortAttribute === 'type') {
 						const regexFrontFaceType = (card) => {
 							// If the card is double-faced, get only the type of its front face (any string up to a slash character).
-							return card.type.match(RegExp(/[^/]*/))[0]
+							return card.type.match(/[^/]*/)[0]
 						}
 						const cardType = regexFrontFaceType(card)
 						const nextCardType = regexFrontFaceType(nextCard)
@@ -77,7 +77,7 @@ export default {
 						}
 					} else if (sortAttribute === 'subtype') {
 						const hasSubtype = (card) => {
-							return RegExp(/\s—\s.*/).test(card.type)
+							return /\s—\s.*/.test(card.type)
 						}
 
 						if (hasSubtype(card) && !hasSubtype(nextCard)) {

@@ -74,6 +74,7 @@ export default new Vuex.Store({
 
 				if (deckA > deckB) return 1
 				else if (deckA < deckB) return -1
+				else return 0
 			})
 		}
 	},

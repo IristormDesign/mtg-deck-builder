@@ -37,12 +37,13 @@ export default {
 				if (card) {
 					return card.name === this.deck.viewedCard
 				}
+				return null
 			})
 		},
 		cardColorClass () {
 			const color = this.card.colors[0]
 
-			if (!color && RegExp(/\bLand\b/).test(this.card.type)) {
+			if (!color && /\bLand\b/.test(this.card.type)) {
 				return 'land'
 			} else {
 				return color

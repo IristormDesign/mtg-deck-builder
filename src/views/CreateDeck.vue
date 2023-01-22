@@ -153,7 +153,7 @@ export default {
 				}
 			} catch (error) {
 				if (error instanceof SyntaxError) {
-					const deckExtRegex = new RegExp(/\.deck$/, 'i')
+					const deckExtRegex = /\.deck$/i
 					const fileName = file.name
 
 					if (deckExtRegex.test(fileName)) {

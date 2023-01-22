@@ -91,14 +91,14 @@ export default {
 					const typeLine = card.type
 
 					// Find the pattern that indicates the card is double-faced, which is a space, a slash, a space, and any characters afterward in the card's type line. (This doesn't look at the second face's entire type line.)
-					const isDoubleFaced = typeLine.match(RegExp(/\s\/\s\w*/))
+					const isDoubleFaced = typeLine.match(/\s\/\s\w*/)
 
 					if (isDoubleFaced) {
 						// Get the part of the string that precedes the slash character.
-						const firstFace = typeLine.match(RegExp(/[^/]*/))[0]
+						const firstFace = typeLine.match(/[^/]*/)[0]
 
 						// Get the part of the string that follows the slash character.
-						const secondFace = typeLine.match(RegExp(/\/.*/))[0]
+						const secondFace = typeLine.match(/\/.*/)[0]
 
 						getSubtypesPerFace(firstFace)
 						getSubtypesPerFace(secondFace)
@@ -110,7 +110,7 @@ export default {
 
 			function getSubtypesPerFace (cardFace) {
 				// In each card's type line, get only the part that indicates the subtype: the em dash and all characters after it.
-				const subtypesPattern = cardFace.match(RegExp(/\s—\s.*/))
+				const subtypesPattern = cardFace.match(/\s—\s.*/)
 
 				// Ignore the following only if the card has no subtype.
 				if (subtypesPattern) {
@@ -122,11 +122,11 @@ export default {
 						subtypeLine.replace(' — ', '')
 
 						// Get every single subtype in the subtype lines having multiple subtypes. Duplicate single subtypes are included.
-						const isolatedSubtypes = subtypeLine.match(RegExp(/\w+/g))
+						const isolatedSubtypes = subtypeLine.match(/\w+/g)
 
 						// Put all of these isolated subtypes in the `subtypes` array.
 						isolatedSubtypes.forEach(subtype => {
-							const regexCreatureType = RegExp(/\bCreature\b/)
+							const regexCreatureType = /\bCreature\b/
 
 							if (regexCreatureType.test(cardFace)) {
 								allSubtypesCreatures.push(subtype)

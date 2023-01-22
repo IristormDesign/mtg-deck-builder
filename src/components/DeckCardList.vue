@@ -90,6 +90,7 @@ export default {
 			}
 		},
 		viewCard (card) {
+			// eslint-disable-next-line
 			this.deck.viewedCard = card.name
 			this.$store.commit('setDecks', this.$store.state.decks)
 			this.$store.commit('setShowCard', true)
@@ -102,7 +103,7 @@ export default {
 			const b = colors.find((c) => c === 'B')
 			const r = colors.find((c) => c === 'R')
 			const g = colors.find((c) => c === 'G')
-			const land = RegExp(/\bLand\b/).test(card.type)
+			const land = /\bLand\b/.test(card.type)
 
 			if (mc) return 'multicolor'
 			else if (w) return 'white'
@@ -116,17 +117,17 @@ export default {
 			const symbol = this.manaSymbol
 
 			return card.mana
-				.replaceAll(RegExp(/{W}/, 'g'), symbol.w)
-				.replaceAll(RegExp(/{U}/, 'g'), symbol.u)
-				.replaceAll(RegExp(/{B}/, 'g'), symbol.b)
-				.replaceAll(RegExp(/{R}/, 'g'), symbol.r)
-				.replaceAll(RegExp(/{G}/, 'g'), symbol.g)
+				.replaceAll(/{W}/g, symbol.w)
+				.replaceAll(/{U}/g, symbol.u)
+				.replaceAll(/{B}/g, symbol.b)
+				.replaceAll(/{R}/g, symbol.r)
+				.replaceAll(/{G}/g, symbol.g)
 				.replaceAll(
-					RegExp(/{(\w+)}/, 'g'), // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
+					/{(\w+)}/g, // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
 					'<span class="mana-symbol">$1</span>' // `$1` is a variable referring to the characters within the parentheses in the regex.
 				)
 				.replaceAll(
-					RegExp(/{(\w+\/\w+)}/, 'g'), // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
+					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
 					'<span class="mana-symbol hybrid" title="Hybrid mana symbol">$1</span>'
 				)
 		},
@@ -142,7 +143,7 @@ export default {
 			}
 		},
 		maxQty (card) {
-			const basicLandType = RegExp(/^Basic (\w* )?Land\b/) // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
+			const basicLandType = /^Basic (\w* )?Land\b/ // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
 			const cardName = card.name
 
 			if (

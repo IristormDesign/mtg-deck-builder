@@ -58,7 +58,7 @@ export default {
 
 			function sortByColor (a, b) {
 				function isColorlessLand (card) {
-					const hasLandType = RegExp(/\bLand\b/).test(card.type)
+					const hasLandType = /\bLand\b/.test(card.type)
 					const isColorless = !card.colors[0]
 
 					return (hasLandType && isColorless)
@@ -86,14 +86,14 @@ export default {
 				const typeB = typeOrder.indexOf(determineType(b))
 
 				function determineType (card) {
-					const cardType = card.type.match(RegExp(/[^/]*/))[0] // Front-face only.
-					const regexCreature = RegExp(/\bCreature\b/)
-					const regexPlaneswalker = RegExp(/\bPlaneswalker\b/)
-					const regexEnchantment = RegExp(/\bEnchantment\b/)
-					const regexArtifact = RegExp(/\bArtifact\b/)
-					const regexSorcery = RegExp(/\bSorcery\b/)
-					const regexInstant = RegExp(/\bInstant\b/)
-					const regexLand = RegExp(/\bLand\b/)
+					const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
+					const regexCreature = /\bCreature\b/
+					const regexPlaneswalker = /\bPlaneswalker\b/
+					const regexEnchantment = /\bEnchantment\b/
+					const regexArtifact = /\bArtifact\b/
+					const regexSorcery = /\bSorcery\b/
+					const regexInstant = /\bInstant\b/
+					const regexLand = /\bLand\b/
 
 					if (regexCreature.test(cardType)) return 'creature'
 					else if (regexPlaneswalker.test(cardType)) return 'planeswalker'
@@ -112,7 +112,7 @@ export default {
 				}
 			}
 			function sortBySubtype (a, b) {
-				const regexSubtypeMarker = RegExp(/\s—\s\w+/) // Finds ` — ` followed by at least one word
+				const regexSubtypeMarker = /\s—\s\w+/ // Finds ` — ` followed by at least one word
 				const subtypeA = a.type.match(regexSubtypeMarker)
 				const subtypeB = b.type.match(regexSubtypeMarker)
 
