@@ -36,8 +36,8 @@
 
 		<div id="m-intro" class="the-manual">
 			<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>.</p>
-			<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/game-info/gameplay/rules-and-formats/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
-			<p>Note that some of the screenshots in this user manual show old versions of MTG Deck Builder which may look slightly different from the current version, but look similar enough to keep those screenshots in use here.</p>
+			<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
+			<p>Note that some of the screenshots in this user manual show old versions of MTG Deck Builder, which may look slightly different from the current version, but look similar enough to keep those screenshots in use here.</p>
 
 			<h3 id="m-app-header">App Header</h3>
 			<p>At the top of every page of MTG Deck Builder is the app header, which includes the following buttons:</p>
@@ -81,14 +81,14 @@
 						src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 						alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 				</p>
-				<p>This section has various statistics about the deck, and they’ll automatically update as needed whenever you modify the deck. The parts of this section include:</p>
+				<p>This section displays various statistics about the current deck. The statistics automatically update as needed whenever you modify the deck. The parts of this section include:</p>
 				<ul>
 					<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” for white, “U” for blue, “B” for black, “R” for red, and “G” for green.</li>
 					<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
 					<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying the deck. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 					<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
-					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number to signal this.</li>
-					<li><strong>More Stats</strong> — Clicking this button takes you to the <a href="#m-more-stats-pages">More Deck Statistics page</a> where you can inspect even more information about your deck.</li>
+					<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number.</li>
+					<li><strong>More Stats</strong> — Clicking this button takes you to the <a href="#m-more-stats-pages">More Deck Statistics page</a>, where you can inspect even more information about your deck.</li>
 				</ul>
 			</section>
 			<section id="m-card-image">
@@ -100,7 +100,7 @@
 				</p>
 				<h4>Card Image</h4>
 				<p>This is a scanned image of the last selected card from the deck’s <a href="#m-card-list">card list</a>.</p>
-				<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, a website which provides more information about <i>Magic</i> cards.</p>
+				<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, a website that provides more information about <i>Magic</i> cards.</p>
 				<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
 			</section>
 			<section id="m-card-list">
@@ -145,7 +145,7 @@
 					<li>Click on the quantity number, then press your keyboard’s up-arrow or down-arrow keys.</li>
 				</ul>
 				<p>To remove a card from the deck, decrease the card’s quantity to 0 (zero). You’ll be asked to confirm you want that card deleted. If not, then it’ll remain in the deck with its quantity reset to 1.</p>
-				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except cards with the “basic land” type which may have any quantity.</p>
+				<p>In accordance to <i>Magic</i>’s rules, each card of a particular name in a deck cannot have a quantity greater than 4, except the cards of the “basic land” type, which may be any quantity.</p>
 			</section>
 			<section id="m-card-adder">
 				<h4>Card Adder</h4>
@@ -191,7 +191,7 @@
 				<p>Beside the card sorter section on a deck page is the deck actions section. It has a selection menu from which you can choose to perform special actions to the deck you’re currently viewing. These deck actions include the following:</p>
 				<ul>
 					<li><strong>Copy</strong> — Creates a new deck that has an identical list of cards. The name of the copied deck will automatically have the same name as the origin deck but with a unique number within parentheses appended to it (though you can <a href="#m-deck-name">rename</a> it later if you want).</li>
-					<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a> which gets saved on your computer or device to wherever your web browser puts downloads. The data file is named after the deck’s name and has “.deck” as its file extension.</li>
+					<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a>, which gets saved on your computer or device to wherever your web browser puts downloads. The data file is named after the deck’s name and has “.deck” as its file extension.</li>
 					<li><strong>Delete</strong> — Fully removes the deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
 				</ul>
 				<p>Each of these options asks you to confirm the action before doing it, giving you the chance to cancel.</p>
@@ -212,7 +212,7 @@
 				<li>The count (“CT.”) of cards of the given property in the second column.</li>
 				<li>The percentage of cards of the given property from the total deck in the third column.</li>
 			</ul>
-			<p>The exception to this table layout is the Power/Toughness category, which has columns for cards’ power and toughness instead of count and percentage.</p>
+			<p>The exception to this table layout is the Power/Toughness category, which has columns for power and toughness instead of count and percentage.</p>
 			<p>The Miscellaneous category table tallies up cards that have any of the following characteristics:
 				<ul>
 					<li>Basic land — Land cards that have the “basic” supertype.</li>
@@ -221,10 +221,10 @@
 					<li>Multicolored — Cards that are two or more mana colors.</li>
 					<li>Variable cost — Cards whose mana costs include a letter X.</li>
 					<li>Variable P/T — Cards whose power (P) or toughness (T) is a star symbol.</li>
-					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back) <em>or</em> cards that are split (have two small card frames on the front side).</li>
+					<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 			</p>
-			<p>Single cards can be counted in multiple properties within a category. For example, a card that has the type “artifact creature” is considered both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
+			<p>Single cards can be counted in multiple properties within a category. For example, a card that has “Artifact Creature” in its type line is considered to be both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than the deck’s total cards and a percentage greater than 100%.</p>
 
 			<h3 id="m-storage-of-deck-data">Storage of Deck Data</h3>
 			<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
@@ -243,7 +243,7 @@
 			<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
 
 			<h3 id="m-app-dev-info">App Development Info</h3>
-			<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
+			<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
 		</div>
 	</article>
 </template>
