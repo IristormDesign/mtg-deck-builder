@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+	transpileDependencies: true,
 	pages: {
 		index: {
 			entry: 'src/js/main.js'
@@ -40,4 +42,4 @@ module.exports = {
 			msTileImage: 'img/icons/mstile-150x150.png'
 		}
 	}
-}
+})

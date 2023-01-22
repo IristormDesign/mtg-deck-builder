@@ -1,13 +1,22 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
+		"target": "es5",
+		"module": "esnext",
+		"baseUrl": "./",
+		"moduleResolution": "node",
 		"paths": {
-			"components/*": [
-				"src/components/*",
-			],
-			"pages/*": [
-				"src/pages/*"
+			"@/*": [
+				"src/*"
 			]
-		}
+		},
+		"lib": [
+			"esnext",
+			"dom",
+			"dom.iterable",
+			"scripthost"
+		]
+	},
+	"vueCompilerOptions": {
+		"target": 2.7
 	}
 }

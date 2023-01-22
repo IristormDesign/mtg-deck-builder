@@ -1,9 +1,11 @@
 import Vue from 'vue'
-import store from './store.js'
-import router from './router.js'
 import App from '../App.vue'
-import VueGtag from 'vue-gtag'
 import './registerServiceWorker.js'
+import router from './router.js'
+import store from './store.js'
+import VueGtag from 'vue-gtag'
+
+Vue.config.productionTip = false
 
 Vue.use(VueGtag, {
 	config: {
@@ -13,7 +15,7 @@ Vue.use(VueGtag, {
 }, router)
 
 new Vue({
-	store,
 	router,
+	store,
 	render: h => h(App)
 }).$mount('#app')
