@@ -15,9 +15,16 @@ export default {
 	},
 	created () {
 		if (this.deck.editDate === null) { // This happens when a default deck is opened for the first time on the user's device.
-			// eslint-disable-next-line
-			this.deck.editDate = new Date()
-			this.$store.commit('setDecks', this.$store.state.decks)
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				if (decks[i].name === this.deck.name) {
+					decks[i].editDate = new Date()
+					break
+				}
+			}
+
+			this.$store.commit('setDecks', decks)
 		}
 	},
 	computed: {

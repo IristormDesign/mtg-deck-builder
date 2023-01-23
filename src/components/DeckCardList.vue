@@ -90,9 +90,16 @@ export default {
 			}
 		},
 		viewCard (card) {
-			// eslint-disable-next-line
-			this.deck.viewedCard = card.name
-			this.$store.commit('setDecks', this.$store.state.decks)
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				if (decks[i].name === this.deck.name) {
+					decks[i].viewedCard = card.name
+					break
+				}
+			}
+
+			this.$store.commit('setDecks', decks)
 			this.$store.commit('setShowCard', true)
 		},
 		colorButton (card) {
