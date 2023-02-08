@@ -80,6 +80,7 @@ export default {
 			const query = this.cardNameInput
 
 			if (query !== '' && query !== '#random') {
+				// eslint-disable-next-line
 				console.log(`Request Scryfall API for autocomplete from "${query}".`)
 
 				axios
@@ -95,6 +96,7 @@ export default {
 						this.cardSuggestions = data
 					})
 					.catch(error => {
+						// eslint-disable-next-line
 						console.log(`⚠ Error: ${error.response.data.details}`)
 					})
 			} else if (query === '') {
@@ -141,6 +143,7 @@ export default {
 						})
 						.catch(error => {
 							alert(`⚠ Error: ${error.response.data.details}`)
+							// eslint-disable-next-line
 							console.log(error)
 							this.loadingCard = false
 						})

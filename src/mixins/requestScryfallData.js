@@ -19,6 +19,7 @@ export default {
 			}, 1)
 		},
 		requestScryfallData (cardQuery, axios, deck, oldCard, callback) {
+			// eslint-disable-next-line
 			console.log(`Request Scryfall API for "${cardQuery}" data.`)
 
 			cardQuery = cardQuery.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -129,6 +130,7 @@ export default {
 				})
 				.catch(error => {
 					alert(`⚠ Error: ${error.response.data.details}`)
+					// eslint-disable-next-line
 					console.log(error)
 				})
 				.finally(() => {
