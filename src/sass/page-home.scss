@@ -43,12 +43,12 @@
 		font-size: 116.67%;
 		position: absolute;
 		top: 8.333vh;
-		right: $lhse;
+		right: $lhse*1.5;
 		background: $color-group-bg;
 		padding: 0 $lhse*.75;
 		border-radius: $border-radius-group;
 		border: 2px solid $color-mythic-dim;
-		box-shadow: -divide($lhse, 8) $lhse*.25 $lhse rgba(#000, .5);
+		box-shadow: divide(-$lhse, 8) divide($lhse, 4) $lhse rgba(#000, .5);
 		animation: animate-text-box .75s ease-out;
 		animation-fill-mode: forwards;
 		animation-delay: 2s;
@@ -79,7 +79,7 @@
 			button,
 			.button {
 				height: 100%;
-				min-height: $lhse*1.5;
+				min-height: $lhse*1.6667;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -108,7 +108,6 @@
 		gap: 0 $lhse;
 	}
 	.app-features-text {
-		line-height: $line-height-standard*.875;
 		max-width: $max-width-content;
 		margin: 0 auto;
 
@@ -124,7 +123,6 @@
 		align-items: center;
 		border-top: 1px solid rgba(#000, .25);
 		padding-top: $lhse;
-		margin-top: $lhse*.75;
 
 		button,
 		.button {
@@ -133,7 +131,7 @@
 			width: 25%;
 			min-width: $lhse*5;
 			height: 100%;
-			min-height: $lhse*1.5;
+			min-height: $lhse*2;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -145,7 +143,7 @@
 @media (max-width: $width-app-breakpoint) {
 	.intro {
 		.text-box {
-			top: $lhse;
+			top: $lhse*1.5;
 			font-size: 1em;
 		}
 	}
@@ -178,7 +176,7 @@
 			width: 100%;
 			max-width: $max-width-content;
 			margin: 0 auto;
-			padding: $lhse*.25 0;
+			padding: divide($lhse, 3) 0;
 			background: none;
 			border: 0;
 			border-radius: 0;
@@ -189,29 +187,26 @@
 			text-align: center;
 		}
 	}
-	.app-features {
-		.wrap {
-			gap: 0 $lhse*.75;
-		}
-	}
 }
-@media (max-width: 840px) { // Max-width must match the "sizes" media query in the img element.
+
+$width-app-features-img: 675px; // SHould match the `img` element's width.
+
+@media (max-width: ($width-app-features-img*1.25)) {
 	.intro {
 		img {
 			margin-bottom: 0;
 		}
 	}
 	.app-features {
-		padding-top: $lhse;
-		padding-bottom: $lhse;
-
 		.wrap {
 			display: block;
+			max-width: $width-app-features-img;
 		}
 		img {
 			margin: 0 auto $lhse;
 		}
 		.app-features-text {
+			
 			li {
 				padding: 0;
 			}
@@ -222,7 +217,6 @@
 	.app-features {
 		.button-group {
 			display: block;
-			margin-top: $lhse*.5;
 
 			button,
 			.button {

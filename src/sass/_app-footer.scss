@@ -3,8 +3,11 @@
 	background: #000;
 	color: desaturate(darken($color-text, 25%), 12.5%);
 	position: relative;
-	padding: $lhse 0;
+	padding: $lhse*1.5 0;
 
+	.wrap {
+		max-width: $max-width-app*.8;
+	}
 	p {
 		font-size: 75%;
 	}

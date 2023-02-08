@@ -20,16 +20,17 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h3 {
-		margin-top: $lhse*.5;
-		margin-bottom: divide($lhse, 8);
+		margin: $lhse*.25 0;
 		text-align: center;
 	}
 	section {
 		cursor: default;
+		width: $lhse*9;
+		margin: 0 auto;
 
 		> table,
 		> .height-limiter {
-			border-bottom: 3px solid $color-heading-bg;
+			border-bottom: 4px solid $color-heading-bg;
 		}
 	}
 	h4 {
@@ -45,7 +46,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		border-top-width: 0;
 		border-bottom-width: 0;
 		width: 100%;
-		max-width: $lhse*9;
 		
 		thead {
 			th {
@@ -77,7 +77,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th,
 		td {
-			padding: 0 divide($lhse, 4);
+			padding: 0 divide($lhse, 3);
 			border: $table-borders;
 			text-align: right;
 			line-height: 1;
@@ -105,7 +105,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 10.125;
+		max-height: $lhse * 10.8;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
@@ -160,7 +160,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	.return-link {
-		margin: 0;
 		text-align: center;
 	}
 	.mana-symbol {
@@ -169,16 +168,16 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	.outdated-data-notice {
 		border: $border-sections;
 		border-radius: $border-radius-group;
-		padding: $lhse*.75;
-		max-width: $max-width-content*.8;
-		margin: $lhse auto;
-		
+		padding: $lhse*.5 $lhse*.75;
+		margin: $lhse*.5 auto;
+		text-align: center;
+
 		p {
 			margin: 0;
 		}
 		.update-button-cont {
 			text-align: center;
-			height: $lhse*1.75;
+			height: $lhse*2;
 			display: flex;
 			align-items: flex-end;
 			justify-content: center;
@@ -191,6 +190,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			font-style: italic;
 			width: 100%;
 			cursor: progress;
+			line-height: $line-height-standard*2;
 			
 			@keyframes pulse {
 				0% {
@@ -241,6 +241,19 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		width: 100%;
 		margin: 0;
 
+		.tables {
+			margin: $lhse auto;
+		}
+	}
+}
+@media (max-width: ($min-width-app*.5)) {
+	.more-stats {
+		h3 {
+			margin-top: $lhse;
+		}
+		.return-link {
+			margin-bottom: $lhse;
+		}
 		.tables {
 			margin: $lhse auto;
 		}

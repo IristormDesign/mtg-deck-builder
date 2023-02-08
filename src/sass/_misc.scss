@@ -69,8 +69,8 @@
 	min-width: 1.3820em; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
 	box-shadow: inset 0 0 1px 1px rgba(#000, .5);
-	margin-right: -.167em;
-	font: bold 75%/#{$line-height-standard*.75} 'Trebuchet MS', sans-serif;
+	margin-right: -.1667em;
+	font: bold 75%/#{$line-height-standard*.8333} 'Trebuchet MS', sans-serif;
 	padding: 1px 0;
 	color: #000;
 	text-shadow: 0 0 1.5px #fff;
@@ -127,8 +127,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 0 $lhse*.25 #000;
-	line-height: $line-height-standard*.75;
 
 	p {
 		margin: 0;
@@ -237,13 +235,12 @@
 @media (max-width: ($min-width-app*.5)) {
 	.update-notif {
 		display: block;
-		padding: divide($lhse, 8) $lhse*.25;
 
 		p {
 			margin: 0;
 		}
 		button {
-			margin: $lhse*.25 0 divide($lhse, 8);
+			margin: $lhse*.25 auto;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-$height-card-list-controls: $lhse * 1.25;
+$height-card-list-controls: $lhse * 1.5;
 
 @mixin clc-single-layer {
 	.card-list-controls {
@@ -53,7 +53,7 @@ $height-card-list-controls: $lhse * 1.25;
 		}
 		label {
 			margin: 0;
-			padding: 0 $lhse*.25 0 0;
+			padding: 0 divide($lhse, 3) 0 0;
 			width: auto;
 		}
 		input {
@@ -67,7 +67,7 @@ $height-card-list-controls: $lhse * 1.25;
 		
 		label {
 			margin: 0;
-			padding: 0 $lhse*.25 0 0;
+			padding: 0 divide($lhse, 3) 0 0;
 		}
 	}
 	.card-sorter {
@@ -91,10 +91,10 @@ $height-card-list-controls: $lhse * 1.25;
 @mixin clc-triple-layer {
 	.card-list-controls {
 		> div {
-			min-height: $lhse*3.25;
+			min-height: $lhse*3.3333;
 		}
 		label {
-			padding: 0 0 $lhse*.25 0;
+			padding: 0 0 divide($lhse, 3) 0;
 			margin-right: .375em;
 			margin-left: .375em;
 		}
@@ -133,15 +133,15 @@ $height-card-list-controls: $lhse * 1.25;
 	
 	> div {
 		background: $color-group-bg;
-		padding: $lhse*.5;
+		padding: $lhse*.6667;
 		display: flex;
 		align-items: center;
-		height: $lhse*3.25;
+		height: $lhse*3.3333;
 	}
 	label {
 		display: block;
 		font-size: 83.33%;
-		padding-bottom: $lhse*.25;
+		padding-bottom: $lhse*.3333;
 		margin-right: .375em;
 		margin-left: .375em;
 		color: $color-text-brighter;
@@ -231,16 +231,8 @@ $height-card-list-controls: $lhse * 1.25;
 	}
 }
 .deck-actions {
-	gap: $lhse*.5;
-	display: flex;
 	border-left: $border-sections;
-	justify-content: space-around;
 
-	button {
-		font-size: 83.33%;
-		width: 100%;
-		max-width: $lhse*4.5;
-	}
 	select {
 		width: 100%;
 		height: $height-card-list-controls;

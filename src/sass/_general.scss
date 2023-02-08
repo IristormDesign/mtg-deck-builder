@@ -6,10 +6,10 @@
 }
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: $height-app-header + $lhse*1.25;
+	scroll-padding-top: $height-app-header + $lhse;
 }
 body {
-	font: 20px/1.5 $font-family-standard;
+	font: 20px/#{$line-height-standard} $font-family-standard;
 	color: $color-text;
 	background: $color-content-bg;
 	min-width: 320px;
@@ -46,7 +46,7 @@ main {
 	position: relative;
 	
 	> article {
-		margin: $lhse*.5 auto;
+		margin: $lhse auto;
 	}
 }
 h1,
@@ -57,6 +57,7 @@ h4 {
 	line-height: 1;
 	color: $color-text-brighter;
 	margin-top: $lhse;
+	margin-bottom: $line-height-standard*1rem;
 }
 h2 {
 	margin-top: $line-height-standard * .5rem;
@@ -90,12 +91,11 @@ ul,
 ol {
 	padding-left: $lhse;
 }
-li {
-	margin-bottom: $lhse*.25;
-	padding-left: .25em;
+ol {
+	padding-left: $lhse + .25em;
 
 	li {
-		margin: 0;
+		padding-left: .25em;
 	}
 }
 ol ol {

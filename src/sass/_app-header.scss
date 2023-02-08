@@ -1,7 +1,7 @@
 .app-header {
 	background: $color-mythic-dim;
 	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
-	box-shadow: 0 0 $lhse*.25 rgba(#000, .5);
+	box-shadow: 0 0 $lhse*.3333 rgba(#000, .5);
 	color: desaturate(lighten($color-mythic-orange, 20%), 33.33%);
 	z-index: index($layers, app-header);
 	height: $height-app-header;
@@ -42,7 +42,7 @@
 		}
 	}
 	h1 {
-		margin: $lhse*.25 1ch $lhse*.25 0;
+		margin: $lhse 1ch $lhse 0;
 		font-size: 1.25em;
 		display: inline-block;
 	}
@@ -141,7 +141,7 @@
 			&::before {
 				position: absolute;
 				bottom: 100%;
-				right: $lhse*1.75;
+				right: $lhse*2;
 				border: solid transparent;
 				content: "";
 				height: 0;
@@ -149,7 +149,7 @@
 				pointer-events: none;
 				border-color: transparent;
 				border-bottom-color: $color-mythic-orange;
-				border-width: $lhse*.25;
+				border-width: $lhse*.3333;
 			}
 		}
 		ul {
@@ -170,8 +170,8 @@
 			text-overflow: ellipsis;
 			overflow-x: hidden;
 			white-space: nowrap;
-			padding: 0 divide($lhse, 3);
-			height: $lhse*1.25;
+			padding: 0 $lhse*.3333;
+			height: $lhse*1.5;
 			transition-duration: 0s;
 			text-decoration: none;
 			color: #000;
@@ -208,13 +208,13 @@
 		max-width: 14em;
 		text-overflow: ellipsis;
 		white-space: normal;
-		line-height: .875;
-		margin: divide($lhse, 8) 0;
+		line-height: 1;
+		margin: divide($lhse, 6) 0;
 	}
 	.deck-menu-deck-colors {
 		display: flex;
 		font-size: 66.67%;
-		margin-left: .5em;
+		margin-left: $lhse*.5;
 		min-width: $lhse*2;
 		justify-content: center;
 		align-items: center;
@@ -239,7 +239,7 @@
 		}
 		.app-menu {
 			> ul {
-				gap: divide($lhse, 3);
+				gap: divide($lhse, 2);
 			}
 		}
 	}
@@ -251,7 +251,7 @@
 		}
 		.app-title {
 			white-space: nowrap;
-			margin-right: $lhse*.5;
+			margin-right: $lhse*.75;
 		}
 		.app-menu {
 			> ul {
@@ -286,10 +286,10 @@
 		.app-menu {
 			@include popup;
 			position: absolute;
-			right: $lhse*.25;
+			right: $lhse*.5;
 			top: $height-app-header;
 			margin: 0;
-			z-index: index($layers, above-overlay);
+			z-index: index($layers, app-menu-toggler);
 
 			&::before {
 				position: absolute;
@@ -306,14 +306,14 @@
 			}
 			> .hover-shield {
 				width: 100%;
-				height: $lhse;
+				height: divide($lhse, 3);
 				position: absolute;
-				top: -$lhse*.5;
+				top: divide(-$lhse, 3);
 			}
 			> ul {
 				overflow-y: auto;
 				max-height: 75vh;
-				max-width: $lhse*9;
+				max-width: $lhse*10;
 				width: auto;
 			}
 			ul {
@@ -330,8 +330,8 @@
 							align-items: center;
 							justify-content: flex-end;
 							min-width: auto;
-							padding: divide($lhse, 4);
-							min-height: $lhse*1.5;
+							padding: 0 divide($lhse, 3);
+							min-height: $lhse*2;
 							height: auto;
 							background: none;
 							color: #000;
@@ -376,7 +376,7 @@
 			strong {
 				@include heading-font;
 				display: block;
-				padding: 0 divide($lhse, 3);
+				padding: 0 divide($line-height-standard, 3) * 1rem;
 				color: $color-mythic-dim;
 				text-transform: uppercase;
 			}

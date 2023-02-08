@@ -21,7 +21,7 @@
 			display: grid;
 			grid-template-columns: 4fr 1fr;
 			grid-template-rows: min-content $lhse;
-			gap: divide($lhse, 3) 0;
+			gap: divide($lhse, 2) 0;
 			align-items: center;
 			margin: $lhse*.25 0;
 		}
@@ -29,10 +29,10 @@
 			font-family: $font-family-standard;
 			font-weight: normal;
 			grid-column: span 2;
-			padding-left: divide($lhse, 6);
+			padding-left: divide($lhse, 4);
 		}
 		input {
-			height: $lhse*1.25;
+			height: $lhse*1.3333;
 			font-weight: $font-weight-semibold;
 			font-size: 112.5%;
 			border-radius: $border-radius-button;
@@ -45,7 +45,7 @@
 			font-size: 112.5%;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
-			height: calc(#{$lhse}*1.25 + 2px);
+			height: calc(#{$lhse}*1.3333 + 2px);
 		}
 	}
 	.import-data {

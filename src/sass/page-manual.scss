@@ -3,7 +3,7 @@
 .manual-page {
 	display: grid;
 	grid-template-columns: auto auto;
-	gap: divide($lhse, 6) $lhse*.5;
+	gap: $lhse*.5;
 	position: relative;
 	
 	&.content-box {
@@ -16,32 +16,31 @@
 	.table-of-contents,
 	.the-manual {
 		background: $color-group-bg;
-		padding: $lhse;
+		padding: $lhse $lhse*1.5;
 		border-radius: $border-radius-group;
 	}
 	header {
 		grid-column: span 2;
 		text-align: center;
-		padding: $lhse*.75;
 
 		h2 {
 			margin-top: 0;
 		}
 	}
 	.table-of-contents {
-		padding-bottom: $lhse*.75;
 		color: desaturate(darken($color-text, 12.5%), 8.33%);
 		height: min-content;
 		max-width: 25vw;
-		max-height: calc(100vh - #{$height-app-header + ($lhse)});
+		max-height: calc(100vh - #{$height-app-header + $lhse});
 		overflow-y: auto;
 		position: sticky;
-		top: $height-app-header + $lhse*.5;
+		top: $height-app-header + $lhse*.75;
 		left: 0;
 		font-size: 87.5%;
+		padding: $lhse*.75;
 
 		h3 {
-			margin: 0 0 $lhse*.25;
+			margin: 0 0 $lhse*.5;
 			font-size: 100%;
 		}
 		ol,
@@ -49,7 +48,7 @@
 			margin: 0;
 		}
 		ol {
-			padding-left: ($lhse*.75);
+			padding-left: $lhse;
 		}
 		a {
 			display: block;
@@ -60,8 +59,7 @@
 	}
 	.the-manual {
 		width: 100%;
-		padding-top: divide($lhse, 6);
-		padding-bottom: $lhse*.5;
+		padding-top: $lhse*.5;
 		max-width: $max-width-content;
 
 		button {
@@ -71,8 +69,7 @@
 			@include pronounced-heading;
 		}
 		h4 {
-			margin-top: $lhse*1.25;
-			margin-bottom: $lhse*.75;
+			margin-bottom: $lhse*.5;
 		}
 	}
 }
@@ -83,7 +80,7 @@
 
 		header,
 		.table-of-contents {
-			margin-bottom: $lhse*.25;
+			margin-bottom: $lhse*.5;
 		}
 		.table-of-contents {
 			position: static;
@@ -92,7 +89,6 @@
 			max-height: 100%;
 			margin-right: auto;
 			margin-left: auto;
-			padding: $lhse*.5 $lhse;
 		}
 	}
 }
@@ -103,14 +99,13 @@
 			display: block;
 			border: 0;
 			border-radius: 0;
-			padding-right: $lhse*.5;
-			padding-left: $lhse*.5;
+			padding-right: $lhse;
+			padding-left: $lhse;
 		}
 		header {
 			border-bottom: $border-sections;
 		}
 		.the-manual {
-			padding-top: $lhse*.25;
 			border-top: $border-sections;
 		}
 		

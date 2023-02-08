@@ -1,6 +1,6 @@
 .deck-header {
 	grid-column: span 7;
-	margin: $lhse auto $lhse*.75;
+	margin: $lhse auto;
 	display: grid;
 	grid-template-columns: 2fr repeat(6, min-content);
 	align-items: center;
@@ -9,7 +9,7 @@
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: $lhse*.25 divide($lhse, 3);
+	padding: divide($lhse, 4) divide($lhse, 2);
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;
@@ -228,8 +228,8 @@
 	}
 	.deck-name {
 		grid-column: span 3;
-		padding-top: divide($lhse, 3);
-		padding-bottom: divide($lhse, 3);
+		padding-top: $lhse*.375;
+		padding-bottom: $lhse*.375;
 	}
 	.deck-info,
 	.more-stats-button {
