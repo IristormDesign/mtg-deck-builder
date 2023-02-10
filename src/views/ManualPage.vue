@@ -223,13 +223,13 @@
 				<p>The exception to this table layout is the Power/Toughness category, which has columns for power and toughness instead of count and percentage.</p>
 				<p>The Miscellaneous category table tallies up cards that have any of the following characteristics:
 					<ul>
-						<li>Basic land — Land cards that have the “basic” supertype.</li>
-						<li>Legendary — Cards that have the “legendary” supertype.</li>
-						<li>Monocolored — Cards that are exactly one mana color.</li>
-						<li>Multicolored — Cards that are two or more mana colors.</li>
-						<li>Variable cost — Cards whose mana costs include a letter X.</li>
-						<li>Variable P/T — Cards whose power (P) or toughness (T) is a star symbol.</li>
-						<li>Double-faced — Cards that are double-faced (have a second card frame on their back side instead of the usual card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
+						<li><strong>Basic land</strong> — Land cards that have the “basic” supertype.</li>
+						<li><strong>Legendary</strong> — Cards that have the “legendary” supertype.</li>
+						<li><strong>Monocolored</strong> — Cards that are exactly one mana color.</li>
+						<li><strong>Multicolored</strong> — Cards that are two or more mana colors.</li>
+						<li><strong>Variable cost</strong> — Cards whose mana costs include a letter X.</li>
+						<li><strong>Variable P/T</strong> — Cards whose power (P) or toughness (T) is a star symbol.</li>
+						<li><strong>Double-faced</strong> — Cards that are double-faced (have a second card frame on their back side instead of the usual card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
 					</ul>
 				</p>
 				<p>Single cards can be counted in multiple properties within a category. For example, a card that has “Artifact Creature” in its type line is considered to be both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than your deck’s total cards and a percentage greater than 100%.</p>
