@@ -30,13 +30,13 @@
 					<ol>
 						<li><a href="#m-deck-data-files">Deck Data Files</a></li>
 					</ol>
-				<li><a href="#m-app-dev-info">App Development Info</a></li>
+				<li><a href="#m-app-dev">App Development</a></li>
 			</ol>
 		</nav>
 
 		<div class="the-manual">
 			<section id="m-intro">
-				<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by Iristorm Design.</p>
+				<p>This page explains in detail how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. In the table of contents, you can click on a link to skip directly to the respective section of this user manual.</p>
 				<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
 			</section>
 
@@ -60,14 +60,25 @@
 
 			<section id="m-deck-pages">
 				<h3>Deck Pages</h3>
-				<p>Deck pages are the central focus of MTG Deck Builder: They’re where you inspect and modify the contents of your <i>Magic</i> decks. Each deck you create in the app has its own deck page.</p>
+				<p>Deck pages are the central focus of MTG Deck Builder: They’re pages of the app where you build, analyze, and edit the contents of your <i>Magic: The Gathering</i> decks. Every deck has its own separate deck page.</p>
 				<p>
 					<img class="screenshot"
 						srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"
 						src="@/img/manual-deck-page.jpg" width="658" height="444"
 						alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 				</p>
-				<p>A deck page contains the following sections, listed in the order of their position on the page from top to bottom, left to right: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, <a href="#m-card-image">card image</a>, <a href="#m-card-list">card list</a>, <a href="#m-card-quantities">card quantities</a>, <a href="#m-card-adder">card adder</a>, <a href="#m-card-sorter">card sorter</a>, and <a href="#m-deck-actions">deck actions</a>. Each of these is going to be explained in greater detail.</p>
+				<p>A deck page consists of several different sections. These sections are the following—listed here in the order of their position on the page (at least when displayed on a wide computer screen) from top to bottom, left to right:</p>
+				<ul>
+					<li><a href="#m-deck-name">Deck name</a></li>
+					<li><a href="#m-deck-statistics">Deck statistics</a></li>
+					<li><a href="#m-card-image">Card image</a></li>
+					<li><a href="#m-card-list">Card list</a></li>
+					<li><a href="#m-card-quantities">Card quantities</a></li>
+					<li><a href="#m-card-adder">Card adder</a></li>
+					<li><a href="#m-card-sorter">Card sorter</a></li>
+					<li><a href="#m-deck-actions">Deck actions</a></li>
+				</ul>
+				<p>Each deck page section is going to be explained in further detail.</p>
 				<section id="m-deck-name">
 					<p>
 						<img class="screenshot float-left"
@@ -76,7 +87,7 @@
 							alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 					</p>
 					<h4>Deck Name</h4>
-					<p>In this section, the deck’s name itself is a link that you can click on to rename the deck to something else.</p>
+					<p>The deck’s name itself is a link that you can click on to rename your deck to something else.</p>
 				</section>
 				<section id="m-deck-statistics">
 					<h4>Deck Statistics</h4>
@@ -86,14 +97,14 @@
 							src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 							alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section displays various statistics about your currently open deck. The statistics automatically update whenever you’ve modified the deck. The parts of this section include:</p>
+					<p>This section displays various statistics about your currently open deck. The statistics automatically update whenever you modify the deck. The parts of this section include:</p>
 					<ul>
 						<li><strong>Using Colors</strong> — Shows whichever of the five mana colors are required by mana costs among all spells in the deck. Instead of their usual graphics, the symbols of the mana colors are represented in this app as single letters in the <i>Magic</i> convention of writing them: “W” for white, “U” for blue, “B” for black, “R” for red, and “G” for green.</li>
 						<li><strong>Average Mana Value</strong> — Shows the mean of the mana value among all spells in the deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
-						<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifying. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
-						<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck.</li>
+						<li><strong>Last Edited</strong> — Shows the date and time when the deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
+						<li><strong>Card Names</strong> — Shows the total number of card names among all cards in the deck. (Having a plural quantity of any card doesn’t increase the deck’s card names total.)</li>
 						<li><strong>Total Cards</strong> — Shows the total number of cards in the deck. When the total is fewer than 60 (which is the minimum limit according to <i>Magic</i>’s standard deck-building rules), a warning symbol (⚠) appears beside the number.</li>
-						<li><strong>More Stats</strong> — Clicking this button takes you to the <a href="#m-more-stats-pages">More Deck Statistics page</a>, where you can inspect even more information about your deck.</li>
+						<li><strong>More Stats</strong> — Clicking on this button takes you to the <a href="#m-more-stats-pages">More Deck Statistics page</a>, where you can inspect even more information about your deck.</li>
 					</ul>
 				</section>
 				<section id="m-card-image">
@@ -206,7 +217,7 @@
 
 			<section id="m-more-stats-pages">
 				<h3>“More Stats” Pages</h3>
-				<p>Clicking the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a> will direct you to that deck’s More Deck Statistics page. This type of page displays tabular data in various categories of measurement about the cards in the deck.</p>
+				<p>Clicking pn the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a> will direct you to that deck’s More Deck Statistics page. This type of page displays tabular data in various categories of measurement about the cards in the deck.</p>
 				<p>
 					<img class="screenshot"
 						srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
@@ -239,7 +250,7 @@
 				<h3>Storage of Deck Data</h3>
 				<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
 				<p>When you’ve opened the app for the first time, you’ll find it comes with two sample decks (“Boros Equipment” and “Sultai Ramp”). You may modify these decks as you like or delete them.</p>
-				<p>To delete all your data in MTG Deck Builder at once, click the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
+				<p>To delete all your data in MTG Deck Builder at once, click on the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
 				<section id="m-deck-data-files">
 					<h4>Deck Data Files</h4>
 					<p>MTG Deck Builder has functions for exporting and importing deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
@@ -249,13 +260,14 @@
 						<li>Store the data file as a backup copy of your deck in case your computer/device or browser somehow causes you to lose your main deck data in the app.</li>
 					</ul>
 					<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the “Export” option.</p>
-					<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
+					<p>To make a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click on the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
 				</section>
 			</section>
 
-			<section id="m-app-dev-info">
-				<h3>App Development Info</h3>
-				<p>MTG Deck Builder was designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
+			<section id="m-app-dev">
+				<h3>App Development</h3>
+				<p>MTG Deck Builder has been designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">learn about the nuts and bolts</a> of the app.</p>
+				<p>Do you still have questions about MTG Deck Builder, or have any comments (whether good or bad) to share with the app developer? Email Damian Schmidt at <a href="mailto:damian@iristormdesign.com">damian@iristormdesign.com</a>.</p>
 			</section>
 		</div>
 	</article>
