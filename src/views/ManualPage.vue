@@ -36,7 +36,7 @@
 
 		<div class="the-manual">
 			<section id="m-intro">
-				<p>This page explains in detail how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. In the table of contents, you can click on a link to skip directly to the respective section of this user manual.</p>
+				<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. In the table of contents, you can click on a link to skip directly to the respective section of this user manual.</p>
 				<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
 			</section>
 
@@ -44,7 +44,7 @@
 				<h3>App Header</h3>
 				<p>At the top of every page of MTG Deck Builder is the app header, which has the following buttons:</p>
 				<ul>
-					<li><strong>User Manual</strong> — Takes you to this page you’re reading right now.</li>
+					<li><strong>User Manual</strong> — Takes you to what you’re reading right now.</li>
 					<li><strong>Create Deck</strong> — Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
 					<li><strong>Open Deck</strong> — Makes a menu appear with an alphabetically ordered list of the names of all your unopened decks stored in the app. Beside each deck name are that deck’s mana colors. Click on any deck name in the list to open that <a href="#m-deck-pages">deck’s page</a>. (If all decks in the app have been deleted, the Open Deck button becomes temporarily disabled.)</li>
 					<li><strong>Contact</strong> — Takes you to the Contact page.</li>
@@ -144,7 +144,7 @@
 						</li>
 					</ul>
 					<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-					<p>The surface color of each card button represents the mana color of that card. For example, the card button color for mono-blue spells is blue. Additionally, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
+					<p>The surface color of each card button represents the mana color of that card. For example, the card button color for mono-blue spells is blue. Moreover, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 				</section>
 				<section id="m-card-quantities">
 					<h4>Card Quantities</h4>
@@ -175,7 +175,7 @@
 						<li>Whenever you start typing letters of a card’s name into the text box, a small list of card suggestions based on those initial letters will appear.</li>
 						<li>Newly added cards will be put at the bottom of the <a href="#m-card-list">card list</a>. (You can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.)</li>
 						<li>When you submit a card name, if that card has been printed in multiple <i>Magic</i> sets, then the card from the latest released set will be retrieved.</li>
-						<li>When you submit a card name, only a valid name of a <i>Magic</i> card will add that card to your deck. If a name you submit is invalid, the app will notify you of the error.</li>
+						<li>When you submit a card name, only a valid name of a <i>Magic</i> card will add the card to your deck. If a name you submit is invalid, the app will notify you of the error.</li>
 						<li>To add any <i>Magic</i> card at random (among Modern-legal cards), submit the code “<strong>#random</strong>” as the name in the card adder. Your web browser may also show this as a selectable option when the card adder’s text box has focus.</li>
 						<li>The card adder won’t add a card of a certain name when that card name already exists in your deck. (If you want to add duplicates of a card, increase its <a href="#m-card-quantities">quantity</a> instead.)</li>
 						<li>Entering names in the card adder is case insensitive. (It doesn’t matter whether letters are uppercase or lowercase.)</li>

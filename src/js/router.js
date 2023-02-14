@@ -84,15 +84,16 @@ const routes = [
 		component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyPage.vue')
 	},
 	{
-		// This route with the `*` path should always be the last item in the `routes` array.
+		// This route should always be the last item in the `routes` array.
 		name: 'notFound',
-		path: '*',
+		path: '/:catchAll(.*)',
 		component: () => import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue')
 	}
 ]
 
 const router = new VueRouter({
 	mode: 'history',
+	base: process.env.BASE_URL,
 	routes,
 	scrollBehavior (to, from, savedPosition) {
 		if (to.hash) {

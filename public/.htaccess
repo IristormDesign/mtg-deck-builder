@@ -2,6 +2,7 @@
 # https://github.com/h5bp/server-configs-apache
 
 ### Disabled: Cross-origin web fonts
+### Added some extra mod_rewrite settings
 
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have
 #     access to the main server configuration file (which is usually
@@ -295,11 +296,16 @@ AddDefaultCharset utf-8
     # Options +SymLinksIfOwnerMatch
 
     # (4)
-    # RewriteBase /
+    RewriteBase /
 
     # (5)
     # RewriteOptions <options>
 
+    # CUSTOM ADDED SETTINGS
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
 </IfModule>
 
 # ----------------------------------------------------------------------
