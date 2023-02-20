@@ -4,9 +4,7 @@
 			<update-notif />
 			<app-header />
 			<main>
-				<transition name="fade-to" mode="out-in">
-					<router-view />
-				</transition>
+				<router-view />
 			</main>
 			<scroll-to-top />
 			<app-footer />

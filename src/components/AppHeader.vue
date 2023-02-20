@@ -2,9 +2,7 @@
 	<header class="app-header">
 		<div class="wrap">
 			<div class="app-title">
-				<h1>
-					<router-link :to="{name: 'home'}">MTG Deck Builder</router-link>
-				</h1>
+				<h1><a href="/">MTG Deck Builder</a></h1>
 				<span class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
 			</div>
 

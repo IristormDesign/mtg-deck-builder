@@ -59,8 +59,8 @@
 				</div>
 			</div>
 		</section>
-		<section class="app-features">
-			<div class="wrap" id="app-features">
+		<section class="app-features" id="app-features">
+			<div class="wrap">
 				<img
 					srcset="@/img/home-deck-page-675.jpg 1x, @/img/home-deck-page-1012.jpg 1.5x, @/img/home-deck-page-1350.jpg 2x"
 					src="@/img/home-deck-page-675.jpg" width="675" height="466"
@@ -115,7 +115,7 @@ export default {
 		scrollToAppFeaturesSection () {
 			const appFeaturesSection = document.getElementById('app-features')
 
-			appFeaturesSection.scrollIntoView(true)
+			appFeaturesSection.scrollIntoView({ behavior: 'smooth' })
 		},
 		homeOpenDeckButton () {
 			this.$store.commit('setMouseoutEventActive', false)

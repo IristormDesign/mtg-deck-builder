@@ -70,7 +70,7 @@
 		.button-group {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: $lhse;
+			gap: $lhse*.75;
 			justify-content: space-between;
 			align-items: center;
 			max-width: $lhse*12;

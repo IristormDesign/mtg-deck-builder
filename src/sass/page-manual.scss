@@ -3,7 +3,7 @@
 .manual-page {
 	display: grid;
 	grid-template-columns: auto auto;
-	gap: $lhse*.5;
+	gap: $lhse*.25;
 	position: relative;
 	
 	&.content-box {
@@ -34,7 +34,7 @@
 		max-height: calc(100vh - #{$height-app-header + $lhse});
 		overflow-y: auto;
 		position: sticky;
-		top: $height-app-header + $lhse*.75;
+		top: $height-app-header + $lhse*.5;
 		left: 0;
 		font-size: 87.5%;
 		padding: $lhse*.75;

@@ -99,8 +99,7 @@ const router = new VueRouter({
 		if (to.hash) {
 			return {
 				selector: to.hash,
-				offset: { y: 70 },
-				behavior: 'smooth'
+				offset: { y: 62 } // Equal to app header's height plus half of $lhse
 			}
 		} else if (savedPosition) {
 			return savedPosition

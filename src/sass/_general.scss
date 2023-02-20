@@ -5,7 +5,6 @@
 	backface-visibility: hidden;
 }
 html {
-	scroll-behavior: smooth;
 	scroll-padding-top: $height-app-header + $lhse;
 }
 body {
@@ -91,15 +90,20 @@ ul,
 ol {
 	padding-left: $lhse;
 }
+ul {
+	ul {
+		margin-top: 0;
+	}
+}
 ol {
 	padding-left: $lhse + .25em;
 
+	ol {
+		list-style-type: lower-alpha;
+	}
 	li {
 		padding-left: .25em;
 	}
-}
-ol ol {
-	list-style-type: lower-alpha;
 }
 img {
 	max-width: 100%;
@@ -120,18 +124,7 @@ img {
 		filter: brightness(0);
 	}
 }
-.fade-to {
-	&-enter-active {
-		transition: opacity .5s ease;
-	}
-	&-leave-active {
-		transition: opacity .25s ease;
-	}
-	&-enter,
-	&-leave-to {
-		opacity: 0;
-	}
-}
+
 @media (max-width: ($min-width-app*.875)) {
 	.wrap {
 		padding: 0 $lhse*.5;
