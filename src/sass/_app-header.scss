@@ -34,6 +34,7 @@
 	.by-iristorm {
 		display: inline-block;
 		font-size: 87.5%;
+		margin-left: $lhse;
 
 		a {
 			@include heading-font;
@@ -42,7 +43,7 @@
 		}
 	}
 	h1 {
-		margin: $lhse 1ch $lhse 0;
+		margin: divide($lhse, 16) 0 0;
 		font-size: 1.25em;
 		display: inline-block;
 	}
