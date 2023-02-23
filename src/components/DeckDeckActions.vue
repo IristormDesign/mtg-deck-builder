@@ -31,12 +31,12 @@ export default {
 
 			setTimeout(() => {
 				switch (this.deckAction) {
-				case 'copy':
-					this.copyDeck(deck); break
-				case 'export':
-					this.exportDeck(deck); break
-				case 'delete':
-					this.deleteDeck(deck); break
+					case 'copy':
+						this.copyDeck(deck); break
+					case 'export':
+						this.exportDeck(deck); break
+					case 'delete':
+						this.deleteDeck(deck); break
 				}
 
 				this.deckAction = ''

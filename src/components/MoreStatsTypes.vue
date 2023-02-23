@@ -125,22 +125,22 @@ export default {
 			})
 
 			switch (givenType) {
-			case 'creature':
-				return counts.creature
-			case 'planeswalker':
-				return counts.planeswalker
-			case 'enchantment':
-				return counts.enchantment
-			case 'artifact':
-				return counts.artifact
-			case 'sorcery':
-				return counts.sorcery
-			case 'instant':
-				return counts.instant
-			case 'land':
-				return counts.land
-			case 'other':
-				return counts.other
+				case 'creature':
+					return counts.creature
+				case 'planeswalker':
+					return counts.planeswalker
+				case 'enchantment':
+					return counts.enchantment
+				case 'artifact':
+					return counts.artifact
+				case 'sorcery':
+					return counts.sorcery
+				case 'instant':
+					return counts.instant
+				case 'land':
+					return counts.land
+				case 'other':
+					return counts.other
 			}
 		}
 	}

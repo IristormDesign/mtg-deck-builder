@@ -142,11 +142,16 @@ export default {
 			const symbol = this.raritySymbol
 
 			switch (card.rarity) {
-			case 'common': return symbol.c
-			case 'uncommon': return symbol.u
-			case 'rare': return symbol.r
-			case 'mythic': return symbol.m
-			default: return symbol.s
+				case 'common':
+					return symbol.c
+				case 'uncommon':
+					return symbol.u
+				case 'rare':
+					return symbol.r
+				case 'mythic':
+					return symbol.m
+				default:
+					return symbol.s
 			}
 		},
 		maxQty (card) {

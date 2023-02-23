@@ -96,11 +96,11 @@ export default {
 						} else {
 							card.colors.forEach(color => {
 								switch (color) {
-								case 'W': counts.white++; break
-								case 'U': counts.blue++; break
-								case 'B': counts.black++; break
-								case 'R': counts.red++; break
-								case 'G': counts.green++; break
+									case 'W': counts.white++; break
+									case 'U': counts.blue++; break
+									case 'B': counts.black++; break
+									case 'R': counts.red++; break
+									case 'G': counts.green++; break
 								}
 							})
 						}
@@ -109,18 +109,18 @@ export default {
 			})
 
 			switch (givenColor) {
-			case 'white':
-				return counts.white
-			case 'blue':
-				return counts.blue
-			case 'black':
-				return counts.black
-			case 'red':
-				return counts.red
-			case 'green':
-				return counts.green
-			case 'colorless':
-				return counts.colorless
+				case 'white':
+					return counts.white
+				case 'blue':
+					return counts.blue
+				case 'black':
+					return counts.black
+				case 'red':
+					return counts.red
+				case 'green':
+					return counts.green
+				case 'colorless':
+					return counts.colorless
 			}
 		}
 	}

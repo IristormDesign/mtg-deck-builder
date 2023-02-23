@@ -43,18 +43,18 @@ export default {
 				const cards = deck.cards
 
 				switch (sortAttribute) {
-				case 'colors':
-					sortByColor(cards); break
-				case 'type':
-					sortByType(cards); break
-				case 'subtype':
-					sortBySubtype(cards); break
-				case 'rarity':
-					sortByRarity(cards); break
-				case 'qty':
-					sortByQuantity(cards); break
-				default:
-					sortByDefault(cards)
+					case 'colors':
+						sortByColor(cards); break
+					case 'type':
+						sortByType(cards); break
+					case 'subtype':
+						sortBySubtype(cards); break
+					case 'rarity':
+						sortByRarity(cards); break
+					case 'qty':
+						sortByQuantity(cards); break
+					default:
+						sortByDefault(cards)
 				}
 
 				this.addSectionalGaps(deck, sortAttribute)

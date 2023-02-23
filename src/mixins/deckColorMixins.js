@@ -37,11 +37,11 @@ export default {
 
 				deck.colors.forEach(color => {
 					switch (color) {
-					case 'W': html += sym.w; break
-					case 'U': html += sym.u; break
-					case 'B': html += sym.b; break
-					case 'R': html += sym.r; break
-					case 'G': html += sym.g; break
+						case 'W': html += sym.w; break
+						case 'U': html += sym.u; break
+						case 'B': html += sym.b; break
+						case 'R': html += sym.r; break
+						case 'G': html += sym.g; break
 					}
 				})
 
@@ -55,12 +55,12 @@ export default {
 				const className = 'resize-mana-symbols '
 
 				switch (deck.colors.length) {
-				case 1: return className + ' one-mana'
-				case 2: return className + ' two-mana'
-				case 3: return className + ' three-mana'
-				case 4: return className + ' four-mana'
-				case 5: return className + ' five-mana'
-				default: return className
+					case 1: return className + ' one-mana'
+					case 2: return className + ' two-mana'
+					case 3: return className + ' three-mana'
+					case 4: return className + ' four-mana'
+					case 5: return className + ' five-mana'
+					default: return className
 				}
 			} else {
 				this.determineDeckColors(deck)

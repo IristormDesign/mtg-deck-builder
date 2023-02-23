@@ -77,26 +77,26 @@ export default {
 			this.deck.cards.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
 					switch (card.rarity) {
-					case 'common':
-						counts.c++; break
-					case 'uncommon':
-						counts.u++; break
-					case 'rare':
-						counts.r++; break
-					case 'mythic':
-						counts.m++; break
-					case 'special':
-						counts.s++; break
+						case 'common':
+							counts.c++; break
+						case 'uncommon':
+							counts.u++; break
+						case 'rare':
+							counts.r++; break
+						case 'mythic':
+							counts.m++; break
+						case 'special':
+							counts.s++; break
 					}
 				}
 			})
 
 			switch (givenRarity) {
-			case 'c': return counts.c
-			case 'u': return counts.u
-			case 'r': return counts.r
-			case 'm': return counts.m
-			case 's': return counts.s
+				case 'c': return counts.c
+				case 'u': return counts.u
+				case 'r': return counts.r
+				case 'm': return counts.m
+				case 's': return counts.s
 			}
 		}
 	}
