@@ -103,7 +103,7 @@
 					<ul>
 						<li><strong>Using Colors</strong> — Shows the symbols of whichever of the five mana colors are required by mana costs among spells in your deck.</li>
 						<li><strong>Average Mana Value</strong> — Shows a number equal to the mean of the mana value among spells in your deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
-						<li><strong>Last Edit</strong> — Shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
+						<li><strong>Last Edit</strong> — Shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as edits. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
 						<li><strong>Card Names</strong> — Shows a number equal to the count of names of cards in your deck, ignoring duplicates of cards. (Having a plural quantity of any card doesn’t increase the deck’s count of card names.)</li>
 						<li><strong>Total Cards</strong> — Shows a number equal to the total cards (including duplicates) in your deck. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building rules, a warning symbol (⚠) appears beside the number.</li>
 						<li><strong>More Stats</strong> — This is a button you can click on to go to the <a href="#m-more-stats-pages">More Deck Statistics page</a>.</li>
@@ -188,15 +188,15 @@
 					</p>
 					<p>This section has a drop-down menu with various options for sorting cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
 					<ul>
-						<li><strong>Name</strong> — Sorts alphabetically.</li>
-						<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
-						<li><strong>Mana Value</strong> — Sorts from least to most.</li>
-						<li><strong>Type</strong> — Sorts in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
-						<li><strong>Subtype</strong> — Sorts alphabetically. Cards with no subtype are moved to the bottom.</li>
+						<li><strong>Name</strong> — Sorts alphabetically by name.</li>
+						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among monocolored cards, this sorts by <i>Magic</i>’s conventional order of the mana colors: white, blue, black, red, green. Among colorless cards, this sorts between spells and lands.</li>
+						<li><strong>Mana Value</strong> — Sorts from least to greatest in mana value (a.k.a. converted mana cost).</li>
+						<li><strong>Type</strong> — Sorts by type in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
+						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
 						<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
-						<li><strong>Quantity</strong> — Sorts from most to fewest.</li>
+						<li><strong>Quantity</strong> — Sorts from most to fewest in quantity.</li>
 					</ul>
-					<p>The card list can become the result of multiple sorting options combined, with the more recently selected options given higher priority. For example, let’s say you first sort by rarity, and then you sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
+					<p>The card list can be the result of multiple sorting options cumulatively, with the more recently selected options given higher priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the instant group, etc.), the cards are sorted by rarity.</p>
 					<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
 					<p>To make the card list easier to skim at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 					<p>Applying a sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
