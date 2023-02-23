@@ -40,23 +40,29 @@ export default {
 			store.commit('setSortAttribute', sortAttribute)
 
 			store.state.decks.forEach(deck => {
-				deck.cards.sort((a, b) => {
-					switch (sortAttribute) {
-					case 'colors': return sortByColor(a, b)
-					case 'type': return sortByType(a, b)
-					case 'subtype': return sortBySubtype(a, b)
-					case 'rarity': return sortByRarity(a, b)
-					case 'qty': return sortByQuantity(a, b)
-					default: return defaultSorting(a, b)
-					}
-				})
+				const cards = deck.cards
+
+				switch (sortAttribute) {
+				case 'colors':
+					sortByColor(cards); break
+				case 'type':
+					sortByType(cards); break
+				case 'subtype':
+					sortBySubtype(cards); break
+				case 'rarity':
+					sortByRarity(cards); break
+				case 'qty':
+					sortByQuantity(cards); break
+				default:
+					sortByDefault(cards)
+				}
 
 				this.addSectionalGaps(deck, sortAttribute)
 			})
 
 			store.commit('setDecks', store.state.decks)
 
-			function sortByColor (a, b) {
+			function sortByColor (cards) {
 				function isColorlessLand (card) {
 					const hasLandType = /\bLand\b/.test(card.type)
 					const isColorless = !card.colors[0]
@@ -68,22 +74,19 @@ export default {
 					'multicolor',
 					undefined // `undefined` means colorless
 				]
-				let colorA = colorOrder.indexOf(a.colors[0])
-				let colorB = colorOrder.indexOf(b.colors[0])
 
-				if (isColorlessLand(a)) colorA++
-				if (isColorlessLand(b)) colorB++
+				cards.sort((a, b) => {
+					let colorA = colorOrder.indexOf(a.colors[0])
+					let colorB = colorOrder.indexOf(b.colors[0])
 
-				if (colorA < colorB) {
-					return -1
-				} else if (colorA > colorB) {
-					return 1
-				}
+					if (isColorlessLand(a)) colorA++
+					if (isColorlessLand(b)) colorB++
+
+					return colorA - colorB
+				})
 			}
-			function sortByType (a, b) {
+			function sortByType (cards) {
 				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
-				const typeA = typeOrder.indexOf(determineType(a))
-				const typeB = typeOrder.indexOf(determineType(b))
 
 				function determineType (card) {
 					const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
@@ -105,47 +108,66 @@ export default {
 					else return 'other'
 				}
 
-				if (typeA < typeB) {
-					return -1
-				} else if (typeA > typeB) {
-					return 1
-				}
+				cards.sort((a, b) => {
+					const typeA = typeOrder.indexOf(determineType(a))
+					const typeB = typeOrder.indexOf(determineType(b))
+
+					return typeA - typeB
+				})
 			}
-			function sortBySubtype (a, b) {
+			function sortBySubtype (cards) {
 				const regexSubtypeMarker = /\s—\s\w+/ // Finds ` — ` followed by at least one word
-				const subtypeA = a.type.match(regexSubtypeMarker)
-				const subtypeB = b.type.match(regexSubtypeMarker)
 
-				if (subtypeA < subtypeB || subtypeB === null) {
-					return -1
-				} else if (subtypeA > subtypeB || subtypeA === null) {
-					return 1
-				}
+				// First, sort between cards with subtypes and cards without subtypes.
+				cards.sort((a, b) => {
+					const aHasSubtype = regexSubtypeMarker.test(a.type)
+					const bHasSubtype = regexSubtypeMarker.test(b.type)
+
+					return bHasSubtype - aHasSubtype
+				})
+
+				// Next, sort the cards with subtypes alphabetically by subtype.
+				cards.sort((a, b) => {
+					const subtypeA = a.type.match(regexSubtypeMarker)
+					const subtypeB = b.type.match(regexSubtypeMarker)
+
+					if (subtypeA < subtypeB) {
+						return -1
+					} else if (subtypeA > subtypeB) {
+						return 1
+					} else {
+						return 0
+					}
+				})
 			}
-			function sortByRarity (a, b) {
+			function sortByRarity (cards) {
 				const rarityOrder = ['mythic', 'rare', 'uncommon', 'common']
-				const rarityA = rarityOrder.indexOf(a.rarity)
-				const rarityB = rarityOrder.indexOf(b.rarity)
 
-				if (rarityA < rarityB) {
-					return -1
-				} else if (rarityA > rarityB) {
-					return 1
-				}
+				cards.sort((a, b) => {
+					const rarityA = rarityOrder.indexOf(a.rarity)
+					const rarityB = rarityOrder.indexOf(b.rarity)
+
+					return rarityA - rarityB
+				})
 			}
-			function sortByQuantity (a, b) {
-				if (a.qty < b.qty) {
-					return 1
-				} else if (a.qty > b.qty) {
-					return -1
-				}
+			function sortByQuantity (cards) {
+				cards.sort((a, b) => {
+					return b.qty - a.qty
+				})
 			}
-			function defaultSorting (a, b) { // For card name and CMC
-				if (a[sortAttribute] < b[sortAttribute]) {
-					return -1
-				} else if (a[sortAttribute] > b[sortAttribute]) {
-					return 1
-				}
+			function sortByDefault (cards) { // For card name and mana value
+				cards.sort((a, b) => {
+					const cardA = a[sortAttribute]
+					const cardB = b[sortAttribute]
+
+					if (cardA < cardB) {
+						return -1
+					} else if (cardA > cardB) {
+						return 1
+					} else {
+						return 0
+					}
+				})
 			}
 		}
 	},

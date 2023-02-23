@@ -88,7 +88,7 @@
 							alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 					</p>
 					<h4>Deck Name</h4>
-					<p>The deck’s name itself is a link that you can click on to rename your deck to something else.</p>
+					<p>This section says the deck’s name, which itself is a link you can click on to rename your deck to something else.</p>
 				</section>
 				<section id="m-deck-statistics">
 					<h4>Deck Statistics</h4>
@@ -98,15 +98,15 @@
 							src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 							alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section displays various statistics about your currently open deck. Whenever you modify your deck, the statistics immediately update as needed.</p>
+					<p>This section displays various statistics about your currently open deck. Whenever you modify the deck, the statistics immediately update as needed.</p>
 					<p>The parts of the deck statistics section include the following:</p>
 					<ul>
-						<li><strong>Using Colors</strong> — Shows the symbols of whichever of the five mana colors are required by mana costs among spells in the deck.</li>
-						<li><strong>Average Mana Value</strong> — Shows a number equal to the mean of the mana value among spells in the deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
-						<li><strong>Last Edited</strong> — Shows the date and time of when the deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
-						<li><strong>Card Names</strong> — Shows a number equal to the count of names of cards in the deck, ignoring duplicates of cards. (Having a plural quantity of any card doesn’t increase the deck’s number of card names.)</li>
-						<li><strong>Total Cards</strong> — Shows a number equal to the total cards (including duplicates) in the deck. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building rules, a warning symbol (⚠) appears beside the number.</li>
-						<li><strong>More Stats</strong> — This is a button you can click on to go to the <a href="#m-more-stats-pages">More Deck Statistics page</a>, where you can review additional sets of information about the deck.</li>
+						<li><strong>Using Colors</strong> — Shows the symbols of whichever of the five mana colors are required by mana costs among spells in your deck.</li>
+						<li><strong>Average Mana Value</strong> — Shows a number equal to the mean of the mana value among spells in your deck. (Mana value is also known by the older term “converted mana cost.”) This calculation includes cards’ quantities and excludes land cards.</li>
+						<li><strong>Last Edited</strong> — Shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">adjusting a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as modifications. (<a href="#m-card-image">Viewing another card</a> and <a href="#m-card-sorter">sorting the card list</a> don’t count.)</li>
+						<li><strong>Card Names</strong> — Shows a number equal to the count of names of cards in your deck, ignoring duplicates of cards. (Having a plural quantity of any card doesn’t increase the deck’s count of card names.)</li>
+						<li><strong>Total Cards</strong> — Shows a number equal to the total cards (including duplicates) in your deck. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building rules, a warning symbol (⚠) appears beside the number.</li>
+						<li><strong>More Stats</strong> — This is a button you can click on to go to the <a href="#m-more-stats-pages">More Deck Statistics page</a>.</li>
 					</ul>
 				</section>
 				<section id="m-card-image">
@@ -117,9 +117,9 @@
 							alt="Snippet of card image" title="Screenshot" loading="lazy" />
 					</p>
 					<h4>Card Image</h4>
-					<p>This is a scanned image of the last selected card from your deck’s <a href="#m-card-list">card list</a>.</p>
-					<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which is a website that provides more information about <i>Magic</i> cards (and it’s where MTG Deck Builder gets its card data from).</p>
+					<p>This section displays a scanned image of the last selected card from the <a href="#m-card-list">card list</a> of your deck.</p>
 					<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
+					<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which is a website that has information on every <i>Magic</i> card (and it’s also where MTG Deck Builder gets its card data from).</p>
 				</section>
 				<section id="m-card-list">
 					<h4>Card List</h4>
@@ -129,7 +129,7 @@
 							src="@/img/manual-card-list.jpg" width="658" height="339"
 							alt="Snippet of card list" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This is the list of cards contained in your currently open deck, where each card is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
+					<p>This section has the list of cards contained in your currently open deck, where each card of a particular name is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
 					<p>Labeled on each of the card buttons are the following card characteristics:</p>
 					<ul>
 						<li>Name</li>
@@ -172,11 +172,11 @@
 							src="@/img/manual-card-adder.jpg" width="810" height="173"
 							alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This is a basic form where you can enter a card’s name in the text box, then click on the Add Card button to insert that card into your deck.</p>
+					<p>This section has a basic form where you can enter a card’s name in the text box, then click on the Add Card button to insert that card into your deck.</p>
 					<p>Whenever you start typing letters of a card’s name into the text box, a small list of card suggestions based on those initial letters will appear. Entering names in the card adder is case insensitive. (It doesn’t matter whether letters are uppercase or lowercase.)</p>
 					<p>When you submit a card name, if that card has been printed in multiple <i>Magic</i> sets, then the card from the latest released set will be retrieved. Only a valid name of a <i>Magic</i> card will add the card to your deck. If a name you submit is invalid, the app will notify you of the error.</p>
 					<p>To add any <i>Magic</i> card at random (among Modern-legal cards), submit the code “<strong>#random</strong>” as the name in the card adder. Your web browser may also show this as a selectable option when the card adder’s text box has focus.</p>
-					<p>The card adder won’t add a card of a certain name when it already exists in the <a href="#m-card-list">card list</a>. (If you want to have duplicates of a card, increase the card’s <a href="#m-card-quantities">quantity</a> instead.)</p>
+					<p>The card adder won’t add a card of a certain name when it already exists in the <a href="#m-card-list">card list</a>. (If you want to have duplicates of a card, increase its <a href="#m-card-quantities">quantity</a> instead.)</p>
 					<p>Newly added cards will be put at the bottom of the card list. (You can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.)</p>
 				</section>
 				<section id="m-card-sorter">
@@ -186,7 +186,7 @@
 							src="@/img/manual-card-sorter.jpg" width="350" height="185"
 							alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This is a drop-down menu with various options for sorting cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
+					<p>This section has a drop-down menu with various options for sorting cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
 					<ul>
 						<li><strong>Name</strong> — Sorts alphabetically.</li>
 						<li><strong>Mana Color</strong> — Sorts from monocolored, to multicolored, to colorless. Among the monocolored, this sorts by <i>Magic</i>’s conventional order of the colors: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
@@ -216,7 +216,7 @@
 
 			<section id="m-more-stats-pages">
 				<h3>“More Stats” Pages</h3>
-				<p>Clicking on the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a> will direct you to the deck’s More Deck Statistics page. This type of page displays tabular data in various categories of measurement about the cards in the deck.</p>
+				<p>Clicking on the More Stats button in the <a href="#m-deck-statistics">deck page’s header</a> will direct you to your deck’s More Deck Statistics page, where you can review additional information about the cards in your deck. This type of page displays tabular data in various categories of measurement.</p>
 				<p>
 					<img class="screenshot"
 						srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
