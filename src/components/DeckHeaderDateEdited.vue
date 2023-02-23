@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-info date-edited">
-		<h3>Last Edited</h3>
+		<h3>Last Edit</h3>
 
 		<div class="output">
 			{{ dateEdited }}<br>{{ timeEdited }}
@@ -30,47 +30,25 @@ export default {
 	computed: {
 		dateEdited: function () {
 			const dateTime = new Date(this.deck.editDate)
-			let month = dateTime.getMonth() + 1
+			const month = monthNameFromNumber()
 			const day = dateTime.getDate()
 			const year = dateTime.getFullYear()
 
-			switch (month) {
-			case 1:
-				month = 'Jan.'
-				break
-			case 2:
-				month = 'Feb.'
-				break
-			case 3:
-				month = 'Mar.'
-				break
-			case 4:
-				month = 'Apr.'
-				break
-			case 5:
-				month = 'May'
-				break
-			case 6:
-				month = 'June'
-				break
-			case 7:
-				month = 'July'
-				break
-			case 8:
-				month = 'Aug.'
-				break
-			case 9:
-				month = 'Sep.'
-				break
-			case 10:
-				month = 'Oct.'
-				break
-			case 11:
-				month = 'Nov.'
-				break
-			case 12:
-				month = 'Dec.'
-				break
+			function monthNameFromNumber () {
+				switch (dateTime.getMonth() + 1) {
+				case 1: return 'Jan.'
+				case 2: return 'Feb.'
+				case 3: return 'Mar.'
+				case 4: return 'Apr.'
+				case 5: return 'May'
+				case 6: return 'June'
+				case 7: return 'July'
+				case 8: return 'Aug.'
+				case 9: return 'Sep.'
+				case 10: return 'Oct.'
+				case 11: return 'Nov.'
+				case 12: return 'Dec.'
+				}
 			}
 
 			return `${month} ${day}, ${year}`
