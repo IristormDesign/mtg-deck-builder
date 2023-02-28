@@ -12,6 +12,7 @@
 					<option value="cmc">Mana Value</option>
 					<option value="type">Type</option>
 					<option value="subtype">Subtype</option>
+					<option value="supertype">Supertype</option>
 					<option value="rarity">Rarity</option>
 					<option value="qty">Quantity</option>
 				</select>
@@ -49,6 +50,8 @@ export default {
 						sortByType(cards); break
 					case 'subtype':
 						sortBySubtype(cards); break
+					case 'supertype':
+						sortBySupertype(cards); break
 					case 'rarity':
 						sortByRarity(cards); break
 					case 'qty':
@@ -116,24 +119,48 @@ export default {
 				})
 			}
 			function sortBySubtype (cards) {
-				const regexSubtypeMarker = /\s—\s\w+/ // Finds ` — ` followed by at least one word
+				const regexSubtype = / — \w/ // Finds ` — ` followed by a word.
 
 				// First, sort between cards with subtypes and cards without subtypes.
 				cards.sort((a, b) => {
-					const aHasSubtype = regexSubtypeMarker.test(a.type)
-					const bHasSubtype = regexSubtypeMarker.test(b.type)
+					const aHasSubtype = regexSubtype.test(a.type)
+					const bHasSubtype = regexSubtype.test(b.type)
 
 					return bHasSubtype - aHasSubtype
 				})
 
 				// Next, sort the cards with subtypes alphabetically by subtype.
 				cards.sort((a, b) => {
-					const subtypeA = a.type.match(regexSubtypeMarker)
-					const subtypeB = b.type.match(regexSubtypeMarker)
+					const subtypeA = a.type.match(regexSubtype)
+					const subtypeB = b.type.match(regexSubtype)
 
 					if (subtypeA < subtypeB) {
 						return -1
 					} else if (subtypeA > subtypeB) {
+						return 1
+					} else {
+						return 0
+					}
+				})
+			}
+			function sortBySupertype (cards) {
+				const regexSupertype = /^\b(Basic|Elite|Legendary|Ongoing|Snow|Token|World)\b \w/ // Finds a string beginning with certain supertype terms such as "Legendary" followed by a space and any word.
+
+				// First, sort between cards with supertypes and cards without supertypes.
+				cards.sort((a, b) => {
+					const aHasSupertype = regexSupertype.test(a.type)
+					const bHasSupertype = regexSupertype.test(b.type)
+
+					return bHasSupertype - aHasSupertype
+				})
+
+				cards.sort((a, b) => {
+					const supertypeA = a.type.match(regexSupertype)
+					const supertypeB = b.type.match(regexSupertype)
+
+					if (supertypeA < supertypeB) {
+						return -1
+					} else if (supertypeA > supertypeB) {
 						return 1
 					} else {
 						return 0

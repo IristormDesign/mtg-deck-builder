@@ -136,7 +136,7 @@
 					<ul>
 						<li>Name</li>
 						<li>Mana cost (if any)</li>
-						<li>Type (including subtype, if any)</li>
+						<li>Type, including supertype and/or subtype (if any)</li>
 						<li>Rarity — The name and symbol of each rarity level are the following:
 							<ul>
 								<li>Common — black “C”</li>
@@ -188,13 +188,14 @@
 							src="@/img/manual-card-sorter.jpg" width="350" height="185"
 							alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section has a drop-down menu with various options for instantly sorting all cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
+					<p>This section has a drop-down menu with various options for instantly sorting all cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options include the following:</p>
 					<ul>
 						<li><strong>Name</strong> — Sorts alphabetically by name.</li>
-						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among monocolored cards, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among colorless cards, this sorts between spells and lands.</li>
+						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among the monocolored, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
 						<li><strong>Mana Value</strong> — Sorts from lowest to highest in mana value (a.k.a. converted mana cost).</li>
 						<li><strong>Type</strong> — Sorts by type in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
+						<li><strong>Supertype</strong> — Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Examples of supertypes are “basic” [on land cards] and “legendary.”)</li>
 						<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
 						<li><strong>Quantity</strong> — Sorts from largest to smallest in quantity.</li>
 					</ul>

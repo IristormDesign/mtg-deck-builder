@@ -77,10 +77,22 @@ export default {
 						}
 					} else if (sortAttribute === 'subtype') {
 						const hasSubtype = (card) => {
-							return /\s—\s.*/.test(card.type)
+							const regexSubtype = / — \w/
+
+							return regexSubtype.test(card.type)
 						}
 
 						if (hasSubtype(card) && !hasSubtype(nextCard)) {
+							card.gapAfter = true
+						}
+					} else if (sortAttribute === 'supertype') {
+						const hasSupertype = (card) => {
+							const regexSupertype = /^\b(Basic|Elite|Legendary|Ongoing|Snow|Token|World)\b \w/
+
+							return regexSupertype.test(card.type)
+						}
+
+						if (hasSupertype(card) && !hasSupertype(nextCard)) {
 							card.gapAfter = true
 						}
 					}
