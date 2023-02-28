@@ -89,7 +89,7 @@ export default {
 				})
 			}
 			function sortByType (cards) {
-				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'other', 'land']
+				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
 
 				function determineType (card) {
 					const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
