@@ -4,10 +4,9 @@
 	border: $border-image;
 }
 .warning-symbol {
-	color: $color-mythic-lighter;
-	display: inline-block;
+	color: desaturate(darken($color-rarity-gold, 12.5%), 12.5%);
 	cursor: default;
-	font-size: 80%;
+	font-size: 60%;
 }
 .mana-symbol {
 	$common-mana-symbol-size: .875em;

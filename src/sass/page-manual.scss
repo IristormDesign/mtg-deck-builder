@@ -22,9 +22,9 @@
 	header {
 		grid-column: span 2;
 		text-align: center;
-
+		
 		h2 {
-			margin-top: 0;
+			margin: 0;
 		}
 	}
 	.table-of-contents {
@@ -59,7 +59,8 @@
 	}
 	.the-manual {
 		width: 100%;
-		padding-top: $lhse*.5;
+		padding-top: $lhse*.25;
+		padding-bottom: $lhse*.5;
 		max-width: $max-width-content;
 
 		button {
@@ -68,8 +69,13 @@
 		h3 {
 			@include pronounced-heading;
 		}
-		h4 {
-			margin-bottom: $lhse*.5;
+	}
+	figure {
+		text-align: center;
+		margin: $lhse*.5;
+		
+		img {
+			margin-bottom: 0;
 		}
 	}
 }
@@ -80,7 +86,7 @@
 
 		header,
 		.table-of-contents {
-			margin-bottom: $lhse*.5;
+			margin-bottom: $lhse*.25;
 		}
 		.table-of-contents {
 			position: static;
@@ -92,6 +98,14 @@
 		}
 	}
 }
+@media (max-width: ($min-width-app*.875)) {
+	.manual-page {
+		.the-manual {
+			padding-right: $lhse;
+			padding-left: $lhse;
+		}
+	}
+}
 @media (max-width: $width-mobile-breakpoint) {
 	.manual-page {
 		header,
@@ -99,8 +113,6 @@
 			display: block;
 			border: 0;
 			border-radius: 0;
-			padding-right: $lhse;
-			padding-left: $lhse;
 		}
 		header {
 			border-bottom: $border-sections;

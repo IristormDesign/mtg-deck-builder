@@ -2,8 +2,6 @@
 	<article class="manual-page content-box">
 		<header>
 			<h2>User Manual</h2>
-			<img class="intro-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-			<small>(Illustration: <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a></i> by Aaron Miller)</small>
 		</header>
 
 		<nav class="table-of-contents">
@@ -36,9 +34,13 @@
 
 		<div class="the-manual">
 			<section id="m-intro">
-				<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. In the table of contents, you can click on a link to skip directly to the respective section of this user manual.</p>
+				<figure>
+					<img class="intro-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
+					<small>(Illustration: <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a></i> by Aaron Miller)</small>
+				</figure>
+				<p>This page explains how to use this web app, <router-link :to="{name: 'home'}">MTG Deck Builder</router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. In the table of contents, you can click on a link to skip directly to the respective section of the user manual.</p>
 				<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Portal:Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
-				<p>Note: In this app, symbols of colored mana are displayed as single letters instead of their standard graphical symbols. By Wizards of the Coast’s convention for representing colored mana in plain text, white is “W,” blue is “U,” black is “B,” red is “R,” and green is “G.”</p>
+				<p>Note: In this app, the symbols of colored mana are displayed as single letters instead of their standard graphical symbols. By Wizards of the Coast’s convention for representing colored mana in plain text, white is “W,” blue is “U,” black is “B,” red is “R,” and green is “G.”</p>
 			</section>
 
 			<section id="m-app-header">
@@ -68,7 +70,7 @@
 						src="@/img/manual-deck-page.jpg" width="658" height="444"
 						alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 				</p>
-				<p>A deck page consists of several different sections. These sections include the following—listed here in the order of their position on the page (at least when displayed on a wide computer screen) from top to bottom, left to right:</p>
+				<p>A deck page consists of several different sections. These sections include the following—listed here in the order of their position on the page from top to bottom, left to right:</p>
 				<ul>
 					<li><a href="#m-deck-name">Deck name</a></li>
 					<li><a href="#m-deck-statistics">Deck statistics</a></li>
@@ -172,12 +174,12 @@
 							src="@/img/manual-card-adder.jpg" width="810" height="173"
 							alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section has a basic form where you can enter a card’s name in the text box, then click on the Add Card button to insert that card into your deck.</p>
+					<p>This section has a simple form where you can enter a card’s name in the text box, then click on the Add Card button to make that card appear in the <a href="#m-card-list">card list</a> of your deck.</p>
 					<p>Whenever you start typing letters of a card’s name into the text box, a small list of card suggestions based on those initial letters will appear. Entering names in the card adder is case insensitive. (It doesn’t matter whether letters are uppercase or lowercase.)</p>
-					<p>When you submit a card name, if that card has been printed in multiple <i>Magic</i> sets, then the card from the latest released set will be retrieved. Only a valid name of a <i>Magic</i> card will add the card to your deck. If a name you submit is invalid, the app will notify you of the error.</p>
+					<p>When you submit a card name, if that card has been printed in multiple <i>Magic</i> sets, then the card from the latest released set will be retrieved. Only a valid name of a <i>Magic</i> card can add the card to your deck. If a name you submit is invalid, the app will notify you of the error.</p>
 					<p>To add any <i>Magic</i> card at random (among Modern-legal cards), submit the code “<strong>#random</strong>” as the name in the card adder. Your web browser may also show this as a selectable option when the card adder’s text box has focus.</p>
-					<p>The card adder won’t add a card of a certain name when it already exists in the <a href="#m-card-list">card list</a>. (If you want to have duplicates of a card, increase its <a href="#m-card-quantities">quantity</a> instead.)</p>
-					<p>Newly added cards will be put at the bottom of the card list. (You can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange them.)</p>
+					<p>The card adder won’t add a card of a certain name when it already exists in the card list. (If you want to have duplicates of a card, increase its <a href="#m-card-quantities">quantity</a> instead.)</p>
+					<p>A newly added card is always put at the bottom of the card list. (You can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange the newly added cards with the rest.)</p>
 				</section>
 				<section id="m-card-sorter">
 					<h4>Card Sorter</h4>
@@ -186,29 +188,29 @@
 							src="@/img/manual-card-sorter.jpg" width="350" height="185"
 							alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section has a drop-down menu with various options for sorting cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
+					<p>This section has a drop-down menu with various options for instantly sorting all cards in the <a href="#m-card-list">card list</a> by certain attributes. The options include the following:</p>
 					<ul>
 						<li><strong>Name</strong> — Sorts alphabetically by name.</li>
-						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among monocolored cards, this sorts by <i>Magic</i>’s conventional order of the mana colors: white, blue, black, red, green. Among colorless cards, this sorts between spells and lands.</li>
-						<li><strong>Mana Value</strong> — Sorts from least to greatest in mana value (a.k.a. converted mana cost).</li>
+						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among monocolored cards, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among colorless cards, this sorts between spells and lands.</li>
+						<li><strong>Mana Value</strong> — Sorts from lowest to highest in mana value (a.k.a. converted mana cost).</li>
 						<li><strong>Type</strong> — Sorts by type in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
 						<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
-						<li><strong>Quantity</strong> — Sorts from most to fewest in quantity.</li>
+						<li><strong>Quantity</strong> — Sorts from largest to smallest in quantity.</li>
 					</ul>
-					<p>The card list can be the result of multiple sorting options cumulatively, with the more recently selected options given higher priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the instant group, etc.), the cards are sorted by rarity.</p>
+					<p>The effects of sorting are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
 					<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
-					<p>To make the card list easier to skim at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
+					<p>For easier skimming of the deck list at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 					<p>Applying a sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
 				</section>
 				<section id="m-deck-actions">
 					<h4>Deck Actions</h4>
-					<p>Beside the card sorter section on a deck page is the deck actions section. It has a drop-down menu from which you can choose to perform special actions to the deck you’re currently viewing.</p>
-					<p>The deck actions include the following:</p>
+					<p>Beside the card sorter section is the deck actions section. It has a drop-down menu from which you can choose to do special actions to the deck you’re currently viewing.</p>
+					<p>The options for deck actions include the following:</p>
 					<ul>
 						<li><strong>Copy</strong> — Creates a new deck that has an identical list of cards. The name of the copied deck will have the same name as the origin deck, except that a unique number within parentheses is appended to it. (You can always <a href="#m-deck-name">rename</a> it later.)</li>
-						<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a> that gets saved on your computer or device to wherever your web browser puts downloads. The data file is named after your deck’s name and has “.deck” as its file extension.</li>
-						<li><strong>Delete</strong> — Fully removes your deck from the app. (If you’d later try to access the page URL of a deleted deck in the app, you’d arrive on a “Page Not Found” error page instead.)</li>
+						<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a> that gets saved on your computer or device to wherever your web browser puts downloads. The file is named after your deck’s name, and has “.deck” as its file extension.</li>
+						<li><strong>Delete</strong> — Removes your whole deck from the app permanently. (If you’d later try to access the URL of a deleted deck’s page in the app, then you’d arrive on a “Page Not Found” error page instead.)</li>
 					</ul>
 					<p>Whenever you select any of the deck action options, the app will ask you to confirm the action before proceeding, giving you the chance to cancel.</p>
 				</section>
@@ -250,7 +252,7 @@
 					<li><strong>Multicolored</strong> — Cards that are two or more mana colors.</li>
 					<li><strong>Variable cost</strong> — Cards whose mana costs include a letter X.</li>
 					<li><strong>Variable P/T</strong> — Cards whose power (P) or toughness (T) is a star symbol.</li>
-					<li><strong>Double-faced</strong> — Cards that are double-faced (have a second card frame on their back side instead of the usual card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
+					<li><strong>Double-faced</strong> — Cards that are double-faced (have a second card frame on their back side instead of the normal card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
 				</ul>
 				<p>Single cards can be counted in multiple properties within a category. For example, a card that has “Artifact Creature” in its type line is considered to be both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than your deck’s total cards and a percentage greater than 100%.</p>
 			</section>

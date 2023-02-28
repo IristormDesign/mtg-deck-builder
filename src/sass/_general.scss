@@ -35,7 +35,7 @@ body {
 .wrap {
 	max-width: $max-width-app;
 	margin: 0 auto;
-	padding: 0 $lhse;
+	padding: 0 $lhse*1.5;
 }
 main {
 	flex-grow: 1;
@@ -56,11 +56,15 @@ h4 {
 	line-height: 1;
 	color: $color-text-brighter;
 	margin-top: $lhse;
-	margin-bottom: $line-height-standard*1rem;
+	margin-bottom: $line-height-standard*.5rem;
 }
 h2 {
 	margin-top: $line-height-standard * .5rem;
 	font-size: 150%;
+
+	&:first-child {
+		margin-top: 0;
+	}
 }
 h3 {
 	font-size: 125%;

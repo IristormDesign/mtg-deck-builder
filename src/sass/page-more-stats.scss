@@ -216,6 +216,8 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 @media (max-width: (1920px * .8333)) {
 	.more-stats {
+		margin: $lhse*.5 auto $lhse;
+		
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}

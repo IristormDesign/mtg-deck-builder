@@ -8,7 +8,7 @@
 	width: 100%;
 	
 	article {
-		margin: 0 0 $lhse;
+		margin: 0;
 		position: relative;
 	}
 }
@@ -16,6 +16,7 @@
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	gap: $lhse*.5;
+	margin-bottom: $lhse;
 }
 .deck-main {
 	grid-column: 3 / 8;
@@ -25,6 +26,11 @@
 @media (max-width: $width-app-breakpoint-tablet) {
 	.deck-main {
 		grid-column: 4 / 8;
+	}
+}
+@media (max-width: ($min-width-app*.875)) {
+	.card-display-scroll-view {
+		margin-bottom: $lhse*.5;
 	}
 }
 @media (max-width: ($min-width-app*.5)) {

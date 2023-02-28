@@ -1,8 +1,8 @@
 .content-box {
 	background: $color-group-bg;
 	border-radius: $border-radius-group;
-	padding: $lhse $lhse*1.5;
-	margin: $lhse;
+	padding: $lhse $lhse*1.5 $lhse*.5;
+	margin: $lhse $lhse*1.5;
 	max-width: $max-width-content;
 	min-width: 0;
 
@@ -53,13 +53,18 @@ img {
 	margin-left: 1em;
 }
 
+@media (max-width: ($min-width-app*.875)) {
+	.content-box {
+		margin: $lhse*.5;
+		padding-right: $lhse;
+		padding-left: $lhse;
+	}
+}
 @media (max-width: $width-mobile-breakpoint) {
 	.content-box {
 		margin: 0;
 		border: 0;
 		border-radius: 0;
-		padding-right: $lhse;
-		padding-left: $lhse;
 	}
 }
 @media (max-width: 24em) {
