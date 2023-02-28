@@ -5,7 +5,7 @@
 	backface-visibility: hidden;
 }
 html {
-	scroll-padding-top: $height-app-header + $lhse;
+	scroll-padding-top: $height-app-header + $lhse*1.5;
 }
 body {
 	font: 20px/#{$line-height-standard} $font-family-standard;

@@ -92,7 +92,7 @@
 	position: relative;
 	background: $background-light-gradient;
 	border-top: divide($lhse, 6) solid $color-mythic-dim;
-	scroll-margin-top: -$lhse;
+	scroll-margin-top: -$lhse*1.5;
 
 	h2,
 	p,

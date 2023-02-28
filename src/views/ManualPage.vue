@@ -131,7 +131,7 @@
 							src="@/img/manual-card-list.jpg" width="658" height="339"
 							alt="Snippet of card list" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section has the list of cards contained in your currently open deck, where each card of a particular name is represented by a wide button. You can click on any of these card buttons to have that card displayed in the <a href="#m-card-image">card image</a> section.</p>
+					<p>This section has the list of <i>Magic</i> cards that are part of your currently open deck. Each card of a particular name is represented by a wide button, which you can click on to have the respective card appear in the <a href="#m-card-image">card image</a> section.</p>
 					<p>Labeled on each of the card buttons are the following card characteristics:</p>
 					<ul>
 						<li>Name</li>
