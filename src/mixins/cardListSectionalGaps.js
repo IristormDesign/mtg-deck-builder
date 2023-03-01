@@ -95,6 +95,10 @@ export default {
 						if (hasSupertype(card) && !hasSupertype(nextCard)) {
 							card.gapAfter = true
 						}
+					} else if (sortAttribute === 'pt-sum') {
+						if (card.power !== undefined && nextCard.power === undefined) {
+							card.gapAfter = true
+						}
 					}
 				} else { // The last card in the list (before any newly added cards)
 					card.gapAfter = true

@@ -188,7 +188,7 @@
 							src="@/img/manual-card-sorter.jpg" width="350" height="185"
 							alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 					</p>
-					<p>This section has a drop-down menu with various options for instantly sorting all cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options include the following:</p>
+					<p>This section has a drop-down menu with various options for instantly sorting all cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options and their effects include the following:</p>
 					<ul>
 						<li><strong>Name</strong> — Sorts alphabetically by name.</li>
 						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among the monocolored, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
@@ -197,11 +197,12 @@
 						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
 						<li><strong>Supertype</strong> — Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Examples of supertypes are “basic” [on land cards] and “legendary.”)</li>
 						<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
+						<li><strong>P/T Sum</strong> — Sorts from largest to smallest by “P/T sum,” which is a number equal to the power (P) plus the toughness (T) of a card. (For example, the P/T sum of a 2/3 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from largest to smallest by power alone. Cards without the power and toughness characteristics are moved to the bottom.</li>
 						<li><strong>Quantity</strong> — Sorts from largest to smallest in quantity.</li>
 					</ul>
 					<p>The effects of sorting are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
 					<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
-					<p>For easier skimming of the deck list at a glance, the sorting options for mana value, type, and subtype add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
+					<p>For easier skimming of the deck list at a glance, the sorting options for mana value, type, subtype, supertype, and P/T sum add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 					<p>Applying a sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
 				</section>
 				<section id="m-deck-actions">

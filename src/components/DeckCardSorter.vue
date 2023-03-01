@@ -14,6 +14,7 @@
 					<option value="subtype">Subtype</option>
 					<option value="supertype">Supertype</option>
 					<option value="rarity">Rarity</option>
+					<option value="pt-sum">P/T Sum</option>
 					<option value="qty">Quantity</option>
 				</select>
 			</fieldset>
@@ -54,6 +55,8 @@ export default {
 						sortBySupertype(cards); break
 					case 'rarity':
 						sortByRarity(cards); break
+					case 'pt-sum':
+						sortByPTSum(cards); break
 					case 'qty':
 						sortByQuantity(cards); break
 					default:
@@ -154,6 +157,7 @@ export default {
 					return bHasSupertype - aHasSupertype
 				})
 
+				// Next, sort the cards with supertypes alphabetically by supertype.
 				cards.sort((a, b) => {
 					const supertypeA = a.type.match(regexSupertype)
 					const supertypeB = b.type.match(regexSupertype)
@@ -175,6 +179,58 @@ export default {
 					const rarityB = rarityOrder.indexOf(b.rarity)
 
 					return rarityA - rarityB
+				})
+			}
+			function sortByPTSum (cards) {
+				// First, sort between cards that have the power attribute and cards that don't.
+				cards.sort((a, b) => {
+					if (a.power !== undefined) {
+						return -1
+					} else if (b.power === undefined) {
+						return 1
+					} else {
+						return 0
+					}
+				})
+
+				// Next, sort the cards by their P/T sum.
+				cards.sort((a, b) => {
+					let cardAPower = a.power
+					let cardBPower = b.power
+					let cardATough = a.toughness
+					let cardBTough = b.toughness
+
+					if (isNaN(cardAPower)) {
+						cardAPower = 0
+					} else {
+						cardAPower = Number(cardAPower)
+					}
+					if (isNaN(cardBPower)) {
+						cardBPower = 0
+					} else {
+						cardBPower = Number(cardBPower)
+					}
+					if (isNaN(cardATough)) {
+						cardATough = 0
+					} else {
+						cardATough = Number(cardATough)
+					}
+					if (isNaN(cardBTough)) {
+						cardBTough = 0
+					} else {
+						cardBTough = Number(cardBTough)
+					}
+
+					const cardASum = cardAPower + cardATough
+					const cardBSum = cardBPower + cardBTough
+
+					if (cardASum < cardBSum) {
+						return 1
+					} else if (cardASum > cardBSum) {
+						return -1
+					} else { // If cards A and B have equal P/T sums, then sort them by power alone.
+						return cardBPower - cardAPower
+					}
 				})
 			}
 			function sortByQuantity (cards) {
