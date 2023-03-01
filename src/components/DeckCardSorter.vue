@@ -68,6 +68,10 @@ export default {
 
 			store.commit('setDecks', store.state.decks)
 
+			document.querySelector('.card-list').scrollIntoView({
+				behavior: 'smooth'
+			})
+
 			function sortByColor (cards) {
 				function isColorlessLand (card) {
 					const hasLandType = /\bLand\b/.test(card.type)

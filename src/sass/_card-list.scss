@@ -10,6 +10,8 @@ $width-qty-column: 2.5em;
 }
 @mixin long-card-buttons {
 	.card-list {
+		scroll-margin-top: -$lhse*.75;
+		
 		.list-headings {
 			display: flex;
 
