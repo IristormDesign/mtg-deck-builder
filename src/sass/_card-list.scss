@@ -38,7 +38,11 @@ $width-qty-column: 2em;
 				padding-left: 1em;
 			}
 		}
-		li {			
+		li {
+			&:has(.qty:hover)	{
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
 			.qty {
 				.qty-buttons {
 					height: $lhse*1.6667;
@@ -66,6 +70,9 @@ $width-qty-column: 2em;
 			}
 		}
 		li {
+			&:has(.qty:hover)	{
+				border-radius: $border-radius-button;
+			}
 			.qty {
 				.qty-buttons {
 					height: $lhse*2;
@@ -328,7 +335,8 @@ $width-qty-column: 2em;
 			}
 			.qty-buttons {
 				position: absolute;
-				right: -1em;
+				top: -$lhse*.3333;
+				right: -$lhse*.75;
 				z-index: 8;
 				display: none;
 				flex-direction: column;
@@ -336,30 +344,28 @@ $width-qty-column: 2em;
 			button {
 				@include primary-btn;
 				font-family: sans-serif;
-				font-weight: bold;
+				font-size: 120%;
 				min-width: auto;
-				width: $lhse*.75;
-				height: $lhse*.875;
+				width: $lhse*.6667;
+				height: $lhse*.6667;
+				line-height: $lhse*.6667;
 				padding: 0;
 				margin: 0; 
 				box-shadow:
 					inset -.5px 1px 0 rgba(#fff, .25),
 					$box-shadow-buttons,
 					inset 0 .25em .5em $color-mythic-lighter;
-				border-radius: 50%;
-				line-height: 1 !important;
+				border-radius: 25%;
 			}
 			.increment {
 				border-bottom-right-radius: 0;
 				border-bottom-left-radius: 0;
 				background: lighten($color-link, 6.25%);
-				padding-top: $lhse*.125;
 			}
 			.decrement {
 				border-top-right-radius: 0;
 				border-top-left-radius: 0;
 				background: desaturate($color-link, 6.25%);
-				padding-bottom: $lhse*.125;
 			}
 		}
 	}

@@ -164,7 +164,7 @@
 						<li>If you’re on a larger screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear beside it. Of that pair of buttons, click on the “+” (plus sign) to increase the card’s quantity, or the “&minus;” (minus sign) to decrease.</li>
 						<li>Click on the quantity number, then press your keyboard’s up-arrow or down-arrow keys.</li>
 					</ul>
-					<p>To remove a card from your deck, decrease the card’s quantity to 0 (zero). Before the card actually gets removed, the app asks you to confirm. If you choose to cancel instead, then the card remains in the deck with its quantity reset to 1.</p>
+					<p>To remove a card from your deck, decrease the card’s quantity to 0 (zero) or delete the quantity number. Before the card actually gets removed, the app asks you to confirm. If you choose to cancel instead, then the card remains in the deck with its quantity reset to 1.</p>
 					<p>Following the rules of <i>Magic</i>, each card of a particular name cannot have a quantity greater than 4 in a deck, except cards of the “basic land” type, which can have any quantity.</p>
 				</section>
 				<section id="m-card-adder">
