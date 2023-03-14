@@ -132,7 +132,7 @@
 							alt="Snippet of card list" title="Screenshot" loading="lazy" />
 					</p>
 					<p>This section has the list of <i>Magic</i> cards that are part of your currently open deck. Each card of a particular name is represented by a wide button, which you can click on to have the respective card appear in the <a href="#m-card-image">card image</a> section.</p>
-					<p>Labeled on each of the card buttons are the following card characteristics:</p>
+					<p>Labeled on each card button are the following card characteristics:</p>
 					<ul>
 						<li>Name</li>
 						<li>Mana cost (if any)</li>
@@ -158,14 +158,14 @@
 							alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
 					</p>
 					<p>Next to each card button in the <a href="#m-card-list">card list</a> is a number representing the quantity (“QTY.”) of that card in your currently viewed deck.</p>
-					<p>To change a card’s quantity, you can do any of the following:</p>
+					<p>To change a card’s quantity, do any of the following methods:</p>
 					<ul>
 						<li>Click on the quantity number, then use your keyboard to type in a new number.</li>
-						<li>If you’re on a larger screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear beside it. Of that pair of buttons, click on “<span title="up arrow">▲</span>” to increase the card’s quantity, or “<span title="down arrow">▼</span>” to decrease.</li>
+						<li>If you’re on a larger screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear beside it. Of that pair of buttons, click on the “+” (plus sign) to increase the card’s quantity, or the “&minus;” (minus sign) to decrease.</li>
 						<li>Click on the quantity number, then press your keyboard’s up-arrow or down-arrow keys.</li>
 					</ul>
 					<p>To remove a card from your deck, decrease the card’s quantity to 0 (zero). Before the card actually gets removed, the app asks you to confirm. If you choose to cancel instead, then the card remains in the deck with its quantity reset to 1.</p>
-					<p>Following the rules of <i>Magic</i>, each card of a particular name cannot have a quantity greater than 4 in a deck, except the cards of the “basic land” type, which can have any quantity.</p>
+					<p>Following the rules of <i>Magic</i>, each card of a particular name cannot have a quantity greater than 4 in a deck, except cards of the “basic land” type, which can have any quantity.</p>
 				</section>
 				<section id="m-card-adder">
 					<h4>Card Adder</h4>
@@ -192,15 +192,15 @@
 					<ul>
 						<li><strong>Name</strong> — Sorts alphabetically by name.</li>
 						<li><strong>Mana Color</strong> — Sorts between monocolored, multicolored, and colorless. Among the monocolored, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</li>
-						<li><strong>Mana Value</strong> — Sorts from lowest to highest in mana value (a.k.a. converted mana cost).</li>
+						<li><strong>Mana Value</strong> — Sorts from lowest to highest by mana value (a.k.a. converted mana cost).</li>
 						<li><strong>Type</strong> — Sorts by type in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</li>
 						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
 						<li><strong>Supertype</strong> — Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Examples of supertypes are “basic” [on land cards] and “legendary.”)</li>
-						<li><strong>Rarity</strong> — Sorts from highest to lowest in level of rarity.</li>
-						<li><strong>P/T Sum</strong> — Sorts from largest to smallest by “P/T sum,” which is a number equal to the power (P) plus the toughness (T) of a card. (For example, the P/T sum of a 2/3 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from largest to smallest by power alone. Cards without the power and toughness characteristics are moved to the bottom.</li>
-						<li><strong>Quantity</strong> — Sorts from largest to smallest in quantity.</li>
+						<li><strong>Rarity</strong> — Sorts from highest to lowest by level of rarity.</li>
+						<li><strong>P/T Sum</strong> — Sorts from greatest to least by “P/T sum,” which is a number equal to combining the power (P) and toughness (T) of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</li>
+						<li><strong>Quantity</strong> — Sorts from largest to smallest by quantity.</li>
 					</ul>
-					<p>The effects of sorting are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
+					<p>The effects of sorting the card list are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
 					<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
 					<p>For easier skimming of the deck list at a glance, the sorting options for mana value, type, subtype, supertype, and P/T sum add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
 					<p>Applying a sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
@@ -214,7 +214,7 @@
 						<li><strong>Export</strong> — Generates a <a href="#m-deck-data-files">deck data file</a> that gets saved on your computer or device to wherever your web browser puts downloads. The file is named after your deck’s name, and has “.deck” as its file extension.</li>
 						<li><strong>Delete</strong> — Removes your whole deck from the app permanently. (If you’d later try to access the URL of a deleted deck’s page in the app, then you’d arrive on a “Page Not Found” error page instead.)</li>
 					</ul>
-					<p>Whenever you select any of the deck action options, the app will ask you to confirm the action before proceeding, giving you the chance to cancel.</p>
+					<p>Whenever you select a deck action option, the app will ask you to confirm the action before proceeding, giving you the chance to cancel.</p>
 				</section>
 			</section>
 

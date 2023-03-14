@@ -1,17 +1,20 @@
 .card-display {
-	grid-column: span 2;
-	height: 534px; // Actual maximum height of card as it appears in the app.
-	width: auto;
+	width: 25%;
+	height: 100vh;
+	display: flex;
+	justify-content: flex-end;
 	position: sticky;
 	top: $height-app-header + divide($lhse, 3);
-	filter: drop-shadow(-.667px 2px 1px rgba(#000, .25));
-
+	filter: drop-shadow(-.6667px 2px 1px rgba(#000, .25));
+	
 	a {
 		position: absolute;
 		display: block;
 		mask-image: url('~@/img/card-mask.svg');
 		background: desaturate(darken($color-frame-generic, 37.5%), 0%);
 		box-shadow: inset 0 0 0 12px #000; // Black card border without card image
+		max-width: 488px * .75; // Pixel value equal to actual width of card images.
+		max-height: 680px * .75; // Pixel value equal to actual height of card images.
 
 		&:focus-visible {
 			filter: brightness(125%);
@@ -117,7 +120,7 @@ $animation-duration-card-browse: .375s;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-display {
-		grid-column: span 3;
+		width: divide(100vw, 3);
 	}
 }
 @media (max-width: 768px) { // Must match window width in JavaScript.

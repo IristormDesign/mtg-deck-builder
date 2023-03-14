@@ -1,5 +1,5 @@
 $box-shadow-card-button: 0 -1px divide($lhse, 3) 3px rgba(#000, .3333);
-$width-qty-column: 2.5em;
+$width-qty-column: 2em;
 
 @mixin box-shadow-hover-card-button($color) {
 	box-shadow:
@@ -10,7 +10,7 @@ $width-qty-column: 2.5em;
 }
 @mixin long-card-buttons {
 	.card-list {
-		scroll-margin-top: -$lhse*.75;
+		scroll-margin-top: -$lhse*.5;
 		
 		.list-headings {
 			display: flex;
@@ -26,11 +26,11 @@ $width-qty-column: 2.5em;
 		}
 		.card-button {
 			display: flex;
-			height: $lhse*1.125;
+			height: 23px;
 		}
 		.card-label-group {
 			width: 50%;
-			padding: 0 divide($lhse, 5);
+			padding: 0 divide($lhse, 6);
 
 			&:last-of-type {
 				border-top: none;
@@ -38,10 +38,10 @@ $width-qty-column: 2.5em;
 				padding-left: 1em;
 			}
 		}
-		li {
+		li {			
 			.qty {
 				.qty-buttons {
-					height: $lhse*1.75;
+					height: $lhse*1.6667;
 				}
 			}
 		}
@@ -54,16 +54,15 @@ $width-qty-column: 2.5em;
 		}
 		.card-button {
 			display: block;
-			height: auto;
+			height: 51px;
 		}
 		.card-label-group {
 			width: 100%;
-			padding: 0 divide($lhse, 3);
+			padding: 0 divide($lhse, 4);
 
 			&:last-of-type {
 				border-top: 1px solid rgba(#000, .25);
-				margin-top: 2px;
-				padding-left: divide($lhse, 3);
+				padding-left: divide($lhse, 4);
 			}
 		}
 		li {
@@ -98,12 +97,12 @@ $width-qty-column: 2.5em;
 		display: flex;
 		text-shadow: $text-shadow-over-light-bg;
 		cursor: default;
+		margin-bottom: $lhse*.125;
 		
 		strong {
 			display: block;
-			font-size: 75%;
+			font-size: 66.67%;
 			line-height: 1;
-			margin-bottom: $lhse*.25;
 			text-transform: uppercase;
 			color: $color-text-brighter;
 		}
@@ -131,7 +130,7 @@ $width-qty-column: 2.5em;
 	}
 	li {
 		display: flex;
-		margin: 2px 0;
+		margin: 1px 0;
 		padding: 0;
 		transition: transform .5s ease; // For card sorting
 		transition-property: transform, background-color;
@@ -167,6 +166,11 @@ $width-qty-column: 2.5em;
 				&.black {
 					background: darken($color-frame-black, 41.67%);
 					color: desaturate(lighten($color-frame-black, 16.67%), 41.67%);
+
+					.name,
+					.type {
+						text-shadow: 1px -1px 0 rgba(#000, .3333);
+					}
 				}
 				&.red {
 					background: saturate(darken($color-frame-red, 16.67%), 6.25%);
@@ -176,6 +180,10 @@ $width-qty-column: 2.5em;
 				}
 				&.multicolor {
 					background: saturate(darken($color-frame-multicolor, 12.5%), 6.25%);
+				}
+				.name,
+				.type {
+					text-shadow: -1px 1px 0 rgba(#fff, .0833);
 				}
 			}
 			&:hover {
@@ -194,6 +202,9 @@ $width-qty-column: 2.5em;
 				input {
 					transition: none;
 					color: $color-link;
+				}
+				> span {
+					color: $color-text;
 				}
 			}
 		}
@@ -230,10 +241,7 @@ $width-qty-column: 2.5em;
 			margin-top: 0;
 		}
 		&.gap-after {
-			margin-bottom: divide($lhse, 3);
-		}
-		&:last-child {
-			margin-bottom: 0;
+			margin-bottom: divide($lhse, 4);
 		}
 		.name,
 		.mana,
@@ -248,7 +256,7 @@ $width-qty-column: 2.5em;
 		}
 		.name {
 			margin: 0;
-			font-size: 100%;
+			font-size: 87.5%;
 			line-height: 1.375;
 			min-width: 33.33%;
 			text-align: left;
@@ -258,13 +266,15 @@ $width-qty-column: 2.5em;
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			font-size: 125%;
 			overflow: visible;
 		}
 		.type {
 			@include heading-font;
-			font-size: 83.33%;
+			font-size: 75%;
 			line-height: 1.5;
+		}
+		.rarity {
+			margin-right: -$lhse*.125;
 		}
 		.qty {
 			display: flex;
@@ -284,8 +294,7 @@ $width-qty-column: 2.5em;
 				color: $color-text;
 				background: transparent;
 				border: 0;
-				font-size: 133.33%;
-				width: 1.5em;
+				width: 1.375em;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
@@ -319,35 +328,38 @@ $width-qty-column: 2.5em;
 			}
 			.qty-buttons {
 				position: absolute;
-				right: -1.125em;
+				right: -1em;
 				z-index: 8;
 				display: none;
 				flex-direction: column;
 			}
 			button {
 				@include primary-btn;
-				font-size: 75%;
+				font-family: sans-serif;
+				font-weight: bold;
 				min-width: auto;
-				width: $lhse*1.25;
+				width: $lhse*.75;
+				height: $lhse*.875;
 				padding: 0;
-				margin: 0;
-				height: 50%;
+				margin: 0; 
 				box-shadow:
 					inset -.5px 1px 0 rgba(#fff, .25),
 					$box-shadow-buttons,
 					inset 0 .25em .5em $color-mythic-lighter;
 				border-radius: 50%;
-				line-height: 1.5 !important;
+				line-height: 1 !important;
 			}
 			.increment {
 				border-bottom-right-radius: 0;
 				border-bottom-left-radius: 0;
 				background: lighten($color-link, 6.25%);
+				padding-top: $lhse*.125;
 			}
 			.decrement {
 				border-top-right-radius: 0;
 				border-top-left-radius: 0;
 				background: desaturate($color-link, 6.25%);
+				padding-bottom: $lhse*.125;
 			}
 		}
 	}
@@ -357,15 +369,19 @@ $width-qty-column: 2.5em;
 		padding: 0;
 		border-radius: $border-radius-button;
 		border: 2px solid transparent;
+		color: rgba(#000, .875);
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		color: $color-text-card-button;
 		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
 		align-items: center;
 		box-shadow: -0.5px 1px 1px 1px rgba(#000, .25);
 
+		&:hover,
+		&:focus-within {
+			color: #000;
+		}
 		&:active {
 			transform: scale(.995) translate(0, .5px);
 			transition-duration: 0s;
@@ -381,6 +397,7 @@ $width-qty-column: 2.5em;
 		}
 		&.black {
 			background: $color-frame-black;
+			color: #000;
 		}
 		&.red {
 			background: $color-frame-red;
@@ -394,11 +411,6 @@ $width-qty-column: 2.5em;
 	}
 }
 
-@media (max-width: $width-app-breakpoint) {
-	.card-list {
-		font-size: 83.33%;
-	}
-}
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include condensed-card-buttons();
 
@@ -421,7 +433,7 @@ $width-qty-column: 2.5em;
 @media (pointer: coarse) {
 	.card-list {
 		.card-button {
-			min-height: 35px; // This is 80% of the WCAG's AAA recommendation for button heights.
+			min-height: 27px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra pixels so that the list items appear to have consistent gaps between each other.
 		}
 	}
 }

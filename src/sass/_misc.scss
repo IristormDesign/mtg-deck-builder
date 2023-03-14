@@ -15,7 +15,7 @@
 	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
 	line-height: 1;
-	margin: 0 0 0 2px;
+	margin: 0 0 0 1px;
 	box-shadow: inset .75px -1.5px 0px .5px rgba(#000, .75);
 	background: $color-mana-generic;
 	color: #000;
@@ -68,39 +68,39 @@
 	min-width: 1.3820em; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
 	box-shadow: inset 0 0 1px 1px rgba(#000, .5);
-	margin-right: -.1667em;
-	font: bold 75%/#{$line-height-standard*.8333} 'Trebuchet MS', sans-serif;
+	font: bold 14px/1 'Trebuchet MS', sans-serif;
 	padding: 1px 0;
-	color: #000;
-	text-shadow: 0 0 1.5px #fff;
+	color: rgba(#000, .875);
+	text-shadow: 0 0 1px #fff;
 	cursor: help;
 	
 	&.common {
-		background: #111;
+		background: #222;
 		box-shadow: inset 0 0 0 1px #ddd;
 		color: #ddd;
 		text-shadow: none;
 	}
 	&.uncommon {
 		background: linear-gradient(-60deg,
-			darken($color-rarity-silver, 25%),
+			darken($color-rarity-silver, 20%),
 			lighten($color-rarity-silver, 20%),
-			darken($color-rarity-silver, 25%)
+			darken($color-rarity-silver, 20%)
 		) $color-rarity-silver;
 	}
 	&.rare {
 		background: linear-gradient(-60deg,
-			darken($color-rarity-gold, 25%),
+			darken($color-rarity-gold, 20%),
 			lighten($color-rarity-gold, 20%),
-			darken($color-rarity-gold, 25%)
+			darken($color-rarity-gold, 20%)
 		) $color-rarity-gold;
 	}
 	&.mythic {
 		background: linear-gradient(-60deg,
-			saturate(darken($color-mythic-orange, 6.25%), 16.67%),
-			saturate(lighten($color-mythic-lighter, 12.5%), 33.33%),
-			saturate(darken($color-mythic-orange, 6.25%), 16.67%)
+			saturate(darken($color-mythic-orange, 6.25%), 6.25%),
+			saturate(lighten($color-mythic-lighter, 6.25%), 25%),
+			saturate(darken($color-mythic-orange, 6.25%), 6.25%)
 		) $color-mythic-lighter;
+		color: #000;
 	}
 	&.special {
 		background: linear-gradient(-60deg,
