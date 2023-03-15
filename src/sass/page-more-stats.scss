@@ -84,8 +84,8 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			height: 1.5em;
 		}
 		td {
-			padding-top: divide($lhse, 5);
-			padding-bottom: divide($lhse, 5);
+			padding-top: 0;
+			padding-bottom: 0;
 		}
 		th {
 			text-align: right;
@@ -105,7 +105,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 10.8;
+		max-height: $lhse * 9.25;
 		background:
 			/* Top shadow cover */
 			linear-gradient(

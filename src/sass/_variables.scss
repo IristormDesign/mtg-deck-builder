@@ -56,8 +56,8 @@ $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .3333);
 $min-width-app: 960px;
 $width-mobile-breakpoint: $min-width-app * .625;
 $width-app-breakpoint: $min-width-app*1.375;
-$width-app-breakpoint-tablet: 1024px;
-$max-width-app: 1440px;
+$width-app-breakpoint-tablet: 1024px - 1;
+$max-width-app: 1440px - 1;
 $max-width-content: 64ch;
 
 // MISCELLANEOUS
