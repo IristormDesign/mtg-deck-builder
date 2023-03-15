@@ -37,8 +37,9 @@ export default {
 			return this.deck.cards.find(card => {
 				if (card) {
 					return card.name === this.deck.viewedCard
+				} else {
+					return null
 				}
-				return null
 			})
 		},
 		cardColorClass () {
@@ -51,8 +52,11 @@ export default {
 			}
 		},
 		displayCardConditions () {
-			if (this.$store.state.showCard && this.card) return true
-			else return false
+			if (this.$store.state.showCard && this.card) {
+				return true
+			} else {
+				return false
+			}
 		}
 	},
 	mounted () {
