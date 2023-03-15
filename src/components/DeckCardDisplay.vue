@@ -1,27 +1,28 @@
 <template>
-	<transition name="cdo-fade">
-		<section
-			class="card-display"
-			v-if="displayCardConditions"
-			@click="hideCDOverlay()"
-		>
-			<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
-				<a
-					:key="card.name" :class="cardColorClass" :href="card.link"
-					target="_blank" rel="noopener noreferrer"
-					title="Click to open this card’s page on Scryfall"
-				>
-					<div class="loading-indicator">
-						Loading&hellip;
-					</div>
-					<img :src="card.img" width="488" height="680" :alt="card.name" />
-				</a>
-			</transition>
-			<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
-				×
-			</button>
-		</section>
-	</transition>
+	<section class="card-display">
+		<transition name="cdo-fade">
+			<div
+				class="card-display-container" v-if="displayCardConditions"
+				@click="hideCDOverlay()"
+			>
+				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
+					<a
+						:key="card.name" :class="cardColorClass" :href="card.link"
+						target="_blank" rel="noopener noreferrer"
+						title="Click to open this card’s page on Scryfall"
+					>
+						<div class="loading-indicator">
+							Loading&hellip;
+						</div>
+						<img :src="card.img" width="488" height="680" :alt="card.name" />
+					</a>
+				</transition>
+				<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
+					×
+				</button>
+			</div>
+		</transition>
+	</section>
 </template>
 
 <script>

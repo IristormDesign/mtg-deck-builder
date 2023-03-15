@@ -42,6 +42,11 @@
 		display: block;
 	}
 }
+@media (max-width: 768px) { // Must match window width in JavaScript.
+	.card-display-scroll-view {
+		gap: 0;
+	}
+}
 @media (max-width: ($min-width-app*.5)) {
 	.deck {
 		.wrap {

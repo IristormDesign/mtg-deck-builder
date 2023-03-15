@@ -11,7 +11,8 @@ $width-qty-column: 2em;
 @mixin long-card-buttons {
 	.card-list {
 		scroll-margin-top: -$lhse*.5;
-		
+		max-width: $max-width-content;
+
 		.list-headings {
 			display: flex;
 
@@ -53,6 +54,10 @@ $width-qty-column: 2em;
 }
 @mixin condensed-card-buttons {
 	.card-list {
+		max-width: $max-width-content*.5;
+		margin-right: auto;
+		margin-left: auto;
+
 		.list-headings {
 			display: none;
 		}
@@ -85,7 +90,7 @@ $width-qty-column: 2em;
 @include long-card-buttons;
 
 .card-list {
-	margin-bottom: divide($lhse, 2);
+	margin-bottom: divide($lhse, 4);
 	min-height: $lhse*8;
 	display: flex;
 	flex-direction: column;
@@ -281,7 +286,7 @@ $width-qty-column: 2em;
 			line-height: 1.5;
 		}
 		.rarity {
-			margin-right: -$lhse*.125;
+			margin-right: -$lhse*.0833;
 		}
 		.qty {
 			display: flex;
@@ -432,6 +437,14 @@ $width-qty-column: 2em;
 }
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-buttons();
+
+	.card-list {
+		li {
+			&:has(.qty:hover)	{
+				border-radius: $border-radius-button;
+			}
+		}
+	}
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-buttons();

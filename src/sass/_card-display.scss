@@ -1,12 +1,15 @@
 .card-display {
-	width: 25vw;
-	height: 100vh;
-	display: flex;
-	justify-content: flex-end;
 	position: sticky;
 	top: $height-app-header + divide($lhse, 3);
-	filter: drop-shadow(-.6667px 2px 1px rgba(#000, .25));
-	
+	width: 25vw;
+	height: 680px * .75;
+	max-height: 100vh;
+
+	.card-display-container {
+		display: flex;
+		justify-content: flex-end;
+		filter: drop-shadow(-.6667px 2px 1px rgba(#000, .25));
+	}
 	a {
 		position: absolute;
 		display: block;
@@ -120,22 +123,24 @@ $animation-duration-card-browse: .375s;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-display {
-		width: divide(100vw, 3);
+		width: 50%;
 	}
 }
 @media (max-width: 768px) { // Must match window width in JavaScript.
 	.card-display {
-		@include overlay-bg;
 		z-index: index($layers, card-overlay);
-		will-change: opacity;
-		filter: none;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-		position: fixed;
-
+		width: auto;
+		height: auto;
+		
+		.card-display-container {
+			@include overlay-bg;
+			will-change: opacity;
+			position: fixed;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			filter: none;
+		}
 		a {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
