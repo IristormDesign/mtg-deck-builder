@@ -94,7 +94,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			th {
 				background: $color-mythic-very-dim;
 				border-color: $color-mythic-very-dim;
-				color: desaturate(lighten($color-mythic-very-dim, 62.5%), 8.33%);
+				color: $color-text-over-mythic-very-dim;
 			}
 		}
 		.mana-symbol {

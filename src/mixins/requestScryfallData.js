@@ -3,20 +3,37 @@ import deckColorMixins from '@/mixins/deckColorMixins.js'
 
 export default {
 	mixins: [stringMethods, deckColorMixins],
+	computed: {
+		activeCardList () {
+			if (this.$store.state.showSideboard) {
+				return this.deck.sideboard
+			} else {
+				return this.deck
+			}
+		}
+	},
 	methods: {
 		findExistingCard (cardName) {
-			return this.deck.cards.find(anyCard =>
+			return this.activeCardList.cards.find(anyCard =>
 				cardName.toUpperCase() === anyCard.name.toUpperCase()
 			)
 		},
 		cardExistsNotice (cardName) {
 			cardName = this.findExistingCard(cardName).name // This gets the card's full, correctly spelled name from the deck's existing card (rather than taking the user's possibly misspelled or incomplete query).
 
-			this.deck.viewedCard = cardName
+			this.activeCardList.viewedCard = cardName
+
+			const activeCardListString = () => {
+				if (this.$store.state.showSideboard) {
+					return 'deck’s sideboard'
+				} else {
+					return 'deck'
+				}
+			}
 
 			setTimeout(() => {
-				alert(`”${cardName}” is already in this deck. If you want duplicates of a certain card, increase its quantity from the card list.`)
-			}, 1)
+				alert(`”${cardName}” is already in this ${activeCardListString()}. If you want to have duplicates of a card, increase its quantity from the card list.`)
+			}, 0)
 		},
 		requestScryfallData (cardQuery, axios, deck, oldCard, callback) {
 			// eslint-disable-next-line
@@ -96,12 +113,13 @@ export default {
 					}
 
 					const store = this.$store
+					let cards = this.activeCardList.cards
 
 					if (oldCard) {
-						deck.cards = deck.cards.filter(card =>
+						cards = cards.filter(card =>
 							card.name !== newCard.name
 						)
-						deck.cards.push(newCard)
+						cards.push(newCard)
 						deck.editDate = new Date()
 
 						this.$nextTick(() => {
@@ -114,11 +132,11 @@ export default {
 						if (this.findExistingCard(newCardName)) {
 							this.cardExistsNotice(newCardName)
 						} else {
-							deck.cards.push(newCard)
+							cards.push(newCard)
 							deck.editDate = new Date()
 
 							this.$nextTick(() => {
-								deck.viewedCard = newCardName
+								this.activeCardList.viewedCard = newCardName
 								store.commit('setDecks', store.state.decks)
 							})
 
@@ -130,8 +148,7 @@ export default {
 				})
 				.catch(error => {
 					alert(`⚠ Error: ${error.response.data.details}`)
-					// eslint-disable-next-line
-					console.log(error)
+					console.error(error)
 				})
 				.finally(() => {
 					return callback

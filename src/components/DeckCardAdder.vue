@@ -1,7 +1,7 @@
 <template>
 	<div class="card-adder">
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
-			<label for="card-input">Add a card to this deck:</label>
+			<label for="card-input">Add a card to this {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
 				:placeholder="inputPlaceholder"
@@ -53,6 +53,13 @@ export default {
 		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
 	},
 	computed: {
+		activeCardListString () {
+			if (this.$store.state.showSideboard) {
+				return 'deck’s sideboard'
+			} else {
+				return 'deck'
+			}
+		},
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
 				return '(Enter the name of a card here.)'

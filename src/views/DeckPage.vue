@@ -30,7 +30,26 @@ import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton }
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
+	created () {
+		const store = this.$store
+
+		store.commit('setShowSideboard', false)
+
+		// For each deck, add the `sideboard` object property if it doesn't exist yet (because of old deck data).
+		store.state.decks.forEach((deck) => {
+			if (!deck.sideboard) {
+				deck.sideboard = {
+					cards: [],
+					viewedCard: ''
+				}
+				store.commit('setDecks', store.state.decks)
+			}
+		})
+	},
+	updated () {
+		this.$store.commit('setShowSideboard', false)
+	}
 }
 </script>
 

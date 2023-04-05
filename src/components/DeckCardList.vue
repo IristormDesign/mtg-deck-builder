@@ -1,70 +1,157 @@
 <template>
-	<section
-		v-if="deck.cards.length <= 0"
-		class="card-list no-cards"
-		@mouseover="attentionAddCard(true)"
-		@mouseleave="attentionAddCard(false)"
-	>
-		<p>This deck has no cards yet.</p>
-	</section>
-	<section v-else class="card-list">
-		<h3>Card List</h3>
-		<header class="list-headings">
-			<div class="card-label-group">
-				<strong class="name">Name</strong>
-				<strong class="mana">Mana Cost</strong>
-			</div>
-			<div class="card-label-group">
-				<strong class="type">Type</strong>
-				<strong class="rarity">Rarity</strong>
-			</div>
-			<div class="qty-label-group">
-				<strong class="qty" title="Quantity">Qty.</strong>
-			</div>
-		</header>
-		<transition-group tag="ul">
-			<li
-				v-for="(card, i) in deck.cards" :key="card.name"
-				:class="(card.gapAfter) ? 'gap-after' : null"
-			>
-				<button
-					@click="viewCard(card)"
-					:class="['card-button', colorButton(card)]"
-				>
-					<div class="card-label-group">
-						<h4 class="name">{{ card.name }}</h4>
-						<div class="mana" v-html="styleManaSymbols(card)"></div>
-					</div>
-					<div class="card-label-group">
-						<div class="type">{{ card.type }}</div>
-						<div class="rarity" v-html="setRaritySymbol(card)"></div>
-					</div>
-				</button>
-				<div class="qty">
-					<label :for="`qty-c${i}`">Quantity</label>
-					<span>&times;</span>
-					<input
-						type="number" :id="`qty-c${i}`"
-						min="0" :max="maxQty(card)"
-						v-model.lazy="card.qty"
-						@change="validateQty(card)"
-						@focus="qtyInputFocused($event, card)"
-					/>
-					<div class="qty-buttons">
-						<button
-							class="increment" title="Increase quantity"
-							@click="increaseQty(card)"
-							:disabled="disableIncreaseQtyBtn(card)"
-						>+</button>
-						<button
-							class="decrement" title="Decrease quantity"
-							@click="decreaseQty(card)"
-						>&minus;</button>
-					</div>
+	<transition mode="out-in">
+		<section
+			v-if="viewingSideboard && deck.sideboard.cards.length <= 0"
+			class="card-list no-cards sideboard"
+			key="sideboard-no-cards"
+		>
+			<header>
+				<h3>Sideboard</h3>
+				<div>Total Cards in Sideboard: 0</div>
+			</header>
+			<p>This deck’s sideboard is currently empty.</p>
+		</section>
+
+		<section
+			v-else-if="!viewingSideboard && deck.cards.length <= 0"
+			class="card-list no-cards"
+			@mouseover="attentionAddCard(true)"
+			@mouseleave="attentionAddCard(false)"
+			key="main-no-cards"
+		>
+			<h3 class="screen-readers-only">Main Deck Card List</h3>
+			<p>This deck has no cards yet. (Add some!)</p>
+		</section>
+
+		<section
+			v-else-if="viewingSideboard"
+			class="card-list sideboard"
+			key="sideboard-cards"
+		>
+			<header>
+				<h3>Sideboard</h3>
+				<div>Total Cards in Sideboard: X</div>
+			</header>
+			<div class="list-headings">
+				<div class="card-label-group">
+					<strong class="name">Name</strong>
+					<strong class="mana">Mana Cost</strong>
 				</div>
-			</li>
-		</transition-group>
-	</section>
+				<div class="card-label-group">
+					<strong class="type">Type</strong>
+					<strong class="rarity">Rarity</strong>
+				</div>
+				<div class="qty-label-group">
+					<strong class="qty" title="Quantity">Qty.</strong>
+				</div>
+			</div>
+			<transition-group tag="ul" name="card-list-sideboard">
+				<li
+					v-for="(card, i) in deck.sideboard.cards" :key="card.name"
+					:class="(card.gapAfter) ? 'gap-after' : null"
+				>
+					<button
+						@click="viewCard(card)"
+						:class="['card-button', colorButton(card)]"
+					>
+						<div class="card-label-group">
+							<h4 class="name">{{ card.name }}</h4>
+							<div class="mana" v-html="styleManaSymbols(card)"></div>
+						</div>
+						<div class="card-label-group">
+							<div class="type">{{ card.type }}</div>
+							<div class="rarity" v-html="setRaritySymbol(card)"></div>
+						</div>
+					</button>
+					<div class="qty">
+						<label :for="`qty-c${i}`">Quantity</label>
+						<span>&times;</span>
+						<input
+							type="number" :id="`qty-c${i}`"
+							min="0" :max="maxQty(card)"
+							v-model.lazy="card.qty"
+							@change="validateQty(card)"
+							@focus="qtyInputFocused($event, card)"
+						/>
+						<div class="qty-buttons">
+							<button
+								class="increment" title="Increase quantity"
+								@click="increaseQty(card)"
+								:disabled="disableIncreaseQtyBtn(card)"
+							>+</button>
+							<button
+								class="decrement" title="Decrease quantity"
+								@click="decreaseQty(card)"
+							>&minus;</button>
+						</div>
+					</div>
+				</li>
+			</transition-group>
+		</section>
+
+		<section
+			v-else
+			class="card-list"
+			key="main-cards"
+		>
+			<h3 class="screen-readers-only">Main Deck Card List</h3>
+			<div class="list-headings">
+				<div class="card-label-group">
+					<strong class="name">Name</strong>
+					<strong class="mana">Mana Cost</strong>
+				</div>
+				<div class="card-label-group">
+					<strong class="type">Type</strong>
+					<strong class="rarity">Rarity</strong>
+				</div>
+				<div class="qty-label-group">
+					<strong class="qty" title="Quantity">Qty.</strong>
+				</div>
+			</div>
+			<transition-group tag="ul" name="card-list-main">
+				<li
+					v-for="(card, i) in deck.cards" :key="card.name"
+					:class="(card.gapAfter) ? 'gap-after' : null"
+				>
+					<button
+						@click="viewCard(card)"
+						:class="['card-button', colorButton(card)]"
+					>
+						<div class="card-label-group">
+							<h4 class="name">{{ card.name }}</h4>
+							<div class="mana" v-html="styleManaSymbols(card)"></div>
+						</div>
+						<div class="card-label-group">
+							<div class="type">{{ card.type }}</div>
+							<div class="rarity" v-html="setRaritySymbol(card)"></div>
+						</div>
+					</button>
+					<div class="qty">
+						<label :for="`qty-c${i}`">Quantity</label>
+						<span>&times;</span>
+						<input
+							type="number" :id="`qty-c${i}`"
+							min="0" :max="maxQty(card)"
+							v-model.lazy="card.qty"
+							@change="validateQty(card)"
+							@focus="qtyInputFocused($event, card)"
+						/>
+						<div class="qty-buttons">
+							<button
+								class="increment" title="Increase quantity"
+								@click="increaseQty(card)"
+								:disabled="disableIncreaseQtyBtn(card)"
+							>+</button>
+							<button
+								class="decrement" title="Decrease quantity"
+								@click="decreaseQty(card)"
+							>&minus;</button>
+						</div>
+					</div>
+				</li>
+			</transition-group>
+		</section>
+	</transition>
 </template>
 
 <script>
@@ -76,6 +163,11 @@ export default {
 	mixins: [deckColorMixins, symbolsMarkup, cardListSectionalGaps],
 	props: {
 		deck: Object
+	},
+	computed: {
+		viewingSideboard () {
+			return !!this.$store.state.showSideboard
+		}
 	},
 	methods: {
 		attentionAddCard (doIt) {
@@ -94,7 +186,11 @@ export default {
 
 			for (let i = 0; i < decks.length; i++) {
 				if (decks[i].name === this.deck.name) {
-					decks[i].viewedCard = card.name
+					if (this.viewingSideboard) {
+						decks[i].sideboard.viewedCard = card.name
+					} else {
+						decks[i].viewedCard = card.name
+					}
 					break
 				}
 			}
@@ -177,26 +273,33 @@ export default {
 			const deck = this.deck
 			const cardName = card.name
 			card.qty = Math.round(card.qty)
-			deck.viewedCard = cardName
+			const activeCardList = () => {
+				if (this.viewingSideboard) {
+					return deck.sideboard
+				} else {
+					return deck
+				}
+			}
+
+			activeCardList().viewedCard = cardName
 
 			if (store.state.sortAttribute === 'qty') {
 				store.commit('setSortAttribute', '') // Reset the sort-by select box.
 			}
-
 			if (card.qty <= 0) {
 				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)
 
 				if (confirmRemoval) {
-					const cards = deck.cards
+					const cards = activeCardList().cards
 					const cardIndex = cards.indexOf(card)
 					const totalCards = cards.length - 1
 
 					// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-					if (deck.viewedCard === cardName && totalCards > 0) {
+					if (activeCardList().viewedCard === cardName && totalCards > 0) {
 						if (cardIndex === totalCards) { // If this card is last in the list...
-							deck.viewedCard = cards[cardIndex - 1].name
+							activeCardList().viewedCard = cards[cardIndex - 1].name
 						} else {
-							deck.viewedCard = cards[cardIndex + 1].name
+							activeCardList().viewedCard = cards[cardIndex + 1].name
 						}
 					}
 

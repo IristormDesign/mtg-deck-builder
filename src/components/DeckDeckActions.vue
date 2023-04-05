@@ -55,7 +55,7 @@ export default {
 		deleteDeck (deck) {
 			const store = this.$store
 			const deckName = deck.name
-			const deletionConfirmed = confirm(`Are you sure you want to permanently erase “${deckName}”?`)
+			const deletionConfirmed = confirm(`Are you sure you want to permanently delete this deck, “${deckName}”?`)
 
 			if (deletionConfirmed) {
 				const remainingDecks = store.state.decks.filter(

@@ -120,8 +120,8 @@
 					</p>
 					<h4>Card Image</h4>
 					<p>This section displays a scanned image of the last selected card from the <a href="#m-card-list">card list</a> of your deck.</p>
-					<p>If you’re viewing MTG Deck Builder on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
-					<p>You can click on the image to open that card’s page on <a href="https://scryfall.com" target="_blank" rel="noopener noreferrer">Scryfall</a>, which is a website that has information on every <i>Magic</i> card (and it’s also where MTG Deck Builder gets its card data from).</p>
+					<p>If you’re viewing this app on a mobile device instead of a larger computer screen, you can tap on any card button in the card list to make the card image appear as a floating popup.</p>
+					<p>You can click on the image to open that card’s page on <a href="https://scryfall.com/" target="_blank" rel="noopener noreferrer">Scryfall</a>, which is a website that has information on every <i>Magic</i> card (and it’s also where MTG Deck Builder gets its card data from).</p>
 				</section>
 				<section id="m-card-list">
 					<h4>Card List</h4>
@@ -148,7 +148,7 @@
 						</li>
 					</ul>
 					<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
-					<p>The surface color of each card button represents the mana color of that card. For example, the card button color for mono-blue spells is blue. Moreover, the card button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
+					<p>The surface color of each card button represents the mana color of that card. (For example, the color of card buttons for mono-blue spells is blue.) Moreover, the color of card buttons for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 				</section>
 				<section id="m-card-quantities">
 					<h4>Card Quantities</h4>
@@ -197,7 +197,7 @@
 						<li><strong>Subtype</strong> — Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</li>
 						<li><strong>Supertype</strong> — Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Examples of supertypes are “basic” [on land cards] and “legendary.”)</li>
 						<li><strong>Rarity</strong> — Sorts from highest to lowest by level of rarity.</li>
-						<li><strong>P/T Sum</strong> — Sorts from greatest to least by “P/T sum,” which is a number equal to combining the power (P) and toughness (T) of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</li>
+						<li><strong>P/T Sum</strong> — Sorts from greatest to least by “P/T sum,” which is a number equal to adding together the power (P) and toughness (T) of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</li>
 						<li><strong>Quantity</strong> — Sorts from largest to smallest by quantity.</li>
 					</ul>
 					<p>The effects of sorting the card list are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
@@ -254,22 +254,23 @@
 					<li><strong>Multicolored</strong> — Cards that are two or more mana colors.</li>
 					<li><strong>Variable cost</strong> — Cards whose mana costs include a letter X.</li>
 					<li><strong>Variable P/T</strong> — Cards whose power (P) or toughness (T) is a star symbol.</li>
-					<li><strong>Double-faced</strong> — Cards that are double-faced (have a second card frame on their back side instead of the normal card back), <em>or</em> cards that are split (have two small card frames on the front side).</li>
+					<li><strong>Double-faced</strong> — Cards that are double-faced (they have a second card frame on their back side instead of the normal card back), <em>or</em> cards that are split (they have two small card frames on the front side).</li>
 				</ul>
 				<p>Single cards can be counted in multiple properties within a category. For example, a card that has “Artifact Creature” in its type line is considered to be both a creature and an artifact in the Types category table. Consequently, the sum of all values of a category may equal a total count greater than your deck’s total cards and a percentage greater than 100%.</p>
 			</section>
 
 			<section id="m-storage-of-deck-data">
 				<h3>Storage of Deck Data</h3>
-				<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs—except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
-				<p>When you’ve opened the app for the first time, you’ll find it comes with two sample decks (“Boros Equipment” and “Sultai Ramp”). You may modify these decks as you like or delete them.</p>
-				<p>To delete all your data in MTG Deck Builder at once, click on the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
+				<p>The data for your customized decks in MTG Deck Builder are stored only locally in the web browser you’re using, not over the internet. This means there’s no need to log onto a personal account to save your decks. It also means other users of MTG Deck Builder on their own web browsers won’t be able to see your decks, or you theirs, except by sharing <a href="#m-deck-data-files">deck data files</a>.</p>
+				<p>When you’ve opened the app for the first time, you’ll find it comes with two sample decks (“Boros Equipment” and “Sultai Ramp”). You may modify these decks however you like or delete them.</p>
+				<p>To delete all of your data in MTG Deck Builder at once, click on the “Clear Stored Data” link that’s in the app footer on any page. Before the data gets erased, you’ll be asked to confirm that you want to go ahead with this irreversible process. After the data has been cleared, the two sample decks will be restored in their original states.</p>
 				<section id="m-deck-data-files">
 					<h4>Deck Data Files</h4>
-					<p>MTG Deck Builder has functions for exporting and importing deck data files, which are files that contain app data for particular decks. You might want to export a deck data file for one of these reasons:</p>
+					<p>MTG Deck Builder includes functions for exporting and importing deck data files, which are files that contain data for particular decks that have been made by you or other users of this app.</p>
+					<p>You might want to export a deck data file for any of the following reasons:</p>
 					<ul>
-						<li>Send the data file to other users of MTG Deck Builder to show them the deck you’ve made.</li>
-						<li>Store the data file as a backup copy of your deck in case your computer/device or browser somehow causes you to lose your main deck data in the app.</li>
+						<li>Show other users of MTG Deck Builder the deck you’ve made by sending them your deck’s data file.</li>
+						<li>Store the file as a backup copy of your deck’s data, in case your computer/device or web browser somehow causes you to lose your main deck data in the app.</li>
 						<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
 					</ul>
 					<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the “Export” option.</p>
@@ -279,8 +280,8 @@
 
 			<section id="m-app-dev">
 				<h3>App Development</h3>
-				<p>MTG Deck Builder has been designed and developed by Damian Schmidt of <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can read about <a href="https://iristormdesign.com/portfolio/mtg-deck-builder" target="_blank" rel="noopener">how this app was made</a>.</p>
-				<p>Do you still have questions about MTG Deck Builder, or have any comments (whether good or bad) for the app developer? Email Damian Schmidt at <a href="mailto:damian@iristormdesign.com">damian@iristormdesign.com</a>.</p>
+				<p>MTG Deck Builder has been designed and developed by Damian Schmidt of <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>. If you’re interested, you can read about <a href="https://iristormdesign.com/portfolio/mtg-deck-builder/" target="_blank" rel="noopener">how this app was made</a>.</p>
+				<p>Do you still have questions about MTG Deck Builder, or have any comments (whether good or bad) for the app developer? If so, email Damian Schmidt at <a href="mailto:damian@iristormdesign.com">damian@iristormdesign.com</a>.</p>
 			</section>
 		</div>
 	</article>

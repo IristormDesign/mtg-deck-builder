@@ -77,8 +77,12 @@ export default {
 						name: name,
 						path: path,
 						cards: [],
-						editDate: new Date(),
 						viewedCard: '',
+						sideboard: {
+							cards: [],
+							viewedCard: ''
+						},
+						editDate: new Date(),
 						colors: []
 					})
 					store.commit('setDecks', updatedDecksArray)
@@ -112,7 +116,7 @@ export default {
 						if (store.getters.existingDeck(deckData.path)) {
 							const dupDeckData = this.amendDupDeckName(deckData)
 
-							alert(`⚠ Since you already have another deck named “${deckData.name},” the deck you’re importing is going to be named “${dupDeckData[0]}” instead.`)
+							alert(`⚠ As you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}” instead.`)
 
 							this.storeDupDeckAndRedirect(deckData, dupDeckData)
 						} else {
@@ -120,8 +124,10 @@ export default {
 								name: deckData.name,
 								path: deckData.path,
 								cards: deckData.cards,
+								viewedCard: deckData.viewedCard,
+								sideboard: deckData.sideboard,
 								editDate: deckData.editDate,
-								viewedCard: deckData.viewedCard
+								colors: deckData.colors
 							})
 							store.commit('setDecks', updatedDecksArray)
 							store.commit('sortDeckMenu')

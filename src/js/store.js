@@ -20,6 +20,7 @@ export default new Vuex.Store({
 		mouseoutEventActive: true,
 		showCard: false,
 		showDeckMenu: false,
+		showSideboard: false,
 		sortAttribute: 'type'
 	},
 	getters: {
@@ -66,6 +67,9 @@ export default new Vuex.Store({
 		},
 		setShowDeckMenu (state, payload) {
 			state.showDeckMenu = payload
+		},
+		setShowSideboard (state, payload) {
+			state.showSideboard = payload
 		},
 		sortDeckMenu (state) {
 			state.decks.sort((a, b) => {

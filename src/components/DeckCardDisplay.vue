@@ -2,7 +2,8 @@
 	<section class="card-display">
 		<transition name="cdo-fade">
 			<div
-				class="card-display-container" v-if="displayCardConditions"
+				v-if="!!(this.card && this.$store.state.showCard)"
+				class="card-display-container"
 				@click="hideCDOverlay()"
 			>
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
@@ -34,9 +35,18 @@ export default {
 	},
 	computed: {
 		card () {
-			return this.deck.cards.find(card => {
+			const deck = this.deck
+			let cards = deck.cards
+			let viewedCard = deck.viewedCard
+
+			if (this.$store.state.showSideboard) {
+				cards = deck.sideboard.cards
+				viewedCard = deck.sideboard.viewedCard
+			}
+
+			return cards.find(card => {
 				if (card) {
-					return card.name === this.deck.viewedCard
+					return card.name === viewedCard
 				} else {
 					return null
 				}
@@ -49,13 +59,6 @@ export default {
 				return 'land'
 			} else {
 				return color
-			}
-		},
-		displayCardConditions () {
-			if (this.$store.state.showCard && this.card) {
-				return true
-			} else {
-				return false
 			}
 		}
 	},

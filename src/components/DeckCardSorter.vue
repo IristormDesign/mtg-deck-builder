@@ -1,7 +1,7 @@
 <template>
 	<div class="card-sorter">
 		<form>
-			<fieldset :disabled="(deck.cards.length <= 1)">
+			<fieldset :disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)">
 				<label for="attributeSelect">Sort cards by:</label>
 				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
 					<option v-if="sortAttribute == ''" value="">
@@ -42,35 +42,47 @@ export default {
 			store.commit('setSortAttribute', sortAttribute)
 
 			store.state.decks.forEach(deck => {
-				const cards = deck.cards
+				const mainCards = deck.cards
+				const sideboardCards = deck.sideboard.cards
 
 				switch (sortAttribute) {
 					case 'colors':
-						sortByColor(cards); break
+						sortByColor(mainCards)
+						sortByColor(sideboardCards)
+						break
 					case 'type':
-						sortByType(cards); break
+						sortByType(mainCards)
+						sortByType(sideboardCards)
+						break
 					case 'subtype':
-						sortBySubtype(cards); break
+						sortBySubtype(mainCards)
+						sortBySubtype(sideboardCards)
+						break
 					case 'supertype':
-						sortBySupertype(cards); break
+						sortBySupertype(mainCards)
+						sortBySupertype(sideboardCards)
+						break
 					case 'rarity':
-						sortByRarity(cards); break
+						sortByRarity(mainCards)
+						sortByRarity(sideboardCards)
+						break
 					case 'pt-sum':
-						sortByPTSum(cards); break
+						sortByPTSum(mainCards)
+						sortByPTSum(sideboardCards)
+						break
 					case 'qty':
-						sortByQuantity(cards); break
+						sortByQuantity(mainCards)
+						sortByQuantity(sideboardCards)
+						break
 					default:
-						sortByDefault(cards)
+						sortDefault(mainCards)
+						sortDefault(sideboardCards)
 				}
 
 				this.addSectionalGaps(deck, sortAttribute)
 			})
 
 			store.commit('setDecks', store.state.decks)
-
-			document.querySelector('.card-list').scrollIntoView({
-				behavior: 'smooth'
-			})
 
 			function sortByColor (cards) {
 				function isColorlessLand (card) {
@@ -242,7 +254,7 @@ export default {
 					return b.qty - a.qty
 				})
 			}
-			function sortByDefault (cards) { // For card name and mana value
+			function sortDefault (cards) { // For card name and mana value
 				cards.sort((a, b) => {
 					const cardA = a[sortAttribute]
 					const cardB = b[sortAttribute]
