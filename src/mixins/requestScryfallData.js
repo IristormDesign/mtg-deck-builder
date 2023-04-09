@@ -148,6 +148,7 @@ export default {
 				})
 				.catch(error => {
 					alert(`⚠ Error: ${error.response.data.details}`)
+					// eslint-disable-next-line
 					console.error(error)
 				})
 				.finally(() => {

@@ -3,7 +3,7 @@
 		<div class="wrap">
 			<p>
 				<span class="group">
-					<a href="/"><strong>MTG Deck Builder</strong></a> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — <span>Version 1.21.3</span>
+					<a href="/"><strong>MTG Deck Builder</strong></a> by <a href="https://iristormdesign.com" target="_blank" rel="noopener">Iristorm Design</a> — <span>Version {{appVersion}}</span>
 				</span>
 				<span class="group">
 					<span class="divider">|</span>
@@ -23,6 +23,11 @@
 
 <script>
 export default {
+	data () {
+		return {
+			appVersion: process.env.VUE_APP_VERSION
+		}
+	},
 	methods: {
 		clearLocalStorage () {
 			const confirmed = confirm('⚠ WARNING\n\nYou’re about to permanently delete all of your data stored in this app, including the decks you’ve made. Are you sure you want to do this?')
