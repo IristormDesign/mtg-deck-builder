@@ -5,7 +5,16 @@
 	>
 		<header>
 			<h3>Sideboard</h3>
-			<div>Total Cards in Sideboard: X</div>
+			<div class="sideboard-card-total">
+				<h4>Total Cards in Sideboard</h4>
+				<div class="output">
+					{{ sideboardTotalCards }}
+					<span
+						class="warning-symbol" v-show="sideboardTotalCards > 15"
+						title="Sideboards cannot have more than 15 cards."
+					>⚠</span>
+				</div>
+			</div>
 		</header>
 		<div
 			v-if="deck.sideboard.cards.length <= 0"
@@ -51,6 +60,18 @@ export default {
 	components: { ActiveCardList },
 	props: {
 		deck: Object
+	},
+	computed: {
+		sideboardTotalCards () {
+			let total = 0
+
+			this.deck.sideboard.cards.forEach(card => {
+				for (let i = 0; i < card.qty; i++) {
+					total++
+				}
+			})
+			return total
+		}
 	},
 	methods: {
 		attentionAddCard (doIt) {

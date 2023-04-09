@@ -6,7 +6,7 @@
 			{{ totalCards }}
 			<span
 				class="warning-symbol" v-show="totalCards < 60"
-				title="The minimum card limit of a deck is 60."
+				title="Decks cannot have fewer than 60 cards."
 			>⚠</span>
 		</div>
 	</section>
