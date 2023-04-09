@@ -101,6 +101,11 @@ $width-qty-column: 2em;
 		color: $color-text-brighter;
 		text-shadow: $text-shadow-over-light-bg;
 	}
+	&.main-deck {
+		> header {
+			@include screen-readers-only;
+		}
+	}
 	&.sideboard {
 		header {
 			margin: 0 0 $lhse*.25;

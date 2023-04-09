@@ -112,9 +112,6 @@
 		text-shadow: 0 0 1.5px #000;
 	}
 }
-.screen-readers-only {
-	@include screen-readers-only;
-}
 .update-notif {
 	position: sticky;
 	top: 0;
