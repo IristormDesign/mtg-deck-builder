@@ -1,11 +1,11 @@
-$height-card-list-controls: $lhse * 1.5;
+$height-deck-control-panel: $lhse * 1.5;
 
 @mixin clc-single-layer {
-	.card-list-controls {
+	.deck-control-panel {
 		display: grid;
 		grid-template-columns: minmax(min-content, 3fr) minmax(min-content, 1fr) minmax(min-content, 1fr);
 
-		> div {
+		section {
 			justify-content: center;
 		}
 	}
@@ -33,11 +33,11 @@ $height-card-list-controls: $lhse * 1.5;
 	}
 }
 @mixin clc-double-layer {
-	.card-list-controls {
+	.deck-control-panel {
 		display: flex;
 		flex-wrap: wrap;
 
-		> div {
+		section {
 			height: $lhse*2.5;
 		}
 	}
@@ -89,8 +89,8 @@ $height-card-list-controls: $lhse * 1.5;
 	}
 }
 @mixin clc-triple-layer {
-	.card-list-controls {
-		> div {
+	.deck-control-panel {
+		section {
 			min-height: $lhse*3.3333;
 		}
 		label {
@@ -125,13 +125,13 @@ $height-card-list-controls: $lhse * 1.5;
 
 @include clc-single-layer;
 
-.card-list-controls {
+.deck-control-panel {
 	grid-column: 3 / 8;
 	justify-content: space-between;
 	border-radius: $border-radius-group;
 	overflow: hidden;
 	
-	> div {
+	section {
 		background: $color-group-bg;
 		padding: $lhse*.6667;
 		display: flex;
@@ -163,7 +163,7 @@ $height-card-list-controls: $lhse * 1.5;
 		border-radius: $border-radius-button;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		height: $height-card-list-controls;
+		height: $height-deck-control-panel;
 		font-weight: $font-weight-semibold;
 
 		&.attention {
@@ -183,7 +183,7 @@ $height-card-list-controls: $lhse * 1.5;
 		}
 	}
 	button {
-		height: calc(#{$height-card-list-controls} + 2px);
+		height: calc(#{$height-deck-control-panel} + 2px);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		white-space: nowrap;
@@ -226,7 +226,7 @@ $height-card-list-controls: $lhse * 1.5;
 		}
 	}
 	select {
-		height: $height-card-list-controls;
+		height: $height-deck-control-panel;
 		font-weight: $font-weight-semibold;
 	}
 }
@@ -235,7 +235,7 @@ $height-card-list-controls: $lhse * 1.5;
 
 	select {
 		width: 100%;
-		height: $height-card-list-controls;
+		height: $height-deck-control-panel;
 		font-weight: $font-weight-semibold;
 	}
 }

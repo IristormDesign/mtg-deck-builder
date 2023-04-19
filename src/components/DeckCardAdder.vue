@@ -1,5 +1,5 @@
 <template>
-	<div class="card-adder">
+	<section class="card-adder">
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
 			<label for="card-input">Add a card to this {{activeCardListString}}:</label>
 			<input
@@ -25,7 +25,7 @@
 		<div v-else class="loading-indicator">
 			Loading card&hellip;
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

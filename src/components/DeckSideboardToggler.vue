@@ -1,30 +1,23 @@
 <template>
-	<div class="sideboard-toggler">
-		<p>
-			<button
-				v-if="!$store.state.showSideboard" @click="showSideboard()"
-			>View Sideboard</button>
-			<button
-				v-else
-				@click="showMainDeck()"
-				class="primary-btn"
-			>View Main Deck</button>
-		</p>
-	</div>
+	<section class="sideboard-toggler">
+		<button
+			v-if="!$store.state.showSideboard"
+			@click="$store.commit('setShowSideboard', true)">
+			View Sideboard
+		</button>
+		<button
+			v-else
+			@click="$store.commit('setShowSideboard', false)"
+			class="primary-btn">
+			View Main Deck
+		</button>
+	</section>
 </template>
 
 <script>
 export default {
 	props: {
 		deck: Object
-	},
-	methods: {
-		showSideboard () {
-			this.$store.commit('setShowSideboard', true)
-		},
-		showMainDeck () {
-			this.$store.commit('setShowSideboard', false)
-		}
 	}
 }
 </script>

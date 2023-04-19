@@ -2,15 +2,15 @@
 	<div class="card-display-scroll-view wrap">
 		<card-display :deck="deck" />
 		<div class="deck-main">
-			<section class="card-list-controls card-list-viewing-controls">
+			<div class="deck-control-panel viewing-controls">
 				<card-sorter :deck="deck" />
 				<sideboard-toggler :deck="deck" />
-			</section>
+			</div>
 			<card-list :deck="deck" />
-			<section class="card-list-controls card-list-action-controls">
+			<div class="deck-control-panel action-controls">
 				<card-adder :deck="deck" />
 				<deck-actions :deck="deck" />
-			</section>
+			</div>
 		</div>
 	</div>
 </template>

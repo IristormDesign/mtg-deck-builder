@@ -1,5 +1,5 @@
 <template>
-	<div class="card-sorter">
+	<section class="card-sorter">
 		<form>
 			<fieldset :disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)">
 				<label for="attributeSelect">Sort cards by:</label>
@@ -19,7 +19,7 @@
 				</select>
 			</fieldset>
 		</form>
-	</div>
+	</section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="deck-actions">
+	<section class="deck-actions">
 		<form>
 			<label for="deckActionSelect">Deck actions:</label>
 			<select v-model="deckAction" @change="doDeckAction()" id="deckActionSelect">
@@ -9,7 +9,7 @@
 				<option value="delete">Delete</option>
 			</select>
 		</form>
-	</div>
+	</section>
 </template>
 
 <script>
