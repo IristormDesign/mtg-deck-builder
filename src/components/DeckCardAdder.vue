@@ -1,7 +1,7 @@
 <template>
 	<section class="card-adder">
 		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
-			<label for="card-input">Add a card to this {{activeCardListString}}:</label>
+			<label for="card-input">Add a Card to This {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
 				:placeholder="inputPlaceholder"
@@ -20,7 +20,7 @@
 					🎲 Add a randomly selected Magic card
 				</option>
 			</datalist>
-			<button class="primary-btn" :disabled="delay">Add<span> Card</span></button>
+			<button class="primary-btn" :disabled="delay">Add</button>
 		</form>
 		<div v-else class="loading-indicator">
 			Loading card&hellip;
@@ -55,9 +55,9 @@ export default {
 	computed: {
 		activeCardListString () {
 			if (this.$store.state.showSideboard) {
-				return 'deck’s sideboard'
+				return 'Sideboard'
 			} else {
-				return 'deck'
+				return 'Deck'
 			}
 		},
 		inputPlaceholder () {

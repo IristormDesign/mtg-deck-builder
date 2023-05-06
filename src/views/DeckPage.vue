@@ -1,5 +1,8 @@
 <template>
-	<div class="deck">
+	<div
+		class="deck"
+		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
+	>
 		<div v-for="(deck, i) in $store.state.decks" :key="i">
 			<article v-if="deck.path === $route.params.deckPath">
 				<div class="wrap">
@@ -47,8 +50,10 @@ export default {
 			}
 		})
 	},
-	updated () {
+	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('setShowSideboard', false)
+
+		next()
 	}
 }
 </script>

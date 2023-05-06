@@ -2,7 +2,7 @@
 	<section class="card-sorter">
 		<form>
 			<fieldset :disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)">
-				<label for="attributeSelect">Sort cards by:</label>
+				<label for="attributeSelect">Sort Cards by:</label>
 				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
 					<option v-if="sortAttribute == ''" value="">
 						(Select)

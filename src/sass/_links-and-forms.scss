@@ -16,39 +16,55 @@ label {
 input,
 textarea,
 select {
+	@include link;
 	caret-color: $color-mythic-orange;
 	line-height: 1.5;
-	background: $color-input-bg;
-	color: #000;
+	background: linear-gradient(
+		darken($color-group-bg, 8.33%) 40%, darken($color-group-bg, 4.17%)
+	) darken($color-group-bg, 6.25%);
+	color: $color-mythic-orange;
 	font-weight: $font-weight-normal;
-	border: 2px inset $color-content-bg;
-	padding: divide($lhse, 8) .25em;
+	border: 1px solid;
+	border-top-color: darken($color-section-border, 8.33%);
+	border-right-color: darken($color-section-border, 0%);
+	border-bottom-color: desaturate(lighten($color-section-border, 16.67%), 8.33%);
+	border-left-color: desaturate(lighten($color-section-border, 8.33%), 4.17%);
+	border-color: $color-section-border;
+	padding: .125em .25em;
 	transition: $transition-duration-standard ease;
 	transition-duration: border, background, box-shadow;
 
 	&:hover,
 	&:focus {
-		border-style: solid;
-		border-color: $color-mythic-orange;
-		background: lighten($color-input-bg, 8.33%);
+		text-decoration: none;
+		background: $color-group-bg;
+	}
+	&:active {
+		background: lighten($color-group-bg, 3.125%);
 	}
 	&:focus-visible {
 		outline: none;
 	}
 	&::placeholder {
-		color: desaturate(darken($color-mythic-complement, 16.67%), 33.33%);
+		color: lighten($color-group-bg, 37.5%);
 		font-style: italic;
 	}
 }
 input {
 	height: 100%;
 	line-height: 1;
+	padding: 0 .5em;
 }
 select {
 	cursor: pointer;
 	line-height: 1;
 	border-radius: $border-radius-button;
+	font-weight: $font-weight-semibold;
 }
 option {
-	font-weight: $font-weight-normal;
+	color: $color-link;
+}
+select,
+option {
+	background-color: $color-group-bg;	
 }

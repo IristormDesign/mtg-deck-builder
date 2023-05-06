@@ -25,13 +25,12 @@ const routes = [
 		path: '/deck/:deckPath',
 		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
 		beforeEnter: (to, from, next) => {
-			const validDeck = store.state.decks.find(deck =>
-				regexDeckPage(`/deck/${deck.path}`).test(to.path)
-			)
-
 			function regexDeckPage (path) {
 				return new RegExp('^' + path, 'i')
 			}
+			const validDeck = store.state.decks.find(deck =>
+				regexDeckPage(`/deck/${deck.path}`).test(to.path)
+			)
 
 			if (validDeck) {
 				next()

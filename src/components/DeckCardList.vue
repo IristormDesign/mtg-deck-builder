@@ -5,16 +5,7 @@
 	>
 		<header>
 			<h3>Sideboard</h3>
-			<div class="sideboard-card-total">
-				<h4>Total Cards in Sideboard</h4>
-				<div class="output">
-					{{ sideboardTotalCards }}
-					<span
-						class="warning-symbol" v-show="sideboardTotalCards > 15"
-						title="Sideboards cannot have more than 15 cards."
-					>⚠</span>
-				</div>
-			</div>
+			<deck-sideboard-total :deck="deck" />
 		</header>
 		<div
 			v-if="deck.sideboard.cards.length <= 0"
@@ -54,30 +45,19 @@
 </template>
 
 <script>
+import DeckSideboardTotal from '@/components/DeckSideboardTotal.vue'
 import ActiveCardList from '@/components/ActiveCardList.vue'
 
 export default {
-	components: { ActiveCardList },
+	components: { DeckSideboardTotal, ActiveCardList },
 	props: {
 		deck: Object
 	},
-	computed: {
-		sideboardTotalCards () {
-			let total = 0
-
-			this.deck.sideboard.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					total++
-				}
-			})
-			return total
-		}
-	},
 	methods: {
-		attentionAddCard (doIt) {
+		attentionAddCard (attention) {
 			const cardAdderInput = document.querySelector('#card-input')
 
-			if (doIt) {
+			if (attention) {
 				cardAdderInput.classList.add('attention')
 			} else {
 				setTimeout(() => {

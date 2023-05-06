@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="active-card-list">
 		<div class="list-headings">
 			<div class="card-label-group">
 				<strong class="name">Name</strong>

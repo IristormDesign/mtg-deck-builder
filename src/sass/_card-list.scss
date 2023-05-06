@@ -1,5 +1,6 @@
 $box-shadow-card-button: 0 -1px divide($lhse, 3) 3px rgba(#000, .3333);
 $width-qty-column: 2em;
+$min-height-card-list: $lhse*6;
 
 @mixin box-shadow-hover-card-button($color) {
 	box-shadow:
@@ -13,6 +14,11 @@ $width-qty-column: 2em;
 		scroll-margin-top: -$lhse*.5;
 		max-width: $max-width-content;
 
+		.active-card-list {
+			align-self: center;
+			width: 100%;
+			max-width: 100%;
+		}
 		.list-headings {
 			display: flex;
 
@@ -54,10 +60,9 @@ $width-qty-column: 2em;
 }
 @mixin condensed-card-buttons {
 	.card-list {
-		max-width: $max-width-content*.5;
-		margin-right: auto;
-		margin-left: auto;
-
+		.active-card-list {
+			max-width: $max-width-content*.5;
+		}
 		.list-headings {
 			display: none;
 		}
@@ -91,16 +96,10 @@ $width-qty-column: 2em;
 
 .card-list {
 	margin-bottom: divide($lhse, 4);
-	min-height: $lhse*8;
+	min-height: $min-height-card-list;
 	display: flex;
 	flex-direction: column;
 	
-	&.no-cards {
-		justify-content: center;
-		text-align: center;
-		color: $color-text-brighter;
-		text-shadow: $text-shadow-over-light-bg;
-	}
 	&.main-deck {
 		> header {
 			@include screen-readers-only;
@@ -108,22 +107,57 @@ $width-qty-column: 2em;
 	}
 	&.sideboard {
 		header {
-			margin: 0 0 $lhse*.25;
-			padding: $lhse*.5;
+			margin: divide($lhse, -3) 0 divide($lhse, 3);
+			padding: $lhse $lhse*.5;
 			background: $color-mythic-very-dim;
 			color: $color-text-over-mythic-very-dim;
-			border: 1px solid $color-section-border;
+			border-radius: $border-radius-group;
 			border-top-left-radius: 0;
 			border-top-right-radius: 0;
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
+			cursor: default;
+			height: $height-deck-control-panel;
+			border-top: $border-sections;
+
+			h3,
+			h4,
+			p {
+				margin: 0;
+			}
+			h4 {
+				font-size: 75%;
+				text-align: right;
+				text-transform: uppercase;
+				margin-right: $lhse*.5;
+			}
+			.output {
+				font-size: 200%;
+				display: flex;
+				align-items: center;
+			}
+			.warning-symbol {
+				margin-left: .25em;
+			}
 		}
-		h3 {
-			margin: 0;
+		.sideboard-card-total {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			border-left: $border-sections-alt;
+			padding-left: $lhse*.5;
 		}
-		p {
-			margin: 0;
-		}
+	}
+	.no-cards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		line-height: $line-height-standard*.875;
+		min-height: $min-height-card-list;
+		text-shadow: $text-shadow-over-light-bg;
+		padding: $lhse*.5;
 	}
 	.list-headings {
 		@include heading-font;
@@ -171,6 +205,9 @@ $width-qty-column: 2em;
 		background: rgba($color-group-bg, .75);
 		border-radius: $border-radius-button;
 		
+		&:last-of-type {
+			margin-bottom: $lhse*.25;
+		}
 		&:hover,
 		&:focus-within {
 			background: rgba($color-group-bg, 1);

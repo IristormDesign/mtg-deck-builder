@@ -20,6 +20,7 @@
 }
 .deck-main {
 	max-width: $max-width-content*.9167;
+	width: 100%;
 }
 
 @media (max-width: ($min-width-app*.875)) {

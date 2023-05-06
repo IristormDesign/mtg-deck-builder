@@ -1,147 +1,23 @@
-$height-deck-control-panel: $lhse * 1.5;
-
-@mixin clc-single-layer {
-	.deck-control-panel {
-		display: grid;
-		grid-template-columns: minmax(min-content, 3fr) minmax(min-content, 1fr) minmax(min-content, 1fr);
-
-		section {
-			justify-content: center;
-		}
-	}
-	.card-adder {
-		border-bottom: 0;
-		padding-right: 0;
-		padding-left: 0;
-
-		form {
-			padding: 0 3.125%;
-		}
-		label {
-			grid-column: span 2;
-		}
-	}
-	.card-sorter {
-		border-left: $border-sections;
-
-		fieldset {
-			display: block;
-		}
-	}
-	.deck-actions {
-		flex-direction: column;
-	}
-}
-@mixin clc-double-layer {
-	.deck-control-panel {
-		display: flex;
-		flex-wrap: wrap;
-
-		section {
-			height: $lhse*2.5;
-		}
-	}
-	.card-adder {
-		grid-column: span 2;
-		border-bottom: $border-sections;
-		width: 100%;
-		
-		form {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		label {
-			margin: 0;
-			padding: 0 divide($lhse, 3) 0 0;
-			width: auto;
-		}
-		input {
-			max-width: 16em;
-			width: 100%;
-		}
-	}
-	.card-sorter,
-	.deck-actions {
-		width: 50%;
-		
-		label {
-			margin: 0;
-			padding: 0 divide($lhse, 3) 0 0;
-		}
-	}
-	.card-sorter {
-		border-left: 0;
-
-		fieldset {
-			display: flex;
-			align-items: center;
-		}
-	}
-	.deck-actions {
-		form {
-			display: flex;
-			align-items: center;
-		}
-		label {
-			white-space: nowrap;			
-		}
-	}
-}
-@mixin clc-triple-layer {
-	.deck-control-panel {
-		section {
-			min-height: $lhse*3.3333;
-		}
-		label {
-			padding: 0 0 divide($lhse, 3) 0;
-			margin-right: .375em;
-			margin-left: .375em;
-		}
-	}
-	.card-adder {
-		form {
-			display: grid;
-			padding: 0;
-		}
-		input {
-			width: 100%;
-			max-width: 100%;
-		}
-	}
-	.card-sorter {
-		fieldset {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-	}
-	.deck-actions {
-		form {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-	}
-}
-
-@include clc-single-layer;
-
 .deck-control-panel {
-	grid-column: 3 / 8;
-	justify-content: space-between;
 	border-radius: $border-radius-group;
+	background: $color-group-bg;
+	width: 100%;
 	overflow: hidden;
-	
+	display: grid;
+	grid-template-columns: auto auto;
+
+	&.viewing-controls {
+		margin-bottom: divide($lhse, 3);
+	}
 	section {
-		background: $color-group-bg;
 		padding: $lhse*.6667;
 		display: flex;
 		align-items: center;
-		height: $lhse*3.3333;
+		justify-content: center;
 	}
 	label {
 		display: block;
 		font-size: 83.33%;
-		padding-bottom: $lhse*.3333;
 		margin-right: .375em;
 		margin-left: .375em;
 		color: $color-text-brighter;
@@ -150,13 +26,60 @@ $height-deck-control-panel: $lhse * 1.5;
 		font-style: italic;
 	}
 }
+.sideboard-visible {
+	.deck-control-panel.viewing-controls {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+.card-sorter {
+	fieldset {
+		padding: 0;
+		border: 0;
+		margin: 0;
+		transition: opacity $transition-duration-standard ease;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: $lhse*.25 0;
+
+		label {
+			white-space: nowrap;
+		}
+		&:disabled {
+			opacity: .25;
+
+			select {
+				opacity: 1;
+				cursor: not-allowed;
+			}
+		}
+	}
+	select {
+		height: $height-deck-control-panel;
+		font-weight: $font-weight-semibold;
+	}
+}
+.sideboard-toggler {
+	button {
+		width: $lhse*6;
+	}
+}
 .card-adder {
 	align-items: center;
 	flex-grow: 1;
-	
+
+	.sideboard-visible & {
+		background: $color-mythic-very-dim;
+
+		input {
+			border-color: desaturate(lighten($color-mythic-very-dim, 20%), 10%);
+		}
+	}
 	form {
 		display: grid;
-		grid-template-columns: 3fr minmax(min-content, 1fr);
+		grid-template-columns: auto min-content;
 		width: 100%;
 	}
 	input {
@@ -169,15 +92,13 @@ $height-deck-control-panel: $lhse * 1.5;
 		&.attention {
 			@keyframes pulsate-input {
 				100% {
-					background: #fff;
-					border-color: $color-mythic-orange;
-					border-style: solid;
-					box-shadow: 0 0 1em 1px $color-mythic-orange;
+					border-color: $color-mythic-lighter;
+					box-shadow: 0 0 $lhse $color-mythic-orange;
 				}
 			}
 			animation-name: pulsate-input;
 			animation-duration: .25s;
-			animation-iteration-count: 40;
+			animation-iteration-count: 20;
 			animation-direction: alternate;
 			animation-timing-function: ease-in;
 		}
@@ -186,7 +107,8 @@ $height-deck-control-panel: $lhse * 1.5;
 		height: calc(#{$height-deck-control-panel} + 2px);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		white-space: nowrap;
+		width: $lhse*2.5;
+		min-width: 0;
 	}
 	.loading-indicator {
 		animation: pulse .5s ease-out;
@@ -209,71 +131,98 @@ $height-deck-control-panel: $lhse * 1.5;
 		}
 	}
 }
-.card-sorter {
-	fieldset {
-		padding: 0;
-		border: 0;
-		margin: 0;
-		transition: opacity $transition-duration-standard ease;
-
-		&:disabled {
-			opacity: .25;
-
-			select {
-				opacity: 1;
-				cursor: not-allowed;
-			}
-		}
-	}
-	select {
-		height: $height-deck-control-panel;
-		font-weight: $font-weight-semibold;
-	}
-}
 .deck-actions {
-	border-left: $border-sections;
-
+	label {
+		white-space: nowrap;
+	}
 	select {
 		width: 100%;
 		height: $height-deck-control-panel;
-		font-weight: $font-weight-semibold;
 	}
 }
 
-@media (max-width: ($width-app-breakpoint * .875)) {
-	@include clc-double-layer;
-}
-@media (max-width: $width-app-breakpoint-tablet) {
-	@include clc-triple-layer;
-}
-@media (max-width: ($width-app-breakpoint-tablet * .75)) {
-	.card-adder {
-		form {
-			padding: 0 3.125%;
-		}
+@mixin viewing-controls-single-layer {
+	.card-sorter {
+		border-right: $border-sections;
+		border-bottom-width: 0;
 	}
 }
-@media (max-width: ($min-width-app * .5)) {
-	.card-adder {
-		form {
-			padding: 0;
-		}
-		button {
-			min-width: 0;
-
-			span {
-				display: none;
-			}
-		}
-	}
-	.card-sorter,
-	.deck-actions {
-		width: 100%;
+@mixin viewing-controls-double-layers {
+	.deck-control-panel.viewing-controls {
+		display: block;
 	}
 	.card-sorter {
+		border-right-width: 0;
+		border-bottom: $border-sections;
+	}
+}
+@mixin action-controls-single-layer {
+	.deck-control-panel.action-controls {
+		display: flex;
+	}
+	.card-adder,
+	.deck-actions {
+		label {
+			padding-bottom: $lhse*.25;
+		}
+	}
+	.card-adder {
+		border-bottom-width: 0;
+		padding-right: 0;
+		padding-left: 0;
+
+		form {
+			max-width: 20em;
+		}
+		label {
+			grid-column: span 2;
+		}
+	}
+	.deck-actions {
+		border-left: $border-sections;
+
+		form {
+			display: block;
+		}
+		label {
+			padding-bottom: $lhse*.25;
+		}
+	}
+}
+@mixin action-controls-double-layers {
+	.deck-control-panel.action-controls {
+		display: block;
+	}
+	.card-adder {
 		border-bottom: $border-sections;
 	}
 	.deck-actions {
 		border-left-width: 0;
+
+		form {
+			display: flex;
+			align-items: center;
+		}
+		label {
+			padding: 0;
+		}
 	}
+}
+
+@include viewing-controls-single-layer;
+@include action-controls-single-layer;
+
+@media (max-width: ($width-app-breakpoint * .75)) {
+}
+@media (max-width: ($min-width-app)) {
+	@include action-controls-double-layers;
+}
+@media (max-width: ($min-width-app * .8)) {
+	@include action-controls-single-layer;
+}
+@media (max-width: ($min-width-app * .6667)) {
+	@include action-controls-double-layers;
+}
+@media (max-width: ($min-width-app * .5)) {
+	@include viewing-controls-double-layers;
 }

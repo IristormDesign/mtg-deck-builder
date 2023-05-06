@@ -1,7 +1,7 @@
 <template>
 	<section class="deck-actions">
 		<form>
-			<label for="deckActionSelect">Deck actions:</label>
+			<label for="deckActionSelect">Do Deck Action:</label>
 			<select v-model="deckAction" @change="doDeckAction()" id="deckActionSelect">
 				<option value="">(Select)</option>
 				<option value="copy">Copy</option>
@@ -55,7 +55,7 @@ export default {
 		deleteDeck (deck) {
 			const store = this.$store
 			const deckName = deck.name
-			const deletionConfirmed = confirm(`Are you sure you want to permanently delete this deck, “${deckName}”?`)
+			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deckName}”?`)
 
 			if (deletionConfirmed) {
 				const remainingDecks = store.state.decks.filter(
