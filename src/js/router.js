@@ -21,6 +21,15 @@ const routes = [
 		path: '/create-deck',
 		component: () => import(/* webpackChunkName: "create-deck" */ '../views/CreateDeck.vue')
 	},
+	{ // When a `deck` URL is missing a specified deck path, redirect to the home page.
+		path: '/deck',
+		beforeEnter: (to, from, next) => {
+			next({
+				name: 'home',
+				replace: true
+			})
+		}
+	},
 	{
 		path: '/deck/:deckPath',
 		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
