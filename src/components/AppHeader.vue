@@ -171,10 +171,8 @@ export default {
 				this.$route.params.deckPath
 			) {
 				return true
-			} else if (this.$store.state.decks.length <= 0) {
-				return true
 			} else {
-				return false
+				return (this.$store.state.decks.length <= 0)
 			}
 		},
 		disabledMenuButtonTooltip () {

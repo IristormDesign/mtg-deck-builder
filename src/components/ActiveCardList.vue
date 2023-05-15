@@ -249,11 +249,7 @@ export default {
 			}, 100)
 		},
 		disableIncreaseQtyBtn (card) {
-			if (card.qty === this.maxQty(card)) {
-				return true
-			} else {
-				return false
-			}
+			return (card.qty === this.maxQty(card))
 		}
 	}
 }
