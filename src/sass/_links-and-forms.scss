@@ -17,12 +17,12 @@ input,
 textarea,
 select {
 	@include link;
-	caret-color: $color-mythic-orange;
+	caret-color: $color-link;
 	line-height: 1.5;
 	background: linear-gradient(
 		darken($color-group-bg, 8.33%) 40%, darken($color-group-bg, 4.17%)
 	) darken($color-group-bg, 6.25%);
-	color: $color-mythic-orange;
+	color: $color-link;
 	font-weight: $font-weight-normal;
 	border: 1px solid;
 	border-top-color: darken($color-section-border, 8.33%);
@@ -39,6 +39,9 @@ select {
 		text-decoration: none;
 		background: $color-group-bg;
 	}
+	&:focus {
+		border-color: $color-link;
+	}
 	&:active {
 		background: lighten($color-group-bg, 3.125%);
 	}
@@ -54,6 +57,73 @@ input {
 	height: 100%;
 	line-height: 1;
 	padding: 0 .5em;
+}
+.radio-fieldset {
+	border: $border-sections;
+	border-radius: $border-radius-button;
+	padding: 0;
+	margin: 0;
+
+	&:hover,
+	&:focus-within,
+	&:active {
+		[type="radio"] {
+			border-color: $color-link;
+		}
+	}
+	> div {
+		margin: $lhse*.1667 0;
+	}
+	label {
+		padding-right: $lhse*.25;
+		cursor: pointer;
+
+		.deck-control-panel & {
+			@include label-text-style;
+		}
+	}
+}
+[type="radio"] {
+	cursor: pointer;
+	appearance: none;
+	width: .8em;
+	height: .8em;
+	margin: 0;
+	border-radius: 50%;
+	border: 2px solid $color-section-border;
+	box-shadow: inset 0 0 0 2px $color-group-bg;
+	background: $color-group-bg;
+
+	&:hover,
+	&:focus {
+		background: $color-mythic-dim;
+
+		&:not(:checked) {
+			border-color: $color-link-focus;
+		}
+	}
+	&:active {
+		background: radial-gradient(
+			#fff,
+			$color-mythic-lighter 50%
+		) $color-mythic-lighter;
+
+		&,
+		&:not(:checked) {
+			border-color: #fff;
+		}
+	}
+	&:checked {
+		&,
+		&:hover,
+		&:focus,
+		&:active {
+			background: radial-gradient(
+				$color-mythic-lighter,
+				$color-link 50%
+			) $color-link;
+		}
+	}
 }
 select {
 	cursor: pointer;

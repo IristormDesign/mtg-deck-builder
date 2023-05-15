@@ -1,16 +1,22 @@
 <template>
 	<section class="sideboard-toggler">
-		<button
-			v-if="!$store.state.showSideboard"
-			@click="$store.commit('setShowSideboard', true)">
-			View Sideboard
-		</button>
-		<button
-			v-else
-			@click="$store.commit('setShowSideboard', false)"
-			class="primary-btn">
-			View Main Deck
-		</button>
+		<h3>View List:</h3>
+		<fieldset class="radio-fieldset">
+			<div>
+				<label for="main-deck">Main Deck</label>
+				<input
+					type="radio" id="main-deck" name="view-list" checked
+					@click="$store.commit('setShowSideboard', false)"
+				/>
+			</div>
+			<div>
+				<label for="sideboard">Sideboard</label>
+				<input
+					type="radio" id="sideboard" name="view-list"
+					@click="$store.commit('setShowSideboard', true)"
+				/>
+			</div>
+		</fieldset>
 	</section>
 </template>
 

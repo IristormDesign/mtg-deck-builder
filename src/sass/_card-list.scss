@@ -108,7 +108,6 @@ $min-height-card-list: $lhse*6;
 	&.sideboard {
 		header {
 			margin: divide($lhse, -3) 0 divide($lhse, 3);
-			padding: $lhse $lhse*.5;
 			background: $color-mythic-very-dim;
 			color: $color-text-over-mythic-very-dim;
 			border-radius: $border-radius-group;
@@ -118,24 +117,27 @@ $min-height-card-list: $lhse*6;
 			justify-content: space-between;
 			align-items: center;
 			cursor: default;
-			height: $height-deck-control-panel;
 			border-top: $border-sections;
 
+			> * {
+				padding: 0 $lhse*.5;
+			}
 			h3,
 			h4,
 			p {
 				margin: 0;
+				color: $color-text-over-mythic-very-dim;
 			}
 			h4 {
-				font-size: 75%;
+				@include label-text-style;
 				text-align: right;
-				text-transform: uppercase;
 				margin-right: $lhse*.5;
 			}
 			.output {
 				font-size: 200%;
 				display: flex;
 				align-items: center;
+				color: $color-text-over-mythic-very-dim;
 			}
 			.warning-symbol {
 				margin-left: .25em;
@@ -168,10 +170,7 @@ $min-height-card-list: $lhse*6;
 		
 		strong {
 			display: block;
-			font-size: 66.67%;
-			line-height: 1;
-			text-transform: uppercase;
-			color: $color-text-brighter;
+			@include label-text-style;
 		}
 		.qty {
 			text-align: center;
@@ -506,6 +505,41 @@ $min-height-card-list: $lhse*6;
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-buttons();
+}
+@media (max-width: ($min-width-app * .6)) {
+	.card-list {
+		&.sideboard {
+			header {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .5)) {
+	.card-list {
+		&.sideboard {
+			header {
+				display: block;
+
+				h3 {
+					text-align: center;
+					padding: $lhse*.25;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					min-height: $height-deck-control-panel-input;
+				}
+				.sideboard-card-total {
+					justify-content: center;
+					border-left: none;
+					border-top: $border-sections-alt;
+				}
+			}
+		}
+	}
 }
 @media (pointer: coarse) {
 	.card-list {

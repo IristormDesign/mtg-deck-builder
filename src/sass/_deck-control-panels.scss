@@ -8,6 +8,7 @@
 
 	&.viewing-controls {
 		margin-bottom: divide($lhse, 3);
+		grid-template-columns: 1fr 1fr;
 	}
 	section {
 		padding: $lhse*.6667;
@@ -15,7 +16,8 @@
 		align-items: center;
 		justify-content: center;
 	}
-	label {
+	label,
+	h3 {
 		display: block;
 		font-size: 83.33%;
 		margin-right: .375em;
@@ -57,13 +59,46 @@
 		}
 	}
 	select {
-		height: $height-deck-control-panel;
+		height: $height-deck-control-panel-input;
 		font-weight: $font-weight-semibold;
 	}
 }
 .sideboard-toggler {
-	button {
-		width: $lhse*6;
+	padding-top: divide($lhse, 3) !important;
+	padding-bottom: divide($lhse, 3) !important;
+	justify-content: space-around;
+	align-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: $lhse*.25;
+
+	h3 {
+		margin: 0;
+		align-self: center;
+		cursor: default;
+	}
+	fieldset {
+		div {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding: 0 $lhse*.375;
+			border-radius: $border-radius-button;
+
+			&:first-child {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			&:last-child {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+			}
+		}
+	}
+	label {
+		.deck-control-panel & {
+			margin: $lhse*.125 0;
+		}
 	}
 }
 .card-adder {
@@ -72,9 +107,14 @@
 
 	.sideboard-visible & {
 		background: $color-mythic-very-dim;
-
+		
+		label {
+			color: $color-text-over-mythic-very-dim;
+		}
 		input {
-			border-color: desaturate(lighten($color-mythic-very-dim, 20%), 10%);
+			&:not(:focus) {
+				border-color: desaturate(lighten($color-mythic-very-dim, 20%), 10%);
+			}
 		}
 	}
 	form {
@@ -86,8 +126,10 @@
 		border-radius: $border-radius-button;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		height: $height-deck-control-panel;
+		height: $height-deck-control-panel-input;
 		font-weight: $font-weight-semibold;
+		min-width: none;
+		width: 100%;
 
 		&.attention {
 			@keyframes pulsate-input {
@@ -104,7 +146,7 @@
 		}
 	}
 	button {
-		height: calc(#{$height-deck-control-panel} + 2px);
+		height: calc(#{$height-deck-control-panel-input} + 2px);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		width: $lhse*2.5;
@@ -137,13 +179,13 @@
 	}
 	select {
 		width: 100%;
-		height: $height-deck-control-panel;
+		height: $height-deck-control-panel-input;
 	}
 }
 
 @mixin viewing-controls-single-layer {
-	.card-sorter {
-		border-right: $border-sections;
+	.sideboard-toggler {
+		border-left: $border-sections;
 		border-bottom-width: 0;
 	}
 }
@@ -212,8 +254,6 @@
 @include viewing-controls-single-layer;
 @include action-controls-single-layer;
 
-@media (max-width: ($width-app-breakpoint * .75)) {
-}
 @media (max-width: ($min-width-app)) {
 	@include action-controls-double-layers;
 }
@@ -223,6 +263,6 @@
 @media (max-width: ($min-width-app * .6667)) {
 	@include action-controls-double-layers;
 }
-@media (max-width: ($min-width-app * .5)) {
+@media (max-width: ($min-width-app * .375)) {
 	@include viewing-controls-double-layers;
 }
