@@ -58,12 +58,12 @@ export default {
 		submitDeckName () {
 			let name = this.deckNameInput
 
-			// First edit the given name to remove any excess white space.
+			// First, edit the submitted name to remove any excess white space.
 			if (name) {
 				name = name.trim()
 				name = this.curlApostrophes(name)
 			}
-			if (name) { // If the user entered any name...
+			if (name) { // If the user submitted any name...
 				const store = this.$store
 				const path = this.stringToPath(name)
 				const deckExists = store.getters.existingDeck(path)

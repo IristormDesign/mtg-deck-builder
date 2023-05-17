@@ -34,14 +34,20 @@ const routes = [
 		path: '/deck/:deckPath',
 		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
 		beforeEnter: (to, from, next) => {
-			function regexDeckPage (path) {
-				return new RegExp('^' + path, 'i')
-			}
-			const validDeck = store.state.decks.find(deck =>
-				regexDeckPage(`/deck/${deck.path}`).test(to.path)
-			)
+			function validDeck () {
+				const decks = store.state.decks
 
-			if (validDeck) {
+				for (let i = 0; i < decks.length; i++) {
+					const deckPathToCheck = `/deck/${decks[i].path}/` // The trailing slash is actually important here, because if the entered URL doesn't include it, then the deck page doesn't fully load properly. In that case, it's better to redirect to the 404 page than to put the user on a broken deck page.
+
+					if (to.path.includes(deckPathToCheck)) {
+						return true
+					}
+				}
+				return false
+			}
+
+			if (validDeck()) {
 				next()
 			} else {
 				next({
@@ -94,7 +100,7 @@ const routes = [
 	{
 		// This route should always be the last item in the `routes` array.
 		name: 'notFound',
-		path: '/:catchAll(.*)',
+		path: '*',
 		component: () => import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue')
 	}
 ]
