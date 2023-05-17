@@ -40,7 +40,7 @@ const routes = [
 				for (let i = 0; i < decks.length; i++) {
 					const deckPathToCheck = `/deck/${decks[i].path}/` // The trailing slash is actually important here, because if the entered URL doesn't include it, then the deck page doesn't fully load properly. In that case, it's better to redirect to the 404 page than to put the user on a broken deck page.
 
-					if (to.path.includes(deckPathToCheck)) {
+					if (to.path.toLowerCase().includes(deckPathToCheck)) {
 						return true
 					}
 				}
