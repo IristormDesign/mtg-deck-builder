@@ -34,11 +34,16 @@
 			</p>
 		</aside>
 
-		<p class="return-link">
-			<router-link :to="{ name: 'deckMain' }">
-				◂ Return to the card list
-			</router-link>
-		</p>
+		<footer>
+			<p v-if="deck.sideboard.cards.length >= 1">
+				<small>Note: These statistics don’t count cards in the sideboard.</small>
+			</p>
+			<p>
+				<router-link :to="{ name: 'deckMain' }">
+					◂ Return to the card list
+				</router-link>
+			</p>
+		</footer>
 	</div>
 </template>
 

@@ -159,9 +159,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			}
 		}
 	}
-	.return-link {
-		text-align: center;
-	}
 	.mana-symbol {
 		font-size: 120%;
 	}
@@ -201,6 +198,10 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				}
 			}
 		}
+	}
+	footer {
+		padding: 0 $lhse*.5;
+		text-align: center;
 	}
 }
 .vert-center-cell {
@@ -253,7 +254,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		h3 {
 			margin-top: $lhse;
 		}
-		.return-link {
+		footer {
 			margin-bottom: $lhse;
 		}
 		.tables {
