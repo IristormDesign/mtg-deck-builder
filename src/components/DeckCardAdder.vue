@@ -10,7 +10,7 @@
 				list="card-suggestions"
 				type="text"
 				v-model="cardNameInput"
-				ref="focus"
+				ref="focusCardAdder"
 			/>
 			<datalist id="card-suggestions">
 				<option v-for="name in cardSuggestions" :key="name">
@@ -74,7 +74,7 @@ export default {
 		loadingCard (loading) {
 			if (window.innerWidth > 768 && !loading) {
 				this.$nextTick(() => {
-					this.$refs.focus.focus()
+					this.$refs.focusCardAdder.focus()
 				})
 			}
 		}
@@ -124,7 +124,7 @@ export default {
 			const cardNameInput = this.cardNameInput
 
 			if (cardNameInput === '') {
-				this.$refs.focus.focus()
+				this.$refs.focusCardAdder.focus()
 			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true

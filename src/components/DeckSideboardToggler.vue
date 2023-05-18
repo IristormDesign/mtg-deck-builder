@@ -3,16 +3,22 @@
 		<h3>View List:</h3>
 		<fieldset class="radio-fieldset">
 			<div>
-				<label for="main-deck">Main Deck</label>
+				<label for="radio-main-deck">Main Deck</label>
 				<input
-					type="radio" id="main-deck" name="view-list" checked
+					id="radio-main-deck"
+					type="radio"
+					checked
+					name="view-list"
 					@click="$store.commit('setShowSideboard', false)"
+					ref="checkRadioMainDeck"
 				/>
 			</div>
 			<div>
-				<label for="sideboard">Sideboard</label>
+				<label for="radio-sideboard">Sideboard</label>
 				<input
-					type="radio" id="sideboard" name="view-list"
+					id="radio-sideboard"
+					type="radio"
+					name="view-list"
 					@click="$store.commit('setShowSideboard', true)"
 				/>
 			</div>
@@ -24,6 +30,18 @@
 export default {
 	props: {
 		deck: Object
+	},
+	computed: {
+		showSideboard () {
+			return this.$store.state.showSideboard
+		}
+	},
+	watch: {
+		showSideboard () {
+			if (!this.showSideboard) {
+				this.$refs.checkRadioMainDeck.checked = true
+			}
+		}
 	}
 }
 </script>

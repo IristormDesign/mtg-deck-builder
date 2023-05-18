@@ -477,6 +477,9 @@ $min-height-card-list: $lhse*6;
 			background: $color-frame-multicolor;
 		}
 	}
+	.card-list-main-leave-active {
+		transition-duration: 0s; // When switching from one deck page to another, this stops the odd lingering of the previous deck list on the current page.
+	}
 }
 
 @media (max-width: $width-app-breakpoint-tablet) {

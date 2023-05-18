@@ -33,10 +33,11 @@
 					</div>
 				</button>
 				<div class="qty">
-					<label :for="`qty-c${i}`">Quantity</label>
+					<label :for="qtyCardID(i)">Quantity</label>
 					<span>&times;</span>
 					<input
-						type="number" :id="`qty-c${i}`"
+						type="number"
+						:id="qtyCardID(i)"
 						min="0" :max="maxQty(card)"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
@@ -76,6 +77,16 @@ export default {
 			} else {
 				return this.deck
 			}
+		},
+		getDeckNumberID () {
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				if (this.deck === decks[i]) {
+					return i
+				}
+			}
+			return null
 		}
 	},
 	methods: {
@@ -250,6 +261,9 @@ export default {
 		},
 		disableIncreaseQtyBtn (card) {
 			return (card.qty === this.maxQty(card))
+		},
+		qtyCardID (cardI) {
+			return `qty-d${this.getDeckNumberID}c${cardI}`
 		}
 	}
 }
