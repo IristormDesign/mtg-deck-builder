@@ -13,6 +13,7 @@
 						id="deck-name"
 						type="text"
 						v-model="deckNameInput"
+						minlength="1"
 						maxlength="50"
 						ref="focus"
 					/>
@@ -58,43 +59,48 @@ export default {
 		submitDeckName () {
 			let name = this.deckNameInput
 
-			// First edit the given name to remove any excess white space.
+			// First, clean up the submitted name.
 			if (name) {
 				name = name.trim()
 				name = this.curlApostrophes(name)
 			}
-			if (name) { // If the user entered any name...
-				const store = this.$store
-				const path = this.stringToPath(name)
-				const deckExists = store.getters.existingDeck(path)
-
-				if (deckExists) {
-					alert(this.alertNameExists(name))
-				} else {
-					const updatedDecksArray = store.state.decks
-
-					updatedDecksArray.push({
-						name: name,
-						path: path,
-						cards: [],
-						viewedCard: '',
-						sideboard: {
-							cards: [],
-							viewedCard: ''
-						},
-						editDate: new Date(),
-						colors: []
-					})
-					store.commit('setDecks', updatedDecksArray)
-					store.commit('sortDeckMenu')
-
-					this.$router.push({
-						name: 'deckMain',
-						params: { deckPath: path }
-					})
+			if (name) { // If the user has submitted any name, after having trimmed any excess white space from it...
+				if (this.minimumDeckNameLimit(name)) {
+					this.createNewDeck(name)
 				}
 			} else {
 				this.$refs.focus.focus()
+			}
+		},
+		createNewDeck (name) {
+			const store = this.$store
+			const path = this.stringToPath(name)
+			const deckExists = store.getters.existingDeck(path)
+
+			if (deckExists) {
+				alert(this.alertNameExists(name))
+			} else {
+				const updatedDecksArray = store.state.decks
+
+				updatedDecksArray.push({
+					name: name,
+					path: path,
+					cards: [],
+					viewedCard: '',
+					sideboard: {
+						cards: [],
+						viewedCard: ''
+					},
+					editDate: new Date(),
+					colors: []
+				})
+				store.commit('setDecks', updatedDecksArray)
+				store.commit('sortDeckMenu')
+
+				this.$router.push({
+					name: 'deckMain',
+					params: { deckPath: path }
+				})
 			}
 		},
 		importDeckData () {
@@ -116,7 +122,7 @@ export default {
 						if (store.getters.existingDeck(deckData.path)) {
 							const dupDeckData = this.amendDupDeckName(deckData)
 
-							alert(`⚠ As you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}” instead.`)
+							alert(`⚠ Since you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}.”`)
 
 							this.storeDupDeckAndRedirect(deckData, dupDeckData)
 						} else {

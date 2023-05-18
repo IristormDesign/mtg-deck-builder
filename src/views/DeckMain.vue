@@ -29,9 +29,17 @@ export default {
 	components: { CardDisplay, CardSorter, SideboardToggler, CardList, CardAdder, DeckActions },
 	computed: {
 		deck () {
-			return this.$store.state.decks.find(deck =>
-				`/deck/${deck.path}/` === this.$route.path
-			)
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				const deck = decks[i]
+
+				if (this.$route.path === `/deck/${deck.path}/`) {
+					return deck
+				}
+			}
+
+			return null
 		}
 	}
 }

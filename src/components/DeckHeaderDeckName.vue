@@ -39,6 +39,8 @@ export default {
 				if (newName.length > 50) {
 					alert('⚠ That deck name is too long. Please shorten it to fewer than 50 characters.')
 					this.renameDeck(newName)
+				} else if (!this.minimumDeckNameLimit(newName)) {
+					this.renameDeck(newName)
 				} else if (!deckExists || theActiveDeck()) {
 					const deck = this.deck
 
