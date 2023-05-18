@@ -34,7 +34,7 @@ export default {
 			for (let i = 0; i < decks.length; i++) {
 				const deck = decks[i]
 
-				if (this.$route.path === `/deck/${deck.path}/`) {
+				if (this.$route.path.toLowerCase().includes(`/deck/${deck.path}/`)) {
 					return deck
 				}
 			}
