@@ -30,6 +30,15 @@ $min-height-card-list: $lhse*6;
 					padding-left: 1em;
 				}
 			}
+			.name {
+				margin-left: $lhse*.125;
+			}
+			.mana {
+				margin-right: -$lhse*.2;
+			}
+			.rarity {
+				margin-right: $lhse*.0833;
+			}
 		}
 		.card-button {
 			display: flex;
