@@ -132,6 +132,9 @@ export default {
 						if (this.findExistingCard(newCardName)) {
 							this.cardExistsNotice(newCardName)
 						} else {
+							cards.forEach(card => {
+								card.gapAfter = false
+							})
 							cards.push(newCard)
 							deck.editDate = new Date()
 
@@ -142,7 +145,7 @@ export default {
 
 							this.determineDeckColors(this.deck)
 
-							store.commit('setSortAttribute', '')
+							store.commit('setSortAttribute', 'unsorted')
 						}
 					}
 				})

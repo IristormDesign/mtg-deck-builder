@@ -14,15 +14,13 @@ export default {
 		deck: Object
 	},
 	computed: {
-		spellsOnly () {
-			return this.deck.cards.filter(card => card.mana)
-		},
 		averageManaValue () {
 			// Any card with a mana cost counts as a spell.
+			const spellsOnly = this.deck.cards.filter(card => card.mana)
 			let avg = 0
 			let totalSpells = 0
 
-			this.spellsOnly.forEach(card => {
+			spellsOnly.forEach(card => {
 				for (let i = 0; i < card.qty; i++) {
 					avg += card.cmc
 					totalSpells++

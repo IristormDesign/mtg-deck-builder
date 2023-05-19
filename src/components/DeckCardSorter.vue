@@ -4,8 +4,8 @@
 			<fieldset :disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)">
 				<label for="attributeSelect">Sort Cards by:</label>
 				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
-					<option v-if="sortAttribute == ''" value="">
-						(Select)
+					<option v-if="sortAttribute == 'unsorted'" value="unsorted">
+						(Unsorted)
 					</option>
 					<option value="name">Name</option>
 					<option value="colors">Mana Color</option>
@@ -42,41 +42,41 @@ export default {
 			store.commit('setSortAttribute', sortAttribute)
 
 			store.state.decks.forEach(deck => {
-				const mainCards = deck.cards
-				const sideboardCards = deck.sideboard.cards
+				const main = deck.cards
+				const sideboard = deck.sideboard.cards
 
 				switch (sortAttribute) {
 					case 'colors':
-						sortByColor(mainCards)
-						sortByColor(sideboardCards)
+						sortByColor(main)
+						sortByColor(sideboard)
 						break
 					case 'type':
-						sortByType(mainCards)
-						sortByType(sideboardCards)
+						sortByType(main)
+						sortByType(sideboard)
 						break
 					case 'subtype':
-						sortBySubtype(mainCards)
-						sortBySubtype(sideboardCards)
+						sortBySubtype(main)
+						sortBySubtype(sideboard)
 						break
 					case 'supertype':
-						sortBySupertype(mainCards)
-						sortBySupertype(sideboardCards)
+						sortBySupertype(main)
+						sortBySupertype(sideboard)
 						break
 					case 'rarity':
-						sortByRarity(mainCards)
-						sortByRarity(sideboardCards)
+						sortByRarity(main)
+						sortByRarity(sideboard)
 						break
 					case 'pt-sum':
-						sortByPTSum(mainCards)
-						sortByPTSum(sideboardCards)
+						sortByPTSum(main)
+						sortByPTSum(sideboard)
 						break
 					case 'qty':
-						sortByQuantity(mainCards)
-						sortByQuantity(sideboardCards)
+						sortByQuantity(main)
+						sortByQuantity(sideboard)
 						break
 					default:
-						sortDefault(mainCards)
-						sortDefault(sideboardCards)
+						sortDefault(main)
+						sortDefault(sideboard)
 				}
 
 				this.addSectionalGaps(deck, sortAttribute)
@@ -274,7 +274,7 @@ export default {
 		// Using `$store.subscribe` seems to be the only way that gets the <select> element to change its value other than clicking its options.
 		this.$store.subscribe((mutation) => {
 			// `$store.subscribe` will activate when anything in the store is mutated; this `if` statement narrows down to the relevant type and payload.
-			if (mutation.type === 'setSortAttribute' && mutation.payload === '') {
+			if (mutation.type === 'setSortAttribute' && mutation.payload === 'unsorted') {
 				this.sortAttribute = mutation.payload
 			}
 		})

@@ -202,7 +202,7 @@
 					</ul>
 					<p>The effects of sorting the card list are cumulative, with the most recently selected sorting option given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the cards are sorted mainly by type, and within each sorted group of types (the creature group, the sorcery group, etc.), the cards are sorted by rarity.</p>
 					<p>Name is the most distinguishable card attribute to sort by. This is because every card in a deck’s card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
-					<p>For easier skimming of the deck list at a glance, the sorting options for mana value, type, subtype, supertype, and P/T sum add small gaps between each sorted group of cards. A gap is also inserted before any <a href="#m-card-adder">newly added cards</a> to the list that haven’t been sorted yet.</p>
+					<p>For easier skimming of the card list at a glance, the sorting options for mana value, type, subtype, supertype, and P/T sum add small gaps between each sorted group.</p>
 					<p>Applying a sorting option affects all of your decks alike, not only the deck you’re currently viewing.</p>
 				</section>
 				<section id="m-deck-actions">
