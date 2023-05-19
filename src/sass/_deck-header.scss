@@ -59,9 +59,6 @@
 	}
 }
 .deck-colors {
-	padding-top: 2px;
-	padding-bottom: 2px;
-
 	h3 {
 		white-space: normal;
 		width: min-content;
@@ -69,6 +66,10 @@
 	.output {
 		width: max-content;
 
+		&.no-colors {
+			font-size: 200%;
+			display: flex;
+		}
 		.mana-symbol {
 			box-shadow: none;
 			line-height: .875;
@@ -278,7 +279,9 @@
 	}
 	.deck-colors {
 		.output {
-			margin-top: divide($lhse, 4);
+			&.size-mana-symbols {
+				margin-top: divide($lhse, 4);
+			}
 		}
 	}
 }

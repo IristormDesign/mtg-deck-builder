@@ -32,36 +32,42 @@ export default {
 		},
 		renderManaSymbols (deck) {
 			if (deck.colors) {
-				let html = ''
-				const sym = this.manaSymbol
+				const getSymbolHTML = (color) => {
+					const s = this.manaSymbol
+
+					switch (color) {
+						case 'W': return s.w
+						case 'U': return s.u
+						case 'B': return s.b
+						case 'R': return s.r
+						case 'G': return s.g
+					}
+				}
+
+				let output = ''
 
 				deck.colors.forEach(color => {
-					switch (color) {
-						case 'W': html += sym.w; break
-						case 'U': html += sym.u; break
-						case 'B': html += sym.b; break
-						case 'R': html += sym.r; break
-						case 'G': html += sym.g; break
-					}
+					output += getSymbolHTML(color)
 				})
 
-				return html
+				return output
 			} else {
 				this.determineDeckColors(deck)
 			}
 		},
-		resizeManaSymbols (deck) {
+		sizeManaSymbols (deck) {
 			if (deck.colors) {
-				const className = 'resize-mana-symbols '
-
-				switch (deck.colors.length) {
-					case 1: return className + ' one-mana'
-					case 2: return className + ' two-mana'
-					case 3: return className + ' three-mana'
-					case 4: return className + ' four-mana'
-					case 5: return className + ' five-mana'
-					default: return className
+				const getClassName = () => {
+					switch (deck.colors.length) {
+						case 1: return 'one'
+						case 2: return 'two'
+						case 3: return 'three'
+						case 4: return 'four'
+						case 5: return 'five'
+					}
 				}
+
+				return 'size-mana-symbols ' + getClassName()
 			} else {
 				this.determineDeckColors(deck)
 			}

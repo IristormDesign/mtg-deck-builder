@@ -71,7 +71,7 @@
 											<span class="deck-menu-deck-name">{{ deck.name }}</span>
 											<div class="deck-menu-deck-colors">
 												<div
-													:class="resizeManaSymbols(deck)"
+													:class="sizeManaSymbols(deck)"
 													v-html="renderManaSymbols(deck)"
 												/>
 											</div>

@@ -1,5 +1,5 @@
 <template>
-	<section v-show="spellsOnly.length > 0" class="deck-info average-mana-value">
+	<section class="deck-info average-mana-value">
 		<h3>Average<br>Mana Value</h3>
 
 		<div class="output">

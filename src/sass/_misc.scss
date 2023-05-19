@@ -5,8 +5,11 @@
 }
 .warning-symbol {
 	color: desaturate(darken($color-rarity-gold, 12.5%), 12.5%);
-	cursor: default;
 	font-size: 60%;
+
+	&[title] {
+		cursor: help;
+	}
 }
 .mana-symbol {
 	$common-mana-symbol-size: .875em;
@@ -160,19 +163,19 @@
 .stt-fade-leave-to {
   opacity: 0;
 }
-.resize-mana-symbols {
+.size-mana-symbols {
 	grid-gap: 0 2px;
 	justify-items: center;
 
 	.mana-symbol {
 		margin: 0;
 	}
-	&.one-mana {
+	&.one {
 		.mana-symbol {
-			font-size: 225%;
+			font-size: 200%;
 		}
 	}
-	&.two-mana {
+	&.two {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr;
@@ -181,13 +184,12 @@
 			font-size: 150%;
 		}
 	}
-	&.three-mana {
+	&.three {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		grid-template-rows: 1fr 1fr;
 
 		.mana-symbol {
-			font-size: 108.33%;
 			grid-row: 2;
 			grid-column: span 3;
 
@@ -197,17 +199,13 @@
 			}
 		}
 	}
-	&.four-mana {
+	&.four {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr 1fr;
 		grid-gap: 2px;
-
-		.mana-symbol {
-			font-size: 108.33%;
-		}
 	}
-	&.five-mana {
+	&.five {
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: 1fr 1fr;
