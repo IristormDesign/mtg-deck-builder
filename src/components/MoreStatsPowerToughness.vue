@@ -11,14 +11,14 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th>Average</th>
-					<td>{{ power.average }}</td>
-					<td>{{ toughness.average }}</td>
-				</tr>
-				<tr>
 					<th>Greatest</th>
 					<td>{{ power.greatest }}</td>
 					<td>{{ toughness.greatest }}</td>
+				</tr>
+				<tr>
+					<th>Average</th>
+					<td>{{ power.average }}</td>
+					<td>{{ toughness.average }}</td>
 				</tr>
 				<tr>
 					<th>Least</th>
@@ -39,14 +39,14 @@ export default {
 	data () {
 		return {
 			power: {
-				average: '—',
 				greatest: '—',
+				average: '—',
 				least: '—',
 				total: 0
 			},
 			toughness: {
-				average: '—',
 				greatest: '—',
+				average: '—',
 				least: '—',
 				total: 0
 			}
@@ -61,10 +61,10 @@ export default {
 			const power = this.power
 			const toughness = this.toughness
 
-			power.average = 0
-			toughness.average = 0
 			power.greatest = 0
 			toughness.greatest = 0
+			power.average = 0
+			toughness.average = 0
 			power.least = Infinity
 			toughness.least = Infinity
 
