@@ -12,7 +12,7 @@
 export default {
 	data () {
 		return {
-			deckObjectData: this.deck
+			deckObject: this.deck
 		}
 	},
 	props: {
@@ -22,7 +22,7 @@ export default {
 		if (this.deck.editDate === null) { // This happens when a default deck is opened for the first time on the user's device.
 			const decks = this.$store.state.decks
 
-			this.deckObjectData.editDate = new Date()
+			this.deckObject.editDate = new Date()
 			this.$store.commit('setDecks', decks)
 		}
 	},

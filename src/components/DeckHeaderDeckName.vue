@@ -2,7 +2,7 @@
 	<section class="deck-info deck-name">
 		<button
 			@click="renameDeck(deck.name)"
-			title="Change the name of this deck"
+			title="Rename this deck"
 		>
 			<h2>{{ deck.name }}</h2>
 		</button>
@@ -19,7 +19,7 @@ export default {
 	},
 	methods: {
 		renameDeck (failedName, deckNameExists) {
-			let message = 'Change the name of this deck:'
+			let message = 'Rename this deck:'
 			if (deckNameExists) {
 				message = this.alertNameExists(deckNameExists)
 			}

@@ -34,11 +34,6 @@ import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 export default {
 	mixins: [findRelevantDeck],
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
-	data () {
-		return {
-			deckObjectData: this.deck
-		}
-	},
 	created () {
 		const store = this.$store
 
