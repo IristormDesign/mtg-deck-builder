@@ -6,13 +6,13 @@
 		<article>
 			<div class="wrap">
 				<header class="deck-header">
-					<deck-name :deck="getCurrentDeck" />
-					<deck-colors :deck="getCurrentDeck" />
-					<average-mana-value :deck="getCurrentDeck" />
-					<date-edited :deck="getCurrentDeck" />
-					<card-names :deck="getCurrentDeck" />
-					<card-total :deck="getCurrentDeck" />
-					<more-stats-button :deck="getCurrentDeck" />
+					<deck-name :deck="deck" />
+					<deck-colors :deck="deck" />
+					<average-mana-value :deck="deck" />
+					<date-edited :deck="deck" />
+					<card-names :deck="deck" />
+					<card-total :deck="deck" />
+					<more-stats-button :deck="deck" />
 				</header>
 			</div>
 
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import findRelevantDeck from '@/mixins/findRelevantDeck.js'
 import DeckName from '@/components/DeckHeaderDeckName.vue'
 import DeckColors from '@/components/DeckHeaderDeckColors.vue'
 import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
@@ -31,7 +32,13 @@ import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 
 export default {
+	mixins: [findRelevantDeck],
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
+	data () {
+		return {
+			deckObjectData: this.deck
+		}
+	},
 	created () {
 		const store = this.$store
 
@@ -52,22 +59,6 @@ export default {
 		this.$store.commit('setShowSideboard', false)
 
 		next()
-	},
-	computed: {
-		getCurrentDeck () {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				const deck = decks[i]
-				const currentURL = this.$route.path.toLowerCase()
-				const deckPathToCheck = `/deck/${deck.path}/`
-
-				if (currentURL.includes(deckPathToCheck)) {
-					return deck
-				}
-			}
-			return null
-		}
 	}
 }
 </script>

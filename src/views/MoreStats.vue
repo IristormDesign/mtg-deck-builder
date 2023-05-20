@@ -85,23 +85,6 @@ export default {
 	mounted () {
 		this.displaySubtypes()
 	},
-	computed: {
-		deck () {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				const deck = decks[i]
-				const currentURL = this.$route.path.toLowerCase()
-				const deckPathToCheck = `/deck/${deck.path}/`
-
-				if (currentURL.includes(deckPathToCheck)) {
-					return deck
-				}
-			}
-
-			return null
-		}
-	},
 	methods: {
 		displaySubtypes () {
 			const allSubtypesCreatures = []

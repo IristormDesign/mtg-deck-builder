@@ -78,6 +78,9 @@ export default {
 				return this.deck
 			}
 		},
+		deckObject () {
+			return this.deck
+		},
 		getDeckNumberID () {
 			const decks = this.$store.state.decks
 
@@ -92,20 +95,14 @@ export default {
 	methods: {
 		viewCard (card) {
 			const store = this.$store
-			const decks = store.state.decks
 
-			for (let i = 0; i < decks.length; i++) {
-				if (decks[i].name === this.deck.name) {
-					if (store.state.showSideboard) {
-						decks[i].sideboard.viewedCard = card.name
-					} else {
-						decks[i].viewedCard = card.name
-					}
-					break
-				}
+			if (store.state.showSideboard) {
+				this.deckObject.sideboard.viewedCard = card.name
+			} else {
+				this.deckObject.viewedCard = card.name
 			}
 
-			store.commit('setDecks', decks)
+			store.commit('setDecks', store.state.decks)
 			store.commit('setShowCard', true)
 		},
 		colorButton (card) {
@@ -188,14 +185,7 @@ export default {
 			activeCardList.viewedCard = cardName
 
 			if (deck.sortBy === 'qty') {
-				for (let i = 0; i < store.state.decks.length; i++) {
-					const deckI = store.state.decks[i]
-
-					if (deckI.path === this.deck.path) {
-						deckI.sortBy = 'unsorted'
-						break
-					}
-				}
+				deck.sortBy = 'unsorted'
 			}
 			if (card.qty <= 0) {
 				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)

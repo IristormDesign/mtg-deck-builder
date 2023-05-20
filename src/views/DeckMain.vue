@@ -26,21 +26,6 @@ import DeckActions from '@/components/DeckDeckActions.vue'
 
 export default {
 	mixins: [findRelevantDeck],
-	components: { CardDisplay, CardSorter, SideboardToggler, CardList, CardAdder, DeckActions },
-	computed: {
-		deck () {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				const deck = decks[i]
-
-				if (this.$route.path.toLowerCase().includes(`/deck/${deck.path}/`)) {
-					return deck
-				}
-			}
-
-			return null
-		}
-	}
+	components: { CardDisplay, CardSorter, SideboardToggler, CardList, CardAdder, DeckActions }
 }
 </script>

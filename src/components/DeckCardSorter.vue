@@ -51,75 +51,59 @@ export default {
 		this.sortMenu = this.deck.sortBy
 	},
 	computed: {
-		deckSortBy () {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				const deckI = decks[i]
-
-				if (deckI.path === this.deck.path) {
-					return deckI.sortBy
-				}
-			}
-
-			return null
+		deckObject () {
+			return this.deck
+		},
+		deckSortValue () {
+			return this.deck.sortBy
 		}
 	},
 	methods: {
 		sortCards () {
-			const decks = this.$store.state.decks
 			const sortMenu = this.sortMenu
 
-			for (let i = 0; i < decks.length; i++) {
-				const deckI = decks[i]
+			this.deckObject.sortBy = sortMenu
 
-				if (deckI.path === this.deck.path) {
-					deckI.sortBy = sortMenu
+			const deck = this.deck
+			const mainList = deck.cards
+			const sbList = deck.sideboard.cards
 
-					const main = deckI.cards
-					const sideboard = deckI.sideboard.cards
-
-					switch (sortMenu) {
-						case 'color':
-							sortByColor(main)
-							sortByColor(sideboard)
-							break
-						case 'type':
-							sortByType(main)
-							sortByType(sideboard)
-							break
-						case 'subtype':
-							sortBySubtype(main)
-							sortBySubtype(sideboard)
-							break
-						case 'supertype':
-							sortBySupertype(main)
-							sortBySupertype(sideboard)
-							break
-						case 'rarity':
-							sortByRarity(main)
-							sortByRarity(sideboard)
-							break
-						case 'pt-sum':
-							sortByPTSum(main)
-							sortByPTSum(sideboard)
-							break
-						case 'qty':
-							sortByQuantity(main)
-							sortByQuantity(sideboard)
-							break
-						default:
-							sortDefault(main)
-							sortDefault(sideboard)
-					}
-
-					this.addSectionalGaps(deckI, sortMenu)
-
+			switch (sortMenu) {
+				case 'color':
+					sortByColor(mainList)
+					sortByColor(sbList)
 					break
-				}
+				case 'type':
+					sortByType(mainList)
+					sortByType(sbList)
+					break
+				case 'subtype':
+					sortBySubtype(mainList)
+					sortBySubtype(sbList)
+					break
+				case 'supertype':
+					sortBySupertype(mainList)
+					sortBySupertype(sbList)
+					break
+				case 'rarity':
+					sortByRarity(mainList)
+					sortByRarity(sbList)
+					break
+				case 'pt-sum':
+					sortByPTSum(mainList)
+					sortByPTSum(sbList)
+					break
+				case 'qty':
+					sortByQuantity(mainList)
+					sortByQuantity(sbList)
+					break
+				default:
+					sortDefault(mainList)
+					sortDefault(sbList)
 			}
 
-			this.$store.commit('setDecks', decks)
+			this.addSectionalGaps(deck, sortMenu)
+			this.$store.commit('setDecks', this.$store.state.decks)
 
 			function sortByColor (cards) {
 				function isColorlessLand (card) {
@@ -308,7 +292,7 @@ export default {
 		}
 	},
 	watch: {
-		deckSortBy: function (value) {
+		deckSortValue: function (value) {
 			// Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to be unsorted. (For example, that can occur by having changed a card's quantity while the list is sorted by quantity.)
 			if (value === 'unsorted') {
 				this.sortMenu = value
