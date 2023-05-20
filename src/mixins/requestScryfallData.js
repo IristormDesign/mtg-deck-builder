@@ -132,20 +132,30 @@ export default {
 						if (this.findExistingCard(newCardName)) {
 							this.cardExistsNotice(newCardName)
 						} else {
-							cards.forEach(card => {
-								card.gapAfter = false
-							})
 							cards.push(newCard)
 							deck.editDate = new Date()
+							this.determineDeckColors(this.deck)
+
+							deck.cards.forEach(card => {
+								card.gapAfter = false
+							})
+							deck.sideboard.cards.forEach(card => {
+								card.gapAfter = false
+							})
+
+							for (let i = 0; i < store.state.decks.length; i++) {
+								const deckI = store.state.decks[i]
+
+								if (deckI.path === this.deck.path) {
+									deckI.sortBy = 'unsorted'
+									break
+								}
+							}
 
 							this.$nextTick(() => {
 								this.activeCardList.viewedCard = newCardName
 								store.commit('setDecks', store.state.decks)
 							})
-
-							this.determineDeckColors(this.deck)
-
-							store.commit('setSortAttribute', 'unsorted')
 						}
 					}
 				})

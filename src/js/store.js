@@ -6,8 +6,7 @@ const vuexLocalStorage = new VuexPersist({
 	storage: window.localStorage,
 	reducer: (state) => ({
 		decks: state.decks,
-		loadDefaultDecks: state.loadDefaultDecks,
-		sortAttribute: state.sortAttribute
+		loadDefaultDecks: state.loadDefaultDecks
 	})
 })
 Vue.use(Vuex)
@@ -20,8 +19,7 @@ export default new Vuex.Store({
 		mouseoutEventActive: true,
 		showCard: false,
 		showDeckMenu: false,
-		showSideboard: false,
-		sortAttribute: 'type'
+		showSideboard: false
 	},
 	getters: {
 		attentionHeaderButton: (state) => () => {
@@ -58,9 +56,6 @@ export default new Vuex.Store({
 		},
 		setMouseoutEventActive (state, payload) {
 			state.mouseoutEventActive = payload
-		},
-		setSortAttribute (state, payload) {
-			state.sortAttribute = payload
 		},
 		setShowCard (state, payload) {
 			state.showCard = payload

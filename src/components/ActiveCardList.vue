@@ -187,8 +187,15 @@ export default {
 
 			activeCardList.viewedCard = cardName
 
-			if (store.state.sortAttribute === 'qty') {
-				store.commit('setSortAttribute', '') // Reset the sort-by select box.
+			if (deck.sortBy === 'qty') {
+				for (let i = 0; i < store.state.decks.length; i++) {
+					const deckI = store.state.decks[i]
+
+					if (deckI.path === this.deck.path) {
+						deckI.sortBy = 'unsorted'
+						break
+					}
+				}
 			}
 			if (card.qty <= 0) {
 				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)

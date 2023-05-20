@@ -1,14 +1,20 @@
 <template>
 	<section class="card-sorter">
 		<form>
-			<fieldset :disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)">
-				<label for="attributeSelect">Sort Cards by:</label>
-				<select v-model="sortAttribute" @change="sortCards()" id="attributeSelect">
-					<option v-if="sortAttribute == 'unsorted'" value="unsorted">
-						(Unsorted)
-					</option>
+			<fieldset
+				:disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)"
+			>
+				<label for="sortMenu">Sort Cards by:</label>
+				<select
+					v-model="sortMenu" id="sortMenu"
+					@change="sortCards()"
+				>
+					<option
+						v-if="sortMenu === 'unsorted'"
+						value="unsorted"
+					>(Unsorted)</option>
 					<option value="name">Name</option>
-					<option value="colors">Mana Color</option>
+					<option value="color">Mana Color</option>
 					<option value="cmc">Mana Value</option>
 					<option value="type">Type</option>
 					<option value="subtype">Subtype</option>
@@ -29,60 +35,91 @@ export default {
 	mixins: [cardListSectionalGaps],
 	data () {
 		return {
-			sortAttribute: this.$store.state.sortAttribute
+			sortMenu: this.deck.sortBy
 		}
 	},
 	props: {
 		deck: Object
 	},
+	created () {
+		if (!this.sortMenu) {
+			this.sortMenu = 'unsorted'
+		}
+	},
+	updated () {
+		// When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's.
+		this.sortMenu = this.deck.sortBy
+	},
+	computed: {
+		deckSortBy () {
+			const decks = this.$store.state.decks
+
+			for (let i = 0; i < decks.length; i++) {
+				const deckI = decks[i]
+
+				if (deckI.path === this.deck.path) {
+					return deckI.sortBy
+				}
+			}
+
+			return null
+		}
+	},
 	methods: {
 		sortCards () {
-			const store = this.$store
-			const sortAttribute = this.sortAttribute
-			store.commit('setSortAttribute', sortAttribute)
+			const decks = this.$store.state.decks
+			const sortMenu = this.sortMenu
 
-			store.state.decks.forEach(deck => {
-				const main = deck.cards
-				const sideboard = deck.sideboard.cards
+			for (let i = 0; i < decks.length; i++) {
+				const deckI = decks[i]
 
-				switch (sortAttribute) {
-					case 'colors':
-						sortByColor(main)
-						sortByColor(sideboard)
-						break
-					case 'type':
-						sortByType(main)
-						sortByType(sideboard)
-						break
-					case 'subtype':
-						sortBySubtype(main)
-						sortBySubtype(sideboard)
-						break
-					case 'supertype':
-						sortBySupertype(main)
-						sortBySupertype(sideboard)
-						break
-					case 'rarity':
-						sortByRarity(main)
-						sortByRarity(sideboard)
-						break
-					case 'pt-sum':
-						sortByPTSum(main)
-						sortByPTSum(sideboard)
-						break
-					case 'qty':
-						sortByQuantity(main)
-						sortByQuantity(sideboard)
-						break
-					default:
-						sortDefault(main)
-						sortDefault(sideboard)
+				if (deckI.path === this.deck.path) {
+					deckI.sortBy = sortMenu
+
+					const main = deckI.cards
+					const sideboard = deckI.sideboard.cards
+
+					switch (sortMenu) {
+						case 'color':
+							sortByColor(main)
+							sortByColor(sideboard)
+							break
+						case 'type':
+							sortByType(main)
+							sortByType(sideboard)
+							break
+						case 'subtype':
+							sortBySubtype(main)
+							sortBySubtype(sideboard)
+							break
+						case 'supertype':
+							sortBySupertype(main)
+							sortBySupertype(sideboard)
+							break
+						case 'rarity':
+							sortByRarity(main)
+							sortByRarity(sideboard)
+							break
+						case 'pt-sum':
+							sortByPTSum(main)
+							sortByPTSum(sideboard)
+							break
+						case 'qty':
+							sortByQuantity(main)
+							sortByQuantity(sideboard)
+							break
+						default:
+							sortDefault(main)
+							sortDefault(sideboard)
+					}
+
+					this.addSectionalGaps(deckI, sortMenu)
+
+					break
 				}
+			}
 
-				this.addSectionalGaps(deck, sortAttribute)
-			})
-
-			store.commit('setDecks', store.state.decks)
+			this.$store.commit('setDecks', decks)
 
 			function sortByColor (cards) {
 				function isColorlessLand (card) {
@@ -256,8 +293,8 @@ export default {
 			}
 			function sortDefault (cards) { // For card name and mana value
 				cards.sort((a, b) => {
-					const cardA = a[sortAttribute]
-					const cardB = b[sortAttribute]
+					const cardA = a[sortMenu]
+					const cardB = b[sortMenu]
 
 					if (cardA < cardB) {
 						return -1
@@ -270,14 +307,13 @@ export default {
 			}
 		}
 	},
-	mounted () {
-		// Using `$store.subscribe` seems to be the only way that gets the <select> element to change its value other than clicking its options.
-		this.$store.subscribe((mutation) => {
-			// `$store.subscribe` will activate when anything in the store is mutated; this `if` statement narrows down to the relevant type and payload.
-			if (mutation.type === 'setSortAttribute' && mutation.payload === 'unsorted') {
-				this.sortAttribute = mutation.payload
+	watch: {
+		deckSortBy: function (value) {
+			// Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to be unsorted. (For example, that can occur by having changed a card's quantity while the list is sorted by quantity.)
+			if (value === 'unsorted') {
+				this.sortMenu = value
 			}
-		})
+		}
 	}
 }
 </script>

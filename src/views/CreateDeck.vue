@@ -2,7 +2,7 @@
 	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
 		<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-		<p>To create a deck, either you can start on an empty deck page and add cards as you want, or you can import a deck data file to load a pre-made deck.</p>
+		<p>To create a deck, you can start from an empty deck page and add cards, or you can import a deck data file to load a pre-made deck.</p>
 
 		<div class="columns">
 			<div class="new-deck">
@@ -92,7 +92,8 @@ export default {
 						viewedCard: ''
 					},
 					editDate: new Date(),
-					colors: []
+					colors: [],
+					sortBy: 'unsorted'
 				})
 				store.commit('setDecks', updatedDecksArray)
 				store.commit('sortDeckMenu')
@@ -133,7 +134,8 @@ export default {
 								viewedCard: deckData.viewedCard,
 								sideboard: deckData.sideboard,
 								editDate: deckData.editDate,
-								colors: deckData.colors
+								colors: deckData.colors,
+								sortBy: deckData.sortBy
 							})
 							store.commit('setDecks', updatedDecksArray)
 							store.commit('sortDeckMenu')
@@ -143,8 +145,6 @@ export default {
 								params: { deckPath: deckData.path }
 							})
 						}
-
-						store.commit('setSortAttribute', '')
 					} else {
 						// Clear the deck file input in case the user tries to load a file of the same name again.
 						fileInputEl.value = null

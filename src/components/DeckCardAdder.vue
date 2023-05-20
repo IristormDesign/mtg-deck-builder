@@ -34,10 +34,9 @@ import axios from 'axios'
 import debounce from 'debounce'
 import stringMethods from '@/mixins/stringMethods.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
-import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
 
 export default {
-	mixins: [stringMethods, requestScryfallData, cardListSectionalGaps],
+	mixins: [stringMethods, requestScryfallData],
 	props: {
 		deck: Object
 	},

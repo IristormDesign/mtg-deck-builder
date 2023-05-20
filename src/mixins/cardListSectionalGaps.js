@@ -1,6 +1,6 @@
 export default {
 	methods: {
-		addSectionalGaps (deck, sortAttribute) {
+		addSectionalGaps (deck, sortBy) {
 			function isCreature (string) {
 				return /\bCreature\b/.test(string)
 			}
@@ -30,11 +30,11 @@ export default {
 					card.gapAfter = false
 
 					if (nextCard) {
-						if (sortAttribute === 'cmc') {
+						if (sortBy === 'cmc') {
 							if (card.cmc < nextCard.cmc) {
 								card.gapAfter = true
 							}
-						} else if (sortAttribute === 'type') {
+						} else if (sortBy === 'type') {
 							const regexFrontFaceType = (card) => {
 								// If the card is double-faced, get only the type of its front face (any string up to a slash character).
 								return card.type.match(/[^/]*/)[0]
@@ -75,7 +75,7 @@ export default {
 									card.gapAfter = true
 								}
 							}
-						} else if (sortAttribute === 'subtype') {
+						} else if (sortBy === 'subtype') {
 							const hasSubtype = (card) => {
 								const regexSubtype = / — \w/
 
@@ -85,7 +85,7 @@ export default {
 							if (hasSubtype(card) && !hasSubtype(nextCard)) {
 								card.gapAfter = true
 							}
-						} else if (sortAttribute === 'supertype') {
+						} else if (sortBy === 'supertype') {
 							const hasSupertype = (card) => {
 								const regexSupertype = /^\b(Basic|Elite|Legendary|Ongoing|Snow|Token|World)\b \w/
 
@@ -95,7 +95,7 @@ export default {
 							if (hasSupertype(card) && !hasSupertype(nextCard)) {
 								card.gapAfter = true
 							}
-						} else if (sortAttribute === 'pt-sum') {
+						} else if (sortBy === 'pt-sum') {
 							if (card.power !== undefined && nextCard.power === undefined) {
 								card.gapAfter = true
 							}
