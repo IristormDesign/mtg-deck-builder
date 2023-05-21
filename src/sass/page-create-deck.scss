@@ -13,7 +13,7 @@
 	}
 	.new-deck,
 	.import-data {
-		border: 2px solid $color-heading-bg;
+		border: $border-image;
 		padding: $lhse*.5;
 		border-radius: $border-radius-group*.5;
 	}

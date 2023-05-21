@@ -24,12 +24,7 @@ select {
 	) darken($color-group-bg, 6.25%);
 	color: $color-link;
 	font-weight: $font-weight-normal;
-	border: 1px solid;
-	border-top-color: darken($color-section-border, 8.33%);
-	border-right-color: darken($color-section-border, 0%);
-	border-bottom-color: desaturate(lighten($color-section-border, 16.67%), 8.33%);
-	border-left-color: desaturate(lighten($color-section-border, 8.33%), 4.17%);
-	border-color: $color-section-border;
+	border: $border-image;
 	padding: .125em .25em;
 	transition: $transition-duration-standard ease;
 	transition-duration: border, background, box-shadow;
@@ -59,7 +54,7 @@ input {
 	padding: 0 .5em;
 }
 .radio-fieldset {
-	border: $border-sections;
+	border: $border-image;
 	border-radius: $border-radius-button;
 	padding: 0;
 	margin: 0;
