@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import findRelevantDeck from '@/mixins/findRelevantDeck.js'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 import DeckName from '@/components/DeckHeaderDeckName.vue'
 import DeckColors from '@/components/DeckHeaderDeckColors.vue'
 import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
@@ -32,7 +32,7 @@ import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 
 export default {
-	mixins: [findRelevantDeck],
+	mixins: [getActiveDeck],
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
 	created () {
 		const store = this.$store

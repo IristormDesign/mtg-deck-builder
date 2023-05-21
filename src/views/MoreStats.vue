@@ -49,7 +49,7 @@
 
 <script>
 import axios from 'axios'
-import findRelevantDeck from '@/mixins/findRelevantDeck.js'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import MoreStatsColors from '@/components/MoreStatsColors.vue'
@@ -62,7 +62,7 @@ import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
 
 export default {
-	mixins: [findRelevantDeck, requestScryfallData, symbolsMarkup],
+	mixins: [getActiveDeck, requestScryfallData, symbolsMarkup],
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
 	data () {
 		return {

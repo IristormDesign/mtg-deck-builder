@@ -75,7 +75,7 @@ export default {
 		createNewDeck (name) {
 			const store = this.$store
 			const path = this.stringToPath(name)
-			const deckExists = store.getters.existingDeck(path)
+			const deckExists = store.getters.deckExists(path)
 
 			if (deckExists) {
 				alert(this.alertNameExists(name))
@@ -120,7 +120,7 @@ export default {
 						const deckData = JSON.parse(fileReaderResult)
 						const updatedDecksArray = store.state.decks
 
-						if (store.getters.existingDeck(deckData.path)) {
+						if (store.getters.deckExists(deckData.path)) {
 							const dupDeckData = this.amendDupDeckName(deckData)
 
 							alert(`⚠ Since you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}.”`)

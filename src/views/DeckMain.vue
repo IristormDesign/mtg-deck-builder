@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import findRelevantDeck from '@/mixins/findRelevantDeck.js'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 import CardDisplay from '@/components/DeckCardDisplay.vue'
 import CardSorter from '@/components/DeckCardSorter.vue'
 import SideboardToggler from '@/components/DeckSideboardToggler.vue'
@@ -25,7 +25,7 @@ import CardAdder from '@/components/DeckCardAdder.vue'
 import DeckActions from '@/components/DeckDeckActions.vue'
 
 export default {
-	mixins: [findRelevantDeck],
+	mixins: [getActiveDeck],
 	components: { CardDisplay, CardSorter, SideboardToggler, CardList, CardAdder, DeckActions }
 }
 </script>

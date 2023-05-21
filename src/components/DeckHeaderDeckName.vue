@@ -32,7 +32,7 @@ export default {
 			if (newName) { // If the user provided any name...
 				const store = this.$store
 				const newPath = this.stringToPath(newName)
-				const deckExists = store.getters.existingDeck(newPath)
+				const deckExists = store.getters.deckExists(newPath)
 				const theActiveDeck = () =>
 					newPath === this.$route.params.deckPath
 
