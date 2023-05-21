@@ -58,13 +58,8 @@ export default {
 			const deletionConfirmed = confirm(`Are you sure you want to permanently delete the deck “${deckName}”?`)
 
 			if (deletionConfirmed) {
-				const remainingDecks = store.state.decks.filter(
-					deck => deck.name !== deckName
-				)
-				this.$nextTick(() => {
-					store.commit('setDecks', remainingDecks)
-				})
 				store.commit('setDeletedDeckName', deckName)
+
 				this.$router.replace({ name: 'deckDeleted' })
 			}
 		},
