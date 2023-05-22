@@ -38,7 +38,6 @@
 	}
 	.output {
 		line-height: 1;
-		color: $color-text-brighter;
 	}
 }
 .deck-name {
@@ -73,6 +72,7 @@
 		.mana-symbol {
 			box-shadow: none;
 			line-height: .875;
+			opacity: $opacity-mana-symbols;
 		}
 	}
 }

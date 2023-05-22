@@ -29,7 +29,7 @@ $color-link: saturate(lighten($color-mythic-orange, 8.33%), 16.67%);
 $color-link-focus: saturate($color-mythic-lighter, 25%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 68.75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 66.67%);
-$color-text: lighten($color-group-bg, 68.75%);
+$color-text: lighten($color-group-bg, 66.67%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 62.5%), 6.25%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
@@ -87,6 +87,7 @@ $background-light-gradient:
 $box-shadow-buttons:
 	0 1px 0 1px rgba(#000, .75), // The edge of the hole around the button
 	-1px .167em .125em 1px rgba(#000, .3333); // The shadow of the button
+$opacity-mana-symbols: .9167;
 
 $x: 2px dashed rgba(#c0f, .75);
 
