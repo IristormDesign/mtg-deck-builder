@@ -73,14 +73,13 @@ export default {
 			}
 		},
 		createNewDeck (name) {
-			const store = this.$store
 			const path = this.stringToPath(name)
-			const deckExists = store.getters.deckExists(path)
+			const deckExists = this.$store.getters.deckExists(path)
 
 			if (deckExists) {
 				alert(this.alertNameExists(name))
 			} else {
-				const updatedDecksArray = store.state.decks
+				const updatedDecksArray = this.$store.state.decks
 
 				updatedDecksArray.push({
 					name: name,
@@ -111,20 +110,21 @@ export default {
 					const fileReaderResult = fileReader.result
 
 					if (this.isValidDeckData(importedFile, fileReaderResult)) {
-						const store = this.$store
 						const deckData = JSON.parse(fileReaderResult)
-						const updatedDecksArray = store.state.decks
+						const deckPath = deckData.path
 
-						if (store.getters.deckExists(deckData.path)) {
+						if (this.$store.getters.deckExists(deckPath)) {
 							const dupDeckData = this.amendDupDeckName(deckData)
 
 							alert(`⚠ Since you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}.”`)
 
 							this.storeDupDeckAndRedirect(deckData, dupDeckData)
 						} else {
+							const updatedDecksArray = this.$store.state.decks
+
 							updatedDecksArray.push({
 								name: deckData.name,
-								path: deckData.path,
+								path: deckPath,
 								cards: deckData.cards,
 								viewedCard: deckData.viewedCard,
 								sideboard: deckData.sideboard,
@@ -133,7 +133,7 @@ export default {
 								sortBy: deckData.sortBy
 							})
 
-							this.finalizeDeckCreation(updatedDecksArray, deckData.path)
+							this.finalizeDeckCreation(updatedDecksArray, deckPath)
 						}
 					} else {
 						// Clear the deck file input in case the user tries to load a file of the same name again.
