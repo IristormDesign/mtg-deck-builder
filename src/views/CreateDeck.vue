@@ -95,13 +95,8 @@ export default {
 					colors: [],
 					sortBy: 'unsorted'
 				})
-				store.commit('setDecks', updatedDecksArray)
-				store.commit('sortDeckMenu')
 
-				this.$router.push({
-					name: 'deckMain',
-					params: { deckPath: path }
-				})
+				this.finalizeDeckCreation(updatedDecksArray, path)
 			}
 		},
 		importDeckData () {
@@ -137,13 +132,8 @@ export default {
 								colors: deckData.colors,
 								sortBy: deckData.sortBy
 							})
-							store.commit('setDecks', updatedDecksArray)
-							store.commit('sortDeckMenu')
 
-							this.$router.push({
-								name: 'deckMain',
-								params: { deckPath: deckData.path }
-							})
+							this.finalizeDeckCreation(updatedDecksArray, deckData.path)
 						}
 					} else {
 						// Clear the deck file input in case the user tries to load a file of the same name again.
@@ -180,6 +170,15 @@ export default {
 
 				return false
 			}
+		},
+		finalizeDeckCreation (updatedDecksArray, deckPath) {
+			this.$store.commit('setDecks', updatedDecksArray)
+			this.$store.commit('sortDeckMenu')
+
+			this.$router.push({
+				name: 'deckMain',
+				params: { deckPath: deckPath }
+			})
 		}
 	}
 }
