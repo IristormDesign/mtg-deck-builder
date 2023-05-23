@@ -35,16 +35,20 @@ export default {
 	},
 	computed: {
 		card () {
+			let cards, viewedCard
 			const deck = this.deck
-			let cards = deck.cards
-			let viewedCard = deck.viewedCard
 
 			if (this.$store.state.showSideboard) {
 				cards = deck.sideboard.cards
 				viewedCard = deck.sideboard.viewedCard
+			} else {
+				cards = deck.cards
+				viewedCard = deck.viewedCard
 			}
 
-			return cards.find(card => card.name === viewedCard)
+			return cards.find(card =>
+				card.name === viewedCard
+			)
 		},
 		cardColorClass () {
 			const color = this.card.colors[0]
