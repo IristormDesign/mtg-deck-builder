@@ -107,12 +107,12 @@ export default {
 		},
 		colorButton (card) {
 			const colors = card.colors
-			const mc = colors.find((c) => c === 'multicolor')
-			const w = colors.find((c) => c === 'W')
-			const u = colors.find((c) => c === 'U')
-			const b = colors.find((c) => c === 'B')
-			const r = colors.find((c) => c === 'R')
-			const g = colors.find((c) => c === 'G')
+			const mc = colors.find(c => c === 'multicolor')
+			const w = colors.find(c => c === 'W')
+			const u = colors.find(c => c === 'U')
+			const b = colors.find(c => c === 'B')
+			const r = colors.find(c => c === 'R')
+			const g = colors.find(c => c === 'G')
 			const land = /\bLand\b/.test(card.type)
 
 			if (mc) return 'multicolor'

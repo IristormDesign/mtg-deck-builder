@@ -44,13 +44,7 @@ export default {
 				viewedCard = deck.sideboard.viewedCard
 			}
 
-			return cards.find(card => {
-				if (card) {
-					return card.name === viewedCard
-				} else {
-					return null
-				}
-			})
+			return cards.find(card => card.name === viewedCard)
 		},
 		cardColorClass () {
 			const color = this.card.colors[0]
