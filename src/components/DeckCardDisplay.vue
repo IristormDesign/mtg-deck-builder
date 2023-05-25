@@ -88,11 +88,12 @@ export default {
 		}
 	},
 	watch: {
-		card: function () {
+		card () {
 			const card = this.card
-			const regexOutdatedImageURL = /\/\/c(1|2|3)\.scryfall\.com/i // Looks for the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
+			const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
 
-			if (regexOutdatedImageURL.test(card.img) || !card.img) {
+			// Check whether the current card's image URL goes to one of Scryfall's outdated image servers. If so, update the URL.
+			if (regexOutdatedServer.test(card.img) || !card.img) {
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API for new image URL for "${card.name}"`)
 
@@ -103,15 +104,14 @@ export default {
 					.then(response => {
 						const data = response.data
 
-						if (data.card_faces) { // If the card is a double-faced or split card...
-							if (data.image_uris) {
-								card.img = data.image_uris.normal
-							} else {
-								card.img = data.card_faces[0].image_uris.normal
-							}
-						} else { // Else the card is a single-faced card.
+						// If the card is double-faced / else the card is single-faced...
+						if (data.card_faces && !data.image_uris) {
+							card.img = data.card_faces[0].image_uris.normal
+						} else {
 							card.img = data.image_uris.normal
 						}
+
+						card.link = data.scryfall_uri
 
 						this.$nextTick(() => {
 							this.$store.commit('setDecks', this.$store.state.decks)
