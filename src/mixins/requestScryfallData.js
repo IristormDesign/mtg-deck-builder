@@ -49,6 +49,7 @@ export default {
 				.then(response => {
 					const data = response.data
 					const newCard = {}
+					const store = this.$store
 
 					if (data.card_faces) { // If the card is a double-faced or split card...
 						const dataFace1 = data.card_faces[0]
@@ -101,6 +102,7 @@ export default {
 					newCard.rarity = data.rarity
 					newCard.keywords = data.keywords
 					newCard.link = data.scryfall_uri
+					newCard.imgVersion = store.state.latestImageVersion
 
 					if (oldCard) {
 						newCard.qty = oldCard.qty
@@ -112,7 +114,6 @@ export default {
 						newCard.colors.unshift('multicolor')
 					}
 
-					const store = this.$store
 					let cards = this.activeCardList.cards
 
 					if (oldCard) {

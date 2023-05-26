@@ -34,6 +34,20 @@ export default {
 	props: {
 		deck: Object
 	},
+	created () {
+		this.checkForOutdatedImageURLs()
+	},
+	mounted () {
+		if (this.mobileView()) {
+			this.$store.commit('setShowCard', false)
+		} else {
+			this.$store.commit('setShowCard', true)
+		}
+
+		window.addEventListener(
+			'resize', debounce(this.resizingViewport, 125), false
+		)
+	},
 	computed: {
 		card () {
 			let cards, viewedCard
@@ -61,15 +75,6 @@ export default {
 			}
 		}
 	},
-	mounted () {
-		if (this.mobileView()) {
-			this.$store.commit('setShowCard', false)
-		} else {
-			this.$store.commit('setShowCard', true)
-		}
-
-		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
-	},
 	methods: {
 		mobileView () {
 			return window.innerWidth <= 768 // Must match media query's width in CSS.
@@ -85,23 +90,19 @@ export default {
 			} else {
 				this.$store.commit('setShowCard', true)
 			}
-		}
-	},
-	watch: {
-		card () {
+		},
+		checkForOutdatedImageURLs () {
 			const card = this.card
-			const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
+			const store = this.$store
+			const latestImageVersion = store.state.latestImageVersion
 
-			// Check whether the current card's image URL goes to one of Scryfall's outdated image servers. If so, update the URL.
-			if (regexOutdatedServer.test(card.img) || !card.img) {
-				// eslint-disable-next-line
-				console.log(`Request Scryfall API for new image URL for "${card.name}"`)
+			if (card && card.imgVersion !== latestImageVersion) {
+				const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
 
-				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
-
-				axios
-					.get('https://api.scryfall.com/cards/named?fuzzy=' + cardQuery)
-					.then(response => {
+				// Check whether the current card's image URL goes to one of Scryfall's outdated image servers. If so, update the URL.
+				if (regexOutdatedServer.test(card.img) || !card.img) {
+					const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+					const updateImageURLs = (response) => {
 						const data = response.data
 
 						// If the card is double-faced / else the card is single-faced...
@@ -112,16 +113,34 @@ export default {
 						}
 
 						card.link = data.scryfall_uri
+						card.imgVersion = latestImageVersion
 
 						this.$nextTick(() => {
-							this.$store.commit('setDecks', this.$store.state.decks)
+							store.commit('setDecks', store.state.decks)
 						})
-					})
-					.catch(error => {
-						// eslint-disable-next-line
-						console.error(error)
-					})
+					}
+
+					// eslint-disable-next-line
+					console.log(`Request Scryfall API for new image URL for "${card.name}"`)
+
+					axios
+						.get(
+							`https://api.scryfall.com/cards/named?fuzzy=${cardQuery}`
+						)
+						.then(response => {
+							updateImageURLs(response)
+						})
+						.catch(error => {
+							// eslint-disable-next-line
+							console.error(error)
+						})
+				}
 			}
+		}
+	},
+	watch: {
+		card () {
+			this.checkForOutdatedImageURLs()
 		}
 	}
 }
