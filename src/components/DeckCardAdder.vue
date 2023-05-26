@@ -86,24 +86,29 @@ export default {
 			const query = this.cardNameInput
 
 			if (query !== '' && query !== '#random') {
+				const requestCardSuggestions = (response) => {
+					const data = response.data.data
+
+					// Limit the number of autocomplete suggestions to 5.
+					while (data.length > 5) {
+						data.pop()
+					}
+					this.cardSuggestions = data
+				}
+
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API for autocomplete from "${query}".`)
 
 				axios
-					.get(`https://api.scryfall.com/cards/autocomplete?q=${query}`)
+					.get(
+						`https://api.scryfall.com/cards/autocomplete?q=${query}`
+					)
 					.then(response => {
-						const data = response.data.data
-
-						// Limit the number of autocomplete suggestions to 5.
-						while (data.length > 5) {
-							data.pop()
-						}
-
-						this.cardSuggestions = data
+						requestCardSuggestions(response)
 					})
 					.catch(error => {
 						// eslint-disable-next-line
-						console.log(`⚠ Error: ${error.response.data.details}`)
+						console.log(error)
 					})
 			} else if (query === '') {
 				this.cardSuggestions = []

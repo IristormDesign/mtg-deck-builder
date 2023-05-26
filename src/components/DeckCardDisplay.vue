@@ -93,10 +93,9 @@ export default {
 		},
 		checkForOutdatedImageURLs () {
 			const card = this.card
-			const store = this.$store
-			const latestImageVersion = store.state.latestImageVersion
+			const state = this.$store.state
 
-			if (card && card.imgVersion !== latestImageVersion) {
+			if (card && card.imgVersion !== state.latestImageVersion) {
 				const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
 
 				// Check whether the current card's image URL goes to one of Scryfall's outdated image servers. If so, update the URL.
@@ -113,10 +112,10 @@ export default {
 						}
 
 						card.link = data.scryfall_uri
-						card.imgVersion = latestImageVersion
+						card.imgVersion = state.latestImageVersion
 
 						this.$nextTick(() => {
-							store.commit('setDecks', store.state.decks)
+							this.$store.commit('setDecks', state.decks)
 						})
 					}
 
