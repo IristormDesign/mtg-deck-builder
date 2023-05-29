@@ -1,6 +1,6 @@
 <template>
 	<section class="sideboard-toggler">
-		<h3>View List:</h3>
+		<h3>Switch Group:</h3>
 		<fieldset class="radio-fieldset">
 			<div>
 				<label for="radio-main-deck">Main Deck</label>

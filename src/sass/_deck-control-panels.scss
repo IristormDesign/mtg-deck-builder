@@ -9,6 +9,12 @@
 	&.viewing-controls {
 		margin-bottom: divide($lhse, 3);
 		grid-template-columns: 1fr 1fr;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	&.action-controls {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
 	}
 	section {
 		padding: $lhse*.6667;
@@ -26,12 +32,6 @@
 	}
 	option[value=""] {
 		font-style: italic;
-	}
-}
-.sideboard-visible {
-	.deck-control-panel.viewing-controls {
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
 	}
 }
 .card-sorter {

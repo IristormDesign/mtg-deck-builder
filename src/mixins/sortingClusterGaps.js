@@ -1,6 +1,6 @@
 export default {
 	methods: {
-		addSectionalGaps (deck, sortBy) {
+		addSortingClusterGaps (deck, sortBy) {
 			function isCreature (string) {
 				return /\bCreature\b/.test(string)
 			}

@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
+import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
-	mixins: [cardListSectionalGaps],
+	mixins: [sortingClusterGaps],
 	data () {
 		return {
 			sortMenu: this.deck.sortBy
@@ -102,7 +102,7 @@ export default {
 					sortDefault(sbList)
 			}
 
-			this.addSectionalGaps(deck, sortMenu)
+			this.addSortingClusterGaps(deck, sortMenu)
 			this.$store.commit('setDecks', this.$store.state.decks)
 
 			function sortByColor (cards) {

@@ -33,6 +33,7 @@ select {
 	&:focus {
 		text-decoration: none;
 		background: $color-group-bg;
+		border-color: $color-section-border;
 	}
 	&:focus {
 		border-color: $color-link;

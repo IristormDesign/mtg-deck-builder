@@ -63,10 +63,10 @@
 <script>
 import deckColorMixins from '@/mixins/deckColorMixins.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
-import cardListSectionalGaps from '@/mixins/cardListSectionalGaps.js'
+import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
-	mixins: [deckColorMixins, symbolsMarkup, cardListSectionalGaps],
+	mixins: [deckColorMixins, symbolsMarkup, sortingClusterGaps],
 	props: {
 		deck: Object
 	},
@@ -213,7 +213,7 @@ export default {
 						cards.splice(cardIndex, 1)
 
 						if (store.state.sortAttribute !== '') {
-							this.addSectionalGaps(deck, store.state.sortAttribute)
+							this.addSortingClusterGaps(deck, store.state.sortAttribute)
 						}
 
 						this.determineDeckColors(deck)
