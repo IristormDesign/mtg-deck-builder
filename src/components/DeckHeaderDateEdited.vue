@@ -19,11 +19,9 @@ export default {
 		deck: Object
 	},
 	created () {
-		if (this.deck.editDate === null) { // This happens when a default deck is opened for the first time on the user's device.
-			const decks = this.$store.state.decks
-
+		if (!this.deck.editDate) { // This happens when a default deck is opened for the first time on the user's device.
 			this.deckObject.editDate = new Date()
-			this.$store.commit('setDecks', decks)
+			this.$store.commit('setDecks', this.$store.state.decks)
 		}
 	},
 	computed: {
