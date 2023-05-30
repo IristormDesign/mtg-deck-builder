@@ -1,11 +1,11 @@
 <template>
 	<section class="sideboard-toggler">
-		<h3>Switch Group:</h3>
+		<h3>Switch Card Group:</h3>
 		<fieldset class="radio-fieldset">
 			<div>
-				<label for="radio-main-deck">Main Deck</label>
+				<label for="radio-main-group">Main</label>
 				<input
-					id="radio-main-deck"
+					id="radio-main-group"
 					type="radio"
 					checked
 					name="view-list"
@@ -14,9 +14,9 @@
 				/>
 			</div>
 			<div>
-				<label for="radio-sideboard">Sideboard</label>
+				<label for="radio-sideboard-group">Sideboard</label>
 				<input
-					id="radio-sideboard"
+					id="radio-sideboard-group"
 					type="radio"
 					name="view-list"
 					@click="$store.commit('setShowSideboard', true)"
