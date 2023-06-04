@@ -7,7 +7,7 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>This section displays various statistics about your currently open deck, specifically about its main <a href="#m-group-toggler">card group</a>. Whenever you modify the deck, the statistics here immediately update as needed.</p>
+		<p>This section shows various statistics about your currently open deck, specifically about the deck’s main <a href="#m-group-toggler">card group</a>. Whenever you modify the deck, the statistics here immediately update as needed.</p>
 		<p>The parts of the deck statistics section include the following:</p>
 		<ul>
 			<li><strong>Using Colors</strong> – Shows the symbols of whichever of the five mana colors are required by mana costs among spells in your deck.</li>

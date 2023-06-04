@@ -7,7 +7,7 @@
 				src="@/img/manual-card-list.jpg" width="658" height="339"
 				alt="Snippet of card list" title="Screenshot" loading="lazy" />
 		</p>
-		<p>This section shows the list of <i>Magic</i> cards belonging to your currently open deck and to the currently <a href="#m-group-toggler">selected card group</a> of the deck.</p>
+		<p>This section shows the list of <i>Magic</i> cards belonging to the currently <a href="#m-group-toggler">selected card group</a> of your currently open deck.</p>
 		<p>Each card of a particular name in the list is represented by a wide button, which you can click on to <a href="#m-card-image">view the card’s image</a>.</p>
 		<p>Labeled on each card button are the following card characteristics:</p>
 		<ul>

@@ -1,7 +1,7 @@
 <template>
 	<section id="m-deck-pages">
 		<h3>Deck Pages</h3>
-		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you build, analyze, and edit the contents of your <i>Magic: The Gathering</i> decks. Every deck you make in the app gets its own deck page.</p>
+		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you build, analyze, and edit the contents of your <i>Magic: The Gathering</i> decks. Every <a href="#m-create-deck">deck you make</a> in the app gets its own deck page.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"

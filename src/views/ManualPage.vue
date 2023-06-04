@@ -8,7 +8,12 @@
 			<h3>Table of Contents</h3>
 			<ol>
 				<li><a href="#m-intro">Introduction</a></li>
-				<li><a href="#m-app-header">App Header</a></li>
+				<li>
+					<a href="#m-app-header">App Header</a>
+					<ol>
+						<li><a href="#m-decks-menu">Decks Menu</a></li>
+					</ol>
+				</li>
 				<li><a href="#m-create-deck">“Create Deck” Page</a></li>
 				<li>
 					<a href="#m-deck-pages">Deck Pages</a>
@@ -26,10 +31,12 @@
 					</ol>
 				</li>
 				<li><a href="#m-more-stats-pages">“More Stats” Pages</a></li>
-				<li><a href="#m-storage-of-deck-data">Storage of Deck Data</a></li>
+				<li>
+					<a href="#m-storage-of-deck-data">Storage of Deck Data</a>
 					<ol>
 						<li><a href="#m-deck-data-files">Deck Data Files</a></li>
 					</ol>
+				</li>
 				<li><a href="#m-app-dev">App Development</a></li>
 			</ol>
 		</nav>
