@@ -1,11 +1,20 @@
+.bg-overlay {
+	@include overlay-bg;
+	transition: all $transition-duration-standard ease;
+}
+.overlay-enter,
+.overlay-leave-to {
+  opacity: 0;
+}
 .intro-illustration {
 	width: $max-width-content*.6180;
 	margin: 0 auto;
 	border: $border-image;
 }
 .warning-symbol {
-	color: desaturate(darken($color-rarity-gold, 12.5%), 12.5%);
+	color: darken($color-rarity-gold, 12.5%);
 	font-size: 60%;
+	margin-top: $lhse*.1667;
 
 	&[title] {
 		cursor: help;
@@ -17,11 +26,12 @@
 	border-radius: 50%;
 	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
-	line-height: 1;
+	line-height: 1.0417;
 	margin: 0 0 0 1px;
 	box-shadow: inset .75px -1.5px 0px .5px rgba(#000, .75);
 	background: $color-mana-generic;
 	color: #000;
+	font-family: $font-family-standard;
 	font-weight: $font-weight-semibold;
 	display: flex;
 	align-items: flex-end;
@@ -71,21 +81,21 @@
 }
 .rarity-symbol {
 	border-radius: $border-radius-button;
-	width: 1.3820em;
-	min-width: 1.3820em; // Needed so that the .rarity element doesn't get squished by a very long .type element.
+	min-width: 19px; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
-	box-shadow: inset 0 0 1px 1px rgba(#000, .5);
-	font: bold 14px/1 'Trebuchet MS', sans-serif;
-	padding: 1px 0;
-	color: rgba(#000, .875);
-	text-shadow: 0 0 1px #fff;
+	font: 800 12px/15px 'Ysabeau', 'Trebuchet MS', sans-serif;
 	cursor: help;
-	
+	outline: 1px solid #000;
+	color: #000;
+
+	> div {
+		transform: scaleX(1.25);
+		backface-visibility: hidden;
+	}
 	&.common {
-		background: #222;
-		box-shadow: inset 0 0 0 1px #ddd;
-		color: #ddd;
-		text-shadow: none;
+		background: lighten(#000, 16.67%);
+		outline-color: darken(#fff, 4.17%);
+		color: darken(#fff, 8.33%);
 	}
 	&.uncommon {
 		background: linear-gradient(-60deg,
@@ -93,6 +103,7 @@
 			lighten($color-rarity-silver, 20%),
 			darken($color-rarity-silver, 20%)
 		) $color-rarity-silver;
+		text-shadow: -.375px .5px 0 rgba(#fff, .75);
 	}
 	&.rare {
 		background: linear-gradient(-60deg,
@@ -100,14 +111,15 @@
 			lighten($color-rarity-gold, 20%),
 			darken($color-rarity-gold, 20%)
 		) $color-rarity-gold;
+		text-shadow: -.375px .5px 0 rgba(#fff, .5);
 	}
 	&.mythic {
 		background: linear-gradient(-60deg,
-			saturate(darken($color-mythic-orange, 6.25%), 6.25%),
-			saturate(lighten($color-mythic-lighter, 6.25%), 25%),
-			saturate(darken($color-mythic-orange, 6.25%), 6.25%)
+			saturate(darken($color-rarity-mythic, 6.25%), 25%),
+			saturate(lighten($color-mythic-lighter, 6.25%), 8.33%),
+			saturate(darken($color-rarity-mythic, 6.25%), 25%)
 		) $color-mythic-lighter;
-		color: #000;
+		text-shadow: -.375px .5px 0 rgba(#fff, .25);
 	}
 	&.special {
 		background: linear-gradient(-60deg,
@@ -115,8 +127,9 @@
 			saturate(lighten($color-rarity-special, 20%), 25%),
 			darken($color-rarity-special, 25%)
 		) $color-rarity-special;
-		color: #fff;
-		text-shadow: 0 0 1.5px #000;
+		outline-color: darken(#fff, 4.17%);
+		color: darken(#fff, 4.17%);
+		text-shadow: .375px -.5px 0 rgba(#000, .5);
 	}
 }
 .update-notif {
@@ -127,7 +140,6 @@
 	z-index: index($layers, update-notif);
 	background: $color-mythic-lighter;
 	padding: divide($lhse, 8) $lhse*.5;
-	min-height: $height-app-header;
 	color: #000;
 	text-align: center;
 	display: flex;
@@ -156,6 +168,7 @@
 	z-index: index($layers, above-overlay);
 
 	button {
+		@include primary-btn;
 		min-width: $lhse;
 	}
 }

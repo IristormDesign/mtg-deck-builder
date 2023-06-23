@@ -27,10 +27,15 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		cursor: default;
 		width: $lhse*9;
 		margin: 0 auto;
+		height: min-content;
+		border-bottom: $table-borders;
 
-		> table,
-		> .height-limiter {
-			border-bottom: 4px solid $color-heading-bg;
+		tbody {
+			tr {
+				&:last-child {
+					border-bottom: $lhse*.2 solid $color-heading-bg;
+				}
+			}
 		}
 	}
 	h4 {
@@ -105,7 +110,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 9.25;
+		max-height: $lhse * 9.125;
 		background:
 			/* Top shadow cover */
 			linear-gradient(

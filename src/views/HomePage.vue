@@ -37,7 +37,7 @@
 					<header>
 						<h2>Greetings, planeswalker.</h2>
 					</header>
-					<p>This is a free web app that lets you create and organize your decks for <i>Magic: The Gathering</i>.</p>
+					<p>This is a free web app where you can construct and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
 						<button @click="scrollToAppFeaturesSection()">Learn More</button>
 
@@ -69,38 +69,42 @@
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
-						<li>Add <i>Magic</i> cards to your decks via the card search feature (powered by Scryfall)</li>
-						<li>Decks show each card’s name, mana cost, type, rarity, and quantity</li>
-						<li>Analyze various statistics about your decks, such as which mana colors they use, the average mana values of cards, the percentages of cards by certain attributes, and more</li>
-						<li>The order of the cards in card lists can be automatically rearranged by multiple sorting options</li>
-						<li>View the image of any card in your decks</li>
-						<li>App is free of charge and has no advertisements</li>
-						<li>No account registration needed</li>
-						<li>Attractive, easy-to-use graphical user interface</li>
+						<li>Customize card lists for your own <i>Magic: The Gathering</i> decks</li>
+						<li>App is free of charge and free of advertisements</li>
+						<li>No account registration required</li>
+						<li>Attractive, user-friendly graphical interface</li>
+						<li>Add cards to your decks with the card name search engine (powered by <a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>)</li>
+						<li>Deck pages show each card’s name, mana cost, type, rarity, and quantity</li>
+						<li>Analyze many statistics about your decks, such as their average mana value, the percentage of cards by certain attributes, and more</li>
+						<li>Instantly sort all cards in card lists by various methods to choose from</li>
+						<li>See the image of any card in your decks</li>
+						<li>Switch between main and sideboard card lists per deck</li>
 					</ul>
 				</div>
-				<p class="button-group">
-					<router-link to="manual" :class="'button'">
-						Read the User Manual
-					</router-link>
-
-					<button
-						v-if="$store.state.decks.length > 0"
-						class="primary-btn"
-						@click="this.homeOpenDeckButton"
-					>
-						Open a Deck
-					</button>
-					<router-link
-						v-else
-						:to="{name: 'createDeck'}"
-						:class="'button primary-btn'"
-					>
-						Create Deck
-					</router-link>
-				</p>
 			</div>
 		</section>
+		<div class="final-call-to-action">
+			<p class="wrap">
+				<router-link to="manual" :class="'button'">
+					<div>Read the<br/> User Manual</div>
+				</router-link>
+
+				<button
+					v-if="$store.state.decks.length > 0"
+					class="primary-btn"
+					@click="this.homeOpenDeckButton"
+				>
+					Open a Deck
+				</button>
+				<router-link
+					v-else
+					:to="{name: 'createDeck'}"
+					:class="'button primary-btn'"
+				>
+					Create Deck
+				</router-link>
+			</p>
+		</div>
 	</article>
 </template>
 

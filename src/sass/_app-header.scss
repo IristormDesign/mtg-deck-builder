@@ -1,57 +1,61 @@
 .app-header {
 	background: $color-mythic-dim;
+	color: lighten($color-mythic-dim, 33.33%);
 	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
-	box-shadow: 0 0 $lhse*.3333 rgba(#000, .5);
-	color: desaturate(lighten($color-mythic-orange, 20%), 33.33%);
 	z-index: index($layers, app-header);
-	height: $height-app-header;
-	display: flex;
-	align-items: center;
-	position: sticky;
-	top: 0;
+	height: $height-app-header-short;
+	box-shadow: 0 0 1px rgba(#fff, .5);
 
+	.root-home-page & {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		box-shadow: 0 0 divide($lhse, 2) rgba(#000, .5);
+	}
 	.wrap {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
+		height: 100%;
 	}
 	.app-title {
+		@include heading-font;
+		display: flex;
+		align-items: flex-end;
+		font-size: 150%;
+		line-height: 1;
+		white-space: nowrap;
+
 		a {
-			text-decoration: none;
-			color: $color-link-over-mythic-dim;
+			color: $color-link-focus;
 			transition-duration: $transition-duration-standard;
-	
+
 			&:hover,
 			&:focus {
 				color: #fff;
 			}
 			&:active {
-				color: $color-link-focus;
+				color: saturate($color-link, 100%);
 			}
 		}
 	}
-	.by-iristorm {
-		display: inline-block;
-		font-size: 87.5%;
-		margin-left: $lhse;
-
-		a {
-			@include heading-font;
-			display: inline-block;
-			margin: 0 .125ch;
-		}
-	}
 	h1 {
-		margin: divide($lhse, 16) 0 0;
-		font-size: 1.25em;
-		display: inline-block;
+		margin: 0 $lhse*.5 0 0;
+		font-size: inherit;
+	}
+	.by-iristorm {
+		font-size: 60%;
+		margin: ($lhse*.0625) 1em;
+		margin-left: 0;
 	}
 	.app-menu-toggler {
 		display: none;
 	}
 	.app-menu {
-		margin-bottom: -2px;
+		width: 100%;
+		max-width: max-content;
 
 		> ul {
 			margin: 0;
@@ -86,8 +90,8 @@
 		}
 		button {
 			&.attention:not(:disabled) {
-				animation: flash .1667s linear;
-				animation-iteration-count: 6;
+				animation: flash .2s linear;
+				animation-iteration-count: 4;
 				animation-direction: alternate;
 	
 				@keyframes flash {
@@ -95,7 +99,7 @@
 						filter: brightness(100%);
 					}
 					100% {
-						filter: brightness(200%);
+						filter: brightness(150%);
 					}
 				}
 			}
@@ -107,8 +111,12 @@
 			@include button;
 			margin-right: 0;
 			margin-left: 0;
-			display: block;
 			width: 100%;
+			font-size: 87.5%;
+			min-height: $lhse*1.5;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 	.open-deck-heading {
@@ -119,7 +127,8 @@
 		z-index: index($layers, above-overlay);
 
 		span {
-			font-size: 66.67%;
+			font-size: 75%;
+			margin-left: .5ch;
 		}
 	}
 	.deck-menu {
@@ -229,54 +238,60 @@
 	}
 }
 
-@media (max-width: $width-app-breakpoint) {
+@media (max-width: 1080px) {
 	.app-header {
-		height: $height-app-header * .875; // Equal to percentage of font-size change.
-
-		.wrap {
-			> * {
-				font-size: 87.5%;
-			}
+		.app-title {
+			font-size: 125%;
 		}
-		.app-menu {
-			> ul {
-				gap: divide($lhse, 2);
+		.app-header-link {
+			> a,
+			> button {
+				font-size: 80%;
 			}
 		}
 	}
 }
 @media (max-width: $min-width-app) {
 	.app-header {
+		height: $height-app-header-tall;
+
 		.wrap {
+			flex-wrap: wrap;
+			gap: divide($lhse, 3);
+			align-content: center;
+			justify-items: center;
+		}
+		.app-title {
+			margin: 0 auto;
+		}
+		.app-menu {
+			max-width: $max-width-content*.75;
+			margin: 0 auto;
+		}
+	}
+}
+@media (max-width: 512px) { // Pixel width must match JavaScript method mobileView() in AppHeader.vue
+	.app-header {
+		height: $height-app-header-medium;
+		padding-top: $lhse*.25;
+		padding-bottom: $lhse*.25;
+
+		.wrap {
+			margin-right: auto;
 			display: flex;
 		}
 		.app-title {
-			white-space: nowrap;
-			margin-right: $lhse*.75;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			width: min-content;
+			margin: 0;
 		}
-		.app-menu {
-			> ul {
-				width: 100%;
-			}
-		}
-	}
-}
-@media (max-width: ($min-width-app*.9167)) {
-	.app-header {
-		.by-iristorm {
-			display: none;
-		}
-	}
-}
-@media (max-width: 720px) { // Must match JavaScript
-	.app-header {
-		.app-title {
-			text-align: left;
-			width: auto;
-			display: inline-block;
+		h1 {
+			margin: 0;
 		}
 		.by-iristorm {
-			display: none;
+			margin-right: $lhse*.125;
+			margin-top: $lhse*.125;
 		}
 		.app-menu-toggler {
 			position: relative;
@@ -288,7 +303,7 @@
 			@include popup;
 			position: absolute;
 			right: $lhse*.5;
-			top: $height-app-header;
+			top: $height-app-header-short;
 			margin: 0;
 			z-index: index($layers, app-menu-toggler);
 
@@ -320,52 +335,48 @@
 			ul {
 				display: block;
 				background: none;
-
-				li {
-					display: block;
+			}
+			li {
+				display: block;
+			}
+			.app-header-link {
+				a,
+				button {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					min-width: auto;
+					padding: 0 divide($lhse, 3);
+					min-height: $lhse*1.6667;
+					height: auto;
+					background: none;
+					color: #000;
+					border: none;
+					text-shadow: none;
+					box-shadow: none;
+					margin: 0;
+					filter: none;
+					border-radius: 0;
+					transition: none;
+					text-align: right;
+					font: $font-weight-semibold 112.5%/#{$line-height-standard} $font-family-standard;
 					
-					&.app-header-link {
-						a,
-						button {
-							display: flex;
-							align-items: center;
-							justify-content: flex-end;
-							min-width: auto;
-							padding: 0 divide($lhse, 3);
-							min-height: $lhse*2;
-							height: auto;
-							background: none;
-							color: #000;
-							border: none;
-							text-shadow: none;
-							box-shadow: none;
-							margin: 0;
-							filter: none;
-							border-radius: 0;
-							transition: none;
-							text-align: right;
-							font-size: 100%;
-							line-height: $line-height-standard;
-							font-weight: $font-weight-semibold;
-							
-							&:hover,
-							&:focus {
-								background: rgba(#fff, .375);
-								filter: none;
-							}
-							&:active {
-								background: $color-mythic-orange;
-								color: #fff;
-							}
-						}
+					&:hover,
+					&:focus {
+						background: rgba(#fff, .375);
+						filter: none;
+					}
+					&:active {
+						background: $color-mythic-orange;
+						color: #fff;
 					}
 				}
-				.deck-menu {
-					background: rgba($color-mythic-lighter, .25);
-					border: 1px solid desaturate($color-mythic-lighter, 33.33%);
-					border-right-width: 0;
-					border-left-width: 0;
-				}
+			}
+			.deck-menu {
+				background: rgba($color-mythic-lighter, .25);
+				border: 1px solid desaturate($color-mythic-lighter, 33.33%);
+				border-right-width: 0;
+				border-left-width: 0;
 			}
 		}
 		.open-deck-heading {
@@ -410,11 +421,12 @@
 		}
 	}
 }
-.bg-overlay {
-	@include overlay-bg;
-	transition: all $transition-duration-standard ease;
-}
-.overlay-enter,
-.overlay-leave-to {
-  opacity: 0;
+@media (max-width: ($min-width-app*.4)) {
+	.app-header {
+		height: $height-app-header-short;
+
+		.by-iristorm {
+			display: none;
+		}
+	}
 }

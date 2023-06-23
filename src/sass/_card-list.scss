@@ -1,5 +1,5 @@
 $box-shadow-card-button: 0 -1px divide($lhse, 3) 3px rgba(#000, .3333);
-$width-qty-column: 2em;
+$width-qty-column: $lhse*1.5;
 $min-height-card-list: $lhse*6;
 
 @mixin box-shadow-hover-card-button($color) {
@@ -11,7 +11,6 @@ $min-height-card-list: $lhse*6;
 }
 @mixin long-card-buttons {
 	.card-list {
-		scroll-margin-top: -$lhse*.5;
 		max-width: $max-width-content;
 
 		.active-card-list {
@@ -59,10 +58,8 @@ $min-height-card-list: $lhse*6;
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 			}
-			.qty {
-				.qty-buttons {
-					height: $lhse*1.6667;
-				}
+			.rarity {
+				margin-right: -$lhse*.0625;
 			}
 		}
 	}
@@ -92,10 +89,8 @@ $min-height-card-list: $lhse*6;
 			&:has(.qty:hover)	{
 				border-radius: $border-radius-button;
 			}
-			.qty {
-				.qty-buttons {
-					height: $lhse*2;
-				}
+			.rarity {
+				margin-right: 0;
 			}
 		}
 	}
@@ -143,6 +138,7 @@ $min-height-card-list: $lhse*6;
 			}
 			.output {
 				font-size: 200%;
+				margin-top: -4.17%;
 				display: flex;
 				align-items: center;
 				color: $color-text-over-mythic-very-dim;
@@ -168,6 +164,7 @@ $min-height-card-list: $lhse*6;
 		min-height: $min-height-card-list;
 		text-shadow: $text-shadow-over-light-bg;
 		padding: $lhse*.5;
+		color: $color-text-brighter;
 	}
 	.list-headings {
 		@include heading-font;
@@ -209,7 +206,7 @@ $min-height-card-list: $lhse*6;
 		transition: .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
 		transition-property: transform, background-color;
 		position: relative;
-		background: rgba($color-group-bg, .75);
+		background: $color-group-bg;
 		border-radius: $border-radius-button;
 		
 		&:last-of-type {
@@ -217,9 +214,6 @@ $min-height-card-list: $lhse*6;
 		}
 		&:hover,
 		&:focus-within {
-			background: rgba($color-group-bg, 1);
-			transition-duration: 0s;
-
 			.card-button {
 				filter: contrast(112.5%);
 				transition-duration: 0s;
@@ -276,12 +270,17 @@ $min-height-card-list: $lhse*6;
 				}
 			}
 			.qty {
+				> span {
+					color: $color-text;
+				}
 				input {
 					transition: none;
 					color: $color-link;
-				}
-				> span {
-					color: $color-text;
+
+					&:hover,
+					&:focus {
+						color: $color-link-focus;
+					}
 				}
 			}
 		}
@@ -350,36 +349,35 @@ $min-height-card-list: $lhse*6;
 			font-size: 75%;
 			line-height: 1.5;
 		}
-		.rarity {
-			margin-right: -$lhse*.0833;
-		}
 		.qty {
 			display: flex;
 			align-items: center;
+			justify-content: flex-end;
 			line-height: 1;
 			width: $width-qty-column;
+			padding-right: 2px;
 			
 			> span {
-				margin: 0 0 0 divide($lhse, 6);
+				margin: -4.17% 0 0 divide($lhse, 6);
 				color: desaturate(darken($color-text, 25%), 12.5%);
 				cursor: default;
+				text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
 			}
 			label {
 				@include screen-readers-only;
 			}
 			input {
 				color: $color-text;
-				background: transparent;
+				background: none;
 				border: 0;
 				width: auto;
 				min-width: 0;
 				text-align: center;
 				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
-				padding: 0 divide($lhse, 6) 0 0;
-				margin: 0;
+				padding: 0 0 0 0;
+				margin: -4.17% 0 0 0;
 				font-weight: $font-weight-semibold;
-				line-height: 1;
 				border-radius: $border-radius-button;
 				appearance: textfield;
 
@@ -389,12 +387,12 @@ $min-height-card-list: $lhse*6;
 				}
 				&:hover,
 				&:focus {
-					color: $color-link-focus;
+					color: $color-link;
 					transition-duration: 0s;
 				}
 				&:focus {
+					color: $color-link-focus;
 					outline: 2px solid $color-link;
-					background: $color-group-bg;
 				}
 			}
 			&:focus-within,
@@ -405,37 +403,36 @@ $min-height-card-list: $lhse*6;
 			}
 			.qty-buttons {
 				position: absolute;
-				top: -$lhse*.3333;
-				right: -$lhse*.75;
-				z-index: 8;
+				top: divide($lhse, -3);
+				right: -1.6em;
+				z-index: index($layers, card-list-item-hover);
 				display: none;
 				flex-direction: column;
+				height: auto;
 			}
 			button {
 				@include primary-btn;
-				font-family: sans-serif;
-				font-size: 120%;
+				border-bottom-width: 2px;
+				font: normal 133.33%/.8333 sans-serif;
 				min-width: auto;
-				width: $lhse*.6667;
+				width: 1.25em;
 				height: $lhse*.6667;
-				line-height: $lhse*.6667;
+				max-height: none;
 				padding: 0;
-				margin: 0; 
-				box-shadow:
-					inset -.5px 1px 0 rgba(#fff, .25),
-					$box-shadow-buttons,
-					inset 0 .25em .5em $color-mythic-lighter;
-				border-radius: 25%;
+				background: darken(desaturate($color-link, 20%), 4.17%);
+				text-shadow:
+					0 0 $lhse*.1667 $color-link-focus,
+					0 0 $lhse*.3333 $color-link-focus,
+					0 0 $lhse*.6667 $color-link-focus;
+				overflow: hidden;
 			}
 			.increment {
 				border-bottom-right-radius: 0;
 				border-bottom-left-radius: 0;
-				background: lighten($color-link, 6.25%);
 			}
 			.decrement {
 				border-top-right-radius: 0;
 				border-top-left-radius: 0;
-				background: desaturate($color-link, 6.25%);
 			}
 		}
 	}

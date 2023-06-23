@@ -17,7 +17,7 @@
 		border-top-right-radius: 0;
 	}
 	section {
-		padding: $lhse*.6667;
+		padding: $lhse*.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -25,10 +25,10 @@
 	label,
 	h3 {
 		display: block;
-		font-size: 83.33%;
+		font-size: 75%;
 		margin-right: .375em;
 		margin-left: .375em;
-		color: $color-text-brighter;
+		color: $color-text;
 	}
 	option[value=""] {
 		font-style: italic;
@@ -82,7 +82,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			padding: 0 $lhse*.375;
+			padding: 0 divide($lhse, 3);
 			border-radius: $border-radius-button;
 
 			&:first-child {

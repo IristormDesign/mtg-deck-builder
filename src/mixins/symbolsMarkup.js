@@ -9,11 +9,11 @@ export default {
 				g: '<span class="mana-symbol green" title="Green mana">G</span>'
 			},
 			raritySymbol: {
-				c: '<div class="rarity-symbol common" title="Common">C</div>',
-				u: '<div class="rarity-symbol uncommon" title="Uncommon">U</div>',
-				r: '<div class="rarity-symbol rare" title="Rare">R</div>',
-				m: '<div class="rarity-symbol mythic" title="Mythic rare">M</div>',
-				s: '<div class="rarity-symbol special" title="Special">S</div>'
+				c: '<div class="rarity-symbol common" title="Common"><div>C</div></div>',
+				u: '<div class="rarity-symbol uncommon" title="Uncommon"><div>U</div></div>',
+				r: '<div class="rarity-symbol rare" title="Rare"><div>R</div></div>',
+				m: '<div class="rarity-symbol mythic" title="Mythic rare"><div>M</div></div>',
+				s: '<div class="rarity-symbol special" title="Special"><div>S</div></div>'
 			}
 		}
 	}

@@ -1,8 +1,11 @@
 <template>
 	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
-		<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-		<p>To create a deck, you can start from an empty deck page and add cards, or you can import a deck data file to load a pre-made deck.</p>
+		<figure>
+			<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
+			<small>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank" rel="noopener noreferrer">Armillary Sphere</a></i> by Franz Vohwinkel)</small>
+		</figure>
+		<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import a pre-made deck from a deck data file.</p>
 
 		<div class="columns">
 			<div class="new-deck">
@@ -17,7 +20,7 @@
 						maxlength="50"
 						ref="focus"
 					/>
-					<button class="primary-btn">Go</button>
+					<button class="primary-btn">Start</button>
 				</form>
 			</div>
 			<div class="import-data">
@@ -30,7 +33,6 @@
 				<button id="file-btn" class="primary-btn">Open Deck<br> Data File</button>
 			</div>
 		</div>
-		<small>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank" rel="noopener noreferrer">Armillary Sphere</a></i> by Franz Vohwinkel)</small>
 	</article>
 </template>
 

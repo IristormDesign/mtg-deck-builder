@@ -4,23 +4,27 @@
 
 		<div class="tables">
 			<more-stats-colors :deck="deck" :manaSymbol="manaSymbol" />
+
 			<more-stats-mana-values :deck="deck" />
+
 			<more-stats-types :deck="deck" />
+
 			<more-stats-subtypes
-				:deck="deck"
-				:subtypeNames="subtypeCreaturesNames"
-				:subtypeCounts="subtypeCounts"
+				:deck="deck" :subtypeNames="subtypeCreaturesNames" :subtypeCounts="subtypeCounts"
 			>Creature</more-stats-subtypes>
+
 			<more-stats-subtypes
-				:deck="deck"
-				:subtypeNames="subtypeOtherNames"
-				:subtypeCounts="subtypeCounts"
+				:deck="deck" :subtypeNames="subtypeOtherNames" :subtypeCounts="subtypeCounts"
 			>Other</more-stats-subtypes>
+
 			<more-stats-rarities :deck="deck" :raritySymbol="raritySymbol" />
+
 			<template v-if="showNewStats">
 				<more-stats-keywords :deck="deck" />
+
 				<more-stats-power-toughness :deck="deck" />
 			</template>
+
 			<more-stats-misc :deck="deck" />
 		</div>
 
@@ -36,7 +40,7 @@
 
 		<footer>
 			<p v-if="deck.sideboard.cards.length >= 1">
-				<small>Note: These statistics don’t count cards in the sideboard.</small>
+				<small>Note: These statistics ignore cards in the sideboard.</small>
 			</p>
 			<p>
 				<router-link :to="{ name: 'deckMain' }">

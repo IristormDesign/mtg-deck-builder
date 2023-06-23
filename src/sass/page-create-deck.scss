@@ -6,16 +6,16 @@
 		margin-bottom: $lhse*.5;
 	}
 	.columns {
-		display: grid;
-		grid-template-columns: 2fr 1fr;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
 		gap: $lhse*.5;
 		margin: $lhse 0 $lhse*.5;
 	}
 	.new-deck,
 	.import-data {
-		border: $border-image;
-		padding: $lhse*.5;
-		border-radius: $border-radius-group*.5;
+		border: $border-sections;
+		padding: $lhse*.5 $lhse*.75;
 	}
 	.new-deck {
 		form {
@@ -43,7 +43,6 @@
 		}
 		button {
 			min-width: auto;
-			font-size: 112.5%;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			height: calc(#{$lhse}*1.3333 + 2px);
@@ -54,24 +53,12 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+
+		button {
+			min-height: $lhse*2.25; // Needed to prevent the heading from jumping on button press
+		}
 	}
 	h3 {
 		margin-top: 0;
-	}
-	small {
-		text-align: center;
-		width: 100%;
-	}
-}
-
-@media (max-width: ($min-width-app * .75)) {
-	.create-deck-page {
-		.columns {
-			display: block;
-		}
-		.new-deck,
-		.import-data {
-			margin: $lhse*.5 auto;
-		}
 	}
 }

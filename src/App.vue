@@ -1,6 +1,6 @@
 <template>
 	<transition appear name="fade-from-black">
-		<div class="fade-bg">
+		<div class="fade-bg" :class="homePageClass">
 			<update-notif />
 			<app-header />
 			<main>
@@ -20,6 +20,15 @@ import AppFooter from '@/components/AppFooter.vue'
 
 export default {
 	components: { UpdateNotif, AppHeader, ScrollToTop, AppFooter },
+	computed: {
+		homePageClass () {
+			if (this.$route.name === 'home') {
+				return 'root-home-page'
+			} else {
+				return null
+			}
+		}
+	},
 	mounted () {
 		this.$watch(function () {
 			// For better performance, don't let the background texture image load on the home page.

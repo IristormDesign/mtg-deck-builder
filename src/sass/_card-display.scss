@@ -1,6 +1,6 @@
 .card-display {
 	position: sticky;
-	top: $height-app-header + divide($lhse, 3);
+	top: divide($lhse, 2);
 	width: 25vw;
 	height: 680px * .75;
 	max-height: 100vh;
@@ -77,7 +77,7 @@
 	img {
 		display: block;
 		width: auto;
-		max-height: calc(100vh - #{$height-app-header} - #{$lhse});
+		max-height: calc(100vh - #{$lhse});
 		position: relative;
 		will-change: transform;
 	}

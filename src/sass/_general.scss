@@ -5,7 +5,7 @@
 	backface-visibility: hidden;
 }
 html {
-	scroll-padding-top: $height-app-header + $lhse*1.5;
+	scroll-padding-top: $line-height-standard*1rem;
 }
 body {
 	font: 20px/#{$line-height-standard} $font-family-standard;
@@ -28,8 +28,7 @@ body {
 				rgba(#fff, .2) 0%,
 				rgba(#000, .2) 100vh
 			),
-			url('img/turbulence-bg-tile.webp');
-		background-blend-mode: luminosity;
+			url('img/turbulence-bg-tile.jpg');
 	}
 }
 .wrap {
@@ -51,7 +50,9 @@ main {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
 	@include heading-font;
 	line-height: 1;
 	color: $color-text-brighter;
@@ -71,6 +72,18 @@ h3 {
 }
 h4 {
 	font-size: 100%;
+}
+h5,
+h6 {
+	margin-top: $line-height-standard*.5rem;
+	margin-bottom: -$line-height-standard*.25rem;
+}
+h5 {
+	font-size: 87.5%;
+}
+h6 {
+	text-transform: uppercase;
+	font-size: 75%;
 }
 p,
 ul,
@@ -109,14 +122,29 @@ ol {
 		padding-left: .25em;
 	}
 }
+li {
+	&:last-child {
+		p:last-child {
+			margin-bottom: $lhse*.75;
+		}
+	}
+}
 img {
 	max-width: 100%;
 	height: auto;
 	display: block;
 }
+figure {
+	margin: $lhse*.5;
+
+	small {
+		display: block;
+		text-align: center;
+		margin: $lhse*.125;
+	}
+}
 ::selection {
-	background: saturate(darken($color-mythic-complement, 31.25%), 33.33%);
-	background: darken($color-mythic-orange, 20%);
+	background: $color-mythic-dim;
 	color: #fff;
 	text-shadow: none;
 }

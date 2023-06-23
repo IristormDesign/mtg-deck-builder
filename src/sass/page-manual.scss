@@ -31,12 +31,11 @@
 		color: desaturate(darken($color-text, 12.5%), 8.33%);
 		height: min-content;
 		max-width: 25vw;
-		max-height: calc(100vh - #{$height-app-header + $lhse});
+		max-height: calc(100vh - #{$lhse*.5});
 		overflow-y: auto;
 		position: sticky;
-		top: $height-app-header + $lhse*.5;
+		top: $lhse*.25;
 		left: 0;
-		font-size: 87.5%;
 		padding: $lhse*.75;
 
 		h3 {
@@ -48,7 +47,7 @@
 			margin: 0;
 		}
 		ol {
-			padding-left: $lhse;
+			padding-left: 1em;
 		}
 		a {
 			display: block;
@@ -56,6 +55,9 @@
 			width: 100%;
 			line-height: 1;
 		}
+	}
+	.toc-links {
+		font-size: 87.5%;
 	}
 	.the-manual {
 		width: 100%;
@@ -70,39 +72,43 @@
 			@include pronounced-heading;
 		}
 	}
-	figure {
-		text-align: center;
-		margin: $lhse*.5;
-		
-		img {
-			margin-bottom: 0;
-		}
-	}
 }
 
 @media (max-width: $min-width-app) {
 	.manual-page {
 		display: block;
-
-		header,
-		.table-of-contents {
+		
+		header {
 			margin-bottom: $lhse*.25;
 		}
 		.table-of-contents {
 			position: static;
-			width: max-content;
 			max-width: 100%;
 			max-height: 100%;
-			margin-right: auto;
-			margin-left: auto;
+			width: 100%;
+			margin: $lhse*.25 auto;
+			padding: $lhse $lhse*1.5;
+
+			h3 {
+				text-align: center;
+				margin-bottom: $line-height-standard*1rem;
+			}
+		}
+		.toc-links {
+			columns: 3;
+			column-gap: $lhse*1.5;
+			column-rule: $border-sections;
 		}
 	}
 }
-@media (max-width: ($min-width-app*.875)) {
+@media (max-width: ($min-width-app*.75)) {
 	.manual-page {
+		.toc-links {
+			columns: 2;
+		}
 		.the-manual {
-			padding-right: $lhse;
-			padding-left: $lhse;
+			padding-right: $lhse*.75;
+			padding-left: $lhse*.75;
 		}
 	}
 }
@@ -117,17 +123,31 @@
 		header {
 			border-bottom: $border-sections;
 		}
+		.table-of-contents {
+			border-radius: 0;
+		}
 		.the-manual {
 			border-top: $border-sections;
 		}
-		
+	}
+}
+@media (max-width: ($width-mobile-breakpoint*.8)) {
+	.manual-page {
+		.toc-links {
+			width: max-content;
+			columns: 1;
+			margin-right: auto;
+			margin-left: auto;
+		}
 	}
 }
 @media (pointer: coarse) {
 	.manual-page {
 		.table-of-contents {
 			a {
-				padding: divide($lhse, 3) 0;
+				min-height: $lhse*1.5;
+				display: flex;
+				align-items: center;
 			}
 		}
 	}

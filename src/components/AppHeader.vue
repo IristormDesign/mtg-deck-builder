@@ -3,7 +3,7 @@
 		<div class="wrap">
 			<div class="app-title">
 				<h1><a href="/">MTG Deck Builder</a></h1>
-				<span class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></span>
+				<div class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></div>
 			</div>
 
 			<button
@@ -256,7 +256,7 @@ export default {
 			}
 		},
 		mobileView () {
-			return window.innerWidth <= 720 // Number must match the CSS media query width.
+			return window.innerWidth <= 512 // Number must match the CSS media query width.
 		},
 		showingAnyPopup () {
 			if (this.showDeckMenu) {

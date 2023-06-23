@@ -5,7 +5,7 @@
 		<p><i>Last revised on March 27, 2021</i></p>
 
 		<p>Please read these terms of service before using this website, MTG Deck Builder (“MDB”), operated by Iristorm Design (“us,” “we,” “our”).</p>
-		<p>By using MDB, you agree to be bound by the terms of service and to the <router-link to="/privacy">privacy policy</router-link>. If you disagree with any part of these terms, do not use MDB.</p>
+		<p>By using MDB, you agree to be bound by the terms of service and the <router-link to="/privacy">privacy policy</router-link>. If you disagree with any part of these terms, do not use MDB.</p>
 
 		<h3>Limitations of Liability</h3>
 		<p>MDB is provided “as-is.” We may change or remove any aspect of the website at any time without warning.</p>

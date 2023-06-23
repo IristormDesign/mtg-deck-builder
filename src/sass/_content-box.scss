@@ -20,6 +20,7 @@
 .page-not-found {
 	h2 {
 		text-align: center;
+		margin-bottom: $lhse*.5;
 	}
 }
 .deck-deleted {
@@ -34,7 +35,6 @@
 .screenshot {
 	border: $border-image;
 	margin: 0 auto;
-	box-sizing: content-box;
 }
 .float-left,
 .float-right {
@@ -59,8 +59,12 @@ img {
 @media (max-width: ($min-width-app*.875)) {
 	.content-box {
 		margin: $lhse*.5;
-		padding-right: $lhse;
-		padding-left: $lhse;
+	}
+}
+@media (max-width: ($min-width-app*.75)) {
+	.content-box {
+		padding-right: $lhse*.75;
+		padding-left: $lhse*.75;
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
