@@ -14,17 +14,9 @@
 			<li>Name</li>
 			<li>Mana cost (if any)</li>
 			<li>Type, including supertype and/or subtype (if any)</li>
-			<li>Rarity – The name and symbol of each rarity level are the following:
-				<ul>
-					<li>Common – black “C”</li>
-					<li>Uncommon – silver “U”</li>
-					<li>Rare – golden “R”</li>
-					<li>Mythic rare – orange “M”</li>
-					<li>Special – purple “S”</li>
-				</ul>
-			</li>
+			<li>Rarity</li>
 		</ul>
-		<p>Double-faced cards include the characteristics of both faces with a slash in between.</p>
+		<p>Double-faced cards label the characteristics of both faces with a “/” (slash) in between the two.</p>
 		<p>The surface color of each card button represents that card’s mana colors. (For example, mono-green spells have green card buttons.) Moreover, the color of card buttons for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 	</section>
 </template>

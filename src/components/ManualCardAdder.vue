@@ -12,7 +12,7 @@
 		<p>When you submit a card name&hellip;</p>
 		<ul>
 			<li>If a card by that name has been printed in multiple <i>Magic</i> sets, the card from the latest released set is retrieved.</li>
-			<li>MTG Deck Builder sends an external data request to the <a href="https://scryfall.com/" target="_blank" rel="noopener noreferrer">Scryfall</a> web servers. Retrieving your card’s data may take a couple of seconds to complete.</li>
+			<li>As MTG Deck Builder sends an external data request to the <a href="https://scryfall.com/" target="_blank" rel="noopener noreferrer">Scryfall</a> web servers, retrieving your card’s data may take a couple of seconds to complete.</li>
 			<li>Only a valid name of a <i>Magic: The Gathering</i> card can add the card to your deck. If a name you submit is invalid, the app notifies you of the error.</li>
 			<li>The card adder won’t add a card of a certain name when it already exists in the card list. (If you want to have duplicates of a card, increase its <a href="#m-card-quantities">quantity</a> instead.)</li>
 		</ul>

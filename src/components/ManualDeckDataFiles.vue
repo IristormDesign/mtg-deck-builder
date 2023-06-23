@@ -9,6 +9,6 @@
 			<li>Move your deck from one web browser to another (if you’re switching your preferred browser, for example).</li>
 		</ul>
 		<p>To produce a data file of a deck, go to the <a href="#m-deck-pages">deck’s page</a>, and then from the <a href="#m-deck-actions">deck actions</a> menu, select the Export option.</p>
-		<p>To view a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click on the button in the “Import a Deck” section. This lets you find and open a deck data file from your computer or device’s file system.</p>
+		<p>To view a deck from exported data, go to the <a href="#m-create-deck">Create Deck page</a> and click on the button in the “Import a Deck” section. This lets you find and open a deck data file from the file system of your computer or device.</p>
 	</section>
 </template>

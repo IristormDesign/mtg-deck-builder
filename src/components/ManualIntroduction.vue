@@ -4,9 +4,19 @@
 			<img class="intro-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
 			<small>(Illustration: <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank" rel="noopener noreferrer">Urza’s Tome</a></i> by Aaron Miller)</small>
 		</figure>
-		<p>This page explains how to use this web app, <router-link :to="{name: 'home'}"><strong>MTG Deck Builder</strong></router-link> by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a>.</p>
-		<p>In the table of contents, you can click on a link to skip directly to the respective section of the user manual.</p>
-		<p>(If you need help on how to play <i>Magic: The Gathering</i> itself, refer to the game rules at the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Comprehensive_Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.)</p>
-		<p>Note: In this app, the symbols of colored mana are displayed as single letters instead of their standard graphical symbols. By Wizards of the Coast’s convention for representing colored mana in plain text, white is “W,” blue is “U,” black is “B,” red is “R,” and green is “G.”</p>
+		<p>This document is the user manual for <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>. Here you can learn the details about how this web app works.</p>
+		<p>The user manual is divided into many chapters. You can skip directly to a chapter you want to read by clicking on the relevant link in the table of contents, or on certain other links throughout the manual.</p>
+		<p>MTG Deck Builder assumes you know how to play <i>Magic: The Gathering</i>. If you have an issue about the game’s rules, you can refer to them on the <a href="https://magic.wizards.com/en/rules" target="_blank" rel="noopener noreferrer">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Comprehensive_Rules" target="_blank" rel="noopener">Fandom MTG Wiki</a>.</p>
+		<p>When you start MTG Deck Builder for the first time ever, it provides two sample decks (“Boros Equipment” and “Sultai Ramp”). You may modify these decks however you like or delete them.</p>
+
+		<manual-symbols />
 	</section>
 </template>
+
+<script>
+import ManualSymbols from '@/components/ManualSymbols.vue'
+
+export default {
+	components: { ManualSymbols }
+}
+</script>

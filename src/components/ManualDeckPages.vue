@@ -1,7 +1,7 @@
 <template>
 	<section id="m-deck-pages">
 		<h3>Deck Pages</h3>
-		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you build, analyze, and edit the contents of your <i>Magic: The Gathering</i> decks. Every <a href="#m-create-deck">deck you make</a> in the app gets its own deck page.</p>
+		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you construct, analyze, and modify the contents of your <i>Magic: The Gathering</i> decks. Every <a href="#m-create-deck">deck created</a> in the app gets its own deck page.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"
@@ -9,7 +9,7 @@
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
 		<p>A deck page consists of several different sections. These sections include the following, listed here in the order of their position on the page from top to bottom, left to right:</p>
-		<ul>
+		<ol>
 			<li><a href="#m-deck-name">Deck name</a></li>
 			<li><a href="#m-deck-statistics">Deck statistics</a></li>
 			<li><a href="#m-card-image">Card image</a></li>
@@ -20,7 +20,7 @@
 			<li><a href="#m-card-quantities">Card quantities</a></li>
 			<li><a href="#m-card-adder">Card adder</a></li>
 			<li><a href="#m-deck-actions">Deck actions</a></li>
-		</ul>
+		</ol>
 		<p>Each deck page section is going to be explained in further detail.</p>
 
 		<manual-deck-name />
