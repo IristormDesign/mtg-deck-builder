@@ -21,30 +21,20 @@
 	}
 }
 .mana-symbol {
-	$common-mana-symbol-size: .875em;
+	$common-mana-symbol-size: .8em;
 
 	border-radius: 50%;
 	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
-	line-height: 1.0417;
-	margin: 0 0 0 1px;
-	box-shadow: inset .75px -1.5px 0px .5px rgba(#000, .75);
 	background: $color-mana-generic;
+	font: $font-weight-semibold 100%/1 $font-family-standard;
 	color: #000;
-	font-family: $font-family-standard;
-	font-weight: $font-weight-semibold;
-	display: flex;
-	align-items: flex-end;
+	display: inline-flex;
+	align-items: center;
 	justify-content: center;
 	cursor: default;
 	overflow: hidden;
-	letter-spacing: divide(-1em, 12);
-	padding-right: divide(1em, 12);
-	text-align: center;
 
-	&:first-of-type {
-		margin-left: 0;
-	}
 	&.white {
 		background: $color-mana-white;
 
@@ -64,16 +54,24 @@
 	&.green {
 		background: $color-mana-green;
 	}
-	&.hybrid {
-		background: $color-mana-hybrid;
-		font-size: 50%;
-		line-height: 1.875;
-		width: $common-mana-symbol-size * 2;
-		height: $common-mana-symbol-size * 2;
-	}
+	&.hybrid,
 	&.long-hybrid {
 		background: $color-mana-hybrid;
-		line-height: 1.5;
+		font-size: 120%;
+
+		div {
+			transform: scale(.5);
+			line-height: $common-mana-symbol-size*2;
+			letter-spacing: divide(1em, -12);
+			text-indent: divide(1em, -6);
+		}
+	}
+	&.long-hybrid {
+		div {
+			transform: scale(1) translateY(-.25em);
+			letter-spacing: normal;
+			text-indent: 0;
+		}
 	}
 	&[title] {
 		cursor: help;
@@ -84,10 +82,13 @@
 	min-width: 19px; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
 	font: 800 12px/15px 'Ysabeau', 'Trebuchet MS', sans-serif;
-	cursor: help;
+	cursor: default;
 	outline: 1px solid #000;
 	color: #000;
 
+	&[title] {
+		cursor: help;
+	}
 	> div {
 		transform: scaleX(1.25);
 		backface-visibility: hidden;

@@ -42,7 +42,7 @@ $color-frame-blue: desaturate(lighten($color-mana-blue, 3.125%), 41.67%);
 $color-frame-black: desaturate(darken($color-mana-black, 3.125%), 3.125%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 50%);
 $color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 20%);
-$color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
+$color-frame-multicolor: desaturate($color-mana-hybrid, 33.33%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 8.33%), 8.33%);
 
 // TEXT
@@ -95,10 +95,10 @@ $x: 2px dashed rgba(#c0f, .75);
 	text-transform: uppercase;
 }
 @mixin popup {
-	box-shadow: -.125em .25em .5em rgba(#000, .5);
+	box-shadow: -.125em .25em .75em rgba(#000, .5);
 	background: $background-light-gradient;
-	border: 2px solid $color-mythic-orange;
-	border-radius: $lhse*.25;
+	border: 1px solid desaturate($color-mythic-lighter, 75%);
+	border-radius: $border-radius-group;
 }
 @mixin overlay-bg {
 	position: fixed;
