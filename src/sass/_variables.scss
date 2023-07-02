@@ -35,6 +35,7 @@ $color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
 $color-section-border: darken($color-content-bg, 6.25%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 20%), 6.25%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
+$color-background-alt: desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
 
 $color-frame-land: desaturate(lighten($color-mythic-lighter, 20%), 80%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
@@ -79,9 +80,9 @@ $height-app-header-medium: $lhse*2;
 $height-app-header-tall: $lhse*3;
 $background-light-gradient:
 	radial-gradient(farthest-corner at 50% 0,
-		desaturate(lighten($color-mythic-lighter, 25%), 62.5%),
-		desaturate(lighten($color-mythic-lighter, 12.5%), 62.5%)
-	) desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
+		lighten($color-background-alt, 6.25%),
+		darken($color-background-alt, 6.25%)
+	) $color-background-alt;
 $opacity-mana-symbols: .9167;
 
 $x: 2px dashed rgba(#c0f, .75);
@@ -95,10 +96,47 @@ $x: 2px dashed rgba(#c0f, .75);
 	text-transform: uppercase;
 }
 @mixin popup {
-	box-shadow: -.125em .25em .75em rgba(#000, .5);
-	background: $background-light-gradient;
-	border: 1px solid desaturate($color-mythic-lighter, 75%);
-	border-radius: $border-radius-group;
+	box-shadow: -.125em .375em .75em rgba(#000, .5);
+	background: $color-background-alt;
+	border-radius: $border-radius-group*.5;
+}
+@mixin popup-menu-list {
+	@include popup;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+
+	a,
+	button {
+		min-width: 6em;
+		padding: 0 $lhse*.3333;
+		min-height: $lhse*1.1667;
+		text-decoration: none;
+		color: #000;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-top: 1px solid rgba(#fff, .3333);
+		border-bottom: 1px solid rgba(#000, .1667);
+		background: none;
+		font: $font-weight-semibold 100%/#{$line-height-standard} $font-family-standard;
+		border-radius: 0;
+		text-shadow: none;
+		box-shadow: none;
+		margin: 0;
+	
+		&:hover,
+		&:focus {
+			background: rgba(#fff, .3820);
+			color: darken($color-mythic-orange, 8.33%);
+			filter: none;
+		}
+		&:active {
+			background: desaturate($color-mythic-orange, 33.33%);
+			color: #fff;
+		}
+	}
 }
 @mixin overlay-bg {
 	position: fixed;
@@ -130,7 +168,6 @@ $x: 2px dashed rgba(#c0f, .75);
 		lighten($color-button-default, 12.5%),
 		darken($color-button-default, 12.5%)
 	);
-
 	cursor: pointer;
 	box-shadow: 
 		0 1px 0 .5px #000, // Rim around button
@@ -161,10 +198,13 @@ $x: 2px dashed rgba(#c0f, .75);
 	}
 	&:active {
 		border-bottom-width: 1px;
-		box-shadow: 0 0 0 .5px #000;
 		margin-top: 0;
 		margin-bottom: 0;
 		filter: none;
+	}
+	&:active,
+	&:disabled {
+		box-shadow: 0 0 0 .5px #000;
 	}
 	&:focus-visible {
 		outline: 2px solid $color-mythic-orange;
@@ -174,15 +214,12 @@ $x: 2px dashed rgba(#c0f, .75);
 		@include primary-btn;	
 	}
 	&:disabled {
-		filter: grayscale(.3333) brightness(.6667) !important;
-		color: rgba(#000, .6667);
+		opacity: .6667;
+		filter: grayscale(.3333) brightness(.6667);
 		cursor: not-allowed;
-		box-shadow: none;
-		margin: 0;
-
-		&:active {
-			border-bottom-width: $border-bottom-width-button;
-		}
+		border-bottom-width: 1px;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
 @mixin primary-btn {

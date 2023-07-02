@@ -1,10 +1,13 @@
+$min-height-menu-link-touchscreen: $lhse*1.3333;
+
 .app-header {
 	background: $color-mythic-dim;
 	color: lighten($color-mythic-dim, 33.33%);
-	border-bottom: 1px solid darken($color-mythic-dim, 12.5%);
+	border: solid darken($color-mythic-dim, 12.5%);
+	border-width: 1px 0;
 	z-index: index($layers, app-header);
 	height: $height-app-header-short;
-	box-shadow: 0 0 1px rgba(#fff, .5);
+	box-shadow: 0 1px 0 rgba(#fff, .125);
 
 	.root-home-page & {
 		position: sticky;
@@ -30,7 +33,6 @@
 
 		a {
 			color: $color-link-focus;
-			transition-duration: $transition-duration-standard;
 
 			&:hover,
 			&:focus {
@@ -57,6 +59,9 @@
 		width: 100%;
 		max-width: max-content;
 
+		> .hover-shield {
+			display: none;
+		}
 		> ul {
 			margin: 0;
 			padding: 0;
@@ -66,57 +71,33 @@
 			gap: $lhse*.5;
 			align-items: center;
 		}
-		li {
-			display: block;
-			margin: 0;
-			padding: 0;
-			border-top: 1px solid rgba(#000, .0625);
+	}
+	.header-menu-item {
+		@include button;
+		@extend .primary-btn;
+		white-space: nowrap;
+		margin-right: 0;
+		margin-left: 0;
+		width: 100%;
+		font-size: 87.5%;
+		min-height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-			> &:first-child {
-				border-top-width: 0;
-			}
-		}
-		a,
-		button {
-			@extend .primary-btn;
-			white-space: nowrap;
-			overflow: hidden;
+		&.attention:not(:disabled) {
+			animation: flash .2s linear;
+			animation-iteration-count: 4;
+			animation-direction: alternate;
 
-			&:hover,
-			&:focus {
-				position: relative;
-				z-index: index($layers, above-overlay);
-			}
-		}
-		button {
-			&.attention:not(:disabled) {
-				animation: flash .2s linear;
-				animation-iteration-count: 4;
-				animation-direction: alternate;
-	
-				@keyframes flash {
-					33.33% {
-						filter: brightness(100%);
-					}
-					100% {
-						filter: brightness(150%);
-					}
+			@keyframes flash {
+				33.33% {
+					filter: brightness(100%);
+				}
+				100% {
+					filter: brightness(150%);
 				}
 			}
-		}
-	}
-	.app-header-link {
-		> a,
-		> button {
-			@include button;
-			margin-right: 0;
-			margin-left: 0;
-			width: 100%;
-			font-size: 87.5%;
-			min-height: $lhse*1.5;
-			display: flex;
-			align-items: center;
-			justify-content: center;
 		}
 	}
 	.open-deck-heading {
@@ -124,7 +105,7 @@
 	}
 	.deck-menu-toggler {
 		position: relative;
-		z-index: index($layers, above-overlay);
+		z-index: index($layers, app-menu-toggler);
 
 		span {
 			font-size: 75%;
@@ -136,95 +117,51 @@
 		z-index: index($layers, above-overlay);
 
 		.hover-shield {
+			position: absolute;
+			margin-top: -$lhse*1.2;
 			width: 100%;
-			height: calc(100% + 2px);
-			position: absolute;
-			top: -2px;
-			padding-bottom: 3em;
-		}
-		.up-pointing-triangle {
-			position: absolute;
-			top: 2.25em;
-			right: 0;
-			z-index: index($layers, above-overlay);
-
-			&::before {
-				position: absolute;
-				bottom: 100%;
-				right: $lhse*2;
-				border: solid transparent;
-				content: "";
-				height: 0;
-				width: 0;
-				pointer-events: none;
-				border-color: transparent;
-				border-bottom-color: $color-mythic-orange;
-				border-width: $lhse*.3333;
-			}
+			height: 100%;
+			border-radius: $border-radius-group;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			background: $color-background-alt;
 		}
 		ul {
-			@include popup;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			min-width: 100%;
-			max-height: 75vh;
-			overflow-y: auto;
-		}
-		li {
-			padding: 0;
+			@include popup-menu-list;
+			border-top-left-radius: 0;
+			position: absolute;
+			top: $lhse*1.3333;
+			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
 		}
 		a {
-			min-width: 6em;
-			max-width: 24em;
-			text-overflow: ellipsis;
-			overflow-x: hidden;
-			white-space: nowrap;
-			padding: 0 $lhse*.3333;
-			height: $lhse*1.5;
-			transition-duration: 0s;
-			text-decoration: none;
-			color: #000;
-			text-align: right;
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			
 			&:hover,
-			&:focus {
-				background: rgba(#fff, .375)
-			}
+			&:focus,
 			&:active {
-				background: $color-mythic-orange;
-				color: #fff;
+				.deck-menu-deck-colors {
+					.mana-symbol {
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}
 	.mouseover-area {
 		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
 		top: 0;
-		height: calc(100% + 2px);
 		width: 100%;
-		display: block;
-		border-radius: $border-radius-button;
+		height: 100%;
 	}
 	.deck-menu-deck-name {
 		font-weight: $font-weight-semibold;
-		min-width: 6em;
+		max-width: 10em;
 		width: max-content;
-		max-width: 14em;
-		text-overflow: ellipsis;
-		white-space: normal;
 		line-height: 1;
-		margin: divide($lhse, 6) 0;
+		padding: $lhse*.0833 0 $lhse*.1667;
 	}
 	.deck-menu-deck-colors {
 		display: flex;
 		font-size: 66.67%;
-		margin-left: $lhse*.5;
+		margin-left: .5em;
 		min-width: $lhse*2;
 		justify-content: center;
 		align-items: center;
@@ -243,10 +180,12 @@
 		.app-title {
 			font-size: 125%;
 		}
-		.app-header-link {
-			> a,
-			> button {
-				font-size: 80%;
+		.header-menu-item {
+			font-size: 80%;
+		}
+		.deck-menu {
+			.hover-shield {
+				margin-top: -$lhse*1.0417;
 			}
 		}
 	}
@@ -270,15 +209,18 @@
 		}
 	}
 }
-@media (max-width: 512px) { // Pixel width must match JavaScript method mobileView() in AppHeader.vue
+@media (max-width: 512px) { // This max-width must match JavaScript method mobileView() in AppHeader.vue.
 	.app-header {
 		height: $height-app-header-medium;
 		padding-top: $lhse*.25;
 		padding-bottom: $lhse*.25;
 
 		.wrap {
-			margin-right: auto;
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
+			justify-content: space-between;
+			grid-gap: $lhse;
+			position: relative;
 		}
 		.app-title {
 			flex-wrap: wrap;
@@ -296,137 +238,87 @@
 		.app-menu-toggler {
 			position: relative;
 			z-index: index($layers, app-menu-toggler);
-			font-size: 87.5%;
 			display: block;
+			font-size: 87.5%;
 		}
 		.app-menu {
-			@include popup;
 			position: absolute;
+			top: $height-app-header-medium;
 			right: $lhse*.5;
-			top: $height-app-header-short;
-			margin: 0;
-			z-index: index($layers, app-menu-toggler);
+			z-index: index($layers, above-overlay);
+			width: auto;
 
-			&::before {
-				position: absolute;
-				bottom: 100%;
-				right: $lhse*1.3333;
-				border: solid transparent;
-				content: "";
-				height: 0;
-				width: 0;
-				pointer-events: none;
-				border-color: transparent;
-				border-bottom-color: $color-mythic-orange;
-				border-width: divide($lhse, 3);
-			}
 			> .hover-shield {
-				width: 100%;
-				height: divide($lhse, 3);
+				display: block;
+				width: ($lhse*.875)*3.375;
+				height: $lhse*1.5;
 				position: absolute;
-				top: divide(-$lhse, 3);
+				top: -$lhse*1.5;
+				right: 0;
+				margin: 0;
+				background: $color-background-alt;
+				border-radius: $border-radius-group;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
 			}
 			> ul {
-				overflow-y: auto;
-				max-height: 75vh;
-				max-width: $lhse*10;
-				width: auto;
-			}
-			ul {
+				@include popup-menu-list;
 				display: block;
-				background: none;
-			}
-			li {
-				display: block;
-			}
-			.app-header-link {
-				a,
-				button {
-					display: flex;
-					align-items: center;
-					justify-content: flex-end;
-					min-width: auto;
-					padding: 0 divide($lhse, 3);
-					min-height: $lhse*1.6667;
-					height: auto;
-					background: none;
-					color: #000;
-					border: none;
-					text-shadow: none;
-					box-shadow: none;
-					margin: 0;
-					filter: none;
-					border-radius: 0;
-					transition: none;
-					text-align: right;
-					font: $font-weight-semibold 112.5%/#{$line-height-standard} $font-family-standard;
-					
-					&:hover,
-					&:focus {
-						background: rgba(#fff, .375);
-						filter: none;
-					}
-					&:active {
-						background: $color-mythic-orange;
-						color: #fff;
-					}
-				}
-			}
-			.deck-menu {
-				background: rgba($color-mythic-lighter, .25);
-				border: 1px solid desaturate($color-mythic-lighter, 33.33%);
-				border-right-width: 0;
-				border-left-width: 0;
+				border-top-right-radius: 0;
+				margin-top: -$lhse*.5;
+				position: relative;
+				max-height: calc(100vh - #{$height-app-header-medium + $lhse*.25});
 			}
 		}
 		.open-deck-heading {
 			display: block;
-			text-align: right;
 			cursor: default;
-			font-size: 66.67%;
+			color: rgba(#fff, .8333);
+			margin-left: $lhse*.375;
 
 			strong {
 				@include heading-font;
-				display: block;
-				padding: 0 divide($line-height-standard, 3) * 1rem;
-				color: $color-mythic-dim;
+				font-size: 75%;
+				color: inherit;
 				text-transform: uppercase;
+				text-shadow: $text-shadow-over-light-bg;
 			}
 		}
 		.deck-menu-toggler {
 			display: none !important;
 		}
 		.deck-menu {
+			background: desaturate(darken($color-background-alt, 25%), 25%);
+			padding: 0 0 $lhse*.3333 $lhse*.3333;
+			
 			.hover-shield {
-				height: auto;
-				position: static;
-				padding-bottom: 0;
-			}
-			.up-pointing-triangle {
-				display: block;
-				position: static;
-
-				&::before {
-					display: none;
-				}
+				display: none;
 			}
 			ul {
-				border: 0;
 				box-shadow: none;
+				border-radius: $border-radius-group*.5;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				position: static;
 				overflow: visible;
+				max-height: 100%;
 			}
-			li {
-				text-align: right;
+		}
+	}
+	@media (pointer: coarse) {
+		.app-header {
+			.header-menu-item {
+				min-height: $min-height-menu-link-touchscreen;
 			}
 		}
 	}
 }
-@media (max-width: ($min-width-app*.4)) {
+@media (pointer: coarse) {
 	.app-header {
-		height: $height-app-header-short;
-
-		.by-iristorm {
-			display: none;
+		.deck-menu {
+			a {
+				min-height: $min-height-menu-link-touchscreen;
+			}
 		}
 	}
 }

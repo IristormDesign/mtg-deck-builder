@@ -1,6 +1,6 @@
 @use "sass:color";
 
-$border-width-card-button: 2.5px;
+$border-width-card-button: 3px;
 $box-shadow-card-button: 0 -1px divide($lhse, 3) $border-width-card-button rgba(#000, .3333);
 $width-qty-column: $lhse*1.5;
 $min-height-card-list: $lhse*6;
@@ -9,11 +9,11 @@ $min-height-card-list: $lhse*6;
 	box-shadow:
 		0 0 0 .5px rgba(#000, .875),
 		0 0 0 $border-width-card-button $color,
-		.3333px -1px 0 $border-width-card-button color.scale($color,
+		.3333px -1px 0 ($border-width-card-button) color.scale($color,
 			$lightness: 50%
 		),
-		-.3333px 1px 0 $border-width-card-button color.scale($color,
-			$lightness: -66.67%, $saturation: -66.67%
+		-.3333px 1px 0 ($border-width-card-button) color.scale($color,
+			$lightness: -50%, $saturation: -66.67%
 		),
 		$box-shadow-card-button;
 }
@@ -286,10 +286,10 @@ $min-height-card-list: $lhse*6;
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 29.17%), 25%));
 				}
 				&.green {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 33.33%), 12.5%));
+					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 25%), 16.67%));
 				}
 				&.multicolor {
-					@include box-shadow-hover-card-button(lighten(desaturate($color-mana-hybrid, 25%), 4.17%));
+					@include box-shadow-hover-card-button(lighten(desaturate($color-mana-hybrid, 16.67%), 6.25%));
 				}
 			}
 		}
@@ -325,7 +325,7 @@ $min-height-card-list: $lhse*6;
 			align-items: center;
 			
 			.mana-symbol {
-				box-shadow: -.5px 1.5px 0 0 #000;
+				box-shadow: -.75px 1.6667px 0 0 #000; // Needs to look good on Firefox
 				margin: 0 0 0 2px;
 			}
 		}

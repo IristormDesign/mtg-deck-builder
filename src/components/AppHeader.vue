@@ -14,11 +14,12 @@
 			</button>
 
 			<nav v-show="showAppMenu" class="app-menu">
-				<div class="hover-shield"></div>
+				<div v-show="showAppMenu" class="hover-shield" />
 				<ul>
-					<li class="app-header-link">
+					<li>
 						<button
 							v-if="$router.currentRoute.name === 'manual'"
+							class="header-menu-item"
 							@click="manualButtonClicked()"
 						>
 							User Manual
@@ -26,22 +27,24 @@
 						<router-link
 							v-else
 							:to="{name: 'manual'}"
+							class="header-menu-item"
 							@click.native="closeAllPopups()"
 						>
 							User Manual
 						</router-link>
 					</li>
-					<li class="add-new-deck app-header-link">
+					<li class="add-new-deck">
 						<router-link
 							:to="{name: 'createDeck'}"
+							class="header-menu-item"
 							@click.native="closeAllPopups()"
 						>
 							Create Deck
 						</router-link>
 					</li>
-					<li class="deck-menu app-header-link">
+					<li class="deck-menu">
 						<button
-							class="deck-menu-toggler"
+							class="deck-menu-toggler header-menu-item"
 							@click="toggleDeckMenu()"
 							:disabled="disableMenuButton"
 							:title="disabledMenuButtonTooltip"
@@ -49,40 +52,42 @@
 							Open Deck <span>▼</span>
 							<div class="mouseover-area"></div>
 						</button>
-
 						<div class="open-deck-heading">
 							<strong>Open Deck:</strong>
 						</div>
-						<div v-show="showDeckMenu" class="hover-shield">
-							<div class="up-pointing-triangle">
-								<ul @mouseover="mouseoutEventActiveEffect">
-									<li v-for="deck in $store.state.decks" :key="deck.name">
-										<router-link
-											v-show="$route.params.deckPath !== deck.path"
-											:to="{
-												name: 'deckMain',
-												params: {
-													deck: deck,
-													deckPath: deck.path
-												}
-											}"
-											@click.native="closeAllPopups()"
-										>
-											<span class="deck-menu-deck-name">{{ deck.name }}</span>
-											<div class="deck-menu-deck-colors">
-												<div
-													:class="sizeManaSymbols(deck)"
-													v-html="renderManaSymbols(deck)"
-												/>
-											</div>
-										</router-link>
-									</li>
-								</ul>
-							</div>
-						</div>
+						<div v-show="showDeckMenu" class="hover-shield" />
+						<ul
+							v-show="showDeckMenu"
+							@mouseover="mouseoutEventActiveEffect"
+						>
+							<li v-for="deck in $store.state.decks" :key="deck.name">
+								<router-link
+									v-show="$route.params.deckPath !== deck.path"
+									:to="{
+										name: 'deckMain',
+										params: {
+											deck: deck,
+											deckPath: deck.path
+										}
+									}"
+									@click.native="closeAllPopups()"
+								>
+									<span class="deck-menu-deck-name">{{ deck.name }}</span>
+									<div class="deck-menu-deck-colors">
+										<div
+											:class="sizeManaSymbols(deck)"
+											v-html="renderManaSymbols(deck)"
+										/>
+									</div>
+								</router-link>
+							</li>
+						</ul>
 					</li>
-					<li class="app-header-link">
-						<router-link :to="{name: 'contact'}">
+					<li>
+						<router-link
+							:to="{name: 'contact'}"
+							class="header-menu-item"
+						>
 							Contact
 						</router-link>
 					</li>

@@ -74,7 +74,6 @@
 						<li>No account registration required</li>
 						<li>Attractive, user-friendly graphical interface</li>
 						<li>Add cards to your decks with the card name search engine (powered by <a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>)</li>
-						<li>Deck pages show each card’s name, mana cost, type, rarity, and quantity</li>
 						<li>Analyze many statistics about your decks, such as their average mana value, the percentage of cards by certain attributes, and more</li>
 						<li>Instantly sort all cards in card lists by various methods to choose from</li>
 						<li>See the image of any card in your decks</li>
