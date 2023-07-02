@@ -18,7 +18,6 @@
 		box-shadow: inset 0 0 0 12px #000; // Black card border without card image
 		max-width: 488px * .75; // Pixel value equal to actual width of card images.
 		max-height: 680px * .75; // Pixel value equal to actual height of card images.
-		width: 100%;
 
 		&:focus-visible {
 			filter: brightness(125%);
