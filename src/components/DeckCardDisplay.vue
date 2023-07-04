@@ -17,7 +17,7 @@
 						<img :src="card.img" width="488" height="680" :alt="card.name" />
 					</a>
 				</transition>
-				<button class="close primary-btn" @click="hideCDOverlay()" title="Close">
+				<button class="close" @click="hideCDOverlay()" title="Close">
 					×
 				</button>
 			</div>

@@ -115,7 +115,6 @@
 	}
 	a,
 	button {
-		@include primary-btn;
 		font-size: 80%;
 		min-width: 6em; // Large enough to make the "More Stats" and "Card List" button labels equal in width.
 		height: $lhse*1.5;

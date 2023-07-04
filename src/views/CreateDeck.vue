@@ -20,7 +20,7 @@
 						maxlength="50"
 						ref="focus"
 					/>
-					<button class="primary-btn">Start</button>
+					<button>Start</button>
 				</form>
 			</div>
 			<div class="import-data">
@@ -30,7 +30,7 @@
 					type="file" accept=".deck"
 					style="display: none"
 				/>
-				<button id="file-btn" class="primary-btn">Open Deck<br> Data File</button>
+				<button id="file-btn">Open Deck<br> Data File</button>
 			</div>
 		</div>
 	</article>

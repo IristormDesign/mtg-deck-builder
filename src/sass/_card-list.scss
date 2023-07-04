@@ -351,7 +351,6 @@ $min-height-card-list: $lhse*6;
 				height: auto;
 			}
 			button {
-				@include primary-btn;
 				border-bottom-width: 2px;
 				font: normal 133.33%/.8333 sans-serif;
 				min-width: auto;

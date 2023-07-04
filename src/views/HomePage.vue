@@ -43,7 +43,6 @@
 
 						<button
 							v-if="$store.state.decks.length > 0"
-							class="primary-btn"
 							@click="this.homeOpenDeckButton"
 						>
 							Open Deck
@@ -51,7 +50,7 @@
 						<router-link
 							v-else
 							:to="{name: 'createDeck'}"
-							:class="'button primary-btn'"
+							:class="'button'"
 						>
 							Create Deck
 						</router-link>
@@ -90,7 +89,6 @@
 
 				<button
 					v-if="$store.state.decks.length > 0"
-					class="primary-btn"
 					@click="this.homeOpenDeckButton"
 				>
 					Open a Deck
@@ -98,7 +96,7 @@
 				<router-link
 					v-else
 					:to="{name: 'createDeck'}"
-					:class="'button primary-btn'"
+					:class="'button'"
 				>
 					Create Deck
 				</router-link>

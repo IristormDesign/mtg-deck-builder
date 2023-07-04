@@ -169,7 +169,6 @@
 	z-index: index($layers, above-overlay);
 
 	button {
-		@include primary-btn;
 		min-width: $lhse;
 	}
 }

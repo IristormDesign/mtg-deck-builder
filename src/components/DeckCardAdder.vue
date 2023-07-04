@@ -20,7 +20,7 @@
 					🎲 Add a randomly selected Magic card
 				</option>
 			</datalist>
-			<button class="primary-btn" :disabled="delay">Add</button>
+			<button :disabled="delay">Add</button>
 		</form>
 		<div v-else class="loading-indicator">
 			Loading card&hellip;

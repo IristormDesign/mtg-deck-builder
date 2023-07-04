@@ -31,7 +31,7 @@
 		<aside v-if="!showNewStats" class="outdated-data-notice">
 			<p>⚠ Update this deck’s set of card data to see additional deck statistics.</p>
 			<p v-if="!updatingDeckData" class="update-button-cont">
-				<button @click="updateDeckData" class="primary-btn">Update Data Set</button>
+				<button @click="updateDeckData">Update Data Set</button>
 			</p>
 			<p v-else class="update-button-cont loading-indicator">
 				<em>Updating now&hellip;</em>

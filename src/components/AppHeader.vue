@@ -7,7 +7,7 @@
 			</div>
 
 			<button
-				class="app-menu-toggler primary-btn"
+				class="app-menu-toggler"
 				@click="toggleAppMenu()"
 			>
 				Menu
