@@ -33,19 +33,18 @@
 			padding-left: divide($lhse, 4);
 		}
 		input {
-			height: $lhse*1.3333;
-			font-weight: $font-weight-semibold;
-			font-size: 112.5%;
 			border-radius: $border-radius-button;
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 			width: 100%;
+			border-right-width: 0;
+			padding-right: 0;
 		}
 		button {
 			min-width: auto;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
-			height: calc(#{$lhse}*1.3333 + 2px);
+			height: $height-deck-control-panel-input;
 		}
 	}
 	.import-data {

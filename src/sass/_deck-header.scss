@@ -9,7 +9,7 @@
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: divide($lhse, 4) divide($lhse, 2);
+	padding: divide($lhse, 3) divide($lhse, 2);
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;
@@ -211,12 +211,12 @@
 	.deck-info {
 		flex-direction: column;
 		text-align: center;
+		justify-content: center;
 
 		h3 {
 			text-align: center;
-			margin: 0;
-			max-width: 6.125em;
-			width: auto;
+			margin: 0 0 $lhse*.25;
+			width: max-content;
 		}
 	}
 }
@@ -230,6 +230,8 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto 1fr 1fr;
+		width: min-content;
+		min-width: 66.67vw;
 	}
 	.deck-name {
 		grid-column: span 3;

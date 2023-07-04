@@ -122,22 +122,24 @@ $min-height-card-list: $lhse*6;
 			margin: divide($lhse, -3) 0 divide($lhse, 3);
 			background: $color-mythic-very-dim;
 			color: $color-text-over-mythic-very-dim;
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
+			border-radius: 0;
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
+			align-items: stretch;
 			cursor: default;
 			border-top: $border-sections;
+			border-bottom: 2px solid $color-section-border-alt;
+			padding: 0 $lhse*.5;
+			min-height: $lhse*2;
 
-			> * {
-				padding: 0 $lhse*.5;
-			}
 			h3,
 			h4,
 			p {
 				margin: 0;
 				color: $color-text-over-mythic-very-dim;
+			}
+			h3 {
+				align-self: center;
 			}
 			h4 {
 				@include label-text-style;
@@ -146,10 +148,10 @@ $min-height-card-list: $lhse*6;
 			}
 			.output {
 				font-size: 200%;
-				margin-top: -4.17%;
+				line-height: 1;
+				margin-top: -$lhse*.0833;
 				display: flex;
 				align-items: center;
-				color: $color-text-over-mythic-very-dim;
 			}
 			.warning-symbol {
 				margin-left: .25em;
@@ -175,7 +177,6 @@ $min-height-card-list: $lhse*6;
 		color: $color-text-brighter;
 	}
 	.list-headings {
-		@include heading-font;
 		display: flex;
 		text-shadow: $text-shadow-over-light-bg;
 		cursor: default;
@@ -251,7 +252,8 @@ $min-height-card-list: $lhse*6;
 			}
 			.qty {
 				> span {
-					color: $color-text;
+					color: desaturate(darken($color-text, 16.67%), 8.33%);
+					transition-duration: 0s;
 				}
 				input {
 					transition: none;
@@ -344,9 +346,10 @@ $min-height-card-list: $lhse*6;
 			
 			> span {
 				margin: -4.17% 0 0 divide($lhse, 6);
-				color: desaturate(darken($color-text, 25%), 12.5%);
+				color: desaturate(darken($color-text, 33.33%), 16.67%);
 				cursor: default;
 				text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
+				transition: color $transition-duration-standard ease;
 			}
 			label {
 				@include screen-readers-only;
@@ -362,7 +365,7 @@ $min-height-card-list: $lhse*6;
 				transition: all $transition-duration-standard ease-out;
 				padding: 0 0 0 0;
 				margin: -4.17% 0 0 0;
-				font-weight: $font-weight-semibold;
+				font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
 				border-radius: $border-radius-button;
 				appearance: textfield;
 
@@ -516,6 +519,7 @@ $min-height-card-list: $lhse*6;
 		&.sideboard {
 			header {
 				display: block;
+				padding: 0;
 
 				h3 {
 					text-align: center;
@@ -523,12 +527,13 @@ $min-height-card-list: $lhse*6;
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					min-height: $height-deck-control-panel-input;
+					width: 100%;
 				}
 				.sideboard-card-total {
 					justify-content: center;
-					border-left: none;
+					border-left-width: 0;
 					border-top: $border-sections-alt;
+					padding: $lhse*.25;
 				}
 			}
 		}
