@@ -133,35 +133,6 @@
 		text-shadow: .375px -.5px 0 rgba(#000, .5);
 	}
 }
-.update-notif {
-	position: sticky;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: index($layers, update-notif);
-	background: $color-mythic-lighter;
-	padding: divide($lhse, 8) $lhse*.5;
-	color: #000;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	p {
-		margin: 0;
-	}
-	strong {
-		color: inherit;
-	}
-	button {
-		margin-left: 1ch;
-		display: inline-block;
-		min-width: $lhse*4;
-	}
-	.reloading {
-		font-style: italic;
-	}
-}
 .scroll-to-top {
 	position: fixed;
 	bottom: divide($lhse, 3);
@@ -242,19 +213,6 @@
 				grid-column: span 6;
 				justify-self: flex-start;
 			}
-		}
-	}
-}
-
-@media (max-width: ($min-width-app*.5)) {
-	.update-notif {
-		display: block;
-
-		p {
-			margin: 0;
-		}
-		button {
-			margin: $lhse*.25 auto;
 		}
 	}
 }

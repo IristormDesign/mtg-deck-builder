@@ -1,0 +1,48 @@
+.update-notification {
+	z-index: index($layers, update-notif);
+	background: $color-link-focus;
+	border: 2px solid lighten($color-link-focus, 12.5%);
+	padding: 0 $lhse*.5;
+	color: #000;
+	min-height: $height-app-header-short;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0 $lhse*.3333;
+
+	p {
+		margin: $lhse*.25;
+		line-height: 1;
+		text-align: right;
+	}
+	strong {
+		color: inherit;
+	}
+	.button-container {
+		height: $lhse*1.25;
+		display: flex;
+		align-items: center;
+	}
+	button {
+		@include secondary-button;
+		display: block;
+		font-size: 87.5%;
+	}
+	.reloading {
+		font-style: italic;
+	}
+}
+
+@media (max-width: ($min-width-app*.5)) {
+	.update-notification {
+		flex-wrap: wrap;
+		padding: 0 $lhse*.25;
+
+		p {
+			text-align: center;
+		}
+		.button-container {
+			margin: 0 0 $lhse*.25;
+		}
+	}
+}
