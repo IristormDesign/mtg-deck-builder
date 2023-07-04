@@ -1,12 +1,9 @@
 <template>
 	<section
 		v-if="$store.state.showSideboard"
-		class="card-list sideboard"
+		class="card-list"
 	>
-		<header>
-			<h3>Sideboard</h3>
-			<deck-sideboard-total :deck="deck" />
-		</header>
+		<deck-sideboard-header :deck="deck" />
 		<div
 			v-if="deck.sideboard.cards.length <= 0"
 			class="no-cards"
@@ -45,11 +42,11 @@
 </template>
 
 <script>
-import DeckSideboardTotal from '@/components/DeckSideboardTotal.vue'
+import DeckSideboardHeader from '@/components/DeckSideboardHeader.vue'
 import ActiveCardList from '@/components/ActiveCardList.vue'
 
 export default {
-	components: { DeckSideboardTotal, ActiveCardList },
+	components: { DeckSideboardHeader, ActiveCardList },
 	props: {
 		deck: Object
 	},

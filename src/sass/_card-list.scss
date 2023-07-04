@@ -117,54 +117,6 @@ $min-height-card-list: $lhse*6;
 			@include screen-readers-only;
 		}
 	}
-	&.sideboard {
-		header {
-			margin: divide($lhse, -3) 0 divide($lhse, 3);
-			background: $color-mythic-very-dim;
-			color: $color-text-over-mythic-very-dim;
-			border-radius: 0;
-			display: flex;
-			justify-content: space-between;
-			align-items: stretch;
-			cursor: default;
-			border-top: $border-sections;
-			border-bottom: 2px solid $color-section-border-alt;
-			padding: 0 $lhse*.5;
-			min-height: $lhse*2;
-
-			h3,
-			h4,
-			p {
-				margin: 0;
-				color: $color-text-over-mythic-very-dim;
-			}
-			h3 {
-				align-self: center;
-			}
-			h4 {
-				@include label-text-style;
-				text-align: right;
-				margin-right: $lhse*.5;
-			}
-			.output {
-				font-size: 200%;
-				line-height: 1;
-				margin-top: -$lhse*.0833;
-				display: flex;
-				align-items: center;
-			}
-			.warning-symbol {
-				margin-left: .25em;
-			}
-		}
-		.sideboard-card-total {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			border-left: $border-sections-alt;
-			padding-left: $lhse*.5;
-		}
-	}
 	.no-cards {
 		display: flex;
 		justify-content: center;
@@ -502,43 +454,7 @@ $min-height-card-list: $lhse*6;
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-buttons();
 }
-@media (max-width: ($min-width-app * .6)) {
-	.card-list {
-		&.sideboard {
-			header {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				padding-top: 0;
-				padding-bottom: 0;
-			}
-		}
-	}
-}
-@media (max-width: ($min-width-app * .5)) {
-	.card-list {
-		&.sideboard {
-			header {
-				display: block;
-				padding: 0;
 
-				h3 {
-					text-align: center;
-					padding: $lhse*.25;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					width: 100%;
-				}
-				.sideboard-card-total {
-					justify-content: center;
-					border-left-width: 0;
-					border-top: $border-sections-alt;
-					padding: $lhse*.25;
-				}
-			}
-		}
-	}
-}
 @media (pointer: coarse) {
 	.card-list {
 		.card-button {
