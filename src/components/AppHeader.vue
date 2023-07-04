@@ -3,7 +3,7 @@
 		<div class="wrap">
 			<div class="app-title">
 				<h1><a href="/">MTG Deck Builder</a></h1>
-				<div class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank" rel="noopener">Iristorm Design</a></div>
+				<div class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank">Iristorm Design</a></div>
 			</div>
 
 			<button

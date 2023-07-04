@@ -9,8 +9,7 @@
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<a
 						:key="card.name" :class="cardColorClass" :href="card.link"
-						target="_blank" rel="noopener noreferrer"
-						title="Click to open this card’s page on Scryfall"
+						target="_blank" title="Click to open this card’s page on Scryfall"
 					>
 						<div class="loading-indicator">
 							Loading&hellip;
