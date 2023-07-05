@@ -1,14 +1,14 @@
 <template>
 	<section id="m-more-stats-pages">
 		<h3>“More Stats” Pages</h3>
-		<p>When you click on the More Stats button in the <a href="#m-deck-statistics">deck statistics</a> section, you’re directed to your deck’s More Deck Statistics page, where you can review additional information about how the deck is composed.</p>
+		<p>When you click on the More Stats button in the <a href="#m-deck-statistics">deck statistics</a> section, you’re directed to your deck’s More Deck Statistics page, where you can review additional information about how your deck is composed.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
 				alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The More Deck Statistics page shows many data tables, each for a certain category of measurement. These categories are the following:</p>
+		<p>The More Deck Statistics page displays many data tables, each for a certain category of measurement. These categories are the following:</p>
 		<ul>
 			<li>Colors of Spells</li>
 			<li>Mana Values of Spells (a.k.a. mana curve)</li>
@@ -37,6 +37,6 @@
 			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness (P/T).</li>
 			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back), <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
-		<p>Single cards can be counted for multiple properties within a category. For example, a card designated “artifact creature” in its type line is considered to be both a creature and an artifact in the Types category table. As a result, the sum of all values of a category can equal a total count greater than your deck’s total cards and a combined percentage greater than 100%.</p>
+		<p>Single cards can be counted for multiple properties within a category. For example, a card designated “artifact creature” in its type line is considered both a creature and an artifact in the Types category table. As a result, the sum of all values of a category can equal a total count greater than your deck’s total cards, and a combined percentage greater than 100%.</p>
 	</section>
 </template>
