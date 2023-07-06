@@ -123,6 +123,11 @@ ol {
 	}
 }
 li {
+	&:first-child {
+		h5:first-child {
+			margin-top: $lhse*.75;
+		}
+	}
 	&:last-child {
 		p:last-child {
 			margin-bottom: $lhse*.75;

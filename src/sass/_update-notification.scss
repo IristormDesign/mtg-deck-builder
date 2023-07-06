@@ -1,7 +1,6 @@
 .update-notification {
 	z-index: index($layers, update-notif);
-	background: $color-link-focus;
-	border: 2px solid lighten($color-link-focus, 12.5%);
+	background: $color-background-alt;
 	padding: 0 $lhse*.5;
 	color: #000;
 	min-height: $height-app-header-short;
@@ -13,7 +12,7 @@
 	p {
 		margin: $lhse*.25;
 		line-height: 1;
-		text-align: right;
+		text-align: center;
 	}
 	strong {
 		color: inherit;
@@ -38,9 +37,6 @@
 		flex-wrap: wrap;
 		padding: 0 $lhse*.25;
 
-		p {
-			text-align: center;
-		}
 		.button-container {
 			margin: 0 0 $lhse*.25;
 		}
