@@ -39,8 +39,10 @@ select {
 		outline: none;
 	}
 	&::placeholder {
-		color: lighten($color-group-bg, 37.5%);
+		color: desaturate(lighten($color-content-bg, 25%), 6.25%);
+		font-weight: normal;
 		font-style: italic;
+		font-family: $font-family-standard;
 	}
 }
 input {

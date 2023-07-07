@@ -5,7 +5,7 @@
 	width: $common-mana-symbol-size;
 	height: $common-mana-symbol-size;
 	background: $color-mana-generic;
-	font: $font-weight-semibold 100%/1 $font-family-standard;
+	font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
 	color: #000;
 	display: inline-flex;
 	align-items: center;

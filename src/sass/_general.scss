@@ -100,7 +100,7 @@ th {
 	}
 }
 small {
-	font-size: 75%;
+	font-size: 80%;
 	display: inline-block;
 }
 ul,
@@ -141,12 +141,13 @@ img {
 }
 figure {
 	margin: $lhse*.5;
-
-	small {
-		display: block;
-		text-align: center;
-		margin: $lhse*.125;
-	}
+}
+figcaption {
+	font-size: 80%;
+	letter-spacing: (1/128)*1em;
+	text-align: center;
+	margin: $lhse*.125;
+	opacity: .8;
 }
 ::selection {
 	background: $color-mythic-dim;

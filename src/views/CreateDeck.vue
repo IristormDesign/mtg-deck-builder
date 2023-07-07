@@ -3,7 +3,7 @@
 		<h2>Create Deck</h2>
 		<figure>
 			<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-			<small>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank">Armillary Sphere</a></i> by Franz Vohwinkel)</small>
+			<figcaption>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank">Armillary Sphere</a></i> by Franz Vohwinkel)</figcaption>
 		</figure>
 		<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import a pre-made deck from a deck data file.</p>
 
@@ -19,6 +19,7 @@
 						minlength="1"
 						maxlength="50"
 						ref="focus"
+						autocomplete="off"
 					/>
 					<button>Start</button>
 				</form>
