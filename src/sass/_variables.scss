@@ -140,6 +140,9 @@ $x: 2px dashed rgba(#c0f, .75);
 			background: desaturate($color-mythic-orange, 33.33%);
 			color: #fff;
 		}
+		@media (pointer: coarse) {
+			min-height: $lhse*1.3333;
+		}
 	}
 }
 @mixin overlay-bg {

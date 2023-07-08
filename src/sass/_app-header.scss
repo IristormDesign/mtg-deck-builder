@@ -305,19 +305,3 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 		}
 	}
 }
-@media (pointer: coarse) {
-	.app-header {
-		.app-menu {
-			.header-menu-item {
-				min-height: $min-height-menu-link-touchscreen;
-			}
-		}
-		.deck-menu {
-			ul {
-				a {
-					min-height: $min-height-menu-link-touchscreen;
-				}
-			}
-		}
-	}
-}
