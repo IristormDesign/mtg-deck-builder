@@ -38,7 +38,7 @@
 					<input
 						type="number"
 						:id="qtyCardID(i)"
-						min="0" :max="maxQty(card)"
+						min="0"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
 						@focus="qtyInputFocused($event, card)"

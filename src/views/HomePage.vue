@@ -69,7 +69,7 @@
 					<h2>App Features</h2>
 					<ul>
 						<li>Customize card lists for your own <i>Magic: The Gathering</i> decks</li>
-						<li>App is free of charge and free of advertisements</li>
+						<li>Using app is free of charge and free of advertisements</li>
 						<li>No account registration required</li>
 						<li>Attractive, user-friendly graphical interface</li>
 						<li>Add cards to your decks with the card name search engine (powered by <a href="https://scryfall.com" target="_blank">Scryfall</a>)</li>

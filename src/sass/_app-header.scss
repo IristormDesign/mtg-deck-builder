@@ -7,7 +7,7 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 	border-width: 1px 0;
 	z-index: index($layers, app-header);
 	height: $height-app-header-short;
-	box-shadow: 0 1px 0 rgba(#fff, .125);
+	box-shadow: 0 1px 0 rgba(#fff, .0833);
 
 	.root-home-page & {
 		position: sticky;
@@ -299,7 +299,7 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 				position: static;
-				overflow: visible;
+				overflow: hidden;
 				max-height: 100%;
 			}
 		}

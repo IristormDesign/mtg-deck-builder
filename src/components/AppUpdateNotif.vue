@@ -1,12 +1,10 @@
 <template>
 	<aside v-if="updateExists" class="update-notification">
-		<template v-if="!refreshing">
-			<p>✨ This app has an <strong>update ready</strong>! Reload the page to use the newest version now.</p>
-			<div class="button-container">
-				<button @click="refreshApp">Reload</button>
-			</div>
-		</template>
-		<p class="reloading" v-else>Reloading&hellip;</p>
+		<p>✨ There’s an <strong>update ready</strong>! Reload the page to use the newest version of this app now.</p>
+		<div class="button-container">
+			<button v-if="refreshing" @click="refreshApp">Reload</button>
+			<p v-else class="reloading">Reloading&hellip;</p>
+		</div>
 	</aside>
 </template>
 
