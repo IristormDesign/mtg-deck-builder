@@ -1,5 +1,3 @@
-$min-height-menu-link-touchscreen: $lhse*1.3333;
-
 .app-header {
 	background: $color-mythic-dim;
 	color: lighten($color-mythic-dim, 33.33%);
@@ -202,6 +200,9 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 		.app-title {
 			margin: 0 auto;
 		}
+		.app-menu-positioner {
+			width: 100%;
+		}
 		.app-menu {
 			max-width: $max-width-content*.75;
 			margin: 0 auto;
@@ -218,7 +219,7 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 			display: grid;
 			grid-template-columns: auto auto;
 			justify-content: space-between;
-			grid-gap: $lhse;
+			grid-gap: $lhse*.5;
 			position: relative;
 		}
 		.app-title {
@@ -234,17 +235,20 @@ $min-height-menu-link-touchscreen: $lhse*1.3333;
 			margin-right: $lhse*.125;
 			margin-top: $lhse*.125;
 		}
+		.app-menu-positioner {
+			position: relative;	
+			z-index: index($layers, app-menu-toggler);
+		}
 		.app-menu-toggler {
 			position: relative;
-			z-index: index($layers, app-menu-toggler);
 			display: block;
 			font-size: 87.5%;
+			z-index: 1;
 		}
 		.app-menu {
 			position: absolute;
-			top: $height-app-header-medium;
-			right: $lhse*.5;
-			z-index: index($layers, above-overlay);
+			top: $lhse*1.8;
+			right: 0;
 			width: auto;
 
 			> .hover-shield {

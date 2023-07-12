@@ -5,94 +5,86 @@
 				<h1><a href="/">MTG Deck Builder</a></h1>
 				<div class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank">Iristorm Design</a></div>
 			</div>
+			<div class="app-menu-positioner">
+				<button
+					class="app-menu-toggler"
+					@click="toggleAppMenu()"
+				>
+					Menu
+				</button>
 
-			<button
-				class="app-menu-toggler"
-				@click="toggleAppMenu()"
-			>
-				Menu
-			</button>
-
-			<nav v-show="showAppMenu" class="app-menu">
-				<div v-show="showAppMenu" class="hover-shield" />
-				<ul>
-					<li>
-						<button
-							v-if="$router.currentRoute.name === 'manual'"
-							class="header-menu-item"
-							@click="manualButtonClicked()"
-						>
-							User Manual
-						</button>
-						<router-link
-							v-else
-							:to="{name: 'manual'}"
-							class="header-menu-item"
-							@click.native="closeAllPopups()"
-						>
-							User Manual
-						</router-link>
-					</li>
-					<li class="add-new-deck">
-						<router-link
-							:to="{name: 'createDeck'}"
-							class="header-menu-item"
-							@click.native="closeAllPopups()"
-						>
-							Create Deck
-						</router-link>
-					</li>
-					<li class="deck-menu">
-						<button
-							class="deck-menu-toggler header-menu-item"
-							@click="toggleDeckMenu()"
-							:disabled="disableMenuButton"
-							:title="disabledMenuButtonTooltip"
-						>
-							Open Deck <span>▼</span>
-							<div class="mouseover-area"></div>
-						</button>
-						<div class="open-deck-heading">
-							<strong>Open Deck:</strong>
-						</div>
-						<div v-show="showDeckMenu" class="hover-shield" />
-						<ul
-							v-show="showDeckMenu"
-							@mouseover="mouseoutEventActiveEffect"
-						>
-							<li v-for="deck in $store.state.decks" :key="deck.name">
-								<router-link
-									v-show="$route.params.deckPath !== deck.path"
-									:to="{
-										name: 'deckMain',
-										params: {
-											deck: deck,
-											deckPath: deck.path
-										}
-									}"
-									@click.native="closeAllPopups()"
-								>
-									<span class="deck-menu-deck-name">{{ deck.name }}</span>
-									<div class="deck-menu-deck-colors">
-										<div
-											:class="sizeManaSymbols(deck)"
-											v-html="renderManaSymbols(deck)"
-										/>
-									</div>
-								</router-link>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<router-link
-							:to="{name: 'contact'}"
-							class="header-menu-item"
-						>
-							Contact
-						</router-link>
-					</li>
-				</ul>
-			</nav>
+				<nav v-show="showAppMenu" class="app-menu">
+					<div v-show="showAppMenu" class="hover-shield" />
+					<ul>
+						<li>
+							<router-link
+								:to="{name: 'manual'}"
+								class="header-menu-item"
+								@click.native="manualButtonClicked()"
+							>
+								User Manual
+							</router-link>
+						</li>
+						<li class="create-deck">
+							<router-link
+								:to="{name: 'createDeck'}"
+								class="header-menu-item"
+							>
+								Create Deck
+							</router-link>
+						</li>
+						<li class="deck-menu">
+							<button
+								class="deck-menu-toggler header-menu-item"
+								@click="toggleDeckMenu()"
+								:disabled="disableMenuButton"
+								:title="disabledMenuButtonTooltip"
+							>
+								Open Deck <span>▼</span>
+								<div class="mouseover-area"></div>
+							</button>
+							<div class="open-deck-heading">
+								<strong>Open Deck:</strong>
+							</div>
+							<div v-show="showDeckMenu" class="hover-shield" />
+							<ul
+								v-show="showDeckMenu"
+								@mouseover="mouseoutEventActiveEffect"
+							>
+								<li v-for="deck in $store.state.decks" :key="deck.name">
+									<router-link
+										v-show="$route.params.deckPath !== deck.path"
+										:to="{
+											name: 'deckMain',
+											params: {
+												deck: deck,
+												deckPath: deck.path
+											}
+										}"
+										@click.native="closeAllPopups()"
+									>
+										<span class="deck-menu-deck-name">{{ deck.name }}</span>
+										<div class="deck-menu-deck-colors">
+											<div
+												:class="sizeManaSymbols(deck)"
+												v-html="renderManaSymbols(deck)"
+											/>
+										</div>
+									</router-link>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<router-link
+								:to="{name: 'contact'}"
+								class="header-menu-item"
+							>
+								Contact
+							</router-link>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 
 		<bg-overlay :popup="showingAnyPopup()" @closePopups="closeAllPopups()" />
@@ -101,13 +93,13 @@
 
 <script>
 import debounce from 'debounce'
-import scrollToTop from '@/mixins/scrollToTop.js'
 import deckColorMixins from '@/mixins/deckColorMixins.js'
+import scrollToTop from '@/mixins/scrollToTop.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 
 export default {
-	mixins: [scrollToTop, deckColorMixins, symbolsMarkup],
+	mixins: [deckColorMixins, scrollToTop, symbolsMarkup],
 	components: { BgOverlay },
 	data () {
 		return {
@@ -121,26 +113,23 @@ export default {
 		}
 	},
 	mounted () {
+		// Users can press the "Esc" key to close any popups.
 		document.addEventListener('keyup', (event) => {
-			const keyEvent = event.key
-
-			if (keyEvent === 'Escape' || keyEvent === 'Esc') {
+			if (event.key === 'Escape' || event.key === 'Esc') {
 				if (this.showingAnyPopup()) {
 					this.closeAllPopups()
 				}
 			}
 		}, false)
 
-		const headerLinks = document.querySelectorAll('.app-title a, .app-header-link > a, .add-new-deck button')
+		document.querySelectorAll(
+			'.app-menu > ul > li > a'
+		).forEach((link) => {
+			// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+			link.addEventListener('click', this.closeAllPopups, false)
 
-		headerLinks.forEach((headerLink) => {
-			// Close the mobile or deck menu when any of their contained links are clicked.
-			headerLink.addEventListener('click', () => {
-				this.closeAllPopups()
-			}, false)
-
-			// If the Open Deck menu is open and if the user tab-focuses onto another first-level link or button in the app header, then close the Open Deck menu.
-			headerLink.addEventListener('focus', () => {
+			// If the user tab-focuses onto another first-level menu link in the app header, then close the Open Deck menu.
+			link.addEventListener('focus', () => {
 				if (this.showDeckMenu && !this.mobileView()) {
 					this.closeAllPopups()
 				}
@@ -161,10 +150,10 @@ export default {
 					this.toggleDeckMenu()
 				}, 250)
 			}
-		})
+		}, false)
 		deckMenuMOArea.addEventListener('mouseout', () => {
 			clearTimeout(deckMenuMOTimer)
-		})
+		}, false)
 	},
 	computed: {
 		showDeckMenu () {
@@ -201,6 +190,17 @@ export default {
 		}
 	},
 	methods: {
+		closeAllPopups () {
+			this.$store.commit('setShowDeckMenu', false)
+			this.$store.commit('setMouseoutEventActive', true)
+
+			if (this.mobileView()) {
+				this.showAppMenu = false
+			}
+		},
+		mobileView () {
+			return window.innerWidth <= 512 // This number must match the CSS media query width.
+		},
 		toggleAppMenu () {
 			if (this.showAppMenu) {
 				this.showAppMenu = false
@@ -208,11 +208,11 @@ export default {
 				this.showAppMenu = true
 				this.$store.commit('setShowDeckMenu', true)
 
-				// If the mobile app menu is opened and the user tab-focuses onto a link that's outside the menu, then close the menu.
-				const allLinks = document.querySelectorAll('a, button')
-
-				allLinks.forEach(link => {
-					link.addEventListener('focus', this.closeAppMenuWhenFocusLost)
+				// If the mobile app menu is opened and the user tab-focuses onto any link anywhere on the page, then close the menu.
+				document.querySelectorAll(
+					'a, button'
+				).forEach(link => {
+					link.addEventListener('focus', this.closeAppMenuWhenFocusLost, false)
 				})
 			}
 		},
@@ -229,14 +229,6 @@ export default {
 				setTimeout(() => {
 					this.freezeDeckMenu = false
 				}, 500)
-			}
-		},
-		closeAllPopups () {
-			this.$store.commit('setShowDeckMenu', false)
-			this.$store.commit('setMouseoutEventActive', true)
-
-			if (this.mobileView()) {
-				this.showAppMenu = false
 			}
 		},
 		closeAppMenuWhenFocusLost () {
@@ -260,17 +252,8 @@ export default {
 				this.$store.commit('setMouseoutEventActive', true)
 			}
 		},
-		mobileView () {
-			return window.innerWidth <= 512 // Number must match the CSS media query width.
-		},
 		showingAnyPopup () {
-			if (this.showDeckMenu) {
-				return true
-			} else if (this.mobileView() && this.showAppMenu) {
-				return true
-			} else {
-				return false
-			}
+			return this.showDeckMenu || (this.mobileView() && this.showAppMenu)
 		},
 		resizingViewport () {
 			if (this.mobileView()) {
@@ -280,8 +263,9 @@ export default {
 			}
 		},
 		manualButtonClicked () {
-			this.scrollToTop()
-			this.closeAllPopups()
+			if (this.$router.currentRoute.name === 'manual') {
+				this.scrollToTop()
+			}
 		}
 	}
 }
