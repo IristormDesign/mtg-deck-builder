@@ -18,7 +18,9 @@ export default {
 		}
 	},
 	created () {
-		document.addEventListener('swUpdated', this.updateAvailable, { once: true })
+		document.addEventListener(
+			'swUpdated', this.updateAvailable, { once: true }
+		)
 
 		navigator.serviceWorker.addEventListener('controllerchange', () => {
 			if (this.refreshing) return

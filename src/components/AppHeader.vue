@@ -120,24 +120,24 @@ export default {
 					this.closeAllPopups()
 				}
 			}
-		}, false)
+		})
 
 		document.querySelectorAll(
 			'.app-menu > ul > li > a'
 		).forEach((link) => {
 			// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
-			link.addEventListener('click', this.closeAllPopups, false)
+			link.addEventListener('click', this.closeAllPopups)
 
 			// If the user tab-focuses onto another first-level menu link in the app header, then close the Open Deck menu.
 			link.addEventListener('focus', () => {
 				if (this.showDeckMenu && !this.mobileView()) {
 					this.closeAllPopups()
 				}
-			}, false)
+			})
 		})
 
 		// Debounce window resizing.
-		window.addEventListener('resize', debounce(this.resizingViewport, 125), false)
+		window.addEventListener('resize', debounce(this.resizingViewport, 125))
 
 		// Add hover interaction with the Open Deck button.
 		const deckMenuToggler = document.querySelector('.deck-menu-toggler')
@@ -150,10 +150,10 @@ export default {
 					this.toggleDeckMenu()
 				}, 250)
 			}
-		}, false)
+		})
 		deckMenuMOArea.addEventListener('mouseout', () => {
 			clearTimeout(deckMenuMOTimer)
-		}, false)
+		})
 	},
 	computed: {
 		showDeckMenu () {
@@ -212,7 +212,7 @@ export default {
 				document.querySelectorAll(
 					'a, button'
 				).forEach(link => {
-					link.addEventListener('focus', this.closeAppMenuWhenFocusLost, false)
+					link.addEventListener('focus', this.closeAppMenuWhenFocusLost)
 				})
 			}
 		},

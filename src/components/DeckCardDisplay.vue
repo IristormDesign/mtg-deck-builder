@@ -44,7 +44,7 @@ export default {
 		}
 
 		window.addEventListener(
-			'resize', debounce(this.resizingViewport, 125), false
+			'resize', debounce(this.resizingViewport, 125)
 		)
 	},
 	computed: {

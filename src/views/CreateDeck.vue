@@ -55,8 +55,8 @@ export default {
 
 		openFileButton.addEventListener('click', () => {
 			fileInput.click()
-		}, false)
-		fileInput.addEventListener('change', this.importDeckData, false)
+		})
+		fileInput.addEventListener('change', this.importDeckData)
 	},
 	methods: {
 		submitDeckName () {
