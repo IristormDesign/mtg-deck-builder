@@ -233,7 +233,8 @@ export default {
 		},
 		closeAppMenuWhenFocusLost () {
 			const appMenuLinks = document.querySelectorAll(
-				'.app-menu-toggler, .app-menu a, .app-menu button')
+				'.app-menu-toggler, .app-menu a, .app-menu button'
+			)
 
 			function anyFocus () {
 				for (let i = 0; i < appMenuLinks.length; i++) {
