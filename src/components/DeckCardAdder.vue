@@ -1,6 +1,9 @@
 <template>
 	<section class="card-adder">
-		<form v-if="!loadingCard" @submit.prevent="handleSubmit()">
+		<form
+			v-if="!loadingCard"
+			@submit.prevent="handleSubmit()"
+		>
 			<label for="card-input">Add a Card to This {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
@@ -8,12 +11,15 @@
 				autocomplete="off"
 				id="card-input"
 				list="card-suggestions"
+				ref="focusCardAdder"
 				type="text"
 				v-model="cardNameInput"
-				ref="focusCardAdder"
 			/>
 			<datalist id="card-suggestions">
-				<option v-for="name in cardSuggestions" :key="name">
+				<option
+					v-for="name in cardSuggestions"
+					:key="name"
+				>
 					{{ name }}
 				</option>
 				<option value="#Random">
@@ -23,13 +29,12 @@
 			<button :disabled="delay">Add</button>
 		</form>
 		<div v-else class="loading-indicator">
-			Loading card&hellip;
+			<span>Loading card&hellip;</span>
 		</div>
 	</section>
 </template>
 
 <script>
-
 import axios from 'axios'
 import debounce from 'debounce'
 import stringMethods from '@/mixins/stringMethods.js'
@@ -62,8 +67,9 @@ export default {
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
 				return '(Enter the name of a card here.)'
+			} else {
+				return null
 			}
-			return null
 		}
 	},
 	watch: {

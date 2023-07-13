@@ -92,7 +92,6 @@
 	}
 }
 .card-adder {
-	align-items: center;
 	flex-grow: 1;
 
 	.sideboard-visible & {
@@ -102,12 +101,15 @@
 			color: $color-text-over-mythic-very-dim;
 		}
 	}
+	form,
+	.loading-indicator {
+		height: $height-deck-control-panel-input * 1.5;
+		width: 100%;
+		align-items: center;
+	}
 	form {
 		display: grid;
 		grid-template-columns: auto min-content;
-		align-items: center;
-		width: 100%;
-		height: $height-deck-control-panel-input * 1.5;
 	}
 	input {
 		border-radius: $border-radius-button;
@@ -140,16 +142,13 @@
 		min-width: 0;
 	}
 	.loading-indicator {
+		display: flex;
+		justify-content: center;
 		animation: pulse .5s ease-out;
 		animation-direction: alternate-reverse;
 		animation-iteration-count: infinite;
-		color: $color-text;
-		font-style: italic;
-		font-size: 112.5%;
-		width: 100%;
-		text-align: center;
 		cursor: progress;
-		
+
 		@keyframes pulse {
 			0% {
 				opacity: 0;
@@ -157,6 +156,11 @@
 			100% {
 				opacity: 1;
 			}
+		}
+		span {
+			color: $color-text;
+			font-style: italic;
+			font-size: 112.5%;
 		}
 	}
 }
@@ -252,4 +256,10 @@
 }
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
+
+	.card-adder {
+		button {
+			width: auto;
+		}
+	}
 }
