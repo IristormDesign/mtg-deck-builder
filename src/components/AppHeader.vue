@@ -204,6 +204,7 @@ export default {
 		toggleAppMenu () {
 			if (this.showAppMenu) {
 				this.showAppMenu = false
+				this.closeAllPopups()
 			} else {
 				this.showAppMenu = true
 				this.$store.commit('setShowDeckMenu', true)
