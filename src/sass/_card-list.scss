@@ -89,7 +89,7 @@ $min-height-card-list: $lhse*6;
 			padding: 0 divide($lhse, 4);
 
 			&:last-of-type {
-				border-top: 1px solid rgba(#000, .25);
+				border-top: 1px solid rgba(#000, .125);
 				padding-left: divide($lhse, 4);
 			}
 		}

@@ -29,11 +29,13 @@
 		margin-left: .3333em;
 		color: $color-text;
 		font: $font-weight-semibold 83.33%/1 $font-family-standard;
+		margin-top: -$lhse*.125;
 	}
 	.radio-fieldset {
 		label {
 			@include heading-font;
 			@include label-text-style;
+			margin-top: 0;
 		}
 	}
 }
@@ -74,7 +76,7 @@
 	gap: $lhse*.1667;
 
 	h3 {
-		margin: 0;
+		margin-bottom: 0;
 		align-self: center;
 		cursor: default;
 	}
@@ -87,13 +89,23 @@
 	}
 	label {
 		.deck-control-panel & {
-			margin: $lhse*.125 0;
+			margin: 0;
+			padding-top: $lhse*.0833;
+			padding-bottom: $lhse*.0833;
 		}
+	}
+}
+.card-adder,
+.deck-actions {
+	form {
+		align-items: center;
+		display: grid;
+		grid-template-rows: $lhse*.75 $lhse*1.5;
 	}
 }
 .card-adder {
 	flex-grow: 1;
-
+	
 	.sideboard-visible & {
 		background: $color-mythic-very-dim;
 		
@@ -103,12 +115,9 @@
 	}
 	form,
 	.loading-indicator {
-		height: $height-deck-control-panel-input * 1.5;
 		width: 100%;
-		align-items: center;
 	}
 	form {
-		display: grid;
 		grid-template-columns: auto min-content;
 	}
 	input {
@@ -193,12 +202,6 @@
 	.deck-control-panel.action-controls {
 		display: flex;
 	}
-	.card-adder,
-	.deck-actions {
-		label {
-			padding-bottom: $lhse*.25;
-		}
-	}
 	.card-adder {
 		border-bottom-width: 0;
 		padding-right: 0;
@@ -213,13 +216,6 @@
 	}
 	.deck-actions {
 		border-left: $border-sections;
-
-		form {
-			display: block;
-		}
-		label {
-			padding-bottom: $lhse*.25;
-		}
 	}
 }
 @mixin action-controls-double-layers {
@@ -231,14 +227,6 @@
 	}
 	.deck-actions {
 		border-left-width: 0;
-
-		form {
-			display: flex;
-			align-items: center;
-		}
-		label {
-			padding: 0;
-		}
 	}
 }
 
