@@ -8,7 +8,7 @@
 				src="@/img/manual-deck-page.jpg" width="658" height="444"
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
-		<p>A deck page consists of several different sections. These sections include the following, listed here in the order of their position on the page from top to bottom, left to right:</p>
+		<p>A deck page comprises several different sections. These sections include the following, listed in order by their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#m-deck-name">Deck name</a></li>
 			<li><a href="#m-deck-statistics">Deck statistics</a></li>

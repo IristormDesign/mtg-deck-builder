@@ -7,12 +7,12 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>This section shows various information about your currently open deck, specifically about its main <a href="#m-group-toggler">card group</a>. Whenever you modify your deck, the statistics here immediately update as needed.</p>
+		<p>This section shows various information about your currently <a href="#m-decks-menu">open deck</a>, specifically about its main <a href="#m-group-toggler">card group</a>. Whenever you modify your deck, the statistics here immediately update as needed.</p>
 		<p>The parts of the deck statistics section include the following:</p>
 		<ul>
 			<li>
 				<h5>Using Colors</h5>
-				<p>Shows the <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required by mana costs among spells in your deck.</p>
+				<p>Shows <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in your deck.</p>
 			</li>
 			<li>
 				<h5>Average Mana Value</h5>
