@@ -216,11 +216,6 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 
 @media (max-width: ($width-app-features-img*1.25)) {
 	.home-page {
-		.intro {
-			img {
-				margin-bottom: 0;
-			}
-		}
 		.app-features {
 			.wrap {
 				display: block;

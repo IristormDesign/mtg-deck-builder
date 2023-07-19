@@ -18,9 +18,11 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		mouseoutEventActive: true,
+		pageScrollByAnchors: false,
 		showCard: false,
 		showDeckMenu: false,
-		showSideboard: false
+		showSideboard: false,
+		stickAppHeader: false
 	},
 	getters: {
 		attentionHeaderButton: (state) => () => {
@@ -57,6 +59,12 @@ export default new Vuex.Store({
 		},
 		setMouseoutEventActive (state, payload) {
 			state.mouseoutEventActive = payload
+		},
+		setPageScrollByAnchors (state, payload) {
+			state.pageScrollByAnchors = payload
+		},
+		setStickAppHeader (state, payload) {
+			state.stickAppHeader = payload
 		},
 		setShowCard (state, payload) {
 			state.showCard = payload

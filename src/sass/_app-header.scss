@@ -6,8 +6,9 @@
 	z-index: index($layers, app-header);
 	height: $height-app-header-short;
 	box-shadow: 0 1px 0 rgba(#fff, .0833);
+	transition: all $transition-duration-standard ease;
 
-	.root-home-page & {
+	&.sticky {
 		position: sticky;
 		top: 0;
 		left: 0;

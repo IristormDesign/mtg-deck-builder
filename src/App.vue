@@ -6,7 +6,6 @@
 			<main>
 				<router-view />
 			</main>
-			<scroll-to-top />
 			<app-footer />
 		</div>
 	</transition>
@@ -15,11 +14,10 @@
 <script>
 import UpdateNotif from '@/components/AppUpdateNotif.vue'
 import AppHeader from '@/components/AppHeader.vue'
-import ScrollToTop from '@/components/AppScrollToTop.vue'
 import AppFooter from '@/components/AppFooter.vue'
 
 export default {
-	components: { UpdateNotif, AppHeader, ScrollToTop, AppFooter },
+	components: { UpdateNotif, AppHeader, AppFooter },
 	computed: {
 		homePageClass () {
 			if (this.$route.name === 'home') {

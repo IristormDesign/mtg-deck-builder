@@ -1,43 +1,41 @@
 <template>
 	<article class="home-page">
 		<section class="intro">
-			<div class="parallax" data-rellax-speed="-9" data-rellax-xs-speed="0" data-rellax-mobile-speed="0">
-				<picture>
-					<source
-						type="image/webp"
-						media="(max-width: 810px)"
-						srcset="
-							@/img/welcome-810.webp 810w,
-							@/img/welcome-608.webp 608w,
-							@/img/welcome-456.webp 456w,
-							@/img/welcome-341.webp 341w"
-					/>
-					<source
-						type="image/webp"
-						media="(max-width: 1920px)"
-						srcset="
-							@/img/welcome-1920.webp 1920w,
-							@/img/welcome-1440.webp 1440w,
-							@/img/welcome-1080.webp 1080w"
-					/>
-					<source
-						type="image/webp"
-						srcset="@/img/welcome-2560.webp 2560w"
-					/>
-					<img
-						src="@/img/welcome-1920.jpg"
-						width="1920" height="1080"
-						alt="Fantasy illustration from Magic: The Gathering"
-						@click="$store.getters.attentionHeaderButton"
-					/>
-				</picture>
-			</div>
+			<picture>
+				<source
+					type="image/webp"
+					media="(max-width: 810px)"
+					srcset="
+						@/img/welcome-810.webp 810w,
+						@/img/welcome-608.webp 608w,
+						@/img/welcome-456.webp 456w,
+						@/img/welcome-341.webp 341w"
+				/>
+				<source
+					type="image/webp"
+					media="(max-width: 1920px)"
+					srcset="
+						@/img/welcome-1920.webp 1920w,
+						@/img/welcome-1440.webp 1440w,
+						@/img/welcome-1080.webp 1080w"
+				/>
+				<source
+					type="image/webp"
+					srcset="@/img/welcome-2560.webp 2560w"
+				/>
+				<img
+					src="@/img/welcome-1920.jpg"
+					width="1920" height="1080"
+					alt="Fantasy illustration from Magic: The Gathering"
+					@click="$store.getters.attentionHeaderButton"
+				/>
+			</picture>
 			<div class="wrap">
 				<div class="text-box">
 					<header>
 						<h2>Greetings, planeswalker.</h2>
 					</header>
-					<p>This is a free web app where you can construct and organize your decks for <i>Magic: The Gathering</i>.</p>
+					<p>With this free web app, you can construct and organize your decks for <i>Magic: The Gathering</i>.</p>
 					<p class="button-group">
 						<button @click="scrollToAppFeaturesSection()">Learn More</button>
 
@@ -58,7 +56,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="app-features" id="app-features">
+		<section class="app-features">
 			<div class="wrap">
 				<img
 					srcset="@/img/home-deck-page-675.jpg 1x, @/img/home-deck-page-1012.jpg 1.5x, @/img/home-deck-page-1350.jpg 2x"
@@ -106,21 +104,16 @@
 </template>
 
 <script>
-import Rellax from 'rellax'
-
 export default {
-	mounted () {
-		Rellax('.parallax')
-	},
 	methods: {
 		scrollToAppFeaturesSection () {
-			const appFeaturesSection = document.getElementById('app-features')
-
-			appFeaturesSection.scrollIntoView({ behavior: 'smooth' })
+			document.querySelector('.app-features')
+				.scrollIntoView({ behavior: 'smooth' })
 		},
 		homeOpenDeckButton () {
 			this.$store.commit('setMouseoutEventActive', false)
 			this.$store.commit('setShowDeckMenu', true)
+			this.$store.commit('setStickAppHeader', true)
 		}
 	}
 }

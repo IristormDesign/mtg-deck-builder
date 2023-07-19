@@ -94,12 +94,11 @@
 <script>
 import debounce from 'debounce'
 import deckColorMixins from '@/mixins/deckColorMixins.js'
-import scrollToTop from '@/mixins/scrollToTop.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 
 export default {
-	mixins: [deckColorMixins, scrollToTop, symbolsMarkup],
+	mixins: [deckColorMixins, symbolsMarkup],
 	components: { BgOverlay },
 	data () {
 		return {
@@ -154,10 +153,36 @@ export default {
 		deckMenuMOArea.addEventListener('mouseout', () => {
 			clearTimeout(deckMenuMOTimer)
 		})
+
+		// Make the app header appear whenever the user scrolls upward.
+		// const appHeader = document.querySelector('.app-header')
+		let previousScrollPos = window.scrollY
+
+		window.onscroll = () => {
+			const currentScrollPos = window.scrollY
+			const store = this.$store
+
+			if (
+				currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
+				( // ...if the user scrolls the page downward and the decks menu isn't open...
+					previousScrollPos <= currentScrollPos &&
+					!this.showDeckMenu
+				)
+			) {
+				store.commit('setStickAppHeader', false)
+			} else if (!store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
+				store.commit('setStickAppHeader', true)
+			}
+
+			previousScrollPos = currentScrollPos
+		}
 	},
 	computed: {
 		showDeckMenu () {
 			return this.$store.state.showDeckMenu
+		},
+		stickAppHeader () {
+			return this.$store.state.stickAppHeader
 		},
 		disableMenuButton () {
 			if (
@@ -187,15 +212,38 @@ export default {
 				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
 				this.showAppMenu = true
 			}
+		},
+		stickAppHeader (val) {
+			const appHeader = document.querySelector('.app-header')
+
+			if (val) {
+				appHeader.style.top = '0px'
+				appHeader.classList.add('sticky')
+			} else {
+				appHeader.style.top = `-${appHeader.offsetHeight}px`
+
+				if (window.scrollY === 0) {
+					appHeader.classList.remove('sticky')
+				} else {
+					setTimeout(() => {
+						appHeader.classList.remove('sticky')
+					}, 250) // Match this timeout duration with .app-header's CSS transition duration.
+				}
+			}
 		}
 	},
 	methods: {
 		closeAllPopups () {
-			this.$store.commit('setShowDeckMenu', false)
-			this.$store.commit('setMouseoutEventActive', true)
+			const store = this.$store
+
+			store.commit('setShowDeckMenu', false)
+			store.commit('setMouseoutEventActive', true)
 
 			if (this.mobileView()) {
 				this.showAppMenu = false
+			}
+			if (this.stickAppHeader) {
+				store.commit('setStickAppHeader', false)
 			}
 		},
 		mobileView () {
@@ -266,7 +314,11 @@ export default {
 		},
 		manualButtonClicked () {
 			if (this.$router.currentRoute.name === 'manual') {
-				this.scrollToTop()
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				})
+				history.replaceState('', document.title, window.location.pathname)
 			}
 		}
 	}

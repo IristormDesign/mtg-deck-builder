@@ -83,6 +83,11 @@ export default {
 
 					event.preventDefault()
 					targetedSection.scrollIntoView({ behavior: 'smooth' })
+					this.$store.commit('setPageScrollByAnchors', true)
+
+					setTimeout(() => {
+						this.$store.commit('setPageScrollByAnchors', false)
+					}, 1000) // Duration should be equal to the amount of time the browser scrolls the page between anchors.
 				}
 			})
 		})
