@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ManualDeckDataFiles from '@/components/ManualDeckDataFiles.vue'
+import ManualDeckDataFiles from '@/components/manual-chapters/ManualDeckDataFiles.vue'
 
 export default {
 	components: { ManualDeckDataFiles }

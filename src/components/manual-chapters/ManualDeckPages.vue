@@ -37,16 +37,16 @@
 </template>
 
 <script>
-import ManualDeckName from '@/components/ManualDeckName.vue'
-import ManualDeckStatistics from '@/components/ManualDeckStatistics.vue'
-import ManualCardImage from '@/components/ManualCardImage.vue'
-import ManualCardSorter from '@/components/ManualCardSorter.vue'
-import ManualCardGroupToggler from '@/components/ManualCardGroupToggler.vue'
-import ManualSideboardHeader from '@/components/ManualSideboardHeader.vue'
-import ManualCardList from '@/components/ManualCardList.vue'
-import ManualCardQuantities from '@/components/ManualCardQuantities.vue'
-import ManualCardAdder from '@/components/ManualCardAdder.vue'
-import ManualDeckActions from '@/components/ManualDeckActions.vue'
+import ManualDeckName from '@/components/manual-chapters/ManualDeckName.vue'
+import ManualDeckStatistics from '@/components/manual-chapters/ManualDeckStatistics.vue'
+import ManualCardImage from '@/components/manual-chapters/ManualCardImage.vue'
+import ManualCardSorter from '@/components/manual-chapters/ManualCardSorter.vue'
+import ManualCardGroupToggler from '@/components/manual-chapters/ManualCardGroupToggler.vue'
+import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
+import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
+import ManualCardQuantities from '@/components/manual-chapters/ManualCardQuantities.vue'
+import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
+import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
 
 export default {
 	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupToggler, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualCardAdder, ManualDeckActions }

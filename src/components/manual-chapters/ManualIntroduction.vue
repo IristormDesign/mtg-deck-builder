@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ManualSymbols from '@/components/ManualSymbols.vue'
+import ManualSymbols from '@/components/manual-chapters/ManualSymbols.vue'
 
 export default {
 	components: { ManualSymbols }

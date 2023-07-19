@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ManualDecksMenu from '@/components/ManualDecksMenu.vue'
+import ManualDecksMenu from '@/components/manual-chapters/ManualDecksMenu.vue'
 
 export default {
 	components: { ManualDecksMenu }

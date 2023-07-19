@@ -61,13 +61,13 @@
 </template>
 
 <script>
-import ManualIntroduction from '@/components/ManualIntroduction.vue'
-import ManualAppHeader from '@/components/ManualAppHeader.vue'
-import ManualCreateDeckPage from '@/components/ManualCreateDeckPage.vue'
-import ManualDeckPages from '@/components/ManualDeckPages.vue'
-import ManualMoreStatsPages from '@/components/ManualMoreStatsPages.vue'
-import ManualStorageOfDeckData from '@/components/ManualStorageOfDeckData.vue'
-import ManualAppDevelopment from '@/components/ManualAppDevelopment.vue'
+import ManualIntroduction from '@/components/manual-chapters/ManualIntroduction.vue'
+import ManualAppHeader from '@/components/manual-chapters/ManualAppHeader.vue'
+import ManualCreateDeckPage from '@/components/manual-chapters/ManualCreateDeckPage.vue'
+import ManualDeckPages from '@/components/manual-chapters/ManualDeckPages.vue'
+import ManualMoreStatsPages from '@/components/manual-chapters/ManualMoreStatsPages.vue'
+import ManualStorageOfDeckData from '@/components/manual-chapters/ManualStorageOfDeckData.vue'
+import ManualAppDevelopment from '@/components/manual-chapters/ManualAppDevelopment.vue'
 
 export default {
 	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualMoreStatsPages, ManualStorageOfDeckData, ManualAppDevelopment },
