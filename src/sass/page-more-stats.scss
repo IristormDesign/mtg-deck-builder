@@ -70,8 +70,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			transition: background-color .125s ease-out;
 
 			&:hover {
-				background: rgba(#000, .375);
+				background: rgba(#000, .5);
 				transition-duration: 0s;
+
+				th,
+				td {
+					color: $color-text-brighter;
+				}
 			}
 			&:last-child {
 				th,
@@ -138,29 +143,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			100% $lhse*1.75, 100% $lhse*1.75,
 			100% $lhse*.875, 100% $lhse*.875;
 		background-attachment: local, local, scroll, scroll;
-
-		&::-webkit-scrollbar {
-			width: divide($lhse, 3);
-			border-right: 1px solid $color-heading-bg;
-		}
-		&::-webkit-scrollbar-thumb {
-			background: none;
-			border-radius: $lhse;
-		}
-		&:hover,
-		&:focus-within {
-			&::-webkit-scrollbar-thumb {
-				background: rgba($color-mythic-orange, .3333);
-			}
-		}
-		&:active {
-			&::-webkit-scrollbar {
-				background: rgba(#000, .25);
-			}
-			&::-webkit-scrollbar-thumb {
-				background: rgba($color-mythic-orange, .6667);
-			}
-		}
 	}
 	.mana-symbol {
 		font-size: 120%;

@@ -154,6 +154,29 @@ figcaption {
 	color: #fff;
 	text-shadow: none;
 }
+::-webkit-scrollbar {
+	width: $lhse*.5;
+	background: darken($color-content-bg, 16.67%);
+	box-shadow: inset $lhse*.0833 0 $lhse*.1667 rgba(#000, .25);
+	
+	&:hover {
+		background: $color-mythic-very-dim;
+	}
+	&:active {
+		background: $color-mythic-dim;
+	}
+}
+::-webkit-scrollbar-thumb {
+	@include gradient-buttons($color-link, $color-mythic-dim);
+	border: 1px solid darken($color-mythic-dim, 16.67%);
+	border-top-width: 0;
+	border-radius: $lhse*.125;
+	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
+
+	&:active {
+		@include gradient-buttons($color-link-focus, $color-link);
+	}
+}
 .fade-from-black {
 	&-enter-active {
 		transition: filter 1s ease;

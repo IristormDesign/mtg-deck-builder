@@ -6,7 +6,7 @@
 	height: $common-mana-symbol-size;
 	background: $color-mana-generic;
 	font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
-	color: #000;
+	color: $color-text-buttons;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -127,7 +127,7 @@
 	font: 800 12px/15px 'Ysabeau', 'Trebuchet MS', sans-serif;
 	cursor: default;
 	outline: 1px solid #000;
-	color: #000;
+	color: $color-text-buttons;
 
 	&[title] {
 		cursor: help;
