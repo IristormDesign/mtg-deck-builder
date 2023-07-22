@@ -85,9 +85,6 @@ export default {
 		}
 	},
 	methods: {
-		alertTooLong () {
-			alert('⚠ The Scryfall web server seems to be taking too long to respond right now. Please try again at a later time.')
-		},
 		autocompleteName () {
 			const query = this.cardNameInput
 
@@ -139,16 +136,6 @@ export default {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
-				// Cancel when 15 seconds pass.
-				setTimeout(() => {
-					if (this.loadingCard) {
-						this.alertTooLong()
-						axios.CancelToken.source().cancel()
-						this.loadingCard = false
-						this.delay = false
-					}
-				}, 15000)
-
 				if (cardNameInput.toLowerCase() === '#random') {
 					axios
 						.get(
@@ -159,7 +146,10 @@ export default {
 							this.getTheCard(response.data.name)
 						})
 						.catch(error => {
-							alert(`⚠ Error: ${error.response.data.details}`)
+							if (error.response.data.details) {
+								alert(`⚠ ERROR: ${error.response.data.details}`)
+							}
+
 							// eslint-disable-next-line
 							console.log(error)
 							this.loadingCard = false
