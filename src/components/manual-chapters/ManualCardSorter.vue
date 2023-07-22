@@ -22,7 +22,7 @@
 			</li>
 			<li>
 				<h5>Type</h5>
-				<p>Sorts by type in the following order: creatures, planeswalkers, enchantments, artifacts, sorceries, instants, lands.</p>
+				<p>Sorts by type in the following order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
 			</li>
 			<li>
 				<h5>Subtype</h5>

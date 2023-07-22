@@ -129,12 +129,13 @@ export default {
 				})
 			}
 			function sortByType (cards) {
-				const typeOrder = ['creature', 'planeswalker', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
+				const typeOrder = ['creature', 'planeswalker', 'battle', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
 
 				function determineType (card) {
 					const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
 					const regexCreature = /\bCreature\b/
 					const regexPlaneswalker = /\bPlaneswalker\b/
+					const regexBattle = /\bBattle\b/
 					const regexEnchantment = /\bEnchantment\b/
 					const regexArtifact = /\bArtifact\b/
 					const regexSorcery = /\bSorcery\b/
@@ -143,6 +144,7 @@ export default {
 
 					if (regexCreature.test(cardType)) return 'creature'
 					else if (regexPlaneswalker.test(cardType)) return 'planeswalker'
+					else if (regexBattle.test(cardType)) return 'battle'
 					else if (regexEnchantment.test(cardType)) return 'enchantment'
 					else if (regexArtifact.test(cardType)) return 'artifact'
 					else if (regexSorcery.test(cardType)) return 'sorcery'
