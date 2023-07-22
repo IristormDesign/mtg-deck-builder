@@ -36,7 +36,6 @@ export default {
 			}, 0)
 		},
 		requestScryfallData (cardQuery, axios, deck, oldCard, callback) {
-			const urlFriendlyCardQuery = cardQuery.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 			const assignCardData = (response) => {
 				const data = response.data
 				const newCard = {}
@@ -146,9 +145,11 @@ export default {
 			// eslint-disable-next-line
 			console.log(`Request Scryfall API for "${cardQuery}"`)
 
+			const urlCodedCardQuery = cardQuery.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+
 			axios
 				.get(
-					`https://api.scryfall.com/cards/named?fuzzy=${urlFriendlyCardQuery}`,
+					`https://api.scryfall.com/cards/named?fuzzy=${urlCodedCardQuery}`,
 					{ cancelToken: axios.CancelToken.source().token }
 				)
 				.then(response => {

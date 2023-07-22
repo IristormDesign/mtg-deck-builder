@@ -152,7 +152,7 @@ export default {
 				if (cardNameInput.toLowerCase() === '#random') {
 					axios
 						.get(
-							'https://api.scryfall.com/cards/random?q=legal%3Amodern', // Get a random card that's legal in Modern tournaments.
+							'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital', // Get a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
 							{ cancelToken: axios.CancelToken.source().token }
 						)
 						.then(response => {
