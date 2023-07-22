@@ -31,6 +31,8 @@ $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
 $color-text: lighten($color-group-bg, 66.67%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
+$color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
+$color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
 $color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
 $color-section-border: darken($color-content-bg, 6.25%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 20%), 6.25%);
@@ -175,8 +177,8 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin button {
 	@include heading-font;
 	@include gradient-buttons(
-		desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%),
-		desaturate(lighten($color-mythic-orange, 4.17%), 12.5%)
+		$color-button-mythic-lighter,
+		$color-button-mythic-orange
 	);
 	cursor: pointer;
 	box-shadow: 

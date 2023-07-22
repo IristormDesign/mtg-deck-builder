@@ -358,20 +358,23 @@ $min-height-card-list: $lhse*6;
 				height: $lhse*.6667;
 				max-height: none;
 				padding: 0;
-				background: darken(desaturate($color-link, 20%), 4.17%);
-				text-shadow:
-					0 0 $lhse*.1667 $color-link-focus,
-					0 0 $lhse*.3333 $color-link-focus,
-					0 0 $lhse*.6667 $color-link-focus;
 				overflow: hidden;
 			}
 			.increment {
 				border-bottom-right-radius: 0;
 				border-bottom-left-radius: 0;
+				background: radial-gradient(ellipse at 50% 100%,
+					$color-button-mythic-lighter,
+					$color-button-mythic-orange
+				);
 			}
 			.decrement {
 				border-top-right-radius: 0;
 				border-top-left-radius: 0;
+				background: radial-gradient(ellipse at 50% 0%,
+					$color-button-mythic-lighter,
+					$color-button-mythic-orange
+				);
 			}
 		}
 	}
