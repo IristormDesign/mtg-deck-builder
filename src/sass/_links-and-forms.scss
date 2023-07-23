@@ -39,7 +39,7 @@ select {
 		outline: none;
 	}
 	&::placeholder {
-		color: desaturate(lighten($color-content-bg, 25%), 6.25%);
+		color: lighten($color-content-bg, 25%);
 		font-weight: normal;
 		font-style: italic;
 		font-family: $font-family-standard;
