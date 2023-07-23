@@ -177,6 +177,9 @@ figcaption {
 		@include gradient-buttons($color-link-focus, $color-link);
 	}
 }
+::-webkit-scrollbar-corner {
+	color: $color-group-bg;
+}
 .fade-from-black {
 	&-enter-active {
 		transition: filter 1s ease;

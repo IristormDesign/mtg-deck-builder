@@ -25,7 +25,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	section {
 		cursor: default;
-		width: $lhse*9;
+		width: 100%;
+		max-width: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
+		overflow-x: auto;
 		margin: 0 auto;
 		height: min-content;
 		border-bottom: $table-borders;
@@ -51,7 +53,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		border-top-width: 0;
 		border-bottom-width: 0;
 		width: 100%;
-		
+
 		thead {
 			th {
 				@include heading-font;
@@ -72,11 +74,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			&:hover {
 				background: rgba(#000, .5);
 				transition-duration: 0s;
-
-				th,
-				td {
-					color: $color-text-brighter;
-				}
 			}
 			&:last-child {
 				th,
@@ -113,7 +110,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 9.125;
+		max-height: $lhse * 9.2;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
