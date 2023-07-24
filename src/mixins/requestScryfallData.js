@@ -35,9 +35,8 @@ export default {
 				alert(`”${cardName}” is already in this ${activeCardListString()}. If you want to have duplicates of a card, increase its quantity from the card list.`)
 			}, 0)
 		},
-		requestScryfallData (cardQuery, axios, deck, oldCard, callback) {
-			const assignCardData = (response) => {
-				const data = response.data
+		requestScryfallData (query, axios, deck, oldCard, callback) {
+			const assignCardData = (data) => {
 				const newCard = {}
 				const store = this.$store
 
@@ -142,27 +141,75 @@ export default {
 				}
 			}
 
-			// eslint-disable-next-line
-			console.log(`Request Scryfall API for "${cardQuery}"`)
+			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
+			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
+			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
-			const urlCodedCardQuery = cardQuery.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+			if (regexScryfallCardURL.test(query)) {
+				const cardSet = query.match(regexScryfallCardURL)[1]
+				const collectorNumber = query.match(regexScryfallCardURL)[2]
 
-			axios
-				.get(
-					`https://api.scryfall.com/cards/named?fuzzy=${urlCodedCardQuery}`,
-					{ cancelToken: axios.CancelToken.source().token }
-				)
-				.then(response => {
-					assignCardData(response)
-				})
-				.catch(error => {
-					alert(`⚠ Error: ${error.response.data.details}`)
-					// eslint-disable-next-line
-					console.error(error)
-				})
-				.finally(() => {
-					return callback
-				})
+				console.log(`Request Scryfall API for card #${collectorNumber} in set ${cardSet.toUpperCase()}`)
+
+				axios
+					.post(
+						'https://api.scryfall.com/cards/collection/',
+						{
+							identifiers: [{
+								set: cardSet,
+								collector_number: collectorNumber
+							}],
+							cancelToken: axios.CancelToken.source().token
+						},
+						{
+							headers: { 'Content-Type': 'application/json' }
+						}
+					)
+					.then(response => {
+						// The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect set code or collector number.
+						try {
+							assignCardData(response.data.data[0])
+						} catch {
+							alert('⚠ Error: The Scryfall page URL you submitted doesn’t match a Magic card that exists.')
+						}
+					})
+					.catch(error => {
+						alert(`⚠ ${error.response.data.details}`)
+						// eslint-disable-next-line
+						console.error(error)
+					})
+					.finally(() => {
+						return callback
+					})
+			} else if (regexURL.test(query)) { // Else, if the user submitted a URL (that isn't for Scryfall card page, since that was already checked)...
+				alert('⚠ What you submitted is neither the name of a Magic card nor the URL to a card page on Scryfall.')
+			} else { // Else the query submitted by the user is a card name, not a URL.
+				// eslint-disable-next-line
+				console.log(`Request Scryfall API for "${query}"`)
+
+				const urlEncodedQuery = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+
+				axios
+					.get(
+						`https://api.scryfall.com/cards/named?fuzzy=${urlEncodedQuery}`,
+						{ cancelToken: axios.CancelToken.source().token }
+					)
+					.then(response => {
+						assignCardData(response.data)
+					})
+					.catch(error => {
+						if (error.response.status === 404) {
+							alert(`⚠ No Magic card named “${query}” exists.`)
+						} else {
+							alert(`⚠ ${error.response.data.details}`)
+							// eslint-disable-next-line
+							console.error(error)
+						}
+					})
+					.finally(() => {
+						return callback
+					})
+			}
 		}
 	}
 }

@@ -86,28 +86,35 @@ export default {
 	},
 	methods: {
 		autocompleteName () {
-			const query = this.cardNameInput
+			const query = this.cardNameInput.trim()
+			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the special MDB code `#random`.
+			const regexAnyURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
+			const regexScryfallShortURL = /^scryfall\./i // A string beginning with `scryfall.`, which indicates the user is manually typing a URL to a Scryfall page.
 
-			if (query !== '' && query !== '#random') {
-				const requestCardSuggestions = (response) => {
-					const data = response.data.data
+			if ( // Basically, if the submitted query is identifiable as just a card name...
+				query &&
+				!regexCodeSymbol.test(query) &&
+				!regexAnyURL.test(query) &&
+				!regexScryfallShortURL.test(query)
+			) {
+				// eslint-disable-next-line
+				console.log(`Request Scryfall API to autocomplete query "${query}"`)
 
+				const requestCardSuggestions = (data) => {
 					// Limit the number of autocomplete suggestions to 5.
 					while (data.length > 5) {
 						data.pop()
 					}
+
 					this.cardSuggestions = data
 				}
-
-				// eslint-disable-next-line
-				console.log(`Request Scryfall API for autocomplete from "${query}".`)
 
 				axios
 					.get(
 						`https://api.scryfall.com/cards/autocomplete?q=${query}`
 					)
 					.then(response => {
-						requestCardSuggestions(response)
+						requestCardSuggestions(response.data.data)
 					})
 					.catch(error => {
 						// eslint-disable-next-line
@@ -147,7 +154,7 @@ export default {
 						})
 						.catch(error => {
 							if (error.response.data.details) {
-								alert(`⚠ ERROR: ${error.response.data.details}`)
+								alert(`⚠ ${error.response.data.details}`)
 							}
 
 							// eslint-disable-next-line
