@@ -68,7 +68,7 @@
 		font-weight: $font-weight-semibold;
 	}
 }
-.sideboard-toggler {
+.card-group-switch {
 	justify-content: space-around;
 	align-content: center;
 	display: flex;
@@ -184,7 +184,7 @@
 }
 
 @mixin viewing-controls-single-layer {
-	.sideboard-toggler {
+	.card-group-switch {
 		border-left: $border-sections;
 		border-bottom-width: 0;
 	}

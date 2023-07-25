@@ -28,7 +28,7 @@
 							<li><a href="#m-deck-statistics">Deck Statistics</a></li>
 							<li><a href="#m-card-image">Card Image</a></li>
 							<li><a href="#m-card-sorter">Card Sorter</a></li>
-							<li><a href="#m-group-toggler">Card Group Toggler</a></li>
+							<li><a href="#m-group-switch">Card Group Switch</a></li>
 							<li><a href="#m-sideboard-header">Sideboard Header</a></li>
 							<li><a href="#m-card-list">Card List</a></li>
 							<li><a href="#m-card-quantities">Card Quantities</a></li>

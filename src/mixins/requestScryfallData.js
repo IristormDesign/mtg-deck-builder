@@ -149,6 +149,7 @@ export default {
 				const cardSet = query.match(regexScryfallCardURL)[1]
 				const collectorNumber = query.match(regexScryfallCardURL)[2]
 
+				// eslint-disable-next-line
 				console.log(`Request Scryfall API for card #${collectorNumber} in set ${cardSet.toUpperCase()}`)
 
 				axios

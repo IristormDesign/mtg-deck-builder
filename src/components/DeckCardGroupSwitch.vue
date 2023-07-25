@@ -1,5 +1,5 @@
 <template>
-	<section class="sideboard-toggler">
+	<section class="card-group-switch">
 		<h3>Switch Card Group:</h3>
 		<fieldset class="radio-fieldset">
 			<div>

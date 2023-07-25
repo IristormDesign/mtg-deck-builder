@@ -7,7 +7,7 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The deck statistics section shows various information about your currently <a href="#m-decks-menu">open deck</a>, specifically about its main <a href="#m-group-toggler">card group</a>. Whenever you modify your deck, the statistics here immediately update as needed.</p>
+		<p>The deck statistics section shows various information about your currently <a href="#m-decks-menu">open deck</a>, specifically about its main <a href="#m-group-switch">card group</a>. Whenever you modify your deck, the statistics here immediately update as needed.</p>
 		<p>The parts of the deck statistics section include the following:</p>
 		<ul>
 			<li>

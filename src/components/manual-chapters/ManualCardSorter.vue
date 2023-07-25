@@ -47,7 +47,7 @@
 		</ul>
 		<p>The effects of sorting cards are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the cards are sorted mainly by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the cards are sorted by rarity.</p>
 		<p>For easier skimming of the card list, certain sorting options put small gaps between each sorted cluster of cards. These options are mana value, type, subtype, supertype, and P/T sum.</p>
-		<p>Whenever you select an option in the card sorter, it sorts cards for only the currently <a href="#m-decks-menu">active deck</a>, in both its main and sideboard <a href="#m-group-toggler">card groups</a>.</p>
+		<p>Whenever you select an option in the card sorter, it sorts cards for only the currently <a href="#m-decks-menu">active deck</a>, in both its main and sideboard <a href="#m-group-switch">card groups</a>.</p>
 		<p>Whenever you <a href="#m-card-adder">add a new card</a>, or whenever you <a href="#m-card-quantities">adjust a card’s quantity</a> while the card sorter is set to the quantity option, the card sorter automatically resets to “(Unsorted),” and any gaps between sorted clusters in the card list are removed.</p>
 		<p>Name is the most distinguishable card attribute to sort by. This is because every card in a card list must have a unique name, which isn’t necessarily true for the other attributes.</p>
 	</section>

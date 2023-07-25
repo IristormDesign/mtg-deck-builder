@@ -14,7 +14,7 @@
 			<li><a href="#m-deck-statistics">Deck statistics</a></li>
 			<li><a href="#m-card-image">Card image</a></li>
 			<li><a href="#m-card-sorter">Card sorter</a></li>
-			<li><a href="#m-group-toggler">Card group toggler</a></li>
+			<li><a href="#m-group-switch">Card group switch</a></li>
 			<li><a href="#m-sideboard-header">Sideboard header</a></li>
 			<li><a href="#m-card-list">Card list</a></li>
 			<li><a href="#m-card-quantities">Card quantities</a></li>
@@ -27,7 +27,7 @@
 		<manual-deck-statistics />
 		<manual-card-image />
 		<manual-card-sorter />
-		<manual-card-group-toggler />
+		<manual-card-group-switch />
 		<manual-sideboard-header />
 		<manual-card-list />
 		<manual-card-quantities />
@@ -41,7 +41,7 @@ import ManualDeckName from '@/components/manual-chapters/ManualDeckName.vue'
 import ManualDeckStatistics from '@/components/manual-chapters/ManualDeckStatistics.vue'
 import ManualCardImage from '@/components/manual-chapters/ManualCardImage.vue'
 import ManualCardSorter from '@/components/manual-chapters/ManualCardSorter.vue'
-import ManualCardGroupToggler from '@/components/manual-chapters/ManualCardGroupToggler.vue'
+import ManualCardGroupSwitch from '@/components/manual-chapters/ManualCardGroupSwitch.vue'
 import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
 import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
 import ManualCardQuantities from '@/components/manual-chapters/ManualCardQuantities.vue'
@@ -49,6 +49,6 @@ import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
 import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
 
 export default {
-	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupToggler, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualCardAdder, ManualDeckActions }
+	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualCardAdder, ManualDeckActions }
 }
 </script>
