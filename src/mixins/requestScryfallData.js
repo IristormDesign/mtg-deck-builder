@@ -182,7 +182,7 @@ export default {
 						return callback
 					})
 			} else if (regexURL.test(query)) { // Else, if the user submitted a URL (that isn't for Scryfall card page, since that was already checked)...
-				alert('⚠ What you submitted is neither the name of a Magic card nor the URL to a card page on Scryfall.')
+				alert('⚠ The query you submitted is neither the name of a Magic card nor the URL to a card page on Scryfall.')
 			} else { // Else the query submitted by the user is a card name, not a URL.
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API for "${query}"`)
