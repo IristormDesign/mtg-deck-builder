@@ -75,6 +75,12 @@ export default {
 	watch: {
 		cardNameInput () {
 			this.debouncedAutocomplete()
+
+			// If the user pastes a Scryfall page URL into the card adder's text input, then automatically submit the query.
+			const regexScryfallCardURL = /^http(s?):\/\/scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
+			if (regexScryfallCardURL.test(this.cardNameInput)) {
+				this.handleSubmit()
+			}
 		},
 		loadingCard (loading) {
 			if (window.innerWidth > 768 && !loading) {
@@ -87,7 +93,7 @@ export default {
 	methods: {
 		autocompleteName () {
 			const query = this.cardNameInput.trim()
-			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the special MDB code `#random`.
+			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the MDB code `#random`.
 			const regexAnyURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 			const regexScryfallShortURL = /^scryfall\./i // A string beginning with `scryfall.`, which indicates the user is manually typing a URL to a Scryfall page.
 
