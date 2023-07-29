@@ -194,7 +194,7 @@ export default {
 
 					setTimeout(() => {
 						this.requestScryfallData(
-							card.name, axios, this.deck, card, callback()
+							card.name, axios, this.deck, false, card, callback()
 						)
 
 						if (cardUpdatesDone === cards.length) {

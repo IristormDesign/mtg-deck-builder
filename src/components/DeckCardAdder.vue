@@ -13,7 +13,7 @@
 				list="card-suggestions"
 				ref="focusCardAdder"
 				type="text"
-				v-model="cardNameInput"
+				v-model="cardQueryInput"
 			/>
 			<datalist id="card-suggestions">
 				<option
@@ -47,7 +47,7 @@ export default {
 	},
 	data () {
 		return {
-			cardNameInput: '',
+			cardQueryInput: '',
 			delay: false,
 			loadingCard: false,
 			cardSuggestions: null
@@ -73,12 +73,12 @@ export default {
 		}
 	},
 	watch: {
-		cardNameInput () {
+		cardQueryInput () {
 			this.debouncedAutocomplete()
 
 			// If the user pastes a Scryfall page URL into the card adder's text input, then automatically submit the query.
 			const regexScryfallCardURL = /^http(s?):\/\/scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
-			if (regexScryfallCardURL.test(this.cardNameInput)) {
+			if (regexScryfallCardURL.test(this.cardQueryInput)) {
 				this.handleSubmit()
 			}
 		},
@@ -92,7 +92,7 @@ export default {
 	},
 	methods: {
 		autocompleteName () {
-			const query = this.cardNameInput.trim()
+			const query = this.cardQueryInput.trim()
 			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the MDB code `#random`.
 			const regexAnyURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 			const regexScryfallShortURL = /^scryfall\./i // A string beginning with `scryfall.`, which indicates the user is manually typing a URL to a Scryfall page.
@@ -106,7 +106,7 @@ export default {
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API to autocomplete query "${query}"`)
 
-				const requestCardSuggestions = (data) => {
+				const queryCardSuggestions = (data) => {
 					// Limit the number of autocomplete suggestions to 5.
 					while (data.length > 5) {
 						data.pop()
@@ -120,7 +120,7 @@ export default {
 						`https://api.scryfall.com/cards/autocomplete?q=${query}`
 					)
 					.then(response => {
-						requestCardSuggestions(response.data.data)
+						queryCardSuggestions(response.data.data)
 					})
 					.catch(error => {
 						// eslint-disable-next-line
@@ -134,29 +134,29 @@ export default {
 			const options = document.getElementById('card-suggestions').childNodes
 
 			for (let i = 0; i < options.length; i++) {
-				if (this.cardNameInput === options[i].value) {
+				if (this.cardQueryInput === options[i].value) {
 					this.handleSubmit()
 					break
 				}
 			}
 		},
 		handleSubmit () {
-			const cardNameInput = this.cardNameInput
+			const query = this.cardQueryInput.trim()
 
-			if (cardNameInput === '') {
+			if (query === '') {
 				this.$refs.focusCardAdder.focus()
 			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
-				if (cardNameInput.toLowerCase() === '#random') {
+				if (query.toLowerCase() === '#random') {
 					axios
 						.get(
 							'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital', // Get a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
 							{ cancelToken: axios.CancelToken.source().token }
 						)
 						.then(response => {
-							this.getTheCard(response.data.name)
+							this.getCard(response.data.name)
 						})
 						.catch(error => {
 							if (error.response.data.details) {
@@ -168,29 +168,45 @@ export default {
 							this.loadingCard = false
 						})
 				} else {
-					this.getTheCard(cardNameInput)
+					this.getCard(query)
 				}
+
+				this.$nextTick(() => {
+					this.loadingCard = false
+				})
 			}
 
-			this.cardNameInput = ''
+			this.cardQueryInput = ''
 
 			setTimeout(() => {
 				this.delay = false
 			}, 500)
 		},
-		getTheCard (query) {
-			query = this.curlApostrophes(query)
+		getCard (query) {
+			const regexScryfallCardURL = /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://`, and where "X" and "Y" are each at least one letter or digit.
 
-			if (this.findExistingCard(query)) {
-				this.cardExistsNotice(query)
-				this.delay = false
-			} else {
-				this.requestScryfallData(query, axios, this.deck)
+			if (regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
+				const regexQueryURL = new RegExp('^' + query + '.*', 'i')
+				const foundExistingCardByLink = this.activeCardList.cards.find(foundCard =>
+					regexQueryURL.test(foundCard.link)
+				)
+
+				if (foundExistingCardByLink) {
+					// The query is an exact variation match of an existing card, so don't get card data.
+
+					this.notifyCardExists(foundExistingCardByLink.name)
+				} else {
+					this.requestScryfallData(query, axios, this.deck, true)
+				}
+			} else { // Else treat the query as a card name.
+				const foundExistingCardByName = this.findExistingCardByName(this.curlApostrophes(query))
+
+				if (foundExistingCardByName) {
+					this.notifyCardExists(foundExistingCardByName.name)
+				} else { // Else the queried card doesn't match the name of another card in the list.
+					this.requestScryfallData(query, axios, this.deck)
+				}
 			}
-
-			this.$nextTick(() => {
-				this.loadingCard = false
-			})
 		}
 	}
 }
