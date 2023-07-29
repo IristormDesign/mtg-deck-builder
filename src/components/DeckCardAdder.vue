@@ -196,7 +196,7 @@ export default {
 
 					this.notifyCardExists(foundExistingCardByLink.name)
 				} else {
-					this.requestScryfallData(query, axios, this.deck, true)
+					this.requestScryfallData(query, true)
 				}
 			} else { // Else treat the query as a card name.
 				const foundExistingCardByName = this.findExistingCardByName(this.curlApostrophes(query))
@@ -204,7 +204,7 @@ export default {
 				if (foundExistingCardByName) {
 					this.notifyCardExists(foundExistingCardByName.name)
 				} else { // Else the queried card doesn't match the name of another card in the list.
-					this.requestScryfallData(query, axios, this.deck)
+					this.requestScryfallData(query)
 				}
 			}
 		}

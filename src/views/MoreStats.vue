@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
@@ -193,9 +192,7 @@ export default {
 					const card = cards[i]
 
 					setTimeout(() => {
-						this.requestScryfallData(
-							card.name, axios, this.deck, false, card, callback()
-						)
+						this.requestScryfallData(card.name, false, card, callback())
 
 						if (cardUpdatesDone === cards.length) {
 							setTimeout(() => {

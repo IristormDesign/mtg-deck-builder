@@ -1,3 +1,4 @@
+import axios from 'axios'
 import stringMethods from '@/mixins/stringMethods.js'
 import deckColorMixins from '@/mixins/deckColorMixins.js'
 
@@ -54,14 +55,12 @@ export default {
 		},
 		/**
 		 * @param {string} query
-		 * @param {Object} axios
-		 * @param {Object} deck
 		 * @param {boolean} replacementAllowed
 		 * @param {Object} oldCard
 		 * @param {Function} callback
 		 * @returns {Function}
 		 */
-		requestScryfallData (query, axios, deck, replacementAllowed, oldCard, callback) {
+		requestScryfallData (query, replacementAllowed, oldCard, callback) {
 			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
 			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
@@ -90,7 +89,7 @@ export default {
 					.then(response => {
 						// The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number.
 						try {
-							this.assignCardData(response.data.data[0], deck, replacementAllowed, oldCard)
+							this.assignCardData(response.data.data[0], replacementAllowed, oldCard)
 						} catch {
 							alert('⚠ Error: The Scryfall card page URL you submitted doesn’t match a Magic card that exists.')
 						}
@@ -117,7 +116,7 @@ export default {
 						{ cancelToken: axios.CancelToken.source().token }
 					)
 					.then(response => {
-						this.assignCardData(response.data, deck, replacementAllowed, oldCard)
+						this.assignCardData(response.data, replacementAllowed, oldCard)
 					})
 					.catch(error => {
 						if (error.response.status === 404) {
@@ -133,7 +132,7 @@ export default {
 					})
 			}
 		},
-		assignCardData (data, deck, replacementAllowed, oldCard) {
+		assignCardData (data, replacementAllowed, oldCard) {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
@@ -196,14 +195,14 @@ export default {
 			if (oldCard) {
 				newCard.qty = oldCard.qty
 
-				this.updateOldCard(newCard, deck)
+				this.updateOldCard(newCard)
 			} else {
 				newCard.qty = 1
 
-				this.validateNewCard(newCard, replacementAllowed, deck)
+				this.validateNewCard(newCard, replacementAllowed)
 			}
 		},
-		updateOldCard (newCard, deck) {
+		updateOldCard (newCard) {
 			const list = this.activeCardList
 
 			// For the card that's about to be updated, remove the existing one from the card list.
@@ -212,7 +211,7 @@ export default {
 			)
 
 			list.cards.push(newCard)
-			deck.editDate = new Date()
+			this.deck.editDate = new Date()
 
 			this.$nextTick(() => {
 				this.$store.commit('setDecks', this.$store.state.decks)
@@ -224,9 +223,8 @@ export default {
 		 * This is because it's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. Or, it's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
 		 * @param {Object} newCard
 		 * @param {boolean} replacementAllowed
-		 * @param {Object} deck
 		*/
-		validateNewCard (newCard, replacementAllowed, deck) {
+		validateNewCard (newCard, replacementAllowed) {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
@@ -236,28 +234,31 @@ export default {
 					if (replaceCard) {
 						newCard.qty = existingCard.qty
 
-						this.updateOldCard(newCard, deck)
+						this.updateOldCard(newCard)
 					} // Else: Do nothing, because the user has chosen to not replace the card.
 				} else {
 					this.notifyCardExists(newCard.name)
 				}
 			} else {
-				this.pushCardData(deck, newCard)
+				this.pushCardData(newCard)
 			}
 		},
-		pushCardData (deck, newCard) {
+		pushCardData (newCard) {
 			this.activeCardList.cards.push(newCard)
+
+			const deck = this.deck
 
 			deck.editDate = new Date()
 			deck.sortBy = 'unsorted'
 			this.determineDeckColors(this.deck)
 
-			deck.cards.forEach(card => {
-				card.gapAfter = false
+			deck.cards.forEach(eachCard => {
+				eachCard.gapAfter = false
 			})
-			deck.sideboard.cards.forEach(card => {
-				card.gapAfter = false
+			deck.sideboard.cards.forEach(eachCard => {
+				eachCard.gapAfter = false
 			})
+
 			this.$nextTick(() => {
 				this.activeCardList.viewedCard = newCard.name
 				this.$store.commit('setDecks', this.$store.state.decks)
