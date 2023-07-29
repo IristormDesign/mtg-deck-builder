@@ -35,20 +35,35 @@ export default {
 	mixins: [getActiveDeck],
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
 	created () {
-		const store = this.$store
+		this.$store.commit('setShowSideboard', false)
 
-		store.commit('setShowSideboard', false)
+		this.addSideboardObject()
+	},
+	methods: {
+		/**
+		 * Add the `sideboard` object property for any decks that are missing it. (Decks created from earlier app versions didn't have sideboards.)
+		 */
+		addSideboardObject () {
+			let dataModified = false
 
-		// For each deck, add the `sideboard` object property if it doesn't exist yet (because of old deck data).
-		store.state.decks.forEach((deck) => {
-			if (!deck.sideboard) {
-				deck.sideboard = {
-					cards: [],
-					viewedCard: ''
+			this.$store.state.decks.forEach(deck => {
+				if (!deck.sideboard) {
+					deck.sideboard = {
+						cards: [],
+						viewedCard: ''
+					}
+					dataModified = true
 				}
-				store.commit('setDecks', store.state.decks)
-			}
-		})
+			})
+
+			this.$nextTick(() => {
+				if (dataModified) {
+					this.$store.commit(
+						'setDecks', this.$store.state.decks
+					)
+				}
+			})
+		}
 	},
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('setShowSideboard', false)
