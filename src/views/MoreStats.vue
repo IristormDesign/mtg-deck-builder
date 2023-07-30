@@ -43,7 +43,6 @@
 
 <script>
 import getActiveDeck from '@/mixins/getActiveDeck.js'
-import requestScryfallData from '@/mixins/requestScryfallData.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import MoreStatsColors from '@/components/MoreStatsColors.vue'
 import MoreStatsManaValues from '@/components/MoreStatsManaValues.vue'
@@ -55,7 +54,7 @@ import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
 
 export default {
-	mixins: [getActiveDeck, requestScryfallData, symbolsMarkup],
+	mixins: [getActiveDeck, symbolsMarkup],
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
 	data () {
 		return {

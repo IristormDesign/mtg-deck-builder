@@ -22,7 +22,10 @@
 </template>
 
 <script>
+import requestScryfallData from '@/mixins/requestScryfallData.js'
+
 export default {
+	mixins: [requestScryfallData],
 	data () {
 		return {
 			updatingDeckData: false
@@ -46,7 +49,7 @@ export default {
 		determineDeckDataVersion () {
 			const deck = this.deck
 
-			if (!deck.dataVersion) {
+			if (!deck.dataVersion || this.deckDataOutdated) {
 				const haveKeywordsObjectKey = () => {
 					for (let i = 0; i < deck.cards.length; i++) {
 						if (!deck.cards[i].keywords) {
@@ -79,7 +82,7 @@ export default {
 					for (let i = 0; i < cards.length; i++) {
 						setTimeout(() => {
 							this.requestScryfallData(
-								cards[i].name, false, cards[i], callback()
+								cards[i].name, false, cards[i].qty, callback()
 							)
 
 							if (cardsUpdated === cards.length) {

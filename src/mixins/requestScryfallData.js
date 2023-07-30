@@ -17,11 +17,11 @@ export default {
 		/**
 		 * @param {string} query
 		 * @param {boolean} replacementAllowed
-		 * @param {Object} oldCard
+		 * @param {number} oldCardQty
 		 * @param {Function} callback
 		 * @returns {Function}
 		 */
-		requestScryfallData (query, replacementAllowed, oldCard, callback) {
+		requestScryfallData (query, replacementAllowed, oldCardQty, callback) {
 			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
 			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
@@ -50,7 +50,7 @@ export default {
 					.then(response => {
 						// The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number.
 						try {
-							this.assignCardData(response.data.data[0], replacementAllowed, oldCard)
+							this.assignCardData(response.data.data[0], replacementAllowed, oldCardQty)
 						} catch {
 							alert('⚠ Error: The Scryfall card page URL you submitted doesn’t match a Magic card that exists.')
 						}
@@ -77,7 +77,7 @@ export default {
 						{ cancelToken: axios.CancelToken.source().token }
 					)
 					.then(response => {
-						this.assignCardData(response.data, replacementAllowed, oldCard)
+						this.assignCardData(response.data, replacementAllowed, oldCardQty)
 					})
 					.catch(error => {
 						if (error.response.status === 404) {
@@ -93,7 +93,7 @@ export default {
 					})
 			}
 		},
-		assignCardData (data, replacementAllowed, oldCard) {
+		assignCardData (data, replacementAllowed, oldCardQty) {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
@@ -153,8 +153,8 @@ export default {
 				newCard.colors.unshift('multicolor')
 			}
 
-			if (oldCard) {
-				newCard.qty = oldCard.qty
+			if (oldCardQty) {
+				newCard.qty = oldCardQty
 
 				this.updateOldCard(newCard)
 			} else {
