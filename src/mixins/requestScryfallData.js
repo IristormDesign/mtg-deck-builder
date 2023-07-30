@@ -15,45 +15,6 @@ export default {
 	},
 	methods: {
 		/**
-		 * @param {string} cardName
-		 * @returns {Object} The card object, if it's found.
-		 */
-		findExistingCardByName (cardName) {
-			return this.activeCardList.cards.find(foundCard =>
-				cardName.toUpperCase() === foundCard.name.toUpperCase()
-			)
-		},
-		/**
-		 * @param {string} cardName The name of a card.
-		 * @param {boolean} confirmToReplace Set to `true` to show a `confirm()` and let the user decide on replacing the existing card. Otherwise, show only an `alert()`.
-		 * @returns {boolean} `true` if the card is to be replaced.
-		 */
-		notifyCardExists (cardName, confirmToReplace) {
-			this.activeCardList.viewedCard = cardName
-
-			const stringActiveCardList = () => {
-				let output = 'deck'
-
-				if (this.$store.state.showSideboard) {
-					output += '’s sideboard' // As in `this deck's sideboard`.
-				}
-
-				return output
-			}
-
-			if (confirmToReplace) {
-				return confirm(
-					`”${cardName}” is already in this ${stringActiveCardList()}, though it may be a different variation from the one you’ve just submitted. Do you want to replace the existing variation?`
-				)
-			} else {
-				setTimeout(() => {
-					alert(
-						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card, increase its quantity number in the card list instead.)`
-					)
-				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
-			}
-		},
-		/**
 		 * @param {string} query
 		 * @param {boolean} replacementAllowed
 		 * @param {Object} oldCard
@@ -241,6 +202,45 @@ export default {
 				}
 			} else {
 				this.pushCardData(newCard)
+			}
+		},
+		/**
+		 * @param {string} cardName
+		 * @returns {Object} The card object, if it's found.
+		 */
+		findExistingCardByName (cardName) {
+			return this.activeCardList.cards.find(foundCard =>
+				cardName.toUpperCase() === foundCard.name.toUpperCase()
+			)
+		},
+		/**
+		 * @param {string} cardName The name of a card.
+		 * @param {boolean} confirmToReplace Set to `true` to show a `confirm()` and let the user decide on replacing the existing card. Otherwise, show only an `alert()`.
+		 * @returns {boolean} `true` if the card is to be replaced.
+		 */
+		notifyCardExists (cardName, confirmToReplace) {
+			this.activeCardList.viewedCard = cardName
+
+			const stringActiveCardList = () => {
+				let output = 'deck'
+
+				if (this.$store.state.showSideboard) {
+					output += '’s sideboard' // As in `this deck's sideboard`.
+				}
+
+				return output
+			}
+
+			if (confirmToReplace) {
+				return confirm(
+					`”${cardName}” is already in this ${stringActiveCardList()}, though it may be a different variation from the one you’ve just submitted. Do you want to replace the existing variation?`
+				)
+			} else {
+				setTimeout(() => {
+					alert(
+						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card, increase its quantity number in the card list instead.)`
+					)
+				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
 			}
 		},
 		pushCardData (newCard) {
