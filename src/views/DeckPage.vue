@@ -17,6 +17,8 @@
 			</div>
 
 			<router-view />
+
+			<update-data-notice :deck="deck" />
 		</article>
 	</div>
 </template>
@@ -30,10 +32,11 @@ import DateEdited from '@/components/DeckHeaderDateEdited.vue'
 import CardNames from '@/components/DeckHeaderCardNames.vue'
 import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
+import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
 
 export default {
 	mixins: [getActiveDeck],
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice },
 	created () {
 		this.$store.commit('setShowSideboard', false)
 
@@ -58,9 +61,7 @@ export default {
 
 			this.$nextTick(() => {
 				if (dataModified) {
-					this.$store.commit(
-						'setDecks', this.$store.state.decks
-					)
+					this.$store.commit('setDecks', this.$store.state.decks)
 				}
 			})
 		}

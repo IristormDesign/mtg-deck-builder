@@ -144,43 +144,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	.mana-symbol {
 		font-size: 120%;
 	}
-	.outdated-data-notice {
-		border: $border-sections;
-		border-radius: $border-radius-group;
-		padding: $lhse*.5 $lhse*.75;
-		margin: $lhse*.5 auto;
-		text-align: center;
-
-		p {
-			margin: 0;
-		}
-		.update-button-cont {
-			text-align: center;
-			height: $lhse*2;
-			display: flex;
-			align-items: flex-end;
-			justify-content: center;
-			margin: 0;
-		}
-		.loading-indicator {
-			animation: pulse .5s ease-out;
-			animation-direction: alternate-reverse;
-			animation-iteration-count: infinite;
-			font-style: italic;
-			width: 100%;
-			cursor: progress;
-			line-height: $line-height-standard*2;
-			
-			@keyframes pulse {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-		}
-	}
 	footer {
 		padding: 0 $lhse*.5;
 		text-align: center;

@@ -7,7 +7,9 @@
 
 .deck {
 	width: 100%;
-	
+	display: flex;
+	justify-content: center;
+
 	article {
 		margin: 0;
 		position: relative;
@@ -22,6 +24,45 @@
 .deck-main {
 	max-width: $max-width-content*.9167;
 	width: 100%;
+}
+.outdated-deck-data-notice {
+	border-radius: $border-radius-group;
+	background: $color-group-bg;
+	padding: $lhse*.5 $lhse;
+	margin: $lhse*.5 auto;
+	text-align: center;
+	max-width: max-content;
+
+	p {
+		margin: 0;
+	}
+	.update-button-cont {
+		text-align: center;
+		height: $lhse*2;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		margin: 0;
+	}
+	.loading-indicator {
+		animation: pulse .75s ease-out;
+		animation-direction: alternate-reverse;
+		animation-iteration-count: infinite;
+		font-style: italic;
+		width: 100%;
+		cursor: progress;
+		line-height: $line-height-standard*1.5;
+		height: $lhse*2;
+		
+		@keyframes pulse {
+			0% {
+				opacity: 0;
+			}
+			75% {
+				opacity: 1;
+			}
+		}
+	}
 }
 
 @media (max-width: ($min-width-app*.875)) {
