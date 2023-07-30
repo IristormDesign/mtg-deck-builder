@@ -28,10 +28,10 @@
 			<more-stats-misc :deck="deck" />
 		</div>
 
-		<aside v-if="!showNewStats" class="outdated-data-notice">
+		<aside v-if="showNewStats" class="outdated-data-notice">
 			<p>⚠ Update this deck’s set of card data to see additional deck statistics.</p>
 			<p v-if="!updatingDeckData" class="update-button-cont">
-				<button @click="updateDeckData">Update Data Set</button>
+				<button @click="updateData()">Update</button>
 			</p>
 			<p v-else class="update-button-cont loading-indicator">
 				<em>Updating now&hellip;</em>
@@ -175,33 +175,42 @@ export default {
 				})
 			}
 		},
-		updateDeckData () {
-			const cards = this.deck.cards
-			let cardUpdatesDone = 0
+		updateData () {
+			const updateCardGroupData = (cardGroup) => {
+				const cards = cardGroup.cards
 
-			function callback () {
-				cardUpdatesDone++
-			}
+				if (cards.length > 150) {
+					alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
+				} else {
+					this.updatingDeckData = true
 
-			if (cards.length > 200) {
-				alert('⚠ Sorry, this deck cannot be updated because it has too many cards.')
-			} else {
-				this.updatingDeckData = true
+					let cardsUpdated = 0
 
-				for (let i = 0; i < cards.length; i++) {
-					const card = cards[i]
+					for (let i = 0; i < cards.length; i++) {
+						setTimeout(() => {
+							this.requestScryfallData(cards[i].name, false, cards[i], callback())
 
-					setTimeout(() => {
-						this.requestScryfallData(card.name, false, card, callback())
+							if (cardsUpdated === cards.length) {
+								if (this.$store.state.showSideboard) {
+									setTimeout(() => {
+										this.$router.go(0) // Reload the page
+									}, 250) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
+								} else {
+									// The main group's cards are done, now do the sideboard's.
+									this.$store.commit('setShowSideboard', true)
 
-						if (cardUpdatesDone === cards.length) {
-							setTimeout(() => {
-								this.$router.go(0) // Reload the page
-							}, 100) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
-						}
-					}, 100 * i)
+									updateCardGroupData(this.deck.sideboard)
+								}
+							}
+						}, 100 * i)
+					}
+					function callback () {
+						cardsUpdated++
+					}
 				}
 			}
+
+			updateCardGroupData(this.deck)
 		}
 	}
 }
