@@ -149,8 +149,6 @@ export default {
 			try {
 				const deckData = JSON.parse(string)
 
-				console.log(deckData)
-
 				if (deckData.name && deckData.path && deckData.cards) {
 					return true
 				} else {
