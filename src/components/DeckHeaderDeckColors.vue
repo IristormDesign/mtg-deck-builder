@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import deckColorMixins from '@/mixins/deckColorMixins.js'
+import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [deckColorMixins, symbolsMarkup],
+	mixins: [deckColors, symbolsMarkup],
 	props: {
 		deck: Object
 	}

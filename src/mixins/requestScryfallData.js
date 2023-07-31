@@ -1,9 +1,9 @@
 import axios from 'axios'
 import stringMethods from '@/mixins/stringMethods.js'
-import deckColorMixins from '@/mixins/deckColorMixins.js'
+import deckColors from '@/mixins/deckColors.js'
 
 export default {
-	mixins: [stringMethods, deckColorMixins],
+	mixins: [stringMethods, deckColors],
 	computed: {
 		activeCardList () {
 			if (this.$store.state.showSideboard) {

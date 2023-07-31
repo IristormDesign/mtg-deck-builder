@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import moreStatsMixins from '@/mixins/moreStatsMixins.js'
+import moreStats from '@/mixins/moreStats.js'
 
 export default {
-	mixins: [moreStatsMixins],
+	mixins: [moreStats],
 	props: {
 		deck: Object,
 		manaSymbol: Object

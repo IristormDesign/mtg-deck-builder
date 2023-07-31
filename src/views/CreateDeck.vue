@@ -39,10 +39,10 @@
 
 <script>
 import stringMethods from '@/mixins/stringMethods.js'
-import methodsCopyDeck from '@/mixins/methodsCopyDeck.js'
+import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
-	mixins: [stringMethods, methodsCopyDeck],
+	mixins: [stringMethods, copyDeck],
 	data () {
 		return {
 			deckNameInput: ''

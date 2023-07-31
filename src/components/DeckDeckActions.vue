@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import methodsCopyDeck from '@/mixins/methodsCopyDeck.js'
+import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
-	mixins: [methodsCopyDeck],
+	mixins: [copyDeck],
 	data () {
 		return {
 			deckAction: ''

@@ -61,12 +61,12 @@
 </template>
 
 <script>
-import deckColorMixins from '@/mixins/deckColorMixins.js'
+import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
-	mixins: [deckColorMixins, symbolsMarkup, sortingClusterGaps],
+	mixins: [deckColors, symbolsMarkup, sortingClusterGaps],
 	props: {
 		deck: Object
 	},

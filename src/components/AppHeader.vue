@@ -93,12 +93,12 @@
 
 <script>
 import debounce from 'debounce'
-import deckColorMixins from '@/mixins/deckColorMixins.js'
+import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 
 export default {
-	mixins: [deckColorMixins, symbolsMarkup],
+	mixins: [deckColors, symbolsMarkup],
 	components: { BgOverlay },
 	data () {
 		return {
