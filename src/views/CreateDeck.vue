@@ -39,10 +39,10 @@
 
 <script>
 import stringMethods from '@/mixins/stringMethods.js'
-import methodsDupDeck from '@/mixins/methodsDupDeck.js'
+import methodsCopyDeck from '@/mixins/methodsCopyDeck.js'
 
 export default {
-	mixins: [stringMethods, methodsDupDeck],
+	mixins: [stringMethods, methodsCopyDeck],
 	data () {
 		return {
 			deckNameInput: ''
@@ -95,7 +95,8 @@ export default {
 					},
 					editDate: new Date(),
 					colors: [],
-					sortBy: 'unsorted'
+					sortBy: 'unsorted',
+					dataVersion: Number() // Vaguely defining the data version as only a number type so that I won't have to remember to update the actual latest version number here. The definite number will be applied later.
 				})
 
 				this.finalizeDeckCreation(updatedDecksArray, path)
@@ -113,30 +114,30 @@ export default {
 					const fileReaderResult = fileReader.result
 
 					if (this.isValidDeckData(importedFile, fileReaderResult)) {
-						const deckData = JSON.parse(fileReaderResult)
-						const deckPath = deckData.path
+						const deck = JSON.parse(fileReaderResult)
 
-						if (this.$store.getters.deckExists(deckPath)) {
-							const dupDeckData = this.amendDupDeckName(deckData)
+						if (this.$store.getters.deckExists(deck.path)) {
+							const amendedDeckData = this.amendCopiedDeckName(deck)
 
-							alert(`⚠ Since you have another deck named “${deckData.name},” the deck you’re importing is going to be renamed “${dupDeckData[0]}.”`)
+							alert(`⚠ Since you have another deck named “${deck.name},” the deck you’re importing is going to be renamed “${amendedDeckData.name}.”`)
 
-							this.storeDupDeckAndRedirect(deckData, dupDeckData)
+							this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 						} else {
 							const updatedDecksArray = this.$store.state.decks
 
 							updatedDecksArray.push({
-								name: deckData.name,
-								path: deckPath,
-								cards: deckData.cards,
-								viewedCard: deckData.viewedCard,
-								sideboard: deckData.sideboard,
-								editDate: deckData.editDate,
-								colors: deckData.colors,
-								sortBy: deckData.sortBy
+								name: deck.name,
+								path: deck.path,
+								cards: deck.cards,
+								viewedCard: deck.viewedCard,
+								sideboard: deck.sideboard,
+								editDate: deck.editDate,
+								colors: deck.colors,
+								sortBy: deck.sortBy,
+								dataVersion: deck.dataVersion
 							})
 
-							this.finalizeDeckCreation(updatedDecksArray, deckPath)
+							this.finalizeDeckCreation(updatedDecksArray, deck.path)
 						}
 					} else {
 						// Clear the deck file input in case the user tries to load a file of the same name again.

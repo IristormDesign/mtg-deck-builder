@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import methodsDupDeck from '@/mixins/methodsDupDeck.js'
+import methodsCopyDeck from '@/mixins/methodsCopyDeck.js'
 
 export default {
-	mixins: [methodsDupDeck],
+	mixins: [methodsCopyDeck],
 	data () {
 		return {
 			deckAction: ''
@@ -42,14 +42,16 @@ export default {
 				this.deckAction = ''
 			})
 		},
-		copyDeck (srcDeck) {
-			const toCopyConfirmed = confirm(`Create a new deck that’s a duplicate of “${srcDeck.name}”?`)
+		copyDeck (sourceDeck) {
+			const toCopyConfirmed = confirm(
+				`Do you want to create a separate deck that’s a duplicate of “${sourceDeck.name}”?`
+			)
 
 			if (toCopyConfirmed) {
-				const dupDeckData = this.amendDupDeckName(srcDeck)
-				const dupDeck = JSON.parse(JSON.stringify(srcDeck)) // Technique for deep-cloning objects, which is necessary here.
+				const copiedDeck = JSON.parse(JSON.stringify(sourceDeck)) // The technique for deep-cloning objects, which is necessary here.
+				const newData = this.amendCopiedDeckName(sourceDeck)
 
-				this.storeDupDeckAndRedirect(dupDeck, dupDeckData)
+				this.storeCopiedDeckAndRedirect(copiedDeck, newData)
 			}
 		},
 		deleteDeck (deck) {
