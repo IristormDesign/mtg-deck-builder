@@ -5,6 +5,9 @@ import deckColors from '@/mixins/deckColors.js'
 export default {
 	mixins: [stringMethods, deckColors],
 	computed: {
+		/**
+		 * @returns The object for either the main deck or the sideboard
+		 */
 		activeCardList () {
 			if (this.$store.state.showSideboard) {
 				return this.deck.sideboard

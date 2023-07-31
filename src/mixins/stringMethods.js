@@ -1,22 +1,22 @@
 export default {
 	methods: {
+		/**
+		 * @param {string} name
+		 */
 		alertNameExists (name) {
 			return `⚠ You already have a deck named “${name}.” Please give a different name.`
 		},
+		/**
+		 * Turn each straight apostrophe (or single closing quotation mark) into a curly one.
+		 * @param {string} string
+		 */
 		curlApostrophes (string) {
-			return string.replace(/'/g, '’') // Turn each straight apostrophe (or single closing quotation mark) into a curly one.
+			return string.replace(/'/g, '’')
 		},
-		minimumDeckNameLimit (name) {
-			const regexMinChars = /\w+/i // At least one letter or digit
-
-			if (regexMinChars.test(name)) {
-				return true
-			} else {
-				alert('⚠ A deck’s name must have at least one letter or digit.')
-
-				return false
-			}
-		},
+		/**
+		 * @param {string} string The string to convert into a path for a valid URL.
+		 * @returns {string} The path.
+		 */
 		stringToPath (string) {
 			const path = string
 				.toLowerCase()

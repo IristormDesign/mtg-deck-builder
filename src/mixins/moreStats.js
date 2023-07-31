@@ -20,7 +20,11 @@ export default {
 		}
 	},
 	methods: {
-		calculatePercentage (givenValue) {
+		/**
+		 * @param {number} count
+		 * @returns {string} Percentage
+		 */
+		calculatePercentage (count) {
 			let deckTotal = 0
 
 			this.deck.cards.forEach(card => {
@@ -29,15 +33,9 @@ export default {
 				}
 			})
 
-			const percentage = ((givenValue / deckTotal) * 100).toFixed(1)
+			const pct = ((count / deckTotal) * 100).toFixed(1)
 
-			return percentage + '%'
-		},
-		dataCommonCountPercent (counter) {
-			return `
-				<td>${counter}</td>
-				<td>${this.calculatePercentage(counter)}</td>
-			`
+			return pct + '%'
 		}
 	}
 }

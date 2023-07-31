@@ -1,5 +1,9 @@
 export default {
 	methods: {
+		/**
+		 * @param {Object} deck
+		 * @param {string} sortBy
+		 */
 		addSortingClusterGaps (deck, sortBy) {
 			function isCreature (string) {
 				return /\bCreature\b/.test(string)

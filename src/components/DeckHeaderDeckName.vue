@@ -19,11 +19,15 @@ export default {
 	},
 	methods: {
 		renameDeck (failedName, deckNameExists) {
-			let message = 'Rename this deck:'
-			if (deckNameExists) {
-				message = this.alertNameExists(deckNameExists)
+			const promptText = () => {
+				if (deckNameExists) {
+					return this.alertNameExists(deckNameExists)
+				} else {
+					return 'Rename this deck:'
+				}
 			}
-			let newName = prompt(message, failedName)
+
+			let newName = prompt(promptText(), failedName)
 
 			if (newName) {
 				newName = newName.trim()
@@ -39,7 +43,7 @@ export default {
 				if (newName.length > 50) {
 					alert('⚠ That deck name is too long. Please shorten it to fewer than 50 characters.')
 					this.renameDeck(newName)
-				} else if (!this.minimumDeckNameLimit(newName)) {
+				} else if (newName.length < 1) {
 					this.renameDeck(newName)
 				} else if (!deckExists || theActiveDeck()) {
 					const deck = this.deck

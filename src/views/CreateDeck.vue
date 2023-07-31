@@ -60,17 +60,11 @@ export default {
 	},
 	methods: {
 		submitDeckName () {
-			let name = this.deckNameInput
+			let name = this.deckNameInput.trim()
 
-			// First, clean up the submitted name.
-			if (name) {
-				name = name.trim()
+			if (name.length > 0) { // If the user has submitted any name, after having trimmed any excess white space from it...
 				name = this.curlApostrophes(name)
-			}
-			if (name) { // If the user has submitted any name, after having trimmed any excess white space from it...
-				if (this.minimumDeckNameLimit(name)) {
-					this.createNewDeck(name)
-				}
+				this.createNewDeck(name)
 			} else {
 				this.$refs.focus.focus()
 			}
