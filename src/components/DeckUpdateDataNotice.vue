@@ -28,6 +28,7 @@ export default {
 	mixins: [requestScryfallData],
 	data () {
 		return {
+			oldCardQty: 0,
 			updatingDeckData: false
 		}
 	},
@@ -81,9 +82,8 @@ export default {
 
 					for (let i = 0; i < cards.length; i++) {
 						setTimeout(() => {
-							this.requestScryfallData(
-								cards[i].name, false, cards[i].qty, callback()
-							)
+							this.oldCardQty = cards[i].qty
+							this.requestScryfallData(cards[i].name, callback())
 
 							if (cardsUpdated === cards.length) {
 								if (this.$store.state.showSideboard) {

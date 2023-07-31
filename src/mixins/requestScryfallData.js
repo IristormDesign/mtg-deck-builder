@@ -19,16 +19,14 @@ export default {
 	methods: {
 		/**
 		 * @param {string} query
-		 * @param {boolean} replacementAllowed
-		 * @param {number} oldCardQty
 		 * @param {Function} callback
-		 * @returns {Function}
+		 * @returns {Function} Callback function
 		 */
-		requestScryfallData (query, replacementAllowed, oldCardQty, callback) {
-			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
+		requestScryfallData (query, callback) {
 			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
+			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
 			if (regexScryfallCardURL.test(query)) {
 				const cardSet = query.match(regexScryfallCardURL)[1]
 				const collectorNumber = query.match(regexScryfallCardURL)[2]
@@ -53,7 +51,7 @@ export default {
 					.then(response => {
 						// The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number.
 						try {
-							this.assignCardData(response.data.data[0], replacementAllowed, oldCardQty)
+							this.assignCardData(response.data.data[0])
 						} catch {
 							alert('⚠ Error: The Scryfall card page URL you submitted doesn’t match a Magic card that exists.')
 						}
@@ -80,7 +78,7 @@ export default {
 						{ cancelToken: axios.CancelToken.source().token }
 					)
 					.then(response => {
-						this.assignCardData(response.data, replacementAllowed, oldCardQty)
+						this.assignCardData(response.data)
 					})
 					.catch(error => {
 						if (error.response.status === 404) {
@@ -96,7 +94,7 @@ export default {
 					})
 			}
 		},
-		assignCardData (data, replacementAllowed, oldCardQty) {
+		assignCardData (data) {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
@@ -156,14 +154,14 @@ export default {
 				newCard.colors.unshift('multicolor')
 			}
 
-			if (oldCardQty) {
-				newCard.qty = oldCardQty
+			if (this.oldCardQty > 0) {
+				newCard.qty = this.oldCardQty
 
 				this.updateOldCard(newCard)
 			} else {
 				newCard.qty = 1
 
-				this.validateNewCard(newCard, replacementAllowed)
+				this.validateNewCard(newCard)
 			}
 		},
 		updateOldCard (newCard) {
@@ -186,13 +184,12 @@ export default {
 		 *
 		 * This is because it's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. Or, it's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
 		 * @param {Object} newCard
-		 * @param {boolean} replacementAllowed
 		*/
-		validateNewCard (newCard, replacementAllowed) {
+		validateNewCard (newCard) {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
-				if (replacementAllowed) {
+				if (this.allowReplacement) {
 					const replaceCard = this.notifyCardExists(newCard.name, true)
 
 					if (replaceCard) {

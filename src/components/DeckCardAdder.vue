@@ -47,10 +47,11 @@ export default {
 	},
 	data () {
 		return {
+			optionalReplacement: false,
+			cardSuggestions: null,
 			cardQueryInput: '',
 			delay: false,
-			loadingCard: false,
-			cardSuggestions: null
+			loadingCard: false
 		}
 	},
 	created () {
@@ -183,6 +184,8 @@ export default {
 			}, 500)
 		},
 		getCard (query) {
+			this.optionalReplacement = false
+
 			const regexScryfallCardURL = /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://`, and where "X" and "Y" are each at least one letter or digit.
 
 			if (regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
@@ -196,7 +199,8 @@ export default {
 
 					this.notifyCardExists(foundExistingCardByLink.name)
 				} else {
-					this.requestScryfallData(query, true)
+					this.optionalReplacement = true
+					this.requestScryfallData(query)
 				}
 			} else { // Else treat the query as a card name.
 				const foundExistingCardByName = this.findExistingCardByName(this.curlApostrophes(query))
