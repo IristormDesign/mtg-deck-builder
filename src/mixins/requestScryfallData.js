@@ -166,13 +166,11 @@ export default {
 		},
 		updateOldCard (newCard) {
 			const list = this.activeCardList
+			const index = list.cards.findIndex((foundCard) => {
+				return foundCard.name === newCard.name
+			})
 
-			// For the card that's about to be updated, remove the existing one from the card list.
-			list.cards = list.cards.filter(filteredCard =>
-				filteredCard.name !== newCard.name
-			)
-
-			list.cards.push(newCard)
+			list.cards.splice(index, 1, newCard)
 			this.deck.editDate = new Date()
 
 			this.$nextTick(() => {
@@ -189,7 +187,7 @@ export default {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
-				if (this.allowReplacement) {
+				if (this.optionalReplacement) {
 					const replaceCard = this.notifyCardExists(newCard.name, true)
 
 					if (replaceCard) {
