@@ -1,15 +1,12 @@
 <template>
-	<div class="wrap">
-		<aside
-			v-if="deckDataOutdated"
-			class="outdated-deck-data-notice"
-		>
+	<div v-if="deckDataOutdated" class="wrap">
+		<aside class="outdated-deck-data-notice wrap">
 			<p>⚠ This deck is using an outdated set of card data. Update it to get enhanced app features!</p>
 			<p
 				v-if="!updatingDeckData"
 				class="update-button-cont"
 			>
-				<button @click="updateData()">Update</button>
+				<button @click="allowDataUpdate()">Update</button>
 			</p>
 			<p
 				v-else
@@ -29,6 +26,7 @@ export default {
 	data () {
 		return {
 			oldCardQty: 0,
+			totalCardsUpdated: 0,
 			updatingDeckData: false
 		}
 	},
@@ -36,8 +34,11 @@ export default {
 		deck: Object
 	},
 	computed: {
+		combinedDeckTotals () {
+			return this.deck.cards.length + this.deck.sideboard.cards.length
+		},
 		deckDataOutdated () {
-			return this.deck.dataVersion < 2
+			return this.deck.dataVersion < 99
 		}
 	},
 	created () {
@@ -69,43 +70,49 @@ export default {
 				})
 			}
 		},
-		updateData () {
-			const updateCardGroupData = (cardGroup) => {
-				const cards = cardGroup.cards
+		allowDataUpdate () {
+			if (this.combinedDeckTotals > 150) {
+				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
+			} else {
+				console.clear()
 
-				if (cards.length > 150) {
-					alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
-				} else {
-					this.updatingDeckData = true
+				this.$store.commit('setShowSideboard', false)
+				this.updateCardGroupData(this.deck)
+				// this.updatingDeckData = true
+			}
+		},
+		updateCardGroupData (group) {
+			console.log('>> updateCardGroupData()')
+			// console.log(`Updated (${
+			// 	(totalCardsUpdated / combinedDeckTotals * 100).toFixed(0)
+			// }%)`)
 
-					let cardsUpdated = 0
-
-					for (let i = 0; i < cards.length; i++) {
-						setTimeout(() => {
-							this.oldCardQty = cards[i].qty
-							this.requestScryfallData(cards[i].name, callback())
-
-							if (cardsUpdated === cards.length) {
-								if (this.$store.state.showSideboard) {
-									setTimeout(() => {
-										this.$router.go(0) // Reload the page
-									}, 250) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
-								} else {
-									// The main group's cards are done, now do the sideboard's.
-									this.$store.commit('setShowSideboard', true)
-
-									updateCardGroupData(this.deck.sideboard)
-								}
-							}
-						}, 100 * i)
-					}
-					function callback () {
-						cardsUpdated++
-					}
-				}
+			const callback = () => {
+				this.totalCardsUpdated++
+				console.log(this.totalCardsUpdated)
 			}
 
-			updateCardGroupData(this.deck)
+			for (let i = 0; i < group.cards.length; i++) {
+				setTimeout(() => {
+					this.oldCardQty = group.cards[i].qty
+
+					this.requestScryfallData(group.cards[i].name, callback())
+					// console.log(group.cards[i].name)
+					// callback()
+
+					if (this.totalCardsUpdated === this.deck.cards.length) { // Once all the cards in the main group have been updated...
+						setTimeout(() => {
+							this.$store.commit('setShowSideboard', true)
+							this.updateCardGroupData(this.deck.sideboard)
+						}, 101)
+					} else if (this.totalCardsUpdated === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
+						setTimeout(() => {
+							console.log('✅ Finished updating!')
+							// this.$router.go(0) // Reload the page
+						}, 500) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
+					}
+				}, 100 * (i + 1))
+			}
 		}
 	}
 }
