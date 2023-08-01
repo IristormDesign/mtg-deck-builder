@@ -1,19 +1,19 @@
 <template>
 	<div v-if="deckDataOutdated" class="wrap">
-		<aside class="outdated-deck-data-notice wrap">
-			<p>⚠ This deck is using an outdated set of card data. Update it to get enhanced app features!</p>
-			<p
-				v-if="!updatingDeckData"
-				class="update-button-cont"
-			>
-				<button @click="allowDataUpdate()">Update</button>
-			</p>
-			<p
-				v-else
-				class="update-button-cont loading-indicator"
-			>
-				<em>Updating now&hellip;</em>
-			</p>
+		<aside class="outdated-deck-data-notice">
+			<template v-if="!updatingDeckData">
+				<p>⚠ This deck uses an outdated set of card data. Update it to get enhanced app features!</p>
+				<div
+					v-if="!updatingDeckData"
+					class="button-container"
+				>
+					<button @click="allowDataUpdate()">Update</button>
+				</div>
+			</template>
+			<template v-else>
+				<p>Updating now, please wait&hellip;</p>
+				<p>Progress: <strong class="updated-percentage">{{ (totalCardsUpdated / combinedDeckTotals * 100).toFixed(0) }}%</strong></p>
+			</template>
 		</aside>
 	</div>
 </template>
@@ -82,10 +82,6 @@ export default {
 			}
 		},
 		updateCardGroupData (group) {
-			// console.log(`Updated (${
-			// 	(totalCardsUpdated / combinedDeckTotals * 100).toFixed(0)
-			// }%)`)
-
 			const callback = () => {
 				this.totalCardsUpdated++
 			}
@@ -100,13 +96,13 @@ export default {
 						setTimeout(() => {
 							this.$store.commit('setShowSideboard', true)
 							this.updateCardGroupData(this.deck.sideboard)
-						}, 101) // I think this delay is needed to prevent data corruption.
+						}, 150) // This delay seems to be needed to prevent corrupting the deck's data during the updating process.
 					} else if (this.totalCardsUpdated === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
 						setTimeout(() => {
 							this.$router.go(0) // Reload the page
-						}, 101)
+						}, 50)
 					}
-				}, 100 * (i + 1))
+				}, (i + 1) * 100)
 			}
 		}
 	}

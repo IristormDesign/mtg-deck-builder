@@ -16,9 +16,9 @@
 				</header>
 			</div>
 
-			<router-view />
-
 			<update-data-notice :deck="deck" />
+
+			<router-view />
 		</article>
 	</div>
 </template>

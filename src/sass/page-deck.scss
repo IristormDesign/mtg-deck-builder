@@ -27,41 +27,26 @@
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
-	background: $color-group-bg;
-	padding: $lhse*.5 $lhse;
+	background: $color-mythic-very-dim;
+	color: $color-text-over-mythic-very-dim;
+	padding: $lhse*.375 4.17% $lhse*.5;
 	margin: $lhse*.5 auto;
 	text-align: center;
-	max-width: max-content;
+	text-wrap: balance;
 
-	p {
-		margin: 0;
+	strong {
+		color: #fff;
 	}
-	.update-button-cont {
-		text-align: center;
-		height: $lhse*2;
+	.button-container {
+		height: $lhse*1.5;
 		display: flex;
-		align-items: flex-end;
+		align-items: flex-start;
 		justify-content: center;
-		margin: 0;
 	}
-	.loading-indicator {
-		animation: pulse .75s ease-out;
-		animation-direction: alternate-reverse;
-		animation-iteration-count: infinite;
-		font-style: italic;
-		width: 100%;
-		cursor: progress;
-		line-height: $line-height-standard*1.5;
-		height: $lhse*2;
-		
-		@keyframes pulse {
-			0% {
-				opacity: 0;
-			}
-			75% {
-				opacity: 1;
-			}
-		}
+	.updated-percentage {
+		display: inline-block;
+		min-width: 4ch;
+		text-align: right;
 	}
 }
 

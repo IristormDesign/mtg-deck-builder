@@ -160,7 +160,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	height: 100%;
 	z-index: index($layers, bg-overlay);
 	background: rgba(darken($color-content-bg, 12.5%), .5);
-	backdrop-filter: blur(4px);
+	backdrop-filter: blur(7px);
 }
 @mixin gradient-buttons($color-top-layer, $color-bottom-layer) {
 	background:
