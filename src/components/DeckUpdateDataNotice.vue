@@ -38,7 +38,7 @@ export default {
 			return this.deck.cards.length + this.deck.sideboard.cards.length
 		},
 		deckDataOutdated () {
-			return this.deck.dataVersion < 99
+			return this.deck.dataVersion < 2
 		}
 	},
 	created () {
@@ -78,18 +78,16 @@ export default {
 
 				this.$store.commit('setShowSideboard', false)
 				this.updateCardGroupData(this.deck)
-				// this.updatingDeckData = true
+				this.updatingDeckData = true
 			}
 		},
 		updateCardGroupData (group) {
-			console.log('>> updateCardGroupData()')
 			// console.log(`Updated (${
 			// 	(totalCardsUpdated / combinedDeckTotals * 100).toFixed(0)
 			// }%)`)
 
 			const callback = () => {
 				this.totalCardsUpdated++
-				console.log(this.totalCardsUpdated)
 			}
 
 			for (let i = 0; i < group.cards.length; i++) {
@@ -97,19 +95,16 @@ export default {
 					this.oldCardQty = group.cards[i].qty
 
 					this.requestScryfallData(group.cards[i].name, callback())
-					// console.log(group.cards[i].name)
-					// callback()
 
 					if (this.totalCardsUpdated === this.deck.cards.length) { // Once all the cards in the main group have been updated...
 						setTimeout(() => {
 							this.$store.commit('setShowSideboard', true)
 							this.updateCardGroupData(this.deck.sideboard)
-						}, 101)
+						}, 101) // I think this delay is needed to prevent data corruption.
 					} else if (this.totalCardsUpdated === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
 						setTimeout(() => {
-							console.log('✅ Finished updating!')
-							// this.$router.go(0) // Reload the page
-						}, 500) // Add a little extra time to let the user's CPU work with the updated card values before reloading the page.
+							this.$router.go(0) // Reload the page
+						}, 101)
 					}
 				}, 100 * (i + 1))
 			}
