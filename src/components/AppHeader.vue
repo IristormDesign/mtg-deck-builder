@@ -285,17 +285,12 @@ export default {
 				'.app-menu-toggler, .app-menu a, .app-menu button'
 			)
 
-			function anyFocus () {
-				for (let i = 0; i < appMenuLinks.length; i++) {
-					const link = appMenuLinks[i]
-
-					if (link === document.activeElement) {
-						return true
-					}
+			for (const link of appMenuLinks) {
+				if (link === document.activeElement) {
+					this.closeAllPopups()
+					break
 				}
 			}
-
-			if (!anyFocus()) this.closeAllPopups()
 		},
 		mouseoutEventActiveEffect () {
 			if (!this.$store.state.mouseoutEventActive) {

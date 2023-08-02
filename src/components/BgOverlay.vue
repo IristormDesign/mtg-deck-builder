@@ -24,9 +24,7 @@ export default {
 			function anyFocusedDeckLink () {
 				const deckMenuLinks = document.querySelector('.app-header .deck-menu').querySelectorAll('a, button')
 
-				for (let i = 0; i < deckMenuLinks.length; i++) {
-					const link = deckMenuLinks[i]
-
+				for (const link of deckMenuLinks) {
 					if (link === document.activeElement) {
 						return true
 					}

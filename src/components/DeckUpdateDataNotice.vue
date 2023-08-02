@@ -53,18 +53,16 @@ export default {
 			const deck = this.deck
 
 			if (!deck.dataVersion || this.deckDataOutdated) {
-				const haveKeywordsObjectKey = () => {
-					for (let i = 0; i < deck.cards.length; i++) {
-						if (!deck.cards[i].keywords) {
+				deck.dataVersion = () => {
+					for (const card of deck.cards) {
+						if (!card.keywords) {
 							return 1
 						}
 					}
 					return 2
 
-					// No need to bother checking the sideboard's cards for the `keywords` object key, because the sideboard was released after `keywords`.
+					// The sideboard's cards are intentionally not checked for the `keywords` object key, because the sideboard feature was released in the app after `keywords`.
 				}
-
-				deck.dataVersion = haveKeywordsObjectKey()
 
 				this.$nextTick(() => {
 					this.$store.commit('setDecks', this.$store.state.decks)
@@ -82,9 +80,7 @@ export default {
 			}
 		},
 		gatherAllCards (group) {
-			for (let i = 0; i < group.cards.length; i++) {
-				const card = group.cards[i]
-
+			for (const card of group.cards) {
 				this.allCardsToUpdate.push({
 					inSideboard: this.$store.state.showSideboard,
 					name: card.name,

@@ -134,8 +134,8 @@ export default {
 		submitSuggestion () {
 			const options = document.getElementById('card-suggestions').childNodes
 
-			for (let i = 0; i < options.length; i++) {
-				if (this.cardQueryInput === options[i].value) {
+			for (const option of options) {
+				if (this.cardQueryInput === option.value) {
 					this.handleSubmit()
 					break
 				}

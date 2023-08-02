@@ -25,9 +25,7 @@ export default {
 	},
 	computed: {
 		emptyTable () {
-			for (let i = 0; i < this.miscProperties.length; i++) {
-				const prop = this.miscProperties[i].toLowerCase()
-
+			for (const prop of this.miscProperties) {
 				if (this.countMisc(prop) > 0) {
 					return false
 				}
@@ -43,7 +41,7 @@ export default {
 				markup += this.tableBodyEmpty
 			} else {
 				this.miscProperties.forEach(heading => {
-					const count = this.countMisc(heading.toLowerCase())
+					const count = this.countMisc(heading)
 
 					if (count > 0) {
 						markup += `
@@ -60,25 +58,31 @@ export default {
 			return markup
 		},
 		countMisc (prop) {
+			prop = prop.toLowerCase()
 			let count = 0
 
 			this.deck.cards.forEach(card => {
-				const testBasicLand = /\bBasic (\w* )?Land\b/.test(card.type)
-				const testLegendary = /\bLegendary\b/.test(card.type)
-				const testMonocolored = card.colors.length === 1
-				const testMulticolored = card.colors[0] === 'multicolor'
-				const testVariableCost = /\{X\}/.test(card.mana)
-				const testVariablePT = card.power === '*' || card.toughness === '*'
-				const testDoubleFaced = /\w\s\/\s\w/.test(card.name)
+				const regexBasicLand = /\bBasic (\w* )?Land\b/
+				const regexLegendary = /\bLegendary\b/
+				const regexVariableCost = /\{X\}/
+				const regexDoubleFaced = /\w\s\/\s\w/
+
+				const matchesBasicLand = regexBasicLand.test(card.type)
+				const matchesLegendary = regexLegendary.test(card.type)
+				const matchesMonocolored = card.colors.length === 1
+				const matchesMulticolored = card.colors[0] === 'multicolor'
+				const matchesVariableCost = regexVariableCost.test(card.mana)
+				const matchesVariablePT = card.power === '*' || card.toughness === '*'
+				const matchesDoubleFaced = regexDoubleFaced.test(card.name)
 
 				if (
-					(prop === 'basic land' && testBasicLand) ||
-					(prop === 'legendary' && testLegendary) ||
-					(prop === 'monocolored' && testMonocolored) ||
-					(prop === 'multicolored' && testMulticolored) ||
-					(prop === 'variable cost' && testVariableCost) ||
-					(prop === 'variable p/t' && testVariablePT) ||
-					(prop === 'double-faced' && testDoubleFaced)
+					(prop === 'basic land' && matchesBasicLand) ||
+					(prop === 'legendary' && matchesLegendary) ||
+					(prop === 'monocolored' && matchesMonocolored) ||
+					(prop === 'multicolored' && matchesMulticolored) ||
+					(prop === 'variable cost' && matchesVariableCost) ||
+					(prop === 'variable p/t' && matchesVariablePT) ||
+					(prop === 'double-faced' && matchesDoubleFaced)
 				) {
 					for (let i = 0; i < card.qty; i++) {
 						count++
