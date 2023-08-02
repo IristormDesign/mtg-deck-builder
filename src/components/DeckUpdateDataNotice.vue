@@ -25,7 +25,8 @@ export default {
 	mixins: [requestScryfallData],
 	data () {
 		return {
-			oldCardQty: 0,
+			allCardsToUpdate: [],
+			oldCardData: {},
 			totalCardsUpdated: 0,
 			updatingDeckData: false
 		}
@@ -74,34 +75,49 @@ export default {
 			if (this.combinedDeckTotals > 150) {
 				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
 			} else {
-				console.clear()
-
-				this.$store.commit('setShowSideboard', false)
-				this.updateCardGroupData(this.deck)
 				this.updatingDeckData = true
+				this.$store.commit('setShowSideboard', false)
+
+				this.gatherAllCards(this.deck)
 			}
 		},
-		updateCardGroupData (group) {
-			const callback = () => {
-				this.totalCardsUpdated++
-			}
-
+		gatherAllCards (group) {
 			for (let i = 0; i < group.cards.length; i++) {
-				setTimeout(() => {
-					this.oldCardQty = group.cards[i].qty
+				const card = group.cards[i]
 
-					this.requestScryfallData(group.cards[i].name, callback())
+				this.allCardsToUpdate.push({
+					inSideboard: this.$store.state.showSideboard,
+					name: card.name,
+					qty: card.qty,
+					gapAfter: card.gapAfter
+				})
 
-					if (this.totalCardsUpdated === this.deck.cards.length) { // Once all the cards in the main group have been updated...
+				if (this.allCardsToUpdate.length === this.deck.cards.length) { // Once all cards in the main group have been gathered...
+					this.$store.commit('setShowSideboard', true)
+
+					// Now gather the sideboard's cards.
+					this.gatherAllCards(this.deck.sideboard)
+				} else if (this.allCardsToUpdate.length === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
+					this.updateCardGroupData()
+				}
+			}
+		},
+		updateCardGroupData () {
+			for (let i = 0; i < this.allCardsToUpdate.length; i++) {
+				const cardData = this.allCardsToUpdate[i]
+
+				const callback = () => {
+					this.totalCardsUpdated++
+
+					if (this.totalCardsUpdated === this.combinedDeckTotals) {
 						setTimeout(() => {
-							this.$store.commit('setShowSideboard', true)
-							this.updateCardGroupData(this.deck.sideboard)
-						}, 150) // This delay seems to be needed to prevent corrupting the deck's data during the updating process.
-					} else if (this.totalCardsUpdated === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
-						setTimeout(() => {
-							this.$router.go(0) // Reload the page
-						}, 50)
+							this.$router.go(0) // Reload the page.
+						}, 125)
 					}
+				}
+
+				setTimeout(() => {
+					this.requestScryfallData(cardData.name, callback(), cardData)
 				}, (i + 1) * 100)
 			}
 		}

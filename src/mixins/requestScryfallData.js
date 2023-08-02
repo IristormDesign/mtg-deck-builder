@@ -4,6 +4,11 @@ import deckColors from '@/mixins/deckColors.js'
 
 export default {
 	mixins: [stringMethods, deckColors],
+	data () {
+		return {
+			oldCardData: {}
+		}
+	},
 	computed: {
 		/**
 		 * @returns The object for either the main deck or the sideboard
@@ -18,11 +23,13 @@ export default {
 	},
 	methods: {
 		/**
-		 * @param {string} query
+		 * @param {string} query Required
 		 * @param {Function} callback
+		 * @param {Object} oldCardData Required only when an existing card is to be replaced via a deck data update.
 		 * @returns {Function} Callback function
 		 */
-		requestScryfallData (query, callback) {
+		requestScryfallData (query, callback, oldCardData) {
+			this.oldCardData = oldCardData
 			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
@@ -154,8 +161,9 @@ export default {
 				newCard.colors.unshift('multicolor')
 			}
 
-			if (this.oldCardQty > 0) {
-				newCard.qty = this.oldCardQty
+			if (this.oldCardData) {
+				newCard.qty = this.oldCardData.qty
+				newCard.gapAfter = this.oldCardData.gapAfter
 
 				this.updateOldCard(newCard)
 			} else {
@@ -165,6 +173,13 @@ export default {
 			}
 		},
 		updateOldCard (newCard) {
+			if (this.oldCardData) {
+				if (this.oldCardData.inSideboard) {
+					this.$store.commit('setShowSideboard', true)
+				} else {
+					this.$store.commit('setShowSideboard', false)
+				}
+			}
 			const list = this.activeCardList
 			const index = list.cards.findIndex((foundCard) => {
 				return foundCard.name === newCard.name
@@ -199,7 +214,7 @@ export default {
 					this.notifyCardExists(newCard.name)
 				}
 			} else {
-				this.pushCardData(newCard)
+				this.insertCardIntoDeck(newCard)
 			}
 		},
 		/**
@@ -241,7 +256,7 @@ export default {
 				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
 			}
 		},
-		pushCardData (newCard) {
+		insertCardIntoDeck (newCard) {
 			this.activeCardList.cards.push(newCard)
 
 			const deck = this.deck
