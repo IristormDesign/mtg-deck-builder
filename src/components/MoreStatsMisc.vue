@@ -3,7 +3,7 @@
 		<h4>Miscellaneous</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="markupTableRows()" />
+			<tbody v-html="markupTableRows" />
 		</table>
 	</section>
 </template>
@@ -18,70 +18,53 @@ export default {
 	},
 	data () {
 		return {
-			miscProperties: [
-				'Basic land', 'Legendary', 'Monocolored', 'Multicolored', 'Variable cost', 'Variable P/T', 'Double-faced'
-			]
+			miscProps: {}
 		}
 	},
-	computed: {
-		emptyTable () {
-			for (const prop of this.miscProperties) {
-				if (this.countMisc(prop) > 0) {
-					return false
-				}
-			}
-			return true
-		}
+	created () {
+		this.setUpMiscProps()
 	},
 	methods: {
-		markupTableRows () {
-			let markup = ''
-
-			if (this.emptyTable) {
-				markup += this.tableBodyEmpty
-			} else {
-				this.miscProperties.forEach(prop => {
-					const count = this.countMisc(prop)
-
-					if (count > 0) {
-						markup += `
-							<tr>
-								<th>${prop}</th>
-								<td>${count}</td>
-								<td>${this.calculatePercentage(count)}</td>
-							</tr>
-						`
-					}
-				})
+		setUpMiscProps () {
+			this.miscProps = {
+				basicLand: new MiscProp('Basic land', matchesBasicLand),
+				legendary: new MiscProp('Legendary', matchesLegendary),
+				monocolored: new MiscProp('Monocolored', matchesMonocolored),
+				multicolored: new MiscProp('Multicolored', matchesMulticolored),
+				variableCost: new MiscProp('Variable cost', matchesVariableCost),
+				variablePT: new MiscProp('Variable P/T', matchesVariablePT),
+				doubleFaced: new MiscProp('Double-faced', matchesDoubleFaced)
 			}
 
-			return markup
-		},
-		countMisc (prop) {
-			switch (prop.toLowerCase()) {
-				case 'basic land':
-					return this.cardsOfProp(matchesBasicLand)
-				case 'legendary':
-					return this.cardsOfProp(matchesLegendary)
-				case 'monocolored':
-					return this.cardsOfProp(matchesMonocolored)
-				case 'multicolored':
-					return this.cardsOfProp(matchesMulticolored)
-				case 'variable cost':
-					return this.cardsOfProp(matchesVariableCost)
-				case 'variable p/t':
-					return this.cardsOfProp(matchesVariablePT)
-				case 'double-faced':
-					return this.cardsOfProp(matchesDoubleFaced)
+			this.deck.cards.forEach(card => {
+				for (const key in this.miscProps) {
+					const prop = this.miscProps[key]
+
+					if (prop.matches(card)) {
+						for (let i = 0; i < card.qty; i++) {
+							prop.count++
+						}
+					}
+				}
+			})
+
+			/**
+			 * @param {string} name
+			 * @param {Function} matches
+			 */
+			function MiscProp (name, matches) {
+				this.name = name
+				this.matches = matches
+				this.count = 0
 			}
 
 			function matchesBasicLand (card) {
-				const regexBasicLand = /\bBasic (\w* )?Land\b/
-				return regexBasicLand.test(card.type)
+				const regex = /\bBasic (\w* )?Land\b/
+				return regex.test(card.type)
 			}
 			function matchesLegendary (card) {
-				const regexLegendary = /\bLegendary\b/
-				return regexLegendary.test(card.type)
+				const regex = /\bLegendary\b/
+				return regex.test(card.type)
 			}
 			function matchesMonocolored (card) {
 				return card.colors.length === 1
@@ -90,29 +73,41 @@ export default {
 				return card.colors[0] === 'multicolor'
 			}
 			function matchesVariableCost (card) {
-				const regexVariableCost = /\{X\}/
-				return regexVariableCost.test(card.mana)
+				const regex = /\{X\}/
+				return regex.test(card.mana)
 			}
 			function matchesVariablePT (card) {
 				return card.power === '*' || card.toughness === '*'
 			}
 			function matchesDoubleFaced (card) {
-				const regexDoubleFaced = /\w\s\/\s\w/
-				return regexDoubleFaced.test(card.name)
+				const regex = /\w\s\/\s\w/
+				return regex.test(card.name)
 			}
-		},
-		cardsOfProp (propMatcher) {
-			let count = 0
+		}
+	},
+	computed: {
+		markupTableRows () {
+			let markup = ''
 
-			this.deck.cards.forEach(card => {
-				if (propMatcher(card)) {
-					for (let i = 0; i < card.qty; i++) {
-						count++
-					}
+			for (const key in this.miscProps) {
+				const prop = this.miscProps[key]
+
+				if (prop.count > 0) {
+					markup += `
+						<tr>
+							<th>${prop.name}</th>
+							<td>${prop.count}</td>
+							<td>${this.calculatePercentage(prop.count)}</td>
+						</tr>
+					`
 				}
-			})
+			}
 
-			return count
+			if (markup === '') {
+				return this.tableBodyEmpty
+			} else {
+				return markup
+			}
 		}
 	}
 }
