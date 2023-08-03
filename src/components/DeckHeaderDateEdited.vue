@@ -25,7 +25,7 @@ export default {
 		}
 	},
 	computed: {
-		dateEdited: function () {
+		dateEdited () {
 			const dateTime = new Date(this.deck.editDate)
 			const month = monthNameFromNumber()
 			const day = dateTime.getDate()
@@ -50,7 +50,7 @@ export default {
 
 			return `${month} ${day}, ${year}`
 		},
-		timeEdited: function () {
+		timeEdited () {
 			const dateTime = new Date(this.deck.editDate)
 			let hour = dateTime.getHours()
 			let minute = dateTime.getMinutes()

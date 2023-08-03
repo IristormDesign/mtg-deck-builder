@@ -294,7 +294,7 @@ export default {
 		}
 	},
 	watch: {
-		deckSortValue: function (value) {
+		deckSortValue (value) {
 			// Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to be unsorted. (For example, that can occur by having changed a card's quantity while the list is sorted by quantity.)
 			if (value === 'unsorted') {
 				this.sortMenu = value
