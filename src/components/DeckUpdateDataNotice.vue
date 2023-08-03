@@ -39,7 +39,7 @@ export default {
 			return this.deck.cards.length + this.deck.sideboard.cards.length
 		},
 		deckDataOutdated () {
-			return this.deck.dataVersion < 2
+			return this.deck.dataVersion < this.$store.state.latestDeckDataVersion
 		}
 	},
 	created () {
@@ -59,14 +59,12 @@ export default {
 							return 1
 						}
 					}
-					return 2
+					return this.$store.state.latestDeckDataVersion
 
 					// The sideboard's cards are intentionally not checked for the `keywords` object key, because the sideboard feature was released in the app after `keywords`.
 				}
 
-				this.$nextTick(() => {
-					this.$store.commit('setDecks', this.$store.state.decks)
-				})
+				this.$store.commit('setDecks', this.$store.state.decks)
 			}
 		},
 		allowDataUpdate () {

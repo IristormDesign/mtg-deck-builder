@@ -15,6 +15,7 @@ export default new Vuex.Store({
 	state: {
 		decks: [],
 		deletedDeckName: null,
+		latestDeckDataVersion: 2,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		mouseoutEventActive: true,

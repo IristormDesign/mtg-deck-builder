@@ -71,12 +71,13 @@ export default {
 		},
 		createNewDeck (name) {
 			const path = this.stringToPath(name)
-			const deckExists = this.$store.getters.deckExists(path)
+			const store = this.$store
+			const deckExists = store.getters.deckExists(path)
 
 			if (deckExists) {
 				alert(this.alertNameExists(name))
 			} else {
-				const updatedDecksArray = this.$store.state.decks
+				const updatedDecksArray = store.state.decks
 
 				updatedDecksArray.push({
 					name: name,
@@ -90,7 +91,7 @@ export default {
 					editDate: new Date(),
 					colors: [],
 					sortBy: 'unsorted',
-					dataVersion: Number() // Vaguely defining the data version as only a number type so that I won't have to remember to update the actual latest version number here. The definite number will be applied later.
+					dataVersion: store.state.latestDeckDataVersion
 				})
 
 				this.finalizeDeckCreation(updatedDecksArray, path)
