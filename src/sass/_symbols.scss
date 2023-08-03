@@ -6,7 +6,8 @@
 	height: $common-mana-symbol-size;
 	background: $color-mana-generic;
 	font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
-	color: $color-text-buttons;
+	color: #000;
+	text-shadow: none;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -128,6 +129,7 @@
 	cursor: default;
 	outline: 1px solid #000;
 	color: $color-text-buttons;
+	text-shadow: none;
 
 	&[title] {
 		cursor: help;

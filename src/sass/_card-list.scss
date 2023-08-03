@@ -222,7 +222,7 @@ $min-height-card-list: $lhse*6;
 			z-index: index($layers, card-list-item-focus-within);
 			
 			.card-button {
-				@include box-shadow-hover-card-button($color-frame-generic);
+				@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
 				
 				&.land {
 					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
@@ -243,7 +243,7 @@ $min-height-card-list: $lhse*6;
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 25%), 16.67%));
 				}
 				&.multicolor {
-					@include box-shadow-hover-card-button(lighten(desaturate($color-mana-hybrid, 16.67%), 6.25%));
+					@include box-shadow-hover-card-button(desaturate($color-mana-hybrid, 16.67%));
 				}
 			}
 		}
@@ -413,6 +413,7 @@ $min-height-card-list: $lhse*6;
 		&.black {
 			background: $color-frame-black;
 			color: #000;
+			text-shadow: 0 0 1px rgba(#fff, .375);
 		}
 		&.red {
 			background: $color-frame-red;
