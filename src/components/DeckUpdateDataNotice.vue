@@ -80,10 +80,10 @@ export default {
 		gatherAllCards (group) {
 			for (const card of group.cards) {
 				this.allCardsToUpdate.push({
+					gapAfter: card.gapAfter,
 					inSideboard: this.$store.state.showSideboard,
 					name: card.name,
-					qty: card.qty,
-					gapAfter: card.gapAfter
+					qty: card.qty
 				})
 
 				if (this.allCardsToUpdate.length === this.deck.cards.length) { // Once all cards in the main group have been gathered...

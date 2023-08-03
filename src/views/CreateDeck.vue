@@ -80,18 +80,18 @@ export default {
 				const updatedDecksArray = store.state.decks
 
 				updatedDecksArray.push({
+					cards: [],
+					colors: [],
+					dataVersion: store.state.latestDeckDataVersion,
+					editDate: new Date(),
 					name: name,
 					path: path,
-					cards: [],
-					viewedCard: '',
 					sideboard: {
 						cards: [],
 						viewedCard: ''
 					},
-					editDate: new Date(),
-					colors: [],
 					sortBy: 'unsorted',
-					dataVersion: store.state.latestDeckDataVersion
+					viewedCard: ''
 				})
 
 				this.finalizeDeckCreation(updatedDecksArray, path)
@@ -121,15 +121,15 @@ export default {
 							const updatedDecksArray = this.$store.state.decks
 
 							updatedDecksArray.push({
+								cards: deck.cards,
+								colors: deck.colors,
+								dataVersion: deck.dataVersion,
+								editDate: deck.editDate,
 								name: deck.name,
 								path: deck.path,
-								cards: deck.cards,
-								viewedCard: deck.viewedCard,
 								sideboard: deck.sideboard,
-								editDate: deck.editDate,
-								colors: deck.colors,
 								sortBy: deck.sortBy,
-								dataVersion: deck.dataVersion
+								viewedCard: deck.viewedCard
 							})
 
 							this.finalizeDeckCreation(updatedDecksArray, deck.path)
