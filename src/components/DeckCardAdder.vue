@@ -52,8 +52,7 @@ export default {
 			cardQueryInput: '',
 			delay: false,
 			loadingCard: false,
-			optionalReplacement: false,
-			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` and `Y` are each at least one letter or digit.
+			optionalReplacement: false
 		}
 	},
 	created () {
@@ -97,13 +96,13 @@ export default {
 			const query = this.cardQueryInput.trim()
 			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the MDB code `#random`.
 			const regexAnyURL = /^http/i // A string beginning with `http`.
-			const regexScryfallShortURL = /^scryfa/i // A string beginning with `scryfa`, which indicates the user is manually typing out a Scryfall URL.
+			const regexIncompleteScryfallURL = /^scryfa/i // A string beginning with `scryfa`, which indicates the user is manually typing out a Scryfall URL.
 
 			if ( // Basically, if the submitted query is identifiable as just a card name (rather than a URL)...
 				query &&
 				!regexCodeSymbol.test(query) &&
 				!regexAnyURL.test(query) &&
-				!regexScryfallShortURL.test(query)
+				!regexIncompleteScryfallURL.test(query)
 			) {
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API to autocomplete query "${query}"`)

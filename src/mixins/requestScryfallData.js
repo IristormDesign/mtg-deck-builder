@@ -6,7 +6,8 @@ export default {
 	mixins: [stringMethods, deckColors],
 	data () {
 		return {
-			oldCardData: {}
+			oldCardData: {},
+			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
 		}
 	},
 	computed: {
@@ -30,13 +31,12 @@ export default {
 		 */
 		requestScryfallData (query, callback, oldCardData) {
 			this.oldCardData = oldCardData
-			const regexScryfallCardURL = /scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A substring `scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
 			// Determine whether the user's submission from the card adder is a card name or a URL to a Scryfall card page.
-			if (regexScryfallCardURL.test(query)) {
-				const cardSet = query.match(regexScryfallCardURL)[1]
-				const collectorNumber = query.match(regexScryfallCardURL)[2]
+			if (this.regexScryfallCardURL.test(query)) {
+				const cardSet = query.match(this.regexScryfallCardURL)[2]
+				const collectorNumber = query.match(this.regexScryfallCardURL)[3]
 
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API for card #${collectorNumber} in set ${cardSet.toUpperCase()}`)
