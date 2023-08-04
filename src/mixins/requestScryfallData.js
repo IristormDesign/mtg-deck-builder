@@ -12,7 +12,7 @@ export default {
 	},
 	computed: {
 		/**
-		 * @returns The object for either the main deck or the sideboard
+		 * @returns The object for either the main deck or the sideboard.
 		 */
 		activeCardList () {
 			if (this.$store.state.showSideboard) {
@@ -24,36 +24,16 @@ export default {
 	},
 	methods: {
 		/**
-		 * @param {string} query Required
-		 * @param {Function} callback
-		 * @param {Object} oldCardData Required only when an existing card is to be replaced via a deck data update.
-		 * @returns {Function} Callback function
+		 * Request the Scryfall API for a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
 		 */
-		requestScryfallData (query, callback, oldCardData) {
-			this.oldCardData = oldCardData
-			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
-
-			if (query.toLowerCase() === '#random') { // If the query is `#random`...
-				this.axiosRandomRequest()
-			} else if (this.regexScryfallCardURL.test(query)) { // If the query is a Scryfall card page URL...
-				this.axiosCollectionRequest(query)
-			} else if (regexURL.test(query)) { // If the user mistakenly submits any URL (but that isn't a Scryfall card page URL, because that was just checked in the previous `if` statement)...
-				alert('⚠ Error: The query you submitted is neither the URL to a card page on Scryfall, nor the name of a Magic card.')
-			} else { // Else the query is a card name.
-				this.axiosNameRequest(query, callback)
-			}
-		},
-		/**
-		 * Get a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
-		 */
-		axiosRandomRequest () {
+		axiosRequestRandom () {
 			axios
 				.get(
 					'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital',
 					{ cancelToken: axios.CancelToken.source().token }
 				)
 				.then(response => {
-					this.getCard(response.data.name)
+					this.determineQueryType(response.data.name)
 				})
 				.catch(error => {
 					if (error.response.data.details) {
@@ -61,9 +41,14 @@ export default {
 					}
 				})
 		},
+		/**
+		 * Request the Scryfall API for a card according to its card set and collector number (based on a submitted Scryfall card page URL).
+		 * @param {string} query Required
+		 */
 		axiosCollectionRequest (query) {
-			const cardSet = query.match(this.regexScryfallCardURL)[2]
-			const collectorNumber = query.match(this.regexScryfallCardURL)[3]
+			const matchingQueryParts = query.match(this.regexScryfallCardURL)
+			const cardSet = matchingQueryParts[2]
+			const collectorNumber = matchingQueryParts[3]
 
 			// eslint-disable-next-line
 			console.log(`Request Scryfall API for card #${collectorNumber} in set ${cardSet.toUpperCase()}`)
@@ -94,7 +79,18 @@ export default {
 					alert(`⚠ ${error.response.data.details}`)
 				})
 		},
-		axiosNameRequest (query, callback) {
+		/**
+		 * Request the Scryfall API for a card by name.
+		 *
+		 * The `callback` and `oldCardData` parameters are unused except when an existing card is going to be replaced via a deck data update.
+		 * @param {string} query Required
+		 * @param {Function} callback
+		 * @param {Object} oldCardData
+		 * @returns {Function} Callback function
+		 */
+		axiosRequestName (query, callback, oldCardData) {
+			this.oldCardData = oldCardData
+
 			// eslint-disable-next-line
 			console.log(`Request Scryfall API for "${query}"`)
 
@@ -214,6 +210,7 @@ export default {
 		 * Check that the card doesn't exist by name in the card list, even if this check has already been done once.
 		 *
 		 * There are two reasons to do this: (1) It's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. (2) It's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
+		 *
 		 * @param {Object} newCard
 		*/
 		validateNewCard (newCard) {

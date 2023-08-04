@@ -111,7 +111,7 @@ export default {
 				}
 
 				setTimeout(() => {
-					this.requestScryfallData(cardData.name, callback(), cardData)
+					this.axiosRequestName(cardData.name, callback(), cardData)
 				}, (i + 1) * 100)
 			}
 		}

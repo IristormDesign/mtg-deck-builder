@@ -149,8 +149,9 @@ export default {
 			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
+				this.optionalReplacement = false
 
-				this.getCard(query)
+				this.determineQueryType(query)
 
 				this.$nextTick(() => {
 					this.loadingCard = false
@@ -163,10 +164,12 @@ export default {
 				this.delay = false
 			}, 500)
 		},
-		getCard (query) {
-			this.optionalReplacement = false
+		determineQueryType (query) {
+			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
-			if (this.regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
+			if (query.toLowerCase() === '#random') { // If the query matches the app code `#random`...
+				this.axiosRequestRandom()
+			} else if (this.regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
 				const coreURL = query.match(this.regexScryfallCardURL)[0] // Extract the core part of the query of a Scryfall card page URL, leaving out any excess cruft in it (often such as "?utm_source=api") that makes finding a match of an existing card less likely.
 				const regexSpecialCharacters = /[./]/g // Any period or slash. These are the characters that would be in a core Scryfall URL that must be escaped in order for regex functions to work properly.
 				const escapedQuery = coreURL.replace(regexSpecialCharacters, '\\$&') // In the URL query, insert a backslash before any of the special regex characters to escape them. (`$&` means the whole matched string.)
@@ -177,21 +180,22 @@ export default {
 
 				if (foundExistingCardByLink) {
 					// The URL query matches an existing card's link URL, which means the queried card is an identical variation match to an existing card.
-
 					this.notifyCardExists(foundExistingCardByLink.name)
 				} else {
 					// The URL query does NOT match an existing card's link URL, which means the queried card doesn't have an identical variation match. (The queried card may or may not have the same name as an existing card, but that's checked in a separate method.)
-
 					this.optionalReplacement = true
-					this.requestScryfallData(query)
+					this.axiosCollectionRequest(query)
 				}
-			} else { // The query is a card name (or at least it's to be handled like a card name) or is the app code "#random".
+			} else if (regexURL.test(query)) { // If the user mistakenly submits any URL (but that isn't a Scryfall card page URL, because that was just checked in the previous `if` statement)...
+				alert('⚠ Error: The query you submitted is neither the URL to a card page on Scryfall, nor the name of a Magic card.')
+			} else {
+				// The query is a card name (or at least it's going to be handled like a card name).
 				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
 					this.notifyCardExists(foundExistingCardByName.name)
 				} else { // Else the queried card doesn't match the name of another card in the list.
-					this.requestScryfallData(query)
+					this.axiosRequestName(query)
 				}
 			}
 		}
