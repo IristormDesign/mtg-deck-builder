@@ -72,7 +72,7 @@ export default {
 						return callback
 					})
 			} else if (regexURL.test(query)) { // Else, if the user submitted a URL (that isn't for Scryfall card page, since that was already checked)...
-				alert('⚠ The query you submitted is neither the name of a Magic card nor the URL to a card page on Scryfall.')
+				alert('⚠ Error: The query you submitted is neither the URL to a card page on Scryfall nor the name of a Magic card.')
 			} else { // Else the query submitted by the user is a card name, not a URL.
 				// eslint-disable-next-line
 				console.log(`Request Scryfall API for "${query}"`)
@@ -195,7 +195,7 @@ export default {
 		/**
 		 * Check that the card doesn't exist by name in the card list, even if this check has already been done once.
 		 *
-		 * This is because it's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. Or, it's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
+		 * There are two reasons to do this: (1) It's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. (2) It's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
 		 * @param {Object} newCard
 		*/
 		validateNewCard (newCard) {
@@ -209,7 +209,7 @@ export default {
 						newCard.qty = existingCard.qty
 
 						this.updateOldCard(newCard)
-					} // Else: Do nothing, because the user has chosen to not replace the card.
+					} // Else do nothing, because the user has chosen to not replace the card.
 				} else {
 					this.notifyCardExists(newCard.name)
 				}
@@ -222,6 +222,8 @@ export default {
 		 * @returns {Object} The card object, if it's found.
 		 */
 		findExistingCardByName (cardName) {
+			cardName = this.curlApostrophes(cardName)
+
 			return this.activeCardList.cards.find(foundCard =>
 				cardName.toUpperCase() === foundCard.name.toUpperCase()
 			)
@@ -245,8 +247,9 @@ export default {
 			}
 
 			if (confirmToReplace) {
+				// (Can't use a timeout here because it messes with the return.)
 				return confirm(
-					`”${cardName}” is already in this ${stringActiveCardList()}, though it may be a different variation from the one you’ve just submitted. Do you want to replace the existing variation?`
+					`”${cardName}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
 				)
 			} else {
 				setTimeout(() => {

@@ -48,11 +48,12 @@ export default {
 	},
 	data () {
 		return {
-			optionalReplacement: false,
 			cardSuggestions: null,
 			cardQueryInput: '',
 			delay: false,
-			loadingCard: false
+			loadingCard: false,
+			optionalReplacement: false,
+			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` and `Y` are each at least one letter or digit.
 		}
 	},
 	created () {
@@ -78,9 +79,8 @@ export default {
 		cardQueryInput () {
 			this.debouncedAutocomplete()
 
-			// If the user pastes a Scryfall page URL into the card adder's text input, then automatically submit the query.
-			const regexScryfallCardURL = /^http(s?):\/\/scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, where "X" is the card set codename (at least one letter or digit) and "Y" is the collector number (at least one digit or even letter).
-			if (regexScryfallCardURL.test(this.cardQueryInput)) {
+			// If the user pastes the URL of a Scryfall card page into the card adder's text input, then automatically submit the query.
+			if (this.regexScryfallCardURL.test(this.cardQueryInput)) {
 				this.handleSubmit()
 			}
 		},
@@ -96,10 +96,10 @@ export default {
 		autocompleteName () {
 			const query = this.cardQueryInput.trim()
 			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the MDB code `#random`.
-			const regexAnyURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
-			const regexScryfallShortURL = /^scryfall\./i // A string beginning with `scryfall.`, which indicates the user is manually typing a URL to a Scryfall page.
+			const regexAnyURL = /^http/i // A string beginning with `http`.
+			const regexScryfallShortURL = /^scryfa/i // A string beginning with `scryfa`, which indicates the user is manually typing out a Scryfall URL.
 
-			if ( // Basically, if the submitted query is identifiable as just a card name...
+			if ( // Basically, if the submitted query is identifiable as just a card name (rather than a URL)...
 				query &&
 				!regexCodeSymbol.test(query) &&
 				!regexAnyURL.test(query) &&
@@ -110,7 +110,7 @@ export default {
 
 				const queryCardSuggestions = (data) => {
 					// Limit the number of autocomplete suggestions to 5.
-					while (data.length > 5) {
+					while (data.length > 6) {
 						data.pop()
 					}
 
@@ -128,7 +128,7 @@ export default {
 						// eslint-disable-next-line
 						console.log(error)
 					})
-			} else if (query === '') {
+			} else {
 				this.cardSuggestions = []
 			}
 		},
@@ -187,24 +187,27 @@ export default {
 		getCard (query) {
 			this.optionalReplacement = false
 
-			const regexScryfallCardURL = /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://`, and where "X" and "Y" are each at least one letter or digit.
-
-			if (regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
-				const regexQueryURL = new RegExp('^' + query + '.*', 'i')
-				const foundExistingCardByLink = this.activeCardList.cards.find(foundCard =>
-					regexQueryURL.test(foundCard.link)
+			if (this.regexScryfallCardURL.test(query)) { // If the query matches the pattern of a URL to a Scryfall card page...
+				const coreURL = query.match(this.regexScryfallCardURL)[0] // Extract the core part of the query of a Scryfall card page URL, leaving out any excess cruft in it (often such as "?utm_source=api") that makes finding a match of an existing card less likely.
+				const regexSpecialCharacters = /[./]/g // Any period or slash. These are the characters that would be in a core Scryfall URL that must be escaped in order for regex functions to work properly.
+				const escapedQuery = coreURL.replace(regexSpecialCharacters, '\\$&') // In the URL query, insert a backslash before any of the special regex characters to escape them. (`$&` means the whole matched string.)
+				const regexQueryURL = new RegExp('^' + escapedQuery, 'i') // A string beginning with the URL query.
+				const foundExistingCardByLink = this.activeCardList.cards.find(
+					foundCard => regexQueryURL.test(foundCard.link)
 				)
 
 				if (foundExistingCardByLink) {
-					// The query is an exact variation match of an existing card, so don't get card data.
+					// The URL query matches an existing card's link URL, which means the queried card is an identical variation match to an existing card.
 
 					this.notifyCardExists(foundExistingCardByLink.name)
 				} else {
+					// The URL query does NOT match an existing card's link URL, which means the queried card doesn't have an identical variation match. (The queried card may or may not have the same name as an existing card, but that's checked in a separate method.)
+
 					this.optionalReplacement = true
 					this.requestScryfallData(query)
 				}
-			} else { // Else treat the query as a card name.
-				const foundExistingCardByName = this.findExistingCardByName(this.curlApostrophes(query))
+			} else { // The query is a card name (or at least it's to be handled as if it were a card name) instead of a Scryfall card page URL.
+				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
 					this.notifyCardExists(foundExistingCardByName.name)
