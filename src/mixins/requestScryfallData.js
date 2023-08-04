@@ -7,7 +7,8 @@ export default {
 	data () {
 		return {
 			oldCardData: null,
-			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
+			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i, // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
+			timeoutMessage: '⚠ Sorry, but your card couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but Scryfall’s web servers can’t be reached at the moment. Try again at a later time.'
 		}
 	},
 	computed: {
@@ -30,14 +31,16 @@ export default {
 			axios
 				.get(
 					'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital',
-					{ cancelToken: axios.CancelToken.source().token }
+					{ timeout: 8000 }
 				)
 				.then(response => {
 					this.determineQueryType(response.data.name)
 				})
 				.catch(error => {
-					if (error.response.data.details) {
-						alert(`⚠ ${error.response.data.details}`)
+					if (error.code === 'ECONNABORTED') {
+						alert(this.timeoutMessage)
+					} else {
+						alert(`⚠ Error: ${error.message}`)
 					}
 				})
 				.finally(() => {
@@ -63,11 +66,10 @@ export default {
 						identifiers: [{
 							set: cardSet,
 							collector_number: collectorNumber
-						}],
-						cancelToken: axios.CancelToken.source().token
-					},
-					{
-						headers: { 'Content-Type': 'application/json' }
+						}]
+					}, {
+						headers: { 'Content-Type': 'application/json' },
+						timeout: 8000
 					}
 				)
 				.then(response => {
@@ -75,11 +77,15 @@ export default {
 					try {
 						this.assignCardData(response.data.data[0])
 					} catch {
-						alert('⚠ Error: The Scryfall card page URL you submitted doesn’t match a Magic card that exists.')
+						alert('⚠ The URL you’re submitting doesn’t go to a valid card page on Scryfall. No card could be added from it.')
 					}
 				})
 				.catch(error => {
-					alert(`⚠ ${error.response.data.details}`)
+					if (error.code === 'ECONNABORTED') {
+						alert(this.timeoutMessage)
+					} else {
+						alert(`⚠ Error: ${error.message}`)
+					}
 				})
 				.finally(() => {
 					this.loadingCard = false
@@ -105,16 +111,18 @@ export default {
 			axios
 				.get(
 					`https://api.scryfall.com/cards/named?fuzzy=${urlEncodedQuery}`,
-					{ cancelToken: axios.CancelToken.source().token }
+					{ timeout: 8000 }
 				)
 				.then(response => {
 					this.assignCardData(response.data)
 				})
 				.catch(error => {
-					if (error.response.status === 404) {
+					if (error.code === 'ECONNABORTED') {
+						alert(this.timeoutMessage)
+					} else if (error.code === 'ERR_BAD_REQUEST') {
 						alert(`⚠ No Magic card named “${query}” exists.`)
 					} else {
-						alert(`⚠ ${error.response.data.details}`)
+						alert(`⚠ Error: ${error.message}`)
 					}
 				})
 				.finally(() => {
