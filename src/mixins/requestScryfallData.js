@@ -6,7 +6,7 @@ export default {
 	mixins: [stringMethods, deckColors],
 	data () {
 		return {
-			oldCardData: {},
+			oldCardData: null,
 			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
 		}
 	},

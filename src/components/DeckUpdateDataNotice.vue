@@ -26,7 +26,6 @@ export default {
 	data () {
 		return {
 			allCardsToUpdate: [],
-			oldCardData: {},
 			totalCardsUpdated: 0,
 			updatingDeckData: false
 		}
