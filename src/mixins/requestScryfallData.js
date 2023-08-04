@@ -40,6 +40,9 @@ export default {
 						alert(`⚠ ${error.response.data.details}`)
 					}
 				})
+				.finally(() => {
+					this.loadingCard = false
+				})
 		},
 		/**
 		 * Request the Scryfall API for a card according to its card set and collector number (based on a submitted Scryfall card page URL).
@@ -78,6 +81,9 @@ export default {
 				.catch(error => {
 					alert(`⚠ ${error.response.data.details}`)
 				})
+				.finally(() => {
+					this.loadingCard = false
+				})
 		},
 		/**
 		 * Request the Scryfall API for a card by name.
@@ -112,6 +118,7 @@ export default {
 					}
 				})
 				.finally(() => {
+					this.loadingCard = false
 					return callback
 				})
 		},

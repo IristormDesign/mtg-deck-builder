@@ -152,10 +152,6 @@ export default {
 				this.optionalReplacement = false
 
 				this.determineQueryType(query)
-
-				this.$nextTick(() => {
-					this.loadingCard = false
-				})
 			}
 
 			this.cardQueryInput = ''
@@ -164,6 +160,9 @@ export default {
 				this.delay = false
 			}, 500)
 		},
+		/**
+		 * @param {string} query
+		 */
 		determineQueryType (query) {
 			const regexURL = /^http(s?):/i // A string beginning with `http:` or `https:`.
 
