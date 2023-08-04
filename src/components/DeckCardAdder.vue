@@ -150,27 +150,7 @@ export default {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 
-				if (query.toLowerCase() === '#random') {
-					axios
-						.get(
-							'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital', // Get a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
-							{ cancelToken: axios.CancelToken.source().token }
-						)
-						.then(response => {
-							this.getCard(response.data.name)
-						})
-						.catch(error => {
-							if (error.response.data.details) {
-								alert(`⚠ ${error.response.data.details}`)
-							}
-
-							// eslint-disable-next-line
-							console.log(error)
-							this.loadingCard = false
-						})
-				} else {
-					this.getCard(query)
-				}
+				this.getCard(query)
 
 				this.$nextTick(() => {
 					this.loadingCard = false
@@ -205,7 +185,7 @@ export default {
 					this.optionalReplacement = true
 					this.requestScryfallData(query)
 				}
-			} else { // The query is a card name (or at least it's to be handled as if it were a card name) instead of a Scryfall card page URL.
+			} else { // The query is a card name (or at least it's to be handled like a card name) or is the app code "#random".
 				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
