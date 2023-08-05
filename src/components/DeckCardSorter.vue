@@ -10,9 +10,9 @@
 					@change="sortCards()"
 				>
 					<option
-						v-if="sortMenu === 'unsorted'"
-						value="unsorted"
-					>(Unsorted)</option>
+						v-if="sortMenu === ''"
+						value=""
+					>(None)</option>
 					<option value="name">Name</option>
 					<option value="color">Mana Color</option>
 					<option value="cmc">Mana Value</option>
@@ -43,7 +43,7 @@ export default {
 	},
 	created () {
 		if (!this.sortMenu) {
-			this.sortMenu = 'unsorted'
+			this.sortMenu = ''
 		}
 	},
 	updated () {
@@ -295,8 +295,8 @@ export default {
 	},
 	watch: {
 		deckSortValue (value) {
-			// Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to be unsorted. (For example, that can occur by having changed a card's quantity while the list is sorted by quantity.)
-			if (value === 'unsorted') {
+			// Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.)
+			if (value === '') {
 				this.sortMenu = value
 			}
 		}

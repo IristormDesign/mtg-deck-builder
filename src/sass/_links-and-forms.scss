@@ -127,8 +127,7 @@ option {
 	color: $color-link;
 	font: $font-weight-semibold #{112.5%}/#{1} $font-family-standard;
 
-	&[value=""],
-	&[value="unsorted"] {
+	&[value=""] {
 		display: none;
 	}
 	&:checked {

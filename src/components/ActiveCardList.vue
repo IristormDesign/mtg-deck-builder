@@ -189,7 +189,7 @@ export default {
 			activeCardList.viewedCard = cardName
 
 			if (deck.sortBy === 'qty') {
-				deck.sortBy = 'unsorted'
+				deck.sortBy = ''
 			}
 			if (card.qty <= 0) {
 				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)

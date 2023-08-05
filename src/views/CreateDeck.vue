@@ -90,7 +90,7 @@ export default {
 						cards: [],
 						viewedCard: ''
 					},
-					sortBy: 'unsorted',
+					sortBy: '',
 					viewedCard: ''
 				})
 
