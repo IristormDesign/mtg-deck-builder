@@ -7,8 +7,7 @@ export default {
 	data () {
 		return {
 			oldCardData: null,
-			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i, // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
-			timeoutMessage: '⚠ Sorry, but your card couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but Scryfall’s web servers can’t be reached at the moment. Try again at a later time.'
+			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
 		}
 	},
 	computed: {
@@ -28,17 +27,20 @@ export default {
 		 * Request the Scryfall API for a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
 		 */
 		axiosRequestRandom () {
+			// eslint-disable-next-line
+			console.log(`Random card requested with Scryfall API`)
+
 			axios
 				.get(
 					'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital',
 					{ timeout: 8000 }
 				)
 				.then(response => {
-					this.determineQueryType(response.data.name)
+					this.assignCardData(response.data)
 				})
 				.catch(error => {
 					if (error.code === 'ECONNABORTED') {
-						alert(this.timeoutMessage)
+						this.alertTimeout()
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
@@ -57,7 +59,7 @@ export default {
 			const collectorNumber = matchingQueryParts[3]
 
 			// eslint-disable-next-line
-			console.log(`Request Scryfall API for card #${collectorNumber} in set ${cardSet.toUpperCase()}`)
+			console.log(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested with Scryfall API`)
 
 			axios
 				.post(
@@ -82,7 +84,7 @@ export default {
 				})
 				.catch(error => {
 					if (error.code === 'ECONNABORTED') {
-						alert(this.timeoutMessage)
+						this.alertTimeout()
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
@@ -104,7 +106,7 @@ export default {
 			this.oldCardData = oldCardData
 
 			// eslint-disable-next-line
-			console.log(`Request Scryfall API for "${query}"`)
+			console.log(`Card named "${query}" requested with Scryfall API`)
 
 			const urlEncodedQuery = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
@@ -118,7 +120,7 @@ export default {
 				})
 				.catch(error => {
 					if (error.code === 'ECONNABORTED') {
-						alert(this.timeoutMessage)
+						this.alertTimeout()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
 						alert(`⚠ No Magic card named “${query}” exists.`)
 					} else {
@@ -129,6 +131,9 @@ export default {
 					this.loadingCard = false
 					return callback
 				})
+		},
+		alertTimeout () {
+			alert('⚠ Sorry, but your card couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data) {
 			const newCard = {}

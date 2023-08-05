@@ -105,7 +105,7 @@ export default {
 				!regexIncompleteScryfallURL.test(query)
 			) {
 				// eslint-disable-next-line
-				console.log(`Request Scryfall API to autocomplete query "${query}"`)
+				console.log(`Query "${query}" autocompleted with Scryfall API`)
 
 				const queryCardSuggestions = (data) => {
 					// Limit the number of autocomplete suggestions to 5.
@@ -122,10 +122,6 @@ export default {
 					)
 					.then(response => {
 						queryCardSuggestions(response.data.data)
-					})
-					.catch(error => {
-						// eslint-disable-next-line
-						console.log(error)
 					})
 			} else {
 				this.cardSuggestions = []
@@ -186,9 +182,8 @@ export default {
 					this.axiosCollectionRequest(query)
 				}
 			} else if (regexURL.test(query)) { // If the user mistakenly submits any URL (but that isn't a Scryfall card page URL, because that was just checked in the previous `if` statement)...
-				alert('⚠ Error: The query you submitted is neither the URL to a card page on Scryfall, nor the name of a Magic card.')
-			} else {
-				// The query is a card name (or at least it's going to be handled like a card name).
+				alert('⚠ No card can be added because the URL you’re submitting is not a URL to a card page on Scryfall.')
+			} else { // Else the query is a card name (or at least it's going to be handled like a card name).
 				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
