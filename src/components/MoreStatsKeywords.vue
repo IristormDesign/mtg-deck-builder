@@ -39,11 +39,13 @@ export default {
 		const keywordCounts = this.keywordCounts
 
 		this.deck.cards.forEach(card => {
-			card.keywords.forEach(keyword => {
-				for (let i = 0; i < card.qty; i++) {
-					allKeywords.push(keyword)
-				}
-			})
+			if (card.keywords) { // This check is needed to potentially prevent an error caused by non-updated cards that lack the `keywords` attribute.
+				card.keywords.forEach(keyword => {
+					for (let i = 0; i < card.qty; i++) {
+						allKeywords.push(keyword)
+					}
+				})
+			}
 		})
 
 		allKeywords.forEach(keyword => {
