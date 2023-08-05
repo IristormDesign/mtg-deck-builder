@@ -40,7 +40,7 @@ $color-heading-bg: lighten($color-group-bg, 8.33%);
 $color-background-alt: desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
 $color-text-buttons: rgba(#000, .875);
 
-$color-frame-land: desaturate(lighten($color-mythic-lighter, 25%), 75%);
+$color-frame-land: desaturate(lighten($color-mythic-lighter, 20.83%), 87.5%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 4.17%), 37.5%);
 $color-frame-black: desaturate(lighten($color-mana-black, 3.125%), 0%);
