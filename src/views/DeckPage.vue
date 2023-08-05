@@ -35,8 +35,13 @@ import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
 
 export default {
-	mixins: [getActiveDeck],
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice },
+	mixins: [getActiveDeck],
+	beforeRouteUpdate (to, from, next) {
+		this.$store.commit('setShowSideboard', false)
+
+		next()
+	},
 	created () {
 		this.$store.commit('setShowSideboard', false)
 
@@ -65,11 +70,6 @@ export default {
 				}
 			})
 		}
-	},
-	beforeRouteUpdate (to, from, next) {
-		this.$store.commit('setShowSideboard', false)
-
-		next()
 	}
 }
 </script>

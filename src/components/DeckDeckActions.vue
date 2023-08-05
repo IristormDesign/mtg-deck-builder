@@ -17,13 +17,13 @@ import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
 	mixins: [copyDeck],
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			deckAction: ''
 		}
-	},
-	props: {
-		deck: Object
 	},
 	methods: {
 		doDeckAction () {

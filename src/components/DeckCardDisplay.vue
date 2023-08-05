@@ -33,20 +33,6 @@ export default {
 	props: {
 		deck: Object
 	},
-	created () {
-		this.checkForOutdatedImageURLs()
-	},
-	mounted () {
-		if (this.mobileView()) {
-			this.$store.commit('setShowCard', false)
-		} else {
-			this.$store.commit('setShowCard', true)
-		}
-
-		window.addEventListener(
-			'resize', debounce(this.resizingViewport, 125)
-		)
-	},
 	computed: {
 		card () {
 			let cards, viewedCard
@@ -73,6 +59,25 @@ export default {
 				return color
 			}
 		}
+	},
+	watch: {
+		card () {
+			this.checkForOutdatedImageURLs()
+		}
+	},
+	created () {
+		this.checkForOutdatedImageURLs()
+	},
+	mounted () {
+		if (this.mobileView()) {
+			this.$store.commit('setShowCard', false)
+		} else {
+			this.$store.commit('setShowCard', true)
+		}
+
+		window.addEventListener(
+			'resize', debounce(this.resizingViewport, 125)
+		)
 	},
 	methods: {
 		mobileView () {
@@ -134,11 +139,6 @@ export default {
 						})
 				}
 			}
-		}
-	},
-	watch: {
-		card () {
-			this.checkForOutdatedImageURLs()
 		}
 	}
 }

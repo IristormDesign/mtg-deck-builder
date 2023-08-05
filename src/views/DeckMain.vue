@@ -25,7 +25,7 @@ import CardAdder from '@/components/DeckCardAdder.vue'
 import DeckActions from '@/components/DeckDeckActions.vue'
 
 export default {
-	mixins: [getActiveDeck],
-	components: { CardDisplay, CardSorter, CardGroupSwitch, CardList, CardAdder, DeckActions }
+	components: { CardDisplay, CardSorter, CardGroupSwitch, CardList, CardAdder, DeckActions },
+	mixins: [getActiveDeck]
 }
 </script>

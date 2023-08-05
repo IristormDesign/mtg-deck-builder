@@ -55,9 +55,6 @@ export default {
 			optionalReplacement: false
 		}
 	},
-	created () {
-		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
-	},
 	computed: {
 		activeCardListString () {
 			if (this.$store.state.showSideboard) {
@@ -90,6 +87,9 @@ export default {
 				})
 			}
 		}
+	},
+	created () {
+		this.debouncedAutocomplete = debounce(this.autocompleteName, 500)
 	},
 	methods: {
 		autocompleteName () {

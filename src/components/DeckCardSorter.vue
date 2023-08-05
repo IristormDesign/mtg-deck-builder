@@ -33,13 +33,29 @@ import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
 	mixins: [sortingClusterGaps],
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			sortMenu: this.deck.sortBy
 		}
 	},
-	props: {
-		deck: Object
+	computed: {
+		deckObject () {
+			return this.deck
+		},
+		deckSortValue () {
+			return this.deck.sortBy
+		}
+	},
+	watch: {
+		deckSortValue (value) {
+			// Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.)
+			if (value === '') {
+				this.sortMenu = value
+			}
+		}
 	},
 	created () {
 		if (!this.sortMenu) {
@@ -49,14 +65,6 @@ export default {
 	updated () {
 		// When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's.
 		this.sortMenu = this.deck.sortBy
-	},
-	computed: {
-		deckObject () {
-			return this.deck
-		},
-		deckSortValue () {
-			return this.deck.sortBy
-		}
 	},
 	methods: {
 		sortCards () {
@@ -290,14 +298,6 @@ export default {
 						return 0
 					}
 				})
-			}
-		}
-	},
-	watch: {
-		deckSortValue (value) {
-			// Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.)
-			if (value === '') {
-				this.sortMenu = value
 			}
 		}
 	}

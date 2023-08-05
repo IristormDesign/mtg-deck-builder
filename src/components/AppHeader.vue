@@ -98,12 +98,67 @@ import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 import BgOverlay from '@/components/BgOverlay.vue'
 
 export default {
-	mixins: [deckColors, symbolsMarkup],
 	components: { BgOverlay },
+	mixins: [deckColors, symbolsMarkup],
 	data () {
 		return {
 			freezeDeckMenu: false,
 			showAppMenu: true
+		}
+	},
+	computed: {
+		showDeckMenu () {
+			return this.$store.state.showDeckMenu
+		},
+		stickAppHeader () {
+			return this.$store.state.stickAppHeader
+		},
+		disableMenuButton () {
+			if (
+				this.$store.state.decks.length <= 1 &&
+				this.$route.params.deckPath
+			) {
+				return true
+			} else {
+				return (this.$store.state.decks.length <= 0)
+			}
+		},
+		disabledMenuButtonTooltip () {
+			if (this.disableMenuButton) {
+				if (this.$store.state.decks.length <= 0) {
+					return 'You have no more decks. Create one!'
+				} else {
+					return 'You currently have no other decks.'
+				}
+			} else {
+				return null
+			}
+		}
+	},
+	watch: {
+		showDeckMenu (val) {
+			if (val) {
+				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
+				this.showAppMenu = true
+			}
+		},
+		stickAppHeader (val) {
+			const appHeader = document.querySelector('.app-header')
+
+			if (val) {
+				appHeader.style.top = '0px'
+				appHeader.classList.add('sticky')
+			} else {
+				appHeader.style.top = `-${appHeader.offsetHeight}px`
+
+				if (window.scrollY === 0) {
+					appHeader.classList.remove('sticky')
+				} else {
+					setTimeout(() => {
+						appHeader.classList.remove('sticky')
+					}, 250) // Match this timeout duration with .app-header's CSS transition duration.
+				}
+			}
 		}
 	},
 	created () {
@@ -175,61 +230,6 @@ export default {
 			}
 
 			previousScrollPos = currentScrollPos
-		}
-	},
-	computed: {
-		showDeckMenu () {
-			return this.$store.state.showDeckMenu
-		},
-		stickAppHeader () {
-			return this.$store.state.stickAppHeader
-		},
-		disableMenuButton () {
-			if (
-				this.$store.state.decks.length <= 1 &&
-				this.$route.params.deckPath
-			) {
-				return true
-			} else {
-				return (this.$store.state.decks.length <= 0)
-			}
-		},
-		disabledMenuButtonTooltip () {
-			if (this.disableMenuButton) {
-				if (this.$store.state.decks.length <= 0) {
-					return 'You have no more decks. Create one!'
-				} else {
-					return 'You currently have no other decks.'
-				}
-			} else {
-				return null
-			}
-		}
-	},
-	watch: {
-		showDeckMenu (val) {
-			if (val) {
-				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
-				this.showAppMenu = true
-			}
-		},
-		stickAppHeader (val) {
-			const appHeader = document.querySelector('.app-header')
-
-			if (val) {
-				appHeader.style.top = '0px'
-				appHeader.classList.add('sticky')
-			} else {
-				appHeader.style.top = `-${appHeader.offsetHeight}px`
-
-				if (window.scrollY === 0) {
-					appHeader.classList.remove('sticky')
-				} else {
-					setTimeout(() => {
-						appHeader.classList.remove('sticky')
-					}, 250) // Match this timeout duration with .app-header's CSS transition duration.
-				}
-			}
 		}
 	},
 	methods: {

@@ -10,18 +10,12 @@
 
 <script>
 export default {
-	data () {
-		return {
-			deckObject: this.deck
-		}
-	},
 	props: {
 		deck: Object
 	},
-	created () {
-		if (!this.deck.editDate) { // This happens when a default deck is opened for the first time on the user's device.
-			this.deckObject.editDate = new Date()
-			this.$store.commit('setDecks', this.$store.state.decks)
+	data () {
+		return {
+			deckObject: this.deck
 		}
 	},
 	computed: {
@@ -74,6 +68,12 @@ export default {
 			}
 
 			return `${hour}:${minute} ${meridiem}`
+		}
+	},
+	created () {
+		if (!this.deck.editDate) { // This happens when a default deck is opened for the first time on the user's device.
+			this.deckObject.editDate = new Date()
+			this.$store.commit('setDecks', this.$store.state.decks)
 		}
 	}
 }

@@ -54,8 +54,8 @@ import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
 
 export default {
-	mixins: [getActiveDeck, symbolsMarkup],
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
+	mixins: [getActiveDeck, symbolsMarkup],
 	data () {
 		return {
 			subtypeCreaturesNames: [],

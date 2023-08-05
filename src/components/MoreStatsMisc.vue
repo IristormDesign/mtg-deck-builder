@@ -21,6 +21,31 @@ export default {
 			miscProps: {}
 		}
 	},
+	computed: {
+		markupTableRows () {
+			let markup = ''
+
+			for (const key in this.miscProps) {
+				const prop = this.miscProps[key]
+
+				if (prop.count > 0) {
+					markup += `
+						<tr>
+							<th>${prop.name}</th>
+							<td>${prop.count}</td>
+							<td>${this.calculatePercentage(prop.count)}</td>
+						</tr>
+					`
+				}
+			}
+
+			if (markup === '') {
+				return this.tableBodyEmpty
+			} else {
+				return markup
+			}
+		}
+	},
 	created () {
 		this.setUpMiscProps()
 	},
@@ -82,31 +107,6 @@ export default {
 			function matchesDoubleFaced (card) {
 				const regex = /\w\s\/\s\w/
 				return regex.test(card.name)
-			}
-		}
-	},
-	computed: {
-		markupTableRows () {
-			let markup = ''
-
-			for (const key in this.miscProps) {
-				const prop = this.miscProps[key]
-
-				if (prop.count > 0) {
-					markup += `
-						<tr>
-							<th>${prop.name}</th>
-							<td>${prop.count}</td>
-							<td>${this.calculatePercentage(prop.count)}</td>
-						</tr>
-					`
-				}
-			}
-
-			if (markup === '') {
-				return this.tableBodyEmpty
-			} else {
-				return markup
 			}
 		}
 	}

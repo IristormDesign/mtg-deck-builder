@@ -23,15 +23,15 @@ import requestScryfallData from '@/mixins/requestScryfallData.js'
 
 export default {
 	mixins: [requestScryfallData],
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			allCardsToUpdate: [],
 			totalCardsUpdated: 0,
 			updatingDeckData: false
 		}
-	},
-	props: {
-		deck: Object
 	},
 	computed: {
 		combinedDeckTotals () {
