@@ -194,13 +194,6 @@ figcaption {
 		padding: 0 $lhse*.5;
 	}
 }
-@media (max-width: ($min-width-app*.625)) {
-	.fade-bg {
-		&.texture-bg {
-			background-image: none;
-		}
-	}
-}
 
 /* Remove all animations and transitions for people who prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
