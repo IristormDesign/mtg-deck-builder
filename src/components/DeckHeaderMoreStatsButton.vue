@@ -26,6 +26,19 @@
 export default {
 	props: {
 		deck: Object
+	},
+	mounted () {
+		const moreStatsButton = document.querySelector('.more-stats-button a')
+
+		moreStatsButton.addEventListener('click', () => {
+			const article = document.querySelector('.more-stats h3')
+
+			if (article) {
+				article.scrollIntoView({
+					behavior: 'smooth'
+				})
+			}
+		})
 	}
 }
 </script>
