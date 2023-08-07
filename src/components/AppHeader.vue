@@ -87,7 +87,7 @@
 			</div>
 		</div>
 
-		<bg-overlay :popup="showingAnyPopup()" @closePopups="closeAllPopups()" />
+		<bg-overlay :popup="showingAnyPopup" @closePopups="closeAllPopups()" />
 	</header>
 </template>
 
@@ -133,6 +133,9 @@ export default {
 			} else {
 				return null
 			}
+		},
+		showingAnyPopup () {
+			return this.showDeckMenu || (this.mobileView() && this.showAppMenu)
 		}
 	},
 	watch: {
@@ -170,25 +173,24 @@ export default {
 		// Users can press the "Esc" key to close any popups.
 		document.addEventListener('keyup', (event) => {
 			if (event.key === 'Escape' || event.key === 'Esc') {
-				if (this.showingAnyPopup()) {
+				if (this.showingAnyPopup) {
 					this.closeAllPopups()
 				}
 			}
 		})
 
-		document.querySelectorAll(
-			'.app-menu > ul > li > a'
-		).forEach((link) => {
-			// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
-			link.addEventListener('click', this.closeAllPopups)
+		document.querySelectorAll('.app-menu > ul > li > a')
+			.forEach((link) => {
+				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+				link.addEventListener('click', this.closeAllPopups)
 
-			// If the user tab-focuses onto another first-level menu link in the app header, then close the Open Deck menu.
-			link.addEventListener('focus', () => {
-				if (this.showDeckMenu && !this.mobileView()) {
-					this.closeAllPopups()
-				}
+				// If the user tab-focuses onto another first-level menu link in the app header, then close the Open Deck menu.
+				link.addEventListener('focus', () => {
+					if (this.showDeckMenu && !this.mobileView()) {
+						this.closeAllPopups()
+					}
+				})
 			})
-		})
 
 		// Debounce window resizing.
 		window.addEventListener('resize', debounce(this.resizingViewport, 125))
@@ -215,7 +217,6 @@ export default {
 
 		window.onscroll = () => {
 			const currentScrollPos = window.scrollY
-			const store = this.$store
 
 			if (
 				currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
@@ -224,9 +225,9 @@ export default {
 					!this.showDeckMenu
 				)
 			) {
-				store.commit('setStickAppHeader', false)
-			} else if (!store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
-				store.commit('setStickAppHeader', true)
+				this.$store.commit('setStickAppHeader', false)
+			} else if (!this.$store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
+				this.$store.commit('setStickAppHeader', true)
 			}
 
 			previousScrollPos = currentScrollPos
@@ -234,16 +235,14 @@ export default {
 	},
 	methods: {
 		closeAllPopups () {
-			const store = this.$store
-
-			store.commit('setShowDeckMenu', false)
-			store.commit('setMouseoutEventActive', true)
+			this.$store.commit('setShowDeckMenu', false)
+			this.$store.commit('setMouseoutEventActive', true)
 
 			if (this.mobileView()) {
 				this.showAppMenu = false
 			}
 			if (this.stickAppHeader) {
-				store.commit('setStickAppHeader', false)
+				this.$store.commit('setStickAppHeader', false)
 			}
 		},
 		mobileView () {
@@ -256,13 +255,6 @@ export default {
 			} else {
 				this.showAppMenu = true
 				this.$store.commit('setShowDeckMenu', true)
-
-				// If the mobile app menu is opened and the user tab-focuses onto any link anywhere on the page, then close the menu.
-				document.querySelectorAll(
-					'a, button'
-				).forEach(link => {
-					link.addEventListener('focus', this.closeAppMenuWhenFocusLost)
-				})
 			}
 		},
 		toggleDeckMenu () {
@@ -296,9 +288,6 @@ export default {
 			if (!this.$store.state.mouseoutEventActive) {
 				this.$store.commit('setMouseoutEventActive', true)
 			}
-		},
-		showingAnyPopup () {
-			return this.showDeckMenu || (this.mobileView() && this.showAppMenu)
 		},
 		resizingViewport () {
 			if (this.mobileView()) {
