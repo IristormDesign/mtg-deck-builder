@@ -239,9 +239,12 @@
 		.app-menu-positioner {
 			position: relative;	
 			z-index: index($layers, app-menu-toggler);
+			margin-top: -$lhse*1.125;
 		}
 		.app-menu-toggler {
-			position: relative;
+			position: absolute;
+			top: 0;
+			right: 0;
 			display: block;
 			font-size: 87.5%;
 			z-index: 1;
