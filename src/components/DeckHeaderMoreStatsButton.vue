@@ -30,15 +30,17 @@ export default {
 	mounted () {
 		const moreStatsButton = document.querySelector('.more-stats-button a')
 
-		moreStatsButton.addEventListener('click', () => {
-			const article = document.querySelector('.more-stats h3')
+		if (moreStatsButton) { // This check is needed to prevent an error whenever the More Stats button is an actual `<button>` element (though a disabled one) rather than an `<a>`.
+			moreStatsButton.addEventListener('click', () => {
+				const article = document.querySelector('.more-stats h3')
 
-			if (article) {
-				article.scrollIntoView({
-					behavior: 'smooth'
-				})
-			}
-		})
+				if (article) {
+					article.scrollIntoView({
+						behavior: 'smooth'
+					})
+				}
+			})
+		}
 	}
 }
 </script>
