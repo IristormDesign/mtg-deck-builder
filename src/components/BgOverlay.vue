@@ -34,7 +34,10 @@ export default {
 
 			if (!this.transitionActive && !anyFocusedDeckLink()) {
 				// In this context, mouseout means the mouse pointer is hovering out of a menu, over the overlay. Thus, if the mouseout event is active, then hide the overlay. (And clicking the overlay hides it too.)
-				if (triggeredByClick || this.$store.state.mouseoutEventActive) {
+				if (
+					triggeredByClick ||
+					(this.$store.mouseoutEventActive && !this.$store.mobileView)
+				) {
 					this.transitionActive = true
 					this.$emit('closePopups', true)
 

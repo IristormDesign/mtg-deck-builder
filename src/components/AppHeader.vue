@@ -179,18 +179,19 @@ export default {
 			}
 		})
 
-		document.querySelectorAll('.app-menu > ul > li > a')
-			.forEach((link) => {
-				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
-				link.addEventListener('click', this.closeAllPopups)
+		const appMenuFirstLevelLinks = document.querySelectorAll('.app-menu > ul > li > a')
 
-				// If the user tab-focuses onto another first-level menu link in the app header, then close the Open Deck menu.
-				link.addEventListener('focus', () => {
-					if (this.showDeckMenu && !this.mobileView()) {
-						this.closeAllPopups()
-					}
-				})
+		appMenuFirstLevelLinks.forEach(link => {
+			// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+			link.addEventListener('click', this.closeAllPopups)
+
+			link.addEventListener('focus', () => {
+				// If the user tab-focuses onto another first-level link in the app header menu, then 	close the Open Deck menu.
+				if (this.showDeckMenu && !this.mobileView()) {
+					this.closeAllPopups()
+				}
 			})
+		})
 
 		// Debounce window resizing.
 		window.addEventListener('resize', debounce(this.resizingViewport, 125))
@@ -212,7 +213,6 @@ export default {
 		})
 
 		// Make the app header appear whenever the user scrolls upward.
-		// const appHeader = document.querySelector('.app-header')
 		let previousScrollPos = window.scrollY
 
 		window.onscroll = () => {
@@ -234,6 +234,28 @@ export default {
 		}
 	},
 	methods: {
+		addFocusListenerToClosePopups () {
+			const allLinks = document.querySelectorAll('a, button')
+
+			const listenForFocus = (link) => {
+				link.addEventListener('focus', this.closePopupsOnFocus)
+			}
+
+			for (let i = 0; i < allLinks.length; i++) {
+				if (allLinks[i].matches('.app-menu-toggler')) {
+					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
+				} else if (allLinks[i].matches('.app-menu > ul li:last-child a')) {
+					listenForFocus(allLinks[i + 2]) // The link just AFTER the app menu's last link. (Add `2` instead of `1` for this because a middle link includes the deck menu toggler, which is hidden on mobile viewports.)
+
+					break
+				}
+			}
+		},
+		closePopupsOnFocus () {
+			if (this.showAppMenu) {
+				this.closeAllPopups()
+			}
+		},
 		closeAllPopups () {
 			this.$store.commit('setShowDeckMenu', false)
 			this.$store.commit('setMouseoutEventActive', true)
@@ -246,7 +268,9 @@ export default {
 			}
 		},
 		mobileView () {
-			return window.innerWidth <= 512 // This number must match the CSS media query width.
+			this.$store.commit('setMobileView', window.innerWidth <= 512) // This number must match the CSS media query width.
+
+			return this.$store.state.mobileView
 		},
 		toggleAppMenu () {
 			if (this.showAppMenu) {
@@ -255,6 +279,7 @@ export default {
 			} else {
 				this.showAppMenu = true
 				this.$store.commit('setShowDeckMenu', true)
+				this.addFocusListenerToClosePopups()
 			}
 		},
 		toggleDeckMenu () {
