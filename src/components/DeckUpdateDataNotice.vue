@@ -2,17 +2,17 @@
 	<div v-if="deckDataOutdated" class="wrap">
 		<aside class="outdated-deck-data-notice">
 			<template v-if="!updatingDeckData">
-				<p>⚠ This deck uses an outdated set of card data. Update it to get enhanced app features!</p>
+				<p>⚠ This deck is using an outdated set of card data. Update it to get enhanced app features!</p>
 				<div
 					v-if="!updatingDeckData"
 					class="button-container"
 				>
-					<button @click="allowDataUpdate()">Update</button>
+					<button @click="prepareDataUpdate()">Update</button>
 				</div>
 			</template>
 			<template v-else>
 				<p>Updating now, please wait&hellip;</p>
-				<p>Progress: <strong class="updated-percentage">{{ (totalCardsUpdated / combinedDeckTotals * 100).toFixed(0) }}%</strong></p>
+				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
 			</template>
 		</aside>
 	</div>
@@ -28,66 +28,72 @@ export default {
 	},
 	data () {
 		return {
-			allCardsToUpdate: [],
-			totalCardsUpdated: 0,
+			cardsToUpdate: [],
+			numberOfCardsToIgnore: 0,
+			numberOfCardsUpdated: 0,
 			updatingDeckData: false
 		}
 	},
 	computed: {
-		combinedDeckTotals () {
-			return this.deck.cards.length + this.deck.sideboard.cards.length
-		},
 		deckDataOutdated () {
 			return this.deck.dataVersion < this.$store.state.latestDeckDataVersion
+		},
+		updatedPercent () {
+			return (this.numberOfCardsUpdated / this.cardsToUpdate.length * 100).toFixed(0)
 		}
 	},
 	methods: {
-		allowDataUpdate () {
-			if (this.combinedDeckTotals > 150) {
+		prepareDataUpdate () {
+			if (this.cardsToUpdate > 150) {
 				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
 			} else {
 				this.updatingDeckData = true
 				this.$store.commit('setShowSideboard', false)
 
-				this.gatherAllCards(this.deck)
+				for (const card of this.deck.cards) {
+					this.determineOutdatedCard(card)
+				}
+
+				this.$store.commit('setShowSideboard', true)
+
+				for (const card of this.deck.sideboard.cards) {
+					this.determineOutdatedCard(card)
+				}
+
+				this.updateCardData()
 			}
 		},
-		gatherAllCards (group) {
-			for (const card of group.cards) {
-				this.allCardsToUpdate.push({
+		determineOutdatedCard (card) {
+			const cardIsOutdated = !card.keywords // Any `card` object lacking the `keywords` key is the sign (the only one for now) indicating that a card's data is outdated.
+
+			if (cardIsOutdated) {
+				this.cardsToUpdate.push({
 					gapAfter: card.gapAfter,
 					inSideboard: this.$store.state.showSideboard,
 					name: card.name,
 					qty: card.qty
 				})
 
-				if (this.allCardsToUpdate.length === this.deck.cards.length) { // Once all cards in the main group have been gathered...
-					this.$store.commit('setShowSideboard', true)
-
-					// Now gather the sideboard's cards.
-					this.gatherAllCards(this.deck.sideboard)
-				} else if (this.allCardsToUpdate.length === this.combinedDeckTotals) { // Once all the cards in both the main and sideboard groups have been updated...
-					this.updateCardGroupData()
-				}
+				this.numberOfCardsToIgnore++
 			}
 		},
-		updateCardGroupData () {
-			for (let i = 0; i < this.allCardsToUpdate.length; i++) {
-				const cardData = this.allCardsToUpdate[i]
+		updateCardData () {
+			const cardsTU = this.cardsToUpdate
 
+			for (let i = 0; i < cardsTU.length; i++) {
 				const callback = () => {
-					this.totalCardsUpdated++
+					this.numberOfCardsUpdated++
 
-					if (this.totalCardsUpdated === this.combinedDeckTotals) {
+					if (this.numberOfCardsUpdated === cardsTU.length) {
 						setTimeout(() => {
 							this.$router.go(0) // Reload the page.
-						}, 125)
+						}, 100)
 					}
 				}
 
 				setTimeout(() => {
-					this.axiosRequestName(cardData.name, callback(), cardData)
-				}, (i + 1) * 100)
+					this.axiosRequestName(cardsTU[i].name, callback(), cardsTU[i])
+				}, (i + 1) * 100) // Delay each request so that the Scryfall API doesn't get overloaded
 			}
 		}
 	}
