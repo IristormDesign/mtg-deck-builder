@@ -167,6 +167,11 @@ export default {
 		}
 	},
 	mounted () {
+		// On the app header's initial rendering from opening the page, set its negative `top` value so that it appears to slide down when the user first scrolls upward.
+		const appHeader = document.querySelector('.app-header')
+
+		appHeader.style.top = `-${appHeader.offsetHeight}px`
+
 		// Users can press the "Esc" key to close any popups.
 		document.addEventListener('keyup', (event) => {
 			if (event.key === 'Escape' || event.key === 'Esc') {
