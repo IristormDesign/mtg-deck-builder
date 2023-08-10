@@ -3,7 +3,7 @@
 		<div
 			v-show="popup"
 			class="bg-overlay"
-			@click="hideOverlay(true)"
+			@click="hideOverlay()"
 			@mouseover="hideOverlay()"
 		></div>
 	</transition>
@@ -20,7 +20,7 @@ export default {
 		}
 	},
 	methods: {
-		hideOverlay (triggeredByClick) {
+		hideOverlay () {
 			function anyFocusedDeckLink () {
 				const deckMenuLinks = document.querySelector('.app-header .deck-menu').querySelectorAll('a, button')
 
@@ -33,18 +33,12 @@ export default {
 			}
 
 			if (!this.transitionActive && !anyFocusedDeckLink()) {
-				// In this context, mouseout means the mouse pointer is hovering out of a menu, over the overlay. Thus, if the mouseout event is active, then hide the overlay. (And clicking the overlay hides it too.)
-				if (
-					triggeredByClick ||
-					(this.$store.mouseoutEventActive && !this.$store.mobileView)
-				) {
-					this.transitionActive = true
-					this.$emit('closePopups', true)
+				this.transitionActive = true
+				this.$emit('closePopups', true)
 
-					setTimeout(() => {
-						this.transitionActive = false
-					}, 250) // Equal to transition's duration
-				}
+				setTimeout(() => {
+					this.transitionActive = false
+				}, 250) // Equal to transition's duration
 			}
 		}
 	}

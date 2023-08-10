@@ -19,7 +19,6 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		mobileView: false,
-		mouseoutEventActive: true,
 		pageScrollByAnchors: false,
 		showCard: false,
 		showDeckMenu: false,
@@ -61,9 +60,6 @@ export default new Vuex.Store({
 		},
 		setMobileView (state, payload) {
 			state.mobileView = payload
-		},
-		setMouseoutEventActive (state, payload) {
-			state.mouseoutEventActive = payload
 		},
 		setPageScrollByAnchors (state, payload) {
 			state.pageScrollByAnchors = payload

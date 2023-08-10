@@ -47,10 +47,7 @@
 								<strong>Open Deck:</strong>
 							</div>
 							<div v-show="showDeckMenu" class="hover-shield" />
-							<ul
-								v-show="showDeckMenu"
-								@mouseover="mouseoutEventActiveEffect"
-							>
+							<ul v-show="showDeckMenu">
 								<li v-for="deck in $store.state.decks" :key="deck.name">
 									<router-link
 										v-show="$route.params.deckPath !== deck.path"
@@ -264,7 +261,6 @@ export default {
 		},
 		closeAllPopups () {
 			this.$store.commit('setShowDeckMenu', false)
-			this.$store.commit('setMouseoutEventActive', true)
 
 			if (this.mobileView()) {
 				this.showAppMenu = false
@@ -292,7 +288,6 @@ export default {
 			if (!this.freezeDeckMenu) {
 				if (this.showDeckMenu) {
 					this.$store.commit('setShowDeckMenu', false)
-					this.$store.commit('setMouseoutEventActive', true)
 				} else {
 					this.$store.commit('setShowDeckMenu', true)
 				}
@@ -313,11 +308,6 @@ export default {
 					this.closeAllPopups()
 					break
 				}
-			}
-		},
-		mouseoutEventActiveEffect () {
-			if (!this.$store.state.mouseoutEventActive) {
-				this.$store.commit('setMouseoutEventActive', true)
 			}
 		},
 		resizingViewport () {
