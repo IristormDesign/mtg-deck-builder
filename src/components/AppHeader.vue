@@ -324,10 +324,7 @@ export default {
 		},
 		manualButtonClicked () {
 			if (this.$router.currentRoute.name === 'manual') {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				})
+				window.scrollTo({ top: 0 })
 				history.replaceState('', document.title, window.location.pathname)
 			}
 		}
