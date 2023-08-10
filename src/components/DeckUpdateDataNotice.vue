@@ -11,7 +11,7 @@
 				</div>
 			</template>
 			<template v-else>
-				<p>Updating now, please wait&hellip;</p>
+				<p>Updating now&hellip;</p>
 				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
 			</template>
 		</aside>

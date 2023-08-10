@@ -244,8 +244,14 @@ export default {
 			for (let i = 0; i < allLinks.length; i++) {
 				if (allLinks[i].matches('.app-menu-toggler')) {
 					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
-				} else if (allLinks[i].matches('.app-menu > ul li:last-child a')) {
-					listenForFocus(allLinks[i + 2]) // The link just AFTER the app menu's last link. (Add `2` instead of `1` for this because a middle link includes the deck menu toggler, which is hidden on mobile viewports.)
+
+					for (let j = i; j < allLinks.length; j++) {
+						if (allLinks[j].matches('.app-menu > ul > li:last-child a')) {
+							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
+
+							break
+						}
+					}
 
 					break
 				}
