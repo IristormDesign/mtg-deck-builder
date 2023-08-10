@@ -238,11 +238,11 @@ export default {
 				link.addEventListener('focus', this.closePopupsOnFocus)
 			}
 
-			for (let i = 0; i < allLinks.length; i++) {
+			for (let i = 1; i < allLinks.length; i++) {
 				if (allLinks[i].matches('.app-menu-toggler')) {
 					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
 
-					for (let j = i; j < allLinks.length; j++) {
+					for (let j = (i + 3); j < allLinks.length; j++) {
 						if (allLinks[j].matches('.app-menu > ul > li:last-child a')) {
 							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
 
