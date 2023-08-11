@@ -136,19 +136,22 @@ export default {
 		}
 	},
 	watch: {
-		showDeckMenu (val) {
-			if (val) {
+		showDeckMenu (show) {
+			if (show) {
 				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
 				this.showAppMenu = true
 			}
 		},
-		stickAppHeader (val) {
+		stickAppHeader (isSticky) {
+			const root = document.documentElement
 			const appHeader = document.querySelector('.app-header')
 
-			if (val) {
+			if (isSticky) {
+				root.style.setProperty('--header-top', '0px')
 				appHeader.style.top = '0px'
 				appHeader.classList.add('sticky')
 			} else {
+				root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
 				appHeader.style.top = `-${appHeader.offsetHeight}px`
 
 				if (window.scrollY === 0) {
@@ -156,7 +159,7 @@ export default {
 				} else {
 					setTimeout(() => {
 						appHeader.classList.remove('sticky')
-					}, 250) // Match this timeout duration with .app-header's CSS transition duration.
+					}, 251) // Match this timeout duration with .app-header's CSS transition duration, plus one millisecond.
 				}
 			}
 		}

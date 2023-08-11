@@ -1,6 +1,9 @@
 .card-display {
 	position: sticky;
-	top: divide($lhse, 2);
+	top: calc(
+		#{$lhse*.5} + var(--header-height) + var(--header-top)
+	);
+	transition: top $transition-duration-standard ease;
 	width: 25vw;
 	height: 680px * .75;
 	max-height: 100vh;

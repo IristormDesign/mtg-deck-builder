@@ -1,16 +1,20 @@
+:root {
+	--header-height: #{$height-app-header-short};
+	--header-top: calc(var(--header-height) * -1); // Multiplying a value by -1 is the only way to get a negative value with CSS custom properties.
+}
 .app-header {
 	background: $color-mythic-dim;
 	color: lighten($color-mythic-dim, 33.33%);
 	border: solid darken($color-mythic-dim, 12.5%);
 	border-width: 1px 0;
 	z-index: index($layers, app-header);
-	height: $height-app-header-short;
+	height: var(--header-height);
 	box-shadow: 0 1px 0 rgba(#fff, .0833);
 	transition: all $transition-duration-standard ease;
+	// `top` property gets set by JavaScript in AppHeader.vue
 
 	&.sticky {
 		position: sticky;
-		top: 0;
 		left: 0;
 		right: 0;
 		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .6667);
@@ -189,9 +193,10 @@
 	}
 }
 @media (max-width: $min-width-app) {
+	:root {
+		--header-height: #{$height-app-header-tall};
+	}
 	.app-header {
-		height: $height-app-header-tall;
-
 		.wrap {
 			flex-wrap: wrap;
 			gap: divide($lhse, 3);
@@ -211,8 +216,10 @@
 	}
 }
 @media (max-width: 512px) { // This max-width must match JavaScript method mobileView() in AppHeader.vue.
+	:root {
+		--header-height: #{$height-app-header-medium};
+	}
 	.app-header {
-		height: $height-app-header-medium;
 		padding-top: $lhse*.25;
 		padding-bottom: $lhse*.25;
 
