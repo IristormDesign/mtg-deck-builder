@@ -209,7 +209,7 @@ export default {
 		deckMenuMOArea.addEventListener('mouseover', () => {
 			if (!deckMenuToggler.hasAttribute('disabled')) {
 				deckMenuMOTimer = setTimeout(() => {
-					this.toggleDeckMenu()
+					this.toggleDeckMenu(true)
 				}, 250)
 			}
 		})
@@ -269,6 +269,7 @@ export default {
 		},
 		closeAllPopups () {
 			this.$store.commit('setShowDeckMenu', false)
+			this.$store.commit('setOverlayHoverEnabled', false)
 
 			if (this.mobileView()) {
 				this.showAppMenu = false
@@ -292,11 +293,17 @@ export default {
 				this.addFocusListenerToClosePopups()
 			}
 		},
-		toggleDeckMenu () {
+		toggleDeckMenu (triggeredByHover) {
 			if (!this.freezeDeckMenu) {
 				if (this.showDeckMenu) {
+					this.$store.commit('setOverlayHoverEnabled', false)
 					this.$store.commit('setShowDeckMenu', false)
 				} else {
+					if (triggeredByHover) {
+						this.$store.commit('setOverlayHoverEnabled', true)
+					} else {
+						this.$store.commit('setOverlayHoverEnabled', false)
+					}
 					this.$store.commit('setShowDeckMenu', true)
 				}
 

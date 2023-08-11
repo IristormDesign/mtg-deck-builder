@@ -111,6 +111,7 @@ export default {
 				.scrollIntoView({ behavior: 'smooth' })
 		},
 		homeOpenDeckButton () {
+			this.$store.commit('setOverlayHoverEnabled', false)
 			this.$store.commit('setShowDeckMenu', true)
 			this.$store.commit('setStickAppHeader', true)
 		}

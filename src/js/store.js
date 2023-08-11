@@ -15,6 +15,7 @@ export default new Vuex.Store({
 	state: {
 		decks: [],
 		deletedDeckName: null,
+		overlayHoverEnabled: false,
 		latestDeckDataVersion: 2,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
@@ -54,6 +55,9 @@ export default new Vuex.Store({
 		},
 		setDeletedDeckName (state, payload) {
 			state.deletedDeckName = payload
+		},
+		setOverlayHoverEnabled (state, payload) {
+			state.overlayHoverEnabled = payload
 		},
 		setLoadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
