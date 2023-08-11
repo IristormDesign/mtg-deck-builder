@@ -45,15 +45,15 @@ export default {
 		deckObject () {
 			return this.deck
 		},
-		deckSortValue () {
+		deckSortAttribute () {
 			return this.deck.sortBy
 		}
 	},
 	watch: {
-		deckSortValue (value) {
+		deckSortAttribute (attribute) {
 			// Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.)
-			if (value === '') {
-				this.sortMenu = value
+			if (attribute === '') {
+				this.sortMenu = attribute
 			}
 		}
 	},
@@ -150,15 +150,25 @@ export default {
 					const regexInstant = /\bInstant\b/
 					const regexLand = /\bLand\b/
 
-					if (regexCreature.test(cardType)) return 'creature'
-					else if (regexPlaneswalker.test(cardType)) return 'planeswalker'
-					else if (regexBattle.test(cardType)) return 'battle'
-					else if (regexEnchantment.test(cardType)) return 'enchantment'
-					else if (regexArtifact.test(cardType)) return 'artifact'
-					else if (regexSorcery.test(cardType)) return 'sorcery'
-					else if (regexInstant.test(cardType)) return 'instant'
-					else if (regexLand.test(cardType)) return 'land'
-					else return 'other'
+					if (regexCreature.test(cardType)) {
+						return 'creature'
+					} else if (regexPlaneswalker.test(cardType)) {
+						return 'planeswalker'
+					} else if (regexBattle.test(cardType)) {
+						return 'battle'
+					} else if (regexEnchantment.test(cardType)) {
+						return 'enchantment'
+					} else if (regexArtifact.test(cardType)) {
+						return 'artifact'
+					} else if (regexSorcery.test(cardType)) {
+						return 'sorcery'
+					} else if (regexInstant.test(cardType)) {
+						return 'instant'
+					} else if (regexLand.test(cardType)) {
+						return 'land'
+					} else {
+						return 'other'
+					}
 				}
 
 				cards.sort((a, b) => {
