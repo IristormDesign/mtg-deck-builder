@@ -55,10 +55,10 @@
 		margin: ($lhse*.0625) 1em;
 		margin-left: 0;
 	}
-	.app-menu-toggler {
+	.header-menu-toggler {
 		display: none;
 	}
-	.app-menu {
+	.header-menu {
 		width: 100%;
 		max-width: max-content;
 
@@ -206,10 +206,10 @@
 		.app-title {
 			margin: 0 auto;
 		}
-		.app-menu-positioner {
+		.header-menu-positioner {
 			width: 100%;
 		}
-		.app-menu {
+		.header-menu {
 			max-width: $max-width-content*.75;
 			margin: 0 auto;
 		}
@@ -243,12 +243,12 @@
 			margin-right: $lhse*.125;
 			margin-top: $lhse*.125;
 		}
-		.app-menu-positioner {
+		.header-menu-positioner {
 			position: relative;	
 			z-index: index($layers, app-menu-toggler);
 			margin-top: -$lhse*1.125;
 		}
-		.app-menu-toggler {
+		.header-menu-toggler {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -256,7 +256,7 @@
 			font-size: 87.5%;
 			z-index: 1;
 		}
-		.app-menu {
+		.header-menu {
 			position: absolute;
 			top: $lhse*1.8;
 			right: 0;

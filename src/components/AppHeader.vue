@@ -5,16 +5,16 @@
 				<h1><a href="/">MTG Deck Builder</a></h1>
 				<div class="by-iristorm">by <a href="https://iristormdesign.com/" target="_blank">Iristorm Design</a></div>
 			</div>
-			<div class="app-menu-positioner">
+			<div class="header-menu-positioner">
 				<button
-					class="app-menu-toggler"
-					@click="toggleAppMenu()"
+					class="header-menu-toggler"
+					@click="toggleHeaderMenu()"
 				>
 					Menu
 				</button>
 
-				<nav v-show="showAppMenu" class="app-menu">
-					<div v-show="showAppMenu" class="hover-shield" />
+				<nav v-show="showHeaderMenu" class="header-menu">
+					<div v-show="showHeaderMenu" class="hover-shield" />
 					<ul>
 						<li>
 							<router-link
@@ -100,7 +100,7 @@ export default {
 	data () {
 		return {
 			freezeDeckMenu: false,
-			showAppMenu: true
+			showHeaderMenu: true
 		}
 	},
 	computed: {
@@ -132,14 +132,14 @@ export default {
 			}
 		},
 		showingAnyPopup () {
-			return this.showDeckMenu || (this.mobileView() && this.showAppMenu)
+			return this.showDeckMenu || (this.mobileView() && this.showHeaderMenu)
 		}
 	},
 	watch: {
 		showDeckMenu (show) {
 			if (show) {
 				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
-				this.showAppMenu = true
+				this.showHeaderMenu = true
 			}
 		},
 		stickAppHeader (isSticky) {
@@ -166,7 +166,7 @@ export default {
 	},
 	created () {
 		if (this.mobileView()) {
-			this.showAppMenu = false
+			this.showHeaderMenu = false
 		}
 	},
 	mounted () {
@@ -201,9 +201,9 @@ export default {
 			})
 		},
 		closeMenusAutomatically () {
-			const appMenuFirstLevelLinks = document.querySelectorAll('.app-menu > ul > li > a')
+			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
 
-			appMenuFirstLevelLinks.forEach(link => {
+			headerMenuFirstLevelLinks.forEach(link => {
 				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
 				link.addEventListener('click', this.closeAllPopups)
 
@@ -266,11 +266,11 @@ export default {
 			}
 
 			for (let i = 1; i < allLinks.length; i++) {
-				if (allLinks[i].matches('.app-menu-toggler')) {
+				if (allLinks[i].matches('.header-menu-toggler')) {
 					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
 
 					for (let j = (i + 3); j < allLinks.length; j++) {
-						if (allLinks[j].matches('.app-menu > ul > li:last-child a')) {
+						if (allLinks[j].matches('.header-menu > ul > li:last-child a')) {
 							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
 
 							break
@@ -282,7 +282,7 @@ export default {
 			}
 		},
 		closePopupsOnFocus () {
-			if (this.showAppMenu) {
+			if (this.showHeaderMenu) {
 				this.closeAllPopups()
 			}
 		},
@@ -291,7 +291,7 @@ export default {
 			this.$store.commit('setOverlayHoverEnabled', false)
 
 			if (this.mobileView()) {
-				this.showAppMenu = false
+				this.showHeaderMenu = false
 			}
 			if (this.stickAppHeader) {
 				this.$store.commit('setStickAppHeader', false)
@@ -302,12 +302,12 @@ export default {
 
 			return this.$store.state.mobileView
 		},
-		toggleAppMenu () {
-			if (this.showAppMenu) {
-				this.showAppMenu = false
+		toggleHeaderMenu () {
+			if (this.showHeaderMenu) {
+				this.showHeaderMenu = false
 				this.closeAllPopups()
 			} else {
-				this.showAppMenu = true
+				this.showHeaderMenu = true
 				this.$store.commit('setShowDeckMenu', true)
 				this.addFocusListenerToClosePopups()
 			}
@@ -334,12 +334,12 @@ export default {
 				}, 500)
 			}
 		},
-		closeAppMenuWhenFocusLost () {
-			const appMenuLinks = document.querySelectorAll(
-				'.app-menu-toggler, .app-menu a, .app-menu button'
+		closeHeaderMenuWhenFocusLost () {
+			const headerMenuLinks = document.querySelectorAll(
+				'.header-menu-toggler, .header-menu a, .header-menu button'
 			)
 
-			for (const link of appMenuLinks) {
+			for (const link of headerMenuLinks) {
 				if (link === document.activeElement) {
 					this.closeAllPopups()
 					break
@@ -348,9 +348,9 @@ export default {
 		},
 		resizingViewport () {
 			if (this.mobileView()) {
-				this.showAppMenu = false
+				this.showHeaderMenu = false
 			} else {
-				this.showAppMenu = true
+				this.showHeaderMenu = true
 			}
 		},
 		manualButtonClicked () {
