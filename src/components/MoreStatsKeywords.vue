@@ -33,40 +33,49 @@ export default {
 			keywordCounts: {}
 		}
 	},
-	mounted () {
-		const allKeywords = this.allKeywords
-		const keywordNames = this.keywordNames
-		const keywordCounts = this.keywordCounts
-
-		this.deck.cards.forEach(card => {
-			if (card.keywords) { // This check is needed to potentially prevent an error caused by non-updated cards that lack the `keywords` attribute.
-				card.keywords.forEach(keyword => {
-					for (let i = 0; i < card.qty; i++) {
-						allKeywords.push(keyword)
-					}
-				})
-			}
-		})
-
-		allKeywords.forEach(keyword => {
-			if (keywordNames.indexOf(keyword) < 0) {
-				keywordNames.push(keyword)
-			}
-		})
-
-		keywordNames.sort()
-
-		keywordNames.forEach(item => {
-			keywordCounts[item] = 0
-		})
-
-		allKeywords.forEach(keyword => {
-			for (const item in keywordCounts) {
-				if (keyword === item) {
-					keywordCounts[item]++
+	created () {
+		this.findAllKeywords()
+		this.setUpKeywordCounts()
+		this.countKeywords()
+	},
+	methods: {
+		findAllKeywords () {
+			this.deck.cards.forEach(card => {
+				if (card.keywords) { // This check is needed to potentially prevent an error caused by non-updated cards that lack the `keywords` attribute.
+					card.keywords.forEach(keyword => {
+						for (let i = 0; i < card.qty; i++) {
+							this.allKeywords.push(keyword)
+						}
+					})
 				}
-			}
-		})
+			})
+		},
+		setUpKeywordCounts () {
+			const kwNames = this.keywordNames
+
+			this.allKeywords.forEach(keyword => {
+				if (kwNames.indexOf(keyword) < 0) {
+					kwNames.push(keyword)
+				}
+			})
+
+			kwNames.sort()
+		},
+		countKeywords () {
+			const kwCounts = this.keywordCounts
+
+			this.keywordNames.forEach(name => {
+				kwCounts[name] = 0
+			})
+
+			this.allKeywords.forEach(keyword => {
+				for (const item in kwCounts) {
+					if (keyword === item) {
+						kwCounts[item]++
+					}
+				}
+			})
+		}
 	}
 }
 </script>

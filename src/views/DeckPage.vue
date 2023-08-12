@@ -44,13 +44,11 @@ export default {
 	},
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('setShowSideboard', false)
-
 		next()
 		this.prepareDecksWithOutdatedData()
 	},
 	created () {
 		this.$store.commit('setShowSideboard', false)
-
 		this.prepareDecksWithOutdatedData()
 	},
 	methods: {

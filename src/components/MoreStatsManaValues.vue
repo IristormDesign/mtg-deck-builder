@@ -35,38 +35,47 @@ export default {
 			cmcCounts: {}
 		}
 	},
-	mounted () {
-		const allCmc = this.allCmc
-		const cmcItems = this.cmcItems
-		const cmcCounts = this.cmcCounts
-
-		this.deck.cards.forEach(card => {
-			if (card.mana !== '') { // Exclude land cards
-				for (let i = 0; i < card.qty; i++) {
-					allCmc.push(card.cmc)
+	created () {
+		this.findAllCMCs()
+		this.setUpCmcCounts()
+		this.countCMCs()
+	},
+	methods: {
+		findAllCMCs () {
+			this.deck.cards.forEach(card => {
+				if (card.mana !== '') { // Exclude land cards
+					for (let i = 0; i < card.qty; i++) {
+						this.allCmc.push(card.cmc)
+					}
 				}
-			}
-		})
+			})
+		},
+		setUpCmcCounts () {
+			const cmcItems = this.cmcItems
 
-		allCmc.forEach(cmc => {
-			if (cmcItems.indexOf(cmc) < 0) {
-				cmcItems.push(cmc)
-			}
-		})
-
-		cmcItems.sort((a, b) => a - b)
-
-		cmcItems.forEach(item => {
-			cmcCounts[item] = 0
-		})
-
-		allCmc.forEach(cmc => {
-			for (const item in cmcCounts) {
-				if (String(cmc) === item) {
-					cmcCounts[item]++
+			this.allCmc.forEach(cmc => {
+				if (cmcItems.indexOf(cmc) < 0) {
+					cmcItems.push(cmc)
 				}
-			}
-		})
+			})
+
+			cmcItems.sort((a, b) => a - b)
+		},
+		countCMCs () {
+			const cmcCounts = this.cmcCounts
+
+			this.cmcItems.forEach(item => {
+				cmcCounts[item] = 0
+			})
+
+			this.allCmc.forEach(cmc => {
+				for (const item in cmcCounts) {
+					if (String(cmc) === item) {
+						cmcCounts[item]++
+					}
+				}
+			})
+		}
 	}
 }
 </script>

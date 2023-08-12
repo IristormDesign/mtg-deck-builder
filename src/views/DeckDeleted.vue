@@ -14,16 +14,20 @@
 <script>
 export default {
 	created () {
-		const store = this.$store
-		const remainingDecks = store.state.decks.filter(
-			deck => deck.name !== store.state.deletedDeckName
-		)
-
-		store.commit('setDecks', remainingDecks)
+		this.removeDeckFromDecks()
 	},
 	destroyed () {
 		// When leaving this page, reset the store variable `deletedDeckName` so that router functions work properly.
 		this.$store.commit('setDeletedDeckName', null)
+	},
+	methods: {
+		removeDeckFromDecks () {
+			const remainingDecks = this.$store.state.decks.filter(
+				deck => deck.name !== this.$store.state.deletedDeckName
+			)
+
+			this.$store.commit('setDecks', remainingDecks)
+		}
 	}
 }
 </script>

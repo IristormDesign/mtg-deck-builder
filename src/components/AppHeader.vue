@@ -170,75 +170,94 @@ export default {
 		}
 	},
 	mounted () {
-		// On the app header's initial rendering from opening the page, set its negative `top` value so that it appears to slide down when the user first scrolls upward.
-		const appHeader = document.querySelector('.app-header')
-
-		appHeader.style.top = `-${appHeader.offsetHeight}px`
-
-		// Users can press the "Esc" key to close any popups.
-		document.addEventListener('keyup', (event) => {
-			if (event.key === 'Escape' || event.key === 'Esc') {
-				if (this.showingAnyPopup) {
-					this.closeAllPopups()
-				}
-			}
-		})
-
-		const appMenuFirstLevelLinks = document.querySelectorAll('.app-menu > ul > li > a')
-
-		appMenuFirstLevelLinks.forEach(link => {
-			// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
-			link.addEventListener('click', this.closeAllPopups)
-
-			link.addEventListener('focus', () => {
-				// If the user tab-focuses onto another first-level link in the app header menu, then 	close the Open Deck menu.
-				if (this.showDeckMenu && !this.mobileView()) {
-					this.closeAllPopups()
-				}
-			})
-		})
+		this.setAppHeaderTop()
+		this.letEscKeyClosePopups()
+		this.closeMenusAutomatically()
+		this.applyHoverEffectToOpenDeckButton()
+		this.showAppHeaderOnUpwardScroll()
 
 		// Debounce window resizing.
 		window.addEventListener('resize', debounce(this.resizingViewport, 125))
-
-		// Add hover interaction with the Open Deck button.
-		const deckMenuToggler = document.querySelector('.deck-menu-toggler')
-		const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
-		let deckMenuMOTimer
-
-		deckMenuMOArea.addEventListener('mouseover', () => {
-			if (!deckMenuToggler.hasAttribute('disabled')) {
-				deckMenuMOTimer = setTimeout(() => {
-					this.toggleDeckMenu(true)
-				}, 250)
-			}
-		})
-		deckMenuMOArea.addEventListener('mouseout', () => {
-			clearTimeout(deckMenuMOTimer)
-		})
-
-		// Make the app header appear whenever the user scrolls upward.
-		let previousScrollPos = window.scrollY
-
-		window.onscroll = () => {
-			const currentScrollPos = window.scrollY
-
-			if (
-				currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
-				( // ...if the user scrolls the page downward and the decks menu isn't open...
-					previousScrollPos <= currentScrollPos &&
-					!this.showDeckMenu
-				)
-			) {
-				this.$store.commit('setStickAppHeader', false)
-			} else if (!this.$store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
-				this.$store.commit('setStickAppHeader', true)
-			}
-
-			previousScrollPos = currentScrollPos
-		}
 	},
 	methods: {
+		/**
+		 * Set the app header's `top` value so that it can appear to slide down when the user first scrolls upward.
+		 */
+		setAppHeaderTop () {
+			const appHeader = document.querySelector('.app-header')
+
+			appHeader.style.top = `-${appHeader.offsetHeight}px`
+		},
+		/**
+		 * Users can press the "Esc" key to close any popups.
+		 */
+		letEscKeyClosePopups () {
+			document.addEventListener('keyup', (event) => {
+				if (event.key === 'Escape' || event.key === 'Esc') {
+					if (this.showingAnyPopup) {
+						this.closeAllPopups()
+					}
+				}
+			})
+		},
+		closeMenusAutomatically () {
+			const appMenuFirstLevelLinks = document.querySelectorAll('.app-menu > ul > li > a')
+
+			appMenuFirstLevelLinks.forEach(link => {
+				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+				link.addEventListener('click', this.closeAllPopups)
+
+				link.addEventListener('focus', () => {
+					// If the user tab-focuses onto another first-level link in the app header menu, then 	close the Open Deck menu.
+					if (this.showDeckMenu && !this.mobileView()) {
+						this.closeAllPopups()
+					}
+				})
+			})
+		},
+		/**
+		 * Add hover interaction with the Open Deck button.
+		 */
+		applyHoverEffectToOpenDeckButton () {
+			const deckMenuToggler = document.querySelector('.deck-menu-toggler')
+			const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
+			let deckMenuMOTimer
+
+			deckMenuMOArea.addEventListener('mouseover', () => {
+				if (!deckMenuToggler.hasAttribute('disabled')) {
+					deckMenuMOTimer = setTimeout(() => {
+						this.toggleDeckMenu(true)
+					}, 250)
+				}
+			})
+			deckMenuMOArea.addEventListener('mouseout', () => {
+				clearTimeout(deckMenuMOTimer)
+			})
+		},
+		/**
+		 * Make the app header appear whenever the user scrolls upward.
+		 */
+		showAppHeaderOnUpwardScroll () {
+			let previousScrollPos = window.scrollY
+
+			window.onscroll = () => {
+				const currentScrollPos = window.scrollY
+
+				if (
+					currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
+					( // ...if the user scrolls the page downward and the decks menu isn't open...
+						previousScrollPos <= currentScrollPos &&
+						!this.showDeckMenu
+					)
+				) {
+					this.$store.commit('setStickAppHeader', false)
+				} else if (!this.$store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
+					this.$store.commit('setStickAppHeader', true)
+				}
+
+				previousScrollPos = currentScrollPos
+			}
+		},
 		addFocusListenerToClosePopups () {
 			const allLinks = document.querySelectorAll('a, button')
 

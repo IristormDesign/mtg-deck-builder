@@ -72,25 +72,29 @@ import ManualAppDevelopment from '@/components/manual-chapters/ManualAppDevelopm
 export default {
 	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualMoreStatsPages, ManualStorageOfDeckData, ManualAppDevelopment },
 	mounted () {
-		const manualLinks = document.querySelectorAll('.manual-page a')
-
-		manualLinks.forEach(link => {
-			link.addEventListener('click', (event) => {
-				const regexManualSectionLink = /^#.*/ // A substring beginning with `#`.
-
-				if (regexManualSectionLink.test(event.target.hash)) {
-					const targetedSection = document.querySelector(event.target.hash)
-
-					event.preventDefault()
-					targetedSection.scrollIntoView({ behavior: 'smooth' })
-					this.$store.commit('setPageScrollByAnchors', true)
-
-					setTimeout(() => {
-						this.$store.commit('setPageScrollByAnchors', false)
-					}, 1000) // Duration should be equal to the amount of time the browser scrolls the page between anchors.
-				}
+		this.modifyManualLinkEffects()
+	},
+	methods: {
+		modifyManualLinkEffects () {
+			document.querySelectorAll('.manual-page a').forEach(link => {
+				link.addEventListener('click', this.manualLinkClickEvent)
 			})
-		})
+		},
+		manualLinkClickEvent (event) {
+			const regexManualSectionLink = /^#.*/ // A string beginning with `#`.
+
+			if (regexManualSectionLink.test(event.target.hash)) {
+				const targetedSection = document.querySelector(event.target.hash)
+
+				event.preventDefault()
+				targetedSection.scrollIntoView({ behavior: 'smooth' })
+				this.$store.commit('setPageScrollByAnchors', true)
+
+				setTimeout(() => {
+					this.$store.commit('setPageScrollByAnchors', false)
+				}, 1000) // Duration should be equal to the amount of time the browser scrolls the page between anchors.
+			}
+		}
 	}
 }
 </script>

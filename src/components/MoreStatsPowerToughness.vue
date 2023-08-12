@@ -52,32 +52,35 @@ export default {
 			}
 		}
 	},
-	mounted () {
-		const onlyCardsWithPT = this.deck.cards.filter(
-			card => card.toughness // Get only the cards that have power/toughness properties, but specifically toughness. If a card has the toughness property then it's assumed to have the power property too.
-		)
-
-		if (onlyCardsWithPT.length > 0) {
-			const power = this.power
-			const toughness = this.toughness
-
-			power.greatest = 0
-			toughness.greatest = 0
-			power.average = 0
-			toughness.average = 0
-			power.least = Infinity
-			toughness.least = Infinity
-
-			onlyCardsWithPT.forEach(card => {
-				this.determinePTStats(card, 'power')
-				this.determinePTStats(card, 'toughness')
-			})
-
-			this.calculateAverage('power')
-			this.calculateAverage('toughness')
-		}
+	created () {
+		this.setUpPTStats()
 	},
 	methods: {
+		setUpPTStats () {
+			const cardsWithPT = this.deck.cards.filter(
+				card => card.toughness // Find only the cards that have the toughness attribute. If a card has it, then it'd be paired with the power attribute too.
+			)
+
+			if (cardsWithPT.length > 0) {
+				const power = this.power
+				const toughness = this.toughness
+
+				power.greatest = 0
+				toughness.greatest = 0
+				power.average = 0
+				toughness.average = 0
+				power.least = Infinity
+				toughness.least = Infinity
+
+				cardsWithPT.forEach(card => {
+					this.determinePTStats(card, 'power')
+					this.determinePTStats(card, 'toughness')
+				})
+
+				this.calculateAverage('power')
+				this.calculateAverage('toughness')
+			}
+		},
 		determinePTStats (card, pT) {
 			const pTNum = Number(card[pT]) // The power/toughness data is originally received as a string type, so covert it to a number type.
 			const pTData = this[pT]

@@ -49,16 +49,21 @@ export default {
 		}
 	},
 	mounted () {
-		// Hide the file input element and make the Open File button gain its functionality.
-		const openFileButton = document.getElementById('file-btn')
-		const fileInput = document.getElementById('data-file')
-
-		openFileButton.addEventListener('click', () => {
-			fileInput.click()
-		})
-		fileInput.addEventListener('change', this.importDeckData)
+		this.hideFileInput()
 	},
 	methods: {
+		/**
+		 * Hide the file input element and make the Open File button gain its functionality.
+		 */
+		hideFileInput () {
+			const openFileButton = document.getElementById('file-btn')
+			const fileInput = document.getElementById('data-file')
+
+			openFileButton.addEventListener('click', () => {
+				fileInput.click()
+			})
+			fileInput.addEventListener('change', this.importDeckData)
+		},
 		submitDeckName () {
 			let name = this.deckNameInput.trim()
 

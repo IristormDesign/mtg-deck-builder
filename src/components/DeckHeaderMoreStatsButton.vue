@@ -28,19 +28,31 @@ export default {
 		deck: Object
 	},
 	mounted () {
-		const moreStatsButton = document.querySelector('.more-stats-button a')
+		this.applyClickEffect()
+	},
+	methods: {
+		/**
+		 * `router-link` elements don't work with Vue's `@click` directive, so a standard `addEventListener` function has to be used instead.
+		 */
+		applyClickEffect () {
+			const moreStatsButton = document.querySelector('.more-stats-button a')
 
-		if (moreStatsButton) { // This check is needed to prevent an error whenever the More Stats button is an actual `<button>` element (though a disabled one) rather than an `<a>`.
-			moreStatsButton.addEventListener('click', () => {
-				const article = document.querySelector('.more-stats h3')
+			if (moreStatsButton) { // This check is needed to prevent an error whenever the More Stats button is an actual `<button>` element (though a disabled one) rather than an `<a>`.
+				moreStatsButton.addEventListener('click', this.scrollDownToMoreStats)
+			}
+		},
+		scrollDownToMoreStats () {
+			console.log('😲')
 
-				if (article) {
-					article.scrollIntoView({
-						behavior: 'smooth'
-					})
-				}
-			})
+			const article = document.querySelector('.more-stats h3')
+
+			if (article) {
+				article.scrollIntoView({
+					behavior: 'smooth'
+				})
+			}
 		}
+
 	}
 }
 </script>
