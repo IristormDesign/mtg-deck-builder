@@ -42,8 +42,6 @@ export default {
 			}
 		},
 		scrollDownToMoreStats () {
-			console.log('😲')
-
 			const article = document.querySelector('.more-stats h3')
 
 			if (article) {

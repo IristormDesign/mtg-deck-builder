@@ -314,16 +314,18 @@ export default {
 		},
 		toggleDeckMenu (triggeredByHover) {
 			if (!this.freezeDeckMenu) {
+				const store = this.$store
+
 				if (this.showDeckMenu) {
-					this.$store.commit('setOverlayHoverEnabled', false)
-					this.$store.commit('setShowDeckMenu', false)
+					store.commit('setOverlayHoverEnabled', false)
+					store.commit('setShowDeckMenu', false)
 				} else {
 					if (triggeredByHover) {
-						this.$store.commit('setOverlayHoverEnabled', true)
+						store.commit('setOverlayHoverEnabled', true)
 					} else {
-						this.$store.commit('setOverlayHoverEnabled', false)
+						store.commit('setOverlayHoverEnabled', false)
 					}
-					this.$store.commit('setShowDeckMenu', true)
+					store.commit('setShowDeckMenu', true)
 				}
 
 				this.freezeDeckMenu = true
