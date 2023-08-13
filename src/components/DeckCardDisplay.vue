@@ -8,9 +8,6 @@
 			>
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<a :key="card.name" :class="cardColorClass" :href="card.link" target="_blank">
-						<div class="loading-indicator">
-							Loading&hellip;
-						</div>
 						<img :src="card.img" width="488" height="680" :alt="card.name" />
 					</a>
 				</transition>
