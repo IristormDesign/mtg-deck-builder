@@ -1,3 +1,32 @@
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes card-fan-in {
+	0% {
+		opacity: 0;
+		transform: rotate(-5.625deg) translateX(-$lhse*6) translateY(-$lhse) scale(1.0625);
+	}
+	37.5% {
+		opacity: 1;
+	}
+}
+@keyframes overshadowed {
+	0% {
+		filter: brightness(100%);
+	}
+	100% {
+		filter: brightness(25%);
+	}
+}
+
 .card-display {
 	position: sticky;
 	top: calc(
@@ -7,11 +36,25 @@
 	width: 25vw;
 	height: 680px * .75;
 	max-height: 100vh;
+	z-index: index($layers, card-overlay);
 
 	.card-display-container {
 		display: flex;
 		justify-content: flex-end;
-		filter: drop-shadow(-.6667px 2px 1px rgba(#000, .25));
+		filter:
+			$drop-shadow-card-image-edge
+			drop-shadow(-.6667px 2px 1px rgba(#000, .25))
+		;
+		transition: filter $transition-duration-card-image-hover-fast ease;
+
+		&:has(a:hover),
+		&:has(a:focus) {
+			filter:
+				$drop-shadow-card-image-edge
+				drop-shadow(0 $lhse*.5 $lhse rgba(#000, .5))
+			;
+			transition-duration: $transition-duration-card-image-hover-slow;
+		}
 	}
 	a {
 		position: absolute;
@@ -21,9 +64,20 @@
 		box-shadow: inset 0 0 0 12px #000; // Black card border without card image
 		max-width: 488px * .75; // Pixel value equal to actual width of card images.
 		max-height: 680px * .75; // Pixel value equal to actual height of card images.
+		transition: $transition-duration-card-image-hover-fast ease;
+		transition-property: transform, filter;
 
-		&:focus-visible {
-			filter: brightness(125%);
+		&:hover,
+		&:focus {
+			transform:
+				scale(1.3333)
+				translate($lhse*1.3333, $lhse*1.6667)
+			;
+			transition-duration: $transition-duration-card-image-hover-slow;
+		}
+		&:active {
+			filter: brightness(120%);
+			transition-duration: 0s;
 		}
 		&.land {
 			background: desaturate(darken($color-frame-land, 40%), 0%);
@@ -63,18 +117,6 @@
 		font-style: italic;
 		color: #fff;
 		font-size: 112.5%;
-		
-		@keyframes fade-in {
-			0% {
-				opacity: 0;
-			}
-			50% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
 	}
 	img {
 		display: block;
@@ -106,24 +148,19 @@ $animation-duration-card-browse: .375s;
 	animation-fill-mode: backwards;
 }
 
-@keyframes card-fan-in {
-	0% {
-		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*6) translateY(-$lhse) scale(1.0625);
-	}
-	37.5% {
-		opacity: 1;
-	}
-}
-@keyframes overshadowed {
-	0% {
-		filter: brightness(100%);
-	}
-	100% {
-		filter: brightness(25%);
+@media (min-width: ($max-width-app*.8333)) { // Note this media query is for MIN-width, not max-width.
+	.card-display {
+		a {
+			&:hover,
+			&:focus {
+				transform:
+					scale(1.2)
+					translate(0, $lhse*1.6)
+				;
+			}
+		}
 	}
 }
-
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-display {
 		width: 50%;
@@ -143,10 +180,21 @@ $animation-duration-card-browse: .375s;
 			justify-content: center;
 			align-items: center;
 			filter: none;
+			transition-duration: 0s;
+			
+			&:has(a:hover),
+			&:has(a:focus) {
+				filter: none;
+			}
 		}
 		a {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
+
+			&:hover,
+			&:focus {
+				transform: none;
+			}
 		}
 		img {
 			max-height: calc(100vh - $lhse*.5);
