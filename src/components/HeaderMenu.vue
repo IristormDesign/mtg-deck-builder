@@ -241,11 +241,11 @@ export default {
 		},
 		toggleHeaderMenu () {
 			if (this.showHeaderMenu) {
-				this.showHeaderMenu = false
 				this.closeAllPopups()
 			} else {
 				this.showHeaderMenu = true
 				this.$store.commit('setShowDeckMenu', true)
+				this.$store.commit('setOverlayHoverEnabled', false)
 				this.addFocusListenerToClosePopups()
 			}
 		},
