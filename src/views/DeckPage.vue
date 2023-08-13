@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import getActiveDeck from '@/mixins/getActiveDeck.js'
 import DeckName from '@/components/DeckHeaderDeckName.vue'
 import DeckColors from '@/components/DeckHeaderDeckColors.vue'
 import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
@@ -33,6 +32,7 @@ import CardNames from '@/components/DeckHeaderCardNames.vue'
 import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice },

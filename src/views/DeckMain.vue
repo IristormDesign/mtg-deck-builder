@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import getActiveDeck from '@/mixins/getActiveDeck.js'
 import CardDisplay from '@/components/DeckCardDisplay.vue'
 import CardSorter from '@/components/DeckCardSorter.vue'
 import CardGroupSwitch from '@/components/DeckCardGroupSwitch.vue'
 import CardList from '@/components/DeckCardList.vue'
 import CardAdder from '@/components/DeckCardAdder.vue'
 import DeckActions from '@/components/DeckDeckActions.vue'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
 	components: { CardDisplay, CardSorter, CardGroupSwitch, CardList, CardAdder, DeckActions },
