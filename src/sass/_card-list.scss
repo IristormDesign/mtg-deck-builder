@@ -383,7 +383,6 @@ $min-height-card-list: $lhse*6;
 		border: 2px solid transparent;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		will-change: transform;
 		filter: contrast(100%);
 		width: 100%;
 		align-items: center;

@@ -13,7 +13,8 @@
 	height: var(--header-height);
 	box-shadow: 0 1px 0 rgba(#fff, .0833);
 	transition: all $transition-duration-standard ease;
-
+	will-change: top;
+	
 	&.sticky {
 		position: sticky;
 		// `top` property gets set by JavaScript in AppHeader.vue

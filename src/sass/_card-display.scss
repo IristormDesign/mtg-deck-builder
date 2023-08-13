@@ -55,6 +55,7 @@
 		max-height: 680px * .75; // Pixel value equal to actual height of card images.
 		transition: $transition-duration-card-image-hover-fast ease;
 		transition-property: transform, filter;
+		will-change: transform; // This prevents a slight visual jump when a card overlays another.
 
 		&:hover,
 		&:focus {
@@ -63,6 +64,7 @@
 				translate($lhse*1.3333, $lhse*1.6667)
 			;
 			transition-duration: $transition-duration-card-image-hover-slow;
+			will-change: auto; // Reset to `auto` when the card image enlarges on hover so that the text appears a little sharper.
 		}
 		&:active {
 			filter: brightness(120%);
@@ -99,7 +101,6 @@
 		width: auto;
 		max-height: calc(100vh - #{$lhse});
 		position: relative;
-		will-change: transform;
 	}
 	.close {
 		display: none;
@@ -150,7 +151,6 @@ $animation-duration-card-browse: .375s;
 		
 		.card-display-container {
 			@include overlay-bg;
-			will-change: opacity;
 			position: fixed;
 			display: flex;
 			justify-content: center;
