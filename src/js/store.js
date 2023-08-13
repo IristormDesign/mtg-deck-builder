@@ -19,8 +19,8 @@ export default new Vuex.Store({
 		latestDeckDataVersion: 2,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
-		mobileView: false,
 		pageScrollByAnchors: false,
+		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
 		showSideboard: false,
@@ -62,14 +62,14 @@ export default new Vuex.Store({
 		setLoadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
 		},
-		setMobileView (state, payload) {
-			state.mobileView = payload
-		},
 		setPageScrollByAnchors (state, payload) {
 			state.pageScrollByAnchors = payload
 		},
 		setStickAppHeader (state, payload) {
 			state.stickAppHeader = payload
+		},
+		setShowingAnyPopup (state, payload) {
+			state.showingAnyPopup = payload
 		},
 		setShowCard (state, payload) {
 			state.showCard = payload

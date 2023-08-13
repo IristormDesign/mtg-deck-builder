@@ -1,7 +1,7 @@
 <template>
 	<transition name="overlay">
 		<div
-			v-show="popup"
+			v-show="$store.state.showingAnyPopup"
 			class="bg-overlay"
 			@click="hideOverlay(true)"
 			@mouseover="hideOverlay(false)"
@@ -11,9 +11,6 @@
 
 <script>
 export default {
-	props: {
-		popup: Boolean
-	},
 	data () {
 		return {
 			transitionActive: false
@@ -26,6 +23,7 @@ export default {
 					this.transitionActive = true
 					this.$emit('closePopups', true)
 					this.$store.commit('setOverlayHoverEnabled', true)
+					this.$store.commit('setShowingAnyPopup', false)
 
 					setTimeout(() => {
 						this.transitionActive = false

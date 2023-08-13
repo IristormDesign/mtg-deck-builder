@@ -1,0 +1,306 @@
+<template>
+	<div class="header-menu-positioner">
+		<button
+			class="header-menu-toggler"
+			@click="toggleHeaderMenu()"
+		>
+			Menu
+		</button>
+
+		<nav v-show="showHeaderMenu" class="header-menu">
+			<div v-show="showHeaderMenu" class="hover-shield" />
+			<ul>
+				<li>
+					<router-link
+						:to="{name: 'manual'}"
+						class="header-menu-item"
+						@click.native="manualButtonClicked()"
+					>
+						User Manual
+					</router-link>
+				</li>
+				<li class="create-deck">
+					<router-link
+						:to="{name: 'createDeck'}"
+						class="header-menu-item"
+					>
+						Create Deck
+					</router-link>
+				</li>
+				<li class="deck-menu">
+					<button
+						class="deck-menu-toggler header-menu-item"
+						@click="toggleDeckMenu()"
+						:disabled="disableMenuButton"
+						:title="disabledMenuButtonTooltip"
+					>
+						Open Deck <span>▼</span>
+						<div class="mouseover-area"></div>
+					</button>
+					<div class="open-deck-heading">
+						<strong>Open Deck:</strong>
+					</div>
+					<div v-show="showDeckMenu" class="hover-shield" />
+					<ul v-show="showDeckMenu">
+						<li v-for="deck in $store.state.decks" :key="deck.name">
+							<router-link
+								v-show="$route.params.deckPath !== deck.path"
+								:to="{
+									name: 'deckMain',
+									params: {
+										deck: deck,
+										deckPath: deck.path
+									}
+								}"
+								@click.native="closeAllPopups()"
+							>
+								<span class="deck-menu-deck-name">{{ deck.name }}</span>
+								<div class="deck-menu-deck-colors">
+									<div
+										:class="sizeManaSymbols(deck)"
+										v-html="renderManaSymbols(deck)"
+									/>
+								</div>
+							</router-link>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<router-link
+						:to="{name: 'contact'}"
+						class="header-menu-item"
+					>
+						Contact
+					</router-link>
+				</li>
+			</ul>
+		</nav>
+
+		<bg-overlay @closePopups="closeAllPopups()" />
+	</div>
+</template>
+
+<script>
+import debounce from 'debounce'
+import BgOverlay from '@/components/BgOverlay.vue'
+import deckColors from '@/mixins/deckColors.js'
+import symbolsMarkup from '@/mixins/symbolsMarkup.js'
+
+export default {
+	components: { BgOverlay },
+	mixins: [deckColors, symbolsMarkup],
+	data () {
+		return {
+			freezeDeckMenu: false,
+			showHeaderMenu: true
+		}
+	},
+	computed: {
+		showDeckMenu () {
+			return this.$store.state.showDeckMenu
+		},
+		disableMenuButton () {
+			if (
+				this.$store.state.decks.length <= 1 &&
+				this.$route.params.deckPath
+			) {
+				return true
+			} else {
+				return (this.$store.state.decks.length <= 0)
+			}
+		},
+		disabledMenuButtonTooltip () {
+			if (this.disableMenuButton) {
+				if (this.$store.state.decks.length <= 0) {
+					return 'You have no more decks. Create one!'
+				} else {
+					return 'You currently have no other decks.'
+				}
+			} else {
+				return null
+			}
+		}
+	},
+	watch: {
+		showHeaderMenu (show) {
+			if (show) {
+				if (this.mobileView()) {
+					this.$store.commit('setShowingAnyPopup', true)
+				}
+			} else {
+				this.$store.commit('setShowingAnyPopup', false)
+			}
+		},
+		showDeckMenu (show) {
+			if (show) {
+				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
+				this.showHeaderMenu = true
+				this.$store.commit('setShowingAnyPopup', true)
+			}
+		}
+	},
+	created () {
+		if (this.mobileView()) {
+			this.showHeaderMenu = false
+		}
+	},
+	mounted () {
+		this.letEscKeyClosePopups()
+		this.closeMenusAutomatically()
+		this.applyHoverEffectToOpenDeckButton()
+
+		// Debounce window resizing.
+		window.addEventListener('resize', debounce(this.resizingViewport, 125))
+	},
+	methods: {
+		/**
+		 * Users can press the "Esc" key to close any popups.
+		 */
+		letEscKeyClosePopups () {
+			document.addEventListener('keyup', (event) => {
+				if (event.key === 'Escape' || event.key === 'Esc') {
+					if (this.$store.state.showingAnyPopup) {
+						this.closeAllPopups()
+					}
+				}
+			})
+		},
+		closeMenusAutomatically () {
+			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
+
+			headerMenuFirstLevelLinks.forEach(link => {
+				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+				link.addEventListener('click', this.closeAllPopups)
+
+				link.addEventListener('focus', () => {
+					// If the user tab-focuses onto another first-level link in the app header menu, then 	close the Open Deck menu.
+					if (this.showDeckMenu && !this.mobileView()) {
+						this.closeAllPopups()
+					}
+				})
+			})
+		},
+		/**
+		 * Add hover interaction with the Open Deck button.
+		 */
+		applyHoverEffectToOpenDeckButton () {
+			const deckMenuToggler = document.querySelector('.deck-menu-toggler')
+			const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
+			let deckMenuMOTimer
+
+			deckMenuMOArea.addEventListener('mouseover', () => {
+				if (!deckMenuToggler.hasAttribute('disabled')) {
+					deckMenuMOTimer = setTimeout(() => {
+						this.toggleDeckMenu(true)
+					}, 250)
+				}
+			})
+			deckMenuMOArea.addEventListener('mouseout', () => {
+				clearTimeout(deckMenuMOTimer)
+			})
+		},
+		addFocusListenerToClosePopups () {
+			const allLinks = document.querySelectorAll('a, button')
+
+			const listenForFocus = (link) => {
+				link.addEventListener('focus', this.closePopupsOnFocus)
+			}
+
+			for (let i = 1; i < allLinks.length; i++) {
+				if (allLinks[i].matches('.header-menu-toggler')) {
+					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
+
+					for (let j = (i + 3); j < allLinks.length; j++) {
+						if (allLinks[j].matches('.header-menu > ul > li:last-child a')) {
+							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
+
+							break
+						}
+					}
+
+					break
+				}
+			}
+		},
+		closePopupsOnFocus () {
+			if (this.showHeaderMenu) {
+				this.closeAllPopups()
+			}
+		},
+		closeAllPopups () {
+			this.$store.commit('setShowDeckMenu', false)
+			this.$store.commit('setOverlayHoverEnabled', false)
+			this.$store.commit('setShowingAnyPopup', false)
+
+			if (this.mobileView()) {
+				this.showHeaderMenu = false
+			}
+			if (this.stickAppHeader) {
+				this.$store.commit('setStickAppHeader', false)
+			}
+		},
+		toggleHeaderMenu () {
+			if (this.showHeaderMenu) {
+				this.showHeaderMenu = false
+				this.closeAllPopups()
+			} else {
+				this.showHeaderMenu = true
+				this.$store.commit('setShowDeckMenu', true)
+				this.addFocusListenerToClosePopups()
+			}
+		},
+		toggleDeckMenu (triggeredByHover) {
+			if (!this.freezeDeckMenu) {
+				const store = this.$store
+
+				if (this.showDeckMenu) {
+					store.commit('setOverlayHoverEnabled', false)
+					store.commit('setShowDeckMenu', false)
+					store.commit('setShowingAnyPopup', false)
+				} else {
+					if (triggeredByHover) {
+						store.commit('setOverlayHoverEnabled', true)
+					} else {
+						store.commit('setOverlayHoverEnabled', false)
+					}
+					store.commit('setShowDeckMenu', true)
+					store.commit('setShowingAnyPopup', true)
+				}
+
+				this.freezeDeckMenu = true
+				setTimeout(() => {
+					this.freezeDeckMenu = false
+				}, 500)
+			}
+		},
+		closeHeaderMenuWhenFocusLost () {
+			const headerMenuLinks = document.querySelectorAll(
+				'.header-menu-toggler, .header-menu a, .header-menu button'
+			)
+
+			for (const link of headerMenuLinks) {
+				if (link === document.activeElement) {
+					this.closeAllPopups()
+					break
+				}
+			}
+		},
+		manualButtonClicked () {
+			if (this.$router.currentRoute.name === 'manual') {
+				window.scrollTo({ top: 0 })
+				history.replaceState('', document.title, window.location.pathname)
+			}
+		},
+		mobileView () {
+			return window.innerWidth <= 512 // This number must match the CSS media query width.
+		},
+		resizingViewport () {
+			if (this.mobileView()) {
+				this.showHeaderMenu = false
+			} else {
+				this.showHeaderMenu = true
+			}
+		}
+	}
+}
+</script>

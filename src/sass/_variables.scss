@@ -64,6 +64,7 @@ $width-app-breakpoint: $min-width-app*1.375;
 $width-app-breakpoint-tablet: 1024px - 1;
 $max-width-app: 1440px - 1;
 $max-width-content: 64ch;
+$max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
 $height-deck-control-panel-input: $lhse * 1.5;
 $height-app-header-short: $lhse*1.75;
 $height-app-header-medium: $lhse*2;
@@ -115,39 +116,37 @@ $x: 2px dashed rgba(#c0f, .75);
 	margin: 0;
 	padding: 0;
 	overflow: auto;
+}
+@mixin popup-menu-list-links {
+	min-width: 6em;
+	padding: 0 $lhse*.3333;
+	min-height: $lhse*1.1667;
+	text-decoration: none;
+	color: #000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-top: 1px solid rgba(#fff, .3333);
+	border-bottom: 1px solid rgba(#000, .1667);
+	background: none;
+	font: $font-weight-semibold 100%/#{$line-height-standard} $font-family-standard;
+	border-radius: 0;
+	text-shadow: none;
+	box-shadow: none;
+	margin: 0;
 
-	a,
-	button {
-		min-width: 6em;
-		padding: 0 $lhse*.3333;
-		min-height: $lhse*1.1667;
-		text-decoration: none;
-		color: #000;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		border-top: 1px solid rgba(#fff, .3333);
-		border-bottom: 1px solid rgba(#000, .1667);
-		background: none;
-		font: $font-weight-semibold 100%/#{$line-height-standard} $font-family-standard;
-		border-radius: 0;
-		text-shadow: none;
-		box-shadow: none;
-		margin: 0;
-	
-		&:hover,
-		&:focus {
-			background: rgba(#fff, .3820);
-			color: darken($color-mythic-orange, 8.33%);
-			filter: none;
-		}
-		&:active {
-			background: desaturate($color-mythic-orange, 33.33%);
-			color: #fff;
-		}
-		@media (pointer: coarse) {
-			min-height: $lhse*1.3333;
-		}
+	&:hover,
+	&:focus {
+		background: rgba(#fff, .3820);
+		color: darken($color-mythic-orange, 8.33%);
+		filter: none;
+	}
+	&:active {
+		background: desaturate($color-mythic-orange, 33.33%);
+		color: #fff;
+	}
+	@media (pointer: coarse) {
+		min-height: $lhse*1.3333;
 	}
 }
 @mixin overlay-bg {

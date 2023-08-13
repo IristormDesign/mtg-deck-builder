@@ -1,0 +1,222 @@
+.header-menu-toggler {
+	display: none;
+}
+.header-menu {
+	width: 100%;
+	max-width: max-content;
+	z-index: index($layers, above-overlay);
+
+	> .hover-shield {
+		display: none;
+	}
+	> ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(max-content, 1fr));
+		gap: $lhse*.5;
+		align-items: center;
+	}
+	.header-menu-item {
+		@include button;
+		white-space: nowrap;
+		margin-right: 0;
+		margin-left: 0;
+		width: 100%;
+		font-size: 87.5%;
+		min-height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	
+		&.attention:not(:disabled) {
+			animation: flash .2s linear;
+			animation-iteration-count: 4;
+			animation-direction: alternate;
+	
+			@keyframes flash {
+				33.33% {
+					filter: brightness(100%);
+				}
+				100% {
+					filter: brightness(150%);
+				}
+			}
+		}
+	}
+	.open-deck-heading {
+		display: none;
+	}
+	.deck-menu-toggler {
+		position: relative;
+		z-index: index($layers, app-menu-toggler);
+	
+		span {
+			font-size: 75%;
+			margin-left: .5ch;
+		}
+	}
+	.deck-menu {
+		position: relative;
+		z-index: index($layers, above-overlay);
+	
+		.hover-shield {
+			position: absolute;
+			margin-top: -$lhse*1.2;
+			width: 100%;
+			height: 100%;
+			border-radius: $border-radius-group;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			background: $color-background-alt;
+		}
+		ul {
+			@include popup-menu-list;
+			border-top-left-radius: 0;
+			position: absolute;
+			top: $lhse*1.3333;
+			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
+		}
+		a {
+			@include popup-menu-list-links;
+
+			&:hover,
+			&:focus,
+			&:active {
+				.mana-symbol {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.mouseover-area {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.deck-menu-deck-name {
+		font-weight: $font-weight-semibold;
+		max-width: 10em;
+		width: max-content;
+		line-height: 1;
+		padding: $lhse*.0833 0 $lhse*.1667;
+	}
+	.deck-menu-deck-colors {
+		display: flex;
+		font-size: 66.67%;
+		margin-left: .5em;
+		min-width: $lhse*2;
+		justify-content: center;
+		align-items: center;
+	}
+	.mana-symbol {
+		display: flex;
+		cursor: inherit;
+		box-shadow: 0 0 0 1px rgba(#000, .125);
+		opacity: $opacity-mana-symbols;
+	}
+}
+
+@media (max-width: 1080px) {
+	.header-menu {
+		.header-menu-item {
+			font-size: 80%;
+		}
+		.deck-menu {
+			.hover-shield {
+				margin-top: -$lhse*1.0417;
+			}
+		}
+	}
+}
+@media (max-width: $min-width-app) {
+	.header-menu-positioner {
+		width: 100%;
+	}
+	.header-menu {
+		max-width: $max-width-content*.75;
+		margin: 0 auto;
+	}
+}
+@media (max-width: $max-width-mobile-header-menu) {
+	.header-menu-positioner {
+		position: relative;	
+		z-index: index($layers, app-menu-toggler);
+		margin-top: -$lhse*1.125;
+	}
+	.header-menu-toggler {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		font-size: 87.5%;
+		z-index: index($layers, app-menu-toggler);
+	}
+	.header-menu {
+		position: absolute;
+		top: $lhse*1.8;
+		right: 0;
+		width: auto;
+
+		> .hover-shield {
+			display: block;
+			width: ($lhse*.875)*3.375;
+			height: $lhse*1.5;
+			position: absolute;
+			top: -$lhse*1.5;
+			right: 0;
+			margin: 0;
+			background: $color-background-alt;
+			border-radius: $border-radius-group;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+		> ul {
+			@include popup-menu-list;
+			display: block;
+			border-top-right-radius: 0;
+			margin-top: -$lhse*.5;
+			position: relative;
+			max-height: calc(100vh - #{$height-app-header-medium + $lhse*.25});
+		}
+		.header-menu-item {
+			@include popup-menu-list-links;
+		}
+		.open-deck-heading {
+			display: block;
+			cursor: default;
+			color: rgba(#fff, .8333);
+			margin-left: $lhse*.375;
+
+			strong {
+				@include heading-font;
+				font-size: 75%;
+				color: inherit;
+				text-transform: uppercase;
+				text-shadow: $text-shadow-over-light-bg;
+			}
+		}
+		.deck-menu-toggler {
+			display: none !important;
+		}
+		.deck-menu {
+			background: desaturate(darken($color-background-alt, 25%), 25%);
+			padding: 0 0 $lhse*.3333 $lhse*.3333;
+			
+			.hover-shield {
+				display: none;
+			}
+			ul {
+				box-shadow: none;
+				border-radius: $border-radius-group*.5;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				position: static;
+				overflow: hidden;
+				max-height: 100%;
+			}
+		}
+	}
+}
