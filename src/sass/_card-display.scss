@@ -145,7 +145,7 @@ $animation-duration-card-browse: .3820s;
 }
 @media (max-width: 768px) { // Must match window width in JavaScript.
 	.card-display {
-		z-index: index($layers, card-overlay);
+		z-index: index($layers, app-header);
 		width: auto;
 		height: auto;
 		
@@ -166,7 +166,7 @@ $animation-duration-card-browse: .3820s;
 		.card-edge {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
-			filter: drop-shadow(0 0 $lhse*.75 rgba(#fff, .25));
+			filter: drop-shadow(0 0 $lhse rgba(#fff, .25));
 		}
 		a {
 			will-change: auto;
@@ -192,18 +192,26 @@ $animation-duration-card-browse: .3820s;
 			padding: 0;
 			z-index: index($layers, card-overlay);
 		}
-	}
-	.cdo-fade {
-		&-enter-active,
-		&-leave-active {
-			transition: opacity .25s ease-out;
+		.cdo-fade {
+			&-enter-active,
+			&-leave-active {
+				transition: opacity $transition-duration-standard ease !important; // For some reason, the transition duration is inconsistent among cards unless I add `!important`.
+			}
+			&-leave-active {
+				transition-duration: $transition-duration-standard*.5 !important;
+			}
+			&-enter,
+			&-leave-to {
+				opacity: 0;
+			}
 		}
-		&-leave-active {
-			transition-duration: .125s;
-		}
-		&-enter,
-		&-leave-to {
-			opacity: 0;
+		.card-browse {
+			&-enter-active {
+				animation: none;
+			}
+			&-leave-active {
+				animation: none;
+			}
 		}
 	}
 }

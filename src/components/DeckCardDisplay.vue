@@ -3,8 +3,7 @@
 		<transition name="cdo-fade">
 			<div
 				v-if="this.card && this.$store.state.showCard"
-				class="card-display-container"
-				@click="hideCDOverlay()"
+				class="card-display-container" @click="hideCDOverlay()"
 			>
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<div :key="card.name" class="card-edge">
@@ -13,7 +12,7 @@
 						</a>
 					</div>
 				</transition>
-				<button class="close" @click="hideCDOverlay()" title="Close">
+				<button class="close" @click="hideCDOverlay()" title="Close this card popup">
 					×
 				</button>
 			</div>

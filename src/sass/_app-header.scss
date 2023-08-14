@@ -20,7 +20,7 @@
 		// `top` property gets set by JavaScript in AppHeader.vue
 		left: 0;
 		right: 0;
-		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .6667);
+		box-shadow: 0 0 $lhse*.25 rgba(#000, .6667);
 	}
 	.wrap {
 		display: flex;
