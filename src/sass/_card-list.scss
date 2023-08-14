@@ -1,6 +1,6 @@
 @use "sass:color";
 
-$border-width-card-button: 3px;
+$border-width-card-button: 2.5px;
 $width-qty-column: $lhse*1.5;
 $min-height-card-list: $lhse*6;
 
@@ -186,6 +186,11 @@ $min-height-card-list: $lhse*6;
 				border-right-color: rgba(#fff, .25);
 				border-bottom-color: rgba(#000, .5);
 				border-left-color: rgba(#000, .25);
+
+				&:active {
+					filter: brightness(87.5%) contrast(125%);
+					box-shadow: none !important;
+				}
 			}
 			&:hover {
 				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button. 
@@ -383,7 +388,6 @@ $min-height-card-list: $lhse*6;
 		border: 2px solid transparent;
 		text-shadow: none;
 		transition: all $transition-duration-standard ease;
-		filter: contrast(100%);
 		width: 100%;
 		align-items: center;
 		box-shadow: -0.5px 1px 1px 1px rgba(#000, .25);
