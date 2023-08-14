@@ -7,9 +7,11 @@
 				@click="hideCDOverlay()"
 			>
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
-					<a :key="card.name" :class="cardColorClass" :href="card.link" target="_blank">
-						<img :src="card.img" width="488" height="680" :alt="card.name" />
-					</a>
+					<div :key="card.name" class="card-edge">
+						<a :class="cardColorClass" :href="card.link" target="_blank">
+							<img :src="card.img" width="488" height="680" :alt="card.name" />
+						</a>
+					</div>
 				</transition>
 				<button class="close" @click="hideCDOverlay()" title="Close">
 					×
