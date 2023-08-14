@@ -87,8 +87,9 @@ export default {
 				const targetedSection = document.querySelector(event.target.hash)
 
 				event.preventDefault()
-				targetedSection.scrollIntoView({ behavior: 'smooth' })
 				this.$store.commit('setPageScrollByAnchors', true)
+				this.$store.commit('setStickAppHeader', false)
+				targetedSection.scrollIntoView({ behavior: 'smooth' })
 
 				setTimeout(() => {
 					this.$store.commit('setPageScrollByAnchors', false)
