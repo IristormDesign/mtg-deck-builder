@@ -248,7 +248,7 @@ $min-height-card-list: $lhse*6;
 			margin-top: 0;
 		}
 		&.gap-after {
-			margin-bottom: divide($lhse, 4);
+			margin-bottom: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
 		}
 		.name,
 		.mana,
