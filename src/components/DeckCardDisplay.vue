@@ -2,7 +2,7 @@
 	<section class="card-display">
 		<transition name="cdo-fade">
 			<div
-				v-if="!!(this.card && this.$store.state.showCard)"
+				v-if="this.card && this.$store.state.showCard"
 				class="card-display-container"
 				@click="hideCDOverlay()"
 			>
