@@ -270,6 +270,7 @@ export default {
 		 */
 		notifyCardExists (cardName, confirmToReplace) {
 			this.activeCardList.viewedCard = cardName
+			this.loadingCard = false
 
 			const stringActiveCardList = () => {
 				let output = 'deck'
