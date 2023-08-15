@@ -25,14 +25,13 @@ export default {
 		stickAppHeader (isSticky) {
 			const root = document.documentElement
 			const appHeader = document.querySelector('.app-header')
+			appHeader.style.top = 'var(--header-top)'
 
 			if (isSticky) {
 				root.style.setProperty('--header-top', '0px')
-				appHeader.style.top = '0px'
 				appHeader.classList.add('sticky')
 			} else {
 				root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
-				appHeader.style.top = `-${appHeader.offsetHeight}px`
 
 				if (window.scrollY === 0) {
 					appHeader.classList.remove('sticky')
