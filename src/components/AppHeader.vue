@@ -70,7 +70,7 @@ export default {
 					currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
 					( // ...if the user scrolls the page downward and the decks menu isn't open...
 						previousScrollPos <= currentScrollPos &&
-						!this.showDeckMenu
+						!this.$store.state.showDeckMenu
 					)
 				) {
 					this.$store.commit('setStickAppHeader', false)
