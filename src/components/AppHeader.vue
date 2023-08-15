@@ -36,9 +36,11 @@ export default {
 				if (window.scrollY === 0) {
 					appHeader.classList.remove('sticky')
 				} else {
+					appHeader.classList.add('sliding-up')
+
 					setTimeout(() => {
-						appHeader.classList.remove('sticky')
-					}, 251) // Match this timeout duration with .app-header's CSS transition duration, plus one millisecond.
+						appHeader.classList.remove('sliding-up', 'sticky')
+					}, 250) // Match this timeout duration with .app-header's transition duration in _app_header.scss.
 				}
 			}
 		}
