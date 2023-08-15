@@ -23,12 +23,18 @@ body {
 	&.texture-bg {
 		background: top left repeat;
 		background-attachment: fixed, scroll;
-		background-image:
-			linear-gradient(191.25deg,
-				rgba(#fff, .2) 0%,
-				rgba(#000, .2) 100vh
-			),
-			url('img/turbulence-bg-tile.jpg');
+
+		@mixin bg-image-texture-bg($length) {
+			background-image:
+				linear-gradient(191.25deg,
+					rgba(#fff, .2) 0%,
+					rgba(#000, .2) $length
+				),
+				url('img/turbulence-bg-tile.jpg');
+		}
+
+		@include bg-image-texture-bg(100vh);
+		@include bg-image-texture-bg(100dvh); // Prefer `dvh` units if the user's browser supports it. Otherwise, fall back to `vh` units.
 	}
 }
 .wrap {
