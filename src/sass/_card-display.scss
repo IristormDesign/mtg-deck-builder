@@ -54,7 +54,8 @@
 		box-shadow: inset 0 0 0 12px #000; // Black card border without card image
 		max-width: 488px * .75; // Pixel value equal to actual width of card images.
 		max-height: 680px * .75; // Pixel value equal to actual height of card images.
-		transition: transform $transition-duration-card-image-hover-fast ease;
+		transition: $transition-duration-card-image-hover-fast ease;
+		transition-property: transform, filter;
 		will-change: transform; // This prevents a slight visual jump when a card overlays another.
 
 		&:hover,
