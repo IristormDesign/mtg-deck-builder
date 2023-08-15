@@ -94,7 +94,7 @@
 			background: desaturate(darken($color-frame-green, 50%), 8.33%);
 		}
 		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 33.33%), 16.67%);
+			background: desaturate(darken($color-frame-multicolor, 25%), 16.67%);
 		}
 	}
 	img {
