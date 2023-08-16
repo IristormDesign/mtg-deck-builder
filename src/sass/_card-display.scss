@@ -30,20 +30,19 @@
 	.card-display-container {
 		display: flex;
 		justify-content: flex-end;
-		filter: drop-shadow(-.6667px 2px 1px rgba(#000, .25));
-		transition: filter $transition-duration-card-image-hover-fast ease;
-
-		&:has(a:hover),
-		&:has(a:focus) {
-			filter:
-				drop-shadow(0 $lhse*.5 $lhse rgba(#000, .5))
-			;
-			transition-duration: $transition-duration-card-image-hover-slow;
-		}
 	}
 	.card-edge {
 		filter: $drop-shadow-card-image-edge;
 		position: absolute;
+
+		&:hover,
+		&:focus-within {
+			filter:
+				$drop-shadow-card-image-edge
+			 	drop-shadow(0 $lhse*.5 $lhse rgba(#000, .5));
+			transition: filter $transition-duration-card-image-hover-fast ease;
+			transition-duration: $transition-duration-card-image-hover-slow;
+		}
 	}
 	a {
 		display: block;
