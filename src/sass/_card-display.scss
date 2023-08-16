@@ -30,10 +30,12 @@
 	.card-display-container {
 		display: flex;
 		justify-content: flex-end;
+		max-width: 488px; // The actual width of card images.
 	}
 	.card-edge {
 		filter: $drop-shadow-card-image-edge;
 		position: absolute;
+		width: 100%;
 
 		&:hover,
 		&:focus-within {
@@ -162,7 +164,12 @@ $animation-duration-card-browse: .3820s;
 		.card-edge {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
-			filter: drop-shadow(0 0 $lhse rgba(#fff, .25));
+
+			&,
+			&:hover,
+			&:focus-within {
+				filter: drop-shadow(0 0 $lhse rgba(#fff, .2));
+			}
 		}
 		a {
 			will-change: auto;
