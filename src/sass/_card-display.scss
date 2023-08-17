@@ -155,6 +155,7 @@ $animation-duration-card-browse: .3820s;
 			align-items: center;
 			filter: none;
 			transition-duration: 0s;
+			max-width: 100%;
 			
 			&:has(a:hover),
 			&:has(a:focus) {
