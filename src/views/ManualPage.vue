@@ -94,7 +94,13 @@ export default {
 				event.preventDefault()
 				this.$store.commit('setPageScrollByAnchors', true)
 				this.$store.commit('setStickAppHeader', false)
-				targetedSection.scrollIntoView({ behavior: 'smooth' })
+
+				// To prevent a bug with the app header appearing when it shouldn't as the page scrolls upward, the page needs to listen for a `scrollend` event. However, too many web browsers as of 2023 still lack support for `scrollend`, so for them, the scrolling behavior should be `instant` rather than `smooth`.
+				if ('onscrollend' in window) { // If the user's browser supports the `scrollend` event...
+					targetedSection.scrollIntoView({ behavior: 'smooth' })
+				} else {
+					targetedSection.scrollIntoView({ behavior: 'instant' })
+				}
 			}
 		},
 		scrollendEvent () {
