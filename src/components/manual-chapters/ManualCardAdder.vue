@@ -14,16 +14,17 @@
 			<li>
 				<h5>Card Name</h5>
 				<p>Simply enter the name of a <i>Magic</i> card, and that card will be added to your deck. While you start typing letters into the card adder’s text input, a small list of selectable suggestions for card names will appear by it.</p>
-				<p>When you submit a card name query, if it doesn’t turn out to be a valid name, then no card will be added to your deck, but the app notifies you of the error. If a card of a particular name has been printed in multiple sets, then the card from the latest released set is retrieved.</p>
+				<p>When you submit a card name query, if it turns out to be an invalid name, then no card will be added to your deck, but the app will notify you of the error. If a card of a particular name has been printed in multiple sets, then the card from the latest released set is retrieved.</p>
 			</li>
 			<li>
 				<h5>Scryfall Card Page URL</h5>
-				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall</a> has individual pages for every printing of every card in <i>Magic</i>. From a card’s page on Scryfall, you can copy its URL in your web browser’s address bar, then paste that URL into the card adder on MTG Deck Builder. The respective card will be automatically added to your deck.</p>
-				<p>A Scryfall card page URL is a useful kind of query for any card of a certain name that has had multiple printings, but the printing you get by default through the card name query isn’t the one you prefer. This could be because, for example, you’d rather see another printing’s <a href="#m-card-image">image</a> that shows a different illustration or card set symbol.</p>
+				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall</a> has individual pages for every print of every card in <i>Magic</i>. From any card’s page on Scryfall, you can copy the page’s URL in your web browser’s address bar, then paste that URL into the card adder on MTG Deck Builder. The respective card will be automatically added to your deck.</p>
+				<p>A Scryfall card page URL is a useful kind of query for adding any card of a certain name that has had multiple prints, but the print you get by default through the card name query isn’t the one you prefer. For example, maybe you’d rather see another print’s <a href="#m-card-image">image</a> that shows a different illustration or card set symbol.</p>
+				<p>You can submit a Scryfall URL for a card that has the same name as a card that already exists in the card list, but is in a different print. In this case, the app will ask you if you want the submitted print to replace the existing print.</p>
 			</li>
 			<li>
 				<h5>Random Card Code</h5>
-				<p>Add any <i>Magic</i> card at random (among Modern tournament-legal cards) by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text input has focus.</p>
+				<p>Add any <i>Magic</i> card at random (among cards legal in Modern tournaments) by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text input has focus.</p>
 			</li>
 		</ul>
 		<p>Other notes about using the card adder:</p>
