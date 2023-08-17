@@ -73,6 +73,11 @@ export default {
 	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualMoreStatsPages, ManualStorageOfDeckData, ManualAppDevelopment },
 	mounted () {
 		this.modifyManualLinkEffects()
+
+		document.addEventListener('scrollend', this.scrollendEvent)
+	},
+	destroyed () {
+		document.removeEventListener('scrollend', this.scrollendEvent)
 	},
 	methods: {
 		modifyManualLinkEffects () {
@@ -90,11 +95,10 @@ export default {
 				this.$store.commit('setPageScrollByAnchors', true)
 				this.$store.commit('setStickAppHeader', false)
 				targetedSection.scrollIntoView({ behavior: 'smooth' })
-
-				setTimeout(() => {
-					this.$store.commit('setPageScrollByAnchors', false)
-				}, 1000) // Duration should be equal to the amount of time the browser scrolls the page between anchors.
 			}
+		},
+		scrollendEvent () {
+			this.$store.commit('setPageScrollByAnchors', false)
 		}
 	}
 }

@@ -9,7 +9,7 @@
 
 		<h3>Stored Browser Data</h3>
 		<p>MDB uses web browser cookies and local web storage for storing personalized user data. Local storage is required in order for MDB to fully function.</p>
-		<p>To delete at once all of your customized MDB data in your browser’s local storage, click the “Clear Stored Data” link located in the footer of this website.</p>
+		<p>To delete at once all of your customized MDB data in your browser’s local storage, click on the “Clear Stored Data” link located in the footer of this website.</p>
 
 		<h3>Statistical Data</h3>
 		<p>We use Google Analytics to collect and analyze anonymous statistical data sent by people’s web browsers whenever they visit MDB. This data helps us better decide on how to improve the website.</p>
