@@ -1,7 +1,7 @@
 <template>
 	<section id="m-deck-actions">
 		<h4>Deck Actions</h4>
-		<p>Positioned beside the card sorter section is the deck actions (“Do Deck Action”) section. It has a drop-down menu from which you can choose to do special actions to the <a href="#m-decks-menu">deck you’re currently viewing</a>.</p>
+		<p>Positioned beside the card sorter is the deck actions section (labeled “Do Deck Action”). It has a drop-down menu from which you can choose to do special actions to the <a href="#m-decks-menu">deck you’re currently viewing</a>.</p>
 		<p>The options for deck actions include the following:</p>
 		<ul>
 			<li>

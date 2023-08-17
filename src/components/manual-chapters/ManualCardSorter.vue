@@ -6,7 +6,7 @@
 				src="@/img/manual-card-sorter.jpg" width="350" height="185"
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The card sorter (“Sort Cards by”) section has a drop-down menu with options for instantly sorting all the cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options and their effects include the following:</p>
+		<p>The card sorter (the section labeled “Sort Cards by”) has a drop-down menu with options for instantly sorting all the cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options and their effects include the following:</p>
 		<ul>
 			<li>
 				<h5>Name</h5>
