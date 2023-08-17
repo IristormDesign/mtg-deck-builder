@@ -9,13 +9,13 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
-		gap: $lhse*.5;
-		margin: $lhse 0 $lhse*.5;
+		margin: $lhse*.5 0;
 	}
 	.new-deck,
 	.import-data {
 		border: $border-sections;
 		padding: $lhse*.5 $lhse*.75;
+		margin: $lhse*.25;
 	}
 	.new-deck {
 		form {

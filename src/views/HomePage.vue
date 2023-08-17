@@ -80,25 +80,29 @@
 			</div>
 		</section>
 		<div class="final-call-to-action">
-			<p class="wrap">
-				<router-link to="manual" :class="'button'">
-					<div>Read the<br/> User Manual</div>
-				</router-link>
+			<div class="wrap">
+				<div class="button-container">
+					<router-link to="manual" :class="'button'">
+						<div>Read the<br/> User Manual</div>
+					</router-link>
+				</div>
 
-				<button
-					v-if="$store.state.decks.length > 0"
-					@click="this.homeOpenDeckButton"
-				>
-					Open a Deck
-				</button>
-				<router-link
-					v-else
-					:to="{name: 'createDeck'}"
-					:class="'button'"
-				>
-					Create Deck
-				</router-link>
-			</p>
+				<div class="button-container">
+					<button
+						v-if="$store.state.decks.length > 0"
+						@click="this.homeOpenDeckButton"
+					>
+						Open a Deck
+					</button>
+					<router-link
+						v-else
+						:to="{name: 'createDeck'}"
+						:class="'button'"
+					>
+						Create Deck
+					</router-link>
+				</div>
+			</div>
 		</div>
 	</article>
 </template>
