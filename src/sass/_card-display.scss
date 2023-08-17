@@ -165,6 +165,7 @@ $animation-duration-card-browse: .3820s;
 		.card-edge {
 			max-width: (488px * .75);
 			max-height: (680px * .75);
+			width: auto;
 
 			&,
 			&:hover,
