@@ -100,6 +100,8 @@ export default {
 					targetedSection.scrollIntoView({ behavior: 'smooth' })
 				} else {
 					targetedSection.scrollIntoView({ behavior: 'instant' })
+
+					setTimeout(this.scrollendEvent, 100)
 				}
 			}
 		},
