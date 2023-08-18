@@ -27,11 +27,6 @@
 	max-height: 100vh;
 	z-index: index($layers, card-overlay);
 
-	.card-display-container {
-		display: flex;
-		justify-content: flex-end;
-		max-width: 488px; // The actual width of card images.
-	}
 	.card-edge {
 		filter: $drop-shadow-card-image-edge;
 		transition: filter $transition-duration-card-image-hover-fast ease;
@@ -47,6 +42,7 @@
 		}
 	}
 	a {
+		position: absolute;
 		display: block;
 		mask-image: url('~@/img/card-mask.svg');
 		background: desaturate(darken($color-frame-generic, 33.33%), 4.17%);
@@ -143,29 +139,19 @@ $animation-duration-card-browse: .3820s;
 }
 @media (max-width: 768px) { // Must match window width in JavaScript.
 	.card-display {
+		@include overlay-bg;
 		z-index: index($layers, app-header);
-		width: auto;
-		height: auto;
-		
-		.card-display-container {
-			@include overlay-bg;
-			position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: all $transition-duration-standard ease !important;
+
+		.card-edge {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			filter: none;
-			transition-duration: 0s;
-			max-width: 100%;
-			
-			&:has(a:hover),
-			&:has(a:focus) {
-				filter: none;
-			}
-		}
-		.card-edge {
-			max-width: (488px * .75);
-			max-height: (680px * .75);
-			width: auto;
+			width: 100%;
+			height: 100%;
 
 			&,
 			&:hover,
@@ -175,6 +161,8 @@ $animation-duration-card-browse: .3820s;
 		}
 		a {
 			will-change: auto;
+			position: static;
+			margin: $lhse*.5;
 
 			&:hover,
 			&:focus {
@@ -182,7 +170,8 @@ $animation-duration-card-browse: .3820s;
 			}
 		}
 		img {
-			max-height: calc(100vh - $lhse*.5);
+			max-width: 87.5vw;
+			max-height: 95.83vh;
 		}
 		.card-browse-leave-active {
 			display: none;
@@ -191,24 +180,11 @@ $animation-duration-card-browse: .3820s;
 			@include secondary-button;
 			display: block;
 			position: absolute;
-			top: $lhse*.25;
+			top: $lhse*.3333;
 			right: $lhse*.25;
 			min-width: $lhse;
 			padding: 0;
 			z-index: index($layers, card-overlay);
-		}
-		.cdo-fade {
-			&-enter-active,
-			&-leave-active {
-				transition: opacity $transition-duration-standard ease !important; // For some reason, the transition duration is inconsistent among cards unless I add `!important`.
-			}
-			&-leave-active {
-				transition-duration: $transition-duration-standard*.5 !important;
-			}
-			&-enter,
-			&-leave-to {
-				opacity: 0;
-			}
 		}
 		.card-browse {
 			&-enter-active {
@@ -217,6 +193,19 @@ $animation-duration-card-browse: .3820s;
 			&-leave-active {
 				animation: none;
 			}
+		}
+	}
+	.card-display-fade {
+		&-enter-active,
+		&-leave-active {
+			transition: opacity $transition-duration-standard ease; // For some reason, the transition duration is inconsistent among cards unless I add `!important`.
+		}
+		&-leave-active {
+			transition-duration: $transition-duration-standard*.5;
+		}
+		&-enter,
+		&-leave-to {
+			opacity: 0;
 		}
 	}
 }

@@ -1,23 +1,22 @@
 <template>
-	<section class="card-display">
-		<transition name="cdo-fade">
-			<div
-				v-if="this.card && this.$store.state.showCard"
-				class="card-display-container" @click="hideCDOverlay()"
-			>
+	<transition name="card-display-fade">
+		<section
+			v-if="this.card && this.$store.state.showCard"
+			class="card-display"
+			@click="hideCDOverlay()"
+		>
+			<div class="card-edge">
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
-					<div :key="card.name" class="card-edge">
-						<a :class="cardColorClass" :href="card.link" target="_blank">
-							<img :src="card.img" width="488" height="680" :alt="card.name" />
-						</a>
-					</div>
+					<a :key="card.name" :class="cardColorClass" :href="card.link" target="_blank">
+						<img :src="card.img" width="488" height="680" :alt="card.name" />
+					</a>
 				</transition>
 				<button class="close" @click="hideCDOverlay()" title="Close this card popup">
 					×
 				</button>
 			</div>
-		</transition>
-	</section>
+		</section>
+	</transition>
 </template>
 
 <script>
