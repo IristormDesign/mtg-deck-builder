@@ -3,7 +3,7 @@
 		<h3>More Deck Statistics</h3>
 
 		<div class="tables">
-			<more-stats-colors :deck="deck" :manaSymbol="manaSymbol" />
+			<more-stats-colors :deck="deck" />
 
 			<more-stats-mana-values :deck="deck" />
 
@@ -17,7 +17,7 @@
 				:deck="deck" :subtypeNames="subtypeOtherNames" :subtypeCounts="subtypeCounts"
 			>Other</more-stats-subtypes>
 
-			<more-stats-rarities :deck="deck" :raritySymbol="raritySymbol" />
+			<more-stats-rarities :deck="deck" />
 
 			<template v-if="deck.dataVersion >= 2">
 				<more-stats-keywords :deck="deck" />
@@ -51,11 +51,10 @@ import MoreStatsMisc from '@/components/MoreStatsMisc.vue'
 import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
-import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
-	mixins: [getActiveDeck, symbolsMarkup],
+	mixins: [getActiveDeck],
 	data () {
 		return {
 			subtypeCreaturesNames: [],

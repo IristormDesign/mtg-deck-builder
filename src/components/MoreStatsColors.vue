@@ -18,12 +18,12 @@
 
 <script>
 import moreStats from '@/mixins/moreStats.js'
+import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [moreStats],
+	mixins: [moreStats, symbolsMarkup],
 	props: {
-		deck: Object,
-		manaSymbol: Object
+		deck: Object
 	},
 	computed: {
 		emptyTable () {
