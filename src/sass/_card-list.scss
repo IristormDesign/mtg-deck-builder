@@ -9,10 +9,10 @@ $min-height-card-list: $lhse*6;
 		0 0 0 .5px rgba(#000, .875),
 		0 0 0 $border-width-card-button $color,
 		.3333px -1px 0 ($border-width-card-button) color.scale($color,
-			$lightness: 50%
+			$lightness: 66.67%
 		),
 		-.3333px 1px 0 ($border-width-card-button) color.scale($color,
-			$lightness: -50%, $saturation: -66.67%
+			$lightness: -66.67%, $saturation: -66.67%
 		),
 		0 -1px divide($lhse, 4) $border-width-card-button rgba(#000, .25);
 }
@@ -390,7 +390,7 @@ $min-height-card-list: $lhse*6;
 		transition: all $transition-duration-standard ease;
 		width: 100%;
 		align-items: center;
-		box-shadow: -0.5px 1px 1px 1px rgba(#000, .25);
+		box-shadow: none;
 
 		&:hover,
 		&:focus-within {
