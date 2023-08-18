@@ -142,6 +142,7 @@ $animation-duration-card-browse: .3820s;
 	.card-display {
 		z-index: index($layers, app-header);
 		width: auto;
+		aspect-ratio: auto;
 
 		.card-edge {
 			display: flex;
