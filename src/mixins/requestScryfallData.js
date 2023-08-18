@@ -45,9 +45,6 @@ export default {
 						alert(`⚠ Error: ${error.message}`)
 					}
 				})
-				.finally(() => {
-					this.loadingCard = false
-				})
 		},
 		/**
 		 * Request the Scryfall API for a card according to its card set and collector number (based on a submitted Scryfall card page URL).
@@ -89,9 +86,6 @@ export default {
 						alert(`⚠ Error: ${error.message}`)
 					}
 				})
-				.finally(() => {
-					this.loadingCard = false
-				})
 		},
 		/**
 		 * Request the Scryfall API for a card by name.
@@ -128,7 +122,6 @@ export default {
 					}
 				})
 				.finally(() => {
-					this.loadingCard = false
 					return callback
 				})
 		},
@@ -296,6 +289,8 @@ export default {
 			}
 		},
 		insertCardIntoDeck (newCard) {
+			this.loadingCard = false
+
 			this.activeCardList.cards.push(newCard)
 
 			const deck = this.deck
