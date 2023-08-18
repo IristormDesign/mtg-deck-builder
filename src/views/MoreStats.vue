@@ -64,9 +64,25 @@ export default {
 		}
 	},
 	mounted () {
+		this.autoScrollDown()
 		this.displaySubtypes()
 	},
 	methods: {
+		autoScrollDown () {
+			this.$nextTick(() => {
+				if (this.$store.state.autoScrollDown) {
+					const article = document.querySelector('.more-stats h3')
+
+					if (article) {
+						article.scrollIntoView({
+							behavior: 'smooth'
+						})
+					}
+
+					this.$store.commit('setAutoScrollDown', false)
+				}
+			})
+		},
 		displaySubtypes () {
 			const allSubtypesCreatures = []
 			const allSubtypesOther = []

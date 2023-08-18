@@ -42,15 +42,8 @@ export default {
 			}
 		},
 		scrollDownToMoreStats () {
-			const article = document.querySelector('.more-stats h3')
-
-			if (article) {
-				article.scrollIntoView({
-					behavior: 'smooth'
-				})
-			}
+			this.$store.commit('setAutoScrollDown', true)
 		}
-
 	}
 }
 </script>

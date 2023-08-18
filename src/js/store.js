@@ -13,6 +13,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
+		autoScrollDown: false,
 		decks: [],
 		deletedDeckName: null,
 		overlayHoverEnabled: false,
@@ -50,6 +51,9 @@ export default new Vuex.Store({
 		}
 	},
 	mutations: {
+		setAutoScrollDown (state, payload) {
+			state.autoScrollDown = payload
+		},
 		setDecks (state, payload) {
 			state.decks = payload
 		},
