@@ -49,6 +49,10 @@ main {
 	justify-content: center;
 	position: relative;
 	
+	.root-home-page & {
+		align-items: flex-start;
+		flex-grow: 0;
+	}
 	> article {
 		margin: $lhse auto;
 	}
