@@ -18,7 +18,7 @@
 		opacity: 1;
 	}
 }
-$box-shadow-intro-text-box: 0 0 $lhse 1px rgba($color-text, divide(1, 3));
+$box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 
 .home-page {
 	margin: 0 auto;
@@ -29,7 +29,10 @@ $box-shadow-intro-text-box: 0 0 $lhse 1px rgba($color-text, divide(1, 3));
 	background: #000;
 
 	.intro {
-		height: calc(100vh - #{$height-app-header-short} - #{$lhse});
+		min-height: $lhse*12;
+		height: 50vw;
+		max-height: calc(100vh - var(--header-height));
+		margin: 0 auto;
 
 		img {
 			display: block;
@@ -93,7 +96,7 @@ $box-shadow-intro-text-box: 0 0 $lhse 1px rgba($color-text, divide(1, 3));
 		padding: $lhse*1.5 0;
 		position: relative;
 		background: $background-light-gradient;
-		scroll-margin-top: $height-app-header-short*.75;
+		scroll-margin-top: -$lhse*.5;
 		border-top: 1px solid desaturate(lighten($color-mythic-lighter, 29.17%), 8.33%);
 		box-shadow: 0 0 $lhse*2 rgba(#000, .6667);
 
@@ -231,20 +234,6 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 			li {
 				padding: 0;
 			}
-		}
-	}
-}
-@media (max-width: $min-width-app) { // Changes with app header's height changing
-	.home-page {
-		.app-features {
-			scroll-margin-top: $height-app-header-tall*.6667;
-		}
-	}
-}
-@media (max-width: ($min-width-app*.4)) { // Changes with app header's height changing
-	.home-page {
-		.app-features {
-			scroll-margin-top: $height-app-header-short*.25;
 		}
 	}
 }

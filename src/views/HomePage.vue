@@ -35,7 +35,7 @@
 					<header>
 						<h2>Greetings, planeswalker.</h2>
 					</header>
-					<p>With this free web app, you can construct and organize your decks for <i>Magic: The Gathering</i>.</p>
+					<p>Construct and organize your decks for <i>Magic: The Gathering</i> with this free web app!</p>
 					<p class="button-group">
 						<button @click="scrollToAppFeaturesSection()">Learn More</button>
 
@@ -66,11 +66,10 @@
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
-						<li>Customize card lists for your own <i>Magic: The Gathering</i> decks</li>
-						<li>Using app is free of charge and free of advertisements</li>
+						<li>App is free of charge and free of advertisements</li>
 						<li>No account registration required</li>
 						<li>Attractive, user-friendly graphical interface</li>
-						<li>Add cards to your decks with the card name search engine (powered by <a href="https://scryfall.com" target="_blank">Scryfall</a>)</li>
+						<li>Add cards to your decks with the card name search engine (powered by Scryfall)</li>
 						<li>Analyze many statistics about your decks, such as their average mana value, the percentage of cards by certain attributes, and more</li>
 						<li>Instantly sort all cards in card lists by various methods to choose from</li>
 						<li>See the image of any card in your decks</li>
