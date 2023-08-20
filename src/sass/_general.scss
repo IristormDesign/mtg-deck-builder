@@ -33,8 +33,8 @@ body {
 				url('img/turbulence-bg-tile.jpg');
 		}
 
-		@include bg-image-texture-bg(100vh);
-		@include bg-image-texture-bg(100dvh); // Prefer `dvh` units if the user's browser supports it. Otherwise, fall back to `vh` units.
+		@include bg-image-texture-bg(100%);
+		@include bg-image-texture-bg(100lvh); // Prefer `100lvh` if the user's browser supports `lvh` units. Otherwise, fall back to `100%`.
 	}
 }
 .wrap {
