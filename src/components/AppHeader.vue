@@ -23,26 +23,28 @@ export default {
 	},
 	watch: {
 		stickAppHeader (isSticky) {
-			const root = document.documentElement
-			const appHeader = document.querySelector('.app-header')
-			appHeader.style.top = 'var(--header-top)'
+			setTimeout(() => { // Putting this function in a `setTimeout` function in order to make it asynchronous, which prevents bugs and improves performance.
+				const root = document.documentElement
+				const appHeader = document.querySelector('.app-header')
+				appHeader.style.top = 'var(--header-top)'
 
-			if (isSticky) {
-				root.style.setProperty('--header-top', '0px')
-				appHeader.classList.add('sticky')
-			} else {
-				root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
-
-				if (window.scrollY === 0) {
-					appHeader.classList.remove('sticky')
+				if (isSticky) {
+					root.style.setProperty('--header-top', '0px')
+					appHeader.classList.add('sticky')
 				} else {
-					appHeader.classList.add('sliding-up')
+					root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
 
-					setTimeout(() => {
-						appHeader.classList.remove('sliding-up', 'sticky')
-					}, 250) // Match this timeout duration with .app-header's transition duration in _app_header.scss.
+					if (window.scrollY === 0) {
+						appHeader.classList.remove('sticky')
+					} else {
+						appHeader.classList.add('sliding-up')
+
+						setTimeout(() => {
+							appHeader.classList.remove('sliding-up', 'sticky')
+						}, 250) // Match this timeout duration with .app-header's transition duration in _app_header.scss.
+					}
 				}
-			}
+			}, 0)
 		}
 	},
 	mounted () {
