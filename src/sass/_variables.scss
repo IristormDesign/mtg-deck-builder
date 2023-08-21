@@ -88,7 +88,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
 $layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $transition-duration-standard: .25s;
-$transition-duration-card-image-hover-slow: .75s;
+$transition-duration-card-image-hover-slow: .5s;
 $transition-duration-card-image-hover-fast: $transition-duration-card-image-hover-slow * .3820;
 $background-light-gradient:
 	radial-gradient(farthest-corner at 50% 0,

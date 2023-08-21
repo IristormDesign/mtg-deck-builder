@@ -3,7 +3,7 @@
 		opacity: 0;
 		transform: rotate(-5.625deg) translateX(-$lhse*6) translateY(-$lhse*2) scale(1.0833);
 	}
-	37.5% {
+	38.20% {
 		opacity: 1;
 	}
 }
@@ -41,6 +41,7 @@
 				$drop-shadow-card-image-edge
 			 	drop-shadow(0 $lhse*.5 $lhse rgba(#000, .5));
 			transition-duration: $transition-duration-card-image-hover-slow;
+			will-change: auto;
 		}
 	}
 	a {
@@ -59,6 +60,7 @@
 				translate($lhse*1.3333, $lhse*1.6667)
 			;
 			transition-duration: $transition-duration-card-image-hover-slow;
+			will-change: auto;
 		}
 		&:active {
 			filter: brightness(120%);
@@ -95,7 +97,6 @@
 		width: auto;
 		max-height: calc(100vh - #{$lhse});
 		position: relative;
-
 	}
 	.close {
 		display: none;
