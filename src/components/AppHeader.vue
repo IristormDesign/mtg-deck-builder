@@ -65,20 +65,23 @@ export default {
 		 */
 		showAppHeaderOnUpwardScroll () {
 			let previousScrollPos = window.scrollY
+			const store = this.$store
 
 			window.onscroll = () => {
 				const currentScrollPos = window.scrollY
 
 				if (
 					currentScrollPos === 0 || // If the viewport is at the very top of the page, or...
-					(
-						previousScrollPos <= currentScrollPos &&
-						!this.$store.state.showDeckMenu
-					) // ...if the user scrolls the page downward and the decks menu isn't open...
+					(previousScrollPos <= currentScrollPos &&
+					!store.state.showDeckMenu) // ...if the user scrolls the page downward and the decks menu isn't open...
 				) {
-					this.$store.commit('setStickAppHeader', false)
-				} else if (!this.$store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
-					this.$store.commit('setStickAppHeader', true)
+					if (store.state.stickAppHeader) {
+						store.commit('setStickAppHeader', false)
+					}
+				} else if (!store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
+					if (!store.state.stickAppHeader) {
+						store.commit('setStickAppHeader', true)
+					}
 				}
 
 				previousScrollPos = currentScrollPos
