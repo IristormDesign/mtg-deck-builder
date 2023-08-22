@@ -29,10 +29,14 @@ export default {
 				appHeader.style.top = 'var(--header-top)'
 
 				if (isSticky) {
-					root.style.setProperty('--header-top', '0px')
+					requestAnimationFrame(() => {
+						root.style.setProperty('--header-top', '0px')
+					})
 					appHeader.classList.add('sticky')
 				} else {
-					root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
+					requestAnimationFrame(() => {
+						root.style.setProperty('--header-top', `-${appHeader.offsetHeight}px`)
+					})
 
 					if (window.scrollY === 0) {
 						appHeader.classList.remove('sticky')
