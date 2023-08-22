@@ -169,7 +169,7 @@ export default {
 			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
 
 			headerMenuFirstLevelLinks.forEach(link => {
-				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the decks menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the deck menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
 				link.addEventListener('click', this.closeAllPopups)
 
 				link.addEventListener('focus', () => {

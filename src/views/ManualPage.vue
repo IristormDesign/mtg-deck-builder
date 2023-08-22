@@ -17,7 +17,7 @@
 					<li>
 						<a href="#m-app-header">App Header</a>
 						<ol>
-							<li><a href="#m-decks-menu">Decks Menu</a></li>
+							<li><a href="#m-deck-menu">Deck Menu</a></li>
 						</ol>
 					</li>
 					<li><a href="#m-create-deck">“Create Deck” Page</a></li>

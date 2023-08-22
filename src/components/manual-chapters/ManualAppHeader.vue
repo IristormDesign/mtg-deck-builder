@@ -5,18 +5,18 @@
 		<ul>
 			<li><strong>User Manual</strong> – Takes you to what you’re reading right now.</li>
 			<li><strong>Create Deck</strong> – Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
-			<li><strong>Open Deck</strong> – Shows the <a href="#m-decks-menu">decks menu</a>.</li>
+			<li><strong>Open Deck</strong> – Shows the <a href="#m-deck-menu">deck menu</a>.</li>
 			<li><strong>Contact</strong> – Takes you to the Contact page.</li>
 		</ul>
 
-		<manual-decks-menu />
+		<manual-deck-menu />
 	</section>
 </template>
 
 <script>
-import ManualDecksMenu from '@/components/manual-chapters/ManualDecksMenu.vue'
+import ManualDeckMenu from '@/components/manual-chapters/ManualDeckMenu.vue'
 
 export default {
-	components: { ManualDecksMenu }
+	components: { ManualDeckMenu }
 }
 </script>
