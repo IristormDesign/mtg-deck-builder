@@ -33,7 +33,7 @@ select {
 	}
 	&:active {
 		background: lighten($color-group-bg, 6.25%);
-		border-color: $color-link-focus;
+		border-color: $color-link-active;
 	}
 	&:focus-visible {
 		outline: none;
@@ -93,7 +93,7 @@ input {
 		background: $color-mythic-dim;
 
 		&:not(:checked) {
-			border-color: $color-link-focus;
+			border-color: $color-link-active;
 		}
 	}
 	&:active {

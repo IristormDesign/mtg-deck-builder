@@ -129,7 +129,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	.final-call-to-action {
 		position: relative;	
 		background: $color-group-bg;
-		border-bottom: $border-sections;
+		background: $color-mythic-dim;
 
 		.wrap {
 			display: flex;
@@ -141,8 +141,8 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 		.button-container {
 			margin: divide($lhse, 3) $lhse*.5;
 
-			&:first-child {
-				.button {
+			&:last-child {
+				button {
 					@include secondary-button;
 				}
 			}
@@ -185,6 +185,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	.home-page {
 		.intro {
 			height: auto;
+			max-height: none;
 	
 			.wrap {
 				position: relative;

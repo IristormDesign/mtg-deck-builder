@@ -8,7 +8,7 @@ $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 37.5%);
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 41.67%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 25%); // Darkened to match brightness level of $color-heading-bg.
 $color-text-over-mythic-very-dim: desaturate(lighten($color-mythic-very-dim, 62.5%), 4.17%);
 
@@ -24,11 +24,12 @@ $color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Sampled
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
 $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 
-$color-link: saturate(lighten($color-mythic-orange, 12.5%), 6.25%);
-$color-link-focus: saturate(lighten($color-mythic-lighter, 20%), 40%);
+$color-link: desaturate(lighten($color-mythic-orange, 8.33%), 16.67%);
+$color-link-focus: saturate(lighten($color-mythic-orange, 8.33%), 50%);
+$color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
-$color-text: lighten($color-group-bg, 66.67%);
+$color-text: lighten($color-group-bg, 62.5%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
@@ -187,7 +188,7 @@ $x: 2px dashed rgba(#c0f, .75);
 		0 1px 0 .5px #000, // Rim around button
 		$box-shadow-button-shine,
 		$box-shadow-button-cast-shadow;
-	border: 0 solid desaturate(darken($color-link, 29.17%), 40%);
+	border: 0 solid desaturate(darken($color-link, 25%), 20%);
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
 	padding: $lhse*.25 .5em;
@@ -205,7 +206,6 @@ $x: 2px dashed rgba(#c0f, .75);
 	&:hover,
 	&:focus {
 		filter: brightness(1.25);
-		outline: none;
 		color: $color-text-buttons;
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;
@@ -220,9 +220,6 @@ $x: 2px dashed rgba(#c0f, .75);
 	&:active,
 	&:disabled {
 		box-shadow: 0 0 0 .5px #000;
-	}
-	&:focus-visible {
-		outline: 2px solid $color-mythic-orange;
 	}
 	&:disabled {
 		opacity: .6667;
@@ -243,8 +240,6 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin link {
 	color: $color-link;
 	text-decoration: none;
-	transition: $transition-duration-standard ease;
-	transition-property: color, text-decoration-color;
 	padding: 0;
 	margin: 0;
 	background: none;
@@ -266,7 +261,7 @@ $x: 2px dashed rgba(#c0f, .75);
 		color: $color-link-focus;
 	}
 	&:active {
-		color: #fff;
+		color: $color-link-active;
 	}
 }
 @mixin link-alt {

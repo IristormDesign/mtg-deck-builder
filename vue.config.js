@@ -11,7 +11,7 @@ module.exports = defineConfig({
 	},
 	pwa: {
 		name: 'MTG Deck Builder',
-		themeColor: '#7c402b', // = $color-mythic-dim
+		themeColor: '#78422f', // = $color-mythic-dim
 		msTileColor: '#1c2426', // = $color-group-bg
 		appleMobileWebAppCapable: 'yes',
 		manifestOptions: {

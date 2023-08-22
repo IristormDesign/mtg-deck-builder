@@ -184,7 +184,7 @@ figcaption {
 	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
 
 	&:active {
-		@include gradient-buttons($color-link-focus, $color-link);
+		@include gradient-buttons($color-link-active, $color-link-focus);
 	}
 }
 ::-webkit-scrollbar-corner {

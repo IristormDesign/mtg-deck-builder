@@ -1,12 +1,12 @@
 .app-footer {
 	background: $color-group-bg;
-	color: desaturate(darken($color-text, 20%), 8.33%);
+	color: desaturate(darken($color-text, 16.67%), 6.25%);
 	position: relative;
 	padding: $lhse 0;
 	margin-top: $lhse*.5;
-	
+
 	.root-home-page & {
-		margin-top: $lhse*.1667;
+		margin-top: 0;
 		flex-grow: 1;
 	}
 	.wrap {
@@ -21,16 +21,14 @@
 		margin: 0 .5em;
 	}
 	a {
-		&:link,
-		&:visited {
-			color: desaturate(darken($color-link, 8.33%), 40%);
-		}
+		color: desaturate(darken($color-link, 8.33%), 25%);
+
 		&:hover,
 		&:focus {
-			color: $color-link;
+			color: $color-link-focus;
 		}
 		&:active {
-			color: $color-link-focus;
+			color: $color-link-active;
 		}
 	}
 }

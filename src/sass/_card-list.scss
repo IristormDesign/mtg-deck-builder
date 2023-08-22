@@ -215,7 +215,7 @@ $min-height-card-list: $lhse*6;
 
 					&:hover,
 					&:focus {
-						color: $color-link-focus;
+						color: $color-link-active;
 					}
 				}
 			}
@@ -333,7 +333,7 @@ $min-height-card-list: $lhse*6;
 					transition-duration: 0s;
 				}
 				&:focus {
-					color: $color-link-focus;
+					color: $color-link-active;
 					outline: 2px solid $color-link;
 				}
 			}
