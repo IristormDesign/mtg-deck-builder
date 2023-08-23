@@ -142,7 +142,8 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			margin: divide($lhse, 3) $lhse*.5;
 
 			&:last-child {
-				button {
+				button,
+				.button {
 					@include secondary-button;
 				}
 			}
