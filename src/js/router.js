@@ -65,17 +65,10 @@ const routes = [
 		]
 	},
 	{
-		name: 'deckDeleted',
-		path: '/deck-deleted',
-		component: () => import(/* webpackChunkName: "deck-deleted" */ '../views/DeckDeleted.vue'),
-		beforeEnter: (to, from, next) => {
-			if (store.state.deletedDeckName) {
-				next()
-			} else {
-				// This page could be accessed at times when it shouldn't, such as via the browser back button or directly entering the URL.
-				next({ name: 'notFound', replace: true })
-			}
-		}
+		name: 'deleteDecks',
+		path: '/delete-decks',
+		component: () => import(/* webpackChunkName: "delete-decks" */ '../views/DeleteDecks.vue'),
+		props: true
 	},
 	{
 		name: 'contact',
