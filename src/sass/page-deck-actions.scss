@@ -1,8 +1,78 @@
 @import 'variables';
 
-.delete-decks {
-
-}
 .export-decks {
 	
+}
+.delete-decks {
+	.multi-select-buttons,
+	.button-container {
+		height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+	}
+	form {
+		display: grid;
+		gap: $lhse*.5;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		justify-content: center;
+		justify-items: center;
+	}
+	.multi-select-buttons,
+	.checklist {
+		padding: $lhse*.25 $lhse*.5;
+		border: $border-sections;
+	}
+	.multi-select-buttons {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		width: max-content;
+		grid-gap: $lhse*.25 $lhse*.5;
+		height: min-content;
+
+		.button-container {
+			height: $lhse*1.25;
+		}
+		button {
+			@include secondary-button;
+			font-size: 75%;
+			width: 100%;
+		}
+	}
+	.checklist {
+		margin: 0;
+		font-size: $font-size-bigger;
+	
+		li {
+			&:first-child {
+				margin-top: -$lhse*.0625;
+			}
+		}
+	}
+	.submit-button {
+		grid-column: span 2;
+	}
+}
+.decks-deleted {
+	text-align: center;
+}
+
+@media (max-width: $width-mobile-breakpoint) {
+	.delete-decks {
+		form {
+			display: block;
+		}
+		.multi-select-buttons,
+		.checklist {
+			margin: $lhse*.5 0;
+		}
+		.multi-select-buttons {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr;
+		}
+		.checklist {
+			width: max-content;
+			max-width: 100%;
+		}
+	}
 }

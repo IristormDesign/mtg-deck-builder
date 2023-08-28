@@ -138,3 +138,57 @@ select,
 option {
 	background-color: $color-group-bg;	
 }
+.checklist {
+	label {
+		padding-left: $lhse*.25;
+		cursor: pointer;
+		transition: color $transition-duration-standard ease;
+	}
+	li {
+		list-style: none;
+	}
+}
+[type="checkbox"] {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $lhse*.6667;
+	height: $lhse*.6667;
+	cursor: pointer;
+	transition: all $transition-duration-standard ease;
+	border: none;
+	outline: 1px solid $color-link;
+	background: none;
+	
+	&:hover,
+	&:focus-visible {
+		outline: 2px solid $color-link;
+		background: none;
+
+		+ label {
+			color: $color-text-brighter;
+		}
+	}
+	&:active {
+		outline-width: 1px;
+		outline-color: $color-link-active;
+	}
+	&::after {
+		font: normal #{80%}/#{1} $font-family-standard;
+		content: '\2714'; // Check mark sign
+		color: $color-link-active;
+		opacity: 0;
+		text-align: center;
+		height: 80%;
+		transition: opacity $transition-duration-standard ease;
+	}
+	&:checked {
+		background: $color-mythic-dim;
+
+		&::after {
+			opacity: 1;
+			transition-duration: 0s;
+		}
+	}
+}

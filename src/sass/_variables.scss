@@ -30,11 +30,10 @@ $color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
 $color-text: lighten($color-group-bg, 62.5%);
-$color-text-brighter: lighten($color-text, 6.25%);
+$color-text-brighter: lighten($color-text, 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
-$color-input-bg: desaturate(lighten($color-mythic-complement, 33.33%), 62.5%);
 $color-section-border: darken($color-content-bg, 6.25%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 20%), 6.25%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
@@ -57,6 +56,7 @@ $lhse: $line-height-standard * 1em;
 $font-weight-normal: 300;
 $font-weight-semibold: 500;
 $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .25);
+$font-size-bigger: 112.5%;
 
 // WIDTHS & HEIGHTS
 $min-width-app: 960px;
@@ -205,7 +205,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	
 	&:hover,
 	&:focus {
-		filter: brightness(1.25);
+		filter: brightness(1.2);
 		color: $color-text-buttons;
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;

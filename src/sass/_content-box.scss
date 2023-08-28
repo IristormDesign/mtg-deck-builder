@@ -20,15 +20,6 @@
 		margin-bottom: $lhse*.5;
 	}
 }
-.deck-deleted {
-	text-align: center;
-
-	p {
-		&:first-of-type {
-			font-size: 112.5%;
-		}
-	}
-}
 .screenshot {
 	border: $border-image;
 	margin: 0 auto;
