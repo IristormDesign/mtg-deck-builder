@@ -27,18 +27,16 @@ export default {
 	},
 	methods: {
 		doDeckAction () {
-			setTimeout(() => {
-				switch (this.deckAction) {
-					case 'copy':
-						this.copyDeck(this.deck); break
-					case 'export':
-						this.exportDeck(this.deck); break
-					case 'delete':
-						this.deleteDeck(this.deck); break
-				}
+			switch (this.deckAction) {
+				case 'copy':
+					this.copyDeck(this.deck); break
+				case 'export':
+					this.exportDeck(this.deck); break
+				case 'delete':
+					this.deleteDeck(this.deck); break
+			}
 
-				this.deckAction = ''
-			}, 1)
+			this.deckAction = ''
 		},
 		copyDeck (sourceDeck) {
 			const toCopyConfirmed = confirm(
@@ -52,27 +50,17 @@ export default {
 				this.storeCopiedDeckAndRedirect(copiedDeck, newData)
 			}
 		},
+		exportDeck (deck) {
+			this.$router.push({
+				name: 'exportDecks',
+				params: { presetDeckName: deck.name }
+			})
+		},
 		deleteDeck (deck) {
 			this.$router.push({
 				name: 'deleteDecks',
 				params: { presetDeckName: deck.name }
 			})
-		},
-		exportDeck (deck) {
-			const toExportConfirmed = confirm(`Export a deck data file of “${deck.name}”?`)
-
-			if (toExportConfirmed) {
-				const deckData = JSON.stringify(deck)
-				const transitoryLink = document.createElement('a')
-
-				transitoryLink.style.display = 'none'
-				transitoryLink.setAttribute('href', `data:text/plain;charset=utf-8,${deckData}`)
-				transitoryLink.setAttribute('download', `${deck.name}.deck`)
-
-				document.body.appendChild(transitoryLink)
-				transitoryLink.click()
-				document.body.removeChild(transitoryLink)
-			}
 		}
 	}
 }

@@ -45,7 +45,15 @@ export default {
 	mixins: [stringMethods, copyDeck],
 	data () {
 		return {
-			deckNameInput: ''
+			deckNameInput: '',
+			fileName: '',
+			formatVer: 0,
+			nameFirstDeck: ''
+		}
+	},
+	computed: {
+		fileInput () {
+			return document.getElementById('data-file')
 		}
 	},
 	mounted () {
@@ -57,12 +65,11 @@ export default {
 		 */
 		hideFileInput () {
 			const openFileButton = document.getElementById('file-btn')
-			const fileInput = document.getElementById('data-file')
 
 			openFileButton.addEventListener('click', () => {
-				fileInput.click()
+				this.fileInput.click()
 			})
-			fileInput.addEventListener('change', this.importDeckData)
+			this.fileInput.addEventListener('change', this.receiveFile)
 		},
 		submitDeckName () {
 			let name = this.deckNameInput.trim()
@@ -102,75 +109,120 @@ export default {
 				this.finalizeDeckCreation(updatedDecksArray, path)
 			}
 		},
-		importDeckData () {
-			const fileInputEl = document.getElementById('data-file')
-			const importedFile = fileInputEl.files[0]
+		receiveFile () {
+			const file = this.fileInput.files[0]
 
-			if (importedFile) {
+			if (file) {
 				const fileReader = new FileReader()
 
-				fileReader.readAsText(importedFile)
+				fileReader.readAsText(file)
 				fileReader.onload = () => {
-					const fileReaderResult = fileReader.result
-
-					if (this.isValidDeckData(importedFile, fileReaderResult)) {
-						const deck = JSON.parse(fileReaderResult)
-
-						if (this.$store.getters.deckExists(deck.path)) {
-							const amendedDeckData = this.amendCopiedDeckName(deck)
-
-							alert(`⚠ Since you have another deck named “${deck.name},” the deck you’re importing is going to be renamed “${amendedDeckData.name}.”`)
-
-							this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
-						} else {
-							const updatedDecksArray = this.$store.state.decks
-
-							updatedDecksArray.push({
-								cards: deck.cards,
-								colors: deck.colors,
-								dataVersion: deck.dataVersion,
-								editDate: deck.editDate,
-								name: deck.name,
-								path: deck.path,
-								sideboard: deck.sideboard,
-								sortBy: deck.sortBy,
-								viewedCard: deck.viewedCard
-							})
-
-							this.finalizeDeckCreation(updatedDecksArray, deck.path)
-						}
-					} else {
-						// Clear the deck file input in case the user tries to load a file of the same name again.
-						fileInputEl.value = null
-					}
+					this.fileName = file.name
+					this.loadFile(fileReader.result)
 				}
 			}
 		},
-		isValidDeckData (file, string) {
-			try {
-				const deckData = JSON.parse(string)
+		loadFile (fileReaderResult) {
+			const data = JSON.parse(fileReaderResult)
+			this.formatVer = this.determineDataFormat(data)
+			this.nameFirstDeck = '' // Reset this property.
 
-				if (deckData.name && deckData.path && deckData.cards) {
-					return true
+			if (this.formatVer === 2) {
+				const decks = data.decks
+				let numExistingDecks = 0
+				let existingDeckName = ''
+
+				for (let i = 0; i < decks.length; i++) {
+					const deck = decks[i]
+
+					if (this.$store.getters.deckExists(deck.path)) {
+						numExistingDecks++
+						existingDeckName = deck.name
+
+						const amendedDeck = this.amendCopiedDeckName(deck)
+
+						deck.name = amendedDeck.name
+						deck.path = amendedDeck.path
+						deck.editDate = new Date()
+					}
+
+					if (i === 0) {
+						this.nameFirstDeck = deck.name
+					}
+
+					this.createImportedDeck(deck)
+				}
+
+				if (numExistingDecks === 1) {
+					alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
+				} else if (numExistingDecks > 1) {
+					alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
+				}
+			} else if (this.formatVer === 1) {
+				const deck = data
+
+				if (this.$store.getters.deckExists(deck.path)) {
+					const amendedDeckData = this.amendCopiedDeckName(deck)
+
+					alert(this.singleExistingDeckMessage(deck.name, amendedDeckData.name))
+					this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
+				} else {
+					this.createImportedDeck(deck)
+				}
+			} else {
+				// Clear the deck file input in case the user tries to load a file of the same name again.
+				this.fileInput.value = null
+			}
+		},
+		createImportedDeck (deck) {
+			const updatedDecksArray = this.$store.state.decks
+
+			updatedDecksArray.push({
+				cards: deck.cards,
+				colors: deck.colors,
+				dataVersion: deck.dataVersion,
+				editDate: deck.editDate,
+				name: deck.name,
+				path: deck.path,
+				sideboard: deck.sideboard,
+				sortBy: deck.sortBy,
+				viewedCard: deck.viewedCard
+			})
+
+			if (
+				this.nameFirstDeck === deck.name || // If the imported data contained an array of decks, check for the name of the first deck...
+				this.formatVer === 1 // Or if the imported data was in the old version format...
+			) {
+				this.finalizeDeckCreation(updatedDecksArray, deck.path)
+			}
+		},
+		singleExistingDeckMessage (existingName, importingName) {
+			return `Because you already have a deck named “${existingName},” the deck you’re importing is going to be renamed “${importingName}.”`
+		},
+		determineDataFormat (data) {
+			try {
+				if (data.decks) { // If the data is the new form of data, which includes a `decks` array containing any number of deck objects...
+					return 2
+				} else if (data.name && data.path && data.cards) { // Else if the data is the old form of data, which has the properties of only a singular deck...
+					return 1
 				} else {
 					throw new SyntaxError()
 				}
 			} catch (error) {
 				if (error instanceof SyntaxError) {
 					const deckExtRegex = /\.deck$/i
-					const fileName = file.name
 
-					if (deckExtRegex.test(fileName)) {
-						alert(`⚠ File Import Error\n\nSorry, the deck data file you’ve selected (${fileName}) couldn’t be imported because the data contained in it is invalid or corrupted.`)
+					if (deckExtRegex.test(this.fileName)) {
+						alert(`⚠ File Import Error\n\nSorry, the deck data file you’ve selected (${this.fileName}) couldn’t be imported because its contained data is invalid or corrupted.`)
 					} else {
-						alert(`⚠ File Import Error\n\nThe file you’ve selected (${fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`)
+						alert(`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`)
 					}
 				} else {
 					alert(error)
 					throw error
 				}
 
-				return false
+				return 0
 			}
 		},
 		finalizeDeckCreation (updatedDecksArray, deckPath) {

@@ -109,18 +109,20 @@ export default {
 			}
 		},
 		confirmedDelete () {
+			const message = '⚠ Are you sure you want to permanently delete '
+
 			if (this.numChecked === 1) {
 				return confirm(
-					`⚠ Are you sure you want to delete “${this.checkedDecks[0]}”?`)
+					message + `“${this.checkedDecks[0]}”?`)
 			} else if (this.numChecked === 2) {
 				return confirm(
-					`⚠ Are you sure you want to delete “${this.checkedDecks[0]}” and “${this.checkedDecks[1]}”?`)
+					message + `“${this.checkedDecks[0]}” and “${this.checkedDecks[1]}”?`)
 			} else if (this.numChecked === this.numExisting) {
 				return confirm(
-					`⚠ Are you sure you want to delete all ${this.numExisting} of your decks?`)
+					message + `all ${this.numExisting} of your decks?`)
 			} else {
 				return confirm(
-					`⚠ Are you sure you want to delete the ${this.numChecked} decks you’ve selected?`)
+					message + `the ${this.numChecked} decks you’ve selected?`)
 			}
 		},
 		removeSelectedDecks () {

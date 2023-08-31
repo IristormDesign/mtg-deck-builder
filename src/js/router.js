@@ -65,6 +65,12 @@ const routes = [
 		]
 	},
 	{
+		name: 'exportDecks',
+		path: '/export-decks',
+		component: () => import(/* webpackChunkName: "export-decks" */ '../views/ExportDecks.vue'),
+		props: true
+	},
+	{
 		name: 'deleteDecks',
 		path: '/delete-decks',
 		component: () => import(/* webpackChunkName: "delete-decks" */ '../views/DeleteDecks.vue'),
