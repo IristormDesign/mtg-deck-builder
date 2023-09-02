@@ -226,12 +226,12 @@ export default {
 			} else {
 				if (this.maxQty(card) === 99) {
 					if (card.qty > 99) {
-						alert('⚠ 99 is plenty, don’t you think?')
+						alert('99 is plenty, don’t you think?')
 						card.qty = 99
 					}
 				} else {
 					if (card.qty > 4) {
-						alert('⚠ A deck can have no more than 4 of any card with a particular name other than basic land cards.')
+						alert('A deck can have no more than 4 of any card with a particular name other than basic land cards.')
 						card.qty = 4
 					}
 				}

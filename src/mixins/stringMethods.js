@@ -4,7 +4,7 @@ export default {
 		 * @param {string} name
 		 */
 		alertNameExists (name) {
-			return `⚠ You already have a deck named “${name}.” Please give a different name.`
+			return `You already have a deck named “${name}.” Please give a different name.`
 		},
 		/**
 		 * Turn each straight apostrophe (or single closing quotation mark) into a curly one.
