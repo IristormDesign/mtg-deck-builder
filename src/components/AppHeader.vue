@@ -80,11 +80,11 @@ export default {
 					!store.state.showDeckMenu) // ...if the user scrolls the page downward and the deck menu isn't open...
 				) {
 					if (store.state.stickAppHeader) {
-						store.commit('setStickAppHeader', false)
+						store.commit('stickAppHeader', false)
 					}
 				} else if (!store.state.pageScrollByAnchors) { // If the page is scrolling upward caused by the user's direct scrolling interaction...
 					if (!store.state.stickAppHeader) {
-						store.commit('setStickAppHeader', true)
+						store.commit('stickAppHeader', true)
 					}
 				}
 

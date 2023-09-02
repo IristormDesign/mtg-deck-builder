@@ -111,7 +111,7 @@ export default {
 			}
 
 			this.addSortingClusterGaps(deck, sortMenu)
-			this.$store.commit('setDecks', this.$store.state.decks)
+			this.$store.commit('decks', this.$store.state.decks)
 
 			function sortByColor (cards) {
 				function isColorlessLand (card) {

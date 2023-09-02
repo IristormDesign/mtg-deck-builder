@@ -102,8 +102,8 @@ export default {
 				this.deckObject.viewedCard = card.name
 			}
 
-			store.commit('setDecks', store.state.decks)
-			store.commit('setShowCard', true)
+			store.commit('decks', store.state.decks)
+			store.commit('showCard', true)
 		},
 		colorButton (card) {
 			const colors = card.colors
@@ -239,7 +239,7 @@ export default {
 			}
 			function saveChanges () {
 				deck.editDate = new Date()
-				store.commit('setDecks', store.state.decks)
+				store.commit('decks', store.state.decks)
 			}
 		},
 		qtyInputFocused (event, card) {

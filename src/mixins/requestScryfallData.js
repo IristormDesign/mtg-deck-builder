@@ -202,9 +202,9 @@ export default {
 		updateOldCard (newCard) {
 			if (this.oldCardData) {
 				if (this.oldCardData.inSideboard) {
-					this.$store.commit('setShowSideboard', true)
+					this.$store.commit('showSideboard', true)
 				} else {
-					this.$store.commit('setShowSideboard', false)
+					this.$store.commit('showSideboard', false)
 				}
 			}
 			const list = this.activeCardList
@@ -216,7 +216,7 @@ export default {
 			this.deck.editDate = new Date()
 
 			this.$nextTick(() => {
-				this.$store.commit('setDecks', this.$store.state.decks)
+				this.$store.commit('decks', this.$store.state.decks)
 			})
 		},
 		/**
@@ -308,7 +308,7 @@ export default {
 
 			this.$nextTick(() => {
 				this.activeCardList.viewedCard = newCard.name
-				this.$store.commit('setDecks', this.$store.state.decks)
+				this.$store.commit('decks', this.$store.state.decks)
 			})
 		}
 	}

@@ -58,8 +58,8 @@ export default {
 			if (this.$store.state.loadDefaultDecks) {
 				import('@/js/default-decks.json')
 					.then(data => {
-						this.$store.commit('setDecks', data.decks)
-						this.$store.commit('setLoadDefaultDecks', false)
+						this.$store.commit('decks', data.decks)
+						this.$store.commit('loadDefaultDecks', false)
 					})
 			}
 		}

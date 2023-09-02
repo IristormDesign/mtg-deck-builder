@@ -28,7 +28,7 @@ export default {
 			}
 
 			deck.colors = deckColors
-			this.$store.commit('setDecks', this.$store.state.decks)
+			this.$store.commit('decks', this.$store.state.decks)
 		},
 		renderManaSymbols (deck) {
 			if (deck.colors) {

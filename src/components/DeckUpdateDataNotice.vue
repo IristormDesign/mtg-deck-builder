@@ -48,13 +48,13 @@ export default {
 				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
 			} else {
 				this.updatingDeckData = true
-				this.$store.commit('setShowSideboard', false)
+				this.$store.commit('showSideboard', false)
 
 				for (const card of this.deck.cards) {
 					this.determineOutdatedCard(card)
 				}
 
-				this.$store.commit('setShowSideboard', true)
+				this.$store.commit('showSideboard', true)
 
 				for (const card of this.deck.sideboard.cards) {
 					this.determineOutdatedCard(card)

@@ -135,7 +135,7 @@ export default {
 			}
 
 			this.isDeleted = true
-			this.$store.commit('setDecks', decks)
+			this.$store.commit('decks', decks)
 		}
 	}
 }

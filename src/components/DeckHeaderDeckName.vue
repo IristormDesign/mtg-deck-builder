@@ -52,7 +52,7 @@ export default {
 					deck.path = newPath
 					deck.editDate = new Date()
 
-					store.commit('setDecks', store.state.decks)
+					store.commit('decks', store.state.decks)
 					store.commit('sortDeckMenu')
 
 					if (!theActiveDeck()) {

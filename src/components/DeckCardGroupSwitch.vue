@@ -9,7 +9,7 @@
 					type="radio"
 					checked
 					name="view-list"
-					@click="$store.commit('setShowSideboard', false)"
+					@click="$store.commit('showSideboard', false)"
 					ref="checkRadioMainDeck"
 				/>
 			</div>
@@ -19,7 +19,7 @@
 					id="radio-sideboard-group"
 					type="radio"
 					name="view-list"
-					@click="$store.commit('setShowSideboard', true)"
+					@click="$store.commit('showSideboard', true)"
 				/>
 			</div>
 		</fieldset>

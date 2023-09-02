@@ -49,31 +49,31 @@ export default new Vuex.Store({
 		}
 	},
 	mutations: {
-		setDecks (state, payload) {
+		decks (state, payload) {
 			state.decks = payload
 		},
-		setOverlayHoverEnabled (state, payload) {
+		overlayHoverEnabled (state, payload) {
 			state.overlayHoverEnabled = payload
 		},
-		setLoadDefaultDecks (state, payload) {
+		loadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
 		},
-		setPageScrollByAnchors (state, payload) {
+		pageScrollByAnchors (state, payload) {
 			state.pageScrollByAnchors = payload
 		},
-		setStickAppHeader (state, payload) {
+		stickAppHeader (state, payload) {
 			state.stickAppHeader = payload
 		},
-		setShowingAnyPopup (state, payload) {
+		showingAnyPopup (state, payload) {
 			state.showingAnyPopup = payload
 		},
-		setShowCard (state, payload) {
+		showCard (state, payload) {
 			state.showCard = payload
 		},
-		setShowDeckMenu (state, payload) {
+		showDeckMenu (state, payload) {
 			state.showDeckMenu = payload
 		},
-		setShowSideboard (state, payload) {
+		showSideboard (state, payload) {
 			state.showSideboard = payload
 		},
 		sortDeckMenu (state) {

@@ -125,17 +125,17 @@ export default {
 		showHeaderMenu (show) {
 			if (show) {
 				if (this.mobileView()) {
-					this.$store.commit('setShowingAnyPopup', true)
+					this.$store.commit('showingAnyPopup', true)
 				}
 			} else {
-				this.$store.commit('setShowingAnyPopup', false)
+				this.$store.commit('showingAnyPopup', false)
 			}
 		},
 		showDeckMenu (show) {
 			if (show) {
 				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
 				this.showHeaderMenu = true
-				this.$store.commit('setShowingAnyPopup', true)
+				this.$store.commit('showingAnyPopup', true)
 			}
 		}
 	},
@@ -228,15 +228,15 @@ export default {
 			}
 		},
 		closeAllPopups () {
-			this.$store.commit('setShowDeckMenu', false)
-			this.$store.commit('setOverlayHoverEnabled', false)
-			this.$store.commit('setShowingAnyPopup', false)
+			this.$store.commit('showDeckMenu', false)
+			this.$store.commit('overlayHoverEnabled', false)
+			this.$store.commit('showingAnyPopup', false)
 
 			if (this.mobileView()) {
 				this.showHeaderMenu = false
 			}
 			if (this.stickAppHeader) {
-				this.$store.commit('setStickAppHeader', false)
+				this.$store.commit('stickAppHeader', false)
 			}
 		},
 		toggleHeaderMenu () {
@@ -244,8 +244,8 @@ export default {
 				this.closeAllPopups()
 			} else {
 				this.showHeaderMenu = true
-				this.$store.commit('setShowDeckMenu', true)
-				this.$store.commit('setOverlayHoverEnabled', false)
+				this.$store.commit('showDeckMenu', true)
+				this.$store.commit('overlayHoverEnabled', false)
 				this.addFocusListenerToClosePopups()
 			}
 		},
@@ -254,17 +254,17 @@ export default {
 				const store = this.$store
 
 				if (this.showDeckMenu) {
-					store.commit('setOverlayHoverEnabled', false)
-					store.commit('setShowDeckMenu', false)
-					store.commit('setShowingAnyPopup', false)
+					store.commit('overlayHoverEnabled', false)
+					store.commit('showDeckMenu', false)
+					store.commit('showingAnyPopup', false)
 				} else {
 					if (triggeredByHover) {
-						store.commit('setOverlayHoverEnabled', true)
+						store.commit('overlayHoverEnabled', true)
 					} else {
-						store.commit('setOverlayHoverEnabled', false)
+						store.commit('overlayHoverEnabled', false)
 					}
-					store.commit('setShowDeckMenu', true)
-					store.commit('setShowingAnyPopup', true)
+					store.commit('showDeckMenu', true)
+					store.commit('showingAnyPopup', true)
 				}
 
 				this.freezeDeckMenu = true

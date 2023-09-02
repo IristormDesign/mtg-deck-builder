@@ -72,9 +72,9 @@ export default {
 	methods: {
 		showCardPerViewport () {
 			if (this.mobileView()) {
-				this.$store.commit('setShowCard', false)
+				this.$store.commit('showCard', false)
 			} else {
-				this.$store.commit('setShowCard', true)
+				this.$store.commit('showCard', true)
 			}
 		},
 		mobileView () {
@@ -82,14 +82,14 @@ export default {
 		},
 		hideCDOverlay () {
 			if (this.mobileView()) {
-				this.$store.commit('setShowCard', false)
+				this.$store.commit('showCard', false)
 			}
 		},
 		resizingViewport () {
 			if (this.mobileView()) {
 				this.hideCDOverlay()
 			} else {
-				this.$store.commit('setShowCard', true)
+				this.$store.commit('showCard', true)
 			}
 		},
 		/**
@@ -135,7 +135,7 @@ export default {
 			card.imgVersion = this.$store.state.latestImageVersion
 
 			this.$nextTick(() => {
-				this.$store.commit('setDecks', this.$store.state.decks)
+				this.$store.commit('decks', this.$store.state.decks)
 			})
 		}
 	}

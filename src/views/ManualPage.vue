@@ -89,11 +89,11 @@ export default {
 			const regexManualSectionLink = /^#.*/ // A string beginning with `#`.
 
 			if (regexManualSectionLink.test(event.target.hash)) {
-				this.$store.commit('setPageScrollByAnchors', true)
-				this.$store.commit('setStickAppHeader', false)
+				this.$store.commit('pageScrollByAnchors', true)
+				this.$store.commit('stickAppHeader', false)
 
 				setTimeout(() => {
-					this.$store.commit('setPageScrollByAnchors', false)
+					this.$store.commit('pageScrollByAnchors', false)
 				}, 10) // There needs to be a little timeout duration because otherwise the header sometimes appears when a link to a higher section is clicked.
 			}
 		}

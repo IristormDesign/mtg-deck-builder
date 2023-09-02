@@ -105,7 +105,7 @@ export default {
 					viewedCard: ''
 				})
 
-				this.$store.commit('setDecks', updatedDecksArray)
+				this.$store.commit('decks', updatedDecksArray)
 				this.goToDeckPage(path)
 			}
 		},
@@ -238,7 +238,7 @@ export default {
 				viewedCard: deck.viewedCard
 			})
 
-			this.$store.commit('setDecks', updatedDecksArray)
+			this.$store.commit('decks', updatedDecksArray)
 		},
 		alertSingleExistingDeck (existingName, importingName) {
 			alert(

@@ -54,7 +54,7 @@ export default {
 			deck.editDate = new Date()
 
 			store.state.decks.push(deck)
-			store.commit('setDecks', store.state.decks)
+			store.commit('decks', store.state.decks)
 			store.commit('sortDeckMenu')
 
 			router.push({

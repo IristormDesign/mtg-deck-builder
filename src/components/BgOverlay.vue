@@ -22,8 +22,8 @@ export default {
 				if (triggeredByClick || (!triggeredByClick && this.$store.state.overlayHoverEnabled)) {
 					this.transitionActive = true
 					this.$emit('closePopups', true)
-					this.$store.commit('setOverlayHoverEnabled', true)
-					this.$store.commit('setShowingAnyPopup', false)
+					this.$store.commit('overlayHoverEnabled', true)
+					this.$store.commit('showingAnyPopup', false)
 
 					setTimeout(() => {
 						this.transitionActive = false

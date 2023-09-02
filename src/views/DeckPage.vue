@@ -43,12 +43,12 @@ export default {
 		}
 	},
 	beforeRouteUpdate (to, from, next) {
-		this.$store.commit('setShowSideboard', false)
+		this.$store.commit('showSideboard', false)
 		next()
 		this.prepareDecksWithOutdatedData()
 	},
 	created () {
-		this.$store.commit('setShowSideboard', false)
+		this.$store.commit('showSideboard', false)
 		this.prepareDecksWithOutdatedData()
 	},
 	methods: {
@@ -58,7 +58,7 @@ export default {
 
 			this.$nextTick(() => {
 				if (this.dataModified) {
-					this.$store.commit('setDecks', this.$store.state.decks)
+					this.$store.commit('decks', this.$store.state.decks)
 				}
 			})
 		},
