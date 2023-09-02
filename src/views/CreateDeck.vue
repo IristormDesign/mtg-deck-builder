@@ -25,7 +25,7 @@
 				</form>
 			</div>
 			<div class="import-data">
-				<h3>Import a Deck</h3>
+				<h3>Import Decks</h3>
 				<input
 					id="data-file"
 					type="file" accept=".deck"

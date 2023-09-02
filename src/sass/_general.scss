@@ -157,7 +157,11 @@ figcaption {
 	letter-spacing: (1/128)*1em;
 	text-align: center;
 	margin: $lhse*.125;
-	opacity: .8;
+	color: $color-text-darker;
+
+	a {
+		color: $color-link-darker;
+	}
 }
 ::selection {
 	background: $color-mythic-dim;

@@ -27,10 +27,12 @@ $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 $color-link: desaturate(lighten($color-mythic-orange, 8.33%), 16.67%);
 $color-link-focus: saturate(lighten($color-mythic-orange, 12.5%), 100%);
 $color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
+$color-link-darker: desaturate(darken($color-link, 8.33%), 25%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
 $color-text: lighten($color-group-bg, 62.5%);
 $color-text-brighter: lighten($color-text, 8.33%);
+$color-text-darker: desaturate(darken($color-text, 16.67%), 6.25%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
@@ -74,7 +76,7 @@ $height-app-header-tall: $lhse*3;
 // BORDERS
 $border-sections: 1px solid $color-section-border;
 $border-sections-alt: 1px solid $color-section-border-alt;
-$border-image: 3px solid $color-heading-bg;
+$border-image: $lhse*.25 solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
 $border-input: 1px solid $color-mythic-dim;
 

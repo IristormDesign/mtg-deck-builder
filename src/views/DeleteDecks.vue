@@ -1,7 +1,7 @@
 <template>
 	<article
 		v-if="!isDeleted"
-		class="delete-decks content-box"
+		class="deck-action-page delete-decks content-box"
 	>
 		<h2>Delete Decks</h2>
 		<template v-if="numExisting <= 0">
@@ -35,18 +35,18 @@
 						<label :for="deck.name">{{ deck.name }}</label>
 					</li>
 				</ul>
-				<p class="button-container submit-button">
+				<div class="button-container submit-button">
 					<button
 						@click.prevent="handleSubmit()"
 						:disabled="numChecked <= 0"
 					>Delete Selected</button>
-				</p>
+				</div>
 			</form>
 		</template>
 	</article>
 	<article
 		v-else
-		class="decks-deleted content-box"
+		class="action-done content-box"
 		@click="$store.getters.attentionHeaderButton"
 	>
 		<figure>

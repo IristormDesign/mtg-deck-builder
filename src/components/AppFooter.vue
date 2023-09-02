@@ -11,9 +11,6 @@
 
 					<span class="divider">|</span>
 					<router-link to="/privacy">Privacy Policy</router-link>
-
-					<span class="divider">|</span>
-					<a href="#clear" @click.prevent="clearLocalStorage()">Clear Stored Data</a>
 				</span>
 			</p>
 			<p><a href="https://magic.wizards.com" target="_blank"><i>Magic: The Gathering</i></a> is TM and &copy; by Wizards of the Coast, LLC. This app is not affiliated with Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided via the public API of <a href="https://scryfall.com" target="_blank">Scryfall</a>, LLC. This app is not affiliated with Scryfall. All other content, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design.</p>
@@ -26,17 +23,6 @@ export default {
 	data () {
 		return {
 			appVersion: process.env.VUE_APP_VERSION
-		}
-	},
-	methods: {
-		clearLocalStorage () {
-			const confirmed = confirm('⚠ WARNING\n\nYou’re about to permanently delete all of your data stored in this app, including the decks you’ve made. Are you sure you want to do this?')
-
-			if (confirmed) {
-				localStorage.clear()
-
-				window.location.href = '/' // Make the page reload which is necessary to restore the default decks.
-			}
 		}
 	}
 }

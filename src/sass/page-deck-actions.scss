@@ -1,7 +1,6 @@
 @import 'variables';
 
-.export-decks,
-.delete-decks {
+.deck-action-page {
 	.multi-select-buttons,
 	.button-container {
 		height: $lhse*1.5;
@@ -15,11 +14,12 @@
 		grid-template-rows: auto auto;
 		justify-content: center;
 		justify-items: center;
+		margin-bottom: $lhse*.5;
 	}
 	.multi-select-buttons,
 	.checklist {
 		padding: $lhse*.25 $lhse*.5;
-		border: $border-sections;
+		border: $border-image;
 	}
 	.multi-select-buttons {
 		display: grid;
@@ -39,9 +39,10 @@
 	}
 	.checklist {
 		margin: 0;
-		font-size: $font-size-bigger;
 	
 		li {
+			font-size: $font-size-bigger;
+
 			&:first-child {
 				margin-top: -$lhse*.0625;
 			}
@@ -51,12 +52,13 @@
 		grid-column: span 2;
 	}
 }
-.decks-deleted {
+.action-done {
 	text-align: center;
+	text-wrap: balance;
 }
 
 @media (max-width: $width-mobile-breakpoint) {
-	.delete-decks {
+	.deck-action-page {
 		form {
 			display: block;
 		}

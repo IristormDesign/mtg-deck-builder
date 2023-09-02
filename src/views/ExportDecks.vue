@@ -1,7 +1,7 @@
 <template>
 	<article
 		v-if="!isExported"
-		class="export-decks content-box"
+		class="deck-action-page export-decks content-box"
 	>
 		<h2>Export Decks</h2>
 		<template v-if="numExisting <= 0">
@@ -35,18 +35,18 @@
 						<label :for="deck.name">{{ deck.name }}</label>
 					</li>
 				</ul>
-				<p class="button-container submit-button">
+				<div class="button-container submit-button">
 					<button
 						@click.prevent="handleSubmit()"
 						:disabled="numChecked <= 0"
 					>Export Selected</button>
-				</p>
+				</div>
 			</form>
 		</template>
 	</article>
 	<article
 		v-else
-		class="decks-exported content-box"
+		class="action-done content-box"
 		@click="$store.getters.attentionHeaderButton"
 	>
 		<figure>
@@ -153,7 +153,7 @@ export default {
 		},
 		setFileName () {
 			if (this.numChecked > 1) {
-				return 'My Exported Decks.deck'
+				return 'My Decks.deck'
 			} else {
 				return `${this.checkedDecks[0]}.deck`
 			}
