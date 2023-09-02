@@ -15,7 +15,10 @@
 		</button>
 		<router-link
 			v-else
-			:to="{ name: 'moreStats' }"
+			:to="{
+				name: 'moreStats',
+				params: { toAutoScrollDown: true }
+			}"
 		>
 			More Stats
 		</router-link>
@@ -26,24 +29,6 @@
 export default {
 	props: {
 		deck: Object
-	},
-	mounted () {
-		this.applyClickEffect()
-	},
-	methods: {
-		/**
-		 * `router-link` elements don't work with Vue's `@click` directive, so a standard `addEventListener` function has to be used instead.
-		 */
-		applyClickEffect () {
-			const moreStatsButton = document.querySelector('.more-stats-button a')
-
-			if (moreStatsButton) { // This check is needed to prevent an error whenever the More Stats button is an actual `<button>` element (though a disabled one) rather than an `<a>`.
-				moreStatsButton.addEventListener('click', this.scrollDownToMoreStats)
-			}
-		},
-		scrollDownToMoreStats () {
-			this.$store.commit('setAutoScrollDown', true)
-		}
 	}
 }
 </script>

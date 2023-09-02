@@ -55,6 +55,9 @@ import getActiveDeck from '@/mixins/getActiveDeck.js'
 export default {
 	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
 	mixins: [getActiveDeck],
+	props: {
+		toAutoScrollDown: Boolean
+	},
 	data () {
 		return {
 			subtypeCreaturesNames: [],
@@ -69,7 +72,7 @@ export default {
 	methods: {
 		autoScrollDown () {
 			this.$nextTick(() => {
-				if (this.$store.state.autoScrollDown) {
+				if (this.toAutoScrollDown) {
 					const article = document.querySelector('.more-stats h3')
 
 					if (article) {
@@ -77,8 +80,6 @@ export default {
 							behavior: 'smooth'
 						})
 					}
-
-					this.$store.commit('setAutoScrollDown', false)
 				}
 			})
 		},

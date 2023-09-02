@@ -60,7 +60,8 @@ const routes = [
 			{
 				name: 'moreStats',
 				path: 'more-stats',
-				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue')
+				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue'),
+				props: true
 			}
 		]
 	},
