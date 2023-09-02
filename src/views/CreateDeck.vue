@@ -68,7 +68,7 @@ export default {
 			openFileButton.addEventListener('click', () => {
 				this.fileInput.click()
 			})
-			this.fileInput.addEventListener('change', this.receiveFile)
+			this.fileInput.addEventListener('change', this.loadFile)
 		},
 		submitDeckName () {
 			let name = this.deckNameInput.trim()
@@ -109,100 +109,29 @@ export default {
 				this.goToDeckPage(path)
 			}
 		},
-		receiveFile () {
+		loadFile () {
 			const file = this.fileInput.files[0]
 
 			if (file) {
 				const fileReader = new FileReader()
 
 				fileReader.readAsText(file)
+
 				fileReader.onload = () => {
+					const data = JSON.parse(fileReader.result)
 					this.fileName = file.name
-					this.loadFile(fileReader.result)
+					this.formatVer = this.determineDataFormat(data)
+
+					if (this.formatVer === 2) {
+						this.handleFormatVer2(data)
+					} else if (this.formatVer === 1) {
+						this.handleFormatVer1(data)
+					} else {
+						// Clear the deck file input in case the user tries to load a file of the same name again.
+						this.fileInput.value = null
+					}
 				}
 			}
-		},
-		loadFile (fileReaderResult) {
-			const data = JSON.parse(fileReaderResult)
-			this.formatVer = this.determineDataFormat(data)
-
-			if (this.formatVer === 2) {
-				const decks = data.decks
-
-				if (decks.length > 0) {
-					let numExistingDecks = 0
-					let existingDeckName = ''
-
-					for (let i = 0; i < decks.length; i++) {
-						const deck = decks[i]
-
-						if (this.$store.getters.deckExists(deck.path)) {
-							numExistingDecks++
-							existingDeckName = deck.name
-
-							const amendedDeck = this.amendCopiedDeckName(deck)
-
-							deck.name = amendedDeck.name
-							deck.path = amendedDeck.path
-							deck.editDate = new Date()
-						}
-
-						this.createImportedDeck(deck)
-
-						if (i === decks.length - 1) {
-							this.$nextTick(() => {
-								this.goToDeckPage(decks[0].path) // Go to the deck page of the first alphabetically listed deck.
-							})
-						}
-					}
-
-					if (numExistingDecks === 1) {
-						alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
-					} else if (numExistingDecks > 1) {
-						alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
-					}
-				} else {
-					this.alertFileImportError(this.fileName)
-				}
-			} else if (this.formatVer === 1) {
-				const deck = data
-
-				if (this.$store.getters.deckExists(deck.path)) {
-					const amendedDeckData = this.amendCopiedDeckName(deck)
-
-					alert(this.singleExistingDeckMessage(deck.name, amendedDeckData.name))
-					this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
-				} else {
-					this.createImportedDeck(deck)
-
-					this.$nextTick(() => {
-						this.goToDeckPage(deck.path)
-					})
-				}
-			} else {
-				// Clear the deck file input in case the user tries to load a file of the same name again.
-				this.fileInput.value = null
-			}
-		},
-		createImportedDeck (deck) {
-			const updatedDecksArray = this.$store.state.decks
-
-			updatedDecksArray.push({
-				cards: deck.cards,
-				colors: deck.colors,
-				dataVersion: deck.dataVersion,
-				editDate: deck.editDate,
-				name: deck.name,
-				path: deck.path,
-				sideboard: deck.sideboard,
-				sortBy: deck.sortBy,
-				viewedCard: deck.viewedCard
-			})
-
-			this.$store.commit('setDecks', updatedDecksArray)
-		},
-		singleExistingDeckMessage (existingName, importingName) {
-			return `Because you already have a deck named “${existingName},” the deck you’re importing is going to be renamed “${importingName}.”`
 		},
 		determineDataFormat (data) {
 			try {
@@ -229,6 +158,81 @@ export default {
 
 				return 0
 			}
+		},
+		handleFormatVer2 (data) {
+			const decks = data.decks
+
+			if (decks.length > 0) {
+				let numExistingDecks = 0
+				let existingDeckName = ''
+
+				for (let i = 0; i < decks.length; i++) {
+					const deck = decks[i]
+
+					if (this.$store.getters.deckExists(deck.path)) {
+						numExistingDecks++
+						existingDeckName = deck.name
+
+						const amendedDeck = this.amendCopiedDeckName(deck)
+
+						deck.name = amendedDeck.name
+						deck.path = amendedDeck.path
+						deck.editDate = new Date()
+					}
+
+					this.createImportedDeck(deck)
+
+					if (i === decks.length - 1) {
+						this.$nextTick(() => {
+							this.goToDeckPage(decks[0].path) // Go to the deck page of the first alphabetically listed deck.
+						})
+					}
+				}
+
+				if (numExistingDecks === 1) {
+					alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
+				} else if (numExistingDecks > 1) {
+					alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
+				}
+			} else {
+				this.alertFileImportError(this.fileName)
+			}
+		},
+		handleFormatVer1 (data) {
+			const deck = data
+
+			if (this.$store.getters.deckExists(deck.path)) {
+				const amendedDeckData = this.amendCopiedDeckName(deck)
+
+				alert(this.singleExistingDeckMessage(deck.name, amendedDeckData.name))
+				this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
+			} else {
+				this.createImportedDeck(deck)
+
+				this.$nextTick(() => {
+					this.goToDeckPage(deck.path)
+				})
+			}
+		},
+		createImportedDeck (deck) {
+			const updatedDecksArray = this.$store.state.decks
+
+			updatedDecksArray.push({
+				cards: deck.cards,
+				colors: deck.colors,
+				dataVersion: deck.dataVersion,
+				editDate: deck.editDate,
+				name: deck.name,
+				path: deck.path,
+				sideboard: deck.sideboard,
+				sortBy: deck.sortBy,
+				viewedCard: deck.viewedCard
+			})
+
+			this.$store.commit('setDecks', updatedDecksArray)
+		},
+		singleExistingDeckMessage (existingName, importingName) {
+			return `Because you already have a deck named “${existingName},” the deck you’re importing is going to be renamed “${importingName}.”`
 		},
 		alertFileImportError (fileName) {
 			alert(`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`)
