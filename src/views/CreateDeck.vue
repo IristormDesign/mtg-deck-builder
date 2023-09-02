@@ -149,7 +149,9 @@ export default {
 					if (deckExtRegex.test(this.fileName)) {
 						this.alertFileImportError(this.fileName)
 					} else {
-						alert(`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`)
+						alert(
+							`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
+						)
 					}
 				} else {
 					alert(error)
@@ -165,6 +167,7 @@ export default {
 			if (decks.length > 0) {
 				let numExistingDecks = 0
 				let existingDeckName = ''
+				let firstAmendedDeckName = ''
 
 				for (let i = 0; i < decks.length; i++) {
 					const deck = decks[i]
@@ -174,6 +177,10 @@ export default {
 						existingDeckName = deck.name
 
 						const amendedDeck = this.amendCopiedDeckName(deck)
+
+						if (numExistingDecks === 1) {
+							firstAmendedDeckName = amendedDeck.name
+						}
 
 						deck.name = amendedDeck.name
 						deck.path = amendedDeck.path
@@ -190,9 +197,11 @@ export default {
 				}
 
 				if (numExistingDecks === 1) {
-					alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
+					this.alertSingleExistingDeck(existingDeckName, firstAmendedDeckName)
 				} else if (numExistingDecks > 1) {
-					alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
+					alert(
+						`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
+					)
 				}
 			} else {
 				this.alertFileImportError(this.fileName)
@@ -204,7 +213,7 @@ export default {
 			if (this.$store.getters.deckExists(deck.path)) {
 				const amendedDeckData = this.amendCopiedDeckName(deck)
 
-				alert(this.singleExistingDeckMessage(deck.name, amendedDeckData.name))
+				this.alertSingleExistingDeck(deck.name, amendedDeckData.name)
 				this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 			} else {
 				this.createImportedDeck(deck)
@@ -231,11 +240,15 @@ export default {
 
 			this.$store.commit('setDecks', updatedDecksArray)
 		},
-		singleExistingDeckMessage (existingName, importingName) {
-			return `Because you already have a deck named “${existingName},” the deck you’re importing is going to be renamed “${importingName}.”`
+		alertSingleExistingDeck (existingName, importingName) {
+			alert(
+				`Because you already have a deck named “${existingName},” the deck you’re importing with that same name is going to be renamed “${importingName}.”`
+			)
 		},
 		alertFileImportError (fileName) {
-			alert(`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`)
+			alert(
+				`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
+			)
 		},
 		goToDeckPage (path) {
 			this.$store.commit('sortDeckMenu')
