@@ -89,24 +89,13 @@ export default {
 			const regexManualSectionLink = /^#.*/ // A string beginning with `#`.
 
 			if (regexManualSectionLink.test(event.target.hash)) {
-				const targetedSection = document.querySelector(event.target.hash)
-
-				event.preventDefault()
 				this.$store.commit('setPageScrollByAnchors', true)
 				this.$store.commit('setStickAppHeader', false)
 
-				// To prevent a bug with the app header appearing when it shouldn't as the page scrolls upward, the page needs to listen for a `scrollend` event. However, too many web browsers as of 2023 still lack support for `scrollend`, so for them, the scrolling behavior should be `instant` rather than `smooth`.
-				if ('onscrollend' in window) { // If the user's browser supports the `scrollend` event...
-					targetedSection.scrollIntoView({ behavior: 'smooth' })
-				} else {
-					targetedSection.scrollIntoView({ behavior: 'instant' })
-
-					setTimeout(this.scrollendEvent, 100)
-				}
+				setTimeout(() => {
+					this.$store.commit('setPageScrollByAnchors', false)
+				}, 10) // There needs to be a little timeout duration because otherwise the header sometimes appears when a link to a higher section is clicked.
 			}
-		},
-		scrollendEvent () {
-			this.$store.commit('setPageScrollByAnchors', false)
 		}
 	}
 }
