@@ -128,36 +128,41 @@ export default {
 
 			if (this.formatVer === 2) {
 				const decks = data.decks
-				let numExistingDecks = 0
-				let existingDeckName = ''
 
-				for (let i = 0; i < decks.length; i++) {
-					const deck = decks[i]
+				if (decks.length > 0) {
+					let numExistingDecks = 0
+					let existingDeckName = ''
 
-					if (this.$store.getters.deckExists(deck.path)) {
-						numExistingDecks++
-						existingDeckName = deck.name
+					for (let i = 0; i < decks.length; i++) {
+						const deck = decks[i]
 
-						const amendedDeck = this.amendCopiedDeckName(deck)
+						if (this.$store.getters.deckExists(deck.path)) {
+							numExistingDecks++
+							existingDeckName = deck.name
 
-						deck.name = amendedDeck.name
-						deck.path = amendedDeck.path
-						deck.editDate = new Date()
+							const amendedDeck = this.amendCopiedDeckName(deck)
+
+							deck.name = amendedDeck.name
+							deck.path = amendedDeck.path
+							deck.editDate = new Date()
+						}
+
+						this.createImportedDeck(deck)
+
+						if (i === decks.length - 1) {
+							this.$nextTick(() => {
+								this.goToDeckPage(decks[0].path) // Go to the deck page of the first alphabetically listed deck.
+							})
+						}
 					}
 
-					this.createImportedDeck(deck)
-
-					if (i === decks.length - 1) {
-						this.$nextTick(() => {
-							this.goToDeckPage(decks[0].path) // Go to the deck page of the first alphabetically listed deck.
-						})
+					if (numExistingDecks === 1) {
+						alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
+					} else if (numExistingDecks > 1) {
+						alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
 					}
-				}
-
-				if (numExistingDecks === 1) {
-					alert(this.singleExistingDeckMessage(existingDeckName, decks[0].name))
-				} else if (numExistingDecks > 1) {
-					alert(`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`)
+				} else {
+					this.alertFileImportError(this.fileName)
 				}
 			} else if (this.formatVer === 1) {
 				const deck = data
@@ -213,7 +218,7 @@ export default {
 					const deckExtRegex = /\.deck$/i
 
 					if (deckExtRegex.test(this.fileName)) {
-						alert(`⚠ File Import Error\n\nSorry, the deck data file you’ve selected (${this.fileName}) couldn’t be imported because its contained data is invalid or corrupted.`)
+						this.alertFileImportError(this.fileName)
 					} else {
 						alert(`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`)
 					}
@@ -224,6 +229,9 @@ export default {
 
 				return 0
 			}
+		},
+		alertFileImportError (fileName) {
+			alert(`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`)
 		},
 		goToDeckPage (path) {
 			this.$store.commit('sortDeckMenu')
