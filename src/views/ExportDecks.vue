@@ -37,7 +37,7 @@
 				</ul>
 				<div class="button-container submit-button">
 					<button
-						@click.prevent="handleSubmit()"
+						@click.prevent="exportSelectedDecks()"
 						:disabled="numChecked <= 0"
 					>Export Selected</button>
 				</div>
@@ -113,9 +113,6 @@ export default {
 		selectNone () {
 			this.checkedDecks = []
 		},
-		handleSubmit () {
-			this.exportSelectedDecks()
-		},
 		exportSelectedDecks () {
 			const transitoryLink = document.createElement('a')
 
@@ -134,6 +131,8 @@ export default {
 		generateJSON () {
 			let data = '{"decks":['
 
+			this.sortCheckedDecksAlphabetically()
+
 			for (let i = 0; i < this.numChecked; i++) {
 				const deck = this.$store.state.decks.find(
 					foundDeck => foundDeck.name === this.checkedDecks[i]
@@ -150,6 +149,16 @@ export default {
 			data += ']}'
 
 			return data
+		},
+		sortCheckedDecksAlphabetically () {
+			this.checkedDecks.sort((a, b) => {
+				const deckA = a.toUpperCase()
+				const deckB = b.toUpperCase()
+
+				if (deckA > deckB) return 1
+				else if (deckA < deckB) return -1
+				else return 0
+			})
 		},
 		setFileName () {
 			if (this.numChecked > 1) {

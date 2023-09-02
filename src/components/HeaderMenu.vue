@@ -173,7 +173,7 @@ export default {
 				link.addEventListener('click', this.closeAllPopups)
 
 				link.addEventListener('focus', () => {
-					// If the user tab-focuses onto another first-level link in the app header menu, then 	close the Open Deck menu.
+					// If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu.
 					if (this.showDeckMenu && !this.mobileView()) {
 						this.closeAllPopups()
 					}

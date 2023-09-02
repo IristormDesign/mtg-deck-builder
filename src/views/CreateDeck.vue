@@ -47,8 +47,7 @@ export default {
 		return {
 			deckNameInput: '',
 			fileName: '',
-			formatVer: 0,
-			nameFirstDeck: ''
+			formatVer: 0
 		}
 	},
 	computed: {
@@ -106,7 +105,8 @@ export default {
 					viewedCard: ''
 				})
 
-				this.finalizeDeckCreation(updatedDecksArray, path)
+				this.$store.commit('setDecks', updatedDecksArray)
+				this.goToDeckPage(path)
 			}
 		},
 		receiveFile () {
@@ -125,7 +125,6 @@ export default {
 		loadFile (fileReaderResult) {
 			const data = JSON.parse(fileReaderResult)
 			this.formatVer = this.determineDataFormat(data)
-			this.nameFirstDeck = '' // Reset this property.
 
 			if (this.formatVer === 2) {
 				const decks = data.decks
@@ -146,11 +145,13 @@ export default {
 						deck.editDate = new Date()
 					}
 
-					if (i === 0) {
-						this.nameFirstDeck = deck.name
-					}
-
 					this.createImportedDeck(deck)
+
+					if (i === decks.length - 1) {
+						this.$nextTick(() => {
+							this.goToDeckPage(decks[0].path) // Go to the deck page of the first alphabetically listed deck.
+						})
+					}
 				}
 
 				if (numExistingDecks === 1) {
@@ -168,6 +169,10 @@ export default {
 					this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 				} else {
 					this.createImportedDeck(deck)
+
+					this.$nextTick(() => {
+						this.goToDeckPage(deck.path)
+					})
 				}
 			} else {
 				// Clear the deck file input in case the user tries to load a file of the same name again.
@@ -189,12 +194,7 @@ export default {
 				viewedCard: deck.viewedCard
 			})
 
-			if (
-				this.nameFirstDeck === deck.name || // If the imported data contained an array of decks, check for the name of the first deck...
-				this.formatVer === 1 // Or if the imported data was in the old version format...
-			) {
-				this.finalizeDeckCreation(updatedDecksArray, deck.path)
-			}
+			this.$store.commit('setDecks', updatedDecksArray)
 		},
 		singleExistingDeckMessage (existingName, importingName) {
 			return `Because you already have a deck named “${existingName},” the deck you’re importing is going to be renamed “${importingName}.”`
@@ -225,13 +225,12 @@ export default {
 				return 0
 			}
 		},
-		finalizeDeckCreation (updatedDecksArray, deckPath) {
-			this.$store.commit('setDecks', updatedDecksArray)
+		goToDeckPage (path) {
 			this.$store.commit('sortDeckMenu')
 
 			this.$router.push({
 				name: 'deckMain',
-				params: { deckPath: deckPath }
+				params: { deckPath: path }
 			})
 		}
 	}
