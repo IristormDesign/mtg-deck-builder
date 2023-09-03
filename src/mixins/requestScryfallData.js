@@ -39,6 +39,8 @@ export default {
 					this.assignCardData(response.data)
 				})
 				.catch(error => {
+					this.loadingCard = false
+
 					if (error.code === 'ECONNABORTED') {
 						this.alertTimeout()
 					} else {
@@ -80,6 +82,8 @@ export default {
 					}
 				})
 				.catch(error => {
+					this.loadingCard = false
+
 					if (error.code === 'ECONNABORTED') {
 						this.alertTimeout()
 					} else {
@@ -113,6 +117,8 @@ export default {
 					this.assignCardData(response.data)
 				})
 				.catch(error => {
+					this.loadingCard = false
+
 					if (error.code === 'ECONNABORTED') {
 						this.alertTimeout()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
