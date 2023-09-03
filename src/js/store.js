@@ -39,7 +39,7 @@ export default new Vuex.Store({
 
 			setTimeout(() => {
 				buttonForAttention.classList.remove('attention')
-			}, 1000)
+			}, 800) // Duration equal to the total animation duration set in CSS.
 		},
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
 		deckExists: (state) => (testPath) => {

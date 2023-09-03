@@ -31,16 +31,18 @@
 		justify-content: center;
 	
 		&.attention:not(:disabled) {
-			animation: flash .2s linear;
-			animation-iteration-count: 4;
-			animation-direction: alternate;
+			animation: flash .4s ease-in-out;
+			animation-iteration-count: 2;
 	
 			@keyframes flash {
-				33.33% {
+				0% {
 					filter: brightness(100%);
 				}
+				50% {
+					filter: brightness(133.33%);
+				}
 				100% {
-					filter: brightness(150%);
+					filter: brightness(100%);
 				}
 			}
 		}
