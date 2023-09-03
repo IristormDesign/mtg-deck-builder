@@ -111,10 +111,10 @@ export default {
 		},
 		disabledMenuButtonTooltip () {
 			if (this.disableMenuButton) {
-				if (this.$store.state.decks.length <= 0) {
-					return 'You have no more decks. Create one!'
+				if (this.$store.state.decks.length > 0) {
+					return 'You have no other decks to open.'
 				} else {
-					return 'You currently have no other decks.'
+					return 'You have no decks.'
 				}
 			} else {
 				return null

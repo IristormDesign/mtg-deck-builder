@@ -32,7 +32,7 @@ export default new Vuex.Store({
 			if (state.decks.length > 0) {
 				buttonForAttention = document.querySelector('.deck-menu-toggler')
 			} else {
-				buttonForAttention = document.querySelector('.create-deck button')
+				buttonForAttention = document.querySelector('.create-deck a')
 			}
 
 			buttonForAttention.classList.add('attention')
