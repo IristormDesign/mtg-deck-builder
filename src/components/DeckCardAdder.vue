@@ -13,7 +13,7 @@
 				list="card-suggestions"
 				ref="focusCardAdder"
 				type="text"
-				v-model="cardQueryInput"
+				v-model.trim="cardQueryInput"
 				title="Enter the name of a Magic card or the URL to a Scryfall card page"
 			/>
 			<datalist id="card-suggestions">
@@ -93,7 +93,7 @@ export default {
 	},
 	methods: {
 		autocompleteName () {
-			const query = this.cardQueryInput.trim()
+			const query = this.cardQueryInput
 			const regexCodeSymbol = /^#/ // A string beginning with `#`, as for the MDB code `#random`.
 			const regexAnyURL = /^http/i // A string beginning with `http`.
 			const regexIncompleteScryfallURL = /^scryfa/i // A string beginning with `scryfa`, which indicates the user is manually typing out a Scryfall URL.
@@ -138,16 +138,14 @@ export default {
 			}
 		},
 		handleSubmit () {
-			const query = this.cardQueryInput.trim()
-
-			if (query === '') {
+			if (this.cardQueryInput === '') {
 				this.$refs.focusCardAdder.focus()
 			} else {
 				this.delay = true // Scryfall staff doesn't want too many server requests sent too quickly.
 				this.loadingCard = true
 				this.optionalReplacement = false
 
-				this.determineQueryType(query)
+				this.determineQueryType(this.cardQueryInput)
 			}
 
 			this.cardQueryInput = ''

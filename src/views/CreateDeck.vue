@@ -15,7 +15,7 @@
 					<input
 						id="deck-name"
 						type="text"
-						v-model="deckNameInput"
+						v-model.trim="deckNameInput"
 						minlength="1"
 						maxlength="50"
 						ref="focus"
@@ -71,7 +71,7 @@ export default {
 			this.fileInput.addEventListener('change', this.loadFile)
 		},
 		submitDeckName () {
-			let name = this.deckNameInput.trim()
+			let name = this.deckNameInput
 
 			if (name.length > 0) { // If the user has submitted any name, after having trimmed any excess white space from it...
 				name = this.curlApostrophes(name)
