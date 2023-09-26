@@ -1,21 +1,32 @@
 @import 'variables';
+
 @keyframes cinematic-fade-in {
-	0%,
-	8.33% {
-		filter: brightness(0%) blur(8px);
-		transform: scale(1.125);
+	0% {
+		filter: brightness(0%) blur(16px);
 	}
 	100% {
-		filter: brightness(100%) blur(0px);
-		transform: scale(1);
+		filter: none;
 	}
 }
-@keyframes animate-text-box {
+@keyframes zoom-in {
+	0% {
+		transform: scale(100%);
+	}
+}
+@keyframes fade-in-text-box {
 	0% {
 		opacity: 0;
+		filter: brightness(133.33%);
+		transform: scale(100%);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(102.0833%);
 	}
 	100% {
 		opacity: 1;
+		filter: none;
+		transform: none;
 	}
 }
 $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
@@ -26,43 +37,54 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-	background: #000;
 
 	.intro {
 		min-height: $lhse*12;
 		height: 50vw;
 		max-height: calc(100vh - var(--header-height));
 		margin: 0 auto;
-
-		img {
-			display: block;
+		position: relative;
+		
+		.image-bg {
 			width: 100%;
-			height: auto;
-			margin: 0 auto;
-			background: $color-content-bg;
-			animation: cinematic-fade-in 2.5s cubic-bezier(0, 0, 0, 1);
+			height: 100%;
+			background: url('/src/img/hero-max.webp') center no-repeat #000;
+			background-size: cover;
+			animation:
+				2s cubic-bezier(0, 0, 0, 1) .25s forwards cinematic-fade-in,
+				3s ease-out .25s zoom-in;
+			filter: brightness(0%);
+			transform:
+				scale(1.0625) // If the scale value is ever changed, then new image sizes should be made.
+				rotate(-.02deg); // This is a hack to fix a rendering glitch in Firefox when the image animates.
+			opacity: .8;
 		}
 		.wrap {
+			height: 100%;
 			position: absolute;
-			margin: 0 auto;
 			top: 0;
 			left: 0;
 			right: 0;
 		}
-		.text-box {
-			width: 25%;
-			box-sizing: content-box;
-			font-size: 116.67%;
+		.invisible-click-surface {
+			height: 100%;
 			position: absolute;
-			top: 8.3333vh;
-			right: $lhse*1.5;
+			left: 0;
+			right: 0;
+		}
+		.text-box {
+			width: $lhse*11;
+			font-size: 108.33%;
+			box-sizing: content-box;
+			position: absolute;
+			bottom: $lhse*1.5;
+			left: $lhse*1.5;
 			background: $color-group-bg;
+			border: $border-image;
+			border-color: $color-content-bg;
 			padding: $lhse*.25 $lhse;
-			border-radius: $border-radius-group;
-			box-shadow: $box-shadow-intro-text-box;
-			animation: animate-text-box .75s ease-out;
-			animation-fill-mode: forwards;
-			animation-delay: 2s;
+			box-shadow: 0 0 $lhse rgba(#000, .3333);
+			animation: .5s ease-in-out 2.25s forwards fade-in-text-box;
 			opacity: 0;
 		}
 		h2 {
@@ -86,7 +108,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			align-items: center;
 			justify-content: center;
 			white-space: nowrap;
-
+			
 			&:first-child {
 				@include secondary-button;
 			}
@@ -95,19 +117,13 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	.app-features {
 		padding: $lhse*1.5 0;
 		position: relative;
-		background: $background-light-gradient;
+		background: $color-background-alt;
 		scroll-margin-top: -$lhse*.5;
-		border-top: 1px solid desaturate(lighten($color-mythic-lighter, 29.17%), 8.33%);
-		box-shadow: 0 0 $lhse*2 rgba(#000, .6667);
+		color: $color-text-over-background-alt;
 
-		h2,
-		p,
-		li {
-			color: #000;
-			text-shadow: -1px 1px 0 rgba(#fff, .2);
-		}
 		h2 {
 			margin-top: 0;
+			color: #000;
 		}
 		.wrap {
 			display: grid;
@@ -128,8 +144,6 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	}
 	.final-call-to-action {
 		position: relative;	
-		background: $color-group-bg;
-		background: $color-mythic-dim;
 
 		.wrap {
 			display: flex;
@@ -141,7 +155,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 		.button-container {
 			margin: divide($lhse, 3) $lhse*.5;
 
-			&:last-child {
+			&:first-child {
 				button,
 				.button {
 					@include secondary-button;
@@ -161,12 +175,12 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 	}
 }
 
+
 @media (max-width: $width-app-breakpoint) {
 	.home-page {
 		.intro {
 			.text-box {
-				top: $lhse*1.5;
-				font-size: 1em;
+				font-size: 100%;
 			}
 		}
 		.app-features {
@@ -182,28 +196,41 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 		}
 	}
 }
-@media (max-width: $width-app-breakpoint-tablet) {
+@media (max-width: ($width-app-breakpoint*.8333)) {
+	.home-page {
+		.intro {
+			.text-box {
+				bottom: $lhse;
+				left: $lhse;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app*.8333)) {
 	.home-page {
 		.intro {
 			height: auto;
 			max-height: none;
-	
+
+			.image-bg {
+				min-height: $lhse*13;
+				max-height: 50vh;
+				opacity: 1;
+			}
 			.wrap {
 				position: relative;
 				background: $color-group-bg;
-				border-top: $border-sections;
-				box-shadow: $box-shadow-intro-text-box;
-			}
-			img {
-				margin-bottom: -12.5%;
+				border-top: $border-image;
 			}
 			.text-box {
-				position: static;
+				position: relative;
 				top: 0;
+				left: 0;
+				right: 0;
 				width: 100%;
 				max-width: $max-width-content*.625;
 				margin: 0 auto;
-				padding: divide($lhse, 3) 0;
+				padding: divide($lhse, 3);
 				background: none;
 				border: 0;
 				border-radius: 0;
@@ -212,6 +239,8 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 				opacity: 1;
 				animation: none;
 				text-align: center;
+				text-wrap: balance;
+				font-size: $font-size-bigger;
 			}
 		}
 		.app-features {
@@ -235,6 +264,62 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 			}
 			li {
 				padding: 0;
+			}
+		}
+	}
+}
+
+// These image sizes are intentionally slightly bigger than the media query widths because of the image's zoom-in effect.
+@media (max-width: 1920px) {
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero-2040.webp');
+			}
+		}
+	}
+}
+@media (max-width: 1440px) {
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero-1530.webp');
+			}
+		}
+	}
+}
+@media (max-width: 1080px) {
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero-1148.webp');
+			}
+		}
+	}
+}
+@media (max-width: 720px) {
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero-765.webp');
+			}
+		}
+	}
+}
+@media (max-width: 480px) {
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero-510.webp');
+			}
+		}
+	}
+}
+@supports not (gap: 1px) { // If the user's browser doesn't support `gap`, then it probably doesn't support WebP images either.
+	.home-page {
+		.intro {
+			.image-bg {
+				background-image: url('/src/img/hero.jpg');
 			}
 		}
 	}

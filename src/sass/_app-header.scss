@@ -20,10 +20,13 @@
 		// `top` property gets set by JavaScript in AppHeader.vue
 		left: 0;
 		right: 0;
-		box-shadow: 0 0 $lhse*.25 rgba(#000, .75);
+		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .6667);
 	}
 	&.sliding-up {
 		box-shadow: none; // Combined with .app-header's transition property, this makes the box-shadow of .app-header gradually disappear as the header slides upward. Without this .sliding-up class, the box-shadow disappears abruptly once the bottom of the header reaches the top of the viewport.
+	}
+	.root-home-page &:not(.sticky) {
+		box-shadow: none;
 	}
 	.wrap {
 		display: flex;

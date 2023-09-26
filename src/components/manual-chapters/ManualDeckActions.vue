@@ -11,8 +11,8 @@
 			</li>
 			<li>
 				<h5>Export</h5>
-				<p>You’re taken to the Export Decks page, where you can select any of your decks in MTG Deck Builder to “export,” which means to have the app generate a <a href="#m-deck-data-files">deck data file</a> of them. This file gets saved on your computer or device to wherever your web browser puts downloads.</p>
-				<p>With a deck data file, you—or anyone whom you give the file to—can “<a href="#m-create-deck">import</a>” it, which means to have the app recreate the whole decks from the data contained in the file.</p>
+				<p>You’re taken to the Export Decks page. There you can select any of your decks in MTG Deck Builder to “export,” which means to have the app generate a <a href="#m-deck-data-files">deck data file</a> for those decks. The file is saved on your computer or device to wherever your web browser puts downloads.</p>
+				<p>Once you have a deck data file, you—or anyone whom you give the file to—can “<a href="#m-create-deck">import</a>” it, which means to have the app recreate the certain decks from the data contained in that file.</p>
 				<p>If you export a single deck alone, the deck data file is named after that deck’s name. If you export multiple decks together, the file is named “My Decks.” In either case, the file has “.deck” as its file extension.</p>
 			</li>
 			<li>

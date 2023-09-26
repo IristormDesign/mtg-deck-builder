@@ -39,7 +39,8 @@ $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12
 $color-section-border: darken($color-content-bg, 6.25%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 20%), 6.25%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
-$color-background-alt: desaturate(lighten($color-mythic-lighter, 20%), 62.5%);
+$color-background-alt: desaturate(lighten($color-mythic-lighter, 20.83%), 62.5%);
+$color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 $color-text-buttons: rgba(#000, .875);
 
 $color-frame-land: desaturate(lighten($color-mythic-lighter, 20.83%), 87.5%);
@@ -69,7 +70,7 @@ $max-width-app: 1440px - 1;
 $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
 $height-deck-control-panel-input: $lhse * 1.5;
-$height-app-header-short: $lhse*1.75;
+$height-app-header-short: $lhse*1.875;
 $height-app-header-medium: $lhse*2;
 $height-app-header-tall: $lhse*3;
 
@@ -93,11 +94,6 @@ $layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-he
 $transition-duration-standard: .25s;
 $transition-duration-card-image-hover-slow: .5s;
 $transition-duration-card-image-hover-fast: $transition-duration-card-image-hover-slow * .3820;
-$background-light-gradient:
-	radial-gradient(farthest-corner at 50% 0,
-		lighten($color-background-alt, 6.25%),
-		darken($color-background-alt, 6.25%)
-	) $color-background-alt;
 $opacity-mana-symbols: .9167;
 
 $x: 2px dashed rgba(#c0f, .75);
@@ -128,7 +124,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	padding: 0 $lhse*.3333;
 	min-height: $lhse*1.1667;
 	text-decoration: none;
-	color: #000;
+	color: $color-text-over-background-alt;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

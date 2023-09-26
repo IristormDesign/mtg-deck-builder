@@ -1,39 +1,15 @@
 <template>
 	<article class="home-page">
 		<section class="intro">
-			<picture>
-				<source
-					type="image/webp"
-					media="(max-width: 810px)"
-					srcset="
-						@/img/welcome-810.webp 810w,
-						@/img/welcome-608.webp 608w,
-						@/img/welcome-456.webp 456w,
-						@/img/welcome-341.webp 341w"
-				/>
-				<source
-					type="image/webp"
-					media="(max-width: 1920px)"
-					srcset="
-						@/img/welcome-1920.webp 1920w,
-						@/img/welcome-1440.webp 1440w,
-						@/img/welcome-1080.webp 1080w"
-				/>
-				<source
-					type="image/webp"
-					srcset="@/img/welcome-2560.webp 2560w"
-				/>
-				<img
-					src="@/img/welcome-1920.jpg"
-					width="1920" height="1080"
-					alt="Fantasy illustration from Magic: The Gathering"
-					@click="$store.getters.attentionHeaderButton"
-				/>
-			</picture>
+			<div class="image-bg"></div>
 			<div class="wrap">
+				<div
+					class="invisible-click-surface"
+					@click="$store.getters.attentionHeaderButton">
+				</div>
 				<div class="text-box">
 					<header>
-						<h2>Greetings, planeswalker.</h2>
+						<h2>Your move, planeswalker.</h2>
 					</header>
 					<p>Construct and organize your decks for <i>Magic: The Gathering</i> with this free web app!</p>
 					<p class="button-group">
@@ -68,17 +44,17 @@
 					<ul>
 						<li>App is free of charge and free of advertisements</li>
 						<li>No account registration required</li>
-						<li>Attractive, user-friendly graphical interface</li>
-						<li>Add cards to your decks with the card name search engine (powered by Scryfall)</li>
-						<li>Analyze many statistics about your decks, such as their average mana value, the percentage of cards by certain attributes, and more</li>
+						<li>Add <i>Magic</i> cards to your decks with the card name search engine (powered by Scryfall)</li>
+						<li>Analyze statistics about your decks such as their average mana value, percentage of cards by certain attributes, and more</li>
 						<li>Instantly sort all cards in card lists by various methods to choose from</li>
 						<li>See the image of any card in your decks</li>
 						<li>Switch between main and sideboard card lists per deck</li>
+						<li>Attractive, user-friendly graphical interface</li>
 					</ul>
 				</div>
 			</div>
 		</section>
-		<div class="final-call-to-action">
+		<div class="final-call-to-action texture-bg">
 			<div class="wrap">
 				<div class="button-container">
 					<router-link to="manual" :class="'button'">
