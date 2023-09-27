@@ -69,9 +69,9 @@
 	}
 }
 .card-group-switch {
+	display: flex;
 	justify-content: space-around;
 	align-content: center;
-	display: flex;
 	flex-wrap: wrap;
 	gap: $lhse*.1667;
 
@@ -85,13 +85,14 @@
 			display: flex;
 			align-items: center;
 			padding: 0 divide($lhse, 2);
+			margin: 0;
 		}
 	}
 	label {
 		.deck-control-panel & {
 			margin: 0;
-			padding-top: $lhse*.0833;
-			padding-bottom: $lhse*.0833;
+			padding-top: $lhse*.25;
+			padding-bottom: $lhse*.25;
 		}
 	}
 }
