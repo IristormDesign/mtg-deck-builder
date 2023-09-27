@@ -13,6 +13,7 @@
 					<router-link to="/privacy">Privacy Policy</router-link>
 				</span>
 			</p>
+			<p v-if="$route.name === 'home'">Intro background image is from illustration <i><a href="https://magic.wizards.com/en/news#wallpapers" target="_blank">Invasion of Dominaria</a></i> by Denys Tsiperko.</p>
 			<p><a href="https://magic.wizards.com" target="_blank"><i>Magic: The Gathering</i></a> is TM and &copy; by Wizards of the Coast, LLC. This app is not affiliated with Wizards of the Coast, but is allowed under their Fan Content Policy. Data and images of <i>Magic</i> cards are provided via the public API of <a href="https://scryfall.com" target="_blank">Scryfall</a>, LLC. This app is not affiliated with Scryfall. All other content, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design.</p>
 		</div>
 	</footer>

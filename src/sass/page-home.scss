@@ -57,7 +57,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			transform:
 				scale(1.0625) // If the scale value is ever changed, then new image sizes should be made.
 				rotate(-.02deg); // This is a hack to fix a rendering glitch in Firefox when the image animates.
-			opacity: .8;
+			opacity: .8333;
 		}
 		.wrap {
 			height: 100%;
