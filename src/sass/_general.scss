@@ -47,7 +47,7 @@ main {
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	
+
 	.root-home-page & {
 		align-items: flex-start;
 		flex-grow: 0;
@@ -171,7 +171,7 @@ figcaption {
 	width: $line-height-standard * .6667rem;
 	background: darken($color-content-bg, 16.67%);
 	box-shadow: inset $lhse*.0833 0 $lhse*.1667 rgba(#000, .25);
-	
+
 	&:hover {
 		background: $color-mythic-very-dim;
 	}
@@ -183,7 +183,7 @@ figcaption {
 	@include gradient-buttons($color-link, $color-mythic-dim);
 	border: 1px solid darken($color-mythic-dim, 16.67%);
 	border-top-width: 0;
-	border-radius: $lhse*.125;
+	border-radius: 2px;
 	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
 
 	&:active {

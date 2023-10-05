@@ -5,7 +5,7 @@
 	grid-template-columns: auto auto;
 	gap: $lhse*.25;
 	position: relative;
-	
+
 	&.content-box {
 		max-width: 100%;
 		background: none;
@@ -22,7 +22,7 @@
 	header {
 		grid-column: span 2;
 		text-align: center;
-		
+
 		h2 {
 			margin: 0;
 		}
@@ -30,7 +30,7 @@
 	.table-of-contents {
 		color: desaturate(darken($color-text, 12.5%), 8.33%);
 		height: min-content;
-		max-width: 25vw;
+		max-width: $lhse*9;
 		max-height: calc(100vh - #{$lhse*.5});
 		overflow-y: auto;
 		position: sticky;
@@ -64,6 +64,8 @@
 		padding-top: $lhse*.25;
 		padding-bottom: $lhse*.5;
 		max-width: $max-width-content;
+		margin-right: auto;
+		margin-left: auto;
 
 		button {
 			@include link;
@@ -95,7 +97,7 @@
 @media (max-width: $min-width-app) {
 	.manual-page {
 		display: block;
-		
+
 		header {
 			margin-bottom: $lhse*.25;
 		}

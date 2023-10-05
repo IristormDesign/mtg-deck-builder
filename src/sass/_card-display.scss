@@ -63,7 +63,6 @@ $transition-delay-card: divide(1, 3) * 1s;
 			;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
-			will-change: auto;
 		}
 		&:active {
 			filter: brightness(120%);
@@ -75,7 +74,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 		}
 		&.W {
 			background: desaturate(darken($color-frame-white, 16.67%), 8.33%);
-			
+
 			.loading-indicator {
 				color: #000;
 			}
