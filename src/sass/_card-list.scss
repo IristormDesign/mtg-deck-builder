@@ -114,7 +114,7 @@ $min-height-card-list: $lhse*6;
 	min-height: $min-height-card-list;
 	display: flex;
 	flex-direction: column;
-	
+
 	&.main-deck {
 		> header {
 			@include screen-readers-only;
@@ -135,8 +135,8 @@ $min-height-card-list: $lhse*6;
 		display: flex;
 		text-shadow: $text-shadow-over-light-bg;
 		cursor: default;
-		margin-bottom: $lhse*.125;
-		
+		margin-bottom: $lhse*.0833;
+
 		strong {
 			display: block;
 			@include label-text-style;
@@ -172,7 +172,7 @@ $min-height-card-list: $lhse*6;
 		position: relative;
 		background: $color-group-bg;
 		border-radius: $border-radius-button;
-		
+
 		&:last-of-type {
 			margin-bottom: $lhse*.25;
 		}
@@ -193,7 +193,7 @@ $min-height-card-list: $lhse*6;
 				}
 			}
 			&:hover {
-				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button. 
+				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button.
 			}
 			&:not(:hover) {
 				.qty {
@@ -222,10 +222,10 @@ $min-height-card-list: $lhse*6;
 		}
 		&:focus-within {
 			z-index: index($layers, card-list-item-focus-within);
-			
+
 			.card-button {
 				@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
-				
+
 				&.land {
 					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
 				}
@@ -279,7 +279,7 @@ $min-height-card-list: $lhse*6;
 			margin-top: -3px;
 			display: flex;
 			align-items: center;
-			
+
 			.mana-symbol {
 				box-shadow: -.75px 1.6667px 0 0 #000; // Needs to look good on Firefox
 				margin: 0 0 0 2px;
@@ -297,7 +297,7 @@ $min-height-card-list: $lhse*6;
 			line-height: 1;
 			width: $width-qty-column;
 			padding-right: 2px;
-			
+
 			> span {
 				margin: -4.17% 0 0 divide($lhse, 6);
 				color: desaturate(darken($color-text, 33.33%), 16.67%);

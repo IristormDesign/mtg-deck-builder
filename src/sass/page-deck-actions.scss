@@ -19,7 +19,7 @@
 	.multi-select-buttons,
 	.checklist {
 		padding: $lhse*.25 $lhse*.5;
-		border: $border-image;
+		border: $border-sections;
 	}
 	.multi-select-buttons {
 		display: grid;
@@ -39,7 +39,7 @@
 	}
 	.checklist {
 		margin: 0;
-	
+
 		li {
 			font-size: $font-size-bigger;
 

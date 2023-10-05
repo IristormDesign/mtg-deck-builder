@@ -92,8 +92,8 @@
 	label {
 		.deck-control-panel & {
 			margin: 0;
-			padding-top: $lhse*.25;
-			padding-bottom: $lhse*.25;
+			padding-top: divide($lhse, 3);
+			padding-bottom: divide($lhse, 3);
 		}
 	}
 }
