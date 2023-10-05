@@ -13,6 +13,7 @@
 		border-bottom-left-radius: 0;
 	}
 	&.action-controls {
+		display: grid;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 	}
@@ -104,12 +105,32 @@
 		grid-template-rows: $lhse*.75 $lhse*1.5;
 	}
 }
+.scryfall-opener {
+	a {
+		@include button;
+		@include secondary-button;
+		min-width: $lhse*1.75;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: all $transition-duration-standard ease;
+		padding: $lhse*.125 $lhse*.25;
+
+		img {
+			opacity: .875;
+		}
+	}
+	img {
+		width: $lhse*1.25;
+		height: $lhse*1.25;
+	}
+}
 .card-adder {
 	flex-grow: 1;
-	
+
 	.sideboard-visible & {
 		background: $color-mythic-very-dim;
-		
+
 		label {
 			color: $color-text-over-mythic-very-dim;
 		}
@@ -201,12 +222,18 @@
 }
 @mixin action-controls-single-layer {
 	.deck-control-panel.action-controls {
-		display: flex;
+		grid-template-columns: min-content auto min-content;
+		grid-template-rows: auto;
+	}
+	.scryfall-opener {
+		border-bottom-width: 0;
 	}
 	.card-adder {
 		border-bottom-width: 0;
 		padding-right: 0;
 		padding-left: 0;
+		border-left: $border-sections;
+		flex-grow: 2;
 
 		form {
 			max-width: 20em;
@@ -216,18 +243,54 @@
 		}
 	}
 	.deck-actions {
+		grid-column: span 1;
 		border-left: $border-sections;
+
+		form {
+			display: grid;
+		}
 	}
 }
 @mixin action-controls-double-layers {
 	.deck-control-panel.action-controls {
-		display: block;
+		grid-template-columns: fit-content auto;
+		grid-template-rows: auto auto;
+	}
+	.scryfall-opener {
+		border-bottom: $border-sections;
 	}
 	.card-adder {
 		border-bottom: $border-sections;
 	}
 	.deck-actions {
+		grid-column: span 2;
 		border-left-width: 0;
+
+		form {
+			display: flex;
+		}
+	}
+}
+@mixin action-controls-double-layers-compressed {
+	.deck-control-panel.action-controls {
+		grid-template-columns: 1fr 1fr;
+	}
+	.scryfall-opener {
+		grid-row: 2;
+		border-bottom-width: 0;
+		border-right: $border-sections;
+	}
+	.card-adder {
+		grid-column: span 2;
+		border-left-width: 0;
+	}
+	.deck-actions {
+		grid-column: span 1;
+		grid-row: 2;
+
+		form {
+			display: grid;
+		}
 	}
 }
 
@@ -245,6 +308,7 @@
 }
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
+	@include action-controls-double-layers-compressed();
 
 	.card-adder {
 		button {
