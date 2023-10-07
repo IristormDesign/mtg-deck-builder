@@ -15,6 +15,7 @@ module.exports = defineConfig({
 		msTileColor: '#1c2426', // = $color-group-bg
 		appleMobileWebAppCapable: 'yes',
 		manifestOptions: {
+			start_url: '/',
 			icons: [
 				{
 					src: './img/icons/android-chrome-192x192.png',
