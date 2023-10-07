@@ -7,14 +7,14 @@
 				alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The card adder (the section labeled “Add a Card to This Deck”) is where you can indicate a new <i>Magic</i> card to put into your deck.</p>
-		<p>The new card will appear in the <a href="#m-card-list">card list</a> for either the main or the sideboard group, whichever is currently active in the <a href="#m-group-switch">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>
+		<p>The new card will appear in the <a href="#m-card-list">card list</a> for either the main group or the sideboard group, whichever is currently active in the <a href="#m-group-switch">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>
 		<p>The card adder has a simple form including a text input where you can enter a query for a card. Then, submit your query by clicking on the Add button or by pressing the Enter/Return key on your keyboard.</p>
 		<p>The card adder accepts the following kinds of queries:</p>
 		<ul>
 			<li>
 				<h5>Card Name</h5>
 				<p>Simply enter the name of a <i>Magic</i> card, and that card will be added to your deck. While you start typing letters into the card adder’s text input, a small list of selectable suggestions for card names will appear by it.</p>
-				<p>When you submit a card name query, if it turns out to be an invalid name, then no card will be added to your deck, but the app will notify you of the error. If a card of a particular name has been printed in multiple sets, then the card from the latest released set is retrieved.</p>
+				<p>When you submit a card name query, if it turns out to be an invalid name, then no card will be added to your deck, but the app will notify you of the mistake. If a card of a particular name has been printed in multiple sets, then the card from the latest released set is retrieved.</p>
 			</li>
 			<li>
 				<h5>Scryfall Card Page URL</h5>

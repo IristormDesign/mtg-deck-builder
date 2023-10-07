@@ -18,6 +18,7 @@
 			<li><a href="#m-sideboard-header">Sideboard header</a></li>
 			<li><a href="#m-card-list">Card list</a></li>
 			<li><a href="#m-card-quantities">Card quantities</a></li>
+			<li><a href="#m-scryfall-button">Scryfall advanced search button</a></li>
 			<li><a href="#m-card-adder">Card adder</a></li>
 			<li><a href="#m-deck-actions">Deck actions</a></li>
 		</ol>
@@ -31,6 +32,7 @@
 		<manual-sideboard-header />
 		<manual-card-list />
 		<manual-card-quantities />
+		<manual-scryfall-button />
 		<manual-card-adder />
 		<manual-deck-actions />
 	</section>
@@ -45,10 +47,11 @@ import ManualCardGroupSwitch from '@/components/manual-chapters/ManualCardGroupS
 import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
 import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
 import ManualCardQuantities from '@/components/manual-chapters/ManualCardQuantities.vue'
+import ManualScryfallButton from '@/components/manual-chapters/ManualScryfallButton.vue'
 import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
 import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
 
 export default {
-	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualCardAdder, ManualDeckActions }
+	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualScryfallButton, ManualCardAdder, ManualDeckActions }
 }
 </script>

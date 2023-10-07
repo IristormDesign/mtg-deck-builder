@@ -32,6 +32,7 @@
 							<li><a href="#m-sideboard-header">Sideboard Header</a></li>
 							<li><a href="#m-card-list">Card List</a></li>
 							<li><a href="#m-card-quantities">Card Quantities</a></li>
+							<li><a href="#m-scryfall-button">Scryfall Advanced Search Button</a></li>
 							<li><a href="#m-card-adder">Card Adder</a></li>
 							<li><a href="#m-deck-actions">Deck Actions</a></li>
 						</ol>
