@@ -27,7 +27,7 @@ $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 $color-link: desaturate(lighten($color-mythic-orange, 8.33%), 16.67%);
 $color-link-focus: saturate(lighten($color-mythic-orange, 12.5%), 100%);
 $color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
-$color-link-darker: desaturate(darken($color-link, 8.33%), 25%);
+$color-link-darker: desaturate(darken($color-link, 2%), 25%); // The darken percentage is the lowest possible integer that passes WebAIM's color contrast check.
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
 $color-text: lighten($color-group-bg, 62.5%);
@@ -182,7 +182,7 @@ $x: 2px dashed rgba(#c0f, .75);
 		$color-button-mythic-orange
 	);
 	cursor: pointer;
-	box-shadow: 
+	box-shadow:
 		0 1px 0 .5px #000, // Rim around button
 		$box-shadow-button-shine,
 		$box-shadow-button-cast-shadow;
@@ -200,7 +200,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	text-shadow: 0 0 $lhse*.25 rgba(#fff, .25);
 	text-decoration: none;
 	display: inline-block;
-	
+
 	&:hover,
 	&:focus {
 		filter: brightness(1.2);
@@ -252,7 +252,7 @@ $x: 2px dashed rgba(#c0f, .75);
 	filter: none;
 	font-weight: normal;
 	line-height: inherit;
-	
+
 	&:hover,
 	&:focus {
 		text-decoration: underline;
@@ -265,7 +265,7 @@ $x: 2px dashed rgba(#c0f, .75);
 }
 @mixin link-alt {
 	color: saturate(darken($color-mythic-lighter-complement, 6.25%), 50%);
-	
+
 	&:hover,
 	&:focus {
 		color: saturate(darken($color-mythic-complement, 6.25%), 50%);
@@ -286,7 +286,7 @@ $x: 2px dashed rgba(#c0f, .75);
 @mixin pronounced-heading {
 	background: $color-heading-bg;
 	padding: divide($lhse, 4) divide($lhse, 3);
-	margin: $lhse*.75 divide(-$lhse, 3) $lhse*.25; 
+	margin: $lhse*.75 divide(-$lhse, 3) $lhse*.25;
 	border-radius: $border-radius-button;
 }
 

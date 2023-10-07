@@ -6,7 +6,7 @@
 }
 .app-header {
 	background: $color-mythic-dim;
-	color: lighten($color-mythic-dim, 33.33%);
+	color: desaturate(lighten($color-mythic-dim, 45.83%), 8.33%);
 	border: solid darken($color-mythic-dim, 8.33%);
 	border-width: 1px 0;
 	z-index: index($layers, app-header);
@@ -14,7 +14,7 @@
 	box-shadow: 0 1px 0 rgba(#fff, .0833);
 	transition: all $transition-duration-standard ease;
 	will-change: top;
-	
+
 	&.sticky {
 		position: sticky;
 		// `top` property gets set by JavaScript in AppHeader.vue
