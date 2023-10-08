@@ -6,10 +6,10 @@
 					<a href="/"><strong>MTG Deck Builder</strong></a> by <a href="https://iristormdesign.com" target="_blank">Iristorm Design</a> – <span>Version {{appVersion}}</span>
 				</span>
 				<span class="group">
-					<span class="divider">|</span>
+					<span class="divider"> | </span>
 					<router-link to="/terms">Terms of Service</router-link>
 
-					<span class="divider">|</span>
+					<span class="divider"> | </span>
 					<router-link to="/privacy">Privacy Policy</router-link>
 				</span>
 			</p>

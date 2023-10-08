@@ -63,6 +63,10 @@
 		font-size: 60%;
 		margin: ($lhse*.0625) 1em;
 		margin-left: 0;
+
+		> span {
+			display: none;
+		}
 	}
 }
 
@@ -115,6 +119,13 @@
 		.by-iristorm {
 			margin-right: $lhse*.125;
 			margin-top: $lhse*.125;
+
+			a {
+				display: none;
+			}
+			> span {
+				display: inline;
+			}
 		}
 	}
 }
