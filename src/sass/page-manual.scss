@@ -58,6 +58,12 @@
 	}
 	.toc-links {
 		font-size: 87.5%;
+
+		a {
+			&:not(:hover):not(:focus):not(:active) {
+				text-decoration: none;
+			}
+		}
 	}
 	.the-manual {
 		width: 100%;

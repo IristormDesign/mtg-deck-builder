@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .app-footer {
 	background: $color-group-bg;
 	color: $color-text-darker;
@@ -22,14 +24,14 @@
 		margin: 0 .25em;
 	}
 	a {
-		color: $color-link-darker;
+		@include link-colors($color-link-darker);
 
 		&:hover,
 		&:focus {
-			color: $color-link-focus;
+			@include link-colors($color-link-focus);
 		}
 		&:active {
-			color: $color-link-active;
+			@include link-colors($color-link-active);
 		}
 	}
 }

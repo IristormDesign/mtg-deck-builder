@@ -127,6 +127,7 @@
 }
 .card-adder {
 	flex-grow: 1;
+	height: $lhse*3.3333;
 
 	.sideboard-visible & {
 		background: $color-mythic-very-dim;

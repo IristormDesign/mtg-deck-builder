@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:color";
 @function divide($dividend, $divisor) {
 	@return math.div($dividend, $divisor);
 }
@@ -24,10 +25,10 @@ $color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Sampled
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
 $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 
-$color-link: desaturate(lighten($color-mythic-orange, 8.33%), 16.67%);
-$color-link-focus: saturate(lighten($color-mythic-orange, 12.5%), 100%);
+$color-link: desaturate(lighten($color-mythic-orange, 12.5%), 8.33%);
+$color-link-focus: saturate(lighten($color-mythic-orange, 4.17%), 100%);
 $color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
-$color-link-darker: desaturate(darken($color-link, 2%), 25%); // The darken percentage is the lowest possible integer that passes WebAIM's color contrast check.
+$color-link-darker: desaturate(darken($color-link, 6.25%), 37.5%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
 $color-text: lighten($color-group-bg, 62.5%);
@@ -236,9 +237,15 @@ $x: 2px dashed rgba(#c0f, .75);
 	);
 	border-color: desaturate(darken($color-button-default, 33.33%), 12.5%);
 }
+@mixin link-colors($color) {
+	color: $color;
+	text-decoration-color: color.scale($color, $lightness: -50%);
+}
 @mixin link {
-	color: $color-link;
-	text-decoration: none;
+	@include link-colors($color-link);
+	text-decoration-line: underline;
+	text-underline-offset: .125em;
+	text-decoration-thickness: 1px;
 	padding: 0;
 	margin: 0;
 	background: none;
@@ -255,12 +262,10 @@ $x: 2px dashed rgba(#c0f, .75);
 
 	&:hover,
 	&:focus {
-		text-decoration: underline;
-		transition-duration: 0s;
-		color: $color-link-focus;
+		@include link-colors($color-link-focus);
 	}
 	&:active {
-		color: $color-link-active;
+		@include link-colors($color-link-active);
 	}
 }
 @mixin link-alt {

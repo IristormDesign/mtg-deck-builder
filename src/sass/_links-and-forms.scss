@@ -24,6 +24,7 @@ select {
 	padding: 0em .25em;
 	transition: $transition-duration-standard ease;
 	transition-duration: border, background, box-shadow;
+	text-decoration: none;
 
 	&:hover,
 	&:focus {
@@ -136,7 +137,7 @@ option {
 }
 select,
 option {
-	background-color: $color-group-bg;	
+	background-color: $color-group-bg;
 }
 .checklist {
 	label {
@@ -160,7 +161,7 @@ option {
 	border: none;
 	outline: 1px solid $color-link;
 	background: none;
-	
+
 	&:hover,
 	&:focus-visible {
 		outline: 2px solid $color-link;

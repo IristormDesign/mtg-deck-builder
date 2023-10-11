@@ -159,7 +159,7 @@ figcaption {
 	color: $color-text-darker;
 
 	a {
-		color: $color-link-darker;
+		@include link-colors($color-link-darker);
 	}
 }
 ::selection {

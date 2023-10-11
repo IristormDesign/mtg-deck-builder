@@ -44,7 +44,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 		max-height: calc(100vh - var(--header-height));
 		margin: 0 auto;
 		position: relative;
-		
+
 		.image-bg {
 			width: 100%;
 			height: 100%;
@@ -108,7 +108,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			align-items: center;
 			justify-content: center;
 			white-space: nowrap;
-			
+
 			&:first-child {
 				@include secondary-button;
 			}
@@ -138,12 +138,9 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			font-size: $font-size-bigger;
 			margin-bottom: 0;
 		}
-		a {
-			@include link-alt;
-		}
 	}
 	.final-call-to-action {
-		position: relative;	
+		position: relative;
 
 		.wrap {
 			display: flex;
@@ -185,7 +182,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 		}
 		.app-features {
 			padding-top: $lhse;
-			
+
 			img {
 				max-width: 675px;
 				width: 100%;
