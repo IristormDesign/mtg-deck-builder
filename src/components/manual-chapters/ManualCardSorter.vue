@@ -14,7 +14,7 @@
 			</li>
 			<li>
 				<h5>Mana Color</h5>
-				<p>Sorts between monocolored, multicolored, and colorless. Among the monocolored, this sorts by mana color in <i>Magic</i>’s conventional order of them: white, blue, black, red, green. Among the colorless, this sorts between spells and lands.</p>
+				<p>Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted among each other in <i>Magic</i>’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted among each other between spells and lands.</p>
 			</li>
 			<li>
 				<h5>Mana Value</h5>
@@ -22,7 +22,7 @@
 			</li>
 			<li>
 				<h5>Type</h5>
-				<p>Sorts by type in the following order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
+				<p>Sorts by card type in the following order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
 			</li>
 			<li>
 				<h5>Subtype</h5>
@@ -38,7 +38,7 @@
 			</li>
 			<li>
 				<h5>P/T Sum</h5>
-				<p>Sorts from greatest to least by “P/T sum,” which is a number equal to adding the power and toughness (P/T) of a card together. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</p>
+				<p>Sorts from greatest to least by “P/T sum,” which is a number equal to adding together the power and toughness (P/T) of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</p>
 			</li>
 			<li>
 				<h5>Quantity</h5>

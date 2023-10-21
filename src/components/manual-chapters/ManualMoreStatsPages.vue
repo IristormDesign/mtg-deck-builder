@@ -34,9 +34,9 @@
 			<li><strong>Monocolored</strong> – Cards of exactly one mana color.</li>
 			<li><strong>Multicolored</strong> – Cards of two or more mana colors.</li>
 			<li><strong>Variable cost</strong> – Cards using the letter X in their mana costs.</li>
-			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness (P/T).</li>
-			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back), <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
+			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness.</li>
+			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
-		<p>Single cards can be counted for multiple properties within a category. For example, a card designated “artifact creature” in its type line is considered both a creature and an artifact in the Types category table. As a result, the sum of all values of a category can equal a total count greater than your deck’s total cards, and a combined percentage greater than 100%.</p>
+		<p>Single cards can be counted for multiple properties within a category. For example, a card that’s designated “artifact creature” in its type line is considered to be both a creature and an artifact to the Types category. As a result, the sum of all counts within a category could be greater than your deck’s total cards, and the sum of all percentages within a category could be greater than 100%.</p>
 	</section>
 </template>
