@@ -1,3 +1,35 @@
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("~@/fonts/CrimsonPro-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("~@/fonts/CrimsonPro-Italic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Crimson Pro";
+	src: url("~@/fonts/CrimsonPro-Medium.ttf") format("truetype");
+	font-weight: 500;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Philosopher";
+	src: url("~@/fonts/Philosopher-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Ysabeau";
+	src: url("~@/fonts/Ysabeau-ExtraBold.ttf") format("truetype");
+	font-weight: 800;
+	font-display: swap;
+}
+
 .bg-overlay {
 	@include overlay-bg;
 	transition: all $transition-duration-standard ease;
