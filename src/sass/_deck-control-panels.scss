@@ -2,7 +2,6 @@
 	border-radius: $border-radius-group;
 	background: $color-group-bg;
 	width: 100%;
-	overflow: hidden;
 	display: grid;
 	grid-template-columns: auto auto;
 
@@ -45,7 +44,6 @@
 		padding: 0;
 		border: 0;
 		margin: 0;
-		transition: opacity $transition-duration-standard ease;
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -135,6 +133,9 @@
 		label {
 			color: $color-text-over-mythic-very-dim;
 		}
+		input {
+			border-color: $color-section-border-alt;
+		}
 	}
 	form,
 	.loading-indicator {
@@ -147,8 +148,6 @@
 		border-radius: $border-radius-button;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		border-right-width: 0;
-		min-width: none;
 		width: 100%;
 		padding-right: 0;
 
@@ -172,6 +171,7 @@
 		border-bottom-left-radius: 0;
 		width: $lhse*2.5;
 		min-width: 0;
+		margin-left: 1px;
 	}
 	.loading-indicator {
 		display: flex;

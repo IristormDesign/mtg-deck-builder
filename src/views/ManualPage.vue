@@ -4,7 +4,7 @@
 			<h2>User Manual</h2>
 		</header>
 
-		<nav class="table-of-contents">
+		<nav class="table-of-contents" aria-label="Table of Contents">
 			<h3>Table of Contents</h3>
 			<div class="toc-links">
 				<ol>

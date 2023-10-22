@@ -50,7 +50,8 @@
 
 	button {
 		@include link;
-		
+		text-decoration-thickness: 1.5px;
+
 		h2 {
 			@include heading-font;
 			margin: 0;
@@ -66,7 +67,7 @@
 	}
 	.output {
 		width: max-content;
-		
+
 		&.no-colors {
 			font-size: 200%;
 			display: flex;
@@ -266,7 +267,7 @@
 	.more-stats-button {
 		width: 100%;
 		height: 100%;
-		
+
 		a,
 		button {
 			white-space: normal;

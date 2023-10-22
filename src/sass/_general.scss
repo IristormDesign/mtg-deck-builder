@@ -150,6 +150,10 @@ img {
 }
 figure {
 	margin: $lhse*.5;
+
+	img {
+		background-color: $color-group-bg-darker;
+	}
 }
 figcaption {
 	font-size: 80%;
@@ -159,7 +163,8 @@ figcaption {
 	color: $color-text-darker;
 
 	a {
-		@include link-colors($color-link-darker);
+		@include link-colors($color-link-dim);
+
 	}
 }
 ::selection {
@@ -169,15 +174,8 @@ figcaption {
 }
 ::-webkit-scrollbar {
 	width: $line-height-standard * .6667rem;
-	background: darken($color-content-bg, 16.67%);
-	box-shadow: inset $lhse*.0833 0 $lhse*.1667 rgba(#000, .25);
-
-	&:hover {
-		background: $color-mythic-very-dim;
-	}
-	&:active {
-		background: $color-mythic-dim;
-	}
+	background: $color-group-bg-darker;
+	border: 1px solid $color-group-bg-darker;
 }
 ::-webkit-scrollbar-thumb {
 	@include gradient-buttons($color-link, $color-mythic-dim);
@@ -186,6 +184,9 @@ figcaption {
 	border-radius: 2px;
 	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
 
+	&:hover {
+		@include gradient-buttons($color-link-focus, $color-link-dark);
+	}
 	&:active {
 		@include gradient-buttons($color-link-active, $color-link-focus);
 	}

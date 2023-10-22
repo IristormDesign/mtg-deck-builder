@@ -10,8 +10,7 @@ $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 41.67%);
-$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 25%); // Darkened to match brightness level of $color-heading-bg.
-$color-text-over-mythic-very-dim: desaturate(lighten($color-mythic-very-dim, 62.5%), 4.17%);
+$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
 
 $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
@@ -25,21 +24,28 @@ $color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Sampled
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
 $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 
-$color-link: desaturate(lighten($color-mythic-orange, 12.5%), 8.33%);
-$color-link-focus: saturate(lighten($color-mythic-orange, 4.17%), 100%);
-$color-link-active: saturate(lighten($color-mythic-lighter, 20%), 40%);
-$color-link-darker: desaturate(darken($color-link, 6.25%), 37.5%);
+$color-link: desaturate(lighten($color-mythic-orange, 12.5%), 0%);
+$color-link-focus: saturate(lighten($color-mythic-orange, 4.17%), 8.33%);
+$color-link-active: saturate(lighten($color-mythic-lighter, 16.67%), 50%);
+$color-link-active-extra-bright: lighten($color-link-active, 12.5%);
+$color-link-dark: color.scale($color-link, $lightness: -33.33%); // Darkened enough to just NOT pass color contrast accessibility check.
+$color-link-dim: desaturate(darken($color-link, 6.25%), 33.33%);
+$color-link-dim: color.scale($color-link, $saturation: -50%);
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
-$color-group-bg: desaturate(darken($color-mythic-complement, 37.5%), 70.83%);
+$color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 66.67%);
+$color-group-bg-darker: darken($color-group-bg, 4.17%);
 $color-text: lighten($color-group-bg, 62.5%);
-$color-text-brighter: lighten($color-text, 8.33%);
-$color-text-darker: desaturate(darken($color-text, 16.67%), 6.25%);
+$color-text-brighter: lighten($color-text, 6.25%);
+$color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
+$color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 58.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
-$color-section-border: darken($color-content-bg, 6.25%);
-$color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 20%), 6.25%);
+$color-input-bg-focus: darken($color-mythic-lighter, 45.83%);
+$color-input-bg-active: darken($color-link, 37.5%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
+$color-section-border: desaturate(lighten($color-group-bg, 12.5%), 4.17%);
+$color-section-border-alt: lighten($color-mythic-very-dim, 16.67%);
 $color-background-alt: desaturate(lighten($color-mythic-lighter, 20.83%), 62.5%);
 $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 $color-text-buttons: rgba(#000, .875);
@@ -78,9 +84,9 @@ $height-app-header-tall: $lhse*3;
 // BORDERS
 $border-sections: 1px solid $color-section-border;
 $border-sections-alt: 1px solid $color-section-border-alt;
-$border-image: $lhse*.25 solid $color-heading-bg;
+$border-image-thin: 1px solid $color-group-bg-darker;
+$border-image-thick: $lhse*.25 solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
-$border-input: 1px solid $color-mythic-dim;
 
 // MISCELLANEOUS
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
@@ -187,7 +193,7 @@ $x: 2px dashed rgba(#c0f, .75);
 		0 1px 0 .5px #000, // Rim around button
 		$box-shadow-button-shine,
 		$box-shadow-button-cast-shadow;
-	border: 0 solid desaturate(darken($color-link, 25%), 20%);
+	border: 0 solid desaturate(darken($color-mythic-orange, 16.67%), 25%);
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
 	padding: $lhse*.25 .5em;
@@ -242,17 +248,16 @@ $x: 2px dashed rgba(#c0f, .75);
 	text-decoration-color: color.scale($color, $lightness: -50%);
 }
 @mixin link {
-	@include link-colors($color-link);
-	text-decoration-line: underline;
+	color: $color-link;
+	text-decoration: underline solid $color-link-dark 1px;
 	text-underline-offset: .125em;
-	text-decoration-thickness: 1px;
 	padding: 0;
 	margin: 0;
 	background: none;
 	border: 0;
 	box-shadow: none;
 	min-width: min-content;
-	border-radius: 0;
+	border-radius: $border-radius-button; // For focus outlines.
 	text-shadow: none;
 	display: inline;
 	text-align: left;
@@ -262,10 +267,16 @@ $x: 2px dashed rgba(#c0f, .75);
 
 	&:hover,
 	&:focus {
-		@include link-colors($color-link-focus);
+		color: $color-link-focus;
+		text-decoration-color: color.scale(
+			$color-link-focus, $lightness: -33.33%
+		); // Lightness scale should be equal to that of normal link's text-decoration-color.
 	}
 	&:active {
-		@include link-colors($color-link-active);
+		color: $color-link-active;
+		text-decoration-color: color.scale(
+			$color-link-active, $lightness: -33.33%
+		); // Lightness scale should be equal to that of normal link's text-decoration-color.
 	}
 }
 @mixin link-alt {

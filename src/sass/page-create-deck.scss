@@ -37,7 +37,6 @@
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 			width: 100%;
-			border-right-width: 0;
 			padding-right: 0;
 		}
 		button {
@@ -45,6 +44,7 @@
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			height: $height-deck-control-panel-input;
+			margin-left: 1px;
 		}
 	}
 	.import-data {

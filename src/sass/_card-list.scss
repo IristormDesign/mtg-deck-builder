@@ -8,11 +8,11 @@ $min-height-card-list: $lhse*6;
 	box-shadow:
 		0 0 0 .5px rgba(#000, .875),
 		0 0 0 $border-width-card-button $color,
-		.3333px -1px 0 ($border-width-card-button) color.scale($color,
-			$lightness: 66.67%
+		.3333px -1px 0 $border-width-card-button color.scale($color,
+			$lightness: 50%
 		),
-		-.3333px 1px 0 ($border-width-card-button) color.scale($color,
-			$lightness: -66.67%, $saturation: -66.67%
+		-.3333px 1px 0 $border-width-card-button color.scale($color,
+			$lightness: -50%, $saturation: -50%
 		),
 		0 -1px divide($lhse, 4) $border-width-card-button rgba(#000, .25);
 }
@@ -168,7 +168,7 @@ $min-height-card-list: $lhse*6;
 		margin: 1px 0;
 		padding: 0;
 		transition: .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
-		transition-property: transform, background-color;
+		transition-property: transform, background-color, border-radius;
 		position: relative;
 		background: $color-group-bg;
 		border-radius: $border-radius-button;
@@ -178,6 +178,9 @@ $min-height-card-list: $lhse*6;
 		}
 		&:hover,
 		&:focus-within {
+			background: $color-group-bg-darker;
+			transition-duration: 0s;
+
 			.card-button {
 				filter: contrast(116.67%);
 				transition-duration: 0s;
@@ -186,6 +189,7 @@ $min-height-card-list: $lhse*6;
 				border-right-color: rgba(#fff, .25);
 				border-bottom-color: rgba(#000, .5);
 				border-left-color: rgba(#000, .25);
+				outline-offset: 3px;
 
 				&:active {
 					filter: brightness(87.5%) contrast(125%);
@@ -206,7 +210,7 @@ $min-height-card-list: $lhse*6;
 			}
 			.qty {
 				> span {
-					color: desaturate(darken($color-text, 16.67%), 8.33%);
+					color: $color-text;
 					transition-duration: 0s;
 				}
 				input {
@@ -215,7 +219,15 @@ $min-height-card-list: $lhse*6;
 
 					&:hover,
 					&:focus {
+						color: $color-link-focus;
+					}
+					&:focus-visible {
+						outline-offset: 0;
+						background: $color-input-bg-focus;
+					}
+					&:active {
 						color: $color-link-active;
+						background: $color-link-dark;
 					}
 				}
 			}
@@ -300,7 +312,7 @@ $min-height-card-list: $lhse*6;
 
 			> span {
 				margin: -4.17% 0 0 divide($lhse, 6);
-				color: desaturate(darken($color-text, 33.33%), 16.67%);
+				color: $color-text-darker;
 				cursor: default;
 				text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
 				transition: color $transition-duration-standard ease;
@@ -315,26 +327,17 @@ $min-height-card-list: $lhse*6;
 				width: auto;
 				min-width: 0;
 				text-align: center;
-				outline: 1px solid rgba($color-mythic-orange, 0);
 				transition: all $transition-duration-standard ease-out;
 				padding: 0 0 0 0;
 				margin: -4.17% 0 0 0;
 				font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
 				border-radius: $border-radius-button;
 				appearance: textfield;
+				box-shadow: none;
 
 				&::-webkit-inner-spin-button,
 				&::-webkit-outer-spin-button {
 					-webkit-appearance: none;
-				}
-				&:hover,
-				&:focus {
-					color: $color-link;
-					transition-duration: 0s;
-				}
-				&:focus {
-					color: $color-link-active;
-					outline: 2px solid $color-link;
 				}
 			}
 			&:focus-within,

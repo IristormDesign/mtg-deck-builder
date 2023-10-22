@@ -8,7 +8,8 @@
 	align-items: stretch;
 	cursor: default;
 	border-top: $border-sections;
-	border-bottom: 2px solid $color-section-border-alt;
+	border-bottom: 3px solid $color-section-border-alt;
+	box-shadow: 0 1px 0 rgba(#000, .0833);
 	padding: 0 $lhse*.5;
 	min-height: $lhse*2;
 

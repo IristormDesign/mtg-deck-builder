@@ -28,7 +28,7 @@
 		}
 	}
 	.table-of-contents {
-		color: desaturate(darken($color-text, 12.5%), 8.33%);
+		color: $color-text-darker;
 		height: min-content;
 		max-width: $lhse*9;
 		max-height: calc(100vh - #{$lhse*.5});

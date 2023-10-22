@@ -7,11 +7,11 @@
 .app-header {
 	background: $color-mythic-dim;
 	color: desaturate(lighten($color-mythic-dim, 45.83%), 8.33%);
-	border: solid darken($color-mythic-dim, 8.33%);
+	border: solid darken($color-mythic-dim, 12.5%);
 	border-width: 1px 0;
 	z-index: index($layers, app-header);
 	height: var(--header-height);
-	box-shadow: 0 1px 0 rgba(#fff, .0833);
+	box-shadow: 0 1px 0 rgba(#fff, .125);
 	transition: all $transition-duration-standard ease;
 	will-change: top;
 
@@ -20,7 +20,7 @@
 		// `top` property gets set by JavaScript in AppHeader.vue
 		left: 0;
 		right: 0;
-		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .6667);
+		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .5);
 	}
 	&.sliding-up {
 		box-shadow: none; // Combined with .app-header's transition property, this makes the box-shadow of .app-header gradually disappear as the header slides upward. Without this .sliding-up class, the box-shadow disappears abruptly once the bottom of the header reaches the top of the viewport.
@@ -49,10 +49,10 @@
 
 			&:hover,
 			&:focus {
-				color: darken($color-link-active, 20%);
+				color: $color-link-active-extra-bright;
 			}
 			&:active {
-				color: #fff;
+				color: darken($color-link-active, 20%);
 			}
 		}
 	}
