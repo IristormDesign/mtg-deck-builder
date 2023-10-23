@@ -11,7 +11,7 @@
 		<p>The deck statistics section has the following subsections:</p>
 		<ul>
 			<li>
-				<h5>Using Colors</h5>
+				<h5>Mana Colors</h5>
 				<p>This shows <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in your deck’s main group.</p>
 			</li>
 			<li>

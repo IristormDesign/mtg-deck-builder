@@ -1,13 +1,11 @@
 <template>
 	<section class="deck-info deck-colors">
-		<h3>Using Colors</h3>
+		<h3>Mana Colors</h3>
 
 		<div
 			v-if="deck.colors.length === 0"
 			class="output no-colors"
-		>
-			0
-		</div>
+		>0</div>
 		<div
 			v-else
 			class="output" :class="sizeManaSymbols(deck)"
