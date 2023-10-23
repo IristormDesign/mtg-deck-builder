@@ -15,7 +15,7 @@ $color-link-dim: color.scale($color-link, $saturation: -50%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 58.33%);
 $color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: lighten($color-mythic-very-dim, 16.67%);
+$color-section-border-alt: lighten($color-mythic-very-dim, 20%);
 
 // YELLOW-BASED COLORS
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
@@ -36,7 +36,7 @@ $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
-$color-section-border: desaturate(lighten($color-group-bg, 12.5%), 4.17%);
+$color-section-border: lighten($color-group-bg, 20%);
 
 // INDIGO-BASED COLORS
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
