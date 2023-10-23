@@ -192,20 +192,21 @@ option {
 		opacity: 0;
 		text-align: center;
 		height: 80%;
-		transition: opacity $transition-duration-standard ease;
+		transition: all $transition-duration-standard ease;
 	}
 	&:checked {
 		background: $color-link-dark;
+		color: $color-link-active; // Possibly fixes a Safari CSS bug.
 
 		&::after {
 			opacity: 1;
 			transition-duration: 0s;
 		}
 		&:active {
-			background: $color-link;
+			background: $color-input-bg-active;
 
 			&::after {
-				color: $color-link-active-extra-bright;
+				color: $color-link;
 			}
 		}
 	}
