@@ -16,8 +16,6 @@
 						id="deck-name"
 						type="text"
 						v-model.trim="deckNameInput"
-						minlength="1"
-						maxlength="50"
 						ref="focus"
 						autocomplete="off"
 					/>
@@ -74,8 +72,13 @@ export default {
 			let name = this.deckNameInput
 
 			if (name.length > 0) { // If the user has submitted any name, after having trimmed any excess white space from it...
-				name = this.curlApostrophes(name)
-				this.createNewDeck(name)
+				if (name.length > 50) {
+					alert(this.alertNameTooLong(name.length))
+					this.$refs.focus.focus()
+				} else {
+					name = this.curlApostrophes(name)
+					this.createNewDeck(name)
+				}
 			} else {
 				this.$refs.focus.focus()
 			}

@@ -49,6 +49,10 @@ select {
 		font-style: italic;
 		font-family: $font-family-standard;
 	}
+	&::selection {
+		background: $color-link-active;
+		color: #000;
+	}
 }
 input {
 	line-height: 1;

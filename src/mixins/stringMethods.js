@@ -6,6 +6,19 @@ export default {
 		alertNameExists (name) {
 			return `You already have a deck named “${name}.” Please give a different name.`
 		},
+		alertNameTooLong (length) {
+			const stringExcessChars = () => {
+				const numExcess = length - 50
+
+				if (numExcess === 1) {
+					return '1 character'
+				} else {
+					return `${numExcess} characters`
+				}
+			}
+
+			return `That deck name is too long by ${stringExcessChars()}. Please revise the name to be 50 characters or fewer in length.`
+		},
 		/**
 		 * Turn each straight apostrophe (or single closing quotation mark) into a curly one.
 		 * @param {string} string

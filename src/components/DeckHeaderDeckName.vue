@@ -41,7 +41,7 @@ export default {
 					newPath === this.$route.params.deckPath
 
 				if (newName.length > 50) {
-					alert('That deck name is too long. Please shorten it to fewer than 50 characters.')
+					alert(this.alertNameTooLong(newName.length))
 					this.renameDeck(newName)
 				} else if (newName.length < 1) {
 					this.renameDeck(newName)
