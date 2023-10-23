@@ -37,7 +37,7 @@
 							<li><a href="#m-deck-actions">Deck Actions</a></li>
 						</ol>
 					</li>
-					<li><a href="#m-more-stats-pages">“More Stats” Pages</a></li>
+					<li><a href="#m-more-stats-pages">“More Deck Statistics” Pages</a></li>
 					<li>
 						<a href="#m-storage-of-deck-data">Storage of Deck Data</a>
 						<ol>

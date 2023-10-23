@@ -9,7 +9,7 @@
 			class="no-cards"
 			key="sideboard-no-cards"
 		>
-			<p>This deck’s sideboard is currently empty.</p>
+			<p>This deck’s sideboard has no cards yet.</p>
 		</div>
 		<active-card-list
 			v-else

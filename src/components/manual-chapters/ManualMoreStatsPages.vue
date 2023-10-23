@@ -1,7 +1,7 @@
 <template>
 	<section id="m-more-stats-pages">
-		<h3>“More Stats” Pages</h3>
-		<p>When you click on the More Stats button in the <a href="#m-deck-statistics">deck statistics</a> section, you’re directed to your deck’s More Deck Statistics page, where you can review additional information about how your deck is composed.</p>
+		<h3>“More Deck Statistics” Pages</h3>
+		<p>The More Deck Statistics page is where you can review additional information about how your currently <a href="#m-deck-menu">open deck</a> is composed. To access this page, click on the More Stats button in the <a href="#m-deck-statistics">deck statistics</a> section on the <a href="#m-deck-pages">deck page</a>.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
@@ -37,6 +37,7 @@
 			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness.</li>
 			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
+		<p>All statistics in all categories count the cards only in the main <a href="#m-group-switch">card group</a> (not in the sideboard) of your deck.</p>
 		<p>Single cards can be counted for multiple properties within a category. For example, a card that’s designated “artifact creature” in its type line is considered to be both a creature and an artifact to the Types category. As a result, the sum of all counts within a category could be greater than your deck’s total cards, and the sum of all percentages within a category could be greater than 100%.</p>
 	</section>
 </template>

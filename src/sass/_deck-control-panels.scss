@@ -154,13 +154,13 @@
 		&.attention {
 			@keyframes pulsate-input {
 				100% {
-					border-color: $color-mythic-lighter;
-					box-shadow: 0 0 $lhse $color-mythic-orange;
+					background-color: $color-input-bg-active;
+					color: $color-link-active;
 				}
 			}
 			animation-name: pulsate-input;
 			animation-duration: .25s;
-			animation-iteration-count: 6;
+			animation-iteration-count: 10;
 			animation-direction: alternate;
 			animation-timing-function: ease-in-out;
 		}
