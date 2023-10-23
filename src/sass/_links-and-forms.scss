@@ -186,8 +186,8 @@ option {
 		}
 	}
 	&::after {
-		font: normal #{80%}/#{1} $font-family-standard;
-		content: '\2714'; // Check mark sign
+		font: normal #{80%}/#{1} monospace; // Setting the font family to `monospace` is a hack for iOS that forces the text content (the check mark) to be displayed as colored plain text instead of as an emoji.
+		content: '\2714'; // Check mark sign.
 		color: $color-link-active;
 		opacity: 0;
 		text-align: center;
@@ -196,7 +196,6 @@ option {
 	}
 	&:checked {
 		background: $color-link-dark;
-		color: $color-link-active; // Possibly fixes a Safari CSS bug.
 
 		&::after {
 			opacity: 1;
