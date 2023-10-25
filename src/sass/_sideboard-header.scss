@@ -11,7 +11,7 @@
 	border-bottom: 3px solid $color-section-border-alt;
 	box-shadow: 0 1px 0 rgba(#000, .0833);
 	padding: 0 $lhse*.5;
-	min-height: $lhse*2;
+	min-height: $lhse*2.2; // Equal to the element's height as if there were vertical paddings of `$lhse*.375`.
 
 	h3,
 	h4,

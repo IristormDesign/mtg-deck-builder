@@ -7,7 +7,6 @@ $outline-focus-visible: 2px solid $color-link-focus;
 :focus:not(:focus-visible) {
 	outline-width: 0;
 }
-
 a {
 	@include link;
 }
@@ -114,8 +113,8 @@ input {
 [type="radio"] {
 	cursor: pointer;
 	appearance: none;
-	width: 16px; // Use whole pixel values for width and height because they don't cause rendering inconsistencies.
-	height: 16px;
+	width: 17px; // Use whole pixel values for width and height because they don't cause rendering inconsistencies.
+	height: 17px;
 	margin: 0;
 	border-radius: 50%;
 	border: 3px solid $color-link;
@@ -132,9 +131,8 @@ input {
 	}
 	&:checked {
 		background: radial-gradient(
-			$color-link-active-extra-bright, $color-link-active
-		);
-		border-color: $color-text-darker;
+			$color-app-header-link-active, $color-mythic-yellow
+		), $color-link-active;
 	}
 }
 select {

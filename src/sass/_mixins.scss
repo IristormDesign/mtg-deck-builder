@@ -142,7 +142,8 @@
 }
 @mixin link {
 	color: $color-link;
-	text-decoration: underline solid $color-link-dark 1px;
+	text-decoration: underline solid $color-link-dark;
+	text-decoration-thickness: 1px;
 	text-underline-offset: .125em;
 	padding: 0;
 	margin: 0;

@@ -9,7 +9,7 @@
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: divide($lhse, 3) divide($lhse, 2);
+	padding: $lhse*.375 $lhse*.5;
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;
@@ -137,7 +137,7 @@
 		grid-template-rows: repeat(2, 1fr);
 		border-radius: $border-radius-group;
 		background: $color-group-bg;
-		margin-bottom: $lhse*.5;
+		margin-bottom: $lhse*.75;
 	}
 	.deck-info {
 		border-radius: 0;
@@ -242,20 +242,17 @@
 		order: 1;
 	}
 	.deck-info {
-		border-top-width: 0 !important;
-		border-right-width: 0 !important;
-		border-bottom-width: 1px !important;
-		border-left-width: 1px !important;
+		border-top-width: 1px;
+		border-right-width: 0;
+		border-left-width: 1px;
 
-		&:last-of-type(),
-		&:nth-last-of-type(2),
-		&:nth-last-of-type(3) {
-			border-bottom-width: 0 !important;
-		}
 		&:first-of-type,
 		&:nth-of-type(2),
 		&:nth-of-type(5) {
-			border-left-width: 0 !important;
+			border-left-width: 0;
+		}
+		&:last-of-type {
+			border-top-width: 1px !important;
 		}
 		h3 {
 			max-width: 100%;
@@ -294,13 +291,14 @@
 		border-left-width: 1px !important;
 		justify-content: center;
 
-		&:nth-of-type(4),
-		&:nth-last-of-type(2) {
+		&:first-of-type,
+		&:nth-of-type(even) {
 			border-left-width: 0 !important;
 		}
-		&:nth-last-of-type(3) {
-			border-left-width: 1px !important;
-			border-bottom-width: 1px !important;
+		&:last-of-type,
+		&:nth-last-of-type(2) {
+			border-top-width: 0 !important;
+			border-bottom-width: 0 !important;
 		}
 	}
 	.deck-name {

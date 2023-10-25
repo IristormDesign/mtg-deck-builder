@@ -81,8 +81,10 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			left: $lhse*1.5;
 			background: $color-group-bg;
 			border: $border-image-thick;
-			box-shadow: 0 0 $lhse rgba(#000, .3333);
-			padding: $lhse*.25 $lhse;
+			border-color: $color-content-bg;
+			box-shadow: 0 0 $lhse rgba(#000, .5);
+			padding: $lhse*.25 $lhse*.875;
+			border-radius: $border-radius-group;
 			animation: .5s ease-in-out 2.25s forwards fade-in-text-box;
 			opacity: 0;
 		}
@@ -217,6 +219,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 				position: relative;
 				background: $color-group-bg;
 				border-top: $border-image-thick;
+				border-color: $color-content-bg;
 			}
 			.text-box {
 				position: relative;

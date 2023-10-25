@@ -6,22 +6,25 @@
 
 // ORANGE-BASED COLORS
 $color-mythic-orange: #ea4b12; // Sampled
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 41.67%);
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 40%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
-$color-link: desaturate(lighten($color-mythic-orange, 12.5%), 0%);
+$color-link: lighten($color-mythic-orange, 12.5%);
 $color-link-focus: saturate(lighten($color-mythic-orange, 4.17%), 8.33%);
 $color-link-dark: color.scale($color-link, $lightness: -33.33%); // Darkened enough to just NOT pass color contrast accessibility check.
 $color-link-dim: color.scale($color-link, $saturation: -50%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 58.33%);
 $color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: lighten($color-mythic-very-dim, 20%);
+$color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 16.67%), 4.17%); // Desaturate and lighten percentages match those of $color-section-border.
 
 // YELLOW-BASED COLORS
 $color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
-$color-link-active: saturate(lighten($color-mythic-lighter, 16.67%), 50%);
-$color-link-active-extra-bright: lighten($color-link-active, 12.5%);
+$color-link-active: lighten($color-mythic-lighter, 12.5%);
+$color-mythic-yellow: $color-mythic-lighter;
 $color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
+$color-app-header-link: lighten($color-mythic-lighter, 20%);
+$color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
+$color-app-header-link-active: lighten($color-app-header-link, 12.5%);
 $color-input-bg-focus: darken($color-mythic-lighter, 45.83%);
 $color-background-alt: desaturate(lighten($color-mythic-lighter, 20.83%), 62.5%);
 $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
@@ -36,7 +39,7 @@ $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
-$color-section-border: lighten($color-group-bg, 20%);
+$color-section-border: desaturate(lighten($color-group-bg, 16.67%), 4.17%);
 
 // INDIGO-BASED COLORS
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
@@ -109,7 +112,7 @@ $transition-duration-card-image-hover-fast: $transition-duration-card-image-hove
 
 // MISCELLANEOUS VARIABLES
 $border-radius-button: #{$lhse} / #{$lhse * 2};
-$border-radius-group: $lhse*.5;
+$border-radius-group: $lhse*.3820;
 $layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
 $x: 2px dashed rgba(#c0f, .75);
