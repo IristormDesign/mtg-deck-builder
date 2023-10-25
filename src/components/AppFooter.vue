@@ -11,6 +11,9 @@
 
 					<span class="divider"> | </span>
 					<router-link to="/privacy">Privacy Policy</router-link>
+
+					<span class="divider"> | </span>
+					<router-link to="/contact">Contact</router-link>
 				</span>
 			</p>
 			<p v-if="$route.name === 'home'">Intro background image is from illustration <i><a href="https://magic.wizards.com/en/news#wallpapers" target="_blank">Invasion of Dominaria</a></i> by Denys Tsiperko.</p>

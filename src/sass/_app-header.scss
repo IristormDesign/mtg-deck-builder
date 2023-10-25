@@ -72,14 +72,14 @@
 	}
 }
 
-@media (max-width: 1080px) {
+@media (max-width: $min-width-app) {
 	.app-header {
 		.app-title {
 			font-size: 125%;
 		}
 	}
 }
-@media (max-width: $min-width-app) {
+@media (max-width: ($min-width-app*.8)) {
 	:root {
 		--header-height: #{$height-app-header-tall};
 	}
@@ -120,7 +120,6 @@
 		}
 		.by-iristorm {
 			margin-right: $lhse*.125;
-			margin-top: $lhse*.125;
 
 			a {
 				display: none;

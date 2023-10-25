@@ -65,14 +65,6 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<router-link
-						:to="{name: 'contact'}"
-						class="header-menu-item"
-					>
-						Contact
-					</router-link>
-				</li>
 			</ul>
 		</nav>
 

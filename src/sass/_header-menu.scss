@@ -14,7 +14,7 @@
 		padding: 0;
 		list-style: none;
 		display: grid;
-		grid-template-columns: repeat(4, minmax(max-content, 1fr));
+		grid-template-columns: repeat(3, minmax(max-content, 1fr));
 		gap: $lhse*.5;
 		align-items: center;
 	}
@@ -29,11 +29,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	
+
 		&.attention:not(:disabled) {
 			animation: flash .4s ease-in-out;
 			animation-iteration-count: 2;
-	
+
 			@keyframes flash {
 				0% {
 					filter: brightness(100%);
@@ -53,7 +53,7 @@
 	.deck-menu-toggler {
 		position: relative;
 		z-index: index($layers, app-menu-toggler);
-	
+
 		span {
 			font-size: 75%;
 			margin-left: .5ch;
@@ -62,7 +62,7 @@
 	.deck-menu {
 		position: relative;
 		z-index: index($layers, above-overlay);
-	
+
 		.hover-shield {
 			position: absolute;
 			margin-top: -$lhse*1.2;
@@ -75,9 +75,10 @@
 		}
 		ul {
 			@include popup-menu-list;
-			border-top-left-radius: 0;
+			border-top-right-radius: 0;
 			position: absolute;
 			top: $lhse*1.3333;
+			right: 0;
 			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
 		}
 		a {
@@ -121,7 +122,7 @@
 	}
 }
 
-@media (max-width: 1080px) {
+@media (max-width: $min-width-app) {
 	.header-menu {
 		.header-menu-item {
 			font-size: 80%;
@@ -133,18 +134,18 @@
 		}
 	}
 }
-@media (max-width: $min-width-app) {
+@media (max-width: ($min-width-app*.8)) {
 	.header-menu-positioner {
 		width: 100%;
 	}
 	.header-menu {
-		max-width: $max-width-content*.75;
+		max-width: $max-width-content*.6;
 		margin: 0 auto;
 	}
 }
 @media (max-width: $max-width-mobile-header-menu) {
 	.header-menu-positioner {
-		position: relative;	
+		position: relative;
 		z-index: index($layers, app-menu-toggler);
 		margin-top: -$lhse*1.125;
 	}
@@ -206,7 +207,7 @@
 		.deck-menu {
 			background: desaturate(darken($color-background-alt, 25%), 25%);
 			padding: 0 0 $lhse*.3333 $lhse*.3333;
-			
+
 			.hover-shield {
 				display: none;
 			}

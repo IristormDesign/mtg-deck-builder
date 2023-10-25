@@ -29,7 +29,6 @@
 		transform: none;
 	}
 }
-$box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 
 .home-page {
 	margin: 0 auto;
@@ -82,7 +81,7 @@ $box-shadow-intro-text-box: 0 0 $lhse*1.5 rgba($color-text, .25);
 			background: $color-group-bg;
 			border: $border-image-thick;
 			border-color: $color-content-bg;
-			box-shadow: 0 0 $lhse rgba(#000, .5);
+			box-shadow: 0 0 $lhse*1.5 rgba(#000, .6667);
 			padding: $lhse*.25 $lhse*.875;
 			border-radius: $border-radius-group;
 			animation: .5s ease-in-out 2.25s forwards fade-in-text-box;
