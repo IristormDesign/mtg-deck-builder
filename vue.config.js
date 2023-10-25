@@ -10,9 +10,10 @@ module.exports = defineConfig({
 		}
 	},
 	pwa: {
-		name: 'MTG Deck Builder',
-		themeColor: '#78422f', // = $color-mythic-dim
-		msTileColor: '#1c2426', // = $color-group-bg
+		name: 'MTG Deck Builder by Iristorm Design',
+		short_name: 'MTG Deck Builder',
+		themeColor: '#7a412d', // = $color-mythic-dim
+		msTileColor: '#243034', // = $color-group-bg
 		appleMobileWebAppCapable: 'yes',
 		manifestOptions: {
 			icons: [

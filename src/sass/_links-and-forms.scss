@@ -9,6 +9,10 @@ $outline-focus-visible: 2px solid $color-link-focus;
 }
 a {
 	@include link;
+
+	&[href^="mailto:"] {
+		hyphens: none;
+	}
 }
 button,
 .button {
