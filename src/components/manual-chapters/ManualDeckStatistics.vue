@@ -7,7 +7,7 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The deck statistics section shows various information about your currently <a href="#m-deck-menu">open deck</a>. Most of these statistics are about the deck’s main <a href="#m-group-switch">card group</a> alone (ignoring the sideboard). Whenever you modify the deck, the statistics here immediately update as needed.</p>
+		<p>The deck statistics section shows various information about your currently <a href="#m-deck-menu">open deck</a>. Most of these statistics are about the deck’s main <a href="#m-group-switch">card group</a> alone (not also the sideboard). Whenever you modify your deck, the statistics here immediately update as needed.</p>
 		<p>The deck statistics section has the following subsections:</p>
 		<ul>
 			<li>
@@ -28,7 +28,7 @@
 			</li>
 			<li>
 				<h5>Total Cards</h5>
-				<p>This shows a number equal to the total cards (including duplicates) in your deck’s main group. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building rules, a warning symbol (⚠) appears beside the number.</p>
+				<p>This shows a number equal to the total cards (including duplicates) in your deck’s main group. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building <a href="#m-game-rules">rules</a>, a warning symbol (⚠) appears beside the number.</p>
 			</li>
 			<li>
 				<h5>More Stats</h5>

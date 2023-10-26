@@ -14,6 +14,6 @@
 			<li>Click on the card’s quantity number to make your web browser focus on it. Then press the up-arrow key on your keyboard to increase the quantity, or the down-arrow key to decrease.</li>
 		</ul>
 		<p>To remove a card from the card list, decrease the card’s quantity to 0, or delete the quantity number. Before the card actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the card stays in your deck with its quantity reset to 1.</p>
-		<p>Conforming to the rules of <i>Magic</i>, each card of a particular name in a deck—except cards of the “basic land” type—cannot be set to a quantity greater than 4.</p>
+		<p>Conforming to the <a href="#m-game-rules">rules of <i>Magic</i></a>, each card of a particular name in a deck—except cards of the “basic land” type—cannot be set to a quantity greater than 4.</p>
 	</section>
 </template>

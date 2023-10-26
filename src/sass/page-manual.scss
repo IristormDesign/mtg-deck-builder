@@ -73,8 +73,12 @@
 		margin-right: auto;
 		margin-left: auto;
 
-		button {
-			@include link;
+		> section {
+			section {
+				&:first-of-type {
+					margin-top: $lhse*1.5;
+				}
+			}
 		}
 		h3 {
 			@include pronounced-heading;

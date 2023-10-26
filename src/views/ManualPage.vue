@@ -11,6 +11,7 @@
 					<li>
 						<a href="#m-intro">Introduction</a>
 						<ol>
+							<li><a href="#m-game-rules">Game Rules</a></li>
 							<li><a href="#m-symbols">Symbols</a></li>
 						</ol>
 					</li>
