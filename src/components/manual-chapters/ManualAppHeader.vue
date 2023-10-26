@@ -6,7 +6,6 @@
 			<li><strong>User Manual</strong> – Takes you to what you’re reading right now.</li>
 			<li><strong>Create Deck</strong> – Takes you to the <a href="#m-create-deck">Create Deck</a> page.</li>
 			<li><strong>Open Deck</strong> – Shows the <a href="#m-deck-menu">deck menu</a>.</li>
-			<li><strong>Contact</strong> – Takes you to the Contact page.</li>
 		</ul>
 
 		<manual-deck-menu />
