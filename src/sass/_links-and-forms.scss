@@ -1,5 +1,3 @@
-$outline-focus-visible: 2px solid $color-link-focus;
-
 :focus-visible {
 	outline: $outline-focus-visible;
 	outline-offset: 1px;
@@ -73,14 +71,16 @@ input {
 	display: flex;
 
 	// For users' browsers that don't yet support the `:has` pseudo-class, provide fallback pseudo-classes.
-	&:has([type="radio"]:focus-visible),
-	&:focus-within,
-	&:active {
+	&:has(input:focus-visible) {
 		outline: $outline-focus-visible;
 		outline-offset: -1px;
 	}
-	&:not(:has([type="radio"]:focus-visible)) {
-		outline: none; // Removes the fallback style.
+	@supports not (selector(:has(input))) { // For Firefox
+		&:focus-within,
+		&:active {
+			outline: $outline-focus-visible;
+			outline-offset: -1px;
+		}
 	}
 	> div {
 		margin: $lhse*.125 0;

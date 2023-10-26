@@ -108,6 +108,9 @@
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;
 	}
+	&:focus-visible {
+		outline: $outline-focus-visible;
+	}
 	&:active {
 		border-bottom-width: 1px;
 		margin-top: 0;
