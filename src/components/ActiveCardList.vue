@@ -21,6 +21,7 @@
 			>
 				<button
 					@click="viewCard(card)"
+					@focus="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
 				>
 					<div class="card-label-group">
