@@ -54,7 +54,8 @@
 			white-space: nowrap;
 		}
 		&:disabled {
-			opacity: .25;
+			opacity: .3333;
+			filter: saturate(.3333);
 
 			select {
 				opacity: 1;

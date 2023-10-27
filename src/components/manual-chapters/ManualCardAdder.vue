@@ -29,7 +29,7 @@
 		</ul>
 		<p>Other notes about using the card adder:</p>
 		<ul>
-			<li>Card queries are case insensitive (meaning it doesn’t matter whether you type letters as uppercase or lowercase.)</li>
+			<li>Card queries are case insensitive (meaning it doesn’t matter whether you type letters as uppercase or lowercase).</li>
 			<li>The card adder won’t add a card of a certain name when it already exists in the card list. (To add duplicates of an existing card, increase its <a href="#m-card-quantities">quantity</a> instead.)</li>
 			<li>When submitting a query, MTG Deck Builder sends an external data request to the Scryfall web servers, and so retrieving your card’s data may take a second or two to complete.</li>
 			<li>Every newly added card is put at the bottom of the card list. You can use the <a href="#m-card-sorter">card sorter</a> afterward to rearrange the newly added cards among the rest.</li>
