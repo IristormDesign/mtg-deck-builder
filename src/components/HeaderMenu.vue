@@ -200,12 +200,13 @@ export default {
 
 			for (let i = 1; i < allLinks.length; i++) {
 				if (allLinks[i].matches('.header-menu-toggler')) {
-					listenForFocus(allLinks[i - 1]) // The link just BEFORE the app menu toggler.
+					// Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the former link is gone.
+					listenForFocus(allLinks[i - 1])
+					listenForFocus(allLinks[i - 2])
 
 					for (let j = (i + 3); j < allLinks.length; j++) {
-						if (allLinks[j].matches('.header-menu > ul > li:last-child a')) {
+						if (allLinks[j].matches('.deck-menu ul li:last-child a')) {
 							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
-
 							break
 						}
 					}
@@ -257,24 +258,13 @@ export default {
 					}
 					store.commit('showDeckMenu', true)
 					store.commit('showingAnyPopup', true)
+					this.addFocusListenerToClosePopups()
 				}
 
 				this.freezeDeckMenu = true
 				setTimeout(() => {
 					this.freezeDeckMenu = false
 				}, 500)
-			}
-		},
-		closeHeaderMenuWhenFocusLost () {
-			const headerMenuLinks = document.querySelectorAll(
-				'.header-menu-toggler, .header-menu a, .header-menu button'
-			)
-
-			for (const link of headerMenuLinks) {
-				if (link === document.activeElement) {
-					this.closeAllPopups()
-					break
-				}
 			}
 		},
 		manualButtonClicked () {
