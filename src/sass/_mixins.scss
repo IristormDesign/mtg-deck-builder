@@ -21,7 +21,7 @@
 }
 @mixin popup-menu-list-links {
 	min-width: 6em;
-	padding: 0 $lhse*.3333;
+	padding: 0 divide($lhse, 3);
 	min-height: $lhse*1.1667;
 	text-decoration: none;
 	color: $color-text-over-background-alt;

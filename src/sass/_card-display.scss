@@ -189,7 +189,7 @@ $animation-duration-card-browse: .3820s;
 			@include secondary-button;
 			display: block;
 			position: absolute;
-			top: $lhse*.3333;
+			top: divide($lhse, 3);
 			right: $lhse*.25;
 			min-width: $lhse;
 			padding: 0;
@@ -201,10 +201,10 @@ $animation-duration-card-browse: .3820s;
 	.cd-overlay-fade {
 		&-enter-active,
 		&-leave-active {
-			transition: opacity .3333s ease;
+			transition: opacity divide(1s, 3) ease;
 		}
 		&-leave-active {
-			transition-duration: .1667s;
+			transition-duration: divide(1s, 6);
 		}
 		&-enter,
 		&-leave-to {

@@ -104,7 +104,7 @@
 		max-width: 10em;
 		width: max-content;
 		line-height: 1;
-		padding: $lhse*.0833 0 $lhse*.1667;
+		padding: divide($lhse, 12) 0 divide($lhse, 6);
 	}
 	.deck-menu-deck-colors {
 		display: flex;
@@ -206,7 +206,7 @@
 		}
 		.deck-menu {
 			background: desaturate(darken($color-background-alt, 25%), 25%);
-			padding: 0 0 $lhse*.3333 $lhse*.3333;
+			padding: 0 0 divide($lhse, 3) divide($lhse, 3);
 
 			.hover-shield {
 				display: none;

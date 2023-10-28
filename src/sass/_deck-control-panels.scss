@@ -26,8 +26,8 @@
 	h3 {
 		display: block;
 		margin-top: -$lhse*.125;
-		margin-right: .3333em;
-		margin-left: .3333em;
+		margin-right: divide(1em, 3);
+		margin-left: divide(1em, 3);
 		color: $color-text;
 		font: $font-weight-semibold #{83.33%}/#{1} $font-family-standard;
 	}
@@ -55,8 +55,8 @@
 			padding-bottom: $lhse*.25;
 		}
 		&:disabled {
-			opacity: .3333;
-			filter: saturate(.3333);
+			opacity: divide(1, 3);
+			filter: saturate(.5);
 
 			select {
 				opacity: 1;
@@ -222,7 +222,7 @@
 		.card-sorter label,
 		.card-group-switch h3 {
 			padding: 0 divide($lhse, 3) 0 0;
-			margin: -$lhse*.0833 0 0 0;
+			margin: divide(-$lhse, 12) 0 0 0;
 		}
 	}
 	.card-sorter {

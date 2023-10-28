@@ -107,7 +107,7 @@
 			font-size: 83.33%;
 			grid-row: 2;
 			grid-column: span 4;
-			
+
 			&:first-of-type {
 				grid-row: 1;
 				grid-column: span 6;
@@ -181,7 +181,7 @@
 .warning-symbol {
 	color: darken($color-rarity-gold, 12.5%);
 	font-size: 60%;
-	margin-top: $lhse*.1667;
+	margin-top: divide($lhse, 6);
 
 	&[title] {
 		cursor: help;
