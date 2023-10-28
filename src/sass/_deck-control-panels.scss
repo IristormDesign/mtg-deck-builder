@@ -25,11 +25,11 @@
 	label,
 	h3 {
 		display: block;
+		margin-top: -$lhse*.125;
 		margin-right: .3333em;
 		margin-left: .3333em;
 		color: $color-text;
-		font: $font-weight-semibold 83.33%/1 $font-family-standard;
-		margin-top: -$lhse*.125;
+		font: $font-weight-semibold #{83.33%}/#{1} $font-family-standard;
 	}
 	.radio-fieldset {
 		label {
@@ -48,10 +48,11 @@
 		align-items: center;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: $lhse*.25 0;
+		width: min-content;
 
 		label {
 			white-space: nowrap;
+			padding-bottom: $lhse*.25;
 		}
 		&:disabled {
 			opacity: .3333;
@@ -69,22 +70,21 @@
 	}
 }
 .card-group-switch {
-	display: flex;
-	justify-content: space-around;
-	align-content: center;
-	flex-wrap: wrap;
-	gap: $lhse*.1667;
-
+	> div {
+		display: flex;
+		justify-content: center;
+	}
 	h3 {
-		margin-bottom: 0;
+		margin-bottom: $lhse*.25;
 		align-self: center;
 		cursor: default;
+		text-align: center;
 	}
 	fieldset {
 		div {
 			display: flex;
 			align-items: center;
-			padding: 0 divide($lhse, 2);
+			padding: 0 $lhse*.375;
 			margin: 0;
 		}
 	}
@@ -122,6 +122,14 @@
 	img {
 		width: $lhse*1.25;
 		height: $lhse*1.25;
+	}
+}
+.card-adder,
+.deck-actions {
+	label {
+		padding-bottom: $lhse*.25;
+		margin-bottom: -$lhse*.25;
+		width: max-content;
 	}
 }
 .card-adder {
@@ -207,10 +215,52 @@
 	}
 }
 
-@mixin viewing-controls-single-layer {
+@mixin viewing-controls-single-layer-compressed {
+	.deck-control-panel.viewing-controls {
+		grid-template-columns: auto auto;
+
+		.card-sorter label,
+		.card-group-switch h3 {
+			padding: 0 divide($lhse, 3) 0 0;
+			margin: -$lhse*.0833 0 0 0;
+		}
+	}
+	.card-sorter {
+		fieldset {
+			flex-wrap: nowrap;
+		}
+	}
 	.card-group-switch {
 		border-left: $border-sections;
-		border-bottom-width: 0;
+
+		> div {
+			flex-wrap: nowrap;
+			width: auto;
+		}
+		h3 {
+			text-align: right;
+		}
+	}
+}
+@mixin viewing-controls-single-layer {
+	.deck-control-panel.viewing-controls {
+		.card-sorter label,
+		.card-group-switch h3 {
+			padding-right: 0;
+			padding-bottom: $lhse*.25;
+			margin-top: -$lhse*.125;
+		}
+	}
+	.card-sorter {
+		fieldset {
+			flex-wrap: wrap;
+		}
+	}
+	.card-group-switch {
+		> div {
+			flex-wrap: wrap;
+			width: min-content;
+		}
 	}
 }
 @mixin viewing-controls-double-layers {
@@ -218,8 +268,10 @@
 		display: block;
 	}
 	.card-sorter {
-		border-right-width: 0;
 		border-bottom: $border-sections;
+	}
+	.card-group-switch {
+		border-left-width: 0 !important;
 	}
 }
 @mixin action-controls-single-layer {
@@ -271,6 +323,9 @@
 		form {
 			display: flex;
 		}
+		label {
+			margin-top: -$lhse*.125;
+		}
 	}
 }
 @mixin action-controls-double-layers-compressed {
@@ -296,16 +351,21 @@
 	}
 }
 
-@include viewing-controls-single-layer;
+@include viewing-controls-single-layer-compressed;
 @include action-controls-single-layer;
 
-@media (max-width: ($min-width-app)) {
+@media (max-width: $width-app-breakpoint-tablet) {
+	@include viewing-controls-single-layer;
+}
+@media (max-width: $min-width-app) {
 	@include action-controls-double-layers;
 }
 @media (max-width: ($min-width-app * .8)) {
+	@include viewing-controls-single-layer-compressed;
 	@include action-controls-single-layer;
 }
 @media (max-width: ($min-width-app * .6667)) {
+	@include viewing-controls-single-layer;
 	@include action-controls-double-layers;
 }
 @media (max-width: ($min-width-app * .5)) {

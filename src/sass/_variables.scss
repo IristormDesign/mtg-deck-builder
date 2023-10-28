@@ -116,7 +116,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.3820;
 $layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
-$x: 2px dashed rgba(#c0f, .75);
+$x: 2px dashed rgba(#c0f, .6);
 
 // MIXINS
 @import 'mixins';

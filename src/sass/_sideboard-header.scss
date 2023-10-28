@@ -46,15 +46,7 @@
 	}
 }
 
-@media (max-width: ($min-width-app * .6)) {
-	.sideboard-header {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-}
-@media (max-width: ($min-width-app * .5)) {
+@media (max-width: ($min-width-app * .4)) {
 	.sideboard-header {
 		display: block;
 		padding: 0;
