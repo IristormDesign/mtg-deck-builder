@@ -21,8 +21,8 @@
 			>
 				<button
 					@click="viewCard(card)"
-					@focus="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
+					:ref="card.name"
 				>
 					<div class="card-label-group">
 						<h4 class="name">{{ card.name }}</h4>
@@ -42,7 +42,7 @@
 						min="0"
 						v-model.lazy="card.qty"
 						@change="validateQty(card)"
-						@focus="qtyInputFocused($event, card)"
+						@click="qtyInputFocused($event, card)"
 					/>
 					<div class="qty-buttons">
 						<button
@@ -79,6 +79,9 @@ export default {
 				return this.deck
 			}
 		},
+		focusCardButton () {
+			return this.$store.state.focusCardButton
+		},
 		deckObject () {
 			return this.deck
 		},
@@ -91,6 +94,11 @@ export default {
 				}
 			}
 			return null
+		}
+	},
+	watch: {
+		focusCardButton (name) {
+			this.$refs[name][0].focus() // Return browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
 		}
 	},
 	methods: {

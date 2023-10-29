@@ -8,7 +8,12 @@
 			>
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<div class="card-edge" :key="card.name">
-						<a :class="cardColorClass" :href="card.link" target="_blank">
+						<a
+							:class="cardColorClass"
+							:href="card.link"
+							ref="cardLink"
+							target="_blank"
+						>
 							<img :src="card.img" width="488" height="680" :alt="card.name" />
 						</a>
 					</div>
@@ -52,11 +57,25 @@ export default {
 			} else {
 				return color
 			}
+		},
+		showCard () {
+			return this.$store.state.showCard
 		}
 	},
 	watch: {
 		card () {
 			this.checkForOutdatedImageURLs()
+		},
+		showCard (isShowing) {
+			if (this.mobileView()) {
+				this.$nextTick(() => {
+					if (isShowing) {
+						this.$refs.cardLink.focus()
+					} else {
+						this.$store.commit('focusCardButton', this.card.name)
+					}
+				})
+			}
 		}
 	},
 	created () {

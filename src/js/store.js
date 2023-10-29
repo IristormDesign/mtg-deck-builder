@@ -14,10 +14,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		decks: [],
-		overlayHoverEnabled: false,
+		focusCardButton: '',
 		latestDeckDataVersion: 2,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
+		overlayHoverEnabled: false,
 		pageScrollByAnchors: false,
 		showingAnyPopup: false,
 		showCard: false,
@@ -52,11 +53,14 @@ export default new Vuex.Store({
 		decks (state, payload) {
 			state.decks = payload
 		},
-		overlayHoverEnabled (state, payload) {
-			state.overlayHoverEnabled = payload
+		focusCardButton (state, payload) {
+			state.focusCardButton = payload
 		},
 		loadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
+		},
+		overlayHoverEnabled (state, payload) {
+			state.overlayHoverEnabled = payload
 		},
 		pageScrollByAnchors (state, payload) {
 			state.pageScrollByAnchors = payload
