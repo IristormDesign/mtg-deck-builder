@@ -83,6 +83,7 @@ export default {
 	},
 	mounted () {
 		this.showCardPerViewport()
+		this.letEscKeyCloseCardImagePopup()
 
 		window.addEventListener(
 			'resize', debounce(this.resizingViewport, 125)
@@ -98,6 +99,13 @@ export default {
 		},
 		mobileView () {
 			return window.innerWidth <= 768 // Must match media query's width in CSS.
+		},
+		letEscKeyCloseCardImagePopup () {
+			document.addEventListener('keyup', (event) => {
+				if (event.key === 'Escape' || event.key === 'Esc') {
+					this.hideCDOverlay()
+				}
+			})
 		},
 		hideCDOverlay () {
 			if (this.mobileView()) {
