@@ -232,11 +232,6 @@
 		width: min-content;
 		min-width: 66.67vw;
 	}
-	.deck-name {
-		grid-column: span 3;
-		padding-top: $lhse*.375;
-		padding-bottom: $lhse*.375;
-	}
 	.deck-info,
 	.more-stats-button {
 		order: 1;
@@ -245,6 +240,8 @@
 		border-top-width: 1px;
 		border-right-width: 0;
 		border-left-width: 1px;
+		padding-top: $lhse*.25;
+		padding-bottom: $lhse*.25;
 
 		&:first-of-type,
 		&:nth-of-type(2),
@@ -260,6 +257,11 @@
 		.output {
 			height: auto;
 		}
+	}
+	.deck-name {
+		grid-column: span 3;
+		padding-top: divide($lhse, 2);
+		padding-bottom: divide($lhse, 2);
 	}
 	.more-stats-button {
 		width: 100%;
