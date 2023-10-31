@@ -104,7 +104,7 @@ input {
 	}
 	label {
 		@include label-text-style;
-		padding-right: $lhse*.25;
+		padding-right: .25em;
 		cursor: pointer;
 		text-align: right;
 		transition: color $transition-duration-standard ease;

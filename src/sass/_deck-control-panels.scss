@@ -81,10 +81,19 @@
 		text-align: center;
 	}
 	fieldset {
+		padding: 0 divide($lhse, 3);
+
 		div {
 			display: flex;
 			align-items: center;
-			margin: 0 divide($lhse, 3);
+			margin: 0 .5em;
+
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 	}
 	label {
