@@ -47,7 +47,6 @@
 	<article
 		v-else
 		class="action-done content-box"
-		@click="$store.getters.attentionHeaderButton"
 	>
 		<figure>
 			<img class="intro-illustration" src="~@/img/island.jpg" width="626" height="457" alt="Illustration of ships sailing away from a port town" />

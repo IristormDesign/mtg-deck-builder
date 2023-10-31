@@ -27,21 +27,6 @@ export default new Vuex.Store({
 		stickAppHeader: false
 	},
 	getters: {
-		attentionHeaderButton: (state) => () => {
-			let buttonForAttention
-
-			if (state.decks.length > 0) {
-				buttonForAttention = document.querySelector('.deck-menu-toggler')
-			} else {
-				buttonForAttention = document.querySelector('.create-deck a')
-			}
-
-			buttonForAttention.classList.add('attention')
-
-			setTimeout(() => {
-				buttonForAttention.classList.remove('attention')
-			}, 800) // Duration equal to the total animation duration set in CSS.
-		},
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
 		deckExists: (state) => (testPath) => {
 			return state.decks.find(deck =>
