@@ -9,12 +9,13 @@
 				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
 					<div class="card-edge" :key="card.name">
 						<a
-							:class="cardColorClass"
 							:href="card.link"
-							ref="cardLink"
 							target="_blank"
+							ref="cardLink"
 						>
-							<img :src="card.img" width="488" height="680" :alt="card.name" />
+							<div class="card-shape" :class="cardColorClass">
+								<img :src="card.img" width="488" height="680" :alt="card.name" />
+							</div>
 						</a>
 					</div>
 				</transition>

@@ -84,8 +84,7 @@
 		div {
 			display: flex;
 			align-items: center;
-			padding: 0 $lhse*.375;
-			margin: 0;
+			margin: 0 divide($lhse, 3);
 		}
 	}
 	label {

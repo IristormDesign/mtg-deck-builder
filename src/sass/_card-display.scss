@@ -52,12 +52,10 @@ $transition-delay-card: divide(1, 3) * 1s;
 	a {
 		position: absolute;
 		display: block;
-		mask-image: url('~@/img/card-mask.svg');
-		background: desaturate(darken($color-frame-generic, 33.33%), 4.17%);
-		box-shadow: inset 0 0 0 10px lighten(#000, 8.33%); // Black card border without card image
 		transition: $transition-duration-card-image-hover-fast ease 0s;
 		transition-property: transform, filter;
-		border-radius: 0;
+		border-radius: $border-radius-group;
+		outline-offset: 0px;
 
 		&:hover,
 		&:focus {
@@ -72,10 +70,16 @@ $transition-delay-card: divide(1, 3) * 1s;
 			transition-delay: 0s;
 		}
 		&:active {
-			filter: brightness(120%);
+			filter: contrast(125%);
 			transition-duration: 0s;
 			transition-delay: 0s;
 		}
+	}
+	.card-shape {
+		mask-image: url('~@/img/card-mask.svg');
+		box-shadow: inset 0 0 0 10px lighten(#000, 8.33%); // Black card border without card image
+		background: desaturate(darken($color-frame-generic, 33.33%), 4.17%);
+
 		&.land {
 			background: desaturate(darken($color-frame-land, 37.5%), 0%);
 		}

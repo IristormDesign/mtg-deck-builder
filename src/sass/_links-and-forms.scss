@@ -84,11 +84,7 @@ input {
 	}
 	> div {
 		margin: $lhse*.125 0;
-		border-right: $border-sections;
 
-		&:last-child {
-			border-right-width: 0;
-		}
 		&:has(input:checked:hover) {
 			label {
 				color: $color-text-darker;
