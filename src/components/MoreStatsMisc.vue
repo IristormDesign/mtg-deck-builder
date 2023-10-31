@@ -95,7 +95,7 @@ export default {
 				return card.colors.length === 1
 			}
 			function matchesMulticolored (card) {
-				return card.colors[0] === 'multicolor'
+				return card.colors.length > 1
 			}
 			function matchesVariableCost (card) {
 				const regex = /\{X\}/

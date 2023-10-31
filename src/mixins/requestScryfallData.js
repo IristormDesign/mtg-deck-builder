@@ -190,10 +190,6 @@ export default {
 			newCard.link = data.scryfall_uri
 			newCard.imgVersion = this.$store.state.latestImageVersion
 
-			if (newCard.colors.length >= 2) {
-				newCard.colors.unshift('multicolor')
-			}
-
 			if (this.oldCardData) {
 				newCard.qty = this.oldCardData.qty
 				newCard.gapAfter = this.oldCardData.gapAfter

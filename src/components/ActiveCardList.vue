@@ -116,7 +116,6 @@ export default {
 		},
 		colorButton (card) {
 			const colors = card.colors
-			const mc = colors.find(c => c === 'multicolor')
 			const w = colors.find(c => c === 'W')
 			const u = colors.find(c => c === 'U')
 			const b = colors.find(c => c === 'B')
@@ -124,7 +123,7 @@ export default {
 			const g = colors.find(c => c === 'G')
 			const land = /\bLand\b/.test(card.type)
 
-			if (mc) return 'multicolor'
+			if (colors.length > 1) return 'multicolor'
 			else if (w) return 'white'
 			else if (u) return 'blue'
 			else if (b) return 'black'

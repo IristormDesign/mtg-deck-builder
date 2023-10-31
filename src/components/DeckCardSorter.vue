@@ -115,25 +115,31 @@ export default {
 
 			function sortByColor (cards) {
 				function isColorlessLand (card) {
-					const hasLandType = /\bLand\b/.test(card.type)
-					const isColorless = !card.colors[0]
+					const regexLand = /\bLand\b/
 
-					return (hasLandType && isColorless)
+					return regexLand.test(card.type)
 				}
-				const colorOrder = [
-					'W', 'U', 'B', 'R', 'G',
-					'multicolor',
-					undefined // `undefined` means colorless
-				]
+				const colorOrder = ['W', 'U', 'B', 'R', 'G']
 
 				cards.sort((a, b) => {
-					let colorA = colorOrder.indexOf(a.colors[0])
-					let colorB = colorOrder.indexOf(b.colors[0])
+					if (a.colors.length === 0 && isColorlessLand(a)) {
+						return 1
+					} else if (b.colors.length === 0 && isColorlessLand(b)) {
+						return -1
+					} else if (a.colors.length === 0 && !isColorlessLand(a)) {
+						return 1
+					} else if (b.colors.length === 0 && !isColorlessLand(b)) {
+						return -1
+					} else if (a.colors.length > 1) {
+						return 1
+					} else if (b.colors.length > 1) {
+						return -1
+					} else {
+						const colorA = colorOrder.indexOf(a.colors[0])
+						const colorB = colorOrder.indexOf(b.colors[0])
 
-					if (isColorlessLand(a)) colorA++
-					if (isColorlessLand(b)) colorB++
-
-					return colorA - colorB
+						return colorA - colorB
+					}
 				})
 			}
 			function sortByType (cards) {

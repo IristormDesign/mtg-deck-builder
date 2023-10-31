@@ -1,12 +1,14 @@
 export default {
 	methods: {
 		determineDeckColors (deck) {
-			let deckColors = []
+			const deckColors = []
 
 			deck.cards.forEach(card => {
 				card.colors.forEach(color => {
 					if (!deckColors.includes(color)) { // Don't repeat colors already counted.
-						deckColors.push(color)
+						if (color !== 'multicolor') { // Ignore the obsoleted array item `multicolor`, which may exist from older versions of deck data.
+							deckColors.push(color)
+						}
 					}
 				})
 			})
@@ -19,13 +21,6 @@ export default {
 				else if (colorA < colorB) return -1
 				else return 0
 			})
-
-			// Remove the `multicolor` array item if it exists.
-			if (deckColors.length >= 3) {
-				deckColors = deckColors.filter(
-					value => value !== 'multicolor'
-				)
-			}
 
 			deck.colors = deckColors
 			this.$store.commit('decks', this.$store.state.decks)
