@@ -39,13 +39,17 @@ export default {
 			this.deckAction = ''
 		},
 		copyDeck (sourceDeck) {
-			const toCopyConfirmed = confirm(
-				`Do you want to create a separate deck that’s a duplicate of “${sourceDeck.name}”?`
+			const deckCopyName = prompt(
+				'Give a name for the deck copy:',
+				this.amendCopiedDeckName(sourceDeck).name
 			)
 
-			if (toCopyConfirmed) {
+			if (deckCopyName) {
 				const copiedDeck = JSON.parse(JSON.stringify(sourceDeck)) // The technique for deep-cloning objects, which is necessary here.
-				const newData = this.amendCopiedDeckName(sourceDeck)
+				const newData = {
+					name: deckCopyName,
+					path: this.stringToPath(deckCopyName)
+				}
 
 				this.storeCopiedDeckAndRedirect(copiedDeck, newData)
 			}

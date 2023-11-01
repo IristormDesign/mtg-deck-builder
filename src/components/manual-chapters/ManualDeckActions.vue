@@ -5,8 +5,7 @@
 		<ul>
 			<li>
 				<h5>Copy</h5>
-				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying.</p>
-				<p>The deck copy is automatically given the same name as the origin deck, except that the copy’s has a unique number within parentheses appended to it. (You could <a href="#m-deck-name">rename</a> it afterward.)</p>
+				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying. You can give the deck copy a new name.</p>
 				<p>Immediately after copying, the app takes you to the copy’s <a href="#m-deck-pages">deck page</a>.</p>
 			</li>
 			<li>
