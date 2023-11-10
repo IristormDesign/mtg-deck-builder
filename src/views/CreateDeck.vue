@@ -15,7 +15,7 @@
 					<input
 						id="deck-name"
 						type="text"
-						v-model.trim="deckNameInput"
+						v-model="deckNameInput"
 						ref="focus"
 						autocomplete="off"
 					/>
@@ -108,7 +108,7 @@ export default {
 					viewedCard: ''
 				})
 
-				this.$store.commit('decks', updatedDecksArray)
+				store.commit('decks', updatedDecksArray)
 				this.goToDeckPage(path)
 			}
 		},

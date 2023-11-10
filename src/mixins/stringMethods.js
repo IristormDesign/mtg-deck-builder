@@ -66,11 +66,15 @@ export default {
 		 * @returns {string} The path.
 		 */
 		stringToPath (string) {
-			const path = string
+			let path = string
 				.toLowerCase()
 				.replace(/\s/g, '-') // Turn each whitespace character into a hyphen.
 				.replace(/-{2,}/g, '-') // Turn each instance of multiple hyphens in a row into a single hyphen.
 				.replace(/[^\w-]/g, '') // Erase any character that's NOT a word character (a letter or digit) or a hyphen.
+
+			if (!path) { // If the path contains only punctuation marks or typographic symbols and no numbers or digits, that would result in critical errors. So instead, give a unique string of digits which come from the current date and time.
+				path = Date.now()
+			}
 
 			return path
 		}
