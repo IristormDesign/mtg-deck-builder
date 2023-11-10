@@ -17,7 +17,19 @@ export default {
 				}
 			}
 
-			return `That deck name is too long by ${stringExcessChars()}. Please revise the name to be 50 characters or fewer in length.`
+			return `That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
+		},
+		/**
+		 * @param {string} string
+		 * @returns {string}
+		 */
+		removeExcessSpaces (string) {
+			if (string) {
+				string = string.replace(/\s\s+/g, ' ') // Replace each group of multiple consecutive spaces with a single space.
+				string = string.trim()
+
+				return string
+			}
 		},
 		/**
 		 * Turn each straight apostrophe (or single closing quotation mark) into a curly one.
@@ -25,6 +37,29 @@ export default {
 		 */
 		curlApostrophes (string) {
 			return string.replace(/'/g, '’')
+		},
+		/**
+		 * @param {string} name
+		 * @param {string} path
+		 * @returns {Boolean}
+		 */
+		nameIsApproved (name, path) {
+			if (name.length > 50) {
+				alert(this.alertNameTooLong(name.length))
+
+				return false
+			} else if ( // If the submitted deck name already exists (based on the deck path), unless that name is of the currently active deck (because letters' cases have been edited)...
+				this.$store.getters.deckExists(path) &&
+				path !== this.$route.params.deckPath
+			) {
+				alert(this.alertNameExists(name))
+
+				return false
+			} else {
+				name = this.curlApostrophes(name)
+
+				return true
+			}
 		},
 		/**
 		 * @param {string} string The string to convert into a path for a valid URL.

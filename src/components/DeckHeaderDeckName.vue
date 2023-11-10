@@ -18,51 +18,31 @@ export default {
 		deck: Object
 	},
 	methods: {
-		renameDeck (failedName, deckNameExists) {
-			const promptText = () => {
-				if (deckNameExists) {
-					return this.alertNameExists(deckNameExists)
-				} else {
-					return 'Rename this deck:'
-				}
-			}
+		renameDeck (failedName) {
+			let submittedName = prompt('Rename this deck:', failedName)
 
-			let newName = prompt(promptText(), failedName)
+			submittedName = this.removeExcessSpaces(submittedName)
 
-			if (newName) {
-				newName = newName.trim()
-				newName = this.curlApostrophes(newName)
-			}
-			if (newName) { // If the user provided any name...
-				const store = this.$store
-				const newPath = this.stringToPath(newName)
-				const deckExists = store.getters.deckExists(newPath)
-				const theActiveDeck = () =>
-					newPath === this.$route.params.deckPath
+			if (submittedName) { // Check `submittedName` again since it's been trimmed.
+				const path = this.stringToPath(submittedName)
 
-				if (newName.length > 50) {
-					alert(this.alertNameTooLong(newName.length))
-					this.renameDeck(newName)
-				} else if (newName.length < 1) {
-					this.renameDeck(newName)
-				} else if (!deckExists || theActiveDeck()) {
+				if (this.nameIsApproved(submittedName, path)) {
 					const deck = this.deck
-
-					deck.name = newName
-					deck.path = newPath
+					deck.name = submittedName
+					deck.path = path
 					deck.editDate = new Date()
 
-					store.commit('decks', store.state.decks)
-					store.commit('sortDeckMenu')
+					this.$store.commit('decks', this.$store.state.decks)
+					this.$store.commit('sortDeckMenu')
 
-					if (!theActiveDeck()) {
+					if (path !== this.$route.params.deckPath) {
 						this.$router.replace({
 							name: 'deckMain',
-							params: { deckPath: newPath }
+							params: { deckPath: path }
 						})
 					}
 				} else {
-					this.renameDeck(newName, deckExists.name) // Start over this method.
+					this.renameDeck(submittedName)
 				}
 			}
 		}
