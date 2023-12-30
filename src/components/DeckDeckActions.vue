@@ -14,10 +14,9 @@
 
 <script>
 import copyDeck from '@/mixins/copyDeck.js'
-import stringMethods from '@/mixins/stringMethods.js'
 
 export default {
-	mixins: [copyDeck, stringMethods],
+	mixins: [copyDeck],
 	props: {
 		deck: Object
 	},
@@ -39,37 +38,32 @@ export default {
 
 			this.deckAction = ''
 		},
-		copyDeck (sourceDeck, failedName) {
-			const defaultCopyName = () => {
-				if (failedName) {
-					return failedName
-				} else {
-					return this.amendCopiedDeckName(sourceDeck).name
-				}
-			}
+		copyDeck (sourceDeck) {
 			let deckCopyName = prompt(
-				'Give a name for the deck copy:',
-				defaultCopyName()
+				'Give a new name for the deck copy:',
+				this.amendCopiedDeckName(sourceDeck).name
 			)
 
-			deckCopyName = this.removeExcessSpaces(deckCopyName)
-
 			if (deckCopyName) {
-				const path = this.stringToPath(deckCopyName)
+				deckCopyName = deckCopyName.trim()
+			}
+			if (deckCopyName) { // Check for a string existing again after having trimmed it.
+				const deckCopyPath = this.stringToPath(deckCopyName)
 
-				if (path === this.deck.path) {
-					alert('Please give the deck copy a name that’s unique.')
+				if (deckCopyPath === this.$route.params.deckPath) {
+					alert(this.alertNameExists(deckCopyName))
+
 					this.copyDeck(sourceDeck)
-				} else if (this.nameIsApproved(deckCopyName, path)) {
+				} else if (this.nameIsApproved(deckCopyName, deckCopyPath)) {
 					const copiedDeck = JSON.parse(JSON.stringify(sourceDeck)) // The technique for deep-cloning objects, which is necessary here.
 					const newData = {
 						name: deckCopyName,
-						path: path
+						path: deckCopyPath
 					}
 
 					this.storeCopiedDeckAndRedirect(copiedDeck, newData)
 				} else {
-					this.copyDeck(sourceDeck, deckCopyName)
+					this.copyDeck(sourceDeck)
 				}
 			}
 		},

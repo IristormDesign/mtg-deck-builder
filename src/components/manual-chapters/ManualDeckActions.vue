@@ -5,7 +5,7 @@
 		<ul>
 			<li>
 				<h5>Copy</h5>
-				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying. You can give the deck copy a new name.</p>
+				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying. The app lets you give the deck copy a new name.</p>
 				<p>Immediately after copying, the app takes you to the copy’s <a href="#m-deck-pages">deck page</a>.</p>
 			</li>
 			<li>
