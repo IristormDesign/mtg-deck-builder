@@ -18,7 +18,7 @@
 			</li>
 			<li>
 				<h5>Mana Value</h5>
-				<p>Sorts from lowest to highest by mana value (a.k.a. converted mana cost).</p>
+				<p>Sorts from least to greatest by mana value (a.k.a. converted mana cost).</p>
 			</li>
 			<li>
 				<h5>Type</h5>
@@ -34,7 +34,7 @@
 			</li>
 			<li>
 				<h5>Rarity</h5>
-				<p>Sorts from highest to lowest by level of rarity.</p>
+				<p>Sorts from greatest to least by level of rarity.</p>
 			</li>
 			<li>
 				<h5>P/T Sum</h5>
@@ -42,7 +42,7 @@
 			</li>
 			<li>
 				<h5>Quantity</h5>
-				<p>Sorts from largest to smallest by quantity.</p>
+				<p>Sorts from greatest to least by quantity.</p>
 			</li>
 		</ul>
 		<p>The effects of sorting cards are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the cards are sorted mainly by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the cards are sorted by rarity.</p>
