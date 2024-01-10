@@ -1,5 +1,6 @@
 <template>
 	<div
+		v-if="this.validDeck()"
 		class="deck"
 		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
 	>
@@ -21,6 +22,8 @@
 			<router-view />
 		</article>
 	</div>
+
+	<not-found-content v-else />
 </template>
 
 <script>
@@ -32,10 +35,11 @@ import CardNames from '@/components/DeckHeaderCardNames.vue'
 import CardTotal from '@/components/DeckHeaderCardTotal.vue'
 import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
 import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
+import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice, NotFoundContent },
 	mixins: [getActiveDeck],
 	data () {
 		return {
@@ -53,14 +57,16 @@ export default {
 	},
 	methods: {
 		prepareDecksWithOutdatedData () {
-			this.addMissingSideboard()
-			this.checkForDataVersion()
+			if (this.deck) { // This check is needed for 404 deck pages.
+				this.addMissingSideboard()
+				this.checkForDataVersion()
 
-			this.$nextTick(() => {
-				if (this.dataModified) {
-					this.$store.commit('decks', this.$store.state.decks)
-				}
-			})
+				this.$nextTick(() => {
+					if (this.dataModified) {
+						this.$store.commit('decks', this.$store.state.decks)
+					}
+				})
+			}
 		},
 		/**
 		 * If the deck's data version number doesn't match the latest version number, then determine what its version number should be.
@@ -96,6 +102,11 @@ export default {
 				}
 				this.dataModified = true
 			}
+		},
+		validDeck () {
+			return this.$store.state.decks.find(deck =>
+				this.$route.params.deckPath.toLowerCase() === deck.path
+			)
 		}
 	}
 }
