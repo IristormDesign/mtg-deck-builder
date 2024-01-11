@@ -75,12 +75,13 @@
 <script>
 import debounce from 'debounce'
 import BgOverlay from '@/components/BgOverlay.vue'
+import getActiveDeck from '@/mixins/getActiveDeck.js'
 import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
 	components: { BgOverlay },
-	mixins: [deckColors, symbolsMarkup],
+	mixins: [getActiveDeck, deckColors, symbolsMarkup],
 	data () {
 		return {
 			freezeDeckMenu: false,
@@ -94,11 +95,11 @@ export default {
 		disableMenuButton () {
 			if (
 				this.$store.state.decks.length <= 1 &&
-				this.$route.params.deckPath
+				this.deck
 			) {
 				return true
 			} else {
-				return (this.$store.state.decks.length <= 0)
+				return (this.$store.state.decks.length === 0)
 			}
 		},
 		disabledMenuButtonTooltip () {

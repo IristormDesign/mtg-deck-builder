@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-if="this.validDeck()"
+		v-if="this.validDeck"
 		class="deck"
 		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
 	>
@@ -44,6 +44,13 @@ export default {
 	data () {
 		return {
 			dataModified: false
+		}
+	},
+	computed: {
+		validDeck () {
+			return this.$store.state.decks.find(deck =>
+				this.$route.params.deckPath.toLowerCase() === deck.path
+			)
 		}
 	},
 	beforeRouteUpdate (to, from, next) {
@@ -102,11 +109,6 @@ export default {
 				}
 				this.dataModified = true
 			}
-		},
-		validDeck () {
-			return this.$store.state.decks.find(deck =>
-				this.$route.params.deckPath.toLowerCase() === deck.path
-			)
 		}
 	}
 }
