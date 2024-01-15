@@ -194,6 +194,12 @@ export default {
 			const activeCardList = this.activeCardList
 			card.qty = Math.round(card.qty)
 
+			const saveChanges = () => {
+				deck.editDate = new Date()
+				this.determineDeckColors()
+				store.commit('decks', store.state.decks)
+			}
+
 			activeCardList.viewedCard = cardName
 
 			if (deck.sortBy === 'qty') {
@@ -224,7 +230,7 @@ export default {
 							this.addSortingClusterGaps(deck, store.state.sortAttribute)
 						}
 
-						this.determineDeckColors(deck)
+						this.determineDeckColors()
 
 						saveChanges() // Needed here when inside `setTimeout()`.
 					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card in the card display.
@@ -244,10 +250,6 @@ export default {
 					}
 				}
 				saveChanges()
-			}
-			function saveChanges () {
-				deck.editDate = new Date()
-				store.commit('decks', store.state.decks)
 			}
 		},
 		qtyInputFocused (event, card) {

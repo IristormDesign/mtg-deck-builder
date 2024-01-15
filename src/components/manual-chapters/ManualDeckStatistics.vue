@@ -12,7 +12,7 @@
 		<ul>
 			<li>
 				<h5>Mana Colors</h5>
-				<p>This shows <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in your deck’s main group.</p>
+				<p>This shows the <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in your deck’s main group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by <i>Magic</i>’s conventional order: white, blue, black, red, green.</p>
 			</li>
 			<li>
 				<h5>Average Mana Value</h5>

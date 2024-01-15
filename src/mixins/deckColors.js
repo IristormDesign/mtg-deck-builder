@@ -1,28 +1,65 @@
 export default {
-	methods: {
-		determineDeckColors (deck) {
-			const deckColors = []
+	computed: {
+		sortColorsByTotals () {
+			const counts = {
+				white: 0,
+				blue: 0,
+				black: 0,
+				red: 0,
+				green: 0
+			}
 
-			deck.cards.forEach(card => {
-				card.colors.forEach(color => {
-					if (!deckColors.includes(color)) { // Don't repeat colors already counted.
-						if (color !== 'multicolor') { // Ignore the obsoleted array item `multicolor`, which may exist from older versions of deck data.
-							deckColors.push(color)
-						}
+			this.deck.cards.forEach(card => {
+				if (card.mana !== '') { // Exclude land cards
+					for (let i = 0; i < card.qty; i++) {
+						card.colors.forEach(color => {
+							switch (color) {
+								case 'W': counts.white++; break
+								case 'U': counts.blue++; break
+								case 'B': counts.black++; break
+								case 'R': counts.red++; break
+								case 'G': counts.green++; break
+							}
+						})
 					}
-				})
-			})
-			deckColors.sort((a, b) => {
-				const colorOrder = ['W', 'U', 'B', 'R', 'G']
-				const colorA = colorOrder.indexOf(a)
-				const colorB = colorOrder.indexOf(b)
-
-				if (colorA > colorB) return 1
-				else if (colorA < colorB) return -1
-				else return 0
+				}
 			})
 
-			deck.colors = deckColors
+			const sortedColors = []
+
+			for (const color in counts) {
+				sortedColors.push([color, counts[color]])
+			}
+
+			sortedColors.sort((a, b) => {
+				return b[1] - a[1]
+			})
+
+			return sortedColors
+		}
+	},
+	methods: {
+		determineDeckColors () {
+			const output = []
+
+			this.sortColorsByTotals.forEach(color => {
+				if (color[1] > 0) {
+					switch (color[0]) {
+						case 'white':
+							output.push('W'); break
+						case 'blue':
+							output.push('U'); break
+						case 'black':
+							output.push('B'); break
+						case 'red':
+							output.push('R'); break
+						case 'green':
+							output.push('G'); break
+					}
+				}
+			})
+
+			this.deck.colors = output
 			this.$store.commit('decks', this.$store.state.decks)
 		},
 		renderManaSymbols (deck) {
@@ -47,7 +84,7 @@ export default {
 
 				return output
 			} else {
-				this.determineDeckColors(deck)
+				this.determineDeckColors()
 			}
 		},
 		sizeManaSymbols (deck) {
@@ -64,7 +101,7 @@ export default {
 
 				return 'size-mana-symbols ' + getClassName()
 			} else {
-				this.determineDeckColors(deck)
+				this.determineDeckColors()
 			}
 		}
 	}

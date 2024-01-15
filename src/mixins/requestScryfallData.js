@@ -299,7 +299,7 @@ export default {
 
 			deck.editDate = new Date()
 			deck.sortBy = ''
-			this.determineDeckColors(this.deck)
+			this.determineDeckColors()
 
 			deck.cards.forEach(eachCard => {
 				eachCard.gapAfter = false
