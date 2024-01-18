@@ -130,7 +130,7 @@ $animation-duration-card-browse: .3820s;
 }
 .card-browse-appear-active {
 	@extend .card-browse-enter-active;
-	animation-delay: $transition-duration-standard;
+	animation-delay: $transition-duration-standard*1.5;
 	animation-duration: $animation-duration-card-browse*1.5;
 	animation-fill-mode: backwards;
 }

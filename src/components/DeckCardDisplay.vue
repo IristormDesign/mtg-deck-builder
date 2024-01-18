@@ -77,6 +77,9 @@ export default {
 					}
 				})
 			}
+		},
+		$route () {
+			this.delayTransitionOfCardDisplay()
 		}
 	},
 	created () {
@@ -165,6 +168,18 @@ export default {
 			this.$nextTick(() => {
 				this.$store.commit('decks', this.$store.state.decks)
 			})
+		},
+		/**
+		 * This effect is used for navigating from one deck page directly to another at wide viewports.
+		 */
+		delayTransitionOfCardDisplay () {
+			if (this.$store.state.showCard) {
+				this.$store.state.showCard = false
+
+				this.$nextTick(() => {
+					this.$store.state.showCard = true
+				})
+			}
 		}
 	}
 }
