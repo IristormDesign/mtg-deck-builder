@@ -75,6 +75,9 @@ export default {
 				if (name.length > 50) {
 					alert(this.alertNameTooLong(name.length))
 					this.$refs.focus.focus()
+				} else if (this.hasNoLetters(name)) {
+					alert(this.alertNoLetters())
+					this.$refs.focus.focus()
 				} else {
 					name = this.curlApostrophes(name)
 					this.createNewDeck(name)
