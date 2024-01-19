@@ -4,7 +4,7 @@ export default {
 		 * @param {string} name
 		 */
 		alertNameExists (name) {
-			return `You already have a deck named “${name}.” Please give a different name.`
+			return `Error: You already have a deck named “${name}.” Please give a different name.`
 		},
 		alertNameTooLong (length) {
 			const stringExcessChars = () => {
@@ -17,10 +17,10 @@ export default {
 				}
 			}
 
-			return `That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
+			return `Error: That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
 		},
 		alertNoLetters () {
-			return 'The deck name must have at least one letter.'
+			return 'Error: The deck name must have at least one letter.'
 		},
 		hasNoLetters (string) {
 			const regexAtLeastOneLetter = /([A-Za-z])+/

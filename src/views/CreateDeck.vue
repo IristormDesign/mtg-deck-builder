@@ -156,7 +156,7 @@ export default {
 						this.alertFileImportError(this.fileName)
 					} else {
 						alert(
-							`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
+							`⚠ Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
 						)
 					}
 				} else {
@@ -253,7 +253,7 @@ export default {
 		},
 		alertFileImportError (fileName) {
 			alert(
-				`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
+				`⚠ Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
 			)
 		},
 		goToDeckPage (path) {
