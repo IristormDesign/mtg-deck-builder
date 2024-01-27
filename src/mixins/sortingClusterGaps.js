@@ -103,6 +103,10 @@ export default {
 							if (card.power !== undefined && nextCard.power === undefined) {
 								card.gapAfter = true
 							}
+						} else if (sortBy === 'starred') {
+							if (card.starred && !nextCard.starred) {
+								card.gapAfter = true
+							}
 						}
 					} else { // The last card in the list (before any newly added cards)
 						card.gapAfter = true

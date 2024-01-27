@@ -50,6 +50,7 @@ $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-text-buttons: rgba(#000, .875);
+$color-card-star: desaturate(lighten($color-rarity-gold, 8.33%), 12.5%);
 
 // MANA-BASED COLORS
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Sampled

@@ -231,6 +231,16 @@ $min-height-card-list: $lhse*6;
 				}
 			}
 		}
+		&:hover {
+			.card-star {
+				background: $color-group-bg-darker;
+
+				&::before {
+					transform: rotate((360deg*.8));
+					transition: transform 1.5s ease-in-out;
+				}
+			}
+		}
 		&:focus-within {
 			z-index: index($layers, card-list-item-focus-within);
 
@@ -380,6 +390,96 @@ $min-height-card-list: $lhse*6;
 					$color-button-mythic-orange
 				);
 			}
+		}
+	}
+	.card-star {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -1.3333em;
+		width: 2em;
+		height: 100%;
+		padding: 0;
+		border: 0;
+		background: $color-group-bg;
+		opacity: 0;
+		border-radius: $border-radius-button;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		transition: all $transition-duration-standard ease;
+		box-shadow: none;
+
+		@keyframes star-pulse {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		&:checked,
+		&:hover,
+		&:focus-visible {
+			opacity: 1;
+			transition-duration: 0s;
+		}
+		&:hover,
+		&:focus-visible {
+			animation: star-pulse .3333s ease 13 alternate;
+			background: $color-input-bg-focus !important;
+
+			&:not(:checked) {
+				opacity: .6;
+			}
+			&::before {
+				transition: none !important;
+				color: saturate($color-card-star, 100%) !important;
+			}
+		}
+		&:hover:focus {
+			&:not(:checked) {
+				animation-delay: 2s; // This delay is for the moment immediately after the user un-stars a card while still having the mouse pointer hovering over the star checkbox input.
+				opacity: 0;
+			}
+		}
+		&:active {
+			opacity: 1 !important;
+			background: $color-input-bg-active !important;
+			animation: none;
+
+			&::before {
+				color: saturate(lighten($color-card-star, 20%), 50%) !important;
+			}
+		}
+		&:checked {
+			&::before {
+				color: $color-card-star;
+			}
+			&:hover,
+			&:focus-visible {
+				animation: none;
+
+				&::before {
+					animation: none;
+				}
+			}
+			&:active {
+				background: $color-input-bg-active;
+
+				&::before {
+					transition-duration: 0s;
+				}
+			}
+		}
+		&::before {
+			content: '★';
+			color: $color-card-star;
+			font-size: 100%;
+			left: 4px;
+			position: absolute;
+		}
+		&::after {
+			display: none;
 		}
 	}
 	.card-button {

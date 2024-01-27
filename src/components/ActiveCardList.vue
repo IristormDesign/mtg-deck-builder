@@ -19,6 +19,11 @@
 				v-for="(card, i) in activeCardList.cards" :key="card.name"
 				:class="(card.gapAfter) ? 'gap-after' : null"
 			>
+				<input
+					type="checkbox" class="card-star"
+					@change="toggleCardStar(card)"
+					v-model="card.starred"
+				>
 				<button
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
@@ -113,6 +118,21 @@ export default {
 
 			store.commit('decks', store.state.decks)
 			store.commit('showCard', true)
+		},
+		toggleCardStar (card) {
+			const deck = this.deck
+
+			deck.editDate = new Date()
+			deck.viewedCard = card.name
+
+			if (deck.sortBy === 'starred') {
+				deck.sortBy = ''
+				deck.cards.forEach(eachCard => {
+					eachCard.gapAfter = false
+				})
+			}
+
+			this.$store.commit('decks', this.$store.state.decks)
 		},
 		colorButton (card) {
 			const colors = card.colors
