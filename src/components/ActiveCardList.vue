@@ -123,11 +123,14 @@ export default {
 			const deck = this.deck
 
 			deck.editDate = new Date()
-			deck.viewedCard = card.name
+			this.activeCardList.viewedCard = card.name
 
 			if (deck.sortBy === 'starred') {
 				deck.sortBy = ''
 				deck.cards.forEach(eachCard => {
+					eachCard.gapAfter = false
+				})
+				deck.sideboard.cards.forEach(eachCard => {
 					eachCard.gapAfter = false
 				})
 			}

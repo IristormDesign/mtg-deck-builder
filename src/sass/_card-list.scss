@@ -3,6 +3,8 @@
 $border-width-card-button: 2.5px;
 $width-qty-column: $lhse*1.5;
 $min-height-card-list: $lhse*6;
+$width-card-star: 2em;
+$margin-left-card-star: ($width-card-star - .9167em);
 
 @mixin box-shadow-hover-card-button($color) {
 	box-shadow:
@@ -25,7 +27,7 @@ $min-height-card-list: $lhse*6;
 		.active-card-list {
 			align-self: center;
 			width: 100%;
-			max-width: $lhse*24.3333; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
+			max-width: $lhse*25.5; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
 			margin: 0 auto;
 		}
 		.list-headings {
@@ -77,7 +79,7 @@ $min-height-card-list: $lhse*6;
 @mixin condensed-card-buttons {
 	.card-list {
 		.active-card-list {
-			max-width: $max-width-content*.5;
+			max-width: $max-width-content*.5417;
 		}
 		.list-headings {
 			display: none;
@@ -135,6 +137,7 @@ $min-height-card-list: $lhse*6;
 		text-shadow: $text-shadow-over-light-bg;
 		cursor: default;
 		margin-bottom: divide($lhse, 12);
+		margin-left: $margin-left-card-star;
 
 		strong {
 			display: block;
@@ -165,6 +168,7 @@ $min-height-card-list: $lhse*6;
 	li {
 		display: flex;
 		margin: 1px 0;
+		margin-left: $margin-left-card-star;
 		padding: 0;
 		transition: .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
 		transition-property: transform, background-color, border-radius;
@@ -235,6 +239,15 @@ $min-height-card-list: $lhse*6;
 			.card-star {
 				background: $color-group-bg-darker;
 
+				&:not(:checked) {
+					opacity: .5;
+					transition-delay: .3333s;
+					transition-duration: .6667s;
+
+					&::before {
+						transition-duration: 0s;
+					}
+				}
 				&::before {
 					transform: rotate((360deg*.8));
 					transition: transform 1.5s ease-in-out;
@@ -397,7 +410,7 @@ $min-height-card-list: $lhse*6;
 		top: 0;
 		bottom: 0;
 		left: -1.3333em;
-		width: 2em;
+		width: $width-card-star;
 		height: 100%;
 		padding: 0;
 		border: 0;
@@ -421,15 +434,16 @@ $min-height-card-list: $lhse*6;
 		&:hover,
 		&:focus-visible {
 			opacity: 1;
-			transition-duration: 0s;
+			transition-duration: 0s !important;
+			transition-delay: 0s !important;
 		}
 		&:hover,
 		&:focus-visible {
-			animation: star-pulse .3333s ease 13 alternate;
+			animation: star-pulse .3333s ease 19 alternate;
 			background: $color-input-bg-focus !important;
 
 			&:not(:checked) {
-				opacity: .6;
+				opacity: .5;
 			}
 			&::before {
 				transition: none !important;
