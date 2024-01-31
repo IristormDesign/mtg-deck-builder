@@ -199,11 +199,13 @@ export default {
 			if (
 				basicLandType.test(card.type) ||
 				cardName === 'Dragon’s Approach' ||
+				cardName === 'Nazgûl' ||
 				cardName === 'Persistent Petitioners' ||
 				cardName === 'Rat Colony' ||
 				cardName === 'Relentless Rats' ||
 				cardName === 'Seven Dwarves' ||
-				cardName === 'Shadowborn Apostle'
+				cardName === 'Shadowborn Apostle' ||
+				cardName === 'Slime Against Humanity'
 			) {
 				return 99
 			} else {
@@ -268,7 +270,7 @@ export default {
 					}
 				} else {
 					if (card.qty > 4) {
-						alert('A deck can have no more than 4 of any card with a particular name other than basic land cards.')
+						alert('A deck can have no more than 4 of any card with a particular name, other than basic land cards.')
 						card.qty = 4
 					}
 				}
