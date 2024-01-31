@@ -578,5 +578,22 @@ $margin-left-card-star: ($width-card-star - .9167em);
 		.card-button {
 			min-height: 27px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra pixels so that the list items appear to have consistent gaps between each other.
 		}
+		.card-star {
+			opacity: 1;
+
+			&:hover,
+			&:focus-visible {
+				background: $color-input-bg-focus !important;
+			}
+			&:not(:checked) {
+				animation: none !important;
+				opacity: 1 !important;
+
+				&::before{
+					content: '';
+				}
+			}
+
+		}
 	}
 }
