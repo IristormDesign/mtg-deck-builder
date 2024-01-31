@@ -193,24 +193,25 @@ export default {
 			}
 		},
 		maxQty (card) {
-			const basicLandType = /^Basic (\w* )?Land\b/ // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land`, such as `Basic Snow Land`.
-			const cardName = card.name
+			const regexBasicLand = /^Basic (\w* )?Land\b/ // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land` (such as `Basic Snow Land`).
 
-			if (
-				basicLandType.test(card.type) ||
-				cardName === 'Dragon’s Approach' ||
-				cardName === 'Nazgûl' ||
-				cardName === 'Persistent Petitioners' ||
-				cardName === 'Rat Colony' ||
-				cardName === 'Relentless Rats' ||
-				cardName === 'Seven Dwarves' ||
-				cardName === 'Shadowborn Apostle' ||
-				cardName === 'Slime Against Humanity'
-			) {
+			if (regexBasicLand.test(card.type)) {
 				return 99
-			} else {
-				return 4
 			}
+
+			switch (card.name) {
+				case 'Dragon’s Approach':
+				case 'Nazgûl':
+				case 'Persistent Petitioners':
+				case 'Rat Colony':
+				case 'Relentless Rats':
+				case 'Seven Dwarves':
+				case 'Shadowborn Apostle':
+				case 'Slime Against Humanity':
+					return 99
+			}
+
+			return 4
 		},
 		validateQty (card) {
 			const store = this.$store
