@@ -325,10 +325,10 @@ export default {
 			function sortByStarred (cards) {
 				cards.sort((a, b) => {
 					// Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property.
-					if (a.starred) {
-						return -1
-					} else if (b.starred) {
+					if (b.starred) {
 						return 1
+					} else if (a.starred) {
+						return -1
 					} else {
 						return 0
 					}
