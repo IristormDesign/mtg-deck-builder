@@ -9,7 +9,7 @@
 .deck-info {
 	display: flex;
 	height: 100%;
-	padding: $lhse*.375 $lhse*.5;
+	padding: divide($lhse, 3) $lhse*.5;
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;
@@ -115,9 +115,9 @@
 	}
 	a,
 	button {
-		font-size: 80%;
+		font-size: 95.83%;
 		min-width: 6em; // Large enough to make the "More Stats" and "Card List" button labels equal in width.
-		height: $lhse*1.5;
+		height: $lhse*1.6;
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -34,9 +34,9 @@
 							<li>
 								<a href="#m-card-list">Card List</a>
 								<ol>
+									<li><a href="#m-card-stars">Card Stars</a></li>
 									<li><a href="#m-card-buttons">Card Buttons</a></li>
 									<li><a href="#m-card-quantities">Card Quantities</a></li>
-									<li><a href="#m-card-stars">Card Stars</a></li>
 								</ol>
 							</li>
 							<li><a href="#m-scryfall-button">Scryfall Advanced Search Button</a></li>

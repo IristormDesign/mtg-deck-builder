@@ -249,8 +249,8 @@ $margin-left-card-star: ($width-card-star - .9167em);
 					}
 				}
 				&::before {
-					transform: rotate((360deg*.8));
-					transition: transform 1.5s ease-in-out;
+					transform: rotate((360deg*.6));
+					transition: transform 1s ease-in-out;
 				}
 			}
 		}
