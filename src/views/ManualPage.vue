@@ -31,8 +31,14 @@
 							<li><a href="#m-card-sorter">Card Sorter</a></li>
 							<li><a href="#m-group-switch">Card Group Switch</a></li>
 							<li><a href="#m-sideboard-header">Sideboard Header</a></li>
-							<li><a href="#m-card-list">Card List</a></li>
-							<li><a href="#m-card-quantities">Card Quantities</a></li>
+							<li>
+								<a href="#m-card-list">Card List</a>
+								<ol>
+									<li><a href="#m-card-buttons">Card Buttons</a></li>
+									<li><a href="#m-card-quantities">Card Quantities</a></li>
+									<li><a href="#m-card-stars">Card Stars</a></li>
+								</ol>
+							</li>
 							<li><a href="#m-scryfall-button">Scryfall Advanced Search Button</a></li>
 							<li><a href="#m-card-adder">Card Adder</a></li>
 							<li><a href="#m-deck-actions">Deck Actions</a></li>

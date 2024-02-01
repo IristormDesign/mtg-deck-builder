@@ -9,6 +9,10 @@
 		<p>The card sorter (the section labeled “Sort Cards by”) has a drop-down menu with options for instantly sorting all the cards in the <a href="#m-card-list">card list</a> by a certain attribute. The options and their effects include the following:</p>
 		<ul>
 			<li>
+				<h5>Starred</h5>
+				<p>Sorts between starred and non-starred. This option is available in the card sorter’s drop-down menu only when at least one card in the deck has been starred.</p>
+			</li>
+			<li>
 				<h5>Name</h5>
 				<p>Sorts alphabetically by name.</p>
 			</li>

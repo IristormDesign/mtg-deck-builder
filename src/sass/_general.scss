@@ -82,17 +82,13 @@ h3 {
 h4 {
 	font-size: 100%;
 }
-h5,
-h6 {
-	margin-top: $line-height-standard*.5rem;
-	margin-bottom: -$line-height-standard*.25rem;
-}
 h5 {
-	font-size: 87.5%;
+	font-size: 80%;
+	text-transform: uppercase;
 }
 h6 {
+	font-size: 60%;
 	text-transform: uppercase;
-	font-size: 75%;
 }
 p,
 ul,
@@ -126,6 +122,10 @@ ol {
 
 	ol {
 		list-style-type: lower-alpha;
+
+		ol {
+			list-style-type: lower-roman;
+		}
 	}
 	li {
 		padding-left: .25em;
