@@ -14,6 +14,6 @@
 			<li>Click on the card’s quantity number to make your web browser focus on it. Then press the up-arrow key on your keyboard to increase the quantity, or the down-arrow key to decrease.</li>
 		</ul>
 		<p>To remove a card from the card list, decrease the card’s quantity to 0, or delete the quantity number. Before the card actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the card stays in your deck with its quantity reset to 1.</p>
-		<p>Conforming to <a href="#m-game-rules"><i>Magic</i>’s rules</a>, MTG Deck Builder prevents you from setting cards to a quantity greater than 4 per name—except the cards of the “basic land” type, and a few certain cards having an ability that specially raises their quantity limit.</p>
+		<p>Conforming to <a href="#m-game-rules"><i>Magic</i>’s rules</a>, MTG Deck Builder prevents you from setting cards to a quantity greater than 4 per name—except the cards of the “basic land” type, and a few certain cards with abilities that specially raise their quantity limits.</p>
 	</section>
 </template>

@@ -20,9 +20,11 @@
 				:class="(card.gapAfter) ? 'gap-after' : null"
 			>
 				<input
-					type="checkbox" class="card-star"
+					type="checkbox"
+					class="card-star"
 					@change="toggleCardStar(card)"
 					v-model="card.starred"
+					:name="'s' + i"
 				>
 				<button
 					@click="viewCard(card)"
