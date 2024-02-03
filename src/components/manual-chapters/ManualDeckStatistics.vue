@@ -28,7 +28,7 @@
 			</li>
 			<li>
 				<h5>Total Cards</h5>
-				<p>This shows a number equal to the total cards (including duplicates) in your deck’s main group. When the total is fewer than 60, which is the minimum limit according to <i>Magic</i>’s standard deck-building <a href="#m-game-rules">rules</a>, a warning symbol (⚠) appears beside the number.</p>
+				<p>This shows a number equal to the total cards (including duplicates) in your deck’s main group. A warning symbol (⚠) appears beside the number when the total is fewer than 60, which is the minimum limit in <i>Magic</i>’s standard deck <a href="#m-game-rules">rules</a>, or when the total is close to but not exactly 100, which is the requirement in the Commander variant rules.</p>
 			</li>
 			<li>
 				<h5>More Stats</h5>
