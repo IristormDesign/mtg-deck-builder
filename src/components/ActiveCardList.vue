@@ -194,26 +194,33 @@ export default {
 					return symbol.s
 			}
 		},
-		maxQty (card) {
-			const regexBasicLand = /^Basic (\w* )?Land\b/ // Finds `Basic Land`, or any phrase starting with `Basic` and ending with `Land` (such as `Basic Snow Land`).
+		determineMaxQty (card) {
+			function isBasicLand () {
+				const regexBasicLand = /^Basic (\w* )?Land\b/ // Finds "Basic Land", or any other phrase starting with "Basic" and ending with "Land" (such as "Basic Snow Land").
 
-			if (regexBasicLand.test(card.type)) {
-				return 99
+				return regexBasicLand.test(card.type)
+			}
+			function isException () {
+				switch (card.name) {
+					case 'Dragon’s Approach':
+					case 'Nazgûl':
+					case 'Persistent Petitioners':
+					case 'Rat Colony':
+					case 'Relentless Rats':
+					case 'Seven Dwarves':
+					case 'Shadowborn Apostle':
+					case 'Slime Against Humanity':
+						return true
+					default:
+						return false
+				}
 			}
 
-			switch (card.name) {
-				case 'Dragon’s Approach':
-				case 'Nazgûl':
-				case 'Persistent Petitioners':
-				case 'Rat Colony':
-				case 'Relentless Rats':
-				case 'Seven Dwarves':
-				case 'Shadowborn Apostle':
-				case 'Slime Against Humanity':
-					return 99
+			if (isBasicLand() || isException()) {
+				card.maxQty = 99
+			} else {
+				card.maxQty = 4
 			}
-
-			return 4
 		},
 		validateQty (card) {
 			const store = this.$store
@@ -264,19 +271,25 @@ export default {
 					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card in the card display.
 				} else {
 					card.qty = 1
+
+					saveChanges()
 				}
 			} else {
-				if (this.maxQty(card) === 99) {
+				if (!card.maxQty) {
+					this.determineMaxQty(card)
+				}
+
+				if (card.maxQty === 99) {
 					if (card.qty > 99) {
-						alert('99 is plenty, don’t you think?')
 						card.qty = 99
 					}
 				} else {
 					if (card.qty > 4) {
-						alert('A deck can have no more than 4 of any card with a particular name, other than basic land cards.')
+						alert('Each card name in a deck cannot have a quantity greater than 4, unless it’s a basic land card.')
 						card.qty = 4
 					}
 				}
+
 				saveChanges()
 			}
 		},
@@ -299,7 +312,7 @@ export default {
 			}, 100)
 		},
 		disableIncreaseQtyBtn (card) {
-			return (card.qty === this.maxQty(card))
+			return (card.qty >= card.maxQty)
 		},
 		qtyCardID (cardI) {
 			return `qty-d${this.getDeckNumberID}c${cardI}`
