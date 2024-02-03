@@ -7,6 +7,9 @@ export default {
 				return this.deck
 			}
 		},
+		cardObject () {
+			return this.card
+		},
 		deckObject () {
 			return this.deck
 		}

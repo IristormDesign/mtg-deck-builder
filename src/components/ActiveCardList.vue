@@ -16,16 +16,12 @@
 
 		<transition-group tag="ul" name="card-list-main">
 			<li
-				v-for="(card, i) in activeCardList.cards" :key="card.name"
+				v-for="(card, i) in activeCardList.cards"
+				:key="card.name"
 				:class="(card.gapAfter) ? 'gap-after' : null"
 			>
-				<input
-					type="checkbox"
-					class="card-star"
-					@change="toggleCardStar(card)"
-					v-model="card.starred"
-					:name="'s' + i"
-				>
+				<card-star :card="card" :deck="deck" :i="i" />
+
 				<button
 					@click="viewCard(card)"
 					:class="['card-button', colorButton(card)]"
@@ -48,24 +44,18 @@
 </template>
 
 <script>
+import CardStar from '@/components/DeckCardStar.vue'
 import CardQuantity from '@/components/DeckCardQuantity.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	components: { CardQuantity },
+	components: { CardStar, CardQuantity },
 	mixins: [cardListFunctions, symbolsMarkup],
 	props: {
 		deck: Object
 	},
 	computed: {
-		activeCardList () {
-			if (this.$store.state.showSideboard) {
-				return this.deck.sideboard
-			} else {
-				return this.deck
-			}
-		},
 		focusCardButton () {
 			return this.$store.state.focusCardButton
 		}
@@ -76,24 +66,6 @@ export default {
 		}
 	},
 	methods: {
-		toggleCardStar (card) {
-			const deck = this.deck
-
-			deck.editDate = new Date()
-			this.activeCardList.viewedCard = card.name
-
-			if (deck.sortBy === 'starred') {
-				deck.sortBy = ''
-				deck.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
-				})
-				deck.sideboard.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
-				})
-			}
-
-			this.$store.commit('decks', this.$store.state.decks)
-		},
 		colorButton (card) {
 			const colors = card.colors
 			const w = colors.find(c => c === 'W')

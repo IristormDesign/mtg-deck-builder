@@ -39,9 +39,6 @@ export default {
 		i: Number
 	},
 	computed: {
-		cardObject () {
-			return this.card
-		},
 		getDeckNumberID () {
 			const decks = this.$store.state.decks
 
