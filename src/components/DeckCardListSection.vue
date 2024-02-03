@@ -11,7 +11,7 @@
 		>
 			<p>This deck’s sideboard has no cards yet.</p>
 		</div>
-		<active-card-list
+		<card-list-items
 			v-else
 			:deck="deck"
 			key="sideboard-cards"
@@ -33,7 +33,7 @@
 		>
 			<p>This deck has no cards yet. (Add some!)</p>
 		</div>
-		<active-card-list
+		<card-list-items
 			v-else
 			:deck="deck"
 			key="main-deck-cards"
@@ -43,10 +43,10 @@
 
 <script>
 import DeckSideboardHeader from '@/components/DeckSideboardHeader.vue'
-import ActiveCardList from '@/components/ActiveCardList.vue'
+import CardListItems from '@/components/DeckCardListItems.vue'
 
 export default {
-	components: { DeckSideboardHeader, ActiveCardList },
+	components: { DeckSideboardHeader, CardListItems },
 	props: {
 		deck: Object
 	},
