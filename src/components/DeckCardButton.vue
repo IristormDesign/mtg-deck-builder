@@ -1,16 +1,16 @@
 <template>
 	<button
 		@click="viewCard(card)"
-		:class="['card-button', colorButton(card)]"
+		:class="['card-button', setButtonColor]"
 		:ref="card.name"
 	>
 		<div class="card-label-group">
 			<h4 class="name">{{ card.name }}</h4>
-			<div class="mana" v-html="styleManaSymbols(card)"></div>
+			<div class="mana" v-html="styleManaSymbols"></div>
 		</div>
 		<div class="card-label-group">
 			<div class="type">{{ card.type }}</div>
-			<div class="rarity" v-html="setRaritySymbol(card)"></div>
+			<div class="rarity" v-html="setRaritySymbol"></div>
 		</div>
 	</button>
 </template>
@@ -26,30 +26,14 @@ export default {
 		deck: Object
 	},
 	computed: {
-		focusCardButton () {
-			return this.$store.state.focusCardButton
-		}
-	},
-	watch: {
-		/**
-		 * Return the browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
-		 * @param {string} cardToFocus
-		 */
-		focusCardButton (cardToFocus) {
-			if (this.card.name === cardToFocus) {
-				this.$refs[cardToFocus].focus()
-			}
-		}
-	},
-	methods: {
-		colorButton (card) {
-			const colors = card.colors
+		setButtonColor () {
+			const colors = this.card.colors
 			const w = colors.find(c => c === 'W')
 			const u = colors.find(c => c === 'U')
 			const b = colors.find(c => c === 'B')
 			const r = colors.find(c => c === 'R')
 			const g = colors.find(c => c === 'G')
-			const land = /\bLand\b/.test(card.type)
+			const land = /\bLand\b/.test(this.card.type)
 
 			if (colors.length > 1) return 'multicolor'
 			else if (w) return 'white'
@@ -58,11 +42,12 @@ export default {
 			else if (r) return 'red'
 			else if (g) return 'green'
 			else if (land) return 'land'
+			else return null
 		},
-		styleManaSymbols (card) {
+		styleManaSymbols () {
 			const symbol = this.manaSymbol
 
-			return card.mana
+			return this.card.mana
 				.replaceAll(/{W}/g, symbol.w)
 				.replaceAll(/{U}/g, symbol.u)
 				.replaceAll(/{B}/g, symbol.b)
@@ -81,10 +66,10 @@ export default {
 					'<span class="mana-symbol long-hybrid" title="Hybrid mana"><div>…</div></span>'
 				)
 		},
-		setRaritySymbol (card) {
+		setRaritySymbol () {
 			const symbol = this.raritySymbol
 
-			switch (card.rarity) {
+			switch (this.card.rarity) {
 				case 'common':
 					return symbol.c
 				case 'uncommon':
@@ -95,6 +80,20 @@ export default {
 					return symbol.m
 				default:
 					return symbol.s
+			}
+		},
+		focusCardButton () {
+			return this.$store.state.focusCardButton
+		}
+	},
+	watch: {
+		/**
+		 * Return the browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
+		 * @param {string} cardToFocus
+		 */
+		focusCardButton (cardToFocus) {
+			if (this.card.name === cardToFocus) {
+				this.$refs[cardToFocus].focus()
 			}
 		}
 	}
