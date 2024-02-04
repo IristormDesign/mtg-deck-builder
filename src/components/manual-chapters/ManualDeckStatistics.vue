@@ -16,15 +16,15 @@
 			</li>
 			<li>
 				<h5>Average Mana Value</h5>
-				<p>This shows a number equal to the mean of the mana value among spells in your deck’s main group. This calculation includes cards’ quantities and excludes land cards. (Mana value is also known by the older term “converted mana cost.”)</p>
+				<p>This shows a number equal to the mean of the mana value among spells in your deck’s main group. This calculation includes card names’ quantities and excludes land cards. (Mana value is also known by the older term “converted mana cost.”)</p>
 			</li>
 			<li>
 				<h5>Last Edit</h5>
-				<p>This shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">changing a card’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as edits in both the main and the sideboard groups of your deck.</p>
+				<p>This shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card</a>, <a href="#m-card-quantities">changing a card name’s quantity</a>, and <a href="#m-deck-name">renaming the deck</a> count as edits in both the main and the sideboard groups of your deck.</p>
 			</li>
 			<li>
 				<h5>Card Names</h5>
-				<p>This shows a number equal to the count of names of cards in your deck’s main group, ignoring duplicates of cards. (Having a plural quantity of any card doesn’t increase the deck’s count of card names.)</p>
+				<p>This shows a number equal to the count of card names in your deck’s main group. It ignores any duplicates of card names. (Having a plural quantity of any name doesn’t increase the deck’s count of names.)</p>
 			</li>
 			<li>
 				<h5>Total Cards</h5>

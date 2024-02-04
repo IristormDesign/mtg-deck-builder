@@ -7,7 +7,7 @@
 				src="@/img/manual-card-list.jpg" width="658" height="339"
 				alt="Snippet of card list" title="Screenshot" loading="lazy" />
 		</p>
-		<p>In the <a href="#m-card-list">card list</a>, each card of a particular name is represented by a wide button, and each button is labeled with the following characteristics of the card:</p>
+		<p>In the <a href="#m-card-list">card list</a>, each card name is represented by a wide button, and each button is labeled with the following characteristics of the card:</p>
 		<ul>
 			<li>Name</li>
 			<li>Mana cost (if any)</li>
