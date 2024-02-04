@@ -55,7 +55,7 @@
 		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only sorting options that don’t insert gaps are the ones for name, mana color, and rarity.</p>
 		<p>The card sorter will reset to “(None),” and any gaps between sorted clusters in the list are removed, under the following conditions:
 			<ul>
-				<li>Whenever you <a href="#m-card-adder">add a new card name</a></li>
+				<li>Whenever you <a href="#m-card-adder">add a new card name</a> to the list</li>
 				<li>Whenever you <a href="#m-card-quantities">adjust the quantity</a> of a card name while the card sorter is set to the quantity option</li>
 				<li>Whenever you star a card name while the card sorter is set to the starred option</li>
 			</ul>
