@@ -116,8 +116,8 @@
 	a,
 	button {
 		font-size: 95.83%;
-		min-width: 6em; // Large enough to make the "More Stats" and "Card List" button labels equal in width.
-		height: $lhse*1.6;
+		min-width: 6.5em; // Large enough to make the "More Stats" and "Card List" button labels equal in width.
+		height: $lhse*1.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -133,7 +133,7 @@
 	.deck-header {
 		overflow: hidden;
 		display: grid;
-		grid-template-columns: repeat(5, minmax(auto, 1fr));
+		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(2, 1fr);
 		border-radius: $border-radius-group;
 		background: $color-group-bg;
@@ -229,7 +229,6 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: auto 1fr 1fr;
-		width: min-content;
 		min-width: 66.67vw;
 	}
 	.deck-info,

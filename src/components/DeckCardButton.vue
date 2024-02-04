@@ -31,8 +31,14 @@ export default {
 		}
 	},
 	watch: {
-		focusCardButton (name) {
-			this.$refs[name][0].focus() // Return browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
+		/**
+		 * Return the browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
+		 * @param {string} cardToFocus
+		 */
+		focusCardButton (cardToFocus) {
+			if (this.card.name === cardToFocus) {
+				this.$refs[cardToFocus].focus()
+			}
 		}
 	},
 	methods: {
