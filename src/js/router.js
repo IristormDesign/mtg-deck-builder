@@ -34,15 +34,20 @@ const routes = [
 		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
 		children: [
 			{
-				name: 'deckMain',
+				name: 'deckEditor',
 				path: '',
-				component: () => import(/* webpackChunkName: "deck-main" */ '../views/DeckMain.vue')
+				component: () => import(/* webpackChunkName: "deck-main" */ '../views/DeckEditor.vue')
 			},
 			{
 				name: 'moreStats',
 				path: 'more-stats',
 				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue'),
 				props: true
+			},
+			{
+				name: 'drawSimulator',
+				path: 'draw-simulator',
+				component: () => import(/* webpackChunkName: "draw-simulator" */ '../views/DrawSimulator.vue')
 			}
 		]
 	},

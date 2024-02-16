@@ -13,7 +13,7 @@
 					<date-edited :deck="deck" />
 					<card-names :deck="deck" />
 					<card-total :deck="deck" />
-					<more-stats-button :deck="deck" />
+					<views-header />
 				</header>
 			</div>
 
@@ -33,13 +33,13 @@ import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
 import DateEdited from '@/components/DeckHeaderDateEdited.vue'
 import CardNames from '@/components/DeckHeaderCardNames.vue'
 import CardTotal from '@/components/DeckHeaderCardTotal.vue'
-import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
+import ViewsHeader from '@/components/DeckViewsHeader.vue'
 import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
 import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice, NotFoundContent },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ViewsHeader, UpdateDataNotice, NotFoundContent },
 	mixins: [getActiveDeck],
 	data () {
 		return {

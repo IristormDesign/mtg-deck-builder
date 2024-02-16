@@ -132,7 +132,7 @@ export default {
 				})
 		},
 		alertTimeout () {
-			alert('⚠ Sorry, but your card couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
+			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data) {
 			const newCard = {}
@@ -285,7 +285,7 @@ export default {
 			} else {
 				setTimeout(() => {
 					alert(
-						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card, increase its quantity number in the card list instead.)`
+						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
 				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
 			}

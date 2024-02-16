@@ -50,7 +50,6 @@ $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-text-buttons: rgba(#000, .875);
-$color-card-star: desaturate(lighten($color-rarity-gold, 8.33%), 12.5%);
 
 // MANA-BASED COLORS
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Sampled
@@ -68,6 +67,7 @@ $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 37.5%);
 $color-frame-green: desaturate(lighten($color-mana-green, 12.5%), 12.5%);
 $color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 0%), 25%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 12.5%), 6.25%);
+$color-card-star: desaturate(lighten($color-mana-hybrid, 0%), 25%);
 
 // TEXT
 $font-family-standard: 'Crimson Pro', serif;
@@ -90,6 +90,10 @@ $height-deck-control-panel-input: $lhse * 1.5;
 $height-app-header-short: $lhse*1.875;
 $height-app-header-medium: $lhse*2;
 $height-app-header-tall: $lhse*3;
+$margin-card-gap-after: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
+$width-card-buttons-wide: $lhse*22.5; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
+$width-card-buttons-narrow: $lhse*12;
+$width-qty-column: $lhse*1.5;
 
 // BORDERS
 $border-sections: 1px solid $color-section-border;
@@ -117,6 +121,12 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.3820;
 $layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
+$gradient-background-sideboard: repeating-linear-gradient(-45deg,
+	$color-mythic-very-dim 											0,
+	$color-mythic-very-dim 										  $lhse*.5,
+	darken($color-mythic-very-dim, (1/64)*100%) $lhse*.5,
+	darken($color-mythic-very-dim, (1/64)*100%) $lhse
+);
 $x: 2px dashed rgba(#c0f, .6);
 
 // MIXINS

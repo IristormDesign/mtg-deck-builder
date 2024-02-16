@@ -2,7 +2,7 @@
 	<section class="deck-info more-stats-button">
 		<router-link
 			v-if="$route.name === 'moreStats'"
-			:to="{ name: 'deckMain' }"
+			:to="{ name: 'deckEditor' }"
 		>
 			Card List
 		</router-link>

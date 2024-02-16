@@ -6,7 +6,6 @@
 @import 'card-list';
 
 .deck {
-	width: 100%;
 	display: flex;
 	justify-content: center;
 
@@ -18,7 +17,7 @@
 }
 .card-display-scroll-view {
 	display: flex;
-	gap: $lhse*.75;
+	gap: $lhse*.5;
 	margin-bottom: $lhse;
 	justify-content: center;
 }
@@ -59,11 +58,6 @@
 			margin-right: auto;
 			margin-left: auto;
 		}
-	}
-}
-@media (max-width: ($max-width-app*.8)) {
-	.card-display-scroll-view {
-		gap: $lhse*.5;
 	}
 }
 @media (max-width: ($min-width-app*.75)) {

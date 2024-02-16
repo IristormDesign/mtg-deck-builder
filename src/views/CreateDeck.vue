@@ -260,7 +260,7 @@ export default {
 			this.$store.commit('sortDeckMenu')
 
 			this.$router.push({
-				name: 'deckMain',
+				name: 'deckEditor',
 				params: { deckPath: path }
 			})
 		}

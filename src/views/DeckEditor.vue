@@ -1,19 +1,21 @@
 <template>
-	<div class="card-display-scroll-view wrap">
-		<card-display :deck="deck" />
-		<div class="deck-main">
-			<div class="deck-control-panel viewing-controls">
-				<card-sorter :deck="deck" />
-				<card-group-switch :deck="deck" />
-			</div>
-			<card-list-section :deck="deck" />
-			<div class="deck-control-panel action-controls">
-				<scryfall-opener />
-				<card-adder :deck="deck" />
-				<deck-actions :deck="deck" />
+	<section class="deck-editor-page">
+		<div class="card-display-scroll-view wrap">
+			<card-display :deck="deck" />
+			<div class="deck-main">
+				<div class="deck-control-panel viewing-controls">
+					<card-sorter :deck="deck" />
+					<card-group-switch :deck="deck" />
+				</div>
+				<card-list-section :deck="deck" />
+				<div class="deck-control-panel action-controls">
+					<scryfall-opener />
+					<card-adder :deck="deck" />
+					<deck-actions :deck="deck" />
+				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>

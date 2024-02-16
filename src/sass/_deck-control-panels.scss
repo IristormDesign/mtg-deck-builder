@@ -145,7 +145,8 @@
 	height: $lhse*3.3333;
 
 	.sideboard-visible & {
-		background: $color-mythic-very-dim;
+		background-color: $color-mythic-very-dim;
+		background-image: $gradient-background-sideboard;
 
 		label {
 			color: $color-text-over-mythic-very-dim;

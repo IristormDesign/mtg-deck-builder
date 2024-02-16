@@ -1,7 +1,5 @@
 <template>
 	<div class="more-stats content-box wrap">
-		<h3>More Deck Statistics</h3>
-
 		<div class="tables">
 			<more-stats-colors :deck="deck" />
 
@@ -33,8 +31,8 @@
 				<small>Note: These statistics ignore cards in the sideboard.</small>
 			</p>
 			<p>
-				<router-link :to="{ name: 'deckMain' }">
-					◂ Return to the card list
+				<router-link :to="{ name: 'deckEditor' }">
+					◂ Return to the deck editor
 				</router-link>
 			</p>
 		</footer>

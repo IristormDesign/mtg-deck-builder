@@ -5,9 +5,10 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 .more-stats {
 	max-width: calc(100% - $lhse*2);
 	width: max-content;
-	margin: $lhse auto;
+	margin: $lhse*.5 auto;
 	display: flex; // This prevents a weird CSS margin-shifting glitch when clicking the "Card List" button.
 	flex-direction: column;
+	padding-top: 0;
 
 	.tables {
 		display: grid;
@@ -18,10 +19,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		section {
 			grid-column: span 1;
 		}
-	}
-	h3 {
-		margin: $lhse*.25 0;
-		text-align: center;
 	}
 	section {
 		cursor: default;

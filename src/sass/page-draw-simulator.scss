@@ -1,0 +1,67 @@
+@import 'variables';
+
+.draw-simulator {
+	margin: $lhse*.5 auto;
+
+	h3 {
+		text-align: center;
+		margin: 0;
+	}
+	.card-browse-appear-active {
+		animation-delay: 0s; // This purposely prevents the delay in the card display that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
+	}
+	.deck-control-panel {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		align-items: center;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		width: $max-width-content;
+		padding: 0 $lhse*.5;
+
+		button {
+			min-height: $lhse*1.5;
+			margin-right: $lhse*.5;
+			margin-left: $lhse*.5;
+
+			&:last-of-type {
+				@include secondary-button;
+			}
+		}
+		.deck-info {
+			@include deck-info-style;
+			padding-top: $lhse*.625;
+			padding-bottom: $lhse*.625;
+			order: 0;
+
+			&:nth-of-type(2) {
+				margin-right: $lhse*.5;
+			}
+			h3 {
+				white-space: normal;
+				width: min-content;
+			}
+			.output {
+				font-size: 200%;
+				min-width: 2ch;
+			}
+		}
+	}
+	.card-list {
+		li {
+			max-width: $width-card-buttons-wide;
+
+			&:nth-last-of-type(8) {
+				margin-bottom: $margin-card-gap-after;
+			}
+		}
+	}
+}
+
+@media (max-width: $width-app-breakpoint-tablet) {
+	.card-list {
+		li {
+			// max-width: $width-card-buttons-narrow !important;
+		}
+	}
+}

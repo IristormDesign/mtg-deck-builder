@@ -1,20 +1,6 @@
 <template>
 	<div class="active-card-list">
-		<div class="list-headings">
-			<div class="card-label-group">
-				<strong class="name">Name</strong>
-				<strong class="mana">Mana Cost</strong>
-			</div>
-			<div class="card-label-group">
-				<strong class="type">Type</strong>
-				<strong class="rarity">Rarity</strong>
-			</div>
-			<div class="qty-label-group">
-				<strong class="qty" title="Quantity">Qty.</strong>
-			</div>
-		</div>
-
-		<transition-group tag="ul" name="card-list-main">
+		<transition-group tag="ul" name="card-list">
 			<li
 				v-for="(card, i) in activeCardList.cards"
 				:key="card.name"

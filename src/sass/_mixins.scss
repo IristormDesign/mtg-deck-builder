@@ -7,6 +7,31 @@
 	font-size: 75%;
 	text-transform: uppercase;
 }
+@mixin deck-info-style {
+	display: flex;
+	height: 100%;
+	padding: divide($lhse, 3) $lhse*.5;
+	border: 0 solid $color-section-border;
+	border-right-width: 1px;
+	align-items: center;
+	justify-content: center;
+	background: $color-group-bg;
+	white-space: nowrap;
+	cursor: default;
+	color: $color-text-brighter;
+
+	h3 {
+		@include label-text-style;
+		margin: 0 $lhse*.5 0 0;
+		display: flex;
+		align-items: center;
+		text-align: right;
+	}
+	.output {
+		line-height: 1;
+		margin-top: -$lhse*.1; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
+	}
+}
 @mixin popup {
 	box-shadow: -.125em .375em .5em rgba(#000, .25);
 	background: $color-background-alt;
