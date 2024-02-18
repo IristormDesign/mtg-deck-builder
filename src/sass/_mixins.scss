@@ -23,8 +23,6 @@
 	h3 {
 		@include label-text-style;
 		margin: 0 $lhse*.5 0 0;
-		display: flex;
-		align-items: center;
 		text-align: right;
 	}
 	.output {

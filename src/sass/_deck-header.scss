@@ -15,7 +15,6 @@
 	h3 {
 		text-align: center;
 		margin: 0 0 $lhse*.25;
-		width: max-content;
 	}
 }
 
@@ -24,14 +23,21 @@
 	margin: $lhse auto $lhse*.5;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
+	grid-template-rows: repeat(2, 1fr);
 	align-items: center;
 	justify-content: space-between;
 	border-radius: $border-radius-button;
 	overflow: hidden;
 	max-width: 100%;
+	background: $color-group-bg;
 }
 .deck-info {
 	@include deck-info-style;
+	color: $color-text;
+
+	h3 {
+		color: $color-text;
+	}
 }
 .deck-name {
 	padding-left: $lhse*.75;
@@ -106,33 +112,33 @@
 	}
 }
 .deck-views {
-	padding: 0 0 0 $lhse*.2;
+	padding: $lhse*.25;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	margin: 0;
+	border-width: 0;
 	border-top: $border-sections;
+	padding-right: $lhse*.125;
 	max-width: 100%;
 	border-radius: 0;
 	grid-column: span 6;
 
+	h3,
+	li {
+		margin: 0 $lhse*.6667;
+	}
 	h3 {
-		margin: 0 $lhse*.5 0;
 		text-transform: uppercase;
 		font-size: 112.5%;
-	}
-	nav {
-		padding: divide($lhse, 3) $lhse*.75;
 	}
 	ul {
 		margin: 0;
 		padding: 0;
 		display: flex;
-		justify-content: space-between;
 	}
 	li {
 		list-style: none;
-		margin: 0 $lhse*.6667;
 	}
 	a {
 		@include heading-font;
@@ -174,6 +180,7 @@
 		order: 0;
 		grid-column: span 5;
 		justify-content: center;
+		padding-left: $lhse*.5;
 
 		h2 {
 			text-align: center;
@@ -184,21 +191,19 @@
 			display: grid;
 		}
 	}
+	.date-edited {
+		.output {
+			margin-top: $lhse*.0417;
+		}
+	}
 	.card-total {
 		border-right-width: 0;
+		padding-right: $lhse*.5;
 	}
 	.deck-views {
 		order: 2;
 		grid-column: span 5;
-	}
-}
-@media (max-width: ($min-width-app*1.25)) {
-	.deck-info {
-		justify-content: center;
-
-		h3 {
-			width: min-content;
-		}
+		padding: $lhse*.25;
 	}
 }
 @media (max-width: $min-width-app) {
@@ -207,6 +212,11 @@
 	}
 	.deck-info {
 		@include deck-info-box-narrow();
+	}
+	.deck-views {
+		h3 {
+			margin: $lhse*.25 auto $lhse*.125;
+		}
 	}
 }
 @media (max-width: ($min-width-app * .875)) {
@@ -248,64 +258,14 @@
 	}
 	.deck-views {
 		grid-column: span 6;
-		display: block;
-		padding: 0;
-
-		h3 {
-			text-align: center;
-			margin: $lhse*.5 0 0;
-			width: 100%;
-		}
-		nav {
-			width: 100%;
-			padding: 0;
-		}
-		ul {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			align-items: center;
-			max-width: $lhse*20;
-			margin: 0 auto;
-		}
-		li {
-			margin: $lhse*.125 $lhse*.5;
-		}
+		white-space: normal;
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
-	.deck-header {
-		// grid-template-columns: 1fr 1fr;
-		// grid-template-rows: min-content repeat(3, 1fr);
-	}
 	.deck-info {
-		// border-top-width: 0 !important;
-		// border-right-width: 0 !important;
-		// border-bottom-width: 1px !important;
-		// border-left-width: 1px !important;
-		// justify-content: center;
-
-		// &:first-of-type,
-		// &:nth-of-type(even) {
-		// 	border-left-width: 0 !important;
-		// }
-		// &:last-of-type,
-		// &:nth-last-of-type(2) {
-		// 	border-top-width: 0 !important;
-		// 	border-bottom-width: 0 !important;
-		// }
 		&:nth-of-type(2),
 		&:nth-of-type(3) {
 			@include deck-info-box-narrow();
-		}
-	}
-	.deck-name {
-		// grid-column: span 2;
-		// height: 100%;
-		// font-size: 87.5%;
-	}
-	.date-edited {
-		.output {
-			margin-top: $lhse*.25;
 		}
 	}
 }
