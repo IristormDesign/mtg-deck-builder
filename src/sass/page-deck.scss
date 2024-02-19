@@ -7,12 +7,10 @@
 
 .deck {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-
-	article {
-		margin: 0;
-		position: relative;
-	}
+	margin: 0 auto;
+	position: relative;
 }
 .card-display-scroll-view {
 	display: flex;

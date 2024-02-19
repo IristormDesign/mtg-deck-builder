@@ -1,27 +1,23 @@
 <template>
-	<div
+	<article
 		v-if="this.validDeck"
-		class="deck"
+		class="deck wrap"
 		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
 	>
-		<article>
-			<div class="wrap">
-				<header class="deck-header">
-					<deck-name :deck="deck" />
-					<deck-colors :deck="deck" />
-					<average-mana-value :deck="deck" />
-					<date-edited :deck="deck" />
-					<card-names :deck="deck" />
-					<card-total :deck="deck" />
-					<views-header />
-				</header>
-			</div>
+		<header class="deck-header">
+			<deck-name :deck="deck" />
+			<deck-colors :deck="deck" />
+			<average-mana-value :deck="deck" />
+			<date-edited :deck="deck" />
+			<card-names :deck="deck" />
+			<card-total :deck="deck" />
+			<views-header />
+		</header>
 
-			<update-data-notice :deck="deck" />
+		<update-data-notice :deck="deck" />
 
-			<router-view />
-		</article>
-	</div>
+		<router-view />
+	</article>
 
 	<not-found-content v-else />
 </template>

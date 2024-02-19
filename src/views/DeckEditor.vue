@@ -1,6 +1,6 @@
 <template>
 	<section class="deck-editor">
-		<div class="card-display-scroll-view wrap">
+		<div class="card-display-scroll-view">
 			<card-display :deck="deck" />
 			<div class="deck-main">
 				<div class="deck-control-panel viewing-controls">
