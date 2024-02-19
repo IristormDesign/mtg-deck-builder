@@ -1,6 +1,10 @@
 <template>
 	<div class="active-card-list">
-		<transition-group tag="ul" name="card-list">
+		<transition-group
+			tag="ul"
+			name="card-list"
+			:key="deck.name"
+		>
 			<li
 				v-for="(card, i) in activeCardList.cards"
 				:key="card.name"
