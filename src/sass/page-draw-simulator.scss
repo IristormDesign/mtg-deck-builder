@@ -10,10 +10,11 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		align-items: center;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
+		overflow: hidden;
 		width: $max-width-content;
-		padding: 0 $lhse*.5;
+		min-height: $height-deck-header-component;
+		padding-right: $lhse*.5;
+		padding-left: $lhse*.25;
 
 		button {
 			min-height: $lhse*1.5;
@@ -26,8 +27,6 @@
 		}
 		.deck-info {
 			@include deck-info-style;
-			padding-top: $lhse*.625;
-			padding-bottom: $lhse*.625;
 			order: 0;
 
 			&:nth-of-type(2) {

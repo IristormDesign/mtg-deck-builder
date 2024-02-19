@@ -4,20 +4,23 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: auto auto;
+	min-height: $height-deck-header-component;
 
 	&.viewing-controls {
 		margin-bottom: divide($lhse, 3);
 		grid-template-columns: 1fr 1fr;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
+		transition: border-radius $transition-duration-standard ease;
+
+		.sideboard-visible & {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 	}
 	&.action-controls {
 		display: grid;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
 	}
 	section {
-		padding: $lhse*.5;
+		padding: $lhse*.25 $lhse*.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;

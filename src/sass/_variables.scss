@@ -87,8 +87,9 @@ $max-width-app: 1440px - 1;
 $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
 $height-deck-control-panel-input: $lhse * 1.5;
-$height-app-header-short: $lhse*1.875;
-$height-app-header-medium: $lhse*2;
+$height-deck-header-component: $lhse*2.1667;
+$height-app-header-short: $height-deck-header-component;
+$height-app-header-medium: $height-deck-header-component;
 $height-app-header-tall: $lhse*3;
 $margin-card-gap-after: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
 $width-card-buttons-wide: $lhse*22.5; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.

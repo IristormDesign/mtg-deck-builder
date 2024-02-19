@@ -23,7 +23,7 @@
 	margin: $lhse auto $lhse*.5;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
-	grid-template-rows: repeat(2, 1fr);
+	grid-template-rows: auto auto;
 	align-items: center;
 	justify-content: space-between;
 	border-radius: $border-radius-button;
@@ -34,6 +34,7 @@
 .deck-info {
 	@include deck-info-style;
 	color: $color-text;
+	min-height: $height-deck-header-component;
 
 	h3 {
 		color: $color-text;
@@ -157,7 +158,7 @@
 	.deck-header {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		grid-template-rows: repeat(3, 1fr);
+		grid-template-rows: repeat(3, auto);
 		border-radius: $border-radius-group;
 		background: $color-group-bg;
 	}
