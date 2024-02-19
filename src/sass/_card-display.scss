@@ -41,6 +41,8 @@ $transition-delay-card: divide(1, 3) * 1s;
 	aspect-ratio: #{488} / #{680}; // Numbers are equal to actual card image's width and height.
 	max-height: 100vh;
 	z-index: index($layers, card-overlay);
+	outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
+	outline-offset: -$lhse*.75;
 
 	.card-edge {
 		filter: $drop-shadow-card-image-edge;
@@ -128,6 +130,10 @@ $transition-delay-card: divide(1, 3) * 1s;
 	.close {
 		display: none;
 	}
+	.no-card-showing {
+
+		height: 100%;
+	}
 }
 
 $animation-duration-card-browse: .3820s;
@@ -181,6 +187,7 @@ $animation-duration-card-browse: .3820s;
 		z-index: index($layers, app-header);
 		width: auto;
 		aspect-ratio: auto;
+		outline: none;
 
 		.card-edge {
 			display: flex;
