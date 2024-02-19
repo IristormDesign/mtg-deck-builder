@@ -1,11 +1,24 @@
-@keyframes card-fan-in {
-	0% {
-		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*6) translateY(-$lhse*2) scale(1.0833);
+@mixin card-fan-in-from ($enter-from) {
+	$transform: none;
+
+	@if $enter-from == 'left' {
+		$transform: rotate(-5.625deg) translateX(-$lhse*6)
 	}
-	38.20% {
-		opacity: 1;
+	@if $enter-from == 'right' {
+		$transform: rotate(5.625deg) translateX($lhse*6);
 	}
+
+	@keyframes card-fan-in-#{$enter-from} {
+		0% {
+			opacity: 0;
+			transform: $transform translateY(-$lhse*2) scale(1.0833);
+		}
+		38.20% {
+			opacity: 1;
+		}
+	}
+
+	animation-name: card-fan-in-#{$enter-from};
 }
 @keyframes overshadowed {
 	0% {
@@ -121,11 +134,21 @@ $animation-duration-card-browse: .3820s;
 
 .card-browse {
 	&-enter-active {
+		animation: $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
 		z-index: 1;
-		animation: card-fan-in $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
 	}
 	&-leave-active {
 		animation: overshadowed $animation-duration-card-browse ease-out;
+	}
+}
+.deck-editor {
+	.card-browse-enter-active {
+		@include card-fan-in-from('left');
+	}
+}
+.draw-simulator {
+	.card-browse-enter-active {
+		@include card-fan-in-from('right');
 	}
 }
 .card-browse-appear-active {

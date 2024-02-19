@@ -1,5 +1,5 @@
 <template>
-	<section class="deck-editor-page">
+	<section class="deck-editor">
 		<div class="card-display-scroll-view wrap">
 			<card-display :deck="deck" />
 			<div class="deck-main">

@@ -1,8 +1,6 @@
 <template>
 	<div class="draw-simulator">
 		<div class="card-display-scroll-view">
-			<card-display :deck="deck" />
-
 			<div class="deck-main">
 				<div class="deck-control-panel">
 					<section class="deck-info">
@@ -48,6 +46,8 @@
 					</div>
 				</div>
 			</div>
+
+			<card-display :deck="deck" />
 		</div>
 	</div>
 </template>

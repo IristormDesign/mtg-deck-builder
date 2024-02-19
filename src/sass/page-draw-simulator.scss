@@ -3,10 +3,6 @@
 .draw-simulator {
 	margin: $lhse*.5 auto;
 
-	h3 {
-		text-align: center;
-		margin: 0;
-	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card display that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
 	}
@@ -44,6 +40,7 @@
 			.output {
 				font-size: 200%;
 				min-width: 2ch;
+				color: $color-text;
 			}
 		}
 	}
@@ -54,14 +51,6 @@
 			&:nth-last-of-type(8) {
 				margin-bottom: $margin-card-gap-after;
 			}
-		}
-	}
-}
-
-@media (max-width: $width-app-breakpoint-tablet) {
-	.card-list {
-		li {
-			// max-width: $width-card-buttons-narrow !important;
 		}
 	}
 }
