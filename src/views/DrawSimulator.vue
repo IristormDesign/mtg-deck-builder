@@ -100,10 +100,8 @@ export default {
 
 		this.prepareCards()
 	},
-	beforeRouteLeave (to, from, next) {
+	destroyed () {
 		this.deck.viewedCard = this.viewedCardBefore
-
-		next()
 	},
 	methods: {
 		prepareCards () {
