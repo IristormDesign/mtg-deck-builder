@@ -1,7 +1,7 @@
 @import 'variables';
 
 @mixin long-card-buttons {
-	.card-list {
+	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
 				border-top-right-radius: 0;
@@ -11,7 +11,7 @@
 	}
 }
 @mixin condensed-card-buttons {
-	.card-list {
+	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
 				border-radius: $border-radius-button;
@@ -102,7 +102,7 @@
 		);
 	}
 }
-.card-list {
+.card-list-section {
 	li {
 		&:focus-within {
 			&:not(:hover) {
@@ -156,7 +156,7 @@
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-buttons();
 
-	.card-list {
+	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
 				border-radius: $border-radius-button;

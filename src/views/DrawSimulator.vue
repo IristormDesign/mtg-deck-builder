@@ -21,10 +21,11 @@
 						:disabled="drawnList.length === 0"
 					>Restart</button>
 				</div>
-				<div class="card-list">
-					<ul
-						v-if="drawnList.length > 0"
-					>
+				<section class="card-list-section">
+					<header class="screen-readers-only">
+						<h3>Drawn Cards</h3>
+					</header>
+					<ul v-if="drawnList.length > 0">
 						<li v-for="(card, i) in drawnList" :key="i">
 							<card-star :card="card" :deck="deck" :i="i" />
 							<card-button :card="card" :deck="deck" />
@@ -44,7 +45,7 @@
 						<p>This deck hasn’t been built yet, so there are no cards to draw.</p>
 						<p>To use the draw simulator, first add cards to the deck’s main card group in the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
 					</div>
-				</div>
+				</section>
 			</div>
 
 			<card-display :deck="deck" />

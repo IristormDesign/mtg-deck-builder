@@ -2,14 +2,14 @@
 $min-height-card-list: $lhse*6;
 
 @mixin long-card-buttons {
-	.card-list {
+	.card-list-section {
 		li {
 			max-width: $width-card-buttons-wide + $width-qty-column;
 		}
 	}
 }
 @mixin condensed-card-buttons {
-	.card-list {
+	.card-list-section {
 		li {
 			max-width: $width-card-buttons-narrow + $width-qty-column;
 		}
@@ -18,17 +18,12 @@ $min-height-card-list: $lhse*6;
 
 @include long-card-buttons;
 
-.card-list {
+.card-list-section {
 	margin: $lhse*.25 auto;
 	min-height: $min-height-card-list;
 	display: flex;
 	flex-direction: column;
 
-	&.main-deck {
-		> header {
-			@include screen-readers-only;
-		}
-	}
 	.no-cards {
 		display: block;
 		text-align: center;
@@ -80,7 +75,7 @@ $min-height-card-list: $lhse*6;
 			margin-bottom: $margin-card-gap-after;
 		}
 	}
-	.card-list-main-leave-active {
+	.card-list-section-main-leave-active {
 		transition-duration: 0s; // When switching from one deck page to another, this stops the odd lingering of the previous deck list on the current page.
 	}
 }

@@ -1,7 +1,7 @@
 <template>
 	<section
 		v-if="$store.state.showSideboard"
-		class="card-list"
+		class="card-list-section"
 	>
 		<deck-sideboard-header :deck="deck" />
 		<div
@@ -19,10 +19,10 @@
 	</section>
 	<section
 		v-else
-		class="card-list main-deck"
+		class="card-list-section main-deck"
 	>
-		<header>
-			<h3>Main Deck Card List</h3>
+		<header class="screen-readers-only">
+			<h3>Main Card List</h3>
 		</header>
 		<div
 			v-if="deck.cards.length <= 0"
