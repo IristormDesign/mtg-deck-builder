@@ -78,7 +78,8 @@ $transition-delay-card: divide(1, 3) * 1s;
 		&:focus {
 			transform:
 				scale(1.3333)
-				translate($lhse*1.3333, $lhse*1.6667)
+				translate($lhse*1.375, $lhse*1.75)
+				rotate((-360/192) * 1deg)
 			;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
