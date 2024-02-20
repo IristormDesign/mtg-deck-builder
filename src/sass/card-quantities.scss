@@ -1,0 +1,169 @@
+@import 'variables';
+
+@mixin long-card-buttons {
+	.card-list {
+		li {
+			&:has(.qty:hover)	{
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+	}
+}
+@mixin condensed-card-buttons {
+	.card-list {
+		li {
+			&:has(.qty:hover)	{
+				border-radius: $border-radius-button;
+			}
+		}
+	}
+}
+
+@include long-card-buttons;
+
+.qty {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	line-height: 1;
+	width: $width-qty-column;
+	padding-right: 2px;
+
+	> span {
+		margin: -4.17% 0 0 $lhse*.2;
+		color: $color-text-darker;
+		cursor: default;
+		text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
+		transition: color $transition-duration-standard ease;
+	}
+	label {
+		@include screen-readers-only;
+	}
+	input {
+		color: $color-text;
+		background: none;
+		border: 0;
+		width: auto;
+		min-width: 0;
+		text-align: center;
+		transition: all $transition-duration-standard ease-out;
+		padding: 0 0 0 0;
+		margin: -4.17% 0 0 0;
+		font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
+		border-radius: $border-radius-button;
+		appearance: textfield;
+		box-shadow: none;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+		}
+	}
+	&:focus-within,
+	&:hover {
+		.qty-buttons {
+			display: flex;
+		}
+	}
+	.qty-buttons {
+		position: absolute;
+		top: divide($lhse, -3);
+		right: -1.6em;
+		z-index: index($layers, card-list-item-hover);
+		display: none;
+		flex-direction: column;
+		height: auto;
+	}
+	button {
+		border-bottom-width: 2px;
+		font: normal 133.33%/.8333 sans-serif;
+		min-width: auto;
+		width: 1.25em;
+		height: $lhse*.6667;
+		max-height: none;
+		padding: 0;
+		overflow: hidden;
+	}
+	.increment {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		background: radial-gradient(ellipse at 50% 100%,
+			$color-button-mythic-lighter,
+			$color-button-mythic-orange
+		);
+	}
+	.decrement {
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+		background: radial-gradient(ellipse at 50% 0%,
+			$color-button-mythic-lighter,
+			$color-button-mythic-orange
+		);
+	}
+}
+.card-list {
+	li {
+		&:focus-within {
+			&:not(:hover) {
+				.qty {
+					&:focus-within {
+						.qty-buttons {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		&:focus-within,
+		&:hover {
+			.qty {
+				> span {
+					color: $color-text;
+					transition-duration: 0s;
+				}
+				input {
+					transition: none;
+					color: $color-link;
+
+					&:hover,
+					&:focus {
+						color: $color-link-focus;
+					}
+					&:focus-visible {
+						outline-offset: 0;
+						background: $color-input-bg-focus;
+					}
+					&:active {
+						color: $color-link-active;
+						background: $color-link-dark;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $width-app-breakpoint-tablet) {
+	@include condensed-card-buttons();
+
+	.qty {
+		.qty-buttons {
+			display: none !important;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .8)) {
+	@include long-card-buttons();
+
+	.card-list {
+		li {
+			&:has(.qty:hover)	{
+				border-radius: $border-radius-button;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .6667)) {
+	@include condensed-card-buttons();
+}

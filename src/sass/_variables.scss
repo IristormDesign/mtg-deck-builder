@@ -94,6 +94,7 @@ $height-app-header-tall: $lhse*3;
 $margin-card-gap-after: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
 $width-card-buttons-wide: $lhse*22.5; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
 $width-card-buttons-narrow: $lhse*12;
+$width-card-star: 2em;
 $width-qty-column: $lhse*1.5;
 
 // BORDERS

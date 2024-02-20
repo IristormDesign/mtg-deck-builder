@@ -1,53 +1,9 @@
-@use "sass:color";
-
-$border-width-card-button: 2.5px;
 $min-height-card-list: $lhse*6;
-$width-card-star: 2em;
-$scale-card-star: scale(1.0833);
 
-@mixin box-shadow-hover-card-button($color) {
-	box-shadow:
-		0 0 0 .5px rgba(#000, .875),
-		0 0 0 $border-width-card-button $color,
-		.3333px -1px 0 $border-width-card-button color.scale($color,
-			$lightness: 50%
-		),
-		-.3333px 1px 0 $border-width-card-button color.scale($color,
-			$lightness: -50%, $saturation: -50%
-		),
-		0 -1px divide($lhse, 4) $border-width-card-button rgba(#000, .25);
-}
-@mixin color-card-buttons($background-color) {
-	background: $background-color;
-	color: color.scale($background-color, $lightness: -87.5%);
-}
 @mixin long-card-buttons {
 	.card-list {
-		.card-button {
-			display: flex;
-			height: 23px;
-			max-width: $width-card-buttons-wide;
-		}
-		.card-label-group {
-			width: 50%;
-			padding: 0 divide($lhse, 6);
-
-			&:last-of-type {
-				border-top: none;
-				margin-top: 0;
-				padding-left: .8333em;
-			}
-		}
 		li {
 			max-width: $width-card-buttons-wide + $width-qty-column;
-
-			&:has(.qty:hover)	{
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-			}
-			.rarity {
-				margin-right: -$lhse*.0625;
-			}
 		}
 	}
 }
@@ -56,39 +12,16 @@ $scale-card-star: scale(1.0833);
 		li {
 			max-width: $width-card-buttons-narrow + $width-qty-column;
 		}
-		.card-button {
-			display: block;
-			max-width: $width-card-buttons-narrow;
-			height: 51px;
-		}
-		.card-label-group {
-			width: 100%;
-			padding: 0 divide($lhse, 4);
-
-			&:last-of-type {
-				border-top: 1px solid rgba(#000, .125);
-				padding-left: divide($lhse, 4);
-			}
-		}
-		li {
-			&:has(.qty:hover)	{
-				border-radius: $border-radius-button;
-			}
-			.rarity {
-				margin-right: 0;
-			}
-		}
 	}
 }
 
 @include long-card-buttons;
 
 .card-list {
-	margin-bottom: divide($lhse, 4);
+	margin: $lhse*.25 auto;
 	min-height: $min-height-card-list;
 	display: flex;
 	flex-direction: column;
-	margin-top: $lhse*.25;
 
 	&.main-deck {
 		> header {
@@ -108,14 +41,6 @@ $scale-card-star: scale(1.0833);
 		a {
 			text-shadow: revert;
 		}
-	}
-	.card-label-group {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.qty-label-group {
-		width: $width-qty-column;
 	}
 	ul {
 		margin: 0;
@@ -140,358 +65,18 @@ $scale-card-star: scale(1.0833);
 			background: $color-group-bg-darker;
 			transition-duration: 0s;
 
-			.card-button {
-				filter: contrast(116.67%);
-				transition-duration: 0s;
-				transition-property: filter, box-shadow, border-color;
-				border-top-color: rgba(#fff, .5);
-				border-right-color: rgba(#fff, .25);
-				border-bottom-color: rgba(#000, .5);
-				border-left-color: rgba(#000, .25);
-				outline-offset: 3px;
-
-				&:active {
-					filter: brightness(87.5%) contrast(125%);
-					box-shadow: none !important;
-				}
-			}
 			&:hover {
 				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button.
-			}
-			&:not(:hover) {
-				.qty {
-					&:focus-within {
-						.qty-buttons {
-							display: none;
-						}
-					}
-				}
-			}
-			.qty {
-				> span {
-					color: $color-text;
-					transition-duration: 0s;
-				}
-				input {
-					transition: none;
-					color: $color-link;
-
-					&:hover,
-					&:focus {
-						color: $color-link-focus;
-					}
-					&:focus-visible {
-						outline-offset: 0;
-						background: $color-input-bg-focus;
-					}
-					&:active {
-						color: $color-link-active;
-						background: $color-link-dark;
-					}
-				}
-			}
-		}
-		&:hover {
-			.card-star {
-				background: $color-group-bg-darker;
-
-				&:not(:checked) {
-					opacity: .5;
-					transition-delay: .5s;
-					transition-duration: 1.5s;
-
-					&::before {
-						transition-duration: 0s;
-					}
-				}
-				&::before {
-					transform: $scale-card-star rotate((360deg*.8));
-					transition: transform 1.5s ease-in-out;
-				}
 			}
 		}
 		&:focus-within {
 			z-index: index($layers, card-list-item-focus-within);
-
-			.card-button {
-				@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
-
-				&.land {
-					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
-				}
-				&.white {
-					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
-				}
-				&.blue {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-blue, 40%), 16.67%));
-				}
-				&.black {
-					@include box-shadow-hover-card-button(darken($color-mana-black, 41.67%));
-				}
-				&.red {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 29.17%), 25%));
-				}
-				&.green {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 25%), 16.67%));
-				}
-				&.multicolor {
-					@include box-shadow-hover-card-button(desaturate($color-mana-hybrid, 16.67%));
-				}
-			}
 		}
 		&:first-child {
 			margin-top: 0;
 		}
 		&.gap-after {
 			margin-bottom: $margin-card-gap-after;
-		}
-		.name,
-		.mana,
-		.type {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-		.mana,
-		.rarity {
-			margin-left: .25em;
-		}
-		.name {
-			margin: 0;
-			font-size: 87.5%;
-			line-height: 1.375;
-			min-width: 33.33%;
-			text-align: left;
-			color: inherit;
-		}
-		.mana {
-			overflow: visible;
-			margin-top: -3px;
-			display: flex;
-			align-items: center;
-
-			.mana-symbol {
-				box-shadow: -.75px 1.6667px 0 0 #000; // Needs to look good on Firefox
-				margin: 0 0 0 2px;
-			}
-		}
-		.type {
-			@include heading-font;
-			font-size: 75%;
-			line-height: 1.5;
-		}
-		.qty {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			line-height: 1;
-			width: $width-qty-column;
-			padding-right: 2px;
-
-			> span {
-				margin: -4.17% 0 0 $lhse*.2;
-				color: $color-text-darker;
-				cursor: default;
-				text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
-				transition: color $transition-duration-standard ease;
-			}
-			label {
-				@include screen-readers-only;
-			}
-			input {
-				color: $color-text;
-				background: none;
-				border: 0;
-				width: auto;
-				min-width: 0;
-				text-align: center;
-				transition: all $transition-duration-standard ease-out;
-				padding: 0 0 0 0;
-				margin: -4.17% 0 0 0;
-				font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
-				border-radius: $border-radius-button;
-				appearance: textfield;
-				box-shadow: none;
-
-				&::-webkit-inner-spin-button,
-				&::-webkit-outer-spin-button {
-					-webkit-appearance: none;
-				}
-			}
-			&:focus-within,
-			&:hover {
-				.qty-buttons {
-					display: flex;
-				}
-			}
-			.qty-buttons {
-				position: absolute;
-				top: divide($lhse, -3);
-				right: -1.6em;
-				z-index: index($layers, card-list-item-hover);
-				display: none;
-				flex-direction: column;
-				height: auto;
-			}
-			button {
-				border-bottom-width: 2px;
-				font: normal 133.33%/.8333 sans-serif;
-				min-width: auto;
-				width: 1.25em;
-				height: $lhse*.6667;
-				max-height: none;
-				padding: 0;
-				overflow: hidden;
-			}
-			.increment {
-				border-bottom-right-radius: 0;
-				border-bottom-left-radius: 0;
-				background: radial-gradient(ellipse at 50% 100%,
-					$color-button-mythic-lighter,
-					$color-button-mythic-orange
-				);
-			}
-			.decrement {
-				border-top-right-radius: 0;
-				border-top-left-radius: 0;
-				background: radial-gradient(ellipse at 50% 0%,
-					$color-button-mythic-lighter,
-					$color-button-mythic-orange
-				);
-			}
-		}
-	}
-	.card-star {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: -1.3333em;
-		width: $width-card-star;
-		height: 100%;
-		padding: 0;
-		border: 0;
-		background: $color-group-bg;
-		opacity: 0;
-		border-radius: $border-radius-button;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-		transition: $transition-duration-standard ease;
-		transition-property: opacity, transform;
-		box-shadow: none;
-
-		@keyframes star-pulse {
-			from {
-				opacity: 0;
-			}
-			to {
-				opacity: 1;
-			}
-		}
-		&:checked,
-		&:hover,
-		&:focus-visible {
-			opacity: 1;
-			transition-duration: 0s !important;
-			transition-delay: 0s !important;
-		}
-		&:hover,
-		&:focus-visible {
-			animation: star-pulse .3333s ease 19 alternate;
-			background: $color-input-bg-focus !important;
-
-			&:not(:checked) {
-				opacity: .5;
-			}
-			&::before {
-				transition: none !important;
-				color: saturate($color-card-star, 100%) !important;
-			}
-		}
-		&:hover:focus {
-			&:not(:checked) {
-				animation-delay: 2s; // This delay is for the moment immediately after the user un-stars a card while still having the mouse pointer hovering over the star checkbox input.
-				opacity: 0;
-			}
-		}
-		&:active {
-			opacity: 1 !important;
-			background: $color-input-bg-active !important;
-			animation: none;
-
-			&::before {
-				color: saturate(lighten($color-card-star, 20%), 50%) !important;
-			}
-		}
-		&:checked {
-			&::before {
-				color: $color-card-star;
-			}
-			&:hover,
-			&:focus-visible {
-				animation: none;
-
-				&::before {
-					animation: none;
-				}
-			}
-			&:active {
-				background: $color-input-bg-active;
-
-				&::before {
-					transition-duration: 0s;
-				}
-			}
-		}
-		&::before {
-			content: '★';
-			color: $color-card-star;
-			left: 4px;
-			position: absolute;
-			transform: $scale-card-star;
-		}
-		&::after {
-			display: none;
-		}
-	}
-	.card-button {
-		@include color-card-buttons($color-frame-generic);
-		margin: 0;
-		padding: 0;
-		border-radius: $border-radius-button;
-		border: 2px solid transparent;
-		text-shadow: none;
-		transition: all $transition-duration-standard ease;
-		transition-property: border, color, filter, transform;
-		width: 100%;
-		align-items: center;
-		box-shadow: none;
-
-		&:active {
-			transform: scale(.995) translate(0, .5px);
-			transition-duration: 0s;
-		}
-		&.land {
-			@include color-card-buttons($color-frame-land);
-		}
-		&.white {
-			@include color-card-buttons($color-frame-white);
-		}
-		&.blue {
-			@include color-card-buttons($color-frame-blue);
-		}
-		&.black {
-			background: $color-frame-black;
-			color: #000;
-			text-shadow: 0 0 1px rgba(#fff, .3333);
-		}
-		&.red {
-			@include color-card-buttons($color-frame-red);
-		}
-		&.green {
-			@include color-card-buttons($color-frame-green);
-		}
-		&.multicolor {
-			@include color-card-buttons($color-frame-multicolor);
 		}
 	}
 	.card-list-main-leave-active {
@@ -501,52 +86,10 @@ $scale-card-star: scale(1.0833);
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include condensed-card-buttons();
-
-	.card-list {
-		li {
-			.qty {
-				.qty-buttons {
-					display: none !important;
-				}
-			}
-		}
-	}
 }
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-buttons();
-
-	.card-list {
-		li {
-			&:has(.qty:hover)	{
-				border-radius: $border-radius-button;
-			}
-		}
-	}
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-buttons();
-}
-
-@media (pointer: coarse) {
-	.card-list {
-		.card-button {
-			min-height: 27px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra pixels so that the list items appear to have consistent gaps between each other.
-		}
-		.card-star {
-			opacity: 1;
-
-			&:hover,
-			&:focus-visible {
-				background: $color-input-bg-focus !important;
-			}
-			&:not(:checked) {
-				animation: none !important;
-				opacity: 1 !important;
-
-				&::before{
-					content: '';
-				}
-			}
-		}
-	}
 }

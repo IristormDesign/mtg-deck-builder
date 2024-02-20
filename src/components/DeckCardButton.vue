@@ -99,3 +99,7 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/card-buttons.scss';
+</style>
