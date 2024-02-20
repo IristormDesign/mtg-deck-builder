@@ -287,3 +287,7 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/header-menu.scss';
+</style>
