@@ -68,7 +68,7 @@ export default {
 			this.checkForOutdatedImageURLs()
 		},
 		showCard (isShowing) {
-			if (this.mobileView()) {
+			if (this.mobileView() && this.card) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
