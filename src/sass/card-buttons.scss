@@ -17,7 +17,7 @@
 }
 @mixin color-card-buttons($background-color) {
 	background: $background-color;
-	color: color.scale($background-color, $lightness: -87.5%);
+	color: color.scale($background-color, $lightness: -83.33%);
 }
 @mixin long-card-buttons {
 	.card-button {
@@ -159,7 +159,7 @@
 				outline-offset: 3px;
 
 				&:active {
-					filter: brightness(87.5%) contrast(125%);
+					filter: brightness(83.33%) saturate(133.33%);
 					box-shadow: none !important;
 				}
 			}
