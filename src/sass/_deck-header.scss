@@ -205,6 +205,7 @@
 		order: 2;
 		grid-column: span 5;
 		padding: $lhse*.25;
+		border-right-width: 0;
 	}
 }
 @media (max-width: $min-width-app) {
@@ -242,12 +243,11 @@
 		}
 		&:nth-of-type(2) {
 			grid-column: 1 / 4;
-			border-left-width: 1px;
 		}
 		&:nth-of-type(3) {
 			grid-column: 4 / 7;
+			border-right-width: 0;
 		}
-
 		&:nth-of-type(6) {
 			border-right-width: 0;
 		}
