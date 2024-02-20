@@ -1,7 +1,7 @@
 <template>
 	<section class="deck-editor">
-		<div class="card-display-scroll-view">
-			<card-display :deck="deck" />
+		<div class="card-image-scroll-view">
+			<card-image :deck="deck" />
 			<div class="deck-main">
 				<div class="deck-control-panel viewing-controls">
 					<card-sorter :deck="deck" />
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import CardDisplay from '@/components/DeckCardDisplay.vue'
+import CardImage from '@/components/DeckCardImage.vue'
 import CardSorter from '@/components/DeckCardSorter.vue'
 import CardGroupSwitch from '@/components/DeckCardGroupSwitch.vue'
 import CardListSection from '@/components/DeckCardListSection.vue'
@@ -29,7 +29,7 @@ import DeckActions from '@/components/DeckDeckActions.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { CardDisplay, CardSorter, CardGroupSwitch, CardListSection, ScryfallOpener, CardAdder, DeckActions },
+	components: { CardImage, CardSorter, CardGroupSwitch, CardListSection, ScryfallOpener, CardAdder, DeckActions },
 	mixins: [getActiveDeck]
 }
 </script>

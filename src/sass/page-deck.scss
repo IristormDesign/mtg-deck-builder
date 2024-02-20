@@ -9,7 +9,7 @@
 	margin: 0 auto;
 	position: relative;
 }
-.card-display-scroll-view {
+.card-image-scroll-view {
 	display: flex;
 	gap: $lhse*.5;
 	margin-bottom: $lhse;
@@ -45,7 +45,7 @@
 }
 
 @media (max-width: ($min-width-app*.875)) {
-	.card-display-scroll-view {
+	.card-image-scroll-view {
 		margin-bottom: $lhse*.5;
 
 		.deck-main {
@@ -55,12 +55,12 @@
 	}
 }
 @media (max-width: ($min-width-app*.75)) {
-	.card-display-scroll-view {
+	.card-image-scroll-view {
 		display: block;
 	}
 }
 @media (max-width: 768px) { // Must match window width in JavaScript.
-	.card-display-scroll-view {
+	.card-image-scroll-view {
 		gap: 0;
 	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="draw-simulator">
-		<div class="card-display-scroll-view">
+		<div class="card-image-scroll-view">
 			<div class="deck-main">
 				<div class="deck-control-panel">
 					<section class="deck-info">
@@ -48,20 +48,20 @@
 				</section>
 			</div>
 
-			<card-display :deck="deck" />
+			<card-image :deck="deck" />
 		</div>
 	</div>
 </template>
 
 <script>
-import CardDisplay from '@/components/DeckCardDisplay.vue'
+import CardImage from '@/components/DeckCardImage.vue'
 import CardStar from '@/components/DeckCardStar.vue'
 import CardButton from '@/components/DeckCardButton.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { CardDisplay, CardStar, CardButton },
+	components: { CardImage, CardStar, CardButton },
 	mixins: [cardListFunctions, getActiveDeck],
 	data () {
 		return {

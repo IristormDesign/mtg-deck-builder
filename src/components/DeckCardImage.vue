@@ -1,5 +1,5 @@
 <template>
-	<section class="card-display">
+	<section class="card-image">
 		<transition name="cd-overlay-fade">
 			<div
 				class="cd-overlay"
@@ -79,7 +79,7 @@ export default {
 			}
 		},
 		$route () {
-			this.delayTransitionOfCardDisplay()
+			this.delayTransitionOfCardImage()
 		}
 	},
 	created () {
@@ -172,7 +172,7 @@ export default {
 		/**
 		 * This effect is used for navigating from one deck page directly to another at wide viewports.
 		 */
-		delayTransitionOfCardDisplay () {
+		delayTransitionOfCardImage () {
 			if (this.$store.state.showCard) {
 				this.$store.state.showCard = false
 
@@ -186,5 +186,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-display.scss';
+	@import '@/sass/card-image.scss';
 </style>
