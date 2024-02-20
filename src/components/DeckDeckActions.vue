@@ -1,7 +1,7 @@
 <template>
 	<section class="deck-actions">
 		<form>
-			<label for="deckActionSelect">Do Deck Action:</label>
+			<label for="deckActionSelect">Do deck action:</label>
 			<select v-model="deckAction" @change="doDeckAction()" id="deckActionSelect">
 				<option value="">(Select)</option>
 				<option value="copy">Copy</option>

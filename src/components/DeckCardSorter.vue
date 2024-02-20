@@ -4,7 +4,7 @@
 			<fieldset
 				:disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)"
 			>
-				<label for="sortMenu">Sort Cards by:</label>
+				<label for="sortMenu">Sort cards by:</label>
 				<select
 					v-model="sortMenu" id="sortMenu"
 					@change="sortCards()"

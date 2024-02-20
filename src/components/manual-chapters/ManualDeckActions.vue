@@ -1,7 +1,7 @@
 <template>
 	<section id="m-deck-actions">
 		<h4>Deck Actions</h4>
-		<p>The deck actions section (labeled “Do Deck Action”) has a drop-down menu from which you can choose to do special actions to your decks. The options and their effects are the following:</p>
+		<p>The deck actions section (labeled “Do deck action”) has a drop-down menu from which you can choose to do special actions to your decks. The options and their effects are the following:</p>
 		<ul>
 			<li>
 				<h5>Copy</h5>

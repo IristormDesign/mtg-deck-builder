@@ -4,7 +4,7 @@
 			v-if="!loadingCard"
 			@submit.prevent="handleSubmit()"
 		>
-			<label for="card-input">Add a Card to This {{activeCardListString}}:</label>
+			<label for="card-input">Add a card to this {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
 				:placeholder="inputPlaceholder"
@@ -58,9 +58,9 @@ export default {
 	computed: {
 		activeCardListString () {
 			if (this.$store.state.showSideboard) {
-				return 'Sideboard'
+				return 'sideboard'
 			} else {
-				return 'Deck'
+				return 'deck'
 			}
 		},
 		inputPlaceholder () {
