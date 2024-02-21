@@ -52,8 +52,9 @@ export default {
 		},
 		cardColorClass () {
 			const color = this.card.colors[0]
+			const hasLandType = /\bLand\b/.test(this.card.type)
 
-			if (!color && /\bLand\b/.test(this.card.type)) {
+			if (!color && hasLandType) {
 				return 'land'
 			} else {
 				return color
