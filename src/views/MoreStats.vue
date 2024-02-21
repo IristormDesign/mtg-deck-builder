@@ -1,5 +1,5 @@
 <template>
-	<div class="more-stats content-box wrap">
+	<div class="more-stats content-box">
 		<div class="tables">
 			<more-stats-colors :deck="deck" />
 
