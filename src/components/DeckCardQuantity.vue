@@ -125,7 +125,7 @@ export default {
 						this.determineDeckColors()
 
 						saveChanges() // Needed here when inside `setTimeout()`.
-					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card in the card display.
+					}, 375) // The timeout duration should be as long as the transition duration of the new card's image overlapping the image of the just-removed card in the card image.
 				} else {
 					card.qty = 1
 

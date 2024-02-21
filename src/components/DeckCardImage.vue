@@ -6,7 +6,11 @@
 				v-if="this.card && this.$store.state.showCard"
 				@click="hideCDOverlay()"
 			>
-				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
+				<transition
+					name="card-browse"
+					appear
+					appear-active-class="card-browse-appear-active"
+				>
 					<div class="card-edge" :key="card.name">
 						<a
 							:href="card.link"
@@ -14,13 +18,19 @@
 							ref="cardLink"
 						>
 							<div class="card-shape" :class="cardColorClass">
-								<img :src="card.img" width="488" height="680" :alt="card.name" />
+								<img
+									:src="card.img"
+									width="488"
+									height="680"
+									:alt="card.name"
+								/>
 							</div>
 						</a>
 					</div>
 				</transition>
 				<button
-					class="close" @click="hideCDOverlay()"
+					class="close"
+					@click="hideCDOverlay()"
 					title="Close this card popup"
 				>×</button>
 			</div>

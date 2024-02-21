@@ -287,7 +287,7 @@ export default {
 					alert(
 						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
-				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
+				}, 25) // Duration should be just long enough to make the card image have a fully animated transition while the browser alert appears.
 			}
 		},
 		insertCardIntoDeck (newCard) {
