@@ -99,6 +99,8 @@
 		);
 }
 @mixin button {
+	$color-text-buttons: rgba(#000, .875);
+
 	@include heading-font;
 	@include gradient-buttons(
 		$color-button-mythic-lighter,

@@ -17,7 +17,7 @@
 }
 @mixin color-card-buttons($background-color) {
 	background: $background-color;
-	color: color.scale($background-color, $lightness: -83.33%);
+	color: $color-black-label-text;
 }
 @mixin long-card-buttons {
 	.card-button {

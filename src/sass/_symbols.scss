@@ -6,7 +6,7 @@
 	height: $common-mana-symbol-size;
 	background: $color-mana-generic;
 	font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
-	color: #000;
+	color: $color-black-label-text;
 	text-shadow: none;
 	display: inline-flex;
 	align-items: center;
@@ -26,6 +26,7 @@
 	}
 	&.black {
 		background: $color-mana-black;
+		color: #000;
 	}
 	&.red {
 		background: $color-mana-red;
@@ -128,7 +129,7 @@
 	font: 800 12px/15px 'Ysabeau', 'Trebuchet MS', sans-serif;
 	cursor: default;
 	outline: 1px solid #000;
-	color: $color-text-buttons;
+	color: $color-black-label-text;
 	text-shadow: none;
 
 	&[title] {
@@ -140,7 +141,7 @@
 	}
 	&.common {
 		background: lighten(#000, 20%);
-		outline-color: darken(#fff, 4.17%);
+		outline-color: darken(#fff, 8.33%);
 		color: darken(#fff, 8.33%);
 	}
 	&.uncommon {
