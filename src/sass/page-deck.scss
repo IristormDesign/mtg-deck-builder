@@ -6,18 +6,19 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 0 auto;
 	position: relative;
 }
-.card-image-scroll-view {
-	display: flex;
-	gap: $lhse*.5;
-	margin-bottom: $lhse;
+.deck-editor {
+	margin: $lhse*.5 auto;
+	display: grid;
+	grid-template-areas:
+		'card-img panel-1'
+		'card-img card-list'
+		'card-img panel-2';
+	grid-template-rows: min-content max-content 100%;
+	grid-template-columns: auto auto;
+	gap: $margin-card-gap-after $lhse*.5;
 	justify-content: center;
-}
-.deck-main {
-	max-width: $max-width-content;
-	width: 100%;
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
@@ -44,31 +45,34 @@
 	}
 }
 
+@media (max-width: $min-width-app) {
+	.deck-editor {
+		max-width: calc(100vw - #{$lhse*3});
+	}
+}
 @media (max-width: ($min-width-app*.875)) {
-	.card-image-scroll-view {
-		margin-bottom: $lhse*.5;
-
-		.deck-main {
-			margin-right: auto;
-			margin-left: auto;
-		}
+	.deck-editor {
+		margin-top: 0;
+		grid-template-columns: 5fr 7fr;
 	}
 }
-@media (max-width: ($min-width-app*.75)) {
-	.card-image-scroll-view {
-		display: block;
+@media (max-width: $width-deck-hidden-image) {
+	.deck-editor {
+		grid-template-areas:
+			'panel-1'
+			'card-list'
+			'panel-2';
+		grid-template-columns: auto;
+		gap: $margin-card-gap-after 0;
 	}
 }
-@media (max-width: 768px) { // Must match window width in JavaScript.
-	.card-image-scroll-view {
-		gap: 0;
-	}
-}
-@media (max-width: ($min-width-app*.5)) {
+@media (max-width: ($min-width-app * .5)) {
 	.deck {
 		.wrap {
 			padding: 0 divide($lhse, 4);
 		}
 	}
-
+	.deck-editor {
+		max-width: 100vw;
+	}
 }

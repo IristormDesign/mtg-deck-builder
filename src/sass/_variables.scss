@@ -49,7 +49,7 @@ $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scry
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
-$color-black-label-text: lighten(#000, 12.5%);
+$color-black-label-text: rgba(#000, 83.33%);
 
 // MANA-BASED COLORS
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Sampled
@@ -83,17 +83,19 @@ $min-width-app: 960px;
 $width-mobile-breakpoint: $min-width-app * .625;
 $width-app-breakpoint: $min-width-app*1.375;
 $width-app-breakpoint-tablet: 1024px - 1;
+$width-deck-hidden-image: 720px; // Must match window width in JavaScript.
 $max-width-app: 1440px - 1;
 $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
-$height-deck-control-panel-input: $lhse * 1.5;
-$height-deck-header-component: $lhse*2.1667;
+$height-control-panel-input: $lhse * 1.5;
+$height-deck-header-component: $lhse*2.125; // Carefully adjusted to prevent large integer-rounded gaps between items in the card list.
+$height-deck-header-component: $lhse*2.125; // Carefully adjusted to prevent large integer-rounded gaps between items in the card list.
 $height-app-header-short: $height-deck-header-component;
 $height-app-header-medium: $height-deck-header-component;
 $height-app-header-tall: $lhse*3;
 $margin-card-gap-after: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
-$width-card-buttons-wide: $lhse*22.5; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
-$width-card-buttons-narrow: $lhse*12;
+$width-card-buttons-wide: $lhse*23; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
+$width-card-buttons-narrow: $lhse*11.75;
 $width-card-star: 2em;
 $width-qty-column: $lhse*1.5;
 
@@ -115,13 +117,13 @@ $drop-shadow-card-image-edge: drop-shadow(1px 1px 0 darken(#fff, 70.83%));
 
 // TRANSITIONS
 $transition-duration-standard: .25s;
-$transition-duration-card-image-hover-slow: .5s;
+$transition-duration-card-image-hover-slow: .75s;
 $transition-duration-card-image-hover-fast: $transition-duration-card-image-hover-slow * .3820;
 
 // MISCELLANEOUS VARIABLES
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.3820;
-$layers: card-list-item-focus-within, card-list-item-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
+$layers: card-li-focus-within, card-li-hover, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
 $gradient-background-sideboard: repeating-linear-gradient(-45deg,
 	$color-mythic-very-dim 											0,

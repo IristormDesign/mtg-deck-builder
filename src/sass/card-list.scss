@@ -1,28 +1,9 @@
 @import 'variables';
 $min-height-card-list: $lhse*6;
 
-@mixin long-card-buttons {
-	.card-list-section {
-		li {
-			max-width: $width-card-buttons-wide + $width-qty-column;
-		}
-	}
-}
-@mixin condensed-card-buttons {
-	.card-list-section {
-		li {
-			max-width: $width-card-buttons-narrow + $width-qty-column;
-		}
-	}
-}
-
-@include long-card-buttons;
-
 .card-list-section {
-	margin: $lhse*.25 auto;
 	min-height: $min-height-card-list;
-	display: flex;
-	flex-direction: column;
+	grid-area: card-list;
 
 	.no-cards {
 		display: block;
@@ -39,7 +20,7 @@ $min-height-card-list: $lhse*6;
 		}
 	}
 	ul {
-		margin: 0;
+		margin: 0 0 (-$margin-card-gap-after);
 		padding: 0 0 0 $width-card-star*.6;
 		list-style: none;
 		position: relative;
@@ -52,6 +33,7 @@ $min-height-card-list: $lhse*6;
 		position: relative;
 		background: $color-group-bg;
 		border-radius: $border-radius-button;
+		width: min-content;
 
 		&:last-of-type {
 			margin-bottom: $lhse*.25;
@@ -60,13 +42,12 @@ $min-height-card-list: $lhse*6;
 		&:focus-within {
 			background: $color-group-bg-darker;
 			transition-duration: 0s;
-
-			&:hover {
-				z-index: index($layers, card-list-item-hover); // To make a hovered card button's glow overlap a focused-within card button's glow positioned directly below the other button.
-			}
+		}
+		&:hover {
+			z-index: index($layers, card-li-hover);
 		}
 		&:focus-within {
-			z-index: index($layers, card-list-item-focus-within);
+			z-index: index($layers, card-li-focus-within);
 		}
 		&:first-child {
 			margin-top: 0;
@@ -80,12 +61,10 @@ $min-height-card-list: $lhse*6;
 	}
 }
 
-@media (max-width: $width-app-breakpoint-tablet) {
-	@include condensed-card-buttons();
-}
-@media (max-width: ($min-width-app * .8)) {
-	@include long-card-buttons();
-}
-@media (max-width: ($min-width-app * .6667)) {
-	@include condensed-card-buttons();
+@media (max-width: ($min-width-app * .5)) {
+	.card-list-section {
+		li {
+			max-width: 80vw;
+		}
+	}
 }

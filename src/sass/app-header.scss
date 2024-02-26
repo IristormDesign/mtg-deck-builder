@@ -14,7 +14,7 @@
 	border-top-color: $color-mythic-dim;
 	z-index: index($layers, app-header);
 	height: var(--header-height);
-	box-shadow: 0 1px 0 rgba(#fff, .125);
+	box-shadow: 0 1px 0 1px rgba(#fff, .0833);
 	transition: all $transition-duration-standard ease;
 	will-change: top;
 

@@ -17,7 +17,6 @@
 }
 @mixin color-card-buttons($background-color) {
 	background: $background-color;
-	color: $color-black-label-text;
 }
 @mixin long-card-buttons {
 	.card-button {
@@ -44,16 +43,20 @@
 	.card-button {
 		display: block;
 		max-width: $width-card-buttons-narrow;
-		height: 51px;
+		height: 43px;
 
 		.card-label-group {
 			width: 100%;
+			height: auto;
 			padding: 0 divide($lhse, 4);
 
 			&:last-of-type {
-				border-top: 1px solid rgba(#000, .125);
 				padding-left: divide($lhse, 4);
 			}
+		}
+		.name,
+		.type {
+			line-height: $line-height-standard*.875;
 		}
 		.rarity {
 			margin-right: 0;
@@ -61,7 +64,7 @@
 	}
 }
 
-@include long-card-buttons;
+@include long-card-buttons();
 
 .card-button {
 	@include color-card-buttons($color-frame-generic);
@@ -72,9 +75,11 @@
 	text-shadow: none;
 	transition: all $transition-duration-standard ease;
 	transition-property: border, color, filter, transform;
-	width: 100%;
+	width: 100vw;
 	align-items: center;
 	box-shadow: none;
+	overflow: hidden;
+	color: $color-black-label-text;
 
 	&:active {
 		transform: scale(.995) translate(0, .5px);
@@ -134,7 +139,7 @@
 		align-items: center;
 
 		.mana-symbol {
-			box-shadow: -.75px 1.6667px 0 0 #000; // Needs to look good on Firefox
+			box-shadow: -1px 1.5px 0 0 $color-black-label-text; // Needs to look good on Firefox
 			margin: 0 0 0 2px;
 		}
 	}
@@ -197,11 +202,18 @@
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include condensed-card-buttons();
 }
-@media (max-width: ($min-width-app * .8)) {
-	@include long-card-buttons();
-}
-@media (max-width: ($min-width-app * .6667)) {
-	@include condensed-card-buttons();
+@media (max-width: ($min-width-app * .5)) {
+	.card-button {
+		font-size: 87.5%;
+		height: 35px;
+
+		.type {
+			line-height: 1;
+		}
+		.rarity-symbol {
+			line-height: 1;
+		}
+	}
 }
 
 @media (pointer: coarse) {

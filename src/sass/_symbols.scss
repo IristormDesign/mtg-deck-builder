@@ -126,9 +126,9 @@
 	border-radius: $border-radius-button;
 	min-width: 19px; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
-	font: 800 12px/15px 'Ysabeau', 'Trebuchet MS', sans-serif;
+	font: 800 60%/1.25 'Ysabeau', 'Trebuchet MS', sans-serif;
 	cursor: default;
-	outline: 1px solid #000;
+	outline: 1px solid $color-black-label-text;
 	color: $color-black-label-text;
 	text-shadow: none;
 
@@ -139,10 +139,13 @@
 		transform: scaleX(1.25);
 		backface-visibility: hidden;
 	}
-	&.common {
-		background: lighten(#000, 20%);
+	&.common,
+	&.special {
 		outline-color: darken(#fff, 8.33%);
 		color: darken(#fff, 8.33%);
+	}
+	&.common {
+		background: lighten(#000, 20%);
 	}
 	&.uncommon {
 		background: linear-gradient(-60deg,
@@ -174,8 +177,6 @@
 			saturate(lighten($color-rarity-special, 20%), 25%),
 			darken($color-rarity-special, 25%)
 		) $color-rarity-special;
-		outline-color: darken(#fff, 4.17%);
-		color: darken(#fff, 4.17%);
 		text-shadow: .375px -.5px 0 rgba(#000, .5);
 	}
 }

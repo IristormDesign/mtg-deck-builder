@@ -1,4 +1,5 @@
 @import 'variables';
+$rotate-card-hover: rotate((-360/192) * 1deg);
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -33,19 +34,21 @@
 $transition-delay-card: divide(1, 3) * 1s;
 
 .card-image {
+	grid-area: card-img;
 	position: sticky;
 	top: calc(
 		#{$lhse*.5} + var(--header-height) + var(--header-top)
 	);
 	transition: top $transition-duration-standard ease;
-	width: 25vw;
-	height: 100%;
-	aspect-ratio: #{488} / #{680}; // Numbers are equal to actual card image's width and height.
-	max-height: 100vh;
 	z-index: index($layers, card-overlay);
-	outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
-	outline-offset: -$lhse*.75;
+	width: min(#{488px * .6667}, 25vw);
+	max-height: #{680px * .6667};
+	aspect-ratio: 488 / 680;
 
+	@supports (aspect-ratio: auto) {
+		outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
+		outline-offset: -$lhse*.75;
+	}
 	.card-edge {
 		filter: $drop-shadow-card-image-edge;
 		transition: filter $transition-duration-card-image-hover-fast ease 0s;
@@ -79,8 +82,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 			transform:
 				scale(1.3333)
 				translate($lhse*1.375, $lhse*1.75)
-				rotate((-360/192) * 1deg)
-			;
+				$rotate-card-hover;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 		}
@@ -133,10 +135,6 @@ $transition-delay-card: divide(1, 3) * 1s;
 	.close {
 		display: none;
 	}
-	.no-card-showing {
-
-		height: 100%;
-	}
 }
 
 $animation-duration-card-browse: .3820s;
@@ -172,17 +170,26 @@ $animation-duration-card-browse: .3820s;
 		a {
 			&:hover,
 			&:focus {
-				transform: scale(1.2) translate(0, $lhse*1.3333);
+				transform:
+					scale(1.2)
+					translate(0, $lhse*1.3333)
+					$rotate-card-hover
+				;
 			}
 		}
 	}
 }
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-image {
-		width: 50%;
+		width: min(#{488px * .6667}, 38.20vw);
 	}
 }
-@media (max-width: 768px) { // Must match window width in JavaScript.
+@media (max-width:($width-app-breakpoint-tablet*.8)) {
+	.card-image {
+		width: min(#{488px * .6667}, 33.33vw);
+	}
+}
+@media (max-width: $width-deck-hidden-image) {
 	.card-image {
 		z-index: index($layers, app-header);
 		width: auto;

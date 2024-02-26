@@ -38,7 +38,7 @@ $scale-card-star: scale(1.0833);
 	}
 	&:hover,
 	&:focus-visible {
-		animation: star-pulse .3333s ease 19 alternate;
+		animation: star-pulse .25s ease 19 alternate;
 		background: $color-input-bg-focus !important;
 
 		&:not(:checked) {
@@ -97,13 +97,14 @@ $scale-card-star: scale(1.0833);
 }
 .card-list-section {
 	li {
-		&:hover {
+		&:hover,
+		&:focus-within {
 			.card-star {
 				background: $color-group-bg-darker;
 
 				&:not(:checked) {
 					opacity: .3820;
-					transition-delay: .5s;
+					transition-delay: .75s;
 					transition-duration: 1.5s;
 
 					&::before {
@@ -133,6 +134,17 @@ $scale-card-star: scale(1.0833);
 
 			&::before{
 				content: '';
+			}
+		}
+	}
+	@supports selector(:has(.card-star:checked)) {
+		.card-list-section {
+			&:has(.card-star:checked) {
+				.card-star {
+					&:not(:checked) {
+						opacity: 0 !important;
+					}
+				}
 			}
 		}
 	}

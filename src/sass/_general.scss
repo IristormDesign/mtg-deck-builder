@@ -209,7 +209,7 @@ figcaption {
 		padding: 0 $lhse*.5;
 	}
 }
-@media (max-width: 768px) { // Must match window width in JavaScript.
+@media (max-width: $width-deck-hidden-image) { // Must match window width in JavaScript.
 	body {
 		contain: none; // The card image animation effect isn't needed at this viewport, and the `contain: paint` style doesn't keep the card image centered as it should be.
 	}

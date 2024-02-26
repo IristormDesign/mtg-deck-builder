@@ -113,7 +113,7 @@ export default {
 			}
 		},
 		mobileView () {
-			return window.innerWidth <= 768 // Must match media query's width in CSS.
+			return window.innerWidth <= 720 // Must match media query's width in CSS.
 		},
 		letEscKeyCloseCardImagePopup () {
 			document.addEventListener('keyup', (event) => {

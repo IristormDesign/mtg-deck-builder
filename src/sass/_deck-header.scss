@@ -11,10 +11,16 @@
 	flex-direction: column;
 	text-align: center;
 	justify-content: center;
+	padding: $lhse*.125 $lhse*.5;
+	box-sizing: border-box;
 
 	h3 {
 		text-align: center;
 		margin: 0 0 $lhse*.25;
+	}
+	&.deck-name,
+	&.deck-views {
+		min-height: $height-deck-header-component;
 	}
 }
 
@@ -26,7 +32,7 @@
 	grid-template-rows: auto auto;
 	align-items: center;
 	justify-content: space-between;
-	border-radius: $border-radius-button;
+	border-radius: #{$lhse} / #{50%};
 	overflow: hidden;
 	max-width: 100%;
 	background: $color-group-bg;
@@ -41,7 +47,7 @@
 	}
 }
 .deck-name {
-	padding-left: $lhse*.75;
+	padding: 0 $lhse*.5 0 $lhse*.75;
 	justify-content: left;
 	overflow: hidden;
 
@@ -51,7 +57,7 @@
 
 		h2 {
 			@include heading-font;
-			margin: 0;
+			margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
 			color: inherit;
 			white-space: normal;
 		}
@@ -113,14 +119,13 @@
 	}
 }
 .deck-views {
-	padding: $lhse*.25;
+	padding: 0 $lhse*.25 0 0;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	margin: 0;
 	border-width: 0;
 	border-top: $border-sections;
-	padding-right: $lhse*.125;
 	max-width: 100%;
 	border-radius: 0;
 	grid-column: span 6;
@@ -130,7 +135,6 @@
 		margin: 0 $lhse*.6667;
 	}
 	h3 {
-		text-transform: uppercase;
 		font-size: 112.5%;
 	}
 	ul {
@@ -159,7 +163,6 @@
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(3, auto);
-		border-radius: $border-radius-group;
 		background: $color-group-bg;
 	}
 	.deck-info {
@@ -181,10 +184,10 @@
 		order: 0;
 		grid-column: span 5;
 		justify-content: center;
-		padding-left: $lhse*.5;
 
 		h2 {
 			text-align: center;
+			padding: 0 $lhse*.25;
 		}
 	}
 	.deck-colors {
@@ -204,14 +207,10 @@
 	.deck-views {
 		order: 2;
 		grid-column: span 5;
-		padding: $lhse*.25;
 		border-right-width: 0;
 	}
 }
 @media (max-width: $min-width-app) {
-	.deck-header {
-		grid-template-rows: repeat(2, min-content);
-	}
 	.deck-info {
 		@include deck-info-box-narrow();
 	}
@@ -223,7 +222,8 @@
 }
 @media (max-width: ($min-width-app * .875)) {
 	.deck-header {
-		margin-top: $lhse*.5;
+		margin: $lhse*.5 auto;
+		grid-template-rows: auto 1fr 1fr auto;
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
@@ -233,8 +233,6 @@
 		min-width: 66.67vw;
 	}
 	.deck-info {
-		padding-top: $lhse*.25;
-		padding-bottom: $lhse*.25;
 		grid-column: span 2;
 
 		&:nth-of-type(2),
@@ -254,15 +252,21 @@
 	}
 	.deck-name {
 		grid-column: span 6;
-		padding-top: divide($lhse, 2);
-		padding-bottom: divide($lhse, 2);
 	}
 	.deck-views {
 		grid-column: span 6;
 		white-space: normal;
+
+		a {
+			width: min-content;
+			line-height: $line-height-standard*.875;
+		}
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
+	.deck-header {
+		border-radius: $border-radius-group;
+	}
 	.deck-info {
 		&:nth-of-type(2),
 		&:nth-of-type(3) {

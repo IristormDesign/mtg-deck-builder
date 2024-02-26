@@ -10,7 +10,7 @@
 @mixin deck-info-style {
 	display: flex;
 	height: 100%;
-	padding: divide($lhse, 3) $lhse*.5;
+	padding: 0 $lhse*.5;
 	border: 0 solid $color-section-border;
 	border-right-width: 1px;
 	align-items: center;

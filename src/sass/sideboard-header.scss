@@ -1,7 +1,7 @@
 @import 'variables';
 
 .sideboard-header {
-	margin: divide($lhse, -3) 0 divide($lhse, 3);
+	margin: -$margin-card-gap-after 0 $margin-card-gap-after;
 	background-color: $color-mythic-very-dim;
 	background-image: $gradient-background-sideboard;
 	color: $color-text-over-mythic-very-dim;
@@ -10,11 +10,9 @@
 	justify-content: space-between;
 	align-items: stretch;
 	cursor: default;
-	border-top: $border-sections;
-	border-bottom: 2px solid $color-section-border-alt;
+	border-bottom: 1px solid $color-section-border-alt;
 	box-shadow: 0 1px 0 rgba(#000, .0833);
-	// height: $lhse*2.25; // A particular height that prevents wider gaps between card buttons in the card list at all viewport widths due to pixel rounding by the browser.
-	min-height: $height-deck-header-component;
+	height: $height-deck-header-component;
 
 	h3,
 	h4,

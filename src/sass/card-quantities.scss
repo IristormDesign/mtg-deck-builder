@@ -18,6 +18,12 @@
 			}
 		}
 	}
+	.qty {
+		.qty-buttons {
+			top: 0;
+			bottom: 0;
+		}
+	}
 }
 
 @include long-card-buttons;
@@ -54,6 +60,7 @@
 		border-radius: $border-radius-button;
 		appearance: textfield;
 		box-shadow: none;
+		position: relative;
 
 		&::-webkit-inner-spin-button,
 		&::-webkit-outer-spin-button {
@@ -146,12 +153,6 @@
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include condensed-card-buttons();
-
-	.qty {
-		.qty-buttons {
-			display: none !important;
-		}
-	}
 }
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-buttons();
@@ -166,4 +167,19 @@
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-buttons();
+
+	.qty {
+		.qty-buttons {
+			display: none !important;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .4)) {
+	.qty {
+		width: $width-qty-column*.6667;
+
+		> span {
+			display: none;
+		}
+	}
 }

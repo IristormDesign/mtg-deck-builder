@@ -81,7 +81,7 @@ export default {
 			}
 		},
 		loadingCard (loading) {
-			if (window.innerWidth > 768 && !loading) {
+			if (window.innerWidth > 720 && !loading) {
 				this.$nextTick(() => {
 					this.$refs.focusCardAdder.focus()
 				})
