@@ -45,12 +45,11 @@ body {
 main {
 	flex-grow: 1;
 	display: flex;
-	align-items: center;
+	align-items: start;
 	justify-content: center;
 	position: relative;
 
 	.root-home-page & {
-		align-items: flex-start;
 		flex-grow: 0;
 	}
 	> article {
