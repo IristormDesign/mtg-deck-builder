@@ -36,7 +36,7 @@ $min-height-card-list: $lhse*6;
 		width: min-content;
 
 		&:last-of-type {
-			margin-bottom: $lhse*.25;
+			margin-bottom: $margin-card-gap-after;
 		}
 		&:hover,
 		&:focus-within {

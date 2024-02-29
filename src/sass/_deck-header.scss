@@ -26,7 +26,7 @@
 
 .deck-header {
 	grid-column: span 6;
-	margin: $lhse auto $lhse*.5;
+	margin: $lhse auto;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;

@@ -19,7 +19,7 @@
 	}
 	&.action-controls {
 		grid-area: panel-2;
-		align-self: start;
+		align-self: flex-start;
 	}
 	section {
 		padding: $lhse*.125 $lhse*.5;

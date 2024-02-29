@@ -4,38 +4,39 @@
 			v-if="deck.cards.length <= 0"
 			class="no-cards"
 		>
-			<p>This deck’s main card group has no cards yet. Statistics about it will appear here once you’ve added cards with the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
+			<p>This deck’s main card group has no cards yet. Statistics about it will display here once you’ve added cards with the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
 		</div>
-		<template v-else>
-			<div class="tables">
-				<more-stats-colors :deck="deck" />
+		<div
+			v-else
+			class="tables"
+		>
+			<more-stats-colors :deck="deck" />
 
-				<more-stats-mana-values :deck="deck" />
+			<more-stats-mana-values :deck="deck" />
 
-				<more-stats-types :deck="deck" />
+			<more-stats-types :deck="deck" />
 
-				<more-stats-subtypes
-					:deck="deck" :subtypeNames="subtypeCreaturesNames" :subtypeCounts="subtypeCounts"
-				>Creature</more-stats-subtypes>
+			<more-stats-subtypes
+				:deck="deck" :subtypeNames="subtypeCreaturesNames" :subtypeCounts="subtypeCounts"
+			>Creature</more-stats-subtypes>
 
-				<more-stats-subtypes
-					:deck="deck" :subtypeNames="subtypeOtherNames" :subtypeCounts="subtypeCounts"
-				>Other</more-stats-subtypes>
+			<more-stats-subtypes
+				:deck="deck" :subtypeNames="subtypeOtherNames" :subtypeCounts="subtypeCounts"
+			>Other</more-stats-subtypes>
 
-				<more-stats-rarities :deck="deck" />
+			<more-stats-rarities :deck="deck" />
 
-				<template v-if="deck.dataVersion >= 2">
-					<more-stats-keywords :deck="deck" />
+			<template v-if="deck.dataVersion >= 2">
+				<more-stats-keywords :deck="deck" />
 
-					<more-stats-power-toughness :deck="deck" />
-				</template>
+				<more-stats-power-toughness :deck="deck" />
+			</template>
 
-				<more-stats-misc :deck="deck" />
-			</div>
+			<more-stats-misc :deck="deck" />
 
 			<footer>
 				<p v-if="deck.sideboard.cards.length >= 1">
-					<small>Note: These statistics ignore cards in the sideboard.</small>
+					<small>Note: The statistics ignore cards in the sideboard.</small>
 				</p>
 				<p>
 					<router-link :to="{ name: 'deckEditor' }">
@@ -43,7 +44,7 @@
 					</router-link>
 				</p>
 			</footer>
-		</template>
+		</div>
 	</div>
 </template>
 

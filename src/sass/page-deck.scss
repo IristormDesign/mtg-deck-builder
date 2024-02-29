@@ -9,7 +9,7 @@
 	position: relative;
 }
 .deck-editor {
-	margin: $lhse*.5 auto;
+	margin: 0 auto $lhse*.5;
 	display: grid;
 	grid-template-areas:
 		'card-img panel-1'
@@ -52,7 +52,6 @@
 }
 @media (max-width: ($min-width-app*.875)) {
 	.deck-editor {
-		margin-top: 0;
 		grid-template-columns: 5fr 7fr;
 	}
 }

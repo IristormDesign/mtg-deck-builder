@@ -1,7 +1,7 @@
 @import 'variables';
 
 .draw-simulator {
-	margin: $lhse*.5 auto;
+	margin: 0 auto $lhse*.5;
 
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
