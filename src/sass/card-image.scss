@@ -1,5 +1,4 @@
 @import 'variables';
-$rotate-card-hover: rotate((-360/192) * 1deg);
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -22,6 +21,26 @@ $rotate-card-hover: rotate((-360/192) * 1deg);
 	}
 
 	animation-name: card-fan-in-#{$enter-from};
+}
+@mixin card-rise ($rise-from) {
+	$translate: none;
+	$rotate: none;
+
+	@if $rise-from == 'left' {
+		$translate: translate($lhse*1.375, $lhse*1.75);
+		$rotate: rotate((-360/192) * 1deg);
+	}
+	@if $rise-from == 'right' {
+		$translate: translate(-$lhse*1.375, $lhse*1.75);
+		$rotate: rotate((360/192) * 1deg);
+	}
+
+	transform:
+		scale(1.3333)
+		$translate
+		$rotate;
+	transition-duration: $transition-duration-card-image-hover-slow;
+	transition-delay: $transition-delay-card;
 }
 @keyframes overshadowed {
 	0% {
@@ -79,12 +98,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 
 		&:hover,
 		&:focus {
-			transform:
-				scale(1.3333)
-				translate($lhse*1.375, $lhse*1.75)
-				$rotate-card-hover;
-			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
+			@include card-rise('left');
 		}
 		&:focus {
 			transition-delay: 0s;
@@ -154,6 +168,14 @@ $animation-duration-card-browse: .3820s;
 	}
 }
 .draw-simulator {
+	.card-image {
+		a {
+			&:hover,
+			&:focus {
+				@include card-rise('right');
+			}
+		}
+	}
 	.card-browse-enter-active {
 		@include card-fan-in-from('right');
 	}
@@ -165,20 +187,6 @@ $animation-duration-card-browse: .3820s;
 	animation-fill-mode: backwards;
 }
 
-@media (min-width: ($max-width-app*.8333)) { // Note this media query is for MIN-width, not max-width.
-	.card-image {
-		a {
-			&:hover,
-			&:focus {
-				transform:
-					scale(1.2)
-					translate(0, $lhse*1.3333)
-					$rotate-card-hover
-				;
-			}
-		}
-	}
-}
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-image {
 		width: min(#{488px * .6667}, 38.20vw);
