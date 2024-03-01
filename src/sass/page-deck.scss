@@ -44,9 +44,32 @@
 		text-align: right;
 	}
 }
+.deck-info {
+	@include deck-info-style;
+	color: $color-text;
+	min-height: $height-deck-header-component;
 
+	h3 {
+		color: $color-text;
+	}
+}
+
+@media (max-width: $width-app-breakpoint) {
+	.deck-info {
+		border-width: 0;
+		border-top-width: 1px;
+		border-right-width: 1px;
+
+		.output {
+			display: flex;
+			max-height: $line-height-standard * 1.75rem;
+			align-items: center;
+		}
+	}
+}
 @media (max-width: $min-width-app) {
-	.deck-editor {
+	.deck-editor,
+	.page-draw-simulator {
 		max-width: calc(100vw - #{$lhse*3});
 	}
 }

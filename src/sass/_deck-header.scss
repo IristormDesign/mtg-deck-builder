@@ -1,29 +1,3 @@
-@mixin deck-info-box-wide() {
-	flex-direction: row;
-
-	h3 {
-		text-align: right;
-		margin: 0 $lhse*.5 0;
-		width: max-content;
-	}
-}
-@mixin deck-info-box-narrow() {
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-	padding: $lhse*.125 $lhse*.5;
-	box-sizing: border-box;
-
-	h3 {
-		text-align: center;
-		margin: 0 0 $lhse*.25;
-	}
-	&.deck-name,
-	&.deck-views {
-		min-height: $height-deck-header-component;
-	}
-}
-
 .deck-header {
 	grid-column: span 6;
 	margin: $lhse auto;
@@ -36,123 +10,115 @@
 	overflow: hidden;
 	max-width: 100%;
 	background: $color-group-bg;
-}
-.deck-info {
-	@include deck-info-style;
-	color: $color-text;
-	min-height: $height-deck-header-component;
 
-	h3 {
-		color: $color-text;
+	.deck-name {
+		padding: 0 $lhse*.5 0 $lhse*.75;
+		justify-content: left;
+		overflow: hidden;
+
+		button {
+			@include link;
+			text-decoration-thickness: 1.5px;
+
+			h2 {
+				@include heading-font;
+				margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
+				color: inherit;
+				white-space: normal;
+			}
+		}
 	}
-}
-.deck-name {
-	padding: 0 $lhse*.5 0 $lhse*.75;
-	justify-content: left;
-	overflow: hidden;
+	.deck-colors {
+		h3 {
+			white-space: normal;
+			width: min-content;
+		}
+		.output {
+			width: max-content;
 
-	button {
-		@include link;
-		text-decoration-thickness: 1.5px;
-
-		h2 {
-			@include heading-font;
-			margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
-			color: inherit;
+			&.size-mana-symbols {
+				margin-top: $lhse*.125;
+				margin-bottom: $lhse*.125;
+			}
+			&.no-colors {
+				font-size: 200%;
+				display: flex;
+			}
+			.mana-symbol {
+				opacity: $opacity-mana-symbols;
+			}
+		}
+	}
+	.average-mana-value {
+		.output {
+			font-size: 200%;
+		}
+	}
+	.date-edited {
+		h3 {
 			white-space: normal;
 		}
-	}
-}
-.deck-colors {
-	h3 {
-		white-space: normal;
-		width: min-content;
-	}
-	.output {
-		width: max-content;
-
-		&.size-mana-symbols {
-			margin-top: $lhse*.125;
-			margin-bottom: $lhse*.125;
+		.output {
+			font-size: 87.5%;
 		}
-		&.no-colors {
+	}
+	.card-names,
+	.card-total {
+		h3 {
+			white-space: normal;
+		}
+		.output {
 			font-size: 200%;
-			display: flex;
-		}
-		.mana-symbol {
-			opacity: $opacity-mana-symbols;
 		}
 	}
-}
-.average-mana-value {
-	.output {
-		font-size: 200%;
-	}
-}
-.date-edited {
-	h3 {
-		white-space: normal;
-	}
-	.output {
-		font-size: 87.5%;
-	}
-}
-.card-names,
-.card-total {
-	h3 {
-		white-space: normal;
-	}
-	.output {
-		font-size: 200%;
-	}
-}
-.card-total {
-	padding-right: $lhse*.75;
-	border-right-width: 0;
+	.card-total {
+		padding-right: $lhse*.75;
+		border-right-width: 0;
 
-	.output {
+		.output {
+			display: flex;
+			align-items: center;
+		}
+		.warning-symbol {
+			margin-left: .25em;
+		}
+	}
+	.deck-views {
 		display: flex;
 		align-items: center;
-	}
-	.warning-symbol {
-		margin-left: .25em;
-	}
-}
-.deck-views {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin: 0;
-	border-width: 0;
-	border-top: $border-sections;
-	max-width: 100%;
-	border-radius: 0;
-	grid-column: span 6;
-
-	h3,
-	li {
-		margin: 0 $lhse*.6667;
-	}
-	h3 {
-		font-size: 112.5%;
-	}
-	ul {
+		justify-content: space-between;
 		margin: 0;
-		padding: 0;
-		display: flex;
-	}
-	li {
-		list-style: none;
-	}
-	a {
-		@include heading-font;
-		display: block;
-		padding: divide($lhse, 3) 0;
-		font-size: 87.5%;
-		text-align: center;
+		border-width: 0;
+		border-top: $border-sections;
+		max-width: 100%;
+		border-radius: 0;
+		grid-column: span 6;
 
-		&.current-page {
-			opacity: .5;
+		h3,
+		li {
+			margin: 0 $lhse*.6667;
+		}
+		h3 {
+			font-size: 112.5%;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		li {
+			list-style: none;
+		}
+		a {
+			@include heading-font;
+			display: block;
+			padding: divide($lhse, 3) 0;
+			font-size: 87.5%;
+			text-align: center;
+
+			&.current-page {
+				opacity: .5;
+			}
 		}
 	}
 }
@@ -163,59 +129,48 @@
 		grid-template-columns: repeat(5, 1fr);
 		grid-template-rows: repeat(3, auto);
 		background: $color-group-bg;
-	}
-	.deck-info {
-		border-radius: 0;
-		border-top-width: 1px;
-		border-right-width: 1px;
-		border-bottom-width: 0;
-		border-left-width: 0;
-		order: 1;
 
-		.output {
-			display: flex;
-			max-height: $line-height-standard * 1.75rem;
-			align-items: center;
-		}
-	}
-	.deck-name {
-		border-width: 0;
-		order: 0;
-		grid-column: span 5;
-		justify-content: center;
+		.deck-name {
+			border-width: 0;
+			order: 0;
+			grid-column: span 5;
+			justify-content: center;
 
-		h2 {
-			text-align: center;
-			padding: 0 $lhse*.25;
+			h2 {
+				text-align: center;
+				padding: 0 $lhse*.25;
+			}
 		}
-	}
-	.deck-colors {
-		.output {
-			display: grid;
+		.deck-colors {
+			.output {
+				display: grid;
+			}
 		}
-	}
-	.date-edited {
-		.output {
-			margin-top: $lhse*.0417;
+		.date-edited {
+			.output {
+				margin-top: $lhse*.0417;
+			}
 		}
-	}
-	.card-total {
-		border-right-width: 0;
-		padding-right: $lhse*.5;
-	}
-	.deck-views {
-		order: 2;
-		grid-column: span 5;
-		border-right-width: 0;
+		.card-total {
+			border-right-width: 0;
+			padding-right: $lhse*.5;
+		}
+		.deck-views {
+			order: 2;
+			grid-column: span 5;
+			border-right-width: 0;
+		}
 	}
 }
 @media (max-width: $min-width-app) {
-	.deck-info {
-		@include deck-info-box-narrow();
-	}
-	.deck-views {
-		h3 {
-			margin: $lhse*.25 auto $lhse*.125;
+	.deck-header {
+		.deck-info {
+			@include deck-info-box-narrow();
+		}
+		.deck-views {
+			h3 {
+				margin: $lhse*.25 auto $lhse*.125;
+			}
 		}
 	}
 }
@@ -230,46 +185,48 @@
 		grid-template-columns: repeat(6, 1fr);
 		grid-template-rows: auto 1fr 1fr auto;
 		min-width: 66.67vw;
-	}
-	.deck-info {
-		grid-column: span 2;
 
-		&:nth-of-type(2),
-		&:nth-of-type(3) {
-			@include deck-info-box-wide();
-		}
-		&:nth-of-type(2) {
-			grid-column: 1 / 4;
-		}
-		&:nth-of-type(3) {
-			grid-column: 4 / 7;
-			border-right-width: 0;
-		}
-		&:nth-of-type(6) {
-			border-right-width: 0;
-		}
-	}
-	.deck-name {
-		grid-column: span 6;
-	}
-	.deck-views {
-		grid-column: span 6;
-		white-space: normal;
+		.deck-info {
+			grid-column: span 2;
 
-		a {
-			width: min-content;
-			line-height: $line-height-standard*.875;
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				@include deck-info-box-wide();
+			}
+			&:nth-of-type(2) {
+				grid-column: 1 / 4;
+			}
+			&:nth-of-type(3) {
+				grid-column: 4 / 7;
+				border-right-width: 0;
+			}
+			&:nth-of-type(6) {
+				border-right-width: 0;
+			}
+		}
+		.deck-name {
+			grid-column: span 6;
+		}
+		.deck-views {
+			grid-column: span 6;
+			white-space: normal;
+
+			a {
+				width: min-content;
+				line-height: $line-height-standard*.875;
+			}
 		}
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck-header {
 		border-radius: $border-radius-group;
-	}
-	.deck-info {
-		&:nth-of-type(2),
-		&:nth-of-type(3) {
-			@include deck-info-box-narrow();
+
+		.deck-info {
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				@include deck-info-box-narrow();
+			}
 		}
 	}
 }

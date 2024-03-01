@@ -1,5 +1,5 @@
 <template>
-	<div class="draw-simulator card-image-scroll-view">
+	<div class="draw-simulator">
 		<div class="control-panel">
 			<section class="deck-info">
 				<h3>Cards&nbsp;in Library</h3>
@@ -9,16 +9,19 @@
 				<h3>Drawn Cards</h3>
 				<div class="output">{{ drawnList.length }}</div>
 			</section>
-			<button
-				@click="drawCard()"
-				:disabled="library.length === 0"
-				:title="(library.length) === 0 ? 'There are no more cards left to draw.' : null"
-			>Draw a Card</button>
-			<button
-				@click="restart()"
-				:disabled="drawnList.length === 0"
-			>Restart</button>
+			<div class="button-container">
+				<button
+					@click="drawCard()"
+					:disabled="library.length === 0"
+					:title="(library.length === 0) ? 'There are no cards left to draw.' : null"
+				>Draw a Card</button>
+				<button
+					@click="restart()"
+					:disabled="drawnList.length === 0"
+				>Restart</button>
+			</div>
 		</div>
+
 		<section class="card-list-section">
 			<header class="screen-readers-only">
 				<h3>Drawn Cards</h3>
@@ -161,5 +164,6 @@ export default {
 </script>
 
 <style lang="scss">
+	@import '@/sass/card-list.scss';
 	@import '@/sass/page-draw-simulator.scss';
 </style>
