@@ -1,10 +1,19 @@
-.control-panel {
-	border-radius: $border-radius-group;
-	background: $color-group-bg;
-	width: 100%;
-	display: grid;
+@import 'variables';
+@import 'card-list';
 
-	&.viewing-controls {
+.deck-editor {
+	margin: 0 auto $lhse*.5;
+	display: grid;
+	grid-template-areas:
+		'card-img panel-1'
+		'card-img card-list'
+		'card-img panel-2';
+	grid-template-rows: min-content max-content 100%;
+	grid-template-columns: auto auto;
+	gap: $margin-card-gap-after $lhse*.5;
+	justify-content: center;
+
+	.viewing-controls {
 		grid-template-columns: 1fr 1fr;
 		grid-area: panel-1;
 		min-height: 0%; // Needed for Firefox on sideboard lists
@@ -17,31 +26,9 @@
 			border-bottom: $border-sections;
 		}
 	}
-	&.action-controls {
+	.action-controls {
 		grid-area: panel-2;
 		align-self: flex-start;
-	}
-	section {
-		padding: $lhse*.125 $lhse*.5;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	label,
-	h3 {
-		display: block;
-		margin-top: -$lhse*.125;
-		margin-right: divide(1em, 3);
-		margin-left: divide(1em, 3);
-		color: $color-text;
-		font: $font-weight-semibold #{83.33%}/#{1} $font-family-standard;
-	}
-	.radio-fieldset {
-		label {
-			@include heading-font;
-			@include label-text-style;
-			margin-top: 0;
-		}
 	}
 }
 .card-sorter {
@@ -230,14 +217,16 @@
 }
 
 @mixin viewing-controls-single-layer-compressed {
-	.control-panel.viewing-controls {
-		grid-template-columns: auto auto;
-		height: $height-deck-header-component;
+	.deck-editor {
+		.viewing-controls {
+			grid-template-columns: auto auto;
+			height: $height-deck-header-component;
 
-		.card-sorter label,
-		.card-group-switch h3 {
-			padding: 0 divide($lhse, 3) 0 0;
-			margin: divide(-$lhse, 12) 0 0 0;
+			.card-sorter label,
+			.card-group-switch h3 {
+				padding: 0 divide($lhse, 3) 0 0;
+				margin: divide(-$lhse, 12) 0 0 0;
+			}
 		}
 	}
 	.card-sorter {
@@ -258,14 +247,16 @@
 	}
 }
 @mixin viewing-controls-single-layer {
-	.control-panel.viewing-controls {
-		height: $lhse*3.125; // Adjust to a height that prevents wide gaps between card buttons.
+	.deck-editor {
+		.viewing-controls {
+			height: $lhse*3.125; // Adjust to a height that prevents wide gaps between card buttons.
 
-		.card-sorter label,
-		.card-group-switch h3 {
-			padding-right: 0;
-			padding-bottom: $lhse*.25;
-			margin-top: -$lhse*.125;
+			.card-sorter label,
+			.card-group-switch h3 {
+				padding-right: 0;
+				padding-bottom: $lhse*.25;
+				margin-top: -$lhse*.125;
+			}
 		}
 	}
 	.card-sorter {
@@ -281,10 +272,12 @@
 	}
 }
 @mixin viewing-controls-double-layers {
-	.control-panel.viewing-controls {
-		grid-template-rows: 1fr 1fr;
-		grid-template-columns: auto;
-		height: auto;
+	.deck-editor {
+		.viewing-controls {
+			grid-template-rows: 1fr 1fr;
+			grid-template-columns: auto;
+			height: auto;
+		}
 	}
 	.card-sorter {
 		border-bottom: $border-sections;
@@ -294,9 +287,11 @@
 	}
 }
 @mixin action-controls-single-layer {
-	.control-panel.action-controls {
-		grid-template-columns: min-content auto min-content;
-		grid-template-rows: auto;
+	.deck-editor {
+		.action-controls {
+			grid-template-columns: min-content auto min-content;
+			grid-template-rows: auto;
+		}
 	}
 	.scryfall-opener {
 		border-bottom-width: 0;
@@ -325,9 +320,11 @@
 	}
 }
 @mixin action-controls-double-layers {
-	.control-panel.action-controls {
-		grid-template-columns: fit-content auto;
-		grid-template-rows: auto auto;
+	.deck-editor {
+		.action-controls {
+			grid-template-columns: fit-content auto;
+			grid-template-rows: auto auto;
+		}
 	}
 	.scryfall-opener {
 		border-bottom: $border-sections;
@@ -349,9 +346,11 @@
 	}
 }
 @mixin action-controls-double-layers-compressed {
-	.control-panel.action-controls {
-		grid-template-rows: 1fr 1fr;
-		grid-template-columns: 1fr 1fr;
+	.deck-editor {
+		.action-controls {
+			grid-template-rows: 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 	.scryfall-opener {
 		grid-row: 2;
@@ -380,10 +379,23 @@
 }
 @media (max-width: $min-width-app) {
 	@include action-controls-double-layers;
+
+	.deck-editor {
+		max-width: $max-width-deck-page-layout;
+	}
 }
-@media (max-width: ($min-width-app * .75)) {
+@media (max-width: $width-deck-hidden-image) {
 	@include viewing-controls-single-layer-compressed;
 	@include action-controls-single-layer;
+
+	.deck-editor {
+		grid-template-areas:
+			'panel-1'
+			'card-list'
+			'panel-2';
+		grid-template-columns: auto;
+		gap: $margin-card-gap-after 0;
+	}
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include viewing-controls-single-layer;
@@ -393,6 +405,9 @@
 	@include viewing-controls-double-layers;
 	@include action-controls-double-layers-compressed();
 
+	.deck-editor {
+		max-width: 100vw;
+	}
 	.card-adder {
 		button {
 			width: auto;

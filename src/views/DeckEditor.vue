@@ -89,5 +89,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-list.scss';
+	@import '@/sass/page-deck-editor.scss';
 </style>

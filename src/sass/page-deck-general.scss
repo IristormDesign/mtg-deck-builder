@@ -1,24 +1,11 @@
 @import 'variables';
 @import 'deck-header';
-@import 'deck-control-panels';
 
 .deck {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
-}
-.deck-editor {
-	margin: 0 auto $lhse*.5;
-	display: grid;
-	grid-template-areas:
-		'card-img panel-1'
-		'card-img card-list'
-		'card-img panel-2';
-	grid-template-rows: min-content max-content 100%;
-	grid-template-columns: auto auto;
-	gap: $margin-card-gap-after $lhse*.5;
-	justify-content: center;
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
@@ -53,6 +40,36 @@
 		color: $color-text;
 	}
 }
+.control-panel {
+	border-radius: $border-radius-group;
+	overflow: hidden;
+	background: $color-group-bg;
+	width: 100%;
+	display: grid;
+
+	section {
+		padding: $lhse*.125 $lhse*.5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	label,
+	h3 {
+		display: block;
+		margin-top: -$lhse*.125;
+		margin-right: divide(1em, 3);
+		margin-left: divide(1em, 3);
+		color: $color-text;
+		font: $font-weight-semibold #{83.33%}/#{1} $font-family-standard;
+	}
+	.radio-fieldset {
+		label {
+			@include heading-font;
+			@include label-text-style;
+			margin-top: 0;
+		}
+	}
+}
 
 @media (max-width: $width-app-breakpoint) {
 	.deck-info {
@@ -67,34 +84,10 @@
 		}
 	}
 }
-@media (max-width: $min-width-app) {
-	.deck-editor,
-	.page-draw-simulator {
-		max-width: calc(100vw - #{$lhse*3});
-	}
-}
-@media (max-width: ($min-width-app*.875)) {
-	.deck-editor {
-		grid-template-columns: 5fr 7fr;
-	}
-}
-@media (max-width: $width-deck-hidden-image) {
-	.deck-editor {
-		grid-template-areas:
-			'panel-1'
-			'card-list'
-			'panel-2';
-		grid-template-columns: auto;
-		gap: $margin-card-gap-after 0;
-	}
-}
 @media (max-width: ($min-width-app * .5)) {
 	.deck {
 		.wrap {
 			padding: 0 divide($lhse, 4);
 		}
-	}
-	.deck-editor {
-		max-width: 100vw;
 	}
 }

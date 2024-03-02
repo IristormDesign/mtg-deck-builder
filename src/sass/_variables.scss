@@ -98,6 +98,7 @@ $width-card-buttons-wide: $lhse*23; // Set to have the width between the card na
 $width-card-buttons-narrow: $lhse*11.75;
 $width-card-star: 2em;
 $width-qty-column: $lhse*1.5;
+$max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 
 // BORDERS
 $border-sections: 1px solid $color-section-border;

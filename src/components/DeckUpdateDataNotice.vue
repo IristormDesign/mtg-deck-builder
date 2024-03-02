@@ -101,5 +101,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck.scss';
+	@import '@/sass/page-deck-general.scss';
 </style>
