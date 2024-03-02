@@ -18,6 +18,7 @@
 		grid-template-columns: 1fr 1fr 2fr;
 		align-items: center;
 		overflow: hidden;
+		width: $width-card-buttons-wide + $width-card-star - $lhse*.5;
 		height: $height-deck-header-component;
 	}
 	.deck-info {
@@ -59,11 +60,12 @@
 	}
 }
 
-@media (max-width: $min-width-app) {
+@media (max-width: $width-app-breakpoint-tablet) {
 	.draw-simulator {
 		.control-panel {
 			grid-template-rows: repeat(2, $height-deck-header-component);
 			grid-template-columns: repeat(2, 1fr);
+			width: auto;
 			height: auto;
 		}
 		.deck-info {
