@@ -83,7 +83,7 @@ $min-width-app: 960px;
 $width-mobile-breakpoint: $min-width-app * .625;
 $width-app-breakpoint: $min-width-app*1.375;
 $width-app-breakpoint-tablet: 1024px - 1;
-$width-deck-hidden-image: 720px; // Must match window width in JavaScript.
+$width-deck-hidden-image: 768px; // Must match window width in JavaScript.
 $max-width-app: 1440px - 1;
 $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.

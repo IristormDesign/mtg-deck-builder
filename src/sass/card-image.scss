@@ -187,11 +187,6 @@ $animation-duration-card-browse: .3820s;
 		width: min(#{488px * .6667}, 38.20vw);
 	}
 }
-@media (max-width:($width-app-breakpoint-tablet*.8)) {
-	.card-image {
-		width: min(#{488px * .6667}, 33.33vw);
-	}
-}
 @media (max-width: $width-deck-hidden-image) {
 	.card-image {
 		z-index: index($layers, app-header);
