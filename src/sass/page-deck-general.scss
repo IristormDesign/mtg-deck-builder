@@ -9,12 +9,16 @@
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
-	background: $color-mythic-very-dim;
+	background-color: $color-mythic-very-dim;
+	background-image: $gradient-background-sideboard;
+	border: 1px solid $color-section-border-alt;
 	color: $color-text-over-mythic-very-dim;
 	padding: $lhse*.375 4.17% $lhse*.5;
-	margin: $lhse*.5 auto;
+	margin: 0 auto $lhse;
 	text-align: center;
 	text-wrap: balance;
+	max-width: $max-width-content*.6667;
+	width: 100vw;
 
 	strong {
 		color: inherit;

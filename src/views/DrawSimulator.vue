@@ -36,7 +36,7 @@
 				v-else-if="library.length > 0"
 				class="no-cards"
 			>
-				<p>Each card you draw will be listed here.</p>
+				<p>Each card you draw from your shuffled library will be listed here.</p>
 				<p>To begin, click on the “Draw a Card” button.</p>
 			</div>
 			<div

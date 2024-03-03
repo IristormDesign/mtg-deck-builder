@@ -2,7 +2,7 @@
 	<div v-if="deckDataOutdated" class="wrap">
 		<aside class="outdated-deck-data-notice">
 			<template v-if="!updatingDeckData">
-				<p>⚠ This deck is using an outdated set of card data. Update it to get enhanced app features!</p>
+				<p>⚠ This deck is using an outdated set of card data. Update it now to get enhanced app features!</p>
 				<div
 					v-if="!updatingDeckData"
 					class="button-container"
