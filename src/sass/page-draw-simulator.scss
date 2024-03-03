@@ -128,3 +128,17 @@
 		}
 	}
 }
+@media (max-width: ($min-width-app * .4)) {
+	.draw-simulator {
+		max-width: 100vw;
+
+		.control-panel {
+			grid-template-rows: auto $height-deck-header-component;
+		}
+		.deck-info {
+			h3 {
+				width: min-content
+			}
+		}
+	}
+}
