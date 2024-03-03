@@ -86,7 +86,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 	aspect-ratio: 488 / 680;
 
 	@supports (aspect-ratio: auto) {
-		outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
+		outline: divide($lhse, 3) dashed rgba($color-text, .2);
 		outline-offset: -$lhse*.75;
 	}
 	.card-edge {
@@ -214,7 +214,7 @@ $animation-duration-card-browse: .3820s;
 
 			&:hover,
 			&:focus {
-				transform: none;
+				transform: none !important;
 			}
 		}
 		img {
