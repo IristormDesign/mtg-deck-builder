@@ -52,6 +52,10 @@ export default {
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('showSideboard', false)
 		next()
+		this.$store.commit('focusCardButton', null)
+
+		next()
+
 		this.prepareDecksWithOutdatedData()
 	},
 	created () {

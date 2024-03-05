@@ -83,8 +83,16 @@ export default {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
-					} else {
-						this.$store.commit('focusCardButton', this.card.name)
+					} else { // The card image popup has now been hidden.
+						const lis = document.querySelector('.card-list-section').querySelectorAll('li')
+
+						for (let i = 0; i < lis.length; i++) {
+							if (i === this.$store.state.focusCardButton) {
+								lis[i].querySelector('.card-button').focus()
+
+								break
+							}
+						}
 					}
 				})
 			}

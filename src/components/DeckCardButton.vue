@@ -1,8 +1,7 @@
 <template>
 	<button
-		@click="viewCard(card)"
+		@click="clickCardButton()"
 		:class="['card-button', setButtonColor]"
-		:ref="card.name"
 	>
 		<div class="card-label-group">
 			<h4 class="name">{{ card.name }}</h4>
@@ -23,7 +22,8 @@ export default {
 	mixins: [cardListFunctions, symbolsMarkup],
 	props: {
 		card: Object,
-		deck: Object
+		deck: Object,
+		i: Number
 	},
 	computed: {
 		setButtonColor () {
@@ -86,15 +86,11 @@ export default {
 			return this.$store.state.focusCardButton
 		}
 	},
-	watch: {
-		/**
-		 * Return the browser focus to the card's button after the user has closed the card image pop-up (at narrow viewports).
-		 * @param {string} cardToFocus
-		 */
-		focusCardButton (cardToFocus) {
-			if (this.card.name === cardToFocus) {
-				this.$refs[cardToFocus].focus()
-			}
+	methods: {
+		clickCardButton () {
+			this.viewCard(this.card)
+
+			this.$store.commit('focusCardButton', this.i)
 		}
 	}
 }

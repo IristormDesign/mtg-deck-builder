@@ -9,7 +9,7 @@
 			:class="(card.gapAfter) ? 'gap-after' : null"
 		>
 			<card-star :card="card" :deck="deck" :i="i" />
-			<card-button :card="card" :deck="deck" />
+			<card-button :card="card" :deck="deck" :i="i" />
 			<card-quantity :card="card" :deck="deck" :i="i" />
 		</li>
 	</transition-group>

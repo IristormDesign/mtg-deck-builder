@@ -29,7 +29,7 @@
 			<ul v-if="drawnList.length > 0">
 				<li v-for="(card, i) in drawnList" :key="i">
 					<card-star :card="card" :deck="deck" :i="i" />
-					<card-button :card="card" :deck="deck" />
+					<card-button :card="card" :deck="deck" :i="i" />
 				</li>
 			</ul>
 			<div
