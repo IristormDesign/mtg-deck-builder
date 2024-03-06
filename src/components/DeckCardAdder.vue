@@ -81,7 +81,7 @@ export default {
 			}
 		},
 		loadingCard (loading) {
-			if (window.innerWidth > 768 && !loading) {
+			if (!this.$store.state.isMobileLayout() && !loading) {
 				this.$nextTick(() => {
 					this.$refs.focusCardAdder.focus()
 				})

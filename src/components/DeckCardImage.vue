@@ -79,12 +79,14 @@ export default {
 			this.checkForOutdatedImageURLs()
 		},
 		showCard (isShowing) {
-			if (this.mobileView() && this.card) {
+			if (this.$store.state.isMobileLayout() && this.card) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
 					} else { // The card image popup has now been hidden.
-						const lis = document.querySelector('.card-list-section').querySelectorAll('li')
+						const lis = document
+							.querySelector('.card-list-section')
+							.querySelectorAll('li')
 
 						for (let i = 0; i < lis.length; i++) {
 							if (i === this.$store.state.focusCardButton) {
@@ -114,14 +116,9 @@ export default {
 	},
 	methods: {
 		showCardPerViewport () {
-			if (this.mobileView()) {
-				this.$store.commit('showCard', false)
-			} else {
-				this.$store.commit('showCard', true)
-			}
-		},
-		mobileView () {
-			return window.innerWidth <= 768 // Must match media query's width in CSS.
+			this.$store.commit(
+				'showCard', !this.$store.state.isMobileLayout()
+			)
 		},
 		letEscKeyCloseCardImagePopup () {
 			document.addEventListener('keyup', (event) => {
@@ -131,12 +128,12 @@ export default {
 			})
 		},
 		hideCDOverlay () {
-			if (this.mobileView()) {
+			if (this.$store.state.isMobileLayout()) {
 				this.$store.commit('showCard', false)
 			}
 		},
 		resizingViewport () {
-			if (this.mobileView()) {
+			if (this.$store.state.isMobileLayout()) {
 				this.hideCDOverlay()
 			} else {
 				this.$store.commit('showCard', true)
