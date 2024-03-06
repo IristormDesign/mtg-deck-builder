@@ -39,7 +39,7 @@ $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
-$color-section-border: desaturate(lighten($color-group-bg, 12.5%), 4.17%);
+$color-section-border: $color-heading-bg;
 
 // INDIGO-BASED COLORS
 $color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement

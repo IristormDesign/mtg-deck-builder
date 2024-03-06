@@ -22,7 +22,7 @@
 			display: grid;
 			grid-template-columns: 4fr 1fr;
 			grid-template-rows: min-content $lhse;
-			gap: divide($lhse, 2) 0;
+			gap: $lhse*.25 0;
 			align-items: center;
 			margin: $lhse*.25 0;
 		}
