@@ -4,7 +4,7 @@
 			v-if="!loadingCard"
 			@submit.prevent="handleSubmit()"
 		>
-			<label for="card-input">Add a card to this {{activeCardListString}}:</label>
+			<label for="card-input">Add a card name to this {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
 				:placeholder="inputPlaceholder"
@@ -65,7 +65,7 @@ export default {
 		},
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
-				return '(Enter the name of a card here.)'
+				return '(Enter a card’s name here.)'
 			} else {
 				return null
 			}
