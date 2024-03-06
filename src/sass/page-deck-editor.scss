@@ -384,10 +384,9 @@
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
+	@include action-controls-double-layers;
 }
 @media (max-width: $min-width-app) {
-	@include action-controls-double-layers;
-
 	.deck-editor {
 		max-width: $max-width-deck-page-layout;
 	}
