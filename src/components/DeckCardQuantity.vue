@@ -82,7 +82,6 @@ export default {
 		validateQty (card) {
 			const store = this.$store
 			const deck = this.deck
-			const cardName = card.name
 			const activeCardList = this.activeCardList
 			card.qty = Math.round(card.qty)
 
@@ -92,13 +91,13 @@ export default {
 				store.commit('decks', store.state.decks)
 			}
 
-			activeCardList.viewedCard = cardName
+			activeCardList.viewedCard = card
 
 			if (deck.sortBy === 'qty') {
 				deck.sortBy = ''
 			}
 			if (card.qty <= 0) {
-				const confirmRemoval = confirm(`Remove “${cardName}” from the deck?`)
+				const confirmRemoval = confirm(`Remove “${card.name}” from the deck?`)
 
 				if (confirmRemoval) {
 					const cards = activeCardList.cards
@@ -106,11 +105,11 @@ export default {
 					const totalCards = cards.length - 1
 
 					// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-					if (activeCardList.viewedCard === cardName && totalCards > 0) {
+					if (activeCardList.viewedCard.name === card.name && totalCards > 0) {
 						if (cardIndex === totalCards) { // If this card is last in the list...
-							activeCardList.viewedCard = cards[cardIndex - 1].name
+							activeCardList.viewedCard = cards[cardIndex - 1]
 						} else {
-							activeCardList.viewedCard = cards[cardIndex + 1].name
+							activeCardList.viewedCard = cards[cardIndex + 1]
 						}
 					}
 

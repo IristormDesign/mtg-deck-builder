@@ -23,7 +23,7 @@ export default {
 			const deck = this.deck
 
 			deck.editDate = new Date()
-			this.activeCardList.viewedCard = card.name
+			this.activeCardList.viewedCard = card
 
 			if (deck.sortBy === 'starred') {
 				deck.sortBy = ''

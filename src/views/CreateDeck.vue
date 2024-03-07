@@ -105,10 +105,10 @@ export default {
 					path: path,
 					sideboard: {
 						cards: [],
-						viewedCard: ''
+						viewedCard: null
 					},
 					sortBy: '',
-					viewedCard: ''
+					viewedCard: null
 				})
 
 				store.commit('decks', updatedDecksArray)

@@ -48,7 +48,7 @@ export default {
 	},
 	computed: {
 		card () {
-			if (this.$route.path.includes('/draw-simulator')) {
+			if (this.$route.name === 'drawSimulator') {
 				return this.$store.state.viewedDrawnCard
 			} else if (this.$store.state.showSideboard) {
 				return this.deck.sideboard.viewedCard
