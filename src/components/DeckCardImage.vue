@@ -54,7 +54,9 @@ export default {
 				)
 			}
 
-			if (this.$store.state.showSideboard) {
+			if (this.$route.path.includes('/draw-simulator')) {
+				return this.$store.state.viewedDrawnCard
+			} else if (this.$store.state.showSideboard) {
 				return findCurrentCard(this.deck.sideboard)
 			} else {
 				return findCurrentCard(this.deck)

@@ -66,8 +66,7 @@ export default {
 		return {
 			afterReshuffle: false,
 			drawnList: [],
-			library: [],
-			viewedCardBefore: ''
+			library: []
 		}
 	},
 	computed: {
@@ -96,15 +95,14 @@ export default {
 		}
 	},
 	mounted () {
-		this.viewedCardBefore = this.deck.viewedCard
-
 		this.prepareCards()
 	},
 	destroyed () {
-		this.deck.viewedCard = this.viewedCardBefore
 	},
 	methods: {
 		prepareCards () {
+			this.$store.commit('viewedDrawnCard', null)
+
 			if (this.drawnList.length === 0) {
 				this.deck.cards.forEach(card => {
 					for (let i = 0; i < card.qty; i++) {
@@ -117,7 +115,6 @@ export default {
 			}
 
 			this.shuffleLibrary()
-			this.deck.viewedCard = null
 		},
 		/**
 		 * Shuffle the deck's cards using the Fisher-Yates method of array randomization.
@@ -151,7 +148,7 @@ export default {
 				} else {
 					this.library.splice(0, 1)
 					this.drawnList.unshift(card)
-					this.deck.viewedCard = card.name
+					this.viewCard(card)
 					this.afterReshuffle = false
 				}
 			}
