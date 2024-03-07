@@ -97,8 +97,6 @@ export default {
 	mounted () {
 		this.prepareCards()
 	},
-	destroyed () {
-	},
 	methods: {
 		prepareCards () {
 			this.$store.commit('viewedDrawnCard', null)
