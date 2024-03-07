@@ -48,18 +48,12 @@ export default {
 	},
 	computed: {
 		card () {
-			function findCurrentCard (group) {
-				return group.cards.find(card =>
-					card.name === group.viewedCard
-				)
-			}
-
 			if (this.$route.path.includes('/draw-simulator')) {
 				return this.$store.state.viewedDrawnCard
 			} else if (this.$store.state.showSideboard) {
-				return findCurrentCard(this.deck.sideboard)
+				return this.deck.sideboard.viewedCard
 			} else {
-				return findCurrentCard(this.deck)
+				return this.deck.viewedCard
 			}
 		},
 		cardColorClass () {

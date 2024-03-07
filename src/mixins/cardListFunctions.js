@@ -21,9 +21,9 @@ export default {
 			if (this.$route.path.includes('/draw-simulator')) {
 				store.commit('viewedDrawnCard', card)
 			} else if (store.state.showSideboard) {
-				this.deckObject.sideboard.viewedCard = card.name
+				this.deckObject.sideboard.viewedCard = card
 			} else {
-				this.deckObject.viewedCard = card.name
+				this.deckObject.viewedCard = card
 			}
 
 			store.commit('decks', store.state.decks)
