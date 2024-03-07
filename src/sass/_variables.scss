@@ -7,26 +7,28 @@
 // ORANGE-BASED COLORS
 $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 40%);
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 41.67%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
-$color-link: lighten($color-mythic-orange, 12.5%);
-$color-link-focus: saturate(lighten($color-mythic-orange, 4.17%), 8.33%);
-$color-link-dark: color.scale($color-link, $lightness: -33.33%); // Darkened enough to just NOT pass color contrast accessibility check.
-$color-link-dim: color.scale($color-link, $saturation: -50%);
+$color-link: lighten($color-mythic-orange, 16.67%);
+$color-link-focus: saturate(lighten($color-mythic-orange, 6.25%), 8.33%);
+$color-link-dark: color.scale($color-link,
+	$lightness: -33.33%, $saturation: -16.67%
+); // Lightness darkened enough to just NOT pass color contrast accessibility check.
+$color-link-dim: desaturate(darken($color-link, 4.17%), 40%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 12.5%), 4.17%); // Desaturate and lighten percentages match those of $color-section-border.
 
 // YELLOW-BASED COLORS
-$color-mythic-lighter: #ff9624; // #FFF with overlay blend on mythic-orange
-$color-link-active: lighten($color-mythic-lighter, 12.5%);
-$color-mythic-yellow: $color-mythic-lighter;
-$color-button-mythic-lighter: desaturate(lighten($color-mythic-lighter, 6.25%), 16.67%);
-$color-app-header-link: lighten($color-mythic-lighter, 20%);
+$color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
+$color-link-active: lighten($color-mythic-yellow, 12.5%);
+$color-button-mythic-lighter: desaturate(lighten($color-mythic-yellow, 6.25%), 16.67%);
+$color-app-header-link: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
-$color-input-bg-focus: darken($color-mythic-lighter, 45.83%);
-$color-background-alt: desaturate(lighten($color-mythic-lighter, 20.83%), 62.5%);
+$color-input-bg-focus: darken($color-mythic-yellow, 45.83%);
+$color-background-alt: desaturate(lighten($color-mythic-yellow, 20.83%), 62.5%);
 $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 
 // SKY-BLUE-BASED COLORS
@@ -42,7 +44,7 @@ $color-heading-bg: lighten($color-group-bg, 8.33%);
 $color-section-border: $color-heading-bg;
 
 // INDIGO-BASED COLORS
-$color-mythic-lighter-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
+$color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 
 // MISCELLANEOUS COLORS
 $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scryfall
@@ -59,7 +61,7 @@ $color-mana-red: adjust_hue(#f9aa8f, -2.8125deg); // Sampled
 $color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Sampled
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
 $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
-$color-frame-land: desaturate(lighten($color-mythic-lighter, 20.83%), 87.5%);
+$color-frame-land: desaturate(lighten($color-mythic-yellow, 20.83%), 87.5%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 4.17%), 37.5%);
 $color-frame-black: desaturate(lighten($color-mana-black, 3.125%), 0%);

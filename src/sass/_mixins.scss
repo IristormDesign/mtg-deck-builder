@@ -202,7 +202,7 @@
 	}
 }
 @mixin link-alt {
-	color: saturate(darken($color-mythic-lighter-complement, 6.25%), 50%);
+	color: saturate(darken($color-mythic-yellow-complement, 6.25%), 50%);
 
 	&:hover,
 	&:focus {
