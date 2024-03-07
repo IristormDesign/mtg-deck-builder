@@ -6,7 +6,6 @@
 
 // ORANGE-BASED COLORS
 $color-mythic-orange: #ea4b12; // Sampled
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 40%);
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 41.67%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: lighten($color-mythic-orange, 16.67%);
