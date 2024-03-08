@@ -13,8 +13,13 @@ $min-height-card-list: $lhse*6;
 		text-shadow: $text-shadow-over-light-bg;
 		padding: $lhse*.5;
 		color: $color-text-brighter;
-		text-wrap: balance;
 
+		p {
+			max-width: $max-width-narrow-message;
+			text-wrap: balance;
+			margin-right: auto;
+			margin-left: auto;
+		}
 		a {
 			text-shadow: revert;
 		}

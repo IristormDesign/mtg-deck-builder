@@ -8,10 +8,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	max-width: 100%;
 
 	.no-cards {
-		max-width: $max-width-content * .75;
-
 		p {
 			margin-top: 0;
+			max-width: $max-width-narrow-message;
 		}
 	}
 	.tables {

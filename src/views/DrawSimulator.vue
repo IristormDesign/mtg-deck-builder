@@ -36,15 +36,15 @@
 				v-else-if="library.length > 0"
 				class="no-cards"
 			>
-				<p>Each card you draw from your shuffled library will be listed here.</p>
+				<p>Your library is now shuffled. Each card you draw from it will be listed here.</p>
 				<p>To begin, click on the “Draw a Card” button.</p>
 			</div>
 			<div
 				v-else
 				class="no-cards"
 			>
-				<p>This deck hasn’t been built yet, so there are no cards to draw.</p>
-				<p>To use the draw simulator, first add cards to the deck’s main card group in the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
+				<p>There are no cards you can draw right now because this deck hasn’t been built yet.</p>
+				<p>To use the draw simulator, first add cards to the deck’s main group in the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
 			</div>
 		</section>
 
