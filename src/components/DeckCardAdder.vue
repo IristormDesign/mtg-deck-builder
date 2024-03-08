@@ -24,7 +24,7 @@
 					{{ name }}
 				</option>
 				<option value="#Random">
-					🎲 Add a randomly selected Magic card
+					🎲 Add a random Magic card
 				</option>
 			</datalist>
 			<button :disabled="delay">Add</button>

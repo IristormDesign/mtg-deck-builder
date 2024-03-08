@@ -111,6 +111,8 @@ export default {
 						} else {
 							activeCardList.viewedCard = cards[cardIndex + 1]
 						}
+					} else {
+						activeCardList.viewedCard = null
 					}
 
 					// Now remove the card from the deck.
