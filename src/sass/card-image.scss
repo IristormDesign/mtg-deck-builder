@@ -1,5 +1,6 @@
 @import 'variables';
 $height-card-image-section: #{680px * .6667};
+$transition-delay-card: divide(1, 3) * 1s;
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -63,6 +64,32 @@ $height-card-image-section: #{680px * .6667};
 		}
 	}
 }
+@mixin card-edge-filters ($position) {
+	$color-card-edge: darken(#fff, 70.83%);
+	$drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
+
+	@if $position == 'left' {
+		filter: drop-shadow(1px 1px 0 $color-card-edge);
+
+		&:hover,
+		&:focus-within {
+			filter:
+				drop-shadow(1px 1px 0 $color-card-edge)
+				$drop-shadow-card-shadow;
+		}
+	}
+	@if $position == 'right' {
+		filter: drop-shadow(-1px 1px 0 $color-card-edge);
+
+		&:hover,
+		&:focus-within {
+			filter:
+				drop-shadow(-1px 1px 0 $color-card-edge)
+				$drop-shadow-card-shadow;
+		}
+	}
+}
+
 @keyframes overshadowed {
 	0% {
 		filter: brightness(100%);
@@ -71,7 +98,6 @@ $height-card-image-section: #{680px * .6667};
 		filter: brightness(50%);
 	}
 }
-$transition-delay-card: divide(1, 3) * 1s;
 
 .card-image {
 	@include card-link('left');
@@ -91,7 +117,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 		outline-offset: -$lhse*.75;
 	}
 	.card-edge {
-		filter: $drop-shadow-card-image-edge;
+		@include card-edge-filters('left');
 		transition: filter $transition-duration-card-image-hover-fast ease 0s;
 		position: absolute;
 		width: 100%;
@@ -99,9 +125,6 @@ $transition-delay-card: divide(1, 3) * 1s;
 
 		&:hover,
 		&:focus-within {
-			filter:
-				$drop-shadow-card-image-edge
-			 	drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 			will-change: auto;
@@ -171,6 +194,10 @@ $animation-duration-card-browse: .3820s;
 .draw-simulator {
 	.card-image {
 		@include card-link('right');
+
+		.card-edge {
+			@include card-edge-filters('right');
+		}
 	}
 	.card-browse-enter-active {
 		@include card-fan-in-from('right');
