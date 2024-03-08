@@ -1,8 +1,15 @@
 <template>
-	<div class="more-stats content-box wrap">
-		<h3>More Deck Statistics</h3>
-
-		<div class="tables">
+	<div class="more-stats content-box">
+		<div
+			v-if="deck.cards.length <= 0"
+			class="no-cards"
+		>
+			<p>This deck’s main card group has no cards yet. Statistics about it will display here once you’ve added cards with the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
+		</div>
+		<div
+			v-else
+			class="tables"
+		>
 			<more-stats-colors :deck="deck" />
 
 			<more-stats-mana-values :deck="deck" />
@@ -26,18 +33,18 @@
 			</template>
 
 			<more-stats-misc :deck="deck" />
-		</div>
 
-		<footer>
-			<p v-if="deck.sideboard.cards.length >= 1">
-				<small>Note: These statistics ignore cards in the sideboard.</small>
-			</p>
-			<p>
-				<router-link :to="{ name: 'deckMain' }">
-					◂ Return to the card list
-				</router-link>
-			</p>
-		</footer>
+			<footer>
+				<p v-if="deck.sideboard.cards.length >= 1">
+					<small>Note: The statistics ignore cards in the sideboard.</small>
+				</p>
+				<p>
+					<router-link :to="{ name: 'deckEditor' }">
+						◂ Return to the deck editor
+					</router-link>
+				</p>
+			</footer>
+		</div>
 	</div>
 </template>
 

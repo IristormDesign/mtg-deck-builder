@@ -1,12 +1,16 @@
 <template>
-	<section class="card-display">
+	<section class="card-image">
 		<transition name="cd-overlay-fade">
 			<div
 				class="cd-overlay"
 				v-if="this.card && this.$store.state.showCard"
 				@click="hideCDOverlay()"
 			>
-				<transition name="card-browse" appear appear-active-class="card-browse-appear-active">
+				<transition
+					name="card-browse"
+					appear
+					appear-active-class="card-browse-appear-active"
+				>
 					<div class="card-edge" :key="card.name">
 						<a
 							:href="card.link"
@@ -14,13 +18,19 @@
 							ref="cardLink"
 						>
 							<div class="card-shape" :class="cardColorClass">
-								<img :src="card.img" width="488" height="680" :alt="card.name" />
+								<img
+									:src="card.img"
+									width="488"
+									height="680"
+									:alt="card.name"
+								/>
 							</div>
 						</a>
 					</div>
 				</transition>
 				<button
-					class="close" @click="hideCDOverlay()"
+					class="close"
+					@click="hideCDOverlay()"
 					title="Close this card popup"
 				>×</button>
 			</div>
@@ -38,22 +48,19 @@ export default {
 	},
 	computed: {
 		card () {
-			function findCurrentCard (group) {
-				return group.cards.find(card =>
-					card.name === group.viewedCard
-				)
-			}
-
-			if (this.$store.state.showSideboard) {
-				return findCurrentCard(this.deck.sideboard)
+			if (this.$route.name === 'drawSimulator') {
+				return this.$store.state.viewedDrawnCard
+			} else if (this.$store.state.showSideboard) {
+				return this.deck.sideboard.viewedCard
 			} else {
-				return findCurrentCard(this.deck)
+				return this.deck.viewedCard
 			}
 		},
 		cardColorClass () {
 			const color = this.card.colors[0]
+			const hasLandType = /\bLand\b/.test(this.card.type)
 
-			if (!color && /\bLand\b/.test(this.card.type)) {
+			if (!color && hasLandType) {
 				return 'land'
 			} else {
 				return color
@@ -68,15 +75,28 @@ export default {
 			this.checkForOutdatedImageURLs()
 		},
 		showCard (isShowing) {
-			if (this.mobileView()) {
+			if (this.$store.state.isMobileLayout() && this.card) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
-					} else {
-						this.$store.commit('focusCardButton', this.card.name)
+					} else { // The card image popup has now been hidden.
+						const lis = document
+							.querySelector('.card-list-section')
+							.querySelectorAll('li')
+
+						for (let i = 0; i < lis.length; i++) {
+							if (i === this.$store.state.focusCardButton) {
+								lis[i].querySelector('.card-button').focus()
+
+								break
+							}
+						}
 					}
 				})
 			}
+		},
+		$route () {
+			this.delayTransitionOfCardImage()
 		}
 	},
 	created () {
@@ -92,14 +112,9 @@ export default {
 	},
 	methods: {
 		showCardPerViewport () {
-			if (this.mobileView()) {
-				this.$store.commit('showCard', false)
-			} else {
-				this.$store.commit('showCard', true)
-			}
-		},
-		mobileView () {
-			return window.innerWidth <= 768 // Must match media query's width in CSS.
+			this.$store.commit(
+				'showCard', !this.$store.state.isMobileLayout()
+			)
 		},
 		letEscKeyCloseCardImagePopup () {
 			document.addEventListener('keyup', (event) => {
@@ -109,12 +124,12 @@ export default {
 			})
 		},
 		hideCDOverlay () {
-			if (this.mobileView()) {
+			if (this.$store.state.isMobileLayout()) {
 				this.$store.commit('showCard', false)
 			}
 		},
 		resizingViewport () {
-			if (this.mobileView()) {
+			if (this.$store.state.isMobileLayout()) {
 				this.hideCDOverlay()
 			} else {
 				this.$store.commit('showCard', true)
@@ -165,7 +180,23 @@ export default {
 			this.$nextTick(() => {
 				this.$store.commit('decks', this.$store.state.decks)
 			})
+		},
+		/**
+		 * This effect is used for navigating from one deck page directly to another at wide viewports.
+		 */
+		delayTransitionOfCardImage () {
+			if (this.$store.state.showCard) {
+				this.$store.state.showCard = false
+
+				this.$nextTick(() => {
+					this.$store.state.showCard = true
+				})
+			}
 		}
 	}
 }
 </script>
+
+<style lang="scss">
+	@import '@/sass/card-image.scss';
+</style>

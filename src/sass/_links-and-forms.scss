@@ -59,7 +59,7 @@ input {
 	line-height: 1;
 
 	&[type="text"] {
-		height: $height-deck-control-panel-input;
+		height: $height-control-panel-input;
 		padding: 0 divide($lhse, 3);
 	}
 }

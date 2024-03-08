@@ -1,3 +1,5 @@
+@import 'variables';
+
 .update-notification {
 	z-index: index($layers, update-notif);
 	background: $color-background-alt;

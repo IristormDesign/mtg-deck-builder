@@ -12,6 +12,7 @@ body {
 	color: $color-text;
 	background: $color-content-bg;
 	min-width: 320px;
+	contain: paint; // Needed for the draw simulator page's card image animations that appear from out of the viewport, and doesn't affect `sticky` positioning.
 }
 .fade-bg {
 	background: $color-content-bg;
@@ -39,17 +40,16 @@ body {
 .wrap {
 	max-width: $max-width-app;
 	margin: 0 auto;
-	padding: 0 $lhse*1.5;
+	padding: 0 $lhse;
 }
 main {
 	flex-grow: 1;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	position: relative;
 
 	.root-home-page & {
-		align-items: flex-start;
 		flex-grow: 0;
 	}
 	> article {
@@ -82,17 +82,13 @@ h3 {
 h4 {
 	font-size: 100%;
 }
-h5,
-h6 {
-	margin-top: $line-height-standard*.5rem;
-	margin-bottom: -$line-height-standard*.25rem;
-}
 h5 {
-	font-size: 87.5%;
+	font-size: 80%;
+	text-transform: uppercase;
 }
 h6 {
+	font-size: 60%;
 	text-transform: uppercase;
-	font-size: 75%;
 }
 p,
 ul,
@@ -126,6 +122,11 @@ ol {
 
 	ol {
 		list-style-type: lower-alpha;
+		margin: 0;
+
+		ol {
+			list-style-type: lower-roman;
+		}
 	}
 	li {
 		padding-left: .25em;
@@ -205,6 +206,11 @@ figcaption {
 @media (max-width: ($min-width-app*.875)) {
 	.wrap {
 		padding: 0 $lhse*.5;
+	}
+}
+@media (max-width: $width-deck-hidden-image) { // Must match window width in JavaScript.
+	body {
+		contain: none; // The card image animation effect isn't needed at this viewport, and the `contain: paint` style doesn't keep the card image centered as it should be.
 	}
 }
 

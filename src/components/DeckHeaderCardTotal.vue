@@ -5,8 +5,9 @@
 		<div class="output">
 			{{ totalCards }}
 			<span
-				class="warning-symbol" v-show="totalCards < 60"
-				title="Decks cannot have fewer than 60 cards."
+				class="warning-symbol"
+				v-show="showTotalsWarningSymbol"
+				:title="totalsWarningTitle"
 			>⚠</span>
 		</div>
 	</section>
@@ -27,6 +28,29 @@ export default {
 				}
 			})
 			return total
+		},
+		showTotalsWarningSymbol () {
+			const total = this.totalCards
+
+			return (
+				total < 60 ||
+				(total >= 90 && total < 100) ||
+				(total > 100 && total <= 110)
+			)
+		},
+		totalsWarningTitle () {
+			const total = this.totalCards
+
+			if (total < 60) {
+				return 'Decks for standard Magic games must have 60 cards minimum.'
+			} else if (
+				(total >= 90 && total < 100) ||
+				(total > 100 && total <= 110)
+			) {
+				return 'Decks for Commander games must have exactly 100 cards.'
+			} else {
+				return null
+			}
 		}
 	}
 }

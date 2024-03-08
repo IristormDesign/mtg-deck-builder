@@ -1,11 +1,11 @@
 <template>
 	<section id="m-deck-actions">
 		<h4>Deck Actions</h4>
-		<p>The deck actions section (labeled “Do Deck Action”) has a drop-down menu from which you can choose to do special actions to your decks. The options and their effects are the following:</p>
+		<p>The deck actions section (labeled “Do deck action”) has a drop-down menu from which you can choose to do special actions to your decks. The options and their effects are the following:</p>
 		<ul>
 			<li>
 				<h5>Copy</h5>
-				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying. You can give the deck copy a new name.</p>
+				<p>From the <a href="#m-deck-menu">deck you’re currently viewing</a>, create another deck that’s identical to it at the time of copying. The app lets you give the deck copy a new name.</p>
 				<p>Immediately after copying, the app takes you to the copy’s <a href="#m-deck-pages">deck page</a>.</p>
 			</li>
 			<li>

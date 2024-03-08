@@ -4,7 +4,7 @@
 			v-if="!loadingCard"
 			@submit.prevent="handleSubmit()"
 		>
-			<label for="card-input">Add a Card to This {{activeCardListString}}:</label>
+			<label for="card-input">Add a card name to this {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
 				:placeholder="inputPlaceholder"
@@ -24,7 +24,7 @@
 					{{ name }}
 				</option>
 				<option value="#Random">
-					🎲 Add a randomly selected Magic card
+					🎲 Add a random Magic card
 				</option>
 			</datalist>
 			<button :disabled="delay">Add</button>
@@ -58,14 +58,14 @@ export default {
 	computed: {
 		activeCardListString () {
 			if (this.$store.state.showSideboard) {
-				return 'Sideboard'
+				return 'sideboard'
 			} else {
-				return 'Deck'
+				return 'deck'
 			}
 		},
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
-				return '(Enter the name of a card here.)'
+				return '(Enter a card’s name here.)'
 			} else {
 				return null
 			}
@@ -81,7 +81,7 @@ export default {
 			}
 		},
 		loadingCard (loading) {
-			if (window.innerWidth > 768 && !loading) {
+			if (!this.$store.state.isMobileLayout() && !loading) {
 				this.$nextTick(() => {
 					this.$refs.focusCardAdder.focus()
 				})

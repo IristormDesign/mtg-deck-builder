@@ -75,6 +75,9 @@ export default {
 				if (name.length > 50) {
 					alert(this.alertNameTooLong(name.length))
 					this.$refs.focus.focus()
+				} else if (this.hasNoLetters(name)) {
+					alert(this.alertNoLetters())
+					this.$refs.focus.focus()
 				} else {
 					name = this.curlApostrophes(name)
 					this.createNewDeck(name)
@@ -102,10 +105,10 @@ export default {
 					path: path,
 					sideboard: {
 						cards: [],
-						viewedCard: ''
+						viewedCard: null
 					},
 					sortBy: '',
-					viewedCard: ''
+					viewedCard: null
 				})
 
 				store.commit('decks', updatedDecksArray)
@@ -153,7 +156,7 @@ export default {
 						this.alertFileImportError(this.fileName)
 					} else {
 						alert(
-							`⚠ File Import Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
+							`⚠ Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
 						)
 					}
 				} else {
@@ -250,14 +253,14 @@ export default {
 		},
 		alertFileImportError (fileName) {
 			alert(
-				`⚠ File Import Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
+				`⚠ Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
 			)
 		},
 		goToDeckPage (path) {
 			this.$store.commit('sortDeckMenu')
 
 			this.$router.push({
-				name: 'deckMain',
+				name: 'deckEditor',
 				params: { deckPath: path }
 			})
 		}

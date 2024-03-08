@@ -37,7 +37,7 @@ export default {
 
 					if (path !== this.$route.params.deckPath) {
 						this.$router.replace({
-							name: 'deckMain',
+							name: 'deckEditor',
 							params: { deckPath: path }
 						})
 					}

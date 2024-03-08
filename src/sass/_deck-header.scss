@@ -1,316 +1,232 @@
 .deck-header {
-	grid-column: span 7;
+	grid-column: span 6;
 	margin: $lhse auto;
 	display: grid;
-	grid-template-columns: 2fr repeat(6, min-content);
+	grid-template-columns: 1fr repeat(5, min-content);
+	grid-template-rows: auto auto;
 	align-items: center;
 	justify-content: space-between;
-}
-.deck-info {
-	display: flex;
-	height: 100%;
-	padding: $lhse*.375 $lhse*.5;
-	border: 0 solid $color-section-border;
-	border-right-width: 1px;
-	align-items: center;
-	justify-content: center;
-	background: $color-group-bg;
-	white-space: nowrap;
-	cursor: default;
-	color: $color-text-brighter;
-
-	&:first-of-type {
-		border-radius: $border-radius-button;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-	&:last-of-type {
-		border-radius: $border-radius-button;
-		border-bottom-left-radius: 0;
-		border-top-left-radius: 0;
-		border-right-width: 0;
-	}
-	h3 {
-		@include label-text-style;
-		margin: 0 $lhse*.5 0 0;
-		display: flex;
-		align-items: center;
-		text-align: right;
-	}
-	.output {
-		line-height: 1;
-		margin-top: -$lhse*.1; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
-	}
-}
-.deck-name {
-	padding-left: $lhse*.5;
-	justify-content: left;
-	max-width: 100%; // Needed for extremely long names with no spaces
+	border-radius: #{$lhse} / #{50%};
 	overflow: hidden;
+	max-width: 100%;
+	background: $color-group-bg;
 
-	button {
-		@include link;
-		text-decoration-thickness: 1.5px;
+	.deck-name {
+		padding: 0 $lhse*.5 0 $lhse*.75;
+		justify-content: left;
+		overflow: hidden;
 
-		h2 {
-			@include heading-font;
-			margin: 0;
-			color: inherit;
+		button {
+			@include link;
+			text-decoration-thickness: 1.5px;
+
+			h2 {
+				@include heading-font;
+				margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
+				color: inherit;
+				white-space: normal;
+			}
+		}
+	}
+	.deck-colors {
+		h3 {
+			white-space: normal;
+			width: min-content;
+		}
+		.output {
+			width: max-content;
+
+			&.size-mana-symbols {
+				margin-top: $lhse*.125;
+				margin-bottom: $lhse*.125;
+			}
+			&.no-colors {
+				font-size: 200%;
+				display: flex;
+			}
+			.mana-symbol {
+				opacity: $opacity-mana-symbols;
+			}
+		}
+	}
+	.average-mana-value {
+		.output {
+			font-size: 200%;
+		}
+	}
+	.date-edited {
+		h3 {
 			white-space: normal;
 		}
+		.output {
+			font-size: 87.5%;
+		}
 	}
-}
-.deck-colors {
-	h3 {
-		white-space: normal;
-		width: min-content;
-	}
-	.output {
-		width: max-content;
-
-		&.no-colors {
+	.card-names,
+	.card-total {
+		h3 {
+			white-space: normal;
+		}
+		.output {
 			font-size: 200%;
+		}
+	}
+	.card-total {
+		padding-right: $lhse*.75;
+		border-right-width: 0;
+
+		.output {
+			display: flex;
+			align-items: center;
+		}
+		.warning-symbol {
+			margin-left: .25em;
+		}
+	}
+	.deck-views {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0;
+		border-width: 0;
+		border-top: $border-sections;
+		max-width: 100%;
+		border-radius: 0;
+		grid-column: span 6;
+
+		h3,
+		li {
+			margin: 0 $lhse*.6667;
+		}
+		h3 {
+			font-size: 112.5%;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
 			display: flex;
 		}
-		.mana-symbol {
-			opacity: $opacity-mana-symbols;
+		li {
+			list-style: none;
 		}
-	}
-}
-.average-mana-value {
-	.output {
-		font-size: 200%;
-	}
-}
-.date-edited {
-	h3 {
-		white-space: normal;
-	}
-	.output {
-		font-size: 87.5%;
-	}
-}
-.card-names,
-.card-total {
-	h3 {
-		white-space: normal;
-	}
-	.output {
-		font-size: 200%;
-	}
+		a {
+			@include heading-font;
+			display: block;
+			padding: divide($lhse, 3) 0;
+			font-size: 87.5%;
+			text-align: center;
 
-}
-.card-total {
-	.output {
-		display: flex;
-		align-items: center;
-	}
-	.warning-symbol {
-		margin-left: .25em;
-	}
-}
-.more-stats-button {
-	a {
-		@include button;
-	}
-	a,
-	button {
-		font-size: 80%;
-		min-width: 6em; // Large enough to make the "More Stats" and "Card List" button labels equal in width.
-		height: $lhse*1.5;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	button {
-		&[disabled] {
-			cursor: not-allowed;
+			&.current-page {
+				opacity: .5;
+			}
 		}
 	}
 }
 
 @media (max-width: $width-app-breakpoint) {
 	.deck-header {
-		overflow: hidden;
 		display: grid;
-		grid-template-columns: repeat(5, minmax(auto, 1fr));
-		grid-template-rows: repeat(2, 1fr);
-		border-radius: $border-radius-group;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(3, auto);
 		background: $color-group-bg;
-		margin-bottom: $lhse*.75;
-	}
-	.deck-info {
-		border-radius: 0;
-		border-top-width: 1px;
-		border-right-width: 1px;
-		border-bottom-width: 0;
-		border-left-width: 0;
-		order: 2;
-		flex-grow: 1;
 
-		&:nth-last-of-type(2) {
+		.deck-name {
+			border-width: 0;
+			order: 0;
+			grid-column: span 5;
+			justify-content: center;
+
+			h2 {
+				text-align: center;
+				padding: 0 $lhse*.25;
+			}
+		}
+		.deck-colors {
+			.output {
+				display: grid;
+			}
+		}
+		.date-edited {
+			.output {
+				margin-top: $lhse*.0417;
+			}
+		}
+		.card-total {
 			border-right-width: 0;
+			padding-right: $lhse*.5;
 		}
-		h3 {
-			max-width: 100%;
-		}
-		.output {
-			display: flex;
-			max-height: $line-height-standard * 1.75rem;
-			align-items: center;
-		}
-	}
-	.deck-name,
-	.more-stats-button {
-		border-top-width: 0 !important;
-		height: auto;
-	}
-	.deck-name {
-		border-left-width: 0 !important;
-		border-radius: 0 !important;
-		order: 0;
-		grid-column: 2 / 5;
-		border-right-width: 0 !important;
-		justify-content: center;
-
-		h2 {
-			text-align: center;
-		}
-	}
-	.deck-colors {
-		.output {
-			display: grid;
-		}
-	}
-	.more-stats-button {
-		border-radius: 0 !important;
-		border-right-width: 0;
-		order: 1;
-		justify-self: flex-end;
-
-		a,
-		button {
-			width: 66.67%;
-		}
-	}
-}
-@media (max-width: ($min-width-app*1.25)) {
-	.deck-info {
-		justify-content: center;
-
-		h3 {
-			width: min-content;
+		.deck-views {
+			order: 2;
+			grid-column: span 5;
+			border-right-width: 0;
 		}
 	}
 }
 @media (max-width: $min-width-app) {
 	.deck-header {
-		grid-template-rows: repeat(2, min-content);
-	}
-	.deck-info {
-		flex-direction: column;
-		text-align: center;
-		justify-content: center;
-
-		h3 {
-			text-align: center;
-			margin: 0 0 $lhse*.25;
-			width: max-content;
+		.deck-info {
+			@include deck-info-box-narrow();
+		}
+		.deck-views {
+			h3 {
+				margin: $lhse*.25 auto $lhse*.125;
+			}
 		}
 	}
 }
 @media (max-width: ($min-width-app * .875)) {
 	.deck-header {
-		margin-top: $lhse*.5;
+		margin: $lhse*.5 auto;
+		grid-template-rows: auto 1fr 1fr auto;
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
 	.deck-header {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: auto 1fr 1fr;
-		width: min-content;
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: auto 1fr 1fr auto;
 		min-width: 66.67vw;
-	}
-	.deck-info,
-	.more-stats-button {
-		order: 1;
-	}
-	.deck-info {
-		border-top-width: 1px;
-		border-right-width: 0;
-		border-left-width: 1px;
-		padding-top: $lhse*.25;
-		padding-bottom: $lhse*.25;
 
-		&:first-of-type,
-		&:nth-of-type(2),
-		&:nth-of-type(5) {
-			border-left-width: 0;
-		}
-		&:last-of-type {
-			border-top-width: 1px !important;
-		}
-		h3 {
-			max-width: 100%;
-		}
-		.output {
-			height: auto;
-		}
-	}
-	.deck-name {
-		grid-column: span 3;
-		padding-top: divide($lhse, 2);
-		padding-bottom: divide($lhse, 2);
-	}
-	.more-stats-button {
-		width: 100%;
-		height: 100%;
+		.deck-info {
+			grid-column: span 2;
 
-		a,
-		button {
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				@include deck-info-box-wide();
+			}
+			&:nth-of-type(2) {
+				grid-column: 1 / 4;
+			}
+			&:nth-of-type(3) {
+				grid-column: 4 / 7;
+				border-right-width: 0;
+			}
+			&:nth-of-type(6) {
+				border-right-width: 0;
+			}
+		}
+		.deck-name {
+			grid-column: span 6;
+		}
+		.deck-views {
+			grid-column: span 6;
 			white-space: normal;
-			font-size: 87.5%;
-		}
-	}
-	.deck-colors {
-		.output {
-			&.size-mana-symbols {
-				margin-top: divide($lhse, 4);
+
+			a {
+				width: min-content;
+				line-height: $line-height-standard*.875;
 			}
 		}
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck-header {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: min-content repeat(3, 1fr);
-	}
-	.deck-info {
-		border-top-width: 0 !important;
-		border-right-width: 0 !important;
-		border-bottom-width: 1px !important;
-		border-left-width: 1px !important;
-		justify-content: center;
+		border-radius: $border-radius-group;
 
-		&:first-of-type,
-		&:nth-of-type(even) {
-			border-left-width: 0 !important;
-		}
-		&:last-of-type,
-		&:nth-last-of-type(2) {
-			border-top-width: 0 !important;
-			border-bottom-width: 0 !important;
-		}
-	}
-	.deck-name {
-		grid-column: span 2;
-		height: 100%;
-		font-size: 87.5%;
-	}
-	.date-edited {
-		.output {
-			margin-top: $lhse*.25;
+		.deck-info {
+			&:nth-of-type(2),
+			&:nth-of-type(3) {
+				@include deck-info-box-narrow();
+			}
 		}
 	}
 }

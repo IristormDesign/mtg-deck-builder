@@ -132,7 +132,7 @@ export default {
 				})
 		},
 		alertTimeout () {
-			alert('⚠ Sorry, but your card couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
+			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data) {
 			const newCard = {}
@@ -233,7 +233,7 @@ export default {
 
 			if (existingCard) {
 				if (this.optionalReplacement) {
-					const replaceCard = this.notifyCardExists(newCard.name, true)
+					const replaceCard = this.notifyCardExists(newCard, true)
 
 					if (replaceCard) {
 						newCard.qty = existingCard.qty
@@ -241,7 +241,7 @@ export default {
 						this.updateOldCard(newCard)
 					} // Else do nothing, because the user has chosen to not replace the card.
 				} else {
-					this.notifyCardExists(newCard.name)
+					this.notifyCardExists(newCard)
 				}
 			} else {
 				this.insertCardIntoDeck(newCard)
@@ -259,12 +259,12 @@ export default {
 			)
 		},
 		/**
-		 * @param {string} cardName The name of a card.
+		 * @param {Object} card The card object.
 		 * @param {boolean} confirmToReplace Set to `true` to show a `confirm()` and let the user decide on replacing the existing card. Otherwise, show only an `alert()`.
 		 * @returns {boolean} `true` if the card is to be replaced.
 		 */
-		notifyCardExists (cardName, confirmToReplace) {
-			this.activeCardList.viewedCard = cardName
+		notifyCardExists (card, confirmToReplace) {
+			this.activeCardList.viewedCard = card
 			this.loadingCard = false
 
 			const stringActiveCardList = () => {
@@ -280,14 +280,14 @@ export default {
 			if (confirmToReplace) {
 				// (Can't use a timeout here because it messes with the return.)
 				return confirm(
-					`”${cardName}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
+					`”${card.name}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
 				)
 			} else {
 				setTimeout(() => {
 					alert(
-						`”${cardName}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card, increase its quantity number in the card list instead.)`
+						`”${card.name}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
-				}, 25) // Duration should be just long enough to make the card display have a fully animated transition while the browser alert appears.
+				}, 25) // Duration should be just long enough to make the card image have a fully animated transition while the browser alert appears.
 			}
 		},
 		insertCardIntoDeck (newCard) {
@@ -299,7 +299,7 @@ export default {
 
 			deck.editDate = new Date()
 			deck.sortBy = ''
-			this.determineDeckColors(this.deck)
+			this.determineDeckColors()
 
 			deck.cards.forEach(eachCard => {
 				eachCard.gapAfter = false
@@ -309,7 +309,7 @@ export default {
 			})
 
 			this.$nextTick(() => {
-				this.activeCardList.viewedCard = newCard.name
+				this.activeCardList.viewedCard = newCard
 				this.$store.commit('decks', this.$store.state.decks)
 			})
 		}

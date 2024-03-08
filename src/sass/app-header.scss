@@ -1,18 +1,20 @@
 // NOTE: This SCSS file excludes the styles for the header menu, which are in _header-menu.scss instead.
 
+@import 'variables';
+
 :root {
 	--header-height: #{$height-app-header-short};
 	--header-top: calc(var(--header-height) * -1); // Multiplying a value by -1 is the only way to get a negative value with CSS custom properties.
 }
 .app-header {
 	background: $color-mythic-dim;
-	color: desaturate(lighten($color-mythic-dim, 45.83%), 8.33%);
+	color: desaturate(lighten($color-mythic-dim, 40%), 6.25%);
 	border: solid darken($color-mythic-dim, 8.33%);
 	border-width: 2px 0;
 	border-top-color: $color-mythic-dim;
 	z-index: index($layers, app-header);
 	height: var(--header-height);
-	box-shadow: 0 1px 0 rgba(#fff, .125);
+	box-shadow: 0 1px 0 1px rgba(#fff, .0833);
 	transition: all $transition-duration-standard ease;
 	will-change: top;
 

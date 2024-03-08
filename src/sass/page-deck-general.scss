@@ -1,0 +1,97 @@
+@import 'variables';
+@import 'deck-header';
+
+.deck {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+.outdated-deck-data-notice {
+	border-radius: $border-radius-group;
+	background-color: $color-mythic-very-dim;
+	background-image: $gradient-background-sideboard;
+	border: 1px solid $color-section-border-alt;
+	color: $color-text-over-mythic-very-dim;
+	padding: $lhse*.375 4.17% $lhse*.5;
+	margin: 0 auto $lhse;
+	text-align: center;
+	text-wrap: balance;
+	max-width: $max-width-content*.6667;
+	width: 100vw;
+
+	strong {
+		color: inherit;
+	}
+	.button-container {
+		height: $lhse*1.5;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	.updated-percentage {
+		display: inline-block;
+		min-width: 4ch;
+		text-align: right;
+	}
+}
+.deck-info {
+	@include deck-info-style;
+	color: $color-text;
+	min-height: $height-deck-header-component;
+
+	h3 {
+		color: $color-text;
+	}
+}
+.control-panel {
+	border-radius: $border-radius-group;
+	overflow: hidden;
+	background: $color-group-bg;
+	width: 100vw;
+	display: grid;
+
+	section {
+		padding: $lhse*.125 $lhse*.5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	label,
+	h3 {
+		display: block;
+		margin-top: -$lhse*.125;
+		margin-right: divide(1em, 3);
+		margin-left: divide(1em, 3);
+		color: $color-text;
+		font: $font-weight-semibold #{83.33%}/#{1} $font-family-standard;
+	}
+	.radio-fieldset {
+		label {
+			@include heading-font;
+			@include label-text-style;
+			margin-top: 0;
+		}
+	}
+}
+
+@media (max-width: $width-app-breakpoint) {
+	.deck-info {
+		border-width: 0;
+		border-top-width: 1px;
+		border-right-width: 1px;
+
+		.output {
+			display: flex;
+			max-height: $line-height-standard * 1.75rem;
+			align-items: center;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .5)) {
+	.deck {
+		.wrap {
+			padding: 0 divide($lhse, 4);
+		}
+	}
+}

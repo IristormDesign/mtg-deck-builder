@@ -1,54 +1,42 @@
-@keyframes card-fan-in {
-	0% {
-		opacity: 0;
-		transform: rotate(-5.625deg) translateX(-$lhse*6) translateY(-$lhse*2) scale(1.0833);
-	}
-	38.20% {
-		opacity: 1;
-	}
-}
-@keyframes overshadowed {
-	0% {
-		filter: brightness(100%);
-	}
-	100% {
-		filter: brightness(50%);
-	}
-}
+@import 'variables';
+$height-card-image-section: #{680px * .6667};
 $transition-delay-card: divide(1, 3) * 1s;
 
-.card-display {
-	position: sticky;
-	top: calc(
-		#{$lhse*.5} + var(--header-height) + var(--header-top)
-	);
-	transition: top $transition-duration-standard ease;
-	width: 25vw;
-	height: 100%;
-	aspect-ratio: #{488} / #{680}; // Numbers are equal to actual card image's width and height.
-	max-height: 100vh;
-	z-index: index($layers, card-overlay);
+@mixin card-fan-in-from ($enter-from) {
+	$transform: none;
 
-	.card-edge {
-		filter: $drop-shadow-card-image-edge;
-		transition: filter $transition-duration-card-image-hover-fast ease 0s;
-		position: absolute;
-		width: 100%;
-		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
+	@if $enter-from == 'left' {
+		$transform: rotate(-5.625deg) translateX(-$lhse*6)
+	}
+	@if $enter-from == 'right' {
+		$transform: rotate(5.625deg) translateX($lhse*6);
+	}
 
-		&:hover,
-		&:focus-within {
-			filter:
-				$drop-shadow-card-image-edge
-			 	drop-shadow(0 $lhse*.5 $lhse rgba(#000, .5));
-			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
-			will-change: auto;
+	@keyframes card-fan-in-#{$enter-from} {
+		0% {
+			opacity: 0;
+			transform: $transform translateY(-$lhse*2) scale(1.0833);
 		}
-		&:focus-within {
-			transition-delay: 0s;
+		38.20% {
+			opacity: 1;
 		}
 	}
+
+	animation-name: card-fan-in-#{$enter-from};
+}
+@mixin card-link ($rise-from) {
+	$translate: none;
+	$rotate: none;
+
+	@if $rise-from == 'left' {
+		$translate: translate($lhse*1.375, $lhse*1.75);
+		$rotate: rotate((-360/192) * 1deg);
+	}
+	@if $rise-from == 'right' {
+		$translate: translate(-$lhse*1.375, $lhse*1.75);
+		$rotate: rotate((360/192) * 1deg);
+	}
+
 	a {
 		position: absolute;
 		display: block;
@@ -61,8 +49,8 @@ $transition-delay-card: divide(1, 3) * 1s;
 		&:focus {
 			transform:
 				scale(1.3333)
-				translate($lhse*1.3333, $lhse*1.6667)
-			;
+				$translate
+				$rotate;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 		}
@@ -72,6 +60,76 @@ $transition-delay-card: divide(1, 3) * 1s;
 		&:active {
 			filter: contrast(125%);
 			transition-duration: 0s;
+			transition-delay: 0s;
+		}
+	}
+}
+@mixin card-edge-filters ($position) {
+	$color-card-edge: darken(#fff, 70.83%);
+	$drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
+
+	@if $position == 'left' {
+		filter: drop-shadow(1px 1px 0 $color-card-edge);
+
+		&:hover,
+		&:focus-within {
+			filter:
+				drop-shadow(1px 1px 0 $color-card-edge)
+				$drop-shadow-card-shadow;
+		}
+	}
+	@if $position == 'right' {
+		filter: drop-shadow(-1px 1px 0 $color-card-edge);
+
+		&:hover,
+		&:focus-within {
+			filter:
+				drop-shadow(-1px 1px 0 $color-card-edge)
+				$drop-shadow-card-shadow;
+		}
+	}
+}
+
+@keyframes overshadowed {
+	0% {
+		filter: brightness(100%);
+	}
+	100% {
+		filter: brightness(50%);
+	}
+}
+
+.card-image {
+	@include card-link('left');
+	grid-area: card-img;
+	position: sticky;
+	top: calc(
+		#{$lhse*.5} + var(--header-height) + var(--header-top)
+	);
+	transition: top $transition-duration-standard ease;
+	z-index: index($layers, card-overlay);
+	width: min(#{488px * .6667}, 25vw);
+	max-height: $height-card-image-section;
+	aspect-ratio: 488 / 680;
+
+	@supports (aspect-ratio: auto) {
+		outline: divide($lhse, 3) dashed rgba($color-text, .2);
+		outline-offset: -$lhse*.75;
+	}
+	.card-edge {
+		@include card-edge-filters('left');
+		transition: filter $transition-duration-card-image-hover-fast ease 0s;
+		position: absolute;
+		width: 100%;
+		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
+
+		&:hover,
+		&:focus-within {
+			transition-duration: $transition-duration-card-image-hover-slow;
+			transition-delay: $transition-delay-card;
+			will-change: auto;
+		}
+		&:focus-within {
 			transition-delay: 0s;
 		}
 	}
@@ -121,43 +179,48 @@ $animation-duration-card-browse: .3820s;
 
 .card-browse {
 	&-enter-active {
+		animation: $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
 		z-index: 1;
-		animation: card-fan-in $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
 	}
 	&-leave-active {
 		animation: overshadowed $animation-duration-card-browse ease-out;
 	}
 }
+.deck-editor {
+	.card-browse-enter-active {
+		@include card-fan-in-from('left');
+	}
+}
+.draw-simulator {
+	.card-image {
+		@include card-link('right');
+
+		.card-edge {
+			@include card-edge-filters('right');
+		}
+	}
+	.card-browse-enter-active {
+		@include card-fan-in-from('right');
+	}
+}
 .card-browse-appear-active {
 	@extend .card-browse-enter-active;
-	animation-delay: $transition-duration-standard;
+	animation-delay: $transition-duration-standard*1.5;
 	animation-duration: $animation-duration-card-browse*1.5;
 	animation-fill-mode: backwards;
 }
 
-@media (min-width: ($max-width-app*.8333)) { // Note this media query is for MIN-width, not max-width.
-	.card-display {
-		a {
-			&:hover,
-			&:focus {
-				transform:
-					scale(1.2)
-					translate(0, $lhse*1.3333)
-				;
-			}
-		}
-	}
-}
 @media (max-width: $width-app-breakpoint-tablet) {
-	.card-display {
-		width: 50%;
+	.card-image {
+		width: min(#{488px * .6667}, 38.20vw);
 	}
 }
-@media (max-width: 768px) { // Must match window width in JavaScript.
-	.card-display {
+@media (max-width: $width-deck-hidden-image) {
+	.card-image {
 		z-index: index($layers, app-header);
 		width: auto;
 		aspect-ratio: auto;
+		outline: none;
 
 		.card-edge {
 			display: flex;
@@ -179,7 +242,7 @@ $animation-duration-card-browse: .3820s;
 
 			&:hover,
 			&:focus {
-				transform: none;
+				transform: none !important;
 			}
 		}
 		img {
@@ -222,5 +285,11 @@ $animation-duration-card-browse: .3820s;
 		&-leave-active {
 			animation: none;
 		}
+	}
+}
+
+@media (max-height: calc($height-card-image-section - $lhse*3)) {
+	.card-image {
+		outline: 0;
 	}
 }

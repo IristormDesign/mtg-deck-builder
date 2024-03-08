@@ -16,8 +16,14 @@
 			<li><a href="#m-card-sorter">Card sorter</a></li>
 			<li><a href="#m-group-switch">Card group switch</a></li>
 			<li><a href="#m-sideboard-header">Sideboard header</a></li>
-			<li><a href="#m-card-list">Card list</a></li>
-			<li><a href="#m-card-quantities">Card quantities</a></li>
+			<li>
+				<a href="#m-card-list">Card list</a>
+				<ol>
+					<li><a href="#m-card-stars">Card stars</a></li>
+					<li><a href="#m-card-buttons">Card buttons</a></li>
+					<li><a href="#m-card-quantities">Card quantities</a></li>
+				</ol>
+			</li>
 			<li><a href="#m-scryfall-button">Scryfall advanced search button</a></li>
 			<li><a href="#m-card-adder">Card adder</a></li>
 			<li><a href="#m-deck-actions">Deck actions</a></li>
@@ -31,7 +37,6 @@
 		<manual-card-group-switch />
 		<manual-sideboard-header />
 		<manual-card-list />
-		<manual-card-quantities />
 		<manual-scryfall-button />
 		<manual-card-adder />
 		<manual-deck-actions />
@@ -46,12 +51,11 @@ import ManualCardSorter from '@/components/manual-chapters/ManualCardSorter.vue'
 import ManualCardGroupSwitch from '@/components/manual-chapters/ManualCardGroupSwitch.vue'
 import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
 import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
-import ManualCardQuantities from '@/components/manual-chapters/ManualCardQuantities.vue'
 import ManualScryfallButton from '@/components/manual-chapters/ManualScryfallButton.vue'
 import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
 import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
 
 export default {
-	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualCardQuantities, ManualScryfallButton, ManualCardAdder, ManualDeckActions }
+	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualScryfallButton, ManualCardAdder, ManualDeckActions }
 }
 </script>

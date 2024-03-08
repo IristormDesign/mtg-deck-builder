@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from './store.js'
 import HomePage from '../views/HomePage.vue'
 
 Vue.use(VueRouter)
@@ -33,35 +32,22 @@ const routes = [
 	{
 		path: '/deck/:deckPath',
 		component: () => import(/* webpackChunkName: "deck" */ '../views/DeckPage.vue'),
-		beforeEnter: (to, from, next) => {
-			function validDeck () {
-				const currentURL = to.path.toLowerCase()
-
-				return store.state.decks.find(deck =>
-					currentURL.includes(`/deck/${deck.path}/`) // The trailing slash is actually important here, because if the entered URL doesn't include it, then the deck page doesn't fully load properly. In that case, it's better to redirect to the 404 page than to put the user on a broken deck page.
-				)
-			}
-
-			if (validDeck()) {
-				next()
-			} else {
-				next({
-					name: 'notFound',
-					replace: true
-				})
-			}
-		},
 		children: [
 			{
-				name: 'deckMain',
+				name: 'deckEditor',
 				path: '',
-				component: () => import(/* webpackChunkName: "deck-main" */ '../views/DeckMain.vue')
+				component: () => import(/* webpackChunkName: "deck-main" */ '../views/DeckEditor.vue')
 			},
 			{
 				name: 'moreStats',
 				path: 'more-stats',
 				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue'),
 				props: true
+			},
+			{
+				name: 'drawSimulator',
+				path: 'draw-simulator',
+				component: () => import(/* webpackChunkName: "draw-simulator" */ '../views/DrawSimulator.vue')
 			}
 		]
 	},

@@ -4,7 +4,7 @@
 			<fieldset
 				:disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)"
 			>
-				<label for="sortMenu">Sort Cards by:</label>
+				<label for="sortMenu">Sort cards by:</label>
 				<select
 					v-model="sortMenu" id="sortMenu"
 					@change="sortCards()"
@@ -13,6 +13,10 @@
 						v-if="sortMenu === ''"
 						value=""
 					>(None)</option>
+					<option
+						v-if="listHasStarredCard"
+						value="starred">Starred
+					</option>
 					<option value="name">Name</option>
 					<option value="color">Mana Color</option>
 					<option value="cmc">Mana Value</option>
@@ -47,6 +51,19 @@ export default {
 		},
 		deckSortAttribute () {
 			return this.deck.sortBy
+		},
+		listHasStarredCard () {
+			const starredInMain = this.deck.cards.find(
+				card => card.starred
+			)
+
+			if (starredInMain) {
+				return true
+			} else {
+				return this.deck.sideboard.cards.find(
+					card => card.starred
+				)
+			}
 		}
 	},
 	watch: {
@@ -77,6 +94,10 @@ export default {
 			const sbList = deck.sideboard.cards
 
 			switch (sortMenu) {
+				case 'starred':
+					sortByStarred(mainList)
+					sortByStarred(sbList)
+					break
 				case 'color':
 					sortByColor(mainList)
 					sortByColor(sbList)
@@ -299,6 +320,18 @@ export default {
 			function sortByQuantity (cards) {
 				cards.sort((a, b) => {
 					return b.qty - a.qty
+				})
+			}
+			function sortByStarred (cards) {
+				cards.sort((a, b) => {
+					// Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property.
+					if (b.starred) {
+						return 1
+					} else if (a.starred) {
+						return -1
+					} else {
+						return 0
+					}
 				})
 			}
 			function sortDefault (cards) { // For card name and mana value

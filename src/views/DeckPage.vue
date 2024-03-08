@@ -1,26 +1,25 @@
 <template>
-	<div
-		class="deck"
+	<article
+		v-if="this.validDeck"
+		class="deck wrap"
 		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
 	>
-		<article>
-			<div class="wrap">
-				<header class="deck-header">
-					<deck-name :deck="deck" />
-					<deck-colors :deck="deck" />
-					<average-mana-value :deck="deck" />
-					<date-edited :deck="deck" />
-					<card-names :deck="deck" />
-					<card-total :deck="deck" />
-					<more-stats-button :deck="deck" />
-				</header>
-			</div>
+		<header class="deck-header">
+			<deck-name :deck="deck" />
+			<deck-colors :deck="deck" />
+			<average-mana-value :deck="deck" />
+			<date-edited :deck="deck" />
+			<card-names :deck="deck" />
+			<card-total :deck="deck" />
+			<deck-views />
+		</header>
 
-			<update-data-notice :deck="deck" />
+		<update-data-notice :deck="deck" />
 
-			<router-view />
-		</article>
-	</div>
+		<router-view />
+	</article>
+
+	<not-found-content v-else />
 </template>
 
 <script>
@@ -30,21 +29,33 @@ import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
 import DateEdited from '@/components/DeckHeaderDateEdited.vue'
 import CardNames from '@/components/DeckHeaderCardNames.vue'
 import CardTotal from '@/components/DeckHeaderCardTotal.vue'
-import MoreStatsButton from '@/components/DeckHeaderMoreStatsButton.vue'
+import DeckViews from '@/components/DeckHeaderDeckViews.vue'
 import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
+import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, MoreStatsButton, UpdateDataNotice },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, DeckViews, UpdateDataNotice, NotFoundContent },
 	mixins: [getActiveDeck],
 	data () {
 		return {
 			dataModified: false
 		}
 	},
+	computed: {
+		validDeck () {
+			return this.$store.state.decks.find(deck =>
+				this.$route.params.deckPath.toLowerCase() === deck.path
+			)
+		}
+	},
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('showSideboard', false)
 		next()
+		this.$store.commit('focusCardButton', null)
+
+		next()
+
 		this.prepareDecksWithOutdatedData()
 	},
 	created () {
@@ -53,14 +64,16 @@ export default {
 	},
 	methods: {
 		prepareDecksWithOutdatedData () {
-			this.addMissingSideboard()
-			this.checkForDataVersion()
+			if (this.deck) { // This check is needed for 404 deck pages.
+				this.addMissingSideboard()
+				this.checkForDataVersion()
 
-			this.$nextTick(() => {
-				if (this.dataModified) {
-					this.$store.commit('decks', this.$store.state.decks)
-				}
-			})
+				this.$nextTick(() => {
+					if (this.dataModified) {
+						this.$store.commit('decks', this.$store.state.decks)
+					}
+				})
+			}
 		},
 		/**
 		 * If the deck's data version number doesn't match the latest version number, then determine what its version number should be.
@@ -102,5 +115,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck.scss';
+	@import '@/sass/page-deck-general.scss';
 </style>

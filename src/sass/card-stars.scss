@@ -1,0 +1,151 @@
+@import 'variables';
+$scale-card-star: scale(1.0833);
+
+@keyframes star-pulse {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.card-star {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -1.3333em;
+	width: $width-card-star;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	background: $color-group-bg;
+	opacity: 0;
+	border-radius: $border-radius-button;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	transition: $transition-duration-standard ease;
+	transition-property: opacity, transform;
+	box-shadow: none;
+
+	&:checked,
+	&:hover,
+	&:focus-visible {
+		background: $color-group-bg;
+		opacity: 1;
+		transition-duration: 0s !important;
+		transition-delay: 0s !important;
+	}
+	&:hover,
+	&:focus-visible {
+		animation: star-pulse .25s ease 19 alternate;
+		background: $color-input-bg-focus !important;
+
+		&:not(:checked) {
+			opacity: .5;
+		}
+		&::before {
+			transition: none !important;
+			color: saturate($color-card-star, 100%) !important;
+		}
+	}
+	&:hover:focus {
+		&:not(:checked) {
+			animation-delay: 2s; // This delay is for the moment immediately after the user un-stars a card while still having the mouse pointer hovering over the star checkbox input.
+			opacity: 0;
+		}
+	}
+	&:active {
+		opacity: 1 !important;
+		background: $color-input-bg-active !important;
+		animation: none;
+
+		&::before {
+			color: saturate(lighten($color-card-star, 20%), 50%) !important;
+		}
+	}
+	&:checked {
+		&::before {
+			color: $color-card-star;
+		}
+		&:hover,
+		&:focus-visible {
+			animation: none;
+
+			&::before {
+				animation: none;
+			}
+		}
+		&:active {
+			background: $color-input-bg-active;
+
+			&::before {
+				transition-duration: 0s;
+			}
+		}
+	}
+	&::before {
+		content: '★';
+		color: $color-card-star;
+		left: 4px;
+		position: absolute;
+		transform: $scale-card-star;
+	}
+	&::after {
+		display: none;
+	}
+}
+.card-list-section {
+	li {
+		&:hover,
+		&:focus-within {
+			.card-star {
+				background: $color-group-bg-darker;
+
+				&:not(:checked) {
+					opacity: .3820;
+					transition-delay: .75s;
+					transition-duration: 1.5s;
+
+					&::before {
+						transition-duration: 0s;
+					}
+				}
+				&::before {
+					transform: $scale-card-star rotate((360deg*.8));
+					transition: transform 1.5s ease-in-out;
+				}
+			}
+		}
+	}
+}
+
+@media (pointer: coarse) {
+	.card-star {
+		opacity: 1;
+
+		&:hover,
+		&:focus-visible {
+			background: $color-input-bg-focus !important;
+		}
+		&:not(:checked) {
+			animation: none !important;
+			opacity: 1 !important;
+
+			&::before{
+				content: '';
+			}
+		}
+	}
+	@supports selector(:has(.card-star:checked)) {
+		.card-list-section {
+			&:has(.card-star:checked) {
+				.card-star {
+					&:not(:checked) {
+						opacity: 0 !important;
+					}
+				}
+			}
+		}
+	}
+}

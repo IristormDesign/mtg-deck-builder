@@ -15,6 +15,7 @@ export default new Vuex.Store({
 	state: {
 		decks: [],
 		focusCardButton: '',
+		isMobileLayout: () => window.innerWidth <= 768, // Number must match media query max-width in CSS.
 		latestDeckDataVersion: 2,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
@@ -24,7 +25,8 @@ export default new Vuex.Store({
 		showCard: false,
 		showDeckMenu: false,
 		showSideboard: false,
-		stickAppHeader: false
+		stickAppHeader: false,
+		viewedDrawnCard: null
 	},
 	getters: {
 		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
@@ -74,6 +76,9 @@ export default new Vuex.Store({
 				else if (deckA < deckB) return -1
 				else return 0
 			})
+		},
+		viewedDrawnCard (state, payload) {
+			state.viewedDrawnCard = payload
 		}
 	},
 	actions: {

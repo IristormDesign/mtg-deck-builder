@@ -1,33 +1,29 @@
 @import 'variables';
+$max-width-stat-tables: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
 $table-borders: 1px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
-	max-width: calc(100% - $lhse*2);
-	width: max-content;
-	margin: $lhse auto;
-	display: flex; // This prevents a weird CSS margin-shifting glitch when clicking the "Card List" button.
-	flex-direction: column;
+	margin: 0 auto $lhse*.5;
+	max-width: 100%;
 
+	.no-cards {
+		max-width: $max-width-content * .75;
+
+		p {
+			margin-top: 0;
+		}
+	}
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		gap: $lhse;
-		margin: $lhse 0;
-
-		section {
-			grid-column: span 1;
-		}
-	}
-	h3 {
-		margin: $lhse*.25 0;
-		text-align: center;
+		margin-bottom: $lhse*.5;
 	}
 	section {
 		cursor: default;
 		width: 100%;
-		max-width: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
-		margin: 0 auto;
+		max-width: $max-width-stat-tables;
 		height: min-content;
 		border-bottom: $table-borders;
 
@@ -143,8 +139,11 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		font-size: 120%;
 	}
 	footer {
-		padding: 0 $lhse*.5;
 		text-align: center;
+		text-wrap: balance;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
 	}
 }
 .vert-center-cell {
@@ -157,10 +156,18 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 }
 
-@media (max-width: (1920px * .8333)) {
+@media (max-width: (1920px * .75)) {
 	.more-stats {
-		margin: $lhse*.5 auto $lhse;
-
+		.tables {
+			grid-template-columns: repeat(4, 1fr);
+		}
+		footer {
+			grid-column: span 3;
+		}
+	}
+}
+@media (max-width: (1920px * .625)) {
+	.more-stats {
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -171,36 +178,21 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
-	}
-}
-@media (max-width: ($width-app-breakpoint-tablet*.6667)) {
-	.more-stats {
-		.tables {
-			grid-template-columns: repeat(1, 1fr);
-		}
-	}
-}
-@media (max-width: ($min-width-app*.625)) {
-	.more-stats {
-		max-width: 100%;
-		width: 100%;
-		margin: 0;
-
-		.tables {
-			margin: $lhse auto;
-		}
-	}
-}
-@media (max-width: ($min-width-app*.5)) {
-	.more-stats {
-		h3 {
-			margin-top: $lhse;
-		}
 		footer {
-			margin-bottom: $lhse;
+			grid-column: span 1;
+			max-width: $max-width-stat-tables;
 		}
+	}
+}
+@media (max-width: ($min-width-app*.75)) {
+	.more-stats {
 		.tables {
-			margin: $lhse auto;
+			grid-template-columns: 1fr;
 		}
+	}
+}
+@media (max-width: $width-mobile-breakpoint) {
+	.more-stats {
+		border-radius: $border-radius-group;
 	}
 }

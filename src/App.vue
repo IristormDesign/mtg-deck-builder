@@ -55,11 +55,19 @@ export default {
 		 * Load the two default decks if needed.
 		 */
 		loadDefaultDecks () {
-			if (this.$store.state.loadDefaultDecks) {
+			const store = this.$store
+
+			if (store.state.loadDefaultDecks) {
 				import('@/js/default-decks.json')
 					.then(data => {
-						this.$store.commit('decks', data.decks)
-						this.$store.commit('loadDefaultDecks', false)
+						store.commit('decks', data.decks)
+						store.commit('loadDefaultDecks', false)
+					})
+					.then(() => {
+						store.state.decks.forEach(deck => {
+							deck.editDate = new Date()
+							store.commit('decks', store.state.decks)
+						})
 					})
 			}
 		}

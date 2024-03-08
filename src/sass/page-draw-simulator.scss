@@ -1,0 +1,152 @@
+@import 'variables';
+
+.draw-simulator {
+	margin: 0 auto $lhse*.5;
+	display: grid;
+	grid-template-areas:
+		'panel card-img'
+		'card-list card-img';
+	grid-template-rows: min-content 100%;
+	gap: $margin-card-gap-after $lhse*.5;
+	justify-content: center;
+
+	.card-browse-appear-active {
+		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
+	}
+	.control-panel {
+		display: grid;
+		grid-template-columns: 1fr 1fr 2fr;
+		align-items: center;
+		overflow: hidden;
+		width: $width-card-buttons-wide + $width-card-star - $lhse*.5;
+		height: $height-deck-header-component;
+	}
+	.deck-info {
+		@include deck-info-style;
+		order: 0;
+
+		h3 {
+			white-space: normal;
+			width: min-content;
+		}
+		.output {
+			font-size: 200%;
+			min-width: 2ch;
+			color: $color-text;
+			justify-content: center;
+		}
+	}
+	.button-container {
+		display: flex;
+		justify-content: space-evenly;
+
+		button {
+			min-height: $lhse*1.5;
+			font-size: 87.5%;
+			padding-right: $lhse*.75;
+			padding-left: $lhse*.75;
+
+			&:last-of-type {
+				@include secondary-button;
+			}
+		}
+	}
+	.card-list-section {
+		li {
+			&:nth-last-of-type(8) {
+				margin-bottom: $margin-card-gap-after;
+			}
+		}
+	}
+}
+
+@media (max-width: $width-app-breakpoint-tablet) {
+	.draw-simulator {
+		.control-panel {
+			grid-template-rows: repeat(2, $height-deck-header-component);
+			grid-template-columns: repeat(2, 1fr);
+			width: fit-content;
+			height: auto;
+			justify-self: center
+		}
+		.deck-info {
+			@include deck-info-box-wide;
+			grid-column: span 1;
+			border-bottom: $border-sections;
+
+			&:nth-of-type(2) {
+				margin-right: 0;
+				border-right-width: 0;
+			}
+		}
+		.button-container {
+			display: flex;
+			justify-content: space-evenly;
+			grid-column: span 2;
+
+			button {
+				padding-right: $lhse*.75;
+				padding-left: $lhse*.75;
+			}
+		}
+		.no-cards {
+			max-width: $lhse*15;
+			width: 100%;
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .75)) {
+	.draw-simulator {
+		max-width: $max-width-deck-page-layout;
+	}
+}
+@media (max-width: ($min-width-app * .75)) {
+	.draw-simulator {
+		grid-template-columns: 100%;
+		grid-template-areas:
+			'panel'
+			'card-list';
+		gap: $margin-card-gap-after 0;
+
+		.deck-info {
+			&:nth-of-type(2) {
+				grid-column: span 1;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .6)) {
+	.draw-simulator {
+		width: 100%;
+
+		.control-panel {
+			grid-template-rows: 1fr 1fr;
+		}
+		.deck-info {
+			@include deck-info-box-narrow;
+			padding-top: $lhse*.25;
+			padding-bottom: $lhse*.25;
+
+			.output {
+				min-width: auto;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .4)) {
+	.draw-simulator {
+		max-width: 100vw;
+
+		.control-panel {
+			grid-template-rows: auto $height-deck-header-component;
+			width: 100%;
+		}
+		.deck-info {
+			h3 {
+				width: min-content
+			}
+		}
+	}
+}

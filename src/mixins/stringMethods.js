@@ -4,7 +4,7 @@ export default {
 		 * @param {string} name
 		 */
 		alertNameExists (name) {
-			return `You already have a deck named “${name}.” Please give a different name.`
+			return `Error: You already have a deck named “${name}.” Please give a different name.`
 		},
 		alertNameTooLong (length) {
 			const stringExcessChars = () => {
@@ -17,7 +17,15 @@ export default {
 				}
 			}
 
-			return `That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
+			return `Error: That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
+		},
+		alertNoLetters () {
+			return 'Error: The deck name must have at least one letter.'
+		},
+		hasNoLetters (string) {
+			const regexAtLeastOneLetter = /([A-Za-z])+/
+
+			return !regexAtLeastOneLetter.test(string)
 		},
 		/**
 		 * @param {string} string
@@ -46,18 +54,18 @@ export default {
 		nameIsApproved (name, path) {
 			if (name.length > 50) {
 				alert(this.alertNameTooLong(name.length))
-
+				return false
+			} else if (this.hasNoLetters(name)) {
+				alert(this.alertNoLetters())
 				return false
 			} else if ( // If the submitted deck name already exists (based on the deck path), unless that name is of the currently active deck (because letters' cases have been edited)...
 				this.$store.getters.deckExists(path) &&
 				path !== this.$route.params.deckPath
 			) {
 				alert(this.alertNameExists(name))
-
 				return false
 			} else {
 				name = this.curlApostrophes(name)
-
 				return true
 			}
 		},
@@ -66,17 +74,11 @@ export default {
 		 * @returns {string} The path.
 		 */
 		stringToPath (string) {
-			let path = string
+			return string
 				.toLowerCase()
 				.replace(/\s/g, '-') // Turn each whitespace character into a hyphen.
 				.replace(/-{2,}/g, '-') // Turn each instance of multiple hyphens in a row into a single hyphen.
 				.replace(/[^\w-]/g, '') // Erase any character that's NOT a word character (a letter or digit) or a hyphen.
-
-			if (!path) { // If the path contains only punctuation marks or typographic symbols and no numbers or digits, that would result in critical errors. So instead, give a unique string of digits which come from the current date and time.
-				path = Date.now()
-			}
-
-			return path
 		}
 	}
 }

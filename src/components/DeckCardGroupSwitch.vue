@@ -1,7 +1,7 @@
 <template>
 	<section class="card-group-switch">
 		<div>
-			<h3>Switch Card Group:</h3>
+			<h3>Switch card group:</h3>
 			<fieldset class="radio-fieldset">
 				<div>
 					<label for="radio-main-group">Main</label>

@@ -1,0 +1,70 @@
+@import 'variables';
+$min-height-card-list: $lhse*6;
+
+.card-list-section {
+	min-height: $min-height-card-list;
+	grid-area: card-list;
+
+	.no-cards {
+		display: block;
+		text-align: center;
+		line-height: $line-height-standard*.875;
+		min-height: $min-height-card-list;
+		text-shadow: $text-shadow-over-light-bg;
+		padding: $lhse*.5;
+		color: $color-text-brighter;
+		text-wrap: balance;
+
+		a {
+			text-shadow: revert;
+		}
+	}
+	ul {
+		margin: 0 0 (-$margin-card-gap-after);
+		padding: 0 0 0 $width-card-star*.6;
+		list-style: none;
+		position: relative;
+	}
+	li {
+		display: flex;
+		margin: 1px auto;
+		transition: .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
+		transition-property: transform, background-color, border-radius;
+		position: relative;
+		background: $color-group-bg;
+		border-radius: $border-radius-button;
+		width: fit-content;
+
+		&:last-of-type {
+			margin-bottom: $margin-card-gap-after;
+		}
+		&:hover,
+		&:focus-within {
+			background: $color-group-bg-darker;
+			transition-duration: 0s;
+		}
+		&:hover {
+			z-index: index($layers, card-li-hover);
+		}
+		&:focus-within {
+			z-index: index($layers, card-li-focus-within);
+		}
+		&:first-child {
+			margin-top: 0;
+		}
+		&.gap-after {
+			margin-bottom: $margin-card-gap-after;
+		}
+	}
+	.card-list-section-main-leave-active {
+		transition-duration: 0s; // When switching from one deck page to another, this stops the odd lingering of the previous deck list on the current page.
+	}
+}
+
+@media (max-width: ($min-width-app * .5)) {
+	.card-list-section {
+		li {
+			max-width: 80vw;
+		}
+	}
+}
