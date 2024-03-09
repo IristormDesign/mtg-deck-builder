@@ -83,6 +83,22 @@
 				}
 			}
 		}
+		section {
+			&:target {
+				@keyframes highlight-section {
+					0% {
+						outline-color: rgba($color-link-active, 0);
+					}
+					12.5% {
+						outline-color: $color-link-active;
+					}
+				}
+
+				outline: $lhse*.125 solid rgba($color-link-active, 0);
+				outline-offset: $lhse*.5;
+				animation: highlight-section 1s ease-in;
+			}
+		}
 		h3 {
 			@include pronounced-heading;
 		}
@@ -158,6 +174,14 @@
 		}
 		.table-of-contents {
 			border-radius: 0;
+		}
+		.the-manual {
+			section {
+				&:target {
+					outline: none;
+					animation: none;
+				}
+			}
 		}
 	}
 }
