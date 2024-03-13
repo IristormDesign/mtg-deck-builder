@@ -21,12 +21,18 @@
 							<li><a href="#m-deck-menu">Deck Menu</a></li>
 						</ol>
 					</li>
-					<li><a href="#m-create-deck">“Create Deck” Page</a></li>
+					<li><a href="#m-create-deck">Create Deck Page</a></li>
 					<li>
 						<a href="#m-deck-pages">Deck Pages</a>
 						<ol>
 							<li><a href="#m-deck-name">Deck Name</a></li>
 							<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+							<li><a href="#m-deck-views">Deck Views Menu</a></li>
+						</ol>
+					</li>
+					<li>
+						<a href="#m-deck-editor">Deck Editor View</a>
+						<ol>
 							<li><a href="#m-card-image">Card Image</a></li>
 							<li><a href="#m-card-sorter">Card Sorter</a></li>
 							<li>
@@ -49,7 +55,8 @@
 							<li><a href="#m-deck-actions">Deck Actions</a></li>
 						</ol>
 					</li>
-					<li><a href="#m-more-stats-pages">“More Deck Statistics” Pages</a></li>
+					<li><a href="#m-more-stats">More Statistics View</a></li>
+					<li><a href="#m-draw-sim">Draw Simulator View</a></li>
 					<li>
 						<a href="#m-storage-of-deck-data">Storage of Deck Data</a>
 						<ol>
@@ -66,7 +73,9 @@
 			<manual-app-header />
 			<manual-create-deck-page />
 			<manual-deck-pages />
-			<manual-more-stats-pages />
+			<manual-deck-editor />
+			<manual-more-stats />
+			<manual-draw-sim />
 			<manual-storage-of-deck-data />
 			<manual-app-development />
 		</div>
@@ -78,12 +87,14 @@ import ManualIntroduction from '@/components/manual-chapters/ManualIntroduction.
 import ManualAppHeader from '@/components/manual-chapters/ManualAppHeader.vue'
 import ManualCreateDeckPage from '@/components/manual-chapters/ManualCreateDeckPage.vue'
 import ManualDeckPages from '@/components/manual-chapters/ManualDeckPages.vue'
-import ManualMoreStatsPages from '@/components/manual-chapters/ManualMoreStatsPages.vue'
+import ManualDeckEditor from '@/components/manual-chapters/ManualDeckEditor.vue'
+import ManualMoreStats from '@/components/manual-chapters/ManualMoreStats.vue'
+import ManualDrawSim from '@/components/manual-chapters/ManualDrawSim.vue'
 import ManualStorageOfDeckData from '@/components/manual-chapters/ManualStorageOfDeckData.vue'
 import ManualAppDevelopment from '@/components/manual-chapters/ManualAppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualMoreStatsPages, ManualStorageOfDeckData, ManualAppDevelopment },
+	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualDeckEditor, ManualMoreStats, ManualDrawSim, ManualStorageOfDeckData, ManualAppDevelopment },
 	mounted () {
 		this.modifyManualLinkEffects()
 

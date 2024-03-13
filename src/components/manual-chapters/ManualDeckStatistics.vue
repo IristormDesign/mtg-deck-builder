@@ -7,7 +7,7 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The deck statistics section shows various information about your currently <a href="#m-deck-menu">open deck</a>. All but one of these statistics are about the deck’s <a href="#m-group-switch">main group</a> alone (not also the sideboard group). Whenever you modify your deck, the statistics here immediately update as needed.</p>
+		<p>The deck statistics section shows various information about how your currently <a href="#m-deck-menu">open deck</a> is composed. All but one of these statistics are about the deck’s main <a href="#m-group-switch">card group</a> alone (not also the sideboard card group). Whenever you modify your deck, the statistics here immediately update as needed.</p>
 		<p>The deck statistics section has the following subsections:</p>
 		<ul>
 			<li>
@@ -32,7 +32,7 @@
 			</li>
 			<li>
 				<h5>More Stats</h5>
-				<p>This has a button that you can click on to go to the <a href="#m-more-stats-pages">More Deck Statistics page</a> for your deck.</p>
+				<p>This has a button that you can click on to go to the <a href="#m-more-stats">More Deck Statistics page</a> for your deck.</p>
 			</li>
 		</ul>
 	</section>

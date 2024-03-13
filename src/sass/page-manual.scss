@@ -91,12 +91,20 @@
 					}
 					12.5% {
 						outline-color: $color-link-active;
+						color: #fff;
 					}
 				}
 
-				outline: $lhse*.125 solid rgba($color-link-active, 0);
-				outline-offset: $lhse*.5;
-				animation: highlight-section 1s ease-in;
+				> h3,
+				> h4,
+				> h5 {
+					outline: $lhse*.125 solid rgba($color-link-active, 0);
+					outline-offset: $lhse*.25;
+					animation: highlight-section 1s ease-in;
+					z-index: 1;
+					position: relative;
+					border-radius: $border-radius-button;
+				}
 			}
 		}
 		h3 {

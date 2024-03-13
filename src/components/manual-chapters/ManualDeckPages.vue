@@ -1,61 +1,29 @@
 <template>
 	<section id="m-deck-pages">
 		<h3>Deck Pages</h3>
-		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you construct, analyze, and modify the contents of your <i>Magic: The Gathering</i> decks. Every <a href="#m-create-deck">deck created</a> in the app gets its own deck page.</p>
+		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you construct, analyze, test, and modify the contents of your <i>Magic: The Gathering</i> decks. Every <a href="#m-create-deck">deck created</a> in the app gets its own deck page.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"
 				src="@/img/manual-deck-page.jpg" width="658" height="444"
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
-		<p>A deck page comprises several different sections. These sections include the following, listed in order by their positions on the page from top to bottom, left to right:</p>
-		<ol>
-			<li><a href="#m-deck-name">Deck name</a></li>
-			<li><a href="#m-deck-statistics">Deck statistics</a></li>
-			<li><a href="#m-card-image">Card image</a></li>
-			<li><a href="#m-card-sorter">Card sorter</a></li>
-			<li><a href="#m-group-switch">Card group switch</a></li>
-			<li><a href="#m-sideboard-header">Sideboard header</a></li>
-			<li>
-				<a href="#m-card-list">Card list</a>
-				<ol>
-					<li><a href="#m-card-stars">Card stars</a></li>
-					<li><a href="#m-card-buttons">Card buttons</a></li>
-					<li><a href="#m-card-quantities">Card quantities</a></li>
-				</ol>
-			</li>
-			<li><a href="#m-scryfall-button">Scryfall advanced search button</a></li>
-			<li><a href="#m-card-adder">Card adder</a></li>
-			<li><a href="#m-deck-actions">Deck actions</a></li>
-		</ol>
-		<p>Each deck page section is going to be explained in further detail.</p>
+		<p>At the top of any deck page is the deck page header, which comprises the following three sections: <a href="#m-deck-name">deck name</a>, <a href="#m-deck-statistics">deck statistics</a>, and <a href="#m-deck-views">deck views menu</a>.</p>
+		<p>Below the deck page header is any one of the three “deck views”: <a href="#m-deck-editor">Deck Editor</a>, <a href="#m-more-stats">More Statistics</a>, or <a href="#m-draw-sim">Draw Simulator</a>. Whichever view is shown, the deck page header always remains visible at the top of the deck page.</p>
+		<p>Each of the deck page header’s sections is going to be explained in further detail.</p>
 
 		<manual-deck-name />
 		<manual-deck-statistics />
-		<manual-card-image />
-		<manual-card-sorter />
-		<manual-card-group-switch />
-		<manual-sideboard-header />
-		<manual-card-list />
-		<manual-scryfall-button />
-		<manual-card-adder />
-		<manual-deck-actions />
+		<manual-deck-views />
 	</section>
 </template>
 
 <script>
 import ManualDeckName from '@/components/manual-chapters/ManualDeckName.vue'
 import ManualDeckStatistics from '@/components/manual-chapters/ManualDeckStatistics.vue'
-import ManualCardImage from '@/components/manual-chapters/ManualCardImage.vue'
-import ManualCardSorter from '@/components/manual-chapters/ManualCardSorter.vue'
-import ManualCardGroupSwitch from '@/components/manual-chapters/ManualCardGroupSwitch.vue'
-import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
-import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
-import ManualScryfallButton from '@/components/manual-chapters/ManualScryfallButton.vue'
-import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
-import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
+import ManualDeckViews from '@/components/manual-chapters/ManualDeckViews.vue'
 
 export default {
-	components: { ManualDeckName, ManualDeckStatistics, ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualScryfallButton, ManualCardAdder, ManualDeckActions }
+	components: { ManualDeckName, ManualDeckStatistics, ManualDeckViews }
 }
 </script>
