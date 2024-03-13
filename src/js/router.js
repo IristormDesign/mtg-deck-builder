@@ -36,7 +36,7 @@ const routes = [
 			{
 				name: 'deckEditor',
 				path: '',
-				component: () => import(/* webpackChunkName: "deck-main" */ '../views/DeckEditor.vue')
+				component: () => import(/* webpackChunkName: "deck-editor" */ '../views/DeckEditor.vue')
 			},
 			{
 				name: 'moreStats',
