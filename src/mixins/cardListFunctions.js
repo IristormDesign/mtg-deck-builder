@@ -18,7 +18,7 @@ export default {
 		viewCard (card) {
 			const store = this.$store
 
-			if (this.$route.name === 'drawSimulator') {
+			if (this.$route.name === 'drawSim') {
 				store.commit('viewedDrawnCard', card)
 			} else if (store.state.showSideboard) {
 				this.deckObject.sideboard.viewedCard = card

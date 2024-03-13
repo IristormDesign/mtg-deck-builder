@@ -45,9 +45,9 @@ const routes = [
 				props: true
 			},
 			{
-				name: 'drawSimulator',
-				path: 'draw-simulator',
-				component: () => import(/* webpackChunkName: "draw-simulator" */ '../views/DrawSimulator.vue')
+				name: 'drawSim',
+				path: 'draw-sim',
+				component: () => import(/* webpackChunkName: "draw-sim" */ '../views/DrawSim.vue')
 			}
 		]
 	},

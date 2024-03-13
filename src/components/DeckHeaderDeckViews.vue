@@ -16,8 +16,8 @@
 			</li>
 			<li>
 				<router-link
-					:class="($route.name === 'drawSimulator') ? 'current-page' : null"
-					:to="{ name: 'drawSimulator' }"
+					:class="($route.name === 'drawSim') ? 'current-page' : null"
+					:to="{ name: 'drawSim' }"
 				>Draw Simulator</router-link>
 			</li>
 		</ul>
@@ -33,7 +33,7 @@ export default {
 					return 'Deck Editor'
 				case 'moreStats':
 					return 'More Statistics'
-				case 'drawSimulator':
+				case 'drawSim':
 					return 'Draw Simulator'
 				default:
 					return null
