@@ -35,5 +35,6 @@
 				<p>This has a button that you can click to go to the <a href="#m-more-stats">More Deck Statistics page</a> for your deck.</p>
 			</li>
 		</ul>
+		<p>Note that these statistics in the <a href="#m-deck-pages">deck page</a> header are only a small portion of all the statistics provided by MTG Deck Builder. For further data analysis of your deck, check out the “<a href="#m-more-stats">More Statistics</a>” <a href="#m-deck-views">deck view</a>.</p>
 	</section>
 </template>
