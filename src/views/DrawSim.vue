@@ -50,8 +50,7 @@
 				v-else
 				class="no-cards"
 			>
-				<p>There are no cards you can draw right now because this deck hasn’t been built yet.</p>
-				<p>To use the draw simulator, first add cards to the deck’s main group in the <router-link :to="{name: 'deckEditor'}">deck editor</router-link>.</p>
+				<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
 			</div>
 		</section>
 
