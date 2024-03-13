@@ -15,7 +15,7 @@
 			<li>Rarity</li>
 		</ul>
 		<p>For a card that’s double-faced or split, its button displays the characteristics of both faces with a “&nbsp;/&nbsp;” (slash) inserted in between.</p>
-		<p>You can click on any card button to <a href="#m-card-image">view that card’s image</a>.</p>
+		<p>You can click any card button to <a href="#m-card-image">view that card’s image</a>.</p>
 		<p>The color of each card button’s surface represents that card’s mana colors. For example, the button color for mono-green spells is green. Moreover, the button color for multicolored spells is gold, for colorless spells is gray, and for lands is brown.</p>
 	</section>
 </template>

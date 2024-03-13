@@ -8,7 +8,7 @@
 			<p>You have no decks. <router-link :to="{name: 'createDeck'}">(Create one?)</router-link></p>
 		</template>
 		<template v-else>
-			<p>In the checklist below, select the decks that you want to download as a deck data file, then click on the Export Selected button. (For more info, see the user manual on <router-link :to="{path: '/manual/#m-storage-of-deck-data'}">how this app stores deck data</router-link>.)</p>
+			<p>In the checklist below, select the decks that you want to download as a deck data file, then click the Export Selected button. (For more info, see the user manual on <router-link :to="{path: '/manual/#m-storage-of-deck-data'}">how this app stores deck data</router-link>.)</p>
 			<form>
 				<div
 					class="multi-select-buttons"

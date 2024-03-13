@@ -12,10 +12,10 @@
 				<p><strong>“Drawn Cards” statistic</strong> – This shows the number of cards you’ve drawn since starting the current round.</p>
 			</li>
 			<li>
-				<p><strong>“Draw a Card” button</strong> – Click on this button to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears in the card image section (if that section is visible on your device’s screen).</p>
+				<p><strong>“Draw a Card” button</strong> – Click this button to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears in the card image section (if that section is visible on your device’s screen).</p>
 			</li>
 			<li>
-				<p><strong>“Restart” button</strong> – Click on this button to start a new testing round. All drawn cards return to your library, then your library is “shuffled” (the cards are rearranged in a new, randomized order).</p>
+				<p><strong>“Restart” button</strong> – Click this button to start a new testing round. All drawn cards return to your library, then your library is “shuffled” (the cards are rearranged in a new, randomized order).</p>
 			</li>
 			<li>
 				<p><strong>Card list section</strong> – This lists your drawn cards in the order you drew them during this round. The list features <a href="#m-card-stars">card stars</a> and <a href="#m-card-buttons">card buttons</a>, which work like those elements in the Deck Editor.</p>

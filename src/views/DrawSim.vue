@@ -44,7 +44,7 @@
 				class="no-cards"
 			>
 				<p>Your library is now shuffled. Each card you draw from it will be listed here.</p>
-				<p>To begin, click on the “Draw a Card” button.</p>
+				<p>To begin, click the “Draw a Card” button.</p>
 			</div>
 			<div
 				v-else

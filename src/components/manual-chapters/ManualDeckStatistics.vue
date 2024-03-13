@@ -32,7 +32,7 @@
 			</li>
 			<li>
 				<h5>More Stats</h5>
-				<p>This has a button that you can click on to go to the <a href="#m-more-stats">More Deck Statistics page</a> for your deck.</p>
+				<p>This has a button that you can click to go to the <a href="#m-more-stats">More Deck Statistics page</a> for your deck.</p>
 			</li>
 		</ul>
 	</section>

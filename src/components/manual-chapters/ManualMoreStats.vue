@@ -1,7 +1,7 @@
 <template>
 	<section id="m-more-stats">
 		<h3>More Statistics View</h3>
-		<p>While the <a href="#m-deck-pages">deck page</a>’s header shows a few <a href="#m-deck-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-views">deck view</a> shows an even greater variety of information. To access this view, click on the “More Statistics” link in the deck views menu.</p>
+		<p>While the <a href="#m-deck-pages">deck page</a>’s header shows a few <a href="#m-deck-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-views">deck view</a> shows an even greater variety of information. To access this view, click the “More Statistics” link in the deck views menu.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"

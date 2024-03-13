@@ -7,6 +7,6 @@
 				alt="Snippet of deck name link" title="Screenshot" loading="lazy" />
 		</p>
 		<h4>Deck Name</h4>
-		<p>The deck name section shows the name of your currently <a href="#m-deck-menu">open deck</a>. The name itself is a link that you can click on to rename the deck.</p>
+		<p>The deck name section shows the name of your currently <a href="#m-deck-menu">open deck</a>. The name itself is a link that you can click to rename the deck.</p>
 	</section>
 </template>
