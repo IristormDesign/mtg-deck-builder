@@ -3,7 +3,14 @@
 		<div class="control-panel">
 			<section class="deck-info">
 				<h3>Cards&nbsp;in Library</h3>
-				<div class="output">{{ library.length }}</div>
+				<div class="output">
+					{{ library.length }}
+					<span
+						class="warning-symbol"
+						v-show="(library.length === 0 && drawnList.length > 0)"
+						title="You’ve drawn every card from your library."
+					>⚠</span>
+				</div>
 			</section>
 			<section class="deck-info">
 				<h3>Drawn Cards</h3>
@@ -13,7 +20,7 @@
 				<button
 					@click="drawCard()"
 					:disabled="library.length === 0"
-					:title="(library.length === 0) ? 'There are no cards left to draw.' : null"
+					:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : null"
 				>Draw a Card</button>
 				<button
 					@click="restart()"
