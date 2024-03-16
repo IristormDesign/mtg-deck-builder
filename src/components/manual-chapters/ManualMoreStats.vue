@@ -1,14 +1,14 @@
 <template>
 	<section id="m-more-stats">
-		<h3>More Statistics View</h3>
-		<p>While the <a href="#m-deck-pages">deck page</a>’s header shows a few <a href="#m-deck-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-views">deck view</a> shows an even greater variety of information. To access this view, click the “More Statistics” link in the deck views menu.</p>
+		<h3>More Statistics Mode</h3>
+		<p>While the <a href="#m-deck-page-header">deck page header</a> shows a few <a href="#m-deck-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows an even greater variety of information.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
 				alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The More Statistics view displays many data tables, each for a certain category regarding your deck’s cards. The categories are the following:</p>
+		<p>The More Statistics mode displays many data tables, each for a certain category regarding your deck’s cards. The categories are the following:</p>
 		<ul>
 			<li>Colors of spells</li>
 			<li>Mana values of spells (a.k.a. mana curve)</li>
@@ -38,6 +38,6 @@
 			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
 		<p>Single cards can be counted multiple times for different properties within a category. For example, if a card is designated “artifact creature” in its type line, then it’s counted as both an artifact and a creature in the types category. As a result, the sum of all counts in a category could be greater than your deck’s total cards, and the sum of all percentages in a category could be greater than 100%.</p>
-		<p>All statistics in the More Statistics view consider the main <a href="#m-card-groups">card group</a> only, not the sideboard.</p>
+		<p>All statistics in the More Statistics mode consider the main <a href="#m-card-groups">card group</a> only, not the sideboard.</p>
 	</section>
 </template>

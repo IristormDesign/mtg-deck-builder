@@ -30,14 +30,14 @@
 								<ol>
 									<li><a href="#m-deck-name">Deck Name</a></li>
 									<li><a href="#m-deck-statistics">Deck Statistics</a></li>
-									<li><a href="#m-views-menu">Deck Views Menu</a></li>
+									<li><a href="#m-modes-menu">Modes Menu</a></li>
 								</ol>
 							</li>
-							<li><a href="#m-deck-views">Deck Views</a></li>
+							<li><a href="#m-deck-page-modes">Deck Page Modes</a></li>
 						</ol>
 					</li>
 					<li>
-						<a href="#m-deck-editor">Deck Editor View</a>
+						<a href="#m-deck-editor">Deck Editor Mode</a>
 						<ol>
 							<li><a href="#m-card-image">Card Image</a></li>
 							<li><a href="#m-card-sorter">Card Sorter</a></li>
@@ -61,8 +61,8 @@
 							<li><a href="#m-deck-actions">Deck Actions</a></li>
 						</ol>
 					</li>
-					<li><a href="#m-more-stats">More Statistics View</a></li>
-					<li><a href="#m-draw-sim">Draw Simulator View</a></li>
+					<li><a href="#m-more-stats">More Statistics Mode</a></li>
+					<li><a href="#m-draw-sim">Draw Simulator Mode</a></li>
 					<li>
 						<a href="#m-storage-of-deck-data">Storage of Deck Data</a>
 						<ol>

@@ -1,8 +1,8 @@
 <template>
 	<section id="m-draw-sim">
-		<h3>Draw Simulator View</h3>
-		<p>The Draw Simulator is a <a href="#m-deck-views">deck view</a> where you can test the process of drawing from a shuffled library of your deck’s cards.</p>
-		<p>You might find the Draw Simulator view helpful for gaining a better understanding of how your deck could play out in an actual game. After testing a few rounds, if you’re not satisfied with your deck’s drawing results, you always can return to the <a href="#m-deck-editor">Deck Editor</a> view to make adjustments.</p>
+		<h3>Draw Simulator Mode</h3>
+		<p>The Draw Simulator is a <a href="#m-deck-page-modes">deck page mode</a> where you can test the process of drawing from a shuffled library of your deck’s cards.</p>
+		<p>You might find the Draw Simulator helpful for gaining a better understanding of how your deck could play out in an actual game. After testing a few rounds, if you’re not satisfied with your deck’s drawing results, you always can return to the <a href="#m-deck-editor">Deck Editor</a> mode to make adjustments.</p>
 		<p>The Draw Simulator contains the following parts, listed in order by their positions on the page from top to bottom, left to right:</p>
 		<ul>
 			<li>

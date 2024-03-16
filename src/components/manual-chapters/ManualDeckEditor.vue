@@ -1,9 +1,8 @@
 <template>
 	<section id="m-deck-editor">
-		<h3>Deck Editor View</h3>
-		<p>The Deck Editor is a <a href="#m-deck-views">deck view</a> where you can see, add, remove, and organize every card in your deck.</p>
-		<p>Whenever you arrive on any <a href="#m-deck-pages">deck page</a>, the Deck Editor is the view shown first. If you’ve gone to another view and want to go back to the Deck Editor, click the “Deck Editor” link in the deck views menu.</p>
-		<p>The Deck Editor view comprises several different sections. These sections include the following, listed in order by their positions on the page (at least when displayed on large-screen devices) from top to bottom, left to right:</p>
+		<h3>Deck Editor Mode</h3>
+		<p>The Deck Editor is a <a href="#m-deck-page-modes">deck page mode</a> where you can view, add, remove, and organize every card in your deck.</p>
+		<p>The Deck Editor comprises several different sections. These sections include the following, listed in order by their positions on the page (at least when displayed on large-screen devices) from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#m-card-image">Card image</a></li>
 			<li><a href="#m-card-sorter">Card sorter</a></li>
