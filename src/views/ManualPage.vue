@@ -25,9 +25,15 @@
 					<li>
 						<a href="#m-deck-pages">Deck Pages</a>
 						<ol>
-							<li><a href="#m-deck-name">Deck Name</a></li>
-							<li><a href="#m-deck-statistics">Deck Statistics</a></li>
-							<li><a href="#m-deck-views">Deck Views Menu</a></li>
+							<li>
+								<a href="#m-deck-page-header">Deck Page Header</a>
+								<ol>
+									<li><a href="#m-deck-name">Deck Name</a></li>
+									<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+									<li><a href="#m-views-menu">Deck Views Menu</a></li>
+								</ol>
+							</li>
+							<li><a href="#m-deck-views">Deck Views</a></li>
 						</ol>
 					</li>
 					<li>
