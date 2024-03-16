@@ -38,6 +38,6 @@
 			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
 		<p>Single cards can be counted multiple times for different properties within a category. For example, if a card is designated “artifact creature” in its type line, then it’s counted as both an artifact and a creature in the types category. As a result, the sum of all counts in a category could be greater than your deck’s total cards, and the sum of all percentages in a category could be greater than 100%.</p>
-		<p>All statistics in the More Statistics view consider the main <a href="#m-group-switch">card group</a> only, not the sideboard.</p>
+		<p>All statistics in the More Statistics view consider the main <a href="#m-card-groups">card group</a> only, not the sideboard.</p>
 	</section>
 </template>

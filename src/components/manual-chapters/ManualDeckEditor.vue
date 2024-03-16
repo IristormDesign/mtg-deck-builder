@@ -7,7 +7,7 @@
 		<ol>
 			<li><a href="#m-card-image">Card image</a></li>
 			<li><a href="#m-card-sorter">Card sorter</a></li>
-			<li><a href="#m-group-switch">Card group switch</a></li>
+			<li><a href="#m-card-groups">Card group switch</a></li>
 			<li><a href="#m-sideboard-header">Sideboard header</a></li>
 			<li>
 				<a href="#m-card-list">Card list</a>

@@ -7,7 +7,7 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The card sorter (the section labeled “Sort cards by”) has a drop-down menu with various options for instantly sorting all card names in the <a href="#m-card-list">card list</a> by a particular attribute you choose.</p>
-		<p>Whenever you select an option in the card sorter, it sorts names for only your currently <a href="#m-deck-menu">active deck</a>, in both the main and sideboard <a href="#m-group-switch">card groups</a>.</p>
+		<p>Whenever you select an option in the card sorter, it sorts names for only your currently <a href="#m-deck-menu">active deck</a>, in both the main and sideboard <a href="#m-card-groups">card groups</a>.</p>
 		<p>The sorting options and their effects include the following:</p>
 		<ul>
 			<li>

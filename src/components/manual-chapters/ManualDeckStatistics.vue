@@ -8,7 +8,7 @@
 				alt="Snipped of deck statistics section" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The deck statistics section shows information about how your currently <a href="#m-deck-menu">open deck</a> is composed.</p>
-		<p>All but one of these statistics are about the deck’s main <a href="#m-group-switch">card group</a> alone (not also the sideboard). Whenever you modify your deck, the statistics here immediately update as needed.</p>
+		<p>All but one of these statistics are about the deck’s main <a href="#m-card-groups">card group</a> alone (not also the sideboard). Whenever you modify your deck, the statistics here immediately update as needed.</p>
 		<p>The deck statistics section has the following subsections:</p>
 		<ul>
 			<li>

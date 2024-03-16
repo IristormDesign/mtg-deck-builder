@@ -42,7 +42,7 @@
 							<li><a href="#m-card-image">Card Image</a></li>
 							<li><a href="#m-card-sorter">Card Sorter</a></li>
 							<li>
-								<a href="#m-group-switch">Card Group Switch</a>
+								<a href="#m-card-groups">Card Group Switch</a>
 								<ol>
 									<li><a href="#m-sideboard-uses">Sideboard Uses</a></li>
 								</ol>

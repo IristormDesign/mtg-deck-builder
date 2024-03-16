@@ -1,7 +1,7 @@
 <template>
 	<section id="m-sideboard-uses">
 		<h5>Sideboard Uses</h5>
-		<p>The sideboard is a <a href="#m-group-switch">card group</a> containing cards that are related to your deck, but that aren’t in the main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
+		<p>The sideboard is a <a href="#m-card-groups">card group</a> containing cards that are related to your deck, but that aren’t in the main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 		<ul>
 			<li>
 				<p>Temporarily swap certain cards in the main card group with ones in the sideboard. You’d typically do this before a rematch with an opponent whose deck you’ve realized has strengths and weaknesses against yours.</p>
