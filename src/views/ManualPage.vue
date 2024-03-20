@@ -29,7 +29,7 @@
 								<a href="#m-deck-page-header">Deck Page Header</a>
 								<ol>
 									<li><a href="#m-deck-name">Deck Name</a></li>
-									<li><a href="#m-deck-statistics">Deck Statistics</a></li>
+									<li><a href="#m-basic-statistics">Basic Statistics</a></li>
 									<li><a href="#m-modes-menu">Modes Menu</a></li>
 								</ol>
 							</li>

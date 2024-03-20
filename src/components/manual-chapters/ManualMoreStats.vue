@@ -1,12 +1,12 @@
 <template>
 	<section id="m-more-stats">
 		<h3>More Statistics Mode</h3>
-		<p>While the <a href="#m-deck-page-header">deck page header</a> shows a few <a href="#m-deck-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows an even greater variety of information.</p>
+		<p>While the <a href="#m-deck-page-header">deck page header</a> shows a few <a href="#m-basic-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows an even greater variety of information.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
-				alt="Snippet of more deck statistics page" title="Screenshot" loading="lazy" />
+				alt="Snippet of more basic statistics page" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The More Statistics mode displays many data tables, each for a certain category regarding your deck’s cards. The categories are the following:</p>
 		<ul>
