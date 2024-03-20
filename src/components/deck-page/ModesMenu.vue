@@ -1,5 +1,5 @@
 <template>
-	<nav class="deck-views deck-info">
+	<nav class="deck-modes deck-info">
 		<h3>{{ deckViewHeading }}</h3>
 		<ul>
 			<li>

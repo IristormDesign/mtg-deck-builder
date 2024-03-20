@@ -83,7 +83,7 @@
 			margin-left: .25em;
 		}
 	}
-	.deck-views {
+	.deck-modes {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -113,7 +113,7 @@
 			@include heading-font;
 			display: block;
 			padding: divide($lhse, 3) 0;
-			font-size: 87.5%;
+			font-size: 93.75%;
 			text-align: center;
 
 			&.current-page {
@@ -155,7 +155,7 @@
 			border-right-width: 0;
 			padding-right: $lhse*.5;
 		}
-		.deck-views {
+		.deck-modes {
 			order: 2;
 			grid-column: span 5;
 			border-right-width: 0;
@@ -167,7 +167,7 @@
 		.deck-info {
 			@include deck-info-box-narrow();
 		}
-		.deck-views {
+		.deck-modes {
 			h3 {
 				margin: $lhse*.25 auto $lhse*.125;
 			}
@@ -207,7 +207,7 @@
 		.deck-name {
 			grid-column: span 6;
 		}
-		.deck-views {
+		.deck-modes {
 			grid-column: span 6;
 			white-space: normal;
 
