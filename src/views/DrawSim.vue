@@ -152,7 +152,9 @@ export default {
 				} else {
 					this.library.splice(0, 1)
 					this.drawnList.unshift(card)
-					this.viewCard(card)
+					if (!this.$store.state.isMobileLayout()) {
+						this.viewCard(card)
+					}
 					this.afterReshuffle = false
 				}
 			}
