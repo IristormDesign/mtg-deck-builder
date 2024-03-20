@@ -2,7 +2,7 @@
 	<section id="m-deck-pages">
 		<h3>Deck Pages</h3>
 		<p>Deck pages are the central focus of MTG Deck Builder: They’re where you construct, analyze, test, and modify the contents of your <i>Magic: The Gathering</i> decks.</p>
-		<p>Every deck in the app gets its own deck page. Whenever you <a href="#m-create-deck">create</a> or <a href="#m-deck-menu">open</a> a deck, you’re directed to its deck page.</p>
+		<p>Every deck in the app has its own deck page. Whenever you <a href="#m-create-deck">create</a> or <a href="#m-deck-menu">open</a> a deck, you’re directed to its deck page.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-page.jpg 1x, @/img/manual-deck-page-2x.jpg 1.5x"
