@@ -100,7 +100,6 @@ $transition-delay-card: divide(1, 3) * 1s;
 }
 
 .card-image {
-	@include card-link('left');
 	grid-area: card-img;
 	position: sticky;
 	top: calc(
@@ -117,7 +116,6 @@ $transition-delay-card: divide(1, 3) * 1s;
 		outline-offset: -$lhse*.75;
 	}
 	.card-edge {
-		@include card-edge-filters('left');
 		transition: filter $transition-duration-card-image-hover-fast ease 0s;
 		position: absolute;
 		width: 100%;
@@ -187,6 +185,13 @@ $animation-duration-card-browse: .3820s;
 	}
 }
 .deck-editor {
+	.card-image {
+		@include card-link('left');
+
+		.card-edge {
+			@include card-edge-filters('left');
+		}
+	}
 	.card-browse-enter-active {
 		@include card-fan-in-from('left');
 	}
@@ -216,6 +221,18 @@ $animation-duration-card-browse: .3820s;
 	}
 }
 @media (max-width: $width-deck-hidden-image) {
+	.deck-editor,
+	.draw-simulator {
+		.card-image {
+			.card-edge {
+				&,
+				&:hover,
+				&:focus-within {
+					filter: drop-shadow(0 0 $lhse rgba(#fff, .1667));
+				}
+			}
+		}
+	}
 	.card-image {
 		z-index: index($layers, app-header);
 		width: auto;
