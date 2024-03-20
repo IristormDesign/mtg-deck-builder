@@ -76,31 +76,31 @@
 
 		<div class="the-manual">
 			<manual-introduction />
-			<manual-app-header />
-			<manual-create-deck-page />
-			<manual-deck-pages />
-			<manual-deck-editor />
-			<manual-more-stats />
-			<manual-draw-sim />
-			<manual-storage-of-deck-data />
-			<manual-app-development />
+			<app-header />
+			<create-deck-page />
+			<deck-pages />
+			<deck-editor />
+			<more-stats />
+			<draw-sim />
+			<storage-of-deck-data />
+			<app-development />
 		</div>
 	</article>
 </template>
 
 <script>
 import ManualIntroduction from '@/components/manual-chapters/ManualIntroduction.vue'
-import ManualAppHeader from '@/components/manual-chapters/ManualAppHeader.vue'
-import ManualCreateDeckPage from '@/components/manual-chapters/ManualCreateDeckPage.vue'
-import ManualDeckPages from '@/components/manual-chapters/ManualDeckPages.vue'
-import ManualDeckEditor from '@/components/manual-chapters/ManualDeckEditor.vue'
-import ManualMoreStats from '@/components/manual-chapters/ManualMoreStats.vue'
-import ManualDrawSim from '@/components/manual-chapters/ManualDrawSim.vue'
-import ManualStorageOfDeckData from '@/components/manual-chapters/ManualStorageOfDeckData.vue'
-import ManualAppDevelopment from '@/components/manual-chapters/ManualAppDevelopment.vue'
+import AppHeader from '@/components/manual-chapters/AppHeader.vue'
+import CreateDeckPage from '@/components/manual-chapters/CreateDeckPage.vue'
+import DeckPages from '@/components/manual-chapters/DeckPages.vue'
+import DeckEditor from '@/components/manual-chapters/DeckEditor.vue'
+import MoreStats from '@/components/manual-chapters/MoreStats.vue'
+import DrawSim from '@/components/manual-chapters/DrawSim.vue'
+import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vue'
+import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, ManualAppHeader, ManualCreateDeckPage, ManualDeckPages, ManualDeckEditor, ManualMoreStats, ManualDrawSim, ManualStorageOfDeckData, ManualAppDevelopment },
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment },
 	mounted () {
 		this.modifyManualLinkEffects()
 

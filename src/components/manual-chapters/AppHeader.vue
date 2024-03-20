@@ -8,14 +8,14 @@
 			<li><strong>Open Deck</strong> – Shows the <a href="#m-deck-menu">deck menu</a>.</li>
 		</ul>
 
-		<manual-deck-menu />
+		<deck-menu />
 	</section>
 </template>
 
 <script>
-import ManualDeckMenu from '@/components/manual-chapters/ManualDeckMenu.vue'
+import DeckMenu from '@/components/manual-chapters/DeckMenu.vue'
 
 export default {
-	components: { ManualDeckMenu }
+	components: { DeckMenu }
 }
 </script>

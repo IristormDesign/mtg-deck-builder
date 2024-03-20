@@ -5,18 +5,18 @@
 		<p>Each card name in the list has three interactive elements: a <a href="#m-card-buttons">button</a>, a <a href="#m-card-quantities">quantity</a>, and a <a href="#m-card-stars">star</a>. These elements will be explained in more detail.</p>
 		<p>Card lists are populated by the <a href="#m-card-adder">card adder</a>.</p>
 
-		<manual-card-stars />
-		<manual-card-buttons />
-		<manual-card-quantities />
+		<card-stars />
+		<card-buttons />
+		<card-quantities />
 	</section>
 </template>
 
 <script>
-import ManualCardButtons from '@/components/manual-chapters/ManualCardButtons.vue'
-import ManualCardQuantities from '@/components/manual-chapters/ManualCardQuantities.vue'
-import ManualCardStars from '@/components/manual-chapters/ManualCardStars.vue'
+import CardButtons from '@/components/manual-chapters/CardButtons.vue'
+import CardQuantities from '@/components/manual-chapters/CardQuantities.vue'
+import CardStars from '@/components/manual-chapters/CardStars.vue'
 
 export default {
-	components: { ManualCardButtons, ManualCardQuantities, ManualCardStars }
+	components: { CardButtons, CardQuantities, CardStars }
 }
 </script>

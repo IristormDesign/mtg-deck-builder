@@ -9,15 +9,15 @@
 		<p>The manual contains screenshots that show parts of MTG Deck Builder. Some of these screenshots have been taken from earlier versions of the app, which may look slightly different from the current version.</p>
 
 		<game-rules />
-		<manual-symbols />
+		<app-symbols />
 	</section>
 </template>
 
 <script>
-import GameRules from '@/components/manual-chapters/ManualGameRules.vue'
-import ManualSymbols from '@/components/manual-chapters/ManualSymbols.vue'
+import GameRules from '@/components/manual-chapters/GameRules.vue'
+import AppSymbols from '@/components/manual-chapters/AppSymbols.vue'
 
 export default {
-	components: { GameRules, ManualSymbols }
+	components: { GameRules, AppSymbols }
 }
 </script>

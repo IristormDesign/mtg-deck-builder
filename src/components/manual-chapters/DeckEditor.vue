@@ -22,28 +22,28 @@
 		</ol>
 		<p>Each of the Deck Editor’s sections is going to be explained in further detail.</p>
 
-		<manual-card-image />
-		<manual-card-sorter />
-		<manual-card-group-switch />
-		<manual-sideboard-header />
-		<manual-card-list />
-		<manual-scryfall-button />
-		<manual-card-adder />
-		<manual-deck-actions />
+		<card-image />
+		<card-sorter />
+		<card-group-switch />
+		<sideboard-header />
+		<card-list />
+		<scryfall-button />
+		<card-adder />
+		<deck-actions />
 	</section>
 </template>
 
 <script>
-import ManualCardImage from '@/components/manual-chapters/ManualCardImage.vue'
-import ManualCardSorter from '@/components/manual-chapters/ManualCardSorter.vue'
-import ManualCardGroupSwitch from '@/components/manual-chapters/ManualCardGroupSwitch.vue'
-import ManualSideboardHeader from '@/components/manual-chapters/ManualSideboardHeader.vue'
-import ManualCardList from '@/components/manual-chapters/ManualCardList.vue'
-import ManualScryfallButton from '@/components/manual-chapters/ManualScryfallButton.vue'
-import ManualCardAdder from '@/components/manual-chapters/ManualCardAdder.vue'
-import ManualDeckActions from '@/components/manual-chapters/ManualDeckActions.vue'
+import CardImage from '@/components/manual-chapters/CardImage.vue'
+import CardSorter from '@/components/manual-chapters/CardSorter.vue'
+import CardGroupSwitch from '@/components/manual-chapters/CardGroupSwitch.vue'
+import SideboardHeader from '@/components/manual-chapters/SideboardHeader.vue'
+import CardList from '@/components/manual-chapters/CardList.vue'
+import ScryfallButton from '@/components/manual-chapters/ScryfallButton.vue'
+import CardAdder from '@/components/manual-chapters/CardAdder.vue'
+import DeckActions from '@/components/manual-chapters/DeckActions.vue'
 
 export default {
-	components: { ManualCardImage, ManualCardSorter, ManualCardGroupSwitch, ManualSideboardHeader, ManualCardList, ManualScryfallButton, ManualCardAdder, ManualDeckActions }
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, CardAdder, DeckActions }
 }
 </script>
