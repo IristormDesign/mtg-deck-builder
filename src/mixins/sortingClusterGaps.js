@@ -127,12 +127,12 @@ export default {
 							gapsStarred(); break
 						case 'cmc':
 							gapsCmc(); break
+						case 'supertype':
+							gapsSupertype(); break
 						case 'type':
 							gapsType(); break
 						case 'subtype':
 							gapsSubtype(); break
-						case 'supertype':
-							gapsSupertype(); break
 						case 'pt-sum':
 							gapsPTSum(); break
 						case 'qty':

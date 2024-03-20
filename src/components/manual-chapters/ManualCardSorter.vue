@@ -23,13 +23,13 @@
 				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost).</p>
 			</li>
 			<li>
+				<p><strong>Supertype</strong> – Sorts alphabetically by supertype, and moves names of cards without supertypes to the bottom. (Examples of supertypes are “basic” [on land cards] and “legendary.”)</p>
+			</li>
+			<li>
 				<p><strong>Type</strong> – Sorts by card type in the following order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
 			</li>
 			<li>
 				<p><strong>Subtype</strong> – Sorts alphabetically by subtype, and moves names of cards without subtypes to the bottom.</p>
-			</li>
-			<li>
-				<p><strong>Supertype</strong> – Sorts alphabetically by supertype, and moves names of cards without supertypes to the bottom. (Examples of supertypes are “basic” and “legendary.”)</p>
 			</li>
 			<li>
 				<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>

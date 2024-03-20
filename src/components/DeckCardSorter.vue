@@ -20,9 +20,9 @@
 					<option value="name">Name</option>
 					<option value="color">Mana Color</option>
 					<option value="cmc">Mana Value</option>
+					<option value="supertype">Supertype</option>
 					<option value="type">Type</option>
 					<option value="subtype">Subtype</option>
-					<option value="supertype">Supertype</option>
 					<option value="rarity">Rarity</option>
 					<option value="pt-sum">P/T Sum</option>
 					<option value="qty">Quantity</option>
@@ -102,6 +102,10 @@ export default {
 					sortByColor(mainList)
 					sortByColor(sbList)
 					break
+				case 'supertype':
+					sortBySupertype(mainList)
+					sortBySupertype(sbList)
+					break
 				case 'type':
 					sortByType(mainList)
 					sortByType(sbList)
@@ -109,10 +113,6 @@ export default {
 				case 'subtype':
 					sortBySubtype(mainList)
 					sortBySubtype(sbList)
-					break
-				case 'supertype':
-					sortBySupertype(mainList)
-					sortBySupertype(sbList)
 					break
 				case 'rarity':
 					sortByRarity(mainList)
@@ -160,6 +160,31 @@ export default {
 						const colorB = colorOrder.indexOf(b.colors[0])
 
 						return colorA - colorB
+					}
+				})
+			}
+			function sortBySupertype (cards) {
+				const regexSupertype = /^\b(Basic|Elite|Legendary|Ongoing|Snow|Token|World)\b \w/ // Finds a string beginning with certain supertype terms such as "Legendary" followed by a space and any word.
+
+				// First, sort between cards with supertypes and cards without supertypes.
+				cards.sort((a, b) => {
+					const aHasSupertype = regexSupertype.test(a.type)
+					const bHasSupertype = regexSupertype.test(b.type)
+
+					return bHasSupertype - aHasSupertype
+				})
+
+				// Next, sort the cards with supertypes alphabetically by supertype.
+				cards.sort((a, b) => {
+					const supertypeA = a.type.match(regexSupertype)
+					const supertypeB = b.type.match(regexSupertype)
+
+					if (supertypeA < supertypeB) {
+						return -1
+					} else if (supertypeA > supertypeB) {
+						return 1
+					} else {
+						return 0
 					}
 				})
 			}
@@ -224,31 +249,6 @@ export default {
 					if (subtypeA < subtypeB) {
 						return -1
 					} else if (subtypeA > subtypeB) {
-						return 1
-					} else {
-						return 0
-					}
-				})
-			}
-			function sortBySupertype (cards) {
-				const regexSupertype = /^\b(Basic|Elite|Legendary|Ongoing|Snow|Token|World)\b \w/ // Finds a string beginning with certain supertype terms such as "Legendary" followed by a space and any word.
-
-				// First, sort between cards with supertypes and cards without supertypes.
-				cards.sort((a, b) => {
-					const aHasSupertype = regexSupertype.test(a.type)
-					const bHasSupertype = regexSupertype.test(b.type)
-
-					return bHasSupertype - aHasSupertype
-				})
-
-				// Next, sort the cards with supertypes alphabetically by supertype.
-				cards.sort((a, b) => {
-					const supertypeA = a.type.match(regexSupertype)
-					const supertypeB = b.type.match(regexSupertype)
-
-					if (supertypeA < supertypeB) {
-						return -1
-					} else if (supertypeA > supertypeB) {
 						return 1
 					} else {
 						return 0
