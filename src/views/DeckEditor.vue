@@ -11,7 +11,7 @@
 			v-if="$store.state.showSideboard"
 			class="card-list-section"
 		>
-			<deck-sideboard-header :deck="deck" />
+			<sideboard-header :deck="deck" />
 			<div
 				v-if="deck.sideboard.cards.length <= 0"
 				class="no-cards"
@@ -49,7 +49,7 @@
 		</section>
 
 		<div class="control-panel action-controls">
-			<scryfall-opener />
+			<scryfall-button />
 			<card-adder :deck="deck" />
 			<deck-actions :deck="deck" />
 		</div>
@@ -57,18 +57,18 @@
 </template>
 
 <script>
-import CardImage from '@/components/DeckCardImage.vue'
-import CardSorter from '@/components/DeckCardSorter.vue'
-import CardGroupSwitch from '@/components/DeckCardGroupSwitch.vue'
-import DeckSideboardHeader from '@/components/DeckSideboardHeader.vue'
-import CardListItems from '@/components/DeckCardListItems.vue'
-import ScryfallOpener from '@/components/DeckScryfallOpener.vue'
-import CardAdder from '@/components/DeckCardAdder.vue'
-import DeckActions from '@/components/DeckDeckActions.vue'
+import CardImage from '@/components/deck-page/CardImage.vue'
+import CardSorter from '@/components/deck-page/CardSorter.vue'
+import CardGroupSwitch from '@/components/deck-page/CardGroupSwitch.vue'
+import SideboardHeader from '@/components/deck-page/SideboardHeader.vue'
+import CardListItems from '@/components/deck-page/CardListItems.vue'
+import ScryfallButton from '@/components/deck-page/ScryfallButton.vue'
+import CardAdder from '@/components/deck-page/CardAdder.vue'
+import DeckActions from '@/components/deck-page/DeckActions.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { CardImage, CardSorter, CardGroupSwitch, DeckSideboardHeader, CardListItems, ScryfallOpener, CardAdder, DeckActions },
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, CardAdder, DeckActions },
 	mixins: [getActiveDeck],
 	methods: {
 		attentionAddCard (attention) {

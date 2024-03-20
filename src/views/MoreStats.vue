@@ -49,14 +49,14 @@
 </template>
 
 <script>
-import MoreStatsColors from '@/components/MoreStatsColors.vue'
-import MoreStatsManaValues from '@/components/MoreStatsManaValues.vue'
-import MoreStatsTypes from '@/components/MoreStatsTypes.vue'
-import MoreStatsSubtypes from '@/components/MoreStatsSubtypes.vue'
-import MoreStatsRarities from '@/components/MoreStatsRarities.vue'
-import MoreStatsMisc from '@/components/MoreStatsMisc.vue'
-import MoreStatsKeywords from '@/components/MoreStatsKeywords.vue'
-import MoreStatsPowerToughness from '@/components/MoreStatsPowerToughness.vue'
+import MoreStatsColors from '@/components/deck-page/MoreStatsColors.vue'
+import MoreStatsManaValues from '@/components/deck-page/MoreStatsManaValues.vue'
+import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
+import MoreStatsSubtypes from '@/components/deck-page/MoreStatsSubtypes.vue'
+import MoreStatsRarities from '@/components/deck-page/MoreStatsRarities.vue'
+import MoreStatsMisc from '@/components/deck-page/MoreStatsMisc.vue'
+import MoreStatsKeywords from '@/components/deck-page/MoreStatsKeywords.vue'
+import MoreStatsPowerToughness from '@/components/deck-page/MoreStatsPowerToughness.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {

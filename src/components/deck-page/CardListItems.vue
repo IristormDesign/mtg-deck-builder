@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import CardStar from '@/components/DeckCardStar.vue'
-import CardButton from '@/components/DeckCardButton.vue'
-import CardQuantity from '@/components/DeckCardQuantity.vue'
+import CardStar from '@/components/deck-page/CardStar.vue'
+import CardButton from '@/components/deck-page/CardButton.vue'
+import CardQuantity from '@/components/deck-page/CardQuantity.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 
 export default {

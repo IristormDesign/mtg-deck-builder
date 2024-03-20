@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import DeckName from '@/components/DeckHeaderDeckName.vue'
-import DeckColors from '@/components/DeckHeaderDeckColors.vue'
-import AverageManaValue from '@/components/DeckHeaderAverageManaValue.vue'
-import DateEdited from '@/components/DeckHeaderDateEdited.vue'
-import CardNames from '@/components/DeckHeaderCardNames.vue'
-import CardTotal from '@/components/DeckHeaderCardTotal.vue'
-import ModesMenu from '@/components/DeckHeaderModesMenu.vue'
-import UpdateDataNotice from '@/components/DeckUpdateDataNotice.vue'
+import DeckName from '@/components/deck-page/DeckName.vue'
+import DeckColors from '@/components/deck-page/StatDeckColors.vue'
+import AverageManaValue from '@/components/deck-page/StatAverageManaValue.vue'
+import DateEdited from '@/components/deck-page/StatDateEdited.vue'
+import CardNames from '@/components/deck-page/StatCardNames.vue'
+import CardTotal from '@/components/deck-page/StatCardTotal.vue'
+import ModesMenu from '@/components/deck-page/ModesMenu.vue'
+import UpdateDataNotice from '@/components/deck-page/UpdateDataNotice.vue'
 import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 

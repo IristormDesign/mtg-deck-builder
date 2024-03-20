@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import CardImage from '@/components/DeckCardImage.vue'
-import CardStar from '@/components/DeckCardStar.vue'
-import CardButton from '@/components/DeckCardButton.vue'
+import CardImage from '@/components/deck-page/CardImage.vue'
+import CardStar from '@/components/deck-page/CardStar.vue'
+import CardButton from '@/components/deck-page/CardButton.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
