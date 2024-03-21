@@ -13,7 +13,7 @@ const routes = [
 	{
 		name: 'manual',
 		path: '/manual',
-		component: () => import(/* webpackChunkName: "manual" */ '../views/ManualPage.vue')
+		component: () => import(/* webpackChunkName: "manual" */ '../views/UserManual.vue')
 	},
 	{
 		name: 'createDeck',
@@ -71,12 +71,12 @@ const routes = [
 	{
 		name: 'terms',
 		path: '/terms',
-		component: () => import(/* webpackChunkName: "terms" */ '../views/TermsPage.vue')
+		component: () => import(/* webpackChunkName: "terms" */ '../views/TermsOfService.vue')
 	},
 	{
 		name: 'privacy',
 		path: '/privacy',
-		component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyPage.vue')
+		component: () => import(/* webpackChunkName: "privacy" */ '../views/PrivacyPolicy.vue')
 	},
 	{
 		// This route should always be the last item in the `routes` array.
