@@ -49,17 +49,16 @@ export default {
 			)
 		}
 	},
+	created () {
+		this.$store.commit('showSideboard', false)
+		this.prepareDecksWithOutdatedData()
+	},
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('showSideboard', false)
-		next()
 		this.$store.commit('focusCardButton', null)
 
 		next()
 
-		this.prepareDecksWithOutdatedData()
-	},
-	created () {
-		this.$store.commit('showSideboard', false)
 		this.prepareDecksWithOutdatedData()
 	},
 	methods: {
