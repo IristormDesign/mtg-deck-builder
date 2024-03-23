@@ -1,0 +1,60 @@
+@import 'variables';
+
+.scroll-to-top {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: index($layers, above-overlay);
+	display: flex;
+	justify-content: center;
+
+	button {
+		min-width: $lhse*2;
+		background: $color-mythic-dim;
+		border: 0;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		text-shadow: none;
+		color: $color-app-header-link;
+		margin: 0;
+		padding: $lhse*.125 $lhse*.5;
+		border-block-width: 0;
+		font-size: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.text-label {
+			width: 0;
+			transition: all .5s ease;
+			text-transform: uppercase;
+			font-size: 66.67%;
+			overflow: hidden;
+			white-space: nowrap;
+			opacity: 0;
+			margin: 0;
+		}
+		&:hover,
+		&:focus {
+			color: $color-app-header-link-hover;
+
+			.text-label {
+				width: $lhse*5.5;
+				margin: 0 .25em;
+				opacity: 1;
+			}
+		}
+		&:active {
+			color: $color-app-header-link-active;
+		}
+	}
+}
+.stt-fade-enter-active,
+.stt-fade-leave-active {
+  transition: opacity .5s ease;
+}
+.stt-fade-enter,
+.stt-fade-leave-to {
+  opacity: 0;
+}

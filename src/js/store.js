@@ -20,12 +20,10 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
-		pageScrollByAnchors: false,
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
 		showSideboard: false,
-		stickAppHeader: false,
 		viewedDrawnCard: null
 	},
 	getters: {
@@ -48,12 +46,6 @@ export default new Vuex.Store({
 		},
 		overlayHoverEnabled (state, payload) {
 			state.overlayHoverEnabled = payload
-		},
-		pageScrollByAnchors (state, payload) {
-			state.pageScrollByAnchors = payload
-		},
-		stickAppHeader (state, payload) {
-			state.stickAppHeader = payload
 		},
 		showingAnyPopup (state, payload) {
 			state.showingAnyPopup = payload

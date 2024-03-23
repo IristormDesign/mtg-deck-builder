@@ -14,7 +14,6 @@
 					<router-link
 						:to="{name: 'manual'}"
 						class="header-menu-item"
-						@click.native="manualButtonClicked()"
 					>
 						User Manual
 					</router-link>
@@ -229,9 +228,6 @@ export default {
 			if (this.mobileView()) {
 				this.showHeaderMenu = false
 			}
-			if (this.stickAppHeader) {
-				this.$store.commit('stickAppHeader', false)
-			}
 		},
 		toggleHeaderMenu () {
 			if (this.showHeaderMenu) {
@@ -266,12 +262,6 @@ export default {
 				setTimeout(() => {
 					this.freezeDeckMenu = false
 				}, 500)
-			}
-		},
-		manualButtonClicked () {
-			if (this.$router.currentRoute.name === 'manual') {
-				window.scrollTo({ top: 0 })
-				history.replaceState('', document.title, window.location.pathname)
 			}
 		},
 		mobileView () {

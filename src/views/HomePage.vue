@@ -95,7 +95,6 @@ export default {
 		homeOpenDeckButton () {
 			this.$store.commit('overlayHoverEnabled', false)
 			this.$store.commit('showDeckMenu', true)
-			this.$store.commit('stickAppHeader', true)
 		}
 	}
 }

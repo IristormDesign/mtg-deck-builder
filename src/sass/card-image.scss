@@ -102,9 +102,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 .card-image {
 	grid-area: card-img;
 	position: sticky;
-	top: calc(
-		#{$lhse*.5} + var(--header-height) + var(--header-top)
-	);
+	top: $lhse*.5;
 	transition: top $transition-duration-standard ease;
 	z-index: index($layers, card-overlay);
 	width: min(#{488px * .6667}, 25vw);

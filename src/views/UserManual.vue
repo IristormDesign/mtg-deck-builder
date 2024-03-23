@@ -100,34 +100,7 @@ import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vu
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment },
-	mounted () {
-		this.modifyManualLinkEffects()
-
-		document.addEventListener('scrollend', this.scrollendEvent)
-	},
-	destroyed () {
-		document.removeEventListener('scrollend', this.scrollendEvent)
-	},
-	methods: {
-		modifyManualLinkEffects () {
-			document.querySelectorAll('.manual-page a').forEach(link => {
-				link.addEventListener('click', this.manualLinkClickEvent)
-			})
-		},
-		manualLinkClickEvent (event) {
-			const regexManualSectionLink = /^#.*/ // A string beginning with `#`.
-
-			if (regexManualSectionLink.test(event.target.hash)) {
-				this.$store.commit('pageScrollByAnchors', true)
-				this.$store.commit('stickAppHeader', false)
-
-				setTimeout(() => {
-					this.$store.commit('pageScrollByAnchors', false)
-				}, 10) // There needs to be a little timeout duration because otherwise the header sometimes appears when a link to a higher section is clicked.
-			}
-		}
-	}
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment }
 }
 </script>
 

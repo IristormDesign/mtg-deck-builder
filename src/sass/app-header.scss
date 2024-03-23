@@ -4,7 +4,6 @@
 
 :root {
 	--header-height: #{$height-app-header-short};
-	--header-top: calc(var(--header-height) * -1); // Multiplying a value by -1 is the only way to get a negative value with CSS custom properties.
 }
 .app-header {
 	background: $color-mythic-dim;
@@ -14,22 +13,12 @@
 	border-top-color: $color-mythic-dim;
 	z-index: index($layers, app-header);
 	height: var(--header-height);
-	box-shadow: 0 1px 0 1px rgba(#fff, .0833);
-	transition: all $transition-duration-standard ease;
-	will-change: top;
+	box-shadow: 0 0 0 1px rgba(#fff, .125);
 
-	&.sticky {
+	.root-home-page & {
 		position: sticky;
-		// `top` property gets set by JavaScript in AppHeader.vue
-		left: 0;
-		right: 0;
-		box-shadow: 0 0 divide($lhse, 3) rgba(#000, .6180);
-	}
-	&.sliding-up {
-		box-shadow: none; // Combined with .app-header's transition property, this makes the box-shadow of .app-header gradually disappear as the header slides upward. Without this .sliding-up class, the box-shadow disappears abruptly once the bottom of the header reaches the top of the viewport.
-	}
-	.root-home-page &:not(.sticky) {
-		box-shadow: none;
+		top: 0;
+		box-shadow: 0 0 $lhse*.25 rgba(#000, .6667);
 	}
 	.wrap {
 		display: flex;

@@ -43,24 +43,6 @@
 	margin: 0 auto;
 	border: $border-image-thick;
 }
-.scroll-to-top {
-	position: fixed;
-	bottom: divide($lhse, 3);
-	right: divide($lhse, 3);
-	z-index: index($layers, above-overlay);
-
-	button {
-		min-width: $lhse;
-	}
-}
-.stt-fade-enter-active,
-.stt-fade-leave-active {
-  transition: opacity .25s ease-out;
-}
-.stt-fade-enter,
-.stt-fade-leave-to {
-  opacity: 0;
-}
 .bigger {
 	font-size: $font-size-bigger;
 }

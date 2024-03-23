@@ -1,12 +1,15 @@
 <template>
 	<transition appear name="fade-from-black">
 		<div class="fade-bg" :class="homePageClass">
-			<update-notif />
-			<app-header />
-			<main>
-				<router-view />
-			</main>
-			<app-footer />
+			<div class="paint-container">
+				<update-notif />
+				<app-header />
+				<main>
+					<router-view />
+				</main>
+				<app-footer />
+			</div>
+			<scroll-to-top />
 		</div>
 	</transition>
 </template>
@@ -15,9 +18,10 @@
 import UpdateNotif from '@/components/AppUpdateNotif.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 
 export default {
-	components: { UpdateNotif, AppHeader, AppFooter },
+	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
 	computed: {
 		homePageClass () {
 			if (this.$route.name === 'home') {
