@@ -15,13 +15,13 @@ body {
 }
 .fade-bg {
 	background: $color-content-bg;
+}
+.paint-container {
+	contain: paint; // Needed for the draw simulator page's card image animations that appear from out of the viewport, and doesn't affect `sticky` positioning.
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	position: relative;
-}
-.paint-container {
-	contain: paint; // Needed for the draw simulator page's card image animations that appear from out of the viewport, and doesn't affect `sticky` positioning.
 }
 .texture-bg {
 	background: top left repeat $color-content-bg;
