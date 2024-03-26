@@ -170,8 +170,8 @@ figcaption {
 	}
 }
 ::selection {
-	background: $color-mythic-dim;
-	color: #fff;
+	background: $color-mythic-very-dim;
+	color: $color-app-header-link-active;
 	text-shadow: none;
 }
 ::-webkit-scrollbar {
