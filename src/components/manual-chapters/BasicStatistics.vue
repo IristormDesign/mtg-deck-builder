@@ -7,9 +7,9 @@
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
 				alt="Screenshot of basic statistics section" title="Screenshot" loading="lazy" />
 		</p>
-		<p>In the <a href="#m-deck-page-header">deck page header</a>, the basic statistics section shows information about how your currently <a href="#m-deck-menu">open deck</a> is composed.</p>
+		<p>In the <a href="#m-deck-page-header">deck page header</a>, the basic statistics section shows some data about how your currently <a href="#m-deck-menu">open deck</a> is composed.</p>
 		<p>All but one of these statistics are about the deck’s main <a href="#m-card-groups">card group</a> alone (not also the sideboard). Whenever you modify your deck, the statistics immediately update as needed.</p>
-		<p>The basic statistics section has the following subsections:</p>
+		<p>The basic statistics section displays the following information:</p>
 		<ul>
 			<li>
 				<p><strong>Mana Colors</strong> – This shows the <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in your deck’s main card group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by <i>Magic</i>’s conventional order: white, blue, black, red, green.</p>
@@ -27,6 +27,6 @@
 				<p><strong>Total Cards</strong> – This shows a number equal to the total cards in your deck’s main card group. A “⚠” (warning symbol) appears beside the number when the total is fewer than 60, which is the minimum limit by <i>Magic</i>’s standard <a href="#m-game-rules">game rules</a>; and when the total is close to but not exactly 100, which is the requirement by the Commander variant rules.</p>
 			</li>
 		</ul>
-		<p>Note that these basic statistics are only a small portion of all the statistics provided by MTG Deck Builder. For deeper data analysis of your deck, check out the <a href="#m-more-stats">“More Statistics” mode</a>.</p>
+		<p>Note that these basic statistics are only a small portion of all the statistics provided by MTG Deck Builder. For further data analysis of your deck, see the <a href="#m-more-stats">“More Statistics” mode</a>.</p>
 	</section>
 </template>
