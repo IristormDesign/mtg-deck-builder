@@ -2,6 +2,7 @@
 	<transition-group
 		tag="ul"
 		:key="deck.name"
+		name="card-li-fade"
 	>
 		<li
 			v-for="(card, i) in activeCardList.cards"

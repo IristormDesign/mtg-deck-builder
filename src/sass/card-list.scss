@@ -29,12 +29,13 @@ $min-height-card-list: $lhse*6;
 		padding: 0 0 0 $width-card-star*.6;
 		list-style: none;
 		position: relative;
+		transition: all .5s ease;
 	}
 	li {
 		display: flex;
 		margin: 1px auto;
-		transition: .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
-		transition-property: transform, background-color, border-radius;
+		transition: all .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
+		transition-property: transform, background-color, border-radius, opacity, filter;
 		position: relative;
 		background: $color-group-bg;
 		border-radius: $border-radius-button;
@@ -63,6 +64,31 @@ $min-height-card-list: $lhse*6;
 	}
 	.card-list-section-main-leave-active {
 		transition-duration: 0s; // When switching from one deck page to another, this stops the odd lingering of the previous deck list on the current page.
+	}
+	.card-li-fade {
+		&-enter-active,
+		&-leave-active {
+			transition: all 1s ease;
+		}
+		&-leave-active {
+			transition-duration: .5s;
+		}
+		&-enter,
+		&-leave-to {
+			opacity: 0;
+
+			button {
+				transform: scaleY(0);
+				transition-duration: 1s;
+			}
+		}
+		&-enter {
+			filter: brightness(150%);
+		}
+		&-leave-to {
+			filter: brightness(0%);
+			margin: 0 !important;
+		}
 	}
 }
 
