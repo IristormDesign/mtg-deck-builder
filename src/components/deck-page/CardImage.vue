@@ -1,5 +1,11 @@
 <template>
 	<section class="card-image">
+		<transition name="placement-outline-fade">
+			<div
+				v-if="this.showPlacementOutline"
+				class="card-placement-outline"
+			></div>
+		</transition>
 		<transition name="cd-overlay-fade">
 			<div
 				class="cd-overlay"
@@ -68,6 +74,13 @@ export default {
 		},
 		showCard () {
 			return this.$store.state.showCard
+		},
+		showPlacementOutline () {
+			if (this.$route.name === 'drawSim') {
+				return true
+			} else {
+				return this.deck.cards.length <= 0
+			}
 		}
 	},
 	watch: {

@@ -109,8 +109,13 @@ $transition-delay-card: divide(1, 3) * 1s;
 	max-height: $height-card-image-section;
 	aspect-ratio: 488 / 680;
 
-	@supports (aspect-ratio: auto) {
-		outline: divide($lhse, 3) dashed rgba($color-text, .2);
+	.card-placement-outline {
+		position: absolute;
+		height: 100%;
+		width: auto;
+		max-height: calc(100vh - #{$lhse});
+		aspect-ratio: 488 / 680;
+		outline: divide($lhse, 3) dashed rgba(#fff, .125);
 		outline-offset: -$lhse*.75;
 	}
 	.card-edge {
@@ -204,6 +209,19 @@ $animation-duration-card-browse: .3820s;
 	}
 	.card-browse-enter-active {
 		@include card-fan-in-from('right');
+	}
+}
+.placement-outline-fade {
+	&-enter-active,
+	&-leave-active {
+		transition: opacity .5s ease;
+	}
+	&-leave-active {
+		transition-delay: 1s;
+	}
+	&-enter,
+	&-leave-to {
+		opacity: 0;
 	}
 }
 .card-browse-appear-active {
