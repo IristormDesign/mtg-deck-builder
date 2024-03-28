@@ -139,7 +139,9 @@ export default {
 							gapsQty(); break
 					}
 				} else { // The last card in the list (before any newly added cards)
-					thisCard.gapAfter = true
+					setTimeout(() => {
+						thisCard.gapAfter = true
+					}, 1000) // Delay long enough for the `.card-li-fade` transition to finish.
 				}
 			}
 		}
