@@ -88,10 +88,9 @@ export default {
 			card.qty = Math.round(card.qty)
 			this.activeCardList.viewedCard = card
 
-			if (deck.sortBy === 'qty') {
-				deck.sortBy = ''
-			}
-			if (card.qty <= 0) {
+			if (card.qty < 0) {
+				card.qty = 0 // Don't allow negative numbers.
+			} else if (card.qty === 0) {
 				setTimeout(() => {
 					const confirmRemoval = confirm(`Remove “${card.name}” from the deck?`)
 
@@ -116,6 +115,17 @@ export default {
 						card.qty = 4
 					}
 				}
+			}
+
+			if (deck.sortBy === 'qty') {
+				deck.sortBy = ''
+
+				deck.cards.forEach(eachCard => {
+					eachCard.gapAfter = false
+				})
+				deck.sideboard.cards.forEach(eachCard => {
+					eachCard.gapAfter = false
+				})
 			}
 
 			// Save the changes.
