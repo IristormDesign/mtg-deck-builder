@@ -24,10 +24,32 @@
 		@include label-text-style;
 		margin: 0 $lhse*.5 0 0;
 		text-align: right;
+		width: min-content;
 	}
 	.output {
 		line-height: 1;
 		margin-top: -$lhse*.1; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
+	}
+}
+@mixin deck-info-box-wide() {
+	flex-direction: row;
+
+	h3 {
+		text-align: right;
+		margin: 0 $lhse*.5 0;
+		width: max-content;
+	}
+}
+@mixin deck-info-box-narrow() {
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	padding: $lhse*.125 $lhse*.5;
+	box-sizing: border-box;
+
+	h3 {
+		text-align: center;
+		margin: 0 0 $lhse*.25;
 	}
 }
 @mixin popup {
@@ -230,25 +252,4 @@
 	margin: $lhse*.75 divide(-$lhse, 3) $lhse*.25;
 	border-radius: $border-radius-button;
 	outline-offset: 2px !important;
-}
-@mixin deck-info-box-wide() {
-	flex-direction: row;
-
-	h3 {
-		text-align: right;
-		margin: 0 $lhse*.5 0;
-		width: max-content;
-	}
-}
-@mixin deck-info-box-narrow() {
-	flex-direction: column;
-	text-align: center;
-	justify-content: center;
-	padding: $lhse*.125 $lhse*.5;
-	box-sizing: border-box;
-
-	h3 {
-		text-align: center;
-		margin: 0 0 $lhse*.25;
-	}
 }

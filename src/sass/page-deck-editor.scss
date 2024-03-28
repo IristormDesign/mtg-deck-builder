@@ -146,7 +146,7 @@ $width-card-adder-button: $lhse*2.3333;
 			color: $color-text-over-mythic-very-dim;
 		}
 		input {
-			border-color: $color-section-border-alt;
+			border-color: darken($color-section-border-alt, 4.17%);
 		}
 	}
 	form,

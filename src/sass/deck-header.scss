@@ -101,6 +101,8 @@
 		h3 {
 			font-size: 112.5%;
 			margin: 0 $lhse*.5;
+			color: $color-text-brighter;
+			width: auto;
 		}
 		ul {
 			padding: $lhse*.25 0;
@@ -170,6 +172,10 @@
 	.deck-header {
 		.deck-info {
 			@include deck-info-box-narrow();
+
+			h3 {
+				width: auto;
+			}
 		}
 		.deck-modes {
 			h3 {

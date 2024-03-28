@@ -26,7 +26,7 @@ select {
 	background: $color-group-bg-darker;
 	box-shadow: inset (-$lhse*.25) $lhse*.25 $lhse*.5 rgba(#000, 1/3);
 	color: $color-link;
-	border: $border-sections;
+	border: $color-input-border;
 	padding: 0 .25em;
 	text-decoration: none;
 	transition: all $transition-duration-standard ease;
@@ -64,7 +64,7 @@ input {
 	}
 }
 .radio-fieldset {
-	border: $border-sections;
+	border: $color-input-border;
 	border-radius: $border-radius-button;
 	padding: 0;
 	margin: 0;
