@@ -6,11 +6,11 @@
 				class="card-placement-outline"
 			></div>
 		</transition>
-		<transition name="cd-overlay-fade">
+		<transition name="image-overlay-fade">
 			<div
-				class="cd-overlay"
+				class="image-overlay"
 				v-if="this.card && this.$store.state.showCard"
-				@click="hideCDOverlay()"
+				@click="hideImageOverlay()"
 			>
 				<transition
 					name="card-browse"
@@ -36,7 +36,7 @@
 				</transition>
 				<button
 					class="close"
-					@click="hideCDOverlay()"
+					@click="hideImageOverlay()"
 					title="Close this card popup"
 				>×</button>
 			</div>
@@ -132,18 +132,18 @@ export default {
 		letEscKeyCloseCardImagePopup () {
 			document.addEventListener('keyup', (event) => {
 				if (event.key === 'Escape' || event.key === 'Esc') {
-					this.hideCDOverlay()
+					this.hideImageOverlay()
 				}
 			})
 		},
-		hideCDOverlay () {
+		hideImageOverlay () {
 			if (this.$store.state.isMobileLayout()) {
 				this.$store.commit('showCard', false)
 			}
 		},
 		resizingViewport () {
 			if (this.$store.state.isMobileLayout()) {
-				this.hideCDOverlay()
+				this.hideImageOverlay()
 			} else {
 				this.$store.commit('showCard', true)
 			}

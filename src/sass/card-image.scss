@@ -295,10 +295,10 @@ $animation-duration-card-browse: .3820s;
 			padding: 0;
 		}
 	}
-	.cd-overlay {
+	.image-overlay {
 		@include overlay-bg;
 	}
-	.cd-overlay-fade {
+	.image-overlay-fade {
 		&-enter-active,
 		&-leave-active {
 			transition: opacity divide(1s, 3) ease;
