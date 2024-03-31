@@ -81,20 +81,20 @@ export default {
 			const cardName = this.library[0].name
 
 			return (
-				!this.afterReshuffle && // If the library had *not* just been reshuffled; and...
+				!this.afterReshuffle && // If the library had *not* just been reshuffled, and...
 				(	// If the drawn card has the same name as either the 1st-, 2nd-, or 3rd-previous drawn card, with a little randomness mixed in...
 					(
 						drawnList[0] &&
 						drawnList[0].name === cardName &&
-						Math.random() < 0.75
+						Math.random() < 0.5
 					) || (
 						drawnList[1] &&
 						drawnList[1].name === cardName &&
-						Math.random() < 0.5
+						Math.random() < 0.25
 					) || (
 						drawnList[2] &&
 						drawnList[2].name === cardName &&
-						Math.random() < 0.25
+						Math.random() < 0.125
 					)
 				)
 			)
