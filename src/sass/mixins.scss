@@ -133,7 +133,7 @@
 		0 1px 0 .5px #000, // Rim around button
 		$box-shadow-button-shine,
 		$box-shadow-button-cast-shadow;
-	border: 0 solid desaturate(darken($color-mythic-orange, 16.67%), 25%);
+	border: 0 solid desaturate(darken($color-mythic-orange, 16.67%), 29.17%);
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
 	padding: $lhse*.25 .5em;

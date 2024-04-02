@@ -14,7 +14,7 @@ $color-link-dark: color.scale($color-link,
 	$lightness: -33.33%, $saturation: -16.67%
 ); // Lightness darkened enough to just NOT pass color contrast accessibility check.
 $color-link-dim: desaturate(darken($color-link, 4.17%), 40%);
-$color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 12.5%);
+$color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 16.67%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 12.5%), 3.125%); // Desaturate and lighten percentages match those of $color-section-border.
@@ -22,7 +22,7 @@ $color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 12.5%), 3.
 // YELLOW-BASED COLORS
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-link-active: lighten($color-mythic-yellow, 12.5%);
-$color-button-mythic-lighter: desaturate(lighten($color-mythic-yellow, 6.25%), 16.67%);
+$color-button-mythic-lighter: desaturate(lighten($color-mythic-yellow, 8.33%), 16.67%);
 $color-app-header-link: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);

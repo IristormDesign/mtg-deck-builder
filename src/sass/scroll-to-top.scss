@@ -10,13 +10,10 @@
 	justify-content: center;
 
 	button {
+		@include button;
 		min-width: $lhse*2;
-		background: $color-mythic-dim;
-		border: 0;
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
-		text-shadow: none;
-		color: $color-app-header-link;
 		margin: 0;
 		padding: $lhse*.125 $lhse*.5;
 		border-block-width: 0;
@@ -37,8 +34,6 @@
 		}
 		&:hover,
 		&:focus {
-			color: $color-app-header-link-hover;
-
 			.text-label {
 				width: $lhse*5.5;
 				margin: 0 .25em;
@@ -46,7 +41,8 @@
 			}
 		}
 		&:active {
-			color: $color-app-header-link-active;
+			border-width: 0;
+			margin-bottom: -2px;
 		}
 	}
 }
