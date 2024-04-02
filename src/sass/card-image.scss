@@ -253,8 +253,10 @@ $animation-duration-card-browse: .3820s;
 		z-index: index($layers, app-header);
 		width: auto;
 		aspect-ratio: auto;
-		outline: none;
 
+		.card-placement-outline {
+			display: none;
+		}
 		.card-edge {
 			display: flex;
 			justify-content: center;
@@ -318,11 +320,5 @@ $animation-duration-card-browse: .3820s;
 		&-leave-active {
 			animation: none;
 		}
-	}
-}
-
-@media (max-height: calc($height-card-image-section - $lhse*3)) {
-	.card-image {
-		outline: 0;
 	}
 }
