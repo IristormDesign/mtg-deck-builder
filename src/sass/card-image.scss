@@ -115,7 +115,7 @@ $transition-delay-card: divide(1, 3) * 1s;
 		width: auto;
 		max-height: calc(100vh - #{$lhse});
 		aspect-ratio: 488 / 680;
-		outline: divide($lhse, 3) dashed rgba(#fff, .125);
+		outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
 		outline-offset: -$lhse*.75;
 	}
 	.card-edge {
