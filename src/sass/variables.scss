@@ -105,7 +105,7 @@ $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 // BORDERS
 $border-sections: 1px solid $color-section-border;
 $border-sections-alt: 1px solid $color-section-border-alt;
-$color-input-border: 1px solid $color-heading-bg;
+$color-input-border: $border-sections;
 $border-image-thin: 1px solid $color-group-bg-darker;
 $border-image-thick: $lhse*.25 solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
