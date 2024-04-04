@@ -7,6 +7,11 @@ export default {
 				return this.deck
 			}
 		},
+		anotherStarredCard () {
+			return this.activeCardList.cards.find(
+				card => card.starred
+			)
+		},
 		cardObject () {
 			return this.card
 		},
@@ -17,13 +22,22 @@ export default {
 	methods: {
 		viewCard (card) {
 			const store = this.$store
+			const deck = this.deck
 
 			if (this.$route.name === 'drawSim') {
 				store.commit('viewedDrawnCard', card)
 			} else if (store.state.showSideboard) {
-				this.deckObject.sideboard.viewedCard = card
+				deck.sideboard.viewedCard = card
+
+				if (deck.sideboard.viewedCard.starred) {
+					deck.sideboard.viewedStarredCard = card
+				}
 			} else {
-				this.deckObject.viewedCard = card
+				deck.viewedCard = card
+
+				if (deck.viewedCard.starred) {
+					deck.viewedStarredCard = card
+				}
 			}
 
 			store.commit('decks', store.state.decks)

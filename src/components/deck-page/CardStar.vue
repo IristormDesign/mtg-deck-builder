@@ -24,6 +24,7 @@ export default {
 
 			deck.editDate = new Date()
 			this.activeCardList.viewedCard = card
+			this.activeCardList.viewedStarredCard = card
 
 			if (deck.sortBy === 'starred') {
 				deck.sortBy = ''
@@ -33,6 +34,10 @@ export default {
 				deck.sideboard.cards.forEach(eachCard => {
 					eachCard.gapAfter = false
 				})
+			}
+
+			if (!card.starred) {
+				this.activeCardList.viewedStarredCard = this.anotherStarredCard
 			}
 
 			this.$store.commit('decks', this.$store.state.decks)

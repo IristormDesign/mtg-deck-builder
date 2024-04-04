@@ -49,9 +49,20 @@ export default {
 			)
 		}
 	},
+	watch: {
+		$route (curRoute, prevRoute) {
+			if ( // If only switching deck modes...
+				prevRoute &&
+				curRoute.params.deckPath !== prevRoute.params.deckPath
+			) {
+				this.showStarredCardIfAvailable(curRoute, prevRoute)
+			}
+		}
+	},
 	created () {
 		this.$store.commit('showSideboard', false)
 		this.prepareDecksWithOutdatedData()
+		this.showStarredCardIfAvailable()
 	},
 	beforeRouteUpdate (to, from, next) {
 		this.$store.commit('showSideboard', false)
@@ -62,6 +73,18 @@ export default {
 		this.prepareDecksWithOutdatedData()
 	},
 	methods: {
+		showStarredCardIfAvailable () {
+			const deck = this.deck
+
+			if (deck.viewedStarredCard) {
+				deck.viewedCard = deck.viewedStarredCard
+			}
+			if (deck.sideboard.viewedStarredCard) {
+				deck.sideboard.viewedCard = deck.sideboard.viewedStarredCard
+			}
+
+			this.$store.commit('decks', this.$store.state.decks)
+		},
 		prepareDecksWithOutdatedData () {
 			if (this.deck) { // This check is needed for 404 deck pages.
 				this.addMissingSideboard()
