@@ -49,6 +49,7 @@
 						<li>Instantly sort all cards in card lists by various methods to choose from</li>
 						<li>See the image of any card in your decks</li>
 						<li>Switch between main and sideboard card lists per deck</li>
+						<li>Simulate drawing cards from your shuffled decks</li>
 						<li>Attractive, user-friendly graphical interface</li>
 					</ul>
 				</div>
