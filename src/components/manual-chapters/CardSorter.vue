@@ -42,8 +42,8 @@
 				<p><strong>Quantity</strong> – Sorts from greatest to least by <a href="#m-card-quantities">quantity</a>.</p>
 			</li>
 		</ul>
-		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted mainly by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
-		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only sorting options that don’t insert gaps are the ones for name, mana color, and rarity.</p>
+		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
+		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only sorting options that don’t insert gaps are for name, mana color, and rarity.</p>
 		<p>The card sorter will reset its sorting option to “(None),” and any gaps between sorted clusters in the card list will be removed, under any of the following conditions:
 			<ul>
 				<li>Whenever you <a href="#m-card-adder">add a card name</a> to the list</li>
@@ -51,6 +51,6 @@
 				<li>Whenever you star a card name while the sorter is set to “Starred”</li>
 			</ul>
 		</p>
-		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the card list must be unique, which isn’t necessarily true for the other attributes.</p>
+		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the card list on the Deck Editor must be unique, which isn’t necessarily true for the other attributes.</p>
 	</section>
 </template>
