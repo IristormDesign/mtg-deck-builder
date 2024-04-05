@@ -108,32 +108,21 @@
 	background: rgba($color-content-bg, .6667);
 	backdrop-filter: blur(4px);
 }
-@mixin gradient-buttons($color-top-layer, $color-bottom-layer) {
-	background:
-		radial-gradient(
-			rgba($color-top-layer, .875),
-			rgba($color-top-layer, 0)
-		),
-		linear-gradient(
-			lighten($color-bottom-layer, 12.5%),
-			desaturate($color-bottom-layer, 6.25%),
-			desaturate(darken($color-bottom-layer, 12.5%), 12.5%)
-		);
-}
-@mixin button {
-	$color-text-buttons: rgba(#000, .875);
+@mixin button($alt-color: false) {
+	@if $alt-color == true {
+		background: $color-button-default;
+	}
+	@else {
+		background: $color-link;
+	}
 
 	@include heading-font;
-	@include gradient-buttons(
-		$color-button-mythic-lighter,
-		$color-button-mythic-orange
-	);
+	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:
-		0 1px 0 .5px #000, // Rim around button
-		$box-shadow-button-shine,
-		$box-shadow-button-cast-shadow;
-	border: 0 solid desaturate(darken($color-mythic-orange, 16.67%), 29.17%);
+		0 1px 0 .5px rgba(#000, .75), // Rim around button
+		$box-shadow-button-shine;
+	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
 	padding: $lhse*.25 .5em;
@@ -141,17 +130,14 @@
 	min-width: 4.5em;
 	filter: brightness(1);
 	transition: filter $transition-duration-standard ease;
-	color: $color-text-buttons;
 	line-height: 1;
 	text-align: center;
-	text-shadow: 0 0 $lhse*.25 rgba(#fff, .25);
 	text-decoration: none;
 	display: inline-block;
 
 	&:hover,
 	&:focus {
 		filter: brightness(1.2);
-		color: $color-text-buttons;
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;
 	}
@@ -163,7 +149,6 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		filter: brightness(.8333) contrast(1.1667);
-		color: #000;
 	}
 	&:active,
 	&:disabled {
@@ -178,13 +163,6 @@
 		margin-bottom: 0;
 		color: #000;
 	}
-}
-@mixin secondary-button {
-	@include gradient-buttons(
-		lighten($color-button-default, 12.5%),
-		darken($color-button-default, 12.5%)
-	);
-	border-color: desaturate(darken($color-button-default, 33.33%), 12.5%);
 }
 @mixin link-colors($color) {
 	color: $color;

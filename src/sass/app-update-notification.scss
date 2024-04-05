@@ -25,7 +25,7 @@
 		align-items: center;
 	}
 	button {
-		@include secondary-button;
+		@include button(true);
 		display: block;
 		font-size: 87.5%;
 		margin-right: auto;

@@ -288,7 +288,7 @@ $animation-duration-card-browse: .3820s;
 			display: none;
 		}
 		.close {
-			@include secondary-button;
+			@include button(true);
 			display: block;
 			position: absolute;
 			top: divide($lhse, 3);

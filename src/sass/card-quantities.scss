@@ -95,18 +95,10 @@
 	.increment {
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
-		background: radial-gradient(ellipse at 50% 100%,
-			$color-button-mythic-lighter,
-			$color-button-mythic-orange
-		);
 	}
 	.decrement {
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
-		background: radial-gradient(ellipse at 50% 0%,
-			$color-button-mythic-lighter,
-			$color-button-mythic-orange
-		);
 	}
 }
 .card-list-section {

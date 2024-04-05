@@ -47,7 +47,7 @@
 			padding-left: $lhse*.75;
 
 			&:last-of-type {
-				@include secondary-button;
+				@include button(true);
 			}
 		}
 	}

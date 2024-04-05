@@ -32,7 +32,7 @@
 			height: $lhse*1.25;
 		}
 		button {
-			@include secondary-button;
+			@include button(true);
 			font-size: 75%;
 			width: 100%;
 		}

@@ -108,7 +108,7 @@ $width-card-adder-button: $lhse*2.3333;
 .scryfall-button {
 	a {
 		@include button;
-		@include secondary-button;
+		@include button(true);
 		min-width: $lhse*1.75;
 		display: flex;
 		justify-content: center;
@@ -140,7 +140,7 @@ $width-card-adder-button: $lhse*2.3333;
 
 	.sideboard-visible & {
 		background-color: $color-mythic-very-dim;
-		background-image: $gradient-background-sideboard;
+		background-image: $striped-pattern-background;
 
 		label {
 			color: $color-text-over-mythic-very-dim;

@@ -38,7 +38,7 @@ $color-group-bg-darker: darken($color-group-bg, 4.17%);
 $color-text: lighten($color-group-bg, 62.5%);
 $color-text-brighter: lighten($color-text, 8.33%);
 $color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
-$color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
+$color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 25%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
 $color-section-border: desaturate(lighten($color-group-bg, 12.5%), 3.125%);
 
@@ -51,6 +51,7 @@ $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-black-label-text: rgba(#000, 83.33%);
+$color-button-border: rgba(#000, 1/3);
 
 // MANA-BASED COLORS
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Sampled
@@ -128,7 +129,7 @@ $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.3820;
 $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
-$gradient-background-sideboard: repeating-linear-gradient(-45deg,
+$striped-pattern-background: repeating-linear-gradient(-45deg,
 	$color-mythic-very-dim 											0,
 	$color-mythic-very-dim 										  $lhse*.5,
 	darken($color-mythic-very-dim, (1/64)*100%) $lhse*.5,

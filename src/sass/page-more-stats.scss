@@ -63,8 +63,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			position: relative;
 		}
 		tr {
-			transition: background-color .125s ease-out;
-
 			&:hover {
 				background: $color-group-bg-darker;
 			}

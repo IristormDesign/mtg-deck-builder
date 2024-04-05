@@ -180,17 +180,20 @@ figcaption {
 	border: 1px solid $color-group-bg-darker;
 }
 ::-webkit-scrollbar-thumb {
-	@include gradient-buttons($color-link, $color-mythic-dim);
-	border: 1px solid darken($color-mythic-dim, 16.67%);
+	background: $color-mythic-dim;
+	border: 2px solid $color-button-border;
 	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 1px;
 	border-radius: 2px;
 	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
+	cursor: grab;
 
 	&:hover {
-		@include gradient-buttons($color-link-focus, $color-link-dark);
+		background: $color-link;
 	}
 	&:active {
-		@include gradient-buttons($color-link-active, $color-link-focus);
+		background: $color-link-active;
 	}
 }
 ::-webkit-scrollbar-corner {
