@@ -34,6 +34,12 @@
 			min-width: 2ch;
 			color: $color-text;
 			justify-content: center;
+			align-items: center;
+			display: flex;
+		}
+		.warning-symbol {
+			margin-left: .25em;
+			display: block;
 		}
 	}
 	.button-container {
