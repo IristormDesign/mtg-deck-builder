@@ -36,7 +36,7 @@ $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 66.67%);
 $color-group-bg-darker: darken($color-group-bg, 4.17%);
 $color-text: lighten($color-group-bg, 62.5%);
-$color-text-brighter: lighten($color-text, 8.33%);
+$color-text-brighter: lighten($color-text, 4.17%);
 $color-text-darker: desaturate(darken($color-text, 16.67%), 8.33%);
 $color-button-default: lighten(desaturate($color-mythic-complement, 66.67%), 25%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
@@ -76,7 +76,7 @@ $font-family-standard: 'Crimson Pro', serif;
 $line-height-standard: 1 + divide(1, 3);
 $lhse: $line-height-standard * 1em;
 $font-weight-normal: 300;
-$font-weight-semibold: 500;
+$font-weight-semibold: 600;
 $text-shadow-over-light-bg: .5px -1px 1px rgba(#000, .25);
 $font-size-bigger: 112.5%;
 
