@@ -3,8 +3,9 @@
 .update-notification {
 	z-index: index($layers, update-notif);
 	background: $color-background-alt;
+	background: $striped-pattern-background;
 	padding: 0 $lhse*.5;
-	color: #000;
+	color: $color-text-over-mythic-very-dim;
 	min-height: $height-app-header-short;
 	display: flex;
 	align-items: center;

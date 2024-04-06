@@ -1,6 +1,6 @@
 <template>
 	<aside v-if="updateExists" class="update-notification">
-		<p>✨ There’s an <strong>app update ready</strong>! Reload the app to use the newest version now.</p>
+		<p>✨ There’s an <strong>app update ready</strong>! Reload the page to use the newest version now.</p>
 		<div class="button-container">
 			<button v-if="!reloading" @click="activateNewServiceWorker()">Reload</button>
 			<p v-else class="reloading">Reloading&hellip;</p>
