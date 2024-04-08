@@ -3,7 +3,7 @@
 		<h4>Mana Color Symbols</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="markupTableRows" />
+			<tbody v-html="tableRowMarkup" />
 		</table>
 		<p class="note"><strong>Notes:</strong> Percentages are of the total count of all mana color symbols in spells’ mana costs. Hybrid mana symbols each count as multiple basic mana symbols. Generic mana symbols and any mana symbols in cards’ abilities are ignored.</p>
 	</section>
@@ -39,7 +39,7 @@ export default {
 			}
 			return true
 		},
-		markupTableRows () {
+		tableRowMarkup () {
 			let markup = ''
 
 			if (this.tableIsEmpty) {

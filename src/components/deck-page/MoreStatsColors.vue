@@ -3,15 +3,7 @@
 		<h4>Colors of Spells</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-
-			<tbody v-html="markupTableRows([
-				['White', 'w'],
-				['Blue', 'u'],
-				['Black', 'b'],
-				['Red', 'r'],
-				['Green', 'g'],
-				['Colorless', ''],
-			])" />
+			<tbody v-html="tableRowMarkup" />
 		</table>
 	</section>
 </template>
@@ -25,103 +17,85 @@ export default {
 	props: {
 		deck: Object
 	},
-	computed: {
-		emptyTable () {
-			if (
-				this.countColor('white') === 0 &&
-				this.countColor('blue') === 0 &&
-				this.countColor('black') === 0 &&
-				this.countColor('red') === 0 &&
-				this.countColor('green') === 0 &&
-				this.countColor('colorless') === 0
-			) {
-				return true
+	data () {
+		return {
+			colorCounts: {
+				White: 0,
+				Blue: 0,
+				Black: 0,
+				Red: 0,
+				Green: 0,
+				Colorless: 0
 			}
-			return false
 		}
 	},
-	methods: {
-		markupTableRows (params) {
+	computed: {
+		tableIsEmpty () {
+			for (const color in this.colorCounts) {
+				if (this.colorCounts[color] > 0) {
+					return false
+				}
+			}
+			return true
+		},
+		tableRowMarkup () {
 			let markup = ''
 
-			if (this.emptyTable) {
-				markup += this.tableBodyEmpty
+			if (this.tableIsEmpty) {
+				markup = this.tableBodyEmpty
 			} else {
-				params.forEach(param => {
-					const heading = param[0]
-					const manaSymbol = this.manaSymbol[param[1]]
-					const count = this.countColor(heading.toLowerCase())
+				for (const colorName in this.colorCounts) {
+					const count = this.colorCounts[colorName]
 
 					if (count > 0) {
 						markup += `
-						<tr>
-							<th>`
-						if (manaSymbol) {
-							markup += `
-							<div class="vert-center-cell">
-								<small>${heading}</small>
-								<div>${manaSymbol}</div>
-							</div>
+							<tr>
+								<th>${colorName}</th>
+								<td>${count}</td>
+								<td>${this.calculatePercentage(count)}</td>
+							</tr>
 						`
-						} else {
-							markup += heading
-						}
-						markup += `
-							</th>
-							<td>${count}</td>
-							<td>${this.calculatePercentage(count)}</td>
-						</tr>
-					`
 					}
-				})
+				}
 			}
 
 			return markup
-		},
-		countColor (givenColor) {
-			const counts = {
-				white: 0,
-				blue: 0,
-				black: 0,
-				red: 0,
-				green: 0,
-				colorless: 0
-			}
-
+		}
+	},
+	mounted () {
+		this.countColor()
+	},
+	methods: {
+		countColor () {
 			this.deck.cards.forEach(card => {
-				if (card.mana !== '') { // Exclude land cards
-					for (let i = 0; i < card.qty; i++) {
-						if (card.colors[0] === undefined) {
-							counts.colorless++
-						} else {
-							card.colors.forEach(color => {
-								switch (color) {
-									case 'W': counts.white++; break
-									case 'U': counts.blue++; break
-									case 'B': counts.black++; break
-									case 'R': counts.red++; break
-									case 'G': counts.green++; break
-								}
-							})
-						}
+				if (card.mana !== '') { // Exclude non-spell cards
+					const count = this.colorCounts
+					const qty = card.qty
+
+					if (card.colors.length > 0) {
+						card.colors.forEach(color => {
+							switch (color) {
+								case 'W':
+									count.White += qty
+									break
+								case 'U':
+									count.Blue += qty
+									break
+								case 'B':
+									count.Black += qty
+									break
+								case 'R':
+									count.Red += qty
+									break
+								case 'G':
+									count.Green += qty
+							}
+						})
+					} else {
+						count.Colorless += qty
 					}
 				}
 			})
-
-			switch (givenColor) {
-				case 'white':
-					return counts.white
-				case 'blue':
-					return counts.blue
-				case 'black':
-					return counts.black
-				case 'red':
-					return counts.red
-				case 'green':
-					return counts.green
-				case 'colorless':
-					return counts.colorless
-			}
 		}
 	}
 }

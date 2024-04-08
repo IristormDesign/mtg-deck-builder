@@ -20,12 +20,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		margin-bottom: $lhse*.5;
 	}
 	section {
-		cursor: default;
 		width: 100%;
 		max-width: $max-width-stat-tables;
 		height: min-content;
 
 		tbody {
+			cursor: default;
+
 			tr {
 				&:last-child {
 					border-bottom: $lhse*.2 solid $color-heading-bg;
@@ -34,7 +35,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 	}
 	h4 {
-		margin: 0 0 2px;
+		margin: 0 0 1px;
 		padding: $lhse*.25;
 		background: $color-heading-bg;
 	}
@@ -63,7 +64,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		tr {
 			&:hover {
-				background: $color-group-bg-darker;
+				background: rgba(#000, .25);
 			}
 			&:last-child {
 				th,

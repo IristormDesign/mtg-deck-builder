@@ -28,14 +28,12 @@ export default {
 			let deckTotal = 0
 
 			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					deckTotal++
-				}
+				deckTotal += card.qty
 			})
 
-			const pct = ((count / deckTotal) * 100).toFixed(1)
+			const percentage = (count / deckTotal * 100).toFixed(1) + '%'
 
-			return pct + '%'
+			return percentage
 		}
 	}
 }
