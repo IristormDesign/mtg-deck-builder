@@ -67,9 +67,10 @@ export default {
 	},
 	methods: {
 		countColor () {
+			const count = this.colorCounts
+
 			this.deck.cards.forEach(card => {
 				if (card.mana !== '') { // Exclude non-spell cards
-					const count = this.colorCounts
 					const qty = card.qty
 
 					if (card.colors.length > 0) {

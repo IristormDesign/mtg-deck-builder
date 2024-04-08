@@ -3,7 +3,7 @@
 		<h4>Miscellaneous</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="markupTableRows" />
+			<tbody v-html="tableRowMarkup" />
 		</table>
 	</section>
 </template>
@@ -22,7 +22,7 @@ export default {
 		}
 	},
 	computed: {
-		markupTableRows () {
+		tableRowMarkup () {
 			let markup = ''
 
 			for (const key in this.miscProps) {
@@ -46,7 +46,7 @@ export default {
 			}
 		}
 	},
-	created () {
+	mounted () {
 		this.setUpMiscProps()
 	},
 	methods: {
@@ -66,9 +66,7 @@ export default {
 					const prop = this.miscProps[key]
 
 					if (prop.matches(card)) {
-						for (let i = 0; i < card.qty; i++) {
-							prop.count++
-						}
+						prop.count += card.qty
 					}
 				}
 			})

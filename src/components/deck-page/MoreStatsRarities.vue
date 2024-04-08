@@ -3,10 +3,7 @@
 		<h4>Rarities</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-
-			<tbody v-html="markupTableRows([
-				'Common', 'Uncommon', 'Rare', 'Mythic rare', 'Special'
-			])" />
+			<tbody v-html="tableRowMarkup" />
 		</table>
 	</section>
 </template>
@@ -20,38 +17,42 @@ export default {
 	props: {
 		deck: Object
 	},
-	computed: {
-		emptyTable () {
-			if (
-				this.countRarities('c') === 0 &&
-				this.countRarities('u') === 0 &&
-				this.countRarities('r') === 0 &&
-				this.countRarities('m') === 0 &&
-				this.countRarities('s') === 0
-			) {
-				return true
+	data () {
+		return {
+			rarityCounts: {
+				Common: 0,
+				Uncommon: 0,
+				Rare: 0,
+				'Mythic rare': 0,
+				Special: 0
 			}
-			return false
 		}
 	},
-	methods: {
-		markupTableRows (headings) {
+	computed: {
+		tableIsEmpty () {
+			for (const rarity in this.rarityCounts) {
+				if (this.rarityCounts[rarity] > 0) {
+					return false
+				}
+			}
+			return true
+		},
+		tableRowMarkup () {
 			let markup = ''
 
-			if (this.emptyTable) {
-				markup += this.tableBodyEmpty
+			if (this.tableIsEmpty) {
+				markup = this.tableBodyEmpty
 			} else {
-				headings.forEach(heading => {
-					const rarityVar = heading.charAt(0).toLowerCase()
-					const raritySymbol = this.raritySymbol[rarityVar]
-					const count = this.countRarities(rarityVar)
+				for (const rarityName in this.rarityCounts) {
+					const count = this.rarityCounts[rarityName]
+					const raritySymbol = this.raritySymbol[rarityName.charAt(0).toLowerCase()]
 
 					if (count > 0) {
 						markup += `
 							<tr>
 								<th>
 									<div class="vert-center-cell">
-										<small>${heading}</small>
+										<small>${rarityName}</small>
 										<div>${raritySymbol}</div>
 									</div>
 								</th>
@@ -60,44 +61,39 @@ export default {
 							</tr>
 						`
 					}
-				})
+				}
 			}
 
 			return markup
-		},
-		countRarities (givenRarity) {
-			const counts = {
-				c: 0,
-				u: 0,
-				r: 0,
-				m: 0,
-				s: 0
-			}
+		}
+	},
+	mounted () {
+		this.countRarities()
+	},
+	methods: {
+		countRarities () {
+			const count = this.rarityCounts
 
 			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					switch (card.rarity) {
-						case 'common':
-							counts.c++; break
-						case 'uncommon':
-							counts.u++; break
-						case 'rare':
-							counts.r++; break
-						case 'mythic':
-							counts.m++; break
-						case 'special':
-							counts.s++; break
-					}
+				const qty = card.qty
+
+				switch (card.rarity) {
+					case 'common':
+						count.Common += qty
+						break
+					case 'uncommon':
+						count.Uncommon += qty
+						break
+					case 'rare':
+						count.Rare += qty
+						break
+					case 'mythic':
+						count['Mythic rare'] += qty
+						break
+					case 'special':
+						count.Special += qty
 				}
 			})
-
-			switch (givenRarity) {
-				case 'c': return counts.c
-				case 'u': return counts.u
-				case 'r': return counts.r
-				case 'm': return counts.m
-				case 's': return counts.s
-			}
 		}
 	}
 }

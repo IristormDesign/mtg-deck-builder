@@ -33,7 +33,7 @@ export default {
 			keywordCounts: {}
 		}
 	},
-	created () {
+	mounted () {
 		this.findAllKeywords()
 		this.setUpKeywordCounts()
 		this.countKeywords()

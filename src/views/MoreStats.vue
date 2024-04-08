@@ -19,11 +19,15 @@
 			<more-stats-types :deck="deck" />
 
 			<more-stats-subtypes
-				:deck="deck" :subtypeNames="subtypeCreaturesNames" :subtypeCounts="subtypeCounts"
+				:deck="deck"
+				:subtypeNames="subtypeCreaturesNames"
+				:subtypeCounts="subtypeCounts"
 			>Creature</more-stats-subtypes>
 
 			<more-stats-subtypes
-				:deck="deck" :subtypeNames="subtypeOtherNames" :subtypeCounts="subtypeCounts"
+				:deck="deck"
+				:subtypeNames="subtypeOtherNames"
+				:subtypeCounts="subtypeCounts"
 			>Other</more-stats-subtypes>
 
 			<more-stats-rarities :deck="deck" />

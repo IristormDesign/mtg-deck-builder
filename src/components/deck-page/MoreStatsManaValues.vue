@@ -5,9 +5,15 @@
 			<table>
 				<thead v-html="tableHeadCommon" />
 
-				<tbody v-if="cmcItems.length <= 0" v-html="tableBodyEmpty" />
+				<tbody
+					v-if="cmcItems.length <= 0"
+					v-html="tableBodyEmpty"
+				/>
 				<tbody v-else>
-					<tr v-for="cmc in cmcItems" :key="cmc">
+					<tr
+						v-for="cmc in cmcItems"
+						:key="cmc"
+					>
 						<th>
 							<span class="mana-symbol">{{ cmc }}</span>
 						</th>
@@ -35,7 +41,7 @@ export default {
 			cmcCounts: {}
 		}
 	},
-	created () {
+	mounted () {
 		this.findAllCMCs()
 		this.setUpCmcCounts()
 		this.countCMCs()
