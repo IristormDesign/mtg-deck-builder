@@ -12,6 +12,8 @@
 		>
 			<more-stats-colors :deck="deck" />
 
+			<more-stats-color-symbols :deck="deck" />
+
 			<more-stats-mana-values :deck="deck" />
 
 			<more-stats-types :deck="deck" />
@@ -35,8 +37,11 @@
 			<more-stats-misc :deck="deck" />
 
 			<footer>
-				<p v-if="deck.sideboard.cards.length >= 1">
-					<small>Note: The statistics ignore cards in the sideboard.</small>
+				<p
+					v-if="deck.sideboard.cards.length >= 1"
+					class="note"
+				>
+					<strong>Note:</strong> These statistics ignore cards in the sideboard.
 				</p>
 				<p>
 					<router-link :to="{ name: 'deckEditor' }">
@@ -50,6 +55,7 @@
 
 <script>
 import MoreStatsColors from '@/components/deck-page/MoreStatsColors.vue'
+import MoreStatsColorSymbols from '@/components/deck-page/MoreStatsColorSymbols.vue'
 import MoreStatsManaValues from '@/components/deck-page/MoreStatsManaValues.vue'
 import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
 import MoreStatsSubtypes from '@/components/deck-page/MoreStatsSubtypes.vue'
@@ -60,7 +66,7 @@ import MoreStatsPowerToughness from '@/components/deck-page/MoreStatsPowerToughn
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
 	mixins: [getActiveDeck],
 	props: {
 		toAutoScrollDown: Boolean

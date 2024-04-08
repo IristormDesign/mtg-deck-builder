@@ -6,7 +6,8 @@ export default {
 				u: '<span class="mana-symbol blue" title="Blue mana">U</span>',
 				b: '<span class="mana-symbol black" title="Black mana">B</span>',
 				r: '<span class="mana-symbol red" title="Red mana">R</span>',
-				g: '<span class="mana-symbol green" title="Green mana">G</span>'
+				g: '<span class="mana-symbol green" title="Green mana">G</span>',
+				c: '<span class="mana-symbol" title="Colorless mana">C</span>'
 			},
 			raritySymbol: {
 				c: '<div class="rarity-symbol common" title="Common"><div>C</div></div>',

@@ -18,8 +18,7 @@
 		padding: 0 $lhse;
 	}
 	p {
-		font-size: 66.67%;
-		letter-spacing: divide(1, 128)*1em;
+		@include tiny-font-size;
 	}
 	.divider {
 		margin: 0 .25em;

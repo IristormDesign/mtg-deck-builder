@@ -24,7 +24,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		width: 100%;
 		max-width: $max-width-stat-tables;
 		height: min-content;
-		border-bottom: $table-borders;
 
 		tbody {
 			tr {
@@ -75,11 +74,10 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th,
 		td {
-			padding: 0 divide($lhse, 3);
+			padding: 1px divide($lhse, 4);
 			border: $table-borders;
 			text-align: right;
-			line-height: 1;
-			height: 1.5em;
+			height: $lhse;
 		}
 		td {
 			padding-top: 0;
@@ -101,7 +99,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 9.2;
+		max-height: $lhse * 10.125;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
@@ -141,6 +139,17 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
+		grid-column: span 5;
+
+		.note {
+			text-align: center;
+		}
+	}
+	.note {
+		@include tiny-font-size;
+		line-height: $line-height-standard*.875;
+		margin-top: $lhse*.25;
+		text-align: justify;
 	}
 }
 .vert-center-cell {
@@ -159,7 +168,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			grid-template-columns: repeat(4, 1fr);
 		}
 		footer {
-			grid-column: span 3;
+			grid-column: span 2;
 		}
 	}
 }
@@ -176,15 +185,18 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			grid-template-columns: repeat(2, 1fr);
 		}
 		footer {
-			grid-column: span 1;
-			max-width: $max-width-stat-tables;
+			grid-column: span 2;
 		}
 	}
 }
-@media (max-width: ($min-width-app*.75)) {
+@media (max-width: ($min-width-app*.6667)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: 1fr;
+		}
+		footer {
+			grid-column: span 1;
+			max-width: $max-width-stat-tables;
 		}
 	}
 }
