@@ -9,19 +9,19 @@
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
-				<template v-for="(colorSymbol, colorName) in colorSymbols">
+				<template v-for="color in colorSymbols">
 					<tr
-						v-if="symbolCounts[colorName.toLowerCase()] > 0"
-						:key="colorSymbol"
+						v-if="color.count > 0"
+						:key="color.name"
 					>
 						<th>
 							<div class="vert-center-cell">
-								<small>{{colorName}}</small>
-								<div v-html="manaSymbol[colorSymbols[colorName]]" />
+								<small>{{ color.name }}</small>
+								<div v-html="manaSymbol[color.letter]" />
 							</div>
 						</th>
-						<td>{{symbolCounts[colorName.toLowerCase()]}}</td>
-						<td>{{calculatePercentage(symbolCounts[colorName.toLowerCase()])}}</td>
+						<td>{{ color.count }}</td>
+						<td>{{ color.percentage }}</td>
 					</tr>
 				</template>
 			</tbody>
@@ -41,69 +41,87 @@ export default {
 	},
 	data () {
 		return {
-			symbolCounts: {
-				white: 0,
-				blue: 0,
-				black: 0,
-				red: 0,
-				green: 0,
-				colorless: 0
-			},
 			colorSymbols: {
-				White: 'w',
-				Blue: 'u',
-				Black: 'b',
-				Red: 'r',
-				Green: 'g',
-				Colorless: 'c'
+				white: {
+					count: 0,
+					letter: 'w',
+					name: 'White',
+					regex: /.W./g
+				},
+				blue: {
+					count: 0,
+					letter: 'u',
+					name: 'Blue',
+					regex: /.U./g
+				},
+				black: {
+					count: 0,
+					letter: 'b',
+					name: 'Black',
+					regex: /.B./g
+				},
+				red: {
+					count: 0,
+					letter: 'r',
+					name: 'Red',
+					regex: /.R./g
+				},
+				green: {
+					count: 0,
+					letter: 'g',
+					name: 'Green',
+					regex: /.G./g
+				},
+				colorless: {
+					count: 0,
+					letter: 'c',
+					name: 'Colorless',
+					regex: /.C./g
+				}
 			}
 		}
 	},
 	computed: {
 		tableIsEmpty () {
-			for (const color in this.symbolCounts) {
-				if (this.symbolCounts[color] > 0) {
+			for (const color in this.colorSymbols) {
+				if (this.colorSymbols[color].count > 0) {
 					return false
 				}
 			}
 			return true
+		},
+		totalSymbolCount () {
+			return Object.values(this.colorSymbols).reduce(
+				(total, symbol) => total + symbol.count, 0
+			)
 		}
 	},
 	mounted () {
 		this.countColorSymbols()
+		this.calculatePercentage()
 	},
 	methods: {
-		symbolMatches (mana) {
-			return {
-				white: mana.match(/.W./g),
-				blue: mana.match(/.U./g),
-				black: mana.match(/.B./g),
-				red: mana.match(/.R./g),
-				green: mana.match(/.G./g),
-				colorless: mana.match(/.C./g)
-			}
-		},
 		countColorSymbols () {
 			this.deck.cards.forEach(({ mana, qty }) => {
-				for (const color in this.symbolCounts) {
-					const colorMatches = this.symbolMatches(mana)[color]
+				const cs = this.colorSymbols
+
+				for (const color in cs) {
+					const colorMatches = mana.match(cs[color].regex)
 
 					if (colorMatches) {
-						this.symbolCounts[color] += colorMatches.length * qty
+						cs[color].count += colorMatches.length * qty
 					}
 				}
 			})
 		},
-		calculatePercentage (count) {
-			let totalCounts = 0
+		calculatePercentage () {
+			const cs = this.colorSymbols
 
-			for (const color in this.symbolCounts) {
-				totalCounts += this.symbolCounts[color]
+			for (const color in cs) {
+				const percentage = (cs[color].count / this.totalSymbolCount * 100).toFixed(1) + '%'
+
+				cs[color].percentage = percentage
 			}
-
-			const percentage = (count / totalCounts * 100).toFixed(1) + '%'
-
-			return percentage
 		}
 	}
 }

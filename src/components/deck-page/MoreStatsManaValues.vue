@@ -14,9 +14,9 @@
 						v-for="(count, mv) in manaValueCounts"
 						:key="mv"
 					>
-						<th><span class="mana-symbol">{{mv}}</span></th>
-						<td>{{count}}</td>
-						<td>{{calculatePercentage(count)}}</td>
+						<th><span class="mana-symbol">{{ mv }}</span></th>
+						<td>{{ count }}</td>
+						<td>{{ calculatePercentage(count) }}</td>
 					</tr>
 				</tbody>
 			</table>
