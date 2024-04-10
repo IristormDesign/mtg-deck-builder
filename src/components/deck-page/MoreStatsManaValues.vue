@@ -5,22 +5,20 @@
 			<table>
 				<thead v-html="tableHeadCommon" />
 
-				<tbody
-					v-if="cmcItems.length <= 0"
-					v-html="tableBodyEmpty"
-				/>
-				<tbody v-else>
+				<tbody v-if="Object.keys(manaValueCounts).length > 0">
 					<tr
-						v-for="cmc in cmcItems"
-						:key="cmc"
+						v-for="(count, mv) in manaValueCounts"
+						:key="mv"
 					>
-						<th>
-							<span class="mana-symbol">{{ cmc }}</span>
-						</th>
-						<td>{{ cmcCounts[cmc] }}</td>
-						<td>{{ calculatePercentage(cmcCounts[cmc]) }}</td>
+						<th><span class="mana-symbol">{{ mv }}</span></th>
+						<td>{{ count }}</td>
+						<td>{{ calculatePercentage(count) }}</td>
 					</tr>
 				</tbody>
+				<tbody
+					v-else
+					v-html="tableBodyEmpty"
+				/>
 			</table>
 		</div>
 	</section>
@@ -36,50 +34,24 @@ export default {
 	},
 	data () {
 		return {
-			allCmc: [],
-			cmcItems: [],
-			cmcCounts: {}
+			manaValueCounts: {}
 		}
 	},
-	mounted () {
-		this.findAllCMCs()
-		this.setUpCmcCounts()
-		this.countCMCs()
+	created () {
+		this.countManaValues()
 	},
 	methods: {
-		findAllCMCs () {
-			this.deck.cards.forEach(card => {
-				if (card.mana !== '') { // Exclude land cards
-					for (let i = 0; i < card.qty; i++) {
-						this.allCmc.push(card.cmc)
-					}
+		countManaValues () {
+			this.deck.cards.forEach(({ mana, cmc, qty }) => {
+				if (!mana) return // Exclude land cards
+
+				const count = this.manaValueCounts
+
+				if (!count[cmc]) {
+					count[cmc] = 0
 				}
-			})
-		},
-		setUpCmcCounts () {
-			const cmcItems = this.cmcItems
 
-			this.allCmc.forEach(cmc => {
-				if (cmcItems.indexOf(cmc) < 0) {
-					cmcItems.push(cmc)
-				}
-			})
-
-			cmcItems.sort((a, b) => a - b)
-		},
-		countCMCs () {
-			const cmcCounts = this.cmcCounts
-
-			this.cmcItems.forEach(item => {
-				cmcCounts[item] = 0
-			})
-
-			this.allCmc.forEach(cmc => {
-				for (const item in cmcCounts) {
-					if (String(cmc) === item) {
-						cmcCounts[item]++
-					}
-				}
+				count[cmc] += qty
 			})
 		}
 	}
