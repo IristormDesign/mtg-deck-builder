@@ -5,7 +5,7 @@
 			<thead v-html="tableHeadCommon" />
 
 			<tbody
-				v-if="tableIsEmpty"
+				v-if="this.totalSymbolCount === 0"
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
@@ -82,14 +82,6 @@ export default {
 		}
 	},
 	computed: {
-		tableIsEmpty () {
-			for (const color in this.colorSymbols) {
-				if (this.colorSymbols[color].count > 0) {
-					return false
-				}
-			}
-			return true
-		},
 		totalSymbolCount () {
 			return Object.values(this.colorSymbols).reduce(
 				(total, symbol) => total + symbol.count, 0
@@ -118,9 +110,7 @@ export default {
 			const cs = this.colorSymbols
 
 			for (const color in cs) {
-				const percentage = (cs[color].count / this.totalSymbolCount * 100).toFixed(1) + '%'
-
-				cs[color].percentage = percentage
+				cs[color].percentage = (cs[color].count / this.totalSymbolCount * 100).toFixed(1) + '%'
 			}
 		}
 	}
