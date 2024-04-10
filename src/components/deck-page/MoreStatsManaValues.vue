@@ -5,20 +5,20 @@
 			<table>
 				<thead v-html="tableHeadCommon" />
 
-				<tbody v-if="Object.keys(manaValueCounts).length > 0">
+				<tbody
+					v-if="Object.keys(manaValueCounts).length === 0"
+					v-html="tableBodyEmpty"
+				/>
+				<tbody v-else>
 					<tr
 						v-for="(count, mv) in manaValueCounts"
 						:key="mv"
 					>
-						<th><span class="mana-symbol">{{ mv }}</span></th>
-						<td>{{ count }}</td>
-						<td>{{ calculatePercentage(count) }}</td>
+						<th><span class="mana-symbol">{{mv}}</span></th>
+						<td>{{count}}</td>
+						<td>{{calculatePercentage(count)}}</td>
 					</tr>
 				</tbody>
-				<tbody
-					v-else
-					v-html="tableBodyEmpty"
-				/>
 			</table>
 		</div>
 	</section>

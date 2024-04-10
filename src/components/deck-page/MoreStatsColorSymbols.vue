@@ -3,7 +3,28 @@
 		<h4>Mana Color Symbols</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="tableRowMarkup" />
+
+			<tbody
+				v-if="tableIsEmpty"
+				v-html="tableBodyEmpty"
+			/>
+			<tbody v-else>
+				<template v-for="(colorSymbol, colorName) in colorSymbols">
+					<tr
+						v-if="symbolCounts[colorName.toLowerCase()] > 0"
+						:key="colorSymbol"
+					>
+						<th>
+							<div class="vert-center-cell">
+								<small>{{colorName}}</small>
+								<div v-html="manaSymbol[colorSymbols[colorName]]" />
+							</div>
+						</th>
+						<td>{{symbolCounts[colorName.toLowerCase()]}}</td>
+						<td>{{calculatePercentage(symbolCounts[colorName.toLowerCase()])}}</td>
+					</tr>
+				</template>
+			</tbody>
 		</table>
 		<p class="note"><strong>Notes:</strong> Percentages are of the total count of all mana color symbols in spells’ mana costs. Hybrid mana symbols each count as multiple basic mana symbols. Generic mana symbols and any mana symbols in cards’ abilities are ignored.</p>
 	</section>
@@ -27,6 +48,14 @@ export default {
 				red: 0,
 				green: 0,
 				colorless: 0
+			},
+			colorSymbols: {
+				White: 'w',
+				Blue: 'u',
+				Black: 'b',
+				Red: 'r',
+				Green: 'g',
+				Colorless: 'c'
 			}
 		}
 	},
@@ -38,44 +67,6 @@ export default {
 				}
 			}
 			return true
-		},
-		tableRowMarkup () {
-			let markup = ''
-
-			if (this.tableIsEmpty) {
-				markup += this.tableBodyEmpty
-			} else {
-				const colors = {
-					White: 'w',
-					Blue: 'u',
-					Black: 'b',
-					Red: 'r',
-					Green: 'g',
-					Colorless: 'c'
-				}
-
-				for (const colorName in colors) {
-					const manaSymbol = this.manaSymbol[colors[colorName]]
-					const count = this.symbolCounts[colorName.toLowerCase()]
-
-					if (count > 0) {
-						markup += `
-							<tr>
-								<th>
-									<div class="vert-center-cell">
-										<small>${colorName}</small>
-										<div>${manaSymbol}</div>
-									</div>
-								</th>
-								<td>${count}</td>
-								<td>${this.calculatePercentage(count)}</td>
-							</tr>
-						`
-					}
-				}
-			}
-
-			return markup
 		}
 	},
 	mounted () {
@@ -93,12 +84,12 @@ export default {
 			}
 		},
 		countColorSymbols () {
-			this.deck.cards.forEach(card => {
+			this.deck.cards.forEach(({ mana, qty }) => {
 				for (const color in this.symbolCounts) {
-					const colorMatches = this.symbolMatches(card.mana)[color]
+					const colorMatches = this.symbolMatches(mana)[color]
 
 					if (colorMatches) {
-						this.symbolCounts[color] += colorMatches.length * card.qty
+						this.symbolCounts[color] += colorMatches.length * qty
 					}
 				}
 			})

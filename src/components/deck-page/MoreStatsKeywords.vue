@@ -41,13 +41,13 @@ export default {
 	methods: {
 		findAllKeywords () {
 			this.deck.cards.forEach(card => {
-				if (card.keywords) { // This check is needed to potentially prevent an error caused by non-updated cards that lack the `keywords` attribute.
-					card.keywords.forEach(keyword => {
-						for (let i = 0; i < card.qty; i++) {
-							this.allKeywords.push(keyword)
-						}
-					})
-				}
+				if (!card.keywords) return // This check is needed to potentially prevent an error caused by non-updated cards that lack the `keywords` attribute.
+
+				card.keywords.forEach(keyword => {
+					for (let i = 0; i < card.qty; i++) {
+						this.allKeywords.push(keyword)
+					}
+				})
 			})
 		},
 		setUpKeywordCounts () {
@@ -62,16 +62,14 @@ export default {
 			kwNames.sort()
 		},
 		countKeywords () {
-			const kwCounts = this.keywordCounts
-
 			this.keywordNames.forEach(name => {
-				kwCounts[name] = 0
+				this.keywordCounts[name] = 0
 			})
 
 			this.allKeywords.forEach(keyword => {
-				for (const item in kwCounts) {
+				for (const item in this.keywordCounts) {
 					if (keyword === item) {
-						kwCounts[item]++
+						this.keywordCounts[item]++
 					}
 				}
 			})
