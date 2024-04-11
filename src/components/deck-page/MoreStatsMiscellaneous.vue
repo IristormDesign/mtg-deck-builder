@@ -36,6 +36,7 @@ export default {
 		return {
 			miscAttributes: {
 				'Basic Land': {
+					count: 0,
 					isMatch: (card) => {
 						const regex = /\bBasic (\w* )?Land\b/
 
@@ -43,6 +44,7 @@ export default {
 					}
 				},
 				Legendary: {
+					count: 0,
 					isMatch: (card) => {
 						const regex = /\bLegendary\b/
 
@@ -50,16 +52,19 @@ export default {
 					}
 				},
 				Monocolored: {
+					count: 0,
 					isMatch: (card) => {
 						return card.colors.length === 1
 					}
 				},
 				Multicolored: {
+					count: 0,
 					isMatch: (card) => {
 						return card.colors.length > 1
 					}
 				},
 				'Variable cost': {
+					count: 0,
 					isMatch: (card) => {
 						const regex = /\{X\}/
 
@@ -67,6 +72,7 @@ export default {
 					}
 				},
 				'Variable P/T': {
+					count: 0,
 					isMatch: (card) => {
 						return (
 							card.power === '*' ||
@@ -75,6 +81,7 @@ export default {
 					}
 				},
 				'Double-faced': {
+					count: 0,
 					isMatch: (card) => {
 						const regex = /\w\s\/\s\w/
 
@@ -91,7 +98,7 @@ export default {
 			)
 		}
 	},
-	created () {
+	mounted () {
 		this.countMisc()
 	},
 	methods: {
@@ -101,10 +108,6 @@ export default {
 					const atb = this.miscAttributes[atbName]
 
 					if (atb.isMatch(card)) {
-						if (!atb.count) {
-							atb.count = 0
-						}
-
 						atb.count += card.qty
 					}
 				}
