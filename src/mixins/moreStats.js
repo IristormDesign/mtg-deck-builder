@@ -25,15 +25,11 @@ export default {
 		 * @returns {string} Percentage
 		 */
 		calculatePercentage (count) {
-			let deckTotal = 0
+			const deckTotal = this.deck.cards.reduce(
+				(total, card) => total + card.qty, 0
+			)
 
-			this.deck.cards.forEach(card => {
-				deckTotal += card.qty
-			})
-
-			const percentage = (count / deckTotal * 100).toFixed(1) + '%'
-
-			return percentage
+			return ((count / deckTotal) * 100).toFixed(1) + '%'
 		}
 	}
 }
