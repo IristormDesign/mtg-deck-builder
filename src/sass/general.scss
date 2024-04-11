@@ -194,6 +194,7 @@ figcaption {
 	}
 	&:active {
 		background: $color-link-active;
+		cursor: grabbing;
 	}
 }
 ::-webkit-scrollbar-corner {

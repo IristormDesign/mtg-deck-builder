@@ -5,15 +5,15 @@
 			<thead v-html="tableHeadCommon" />
 
 			<tbody>
-				<template v-for="(count, rarityName) in rarityCounts">
+				<template v-for="(count, name) in rarityCounts">
 					<tr
 						v-if="count > 0"
-						:key="rarityName"
+						:key="name"
 					>
 						<th>
 							<div class="vert-center-cell">
-								<small>{{ rarityName }}</small>
-								<div v-html="raritySymbol[rarityName.charAt(0).toLowerCase()]" />
+								<small>{{ name }}</small>
+								<div v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
 							</div>
 						</th>
 						<td>{{ count }}</td>

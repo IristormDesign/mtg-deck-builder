@@ -3,7 +3,23 @@
 		<h4>Miscellaneous</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="tableRowMarkup" />
+
+			<tbody
+				v-if="noData"
+				v-html="tableBodyEmpty"
+			/>
+			<tbody v-else>
+				<template v-for="(prop, propName) in miscProps">
+					<tr
+						v-if="prop.count > 0"
+						:key="propName"
+					>
+						<th>{{ propName }}</th>
+						<td>{{ prop.count }}</td>
+						<td>{{ calculatePercentage(prop.count) }}</td>
+					</tr>
+				</template>
+			</tbody>
 		</table>
 	</section>
 </template>
@@ -18,94 +34,81 @@ export default {
 	},
 	data () {
 		return {
-			miscProps: {}
+			miscProps: {
+				'Basic Land': {
+					isMatch: (card) => {
+						const regex = /\bBasic (\w* )?Land\b/
+
+						return regex.test(card.type)
+					}
+				},
+				Legendary: {
+					isMatch: (card) => {
+						const regex = /\bLegendary\b/
+
+						return regex.test(card.type)
+					}
+				},
+				Monocolored: {
+					isMatch: (card) => {
+						return card.colors.length === 1
+					}
+				},
+				Multicolored: {
+					isMatch: (card) => {
+						return card.colors.length > 1
+					}
+				},
+				'Variable cost': {
+					isMatch: (card) => {
+						const regex = /\{X\}/
+
+						return regex.test(card.mana)
+					}
+				},
+				'Variable P/T': {
+					isMatch: (card) => {
+						return (
+							card.power === '*' ||
+							card.toughness === '*'
+						)
+					}
+				},
+				'Double-faced': {
+					isMatch: (card) => {
+						const regex = /\w\s\/\s\w/
+
+						return regex.test(card.name)
+					}
+				}
+			}
 		}
 	},
 	computed: {
-		tableRowMarkup () {
-			let markup = ''
-
-			for (const key in this.miscProps) {
-				const prop = this.miscProps[key]
-
-				if (prop.count > 0) {
-					markup += `
-						<tr>
-							<th>${prop.name}</th>
-							<td>${prop.count}</td>
-							<td>${this.calculatePercentage(prop.count)}</td>
-						</tr>
-					`
-				}
-			}
-
-			if (markup === '') {
-				return this.tableBodyEmpty
-			} else {
-				return markup
-			}
+		noData () {
+			return Object.values(this.miscProps).every(
+				prop => prop.count === 0
+			)
 		}
 	},
-	mounted () {
-		this.setUpMiscProps()
+	created () {
+		this.countMiscProps()
 	},
 	methods: {
-		setUpMiscProps () {
-			this.miscProps = {
-				basicLand: new MiscProp('Basic land', matchesBasicLand),
-				legendary: new MiscProp('Legendary', matchesLegendary),
-				monocolored: new MiscProp('Monocolored', matchesMonocolored),
-				multicolored: new MiscProp('Multicolored', matchesMulticolored),
-				variableCost: new MiscProp('Variable cost', matchesVariableCost),
-				variablePT: new MiscProp('Variable P/T', matchesVariablePT),
-				doubleFaced: new MiscProp('Double-faced', matchesDoubleFaced)
-			}
-
+		countMiscProps () {
 			this.deck.cards.forEach(card => {
-				for (const key in this.miscProps) {
-					const prop = this.miscProps[key]
+				for (const propName in this.miscProps) {
+					const prop = this.miscProps[propName]
 
-					if (prop.matches(card)) {
+					if (prop.isMatch(card)) {
+						if (!prop.count) {
+							prop.count = 0
+						}
+
 						prop.count += card.qty
 					}
 				}
 			})
-
-			/**
-			 * @param {string} name
-			 * @param {Function} matches
-			 */
-			function MiscProp (name, matches) {
-				this.name = name
-				this.matches = matches
-				this.count = 0
-			}
-
-			function matchesBasicLand (card) {
-				const regex = /\bBasic (\w* )?Land\b/
-				return regex.test(card.type)
-			}
-			function matchesLegendary (card) {
-				const regex = /\bLegendary\b/
-				return regex.test(card.type)
-			}
-			function matchesMonocolored (card) {
-				return card.colors.length === 1
-			}
-			function matchesMulticolored (card) {
-				return card.colors.length > 1
-			}
-			function matchesVariableCost (card) {
-				const regex = /\{X\}/
-				return regex.test(card.mana)
-			}
-			function matchesVariablePT (card) {
-				return card.power === '*' || card.toughness === '*'
-			}
-			function matchesDoubleFaced (card) {
-				const regex = /\w\s\/\s\w/
-				return regex.test(card.name)
-			}
 		}
 	}
 }
