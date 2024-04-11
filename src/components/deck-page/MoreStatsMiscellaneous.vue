@@ -9,14 +9,14 @@
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
-				<template v-for="(prop, propName) in miscProps">
+				<template v-for="(atb, atbName) in miscAttributes">
 					<tr
-						v-if="prop.count > 0"
-						:key="propName"
+						v-if="atb.count > 0"
+						:key="atbName"
 					>
-						<th>{{ propName }}</th>
-						<td>{{ prop.count }}</td>
-						<td>{{ calculatePercentage(prop.count) }}</td>
+						<th>{{ atbName }}</th>
+						<td>{{ atb.count }}</td>
+						<td>{{ calculatePercentage(atb.count) }}</td>
 					</tr>
 				</template>
 			</tbody>
@@ -34,7 +34,7 @@ export default {
 	},
 	data () {
 		return {
-			miscProps: {
+			miscAttributes: {
 				'Basic Land': {
 					isMatch: (card) => {
 						const regex = /\bBasic (\w* )?Land\b/
@@ -86,26 +86,26 @@ export default {
 	},
 	computed: {
 		noData () {
-			return Object.values(this.miscProps).every(
-				prop => prop.count === 0
+			return Object.values(this.miscAttributes).every(
+				atb => atb.count === 0
 			)
 		}
 	},
 	created () {
-		this.countMiscProps()
+		this.countMisc()
 	},
 	methods: {
-		countMiscProps () {
+		countMisc () {
 			this.deck.cards.forEach(card => {
-				for (const propName in this.miscProps) {
-					const prop = this.miscProps[propName]
+				for (const atbName in this.miscAttributes) {
+					const atb = this.miscAttributes[atbName]
 
-					if (prop.isMatch(card)) {
-						if (!prop.count) {
-							prop.count = 0
+					if (atb.isMatch(card)) {
+						if (!atb.count) {
+							atb.count = 0
 						}
 
-						prop.count += card.qty
+						atb.count += card.qty
 					}
 				}
 			})

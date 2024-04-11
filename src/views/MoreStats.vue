@@ -38,7 +38,7 @@
 				<more-stats-power-toughness :deck="deck" />
 			</template>
 
-			<more-stats-misc :deck="deck" />
+			<more-stats-miscellaneous :deck="deck" />
 
 			<footer>
 				<p
@@ -64,13 +64,13 @@ import MoreStatsManaValues from '@/components/deck-page/MoreStatsManaValues.vue'
 import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
 import MoreStatsSubtypes from '@/components/deck-page/MoreStatsSubtypes.vue'
 import MoreStatsRarities from '@/components/deck-page/MoreStatsRarities.vue'
-import MoreStatsMisc from '@/components/deck-page/MoreStatsMisc.vue'
+import MoreStatsMiscellaneous from '@/components/deck-page/MoreStatsMiscellaneous.vue'
 import MoreStatsKeywords from '@/components/deck-page/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/deck-page/MoreStatsPowerToughness.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMisc, MoreStatsKeywords, MoreStatsPowerToughness },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
 	mixins: [getActiveDeck],
 	props: {
 		toAutoScrollDown: Boolean
