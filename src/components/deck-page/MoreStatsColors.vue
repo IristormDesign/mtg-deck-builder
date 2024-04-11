@@ -30,7 +30,7 @@ export default {
 		}
 	},
 	computed: {
-		tableIsEmpty () {
+		noData () {
 			for (const color in this.colorCounts) {
 				if (this.colorCounts[color] > 0) {
 					return false
@@ -41,7 +41,7 @@ export default {
 		tableRowMarkup () {
 			let markup = ''
 
-			if (this.tableIsEmpty) {
+			if (this.noData) {
 				markup = this.tableBodyEmpty
 			} else {
 				for (const colorName in this.colorCounts) {

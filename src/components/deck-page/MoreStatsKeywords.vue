@@ -5,9 +5,15 @@
 			<table>
 				<thead v-html="tableHeadCommon" />
 
-				<tbody v-if="keywordNames.length <= 0" v-html="tableBodyEmpty" />
+				<tbody
+					v-if="keywordNames.length === 0"
+					v-html="tableBodyEmpty"
+				/>
 				<tbody v-else>
-					<tr v-for="keyword in keywordNames" :key="keyword">
+					<tr
+						v-for="keyword in keywordNames"
+						:key="keyword"
+					>
 						<th>{{ keyword }}</th>
 						<td>{{ keywordCounts[keyword] }}</td>
 						<td>{{ calculatePercentage(keywordCounts[keyword]) }}</td>

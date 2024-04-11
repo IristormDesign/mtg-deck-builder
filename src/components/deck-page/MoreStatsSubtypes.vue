@@ -6,7 +6,7 @@
 				<thead v-html="tableHeadCommon" />
 
 				<tbody
-					v-if="subtypeNames.length <= 0"
+					v-if="subtypeNames.length === 0"
 					v-html="tableBodyEmpty"
 				/>
 				<tbody v-else>

@@ -29,7 +29,7 @@ export default {
 		}
 	},
 	computed: {
-		tableIsEmpty () {
+		noData () {
 			for (const rarity in this.rarityCounts) {
 				if (this.rarityCounts[rarity] > 0) {
 					return false
@@ -40,7 +40,7 @@ export default {
 		tableRowMarkup () {
 			let markup = ''
 
-			if (this.tableIsEmpty) {
+			if (this.noData) {
 				markup = this.tableBodyEmpty
 			} else {
 				for (const rarityName in this.rarityCounts) {
