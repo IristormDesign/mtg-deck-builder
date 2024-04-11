@@ -3,6 +3,7 @@
 		<h4>Types</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
+
 			<tbody
 				v-if="noData"
 				v-html="tableBodyEmpty"

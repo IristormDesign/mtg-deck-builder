@@ -3,7 +3,28 @@
 		<h4>Rarities</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="tableRowMarkup" />
+
+			<tbody
+				v-if="noData"
+				v-html="tableBodyEmpty"
+			/>
+			<tbody v-else>
+				<template v-for="(count, rarityName) in rarityCounts">
+					<tr
+						v-if="count > 0"
+						:key="rarityName"
+					>
+						<th>
+							<div class="vert-center-cell">
+								<small>{{ rarityName }}</small>
+								<div v-html="raritySymbol[rarityName.charAt(0).toLowerCase()]" />
+							</div>
+						</th>
+						<td>{{ count }}</td>
+						<td>{{ calculatePercentage(count) }}</td>
+					</tr>
+				</template>
+			</tbody>
 		</table>
 	</section>
 </template>
@@ -30,41 +51,9 @@ export default {
 	},
 	computed: {
 		noData () {
-			for (const rarity in this.rarityCounts) {
-				if (this.rarityCounts[rarity] > 0) {
-					return false
-				}
-			}
-			return true
-		},
-		tableRowMarkup () {
-			let markup = ''
-
-			if (this.noData) {
-				markup = this.tableBodyEmpty
-			} else {
-				for (const rarityName in this.rarityCounts) {
-					const count = this.rarityCounts[rarityName]
-					const raritySymbol = this.raritySymbol[rarityName.charAt(0).toLowerCase()]
-
-					if (count > 0) {
-						markup += `
-							<tr>
-								<th>
-									<div class="vert-center-cell">
-										<small>${rarityName}</small>
-										<div>${raritySymbol}</div>
-									</div>
-								</th>
-								<td>${count}</td>
-								<td>${this.calculatePercentage(count)}</td>
-							</tr>
-						`
-					}
-				}
-			}
-
-			return markup
+			return Object.values(this.rarityCounts).every(
+				count => count === 0
+			)
 		}
 	},
 	mounted () {
@@ -74,10 +63,8 @@ export default {
 		countRarities () {
 			const count = this.rarityCounts
 
-			this.deck.cards.forEach(card => {
-				const qty = card.qty
-
-				switch (card.rarity) {
+			this.deck.cards.forEach(({ rarity, qty }) => {
+				switch (rarity) {
 					case 'common':
 						count.Common += qty
 						break
