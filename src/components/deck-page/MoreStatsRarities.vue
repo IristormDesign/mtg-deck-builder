@@ -4,11 +4,7 @@
 		<table>
 			<thead v-html="tableHeadCommon" />
 
-			<tbody
-				v-if="noData"
-				v-html="tableBodyEmpty"
-			/>
-			<tbody v-else>
+			<tbody>
 				<template v-for="(count, rarityName) in rarityCounts">
 					<tr
 						v-if="count > 0"
@@ -47,13 +43,6 @@ export default {
 				'Mythic rare': 0,
 				Special: 0
 			}
-		}
-	},
-	computed: {
-		noData () {
-			return Object.values(this.rarityCounts).every(
-				count => count === 0
-			)
 		}
 	},
 	mounted () {

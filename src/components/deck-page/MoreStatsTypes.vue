@@ -4,11 +4,7 @@
 		<table>
 			<thead v-html="tableHeadCommon" />
 
-			<tbody
-				v-if="noData"
-				v-html="tableBodyEmpty"
-			/>
-			<tbody v-else>
+			<tbody>
 				<template v-for="(type, typeName) in types">
 					<tr
 						v-if="type.count > 0"
@@ -71,13 +67,6 @@ export default {
 					count: 0
 				}
 			}
-		}
-	},
-	computed: {
-		noData () {
-			return Object.values(this.types).every(
-				type => type.count === 0
-			)
 		}
 	},
 	mounted () {
