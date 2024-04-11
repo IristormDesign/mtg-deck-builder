@@ -3,7 +3,23 @@
 		<h4>Colors of Spells</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-			<tbody v-html="tableRowMarkup" />
+
+			<tbody
+				v-if="noData"
+				v-html="tableBodyEmpty"
+			/>
+			<tbody v-else>
+				<template v-for="(count, colorName) in colorCounts">
+					<tr
+						v-if="count > 0"
+						:key="colorName"
+					>
+						<th>{{ colorName }}</th>
+						<td>{{ count }}</td>
+						<td>{{ calculatePercentage(count) }}</td>
+					</tr>
+				</template>
+			</tbody>
 		</table>
 	</section>
 </template>
@@ -31,35 +47,9 @@ export default {
 	},
 	computed: {
 		noData () {
-			for (const color in this.colorCounts) {
-				if (this.colorCounts[color] > 0) {
-					return false
-				}
-			}
-			return true
-		},
-		tableRowMarkup () {
-			let markup = ''
-
-			if (this.noData) {
-				markup = this.tableBodyEmpty
-			} else {
-				for (const colorName in this.colorCounts) {
-					const count = this.colorCounts[colorName]
-
-					if (count > 0) {
-						markup += `
-							<tr>
-								<th>${colorName}</th>
-								<td>${count}</td>
-								<td>${this.calculatePercentage(count)}</td>
-							</tr>
-						`
-					}
-				}
-			}
-
-			return markup
+			return Object.values(this.colorCounts).every(
+				count => count === 0
+			)
 		}
 	},
 	mounted () {
@@ -69,12 +59,10 @@ export default {
 		countColor () {
 			const count = this.colorCounts
 
-			this.deck.cards.forEach(card => {
-				if (card.mana !== '') { // Exclude non-spell cards
-					const qty = card.qty
-
-					if (card.colors.length > 0) {
-						card.colors.forEach(color => {
+			this.deck.cards.forEach(({ mana, colors, qty }) => {
+				if (mana !== '') { // Exclude non-spell cards
+					if (colors.length > 0) {
+						colors.forEach(color => {
 							switch (color) {
 								case 'W':
 									count.White += qty
