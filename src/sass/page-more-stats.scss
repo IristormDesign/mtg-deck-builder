@@ -79,6 +79,10 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th {
 			text-align: right;
+
+			i {
+				font-weight: normal;
+			}
 		}
 		.distinct-head {
 			th {
@@ -93,7 +97,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 10.125;
+		max-height: $lhse * 8.8;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
