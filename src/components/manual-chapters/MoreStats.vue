@@ -11,6 +11,7 @@
 		<p>The More Statistics mode displays many data tables, each for a certain category regarding your deck’s cards. The categories are the following:</p>
 		<ul>
 			<li>Colors of spells</li>
+			<li>Mana color symbols</li>
 			<li>Mana values of spells (a.k.a. mana curve)</li>
 			<li>Types</li>
 			<li>Creature subtypes</li>
@@ -20,11 +21,11 @@
 			<li>Power/toughness</li>
 			<li>Miscellaneous</li>
 		</ul>
-		<p>In the table for almost every category, each row indicates:</p>
+		<p>In the table for almost every category, each row intersects with the following columns:</p>
 		<ul>
-			<li>The name of a certain property in the first column.</li>
-			<li>The count (“CT.”) of cards of the given property in the second column.</li>
-			<li>The percentage of cards of the given property from the total deck in the third column.</li>
+			<li>The first column has the name of a certain attribute.</li>
+			<li>The second column has the count (“CT.”) of cards of the given attribute.</li>
+			<li>The third column has the percentage of the given attribute. Depending on the category, the percentage may be based on your deck’s total cards or on the total count of all attributes within the category.</li>
 		</ul>
 		<p>The exception to having that table layout is the power/toughness category, which has columns for power and toughness instead of count and percentage.</p>
 		<p>The miscellaneous category tallies up cards that have any of the following characteristics:</p>

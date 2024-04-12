@@ -4,7 +4,7 @@
 			v-if="deck.cards.length <= 0"
 			class="no-cards"
 		>
-			<p>More statistics about your deck will be displayed here once you’ve added cards to the main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
+			<p>Various statistics about your deck will be displayed here once you add cards to the main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
 		</div>
 		<div
 			v-else
