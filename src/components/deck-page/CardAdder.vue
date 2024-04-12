@@ -180,8 +180,11 @@ export default {
 					this.axiosCollectionRequest(query)
 				}
 			} else if (regexURL.test(query)) { // If the user mistakenly submits any URL (but that isn't a Scryfall card page URL, because that was just checked in the previous `if` statement)...
-				alert('⚠ No card can be added because the URL you’re submitting is not a URL to a card page on Scryfall.')
-			} else { // Else the query is a card name (or at least it's going to be handled like a card name).
+				alert('⚠ No card can be added because the URL you’re submitting is not a URL to an individual card page on Scryfall.')
+				this.loadingCard = false
+
+			// Else the query is a card name (or at least it's going to be handled like a card name).
+			} else {
 				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
