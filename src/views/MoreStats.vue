@@ -70,28 +70,7 @@ import moreStatsSubtypes from '@/mixins/moreStatsSubtypes.js'
 
 export default {
 	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
-	mixins: [getActiveDeck, moreStatsSubtypes],
-	props: {
-		toAutoScrollDown: Boolean
-	},
-	mounted () {
-		this.autoScrollDown()
-	},
-	methods: {
-		autoScrollDown () {
-			this.$nextTick(() => {
-				if (this.toAutoScrollDown) {
-					const article = document.querySelector('.more-stats h3')
-
-					if (article) {
-						article.scrollIntoView({
-							behavior: 'smooth'
-						})
-					}
-				}
-			})
-		}
-	}
+	mixins: [getActiveDeck, moreStatsSubtypes]
 }
 </script>
 

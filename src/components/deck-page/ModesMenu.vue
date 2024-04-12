@@ -10,14 +10,14 @@
 			</li>
 			<li>
 				<router-link
-					:class="($route.name === 'moreStats') ? 'current-page' : null"
 					:to="{ name: 'moreStats' }"
+					:class="($route.name === 'moreStats') ? 'current-page' : null"
 				>More Statistics</router-link>
 			</li>
 			<li>
 				<router-link
-					:class="($route.name === 'drawSim') ? 'current-page' : null"
 					:to="{ name: 'drawSim' }"
+					:class="($route.name === 'drawSim') ? 'current-page' : null"
 				>Draw Simulator</router-link>
 			</li>
 		</ul>

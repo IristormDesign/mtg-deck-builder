@@ -41,8 +41,7 @@ const routes = [
 			{
 				name: 'moreStats',
 				path: 'more-stats',
-				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue'),
-				props: true
+				component: () => import(/* webpackChunkName: "more-stats" */ '../views/MoreStats.vue')
 			},
 			{
 				name: 'drawSim',

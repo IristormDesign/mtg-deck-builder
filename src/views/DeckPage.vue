@@ -56,6 +56,8 @@ export default {
 				curRoute.params.deckPath !== prevRoute.params.deckPath
 			) {
 				this.showStarredCardIfAvailable(curRoute, prevRoute)
+			} else {
+				this.autoScrollDown()
 			}
 		}
 	},
@@ -131,6 +133,17 @@ export default {
 				}
 				this.dataModified = true
 			}
+		},
+		autoScrollDown () {
+			this.$nextTick(() => {
+				const destination = document.querySelector('.deck-modes')
+
+				if (destination) {
+					destination.scrollIntoView({
+						behavior: 'instant'
+					})
+				}
+			})
 		}
 	}
 }
