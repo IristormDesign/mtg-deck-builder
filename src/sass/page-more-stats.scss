@@ -1,6 +1,6 @@
 @import 'variables';
 $max-width-stat-tables: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
-$table-borders: 1px solid $color-heading-bg;
+$table-inner-borders: 1px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
@@ -26,12 +26,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 		tbody {
 			cursor: default;
-
-			tr {
-				&:last-child {
-					border-bottom: $lhse*.2 solid $color-heading-bg;
-				}
-			}
 		}
 	}
 	h4 {
@@ -42,10 +36,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
-		border: $table-borders;
-		border-width: 1px;
+		border: $table-inner-borders;
+		border-width: $lhse*.125;
 		border-top-width: 0;
-		border-bottom-width: 0;
 		width: 100%;
 
 		thead {
@@ -55,8 +48,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				text-transform: uppercase;
 				text-align: right;
 				background: $color-heading-bg;
-				padding-top: 0;
-				padding-bottom: 0;
 			}
 		}
 		tbody {
@@ -76,9 +67,11 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		th,
 		td {
 			padding: 1px divide($lhse, 4);
-			border: $table-borders;
+			border: $table-inner-borders;
 			text-align: right;
-			height: $lhse;
+			line-height: .8;
+			padding-top: $lhse*.1667;
+			padding-bottom: $lhse*.1667;
 		}
 		td {
 			padding-top: 0;
@@ -132,7 +125,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		background-attachment: local, local, scroll, scroll;
 	}
 	.mana-symbol {
-		font-size: 120%;
+		font-size: 112.5%;
+		margin-top: -$lhse*.0625;
+		margin-bottom: -$lhse*.0625;
 	}
 	footer {
 		text-align: center;
