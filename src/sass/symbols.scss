@@ -129,7 +129,7 @@
 	border-radius: $border-radius-button;
 	min-width: 19px; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
-	font: 800 60%/1.25 'Ysabeau', 'Trebuchet MS', sans-serif;
+	font: 800 60%/1.1667 'Ysabeau', 'Trebuchet MS', sans-serif;
 	cursor: default;
 	outline: 1px solid $color-black-label-text;
 	color: $color-black-label-text;
@@ -160,9 +160,9 @@
 	}
 	&.rare {
 		background: linear-gradient(-60deg,
-			darken($color-rarity-gold, 20%),
-			lighten($color-rarity-gold, 20%),
-			darken($color-rarity-gold, 20%)
+			desaturate(darken($color-rarity-gold, 20%), 12.5%),
+			desaturate(lighten($color-rarity-gold, 20%), 12.5%),
+			desaturate(darken($color-rarity-gold, 20%), 12.5%)
 		) $color-rarity-gold;
 		text-shadow: -.375px .5px 0 rgba(#fff, .5);
 	}
