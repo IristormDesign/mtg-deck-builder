@@ -38,6 +38,7 @@
 		a {
 			color: $color-app-header-link;
 			text-decoration: none;
+			text-shadow: 0 0 2px rgba(#000, .5);
 
 			&:hover,
 			&:focus {
