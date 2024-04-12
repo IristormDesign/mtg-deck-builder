@@ -66,7 +66,7 @@ export default {
 					case 'mythic':
 						count['Mythic rare'] += qty
 						break
-					case 'special':
+					default:
 						count.Special += qty
 				}
 			})
