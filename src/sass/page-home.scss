@@ -118,7 +118,7 @@
 		padding: $lhse*1.5 0;
 		position: relative;
 		background: $color-background-alt;
-		scroll-margin-top: -$lhse*.5;
+		scroll-margin-top: $lhse;
 		color: $color-text-over-background-alt;
 
 		h2 {
