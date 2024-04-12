@@ -20,14 +20,12 @@
 
 			<more-stats-subtypes
 				:deck="deck"
-				:subtypeNames="subtypeCreaturesNames"
-				:subtypeCounts="subtypeCounts"
+				:subtypeCounts="creatureSubtypeCounts"
 			>Creature</more-stats-subtypes>
 
 			<more-stats-subtypes
 				:deck="deck"
-				:subtypeNames="subtypeOtherNames"
-				:subtypeCounts="subtypeCounts"
+				:subtypeCounts="otherSubtypeCounts"
 			>Other</more-stats-subtypes>
 
 			<more-stats-rarities :deck="deck" />
@@ -77,14 +75,15 @@ export default {
 	},
 	data () {
 		return {
-			subtypeCreaturesNames: [],
-			subtypeOtherNames: [],
-			subtypeCounts: {}
+			creatureSubtypeCounts: {},
+			otherSubtypeCounts: {}
 		}
 	},
 	mounted () {
+		this.getAllSubtypes()
+		this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
+		this.otherSubtypeCounts = this.alphabetizeSubtypes(this.otherSubtypeCounts)
 		this.autoScrollDown()
-		this.displaySubtypes()
 	},
 	methods: {
 		autoScrollDown () {
@@ -100,91 +99,70 @@ export default {
 				}
 			})
 		},
-		displaySubtypes () {
-			const allSubtypesCreatures = []
-			const allSubtypesOther = []
-			const subtypeCounts = this.subtypeCounts
-
+		getAllSubtypes () {
 			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					const typeLine = card.type
+				const faceTypeLines = getEachCardFaceTypeLine(card.type)
 
-					// Find the pattern that indicates the card is double-faced, which is a space, a slash, a space, and any characters afterward in the card's type line. (This doesn't look at the second face's entire type line.)
-					const isDoubleFaced = typeLine.match(/\s\/\s\w*/)
+				faceTypeLines.forEach(typeLine => {
+					const regexSubtypeSignifier = /\s—\s.+/ // Space, em dash, space, and any additional characters.
 
-					if (isDoubleFaced) {
-						// Get the part of the string that precedes the slash character.
-						const firstFace = typeLine.match(/[^/]*/)[0]
+					// From the card face's type line, find only the part that indicates there's at least one subtype.
+					const hasSubtype = typeLine.match(regexSubtypeSignifier)
 
-						// Get the part of the string that follows the slash character.
-						const secondFace = typeLine.match(/\/.*/)[0]
+					if (hasSubtype) {
+						// Get each subtype from the subtypes string.
+						const regexWholeWords = /\w+/g
+						const individualSubtypes = hasSubtype[0].match(regexWholeWords)
 
-						getSubtypesPerFace(firstFace)
-						getSubtypesPerFace(secondFace)
-					} else { // A regular single-face card.
-						getSubtypesPerFace(typeLine)
+						// Count the subtypes.
+						this.countSubtypes(individualSubtypes, card)
 					}
-				}
+				})
 			})
 
-			function getSubtypesPerFace (cardFace) {
-				// In each card's type line, get only the part that indicates the subtype: the em dash and all characters after it.
-				const subtypesPattern = cardFace.match(/\s—\s.*/)
+			/**
+			 * Get each type line of the card. If the card is double-faced, it has two type lines.
+			 */
+			function getEachCardFaceTypeLine (typeLine) {
+				const regexDoubleFaced = /\s\/\s\w+/ // " / " plus any word characters.
 
-				// Ignore the following only if the card has no subtype.
-				if (subtypesPattern) {
-					// The card's line of subtypes, which may have only a single subtype or multiple of them.
-					const subtypeLine = subtypesPattern[0]
+				if (typeLine.match(regexDoubleFaced)) {
+					const regexCardFaceDivider = /[^/]+/g // Match any continuous substrings that do NOT contain a slash character.
+					const frontFaceTypeLine = typeLine.match(regexCardFaceDivider)[0]
+					const backFaceTypeLine = typeLine.match(regexCardFaceDivider)[1]
 
-					if (subtypeLine) {
-						// Delete the " — " (em dash) part that came from the collected subtype pattern.
-						subtypeLine.replace(' — ', '')
+					return [frontFaceTypeLine, backFaceTypeLine]
 
-						// Get every single subtype in the subtype lines having multiple subtypes. Duplicate single subtypes are included.
-						const isolatedSubtypes = subtypeLine.match(/\w+/g)
-
-						// Put all of these isolated subtypes in the `subtypes` array.
-						isolatedSubtypes.forEach(subtype => {
-							const regexCreatureType = /\bCreature\b/
-
-							if (regexCreatureType.test(cardFace)) {
-								allSubtypesCreatures.push(subtype)
-							} else {
-								allSubtypesOther.push(subtype)
-							}
-						})
-					}
+				// Else this card is an ordinary single-face one.
+				} else {
+					return [typeLine]
 				}
 			}
+		},
+		countSubtypes (subtypes, card) {
+			const regexCreatureType = /\bCreature\b/
 
-			prepareSubtypesTable(allSubtypesCreatures, this.subtypeCreaturesNames)
-			prepareSubtypesTable(allSubtypesOther, this.subtypeOtherNames)
+			// Put each isolated subtype in the proper subtypes object group (either creature or other).
+			subtypes.forEach(subtype => {
+				if (regexCreatureType.test(card.type)) {
+					countSubtypesPerCategory(this.creatureSubtypeCounts)
+				} else {
+					countSubtypesPerCategory(this.otherSubtypeCounts)
+				}
 
-			function prepareSubtypesTable (allSubtypes, subtypeNames) {
-				// Make an array containing only the UNIQUE names among all the deck's subtypes.
-				allSubtypes.forEach(subtype => {
-					if (subtypeNames.indexOf(subtype) < 0) {
-						subtypeNames.push(subtype)
+				function countSubtypesPerCategory (counts) {
+					if (!counts[subtype]) {
+						counts[subtype] = 0
 					}
-				})
 
-				// Alphabetize the subtypes.
-				subtypeNames.sort()
-
-				// Set up an object having properties of the unique names of each subtype, with the count of each initially set to 0.
-				subtypeNames.forEach(name => {
-					subtypeCounts[name] = 0
-				})
-
-				// Apply the counts of each subtype.
-				allSubtypes.forEach(subtype => {
-					for (const name in subtypeCounts) {
-						if (subtype === name) {
-							subtypeCounts[subtype]++
-						}
-					}
-				})
-			}
+					counts[subtype] += card.qty
+				}
+			})
+		},
+		alphabetizeSubtypes (counts) {
+			return Object.fromEntries(
+				Object.entries(counts).sort()
+			)
 		}
 	}
 }

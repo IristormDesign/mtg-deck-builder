@@ -6,17 +6,17 @@
 				<thead v-html="tableHeadCommon" />
 
 				<tbody
-					v-if="subtypeNames.length === 0"
+					v-if="Object.keys(subtypeCounts).length === 0"
 					v-html="tableBodyEmpty"
 				/>
 				<tbody v-else>
 					<tr
-						v-for="subtype in subtypeNames"
-						:key="subtype"
+						v-for="(count, subtypeName) in subtypeCounts"
+						:key="subtypeName"
 					>
-						<th>{{ subtype }}</th>
-						<td>{{ subtypeCounts[subtype] }}</td>
-						<td>{{ calculatePercentage(subtypeCounts[subtype]) }}</td>
+						<th>{{ subtypeName }}</th>
+						<td>{{ count }}</td>
+						<td>{{ calculatePercentage(count) }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -31,7 +31,6 @@ export default {
 	mixins: [moreStats],
 	props: {
 		deck: Object,
-		subtypeNames: Array,
 		subtypeCounts: Object
 	}
 }
