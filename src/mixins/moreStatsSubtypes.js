@@ -9,7 +9,6 @@ export default {
 		this.getAllSubtypes()
 
 		this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
-
 		this.otherSubtypeCounts = this.alphabetizeSubtypes(this.otherSubtypeCounts)
 	},
 	methods: {
@@ -83,6 +82,7 @@ export default {
 		/**
 		 * Arrange the subtypes by name in alphabetical order.
 		 * @param {Object} counts The counts object for either creature subtypes or other subtypes.
+		 * @returns Resorted subtypes object
 		 */
 		alphabetizeSubtypes (counts) {
 			return Object.fromEntries(

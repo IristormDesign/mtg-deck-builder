@@ -37,8 +37,9 @@ export default {
 			keywordCounts: {}
 		}
 	},
-	created () {
+	mounted () {
 		this.countKeywords()
+		this.alphabetizeKeywords()
 	},
 	methods: {
 		countKeywords () {
@@ -53,6 +54,11 @@ export default {
 					counts[kw] += card.qty
 				})
 			})
+		},
+		alphabetizeKeywords () {
+			this.keywordCounts = Object.fromEntries(
+				Object.entries(this.keywordCounts).sort()
+			)
 		}
 	}
 }
