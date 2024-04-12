@@ -14,7 +14,19 @@
 						v-for="(count, mv) in manaValueCounts"
 						:key="mv"
 					>
-						<th><span class="mana-symbol">{{ mv }}</span></th>
+						<th>
+							<span class="mana-symbol">
+								<span
+									v-if="shrinkSymbolText(mv)"
+									class="double-digits"
+								>
+									{{ mv }}
+								</span>
+								<template v-else>
+									{{ mv }}
+								</template>
+							</span>
+						</th>
 						<td>{{ count }}</td>
 						<td>{{ calculatePercentage(count) }}</td>
 					</tr>
@@ -53,6 +65,9 @@ export default {
 
 				count[cmc] += qty
 			})
+		},
+		shrinkSymbolText (string) {
+			return string.length > 1
 		}
 	}
 }

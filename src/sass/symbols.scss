@@ -53,6 +53,9 @@
 			text-indent: 0;
 		}
 	}
+	.double-digits {
+		transform: scale(.75); // Transforming the scale is better than changing font-size because it doesn't affect margins.
+	}
 	&[title] {
 		cursor: help;
 	}
