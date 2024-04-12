@@ -9,20 +9,25 @@ export default {
 				green: 0
 			}
 
-			this.deck.cards.forEach(card => {
-				if (card.mana !== '') { // Exclude land cards
-					for (let i = 0; i < card.qty; i++) {
-						card.colors.forEach(color => {
-							switch (color) {
-								case 'W': counts.white++; break
-								case 'U': counts.blue++; break
-								case 'B': counts.black++; break
-								case 'R': counts.red++; break
-								case 'G': counts.green++; break
-							}
-						})
+			this.deck.cards.forEach(({ colors, qty }) => {
+				colors.forEach(color => {
+					switch (color) {
+						case 'W':
+							counts.white += qty
+							break
+						case 'U':
+							counts.blue += qty
+							break
+						case 'B':
+							counts.black += qty
+							break
+						case 'R':
+							counts.red += qty
+							break
+						case 'G':
+							counts.green += qty
 					}
-				}
+				})
 			})
 
 			const sortedColors = []
@@ -54,7 +59,7 @@ export default {
 						case 'red':
 							output.push('R'); break
 						case 'green':
-							output.push('G'); break
+							output.push('G')
 					}
 				}
 			})
@@ -76,13 +81,9 @@ export default {
 					}
 				}
 
-				let output = ''
-
-				deck.colors.forEach(color => {
-					output += getSymbolHTML(color)
-				})
-
-				return output
+				return deck.colors.map(
+					color => getSymbolHTML(color)
+				).join('')
 			} else {
 				this.determineDeckColors()
 			}
