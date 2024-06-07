@@ -72,7 +72,7 @@ export default {
 	computed: {
 		noData () {
 			return Object.values(this.colorStats).every(
-				count => count === 0
+				stat => stat.ct === 0
 			)
 		}
 	},
