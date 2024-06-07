@@ -4,7 +4,7 @@ export default {
 			return `
 				<tr>
 					<th></th>
-					<th>Ct.</th>
+					<th title="Count">Ct.</th>
 					<th>Percent</th>
 				</tr>
 			`
@@ -17,6 +17,12 @@ export default {
 					<td>—</td>
 				</tr>
 			`
+		},
+		totalCards () {
+			return this.deck.cards.reduce(
+				(total, card) => total + card.qty,
+				0
+			)
 		}
 	},
 	methods: {
@@ -25,11 +31,7 @@ export default {
 		 * @returns {string} Percentage
 		 */
 		calculatePercentage (count) {
-			const deckTotal = this.deck.cards.reduce(
-				(total, card) => total + card.qty, 0
-			)
-
-			return ((count / deckTotal) * 100).toFixed(1) + '%'
+			return ((count / this.totalCards) * 100).toFixed(1)
 		}
 	}
 }

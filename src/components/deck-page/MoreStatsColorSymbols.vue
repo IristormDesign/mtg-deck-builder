@@ -9,24 +9,28 @@
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
-				<template v-for="color in colorSymbols">
+				<template v-for="symbol in colorSymbols">
 					<tr
-						v-if="color.count > 0"
-						:key="color.name"
+						v-if="symbol.ct > 0"
+						:key="symbol.name"
 					>
 						<th>
 							<div class="vert-center-cell">
-								<small>{{ color.name }}</small>
-								<div v-html="manaSymbol[color.letter]" />
+								<small>{{ symbol.name }}</small>
+								<div v-html="manaSymbol[symbol.letter]" />
 							</div>
 						</th>
-						<td>{{ color.count }}</td>
-						<td>{{ color.percentage }}</td>
+						<td>{{ symbol.ct }}</td>
+						<td>{{ symbol.pct.toFixed(1) }}<span>%</span></td>
 					</tr>
 				</template>
+				<tr class="total">
+					<th>Total symbols</th>
+					<td>{{ totalSymbolCount }}</td>
+					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
+				</tr>
 			</tbody>
 		</table>
-		<!-- <p class="note"><strong>Notes:</strong> Percentages are of the total count of all mana color symbols in spells’ mana costs. Hybrid mana symbols each count as multiple basic mana symbols. Generic mana symbols and any mana symbols in cards’ abilities are ignored.</p> -->
 	</section>
 </template>
 
@@ -43,37 +47,37 @@ export default {
 		return {
 			colorSymbols: {
 				white: {
-					count: 0,
+					ct: 0,
 					letter: 'w',
 					name: 'White',
 					regex: /.W./g
 				},
 				blue: {
-					count: 0,
+					ct: 0,
 					letter: 'u',
 					name: 'Blue',
 					regex: /.U./g
 				},
 				black: {
-					count: 0,
+					ct: 0,
 					letter: 'b',
 					name: 'Black',
 					regex: /.B./g
 				},
 				red: {
-					count: 0,
+					ct: 0,
 					letter: 'r',
 					name: 'Red',
 					regex: /.R./g
 				},
 				green: {
-					count: 0,
+					ct: 0,
 					letter: 'g',
 					name: 'Green',
 					regex: /.G./g
 				},
 				colorless: {
-					count: 0,
+					ct: 0,
 					letter: 'c',
 					name: 'Colorless',
 					regex: /.C./g
@@ -84,7 +88,12 @@ export default {
 	computed: {
 		totalSymbolCount () {
 			return Object.values(this.colorSymbols).reduce(
-				(total, symbol) => total + symbol.count, 0
+				(total, symbol) => total + symbol.ct, 0
+			)
+		},
+		totalSymbolPercentage () {
+			return Object.values(this.colorSymbols).reduce(
+				(total, symbol) => total + symbol.pct, 0
 			)
 		}
 	},
@@ -97,11 +106,11 @@ export default {
 			this.deck.cards.forEach(({ mana, qty }) => {
 				const cs = this.colorSymbols
 
-				for (const color in cs) {
-					const colorMatches = mana.match(cs[color].regex)
+				for (const symbol in cs) {
+					const symbolMatches = mana.match(cs[symbol].regex)
 
-					if (colorMatches) {
-						cs[color].count += colorMatches.length * qty
+					if (symbolMatches) {
+						cs[symbol].ct += symbolMatches.length * qty
 					}
 				}
 			})
@@ -109,8 +118,8 @@ export default {
 		calculatePercentage () {
 			const cs = this.colorSymbols
 
-			for (const color in cs) {
-				cs[color].percentage = (cs[color].count / this.totalSymbolCount * 100).toFixed(1) + '%'
+			for (const symbol in cs) {
+				cs[symbol].pct = (cs[symbol].ct / this.totalSymbolCount * 100)
 			}
 		}
 	}

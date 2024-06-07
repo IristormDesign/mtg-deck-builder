@@ -18,15 +18,15 @@
 
 			<more-stats-types :deck="deck" />
 
-			<more-stats-subtypes
+			<more-stats-creature-subtypes
 				:deck="deck"
 				:subtypeCounts="creatureSubtypeCounts"
-			>Creature</more-stats-subtypes>
+			/>
 
-			<more-stats-subtypes
+			<more-stats-other-subtypes
 				:deck="deck"
 				:subtypeCounts="otherSubtypeCounts"
-			>Other</more-stats-subtypes>
+			/>
 
 			<more-stats-rarities :deck="deck" />
 
@@ -39,13 +39,21 @@
 			<more-stats-miscellaneous :deck="deck" />
 
 			<footer>
-				<p
-					v-if="deck.sideboard.cards.length >= 1"
-					class="note"
-				>
-					<strong>Note:</strong> These statistics ignore cards in the sideboard.
-				</p>
-				<p>
+				<div class="note">
+					<h4>Notes</h4>
+					<ul>
+						<li>
+							<p>These statistics don’t count cards in the sideboard.</p>
+						</li>
+						<li>
+							<p>Single cards can be counted multiple times in a category when they match more than one attribute. (For example, if there’s a card with the types “artifact creature,” then the Types category counts that card once as an artifact and once again as a creature.)</p>
+						</li>
+						<li>
+							<p>See the user manual for <router-link to="/manual/#m-more-stats">more info</router-link> about this page.</p>
+						</li>
+					</ul>
+				</div>
+				<p class="return">
 					<router-link :to="{ name: 'deckEditor' }">
 						◂ Return to the Deck Editor
 					</router-link>
@@ -60,7 +68,8 @@ import MoreStatsColors from '@/components/deck-page/MoreStatsColors.vue'
 import MoreStatsColorSymbols from '@/components/deck-page/MoreStatsColorSymbols.vue'
 import MoreStatsManaValues from '@/components/deck-page/MoreStatsManaValues.vue'
 import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
-import MoreStatsSubtypes from '@/components/deck-page/MoreStatsSubtypes.vue'
+import MoreStatsCreatureSubtypes from '@/components/deck-page/MoreStatsCreatureSubtypes.vue'
+import MoreStatsOtherSubtypes from '@/components/deck-page/MoreStatsOtherSubtypes.vue'
 import MoreStatsRarities from '@/components/deck-page/MoreStatsRarities.vue'
 import MoreStatsMiscellaneous from '@/components/deck-page/MoreStatsMiscellaneous.vue'
 import MoreStatsKeywords from '@/components/deck-page/MoreStatsKeywords.vue'
@@ -69,7 +78,7 @@ import getActiveDeck from '@/mixins/getActiveDeck.js'
 import moreStatsSubtypes from '@/mixins/moreStatsSubtypes.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
 	mixins: [getActiveDeck, moreStatsSubtypes]
 }
 </script>

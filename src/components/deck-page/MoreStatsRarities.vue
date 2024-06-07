@@ -5,9 +5,9 @@
 			<thead v-html="tableHeadCommon" />
 
 			<tbody>
-				<template v-for="(count, name) in rarityCounts">
+				<template v-for="(ct, name) in rarityCounts">
 					<tr
-						v-if="count > 0"
+						v-if="ct > 0"
 						:key="name"
 					>
 						<th>
@@ -16,10 +16,15 @@
 								<div v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
 							</div>
 						</th>
-						<td>{{ count }}</td>
-						<td>{{ calculatePercentage(count) }}</td>
+						<td>{{ ct }}</td>
+						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
 				</template>
+				<tr class="total">
+					<th>All cards</th>
+					<td>{{ totalCards }}</td>
+					<td>100.0<span>%</span></td>
+				</tr>
 			</tbody>
 		</table>
 	</section>
@@ -50,24 +55,24 @@ export default {
 	},
 	methods: {
 		countRarities () {
-			const count = this.rarityCounts
+			const ct = this.rarityCounts
 
 			this.deck.cards.forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
-						count.Common += qty
+						ct.Common += qty
 						break
 					case 'uncommon':
-						count.Uncommon += qty
+						ct.Uncommon += qty
 						break
 					case 'rare':
-						count.Rare += qty
+						ct.Rare += qty
 						break
 					case 'mythic':
-						count['Mythic rare'] += qty
+						ct['Mythic rare'] += qty
 						break
 					default:
-						count.Special += qty
+						ct.Special += qty
 				}
 			})
 		}

@@ -1,34 +1,35 @@
 <template>
 	<section id="m-more-stats">
 		<h3>More Statistics Mode</h3>
-		<p>While the <a href="#m-deck-page-header">deck page header</a> shows a few <a href="#m-basic-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows an even greater variety of information.</p>
+		<p>While the <a href="#m-deck-page-header">deck page header</a> shows you a few <a href="#m-basic-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows you an even greater variety of information.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
 				alt="Snippet of more basic statistics page" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The More Statistics mode displays many data tables, each for a certain category regarding your deck’s cards. The categories are the following:</p>
+		<p>The page in the More Statistics mode displays many data tables, each for a certain statistic category regarding your deck’s cards. The categories are the following:</p>
 		<ul>
-			<li>Colors of spells</li>
-			<li>Mana color symbols</li>
-			<li>Mana values of spells (a.k.a. mana curve)</li>
+			<li>Colors of Spells</li>
+			<li>Mana Color Symbols</li>
+			<li>Mana Values of Spells (a.k.a. mana curve)</li>
 			<li>Types</li>
-			<li>Creature subtypes</li>
-			<li>Other subtypes</li>
+			<li>Creature Subtypes</li>
+			<li>Other Subtypes</li>
 			<li>Rarities</li>
-			<li>Keyword abilities</li>
-			<li>Power/toughness</li>
+			<li>Keyword Abilities</li>
+			<li>Power/Toughness</li>
 			<li>Miscellaneous</li>
 		</ul>
-		<p>In the table for almost every category, each row intersects with the following columns:</p>
+		<p>The table for almost every category has the following columns:</p>
 		<ul>
-			<li>The first column has the name of a certain attribute.</li>
-			<li>The second column has the count (“CT.”) of cards of the given attribute.</li>
-			<li>The third column has the percentage of the given attribute. Depending on the category, the percentage may be based on your deck’s total cards or on the total count of all attributes within the category.</li>
+			<li>The first column displays the names of certain card attributes that relate to the category.</li>
+			<li>The second column (“Ct.”) displays the counts of the attributes among the cards in your deck’s main <a href="#m-card-groups">card group</a>.</li>
+			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies between categories. For the majority of them, the percentages are based on the total number of cards in your deck’s main card group.</li>
 		</ul>
-		<p>The exception to having that table layout is the power/toughness category, which has columns for power and toughness instead of count and percentage.</p>
-		<p>The miscellaneous category tallies up cards that have any of the following characteristics:</p>
+		<p>The category that’s the exception to using the aforementioned table layout is Power/Toughness, whose table has columns for power and toughness instead of count and percentage, and also lacks the row for the percentage basis.</p>
+		<p>In the Mana Color Symbols category, generic mana symbols and any mana symbols in cards’ abilities are ignored. Hybrid mana symbols are counted as multiple basic mana symbols.</p>
+		<p>The Miscellaneous category tallies up cards that have any of the following characteristics:</p>
 		<ul>
 			<li><strong>Basic land</strong> – Cards of both the “land” type and “basic” supertype.</li>
 			<li><strong>Legendary</strong> – Cards of the “legendary” supertype.</li>
@@ -38,7 +39,5 @@
 			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness.</li>
 			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
 		</ul>
-		<p>Single cards can be counted multiple times for different properties within a category. For example, if a card is designated “artifact creature” in its type line, then it’s counted as both an artifact and a creature in the types category. As a result, the sum of all counts in a category could be greater than your deck’s total cards, and the sum of all percentages in a category could be greater than 100%.</p>
-		<p>All statistics in the More Statistics mode consider only the main <a href="#m-card-groups">card group</a>, not also the sideboard.</p>
 	</section>
 </template>

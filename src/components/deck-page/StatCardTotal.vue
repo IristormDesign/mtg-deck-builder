@@ -20,14 +20,10 @@ export default {
 	},
 	computed: {
 		totalCards () {
-			let total = 0
-
-			this.deck.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					total++
-				}
-			})
-			return total
+			return this.deck.cards.reduce(
+				(total, card) => total + card.qty,
+				0
+			)
 		},
 		showTotalsWarningSymbol () {
 			const total = this.totalCards

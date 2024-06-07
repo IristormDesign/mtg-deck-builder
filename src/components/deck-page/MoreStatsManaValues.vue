@@ -6,29 +6,34 @@
 				<thead v-html="tableHeadCommon" />
 
 				<tbody
-					v-if="Object.keys(manaValueCounts).length === 0"
+					v-if="Object.keys(mvStats).length === 0"
 					v-html="tableBodyEmpty"
 				/>
 				<tbody v-else>
 					<tr
-						v-for="(count, mv) in manaValueCounts"
-						:key="mv"
+						v-for="(stats, name) in mvStats"
+						:key="name"
 					>
 						<th>
 							<span class="mana-symbol">
 								<span
-									v-if="shrinkSymbolText(mv)"
+									v-if="shrinkSymbolText(name)"
 									class="double-digits"
 								>
-									{{ mv }}
+									{{ name }}
 								</span>
 								<template v-else>
-									{{ mv }}
+									{{ name }}
 								</template>
 							</span>
 						</th>
-						<td>{{ count }}</td>
-						<td>{{ calculatePercentage(count) }}</td>
+						<td>{{ stats.ct }}</td>
+						<td>{{ stats.pct }}<span>%</span></td>
+					</tr>
+					<tr class="total">
+						<th>All spells</th>
+						<td>{{ allSpellsCount }}</td>
+						<td>100.0<span>%</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -46,25 +51,36 @@ export default {
 	},
 	data () {
 		return {
-			manaValueCounts: {}
+			mvStats: {},
+			allSpellsCount: 0
 		}
 	},
 	created () {
 		this.countManaValues()
+		this.calculatePercentageOfSpells()
 	},
 	methods: {
 		countManaValues () {
 			this.deck.cards.forEach(({ mana, cmc, qty }) => {
 				if (!mana) return // Exclude land cards
 
-				const count = this.manaValueCounts
-
-				if (!count[cmc]) {
-					count[cmc] = 0
+				if (!this.mvStats[cmc]) {
+					this.mvStats[cmc] = {
+						ct: 0
+					}
 				}
 
-				count[cmc] += qty
+				this.mvStats[cmc].ct += qty
+
+				this.allSpellsCount += qty
 			})
+		},
+		calculatePercentageOfSpells () {
+			for (const statName in this.mvStats) {
+				const stat = this.mvStats[statName]
+
+				stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
+			}
 		},
 		shrinkSymbolText (string) {
 			return string.length > 1

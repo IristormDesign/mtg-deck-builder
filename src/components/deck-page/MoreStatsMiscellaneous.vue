@@ -9,16 +9,21 @@
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
-				<template v-for="(atb, atbName) in miscAttributes">
+				<template v-for="(attr, attrName) in miscAttributes">
 					<tr
-						v-if="atb.count > 0"
-						:key="atbName"
+						v-if="attr.ct > 0"
+						:key="attrName"
 					>
-						<th>{{ atbName }}</th>
-						<td>{{ atb.count }}</td>
-						<td>{{ calculatePercentage(atb.count) }}</td>
+						<th>{{ attrName }}</th>
+						<td>{{ attr.ct }}</td>
+						<td>{{ calculatePercentage(attr.ct) }}<span>%</span></td>
 					</tr>
 				</template>
+				<tr class="total">
+					<th>All cards</th>
+					<td>{{ totalCards }}</td>
+					<td>100.0<span>%</span></td>
+				</tr>
 			</tbody>
 		</table>
 	</section>
@@ -36,7 +41,7 @@ export default {
 		return {
 			miscAttributes: {
 				'Basic Land': {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						const regex = /\bBasic (\w* )?Land\b/
 
@@ -44,7 +49,7 @@ export default {
 					}
 				},
 				Legendary: {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						const regex = /\bLegendary\b/
 
@@ -52,19 +57,19 @@ export default {
 					}
 				},
 				Monocolored: {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						return card.colors.length === 1
 					}
 				},
 				Multicolored: {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						return card.colors.length > 1
 					}
 				},
 				'Variable cost': {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						const regex = /\{X\}/
 
@@ -72,7 +77,7 @@ export default {
 					}
 				},
 				'Variable P/T': {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						return (
 							card.power === '*' ||
@@ -81,7 +86,7 @@ export default {
 					}
 				},
 				'Double-faced': {
-					count: 0,
+					ct: 0,
 					isMatch: (card) => {
 						const regex = /\w\s\/\s\w/
 
@@ -94,7 +99,7 @@ export default {
 	computed: {
 		noData () {
 			return Object.values(this.miscAttributes).every(
-				atb => atb.count === 0
+				attr => attr.ct === 0
 			)
 		}
 	},
@@ -104,11 +109,11 @@ export default {
 	methods: {
 		countMisc () {
 			this.deck.cards.forEach(card => {
-				for (const atbName in this.miscAttributes) {
-					const atb = this.miscAttributes[atbName]
+				for (const attrName in this.miscAttributes) {
+					const attr = this.miscAttributes[attrName]
 
-					if (atb.isMatch(card)) {
-						atb.count += card.qty
+					if (attr.isMatch(card)) {
+						attr.ct += card.qty
 					}
 				}
 			})

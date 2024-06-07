@@ -9,16 +9,21 @@
 				v-html="tableBodyEmpty"
 			/>
 			<tbody v-else>
-				<template v-for="(count, colorName) in colorCounts">
+				<template v-for="(stats, name) in colorStats">
 					<tr
-						v-if="count > 0"
-						:key="colorName"
+						v-if="stats.ct > 0"
+						:key="name"
 					>
-						<th>{{ colorName }}</th>
-						<td>{{ count }}</td>
-						<td>{{ calculatePercentage(count) }}</td>
+						<th>{{ name }}</th>
+						<td>{{ stats.ct }}</td>
+						<td>{{ stats.pct }}<span>%</span></td>
 					</tr>
 				</template>
+				<tr class="total">
+					<th>All spells</th>
+					<td>{{ allSpellsCount }}</td>
+					<td>100.0<span>%</span></td>
+				</tr>
 			</tbody>
 		</table>
 	</section>
@@ -35,29 +40,49 @@ export default {
 	},
 	data () {
 		return {
-			colorCounts: {
-				White: 0,
-				Blue: 0,
-				Black: 0,
-				Red: 0,
-				Green: 0,
-				Colorless: 0
-			}
+			colorStats: {
+				White: {
+					ct: 0,
+					pct: 0
+				},
+				Blue: {
+					ct: 0,
+					pct: 0
+				},
+				Black: {
+					ct: 0,
+					pct: 0
+				},
+				Red: {
+					ct: 0,
+					pct: 0
+				},
+				Green: {
+					ct: 0,
+					pct: 0
+				},
+				Colorless: {
+					ct: 0,
+					pct: 0
+				}
+			},
+			allSpellsCount: 0
 		}
 	},
 	computed: {
 		noData () {
-			return Object.values(this.colorCounts).every(
+			return Object.values(this.colorStats).every(
 				count => count === 0
 			)
 		}
 	},
 	mounted () {
-		this.countColor()
+		this.countColors()
+		this.calculatePercentageOfSpells()
 	},
 	methods: {
-		countColor () {
-			const count = this.colorCounts
+		countColors () {
+			const stats = this.colorStats
 
 			this.deck.cards.forEach(({ mana, colors, qty }) => {
 				if (mana !== '') { // Exclude non-spell cards
@@ -65,26 +90,35 @@ export default {
 						colors.forEach(color => {
 							switch (color) {
 								case 'W':
-									count.White += qty
+									stats.White.ct += qty
 									break
 								case 'U':
-									count.Blue += qty
+									stats.Blue.ct += qty
 									break
 								case 'B':
-									count.Black += qty
+									stats.Black.ct += qty
 									break
 								case 'R':
-									count.Red += qty
+									stats.Red.ct += qty
 									break
 								case 'G':
-									count.Green += qty
+									stats.Green.ct += qty
 							}
 						})
 					} else {
-						count.Colorless += qty
+						stats.Colorless.ct += qty
 					}
+
+					this.allSpellsCount += qty
 				}
 			})
+		},
+		calculatePercentageOfSpells () {
+			for (const statName in this.colorStats) {
+				const stat = this.colorStats[statName]
+
+				stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
+			}
 		}
 	}
 }

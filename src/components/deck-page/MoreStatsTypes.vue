@@ -7,14 +7,19 @@
 			<tbody>
 				<template v-for="(type, typeName) in types">
 					<tr
-						v-if="type.count > 0"
+						v-if="type.ct > 0"
 						:key="typeName"
 					>
 						<th>{{ typeName }}</th>
-						<td>{{ type.count }}</td>
-						<td>{{ calculatePercentage(type.count) }}</td>
+						<td>{{ type.ct }}</td>
+						<td>{{ calculatePercentage(type.ct) }}<span>%</span></td>
 					</tr>
 				</template>
+				<tr class="total">
+					<th>All cards</th>
+					<td>{{ totalCards }}</td>
+					<td>100.0<span>%</span></td>
+				</tr>
 			</tbody>
 		</table>
 	</section>
@@ -32,39 +37,39 @@ export default {
 		return {
 			types: {
 				Creature: {
-					count: 0,
+					ct: 0,
 					regex: /\bCreature\b/
 				},
 				Planeswalker: {
-					count: 0,
+					ct: 0,
 					regex: /\bPlaneswalker\b/
 				},
 				Battle: {
-					count: 0,
+					ct: 0,
 					regex: /\bBattle\b/
 				},
 				Enchantment: {
-					count: 0,
+					ct: 0,
 					regex: /\bEnchantment\b/
 				},
 				Artifact: {
-					count: 0,
+					ct: 0,
 					regex: /\bArtifact\b/
 				},
 				Sorcery: {
-					count: 0,
+					ct: 0,
 					regex: /\bSorcery\b/
 				},
 				Instant: {
-					count: 0,
+					ct: 0,
 					regex: /\bInstant\b/
 				},
 				Land: {
-					count: 0,
+					ct: 0,
 					regex: /\bLand\b/
 				},
 				Other: {
-					count: 0
+					ct: 0
 				}
 			}
 		}
@@ -81,13 +86,13 @@ export default {
 					const type = this.types[typeName]
 
 					if (type.regex && type.regex.test(card.type)) {
-						type.count += card.qty
+						type.ct += card.qty
 						recognizedType = true
 					}
 				}
 
 				if (!recognizedType) {
-					this.types.Other.count += card.qty
+					this.types.Other.ct += card.qty
 				}
 			})
 		}
