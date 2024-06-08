@@ -1,7 +1,13 @@
 <template>
 	<section>
 		<h4>Power/Toughness</h4>
-		<table>
+		<div
+			v-if="power.total === 0 && toughness.total === 0"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead class="distinct-head">
 				<tr>
 					<th></th>
@@ -39,15 +45,9 @@ export default {
 	data () {
 		return {
 			power: {
-				greatest: '—',
-				average: '—',
-				least: '—',
 				total: 0
 			},
 			toughness: {
-				greatest: '—',
-				average: '—',
-				least: '—',
 				total: 0
 			}
 		}

@@ -9,15 +9,6 @@ export default {
 				</tr>
 			`
 		},
-		tableBodyEmpty () {
-			return `
-				<tr>
-					<th><i>(None)</i></th>
-					<td>—</td>
-					<td>—</td>
-				</tr>
-			`
-		},
 		totalCards () {
 			return this.deck.cards.reduce(
 				(total, card) => total + card.qty,

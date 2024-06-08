@@ -1,14 +1,15 @@
 <template>
 	<section>
 		<h4>Miscellaneous</h4>
-		<table>
+		<div
+			v-if="noData"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon" />
-
-			<tbody
-				v-if="noData"
-				v-html="tableBodyEmpty"
-			/>
-			<tbody v-else>
+			<tbody>
 				<template v-for="(attr, attrName) in miscAttributes">
 					<tr
 						v-if="attr.ct > 0"

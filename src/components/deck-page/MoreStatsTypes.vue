@@ -3,7 +3,6 @@
 		<h4>Types</h4>
 		<table>
 			<thead v-html="tableHeadCommon" />
-
 			<tbody>
 				<template v-for="(type, typeName) in types">
 					<tr

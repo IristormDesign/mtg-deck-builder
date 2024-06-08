@@ -1,14 +1,15 @@
 <template>
 	<section>
 		<h4>Mana Color Symbols</h4>
-		<table>
+		<div
+			v-if="this.totalSymbolCount === 0"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon" />
-
-			<tbody
-				v-if="this.totalSymbolCount === 0"
-				v-html="tableBodyEmpty"
-			/>
-			<tbody v-else>
+			<tbody>
 				<template v-for="symbol in colorSymbols">
 					<tr
 						v-if="symbol.ct > 0"

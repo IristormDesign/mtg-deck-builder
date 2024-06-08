@@ -1,15 +1,20 @@
 <template>
 	<section>
 		<h4>Other Subtypes</h4>
-		<div class="height-limiter" tabindex="0">
+		<div
+			v-if="Object.keys(subtypeCounts).length === 0"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<div
+			v-else
+			class="height-limiter"
+			tabindex="0"
+		>
 			<table>
 				<thead v-html="tableHeadCommon" />
-
-				<tbody
-					v-if="Object.keys(subtypeCounts).length === 0"
-					v-html="tableBodyEmpty"
-				/>
-				<tbody v-else>
+				<tbody>
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"

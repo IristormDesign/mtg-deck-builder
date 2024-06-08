@@ -1,7 +1,7 @@
 @import 'variables';
 $max-width-stat-tables: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
 $table-inner-borders: 1px solid $color-heading-bg;
-$table-outer-borders: 4px;
+$table-outer-borders: 4px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
@@ -29,16 +29,26 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			cursor: default;
 		}
 		h4 {
-			margin: 0 0 1px;
+			margin: 0 0 1.6667px;
 			padding: $lhse*.25;
 			background: $color-heading-bg;
+		}
+		.no-data {
+			padding: 0 $lhse*.25;
+			font-style: italic;
+			min-height: $lhse*2;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: $table-outer-borders;
+			color: $color-text-darker;
+			cursor: default;
 		}
 	}
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
-		border: $table-inner-borders;
-		border-width: $table-outer-borders;
+		border: $table-outer-borders;
 		border-top-width: 0;
 		width: 100%;
 
@@ -68,7 +78,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		.total {
 			th,
 			td {
-				border-top-width: $table-outer-borders;
+				border-top: $table-outer-borders;
 				font-size: 80%;
 				color: $color-text-darker;
 				text-transform: uppercase;
@@ -153,11 +163,14 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		flex-direction: column;
 		justify-content: space-evenly;
 		grid-column: span 5;
+		border: $border-sections;
+		padding: $lhse*.5 $lhse*.5 0;
+		width: fit-content;
+		justify-self: center;
 	}
 	.note {
 		font-size: 80%;
 		line-height: $line-height-standard*.9;
-		margin-top: divide($lhse, 3);
 		max-width: $max-width-content*.8;
 		margin-right: auto;
 		margin-left: auto;
