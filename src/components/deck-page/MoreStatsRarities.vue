@@ -11,10 +11,14 @@
 						:key="name"
 					>
 						<th>
-							<div class="vert-center-cell">
+							<div
+								v-if="name !== 'Other'"
+								class="vert-center-cell"
+							>
 								<small>{{ name }}</small>
 								<div v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
 							</div>
+							<div v-else>Other</div>
 						</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
@@ -46,7 +50,8 @@ export default {
 				Uncommon: 0,
 				Rare: 0,
 				'Mythic rare': 0,
-				Special: 0
+				Special: 0,
+				Other: 0
 			}
 		}
 	},
@@ -71,8 +76,11 @@ export default {
 					case 'mythic':
 						ct['Mythic rare'] += qty
 						break
-					default:
+					case 'special':
 						ct.Special += qty
+						break
+					default:
+						ct.Other += qty
 				}
 			})
 		}

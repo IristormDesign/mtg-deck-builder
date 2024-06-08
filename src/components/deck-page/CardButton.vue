@@ -78,8 +78,10 @@ export default {
 					return symbol.r
 				case 'mythic':
 					return symbol.m
-				default:
+				case 'special':
 					return symbol.s
+				default:
+					return null
 			}
 		},
 		focusCardButton () {
