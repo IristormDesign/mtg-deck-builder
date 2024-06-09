@@ -80,6 +80,8 @@ export default {
 	mounted () {
 		this.countColors()
 		this.calculatePercentageOfSpells()
+
+		this.colorStats = this.sortTableByCounts(this.colorStats)
 	},
 	methods: {
 		countColors () {

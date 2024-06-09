@@ -75,6 +75,8 @@ export default {
 	},
 	mounted () {
 		this.countTypes()
+
+		this.types = this.sortTableByCounts(this.types)
 	},
 	methods: {
 		countTypes () {

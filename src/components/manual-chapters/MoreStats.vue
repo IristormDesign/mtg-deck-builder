@@ -27,7 +27,8 @@
 			<li>The second column (“Ct.”) displays the counts of the attributes among the cards in your deck’s main <a href="#m-card-groups">card group</a>.</li>
 			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies between categories. For the majority of them, the percentages are based on the total number of cards in your deck’s main card group.</li>
 		</ul>
-		<p>The category that’s the exception to using the aforementioned table layout is Power/Toughness, whose table has columns for power and toughness instead of count and percentage, and also lacks the row for the percentage basis.</p>
+		<p>The exception to using the aforementioned table layout is the Power/Toughness category, whose table has columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
+		<p>In the table for almost every category that shows card counts, the table’s rows are sorted by the card attribute count from greatest to least. If multiple attributes each have the same count, then their rows are sorted among each other alphabetically or in a predetermined order. The exception to this sorting method is the table for the Mana Values of Spells category, in which its rows are sorted by mana value from least to greatest.</p>
 		<p>In the Mana Color Symbols category, generic mana symbols and any mana symbols in cards’ abilities are ignored. Hybrid mana symbols are counted as multiple basic mana symbols.</p>
 		<p>The Miscellaneous category tallies up cards that have any of the following characteristics:</p>
 		<ul>

@@ -50,6 +50,8 @@ export default {
 	mounted () {
 		this.countKeywords()
 		this.alphabetizeKeywords()
+
+		this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
 	},
 	methods: {
 		countKeywords () {

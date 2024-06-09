@@ -56,6 +56,8 @@ export default {
 	},
 	mounted () {
 		this.countRarities()
+
+		this.rarityCounts = this.sortTableByCounts(this.rarityCounts)
 	},
 	methods: {
 		countRarities () {

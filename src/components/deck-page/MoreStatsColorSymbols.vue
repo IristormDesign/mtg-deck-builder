@@ -101,6 +101,8 @@ export default {
 	mounted () {
 		this.countColorSymbols()
 		this.calculatePercentage()
+
+		this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
 	},
 	methods: {
 		countColorSymbols () {

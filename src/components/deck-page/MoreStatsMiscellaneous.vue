@@ -106,6 +106,8 @@ export default {
 	},
 	mounted () {
 		this.countMisc()
+
+		this.miscAttributes = this.sortTableByCounts(this.miscAttributes)
 	},
 	methods: {
 		countMisc () {

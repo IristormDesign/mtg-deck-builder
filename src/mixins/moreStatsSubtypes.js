@@ -1,4 +1,7 @@
+import moreStats from '@/mixins/moreStats.js'
+
 export default {
+	mixins: [moreStats],
 	data () {
 		return {
 			creatureSubtypeCounts: {},
@@ -9,7 +12,10 @@ export default {
 		this.getAllSubtypes()
 
 		this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
+		this.creatureSubtypeCounts = this.sortTableByCounts(this.creatureSubtypeCounts)
+
 		this.otherSubtypeCounts = this.alphabetizeSubtypes(this.otherSubtypeCounts)
+		this.otherSubtypeCounts = this.sortTableByCounts(this.otherSubtypeCounts)
 	},
 	methods: {
 		/**
