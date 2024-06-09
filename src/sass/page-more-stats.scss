@@ -82,6 +82,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				font-size: 80%;
 				color: $color-text-darker;
 				text-transform: uppercase;
+				height: $lhse*1.125;
 			}
 		}
 		th,
@@ -89,9 +90,8 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			padding: 1px divide($lhse, 4);
 			border: $table-inner-borders;
 			text-align: right;
-			line-height: .8;
-			padding-top: $lhse*.2;
-			padding-bottom: $lhse*.2;
+			line-height: .875;
+			height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
 		}
 		td {
 			padding-top: 0;
