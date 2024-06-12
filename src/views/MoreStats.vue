@@ -46,7 +46,7 @@
 							<p>These statistics don’t count cards in the sideboard.</p>
 						</li>
 						<li>
-							<p>Single cards can be counted multiple times in a category when they match more than one attribute. (For example, if there’s a card with the types “artifact creature,” then the Types category counts that card once as an artifact and once again as a creature.)</p>
+							<p>Single cards can be counted multiple times in a category when they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card once as an artifact and once again as a creature.)</p>
 						</li>
 						<li>
 							<p>See the user manual for <router-link to="/manual/#m-more-stats">more info</router-link> about this page.</p>
