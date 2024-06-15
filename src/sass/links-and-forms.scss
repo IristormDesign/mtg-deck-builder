@@ -129,7 +129,7 @@ input {
 		transition-duration: 0s;
 	}
 	&:checked {
-		background: $color-link-active;
+		background: $color-text-brighter;
 
 		&:hover {
 			border-color: $color-text-darker;
