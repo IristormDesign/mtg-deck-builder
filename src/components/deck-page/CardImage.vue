@@ -1,44 +1,62 @@
 <template>
 	<section class="card-image">
-		<transition name="placement-outline-fade">
-			<div
-				v-if="this.showPlacementOutline"
-				class="card-placement-outline"
-			></div>
-		</transition>
-		<transition name="image-overlay-fade">
-			<div
-				class="image-overlay"
-				v-if="this.card && this.$store.state.showCard"
-				@click="hideImageOverlay()"
-			>
-				<transition
-					name="card-browse"
-					appear
-					appear-active-class="card-browse-appear-active"
-				>
-					<div class="card-edge" :key="card.name">
-						<a
-							:href="card.link"
-							target="_blank"
-							ref="cardLink"
-						>
-							<div class="card-shape" :class="cardColorClass">
-								<img
-									:src="card.img"
-									width="488"
-									height="680"
-									:alt="card.name"
-								/>
-							</div>
-						</a>
-					</div>
-				</transition>
-				<button
-					class="close"
+		<div class="image-container">
+			<transition name="placement-outline-fade">
+				<div
+					v-if="this.showPlacementOutline"
+					class="card-placement-outline"
+				></div>
+			</transition>
+			<transition name="image-overlay-fade">
+				<div
+					class="image-overlay"
+					v-if="this.card && this.$store.state.showCard"
 					@click="hideImageOverlay()"
-					title="Close this card popup"
-				>×</button>
+				>
+					<transition
+						name="card-browse"
+						appear
+						appear-active-class="card-browse-appear-active"
+					>
+						<div
+							class="card-edge"
+							:key="card.name"
+						>
+							<a
+								:href="card.link"
+								target="_blank"
+								ref="cardLink"
+							>
+								<div
+									class="card-shape"
+									:class="cardColorClass"
+								>
+									<img
+										:src="cardImage"
+										width="488"
+										height="680"
+										:alt="card.name"
+									/>
+								</div>
+							</a>
+						</div>
+					</transition>
+					<button
+						class="close"
+						@click="hideImageOverlay()"
+						title="Close this card popup"
+					>×</button>
+				</div>
+			</transition>
+		</div>
+		<transition name="turn-over-button-transition">
+			<div
+				v-show="card.img2"
+				class="turn-over"
+			>
+				<button @click="showingFrontFace = !showingFrontFace">
+					Turn Over
+				</button>
 			</div>
 		</transition>
 	</section>
@@ -52,6 +70,11 @@ export default {
 	props: {
 		deck: Object
 	},
+	data () {
+		return {
+			showingFrontFace: true
+		}
+	},
 	computed: {
 		card () {
 			if (this.$route.name === 'drawSim') {
@@ -63,13 +86,26 @@ export default {
 			}
 		},
 		cardColorClass () {
-			const color = this.card.colors[0]
-			const hasLandType = /\bLand\b/.test(this.card.type)
+			function perFace (colors, type) {
+				if (colors.length > 1) {
+					return 'multicolor'
+				} else if (colors.length === 1) {
+					return colors[0]
+				} else if (/\bLand\b/.test(type)) {
+					return 'land'
+				} else {
+					return null // Default to colorless spell.
+				}
+			}
 
-			if (!color && hasLandType) {
-				return 'land'
+			const card = this.card
+
+			console.log(card)
+
+			if (this.showingFrontFace) {
+				return perFace(card.colors, card.type)
 			} else {
-				return color
+				return perFace(card.colors2, card.type2)
 			}
 		},
 		showCard () {
@@ -81,11 +117,20 @@ export default {
 			} else {
 				return this.deck.cards.length <= 0
 			}
+		},
+		cardImage () {
+			if (!this.card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
+				return this.card.img
+			} else { // Else, the displayed card is double-faced and showing its back face.
+				return this.card.img2
+			}
 		}
 	},
 	watch: {
 		card () {
 			this.checkForOutdatedImageURLs()
+
+			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 		},
 		showCard (isShowing) {
 			if (this.$store.state.isMobileLayout() && this.card) {

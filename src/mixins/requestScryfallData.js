@@ -138,53 +138,50 @@ export default {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
+				newCard.layout = data.layout
+
 				const dataFace1 = data.card_faces[0]
 				const dataFace2 = data.card_faces[1]
 
-				newCard.name = `${dataFace1.name} / ${dataFace2.name}`
+				newCard.name = this.curlApostrophes(dataFace1.name)
+				newCard.name2 = this.curlApostrophes(dataFace2.name)
 
-				newCard.mana = `${dataFace1.mana_cost}`
-				if (dataFace2.mana_cost !== '') { // If the card's second face has its own mana cost, add it onto the mana cost string with a slash before it.
-					newCard.mana += '/' + dataFace2.mana_cost
-				}
+				newCard.mana = dataFace1.mana_cost
+				newCard.mana2 = dataFace2.mana_cost
 
-				newCard.type = `${dataFace1.type_line} / ${dataFace2.type_line}`
-				newCard.cmc = data.cmc
+				newCard.type = dataFace1.type_line
+				newCard.type2 = dataFace2.type_line
 
-				if (data.colors) {
-					newCard.colors = data.colors
-				} else {
+				if (!data.colors) {
 					newCard.colors = dataFace1.colors
+					newCard.colors2 = dataFace2.colors
 				}
 
-				if (data.image_uris) {
-					newCard.img = data.image_uris.normal
-				} else {
+				if (!data.image_uris) {
 					newCard.img = dataFace1.image_uris.normal
+					newCard.img2 = dataFace2.image_uris.normal
 				}
 
-				if (data.power) {
-					newCard.power = data.power
-				} else {
+				if (!data.power) {
 					newCard.power = dataFace1.power
+					newCard.power2 = dataFace2.power
 				}
 
-				if (data.toughness) {
-					newCard.toughness = data.toughness
-				} else {
+				if (!data.toughness) {
 					newCard.toughness = dataFace1.toughness
+					newCard.toughness2 = dataFace2.toughness
 				}
 			} else { // Else the card is a single-faced card.
-				newCard.name = data.name
+				newCard.name = this.curlApostrophes(data.name)
 				newCard.mana = data.mana_cost
 				newCard.type = data.type_line
-				newCard.cmc = data.cmc
 				newCard.colors = data.colors
 				newCard.img = data.image_uris.normal
 				newCard.power = data.power
 				newCard.toughness = data.toughness
 			}
-			newCard.name = this.curlApostrophes(newCard.name)
+
+			newCard.cmc = data.cmc
 			newCard.rarity = data.rarity
 			newCard.keywords = data.keywords
 			newCard.link = data.scryfall_uri

@@ -1,6 +1,7 @@
 @import 'variables';
 $height-card-image-section: #{680px * .6667};
 $transition-delay-card: divide(1, 3) * 1s;
+$animation-duration-card-browse: .3820s;
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -103,12 +104,17 @@ $transition-delay-card: divide(1, 3) * 1s;
 	grid-area: card-img;
 	position: sticky;
 	top: $lhse*.5;
-	transition: top $transition-duration-standard ease;
 	z-index: index($layers, card-overlay);
-	width: min(#{488px * .6667}, 25vw);
-	max-height: $height-card-image-section;
-	aspect-ratio: 488 / 680;
+	height: min-content; // Needed so that the app footer links positioned directly beneath the card image can still be clicked.
 
+	.image-container {
+		transition: top $transition-duration-standard ease;
+		width: min(#{488px * .6667}, 25vw);
+		max-height: $height-card-image-section;
+		aspect-ratio: 488 / 680;
+		position: relative;
+		z-index: 1;
+	}
 	.card-placement-outline {
 		position: absolute;
 		height: 100%;
@@ -174,9 +180,30 @@ $transition-delay-card: divide(1, 3) * 1s;
 	.close {
 		display: none;
 	}
-}
+	.turn-over-button-transition {
+		&-enter-active,
+		&-leave-active {
+			transition: opacity $transition-duration-standard ease-out;
+		}
+		&-enter-active {
+			transition-delay: $animation-duration-card-browse;
+		}
+		&-enter,
+		&-leave-to {
+			opacity: 0;
+		}
+	}
+	.turn-over {
+		display: flex;
+		justify-content: center;
+		margin-top: divide($lhse, 3);
 
-$animation-duration-card-browse: .3820s;
+		button {
+			font-size: 80%;
+			height: $lhse*1.5;
+		}
+	}
+}
 
 .card-browse {
 	&-enter-active {

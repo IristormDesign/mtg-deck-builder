@@ -4,11 +4,11 @@
 		:class="['card-button', setButtonColor]"
 	>
 		<div class="card-label-group">
-			<h4 class="name">{{ card.name }}</h4>
-			<div class="mana" v-html="styleManaSymbols"></div>
+			<h4 class="name" v-html="cardName"></h4>
+			<div class="mana" v-html="styleManaSymbols(card.mana)"></div>
 		</div>
 		<div class="card-label-group">
-			<div class="type">{{ card.type }}</div>
+			<div class="type" v-html="cardType"></div>
 			<div class="rarity" v-html="setRaritySymbol"></div>
 		</div>
 	</button>
@@ -25,46 +25,71 @@ export default {
 		deck: Object,
 		i: Number
 	},
+	data () {
+		return {
+			backFaceIsLandType: /\bLand\b/.test(this.card.type2)
+		}
+	},
 	computed: {
-		setButtonColor () {
-			const colors = this.card.colors
-			const w = colors.find(c => c === 'W')
-			const u = colors.find(c => c === 'U')
-			const b = colors.find(c => c === 'B')
-			const r = colors.find(c => c === 'R')
-			const g = colors.find(c => c === 'G')
-			const land = /\bLand\b/.test(this.card.type)
-
-			if (colors.length > 1) return 'multicolor'
-			else if (w) return 'white'
-			else if (u) return 'blue'
-			else if (b) return 'black'
-			else if (r) return 'red'
-			else if (g) return 'green'
-			else if (land) return 'land'
-			else return null
+		hasDoubleCastableFaces () {
+			switch (this.card.layout) {
+				case 'adventure': case 'modal_dfc': case 'split':
+					return true
+				default:
+					return false
+			}
 		},
-		styleManaSymbols () {
-			const symbol = this.manaSymbol
+		setButtonColor () {
+			function colorPerFace (colors, type) {
+				if (colors.length > 1) {
+					return 'multicolor'
+				} else if (colors.find(c => c === 'W')) {
+					return 'white'
+				} else if (colors.find(c => c === 'U')) {
+					return 'blue'
+				} else if (colors.find(c => c === 'B')) {
+					return 'black'
+				} else if (colors.find(c => c === 'R')) {
+					return 'red'
+				} else if (colors.find(c => c === 'G')) {
+					return 'green'
+				} else if (/\bLand\b/.test(type)) {
+					return 'land'
+				} else {
+					return null
+				}
+			}
 
-			return this.card.mana
-				.replaceAll(/{W}/g, symbol.w)
-				.replaceAll(/{U}/g, symbol.u)
-				.replaceAll(/{B}/g, symbol.b)
-				.replaceAll(/{R}/g, symbol.r)
-				.replaceAll(/{G}/g, symbol.g)
-				.replaceAll(
-					/{(\w+)}/g, // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
-					'<span class="mana-symbol">$1</span>' // `$1` is a variable referring to the characters within the parentheses in the regex.
-				)
-				.replaceAll(
-					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
-					'<span class="mana-symbol hybrid" title="Hybrid mana"><div>$1</div></span>'
-				)
-				.replaceAll(
-					/{\w+\/\w+\/.*}/g, // Find hybrid mana symbols having 2 or more slashes, such as `{G/U/P}`. (These symbols are very rare but they do exist.)
-					'<span class="mana-symbol long-hybrid" title="Hybrid mana"><div>…</div></span>'
-				)
+			const frontFaceColor = colorPerFace(this.card.colors, this.card.type)
+			const backFaceColor = () => {
+				if (this.card.name2) {
+					return colorPerFace(this.card.colors2, this.card.type2)
+				}
+			}
+
+			if (this.card.name2 && frontFaceColor !== backFaceColor()) {
+				return 'multicolor'
+			} else {
+				return frontFaceColor
+			}
+		},
+		cardName () {
+			let output = this.card.name
+
+			if (this.hasDoubleCastableFaces) {
+				output += `<span title="${this.card.name2}"> / ${this.card.name2}</span>`
+			}
+
+			return output
+		},
+		cardType () {
+			let output = this.card.type
+
+			if (this.hasDoubleCastableFaces) {
+				output += `<span title="${this.card.type2}"> / ${this.card.type2}</span>`
+			}
+
+			return output
 		},
 		setRaritySymbol () {
 			const symbol = this.raritySymbol
@@ -89,6 +114,28 @@ export default {
 		}
 	},
 	methods: {
+		styleManaSymbols (cardFaceMana) {
+			const symbol = this.manaSymbol
+
+			return cardFaceMana
+				.replaceAll(/{W}/g, symbol.w)
+				.replaceAll(/{U}/g, symbol.u)
+				.replaceAll(/{B}/g, symbol.b)
+				.replaceAll(/{R}/g, symbol.r)
+				.replaceAll(/{G}/g, symbol.g)
+				.replaceAll(
+					/{(\w+)}/g, // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
+					'<span class="mana-symbol">$1</span>' // `$1` is a variable referring to the characters within the parentheses in the regex.
+				)
+				.replaceAll(
+					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
+					'<span class="mana-symbol hybrid" title="Hybrid mana"><div>$1</div></span>'
+				)
+				.replaceAll(
+					/{\w+\/\w+\/.*}/g, // Find hybrid mana symbols having 2 or more slashes, such as `{G/U/P}`. (These symbols are very rare but they do exist.)
+					'<span class="mana-symbol long-hybrid" title="Hybrid mana"><div>…</div></span>'
+				)
+		},
 		clickCardButton () {
 			this.viewCard(this.card)
 

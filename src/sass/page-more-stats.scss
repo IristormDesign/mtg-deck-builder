@@ -67,6 +67,11 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		tr {
 			&:hover {
 				background: rgba(#000, .25);
+
+				th,
+				td {
+					color: $color-text-brighter;
+				}
 			}
 			&:last-child {
 				th,
