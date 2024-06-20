@@ -146,28 +146,40 @@ export default {
 				newCard.name = this.curlApostrophes(dataFace1.name)
 				newCard.name2 = this.curlApostrophes(dataFace2.name)
 
-				newCard.mana = dataFace1.mana_cost
-				newCard.mana2 = dataFace2.mana_cost
+				if (data.mana) {
+					newCard.mana = data.mana_cost
+				} else {
+					newCard.mana = dataFace1.mana_cost
+					newCard.mana2 = dataFace2.mana_cost
+				}
 
 				newCard.type = dataFace1.type_line
 				newCard.type2 = dataFace2.type_line
 
-				if (!data.colors) {
+				if (data.colors) {
+					newCard.colors = data.colors
+				} else {
 					newCard.colors = dataFace1.colors
 					newCard.colors2 = dataFace2.colors
 				}
 
-				if (!data.image_uris) {
+				if (data.image_uris) {
+					newCard.img = data.image_uris.normal
+				} else {
 					newCard.img = dataFace1.image_uris.normal
 					newCard.img2 = dataFace2.image_uris.normal
 				}
 
-				if (!data.power) {
+				if (data.power) {
+					newCard.power = data.power
+				} else {
 					newCard.power = dataFace1.power
 					newCard.power2 = dataFace2.power
 				}
 
-				if (!data.toughness) {
+				if (data.toughness) {
+					newCard.toughness = data.toughness
+				} else {
 					newCard.toughness = dataFace1.toughness
 					newCard.toughness2 = dataFace2.toughness
 				}

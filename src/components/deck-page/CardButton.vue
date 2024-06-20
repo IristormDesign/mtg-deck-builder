@@ -41,6 +41,8 @@ export default {
 		},
 		setButtonColor () {
 			function colorPerFace (colors, type) {
+				if (!colors || !type) return null
+
 				if (colors.length > 1) {
 					return 'multicolor'
 				} else if (colors.find(c => c === 'W')) {
@@ -55,19 +57,13 @@ export default {
 					return 'green'
 				} else if (/\bLand\b/.test(type)) {
 					return 'land'
-				} else {
-					return null
 				}
 			}
 
 			const frontFaceColor = colorPerFace(this.card.colors, this.card.type)
-			const backFaceColor = () => {
-				if (this.card.name2) {
-					return colorPerFace(this.card.colors2, this.card.type2)
-				}
-			}
+			const backFaceColor = colorPerFace(this.card.colors2, this.card.type2)
 
-			if (this.card.name2 && frontFaceColor !== backFaceColor()) {
+			if (this.card.colors2 && frontFaceColor !== backFaceColor) {
 				return 'multicolor'
 			} else {
 				return frontFaceColor
