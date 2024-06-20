@@ -5,7 +5,7 @@
 	>
 		<div class="card-label-group">
 			<h4 class="name" v-html="cardName"></h4>
-			<div class="mana" v-html="styleManaSymbols(card.mana)"></div>
+			<div class="mana" v-html="cardMana"></div>
 		</div>
 		<div class="card-label-group">
 			<div class="type" v-html="cardType"></div>
@@ -77,6 +77,15 @@ export default {
 			}
 
 			return output
+		},
+		cardMana () {
+			const card = this.card
+
+			if (card.layout === 'split') {
+				return `${this.styleManaSymbols(card.mana)} / ${this.styleManaSymbols(card.mana2)}`
+			} else {
+				return this.styleManaSymbols(card.mana)
+			}
 		},
 		cardType () {
 			let output = this.card.type
