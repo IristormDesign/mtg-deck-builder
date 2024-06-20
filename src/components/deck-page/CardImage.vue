@@ -100,8 +100,6 @@ export default {
 
 			const card = this.card
 
-			console.log(card)
-
 			if (this.showingFrontFace) {
 				return perFace(card.colors, card.type)
 			} else {
