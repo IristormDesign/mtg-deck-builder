@@ -4,7 +4,7 @@
 		<table>
 			<thead v-html="tableHeadCommon" />
 			<tbody>
-				<template v-for="(type, typeName) in types">
+				<template v-for="(type, typeName) in typeStats">
 					<tr
 						v-if="type.ct > 0"
 						:key="typeName"
@@ -34,7 +34,7 @@ export default {
 	},
 	data () {
 		return {
-			types: {
+			typeStats: {
 				Creature: {
 					ct: 0,
 					regex: /\bCreature\b/
@@ -76,25 +76,32 @@ export default {
 	mounted () {
 		this.countTypes()
 
-		this.types = this.sortTableByCounts(this.types)
+		this.typeStats = this.sortTableByCounts(this.typeStats)
 	},
 	methods: {
 		countTypes () {
 			this.deck.cards.forEach(card => {
-				let recognizedType = false
+				const typePerFace = (cardType) => {
+					if (!cardType) return
 
-				for (const typeName in this.types) {
-					const type = this.types[typeName]
+					let recognizedType = false
 
-					if (type.regex && type.regex.test(card.type)) {
-						type.ct += card.qty
-						recognizedType = true
+					for (const typeName in this.typeStats) {
+						const stat = this.typeStats[typeName]
+
+						if (stat.regex && stat.regex.test(cardType)) {
+							stat.ct += card.qty
+							recognizedType = true
+						}
+					}
+
+					if (!recognizedType) {
+						this.typeStats.Other.ct += card.qty
 					}
 				}
 
-				if (!recognizedType) {
-					this.types.Other.ct += card.qty
-				}
+				typePerFace(card.type)
+				typePerFace(card.type2)
 			})
 		}
 	}
