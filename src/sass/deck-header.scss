@@ -5,6 +5,7 @@
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;
 	align-items: center;
+	align-content: flex-start; // Needed for Safari.
 	justify-content: space-between;
 	border-radius: #{$lhse} / #{50%};
 	overflow: hidden;
