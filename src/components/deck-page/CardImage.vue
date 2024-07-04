@@ -51,7 +51,7 @@
 		</div>
 		<transition name="turn-over-button-transition">
 			<div
-				v-show="card.img2"
+				v-if="card && card.img2"
 				class="turn-over"
 			>
 				<button @click="showingFrontFace = !showingFrontFace">
@@ -197,27 +197,28 @@ export default {
 		checkForOutdatedImageURLs () {
 			const card = this.card
 
-			if (card && card.imgVersion !== this.$store.state.latestImageVersion) {
-				const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
+			if (!card) return
+			if (card.imgVersion === this.$store.state.latestImageVersion) return
 
-				if (regexOutdatedServer.test(card.img) || !card.img) {
-					const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+			const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
 
-					// eslint-disable-next-line
-					console.log(`New image URL for "${card.name}" requested with Scryfall API`)
+			if (regexOutdatedServer.test(card.img) || !card.img) {
+				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
-					axios
-						.get(
-							`https://api.scryfall.com/cards/named?fuzzy=${cardQuery}`
-						)
-						.then(response => {
-							this.updateImageURL(response)
-						})
-						.catch(error => {
-							// eslint-disable-next-line
-							console.error(error)
-						})
-				}
+				// eslint-disable-next-line
+				console.log(`New image URL for "${card.name}" requested with Scryfall API`)
+
+				axios
+					.get(
+						`https://api.scryfall.com/cards/named?fuzzy=${cardQuery}`
+					)
+					.then(response => {
+						this.updateImageURL(response)
+					})
+					.catch(error => {
+						// eslint-disable-next-line
+						console.error(error)
+					})
 			}
 		},
 		updateImageURL (response) {
