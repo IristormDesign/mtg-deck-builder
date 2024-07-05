@@ -87,32 +87,40 @@ export default {
 		countColors () {
 			const stats = this.colorStats
 
-			this.deck.cards.forEach(({ mana, colors, qty }) => {
-				if (mana !== '') { // Exclude non-spell cards
-					if (colors.length > 0) {
-						colors.forEach(color => {
-							switch (color) {
-								case 'W':
-									stats.White.ct += qty
-									break
-								case 'U':
-									stats.Blue.ct += qty
-									break
-								case 'B':
-									stats.Black.ct += qty
-									break
-								case 'R':
-									stats.Red.ct += qty
-									break
-								case 'G':
-									stats.Green.ct += qty
-							}
-						})
-					} else {
-						stats.Colorless.ct += qty
-					}
+			this.deck.cards.forEach(({ mana, mana2, colors, colors2, qty, layout }) => {
+				const colorsPerFace = (faceMana, faceColors) => {
+					if (faceMana !== '') { // Exclude non-spell cards
+						if (faceColors.length > 0) {
+							faceColors.forEach(color => {
+								switch (color) {
+									case 'W':
+										stats.White.ct += qty
+										break
+									case 'U':
+										stats.Blue.ct += qty
+										break
+									case 'B':
+										stats.Black.ct += qty
+										break
+									case 'R':
+										stats.Red.ct += qty
+										break
+									case 'G':
+										stats.Green.ct += qty
+								}
+							})
+						} else {
+							stats.Colorless.ct += qty
+						}
 
-					this.allSpellsCount += qty
+						this.allSpellsCount += qty
+					}
+				}
+
+				colorsPerFace(mana, colors)
+
+				if (layout === 'modal_dfc') {
+					colorsPerFace(mana2, colors2)
 				}
 			})
 		},
