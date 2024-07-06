@@ -40,33 +40,24 @@ export default {
 			}
 		},
 		setButtonColor () {
-			function colorPerFace (colors, type) {
-				if (!colors || !type) return null
+			const colors = this.card.colors
 
-				if (colors.length > 1) {
-					return 'multicolor'
-				} else if (colors.find(c => c === 'W')) {
-					return 'white'
-				} else if (colors.find(c => c === 'U')) {
-					return 'blue'
-				} else if (colors.find(c => c === 'B')) {
-					return 'black'
-				} else if (colors.find(c => c === 'R')) {
-					return 'red'
-				} else if (colors.find(c => c === 'G')) {
-					return 'green'
-				} else if (/\bLand\b/.test(type)) {
-					return 'land'
-				}
-			}
-
-			const frontFaceColor = colorPerFace(this.card.colors, this.card.type)
-			const backFaceColor = colorPerFace(this.card.colors2, this.card.type2)
-
-			if (this.card.colors2 && frontFaceColor !== backFaceColor) {
+			if (colors.length > 1) {
 				return 'multicolor'
+			} else if (colors.find(c => c === 'W')) {
+				return 'white'
+			} else if (colors.find(c => c === 'U')) {
+				return 'blue'
+			} else if (colors.find(c => c === 'B')) {
+				return 'black'
+			} else if (colors.find(c => c === 'R')) {
+				return 'red'
+			} else if (colors.find(c => c === 'G')) {
+				return 'green'
+			} else if (/\bLand\b/.test(this.card.type)) {
+				return 'land'
 			} else {
-				return frontFaceColor
+				return null
 			}
 		},
 		cardName () {
