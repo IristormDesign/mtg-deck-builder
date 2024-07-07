@@ -87,41 +87,57 @@ export default {
 		countColors () {
 			const stats = this.colorStats
 
-			this.deck.cards.forEach(({ mana, mana2, colors, colors2, qty, layout }) => {
-				const colorsPerFace = (faceMana, faceColors) => {
-					if (faceMana !== '') { // Exclude non-spell cards
-						if (faceColors.length > 0) {
-							faceColors.forEach(color => {
-								switch (color) {
-									case 'W':
-										stats.White.ct += qty
-										break
-									case 'U':
-										stats.Blue.ct += qty
-										break
-									case 'B':
-										stats.Black.ct += qty
-										break
-									case 'R':
-										stats.Red.ct += qty
-										break
-									case 'G':
-										stats.Green.ct += qty
-								}
-							})
-						} else {
-							stats.Colorless.ct += qty
-						}
+			this.deck.cards.forEach(card => {
+				const qty = card.qty
+				const countedOnFrontFace = {}
 
-						this.allSpellsCount += qty
+				const colorsPerFace = (faceType, faceColors) => {
+					if (faceColors) {
+						faceColors.forEach(color => {
+							switch (color) {
+								case 'W':
+									if (!countedOnFrontFace.White) {
+										stats.White.ct += qty
+										countedOnFrontFace.White = true
+									}
+									break
+								case 'U':
+									if (!countedOnFrontFace.Blue) {
+										stats.Blue.ct += qty
+										countedOnFrontFace.Blue = true
+									}
+									break
+								case 'B':
+									if (!countedOnFrontFace.Black) {
+										stats.Black.ct += qty
+										countedOnFrontFace.Black = true
+									}
+									break
+								case 'R':
+									if (!countedOnFrontFace.Red) {
+										stats.Red.ct += qty
+										countedOnFrontFace.Red = true
+									}
+									break
+								case 'G':
+									if (!countedOnFrontFace.Green) {
+										stats.Green.ct += qty
+										countedOnFrontFace.Green = true
+									}
+							}
+						})
+					} else if (!/\bLand\b/.test(faceType)) {
+						stats.Colorless.ct += qty
 					}
 				}
 
-				colorsPerFace(mana, colors)
+				colorsPerFace(card.type, card.colors)
 
-				if (layout === 'modal_dfc') {
-					colorsPerFace(mana2, colors2)
+				if (card.img2) {
+					colorsPerFace(card.type2, card.colors2)
 				}
+
+				this.allSpellsCount += qty
 			})
 		},
 		calculatePercentageOfSpells () {

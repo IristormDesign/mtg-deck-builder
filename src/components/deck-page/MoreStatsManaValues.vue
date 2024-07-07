@@ -76,7 +76,6 @@ export default {
 				}
 
 				this.mvStats[cmc].ct += qty
-
 				this.allSpellsCount += qty
 			})
 		},

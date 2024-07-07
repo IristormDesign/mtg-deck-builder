@@ -106,15 +106,23 @@ export default {
 	},
 	methods: {
 		countColorSymbols () {
-			this.deck.cards.forEach(({ mana, qty }) => {
-				const cs = this.colorSymbols
+			this.deck.cards.forEach(card => {
+				const symbolsPerFace = (faceMana) => {
+					const cs = this.colorSymbols
 
-				for (const symbol in cs) {
-					const symbolMatches = mana.match(cs[symbol].regex)
+					for (const symbol in cs) {
+						const symbolMatches = faceMana.match(cs[symbol].regex)
 
-					if (symbolMatches) {
-						cs[symbol].ct += symbolMatches.length * qty
+						if (symbolMatches) {
+							cs[symbol].ct += symbolMatches.length * card.qty
+						}
 					}
+				}
+
+				symbolsPerFace(card.mana)
+
+				if (card.mana2) {
+					symbolsPerFace(card.mana2)
 				}
 			})
 		},

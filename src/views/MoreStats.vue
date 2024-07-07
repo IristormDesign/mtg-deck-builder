@@ -43,16 +43,16 @@
 					<h4>Notes About These Statistics</h4>
 					<ul>
 						<li>
-							<p>Cards in the sideboard aren’t counted.</p>
+							<p>Cards in the sideboard are ignored.</p>
 						</li>
 						<li>
-							<p>Single cards can be counted multiple times within a category when they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card once as an artifact and once again as a creature.)</p>
+							<p>Cards can be counted multiple times within a category if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card twice: once as an artifact and once again as a creature.)</p>
 						</li>
 						<li>
-							<p>For each modal double-faced card, some statistic categories count its back face as if it were a separate, additional card. So, if your deck has any modal double-faced cards, then some statistics show a total number of cards that’s greater than your deck’s actual total.</p>
+							<p>For double-faced cards, most categories count both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
 						</li>
 						<li>
-							<p>See the user manual for <router-link to="/manual/#m-more-stats">more info</router-link> about the More Statistics mode.</p>
+							<p>For more info about this More Statistics mode, see the <router-link to="/manual/#m-more-stats">user manual</router-link>.</p>
 						</li>
 					</ul>
 				</div>

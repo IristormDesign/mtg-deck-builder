@@ -81,27 +81,37 @@ export default {
 	methods: {
 		countTypes () {
 			this.deck.cards.forEach(card => {
-				const typePerFace = (cardType) => {
-					if (!cardType) return
+				const countedOnFrontFace = {}
+
+				const typesPerFace = (typeLine) => {
+					if (!typeLine) return
 
 					let recognizedType = false
 
 					for (const typeName in this.typeStats) {
 						const stat = this.typeStats[typeName]
 
-						if (stat.regex && stat.regex.test(cardType)) {
-							stat.ct += card.qty
+						if (
+							stat.regex &&
+							stat.regex.test(typeLine)
+						) {
+							if (!countedOnFrontFace[typeName]) {
+								stat.ct += card.qty
+								countedOnFrontFace[typeName] = true
+							}
+
 							recognizedType = true
 						}
 					}
 
 					if (!recognizedType) {
 						this.typeStats.Other.ct += card.qty
+						countedOnFrontFace.Other = true
 					}
 				}
 
-				typePerFace(card.type)
-				typePerFace(card.type2)
+				typesPerFace(card.type)
+				typesPerFace(card.type2)
 			})
 		}
 	}
