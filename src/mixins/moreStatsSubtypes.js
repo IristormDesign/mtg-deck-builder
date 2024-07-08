@@ -9,7 +9,7 @@ export default {
 		}
 	},
 	mounted () {
-		this.getAllSubtypes()
+		this.extractEverySubtype()
 
 		this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
 		this.creatureSubtypeCounts = this.sortTableByCounts(this.creatureSubtypeCounts)
@@ -21,67 +21,52 @@ export default {
 		/**
 		 * Go through the deck, checking for each card's subtypes, then tally each subtype.
 		 */
-		getAllSubtypes () {
+		extractEverySubtype () {
 			this.deck.cards.forEach(card => {
-				const faceTypeLines = this.getEachCardFaceTypeLine(card.type)
+				const countedOnFrontFace = {}
 
-				faceTypeLines.forEach(typeLine => {
+				const subtypesPerFace = (typeLine) => {
+					if (!typeLine) return
+
 					const regexSubtypeSignifier = /\s—\s.+/ // Space, em dash, space, and any additional characters.
+					const hasSubtype = typeLine.match(regexSubtypeSignifier) // From the card face's type line, find only the part that indicates there's at least one subtype.
 
-					// From the card face's type line, find only the part that indicates there's at least one subtype.
-					const hasSubtype = typeLine.match(regexSubtypeSignifier)
+					if (!hasSubtype) return
 
-					if (hasSubtype) {
-						const regexWholeWords = /\w+/g
+					const regexWholeWords = /\w+/g
+					const individualSubtypes = hasSubtype[0].match(regexWholeWords) // Isolate each subtype from the subtypes string.
 
-						// Isolate each subtype from the subtypes string.
-						const individualSubtypes = hasSubtype[0].match(regexWholeWords)
+					this.countSubtypes(individualSubtypes, countedOnFrontFace, typeLine, card.qty)
+				}
 
-						this.countSubtypes(individualSubtypes, card)
-					}
-				})
+				subtypesPerFace(card.type)
+				subtypesPerFace(card.type2)
 			})
 		},
 		/**
-		 * Return each type line of the given card. Most cards have only one type line, but double-faced cards have two.
-		 * @param {string} typeLine
-		 * @returns {Array} An array containing either one or two strings
+		 * Tally each subtype of a card. The cumulative results go to the designated counts object for either creature subtypes or "other" subtypes. This function works with double-faced cards as well as single-faced ones.
+		 * @param {Array} subtypes - An array of each extracted subtype of the card's face.
+		 * @param {Object} countedOnFrontFace - An object that tracks whether each subtype of the card's front face has already been counted (for double-faced cards).
+		 * @param {string} typeLine - A string of the card face's type line.
+		 * @param {number} qty - The number of the card's quantity.
 		 */
-		getEachCardFaceTypeLine (typeLine) {
-			const regexDoubleFaced = /\s\/\s\w+/ // " / " plus any word characters.
-
-			if (typeLine.match(regexDoubleFaced)) {
-				const regexCardFaceDivider = /[^/]+/g // Match any continuous substrings that do NOT contain a slash character.
-				const frontFaceTypeLine = typeLine.match(regexCardFaceDivider)[0]
-				const backFaceTypeLine = typeLine.match(regexCardFaceDivider)[1]
-
-				return [frontFaceTypeLine, backFaceTypeLine]
-			} else {
-				return [typeLine]
-			}
-		},
-		/**
-		 * Tally each subtype. The results go to the designated counts object for either creature subtypes or other subtypes.
-		 * @param {Array} subtypes
-		 * @param {Object} card
-		 */
-		countSubtypes (subtypes, card) {
-			const regexCreatureType = /\bCreature\b/
-
-			// Put each isolated subtype in the proper subtypes object group (either creature or other).
+		countSubtypes (subtypes, countedOnFrontFace, typeLine, qty) {
 			subtypes.forEach(subtype => {
-				if (regexCreatureType.test(card.type)) {
-					countSubtypesPerCategory(this.creatureSubtypeCounts)
+				if (countedOnFrontFace[subtype]) return
+
+				if (/\bCreature\b/.test(typeLine)) {
+					countPerCategory(this.creatureSubtypeCounts)
 				} else {
-					countSubtypesPerCategory(this.otherSubtypeCounts)
+					countPerCategory(this.otherSubtypeCounts)
 				}
 
-				function countSubtypesPerCategory (counts) {
+				function countPerCategory (counts) {
 					if (!counts[subtype]) {
 						counts[subtype] = 0
 					}
 
-					counts[subtype] += card.qty
+					counts[subtype] += qty
+					countedOnFrontFace[subtype] = true
 				}
 			})
 		},
