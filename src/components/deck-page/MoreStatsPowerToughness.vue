@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h4>Power/Toughness</h4>
+		<h4>Power & Toughness</h4>
 		<div
 			v-if="power.total === 0 && toughness.total === 0"
 			class="no-data"
