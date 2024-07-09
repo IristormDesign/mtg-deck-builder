@@ -92,6 +92,8 @@ export default {
 				const countedOnFrontFace = {}
 
 				const colorsPerFace = (faceType, faceColors) => {
+					if (!faceType) return // Conditionally exit this function before it tries count the undefined data of a single-faced card's back face.
+
 					if (faceColors) {
 						faceColors.forEach(color => {
 							switch (color) {
@@ -132,10 +134,7 @@ export default {
 				}
 
 				colorsPerFace(card.type, card.colors)
-
-				if (card.img2) {
-					colorsPerFace(card.type2, card.colors2)
-				}
+				colorsPerFace(card.type2, card.colors2)
 
 				this.allSpellsCount += qty
 			})

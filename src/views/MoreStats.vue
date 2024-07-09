@@ -46,10 +46,10 @@
 							<p>Cards in the sideboard are ignored.</p>
 						</li>
 						<li>
-							<p>Individual cards can be counted multiple times within a category if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card twice: once as an artifact and once again as a creature.)</p>
+							<p>Individual cards can be counted multiple times within a category if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card twice for being both an artifact and a creature.)</p>
 						</li>
 						<li>
-							<p>For double-faced cards, most categories count both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
+							<p>For double-faced cards, most categories count the attributes of both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
 						</li>
 						<li>
 							<p>For more info about this More Statistics mode, see the <router-link to="/manual/#m-more-stats">user manual</router-link>.</p>
