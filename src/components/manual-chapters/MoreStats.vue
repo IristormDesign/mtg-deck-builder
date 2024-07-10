@@ -8,7 +8,7 @@
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
 				alt="Snippet of more basic statistics page" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The page in the More Statistics mode displays many data tables for various statistical categories regarding your deck’s cards. The categories are the following:</p>
+		<p>In the More Statistics mode, the page displays many data tables for various statistical categories about the cards in your deck’s main <a href="#m-card-groups">card group</a>. The categories are the following:</p>
 		<ul>
 			<li>Colors of Spells</li>
 			<li>Mana Color Symbols</li>
@@ -21,13 +21,13 @@
 			<li>Power & Toughness</li>
 			<li>Miscellaneous</li>
 		</ul>
-		<p>The table for almost every category has the following columns:</p>
+		<p>For almost every category, their tables have the following columns:</p>
 		<ul>
-			<li>The first column displays the names of certain card attributes that relate to the category.</li>
-			<li>The second column (“Ct.”) displays the counts of the attributes among the cards in your deck’s main <a href="#m-card-groups">card group</a>.</li>
-			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies between categories. For the majority of them, the percentages are based on the total number of cards in your deck’s main card group.</li>
+			<li>The first column displays the names of card attributes relevant to the category. Only the attributes that exist among cards in your deck are shown.</li>
+			<li>The second column (“Ct.”) displays the counts of the attributes.</li>
+			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies among categories. In the majority of the categories, percentages are based on the total number of cards in your deck.</li>
 		</ul>
-		<p>The exception to the aforementioned table layout is the table for the “Power & Toughness” category, which has columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
+		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
 		<p>In the table for almost every category that shows card counts, rows are sorted by attributes’ counts from greatest to least. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another predetermined order. The exception to this sorting method is the table for the “Mana Values of Spells” category, whose rows are always sorted by mana value from least to greatest.</p>
 		<p>In the “Mana Color Symbols” category, generic mana symbols and any mana symbols in cards’ abilities are ignored. Hybrid mana symbols are each counted as multiple basic mana symbols.</p>
 		<p>The Miscellaneous category tallies up cards that have any of the following characteristics:</p>
