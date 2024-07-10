@@ -108,6 +108,8 @@ export default {
 		countColorSymbols () {
 			this.deck.cards.forEach(card => {
 				const symbolsPerFace = (faceMana) => {
+					if (!faceMana) return
+
 					const cs = this.colorSymbols
 
 					for (const symbol in cs) {
@@ -120,10 +122,7 @@ export default {
 				}
 
 				symbolsPerFace(card.mana)
-
-				if (card.mana2) {
-					symbolsPerFace(card.mana2)
-				}
+				symbolsPerFace(card.mana2)
 			})
 		},
 		calculatePercentage () {

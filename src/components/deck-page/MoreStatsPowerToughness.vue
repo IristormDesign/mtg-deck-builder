@@ -53,8 +53,6 @@ export default {
 		}
 	},
 	mounted () {
-		console.clear()
-
 		this.setUpPTStats()
 	},
 	methods: {
