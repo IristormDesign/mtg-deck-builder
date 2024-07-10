@@ -53,6 +53,8 @@ export default {
 		}
 	},
 	mounted () {
+		console.clear()
+
 		this.setUpPTStats()
 	},
 	methods: {
@@ -62,50 +64,58 @@ export default {
 			)
 
 			if (cardsWithPT.length > 0) {
-				const power = this.power
-				const toughness = this.toughness
+				const p = this.power
+				const t = this.toughness
 
-				power.greatest = 0
-				toughness.greatest = 0
-				power.average = 0
-				toughness.average = 0
-				power.least = Infinity
-				toughness.least = Infinity
+				p.greatest = 0
+				t.greatest = 0
+				p.average = 0
+				t.average = 0
+				p.least = Infinity
+				t.least = Infinity
 
 				cardsWithPT.forEach(card => {
 					this.determinePTStats(card, 'power')
 					this.determinePTStats(card, 'toughness')
 				})
 
-				this.calculateAverage('power')
-				this.calculateAverage('toughness')
+				this.calculatePTAverage('power')
+				this.calculatePTAverage('toughness')
 			}
 		},
-		determinePTStats (card, pT) {
-			const pTNum = Number(card[pT]) // The power/toughness data is originally received as a string type, so covert it to a number type.
-			const pTData = this[pT]
+		determinePTStats (card, ptLabel) {
+			const ptPerFace = (facePTLabel) => {
+				if (!facePTLabel) return
 
-			if (!isNaN(pTNum)) { // The card's power/toughness value should be an actual number rather than `NaN`. If it is `NaN`, that means it's a variable symbol, and thus it should be ignored for calculating the average.
-				for (let i = 0; i < card.qty; i++) {
-					pTData.average += pTNum
-					pTData.total++
-				}
+				const ptNum = Number(card[facePTLabel]) // Convert the power or toughness data into a number type, as it originally comes from the Scryfall API as a string type.
 
-				if (pTNum > pTData.greatest) {
-					pTData.greatest = pTNum
+				if (isNaN(ptNum)) return // The card's power/toughness value needs to be actual digits rather than `NaN`. If it does happen to be `NaN`, that means it has a variable symbol for P/T, and it should be ignored for these statistics.
+
+				const ptDataSet = this[ptLabel]
+
+				ptDataSet.average += ptNum * card.qty
+				ptDataSet.total += card.qty
+
+				if (ptNum > ptDataSet.greatest) {
+					ptDataSet.greatest = ptNum
 				}
-				if (pTNum < pTData.least) {
-					pTData.least = pTNum
+				if (ptNum < ptDataSet.least) {
+					ptDataSet.least = ptNum
 				}
 			}
+
+			ptPerFace(ptLabel)
+			ptPerFace(ptLabel + '2') // For P/T on card's back face, if available.
 		},
-		calculateAverage (pT) {
-			const pTData = this[pT]
+		calculatePTAverage (ptLabel) {
+			if (!ptLabel) return
 
-			if (pTData.total > 0) {
-				pTData.average /= pTData.total
+			const stats = this[ptLabel]
+
+			if (stats.total > 0) {
+				stats.average /= stats.total
 			}
-			pTData.average = pTData.average.toFixed(1)
+			stats.average = stats.average.toFixed(1)
 		}
 	}
 }
