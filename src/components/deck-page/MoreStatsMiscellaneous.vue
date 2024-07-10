@@ -41,57 +41,82 @@ export default {
 	data () {
 		return {
 			miscAttributes: {
-				'Basic Land': {
+				'Basic land': {
 					ct: 0,
-					isMatch: (card) => {
+					isMatch: (card, backFace) => {
 						const regex = /\bBasic (\w* )?Land\b/
 
-						return regex.test(card.type)
+						if (backFace) {
+							return regex.test(card.type2)
+						} else {
+							return regex.test(card.type)
+						}
 					}
 				},
 				Legendary: {
 					ct: 0,
-					isMatch: (card) => {
+					isMatch: (card, backFace) => {
 						const regex = /\bLegendary\b/
 
-						return regex.test(card.type)
+						if (backFace) {
+							return regex.test(card.type2)
+						} else {
+							return regex.test(card.type)
+						}
 					}
 				},
 				Monocolored: {
 					ct: 0,
-					isMatch: (card) => {
-						return card.colors.length === 1
+					isMatch: (card, backFace) => {
+						if (backFace && card.colors2) {
+							return card.colors2.length === 1
+						} else {
+							return card.colors.length === 1
+						}
 					}
 				},
 				Multicolored: {
 					ct: 0,
-					isMatch: (card) => {
-						return card.colors.length > 1
+					isMatch: (card, backFace) => {
+						if (backFace && card.colors2) {
+							return card.colors2.length > 1
+						} else {
+							return card.colors.length > 1
+						}
 					}
 				},
 				'Variable cost': {
 					ct: 0,
-					isMatch: (card) => {
+					isMatch: (card, backFace) => {
 						const regex = /\{X\}/
 
-						return regex.test(card.mana)
+						if (backFace) {
+							return regex.test(card.mana2)
+						} else {
+							return regex.test(card.mana)
+						}
 					}
 				},
 				'Variable P/T': {
 					ct: 0,
-					isMatch: (card) => {
-						return (
-							card.power === '*' ||
-							card.toughness === '*'
-						)
+					isMatch: (card, backFace) => {
+						if (backFace) {
+							return (
+								card.power2 === '*' ||
+								card.toughness2 === '*'
+							)
+						} else {
+							return (
+								card.power === '*' ||
+								card.toughness === '*'
+							)
+						}
 					}
 				},
 				'Double-faced': {
 					ct: 0,
 					isMatch: (card) => {
-						const regex = /\w\s\/\s\w/
-
-						return regex.test(card.name)
+						return card.name2
 					}
 				}
 			}
@@ -113,11 +138,22 @@ export default {
 		countMisc () {
 			this.deck.cards.forEach(card => {
 				for (const attrName in this.miscAttributes) {
-					const attr = this.miscAttributes[attrName]
+					const countedOnFrontFace = {}
 
-					if (attr.isMatch(card)) {
-						attr.ct += card.qty
+					const miscAttrsPerFace = (faceAttrName, forBackFace) => {
+						const attr = this.miscAttributes[faceAttrName]
+
+						if (
+							!countedOnFrontFace[faceAttrName] &&
+							attr.isMatch(card, forBackFace)
+						) {
+							attr.ct += card.qty
+							countedOnFrontFace[faceAttrName] = true
+						}
 					}
+
+					miscAttrsPerFace(attrName)
+					miscAttrsPerFace(attrName, true)
 				}
 			})
 		}
