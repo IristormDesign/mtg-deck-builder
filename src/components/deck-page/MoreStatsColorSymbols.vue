@@ -107,22 +107,32 @@ export default {
 	methods: {
 		countColorSymbols () {
 			this.deck.cards.forEach(card => {
-				const symbolsPerFace = (faceMana) => {
-					if (!faceMana) return
+				const symbols = this.colorSymbols
+				const countedOnFrontFace = {}
 
-					const cs = this.colorSymbols
+				for (const symbolName in symbols) {
+					const symbolsPerFace = (faceMana) => {
+						if (!faceMana) return
 
-					for (const symbol in cs) {
-						const symbolMatches = faceMana.match(cs[symbol].regex)
+						const allSymbolMatches = faceMana.match(symbols[symbolName].regex)
 
-						if (symbolMatches) {
-							cs[symbol].ct += symbolMatches.length * card.qty
+						if (allSymbolMatches) {
+							if (
+								!countedOnFrontFace[symbolName] ||
+								countedOnFrontFace[symbolName] < allSymbolMatches.length
+							) {
+								countedOnFrontFace[symbolName] = allSymbolMatches.length
+							}
 						}
 					}
-				}
 
-				symbolsPerFace(card.mana)
-				symbolsPerFace(card.mana2)
+					symbolsPerFace(card.mana)
+					symbolsPerFace(card.mana2)
+
+					if (countedOnFrontFace[symbolName]) {
+						this.colorSymbols[symbolName].ct += countedOnFrontFace[symbolName] * card.qty
+					}
+				}
 			})
 		},
 		calculatePercentage () {
