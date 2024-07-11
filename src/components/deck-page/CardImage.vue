@@ -88,7 +88,7 @@ export default {
 		cardColorClass () {
 			function perFace (colors, type) {
 				if (colors.length > 1) {
-					return 'multicolor'
+					return 'multi'
 				} else if (colors.length === 1) {
 					return colors[0]
 				} else if (/\bLand\b/.test(type)) {

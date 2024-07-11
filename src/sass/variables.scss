@@ -67,7 +67,7 @@ $color-frame-blue: desaturate(lighten($color-mana-blue, 4.17%), 37.5%);
 $color-frame-black: desaturate(lighten($color-mana-black, 3.125%), 0%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 37.5%);
 $color-frame-green: desaturate(lighten($color-mana-green, 12.5%), 12.5%);
-$color-frame-multicolor: desaturate(lighten($color-mana-hybrid, 0%), 25%);
+$color-frame-multi: desaturate(lighten($color-mana-hybrid, 0%), 25%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 12.5%), 6.25%);
 $color-card-star: desaturate(lighten($color-mana-hybrid, 0%), 25%);
 

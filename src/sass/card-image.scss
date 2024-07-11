@@ -167,8 +167,8 @@ $animation-duration-card-browse: .3820s;
 		&.G {
 			background: desaturate(darken($color-frame-green, 50%), 8.33%);
 		}
-		&.multicolor {
-			background: desaturate(darken($color-frame-multicolor, 25%), 16.67%);
+		&.multi {
+			background: desaturate(darken($color-frame-multi, 25%), 16.67%);
 		}
 	}
 	img {

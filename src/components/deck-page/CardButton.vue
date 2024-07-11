@@ -43,7 +43,7 @@ export default {
 			const colors = this.card.colors
 
 			if (colors.length > 1) {
-				return 'multicolor'
+				return 'multi'
 			} else if (colors.find(c => c === 'W')) {
 				return 'white'
 			} else if (colors.find(c => c === 'U')) {

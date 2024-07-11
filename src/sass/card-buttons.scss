@@ -104,8 +104,8 @@
 	&.green {
 		@include color-card-buttons($color-frame-green);
 	}
-	&.multicolor {
-		@include color-card-buttons($color-frame-multicolor);
+	&.multi {
+		@include color-card-buttons($color-frame-multi);
 	}
 	.card-label-group {
 		display: flex;
@@ -190,7 +190,7 @@
 				&.green {
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 25%), 16.67%));
 				}
-				&.multicolor {
+				&.multi {
 					@include box-shadow-hover-card-button(desaturate($color-mana-hybrid, 16.67%));
 				}
 			}
