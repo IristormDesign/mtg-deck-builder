@@ -116,13 +116,13 @@ export default {
 
 						const allSymbolMatches = faceMana.match(symbols[symbolName].regex)
 
-						if (allSymbolMatches) {
-							if (
-								!countedOnFrontFace[symbolName] ||
+						if (!allSymbolMatches) return
+
+						if (
+							!countedOnFrontFace[symbolName] ||
 								countedOnFrontFace[symbolName] < allSymbolMatches.length
-							) {
-								countedOnFrontFace[symbolName] = allSymbolMatches.length
-							}
+						) {
+							countedOnFrontFace[symbolName] = allSymbolMatches.length
 						}
 					}
 
