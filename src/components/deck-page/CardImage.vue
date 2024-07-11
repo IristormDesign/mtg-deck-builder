@@ -205,8 +205,7 @@ export default {
 			if (regexOutdatedServer.test(card.img) || !card.img) {
 				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
-				// eslint-disable-next-line
-				console.log(`New image URL for "${card.name}" requested with Scryfall API`)
+				console.info(`New image URL for "${card.name}" requested with Scryfall API`)
 
 				axios
 					.get(

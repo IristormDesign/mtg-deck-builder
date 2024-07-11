@@ -104,8 +104,7 @@ export default {
 				!regexAnyURL.test(query) &&
 				!regexIncompleteScryfallURL.test(query)
 			) {
-				// eslint-disable-next-line
-				console.log(`Query "${query}" autocompleted with Scryfall API`)
+				console.info(`Query "${query}" autocompleted with Scryfall API`)
 
 				const queryCardSuggestions = (data) => {
 					// Limit the number of autocomplete suggestions to 5.
