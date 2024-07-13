@@ -91,8 +91,13 @@ export default {
 				const qty = card.qty
 				const countedOnFrontFace = {}
 
-				const colorsPerFace = (faceType, faceColors) => {
-					if (!faceType) return // Conditionally exit this function before it tries count the undefined data of a single-faced card's back face.
+				const colorsPerFace = (faceType, faceColors, cardLayout) => {
+					if (!faceType) return // Exit now if this function would try to count the undefined data of a single-faced card's back face.
+
+					if (
+						cardLayout === 'adventure' &&
+						faceType === card.type2
+					) return // Exit now if the current subject of counting is an adventure card's second face. This particular kind of face needs to be ignored for counting mana colors, or else adventure cards always get counted as colorless even when they're not.
 
 					if (faceColors) {
 						faceColors.forEach(color => {
@@ -128,13 +133,13 @@ export default {
 									}
 							}
 						})
-					} else if (!/\bLand\b/.test(faceType)) {
+					} else if (!/\bLand\b/.test(faceType)) { // If NOT a land-type card...
 						stats.Colorless.ct += qty
 					}
 				}
 
 				colorsPerFace(card.type, card.colors)
-				colorsPerFace(card.type2, card.colors2)
+				colorsPerFace(card.type2, card.colors2, card.layout)
 
 				this.allSpellsCount += qty
 			})

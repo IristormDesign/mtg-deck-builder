@@ -49,16 +49,19 @@
 				</div>
 			</transition>
 		</div>
-		<transition name="turn-over-button-transition">
-			<div
-				v-if="card && card.img2"
-				class="turn-over"
-			>
-				<button @click="showingFrontFace = !showingFrontFace">
+		<div
+			v-show="showCard"
+			class="turn-over"
+		>
+			<transition name="turn-over-button-transition">
+				<button
+					v-if="showCard && card && card.img2"
+					@click="showingFrontFace = !showingFrontFace"
+				>
 					Turn Over
 				</button>
-			</div>
-		</transition>
+			</transition>
+		</div>
 	</section>
 </template>
 
@@ -88,7 +91,7 @@ export default {
 		cardColorClass () {
 			function perFace (colors, type) {
 				if (colors.length > 1) {
-					return 'multicolor'
+					return 'multi'
 				} else if (colors.length === 1) {
 					return colors[0]
 				} else if (/\bLand\b/.test(type)) {
@@ -205,8 +208,7 @@ export default {
 			if (regexOutdatedServer.test(card.img) || !card.img) {
 				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
-				// eslint-disable-next-line
-				console.log(`New image URL for "${card.name}" requested with Scryfall API`)
+				console.info(`New image URL for "${card.name}" requested with Scryfall API`)
 
 				axios
 					.get(

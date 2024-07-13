@@ -6,9 +6,9 @@
 				src="@/img/manual-card-sorter.jpg" width="350" height="185"
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 		</p>
-		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all names in the <a href="#m-card-list">card list</a> in various ways.</p>
-		<p>The card sorter has a drop-down menu providing several card attributes as options. The card names listed in both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> are sorted according to the attribute you select.</p>
-		<p>The sorting options and their effects include the following:</p>
+		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#m-card-list">card list</a> in various ways.</p>
+		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have the card names sorted by it. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter’s options and their effects include the following:</p>
 		<ul>
 			<li>
 				<p><strong>Starred</strong> – Sorts between <a href="#m-card-stars">starred</a> and non-starred. This sorting option is hidden when no cards in your deck have a star.</p>
@@ -43,7 +43,7 @@
 			</li>
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
-		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only sorting options that don’t insert gaps are for name, mana color, and rarity.</p>
+		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that don’t insert gaps are name, mana color, and rarity.</p>
 		<p>The card sorter will reset its sorting option to “(None),” and any gaps between sorted clusters in the card list will be removed, under any of the following conditions:
 			<ul>
 				<li>Whenever you <a href="#m-card-adder">add a card name</a> to the list</li>

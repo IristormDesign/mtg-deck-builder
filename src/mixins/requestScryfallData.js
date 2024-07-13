@@ -27,8 +27,7 @@ export default {
 		 * Request the Scryfall API for a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
 		 */
 		axiosRequestRandom () {
-			// eslint-disable-next-line
-			console.log(`Random card requested with Scryfall API`)
+			console.info('Random card requested with Scryfall API')
 
 			axios
 				.get(
@@ -57,8 +56,7 @@ export default {
 			const cardSet = matchingQueryParts[2]
 			const collectorNumber = matchingQueryParts[3]
 
-			// eslint-disable-next-line
-			console.log(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested with Scryfall API`)
+			console.info(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested with Scryfall API`)
 
 			axios
 				.post(
@@ -103,8 +101,7 @@ export default {
 		axiosRequestName (query, callback, oldCardData) {
 			this.oldCardData = oldCardData
 
-			// eslint-disable-next-line
-			console.log(`Card named "${query}" requested with Scryfall API`)
+			console.info(`Card named "${query}" requested with Scryfall API`)
 
 			const urlEncodedQuery = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
