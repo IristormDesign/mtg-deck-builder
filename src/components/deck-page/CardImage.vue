@@ -49,16 +49,19 @@
 				</div>
 			</transition>
 		</div>
-		<transition name="turn-over-button-transition">
-			<div
-				v-if="card && card.img2"
-				class="turn-over"
-			>
-				<button @click="showingFrontFace = !showingFrontFace">
+		<div
+			v-show="showCard"
+			class="turn-over"
+		>
+			<transition name="turn-over-button-transition">
+				<button
+					v-if="showCard && card && card.img2"
+					@click="showingFrontFace = !showingFrontFace"
+				>
 					Turn Over
 				</button>
-			</div>
-		</transition>
+			</transition>
+		</div>
 	</section>
 </template>
 

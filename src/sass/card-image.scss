@@ -114,6 +114,7 @@ $animation-duration-card-browse: .3820s;
 		aspect-ratio: 488 / 680;
 		position: relative;
 		z-index: 1;
+		margin: 0 auto;
 	}
 	.card-placement-outline {
 		position: absolute;
@@ -196,7 +197,8 @@ $animation-duration-card-browse: .3820s;
 	.turn-over {
 		display: flex;
 		justify-content: center;
-		margin-top: divide($lhse, 3);
+		align-items: flex-end;
+		min-height: $lhse*1.6667;
 
 		button {
 			font-size: 80%;
@@ -204,7 +206,6 @@ $animation-duration-card-browse: .3820s;
 		}
 	}
 }
-
 .card-browse {
 	&-enter-active {
 		animation: $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
@@ -260,7 +261,9 @@ $animation-duration-card-browse: .3820s;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-image {
-		width: min(#{488px * .6667}, 38.20vw);
+		.image-container {
+			width: min(#{488px * .6667}, 38.20vw);
+		}
 	}
 }
 @media (max-width: $width-deck-hidden-image) {
@@ -278,9 +281,11 @@ $animation-duration-card-browse: .3820s;
 	}
 	.card-image {
 		z-index: index($layers, app-header);
-		width: auto;
-		aspect-ratio: auto;
 
+		.image-container {
+			width: auto;
+			aspect-ratio: auto;
+		}
 		.card-placement-outline {
 			display: none;
 		}
@@ -310,6 +315,14 @@ $animation-duration-card-browse: .3820s;
 		img {
 			max-width: 91.67vw;
 			max-height: 91.67vh;
+		}
+		.turn-over {
+			position: fixed;
+			bottom: divide($lhse, 3);
+			left: $lhse*.5;
+			display: block;
+			min-height: auto;
+			z-index: 1;
 		}
 		.card-browse-leave-active {
 			display: none;
