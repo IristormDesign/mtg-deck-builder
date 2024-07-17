@@ -16,7 +16,7 @@ export default new Vuex.Store({
 		decks: [],
 		focusCardButton: '',
 		isMobileLayout: () => window.innerWidth <= 768, // Number must match media query max-width in CSS.
-		latestDeckDataVersion: 2,
+		latestDeckDataVersion: 3,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,

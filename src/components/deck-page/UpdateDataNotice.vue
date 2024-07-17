@@ -1,13 +1,13 @@
 <template>
-	<div v-if="deckDataOutdated" class="wrap">
+	<div
+		v-if="isDeckDataOutdated"
+		class="wrap"
+	>
 		<aside class="outdated-deck-data-notice">
 			<template v-if="!updatingDeckData">
-				<p>⚠ This deck is using an outdated set of card data. Update it now to get enhanced app features!</p>
-				<div
-					v-if="!updatingDeckData"
-					class="button-container"
-				>
-					<button @click="prepareDataUpdate()">Update</button>
+				<p>⚠ This deck has an outdated set of card data. Update it now to get enhanced app features!</p>
+				<div class="button-container">
+					<button @click="userEngagedUpdate()">Update</button>
 				</div>
 			</template>
 			<template v-else>
@@ -19,87 +19,160 @@
 </template>
 
 <script>
+import cardListFunctions from '@/mixins/cardListFunctions.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 
 export default {
-	mixins: [requestScryfallData],
+	mixins: [cardListFunctions, requestScryfallData],
 	props: {
 		deck: Object
 	},
 	data () {
 		return {
 			cardsToUpdate: [],
-			numberOfCardsToIgnore: 0,
 			numberOfCardsUpdated: 0,
+			signOfUpToDate: 'layout', // Any `card` object lacking the `layout` key means that the card has an outdated set of data by one or more versions.
 			updatingDeckData: false
 		}
 	},
 	computed: {
-		deckDataOutdated () {
-			return this.deck.dataVersion < this.$store.state.latestDeckDataVersion
+		/**
+		* @returns {boolean}
+		*/
+		isDeckDataOutdated () {
+			if (!this.deck) return // This condition is needed for 404 error pages.
+
+			return (
+				!this.deck.dataVersion ||
+				this.deck.dataVersion < this.$store.state.latestDeckDataVersion
+			)
 		},
+		/**
+		* @returns {number}
+		*/
 		updatedPercent () {
 			return (this.numberOfCardsUpdated / this.cardsToUpdate.length * 100).toFixed(0)
 		}
 	},
+	watch: {
+		'$route' (to, from) {
+			if (to.params.deckPath === from.params.deckPath) return // Exit now if the route is only switching modes on the same deck page
+
+			this.cardsToUpdate = []
+			this.numberOfCardsUpdated = 0
+			this.updatingDeckData = false
+
+			this.prepareDataUpdate()
+		}
+	},
+	mounted () {
+		this.prepareDataUpdate()
+	},
 	methods: {
+		/**
+		 * Add the `sideboard` object for any decks that may be lacking it. (Decks created from earlier app versions didn't have sideboards.)
+		 */
 		prepareDataUpdate () {
-			if (this.cardsToUpdate > 150) {
+			if (!this.isDeckDataOutdated) return
+
+			// Reset the following data variables in case an update check is done more than once.
+			this.updatingDeckData = false
+			this.cardsToUpdate = []
+			this.numberOfCardsUpdated = 0
+
+			if (!this.deck.sideboard) {
+				this.deckObject.sideboard = {
+					cards: [],
+					viewedCard: ''
+				}
+			}
+
+			this.$store.commit('showSideboard', false)
+			this.determineOutdatedCard(this.deck)
+
+			this.$store.commit('showSideboard', true)
+			this.determineOutdatedCard(this.deck.sideboard)
+
+			this.$store.commit('showSideboard', false)
+
+			if (this.cardsToUpdate.length === 0) {
+				this.deckObject.dataVersion = this.$store.state.latestDeckDataVersion
+
+				this.$store.commit('decks', this.$store.state.decks)
+			}
+		},
+		determineOutdatedCard (list) {
+			for (const card of list.cards) {
+				if (!card[this.signOfUpToDate]) {
+					this.cardsToUpdate.push({
+						gapAfter: card.gapAfter,
+						inSideboard: this.$store.state.showSideboard,
+						name: fullDFCName(),
+						qty: card.qty,
+						img: card.img,
+						img2: card.img2,
+						imgVersion: card.imgVersion,
+						link: card.link
+					})
+				}
+
+				function fullDFCName () {
+					let output = card.name
+
+					if (card.name2) {
+						output += ` // ${card.name2}`
+					}
+
+					return output
+				}
+			}
+		},
+		userEngagedUpdate () {
+			if (this.cardsToUpdate > 200) {
 				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
 			} else {
 				this.updatingDeckData = true
-				this.$store.commit('showSideboard', false)
 
+				const cardsToUpdate = this.cardsToUpdate
+
+				for (let i = 0; i < cardsToUpdate.length; i++) {
+					const callback = () => {
+						this.numberOfCardsUpdated++
+
+						if (this.numberOfCardsUpdated < cardsToUpdate.length) return
+
+						this.validateAfterUpdating()
+					}
+
+					setTimeout(() => {
+						this.axiosRequestName(cardsToUpdate[i].name, callback(), cardsToUpdate[i])
+
+						// console.log(cardsToUpdate[i].name)
+						// console.log(cardsToUpdate[i])
+						// callback()
+					}, (i + 1) * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
+				}
+			}
+		},
+		validateAfterUpdating () {
+			const state = this.$store.state
+
+			setTimeout(() => {
 				for (const card of this.deck.cards) {
-					this.determineOutdatedCard(card)
-				}
+					if (!card[this.signOfUpToDate]) {
+						alert('⚠ Sorry, the data update has failed for some reason. Make sure that your computer or device is currently connected to the Internet, then try updating again.\n\nIf you keep getting this error message, contact the app developer.')
 
-				this.$store.commit('showSideboard', true)
+						// this.$router.go(0) // Reload the page.
 
-				for (const card of this.deck.sideboard.cards) {
-					this.determineOutdatedCard(card)
-				}
-
-				this.updateCardData()
-			}
-		},
-		determineOutdatedCard (card) {
-			const cardIsOutdated = !card.keywords // Any `card` object lacking the `keywords` key is the sign (the only one for now) indicating that a card's data is outdated.
-
-			if (cardIsOutdated) {
-				this.cardsToUpdate.push({
-					gapAfter: card.gapAfter,
-					inSideboard: this.$store.state.showSideboard,
-					name: card.name,
-					qty: card.qty
-				})
-
-				this.numberOfCardsToIgnore++
-			}
-		},
-		updateCardData () {
-			const cardsTU = this.cardsToUpdate
-
-			for (let i = 0; i < cardsTU.length; i++) {
-				const callback = () => {
-					this.numberOfCardsUpdated++
-
-					if (this.numberOfCardsUpdated === cardsTU.length) {
-						setTimeout(() => {
-							this.$router.go(0) // Reload the page.
-						}, 100)
+						return
 					}
 				}
 
-				setTimeout(() => {
-					this.axiosRequestName(cardsTU[i].name, callback(), cardsTU[i])
-				}, (i + 1) * 100) // Delay each request so that the Scryfall API doesn't get overloaded
-			}
+				alert('Update completed!')
+
+				this.deckObject.dataVersion = state.latestDeckDataVersion
+			}, 100) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		}
 	}
 }
 </script>
-
-<style lang="scss">
-	@import '@/sass/page-deck-general.scss';
-</style>

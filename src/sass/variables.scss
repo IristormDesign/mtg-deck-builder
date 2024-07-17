@@ -132,9 +132,9 @@ $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-h
 $opacity-mana-symbols: .9167;
 $striped-pattern-background: repeating-linear-gradient(-45deg,
 	$color-mythic-very-dim 											0,
-	$color-mythic-very-dim 										  $lhse*.5,
-	darken($color-mythic-very-dim, (1/64)*100%) $lhse*.5,
-	darken($color-mythic-very-dim, (1/64)*100%) $lhse
+	$color-mythic-very-dim 										  .5em,
+	darken($color-mythic-very-dim, (1/64)*100%) .5em,
+	darken($color-mythic-very-dim, (1/64)*100%) 1em
 );
 $x: 2px dashed rgba(#c0f, .6);
 

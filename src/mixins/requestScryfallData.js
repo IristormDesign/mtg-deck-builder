@@ -135,8 +135,6 @@ export default {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
-				newCard.layout = data.layout
-
 				const dataFace1 = data.card_faces[0]
 				const dataFace2 = data.card_faces[1]
 
@@ -193,17 +191,20 @@ export default {
 			newCard.cmc = data.cmc
 			newCard.rarity = data.rarity
 			newCard.keywords = data.keywords
+			newCard.layout = data.layout
 			newCard.link = data.scryfall_uri
 			newCard.imgVersion = this.$store.state.latestImageVersion
+			newCard.qty = 1
 
 			if (this.oldCardData) {
 				newCard.qty = this.oldCardData.qty
+				newCard.img = this.oldCardData.img
+				newCard.imgVersion = this.oldCardData.imgVersion
+				newCard.link = this.oldCardData.link
 				newCard.gapAfter = this.oldCardData.gapAfter
 
 				this.updateOldCard(newCard)
 			} else {
-				newCard.qty = 1
-
 				this.validateNewCard(newCard)
 			}
 		},

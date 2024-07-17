@@ -200,12 +200,17 @@ export default {
 		checkForOutdatedImageURLs () {
 			const card = this.card
 
-			if (!card) return
-			if (card.imgVersion === this.$store.state.latestImageVersion) return
+			if (
+				!card ||
+				card.imgVersion === this.$store.state.latestImageVersion
+			) return
 
 			const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
 
-			if (regexOutdatedServer.test(card.img) || !card.img) {
+			if (
+				!card.img ||
+				regexOutdatedServer.test(card.img)
+			) {
 				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
 				console.info(`New image URL for "${card.name}" requested with Scryfall API`)
