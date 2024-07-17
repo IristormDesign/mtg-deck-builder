@@ -93,17 +93,17 @@ export default {
 		 * Request the Scryfall API for a card by name.
 		 *
 		 * The `callback` and `oldCardData` parameters are unused except when an existing card is going to be replaced via a deck data update.
-		 * @param {string} query Required
+		 * @param {string} name Required
 		 * @param {Function} callback
 		 * @param {Object} oldCardData
 		 * @returns {Function} Callback function
 		 */
-		axiosRequestName (query, callback, oldCardData) {
+		axiosRequestName (name, callback, oldCardData) {
 			this.oldCardData = oldCardData
 
-			console.info(`Card named "${query}" requested with Scryfall API`)
+			console.info(`Card named "${name}" requested with Scryfall API`)
 
-			const urlEncodedQuery = query.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
+			const urlEncodedQuery = name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
 			axios
 				.get(
@@ -119,7 +119,7 @@ export default {
 					if (error.code === 'ECONNABORTED') {
 						this.alertTimeout()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
-						alert(`⚠ No Magic card named “${query}” exists.`)
+						alert(`⚠ No Magic card named “${name}” exists.`)
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
@@ -197,11 +197,12 @@ export default {
 			newCard.qty = 1
 
 			if (this.oldCardData) {
-				newCard.qty = this.oldCardData.qty
 				newCard.img = this.oldCardData.img
+				newCard.img2 = this.oldCardData.img2
 				newCard.imgVersion = this.oldCardData.imgVersion
 				newCard.link = this.oldCardData.link
 				newCard.gapAfter = this.oldCardData.gapAfter
+				newCard.qty = this.oldCardData.qty
 
 				this.updateOldCard(newCard)
 			} else {
@@ -209,23 +210,29 @@ export default {
 			}
 		},
 		updateOldCard (newCard) {
-			if (this.oldCardData) {
-				if (this.oldCardData.inSideboard) {
-					this.$store.commit('showSideboard', true)
-				} else {
-					this.$store.commit('showSideboard', false)
-				}
+			const store = this.$store
+
+			if (this.oldCardData.inSideboard) {
+				store.commit('showSideboard', true)
+			} else {
+				store.commit('showSideboard', false)
 			}
+
 			const list = this.activeCardList
 			const index = list.cards.findIndex((foundCard) => {
-				return foundCard.name === newCard.name
+				const regexDoubleFacedName = new RegExp(`(${newCard.name})[ /]*(${newCard.name2})`, 'i') // This regex finds names of double-faced cards that includes the back face's name, and with zero or more slashes (`/`) in between the front face and back face names. In older card data, the names for double-faced cards had included both face's names together with a singular slash.
+
+				return (
+					foundCard.name === newCard.name ||
+					regexDoubleFacedName.test(foundCard.name)
+				)
 			})
 
 			list.cards.splice(index, 1, newCard)
 			this.deck.editDate = new Date()
 
 			this.$nextTick(() => {
-				this.$store.commit('decks', this.$store.state.decks)
+				store.commit('decks', store.state.decks)
 			})
 		},
 		/**

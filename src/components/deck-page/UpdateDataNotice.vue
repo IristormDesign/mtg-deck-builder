@@ -146,10 +146,6 @@ export default {
 
 					setTimeout(() => {
 						this.axiosRequestName(cardsToUpdate[i].name, callback(), cardsToUpdate[i])
-
-						// console.log(cardsToUpdate[i].name)
-						// console.log(cardsToUpdate[i])
-						// callback()
 					}, (i + 1) * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
 				}
 			}
@@ -162,7 +158,7 @@ export default {
 					if (!card[this.signOfUpToDate]) {
 						alert('⚠ Sorry, the data update has failed for some reason. Make sure that your computer or device is currently connected to the Internet, then try updating again.\n\nIf you keep getting this error message, contact the app developer.')
 
-						// this.$router.go(0) // Reload the page.
+						this.$router.go(0) // Reload the page.
 
 						return
 					}
