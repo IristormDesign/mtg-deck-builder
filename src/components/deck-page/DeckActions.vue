@@ -2,7 +2,11 @@
 	<section class="deck-actions">
 		<form>
 			<label for="deckActionSelect">Do deck action:</label>
-			<select v-model="deckAction" @change="doDeckAction()" id="deckActionSelect">
+			<select
+				v-model="deckAction"
+				@change="doDeckAction()"
+				id="deckActionSelect"
+			>
 				<option value="">(Select)</option>
 				<option value="copy">Copy</option>
 				<option value="export">Export</option>
@@ -29,16 +33,18 @@ export default {
 		doDeckAction () {
 			switch (this.deckAction) {
 				case 'copy':
-					this.copyDeck(this.deck); break
+					this.copyDeck(); break
 				case 'export':
-					this.exportDeck(this.deck); break
+					this.exportDeck(); break
 				case 'delete':
-					this.deleteDeck(this.deck); break
+					this.deleteDeck(); break
 			}
 
 			this.deckAction = ''
 		},
-		copyDeck (sourceDeck) {
+		copyDeck () {
+			const sourceDeck = this.deck
+
 			let deckCopyName = prompt(
 				'Give a new name for the deck copy:',
 				this.amendCopiedDeckName(sourceDeck).name
@@ -67,16 +73,16 @@ export default {
 				}
 			}
 		},
-		exportDeck (deck) {
+		exportDeck () {
 			this.$router.push({
 				name: 'exportDecks',
-				params: { presetDeckName: deck.name }
+				params: { presetDeckName: this.deck.name }
 			})
 		},
-		deleteDeck (deck) {
+		deleteDeck () {
 			this.$router.push({
 				name: 'deleteDecks',
-				params: { presetDeckName: deck.name }
+				params: { presetDeckName: this.deck.name }
 			})
 		}
 	}

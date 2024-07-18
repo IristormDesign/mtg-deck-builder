@@ -17,17 +17,28 @@
 	margin: 0 auto $lhse;
 	text-align: center;
 	text-wrap: balance;
-	max-width: $max-width-content*.6667;
-	width: 100vw;
+	max-width: $max-width-content*.75;
 
-	strong {
+	h3 {
+		margin-top: $lhse*.5;
 		color: inherit;
+	}
+	.button-group {
+		display: flex;
+		justify-content: center;
 	}
 	.button-container {
 		height: $lhse*1.5;
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
+		margin: $lhse*.5 $lhse*.5 $lhse*.25;
+
+		&:first-of-type {
+			button {
+				@include button(true)
+			}
+		}
 	}
 	.updated-percentage {
 		display: inline-block;

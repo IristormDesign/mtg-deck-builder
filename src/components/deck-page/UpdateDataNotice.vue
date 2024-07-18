@@ -1,13 +1,19 @@
 <template>
-	<div
-		v-if="isDeckDataOutdated"
-		class="wrap"
-	>
-		<aside class="outdated-deck-data-notice">
+		<aside
+			v-if="isDeckDataOutdated"
+			class="outdated-deck-data-notice"
+		>
 			<template v-if="!updatingDeckData">
-				<p>⚠ This deck has an outdated set of card data. Update it now to get enhanced app features!</p>
-				<div class="button-container">
-					<button @click="userEngagedUpdate()">Update</button>
+				<h3>Card Data Update</h3>
+				<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
+				<p>Before updating, you should have a backup copy of your deck data, which you can make by exporting your deck.</p>
+				<div class="button-group">
+					<div class="button-container">
+						<button @click="exportDeck()">Export</button>
+					</div>
+					<div class="button-container">
+						<button @click="userEngagedUpdate()">Update</button>
+					</div>
 				</div>
 			</template>
 			<template v-else>
@@ -15,7 +21,6 @@
 				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
 			</template>
 		</aside>
-	</div>
 </template>
 
 <script>
@@ -163,6 +168,14 @@ export default {
 			setTimeout(() => {
 				alert('Update completed!')
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
+		},
+		exportDeck () {
+			console.log('exportDeck()')
+
+			this.$router.push({
+				name: 'exportDecks',
+				params: { presetDeckName: this.deck.name }
+			})
 		}
 	}
 }
