@@ -150,13 +150,18 @@ export default {
 			}
 		},
 		finishUpdating () {
-			const state = this.$store.state
+			const store = this.$store
+
+			this.deckObject.editDate = new Date()
+			store.commit('showSideboard', false)
+
+			this.$nextTick(() => {
+				this.deckObject.dataVersion = store.state.latestDeckDataVersion
+				store.commit('decks', store.state.decks)
+			})
 
 			setTimeout(() => {
 				alert('Update completed!')
-
-				this.deckObject.dataVersion = state.latestDeckDataVersion
-				this.$store.commit('showSideboard', false)
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		}
 	}

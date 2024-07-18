@@ -233,12 +233,6 @@ export default {
 			for (const key in newCard) {
 				oldCard[key] = newCard[key]
 			}
-
-			this.deck.editDate = new Date()
-
-			this.$nextTick(() => {
-				store.commit('decks', store.state.decks)
-			})
 		},
 		/**
 		 * Check that the card doesn't exist by name in the card list, even if this check has already been done once.
