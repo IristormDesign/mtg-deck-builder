@@ -221,8 +221,7 @@ export default {
 				store.commit('showSideboard', false)
 			}
 
-			const list = this.activeCardList
-			const index = list.cards.findIndex((foundCard) => {
+			const oldCard = this.activeCardList.cards.find(foundCard => {
 				const regexDoubleFacedName = new RegExp(`(${newCard.name})[ /]*(${newCard.name2})`, 'i') // This regex finds names of double-faced cards that includes the back face's name, and with zero or more slashes (`/`) in between the front face and back face names. In older card data, the names for double-faced cards had included both face's names together with a singular slash.
 
 				return (
@@ -231,7 +230,10 @@ export default {
 				)
 			})
 
-			list.cards.splice(index, 1, newCard)
+			for (const key in newCard) {
+				oldCard[key] = newCard[key]
+			}
+
 			this.deck.editDate = new Date()
 
 			this.$nextTick(() => {
