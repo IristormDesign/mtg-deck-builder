@@ -31,7 +31,6 @@ export default {
 		return {
 			cardsToUpdate: [],
 			numberOfCardsUpdated: 0,
-			signOfUpToDate: 'layout', // Any `card` object lacking the `layout` key means that the card has an outdated set of data by one or more versions.
 			updatingDeckData: false
 		}
 	},
@@ -103,7 +102,7 @@ export default {
 		},
 		determineOutdatedCard (list) {
 			for (const card of list.cards) {
-				if (!card[this.signOfUpToDate]) {
+				if (!card.layout) { // Any `card` object lacking the `layout` key means that the card's data set is outdated by at least one version.
 					this.cardsToUpdate.push({
 						gapAfter: card.gapAfter,
 						inSideboard: this.$store.state.showSideboard,
@@ -154,20 +153,10 @@ export default {
 			const state = this.$store.state
 
 			setTimeout(() => {
-				for (const card of this.deck.cards) {
-					if (!card[this.signOfUpToDate]) {
-						alert('⚠ Sorry, the data update has failed for some reason. Make sure that your computer or device is currently connected to the Internet, then try updating again.\n\nIf you keep getting this error message, contact the app developer.')
-
-						this.$router.go(0) // Reload the page.
-
-						return
-					}
-				}
-
 				alert('Update completed!')
 
 				this.deckObject.dataVersion = state.latestDeckDataVersion
-			}, 100) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
+			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		}
 	}
 }

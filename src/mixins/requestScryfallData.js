@@ -198,11 +198,14 @@ export default {
 
 			if (this.oldCardData) {
 				newCard.img = this.oldCardData.img
-				newCard.img2 = this.oldCardData.img2
 				newCard.imgVersion = this.oldCardData.imgVersion
 				newCard.link = this.oldCardData.link
 				newCard.gapAfter = this.oldCardData.gapAfter
 				newCard.qty = this.oldCardData.qty
+
+				if (this.oldCardData.img2) {
+					newCard.img2 = this.oldCardData.img2
+				}
 
 				this.updateOldCard(newCard)
 			} else {
