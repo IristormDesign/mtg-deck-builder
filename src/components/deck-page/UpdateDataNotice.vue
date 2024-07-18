@@ -140,7 +140,7 @@ export default {
 
 						if (this.numberOfCardsUpdated < cardsToUpdate.length) return
 
-						this.validateAfterUpdating()
+						this.finishUpdating()
 					}
 
 					setTimeout(() => {
@@ -149,13 +149,14 @@ export default {
 				}
 			}
 		},
-		validateAfterUpdating () {
+		finishUpdating () {
 			const state = this.$store.state
 
 			setTimeout(() => {
 				alert('Update completed!')
 
 				this.deckObject.dataVersion = state.latestDeckDataVersion
+				this.$store.commit('showSideboard', false)
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		}
 	}
