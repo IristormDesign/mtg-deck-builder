@@ -170,8 +170,6 @@ export default {
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		},
 		exportDeck () {
-			console.log('exportDeck()')
-
 			this.$router.push({
 				name: 'exportDecks',
 				params: { presetDeckName: this.deck.name }
