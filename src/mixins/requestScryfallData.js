@@ -132,7 +132,7 @@ export default {
 			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data) {
-			this.$nextTick(() => { // Using `$nextTick()` might be helping prevent bugs involved with card updating, but I'm not absolutely sure.
+			this.$nextTick(() => { // Using `$nextTick()` is probably helping prevent bugs involved with updating old card data sets.
 				const newCard = {}
 
 				if (data.card_faces) { // If the card is a double-faced or split card...
