@@ -84,10 +84,10 @@ export default {
 			this.cardsToUpdate = []
 			this.numberOfCardsUpdated = 0
 
-			if (!this.deck.sideboard) {
+			if (!this.deck.sideboard) { // Early versions of deck data didn't have the sideboard list. If the `sideboard` key is still missing from the `deck` object, then add it.
 				this.deckObject.sideboard = {
 					cards: [],
-					viewedCard: ''
+					viewedCard: null
 				}
 			}
 
@@ -107,7 +107,7 @@ export default {
 		},
 		determineOutdatedCard (list) {
 			for (const card of list.cards) {
-				if (!card.layout) { // Any `card` object lacking the `layout` key means that the card's data set is outdated by at least one version.
+				if (!card.layout) { // Any `card` object lacking the `layout` key means the card's data set is outdated by at least one version.
 					this.cardsToUpdate.push({
 						gapAfter: card.gapAfter,
 						inSideboard: this.$store.state.showSideboard,
@@ -133,7 +133,7 @@ export default {
 		},
 		userEngagedUpdate () {
 			if (this.cardsToUpdate > 200) {
-				alert('⚠ Sorry, this deck’s data cannot be updated because it has too many cards.')
+				alert('⚠ Sorry, this deck’s data set cannot be updated because it has too many cards.')
 			} else {
 				this.updatingDeckData = true
 
