@@ -6,8 +6,8 @@
 	right: 0;
 	left: 0;
 	z-index: index($layers, scroll-to-top);
-	display: flex;
-	justify-content: center;
+	margin: 0 auto;
+	width: fit-content;
 
 	button {
 		@include button;
