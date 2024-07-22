@@ -20,6 +20,7 @@
 					>
 						<div
 							class="card-edge"
+							:class="(turningOverCard) ? 'card-turning-over' : null"
 							:key="card.name"
 						>
 							<a
@@ -56,7 +57,7 @@
 			<transition name="turn-over-button-transition">
 				<button
 					v-if="showCard && card && card.img2"
-					@click="showingFrontFace = !showingFrontFace"
+					@click="clickedTurnOver()"
 				>
 					Turn Over
 				</button>
@@ -75,7 +76,8 @@ export default {
 	},
 	data () {
 		return {
-			showingFrontFace: true
+			showingFrontFace: true,
+			turningOverCard: false
 		}
 	},
 	computed: {
@@ -256,6 +258,20 @@ export default {
 					this.$store.state.showCard = true
 				})
 			}
+		},
+		clickedTurnOver () {
+			if (this.turningOverCard) return // This early exit prevents the card image from switching faces while it's already in the animation of turning over. This situation could happen if the user clicks the Turn Over button many times rapidly.
+
+			this.turningOverCard = true
+
+			const ms = 333.3
+
+			setTimeout(() => {
+				this.showingFrontFace = !this.showingFrontFace
+			}, ms)
+			setTimeout(() => {
+				this.turningOverCard = false
+			}, ms * 2)
 		}
 	}
 }
