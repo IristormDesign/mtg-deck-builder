@@ -24,7 +24,7 @@ export default {
 	},
 	methods: {
 		checkScrollPosition () {
-			this.atTop = window.scrollY === 0
+			this.atTop = window.scrollY <= 0
 		},
 		scrollToTop () {
 			window.scrollTo({

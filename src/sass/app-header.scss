@@ -8,8 +8,8 @@
 .app-header {
 	background: $color-mythic-dim;
 	color: desaturate(lighten($color-mythic-dim, 40%), 6.25%);
-	border: solid darken($color-mythic-dim, 8.33%);
-	border-width: 2px 0;
+	border: solid darken($color-mythic-dim, 12.5%);
+	border-width: 1px 0;
 	border-top-color: $color-mythic-dim;
 	z-index: index($layers, app-header);
 	height: var(--header-height);
