@@ -8,7 +8,7 @@
 		</p>
 		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#m-card-list">card list</a> in various ways.</p>
 		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have the card names sorted by it. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>
-		<p>The card sorter’s options and their effects include the following:</p>
+		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
 				<p><strong>Starred</strong> – Sorts between <a href="#m-card-stars">starred</a> and non-starred. This sorting option is hidden when no cards in your deck have a star.</p>

@@ -52,20 +52,26 @@
 		ol {
 			padding-left: 1em;
 		}
+		li {
+			line-height: 1;
+		}
 		a {
 			display: block;
 			padding: divide($lhse, 6) 0;
-			width: 100%;
-			line-height: 1;
+			position: relative;
+
+			&:hover,
+			&:focus,
+			&:active {
+				background: $color-group-bg-darker;
+			}
 		}
 	}
 	.toc-links {
 		font-size: 87.5%;
 
 		a {
-			&:not(:hover):not(:focus):not(:active) {
-				text-decoration: none;
-			}
+			text-decoration: none;
 		}
 	}
 	.the-manual {
