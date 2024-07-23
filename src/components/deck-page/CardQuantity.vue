@@ -16,12 +16,12 @@
 				title="Increase quantity"
 				@click="increaseQty()"
 				:disabled="disableIncreaseQtyBtn()"
-			>+</button>
+			><div>+</div></button>
 			<button
 				class="decrement"
 				title="Decrease quantity"
 				@click="decreaseQty()"
-			>&minus;</button>
+			><div>&minus;</div></button>
 		</div>
 	</div>
 </template>

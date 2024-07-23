@@ -24,9 +24,10 @@ select {
 	font-size: 87.5%;
 	caret-color: $color-link-active;
 	background: $color-group-bg-darker;
+	appearance: none;
 	color: $color-link;
 	border: $color-input-border;
-	padding: 0 .25em;
+	padding: 0 .5em;
 	text-decoration: none;
 	transition: all $transition-duration-standard ease;
 	transition-property: color, background-color, border-color;

@@ -84,13 +84,20 @@
 	}
 	button {
 		border-bottom-width: 2px;
-		font: normal 133.33%/.8333 sans-serif;
+		font: normal 133.33%/1 sans-serif;
 		min-width: auto;
 		width: 1.25em;
 		height: $lhse*.6667;
 		max-height: none;
 		padding: 0;
 		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		div {
+			margin-bottom: $lhse*.0625; // Makes the "+" and "-" signs look more vertically centered on the button surface.
+		}
 	}
 	.increment {
 		border-bottom-right-radius: 0;
