@@ -6,7 +6,6 @@ export default {
 	mixins: [stringMethods, deckColors],
 	data () {
 		return {
-			oldCardData: null,
 			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
 		}
 	},
@@ -99,8 +98,6 @@ export default {
 		 * @returns {Function} Callback function
 		 */
 		axiosRequestName (name, callback, oldCardData) {
-			this.oldCardData = oldCardData
-
 			console.info(`Card named "${name}" requested with Scryfall API`)
 
 			const urlEncodedQuery = name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -111,7 +108,7 @@ export default {
 					{ timeout: 8000 }
 				)
 				.then(response => {
-					this.assignCardData(response.data)
+					this.assignCardData(response.data, oldCardData)
 				})
 				.catch(error => {
 					this.loadingCard = false
@@ -131,7 +128,7 @@ export default {
 		alertTimeout () {
 			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
-		assignCardData (data) {
+		assignCardData (data, oldCard) {
 			this.$nextTick(() => { // Using `$nextTick()` is probably helping prevent bugs involved with updating old card data sets.
 				const newCard = {}
 
@@ -197,27 +194,27 @@ export default {
 				newCard.imgVersion = this.$store.state.latestImageVersion
 				newCard.qty = 1
 
-				if (this.oldCardData) {
-					newCard.img = this.oldCardData.img
-					newCard.imgVersion = this.oldCardData.imgVersion
-					newCard.link = this.oldCardData.link
-					newCard.gapAfter = this.oldCardData.gapAfter
-					newCard.qty = this.oldCardData.qty
+				if (oldCard) {
+					newCard.img = oldCard.img
+					newCard.imgVersion = oldCard.imgVersion
+					newCard.link = oldCard.link
+					newCard.gapAfter = oldCard.gapAfter
+					newCard.qty = oldCard.qty
 
-					if (this.oldCardData.img2) {
-						newCard.img2 = this.oldCardData.img2
+					if (oldCard.img2) {
+						newCard.img2 = oldCard.img2
 					}
 
-					this.updateOldCard(newCard)
+					this.updateOldCard(newCard, oldCard.inSideboard)
 				} else {
 					this.validateNewCard(newCard)
 				}
 			})
 		},
-		updateOldCard (newCard) {
+		updateOldCard (newCard, inSideboard) {
 			const store = this.$store
 
-			if (this.oldCardData.inSideboard) {
+			if (inSideboard) {
 				store.commit('showSideboard', true)
 			} else {
 				store.commit('showSideboard', false)
