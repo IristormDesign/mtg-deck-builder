@@ -19,27 +19,29 @@
 						appear-active-class="card-browse-appear-active"
 					>
 						<div
-							class="card-edge"
+							class="card-shadow"
 							:class="(turningOverCard) ? 'card-turning-over' : null"
 							:key="card.name"
-						>
-							<a
-								:href="card.link"
-								target="_blank"
-								ref="cardLink"
-							>
-								<div
-									class="card-shape"
-									:class="cardColorClass"
+						><!-- The shadow is needed as its own element because Safari doesn't support more than drop-shadow filter on one element. -->
+							<div class="card-edge">
+								<a
+									:href="card.link"
+									target="_blank"
+									ref="cardLink"
 								>
-									<img
-										:src="cardImage"
-										width="488"
-										height="680"
-										:alt="card.name"
-									/>
-								</div>
-							</a>
+									<div
+										class="card-shape"
+										:class="cardColorClass"
+									>
+										<img
+											:src="cardImage"
+											width="488"
+											height="680"
+											:alt="card.name"
+										/>
+									</div>
+								</a>
+							</div>
 						</div>
 					</transition>
 					<button

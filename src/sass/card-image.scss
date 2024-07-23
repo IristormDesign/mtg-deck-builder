@@ -67,27 +67,13 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	}
 }
 @mixin card-edge-filters ($position) {
-	$color-card-edge: darken(#fff, 70.83%);
+	$color-card-edge: darken(#fff, 66.67%);
 
 	@if $position == 'left' {
 		filter: drop-shadow(1px 1px 0 $color-card-edge);
-
-		&:hover,
-		&:focus-within {
-			filter:
-				drop-shadow(1px 1px 0 $color-card-edge)
-				$drop-shadow-card-shadow;
-		}
 	}
 	@if $position == 'right' {
 		filter: drop-shadow(-1px 1px 0 $color-card-edge);
-
-		&:hover,
-		&:focus-within {
-			filter:
-				drop-shadow(-1px 1px 0 $color-card-edge)
-				$drop-shadow-card-shadow;
-		}
 	}
 }
 
@@ -125,14 +111,15 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
 		outline-offset: -$lhse*.75;
 	}
-	.card-edge {
-		transition: filter $transition-duration-card-image-hover-fast ease 0s;
+	.card-shadow {
 		position: absolute;
 		width: 100%;
+		transition: filter $transition-duration-card-image-hover-fast ease;
 		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
 
 		&:hover,
 		&:focus-within {
+			filter: $drop-shadow-card-shadow;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 			will-change: auto;
@@ -220,8 +207,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		transform:
 			rotateY(90deg)
 			scale(1.125)
-			translateY(-$lhse*1.125);
-		filter: $drop-shadow-card-shadow;
+			translateY(-$lhse*2);
 	}
 }
 .card-turning-over {
@@ -281,18 +267,6 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	}
 }
 @media (max-width: $width-deck-hidden-image) {
-	.deck-editor,
-	.draw-simulator {
-		.card-image {
-			.card-edge {
-				&,
-				&:hover,
-				&:focus-within {
-					filter: drop-shadow(0 0 $lhse rgba(#fff, .1667));
-				}
-			}
-		}
-	}
 	.card-image {
 		z-index: index($layers, app-header);
 
@@ -303,10 +277,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		.card-placement-outline {
 			display: none;
 		}
-		.card-edge {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+		.card-shadow {
 			width: 100%;
 			height: 100%;
 			will-change: auto;
@@ -316,6 +287,13 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			&:focus-within {
 				filter: drop-shadow(0 0 $lhse rgba(#fff, .1667));
 			}
+		}
+		.card-edge {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		a {
 			position: static;
