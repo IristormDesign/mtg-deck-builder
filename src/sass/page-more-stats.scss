@@ -83,16 +83,17 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		.total {
 			th,
 			td {
+				@include heading-font;
 				border-top: $table-outer-borders;
-				font-size: 80%;
+				font-size: $font-size-tiny;
 				color: $color-text-darker;
 				text-transform: uppercase;
-				height: $lhse*1.125;
+				height: $lhse*1.3333;
 			}
 		}
 		th,
 		td {
-			padding: 1px divide($lhse, 4);
+			padding: $lhse*.1667 $lhse*.25;
 			border: $table-inner-borders;
 			text-align: right;
 			line-height: .875;
