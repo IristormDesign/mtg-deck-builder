@@ -12,7 +12,7 @@
 				<p><strong>“Drawn Cards” statistic</strong> – This shows the number of cards you’ve drawn since starting the current round.</p>
 			</li>
 			<li>
-				<p><strong>“Draw a Card” button</strong> – Click this button to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears in the <a href="#m-card-image">card image</a> section (if that section is visible on your device’s screen).</p>
+				<p><strong>“Draw a Card” button</strong> – Click this button to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears in the card image section (if that section is visible on your device’s screen).</p>
 				<p>You can keep clicking “Draw a Card” as many times as you have cards left in your library.</p>
 			</li>
 			<li>
