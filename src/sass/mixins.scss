@@ -114,14 +114,14 @@
 }
 @mixin button($alt-color: false) {
 	@if $alt-color == true {
-		background: $color-button-default;
+		background: $color-button-alt;
 	}
 	@else {
-		background: $color-link;
+		background: $color-button;
 	}
 
 	@include heading-font;
-	color: $color-black-label-text;
+	color: #000;
 	cursor: pointer;
 	box-shadow:
 		0 1px 0 .5px rgba(#000, .75), // Rim around button
