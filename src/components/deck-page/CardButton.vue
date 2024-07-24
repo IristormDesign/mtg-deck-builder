@@ -120,8 +120,12 @@ export default {
 				.replaceAll(/{R}/g, symbol.r)
 				.replaceAll(/{G}/g, symbol.g)
 				.replaceAll(
-					/{(\w+)}/g, // Find any other string having a pair of curly brackets with any other alphanumeric characters in between. This gets generic mana in both single and multiple digits and colorless mana ({C}).
+					/{(\w)}/g, // Find a string having any singular alphanumeric character between two curly braces. This gets single-digit generic mana and required colorless mana ("{C}").
 					'<span class="mana-symbol">$1</span>' // `$1` is a variable referring to the characters within the parentheses in the regex.
+				)
+				.replaceAll(
+					/{(\w\w+)}/g, // Find a string having two or more alphanumeric characters between a pair of curly braces. This is for finding double-digit generic mana symbols. (A slash doesn't count as an alphanumeric character, so this regex doesn't find hybrid mana symbols.)
+					'<span class="mana-symbol"><div class="double-digits">$1</div></span>'
 				)
 				.replaceAll(
 					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
