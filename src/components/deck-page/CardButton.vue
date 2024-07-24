@@ -64,7 +64,7 @@ export default {
 			let output = this.card.name
 
 			if (this.hasDoubleCastableFaces) {
-				output += `<span title="${this.card.name2}"> / ${this.card.name2}</span>`
+				output += `<span title="${this.card.name2}"> // ${this.card.name2}</span>`
 			}
 
 			return output
@@ -73,7 +73,7 @@ export default {
 			const card = this.card
 
 			if (card.layout === 'split') {
-				return `${this.styleManaSymbols(card.mana)} / ${this.styleManaSymbols(card.mana2)}`
+				return `${this.styleManaSymbols(card.mana)} // ${this.styleManaSymbols(card.mana2)}`
 			} else {
 				return this.styleManaSymbols(card.mana)
 			}
@@ -82,7 +82,7 @@ export default {
 			let output = this.card.type
 
 			if (this.hasDoubleCastableFaces) {
-				output += `<span title="${this.card.type2}"> / ${this.card.type2}</span>`
+				output += `<span title="${this.card.type2}"> // ${this.card.type2}</span>`
 			}
 
 			return output
