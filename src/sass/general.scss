@@ -9,6 +9,7 @@ html {
 }
 body {
 	font: 20px/#{$line-height-standard} $font-family-standard;
+	font-weight: 367;
 	color: $color-text;
 	background: $color-content-bg;
 	min-width: 320px;
@@ -100,7 +101,7 @@ ol {
 strong,
 b,
 th {
-	font-weight: $font-weight-semibold;
+	font-weight: $font-weight-label;
 
 	*:not(a) > & {
 		color: $color-text-brighter;
