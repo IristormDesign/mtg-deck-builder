@@ -7,7 +7,7 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#m-card-list">card list</a> in various ways.</p>
-		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have the card names sorted by it. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
@@ -17,7 +17,7 @@
 				<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
 			</li>
 			<li>
-				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by <i>Magic</i>’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
+				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
 			</li>
 			<li>
 				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost).</p>
