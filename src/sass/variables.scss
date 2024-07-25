@@ -34,7 +34,7 @@ $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%)
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
-$color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 66.67%);
+$color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 56.25%);
 $color-group-bg-darker: darken($color-group-bg, 4.17%);
 $color-text: lighten($color-group-bg, 62.5%);
 $color-text-brighter: lighten($color-text, 4.17%);
