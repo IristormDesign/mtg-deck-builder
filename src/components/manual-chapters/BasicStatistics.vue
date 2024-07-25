@@ -21,7 +21,7 @@
 				<p><strong>Last Edit</strong> – This shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card name</a>, <a href="#m-card-quantities">changing a card name’s quantity</a>, <a href="#m-card-stars">starring a card name</a>, and <a href="#m-deck-name">renaming the deck</a> count as edits. Last Edit involves both the main and sideboard card groups.</p>
 			</li>
 			<li>
-				<p><strong>Card Names</strong> – This shows a number equal to the count of card names in the main card group. (Having a plural quantity of any card name doesn’t increase the name count.)</p>
+				<p><strong>Card Names</strong> – This shows a number equal to the count of distinct card names in the main card group. (Having a plural quantity of cards of a certain name doesn’t increase the count of names.)</p>
 			</li>
 			<li>
 				<p><strong>Total Cards</strong> – This shows a number equal to the total cards in the main card group. A “⚠” (warning symbol) appears beside the number when the total is fewer than 60, which is the minimum limit by <i>Magic</i>’s standard <a href="#m-game-rules">game rules</a>; or when the total is close to but not exactly 100, which is the requirement by the Commander format rules.</p>
