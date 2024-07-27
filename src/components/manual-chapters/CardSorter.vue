@@ -43,14 +43,14 @@
 			</li>
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
-		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that don’t insert gaps are name, mana color, and rarity.</p>
-		<p>The card sorter will reset its sorting option to “(None),” and any gaps between sorted clusters in the card list will be removed, under any of the following conditions:
+		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that never insert gaps are name, mana color, and rarity.</p>
+		<p>Under certain conditions, the card sorter’s sorting option rests to “(None),” and any gaps in the card list between sorted clusters disappear. The conditions happen whenever you do any of the following actions:
 			<ul>
-				<li>Whenever you <a href="#m-card-adder">add a card name</a> to the list</li>
-				<li>Whenever you adjust the quantity of a card name while the sorter is set to “Quantity”</li>
-				<li>Whenever you star a card name while the sorter is set to “Starred”</li>
+				<li><a href="#m-card-adder">Add a card name</a> to the list</li>
+				<li>Adjust the quantity of a card name while the sorter is set to “Quantity”</li>
+				<li>Star a card name while the sorter is set to “Starred”</li>
 			</ul>
 		</p>
-		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the card list on the Deck Editor must be unique, which isn’t necessarily true for the other attributes.</p>
+		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the Deck Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
 	</section>
 </template>
