@@ -33,7 +33,7 @@
 						:disabled="disableMenuButton"
 						:title="disabledMenuButtonTooltip"
 					>
-						Open Deck <span>▼</span>
+						Open Deck&hellip;
 						<div class="mouseover-area"></div>
 					</button>
 					<div class="open-deck-heading">

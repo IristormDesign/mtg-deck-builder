@@ -1,11 +1,12 @@
 @import 'variables';
-@import 'deck-header';
 
 .deck {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
+	max-width: $max-width-app;
+	width: 100%;
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;

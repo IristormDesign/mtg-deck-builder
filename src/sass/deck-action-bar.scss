@@ -1,0 +1,157 @@
+.deck-action-bar {
+	background: $color-group-bg;
+	display: grid;
+	grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
+	align-items: center;
+	border-radius: $border-radius-group;
+	margin: 0 auto $lhse*.25;
+	width: 100%;
+	position: relative;
+	min-height: $height-deck-header-component;
+}
+.mode-heading,
+.modes-menu,
+.deck-actions {
+	margin: 0;
+	padding: 0 $lhse*.5;
+}
+.mode-heading {
+	width: max-content;
+	cursor: default;
+
+	h3 {
+		font-size: 112.5%;
+		margin: 0;
+	}
+}
+.modes-menu {
+	align-self: stretch;
+	padding: 0 $lhse*.5;
+	border-left: $border-sections;
+	border-right: $border-sections;
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: $lhse*.5;
+		margin: 0 auto;
+		padding: 0;
+		height: 100%;
+		align-items: center;
+	}
+	li {
+		list-style: none;
+	}
+	a {
+		@include button;
+		font-size: 80%;
+		min-height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+
+		&.current-page {
+			opacity: .3820;
+			cursor: default;
+		}
+	}
+}
+.deck-actions {
+	display: flex;
+	justify-content: flex-end;
+
+	label {
+		white-space: nowrap;
+	}
+	select {
+		@include button(true);
+		font-size: 66.67%;
+		height: $lhse*1.75;
+
+		&:active { // Prevent the appearance of the button pushing, because it causes the menu to bounce with it.
+			border-bottom-width: $border-bottom-width-button;
+			margin: -2px 0 2px;
+		}
+	}
+	option {
+		text-align: left;
+		font-size: 150%;
+	}
+}
+
+@media (max-width: ($min-width-app*.875)) {
+	.modes-menu {
+		ul {
+			grid-template-columns: repeat(3, $lhse*3);
+		}
+	}
+}
+@media (max-width: ($min-width-app*.7083)) {
+	.deck-action-bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+	}
+	.mode-heading,
+	.modes-menu,
+	.deck-actions {
+		min-height: $lhse*2;
+		padding: 0 $lhse*.5;
+	}
+	.mode-heading {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
+	}
+	.modes-menu {
+		order: 3;
+		width: 100%;
+		border-width: 0;
+		border-top: $border-sections;
+		box-sizing: content-box;
+
+		ul {
+			grid-template-columns: repeat(3, 1fr);
+			gap: divide($lhse, 3);
+			justify-content: space-around;
+		}
+		li {
+			display: flex;
+			justify-content: center;
+			margin: $lhse*.25 0;
+		}
+		a {
+			width: 25vw;
+		}
+	}
+	.deck-actions {
+		border-left: $border-sections;
+		display: flex;
+		align-items: center;
+		justify-self: flex-end;
+	}
+}
+@media (max-width: ($min-width-app*.6)) {
+	.modes-menu {
+		ul {
+			align-items: stretch;
+
+		}
+	}
+}
+@media (max-width: ($min-width-app*.375)) {
+	.mode-heading,
+	.modes-menu,
+	.deck-actions {
+		padding: 0 $lhse*.25;
+	}
+	.modes-menu {
+		a {
+			width: 100%;
+		}
+	}
+	.mode-heading {
+		justify-content: center;
+	}
+}

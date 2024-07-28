@@ -1,6 +1,5 @@
 <template>
-	<nav class="deck-modes deck-info">
-		<h3>{{ deckViewHeading }}</h3>
+	<nav class="modes-menu">
 		<ul>
 			<li>
 				<router-link
@@ -23,22 +22,3 @@
 		</ul>
 	</nav>
 </template>
-
-<script>
-export default {
-	computed: {
-		deckViewHeading () {
-			switch (this.$route.name) {
-				case 'deckEditor':
-					return 'Deck Editor'
-				case 'moreStats':
-					return 'More Statistics'
-				case 'drawSim':
-					return 'Draw Simulator'
-				default:
-					return null
-			}
-		}
-	}
-}
-</script>

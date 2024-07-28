@@ -1,18 +1,15 @@
 <template>
 	<section class="deck-actions">
-		<form>
-			<label for="deckActionSelect">Do deck action:</label>
-			<select
-				v-model="deckAction"
-				@change="doDeckAction()"
-				id="deckActionSelect"
-			>
-				<option value="">(Select)</option>
-				<option value="copy">Copy</option>
-				<option value="export">Export</option>
-				<option value="delete">Delete</option>
-			</select>
-		</form>
+		<select
+			v-model="deckAction"
+			@change="doDeckAction()"
+			id="deckActionSelect"
+		>
+			<option value="">Deck Actions&hellip;</option>
+			<option value="copy">Copy</option>
+			<option value="export">Export</option>
+			<option value="delete">Delete</option>
+		</select>
 	</section>
 </template>
 

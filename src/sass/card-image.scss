@@ -31,11 +31,11 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	$rotate: none;
 
 	@if $rise-from == 'left' {
-		$translate: translate($lhse*1.375, $lhse*1.75);
+		$translate: translate($lhse*1.375, $lhse*2);
 		$rotate: rotate((-360/192) * 1deg);
 	}
 	@if $rise-from == 'right' {
-		$translate: translate(-$lhse*1.375, $lhse*1.75);
+		$translate: translate(-$lhse*1.375, $lhse*2);
 		$rotate: rotate((360/192) * 1deg);
 	}
 

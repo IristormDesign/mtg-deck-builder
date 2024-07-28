@@ -97,8 +97,7 @@ $width-card-adder-button: $lhse*2.3333;
 		}
 	}
 }
-.card-adder,
-.deck-actions {
+.card-adder {
 	form {
 		align-items: center;
 		display: grid;
@@ -125,8 +124,7 @@ $width-card-adder-button: $lhse*2.3333;
 		height: $lhse*1.25;
 	}
 }
-.card-adder,
-.deck-actions {
+.card-adder {
 	label {
 		padding-bottom: $lhse*.25;
 		margin-bottom: -$lhse*.25;
@@ -206,15 +204,6 @@ $width-card-adder-button: $lhse*2.3333;
 			font-style: italic;
 			font-size: $font-size-bigger;
 		}
-	}
-}
-.deck-actions {
-	label {
-		white-space: nowrap;
-	}
-	select {
-		width: 100%;
-		height: $height-control-panel-input;
 	}
 }
 
@@ -322,15 +311,6 @@ $width-card-adder-button: $lhse*2.3333;
 			grid-column: span 2;
 		}
 	}
-	.deck-actions {
-		grid-row: 1;
-		grid-column: span 1;
-		border-left: $border-sections;
-
-		form {
-			display: grid;
-		}
-	}
 }
 @mixin action-controls-double-layers {
 	.deck-editor {
@@ -352,14 +332,14 @@ $width-card-adder-button: $lhse*2.3333;
 		border-left-width: 0;
 		border-bottom: $border-sections;
 	}
-	.deck-actions {
-		grid-column: span 1;
-		grid-row: 2;
+	// .deck-actions {
+	// 	grid-column: span 1;
+	// 	grid-row: 2;
 
-		form {
-			display: flex;
-		}
-	}
+	// 	form {
+	// 		display: flex;
+	// 	}
+	// }
 }
 
 @include viewing-controls-single-layer-compressed;
@@ -406,9 +386,9 @@ $width-card-adder-button: $lhse*2.3333;
 			width: auto;
 		}
 	}
-	.deck-actions {
-		label {
-			white-space: wrap;
-		}
-	}
+	// .deck-actions {
+	// 	label {
+	// 		white-space: wrap;
+	// 	}
+	// }
 }

@@ -1,15 +1,17 @@
 .deck-header {
 	grid-column: span 6;
-	margin: $lhse auto;
+	margin: $lhse auto $lhse*.25;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;
 	align-items: center;
 	align-content: flex-start; // Needed for Safari.
 	justify-content: space-between;
-	border-radius: #{$lhse} / #{50%};
 	overflow: hidden;
-	max-width: 100%;
+	width: 100%;
+	border-radius: #{$lhse} / #{50%};
+	border-bottom-right-radius: $border-radius-group;
+	border-bottom-left-radius: $border-radius-group;
 	background: $color-group-bg;
 
 	.deck-name {
@@ -84,59 +86,13 @@
 			margin-left: .25em;
 		}
 	}
-	.deck-modes {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin: 0;
-		border-width: 0;
-		border-top: $border-sections;
-		max-width: 100%;
-		border-radius: 0;
-		grid-column: span 6;
-
-		h3,
-		ul {
-			margin: 0 $lhse*.5;
-		}
-		h3 {
-			font-size: 112.5%;
-			margin: 0 $lhse*.5;
-			color: $color-text-brighter;
-			width: auto;
-		}
-		ul {
-			padding: $lhse*.25 0;
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: $lhse*.5;
-		}
-		li {
-			list-style: none;
-		}
-		a {
-			@include button;
-			display: flex;
-			min-height: $lhse*1.5;
-			height: 100%;
-			align-items: center;
-			justify-content: center;
-			font-size: 87.5%;
-			text-align: center;
-
-			&.current-page {
-				opacity: .3820;
-			}
-		}
-	}
 }
 
 @media (max-width: $width-app-breakpoint) {
 	.deck-header {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		grid-template-rows: repeat(3, auto);
-		background: $color-group-bg;
+		grid-template-rows: auto auto;
 
 		.deck-name {
 			border-width: 0;
@@ -158,11 +114,6 @@
 			border-right-width: 0;
 			padding-right: $lhse*.5;
 		}
-		.deck-modes {
-			order: 2;
-			grid-column: span 5;
-			border-right-width: 0;
-		}
 	}
 }
 @media (max-width: $min-width-app) {
@@ -174,23 +125,17 @@
 				width: auto;
 			}
 		}
-		.deck-modes {
-			h3 {
-				margin: $lhse*.25 auto $lhse*.125;
-			}
-		}
 	}
 }
 @media (max-width: ($min-width-app * .875)) {
 	.deck-header {
-		margin: $lhse*.5 auto;
-		grid-template-rows: auto 1fr 1fr auto;
+		margin-top: $lhse*.5
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
 	.deck-header {
 		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: auto 1fr 1fr auto;
+		grid-template-rows: 1fr 1fr 1fr;
 		min-width: 66.67vw;
 
 		.deck-info {
@@ -214,36 +159,10 @@
 		.deck-name {
 			grid-column: span 6;
 		}
-		.deck-modes {
-			grid-column: span 6;
-			white-space: normal;
-
-			ul {
-				gap: divide($lhse, 3);
-			}
-		}
-	}
-}
-@media (max-width: ($min-width-app * .625)) {
-	.deck-header {
-		.deck-modes {
-			ul {
-				margin: 0;
-			}
-			li {
-				width: min-content;
-				min-width: 100%;
-			}
-			a {
-				font-size: 80%;
-			}
-		}
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck-header {
-		border-radius: $border-radius-group;
-
 		.deck-info {
 			&:nth-of-type(2),
 			&:nth-of-type(3) {
