@@ -10,7 +10,7 @@
 	min-height: $height-deck-header-component;
 }
 .mode-heading,
-.modes-menu,
+.mode-menu,
 .deck-actions {
 	margin: 0;
 	padding: 0 $lhse*.5;
@@ -24,7 +24,7 @@
 		margin: 0;
 	}
 }
-.modes-menu {
+.mode-menu {
 	align-self: stretch;
 	padding: 0 $lhse*.5;
 	border-left: $border-sections;
@@ -81,7 +81,7 @@
 }
 
 @media (max-width: ($min-width-app*.875)) {
-	.modes-menu {
+	.mode-menu {
 		ul {
 			grid-template-columns: repeat(3, $lhse*3);
 		}
@@ -94,7 +94,7 @@
 		align-items: stretch;
 	}
 	.mode-heading,
-	.modes-menu,
+	.mode-menu,
 	.deck-actions {
 		min-height: $lhse*2;
 		padding: 0 $lhse*.5;
@@ -104,7 +104,7 @@
 		align-items: center;
 		flex-grow: 1;
 	}
-	.modes-menu {
+	.mode-menu {
 		order: 3;
 		width: 100%;
 		border-width: 0;
@@ -133,7 +133,7 @@
 	}
 }
 @media (max-width: ($min-width-app*.6)) {
-	.modes-menu {
+	.mode-menu {
 		ul {
 			align-items: stretch;
 
@@ -142,11 +142,11 @@
 }
 @media (max-width: ($min-width-app*.375)) {
 	.mode-heading,
-	.modes-menu,
+	.mode-menu,
 	.deck-actions {
 		padding: 0 $lhse*.25;
 	}
-	.modes-menu {
+	.mode-menu {
 		a {
 			width: 100%;
 		}

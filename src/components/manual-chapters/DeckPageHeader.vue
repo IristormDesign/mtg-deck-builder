@@ -5,7 +5,7 @@
 		<ul>
 			<li><a href="#m-deck-name">Deck name</a></li>
 			<li><a href="#m-basic-statistics">Basic statistics</a></li>
-			<li><a href="#m-modes-menu">Mode menu</a></li>
+			<li><a href="#m-mode-menu">Mode menu</a></li>
 			<li><a href="#m-deck-actions">Deck actions</a></li>
 		</ul>
 		<p>Each of these sections will be explained in more detail.</p>
@@ -13,7 +13,7 @@
 
 		<deck-name />
 		<basic-statistics />
-		<modes-menu />
+		<mode-menu />
 		<deck-actions />
 	</section>
 </template>
@@ -21,10 +21,10 @@
 <script>
 import DeckName from '@/components/manual-chapters/DeckName.vue'
 import BasicStatistics from '@/components/manual-chapters/BasicStatistics.vue'
-import ModesMenu from '@/components/manual-chapters/ModesMenu.vue'
+import ModeMenu from '@/components/manual-chapters/ModeMenu.vue'
 import DeckActions from '@/components/manual-chapters/DeckActions.vue'
 
 export default {
-	components: { DeckName, BasicStatistics, ModesMenu, DeckActions }
+	components: { DeckName, BasicStatistics, ModeMenu, DeckActions }
 }
 </script>

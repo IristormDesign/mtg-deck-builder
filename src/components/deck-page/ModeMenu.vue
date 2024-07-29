@@ -1,5 +1,5 @@
 <template>
-	<nav class="modes-menu">
+	<nav class="mode-menu">
 		<ul>
 			<li>
 				<router-link

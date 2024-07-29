@@ -33,7 +33,7 @@
 							<ol>
 								<li><a href="#m-deck-name">Deck Name</a></li>
 								<li><a href="#m-basic-statistics">Basic Statistics</a></li>
-								<li><a href="#m-modes-menu">Modes Menu</a></li>
+								<li><a href="#m-mode-menu">Mode Menu</a></li>
 								<li><a href="#m-deck-actions">Deck Actions</a></li>
 							</ol>
 						</li>
