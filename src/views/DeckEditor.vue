@@ -48,7 +48,7 @@
 			/>
 		</section>
 
-		<div class="control-panel action-controls">
+		<div class="control-panel adder-controls">
 			<scryfall-button />
 			<card-adder :deck="deck" />
 			<!-- <deck-actions :deck="deck" /> -->

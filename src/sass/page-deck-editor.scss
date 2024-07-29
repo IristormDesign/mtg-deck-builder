@@ -27,7 +27,7 @@ $width-card-adder-button: $lhse*2.3333;
 			border-bottom-left-radius: 0;
 		}
 	}
-	.action-controls {
+	.adder-controls {
 		grid-area: panel-2;
 		align-self: flex-start;
 	}
@@ -282,9 +282,9 @@ $width-card-adder-button: $lhse*2.3333;
 		border-left-width: 0 !important;
 	}
 }
-@mixin action-controls-single-layer {
+@mixin adder-controls-single-layer {
 	.deck-editor {
-		.action-controls {
+		.adder-controls {
 			grid-template-rows: auto;
 			grid-template-columns: 1fr minmax(auto, 7fr);
 
@@ -311,9 +311,9 @@ $width-card-adder-button: $lhse*2.3333;
 		}
 	}
 }
-@mixin action-controls-double-layers {
+@mixin adder-controls-double-layers {
 	.deck-editor {
-		.action-controls {
+		.adder-controls {
 			grid-template-rows: $lhse*2 $lhse*3;
 			grid-template-columns: auto;
 
@@ -338,7 +338,7 @@ $width-card-adder-button: $lhse*2.3333;
 }
 
 @include viewing-controls-single-layer-compressed;
-@include action-controls-single-layer;
+@include adder-controls-single-layer;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
@@ -364,7 +364,7 @@ $width-card-adder-button: $lhse*2.3333;
 	@include viewing-controls-single-layer;
 
 	.deck-editor {
-		.action-controls {
+		.adder-controls {
 			width: auto;
 			max-width: none;
 		}
@@ -372,7 +372,7 @@ $width-card-adder-button: $lhse*2.3333;
 }
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
-	@include action-controls-double-layers;
+	@include adder-controls-double-layers;
 
 	.deck-editor {
 		max-width: 100vw;
