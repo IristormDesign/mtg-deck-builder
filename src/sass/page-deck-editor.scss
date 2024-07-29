@@ -106,7 +106,6 @@ $width-card-adder-button: $lhse*2.3333;
 }
 .scryfall-button {
 	a {
-		@include button;
 		@include button(true);
 		min-width: $lhse*1.75;
 		display: flex;
@@ -116,7 +115,7 @@ $width-card-adder-button: $lhse*2.3333;
 		padding: $lhse*.125 $lhse*.25;
 
 		img {
-			opacity: .875;
+			opacity: .9167;
 		}
 	}
 	img {
@@ -286,8 +285,8 @@ $width-card-adder-button: $lhse*2.3333;
 @mixin action-controls-single-layer {
 	.deck-editor {
 		.action-controls {
-			grid-template-columns: $lhse*3 auto min-content;
 			grid-template-rows: auto;
+			grid-template-columns: 1fr minmax(auto, 7fr);
 
 			section {
 				height: $lhse*3;
@@ -315,31 +314,27 @@ $width-card-adder-button: $lhse*2.3333;
 @mixin action-controls-double-layers {
 	.deck-editor {
 		.action-controls {
-			grid-template-rows: $lhse*3 $height-deck-header-component;
-			grid-template-columns: auto auto;
+			grid-template-rows: $lhse*2 $lhse*3;
+			grid-template-columns: auto;
 
 			section {
 				height: auto;
 			}
 		}
 	}
-	.scryfall-button {
-		grid-row: 2;
-		border-bottom-width: 0;
-	}
 	.card-adder {
-		grid-column: span 2;
 		border-left-width: 0;
-		border-bottom: $border-sections;
-	}
-	// .deck-actions {
-	// 	grid-column: span 1;
-	// 	grid-row: 2;
+		border-top: $border-sections;
+		grid-row: 2;
 
-	// 	form {
-	// 		display: flex;
-	// 	}
-	// }
+		input,
+		button {
+			font-size: 80%;
+		}
+		button {
+			height: 87.5%;
+		}
+	}
 }
 
 @include viewing-controls-single-layer-compressed;
@@ -347,7 +342,6 @@ $width-card-adder-button: $lhse*2.3333;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
-	@include action-controls-double-layers;
 }
 @media (max-width: $min-width-app) {
 	.deck-editor {
@@ -356,7 +350,6 @@ $width-card-adder-button: $lhse*2.3333;
 }
 @media (max-width: $width-deck-hidden-image) {
 	@include viewing-controls-single-layer-compressed;
-	@include action-controls-single-layer;
 
 	.deck-editor {
 		grid-template-areas:
@@ -369,10 +362,17 @@ $width-card-adder-button: $lhse*2.3333;
 }
 @media (max-width: ($min-width-app * .75)) {
 	@include viewing-controls-single-layer;
-	@include action-controls-double-layers;
+
+	.deck-editor {
+		.action-controls {
+			width: auto;
+			max-width: none;
+		}
+	}
 }
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
+	@include action-controls-double-layers;
 
 	.deck-editor {
 		max-width: 100vw;
@@ -386,9 +386,4 @@ $width-card-adder-button: $lhse*2.3333;
 			width: auto;
 		}
 	}
-	// .deck-actions {
-	// 	label {
-	// 		white-space: wrap;
-	// 	}
-	// }
 }
