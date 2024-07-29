@@ -1,6 +1,6 @@
 <template>
 	<section id="m-basic-statistics">
-		<h5>Basic Statistics</h5>
+		<h4>Basic Statistics</h4>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-deck-statistics.jpg 1x, @/img/manual-deck-statistics-2x.jpg 1.5x"

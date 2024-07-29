@@ -18,7 +18,6 @@
 			</li>
 			<li><a href="#m-scryfall-button">Scryfall advanced search button</a></li>
 			<li><a href="#m-card-adder">Card adder</a></li>
-			<li><a href="#m-deck-actions">Deck actions</a></li>
 		</ol>
 		<p>Each of the Deck Editor’s sections is going to be explained in further detail.</p>
 
@@ -29,7 +28,6 @@
 		<card-list />
 		<scryfall-button />
 		<card-adder />
-		<deck-actions />
 	</section>
 </template>
 
@@ -41,9 +39,8 @@ import SideboardHeader from '@/components/manual-chapters/SideboardHeader.vue'
 import CardList from '@/components/manual-chapters/CardList.vue'
 import ScryfallButton from '@/components/manual-chapters/ScryfallButton.vue'
 import CardAdder from '@/components/manual-chapters/CardAdder.vue'
-import DeckActions from '@/components/manual-chapters/DeckActions.vue'
 
 export default {
-	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, CardAdder, DeckActions }
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, CardAdder }
 }
 </script>

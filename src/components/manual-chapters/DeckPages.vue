@@ -10,18 +10,15 @@
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy" />
 		</p>
 		<p>A deck page’s contents has two major sections—the <a href="#m-deck-page-header">deck page header</a> and the <a href="#m-deck-page-modes">deck page mode</a> section—and both of them are subdivided into sections of their own.</p>
-		<p>The subsequent chapters of this user manual explain in detail every section of a deck page.</p>
 
-		<deck-page-header />
 		<deck-page-modes />
 	</section>
 </template>
 
 <script>
-import DeckPageHeader from '@/components/manual-chapters/DeckPageHeader.vue'
 import DeckPageModes from '@/components/manual-chapters/DeckPageModes.vue'
 
 export default {
-	components: { DeckPageHeader, DeckPageModes }
+	components: { DeckPageModes }
 }
 </script>

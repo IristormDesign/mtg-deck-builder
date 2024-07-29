@@ -1,11 +1,20 @@
 <template>
 	<section id="m-deck-page-header">
-		<h4>Deck Page Header</h4>
-		<p>Constantly positioned by the top of a <a href="#m-deck-pages">deck page</a> is the deck page header. It comprises the following three sections: <a href="#m-deck-name">deck name</a>, <a href="#m-basic-statistics">basic statistics</a>, and <a href="#m-modes-menu">modes menu</a>.</p>
+		<h3>Deck Page Header</h3>
+		<p>By the top of a <a href="#m-deck-pages">deck page</a> is the deck page header, which comprises the following sections:</p>
+		<ul>
+			<li><a href="#m-deck-name">Deck name</a></li>
+			<li><a href="#m-basic-statistics">Basic statistics</a></li>
+			<li><a href="#m-modes-menu">Mode menu</a></li>
+			<li><a href="#m-deck-actions">Deck actions</a></li>
+		</ul>
+		<p>Each of these sections will be explained in more detail.</p>
+		<p>The deck page header is always positioned by the top, regardless of whichever <a href="#m-deck-page-modes">deck page mode</a> is active.</p>
 
 		<deck-name />
 		<basic-statistics />
 		<modes-menu />
+		<deck-actions />
 	</section>
 </template>
 
@@ -13,8 +22,9 @@
 import DeckName from '@/components/manual-chapters/DeckName.vue'
 import BasicStatistics from '@/components/manual-chapters/BasicStatistics.vue'
 import ModesMenu from '@/components/manual-chapters/ModesMenu.vue'
+import DeckActions from '@/components/manual-chapters/DeckActions.vue'
 
 export default {
-	components: { DeckName, BasicStatistics, ModesMenu }
+	components: { DeckName, BasicStatistics, ModesMenu, DeckActions }
 }
 </script>

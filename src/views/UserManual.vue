@@ -25,17 +25,18 @@
 					<li>
 						<a href="#m-deck-pages">Deck Pages</a>
 						<ol>
-							<li>
-								<a href="#m-deck-page-header">Deck Page Header</a>
-								<ol>
-									<li><a href="#m-deck-name">Deck Name</a></li>
-									<li><a href="#m-basic-statistics">Basic Statistics</a></li>
-									<li><a href="#m-modes-menu">Modes Menu</a></li>
-								</ol>
-							</li>
 							<li><a href="#m-deck-page-modes">Deck Page Modes</a></li>
 						</ol>
 					</li>
+					<li>
+							<a href="#m-deck-page-header">Deck Page Header</a>
+							<ol>
+								<li><a href="#m-deck-name">Deck Name</a></li>
+								<li><a href="#m-basic-statistics">Basic Statistics</a></li>
+								<li><a href="#m-modes-menu">Modes Menu</a></li>
+								<li><a href="#m-deck-actions">Deck Actions</a></li>
+							</ol>
+						</li>
 					<li>
 						<a href="#m-deck-editor">Deck Editor Mode</a>
 						<ol>
@@ -58,7 +59,6 @@
 							</li>
 							<li><a href="#m-scryfall-button">Scryfall Advanced Search Button</a></li>
 							<li><a href="#m-card-adder">Card Adder</a></li>
-							<li><a href="#m-deck-actions">Deck Actions</a></li>
 						</ol>
 					</li>
 					<li><a href="#m-more-stats">More Statistics Mode</a></li>
@@ -79,6 +79,7 @@
 			<app-header />
 			<create-deck-page />
 			<deck-pages />
+			<deck-page-header />
 			<deck-editor />
 			<more-stats />
 			<draw-sim />
@@ -93,6 +94,7 @@ import ManualIntroduction from '@/components/manual-chapters/ManualIntroduction.
 import AppHeader from '@/components/manual-chapters/AppHeader.vue'
 import CreateDeckPage from '@/components/manual-chapters/CreateDeckPage.vue'
 import DeckPages from '@/components/manual-chapters/DeckPages.vue'
+import DeckPageHeader from '@/components/manual-chapters/DeckPageHeader.vue'
 import DeckEditor from '@/components/manual-chapters/DeckEditor.vue'
 import MoreStats from '@/components/manual-chapters/MoreStats.vue'
 import DrawSim from '@/components/manual-chapters/DrawSim.vue'
@@ -100,7 +102,7 @@ import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vu
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment }
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment }
 }
 </script>
 
