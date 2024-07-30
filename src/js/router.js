@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '../views/HomePage.vue'
+import HomePage from '@/views/HomePage.vue'
 
 Vue.use(VueRouter)
 
@@ -93,7 +93,7 @@ const router = new VueRouter({
 		if (to.hash) {
 			return {
 				selector: to.hash,
-				offset: { y: 62 } // Equal to app header's height plus half of $lhse
+				offset: { y: 26.6667 } // Equal to $lhse at standard font size
 			}
 		} else if (savedPosition) {
 			return savedPosition
