@@ -129,6 +129,7 @@
 	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
+	outline-offset: 2px;
 	padding: $lhse*.25 .5em;
 	margin: -2px 0 2px;
 	min-width: 4.5em;

@@ -8,6 +8,11 @@
 	z-index: index($layers, scroll-to-top);
 	margin: 0 auto;
 	width: fit-content;
+	outline: 3px solid $color-section-border;
+	background: $color-input-border;
+	border-radius: $border-radius-button;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 
 	button {
 		@include button;
