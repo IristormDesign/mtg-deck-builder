@@ -73,6 +73,8 @@ export default {
 		showStarredCardIfAvailable () {
 			const deck = this.deck
 
+			if (!deck) return
+
 			if (deck.viewedStarredCard) {
 				deck.viewedCard = deck.viewedStarredCard
 			}
