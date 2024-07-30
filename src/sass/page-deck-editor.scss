@@ -245,7 +245,7 @@ $width-card-adder-button: $lhse*2.3333;
 			max-width: $width-card-buttons-narrow + $width-card-star + $width-qty-column - $lhse*.5;
 		}
 		.viewing-controls {
-			height: $lhse*3.125; // Adjust to a height that prevents wide gaps between card buttons.
+			height: $lhse*3.0833; // Adjust to a height that prevents wide gaps between card buttons.
 
 			.card-sorter label,
 			.card-group-switch h3 {
@@ -364,6 +364,10 @@ $width-card-adder-button: $lhse*2.3333;
 	@include viewing-controls-single-layer;
 
 	.deck-editor {
+		.viewing-controls {
+			width: 100%;
+			max-width: none;
+		}
 		.adder-controls {
 			width: auto;
 			max-width: none;

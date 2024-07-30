@@ -26,7 +26,6 @@
 }
 .mode-menu {
 	align-self: stretch;
-	padding: 0 $lhse*.5;
 	border-left: $border-sections;
 	border-right: $border-sections;
 
@@ -82,6 +81,8 @@
 
 @media (max-width: ($min-width-app*.875)) {
 	.mode-menu {
+		height: $lhse*2.25;
+
 		ul {
 			grid-template-columns: repeat(3, $lhse*3);
 		}
@@ -134,9 +135,10 @@
 }
 @media (max-width: ($min-width-app*.6)) {
 	.mode-menu {
-		ul {
-			align-items: stretch;
+		height: $lhse*2.25;
 
+		a {
+			height: $lhse*1.875;
 		}
 	}
 }
