@@ -58,7 +58,7 @@ export default {
 			) {
 				this.showStarredCardIfAvailable()
 			} else {
-				this.autoScrollDown()
+				this.maintainPagePosition()
 			}
 
 			this.$store.commit('focusCardButton', null)
@@ -88,18 +88,11 @@ export default {
 
 			this.$store.commit('decks', this.$store.state.decks)
 		},
-		autoScrollDown () {
+		maintainPagePosition () {
+			const prevPagePosition = window.scrollY
+
 			this.$nextTick(() => {
-				const destination = document.querySelector('.deck-header')
-
-				if (
-					!destination ||
-					this.$route.name === 'deckEditor'
-				) return
-
-				destination.scrollIntoView({
-					behavior: 'instant'
-				})
+				window.scroll(0, prevPagePosition)
 			})
 		}
 	}
