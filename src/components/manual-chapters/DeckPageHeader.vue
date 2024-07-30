@@ -8,8 +8,8 @@
 			<li><a href="#m-mode-menu">Mode menu</a></li>
 			<li><a href="#m-deck-actions">Deck actions</a></li>
 		</ul>
-		<p>Each of these sections will be explained in more detail.</p>
-		<p>The deck page header is always positioned by the top, regardless of whichever <a href="#m-deck-page-modes">deck page mode</a> is active.</p>
+		<p>Each of these sections is going to be explained in more detail.</p>
+		<p>The deck page header always exists on a deck page, regardless of whichever <a href="#m-deck-page-modes">deck page mode</a> is active.</p>
 
 		<deck-name />
 		<basic-statistics />

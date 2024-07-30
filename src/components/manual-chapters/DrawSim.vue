@@ -1,10 +1,10 @@
 <template>
 	<section id="m-draw-sim">
-		<h3>Draw Simulator Mode</h3>
+		<h3>Draw Simulator</h3>
 		<p>The Draw Simulator is a <a href="#m-deck-page-modes">deck page mode</a> where you can test the experience of drawing from a shuffled library of your deck’s cards.</p>
 		<p>You might find the Draw Simulator helpful for gaining more insight on how your deck could turn out in a game of <i>Magic</i>. After testing a few rounds, if you’re unsatisfied with the drawing results, you always can go back to the <a href="#m-deck-editor">Deck Editor mode</a> to make adjustments.</p>
-		<p>The page for the Draw Simulator contains the following parts, listed in order by their positions on the page from top to bottom, left to right:</p>
-		<ul>
+		<p>The page for the Draw Simulator contains the following parts, listed by the order of their positions on the page from top to bottom, left to right:</p>
+		<ol>
 			<li>
 				<p><strong>“Cards in Library” statistic</strong> – This shows the number of remaining cards you could draw. Whenever you start a new round, the “Cards in Library” are the total cards in your deck’s main <a href="#m-card-groups">card group</a>. (Cards in the sideboard aren’t used here.)</p>
 			</li>
@@ -26,6 +26,6 @@
 			<li>
 				<p><strong>Card image section</strong> – This works like the Deck Editor’s <a href="#m-card-image">card image</a> section.</p>
 			</li>
-		</ul>
+		</ol>
 	</section>
 </template>

@@ -1,6 +1,6 @@
 <template>
 	<section id="m-more-stats">
-		<h3>More Statistics Mode</h3>
+		<h3>More Statistics</h3>
 		<p>While the <a href="#m-deck-page-header">deck page header</a> shows you a few <a href="#m-basic-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows you an even greater array of information.</p>
 		<p>
 			<img class="screenshot"
