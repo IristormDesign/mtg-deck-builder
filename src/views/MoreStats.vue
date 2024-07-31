@@ -16,6 +16,8 @@
 
 			<more-stats-mana-values :deck="deck" />
 
+			<more-stats-supertypes :deck="deck" />
+
 			<more-stats-types :deck="deck" />
 
 			<more-stats-creature-subtypes
@@ -70,6 +72,7 @@
 import MoreStatsColors from '@/components/deck-page/MoreStatsColors.vue'
 import MoreStatsColorSymbols from '@/components/deck-page/MoreStatsColorSymbols.vue'
 import MoreStatsManaValues from '@/components/deck-page/MoreStatsManaValues.vue'
+import MoreStatsSupertypes from '@/components/deck-page/MoreStatsSupertypes.vue'
 import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
 import MoreStatsCreatureSubtypes from '@/components/deck-page/MoreStatsCreatureSubtypes.vue'
 import MoreStatsOtherSubtypes from '@/components/deck-page/MoreStatsOtherSubtypes.vue'
@@ -81,7 +84,7 @@ import getActiveDeck from '@/mixins/getActiveDeck.js'
 import moreStatsSubtypes from '@/mixins/moreStatsSubtypes.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsSupertypes, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
 	mixins: [getActiveDeck, moreStatsSubtypes]
 }
 </script>

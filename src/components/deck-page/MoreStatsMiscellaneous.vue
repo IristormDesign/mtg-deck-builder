@@ -41,30 +41,6 @@ export default {
 	data () {
 		return {
 			miscAttributes: {
-				'Basic land': {
-					ct: 0,
-					isMatch: (card, backFace) => {
-						const regex = /\bBasic (\w* )?Land\b/
-
-						if (backFace) {
-							return regex.test(card.type2)
-						} else {
-							return regex.test(card.type)
-						}
-					}
-				},
-				Legendary: {
-					ct: 0,
-					isMatch: (card, backFace) => {
-						const regex = /\bLegendary\b/
-
-						if (backFace) {
-							return regex.test(card.type2)
-						} else {
-							return regex.test(card.type)
-						}
-					}
-				},
 				Monocolored: {
 					ct: 0,
 					isMatch: (card, backFace) => {
