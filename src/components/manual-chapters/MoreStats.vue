@@ -28,7 +28,7 @@
 			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies among categories. In the majority of the categories, percentages are based on the total number of cards in your deck.</li>
 		</ul>
 		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
-		<p>In the table for almost every category that shows card counts, rows are sorted by attributes’ counts from greatest to least. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another predetermined order. The exception to this sorting method is the table for the “Mana Values of Spells” category, whose rows are always sorted by mana value from least to greatest.</p>
+		<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from greatest to least. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another predetermined order. The exceptions to this sorting method are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order.</p>
 		<p>In the “Mana Color Symbols” category, generic mana symbols and any mana symbols in cards’ abilities are ignored. Hybrid mana symbols are each counted as multiple basic mana symbols.</p>
 		<p>The Miscellaneous category tallies up cards that have any of the following characteristics:</p>
 		<ul>
