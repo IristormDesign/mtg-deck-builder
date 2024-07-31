@@ -92,7 +92,17 @@ export default {
 				card.qty = 0 // Don't allow negative numbers.
 			} else if (card.qty === 0) {
 				setTimeout(() => {
-					const confirmRemoval = confirm(`Remove “${card.name}” from the deck?`)
+					function cardName () {
+						if (
+							card.layout === 'modal_dfc' ||
+							card.layout === 'split'
+						) {
+							return `${card.name} // ${card.name2}`
+						} else {
+							return card.name
+						}
+					}
+					const confirmRemoval = confirm(`Remove “${cardName()}” from the deck?`)
 
 					if (confirmRemoval) {
 						this.removeCard()
