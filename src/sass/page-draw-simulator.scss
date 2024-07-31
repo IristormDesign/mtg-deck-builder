@@ -62,6 +62,7 @@
 		li {
 			&:nth-last-of-type(8) {
 				margin-bottom: $margin-card-gap-after;
+				box-shadow: $box-shadow-card-button-cluster;
 			}
 		}
 	}

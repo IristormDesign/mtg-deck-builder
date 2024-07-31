@@ -58,8 +58,13 @@ $min-height-card-list: $lhse*6;
 		&:first-child {
 			margin-top: 0;
 		}
-		&.gap-after {
+		&.gap-after,
+		&:last-of-type {
 			margin-bottom: $margin-card-gap-after;
+
+			.card-button {
+				box-shadow: $box-shadow-card-button-cluster;
+			}
 		}
 	}
 	.card-list-section-main-leave-active {
