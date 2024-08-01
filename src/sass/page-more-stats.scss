@@ -99,6 +99,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th {
 			text-align: right;
+			text-wrap: balance;
 
 			i {
 				font-weight: normal;

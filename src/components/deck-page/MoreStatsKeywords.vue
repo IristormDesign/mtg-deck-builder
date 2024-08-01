@@ -16,10 +16,10 @@
 				<thead v-html="tableHeadCommon" />
 				<tbody>
 					<tr
-						v-for="(ct, name) in keywordCounts"
-						:key="name"
+						v-for="(ct, kwName) in keywordCounts"
+						:key="kwName"
 					>
-						<th>{{ name }}</th>
+						<th :class="kwName.length > 15 ? 'small' : null">{{ kwName }}</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
