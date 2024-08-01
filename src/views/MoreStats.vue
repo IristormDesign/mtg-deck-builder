@@ -38,6 +38,10 @@
 				<more-stats-power-toughness :deck="deck" />
 			</template>
 
+			<template v-if="deck.dataVersion >= 3">
+				<more-stats-layouts :deck="deck" />
+			</template>
+
 			<more-stats-miscellaneous :deck="deck" />
 
 			<footer>
@@ -80,11 +84,12 @@ import MoreStatsRarities from '@/components/deck-page/MoreStatsRarities.vue'
 import MoreStatsMiscellaneous from '@/components/deck-page/MoreStatsMiscellaneous.vue'
 import MoreStatsKeywords from '@/components/deck-page/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/deck-page/MoreStatsPowerToughness.vue'
+import MoreStatsLayouts from '@/components/deck-page/MoreStatsLayouts.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import moreStatsSubtypes from '@/mixins/moreStatsSubtypes.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsSupertypes, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsSupertypes, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness, MoreStatsLayouts },
 	mixins: [getActiveDeck, moreStatsSubtypes]
 }
 </script>

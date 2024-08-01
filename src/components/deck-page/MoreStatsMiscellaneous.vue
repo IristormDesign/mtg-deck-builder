@@ -88,12 +88,6 @@ export default {
 							)
 						}
 					}
-				},
-				'Double-faced': {
-					ct: 0,
-					isMatch: (card) => {
-						return card.name2
-					}
 				}
 			}
 		}

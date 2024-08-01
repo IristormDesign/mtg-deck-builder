@@ -107,9 +107,9 @@ th {
 		color: $color-text-brighter;
 	}
 }
-small {
+small,
+.small {
 	font-size: 80%;
-	display: inline-block;
 }
 ul,
 ol {

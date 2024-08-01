@@ -67,12 +67,12 @@ export default {
 		}
 	},
 	mounted () {
-		this.countTypes()
+		this.countSupertypes()
 
 		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
 	},
 	methods: {
-		countTypes () {
+		countSupertypes () {
 			this.deck.cards.forEach(card => {
 				const countedOnFrontFace = {}
 

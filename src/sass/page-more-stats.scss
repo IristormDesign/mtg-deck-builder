@@ -88,9 +88,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				@include heading-font;
 				font-size: 60%;
 			}
-			td {
-				font-weight: $font-weight-label;
-			}
 		}
 		th,
 		td {
@@ -100,6 +97,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			line-height: .875;
 			height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
 		}
+		th {
+			text-align: right;
+
+			i {
+				font-weight: normal;
+			}
+		}
 		td {
 			padding-top: 0;
 			padding-bottom: 0;
@@ -107,13 +111,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			span {
 				font-size: 75%;
 				margin-left: .0417ch;
-			}
-		}
-		th {
-			text-align: right;
-
-			i {
-				font-weight: normal;
 			}
 		}
 		.distinct-head {
