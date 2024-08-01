@@ -63,22 +63,16 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		tbody {
 			position: relative;
+			border: $table-outer-borders;
 		}
 		tr {
 			&:hover {
 				background: rgba(#000, .25);
 			}
-			&:last-child {
-				th,
-				td {
-					border-bottom-width: 0;
-				}
-			}
 		}
 		.total {
 			th,
 			td {
-				border-top: $table-outer-borders;
 				font-size: $font-size-tiny;
 				color: $color-text-darker;
 				text-transform: uppercase;
@@ -99,7 +93,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		}
 		th {
 			text-align: right;
-			text-wrap: balance;
 
 			i {
 				font-weight: normal;

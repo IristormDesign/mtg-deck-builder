@@ -41,26 +41,6 @@ export default {
 	data () {
 		return {
 			miscAttributes: {
-				Monocolored: {
-					ct: 0,
-					isMatch: (card, backFace) => {
-						if (backFace && card.colors2) {
-							return card.colors2.length === 1
-						} else {
-							return card.colors.length === 1
-						}
-					}
-				},
-				Multicolored: {
-					ct: 0,
-					isMatch: (card, backFace) => {
-						if (backFace && card.colors2) {
-							return card.colors2.length > 1
-						} else {
-							return card.colors.length > 1
-						}
-					}
-				},
 				'Variable cost': {
 					ct: 0,
 					isMatch: (card, backFace) => {
