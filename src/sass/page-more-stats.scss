@@ -70,19 +70,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				background: rgba(#000, .25);
 			}
 		}
-		.total {
-			th,
-			td {
-				font-size: $font-size-tiny;
-				color: $color-text-darker;
-				text-transform: uppercase;
-				height: $lhse*1.3333;
-			}
-			th {
-				@include heading-font;
-				font-size: 60%;
-			}
-		}
 		th,
 		td {
 			padding: $lhse*.1667 $lhse*.25;
@@ -105,6 +92,17 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			span {
 				font-size: 75%;
 				margin-left: .0417ch;
+			}
+		}
+		.total {
+			tr {
+				height: $lhse;
+			}
+			th,
+			td {
+				color: $color-text-darker;
+				font-size: $font-size-small;
+				font-style: italic;
 			}
 		}
 		.distinct-head {
@@ -167,7 +165,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		justify-self: center;
 	}
 	.note {
-		font-size: 80%;
+		font-size: $font-size-small;
 		line-height: $line-height-standard*.9;
 		max-width: $max-width-content*.8;
 		margin-right: auto;

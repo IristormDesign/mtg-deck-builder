@@ -23,7 +23,9 @@
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
 				</template>
-				<tr class="total">
+			</tbody>
+			<tbody class="total">
+				<tr>
 					<th>All cards</th>
 					<td>{{ totalCards }}</td>
 					<td>100.0<span>%</span></td>

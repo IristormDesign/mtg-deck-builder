@@ -33,8 +33,8 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody>
-				<tr class="total">
+			<tbody class="total">
+				<tr>
 					<th>All spells</th>
 					<td>{{ allSpellsCount }}</td>
 					<td>100.0<span>%</span></td>

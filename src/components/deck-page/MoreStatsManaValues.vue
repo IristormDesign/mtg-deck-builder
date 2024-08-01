@@ -35,7 +35,9 @@
 						<td>{{ stats.ct }}</td>
 						<td>{{ stats.pct }}<span>%</span></td>
 					</tr>
-					<tr class="total">
+				</tbody>
+				<tbody class="total">
+					<tr>
 						<th>All spells</th>
 						<td>{{ allSpellsCount }}</td>
 						<td>100.0<span>%</span></td>

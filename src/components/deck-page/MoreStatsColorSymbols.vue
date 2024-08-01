@@ -25,7 +25,9 @@
 						<td>{{ symbol.pct.toFixed(1) }}<span>%</span></td>
 					</tr>
 				</template>
-				<tr class="total">
+			</tbody>
+			<tbody class="total">
+				<tr>
 					<th>Total symbols</th>
 					<td>{{ totalSymbolCount }}</td>
 					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
