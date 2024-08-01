@@ -28,18 +28,9 @@
 			<li>The second column (“Ct.”) displays the counts of the attributes.</li>
 			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of the percentages, indicated on each table’s last row, varies among categories. In the majority of the categories, percentages are based on the total number of cards in your deck.</li>
 		</ul>
-		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
+		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has a table subsection with columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
 		<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from greatest to least. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another predetermined order. The exceptions to this sorting method are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order.</p>
+		<p>Data tables only show rows for attributes that have a count of cards greater than zero.</p>
 		<p>In the “Mana Color Symbols” category, generic mana symbols and any mana symbols in cards’ abilities are ignored. Hybrid mana symbols are each counted as multiple basic mana symbols.</p>
-		<p>The Miscellaneous category tallies up cards that have any of the following characteristics:</p>
-		<ul>
-			<li><strong>Basic land</strong> – Cards of both the “land” type and “basic” supertype.</li>
-			<li><strong>Legendary</strong> – Cards of the “legendary” supertype.</li>
-			<li><strong>Monocolored</strong> – Cards of exactly one mana color.</li>
-			<li><strong>Multicolored</strong> – Cards of two or more mana colors.</li>
-			<li><strong>Variable cost</strong> – Cards using the letter X in their mana costs.</li>
-			<li><strong>Variable P/T</strong> – Cards using a star symbol for their power or toughness.</li>
-			<li><strong>Double-faced</strong> – Double-faced cards (they have a second card frame on their back side instead of the normal <i>Magic</i> card back) <em>or</em> split cards (they have two shrunken card frames on the front side).</li>
-		</ul>
 	</section>
 </template>
