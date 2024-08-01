@@ -60,11 +60,6 @@
 						</li>
 					</ul>
 				</div>
-				<p class="return">
-					<router-link :to="{ name: 'deckEditor' }">
-						◂ Return to the Deck Editor
-					</router-link>
-				</p>
 			</footer>
 		</div>
 	</div>
