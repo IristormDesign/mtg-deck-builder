@@ -22,7 +22,7 @@
 						<th>
 							<span class="mana-symbol">
 								<span
-									v-if="shrinkSymbolText(name)"
+									v-if="name.length > 1"
 									class="double-digits"
 								>
 									{{ name }}
@@ -34,6 +34,13 @@
 						</th>
 						<td>{{ stats.ct }}</td>
 						<td>{{ stats.pct }}<span>%</span></td>
+					</tr>
+				</tbody>
+				<tbody v-show="variableStat.ct">
+					<tr>
+						<th>Variable</th>
+						<td>{{ variableStat.ct }}</td>
+						<td>{{ variableStat.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
 				<tbody class="total">
@@ -59,6 +66,7 @@ export default {
 	data () {
 		return {
 			mvStats: {},
+			variableStat: { ct: 0 },
 			allSpellsCount: 0
 		}
 	},
@@ -68,6 +76,8 @@ export default {
 	},
 	methods: {
 		countManaValues () {
+			const regexVariableCost = /\{X\}/
+
 			this.deck.cards.forEach(({ mana, cmc, qty }) => {
 				if (!mana) return // Exclude land cards
 
@@ -78,18 +88,24 @@ export default {
 				}
 
 				this.mvStats[cmc].ct += qty
+
+				if (regexVariableCost.test(mana)) {
+					this.variableStat.ct += qty
+				}
+
 				this.allSpellsCount += qty
 			})
 		},
 		calculatePercentageOfSpells () {
-			for (const statName in this.mvStats) {
-				const stat = this.mvStats[statName]
-
-				stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
+			const returnPct = (stat) => {
+				return ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
 			}
-		},
-		shrinkSymbolText (string) {
-			return string.length > 1
+
+			for (const statName in this.mvStats) {
+				this.mvStats[statName].pct = returnPct(this.mvStats[statName])
+			}
+
+			this.variableStat.pct = returnPct(this.variableStat)
 		}
 	}
 }

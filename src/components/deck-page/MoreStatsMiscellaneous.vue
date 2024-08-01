@@ -41,18 +41,6 @@ export default {
 	data () {
 		return {
 			miscAttributes: {
-				'Variable cost': {
-					ct: 0,
-					isMatch: (card, backFace) => {
-						const regex = /\{X\}/
-
-						if (backFace) {
-							return regex.test(card.mana2)
-						} else {
-							return regex.test(card.mana)
-						}
-					}
-				},
 				'Variable P/T': {
 					ct: 0,
 					isMatch: (card, backFace) => {
