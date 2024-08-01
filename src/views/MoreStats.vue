@@ -42,8 +42,6 @@
 				<more-stats-layouts :deck="deck" />
 			</template>
 
-			<more-stats-miscellaneous :deck="deck" />
-
 			<footer>
 				<div class="note">
 					<h4>Notes About These Statistics</h4>
@@ -81,7 +79,6 @@ import MoreStatsTypes from '@/components/deck-page/MoreStatsTypes.vue'
 import MoreStatsCreatureSubtypes from '@/components/deck-page/MoreStatsCreatureSubtypes.vue'
 import MoreStatsOtherSubtypes from '@/components/deck-page/MoreStatsOtherSubtypes.vue'
 import MoreStatsRarities from '@/components/deck-page/MoreStatsRarities.vue'
-import MoreStatsMiscellaneous from '@/components/deck-page/MoreStatsMiscellaneous.vue'
 import MoreStatsKeywords from '@/components/deck-page/MoreStatsKeywords.vue'
 import MoreStatsPowerToughness from '@/components/deck-page/MoreStatsPowerToughness.vue'
 import MoreStatsLayouts from '@/components/deck-page/MoreStatsLayouts.vue'
@@ -89,7 +86,7 @@ import getActiveDeck from '@/mixins/getActiveDeck.js'
 import moreStatsSubtypes from '@/mixins/moreStatsSubtypes.js'
 
 export default {
-	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsSupertypes, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsMiscellaneous, MoreStatsKeywords, MoreStatsPowerToughness, MoreStatsLayouts },
+	components: { MoreStatsColors, MoreStatsColorSymbols, MoreStatsManaValues, MoreStatsSupertypes, MoreStatsTypes, MoreStatsCreatureSubtypes, MoreStatsOtherSubtypes, MoreStatsRarities, MoreStatsKeywords, MoreStatsPowerToughness, MoreStatsLayouts },
 	mixins: [getActiveDeck, moreStatsSubtypes]
 }
 </script>

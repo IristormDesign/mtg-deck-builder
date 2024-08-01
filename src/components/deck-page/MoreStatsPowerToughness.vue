@@ -32,13 +32,32 @@
 					<td>{{ toughness.least }}</td>
 				</tr>
 			</tbody>
+			<template v-if="variablePT.ct">
+				<thead v-html="tableHeadCommon" />
+				<tbody v-show="variablePT.ct">
+					<tr>
+						<th>Variable P/T</th>
+						<td>{{ variablePT.ct }}</td>
+						<td>{{ variablePT.pct }}<span>%</span></td>
+					</tr>
+				</tbody>
+				<tbody class="total">
+					<tr>
+						<th>All spells</th>
+						<td>{{ allSpellsCount }}</td>
+						<td>100.0<span>%</span></td>
+					</tr>
+				</tbody>
+			</template>
 		</table>
 	</section>
 </template>
 
 <script>
+import moreStats from '@/mixins/moreStats.js'
 
 export default {
+	mixins: [moreStats],
 	props: {
 		deck: Object
 	},
@@ -49,11 +68,18 @@ export default {
 			},
 			toughness: {
 				total: 0
-			}
+			},
+			variablePT: {
+				ct: 0,
+				pct: 0
+			},
+			allSpellsCount: 0
 		}
 	},
 	mounted () {
 		this.setUpPTStats()
+		this.countVariablePT()
+		this.calculatePercentageOfSpells(this.variablePT)
 	},
 	methods: {
 		setUpPTStats () {
@@ -114,6 +140,45 @@ export default {
 				stats.average /= stats.total
 			}
 			stats.average = stats.average.toFixed(1)
+		},
+		countVariablePT () {
+			this.deck.cards.forEach(card => {
+				function hasVariablePT (forBackFace) {
+					if (forBackFace) {
+						return (
+							card.power2 === '*' ||
+							card.toughness2 === '*'
+						)
+					} else {
+						return (
+							card.power === '*' ||
+							card.toughness === '*'
+						)
+					}
+				}
+
+				let countedOnFrontFace = false
+
+				const variablePTPerFace = (forBackFace) => {
+					if (
+						!countedOnFrontFace &&
+						hasVariablePT(forBackFace)
+					) {
+						this.variablePT.ct += card.qty
+						countedOnFrontFace = true
+					}
+				}
+
+				variablePTPerFace()
+				variablePTPerFace(true)
+
+				if (card.mana || card.mana2) {
+					this.allSpellsCount += card.qty
+				}
+			})
+		},
+		calculatePercentageOfSpells (stat) {
+			stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
 		}
 	}
 }

@@ -64,6 +64,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		tbody {
 			position: relative;
 			border: $table-outer-borders;
+			border-top-width: 0;
 		}
 		tr {
 			&:hover {
