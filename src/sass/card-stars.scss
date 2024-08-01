@@ -103,7 +103,7 @@ $scale-card-star: scale(1.0833);
 				background: $color-group-bg-darker;
 
 				&:not(:checked) {
-					opacity: .3820;
+					opacity: .25;
 					transition-delay: .75s;
 					transition-duration: 1.5s;
 
