@@ -13,13 +13,14 @@
 			<li>Colors of Spells</li>
 			<li>Mana Color Symbols</li>
 			<li>Mana Values of Spells (a.k.a. mana curve)</li>
+			<li>Supertypes</li>
 			<li>Types</li>
 			<li>Creature Subtypes</li>
 			<li>Other Subtypes</li>
 			<li>Rarities</li>
 			<li>Keyword Abilities</li>
 			<li>Power & Toughness</li>
-			<li>Miscellaneous</li>
+			<li>Layouts</li>
 		</ul>
 		<p>For almost every category, their tables have the following columns:</p>
 		<ul>
