@@ -1,7 +1,13 @@
 <template>
 	<section>
 		<h4>Supertypes</h4>
-		<table>
+		<div
+			v-if="noData"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon" />
 			<tbody>
 				<template v-for="(supertype, supertypeName) in supertypeStats">
@@ -66,6 +72,13 @@ export default {
 					regex: /\bWorld .+/
 				}
 			}
+		}
+	},
+	computed: {
+		noData () {
+			return Object.values(this.supertypeStats).every(
+				stat => stat.ct === 0
+			)
 		}
 	},
 	mounted () {
