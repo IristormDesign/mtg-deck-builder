@@ -51,8 +51,8 @@ img {
 }
 @media (max-width: ($min-width-app*.75)) {
 	.content-box {
-		padding-right: $lhse*.75;
-		padding-left: $lhse*.75;
+		padding-right: $lhse;
+		padding-left: $lhse;
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
@@ -60,6 +60,8 @@ img {
 		margin: 0;
 		border: 0;
 		border-radius: 0;
+		padding-right: $lhse*.75;
+		padding-left: $lhse*.75;
 	}
 }
 @media (max-width: 24em) {

@@ -72,7 +72,7 @@
 			</div>
 		</nav>
 
-		<div class="the-manual">
+		<div class="manual-contents">
 			<manual-introduction />
 			<app-header />
 			<create-deck-page />

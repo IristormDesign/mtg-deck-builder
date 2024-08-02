@@ -14,7 +14,7 @@
 	}
 	header,
 	.table-of-contents,
-	.the-manual {
+	.manual-contents {
 		background: $color-group-bg;
 		padding: $lhse $lhse*1.5;
 		border-radius: $border-radius-group;
@@ -74,15 +74,25 @@
 			text-decoration: none;
 		}
 	}
-	.the-manual {
+	.manual-contents {
 		width: 100%;
-		padding-top: $lhse*.25;
-		padding-bottom: $lhse*.5;
 		max-width: $max-width-content;
 		margin-right: auto;
 		margin-left: auto;
+		background: none;
+		padding-right: 0;
+		padding-left: 0;
+		padding: 0;
 
 		> section {
+			background: $color-group-bg;
+			padding: $lhse*.5 $lhse*1.5;
+			margin-bottom: $lhse*.25;
+			border-radius: $border-radius-group;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 			section {
 				&:first-of-type {
 					margin-top: $lhse*1.5;
@@ -113,8 +123,15 @@
 				}
 			}
 		}
-		h3 {
+		h3,
+		h4 {
 			@include pronounced-heading;
+		}
+		h3 {
+			margin-top: $lhse*.5;
+		}
+		h4 {
+			margin-top: $lhse*1.25;
 		}
 		.mana-symbol,
 		.rarity-symbol {
@@ -169,16 +186,19 @@
 		.toc-links {
 			columns: 2;
 		}
-		.the-manual {
-			padding-right: $lhse*.75;
-			padding-left: $lhse*.75;
+		.manual-contents {
+			padding: 0;
+
+			> section {
+				padding: $lhse*.5 $lhse;
+			}
 		}
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
 	.manual-page {
 		header,
-		.the-manual {
+		.manual-contents {
 			display: block;
 			border: 0;
 			border-radius: 0;
@@ -189,7 +209,12 @@
 		.table-of-contents {
 			border-radius: 0;
 		}
-		.the-manual {
+		.manual-contents {
+			> section {
+				border-radius: 0;
+				padding-right: $lhse*.75;
+				padding-left: $lhse*.75;
+			}
 			section {
 				&:target {
 					outline: none;
