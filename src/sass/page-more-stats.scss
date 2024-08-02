@@ -1,35 +1,39 @@
 @import 'variables';
-$max-width-stat-tables: $lhse*10; // Wide enough to prevent the Keyword Abilities section from not horizontally scrolling with the "Undergrowth" property.
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 .more-stats {
 	margin: 0 auto $lhse*.5;
-	max-width: 100%;
+	max-width: none;
 
 	.no-cards {
-		p {
+		h4 {
 			margin-top: 0;
+		}
+		p {
 			max-width: $max-width-narrow-message;
 		}
 	}
 	.tables {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		gap: $lhse;
 		margin-bottom: $lhse*.5;
+		width: min-content;
 	}
 	section {
-		width: 100%;
-		max-width: $max-width-stat-tables;
+		min-width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword with breaking layout.
 		height: min-content;
+		border: 2px solid $color-group-bg;
+		outline: 1px solid $color-section-border;
 
 		tbody {
 			cursor: default;
 		}
 		h4 {
-			margin: 0 0 1.6667px;
+			margin: 0;
+			border-bottom: 1px solid $color-group-bg;
 			padding: $lhse*.25;
 			background: $color-heading-bg;
 		}
@@ -75,20 +79,22 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		td {
 			padding: $lhse*.1667 $lhse*.25;
 			border: $table-inner-borders;
+			border-width: 1px 2px;
 			text-align: right;
 			line-height: .875;
-			height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
 		}
 		th {
 			text-align: right;
 
-			i {
-				font-weight: normal;
+			small {
+				margin-right: .5em;
+				line-height: .875 * 1.25; // Tall enough to make the height of the Rarities table's rows match the heights of the other tables' rows.
 			}
 		}
 		td {
 			padding-top: 0;
 			padding-bottom: 0;
+			height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
 
 			span {
 				font-size: 75%;
@@ -96,9 +102,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 			}
 		}
 		.total {
-			tr {
-				height: $lhse;
-			}
 			th,
 			td {
 				color: $color-text-darker;
@@ -116,10 +119,13 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		.mana-symbol {
 			margin-left: auto;
 		}
+		.rarity-symbol {
+			filter: saturate(.875);
+		}
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 13.5;
+		max-height: $lhse * 13.4;
 		background:
 			/* Top shadow cover */
 			linear-gradient(
@@ -159,18 +165,16 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-evenly;
-		grid-column: span 5;
-		border: $border-sections;
-		padding: $lhse*.5 $lhse*.5 0;
-		width: fit-content;
+		grid-column: 2 / 4;
 		justify-self: center;
+		border: $border-sections;
+		margin-top: 0;
+		padding: $lhse $lhse $lhse*.25;
 	}
 	.note {
 		font-size: $font-size-small;
 		line-height: $line-height-standard*.9;
-		max-width: $max-width-content*.8;
-		margin-right: auto;
-		margin-left: auto;
+		max-width: $max-width-content;
 
 		h4 {
 			margin-top: 0;
@@ -181,47 +185,54 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-
-	small {
-		margin-right: .5em;
-	}
 }
 
-@media (max-width: (1920px * .75)) {
-	.more-stats {
-		.tables {
-			grid-template-columns: repeat(4, 1fr);
-		}
-		footer {
-			grid-column: span 2;
-		}
-	}
-}
-@media (max-width: (1920px * .625)) {
+@media (max-width: (1920px * divide(2, 3))) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
+		section {
+			grid-column: span 1;
+		}
+		footer {
+			grid-column: span 3;
+		}
 	}
 }
-@media (max-width: ($width-app-breakpoint-tablet)) {
+@media (max-width: $min-width-app) {
 	.more-stats {
 		.tables {
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: 2fr;
 		}
 		footer {
 			grid-column: span 2;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .75)) {
+	.more-stats {
+		.tables {
+			gap: $lhse*.5
+		}
+		footer {
+			padding: $lhse*.5 $lhse*.5 0;
 		}
 	}
 }
 @media (max-width: ($min-width-app*.6667)) {
 	.more-stats {
+
 		.tables {
 			grid-template-columns: 1fr;
+			width: 100%;
 		}
 		footer {
 			grid-column: span 1;
-			max-width: $max-width-stat-tables;
+			margin-top: $lhse*.5;
+		}
+		.note {
+			max-width: $max-width-content*.6667;
 		}
 	}
 }

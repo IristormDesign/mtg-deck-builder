@@ -15,7 +15,7 @@
 								class="vert-center-cell"
 							>
 								<small>{{ name }}</small>
-								<div v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
+								<span v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
 							</div>
 							<div v-else>Other</div>
 						</th>
