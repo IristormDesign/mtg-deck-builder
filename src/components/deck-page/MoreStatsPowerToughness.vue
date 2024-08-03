@@ -2,36 +2,38 @@
 	<section>
 		<h4>Power & Toughness</h4>
 		<div
-			v-if="power.total === 0 && toughness.total === 0"
+			v-if="ptTotal === 0 && variablePT.ct === 0"
 			class="no-data"
 		>
 			(None)
 		</div>
 		<table v-else>
-			<thead class="distinct-head">
-				<tr>
-					<th></th>
-					<th>Power</th>
-					<th>Tough.</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>Greatest</th>
-					<td>{{ power.greatest }}</td>
-					<td>{{ toughness.greatest }}</td>
-				</tr>
-				<tr>
-					<th>Average</th>
-					<td>{{ power.average }}</td>
-					<td>{{ toughness.average }}</td>
-				</tr>
-				<tr>
-					<th>Least</th>
-					<td>{{ power.least }}</td>
-					<td>{{ toughness.least }}</td>
-				</tr>
-			</tbody>
+			<template v-if="ptTotal > 0">
+				<thead class="distinct-head">
+					<tr>
+						<th></th>
+						<th>Power</th>
+						<th>Tough.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Greatest</th>
+						<td>{{ powerStats.greatest }}</td>
+						<td>{{ toughnessStats.greatest }}</td>
+					</tr>
+					<tr>
+						<th>Average</th>
+						<td>{{ powerStats.average }}</td>
+						<td>{{ toughnessStats.average }}</td>
+					</tr>
+					<tr>
+						<th>Least</th>
+						<td>{{ powerStats.least }}</td>
+						<td>{{ toughnessStats.least }}</td>
+					</tr>
+				</tbody>
+			</template>
 			<template v-if="variablePT.ct">
 				<thead v-html="tableHeadCommon" />
 				<tbody v-show="variablePT.ct">
@@ -63,12 +65,9 @@ export default {
 	},
 	data () {
 		return {
-			power: {
-				total: 0
-			},
-			toughness: {
-				total: 0
-			},
+			powerStats: {},
+			toughnessStats: {},
+			ptTotal: 0,
 			variablePT: {
 				ct: 0,
 				pct: 0
@@ -78,6 +77,7 @@ export default {
 	},
 	mounted () {
 		this.setUpPTStats()
+
 		this.countVariablePT()
 		this.calculatePercentageOfSpells(this.variablePT)
 	},
@@ -88,8 +88,8 @@ export default {
 			)
 
 			if (cardsWithPT.length > 0) {
-				const p = this.power
-				const t = this.toughness
+				const p = this.powerStats
+				const t = this.toughnessStats
 
 				p.greatest = 0
 				t.greatest = 0
@@ -101,6 +101,13 @@ export default {
 				cardsWithPT.forEach(card => {
 					this.determinePTStats(card, 'power')
 					this.determinePTStats(card, 'toughness')
+
+					if (
+						!isNaN(card.power) ||
+						!isNaN(card.toughness)
+					) { // If the P/T value is an integer (not a star symbol)...
+						this.ptTotal += card.qty
+					}
 				})
 
 				this.calculatePTAverage('power')
@@ -115,10 +122,9 @@ export default {
 
 				if (isNaN(ptNum)) return // The card's power/toughness value needs to be actual digits rather than `NaN`. If it does happen to be `NaN`, that means it has a variable symbol for P/T, and it should be ignored for these statistics.
 
-				const ptDataSet = this[ptLabel]
+				const ptDataSet = this[ptLabel + 'Stats']
 
 				ptDataSet.average += ptNum * card.qty
-				ptDataSet.total += card.qty
 
 				if (ptNum > ptDataSet.greatest) {
 					ptDataSet.greatest = ptNum
@@ -132,12 +138,10 @@ export default {
 			ptPerFace(ptLabel + '2') // For P/T on card's back face, if available.
 		},
 		calculatePTAverage (ptLabel) {
-			if (!ptLabel) return
+			const stats = this[ptLabel + 'Stats']
 
-			const stats = this[ptLabel]
-
-			if (stats.total > 0) {
-				stats.average /= stats.total
+			if (this.ptTotal > 0) {
+				stats.average /= this.ptTotal
 			}
 			stats.average = stats.average.toFixed(1)
 		},
