@@ -109,14 +109,13 @@ export default {
 	methods: {
 		countColorSymbols () {
 			this.deck.cards.forEach(card => {
-				const symbols = this.colorSymbols
 				const countedOnFrontFace = {}
 
-				for (const symbolName in symbols) {
+				for (const symbolName in this.colorSymbols) {
 					const symbolsPerFace = (faceMana) => {
 						if (!faceMana) return
 
-						const allSymbolMatches = faceMana.match(symbols[symbolName].regex)
+						const allSymbolMatches = faceMana.match(this.colorSymbols[symbolName].regex)
 
 						if (!allSymbolMatches) return
 

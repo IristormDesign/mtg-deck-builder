@@ -56,35 +56,15 @@ export default {
 	data () {
 		return {
 			colorStatsBasic: {
-				White: {
-					ct: 0,
-					pct: 0
-				},
-				Blue: {
-					ct: 0,
-					pct: 0
-				},
-				Black: {
-					ct: 0,
-					pct: 0
-				},
-				Red: {
-					ct: 0,
-					pct: 0
-				},
-				Green: {
-					ct: 0,
-					pct: 0
-				}
+				White: {},
+				Blue: {},
+				Black: {},
+				Red: {},
+				Green: {}
 			},
 			colorStatsExtra: {
-				Colorless: {
-					ct: 0,
-					pct: 0
-				},
+				Colorless: {},
 				Monocolored: {
-					ct: 0,
-					pct: 0,
 					isMatch: (card, backFace) => {
 						if (backFace && card.colors2) {
 							return card.colors2.length === 1
@@ -94,8 +74,6 @@ export default {
 					}
 				},
 				Multicolored: {
-					ct: 0,
-					pct: 0,
 					isMatch: (card, backFace) => {
 						if (backFace && card.colors2) {
 							return card.colors2.length > 1
@@ -135,6 +113,10 @@ export default {
 
 					function count (colorProp) {
 						if (!countedOnFrontFace[colorProp]) {
+							if (!statsObject[colorProp].ct) {
+								statsObject[colorProp].ct = 0
+							}
+
 							statsObject[colorProp].ct += qty
 							countedOnFrontFace[colorProp] = true
 						}

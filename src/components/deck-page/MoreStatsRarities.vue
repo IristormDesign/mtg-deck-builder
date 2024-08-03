@@ -61,27 +61,27 @@ export default {
 	},
 	methods: {
 		countRarities () {
-			const ct = this.rarityCounts
+			const cts = this.rarityCounts
 
 			this.deck.cards.forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
-						ct.Common += qty
+						cts.Common += qty
 						break
 					case 'uncommon':
-						ct.Uncommon += qty
+						cts.Uncommon += qty
 						break
 					case 'rare':
-						ct.Rare += qty
+						cts.Rare += qty
 						break
 					case 'mythic':
-						ct['Mythic rare'] += qty
+						cts['Mythic rare'] += qty
 						break
 					case 'special':
-						ct.Special += qty
+						cts.Special += qty
 						break
 					default:
-						ct.Other += qty
+						cts.Other += qty
 				}
 			})
 		}

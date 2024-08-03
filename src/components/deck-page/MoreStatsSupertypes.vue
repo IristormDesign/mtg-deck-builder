@@ -97,11 +97,12 @@ export default {
 					for (const supertypeName in this.supertypeStats) {
 						const stat = this.supertypeStats[supertypeName]
 
-						if (stat.regex.test(typeLine)) {
-							if (!countedOnFrontFace[supertypeName]) {
-								stat.ct += card.qty
-								countedOnFrontFace[supertypeName] = true
-							}
+						if (
+							stat.regex.test(typeLine) &&
+							!countedOnFrontFace[supertypeName]
+						) {
+							stat.ct += card.qty
+							countedOnFrontFace[supertypeName] = true
 						}
 					}
 				}
