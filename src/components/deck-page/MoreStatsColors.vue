@@ -133,57 +133,42 @@ export default {
 				const colorsPerFace = (faceColors) => {
 					if (!faceColors) return // Exit now if this function would try to count the undefined data of a single-faced card's back face.
 
-					const stats = this.colorStatsBasic
+					function count (colorProp) {
+						if (!countedOnFrontFace[colorProp]) {
+							statsObject[colorProp].ct += qty
+							countedOnFrontFace[colorProp] = true
+						}
+					}
+
+					let statsObject = this.colorStatsBasic
 
 					faceColors.forEach(color => {
 						switch (color) {
 							case 'W':
-								if (!countedOnFrontFace.White) {
-									stats.White.ct += qty
-									countedOnFrontFace.White = true
-								}
+								count('White')
 								break
 							case 'U':
-								if (!countedOnFrontFace.Blue) {
-									stats.Blue.ct += qty
-									countedOnFrontFace.Blue = true
-								}
+								count('Blue')
 								break
 							case 'B':
-								if (!countedOnFrontFace.Black) {
-									stats.Black.ct += qty
-									countedOnFrontFace.Black = true
-								}
+								count('Black')
 								break
 							case 'R':
-								if (!countedOnFrontFace.Red) {
-									stats.Red.ct += qty
-									countedOnFrontFace.Red = true
-								}
+								count('Red')
 								break
 							case 'G':
-								if (!countedOnFrontFace.Green) {
-									stats.Green.ct += qty
-									countedOnFrontFace.Green = true
-								}
+								count('Green')
 						}
 					})
 
+					statsObject = this.colorStatsExtra
+
 					if (faceColors.length === 1) {
-						if (!countedOnFrontFace.Monocolored) {
-							this.colorStatsExtra.Monocolored.ct += qty
-							countedOnFrontFace.Monocolored = true
-						}
+						count('Monocolored')
 					} else if (faceColors.length > 1) {
-						if (!countedOnFrontFace.Multicolored) {
-							this.colorStatsExtra.Multicolored.ct += qty
-							countedOnFrontFace.Multicolored = true
-						}
+						count('Multicolored')
 					} else {
-						if (!countedOnFrontFace.Colorless) {
-							this.colorStatsExtra.Colorless.ct += qty
-							countedOnFrontFace.Colorless = true
-						}
+						count('Colorless')
 					}
 				}
 
