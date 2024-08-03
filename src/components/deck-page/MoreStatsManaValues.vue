@@ -78,8 +78,10 @@ export default {
 		countManaValues () {
 			const regexVariableCost = /\{X\}/
 
-			this.deck.cards.forEach(({ mana, cmc, qty }) => {
-				if (!mana) return // Exclude land cards
+			this.deck.cards.forEach(({ mana, cmc, type, qty }) => {
+				const isNotSpell = /\bLand\b/.test(type)
+
+				if (isNotSpell) return
 
 				if (!this.mvStats[cmc]) {
 					this.mvStats[cmc] = {

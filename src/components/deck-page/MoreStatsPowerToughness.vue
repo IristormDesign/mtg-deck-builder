@@ -172,7 +172,16 @@ export default {
 				variablePTPerFace()
 				variablePTPerFace(true)
 
-				if (card.mana || card.mana2) {
+				function faceIsSpell (faceType) {
+					if (!faceType) return
+
+					return !/\bLand\b/.test(faceType)
+				}
+
+				if (
+					faceIsSpell(card.type) ||
+					faceIsSpell(card.type2)
+				) {
 					this.allSpellsCount += card.qty
 				}
 			})

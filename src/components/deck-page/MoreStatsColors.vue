@@ -130,8 +130,7 @@ export default {
 				const qty = card.qty
 				const countedOnFrontFace = {}
 
-				const colorsPerFace = (faceColors, faceMana) => {
-					if (!faceMana) return // Card isn't a spell, so don't count it.
+				const colorsPerFace = (faceColors) => {
 					if (!faceColors) return // Exit now if this function would try to count the undefined data of a single-faced card's back face.
 
 					const stats = this.colorStatsBasic
@@ -188,10 +187,23 @@ export default {
 					}
 				}
 
-				colorsPerFace(card.colors, card.mana)
-				colorsPerFace(card.colors2, card.mana2)
+				function faceIsSpell (faceType) {
+					if (!faceType) return
 
-				if (card.mana || card.mana2) {
+					return !/\bLand\b/.test(faceType)
+				}
+
+				if (faceIsSpell(card.type)) {
+					colorsPerFace(card.colors)
+				}
+				if (faceIsSpell(card.type2)) {
+					colorsPerFace(card.colors2)
+				}
+
+				if (
+					faceIsSpell(card.type) ||
+					faceIsSpell(card.type2)
+				) {
 					this.allSpellsCount += qty
 				}
 			})
