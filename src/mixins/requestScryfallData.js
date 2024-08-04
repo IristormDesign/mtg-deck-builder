@@ -149,6 +149,10 @@ export default {
 					newCard.type = dataFace1.type_line
 					newCard.type2 = dataFace2.type_line
 
+					if (!data.cmc) { // Needed for special exceptions such as: https://scryfall.com/card/sld/1544/adrix-and-nev-twincasters-adrix-and-nev-twincasters
+						newCard.cmc = dataFace1.cmc
+					}
+
 					if (data.colors) {
 						newCard.colors = data.colors
 					} else {
@@ -186,7 +190,9 @@ export default {
 					newCard.toughness = data.toughness
 				}
 
-				newCard.cmc = data.cmc
+				if (data.cmc) {
+					newCard.cmc = data.cmc
+				}
 				newCard.rarity = data.rarity
 				newCard.keywords = data.keywords
 				newCard.layout = data.layout
