@@ -3,6 +3,7 @@
 
 .app-footer {
 	background: rgba($color-group-bg-darker, .5);
+	border-top: 1px solid $color-content-bg;
 	color: $color-text-darker;
 	position: relative;
 	padding: $lhse*1.25 0;

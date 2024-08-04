@@ -67,6 +67,10 @@ export default {
 					ct: 0,
 					regex: /\bSnow .+/
 				},
+				Token: {
+					ct: 0,
+					regex: /\bToken .+/
+				},
 				World: {
 					ct: 0,
 					regex: /\bWorld .+/
