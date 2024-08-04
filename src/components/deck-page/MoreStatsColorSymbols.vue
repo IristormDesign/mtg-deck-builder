@@ -10,7 +10,7 @@
 		<table v-else>
 			<thead v-html="tableHeadCommon" />
 			<tbody>
-				<template v-for="symbol in colorSymbols">
+				<template v-for="symbol in colorSymbolsMinusHybrid">
 					<tr
 						v-if="symbol.ct > 0"
 						:key="symbol.name"
@@ -18,13 +18,25 @@
 						<th>
 							<div class="vert-center-cell">
 								<small>{{ symbol.name }}</small>
-								<div v-html="manaSymbol[symbol.letter]" />
+								<div v-html="manaSymbol[symbol.key]" />
 							</div>
 						</th>
 						<td>{{ symbol.ct }}</td>
 						<td>{{ symbol.pct.toFixed(1) }}<span>%</span></td>
 					</tr>
 				</template>
+			</tbody>
+			<tbody v-show="colorSymbols.hybrid.ct > 0">
+				<tr>
+					<th>
+						<div class="vert-center-cell">
+							<small>{{ colorSymbols.hybrid.name }}</small>
+							<div v-html="manaSymbol[colorSymbols.hybrid.key]" />
+						</div>
+					</th>
+					<td>{{ colorSymbols.hybrid.ct }}</td>
+					<td>{{ colorSymbols.hybrid.pct.toFixed(1) }}<span>%</span></td>
+				</tr>
 			</tbody>
 			<tbody class="total">
 				<tr>
@@ -51,51 +63,70 @@ export default {
 			colorSymbols: {
 				white: {
 					ct: 0,
-					letter: 'w',
+					key: 'w',
 					name: 'White',
 					regex: /.W./g
 				},
 				blue: {
 					ct: 0,
-					letter: 'u',
+					key: 'u',
 					name: 'Blue',
 					regex: /.U./g
 				},
 				black: {
 					ct: 0,
-					letter: 'b',
+					key: 'b',
 					name: 'Black',
 					regex: /.B./g
 				},
 				red: {
 					ct: 0,
-					letter: 'r',
+					key: 'r',
 					name: 'Red',
 					regex: /.R./g
 				},
 				green: {
 					ct: 0,
-					letter: 'g',
+					key: 'g',
 					name: 'Green',
 					regex: /.G./g
 				},
 				colorless: {
 					ct: 0,
-					letter: 'c',
+					key: 'c',
 					name: 'Colorless',
 					regex: /.C./g
+				},
+				snow: {
+					ct: 0,
+					key: 's',
+					name: 'Snow',
+					regex: /.S./g
+				},
+				hybrid: {
+					ct: 0,
+					key: 'hybrid',
+					name: 'Hybrid',
+					regex: /.\/./g
 				}
 			}
 		}
 	},
 	computed: {
+		colorSymbolsMinusHybrid () {
+			const csCopy = { ...this.colorSymbols }
+
+			delete csCopy.hybrid
+
+			return csCopy
+		},
 		totalSymbolCount () {
-			return Object.values(this.colorSymbols).reduce(
+			return Object.values(this.colorSymbolsMinusHybrid).reduce(
 				(total, symbol) => total + symbol.ct, 0
 			)
 		},
 		totalSymbolPercentage () {
-			return Object.values(this.colorSymbols).reduce(
+			return Object.values(this.colorSymbolsMinusHybrid).reduce(
 				(total, symbol) => total + symbol.pct, 0
 			)
 		}

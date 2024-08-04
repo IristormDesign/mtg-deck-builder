@@ -116,12 +116,6 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 				color: $color-text-over-mythic-very-dim;
 			}
 		}
-		.mana-symbol {
-			margin-left: auto;
-		}
-		.rarity-symbol {
-			filter: saturate(.875);
-		}
 	}
 	.height-limiter {
 		overflow-y: auto;
@@ -160,6 +154,9 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		font-size: 112.5%;
 		margin-top: -$lhse*.0625;
 		margin-bottom: -$lhse*.0625;
+	}
+	.rarity-symbol {
+		filter: saturate(.875);
 	}
 	footer {
 		display: flex;
