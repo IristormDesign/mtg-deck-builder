@@ -4,13 +4,13 @@
 		<table>
 			<thead v-html="tableHeadCommon" />
 			<tbody>
-				<template v-for="(layout, layoutName) in layoutStats">
+				<template v-for="(layout, layoutKey) in layoutStats">
 					<tr
 						v-if="layout.ct > 0"
-						:key="layoutName"
+						:key="layoutKey"
 					>
-						<th :class="layoutName.length > 15 ? 'small' : null">
-							{{ layoutName }}
+						<th :class="layout.label.length > 15 ? 'small' : null">
+							{{ layout.label }}
 						</th>
 						<td>{{ layout.ct }}</td>
 						<td>{{ calculatePercentage(layout.ct) }}<span>%</span></td>
@@ -38,104 +38,45 @@ export default {
 	},
 	data () {
 		return {
-			layoutStats: {
-				Adventure: {
-					id: 'adventure'
-				},
-				Augment: {
-					id: 'augment'
-				},
-				Battle: {
-					id: 'battle'
-				},
-				Case: {
-					id: 'case'
-				},
-				Class: {
-					id: 'class'
-				},
-				'Double-faced token': {
-					id: 'double_faced_token'
-				},
-				Emblem: {
-					id: 'emblem'
-				},
-				Flip: {
-					id: 'flip'
-				},
-				Host: {
-					id: 'host'
-				},
-				Leveler: {
-					id: 'leveler'
-				},
-				Meld: {
-					id: 'meld'
-				},
-				'Modal double-faced': {
-					id: 'modal_dfc'
-				},
-				Mutate: {
-					id: 'mutate'
-				},
-				Normal: {
-					id: 'normal'
-				},
-				Planar: {
-					id: 'planar'
-				},
-				Prototype: {
-					id: 'prototype'
-				},
-				Saga: {
-					id: 'saga'
-				},
-				Scheme: {
-					id: 'scheme'
-				},
-				Split: {
-					id: 'split'
-				},
-				Token: {
-					id: 'token'
-				},
-				Transform: {
-					id: 'transform'
-				},
-				Vanguard: {
-					id: 'vanguard'
-				},
-				Other: {
-				}
-			}
+			layoutStats: {}
 		}
 	},
 	mounted () {
 		this.countLayouts()
+		this.setPreferredLayoutLabels()
 
 		this.layoutStats = this.sortTableByCounts(this.layoutStats)
 	},
 	methods: {
 		countLayouts () {
-			this.deck.cards.forEach(card => {
-				let recognizedLayout = false
+			this.deck.cards.forEach(({ layout, qty }) => {
+				if (!layout) return
 
-				for (const layoutName in this.layoutStats) {
-					const stat = this.layoutStats[layoutName]
-
-					if (!stat.ct) {
-						stat.ct = 0
-					}
-					if (card.layout === stat.id) {
-						stat.ct += card.qty
-						recognizedLayout = true
+				if (!this.layoutStats[layout]) {
+					this.layoutStats[layout] = {
+						ct: 0
 					}
 				}
 
-				if (!recognizedLayout) {
-					this.layoutStats.Other.ct += card.qty
-				}
+				this.layoutStats[layout].ct += qty
 			})
+		},
+		setPreferredLayoutLabels () {
+			for (const key in this.layoutStats) {
+				function setLabel () {
+					switch (key) {
+						case 'modal_dfc':
+							return 'Modal double-faced'
+						case 'double_faced_token':
+							return 'Double-faced token'
+						default:
+							// Use the layout's key name directly as the label, except capitalize its initial letter.
+							return key.charAt(0).toUpperCase() + key.slice(1)
+					}
+				}
+
+				this.layoutStats[key].label = setLabel()
+			}
 		}
 	}
 }
