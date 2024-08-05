@@ -172,7 +172,7 @@ export default {
 
 				if (foundExistingCardByLink) {
 					// The URL query matches an existing card's link URL, which means the queried card is an identical variation match to an existing card.
-					this.notifyCardExists(foundExistingCardByLink.name)
+					this.notifyCardExists(foundExistingCardByLink)
 				} else {
 					// The URL query does NOT match an existing card's link URL, which means the queried card doesn't have an identical variation match. (The queried card may or may not have the same name as an existing card, but that's checked in a separate method.)
 					this.optionalReplacement = true
@@ -187,7 +187,7 @@ export default {
 				const foundExistingCardByName = this.findExistingCardByName(query)
 
 				if (foundExistingCardByName) {
-					this.notifyCardExists(foundExistingCardByName.name)
+					this.notifyCardExists(foundExistingCardByName)
 				} else { // Else the queried card doesn't match the name of another card in the list.
 					this.axiosRequestName(query)
 				}

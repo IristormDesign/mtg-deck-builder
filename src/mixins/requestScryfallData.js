@@ -298,12 +298,12 @@ export default {
 			if (confirmToReplace) {
 				// (Can't use a timeout here because it messes with the return.)
 				return confirm(
-					`”${card.name}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
+					`“${card.name}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
 				)
 			} else {
 				setTimeout(() => {
 					alert(
-						`”${card.name}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
+						`“${card.name}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
 				}, 25) // Duration should be just long enough to make the card image have a fully animated transition while the browser alert appears.
 			}
