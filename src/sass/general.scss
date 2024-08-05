@@ -25,20 +25,7 @@ body {
 	position: relative;
 }
 .texture-bg {
-	background: top left repeat $color-content-bg;
-	background-attachment: fixed, scroll;
-
-	@mixin bg-image-texture-bg($length) {
-		background-image:
-			linear-gradient(191.25deg,
-				rgba(#fff, .2) 0%,
-				rgba(#000, .2) $length
-			),
-			url('img/turbulence-bg-tile.jpg');
-	}
-
-	@include bg-image-texture-bg(100%);
-	@include bg-image-texture-bg(100lvh); // Prefer `100lvh` if the user's browser supports `lvh` units. Otherwise, fall back to `100%`.
+	background: top left repeat url('img/turbulence-bg-tile.jpg') $color-content-bg;
 }
 .wrap {
 	max-width: $max-width-app;
