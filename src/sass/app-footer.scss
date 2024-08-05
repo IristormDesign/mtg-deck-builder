@@ -13,7 +13,6 @@
 		margin-top: 0;
 		flex-grow: 1;
 		transform: translateZ(0); // This is to fix an odd page-rendering glitch in Chrome. Without it, the text in the footer dims whenever a button elsewhere on the page is hovered/focused. This glitch only seems to happen on the home page.
-		background: $color-group-bg;
 	}
 	.wrap {
 		max-width: $min-width-app*.8;

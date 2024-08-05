@@ -1,6 +1,9 @@
 <template>
 	<transition appear name="fade-from-black">
-		<div class="fade-bg" :class="homePageClass">
+		<div
+			class="fade-bg"
+			:class="this.$route.name === 'home' ? 'root-home-page' : null"
+		>
 			<div class="paint-container">
 				<update-notif />
 				<app-header />
@@ -22,15 +25,6 @@ import ScrollToTop from '@/components/ScrollToTop.vue'
 
 export default {
 	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
-	computed: {
-		homePageClass () {
-			if (this.$route.name === 'home') {
-				return 'root-home-page'
-			} else {
-				return 'texture-bg' // For better performance, don't let the background texture image load on the home page.
-			}
-		}
-	},
 	mounted () {
 		this.preventMiddleClicking()
 		this.loadDefaultDecks()
