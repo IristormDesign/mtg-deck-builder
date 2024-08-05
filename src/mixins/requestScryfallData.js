@@ -6,7 +6,8 @@ export default {
 	mixins: [stringMethods, deckColors],
 	data () {
 		return {
-			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
+			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i, // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
+			alertTimeoutDuration: 25
 		}
 	},
 	computed: {
@@ -40,7 +41,7 @@ export default {
 					this.loadingCard = false
 
 					if (error.code === 'ECONNABORTED') {
-						this.alertTimeout()
+						this.alertConnectionAborted()
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
@@ -82,7 +83,7 @@ export default {
 					this.loadingCard = false
 
 					if (error.code === 'ECONNABORTED') {
-						this.alertTimeout()
+						this.alertConnectionAborted()
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
@@ -114,7 +115,7 @@ export default {
 					this.loadingCard = false
 
 					if (error.code === 'ECONNABORTED') {
-						this.alertTimeout()
+						this.alertConnectionAborted()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
 						alert(`⚠ No Magic card named “${name}” exists.`)
 					} else {
@@ -125,7 +126,7 @@ export default {
 					return callback
 				})
 		},
-		alertTimeout () {
+		alertConnectionAborted () {
 			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data, oldCard) {
@@ -218,13 +219,7 @@ export default {
 			})
 		},
 		updateOldCard (newCard, inSideboard) {
-			const store = this.$store
-
-			if (inSideboard) {
-				store.commit('showSideboard', true)
-			} else {
-				store.commit('showSideboard', false)
-			}
+			this.$store.commit('showSideboard', inSideboard)
 
 			const oldCard = this.activeCardList.cards.find(foundCard => {
 				const regexDoubleFacedName = new RegExp(`(${newCard.name})[ /]*(${newCard.name2})`, 'i') // This regex finds names of double-faced cards that includes the back face's name, and with zero or more slashes (`/`) in between the front face and back face names. In older card data, the names for double-faced cards had included both face's names together with a singular slash.
@@ -250,14 +245,19 @@ export default {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
+				this.activeCardList.viewedCard = existingCard
+
 				if (this.optionalReplacement) {
-					const replaceCard = this.notifyCardExists(newCard, true)
+					setTimeout(() => {
+						const replaceCard = this.notifyCardExists(newCard, true)
 
-					if (replaceCard) {
-						newCard.qty = existingCard.qty
+						if (replaceCard) {
+							this.activeCardList.viewedCard = newCard
+							newCard.qty = existingCard.qty
 
-						this.updateOldCard(newCard)
-					} // Else do nothing, because the user has chosen to not replace the card.
+							this.updateOldCard(newCard)
+						} // Else do nothing, because the user has chosen to not replace the card.
+					}, this.alertTimeoutDuration)
 				} else {
 					this.notifyCardExists(newCard)
 				}
@@ -282,8 +282,8 @@ export default {
 		 * @returns {boolean} `true` if the card is to be replaced.
 		 */
 		notifyCardExists (card, confirmToReplace) {
-			this.activeCardList.viewedCard = card
 			this.loadingCard = false
+			this.activeCardList.viewedCard = this.findExistingCardByName(card.name)
 
 			const stringActiveCardList = () => {
 				let output = 'deck'
@@ -305,7 +305,7 @@ export default {
 					alert(
 						`“${card.name}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
-				}, 25) // Duration should be just long enough to make the card image have a fully animated transition while the browser alert appears.
+				}, this.alertTimeoutDuration)
 			}
 		},
 		insertCardIntoDeck (newCard) {
