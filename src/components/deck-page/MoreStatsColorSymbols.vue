@@ -40,7 +40,7 @@
 			</tbody>
 			<tbody class="total">
 				<tr>
-					<th>Total symbols</th>
+					<th>All mana symbols</th>
 					<td>{{ totalSymbolCount }}</td>
 					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
 				</tr>

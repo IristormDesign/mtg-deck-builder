@@ -38,7 +38,10 @@
 				</tbody>
 				<tbody v-show="variableStat.ct">
 					<tr>
-						<th>Variable</th>
+						<th>
+							<small>Variable</small>
+							<span class="mana-symbol">X</span>
+						</th>
 						<td>{{ variableStat.ct }}</td>
 						<td>{{ variableStat.pct }}<span>%</span></td>
 					</tr>
