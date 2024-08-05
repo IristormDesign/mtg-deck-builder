@@ -190,7 +190,7 @@ export default {
 					newCard.toughness = data.toughness
 				}
 
-				if (data.cmc) {
+				if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
 					newCard.cmc = data.cmc
 				}
 				newCard.rarity = data.rarity
