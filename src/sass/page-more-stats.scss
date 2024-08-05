@@ -23,7 +23,8 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		width: min-content;
 	}
 	section {
-		min-width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword with breaking layout.
+		width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword with breaking layout.
+		justify-self: center;
 		height: min-content;
 		border: 2px solid $color-group-bg;
 		outline: 1px solid $color-section-border;
@@ -204,7 +205,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: $min-width-app) {
 	.more-stats {
 		.tables {
-			grid-template-columns: 2fr;
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 }

@@ -45,7 +45,7 @@
 
 			<footer>
 				<div class="note">
-					<h4>Notes About These Statistics</h4>
+					<h4>About These Statistics</h4>
 					<ul>
 						<li>
 							<p>Cards in the sideboard are ignored.</p>
