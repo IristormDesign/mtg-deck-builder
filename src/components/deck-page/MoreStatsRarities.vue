@@ -13,10 +13,11 @@
 							<div
 								v-if="name !== 'Other'"
 								class="vert-center-cell"
-							>
-								<small>{{ name }}</small>
-								<span v-html="raritySymbol[name.charAt(0).toLowerCase()]" />
-							</div>
+								v-html="`
+									<small>${name}</small>
+									${raritySymbol[name.charAt(0).toLowerCase()]}
+								`"
+							/>
 							<div v-else>Other</div>
 						</th>
 						<td>{{ ct }}</td>

@@ -16,10 +16,13 @@
 						:key="symbol.name"
 					>
 						<th>
-							<div class="vert-center-cell">
-								<small>{{ symbol.name }}</small>
-								<div v-html="manaSymbol[symbol.key]" />
-							</div>
+							<div
+								class="vert-center-cell"
+								v-html="`
+									<small>${symbol.name}</small>
+									${manaSymbol[symbol.key]}
+								`"
+							/>
 						</th>
 						<td>{{ symbol.ct }}</td>
 						<td>{{ symbol.pct.toFixed(1) }}<span>%</span></td>
@@ -29,10 +32,13 @@
 			<tbody v-show="colorSymbols.hybrid.ct > 0">
 				<tr>
 					<th>
-						<div class="vert-center-cell">
-							<small>{{ colorSymbols.hybrid.name }}</small>
-							<div v-html="manaSymbol[colorSymbols.hybrid.key]" />
-						</div>
+						<div
+							class="vert-center-cell"
+							v-html="`
+								<small>${colorSymbols.hybrid.name}</small>
+								${manaSymbol[colorSymbols.hybrid.key]}
+							`"
+						/>
 					</th>
 					<td>{{ colorSymbols.hybrid.ct }}</td>
 					<td>{{ colorSymbols.hybrid.pct.toFixed(1) }}<span>%</span></td>
