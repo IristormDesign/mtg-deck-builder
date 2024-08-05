@@ -44,35 +44,27 @@ export default {
 		return {
 			supertypeStats: {
 				Basic: {
-					ct: 0,
 					regex: /\bBasic .+/
 				},
 				Elite: {
-					ct: 0,
 					regex: /\bElite .+/
 				},
 				Host: {
-					ct: 0,
 					regex: /\bHost .+/
 				},
 				Legendary: {
-					ct: 0,
 					regex: /\bLegendary .+/
 				},
 				Ongoing: {
-					ct: 0,
 					regex: /\bOngoing .+/
 				},
 				Snow: {
-					ct: 0,
 					regex: /\bSnow .+/
 				},
 				Token: {
-					ct: 0,
 					regex: /\bToken .+/
 				},
 				World: {
-					ct: 0,
 					regex: /\bWorld .+/
 				}
 			}
@@ -100,6 +92,10 @@ export default {
 
 					for (const supertypeName in this.supertypeStats) {
 						const stat = this.supertypeStats[supertypeName]
+
+						if (!stat.ct) {
+							stat.ct = 0
+						}
 
 						if (
 							stat.regex.test(typeLine) &&
