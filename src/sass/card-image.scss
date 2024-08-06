@@ -94,13 +94,13 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	height: min-content; // Needed so that the app footer links positioned directly beneath the card image can still be clicked.
 
 	.image-container {
-		transition: top $transition-duration-standard ease;
 		width: min(#{488px * .6667}, 25vw);
 		max-height: $height-card-image-section;
 		aspect-ratio: 488 / 680;
 		position: relative;
 		z-index: 1;
 		margin: 0 auto;
+		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 rgba(#000, .25));
 	}
 	.card-placement-outline {
 		position: absolute;

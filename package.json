@@ -1,6 +1,6 @@
 {
 	"name": "mtg-deck-builder",
-	"version": "3.14.5",
+	"version": "3.14.6",
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
