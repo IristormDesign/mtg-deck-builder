@@ -73,14 +73,12 @@ export default {
 		attentionAddCard (attention) {
 			const cardAdderInput = document.querySelector('#card-input')
 
-			if (cardAdderInput) { // Check for this condition to prevent errors when in the middle of loading a submitted card name.
-				if (attention) {
-					cardAdderInput.classList.add('attention')
-				} else {
-					setTimeout(() => {
-						cardAdderInput.classList.remove('attention')
-					}, 500)
-				}
+			if (!cardAdderInput) return // Check for this condition to prevent errors when in the middle of loading a submitted card name.
+
+			if (attention) {
+				cardAdderInput.classList.add('attention')
+			} else {
+				cardAdderInput.classList.remove('attention')
 			}
 		}
 	}

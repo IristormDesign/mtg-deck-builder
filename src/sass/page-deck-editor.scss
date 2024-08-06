@@ -163,13 +163,13 @@ $width-card-adder-button: $lhse*2.3333;
 		&.attention {
 			@keyframes pulsate-input {
 				100% {
-					background-color: $color-input-bg-active;
+					background-color: $color-input-bg-focus;
 					color: $color-link-active;
 				}
 			}
 			animation-name: pulsate-input;
 			animation-duration: .25s;
-			animation-iteration-count: 10;
+			animation-iteration-count: 20;
 			animation-direction: alternate;
 			animation-timing-function: ease-in-out;
 		}

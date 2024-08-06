@@ -32,19 +32,17 @@
 		align-items: center;
 		justify-content: center;
 
-		&.attention:not(:disabled) {
-			animation: flash .4s ease-in-out;
-			animation-iteration-count: 2;
+		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerButtonAttention.js.
+			animation: flash .1667s ease-in;
+			animation-iteration-count: 6;
+			animation-direction: alternate;
 
 			@keyframes flash {
 				0% {
-					filter: brightness(100%);
-				}
-				50% {
-					filter: brightness(133.33%);
+					filter: brightness(100%) contrast(100%);
 				}
 				100% {
-					filter: brightness(100%);
+					filter: brightness(133.33%) contrast(133.33%);
 				}
 			}
 		}

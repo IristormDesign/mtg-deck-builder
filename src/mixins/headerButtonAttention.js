@@ -13,7 +13,7 @@ export default {
 
 			setTimeout(() => {
 				button.classList.remove('attention')
-			}, 800) // Duration equal to the total animation duration set in CSS.
+			}, 1001) // Duration equal to the total animation duration set in CSS, plus an extra millisecond due to rounded iteration durations.
 		}
 	}
 }
