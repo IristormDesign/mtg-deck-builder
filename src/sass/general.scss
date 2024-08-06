@@ -15,7 +15,7 @@ body {
 	min-width: 320px;
 }
 .fade-bg {
-	background: top left repeat url('img/turbulence-bg-tile.jpg') $color-content-bg;
+	background: top left repeat url('@/img/turbulence-bg-tile.jpg') $color-content-bg;
 }
 .paint-container {
 	contain: paint; // Needed for the draw simulator page's card image animations that appear from out of the viewport, and doesn't affect `sticky` positioning.
