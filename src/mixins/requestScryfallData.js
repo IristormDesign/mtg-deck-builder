@@ -255,7 +255,7 @@ export default {
 							this.activeCardList.viewedCard = newCard
 							newCard.qty = existingCard.qty
 
-							this.updateOldCard(newCard)
+							this.updateOldCard(newCard, this.$store.state.showSideboard)
 						} // Else do nothing, because the user has chosen to not replace the card.
 					}, this.alertTimeoutDuration)
 				} else {
