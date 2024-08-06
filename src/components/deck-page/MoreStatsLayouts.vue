@@ -63,6 +63,8 @@ export default {
 		},
 		setPreferredLayoutLabels () {
 			for (const key in this.layoutStats) {
+				this.layoutStats[key].label = setLabel()
+
 				function setLabel () {
 					switch (key) {
 						case 'modal_dfc':
@@ -70,12 +72,17 @@ export default {
 						case 'double_faced_token':
 							return 'Double-faced token'
 						default:
-							// Use the layout's key name directly as the label, except capitalize its initial letter.
-							return key.charAt(0).toUpperCase() + key.slice(1)
+							return makeLabelFromKeyName(key)
 					}
 				}
 
-				this.layoutStats[key].label = setLabel()
+				// Use the layout's key name directly as the label, with some modifications to it.
+				function makeLabelFromKeyName (key) {
+					key = key.charAt(0).toUpperCase() + key.slice(1) // Capitalize the initial letter.
+					key = key.replace(/_/g, ' ') // Replace any underscores with spaces.
+
+					return key
+				}
 			}
 		}
 	}
