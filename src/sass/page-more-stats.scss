@@ -2,6 +2,7 @@
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
+$outline-width-stat-section: 2px;
 
 .more-stats {
 	margin: 0 auto $lhse*.5;
@@ -18,7 +19,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: $lhse;
+		gap: calc(#{$lhse} + #{$outline-width-stat-section * 2});
 		margin-bottom: $lhse*.5;
 		width: min-content;
 	}
@@ -27,7 +28,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 		justify-self: center;
 		height: min-content;
 		border: 2px solid $color-group-bg;
-		outline: 1px solid $color-section-border;
+		outline: $outline-width-stat-section solid $color-section-border;
 
 		tbody {
 			cursor: default;
@@ -202,7 +203,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 
 	}
 }
-@media (max-width: $min-width-app) {
+@media (max-width: ($min-width-app * 1.0625)) {
 	.more-stats {
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
@@ -212,7 +213,7 @@ $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 @media (max-width: ($min-width-app * .75)) {
 	.more-stats {
 		.tables {
-			gap: $lhse*.5
+			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
 		}
 
 		footer {

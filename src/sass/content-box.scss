@@ -1,7 +1,7 @@
 .content-box {
 	background: $color-group-bg;
 	border-radius: $border-radius-group;
-	padding: $lhse $lhse*1.5 $lhse*.5;
+	padding: $lhse $lhse*1.5 $lhse*.75;
 	margin: $lhse $lhse*1.5;
 	max-width: $max-width-content;
 	min-width: 0;
@@ -13,11 +13,9 @@
 			clear: both;
 		}
 	}
-	&:not(.manual-page) {
-		h2 {
-			@include pronounced-heading;
-			margin-top: 0;
-		}
+	h2 {
+		@include pronounced-heading;
+		margin-top: 0;
 	}
 }
 .page-not-found {

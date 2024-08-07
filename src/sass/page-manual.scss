@@ -80,13 +80,11 @@
 		margin-right: auto;
 		margin-left: auto;
 		background: none;
-		padding-right: 0;
-		padding-left: 0;
 		padding: 0;
 
 		> section {
 			background: $color-group-bg;
-			padding: $lhse*.5 $lhse*1.5;
+			padding: $lhse $lhse*1.5 $lhse*.75;
 			margin-bottom: $lhse*.25;
 			border-radius: $border-radius-group;
 
@@ -123,12 +121,8 @@
 				}
 			}
 		}
-		h3,
-		h4 {
-			@include pronounced-heading;
-		}
 		h3 {
-			margin-top: $lhse*.5;
+			margin-top: $lhse*.25;
 		}
 		h4 {
 			margin-top: $lhse*1.25;

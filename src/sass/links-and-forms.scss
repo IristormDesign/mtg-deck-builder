@@ -37,11 +37,13 @@ select {
 		text-decoration: none;
 		background: $color-input-bg-focus;
 		color: $color-link-focus;
-		outline-offset: -1px;
+		border-color: $color-link-focus;
+		outline-offset: 0px;
 	}
 	&:active {
 		background: $color-input-bg-active;
 		color: $color-link-active;
+		border-color: $color-link-active;
 		transition-duration: 0s;
 	}
 	&::placeholder {
@@ -64,7 +66,7 @@ input {
 	}
 }
 .radio-fieldset {
-	border: $color-input-border;
+	border: $border-sections;
 	border-radius: $border-radius-button;
 	padding: 0;
 	margin: 0;
@@ -172,19 +174,14 @@ option {
 	height: $lhse*.75;
 	cursor: pointer;
 	background: none;
-	border-color: $color-link;
 
 	&:hover,
 	&:focus-visible {
-		border-color: $color-link-focus;
-
 		+ label {
 			color: $color-link-focus;
 		}
 	}
 	&:active {
-		border-color: $color-link-active;
-
 		+ label {
 			color: $color-link-active;
 			transition-duration: 0s;

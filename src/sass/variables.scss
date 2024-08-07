@@ -18,7 +18,7 @@ $color-button: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
 $color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 16.67%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: desaturate(lighten($color-mythic-very-dim, 12.5%), 3.125%); // Desaturate and lighten percentages match those of $color-section-border.
+$color-section-border-alt: lighten($color-mythic-very-dim, 8.33%); // Lighten percentage matches that of $color-section-border.
 
 // YELLOW-BASED COLORS
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
@@ -41,7 +41,7 @@ $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
 $color-button-alt: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: lighten($color-group-bg, 8.33%);
-$color-section-border: desaturate(lighten($color-group-bg, 12.5%), 4.17%);
+$color-section-border: $color-heading-bg;
 
 // INDIGO-BASED COLORS
 $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
@@ -106,9 +106,9 @@ $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 
 // BORDERS
-$border-sections: 1px solid $color-section-border;
-$border-sections-alt: 1px solid $color-section-border-alt;
-$color-input-border: $border-sections;
+$border-sections: 2px solid $color-section-border;
+$border-sections-alt: 2px solid $color-section-border-alt;
+$color-input-border: 1px solid $color-button;
 $border-image-thin: 1px solid $color-group-bg-darker;
 $border-image-thick: $lhse*.25 solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
