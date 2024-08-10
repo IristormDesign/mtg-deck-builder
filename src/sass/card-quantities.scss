@@ -107,6 +107,12 @@
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
 	}
+	&.kb-shortcut-highlight {
+		outline: $outline-focus-visible !important;
+		background: $color-input-bg-focus !important;
+		border-radius: $border-radius-button;
+		z-index: 1;
+	}
 }
 .card-list-section {
 	li {

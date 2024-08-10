@@ -20,6 +20,7 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
+		qtyElIHighlighted: -1,
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
@@ -46,6 +47,9 @@ export default new Vuex.Store({
 		},
 		overlayHoverEnabled (state, payload) {
 			state.overlayHoverEnabled = payload
+		},
+		qtyElIHighlighted (state, payload) {
+			state.qtyElIHighlighted = payload
 		},
 		showingAnyPopup (state, payload) {
 			state.showingAnyPopup = payload

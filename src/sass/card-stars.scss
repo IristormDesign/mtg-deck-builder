@@ -84,6 +84,11 @@ $scale-card-star: scale(1.0833);
 			}
 		}
 	}
+	&.force-transparency {
+		background: $color-link-dark !important;
+		opacity: 0 !important;
+		transition: none !important;
+	}
 	&::before {
 		content: '★';
 		color: $color-card-star;

@@ -7,6 +7,7 @@
 		<li
 			v-for="(card, i) in activeCardList.cards"
 			:key="card.name"
+			class="card-li"
 			:class="(card.gapAfter) ? 'gap-after' : null"
 		>
 			<card-star :card="card" :deck="deck" :i="i" />
