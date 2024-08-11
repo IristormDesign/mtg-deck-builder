@@ -22,7 +22,6 @@ export default {
 
 			return true
 		},
-
 		qtyElIHighlighted () {
 			return this.$store.state.qtyElIHighlighted // Negative 1 means no quantity element anywhere has keyboard shortcut focus. Any greater number is the index position of the quantity element in the card list.
 		},
@@ -38,8 +37,6 @@ export default {
 	},
 	methods: {
 		doKeyboardShortcut (event) {
-			console.log('⌨ ' + event.key)
-
 			if (event.key === 'Escape' || event.key === 'Esc') {
 				document.activeElement.blur()
 				return
@@ -47,47 +44,78 @@ export default {
 
 			if (!this.noActiveInputs) return
 
-			if (this.cardListUnfocused()) {
-				switch (event.key) {
-					case 'w':
-					case 's':
-						this.focusOntoCardList()
-						this.viewCard(this.relevantCardAtIndex(0))
-						break
-					case 'e':
-						this.switchCardGroup()
-				}
-			} else {
-				for (let i = 0; i < this.cardLIs.length; i++) {
-					const cardButton = this.cardLIs[i].querySelector('.card-button')
+			switch (event.key) {
+				case 'w':
+				case 'e':
+				case 'a':
+				case 's':
+				case 'd':
+				case 'f':
+					if (this.cardListUnfocused()) {
+						const alreadyViewedCard = () => {
+							return this.activeCardList.cards.find(
+								card => card.name === this.activeCardList.viewedCard.name
+							)
+						}
 
-					if (
-						document.activeElement !== cardButton &&
-						this.qtyElIHighlighted !== i
-					) {
-						continue
+						if (alreadyViewedCard()) {
+							for (let i = 0; i < this.cardLIs.length; i++) {
+								if (alreadyViewedCard().name === this.relevantCardAtIndex(i).name) {
+									const cardButton = this.cardLIs[i].querySelector('.card-button')
+
+									cardButton.focus({ focusVisible: true })
+
+									break
+								}
+							}
+						} else {
+							console.log('🧐')
+
+							switch (event.key) {
+								case 'w':
+								case 's':
+									this.focusOntoCardList()
+									this.viewCard(this.relevantCardAtIndex(0))
+									break
+								case 'f':
+									this.switchCardGroup()
+							}
+						}
+					} else {
+						for (let i = 0; i < this.cardLIs.length; i++) {
+							const cardButton = this.cardLIs[i].querySelector('.card-button')
+
+							if (
+								document.activeElement !== cardButton &&
+								this.qtyElIHighlighted !== i
+							) {
+								continue
+							}
+
+							switch (event.key) {
+								case 'w':
+									this.pressedW(i)
+									return
+								case 's':
+									this.pressedS(i)
+									return
+								case 'e':
+									this.pressedE(i)
+									return
+								case 'd':
+									this.pressedD(i)
+									return
+								case 'a':
+									this.pressedA(i)
+									return
+								case 'f':
+									this.switchCardGroup(i)
+									return
+							}
+
+							break
+						}
 					}
-
-					switch (event.key) {
-						case 'w':
-							this.pressedW(i)
-							return
-						case 's':
-							this.pressedS(i)
-							return
-						case 'a':
-							this.pressedA(i)
-							return
-						case 'd':
-							this.pressedD(i)
-							return
-						case 'e':
-							this.switchCardGroup(i)
-							return
-					}
-
-					break
-				}
 			}
 		},
 		cardListUnfocused () {
@@ -95,8 +123,12 @@ export default {
 
 			for (const li of this.cardLIs) {
 				const cardButton = li.querySelector('.card-button')
+				const cardStar = li.querySelector('.card-star')
 
-				if (document.activeElement === cardButton) {
+				if (
+					document.activeElement === cardButton ||
+					document.activeElement === cardStar
+				) {
 					return false
 				}
 			}
@@ -110,41 +142,29 @@ export default {
 			topCardButton.focus({ focusVisible: true })
 		},
 		pressedW (i) {
-			if (this.qtyElIHighlighted >= 0) {
-				if (i === this.qtyElIHighlighted) {
-					this.increaseCardQty(i)
-				}
-			} else {
-				this.focusPrevCardButton(i)
-			}
+			this.blurQtyEl()
+			this.focusPrevCardButton(i)
 		},
 		pressedS (i) {
-			if (i === this.qtyElIHighlighted) {
-				this.decreaseCardQty(i)
-			} else {
-				this.focusNextCardButton(i)
-			}
+			this.blurQtyEl()
+			this.focusNextCardButton(i)
 		},
-		pressedA (i) {
-			if (i === this.qtyElIHighlighted) {
-				this.$store.commit('qtyElIHighlighted', -1)
+		pressedE (i) {
+			const cardButton = this.cardLIs[i].querySelector('.card-button')
 
-				const cardButton = this.cardLIs[i].querySelector('.card-button')
-
-				cardButton.focus()
-			} else {
-				this.starCard(i)
-			}
+			cardButton.blur()
+			this.$store.commit('qtyElIHighlighted', i)
+			this.increaseCardQty(i)
 		},
 		pressedD (i) {
-			// If the card quantity element doesn't currently have focus.
-			if (this.qtyElIHighlighted < 0) {
-				const cardButton = this.cardLIs[i].querySelector('.card-button')
+			const cardButton = this.cardLIs[i].querySelector('.card-button')
 
-				cardButton.blur()
-
-				this.$store.commit('qtyElIHighlighted', i)
-			}
+			cardButton.blur()
+			this.$store.commit('qtyElIHighlighted', i)
+			this.decreaseCardQty(i)
+		},
+		pressedA (i) {
+			this.starCard(i)
 		},
 		focusPrevCardButton (i) {
 			let prevIndex = --i
@@ -170,6 +190,11 @@ export default {
 			nextCardButton.focus({ focusVisible: true })
 			this.viewCard(this.relevantCardAtIndex(nextIndex))
 		},
+		blurQtyEl () {
+			if (this.qtyElIHighlighted >= 0) {
+				this.$store.commit('qtyElIHighlighted', -1)
+			}
+		},
 		increaseCardQty (i) {
 			this.relevantCardAtIndex(i).qty++
 		},
@@ -177,20 +202,19 @@ export default {
 			this.relevantCardAtIndex(i).qty--
 		},
 		starCard (i) {
-			const cardStar = this.cardLIs[i].querySelector('.card-star')
-			const cardButton = this.cardLIs[i].querySelector('.card-button')
+			const star = this.cardLIs[i].querySelector('.card-star')
 			const card = this.relevantCardAtIndex(i)
+			const cardButton = this.cardLIs[i].querySelector('.card-button')
 
+			this.blurQtyEl()
+			star.focus()
 			card.starred = !card.starred
+			star.classList.add('active')
 
-			if (
-				document.activeElement === cardButton &&
-				!card.starred
-			) {
-				cardStar.classList.add('force-transparency')
-			} else {
-				cardStar.classList.remove('force-transparency')
-			}
+			setTimeout(() => {
+				cardButton.focus()
+				star.classList.remove('active')
+			}, 375)
 		},
 		switchCardGroup (index = 0) {
 			const store = this.$store
@@ -216,7 +240,7 @@ export default {
 			this.$nextTick(() => {
 				const cardButton = this.cardLIs[returningCardIndex()].querySelector('.card-button')
 
-				cardButton.focus()
+				cardButton.focus({ focusVisible: true })
 
 				this.viewCard(this.relevantCardAtIndex(returningCardIndex()))
 			})

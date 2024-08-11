@@ -55,7 +55,8 @@ $scale-card-star: scale(1.0833);
 			opacity: 0;
 		}
 	}
-	&:active {
+	&:active,
+	&.active {
 		opacity: 1 !important;
 		background: $color-input-bg-active !important;
 		animation: none;
@@ -76,18 +77,14 @@ $scale-card-star: scale(1.0833);
 				animation: none;
 			}
 		}
-		&:active {
+		&:active,
+		&.active {
 			background: $color-input-bg-active;
 
 			&::before {
 				transition-duration: 0s;
 			}
 		}
-	}
-	&.force-transparency {
-		background: $color-link-dark !important;
-		opacity: 0 !important;
-		transition: none !important;
 	}
 	&::before {
 		content: '★';
