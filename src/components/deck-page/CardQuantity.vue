@@ -10,20 +10,19 @@
 			:id="qtyCardID(i)"
 			min="0"
 			v-model.lazy="cardObject.qty"
-			@change="validateQty()"
 			@click="qtyInputFocused($event)"
 		/>
 		<div class="qty-buttons">
 			<button
 				class="increment"
 				title="Increase quantity"
-				@click="increaseQty()"
+				@click="cardObject.qty++"
 				:disabled="disableIncreaseQtyBtn()"
 			><div>+</div></button>
 			<button
 				class="decrement"
 				title="Decrease quantity"
-				@click="decreaseQty()"
+				@click="cardObject.qty--"
 			><div>&minus;</div></button>
 		</div>
 	</div>
@@ -58,6 +57,14 @@ export default {
 			} else {
 				return null
 			}
+		},
+		cardQtyValue () { // Needed for keyboard shortcuts.
+			return this.cardObject.qty
+		}
+	},
+	watch: {
+		cardQtyValue () {
+			this.validateQty()
 		}
 	},
 	methods: {
@@ -92,6 +99,8 @@ export default {
 			}
 		},
 		validateQty () {
+			console.log('validateQty()')
+
 			const card = this.card
 			const deck = this.deck
 
@@ -101,17 +110,18 @@ export default {
 			if (card.qty < 0) {
 				card.qty = 0 // Don't allow negative numbers.
 			} else if (card.qty === 0) {
-				setTimeout(() => {
-					function cardName () {
-						if (
-							card.layout === 'modal_dfc' ||
+				function cardName () {
+					if (
+						card.layout === 'modal_dfc' ||
 							card.layout === 'split'
-						) {
-							return `${card.name} // ${card.name2}`
-						} else {
-							return card.name
-						}
+					) {
+						return `${card.name} // ${card.name2}`
+					} else {
+						return card.name
 					}
+				}
+
+				setTimeout(() => {
 					const confirmRemoval = confirm(`Remove “${cardName()}” from the deck?`)
 
 					if (confirmRemoval) {
@@ -119,7 +129,7 @@ export default {
 					} else {
 						card.qty = 1
 					}
-				}, 250) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+				}, 125) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
 			} else {
 				if (!card.maxQty) {
 					this.determineMaxQty()
@@ -131,7 +141,8 @@ export default {
 					}
 				} else {
 					if (card.qty > 4) {
-						alert('Each card name in a deck cannot have a quantity greater than 4, unless it’s a basic land card.')
+						alert('A card name cannot have a quantity greater than 4 in a deck, except for basic land cards.')
+
 						card.qty = 4
 					}
 				}
@@ -160,7 +171,10 @@ export default {
 			const totalCards = cards.length - 1
 
 			// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-			if (list.viewedCard.name === this.card.name && totalCards > 0) {
+			if (
+				list.viewedCard.name === this.card.name &&
+				totalCards > 0
+			) {
 				if (index === totalCards) { // If this card is last in the list...
 					list.viewedCard = cards[index - 1]
 				} else {
@@ -185,18 +199,6 @@ export default {
 			if (!this.$store.state.isMobileLayout()) {
 				this.viewCard(this.card)
 			}
-		},
-		increaseQty () {
-			const card = this.card
-
-			card.qty++
-			this.validateQty()
-		},
-		decreaseQty () {
-			const card = this.card
-
-			card.qty--
-			this.validateQty()
 		},
 		disableIncreaseQtyBtn () {
 			return this.card.qty >= this.card.maxQty

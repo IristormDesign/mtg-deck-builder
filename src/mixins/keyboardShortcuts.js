@@ -50,7 +50,7 @@ export default {
 				case 'a':
 				case 's':
 				case 'd':
-				case 'f':
+				case 'r':
 					if (this.cardListUnfocused()) {
 						const alreadyViewedCard = () => {
 							return this.activeCardList.cards.find(
@@ -77,7 +77,7 @@ export default {
 									this.focusOntoCardList()
 									this.viewCard(this.relevantCardAtIndex(0))
 									break
-								case 'f':
+								case 'r':
 									this.switchCardGroup()
 							}
 						}
@@ -108,7 +108,7 @@ export default {
 								case 'a':
 									this.pressedA(i)
 									return
-								case 'f':
+								case 'r':
 									this.switchCardGroup(i)
 									return
 							}
