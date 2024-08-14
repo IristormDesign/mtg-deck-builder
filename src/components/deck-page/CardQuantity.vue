@@ -99,8 +99,6 @@ export default {
 			}
 		},
 		validateQty () {
-			console.log('validateQty()')
-
 			const card = this.card
 			const deck = this.deck
 
