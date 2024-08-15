@@ -100,7 +100,8 @@ $scale-card-star: scale(1.0833);
 .card-list-section {
 	li {
 		&:hover,
-		&:focus-within {
+		&:focus-within,
+		&.highlight {
 			.card-star {
 				background: $color-group-bg-darker;
 
@@ -116,6 +117,24 @@ $scale-card-star: scale(1.0833);
 				&::before {
 					transform: $scale-card-star rotate((360deg*.8));
 					transition: transform 1.5s ease-in-out;
+				}
+			}
+		}
+		&.highlight {
+			.card-star {
+				outline: $outline-keyboard-focus;
+				transition-delay: 0s;
+				transition-duration: 0s !important;
+
+				&:not(:checked) {
+					transition-delay: 0s;
+					transition-duration: 0s;
+
+					&:not(.active) {
+						&::before {
+							transition: none !important; // Prevents the spinning star animation while the card item is focused and the user has just removed the star from the card.
+						}
+					}
 				}
 			}
 		}

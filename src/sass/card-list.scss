@@ -45,14 +45,16 @@ $min-height-card-list: $lhse*6;
 			margin-bottom: $margin-card-gap-after;
 		}
 		&:hover,
-		&:focus-within {
+		&:focus-within,
+		&.highlight {
 			background: $color-group-bg-darker;
 			transition-duration: 0s;
 		}
 		&:hover {
 			z-index: index($layers, card-li-hover);
 		}
-		&:focus-within {
+		&:focus-within,
+		&.highlight {
 			z-index: index($layers, card-li-focus-within);
 		}
 		&:first-child {
@@ -65,6 +67,11 @@ $min-height-card-list: $lhse*6;
 			.card-button {
 				box-shadow: $box-shadow-card-button-cluster;
 			}
+		}
+		&.highlight {
+			outline: $outline-keyboard-focus;
+			scroll-margin-top: 50vh;
+			scroll-margin-bottom: 50vh;
 		}
 	}
 	.card-list-section-main-leave-active {

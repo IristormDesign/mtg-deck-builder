@@ -151,7 +151,8 @@
 .card-list-section {
 	li {
 		&:hover,
-		&:focus-within {
+		&:focus-within,
+		&.highlight {
 			.card-button {
 				filter: contrast(116.67%);
 				transition-duration: 0s;
@@ -168,7 +169,8 @@
 				}
 			}
 		}
-		&:focus-within {
+		&:focus-within,
+		&.highlight {
 			.card-button {
 				@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
 

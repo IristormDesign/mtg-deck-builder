@@ -128,7 +128,8 @@
 			}
 		}
 		&:focus-within,
-		&:hover {
+		&:hover,
+		&.highlight {
 			.qty {
 				> span {
 					color: $color-text;

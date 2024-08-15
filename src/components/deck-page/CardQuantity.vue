@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="qty"
-		:class="qtyElementHasKBShortcutFocus"
-	>
+	<div class="qty">
 		<label :for="qtyCardID(i)">Quantity</label>
 		<span>&times;</span>
 		<input
@@ -50,13 +47,6 @@ export default {
 				}
 			}
 			return null
-		},
-		qtyElementHasKBShortcutFocus () {
-			if (this.$store.state.qtyElIHighlighted === this.i) { // If a certain card quantity element currently has focus...
-				return 'kb-shortcut-highlight'
-			} else {
-				return null
-			}
 		},
 		cardQtyValue () { // Needed for keyboard shortcuts.
 			return this.cardObject.qty

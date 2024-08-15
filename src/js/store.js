@@ -15,12 +15,12 @@ export default new Vuex.Store({
 	state: {
 		decks: [],
 		focusCardButton: '',
+		highlightedCardLIIndex: -1,
 		isMobileLayout: () => window.innerWidth <= 768, // Number must match media query max-width in CSS.
 		latestDeckDataVersion: 3,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
-		qtyElIHighlighted: -1,
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
@@ -42,14 +42,14 @@ export default new Vuex.Store({
 		focusCardButton (state, payload) {
 			state.focusCardButton = payload
 		},
+		highlightedCardLIIndex (state, payload) {
+			state.highlightedCardLIIndex = payload
+		},
 		loadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload
 		},
 		overlayHoverEnabled (state, payload) {
 			state.overlayHoverEnabled = payload
-		},
-		qtyElIHighlighted (state, payload) {
-			state.qtyElIHighlighted = payload
 		},
 		showingAnyPopup (state, payload) {
 			state.showingAnyPopup = payload
