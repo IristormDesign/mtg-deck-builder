@@ -70,8 +70,8 @@ $min-height-card-list: $lhse*6;
 		}
 		&.highlight {
 			outline: $outline-keyboard-focus;
-			scroll-margin-top: 50vh;
-			scroll-margin-bottom: 50vh;
+			scroll-margin-top: $lhse*2;
+			scroll-margin-bottom: $lhse*2;
 		}
 	}
 	.card-list-section-main-leave-active {

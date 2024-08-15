@@ -219,6 +219,7 @@ export default {
 			const star = this.cardLIs[this.highlightedIndex].querySelector('.card-star')
 
 			card.starred = !card.starred
+			this.$store.commit('decks', this.$store.state.decks)
 
 			star.classList.add('active')
 

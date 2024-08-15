@@ -123,13 +123,10 @@ $scale-card-star: scale(1.0833);
 		&.highlight {
 			.card-star {
 				outline: $outline-keyboard-focus;
-				transition-delay: 0s;
+				transition-delay: 0s !important;
 				transition-duration: 0s !important;
 
 				&:not(:checked) {
-					transition-delay: 0s;
-					transition-duration: 0s;
-
 					&:not(.active) {
 						&::before {
 							transition: none !important; // Prevents the spinning star animation while the card item is focused and the user has just removed the star from the card.
