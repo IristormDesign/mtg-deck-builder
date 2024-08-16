@@ -71,7 +71,9 @@ export default {
 			}
 		},
 		doKeyboardShortcut (event) {
-			switch (event.key) {
+			const eventKey = event.key.toLowerCase()
+
+			switch (eventKey) {
 				case 'Escape': case 'Esc':
 					if (this.highlightedIndex > -1) {
 						event.preventDefault()
@@ -82,14 +84,14 @@ export default {
 
 			if (this.anyInputActive()) return
 
-			switch (event.key) {
+			switch (eventKey) {
 				case 'r':
 					this.switchCardGroup()
 					break
 			}
 
 			if (this.highlightedIndex < 0) {
-				switch (event.key) {
+				switch (eventKey) {
 					case 'w':
 					case 's':
 					case 'a':
@@ -102,29 +104,36 @@ export default {
 			} else {
 				this.scrollLIIntoView()
 
-				switch (event.key) {
-					case 'w':
-						this.highlightPrevLI()
-						break
-					case 's':
-						this.highlightNextLI()
-						break
-					case 'e':
-						this.relevantCardAtHighlightedIndex().qty++
-						break
-					case 'd':
-						this.relevantCardAtHighlightedIndex().qty--
-						break
-					case 'a':
-						this.starCard()
-						break
-					case 'q':
-						this.toggleCardImageEnlargement()
-						break
+				if (event.shiftKey) {
+					switch (eventKey) {
+						case 'q':
+							this.openScryfallPage()
+					}
+				} else {
+					switch (eventKey) {
+						case 'w':
+							this.highlightPrevLI()
+							break
+						case 's':
+							this.highlightNextLI()
+							break
+						case 'e':
+							this.relevantCardAtHighlightedIndex().qty++
+							break
+						case 'd':
+							this.relevantCardAtHighlightedIndex().qty--
+							break
+						case 'a':
+							this.starCard()
+							break
+						case 'q':
+							this.toggleCardImageEnlargement()
+							break
+					}
 				}
 
 				if (this.imageEnlarged) {
-					switch (event.key) {
+					switch (eventKey) {
 						case 'w':
 						case 's':
 						case 'a':
@@ -195,6 +204,11 @@ export default {
 
 				this.imageEnlarged = true
 			}
+		},
+		openScryfallPage () {
+			const cardPage = this.relevantCardAtHighlightedIndex().link
+
+			window.open(cardPage, '_blank')
 		},
 		setHighlightedIndex (index) {
 			document.activeElement.blur()
