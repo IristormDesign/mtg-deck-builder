@@ -11,22 +11,8 @@ export default {
 		cardLIs () {
 			return document.getElementsByClassName('card-li') // Using `.getElementsByClassName` instead of `.querySelectorAll` here because the former gets a live node list. The live node list automatically updates whenever the card list switches between main and sideboard.
 		},
-		noActiveInputs () {
-			const allPageInputs = document.querySelectorAll('input[type="text"], input[type="number"]')
-
-			for (const input of allPageInputs) {
-				if (document.activeElement === input) {
-					return false
-				}
-			}
-
-			return true
-		},
 		highlightedIndex () {
 			return this.$store.state.highlightedCardLIIndex // A value of -1 means no card list item currently has attention by keyboard shortcuts. A value of any higher number means the index position of the list item that's currently highlighted by keyboard shortcuts.
-		},
-		showSideboard () {
-			return this.$store.state.showSideboard
 		}
 	},
 	watch: {
@@ -40,16 +26,7 @@ export default {
 			}, 382) // This timeout's duration is to be equal to the CSS card browse transition's duration. This delay is needed so that the card browse transition doesn't interfere with the image-enlarge transition.
 
 			if (curIndex > -1) {
-				const curLI = document.querySelector(`.card-li:nth-of-type(${curIndex + 1})`)
-
-				if (curLI) {
-					curLI.classList.add('highlight')
-
-					curLI.scrollIntoView({
-						behavior: 'smooth',
-						block: 'nearest'
-					})
-				}
+				this.scrollLIIntoView()
 			} else {
 				if (this.imageEnlarged) {
 					this.toggleCardImageEnlargement()
@@ -70,6 +47,29 @@ export default {
 		document.removeEventListener('keyup', this.doKeyboardShortcut)
 	},
 	methods: {
+		anyInputActive () {
+			const allInputs = document.getElementsByTagName('input')
+
+			for (const input of allInputs) {
+				if (document.activeElement === input) {
+					return true
+				}
+			}
+
+			return false
+		},
+		scrollLIIntoView () {
+			const li = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
+
+			if (li) {
+				li.classList.add('highlight')
+
+				li.scrollIntoView({
+					behavior: 'smooth',
+					block: 'nearest'
+				})
+			}
+		},
 		doKeyboardShortcut (event) {
 			switch (event.key) {
 				case 'Escape': case 'Esc':
@@ -78,12 +78,15 @@ export default {
 						this.setHighlightedIndex(-1)
 					}
 					return
+			}
+
+			if (this.anyInputActive()) return
+
+			switch (event.key) {
 				case 'r':
 					this.switchCardGroup()
 					break
 			}
-
-			// if (!this.noActiveInputs) return
 
 			if (this.highlightedIndex < 0) {
 				switch (event.key) {
@@ -94,8 +97,11 @@ export default {
 					case 'd':
 					case 'q':
 						this.setHighlightedIndex(0)
+						this.viewCard(this.relevantCardAtHighlightedIndex())
 				}
 			} else {
+				this.scrollLIIntoView()
+
 				switch (event.key) {
 					case 'w':
 						this.highlightPrevLI()
@@ -129,21 +135,6 @@ export default {
 					}
 				}
 			}
-		},
-		cardListUnfocused () {
-			for (const li of this.cardLIs) {
-				const cardButton = li.querySelector('.card-button')
-				const cardStar = li.querySelector('.card-star')
-
-				if (
-					document.activeElement === cardButton ||
-					document.activeElement === cardStar
-				) {
-					return false
-				}
-			}
-
-			return true
 		},
 		highlightPrevLI () {
 			if (this.highlightedIndex === 0) {
