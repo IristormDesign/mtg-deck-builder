@@ -50,6 +50,10 @@ export default {
 						block: 'nearest'
 					})
 				}
+			} else {
+				if (this.imageEnlarged) {
+					this.toggleCardImageEnlargement()
+				}
 			}
 
 			const prevLI = document.querySelector(`.card-li:nth-of-type(${prevIndex + 1})`)
@@ -68,18 +72,15 @@ export default {
 	methods: {
 		doKeyboardShortcut (event) {
 			switch (event.key) {
-				case 'Escape':
-				case 'Esc':
+				case 'Escape': case 'Esc':
 					if (this.highlightedIndex > -1) {
 						event.preventDefault()
 						this.setHighlightedIndex(-1)
-
-						return
 					}
-					break
+					return
 				case 'r':
 					this.switchCardGroup()
-					return
+					break
 			}
 
 			// if (!this.noActiveInputs) return
@@ -123,84 +124,11 @@ export default {
 						case 'a':
 						case 'e':
 						case 'd':
+						case 'r':
 							this.toggleCardImageEnlargement()
 					}
 				}
 			}
-
-			// switch (event.key) {
-			// 	case 'w':
-			// 	case 'e':
-			// 	case 'a':
-			// 	case 's':
-			// 	case 'd':
-			// 	case 'r':
-			// 		if (this.cardListUnfocused()) {
-			// 			const alreadyViewedCard = () => {
-			// 				return this.activeCardList.cards.find(
-			// 					card => card.name === this.activeCardList.viewedCard.name
-			// 				)
-			// 			}
-
-			// 			if (alreadyViewedCard()) {
-			// 				for (let i = 0; i < this.cardLIs.length; i++) {
-			// 					if (alreadyViewedCard().name === this.relevantCardAtHighlightedIndex(i).name) {
-			// 						const cardButton = this.cardLIs[i].querySelector('.card-button')
-
-			// 						cardButton.focus({ focusVisible: true })
-
-			// 						break
-			// 					}
-			// 				}
-			// 			} else {
-			// 				console.log('🧐')
-
-			// 				switch (event.key) {
-			// 					case 'w':
-			// 					case 's':
-			// 						this.focusOntoCardList()
-			// 						this.viewCard(this.relevantCardAtHighlightedIndex(0))
-			// 						break
-			// 					case 'r':
-			// 						this.switchCardGroup()
-			// 				}
-			// 			}
-			// 		} else {
-			// 			for (let i = 0; i < this.cardLIs.length; i++) {
-			// 				const cardButton = this.cardLIs[i].querySelector('.card-button')
-
-			// 				if (
-			// 					document.activeElement !== cardButton &&
-			// 					this.qtyElIHighlighted !== i
-			// 				) {
-			// 					continue
-			// 				}
-
-			// 				switch (event.key) {
-			// 					case 'w':
-			// 						this.pressedW(i)
-			// 						return
-			// 					case 's':
-			// 						this.pressedS(i)
-			// 						return
-			// 					case 'e':
-			// 						this.pressedE(i)
-			// 						return
-			// 					case 'd':
-			// 						this.pressedD(i)
-			// 						return
-			// 					case 'a':
-			// 						this.pressedA(i)
-			// 						return
-			// 					case 'r':
-			// 						this.switchCardGroup(i)
-			// 						return
-			// 				}
-
-			// 				break
-			// 			}
-			// 		}
-			// }
 		},
 		cardListUnfocused () {
 			for (const li of this.cardLIs) {
