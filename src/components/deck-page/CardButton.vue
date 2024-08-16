@@ -139,6 +139,7 @@ export default {
 		clickCardButton () {
 			this.viewCard(this.card)
 
+			this.$store.commit('highlightedCardLIIndex', -1)
 			this.$store.commit('focusCardButton', this.i)
 		}
 	}

@@ -71,7 +71,7 @@ export default {
 			}
 		},
 		doKeyboardShortcut (event) {
-			const eventKey = event.key.toLowerCase()
+			const eventKey = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
 
 			switch (eventKey) {
 				case 'Escape': case 'Esc':
@@ -89,6 +89,8 @@ export default {
 					this.switchCardGroup()
 					break
 			}
+
+			this.startKBShortcutsFromFocusedCardButton()
 
 			if (this.highlightedIndex < 0) {
 				switch (eventKey) {
@@ -142,6 +144,17 @@ export default {
 						case 'r':
 							this.toggleCardImageEnlargement()
 					}
+				}
+			}
+		},
+		startKBShortcutsFromFocusedCardButton () {
+			const cardButtons = document.querySelectorAll('.card-button')
+
+			for (let i = 0; i < cardButtons.length; i++) {
+				if (cardButtons[i] === document.activeElement) {
+					this.$nextTick(() => {
+						this.setHighlightedIndex(i)
+					})
 				}
 			}
 		},
