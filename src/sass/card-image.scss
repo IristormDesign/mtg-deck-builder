@@ -48,7 +48,8 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		outline-offset: 0px;
 
 		&:hover,
-		&:focus {
+		&:focus,
+		&.kb-highlight {
 			transform:
 				scale(1.3333)
 				$translate
@@ -56,7 +57,8 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 		}
-		&:focus {
+		&:focus,
+		&.kb-highlight {
 			transition-delay: 0s;
 		}
 		&:active {
@@ -118,13 +120,15 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
 
 		&:hover,
-		&:focus-within {
+		&:focus-within,
+		&.kb-highlight {
 			filter: $drop-shadow-card-shadow;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
 			will-change: auto;
 		}
-		&:focus-within {
+		&:focus-within,
+		&.kb-highlight {
 			transition-delay: 0s;
 		}
 	}
@@ -284,7 +288,8 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 
 			&,
 			&:hover,
-			&:focus-within {
+			&:focus-within,
+			&.kb-highlight {
 				filter: drop-shadow(0 0 $lhse rgba(#fff, .1667));
 			}
 		}
@@ -300,7 +305,8 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			margin: $lhse*.5;
 
 			&:hover,
-			&:focus {
+			&:focus,
+			&.kb-highlight {
 				transform: none !important;
 			}
 		}

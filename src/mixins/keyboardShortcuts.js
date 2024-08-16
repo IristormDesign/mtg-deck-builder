@@ -2,7 +2,9 @@ export default {
 	data () {
 		return {
 			mainLastHighlightedIndex: -1,
-			sideboardLastHighlightedIndex: -1
+			sideboardLastHighlightedIndex: -1,
+			imageEnlarged: false,
+			disableImageEnlargeAtIndex: -1
 		}
 	},
 	computed: {
@@ -29,28 +31,32 @@ export default {
 	},
 	watch: {
 		highlightedIndex (curIndex, prevIndex) {
-			document.activeElement.blur()
+			this.disableImageEnlargeAtIndex = curIndex
 
-			this.$nextTick(() => {
-				if (curIndex > -1) {
-					const curLI = document.querySelector(`.card-li:nth-of-type(${curIndex + 1})`)
+			setTimeout(() => {
+				if (curIndex !== this.disableImageEnlargeAtIndex) return
 
-					if (curLI) {
-						curLI.classList.add('highlight')
+				this.disableImageEnlargeAtIndex = -1
+			}, 382) // This timeout's duration is to be equal to the CSS card browse transition's duration. This delay is needed so that the card browse transition doesn't interfere with the image-enlarge transition.
 
-						curLI.scrollIntoView({
-							behavior: 'smooth',
-							block: 'nearest'
-						})
-					}
+			if (curIndex > -1) {
+				const curLI = document.querySelector(`.card-li:nth-of-type(${curIndex + 1})`)
+
+				if (curLI) {
+					curLI.classList.add('highlight')
+
+					curLI.scrollIntoView({
+						behavior: 'smooth',
+						block: 'nearest'
+					})
 				}
+			}
 
-				const prevLI = document.querySelector(`.card-li:nth-of-type(${prevIndex + 1})`)
+			const prevLI = document.querySelector(`.card-li:nth-of-type(${prevIndex + 1})`)
 
-				if (prevLI) {
-					prevLI.classList.remove('highlight')
-				}
-			})
+			if (prevLI) {
+				prevLI.classList.remove('highlight')
+			}
 		}
 	},
 	mounted () {
@@ -73,7 +79,7 @@ export default {
 					break
 				case 'r':
 					this.switchCardGroup()
-					break
+					return
 			}
 
 			// if (!this.noActiveInputs) return
@@ -85,25 +91,40 @@ export default {
 					case 'a':
 					case 'e':
 					case 'd':
+					case 'q':
 						this.setHighlightedIndex(0)
 				}
 			} else {
 				switch (event.key) {
 					case 'w':
-						this.focusPrevLI()
+						this.highlightPrevLI()
 						break
 					case 's':
-						this.focusNextLI()
+						this.highlightNextLI()
 						break
 					case 'e':
-						this.relevantCardAtIndex(this.highlightedIndex).qty++
+						this.relevantCardAtHighlightedIndex().qty++
 						break
 					case 'd':
-						this.relevantCardAtIndex(this.highlightedIndex).qty--
+						this.relevantCardAtHighlightedIndex().qty--
 						break
 					case 'a':
 						this.starCard()
 						break
+					case 'q':
+						this.toggleCardImageEnlargement()
+						break
+				}
+
+				if (this.imageEnlarged) {
+					switch (event.key) {
+						case 'w':
+						case 's':
+						case 'a':
+						case 'e':
+						case 'd':
+							this.toggleCardImageEnlargement()
+					}
 				}
 			}
 
@@ -123,7 +144,7 @@ export default {
 
 			// 			if (alreadyViewedCard()) {
 			// 				for (let i = 0; i < this.cardLIs.length; i++) {
-			// 					if (alreadyViewedCard().name === this.relevantCardAtIndex(i).name) {
+			// 					if (alreadyViewedCard().name === this.relevantCardAtHighlightedIndex(i).name) {
 			// 						const cardButton = this.cardLIs[i].querySelector('.card-button')
 
 			// 						cardButton.focus({ focusVisible: true })
@@ -138,7 +159,7 @@ export default {
 			// 					case 'w':
 			// 					case 's':
 			// 						this.focusOntoCardList()
-			// 						this.viewCard(this.relevantCardAtIndex(0))
+			// 						this.viewCard(this.relevantCardAtHighlightedIndex(0))
 			// 						break
 			// 					case 'r':
 			// 						this.switchCardGroup()
@@ -196,26 +217,26 @@ export default {
 
 			return true
 		},
-		focusPrevLI () {
+		highlightPrevLI () {
 			if (this.highlightedIndex === 0) {
 				this.setHighlightedIndex(this.activeCardList.cards.length - 1)
 			} else {
 				this.setHighlightedIndex(this.highlightedIndex - 1)
 			}
 
-			this.viewCard(this.relevantCardAtIndex(this.highlightedIndex))
+			this.viewCard(this.relevantCardAtHighlightedIndex())
 		},
-		focusNextLI () {
+		highlightNextLI () {
 			if (this.highlightedIndex === this.activeCardList.cards.length - 1) {
 				this.setHighlightedIndex(0)
 			} else {
 				this.setHighlightedIndex(this.highlightedIndex + 1)
 			}
 
-			this.viewCard(this.relevantCardAtIndex(this.highlightedIndex))
+			this.viewCard(this.relevantCardAtHighlightedIndex())
 		},
 		starCard () {
-			const card = this.relevantCardAtIndex(this.highlightedIndex)
+			const card = this.relevantCardAtHighlightedIndex()
 			const star = this.cardLIs[this.highlightedIndex].querySelector('.card-star')
 
 			card.starred = !card.starred
@@ -238,10 +259,30 @@ export default {
 
 			this.$store.commit('showSideboard', !this.$store.state.showSideboard)
 		},
+		toggleCardImageEnlargement () {
+			const imageLinkCL = document.querySelector('.card-image a').classList
+			const imageCardShadowCL = document.querySelector('.card-image .card-shadow').classList
+
+			if (this.imageEnlarged) {
+				imageLinkCL.remove('kb-highlight')
+				imageCardShadowCL.remove('kb-highlight')
+
+				this.imageEnlarged = false
+			} else {
+				if (this.disableImageEnlargeAtIndex > -1) return
+
+				imageLinkCL.add('kb-highlight')
+				imageCardShadowCL.add('kb-highlight')
+
+				this.imageEnlarged = true
+			}
+		},
 		setHighlightedIndex (index) {
+			document.activeElement.blur()
+
 			this.$store.commit('highlightedCardLIIndex', index)
 		},
-		relevantCardAtIndex (index) {
+		relevantCardAtHighlightedIndex (index = this.highlightedIndex) {
 			return this.activeCardList.cards.find(card =>
 				this.activeCardList.cards.indexOf(card) === index
 			)
