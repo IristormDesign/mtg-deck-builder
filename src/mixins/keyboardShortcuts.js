@@ -110,8 +110,23 @@ export default {
 
 				if (event.shiftKey) {
 					switch (eventKey) {
+						case 'w':
+							this.highlightPrevLI()
+							this.highlightPrevLI()
+							break
+						case 's':
+							this.highlightNextLI()
+							this.highlightNextLI()
+							break
+						case 'e':
+							this.relevantCardAtHighlightedIndex().qty = this.relevantCardAtHighlightedIndex().qty + 2
+							break
+						case 'd':
+							this.relevantCardAtHighlightedIndex().qty = this.relevantCardAtHighlightedIndex().qty - 2
+							break
 						case 'q':
 							this.openScryfallPage()
+							break
 					}
 				} else {
 					switch (eventKey) {
