@@ -42,9 +42,11 @@ export default {
 	},
 	mounted () {
 		document.addEventListener('keyup', this.doKeyboardShortcut)
+		document.addEventListener('click', this.quitKBShortcuts)
 	},
 	destroyed () {
 		document.removeEventListener('keyup', this.doKeyboardShortcut)
+		document.removeEventListener('click', this.quitKBShortcuts)
 	},
 	methods: {
 		anyInputActive () {
@@ -74,7 +76,7 @@ export default {
 			const eventKey = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
 
 			switch (eventKey) {
-				case 'Escape': case 'Esc':
+				case 'escape': case 'esc':
 					if (this.highlightedIndex > -1) {
 						event.preventDefault()
 						this.setHighlightedIndex(-1)
@@ -223,8 +225,10 @@ export default {
 
 			window.open(cardPage, '_blank')
 		},
-		setHighlightedIndex (index) {
-			document.activeElement.blur()
+		setHighlightedIndex (index, keepFocus) {
+			if (!keepFocus) {
+				document.activeElement.blur()
+			}
 
 			this.$store.commit('highlightedCardLIIndex', index)
 		},
@@ -232,6 +236,17 @@ export default {
 			return this.activeCardList.cards.find(card =>
 				this.activeCardList.cards.indexOf(card) === index
 			)
+		},
+		quitKBShortcuts () {
+			const cardButtons = document.querySelectorAll('.card-button')
+
+			for (let i = 0; i < cardButtons.length; i++) {
+				if (cardButtons[i] === document.activeElement) {
+					return
+				}
+			}
+
+			this.setHighlightedIndex(-1, true)
 		}
 	}
 }
