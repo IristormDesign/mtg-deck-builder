@@ -1,10 +1,10 @@
 export default {
 	data () {
 		return {
-			mainLastHighlightedIndex: -1,
-			sideboardLastHighlightedIndex: -1,
+			disableImageEnlargeAtIndex: -1,
 			imageEnlarged: false,
-			disableImageEnlargeAtIndex: -1
+			mainLastHighlightedIndex: -1,
+			sideboardLastHighlightedIndex: -1
 		}
 	},
 	computed: {
@@ -49,29 +49,6 @@ export default {
 		document.removeEventListener('click', this.quitKBShortcuts)
 	},
 	methods: {
-		anyInputActive () {
-			const allInputs = document.getElementsByTagName('input')
-
-			for (const input of allInputs) {
-				if (document.activeElement === input) {
-					return true
-				}
-			}
-
-			return false
-		},
-		scrollLIIntoView () {
-			const li = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
-
-			if (li) {
-				li.classList.add('highlight')
-
-				li.scrollIntoView({
-					behavior: 'smooth',
-					block: 'nearest'
-				})
-			}
-		},
 		listenForDeckEditorKBShortcuts (event) {
 			if (event.repeat) return // Ignore key events from held-down key presses, which would trigger multiple events too rapidly.
 
@@ -95,6 +72,17 @@ export default {
 			}
 
 			this.kbShortcutsAllDeckPageModes(keyEvent)
+		},
+		quitKBShortcuts () {
+			const cardButtons = document.querySelectorAll('.card-button')
+
+			for (let i = 0; i < cardButtons.length; i++) {
+				if (cardButtons[i] === document.activeElement) {
+					return
+				}
+			}
+
+			this.setHighlightedIndex(-1, true)
 		},
 		kbShortcutsAllDeckPageModes (keyEvent) {
 			const switchToMode = (routeName) => {
@@ -217,6 +205,24 @@ export default {
 				}
 			}
 		},
+		anyInputActive () {
+			const allInputs = document.getElementsByTagName('input')
+
+			for (const input of allInputs) {
+				if (document.activeElement === input) {
+					return true
+				}
+			}
+
+			return false
+		},
+		setHighlightedIndex (index, keepFocus) {
+			if (!keepFocus) {
+				document.activeElement.blur()
+			}
+
+			this.$store.commit('highlightedCardLIIndex', index)
+		},
 		highlightPrevLI () {
 			if (this.highlightedIndex === 0) {
 				this.setHighlightedIndex(this.activeCardList.cards.length - 1)
@@ -289,18 +295,6 @@ export default {
 
 			window.open(cardPage, '_blank')
 		},
-		setHighlightedIndex (index, keepFocus) {
-			if (!keepFocus) {
-				document.activeElement.blur()
-			}
-
-			this.$store.commit('highlightedCardLIIndex', index)
-		},
-		relevantCardAtHighlightedIndex (index = this.highlightedIndex) {
-			return this.activeCardList.cards.find(card =>
-				this.activeCardList.cards.indexOf(card) === index
-			)
-		},
 		drawCard () {
 			const button = document.querySelector('.draw-card')
 
@@ -311,16 +305,22 @@ export default {
 
 			button.click()
 		},
-		quitKBShortcuts () {
-			const cardButtons = document.querySelectorAll('.card-button')
+		scrollLIIntoView () {
+			const li = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
 
-			for (let i = 0; i < cardButtons.length; i++) {
-				if (cardButtons[i] === document.activeElement) {
-					return
-				}
+			if (li) {
+				li.classList.add('highlight')
+
+				li.scrollIntoView({
+					behavior: 'smooth',
+					block: 'nearest'
+				})
 			}
-
-			this.setHighlightedIndex(-1, true)
+		},
+		relevantCardAtHighlightedIndex (index = this.highlightedIndex) {
+			return this.activeCardList.cards.find(card =>
+				this.activeCardList.cards.indexOf(card) === index
+			)
 		}
 	}
 }
