@@ -65,12 +65,10 @@ import CardListItems from '@/components/deck-page/CardListItems.vue'
 import ScryfallButton from '@/components/deck-page/ScryfallButton.vue'
 import CardAdder from '@/components/deck-page/CardAdder.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
-import cardListFunctions from '@/mixins/cardListFunctions.js'
-import keyboardShortcuts from '@/mixins/keyboardShortcuts.js'
 
 export default {
 	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, CardAdder },
-	mixins: [getActiveDeck, cardListFunctions, keyboardShortcuts],
+	mixins: [getActiveDeck],
 	methods: {
 		attentionAddCard (attention) {
 			const cardAdderInput = document.querySelector('#card-input')

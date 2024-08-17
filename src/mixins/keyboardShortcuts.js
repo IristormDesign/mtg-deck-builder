@@ -41,11 +41,11 @@ export default {
 		}
 	},
 	mounted () {
-		document.addEventListener('keyup', this.doKeyboardShortcut)
+		document.addEventListener('keydown', this.listenForDeckEditorKBShortcuts)
 		document.addEventListener('click', this.quitKBShortcuts)
 	},
 	destroyed () {
-		document.removeEventListener('keyup', this.doKeyboardShortcut)
+		document.removeEventListener('keydown', this.listenForDeckEditorKBShortcuts)
 		document.removeEventListener('click', this.quitKBShortcuts)
 	},
 	methods: {
@@ -72,10 +72,12 @@ export default {
 				})
 			}
 		},
-		doKeyboardShortcut (event) {
-			const eventKey = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
+		listenForDeckEditorKBShortcuts (event) {
+			if (event.repeat) return // Ignore key events from held-down key presses, which would trigger multiple events too rapidly.
 
-			switch (eventKey) {
+			const keyEvent = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
+
+			switch (keyEvent) {
 				case 'escape': case 'esc':
 					if (this.highlightedIndex > -1) {
 						event.preventDefault()
@@ -86,7 +88,35 @@ export default {
 
 			if (this.anyInputActive()) return
 
-			switch (eventKey) {
+			if (this.$route.name === 'deckEditor') {
+				this.kbShortcutsDeckEditor(keyEvent, event.shiftKey)
+			} else if (this.$route.name === 'drawSim') {
+				this.kbShortcutsDrawSim(keyEvent, event)
+			}
+
+			this.kbShortcutsAllDeckPageModes(keyEvent)
+		},
+		kbShortcutsAllDeckPageModes (keyEvent) {
+			const switchToMode = (routeName) => {
+				if (this.$route.name !== routeName) {
+					this.$router.push({ name: routeName })
+				}
+			}
+
+			switch (keyEvent) {
+				case '1':
+					switchToMode('deckEditor')
+					break
+				case '2':
+					switchToMode('moreStats')
+					break
+				case '3':
+					switchToMode('drawSim')
+					break
+			}
+		},
+		kbShortcutsDeckEditor (keyEvent, shiftKeyEvent) {
+			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
 				case 'r':
 					this.switchCardGroup()
 					break
@@ -95,21 +125,19 @@ export default {
 			this.startKBShortcutsFromFocusedCardButton()
 
 			if (this.highlightedIndex < 0) {
-				switch (eventKey) {
+				switch (keyEvent) {
 					case 'w':
 					case 's':
-					case 'a':
 					case 'e':
 					case 'd':
+					case 'a':
 					case 'q':
 						this.setHighlightedIndex(0)
 						this.viewCard(this.relevantCardAtHighlightedIndex())
 				}
 			} else {
-				this.scrollLIIntoView()
-
-				if (event.shiftKey) {
-					switch (eventKey) {
+				if (shiftKeyEvent) {
+					switch (keyEvent) {
 						case 'w':
 							this.highlightPrevLI()
 							this.highlightPrevLI()
@@ -119,17 +147,17 @@ export default {
 							this.highlightNextLI()
 							break
 						case 'e':
-							this.relevantCardAtHighlightedIndex().qty = this.relevantCardAtHighlightedIndex().qty + 2
+							this.adjustCardQty(2)
 							break
 						case 'd':
-							this.relevantCardAtHighlightedIndex().qty = this.relevantCardAtHighlightedIndex().qty - 2
+							this.adjustCardQty(-2)
 							break
 						case 'q':
 							this.openScryfallPage()
 							break
 					}
 				} else {
-					switch (eventKey) {
+					switch (keyEvent) {
 						case 'w':
 							this.highlightPrevLI()
 							break
@@ -137,10 +165,10 @@ export default {
 							this.highlightNextLI()
 							break
 						case 'e':
-							this.relevantCardAtHighlightedIndex().qty++
+							this.adjustCardQty(1)
 							break
 						case 'd':
-							this.relevantCardAtHighlightedIndex().qty--
+							this.adjustCardQty(-1)
 							break
 						case 'a':
 							this.starCard()
@@ -152,16 +180,30 @@ export default {
 				}
 
 				if (this.imageEnlarged) {
-					switch (eventKey) {
+					switch (keyEvent) {
 						case 'w':
 						case 's':
-						case 'a':
 						case 'e':
 						case 'd':
+						case 'a':
 						case 'r':
 							this.toggleCardImageEnlargement()
 					}
 				}
+			}
+		},
+		kbShortcutsDrawSim (keyEvent, event) {
+			switch (keyEvent) {
+				case ' ':
+					event.preventDefault()
+					this.drawCard()
+					break
+				case 'r':
+					this.restartDrawSim()
+					break
+				case 'q':
+					this.toggleCardImageEnlargement()
+					break
 			}
 		},
 		startKBShortcutsFromFocusedCardButton () {
@@ -193,13 +235,20 @@ export default {
 
 			this.viewCard(this.relevantCardAtHighlightedIndex())
 		},
+		adjustCardQty (number) {
+			this.scrollLIIntoView()
+
+			const card = this.relevantCardAtHighlightedIndex()
+
+			card.qty = card.qty + number
+		},
 		starCard () {
 			const card = this.relevantCardAtHighlightedIndex()
 			const star = this.cardLIs[this.highlightedIndex].querySelector('.card-star')
 
+			this.scrollLIIntoView()
 			card.starred = !card.starred
 			this.$store.commit('decks', this.$store.state.decks)
-
 			star.classList.add('active')
 
 			setTimeout(() => {
@@ -251,6 +300,16 @@ export default {
 			return this.activeCardList.cards.find(card =>
 				this.activeCardList.cards.indexOf(card) === index
 			)
+		},
+		drawCard () {
+			const button = document.querySelector('.draw-card')
+
+			button.click()
+		},
+		restartDrawSim () {
+			const button = document.querySelector('.restart')
+
+			button.click()
 		},
 		quitKBShortcuts () {
 			const cardButtons = document.querySelectorAll('.card-button')

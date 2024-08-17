@@ -40,10 +40,12 @@ import DeckActions from '@/components/deck-page/DeckActions.vue'
 import UpdateDataNotice from '@/components/deck-page/UpdateDataNotice.vue'
 import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
+import cardListFunctions from '@/mixins/cardListFunctions.js'
+import keyboardShortcuts from '@/mixins/keyboardShortcuts.js'
 
 export default {
 	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, DeckModeHeading, ModeMenu, DeckActions, UpdateDataNotice, NotFoundContent },
-	mixins: [getActiveDeck],
+	mixins: [getActiveDeck, cardListFunctions, keyboardShortcuts],
 	computed: {
 		validDeck () {
 			return this.$store.state.decks.find(deck =>

@@ -52,10 +52,9 @@
 			padding-right: $lhse*.75;
 			padding-left: $lhse*.75;
 			touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices when double-tapping on this button.
-
-			&:last-of-type {
-				@include button(true);
-			}
+		}
+		.restart {
+			@include button(true);
 		}
 	}
 	.card-list-section {
