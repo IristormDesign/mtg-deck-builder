@@ -86,6 +86,13 @@ export default {
 			const switchToMode = (routeName) => {
 				if (this.$route.name !== routeName) {
 					this.$router.push({ name: routeName })
+				} else {
+					const actionBar = document.querySelector('.deck-action-bar')
+
+					actionBar.scrollIntoView({
+						behavior: 'smooth',
+						block: 'nearest'
+					})
 				}
 			}
 
