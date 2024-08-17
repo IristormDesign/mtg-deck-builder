@@ -55,12 +55,10 @@ export default {
 	},
 	watch: {
 		$route (curRoute, prevRoute) {
-			if ( // If only switching deck modes on the same deck page...
-				curRoute.params.deckPath !== prevRoute.params.deckPath
-			) {
+			if (curRoute.params.deckPath === prevRoute.params.deckPath) { // If only switching between deck page modes for the same deck...
+				this.scrollToActionBar()
+			} else { // Else going from one deck's page to a different deck's.
 				this.showStarredCardIfAvailable()
-			} else {
-				this.maintainPagePosition()
 			}
 
 			this.$store.commit('focusCardButton', null)
@@ -90,11 +88,18 @@ export default {
 
 			this.$store.commit('decks', this.$store.state.decks)
 		},
-		maintainPagePosition () {
+		// If the deck action bar is in view on the page, then hold the page's existing position. Otherwise, make the page scroll to the deck action bar.
+		scrollToActionBar () {
 			const prevPagePosition = window.scrollY
+			const actionBar = document.querySelector('.deck-action-bar')
 
 			this.$nextTick(() => {
 				window.scroll(0, prevPagePosition)
+
+				actionBar.scrollIntoView({
+					behavior: 'smooth',
+					block: 'nearest'
+				})
 			})
 		}
 	}

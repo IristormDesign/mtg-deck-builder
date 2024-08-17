@@ -8,9 +8,6 @@ export default {
 		}
 	},
 	computed: {
-		cardLIs () {
-			return document.getElementsByClassName('card-li') // Using `.getElementsByClassName` instead of `.querySelectorAll` here because the former gets a live node list. The live node list automatically updates whenever the card list switches between main and sideboard.
-		},
 		highlightedIndex () {
 			return this.$store.state.highlightedCardLIIndex // A value of -1 means no card list item currently has attention by keyboard shortcuts. A value of any higher number means the index position of the list item that's currently highlighted by keyboard shortcuts.
 		}
@@ -93,34 +90,23 @@ export default {
 			}
 
 			switch (keyEvent) {
-				case '1':
-					switchToMode('deckEditor')
+				case '1': switchToMode('deckEditor')
 					break
-				case '2':
-					switchToMode('moreStats')
+				case '2': switchToMode('moreStats')
 					break
-				case '3':
-					switchToMode('drawSim')
-					break
+				case '3': switchToMode('drawSim')
 			}
 		},
 		kbShortcutsDeckEditor (keyEvent, shiftKeyEvent) {
 			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
-				case 'r':
-					this.switchCardGroup()
-					break
+				case 'r': this.switchCardGroup()
 			}
 
 			this.startKBShortcutsFromFocusedCardButton()
 
 			if (this.highlightedIndex < 0) {
 				switch (keyEvent) {
-					case 'w':
-					case 's':
-					case 'e':
-					case 'd':
-					case 'a':
-					case 'q':
+					case 'w': case 's': case 'e': case 'd': case 'a': case 'q':
 						this.setHighlightedIndex(0)
 						this.viewCardAtHighlightedIndex()
 				}
@@ -143,39 +129,26 @@ export default {
 							break
 						case 'q':
 							this.openScryfallPage()
-							break
 					}
 				} else {
 					switch (keyEvent) {
-						case 'w':
-							this.highlightPrevLI()
+						case 'w': this.highlightPrevLI()
 							break
-						case 's':
-							this.highlightNextLI()
+						case 's': this.highlightNextLI()
 							break
-						case 'e':
-							this.adjustCardQty(1)
+						case 'e': this.adjustCardQty(1)
 							break
-						case 'd':
-							this.adjustCardQty(-1)
+						case 'd': this.adjustCardQty(-1)
 							break
-						case 'a':
-							this.starCard()
+						case 'a': this.starCard()
 							break
-						case 'q':
-							this.toggleCardImageEnlargement()
-							break
+						case 'q': this.toggleCardImageEnlargement()
 					}
 				}
 
 				if (this.imageEnlarged) {
 					switch (keyEvent) {
-						case 'w':
-						case 's':
-						case 'e':
-						case 'd':
-						case 'a':
-						case 'r':
+						case 'w': case 's': case 'e': case 'd': case 'a': case 'r':
 							this.toggleCardImageEnlargement()
 					}
 				}
@@ -256,7 +229,8 @@ export default {
 
 			if (!card) return
 
-			const star = this.cardLIs[this.highlightedIndex].querySelector('.card-star')
+			const cardLIs = document.getElementsByClassName('card-li') // Using `.getElementsByClassName` instead of `.querySelectorAll` here because the former gets a live node list. The live node list automatically updates whenever the card list switches between main and sideboard.
+			const star = cardLIs[this.highlightedIndex].querySelector('.card-star')
 
 			if (!star) return
 
