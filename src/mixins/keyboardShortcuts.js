@@ -121,7 +121,7 @@ export default {
 					case 'a':
 					case 'q':
 						this.setHighlightedIndex(0)
-						this.viewCard(this.relevantCardAtHighlightedIndex())
+						this.viewCardAtHighlightedIndex()
 				}
 			} else {
 				if (shiftKeyEvent) {
@@ -230,7 +230,7 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex - 1)
 			}
 
-			this.viewCard(this.relevantCardAtHighlightedIndex())
+			this.viewCardAtHighlightedIndex()
 		},
 		highlightNextLI () {
 			if (this.highlightedIndex === this.activeCardList.cards.length - 1) {
@@ -239,18 +239,25 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex + 1)
 			}
 
-			this.viewCard(this.relevantCardAtHighlightedIndex())
+			this.viewCardAtHighlightedIndex()
 		},
 		adjustCardQty (number) {
 			this.scrollLIIntoView()
 
 			const card = this.relevantCardAtHighlightedIndex()
 
+			if (!card) return
+
 			card.qty = card.qty + number
 		},
 		starCard () {
 			const card = this.relevantCardAtHighlightedIndex()
+
+			if (!card) return
+
 			const star = this.cardLIs[this.highlightedIndex].querySelector('.card-star')
+
+			if (!star) return
 
 			this.scrollLIIntoView()
 			card.starred = !card.starred
@@ -273,8 +280,12 @@ export default {
 			this.$store.commit('showSideboard', !this.$store.state.showSideboard)
 		},
 		toggleCardImageEnlargement () {
-			const imageLinkCL = document.querySelector('.card-image a').classList
-			const imageCardShadowCL = document.querySelector('.card-image .card-shadow').classList
+			const image = document.querySelector('.card-image .image-overlay')
+
+			if (!image) return // If no card image even exists, then exit this function now.
+
+			const imageLinkCL = image.querySelector('a').classList
+			const imageCardShadowCL = image.querySelector('.card-shadow').classList
 
 			if (this.imageEnlarged) {
 				imageLinkCL.remove('kb-highlight')
@@ -293,9 +304,15 @@ export default {
 		openScryfallPage () {
 			const cardPage = this.relevantCardAtHighlightedIndex().link
 
+			if (!cardPage) return
+
 			window.open(cardPage, '_blank')
 		},
 		drawCard () {
+			if (this.imageEnlarged) {
+				this.toggleCardImageEnlargement()
+			}
+
 			const button = document.querySelector('.draw-card')
 
 			button.click()
@@ -316,6 +333,13 @@ export default {
 					block: 'nearest'
 				})
 			}
+		},
+		viewCardAtHighlightedIndex () {
+			const card = this.relevantCardAtHighlightedIndex()
+
+			if (!card) return
+
+			this.viewCard(card)
 		},
 		relevantCardAtHighlightedIndex (index = this.highlightedIndex) {
 			return this.activeCardList.cards.find(card =>
