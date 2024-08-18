@@ -1,18 +1,18 @@
 <template>
 	<section class="card-image">
-		<div class="image-container">
-			<transition name="placement-outline-fade">
-				<div
-					v-if="this.showPlacementOutline"
-					class="card-placement-outline"
-				></div>
-			</transition>
-			<transition name="image-overlay-fade">
-				<div
-					class="image-overlay"
-					v-if="this.card && this.$store.state.showCard"
-					@click="hideImageOverlay()"
-				>
+		<transition name="image-overlay-fade">
+			<div
+				class="image-container"
+				v-show="this.card && this.$store.state.showCard"
+				@click="hideImageOverlay()"
+			>
+				<transition name="placement-outline-fade">
+					<div
+						class="card-placement-outline"
+						v-show="this.showPlacementOutline"
+					></div>
+				</transition>
+				<div class="image-overlay">
 					<transition
 						name="card-browse"
 						appear
@@ -50,11 +50,11 @@
 						title="Close this card popup"
 					>×</button>
 				</div>
-			</transition>
-		</div>
+			</div>
+		</transition>
 		<div
-			v-show="showCard"
 			class="turn-over"
+			v-show="showCard"
 		>
 			<transition name="turn-over-button-transition">
 				<button
