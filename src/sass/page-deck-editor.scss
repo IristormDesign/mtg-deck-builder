@@ -14,6 +14,7 @@ $width-card-adder-button: $lhse*2.3333;
 	grid-template-columns: auto auto;
 	gap: $margin-card-gap-after $lhse*.5;
 	justify-content: center;
+	position: relative;
 
 	.viewing-controls {
 		grid-template-columns: 1fr 1fr;

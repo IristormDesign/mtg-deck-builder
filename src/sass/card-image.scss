@@ -192,28 +192,47 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			height: $lhse*1.5;
 		}
 	}
-}
-.card-browse {
-	&-enter-active {
-		animation: $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
-		z-index: 1;
+	.card-browse {
+		&-enter-active {
+			animation: $animation-duration-card-browse cubic-bezier(0, 0, .25, 1);
+			z-index: 1;
+		}
+		&-leave-active {
+			animation: overshadowed $animation-duration-card-browse ease-out;
+		}
 	}
-	&-leave-active {
-		animation: overshadowed $animation-duration-card-browse ease-out;
+	@keyframes turn-over {
+		100% {
+			transform:
+				rotateY(90deg)
+				scale(1.125)
+				translateY(-$lhse*2);
+		}
 	}
-}
-@keyframes turn-over {
-	100% {
-		transform:
-			rotateY(90deg)
-			scale(1.125)
-			translateY(-$lhse*2);
+	.card-turning-over {
+		animation: turn-over 333.3ms ease-in; // The duration needs to match the timing in the `clickedTurnOver` method in CardImage.vue.
+		animation-iteration-count: 2;
+		animation-direction: alternate;
 	}
-}
-.card-turning-over {
-	animation: turn-over 333.3ms ease-in; // The duration needs to match the timing in the `clickedTurnOver` method in CardImage.vue.
-	animation-iteration-count: 2;
-	animation-direction: alternate;
+	.placement-outline-fade {
+		&-enter-active,
+		&-leave-active {
+			transition: opacity .5s ease;
+		}
+		&-leave-active {
+			transition-delay: 1s;
+		}
+		&-enter,
+		&-leave-to {
+			opacity: 0;
+		}
+	}
+	.card-browse-appear-active {
+		@extend .card-browse-enter-active;
+		animation-delay: $transition-duration-standard*1.5;
+		animation-duration: $animation-duration-card-browse*1.5;
+		animation-fill-mode: backwards;
+	}
 }
 .deck-editor {
 	.card-image {
@@ -239,25 +258,6 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		@include card-fan-in-from('right');
 	}
 }
-.placement-outline-fade {
-	&-enter-active,
-	&-leave-active {
-		transition: opacity .5s ease;
-	}
-	&-leave-active {
-		transition-delay: 1s;
-	}
-	&-enter,
-	&-leave-to {
-		opacity: 0;
-	}
-}
-.card-browse-appear-active {
-	@extend .card-browse-enter-active;
-	animation-delay: $transition-duration-standard*1.5;
-	animation-duration: $animation-duration-card-browse*1.5;
-	animation-fill-mode: backwards;
-}
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-image {
@@ -270,12 +270,31 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	.card-image {
 		z-index: index($layers, app-header);
 
+		.image-overlay-fade {
+			&-enter-active,
+			&-leave-active {
+				transition: opacity .25s ease;
+			}
+			&-enter,
+			&-leave-to {
+				opacity: 0;
+			}
+		}
 		.image-container {
-			width: auto;
 			aspect-ratio: auto;
+			width: 100%;
+			max-height: 100%;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
 		}
 		.card-placement-outline {
 			display: none;
+		}
+		.image-overlay {
+			@include overlay-bg;
 		}
 		.card-shadow {
 			width: 100%;
@@ -328,29 +347,13 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			min-width: $lhse;
 			padding: 0;
 		}
-	}
-	.image-overlay {
-		@include overlay-bg;
-	}
-	.image-overlay-fade {
-		&-enter-active,
-		&-leave-active {
-			transition: opacity divide(1s, 3) ease;
-		}
-		&-leave-active {
-			transition-duration: divide(1s, 6);
-		}
-		&-enter,
-		&-leave-to {
-			opacity: 0;
-		}
-	}
-	.card-browse {
-		&-enter-active {
-			animation: none;
-		}
-		&-leave-active {
-			animation: none;
+		.card-browse {
+			&-enter-active {
+				animation: none;
+			}
+			&-leave-active {
+				animation: none;
+			}
 		}
 	}
 }
