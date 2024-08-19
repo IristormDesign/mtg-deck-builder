@@ -244,18 +244,14 @@ export default {
 			card.qty = card.qty + number
 		},
 		starCard () {
-			const card = this.relevantCardAtHighlightedIndex()
-
-			if (!card) return
-
-			const cardLIs = document.getElementsByClassName('card-li') // Using `.getElementsByClassName` instead of `.querySelectorAll` here because the former gets a live node list. The live node list automatically updates whenever the card list switches between main and sideboard.
-			const star = cardLIs[this.highlightedIndex].querySelector('.card-star')
+			const star = document
+				.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
+				.querySelector('.card-star')
 
 			if (!star) return
 
 			this.scrollLIIntoView()
-			card.starred = !card.starred
-			this.$store.commit('decks', this.$store.state.decks)
+			star.click()
 
 			star.classList.add('active')
 
