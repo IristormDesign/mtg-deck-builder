@@ -38,15 +38,15 @@ export default {
 		}
 	},
 	mounted () {
-		document.addEventListener('keydown', this.listenForDeckEditorKBShortcuts)
-		document.addEventListener('click', this.quitKBShortcuts)
+		document.addEventListener('keydown', this.listenForKeyboardShortcuts)
+		document.addEventListener('click', this.clickToQuitKeyboardShortcuts)
 	},
 	destroyed () {
-		document.removeEventListener('keydown', this.listenForDeckEditorKBShortcuts)
-		document.removeEventListener('click', this.quitKBShortcuts)
+		document.removeEventListener('keydown', this.listenForKeyboardShortcuts)
+		document.removeEventListener('click', this.clickToQuitKeyboardShortcuts)
 	},
 	methods: {
-		listenForDeckEditorKBShortcuts (event) {
+		listenForKeyboardShortcuts (event) {
 			if (!event.key) return // Exit this function now if there's no detected key press. Apparently this function is triggered whenever a card is added to the card list, even if no key has been pressed.
 			if (event.repeat) return // Ignore key events from held-down key presses, which would trigger multiple events too rapidly.
 
@@ -74,7 +74,7 @@ export default {
 
 			this.kbShortcutsAllDeckPageModes(keyEvent)
 		},
-		quitKBShortcuts () {
+		clickToQuitKeyboardShortcuts () {
 			const cardButtons = document.querySelectorAll('.card-button')
 
 			for (let i = 0; i < cardButtons.length; i++) {
@@ -106,92 +106,87 @@ export default {
 					break
 				case '3': switchToMode('drawSim')
 			}
+
+			if (this.imageEnlarged) {
+				switch (keyEvent) {
+					case 'w': case 'e': case 'r':
+					case 'a': case 's': case 'd':
+					case 'z': case 'x': case ' ':
+						this.toggleCardImageEnlargement()
+				}
+			}
 		},
 		kbShortcutsDeckEditor (keyEvent, event) {
-			if (keyEvent === 'x') {
-				this.focusOnCardAdder(event)
-
-				return
+			// The following keyboard shortcuts can work at anytime, even when the card list is empty.
+			if (event.shiftKey) { // If pressing Shift + another key...
+				switch (keyEvent) {
+					case 'x': this.openScryfallSearch()
+						return
+				}
+			} else { // Else not holding Shift.
+				switch (keyEvent) {
+					case 'r': this.switchCardGroup()
+						return
+					case 'x': this.focusOnCardAdder(event)
+						return
+				}
 			}
 
 			this.startKBShortcutsFromCardOfViewedImage()
 
-			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
-				case 'r':
-					this.switchCardGroup()
-					break
-				case 'q':
-					this.toggleCardImageEnlargement()
-					break
-				case 'z':
-					this.turnOverCardImage()
-					return
-			}
-
-			if (this.highlightedIndex < 0) {
+			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
-					case 'w': case 's': case 'e': case 'd': case 'a': case 'q':
-						this.setHighlightedIndex(0)
-						this.viewCardAtHighlightedIndex()
+					case 'q': this.openCardScryfallPage()
+						return
+					case 'w':
+						this.highlightPrevLI()
+						this.highlightPrevLI()
+						return
+					case 'e': this.adjustCardQty(2)
+						return
+					case 's':
+						this.highlightNextLI()
+						this.highlightNextLI()
+						return
+					case 'd': this.adjustCardQty(-2)
 				}
-			} else {
-				if (event.shiftKey) {
-					// Shift + key events
-					switch (keyEvent) {
-						case 'w':
-							this.highlightPrevLI()
-							this.highlightPrevLI()
-							break
-						case 's':
-							this.highlightNextLI()
-							this.highlightNextLI()
-							break
-						case 'e':
-							this.adjustCardQty(2)
-							break
-						case 'd':
-							this.adjustCardQty(-2)
-							break
-						case 'q':
-							this.openScryfallPage()
-					}
-				} else {
-					switch (keyEvent) {
-						case 'w': this.highlightPrevLI()
-							break
-						case 's': this.highlightNextLI()
-							break
-						case 'e': this.adjustCardQty(1)
-							break
-						case 'd': this.adjustCardQty(-1)
-							break
-						case 'a': this.starCard()
-					}
-				}
-
-				if (this.imageEnlarged) {
-					switch (keyEvent) {
-						case 'w': case 's': case 'e': case 'd': case 'a': case 'r':
-							this.toggleCardImageEnlargement()
-					}
+			} else { // Else not holding Shift.
+				switch (keyEvent) {
+					case 'q': this.toggleCardImageEnlargement()
+						return
+					case 'w': this.highlightPrevLI()
+						return
+					case 'e': this.adjustCardQty(1)
+						return
+					case 'a': this.starCard()
+						return
+					case 's': this.highlightNextLI()
+						return
+					case 'd': this.adjustCardQty(-1)
+						return
+					case 'z': this.turnOverCardImage()
 				}
 			}
 		},
 		kbShortcutsDrawSim (keyEvent, event) {
-			switch (keyEvent) {
-				case ' ':
-					event.preventDefault()
-					this.drawCard()
-					break
-				case 'r':
-					this.restartDrawSim()
-					break
-				case 'q':
-					this.toggleCardImageEnlargement()
+			if (event.shiftKey) { // If pressing Shift + another key...
+				switch (keyEvent) {
+					case 'q': this.openCardScryfallPage()
+				}
+			} else {
+				switch (keyEvent) {
+					case 'q': this.toggleCardImageEnlargement()
+						return
+					case 'r': this.restartDrawSim()
+						return
+					case 'z': this.turnOverCardImage()
+						return
+					case ' ': this.drawCard(event)
+				}
 			}
 		},
 		startKBShortcutsFromCardOfViewedImage () {
-			if (this.highlightedIndex > -1) return
+			if (this.highlightedIndex > -1) return // If the highlighted index is already set, exit this function now.
 
 			const list = this.activeCardList
 
@@ -301,12 +296,12 @@ export default {
 				this.imageEnlarged = true
 			}
 		},
-		openScryfallPage () {
-			const cardPage = this.relevantCardAtHighlightedIndex().link
+		openCardScryfallPage () {
+			const cardLink = document.querySelector('.card-image a')
 
-			if (!cardPage) return
+			if (!cardLink) return
 
-			window.open(cardPage, '_blank')
+			cardLink.click()
 		},
 		turnOverCardImage () {
 			const button = document.querySelector('.turn-over button')
@@ -326,13 +321,21 @@ export default {
 
 			cardAdder.focus()
 		},
-		drawCard () {
+		openScryfallSearch () {
+			const scryfallSearch = document.querySelector('.scryfall-button a')
+
+			scryfallSearch.click()
+		},
+		drawCard (event) {
+			event.preventDefault()
+
 			if (this.imageEnlarged) {
 				this.toggleCardImageEnlargement()
 			}
 
 			const button = document.querySelector('.draw-card')
 
+			document.activeElement.blur()
 			button.click()
 		},
 		restartDrawSim () {
