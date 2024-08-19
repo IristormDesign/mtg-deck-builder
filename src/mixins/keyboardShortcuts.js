@@ -107,9 +107,13 @@ export default {
 		kbShortcutsDeckEditor (keyEvent, shiftKeyEvent) {
 			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
 				case 'r': this.switchCardGroup()
+					break
+				case 'q': this.toggleCardImageEnlargement()
+					break
+				case 'z': this.turnOverCardImage()
 			}
 
-			this.startKBShortcutsFromFocusedCardButton()
+			this.startKBShortcutsFromCardOfViewedImage()
 
 			if (this.highlightedIndex < 0) {
 				switch (keyEvent) {
@@ -119,6 +123,7 @@ export default {
 				}
 			} else {
 				if (shiftKeyEvent) {
+					// Shift + key events
 					switch (keyEvent) {
 						case 'w':
 							this.highlightPrevLI()
@@ -148,8 +153,6 @@ export default {
 						case 'd': this.adjustCardQty(-1)
 							break
 						case 'a': this.starCard()
-							break
-						case 'q': this.toggleCardImageEnlargement()
 					}
 				}
 
@@ -175,14 +178,14 @@ export default {
 					break
 			}
 		},
-		startKBShortcutsFromFocusedCardButton () {
-			const cardButtons = document.querySelectorAll('.card-button')
+		startKBShortcutsFromCardOfViewedImage () {
+			const list = this.activeCardList
 
-			for (let i = 0; i < cardButtons.length; i++) {
-				if (cardButtons[i] === document.activeElement) {
-					this.$nextTick(() => {
-						this.setHighlightedIndex(i)
-					})
+			for (let i = 0; i < list.cards.length; i++) {
+				if (list.cards[i].name === list.viewedCard.name) {
+					this.setHighlightedIndex(i)
+
+					break
 				}
 			}
 		},
@@ -290,6 +293,17 @@ export default {
 			if (!cardPage) return
 
 			window.open(cardPage, '_blank')
+		},
+		turnOverCardImage () {
+			const button = document.querySelector('.turn-over button')
+
+			if (!button) return
+
+			const cardImage = document.querySelector('.card-image .card-shadow')
+
+			if (cardImage.classList.contains('card-browse-leave-active')) return // If the card image already has an ongoing animation, then do nothing right now. Otherwise, it may cause a glitchy-looking animation.
+
+			button.click()
 		},
 		drawCard () {
 			if (this.imageEnlarged) {

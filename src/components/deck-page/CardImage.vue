@@ -3,7 +3,7 @@
 		<transition name="image-overlay-fade">
 			<div
 				class="image-container"
-				v-show="this.card && this.$store.state.showCard"
+				v-if="this.card && this.$store.state.showCard"
 				@click="hideImageOverlay()"
 			>
 				<transition name="placement-outline-fade">
@@ -262,6 +262,19 @@ export default {
 			}
 		},
 		clickedTurnOver () {
+			// If the user has been using keyboard shortcuts, put the focus back onto keyboard shortcuts.
+			const currentLIIndex = this.$store.state.highlightedCardLIIndex
+
+			if (currentLIIndex > -1) {
+				// In order to trigger behavior from Vue watching the keyboard-highlighted index (in @/mixin/keyboardShortcuts.js), set the index to -1, then immediately set it back to what the index was before.
+
+				this.$store.commit('highlightedCardLIIndex', -1)
+
+				setTimeout(() => {
+					this.$store.commit('highlightedCardLIIndex', currentLIIndex)
+				}, 1)
+			}
+
 			if (this.turningOverCard) return // This early exit prevents the card image from switching faces while it's already in the animation of turning over. This situation could happen if the user clicks the Turn Over button many times rapidly.
 
 			this.turningOverCard = true
