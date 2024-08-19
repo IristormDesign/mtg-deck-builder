@@ -57,14 +57,17 @@ export default {
 					if (this.highlightedIndex > -1) {
 						event.preventDefault()
 						this.setHighlightedIndex(-1)
+					} else {
+						document.activeElement.blur()
 					}
+
 					return
 			}
 
 			if (this.anyInputActive()) return
 
 			if (this.$route.name === 'deckEditor') {
-				this.kbShortcutsDeckEditor(keyEvent, event.shiftKey)
+				this.kbShortcutsDeckEditor(keyEvent, event)
 			} else if (this.$route.name === 'drawSim') {
 				this.kbShortcutsDrawSim(keyEvent, event)
 			}
@@ -104,16 +107,26 @@ export default {
 				case '3': switchToMode('drawSim')
 			}
 		},
-		kbShortcutsDeckEditor (keyEvent, shiftKeyEvent) {
-			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
-				case 'r': this.switchCardGroup()
-					break
-				case 'q': this.toggleCardImageEnlargement()
-					break
-				case 'z': this.turnOverCardImage()
+		kbShortcutsDeckEditor (keyEvent, event) {
+			if (keyEvent === 'x') {
+				this.focusOnCardAdder(event)
+
+				return
 			}
 
 			this.startKBShortcutsFromCardOfViewedImage()
+
+			switch (keyEvent) { // The following keyboard shortcuts can be used anytime, even while the card list has no highlighted items.
+				case 'r':
+					this.switchCardGroup()
+					break
+				case 'q':
+					this.toggleCardImageEnlargement()
+					break
+				case 'z':
+					this.turnOverCardImage()
+					return
+			}
 
 			if (this.highlightedIndex < 0) {
 				switch (keyEvent) {
@@ -122,7 +135,7 @@ export default {
 						this.viewCardAtHighlightedIndex()
 				}
 			} else {
-				if (shiftKeyEvent) {
+				if (event.shiftKey) {
 					// Shift + key events
 					switch (keyEvent) {
 						case 'w':
@@ -175,7 +188,6 @@ export default {
 					break
 				case 'q':
 					this.toggleCardImageEnlargement()
-					break
 			}
 		},
 		startKBShortcutsFromCardOfViewedImage () {
@@ -306,6 +318,13 @@ export default {
 			if (cardImage.classList.contains('card-browse-leave-active')) return // If the card image already has an ongoing animation, then do nothing right now. Otherwise, it may cause a glitchy-looking animation.
 
 			button.click()
+		},
+		focusOnCardAdder (event) {
+			event.preventDefault()
+
+			const cardAdder = document.querySelector('.card-adder input')
+
+			cardAdder.focus()
 		},
 		drawCard () {
 			if (this.imageEnlarged) {
