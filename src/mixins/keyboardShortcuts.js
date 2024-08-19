@@ -179,6 +179,8 @@ export default {
 			}
 		},
 		startKBShortcutsFromCardOfViewedImage () {
+			if (this.highlightedIndex > -1) return
+
 			const list = this.activeCardList
 
 			for (let i = 0; i < list.cards.length; i++) {
