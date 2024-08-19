@@ -11,7 +11,7 @@
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
-				<p><strong>Starred</strong> – Sorts between <a href="#m-card-stars">starred</a> and non-starred. This sorting option is hidden when no cards in your deck have a star.</p>
+				<p><strong>Starred</strong> – Sorts between <a href="#m-card-stars">starred</a> and un-starred. If no card names in your deck have a star, this sorting option is hidden.</p>
 			</li>
 			<li>
 				<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
@@ -39,12 +39,12 @@
 				<p>Among cards having the same P/T sums as each other, they’re sorted from greatest to least by power alone. Cards without the power and toughness characteristics are moved to the bottom.</p>
 			</li>
 			<li>
-				<p><strong>Quantity</strong> – Sorts from greatest to least by <a href="#m-card-quantities">quantity</a>.</p>
+				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#m-card-quantities">quantity</a>.</p>
 			</li>
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that never insert gaps are name, mana color, and rarity.</p>
-		<p>Under certain conditions, the card sorter’s sorting option rests to “(None),” and any gaps in the card list between sorted clusters disappear. The conditions happen whenever you do any of the following actions:
+		<p>Under certain conditions, the card sorter’s sorting option resets to “(None),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
 				<li><a href="#m-card-adder">Add a card name</a> to the list</li>
 				<li>Adjust the quantity of a card name while the sorter is set to “Quantity”</li>
