@@ -7,6 +7,7 @@
 			<label for="card-input">Add a card name to this {{activeCardListString}}:</label>
 			<input
 				@input="submitSuggestion()"
+				@focus="adderFocused()"
 				:placeholder="inputPlaceholder"
 				autocomplete="off"
 				id="card-input"
@@ -51,6 +52,7 @@ export default {
 			cardSuggestions: null,
 			cardQueryInput: '',
 			delay: false,
+			focusedViaKBShortcut: false,
 			loadingCard: false,
 			optionalReplacement: false
 		}
@@ -81,11 +83,15 @@ export default {
 			}
 		},
 		loadingCard (loading) {
-			if (!this.$store.state.isMobileLayout() && !loading) {
-				this.$nextTick(() => {
-					this.$refs.focusCardAdder.focus()
-				})
-			}
+			this.$nextTick(() => {
+				if (
+					!loading &&
+					this.focusedViaKBShortcut
+				) {
+					this.$store.commit('highlightedCardLIIndex', this.activeCardList.cards.length - 1)
+					this.focusedViaKBShortcut = false
+				}
+			})
 		}
 	},
 	created () {
@@ -191,6 +197,14 @@ export default {
 				} else { // Else the queried card doesn't match the name of another card in the list.
 					this.axiosRequestName(query)
 				}
+			}
+		},
+		adderFocused () {
+			if (this.$store.state.highlightedCardLIIndex > -1) {
+				this.focusedViaKBShortcut = true
+				this.$store.commit('highlightedCardLIIndex', -1)
+			} else {
+				this.focusedViaKBShortcut = false
 			}
 		}
 	}

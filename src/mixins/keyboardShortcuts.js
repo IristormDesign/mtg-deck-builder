@@ -30,10 +30,22 @@ export default {
 				}
 			}
 
-			const prevLI = document.querySelector(`.card-li:nth-of-type(${prevIndex + 1})`)
+			if (prevIndex > -1) { // If there had been a previously highlighted list item when the current list item got highlighted...
+				const prevLI = document.querySelector(`.card-li:nth-of-type(${prevIndex + 1})`)
 
-			if (prevLI) {
-				prevLI.classList.remove('highlight')
+				if (prevLI) {
+					prevLI.classList.remove('highlight')
+				}
+			} else { // Else check the whole card list for any highlighted list items that may exist other than the actively highlighted one. This may happen by effects of the card adder component.
+				if (curIndex < 0) return
+
+				const allLIs = document.querySelectorAll('.card-li')
+
+				for (let i = 0; i < allLIs.length; i++) {
+					if (i === curIndex) continue
+
+					allLIs[i].classList.remove('highlight')
+				}
 			}
 		}
 	},
@@ -127,7 +139,7 @@ export default {
 				switch (keyEvent) {
 					case 'r': this.switchCardGroup()
 						return
-					case 'x': this.focusOnCardAdder(event)
+					case 'x': this.focusOntoCardAdder(event)
 						return
 				}
 			}
@@ -310,7 +322,7 @@ export default {
 
 			button.click()
 		},
-		focusOnCardAdder (event) {
+		focusOntoCardAdder (event) {
 			event.preventDefault()
 
 			const cardAdder = document.querySelector('.card-adder input')
