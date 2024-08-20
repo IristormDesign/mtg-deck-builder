@@ -66,6 +66,7 @@ export default {
 
 				return regexBasicLand.test(card.type)
 			}
+			// For future app updates, periodically check for new cards that modify the standard quantity limit, and add those cards' names here. See: https://scryfall.com/search?q=%28oracle%3A%22a+deck+can+have%22+oracle%3A%22cards+named%22%29+%28game%3Apaper%29&order=released&as=grid
 			function isException () {
 				switch (card.name) {
 					case 'Dragon’s Approach':
@@ -76,6 +77,7 @@ export default {
 					case 'Seven Dwarves':
 					case 'Shadowborn Apostle':
 					case 'Slime Against Humanity':
+					case 'Templar Knight':
 						return true
 					default:
 						return false
