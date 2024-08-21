@@ -7,7 +7,8 @@
 			:id="qtyCardID(i)"
 			min="0"
 			v-model.lazy="cardObject.qty"
-			@click="qtyInputFocused($event)"
+			@focus="focusedOnQtyInput()"
+			@blur="blurredFromQtyInput()"
 		/>
 		<div class="qty-buttons">
 			<button
@@ -62,6 +63,25 @@ export default {
 		}
 	},
 	methods: {
+		listenForKeyboardShortcuts (event) {
+			if (event.repeat) return
+
+			console.log(event)
+
+			if (event.key === 'Enter') {
+				document.activeElement.blur()
+			}
+
+			const disallowedKeyEvents = () => {
+				const regexDisallowed = /[^e.-]/i // A character that's NOT the letter E, or a period (decimal point), or a hyphen (minus sign). These are the certain non-digit characters that are allowed by a number-type input, but that should never be used for the card quantity inputs.
+
+				return !regexDisallowed.test(event.key) // Having the regex be negative ("^") and this function's return value also be negative ("!") is intentional. This lets certain keyboard events that regex can't test to still be used as normal, such as the events for the backspace, enter, and arrow keys.
+			}
+
+			if (disallowedKeyEvents()) {
+				event.preventDefault()
+			}
+		},
 		determineMaxQty () {
 			const card = this.card
 
@@ -187,12 +207,15 @@ export default {
 
 			this.determineDeckColors()
 		},
-		qtyInputFocused (event) {
-			event.target.select()
-
+		focusedOnQtyInput () {
 			if (!this.$store.state.isMobileLayout()) {
 				this.viewCard(this.card)
 			}
+
+			document.addEventListener('keydown', this.listenForKeyboardShortcuts)
+		},
+		blurredFromQtyInput () {
+			document.removeEventListener('keydown', this.listenForKeyboardShortcuts)
 		},
 		disableIncreaseQtyBtn () {
 			return this.card.qty >= this.card.maxQty
