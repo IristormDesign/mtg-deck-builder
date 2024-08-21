@@ -122,6 +122,8 @@ export default {
 						card.qty = 1
 					}
 				}, 125) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+			} else if (isNaN(card.qty)) { // If the user somehow entered non-digits for the quantity, reset the quantity to 1 instead.
+				card.qty = 1
 			} else {
 				if (!card.maxQty) {
 					this.determineMaxQty()
