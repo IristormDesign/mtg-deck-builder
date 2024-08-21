@@ -66,8 +66,6 @@ export default {
 		listenForKeyboardShortcuts (event) {
 			if (event.repeat) return
 
-			console.log(event)
-
 			if (event.key === 'Enter') {
 				document.activeElement.blur()
 			}
