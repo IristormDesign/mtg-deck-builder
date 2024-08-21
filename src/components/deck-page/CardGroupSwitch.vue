@@ -11,7 +11,7 @@
 						checked
 						name="view-list"
 						@click="$store.commit('showSideboard', false)"
-						ref="checkRadioMainDeck"
+						ref="radioMainGroup"
 					/>
 				</div>
 				<div>
@@ -21,6 +21,7 @@
 						type="radio"
 						name="view-list"
 						@click="$store.commit('showSideboard', true)"
+						ref="radioSideboardGroup"
 					/>
 				</div>
 			</fieldset>
@@ -40,8 +41,10 @@ export default {
 	},
 	watch: {
 		showSideboard () {
-			if (!this.showSideboard) {
-				this.$refs.checkRadioMainDeck.checked = true
+			if (this.showSideboard) {
+				this.$refs.radioSideboardGroup.checked = true
+			} else {
+				this.$refs.radioMainGroup.checked = true
 			}
 		}
 	}
