@@ -15,12 +15,16 @@
 				title="Increase quantity"
 				@click="cardObject.qty++"
 				:disabled="disableIncreaseQtyBtn()"
-			><div>+</div></button>
+			>
+				<div>+</div>
+			</button>
 			<button
 				class="decrement"
 				title="Decrease quantity"
 				@click="cardObject.qty--"
-			><div>&minus;</div></button>
+			>
+				<div>&minus;</div>
+			</button>
 		</div>
 	</div>
 </template>
@@ -101,13 +105,11 @@ export default {
 				card.qty = 0 // Don't allow negative numbers.
 			} else if (card.qty === 0) {
 				function cardName () {
-					if (
-						card.layout === 'modal_dfc' ||
-							card.layout === 'split'
-					) {
-						return `${card.name} // ${card.name2}`
-					} else {
-						return card.name
+					switch (card.layout) {
+						case 'modal_dfc': case 'split':
+							return `${card.name} // ${card.name2}`
+						default:
+							return card.name
 					}
 				}
 
