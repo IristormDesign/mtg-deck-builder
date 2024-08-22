@@ -76,7 +76,13 @@ export default {
 					return
 			}
 
-			if (this.anyInputActive()) return
+			if (keyEvent === 'tab') {
+				this.$nextTick(() => {
+					this.setHighlightedIndex(-1)
+				})
+			} else {
+				if (this.anyInputActive()) return
+			}
 
 			if (this.$route.name === 'deckEditor') {
 				this.kbShortcutsDeckEditor(keyEvent, event)
@@ -123,7 +129,8 @@ export default {
 				switch (keyEvent) {
 					case 'w': case 'e': case 'r':
 					case 'a': case 's': case 'd':
-					case 'z': case 'x': case ' ':
+					case 'z': case 'x':
+					case 'tab': case ' ':
 						this.toggleCardImageEnlargement()
 				}
 			}
