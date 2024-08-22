@@ -214,7 +214,10 @@ export default {
 			const allInputs = document.getElementsByTagName('input')
 
 			for (const input of allInputs) {
-				if (document.activeElement === input) {
+				if (
+					document.activeElement === input &&
+					input.getAttribute('type') !== 'radio'
+				) {
 					return true
 				}
 			}
