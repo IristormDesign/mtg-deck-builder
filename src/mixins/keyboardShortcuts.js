@@ -266,11 +266,11 @@ export default {
 			card.qty = card.qty + number
 		},
 		starCard () {
-			const star = document
-				.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
-				.querySelector('.card-star')
+			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
 
-			if (!star) return
+			if (!cardLI) return
+
+			const star = cardLI.querySelector('.card-star')
 
 			this.scrollLIIntoView()
 			star.click()
