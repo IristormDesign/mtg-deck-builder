@@ -61,6 +61,14 @@
 					<li><a href="#m-more-stats">More Statistics</a></li>
 					<li><a href="#m-draw-sim">Draw Simulator</a></li>
 					<li>
+						<a href="#m-keyboard-shortcuts">Keyboard Shortcuts</a>
+						<ol>
+							<li><a href="#m-kbsc-deck-page-modes">Deck Page Modes</a></li>
+							<li><a href="#m-kbsc-deck-editor">Deck Editor Actions</a></li>
+							<li><a href="#m-kbsc-draw-sim">Draw Simulator Actions</a></li>
+						</ol>
+					</li>
+					<li>
 						<a href="#m-storage-of-deck-data">Storage of Deck Data</a>
 						<ol>
 							<li><a href="#m-deck-data-files">Deck Data Files</a></li>
@@ -81,6 +89,7 @@
 			<deck-editor />
 			<more-stats />
 			<draw-sim />
+			<keyboard-shortcuts />
 			<storage-of-deck-data />
 			<app-development />
 		</div>
@@ -97,11 +106,12 @@ import DeckPageModes from '@/components/manual-chapters/DeckPageModes.vue'
 import DeckEditor from '@/components/manual-chapters/DeckEditor.vue'
 import MoreStats from '@/components/manual-chapters/MoreStats.vue'
 import DrawSim from '@/components/manual-chapters/DrawSim.vue'
+import KeyboardShortcuts from '@/components/manual-chapters/KeyboardShortcuts.vue'
 import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vue'
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, MoreStats, DrawSim, StorageOfDeckData, AppDevelopment }
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, MoreStats, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment }
 }
 </script>
 

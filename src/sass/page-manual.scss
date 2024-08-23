@@ -109,9 +109,9 @@
 					}
 				}
 
-				> h3,
-				> h4,
-				> h5 {
+				> h3:first-child,
+				> h4:first-child,
+				> h5:first-child {
 					outline: $lhse*.125 solid rgba($color-link-active, 0);
 					outline-offset: $lhse*.25;
 					animation: highlight-section 1s ease-in;
@@ -145,6 +145,14 @@
 			display: inline-block;
 			transform: scale(1.0833) translateY(-.0417em);
 		}
+	}
+}
+.keyboard-shortcuts {
+	padding-left: 0;
+
+	li {
+		list-style: none;
+		margin: $lhse*.25 0;
 	}
 }
 

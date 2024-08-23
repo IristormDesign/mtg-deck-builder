@@ -154,6 +154,33 @@ figcaption {
 		@include link-colors($color-link-dim);
 	}
 }
+kbd {
+	$kbd-height: $lhse*1.375;
+
+	background: $color-heading-bg;
+	color: $color-text-brighter;
+	border: 1px solid $color-group-bg-darker;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 1px;
+	width: $kbd-height;
+	height: $kbd-height;
+	border-radius: $kbd-height*.125;
+	font-size: 75%;
+	font-family: "Trebuchet MS", sans-serif;
+	vertical-align: text-top;
+	margin-top: -.0833em;
+	cursor: default;
+
+	&.shift-key {
+		width: $kbd-height * 2;
+	}
+	&.space-bar {
+		width: $kbd-height * 4;
+	}
+}
 ::selection {
 	background: $color-mythic-very-dim;
 	color: $color-app-header-link-active;
