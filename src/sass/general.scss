@@ -72,10 +72,12 @@ h4 {
 h5 {
 	font-size: 80%;
 	text-transform: uppercase;
+	margin-top: $lhse*1.5;
 }
 h6 {
 	font-size: 60%;
 	text-transform: uppercase;
+	margin-top: $lhse*1.5;
 }
 p,
 ul,
@@ -168,11 +170,11 @@ kbd {
 	width: $kbd-height;
 	height: $kbd-height;
 	border-radius: $kbd-height*.125;
-	font-size: 75%;
-	font-family: "Trebuchet MS", sans-serif;
+	font-size: 70.83%;
+	font-family: "Segoe UI Semibold", "Trebuchet MS", sans-serif;
 	vertical-align: text-top;
-	margin-top: -.0833em;
-	cursor: default;
+	margin-top: -.125em; // To vertically align the key letters with normal text.
+	margin-bottom: -.125em; // To maintain a consistent line height.
 
 	&.shift-key {
 		width: $kbd-height * 2;

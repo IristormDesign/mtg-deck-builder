@@ -7,6 +7,6 @@
 			<li><kbd>2</kbd>: Set to <a href="#m-more-stats">More Statistics</a>.</li>
 			<li><kbd>3</kbd>: Set to the <a href="#m-draw-sim">Draw Simulator</a>.</li>
 		</ul>
-		<p>Additionally, if you do any of these mode keyboard shortcuts for the mode that’s already active, then the shortcut will scroll the page up to the <a href="#m-mode-menu">mode menu</a> (if it’s not already in view).</p>
+		<p>Additionally, if you use any of these mode-setting <a href="#m-keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, then the shortcut will scroll the page up to the <a href="#m-mode-menu">mode menu</a> (if it’s not already in view).</p>
 	</section>
 </template>

@@ -1,13 +1,19 @@
 <template>
 	<section id="m-kbsc-draw-sim">
 		<h4>Keyboard Shortcuts: Draw Simulator Actions</h4>
-		<p>While in the <a href="#m-draw-sim">Draw Simulator mode</a>, you can do actions by pressing one of the following keys:</p>
+		<p>The <a href="#m-draw-sim">Draw Simulator mode</a> works with special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>, including the following:</p>
+
+		<h5>Unique Draw Simulator Shortcuts</h5>
 		<ul class="keyboard-shortcuts">
 			<li><kbd class="space-bar">Space</kbd>: Draw a card.</li>
-			<li><kbd>R</kbd>: Restart the testing round.</li>
+			<li><kbd>R</kbd>: Restart in a new testing round.</li>
+		</ul>
+
+		<h5>Matching Shortcuts with Deck Editor</h5>
+		<ul class="keyboard-shortcuts">
 			<li><kbd>Q</kbd>: View the <a href="#m-card-image">card image</a> up closer.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a tab to the displayed card’s page on Scryfall.</li>
 			<li><kbd>Z</kbd>: Turn over the card image (if double-faced).</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open the card’s page on Scryfall in a new tab.</li>
 		</ul>
 	</section>
 </template>
