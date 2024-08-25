@@ -1,18 +1,21 @@
 <template>
-	<section class="card-image">
-		<transition name="image-overlay-fade">
-			<div
-				class="image-container"
-				v-if="this.card && this.$store.state.showCard"
-				@click="hideImageOverlay()"
-			>
-				<transition name="placement-outline-fade">
-					<div
-						class="card-placement-outline"
-						v-show="this.showPlacementOutline"
-					></div>
-				</transition>
-				<div class="image-overlay">
+	<transition name="image-overlay-fade">
+		<section
+			class="card-image"
+			v-if="showCard"
+		>
+			<transition name="placement-outline-fade">
+				<div
+					class="card-placement-outline"
+					v-show="this.showPlacementOutline"
+				></div>
+			</transition>
+			<div class="image-container">
+				<div
+					class="image-overlay"
+					v-if="this.card && showCard"
+					@click="hideImageOverlay()"
+				>
 					<transition
 						name="card-browse"
 						appear
@@ -51,21 +54,21 @@
 					>×</button>
 				</div>
 			</div>
-		</transition>
-		<div
-			class="turn-over"
-			v-show="showCard"
-		>
-			<transition name="turn-over-button-transition">
-				<button
-					v-if="showCard && card && card.img2"
-					@click="clickedTurnOver()"
-				>
-					Turn Over
-				</button>
-			</transition>
-		</div>
-	</section>
+			<div
+				class="turn-over"
+				v-show="showCard"
+			>
+				<transition name="turn-over-button-transition">
+					<button
+						v-if="showCard && card && card.img2"
+						@click="clickedTurnOver()"
+					>
+						Turn Over
+					</button>
+				</transition>
+			</div>
+		</section>
+	</transition>
 </template>
 
 <script>
@@ -117,7 +120,9 @@ export default {
 			return this.$store.state.showCard
 		},
 		showPlacementOutline () {
-			if (this.$route.name === 'drawSim') {
+			if (this.$store.state.isMobileLayout()) {
+				return false
+			} else if (this.$route.name === 'drawSim') {
 				return true
 			} else {
 				return this.deck.cards.length <= 0
