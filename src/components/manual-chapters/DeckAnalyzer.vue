@@ -1,14 +1,14 @@
 <template>
-	<section id="m-more-stats">
-		<h3>More Statistics</h3>
-		<p>While the <a href="#m-deck-page-header">deck page header</a> shows you a few <a href="#m-basic-statistics">basic statistics</a> about your deck, the “More Statistics” <a href="#m-deck-page-modes">deck page mode</a> shows you an even greater array of information.</p>
+	<section id="m-deck-analyzer">
+		<h3>Deck Analyzer</h3>
+		<p>The Deck Analyzer is a <a href="#m-deck-page-modes">deck page mode</a> where you can view lots of data about how your deck is composed. While the <a href="#m-deck-page-header">deck page header</a> shows a few <a href="#m-basic-statistics">basic statistics</a>, the Deck Analyzer shows more statistics that go further in depth.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
-				alt="Snippet of more basic statistics page" title="Screenshot" loading="lazy" />
+				alt="Snippet of the Deck Analyzer mode" title="Screenshot" loading="lazy" />
 		</p>
-		<p>In the More Statistics mode, the page displays many data tables for various statistical categories about the cards in your deck’s main <a href="#m-card-groups">card group</a>. The categories are the following:</p>
+		<p>When in the Deck Analyzer mode, the page displays many data tables for various statistical categories about the cards in your deck’s main <a href="#m-card-groups">card group</a>. The categories are the following:</p>
 		<ul>
 			<li>Colors of Spells</li>
 			<li>Mana Color Symbols</li>

@@ -107,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck-general.scss';
+	@import '@/sass/page-deck-page-general.scss';
 	@import '@/sass/deck-header.scss';
 	@import '@/sass/deck-action-bar.scss';
 </style>

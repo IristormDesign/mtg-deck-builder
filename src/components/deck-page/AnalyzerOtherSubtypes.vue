@@ -37,10 +37,10 @@
 </template>
 
 <script>
-import moreStats from '@/mixins/moreStats.js'
+import deckAnalyzer from '@/mixins/deckAnalyzer.js'
 
 export default {
-	mixins: [moreStats],
+	mixins: [deckAnalyzer],
 	props: {
 		deck: Object,
 		subtypeCounts: Object

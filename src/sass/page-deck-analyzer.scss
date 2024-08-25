@@ -4,7 +4,7 @@ $table-outer-borders: 4px solid $color-heading-bg;
 $color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 $outline-width-stat-section: 2px;
 
-.more-stats {
+.deck-analyzer {
 	margin: 0 auto $lhse*.5;
 	max-width: none;
 
@@ -192,7 +192,7 @@ $outline-width-stat-section: 2px;
 }
 
 @media (max-width: (1920px * divide(2, 3))) {
-	.more-stats {
+	.deck-analyzer {
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -203,14 +203,14 @@ $outline-width-stat-section: 2px;
 	}
 }
 @media (max-width: ($min-width-app * 1.0625)) {
-	.more-stats {
+	.deck-analyzer {
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
-	.more-stats {
+	.deck-analyzer {
 		.tables {
 			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
 		}
@@ -221,7 +221,7 @@ $outline-width-stat-section: 2px;
 	}
 }
 @media (max-width: ($min-width-app*.6667)) {
-	.more-stats {
+	.deck-analyzer {
 		.tables {
 			grid-template-columns: 1fr;
 			width: 100%;
@@ -229,7 +229,7 @@ $outline-width-stat-section: 2px;
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
-	.more-stats {
+	.deck-analyzer {
 		border-radius: $border-radius-group;
 	}
 }

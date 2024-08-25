@@ -9,9 +9,9 @@
 			</li>
 			<li>
 				<router-link
-					:to="{ name: 'moreStats' }"
-					:class="($route.name === 'moreStats') ? 'current-page' : null"
-				>More Statistics</router-link>
+					:to="{ name: 'deckAnalyzer' }"
+					:class="($route.name === 'deckAnalyzer') ? 'current-page' : null"
+				>Deck Analyzer</router-link>
 			</li>
 			<li>
 				<router-link

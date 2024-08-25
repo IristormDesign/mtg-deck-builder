@@ -120,7 +120,7 @@ export default {
 			switch (keyEvent) {
 				case '1': switchToMode('deckEditor')
 					break
-				case '2': switchToMode('moreStats')
+				case '2': switchToMode('deckAnalyzer')
 					break
 				case '3': switchToMode('drawSim')
 			}
