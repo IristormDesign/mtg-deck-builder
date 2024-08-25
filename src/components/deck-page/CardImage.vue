@@ -7,13 +7,13 @@
 			<transition name="placement-outline-fade">
 				<div
 					class="card-placement-outline"
-					v-show="this.showPlacementOutline"
+					v-show="showPlacementOutline"
 				></div>
 			</transition>
 			<div class="image-container">
 				<div
 					class="image-overlay"
-					v-if="this.card && showCard"
+					v-if="card"
 					@click="hideImageOverlay()"
 				>
 					<transition
@@ -54,13 +54,10 @@
 					>×</button>
 				</div>
 			</div>
-			<div
-				class="turn-over"
-				v-show="showCard"
-			>
+			<div class="turn-over">
 				<transition name="turn-over-button-transition">
 					<button
-						v-if="showCard && card && card.img2"
+						v-if="card && card.img2"
 						@click="clickedTurnOver()"
 					>
 						Turn Over
@@ -258,11 +255,11 @@ export default {
 		 * This effect is used for navigating from one deck page directly to another at wide viewports.
 		 */
 		delayTransitionOfCardImage () {
-			if (this.$store.state.showCard) {
-				this.$store.state.showCard = false
+			if (this.showCard) {
+				this.$store.commit('showCard', false)
 
 				this.$nextTick(() => {
-					this.$store.state.showCard = true
+					this.$store.commit('showCard', true)
 				})
 			}
 		},

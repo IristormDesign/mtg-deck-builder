@@ -110,7 +110,7 @@
 	height: 100%;
 	z-index: index($layers, bg-overlay);
 	background: rgba($color-content-bg, .6667);
-	backdrop-filter: blur(4px);
+	backdrop-filter: blur(3px);
 }
 @mixin button($alt-color: false) {
 	@if $alt-color == true {
