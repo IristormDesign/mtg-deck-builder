@@ -4,21 +4,33 @@
 			<li>
 				<router-link
 					:to="{ name: 'deckEditor' }"
-					:class="($route.name === 'deckEditor') ? 'current-page' : null"
+					:class="onPage('deckEditor')"
 				>Deck Editor</router-link>
 			</li>
 			<li>
 				<router-link
 					:to="{ name: 'deckAnalyzer' }"
-					:class="($route.name === 'deckAnalyzer') ? 'current-page' : null"
+					:class="onPage('deckAnalyzer')"
 				>Deck Analyzer</router-link>
 			</li>
 			<li>
 				<router-link
 					:to="{ name: 'drawSim' }"
-					:class="($route.name === 'drawSim') ? 'current-page' : null"
+					:class="onPage('drawSim')"
 				>Draw Simulator</router-link>
 			</li>
 		</ul>
 	</nav>
 </template>
+
+<script>
+export default {
+	methods: {
+		onPage (routeName) {
+			if (this.$route.name === routeName) {
+				return 'current-page'
+			}
+		}
+	}
+}
+</script>
