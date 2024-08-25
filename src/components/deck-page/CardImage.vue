@@ -5,10 +5,7 @@
 			v-if="showCard"
 		>
 			<transition name="placement-outline-fade">
-				<div
-					class="card-placement-outline"
-					v-show="showPlacementOutline"
-				></div>
+				<div class="card-placement-outline"></div>
 			</transition>
 			<div class="image-container">
 				<div

@@ -95,6 +95,14 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 	z-index: index($layers, card-overlay);
 	height: min-content; // Needed so that the app footer links positioned directly beneath the card image can still be clicked.
 
+	.card-placement-outline {
+		position: absolute;
+		width: min(#{488px * .6667}, 25vw);
+		max-height: $height-card-image-section;
+		aspect-ratio: 488 / 680;
+		outline: divide($lhse, 3) dashed rgba(#fff, .1667);
+		outline-offset: -$lhse*.75;
+	}
 	.image-container {
 		width: min(#{488px * .6667}, 25vw);
 		max-height: $height-card-image-section;
@@ -103,14 +111,6 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		z-index: 1;
 		margin: 0 auto;
 		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 rgba(#000, .25));
-	}
-	.card-placement-outline {
-		position: absolute;
-		width: min(#{488px * .6667}, 25vw);
-		max-height: $height-card-image-section;
-		aspect-ratio: 488 / 680;
-		outline: divide($lhse, 3) dashed rgba($color-text-brighter, .2);
-		outline-offset: -$lhse*.75;
 	}
 	.card-shadow {
 		position: absolute;
@@ -264,6 +264,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-image {
+		.card-placement-outline,
 		.image-container {
 			width: min(#{488px * .6667}, 38.20vw);
 		}
@@ -284,6 +285,9 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 				opacity: 0;
 			}
 		}
+		.card-placement-outline {
+			display: none;
+		}
 		.image-container {
 			aspect-ratio: auto;
 			width: 100%;
@@ -294,9 +298,6 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			bottom: 0;
 			left: 0;
 			filter: none; // Necessary to allow filters to be shown in child elements.
-		}
-		.card-placement-outline {
-			display: none;
 		}
 		.image-overlay {
 			@include overlay-bg;
