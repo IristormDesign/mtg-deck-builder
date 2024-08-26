@@ -4,8 +4,8 @@
 			v-if="deck.cards.length <= 0"
 			class="no-cards"
 		>
-			<h4>No Data Available</h4>
-			<p>Various statistics about your deck will be displayed here once you’ve added cards to the main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
+			<h4>No Data Yet</h4>
+			<p>Statistics about your deck will be displayed here once you’ve added cards to the main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
 		</div>
 		<div
 			v-else

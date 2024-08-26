@@ -45,8 +45,8 @@
 				v-else-if="library.length > 0"
 				class="no-cards"
 			>
-				<p>Your library is now shuffled. Each card you draw from it will be listed here.</p>
-				<p>To begin, click the “Draw a Card” button.</p>
+				<p>Your library is now shuffled.
+				<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#m-draw-sim">user manual</router-link>.</p>
 			</div>
 			<div
 				v-else
