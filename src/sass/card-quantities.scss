@@ -154,6 +154,14 @@
 				}
 			}
 		}
+		&.flash {
+			background: $color-input-bg-active !important;
+			outline-color: $color-link-focus !important;
+
+			input {
+				color: $color-link-active !important;
+			}
+		}
 	}
 }
 

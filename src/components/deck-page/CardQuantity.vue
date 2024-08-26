@@ -60,6 +60,10 @@ export default {
 	watch: {
 		cardQtyValue () {
 			this.validateQty()
+
+			if (this.$store.state.highlightedCardLIIndex > -1) {
+				this.flashQty()
+			}
 		}
 	},
 	methods: {
@@ -220,6 +224,15 @@ export default {
 		},
 		qtyCardID (cardI) {
 			return `qty-d${this.getDeckNumberID}c${cardI}`
+		},
+		flashQty () {
+			const li = document.querySelector(`.card-li:nth-of-type(${this.i + 1})`)
+
+			li.classList.add('flash')
+
+			setTimeout(() => {
+				li.classList.remove('flash')
+			}, 125)
 		}
 	}
 }

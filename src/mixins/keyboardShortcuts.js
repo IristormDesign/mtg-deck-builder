@@ -245,7 +245,7 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex - 1)
 			}
 
-			this.viewCardAtHighlightedIndex()
+			this.viewCardImageAtHighlightedIndex()
 		},
 		highlightNextLI () {
 			if (this.highlightedIndex === this.activeCardList.cards.length - 1) {
@@ -254,7 +254,7 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex + 1)
 			}
 
-			this.viewCardAtHighlightedIndex()
+			this.viewCardImageAtHighlightedIndex()
 		},
 		adjustCardQty (number) {
 			this.scrollLIIntoView()
@@ -271,14 +271,16 @@ export default {
 			if (!cardLI) return
 
 			const star = cardLI.querySelector('.card-star')
+			const currentIndex = this.highlightedIndex
 
 			this.scrollLIIntoView()
 			star.click()
+			star.classList.add('flash')
 
-			star.classList.add('active')
+			this.setHighlightedIndex(currentIndex)
 
 			setTimeout(() => {
-				star.classList.remove('active')
+				star.classList.remove('flash')
 			}, 125)
 		},
 		switchCardGroup () {
@@ -373,7 +375,7 @@ export default {
 				})
 			}
 		},
-		viewCardAtHighlightedIndex () {
+		viewCardImageAtHighlightedIndex () {
 			const card = this.relevantCardAtHighlightedIndex()
 
 			if (!card) return

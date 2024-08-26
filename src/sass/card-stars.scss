@@ -56,7 +56,7 @@ $scale-card-star: scale(1.0833);
 		}
 	}
 	&:active,
-	&.active {
+	&.flash {
 		opacity: 1 !important;
 		background: $color-input-bg-active !important;
 		animation: none;
@@ -78,7 +78,7 @@ $scale-card-star: scale(1.0833);
 			}
 		}
 		&:active,
-		&.active {
+		&.flash {
 			background: $color-input-bg-active;
 
 			&::before {
@@ -126,8 +126,11 @@ $scale-card-star: scale(1.0833);
 				transition-delay: 0s !important;
 				transition-duration: 0s !important;
 
+				&.flash {
+					outline-color: $color-link-focus;
+				}
 				&:not(:checked) {
-					&:not(.active) {
+					&:not(.flash) {
 						&::before {
 							transition: none !important; // Prevents the spinning star animation while the card item is focused and the user has just removed the star from the card.
 						}
