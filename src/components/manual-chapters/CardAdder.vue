@@ -7,7 +7,7 @@
 				alt="Snippet of card adder" title="Screenshot" loading="lazy" />
 		</p>
 		<p>The card adder (the section labeled “Add a card name to this deck/sideboard” in the <a href="#m-deck-editor">Deck Editor</a>) is where you can indicate a new <i>Magic</i> card to put into your deck.</p>
-		<p>The new card name will appear in the <a href="#m-card-list">card list</a> for either the main group or the sideboard group, whichever is currently active in the <a href="#m-card-groups">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>
+		<p>The new card name will appear in the <a href="#m-card-list">card list</a> for either the main or sideboard group, whichever is currently active in the <a href="#m-card-groups">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>
 		<p>The card adder has a simple form including a text field where you can enter a query for a card. Then, submit your query by clicking the Add button or by pressing the Enter/Return key on your keyboard.</p>
 		<p>The card adder accepts the following three kinds of queries:</p>
 		<ul>
@@ -29,7 +29,7 @@
 		</ul>
 		<p>Other notes about using the card adder:</p>
 		<ul>
-			<li>Via <a href="#m-keyboard-shortcuts">keyboard shortcut</a>, you can press <kbd>X</kbd> to focus onto the card adder’s text field. Press <kbd class="">Esc</kbd> to cancel the focus (thus allowing you to use other keyboard shortcuts).</li>
+			<li>As a <a href="#m-keyboard-shortcuts">keyboard shortcut</a>, press <kbd>X</kbd> to focus onto the card adder’s text field. Press <kbd class="">Esc</kbd> to cancel the focus (thus allowing you to use other keyboard shortcuts).</li>
 			<li>Card queries are case insensitive (meaning it doesn’t matter whether you type letters as uppercase or lowercase).</li>
 			<li>The card adder won’t add a name that already exists in the card list. (To add duplicates of an existing name, <a href="#m-card-quantities">increase its quantity</a> instead.)</li>
 			<li>When submitting a query, MTG Deck Builder sends an external data request to the Scryfall web servers, and so retrieving your card’s data may take a second or two to complete.</li>

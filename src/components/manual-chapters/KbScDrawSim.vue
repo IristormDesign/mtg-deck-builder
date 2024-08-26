@@ -1,7 +1,7 @@
 <template>
 	<section id="m-kbsc-draw-sim">
 		<h4>Keyboard Shortcuts: Draw Simulator Actions</h4>
-		<p>The <a href="#m-draw-sim">Draw Simulator mode</a> works with special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>, including the following:</p>
+		<p>The <a href="#m-draw-sim">Draw Simulator mode</a> accepts special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>, including the following:</p>
 
 		<h5>Unique Draw Simulator Shortcuts</h5>
 		<ul class="keyboard-shortcuts">

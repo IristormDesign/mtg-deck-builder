@@ -12,13 +12,11 @@
 				<p><strong>“Drawn Cards” statistic</strong> – This shows the number of cards you’ve drawn since starting the current round.</p>
 			</li>
 			<li>
-				<p><strong>“Draw a Card” button</strong> – Click this button to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears (if the card image section is already visible on your device’s screen).</p>
-				<p>Alternatively, draw a card via <a href="#m-kbsc-draw-sim">keyboard shortcut</a> by pressing the <kbd class="space-bar">Space</kbd> bar.</p>
-				<p>You can repeatedly draw cards until your library has none left.</p>
+				<p><strong>“Draw a Card” button</strong> – Click this button, or <a href="#m-kbsc-draw-sim">press the space bar</a>, to draw one card from your library.</p>
+				<p>The drawn card’s name appears at the top of the card list, and its image appears (if the card image section is already visible on your device’s screen). You can keep drawing cards until your library has none left.</p>
 			</li>
 			<li>
-				<p><strong>“Restart” button</strong> – Click this button anytime to begin a new testing round. This means that all drawn cards are returned to your library, then your library is shuffled (the cards are rearranged in a new randomized order).</p>
-				<p>Alternatively, press <kbd>R</kbd> to restart.</p>
+				<p><strong>“Restart” button</strong> – Click this button, or press the <kbd>R</kbd> key, anytime to begin a new testing round. This means that all drawn cards are returned to your library, then your library is shuffled (the cards are rearranged in a new randomized order).</p>
 			</li>
 			<li>
 				<p><strong>Card list section</strong> – This shows the record of cards you’ve drawn in chronological order during the current round. The list has <a href="#m-card-stars">card stars</a> and <a href="#m-card-buttons">card buttons</a> that work like those same elements in the Deck Editor.</p>

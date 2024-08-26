@@ -1,10 +1,10 @@
 <template>
 	<section id="m-kbsc-deck-editor">
 		<h4>Keyboard Shortcuts: Deck Editor Actions</h4>
-		<p>The <a href="#m-deck-editor">Deck Editor mode</a> makes use of several <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided among three categories, explained in the next subchapters.</p>
+		<p>The <a href="#m-deck-editor">Deck Editor mode</a> accepts several special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided among three categories, explained in the next subchapters.</p>
 
 		<h5>Highlighting Rows in the Card List</h5>
-		<p>For the card name in the row that’s currently highlighted, its card image is shown, and actions triggered by other keyboard shortcuts can be done to that card name. No more than one one row is highlighted at a time.</p>
+		<p>A <a href="#m-card-list">card list</a> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <a href="#m-card-image">card image</a> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
 		<ul class="keyboard-shortcuts">
 			<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
 			<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
@@ -12,10 +12,10 @@
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight down to the 2nd-next row.</li>
 			<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 		</ul>
-		<p>If the highlighted row is either the first or the last row of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the opposite end of the list instead.</p>
+		<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the opposite end of the list instead.</p>
 
-		<h5>Actions to Highlighted Row of Card List</h5>
-		<p>These keyboard shortcuts perform actions that apply to the card name in the currently highlighted row of the card list. If no card list row is highlighted yet, then using any of these shortcuts will highlight the row belonging to the currently shown card image.</p>
+		<h5>Actions to Highlighted Row</h5>
+		<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list. If no row is highlighted yet, then using any of these shortcuts will highlight the row having the card name that’s associated with the currently displayed card image.</p>
 		<ul class="keyboard-shortcuts">
 			<li><kbd>E</kbd>: Raise the <a href="#m-card-quantities">quantity</a> by 1.</li>
 			<li><kbd>D</kbd>: Lower the quantity by 1.</li>
