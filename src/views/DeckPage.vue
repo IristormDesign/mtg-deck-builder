@@ -21,7 +21,7 @@
 			<deck-actions :deck="deck" />
 		</div>
 
-		<router-view />
+		<router-view :deck="deck" />
 	</article>
 
 	<not-found-content v-else />

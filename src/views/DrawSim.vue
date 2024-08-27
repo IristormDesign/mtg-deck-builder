@@ -45,7 +45,7 @@
 				v-else-if="library.length > 0"
 				class="no-cards"
 			>
-				<p>Your library is now shuffled.
+				<p>Your library is now shuffled.</p>
 				<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#m-draw-sim">user manual</router-link>.</p>
 			</div>
 			<div
@@ -65,11 +65,13 @@ import CardImage from '@/components/deck-page/CardImage.vue'
 import CardStar from '@/components/deck-page/CardStar.vue'
 import CardButton from '@/components/deck-page/CardButton.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
-import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
 	components: { CardImage, CardStar, CardButton },
-	mixins: [cardListFunctions, getActiveDeck],
+	mixins: [cardListFunctions],
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			afterReshuffle: false,
