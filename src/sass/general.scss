@@ -162,7 +162,6 @@ kbd {
 	background: $color-heading-bg;
 	color: $color-text-brighter;
 	border: 1px solid $color-group-bg-darker;
-
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -171,7 +170,7 @@ kbd {
 	height: $kbd-height;
 	border-radius: $kbd-height*.125;
 	font-size: 70.83%;
-	font-family: ui-sans-serif, system-ui, "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+	font-family: "Segoe UI Semibold", ui-sans-serif, system-ui, sans-serif;
 	vertical-align: text-top;
 	margin-top: -.125em; // To vertically align the key letters with normal text.
 	margin-bottom: -.125em; // To maintain a consistent line height.
