@@ -42,6 +42,11 @@ export default {
 		deck: Object,
 		i: Number
 	},
+	data () {
+		return {
+			pressedKeyForQty: false
+		}
+	},
 	computed: {
 		getDeckNumberID () {
 			const decks = this.$store.state.decks
@@ -70,8 +75,16 @@ export default {
 		listenForKeyboardShortcuts (event) {
 			if (event.repeat) return
 
-			if (event.key === 'Enter') {
-				document.activeElement.blur()
+			switch (event.key) {
+				case 'Enter':
+					document.activeElement.blur()
+					return
+			}
+
+			if (event.key) {
+				this.pressedKeyForQty = true
+
+				return
 			}
 
 			const disallowedKeyEvents = () => {
@@ -133,8 +146,7 @@ export default {
 							return card.name
 					}
 				}
-
-				setTimeout(() => {
+				const effectOfConfirm = () => {
 					const confirmRemoval = confirm(`Remove “${cardName()}” from the deck?`)
 
 					if (confirmRemoval) {
@@ -142,7 +154,16 @@ export default {
 					} else {
 						card.qty = 1
 					}
-				}, 100) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+				}
+
+				/* The `setTimeout()` function causes the card-removal `confirm()` dialog to appear twice when the quantity input has been set to 0 by the user pressing the "0" key, or by the user pressing the backspace or delete keys to clear the quantity number. It seems the only way around this bug is to avoid `setTimeout()` under that condition. */
+				if (this.pressedKeyForQty) {
+					effectOfConfirm()
+				} else {
+					setTimeout(() => {
+						effectOfConfirm()
+					}, 100) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+				}
 			} else if (isNaN(card.qty)) { // If the user somehow entered non-digits for the quantity, reset the quantity to 1 instead.
 				card.qty = 1
 			} else {
@@ -177,6 +198,8 @@ export default {
 					eachCard.gapAfter = false
 				})
 			}
+
+			this.pressedKeyForQty = false
 
 			// Save the changes.
 			deck.editDate = new Date()
