@@ -118,7 +118,6 @@ export default {
 		},
 		validateQty () {
 			const card = this.card
-			const deck = this.deck
 
 			card.qty = Math.round(card.qty)
 			this.activeCardList.viewedCard = card
@@ -158,13 +157,15 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						setTimeout(() => {
-							alert('A card name cannot have a quantity greater than 4 in a deck, except for basic land cards.')
+							alert('A deck cannot have more than 4 cards of a particular name, except if they’re basic land cards.')
 						}, 100)
 
 						card.qty = 4
 					}
 				}
 			}
+
+			const deck = this.deck
 
 			if (deck.sortBy === 'qty') {
 				deck.sortBy = ''
