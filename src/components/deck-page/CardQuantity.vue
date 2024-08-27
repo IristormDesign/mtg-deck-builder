@@ -143,7 +143,7 @@ export default {
 					} else {
 						card.qty = 1
 					}
-				}, 125) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+				}, 100) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
 			} else if (isNaN(card.qty)) { // If the user somehow entered non-digits for the quantity, reset the quantity to 1 instead.
 				card.qty = 1
 			} else {
@@ -157,7 +157,9 @@ export default {
 					}
 				} else {
 					if (card.qty > 4) {
-						alert('A card name cannot have a quantity greater than 4 in a deck, except for basic land cards.')
+						setTimeout(() => {
+							alert('A card name cannot have a quantity greater than 4 in a deck, except for basic land cards.')
+						}, 100)
 
 						card.qty = 4
 					}
