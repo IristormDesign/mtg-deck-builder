@@ -96,7 +96,7 @@
 	&.black {
 		background: $color-frame-black;
 		color: #000;
-		text-shadow: 0 0 1px rgba(#fff, .3333);
+		text-shadow: 0 0 1px rgba(#fff, .25);
 	}
 	&.red {
 		@include color-card-buttons($color-frame-red);

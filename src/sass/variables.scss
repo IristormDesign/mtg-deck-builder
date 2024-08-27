@@ -55,21 +55,21 @@ $color-black-label-text: rgba(#000, 83.33%);
 $color-button-border: rgba(#000, 1/3);
 
 // MANA-BASED COLORS
-$color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Sampled
-$color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Sampled
-$color-mana-black: adjust_hue(desaturate(lighten(#00032a, 60%), 95.83%), 22.5deg); // Inverted mana-white
-$color-mana-red: adjust_hue(#f9aa8f, -2.8125deg); // Sampled
-$color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Sampled
-$color-mana-generic: desaturate(#ccc2c0, 50%); // Sampled
+$color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Based on sample
+$color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
+$color-mana-black: desaturate(lighten(#00032a, 60%), 95.83%); // Based on inverted mana-white
+$color-mana-red: adjust_hue(#f9aa8f, -2.8125deg); // Based on sample
+$color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Based on sample
+$color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
 $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 $color-frame-land: desaturate(lighten($color-mythic-yellow, 20.83%), 87.5%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 4.17%), 37.5%);
-$color-frame-black: desaturate(lighten($color-mana-black, 3.125%), 0%);
+$color-frame-black: darken($color-mana-black, 4.17%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 37.5%);
 $color-frame-green: desaturate(lighten($color-mana-green, 12.5%), 12.5%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 0%), 25%);
-$color-frame-generic: desaturate(lighten($color-rarity-silver, 12.5%), 6.25%);
+$color-frame-generic: desaturate(lighten($color-rarity-silver, 8.33%), 6.25%);
 $color-card-star: desaturate(lighten($color-mana-hybrid, 0%), 25%);
 
 // TEXT
