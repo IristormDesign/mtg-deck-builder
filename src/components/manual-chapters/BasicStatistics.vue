@@ -5,7 +5,8 @@
 			<img class="screenshot"
 				srcset="@/img/manual-deck-statistics.jpg 1x, @/img/manual-deck-statistics-2x.jpg 1.5x"
 				src="@/img/manual-deck-statistics.jpg" width="658" height="63"
-				alt="Screenshot of basic statistics section" title="Screenshot" loading="lazy" />
+				alt="Screenshot of basic statistics section" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>In the <a href="#m-deck-page-header">deck page header</a>, the basic statistics section shows some data about how your currently <a href="#m-deck-menu">open deck</a> is composed.</p>
 		<p>All but one of these statistics regard your deck’s main <a href="#m-card-groups">card group</a> alone (not also the sideboard). Whenever you modify your deck, the statistics immediately update as needed.</p>

@@ -10,7 +10,7 @@
 			v-else
 			class="output" :class="sizeManaSymbols(deck)"
 			v-html="renderManaSymbols(deck)"
-		/>
+		></div>
 	</section>
 </template>
 

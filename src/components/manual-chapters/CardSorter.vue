@@ -4,7 +4,8 @@
 		<p>
 			<img class="screenshot float-right"
 				src="@/img/manual-card-sorter.jpg" width="350" height="185"
-				alt="Snippet of card sorter" title="Screenshot" loading="lazy" />
+				alt="Snippet of card sorter" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#m-card-list">card list</a> in various ways.</p>
 		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>

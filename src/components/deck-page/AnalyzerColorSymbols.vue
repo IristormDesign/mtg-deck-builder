@@ -8,7 +8,7 @@
 			(None)
 		</div>
 		<table v-else>
-			<thead v-html="tableHeadCommon" />
+			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
 				<template v-for="symbol in colorSymbolsMinusHybrid">
 					<tr
@@ -22,7 +22,7 @@
 									<small>${symbol.name}</small>
 									${manaSymbol[symbol.key]}
 								`"
-							/>
+							></div>
 						</th>
 						<td>{{ symbol.ct }}</td>
 						<td>{{ symbol.pct.toFixed(1) }}<span>%</span></td>
@@ -38,7 +38,7 @@
 								<small>${colorSymbols.hybrid.name}</small>
 								${manaSymbol[colorSymbols.hybrid.key]}
 							`"
-						/>
+						></div>
 					</th>
 					<td>{{ colorSymbols.hybrid.ct }}</td>
 					<td>{{ colorSymbols.hybrid.pct.toFixed(1) }}<span>%</span></td>

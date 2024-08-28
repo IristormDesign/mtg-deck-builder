@@ -4,7 +4,8 @@
 		<p>
 			<img class="screenshot"
 				src="@/img/manual-card-adder.jpg" width="810" height="173"
-				alt="Snippet of card adder" title="Screenshot" loading="lazy" />
+				alt="Snippet of card adder" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>The card adder (the section labeled “Add a card name to this deck/sideboard” in the <a href="#m-deck-editor">Deck Editor</a>) is where you can indicate a new <i>Magic</i> card to put into your deck.</p>
 		<p>The new card name will appear in the <a href="#m-card-list">card list</a> for either the main or sideboard group, whichever is currently active in the <a href="#m-card-groups">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>

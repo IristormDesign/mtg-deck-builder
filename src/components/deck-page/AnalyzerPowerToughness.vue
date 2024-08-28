@@ -35,7 +35,7 @@
 				</tbody>
 			</template>
 			<template v-if="variablePT.ct">
-				<thead v-html="tableHeadCommon" />
+				<thead v-html="tableHeadCommon"></thead>
 				<tbody v-show="variablePT.ct">
 					<tr>
 						<th>Variable P/T</th>

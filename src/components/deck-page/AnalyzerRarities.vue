@@ -2,7 +2,7 @@
 	<section>
 		<h4>Rarities</h4>
 		<table>
-			<thead v-html="tableHeadCommon" />
+			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
 				<template v-for="(ct, name) in rarityCounts">
 					<tr
@@ -17,7 +17,7 @@
 									<small>${name}</small>
 									${raritySymbol[name.charAt(0).toLowerCase()]}
 								`"
-							/>
+							></div>
 							<div v-else>Other</div>
 						</th>
 						<td>{{ ct }}</td>

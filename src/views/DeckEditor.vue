@@ -53,7 +53,6 @@
 		<div class="control-panel adder-controls">
 			<scryfall-button />
 			<card-adder :deck="deck" />
-			<!-- <deck-actions :deck="deck" /> -->
 		</div>
 	</div>
 </template>

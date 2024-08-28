@@ -5,7 +5,8 @@
 			<img class="screenshot float-left"
 				srcset="@/img/manual-card-image.jpg 1x, @/img/manual-card-image-2x.jpg 1.5x"
 				src="@/img/manual-card-image.jpg" width="265" height="356"
-				alt="Snippet of card image" title="Screenshot" loading="lazy" />
+				alt="Snippet of card image" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>In the <a href="#m-deck-editor">Deck Editor</a>, the card image section shows a full-frame picture of a scanned <i>Magic</i> card.</p>
 		<p>The card image shown is usually of the card pertaining to the <a href="#m-card-list">card list</a> element you’ve most recently interacted with. (These elements include <a href="#m-card-buttons">card buttons</a>, <a href="#m-card-quantities">quantities</a>, and <a href="#m-card-stars">stars</a>.)</p>

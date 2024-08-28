@@ -8,7 +8,7 @@
 			(None)
 		</div>
 		<table v-else>
-			<thead v-html="tableHeadCommon" />
+			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
 				<template v-for="(supertype, supertypeName) in supertypeStats">
 					<tr

@@ -13,7 +13,7 @@
 			tabindex="0"
 		>
 			<table>
-				<thead v-html="tableHeadCommon" />
+				<thead v-html="tableHeadCommon"></thead>
 				<tbody>
 					<tr
 						v-for="(stats, name) in mvStats"

@@ -5,7 +5,8 @@
 			<img class="screenshot"
 				srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 1.5x"
 				src="@/img/manual-card-list.jpg" width="658" height="339"
-				alt="Snippet of card list" title="Screenshot" loading="lazy" />
+				alt="Snippet of card list" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>In the <a href="#m-card-list">card list</a>, each card name is represented by a wide button, and each button is labeled with the following characteristics of the card:</p>
 		<ul>

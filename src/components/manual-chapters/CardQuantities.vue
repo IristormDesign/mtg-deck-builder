@@ -4,7 +4,8 @@
 		<p>
 			<img class="screenshot float-right"
 				src="@/img/manual-card-quantities.jpg" width="118" height="256"
-				alt="Snippet of card quantities" title="Screenshot" loading="lazy" />
+				alt="Snippet of card quantities" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>To the right of each <a href="#m-card-buttons">card name’s button</a> is a number representing the quantity of that card name in your deck’s <a href="#m-card-groups">selected card group</a>.</p>
 		<p>To change a card name’s quantity, do any of the following methods:</p>

@@ -8,7 +8,7 @@
 		</button>
 
 		<nav v-show="showHeaderMenu" class="header-menu">
-			<div v-show="showHeaderMenu" class="hover-shield" />
+			<div v-show="showHeaderMenu" class="hover-shield"></div>
 			<ul>
 				<li>
 					<router-link
@@ -39,7 +39,7 @@
 					<div class="open-deck-heading">
 						<strong>Open Deck:</strong>
 					</div>
-					<div v-show="showDeckMenu" class="hover-shield" />
+					<div v-show="showDeckMenu" class="hover-shield"></div>
 					<ul v-show="showDeckMenu">
 						<li v-for="deck in $store.state.decks" :key="deck.name">
 							<router-link
@@ -58,7 +58,7 @@
 									<div
 										:class="sizeManaSymbols(deck)"
 										v-html="renderManaSymbols(deck)"
-									/>
+									></div>
 								</div>
 							</router-link>
 						</li>

@@ -6,7 +6,8 @@
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
 				src="@/img/manual-more-stats-page.jpg" width="530" height="441"
-				alt="Snippet of the Deck Analyzer mode" title="Screenshot" loading="lazy" />
+				alt="Snippet of the Deck Analyzer mode" title="Screenshot" loading="lazy"
+			/>
 		</p>
 		<p>When in the Deck Analyzer mode, the page displays many data tables for various statistical categories about the cards in your deck’s main <a href="#m-card-groups">card group</a>. The categories are the following:</p>
 		<ul>

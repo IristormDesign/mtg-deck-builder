@@ -2,7 +2,7 @@
 	<section>
 		<h4>Types</h4>
 		<table>
-			<thead v-html="tableHeadCommon" />
+			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
 				<template v-for="(type, typeName) in typeStats">
 					<tr

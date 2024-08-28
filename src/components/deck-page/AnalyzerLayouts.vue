@@ -2,7 +2,7 @@
 	<section>
 		<h4>Layouts</h4>
 		<table>
-			<thead v-html="tableHeadCommon" />
+			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
 				<template v-for="(layout, layoutKey) in layoutStats">
 					<tr
