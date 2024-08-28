@@ -64,7 +64,6 @@
 @include long-card-buttons();
 
 .card-button {
-	background: $color-frame-generic;
 	margin: 0;
 	padding: 0;
 	border-radius: $border-radius-button;
@@ -89,9 +88,6 @@
 			}
 		}
 	}
-	&.land {
-		background: $color-frame-land;
-	}
 	&.white {
 		background: $color-frame-white;
 	}
@@ -111,6 +107,12 @@
 	}
 	&.multi {
 		background: $color-frame-multi;
+	}
+	&.colorless {
+		background: $color-frame-generic;
+	}
+	&.land {
+		background: $color-frame-land;
 	}
 	.card-label-group {
 		display: flex;
@@ -177,11 +179,6 @@
 		&:focus-within,
 		&.highlight {
 			.card-button {
-				@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
-
-				&.land {
-					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
-				}
 				&.white {
 					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
 				}
@@ -199,6 +196,12 @@
 				}
 				&.multi {
 					@include box-shadow-hover-card-button(desaturate($color-mana-hybrid, 16.67%));
+				}
+				&.colorless {
+					@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
+				}
+				&.land {
+					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
 				}
 			}
 		}

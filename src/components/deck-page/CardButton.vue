@@ -57,7 +57,7 @@ export default {
 			} else if (/\bLand\b/.test(this.card.type)) {
 				return 'land'
 			} else {
-				return null
+				return 'colorless'
 			}
 		},
 		cardName () {
