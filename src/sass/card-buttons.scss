@@ -15,9 +15,6 @@
 		),
 		0 -1px divide($lhse, 4) $border-width-card-button rgba(#000, .25);
 }
-@mixin color-card-buttons($background-color) {
-	background: $background-color;
-}
 @mixin long-card-buttons {
 	.card-button {
 		display: flex;
@@ -67,7 +64,7 @@
 @include long-card-buttons();
 
 .card-button {
-	@include color-card-buttons($color-frame-generic);
+	background: $color-frame-generic;
 	margin: 0;
 	padding: 0;
 	border-radius: $border-radius-button;
@@ -82,17 +79,24 @@
 	color: $color-black-label-text;
 
 	&:active {
-		transform: scale(.995) translate(0, .5px);
+		transform: none;
 		transition-duration: 0s;
+		border-bottom-width: 0px;
+
+		.card-label-group {
+			> * {
+				transform: translateY(1px);
+			}
+		}
 	}
 	&.land {
-		@include color-card-buttons($color-frame-land);
+		background: $color-frame-land;
 	}
 	&.white {
-		@include color-card-buttons($color-frame-white);
+		background: $color-frame-white;
 	}
 	&.blue {
-		@include color-card-buttons($color-frame-blue);
+		background: $color-frame-blue;
 	}
 	&.black {
 		background: $color-frame-black;
@@ -100,13 +104,13 @@
 		text-shadow: 0 0 1px rgba(#fff, .25);
 	}
 	&.red {
-		@include color-card-buttons($color-frame-red);
+		background: $color-frame-red;
 	}
 	&.green {
-		@include color-card-buttons($color-frame-green);
+		background: $color-frame-green;
 	}
 	&.multi {
-		@include color-card-buttons($color-frame-multi);
+		background: $color-frame-multi;
 	}
 	.card-label-group {
 		display: flex;

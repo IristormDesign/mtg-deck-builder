@@ -103,7 +103,6 @@ $scale-card-star: scale(1.0833);
 		&:focus-within,
 		&.highlight {
 			.card-star {
-				background: $color-group-bg-darker;
 
 				&:not(:checked) {
 					opacity: .25;
@@ -118,6 +117,12 @@ $scale-card-star: scale(1.0833);
 					transform: $scale-card-star rotate((360deg*.8));
 					transition: transform 1.5s ease-in-out;
 				}
+			}
+		}
+		&:focus-within,
+		&.highlight {
+			.card-star {
+				background: $color-input-bg-focus;
 			}
 		}
 		&.highlight {

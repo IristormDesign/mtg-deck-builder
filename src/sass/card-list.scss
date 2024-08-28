@@ -47,7 +47,6 @@ $min-height-card-list: $lhse*6;
 		&:hover,
 		&:focus-within,
 		&.highlight {
-			background: $color-group-bg-darker;
 			transition-duration: 0s;
 		}
 		&:hover {
@@ -55,6 +54,7 @@ $min-height-card-list: $lhse*6;
 		}
 		&:focus-within,
 		&.highlight {
+			background: $color-input-bg-focus;
 			z-index: index($layers, card-li-focus-within);
 		}
 		&:first-child {
