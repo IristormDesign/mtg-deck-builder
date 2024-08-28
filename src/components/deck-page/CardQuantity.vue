@@ -15,7 +15,7 @@
 				class="increment"
 				title="Increase quantity"
 				@click="cardObject.qty++"
-				:disabled="disableIncreaseQtyBtn()"
+				:disabled="card.qty >= card.maxQty"
 			>
 				<div>+</div>
 			</button>
@@ -48,16 +48,6 @@ export default {
 		}
 	},
 	computed: {
-		getDeckNumberID () {
-			const decks = this.$store.state.decks
-
-			for (let i = 0; i < decks.length; i++) {
-				if (this.deck === decks[i]) {
-					return i
-				}
-			}
-			return null
-		},
 		cardQtyValue () { // Needed for keyboard shortcuts.
 			return this.cardObject.qty
 		}
@@ -245,11 +235,14 @@ export default {
 		blurredFromQtyInput () {
 			document.removeEventListener('keydown', this.listenForKeyboardShortcuts)
 		},
-		disableIncreaseQtyBtn () {
-			return this.card.qty >= this.card.maxQty
-		},
-		qtyCardID (cardI) {
-			return `qty-d${this.getDeckNumberID}c${cardI}`
+		qtyCardID (cardIndex) {
+			const deckIndex = () => {
+				return this.$store.state.decks.findIndex(
+					foundDeck => foundDeck === this.deck
+				)
+			}
+
+			return `qty-d${deckIndex()}c${cardIndex}`
 		},
 		flashQty () {
 			const li = document.querySelector(`.card-li:nth-of-type(${this.i + 1})`)
