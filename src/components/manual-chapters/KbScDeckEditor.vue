@@ -9,7 +9,7 @@
 			<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
 			<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to the 2nd-previous row.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight down to the 2nd-next row.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to the 2nd-next row.</li>
 			<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 		</ul>
 		<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the opposite end of the list instead.</p>
