@@ -165,7 +165,7 @@ $outline-width-stat-section: 2px;
 		grid-column: span 1;
 	}
 	.note {
-		font-size: $font-size-tiny;
+		@include tiny-font-size;
 		line-height: $line-height-standard*.875;
 
 		h4 {

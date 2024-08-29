@@ -3,7 +3,7 @@
 	font-weight: bold;
 }
 @mixin tiny-font-size {
-	font-size: $font-size-tiny;
+	font-size: 66.67%;
 	letter-spacing: divide(1, 128)*1em;
 }
 @mixin label-text-style {
