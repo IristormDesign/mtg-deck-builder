@@ -57,7 +57,7 @@ $color-button-border: rgba(#000, 1/3);
 // MANA-BASED COLORS
 $color-mana-white: desaturate(lighten(#fffcd5, 3.125%), 41.67%); // Based on sample
 $color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
-$color-mana-black: desaturate(lighten(#00032a, 60%), 95.83%); // Based on inverted mana-white
+$color-mana-black: desaturate(lighten(#00032a, 62.5%), 95.83%); // Based on inverted mana-white
 $color-mana-red: adjust_hue(#f9aa8f, -2.8125deg); // Based on sample
 $color-mana-green: adjust_hue(#9bd3ae, -5.625deg); // Based on sample
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
@@ -65,7 +65,7 @@ $color-mana-hybrid: saturate(lighten($color-rarity-gold, 12.5%), 6.25%);
 $color-frame-land: desaturate(lighten($color-mythic-yellow, 20.83%), 87.5%);
 $color-frame-white: desaturate(darken($color-mana-white, 1.5625%), 33.33%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 4.17%), 37.5%);
-$color-frame-black: darken($color-mana-black, 3.125%);
+$color-frame-black: darken($color-mana-black, 4.17%);
 $color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 37.5%);
 $color-frame-green: desaturate(lighten($color-mana-green, 12.5%), 12.5%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 0%), 25%);

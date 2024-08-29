@@ -186,7 +186,7 @@
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-blue, 40%), 16.67%));
 				}
 				&.black {
-					@include box-shadow-hover-card-button(darken($color-mana-black, 41.67%));
+					@include box-shadow-hover-card-button(darken($color-mana-black, 40%));
 				}
 				&.red {
 					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 29.17%), 25%));

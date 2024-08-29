@@ -1,5 +1,5 @@
 <template>
-	<transition name="image-overlay-fade">
+	<transition name="image-fade">
 		<section
 			class="card-image"
 			v-if="showCard"

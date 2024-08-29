@@ -275,7 +275,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		z-index: index($layers, app-header);
 		position: fixed;
 
-		&.image-overlay-fade {
+		&.image-fade {
 			&-enter-active,
 			&-leave-active {
 				transition: opacity .25s ease;
