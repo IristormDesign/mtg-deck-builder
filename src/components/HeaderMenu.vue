@@ -140,9 +140,7 @@ export default {
 		this.letEscKeyClosePopups()
 		this.closeMenusAutomatically()
 		this.applyHoverEffectToOpenDeckButton()
-
-		// Debounce window resizing.
-		window.addEventListener('resize', debounce(this.resizingViewport, 125))
+		this.debounceWindowResizing()
 	},
 	methods: {
 		/**
@@ -190,6 +188,13 @@ export default {
 			deckMenuMOArea.addEventListener('mouseout', () => {
 				clearTimeout(deckMenuMOTimer)
 			})
+		},
+		debounceWindowResizing () {
+			const resizingViewport = () => {
+				this.showHeaderMenu = !this.mobileView()
+			}
+
+			window.addEventListener('resize', debounce(resizingViewport, 125))
 		},
 		addFocusListenerToClosePopups () {
 			const allLinks = document.querySelectorAll('a, button')
@@ -266,13 +271,6 @@ export default {
 		},
 		mobileView () {
 			return window.innerWidth <= 512 // This number must match the CSS media query width.
-		},
-		resizingViewport () {
-			if (this.mobileView()) {
-				this.showHeaderMenu = false
-			} else {
-				this.showHeaderMenu = true
-			}
 		}
 	}
 }
