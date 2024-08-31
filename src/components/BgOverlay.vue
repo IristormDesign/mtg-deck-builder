@@ -18,29 +18,31 @@ export default {
 	},
 	methods: {
 		hideOverlay (triggeredByClick) {
-			if (!this.transitionActive && !anyDeckLinkFocused()) {
-				if (triggeredByClick || (!triggeredByClick && this.$store.state.overlayHoverEnabled)) {
-					this.transitionActive = true
-					this.$emit('closePopups', true)
-					this.$store.commit('overlayHoverEnabled', true)
-					this.$store.commit('showingAnyPopup', false)
-
-					setTimeout(() => {
-						this.transitionActive = false
-					}, 250) // Equal to transition's duration
-				}
-			}
+			if (this.transitionActive) return
 
 			function anyDeckLinkFocused () {
 				const deckMenuLinks = document.querySelectorAll('.deck-menu a')
 
-				for (const link of deckMenuLinks) {
-					if (link === document.activeElement) {
-						return true
-					}
-				}
-				return false
+				return [...deckMenuLinks].some(
+					link => link === document.activeElement
+				)
 			}
+
+			if (anyDeckLinkFocused()) return
+
+			if (
+				!triggeredByClick &&
+				!this.$store.state.overlayHoverEnabled
+			) return
+
+			this.transitionActive = true
+			this.$emit('closePopups', true)
+			this.$store.commit('overlayHoverEnabled', true)
+			this.$store.commit('showingAnyPopup', false)
+
+			setTimeout(() => {
+				this.transitionActive = false
+			}, 250) // Equal to transition's duration
 		}
 	}
 }
