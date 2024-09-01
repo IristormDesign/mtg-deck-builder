@@ -7,6 +7,6 @@
 			<li><kbd>2</kbd>: Set to the <a href="#m-deck-analyzer">Deck Analyzer</a>.</li>
 			<li><kbd>3</kbd>: Set to the <a href="#m-draw-sim">Draw Simulator</a>.</li>
 		</ul>
-		<p>Additionally, if you use any of these mode-setting <a href="#m-keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, then the shortcut will scroll the page up to the <a href="#m-mode-menu">mode menu</a> (if it’s not already in view).</p>
+		<p>Furthermore, if you use any of these mode-setting <a href="#m-keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, then the shortcut will scroll the page up to the <a href="#m-mode-menu">mode menu</a> (if it’s not already in view).</p>
 	</section>
 </template>

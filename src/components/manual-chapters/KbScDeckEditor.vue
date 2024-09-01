@@ -1,7 +1,7 @@
 <template>
 	<section id="m-kbsc-deck-editor">
 		<h4>Keyboard Shortcuts: Deck Editor Actions</h4>
-		<p>The <a href="#m-deck-editor">Deck Editor mode</a> accepts several special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided among three categories, explained in the next subchapters.</p>
+		<p>The <a href="#m-deck-editor">Deck Editor</a> accepts several special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided among three categories, explained in the next subchapters.</p>
 
 		<h5>Highlighting Rows in the Card List</h5>
 		<p>A <a href="#m-card-list">card list</a> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <a href="#m-card-image">card image</a> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
@@ -24,7 +24,7 @@
 			<li><kbd>A</kbd>: Toggle the <a href="#m-card-stars">star label</a> on or off.</li>
 			<li><kbd>Q</kbd>: View the <a href="#m-card-image">card image</a> up closer.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a tab to the card’s page on Scryfall.</li>
-			<li><kbd>Z</kbd>: Turn over the card image (if double-faced).</li>
+			<li><kbd>Z</kbd>: Turn over the card image (if it’s double-faced).</li>
 		</ul>
 
 		<h5>Other Deck Editor Actions</h5>
