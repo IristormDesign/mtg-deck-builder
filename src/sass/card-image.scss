@@ -278,7 +278,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		&.image-fade {
 			&-enter-active,
 			&-leave-active {
-				transition: opacity .25s ease;
+				transition: opacity .2s ease;
 			}
 			&-enter,
 			&-leave-to {
@@ -311,7 +311,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 			&:hover,
 			&:focus-within,
 			&.kb-highlight {
-				filter: drop-shadow(0 0 $lhse rgba(#fff, .1667));
+				filter: drop-shadow(0 0 $lhse rgba($color-text-brighter, .25));
 			}
 		}
 		.card-edge {

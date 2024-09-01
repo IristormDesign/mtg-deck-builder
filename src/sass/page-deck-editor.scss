@@ -16,6 +16,10 @@ $width-card-adder-button: $lhse*2.3333;
 	justify-content: center;
 	position: relative;
 
+	.viewing-controls,
+	.adder-controls {
+		min-width: $width-deck-editor-region;
+	}
 	.viewing-controls {
 		grid-template-columns: 1fr 1fr;
 		grid-area: panel-1;

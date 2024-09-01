@@ -4,6 +4,7 @@ $min-height-card-list: $lhse*6;
 .card-list-section {
 	min-height: $min-height-card-list;
 	grid-area: card-list;
+	min-width: $width-deck-editor-region;
 
 	.no-cards {
 		display: block;
@@ -19,6 +20,7 @@ $min-height-card-list: $lhse*6;
 			text-wrap: balance;
 			margin-right: auto;
 			margin-left: auto;
+			margin-bottom: $lhse;
 		}
 		a {
 			text-shadow: revert;
@@ -103,6 +105,20 @@ $min-height-card-list: $lhse*6;
 	}
 }
 
+@media (max-width: $width-app-breakpoint-tablet) {
+	.card-list-section {
+		.no-cards {
+			max-width: $width-deck-editor-region;
+		}
+	}
+}
+@media (max-width: $width-deck-hidden-image) {
+	.card-list-section {
+		.no-cards {
+			max-width: none;
+		}
+	}
+}
 @media (max-width: ($min-width-app * .5)) {
 	.card-list-section {
 		li {
