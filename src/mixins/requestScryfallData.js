@@ -24,14 +24,14 @@ export default {
 	},
 	methods: {
 		/**
-		 * Request the Scryfall API for a random card that's legal in Modern tournaments and is NOT a digital (MTG Arena) edition.
+		 * Request the Scryfall API for a random card.
 		 */
 		axiosRequestRandom () {
 			console.info('Random card requested with Scryfall API')
 
 			axios
 				.get(
-					'https://api.scryfall.com/cards/random?q=legal%3Amodern+-is%3Adigital',
+					'https://api.scryfall.com/cards/random?q=legal%3Avintage+lang%3Aen+-is%3Aold+-is%3Afuture+-is%3Adigital', // Get a random card that's legal in Vintage tournaments, is in English text, does NOT have the old-style nor "future"-style card frames, and is NOT a digital (MTG Arena) edition.
 					{ timeout: 8000 }
 				)
 				.then(response => {

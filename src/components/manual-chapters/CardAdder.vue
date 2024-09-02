@@ -25,7 +25,7 @@
 			</li>
 			<li>
 				<h5>Random Card Code</h5>
-				<p>Add any <i>Magic</i> card name at random (among cards legal in Modern tournaments) by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text field has focus.</p>
+				<p>Add any <i>Magic</i> card name at random by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text field has focus.</p>
 			</li>
 		</ul>
 		<p>Other notes about using the card adder:</p>
