@@ -40,7 +40,7 @@ $color-text: lighten($color-group-bg, 62.5%);
 $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
 $color-button-alt: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
-$color-heading-bg: lighten($color-group-bg, 8.33%);
+$color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 4.17%);
 $color-section-border: $color-heading-bg;
 
 // INDIGO-BASED COLORS
@@ -51,22 +51,23 @@ $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scry
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
-$color-black-label-text: rgba(#000, 87.5%);
+$color-black-label-text: rgba(#000, .875);
 $color-button-border: rgba(#000, 1/3);
+$color-shadows: rgba(#000, .25);
 
 // MANA-BASED COLORS
-$color-mana-white: desaturate(#fffcd5, 62.5%); // Based on sample
+$color-mana-white: desaturate(#fffcd5, 66.67%); // Based on sample
 $color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
-$color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 33.33%);
+$color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 29.1799%);
 $color-mana-red: adjust_hue(#f9aa8f, -3.75deg); // Based on sample
 $color-mana-green: adjust_hue(#9bd3ae, -8.8888deg); // Based on sample
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
 $color-mana-hybrid: desaturate(lighten($color-rarity-gold, 4.17%), 6.25%);
 $color-frame-land: desaturate(lighten($color-mythic-yellow, 20%), 83.33%);
-$color-frame-white: desaturate(darken($color-mana-white, 3.125%), 16.67%);
-$color-frame-blue: desaturate(lighten($color-mana-blue, 0%), 54.17%);
-$color-frame-black: darken($color-mana-black, 4.17%);
-$color-frame-red: desaturate(lighten($color-mana-red, 8.33%), 50%);
+$color-frame-white: desaturate(darken($color-mana-white, 3.125%), 20%);
+$color-frame-blue: desaturate(lighten($color-mana-blue, 0%), 50%);
+$color-frame-black: darken($color-mana-black, 6.25%);
+$color-frame-red: desaturate(lighten($color-mana-red, 6.25%), 50%);
 $color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 16.67%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 6.25%);

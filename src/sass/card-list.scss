@@ -56,7 +56,6 @@ $min-height-card-list: $lhse*6;
 		}
 		&:focus-within,
 		&.highlight {
-			background: $color-input-bg-focus;
 			z-index: index($layers, card-li-focus-within);
 		}
 		&:first-child {

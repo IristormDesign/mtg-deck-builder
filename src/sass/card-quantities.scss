@@ -69,6 +69,8 @@
 	}
 	&:focus-within,
 	&:hover {
+		background: $color-input-bg-focus;
+
 		.qty-buttons {
 			display: flex;
 		}

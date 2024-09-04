@@ -88,6 +88,9 @@
 			margin-bottom: $lhse*.25;
 			border-radius: $border-radius-group;
 
+			&:first-child {
+				padding-top: $lhse*.5;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}

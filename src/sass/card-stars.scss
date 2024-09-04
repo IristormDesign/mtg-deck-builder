@@ -114,7 +114,7 @@ $scale-card-star: scale(1.0833);
 					}
 				}
 				&::before {
-					transform: $scale-card-star rotate((360deg*.8));
+					transform: $scale-card-star rotate(360deg);
 					transition: transform 1.5s ease-in-out;
 				}
 			}

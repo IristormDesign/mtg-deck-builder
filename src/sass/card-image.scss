@@ -2,7 +2,7 @@
 $height-card-image-section: #{680px * .6667};
 $transition-delay-card: divide(1, 3) * 1s;
 $animation-duration-card-browse: .3820s;
-$drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
+$drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -110,7 +110,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .6667));
 		position: relative;
 		z-index: 1;
 		margin: 0 auto;
-		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 rgba(#000, .25));
+		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 $color-shadows);
 	}
 	.card-shadow {
 		position: absolute;
