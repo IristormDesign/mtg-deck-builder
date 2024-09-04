@@ -42,6 +42,24 @@ export default {
 
 			store.commit('decks', store.state.decks)
 			store.commit('showCard', true)
+		},
+		attentionAddCard (alreadyAttending) {
+			if (
+				alreadyAttending ||
+				this.activeCardList.cards.length > 0
+			) return
+
+			const cardAdderInput = document.querySelector('#card-input')
+
+			if (!cardAdderInput) return // Check for this condition to prevent errors when in the middle of loading a submitted card name.
+
+			alreadyAttending = true
+			cardAdderInput.classList.add('attention')
+
+			setTimeout(() => {
+				cardAdderInput.classList.remove('attention')
+				alreadyAttending = false
+			}, 500) // Timeout duration equal to CSS animation duration (page-deck-editor.scss).
 		}
 	}
 }

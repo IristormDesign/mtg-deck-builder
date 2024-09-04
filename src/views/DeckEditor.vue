@@ -10,6 +10,7 @@
 		<section
 			v-if="$store.state.showSideboard"
 			class="card-list-section"
+			@mouseenter="attentionAddCard()"
 		>
 			<sideboard-header :deck="deck" />
 			<div
@@ -29,6 +30,7 @@
 		<section
 			v-else
 			class="card-list-section main-deck"
+			@mouseenter="attentionAddCard()"
 		>
 			<header class="screen-readers-only">
 				<h3>Main Card List</h3>
@@ -36,8 +38,6 @@
 			<div
 				v-if="deck.cards.length <= 0"
 				class="no-cards"
-				@mouseover="attentionAddCard(true)"
-				@mouseleave="attentionAddCard(false)"
 				key="main-deck-no-cards"
 			>
 				<p>This deck has no cards yet. (Add some!)</p>
@@ -65,24 +65,13 @@ import SideboardHeader from '@/components/deck-page/SideboardHeader.vue'
 import CardListItems from '@/components/deck-page/CardListItems.vue'
 import ScryfallButton from '@/components/deck-page/ScryfallButton.vue'
 import CardAdder from '@/components/deck-page/CardAdder.vue'
+import cardListFunctions from '@/mixins/cardListFunctions'
 
 export default {
 	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, CardAdder },
+	mixins: [cardListFunctions],
 	props: {
 		deck: Object
-	},
-	methods: {
-		attentionAddCard (attention) {
-			const cardAdderInput = document.querySelector('#card-input')
-
-			if (!cardAdderInput) return // Check for this condition to prevent errors when in the middle of loading a submitted card name.
-
-			if (attention) {
-				cardAdderInput.classList.add('attention')
-			} else {
-				cardAdderInput.classList.remove('attention')
-			}
-		}
 	}
 }
 </script>

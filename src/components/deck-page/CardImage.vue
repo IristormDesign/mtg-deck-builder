@@ -3,6 +3,8 @@
 		<section
 			class="card-image"
 			v-if="showCard"
+			@mouseover="attentionAddCard()"
+			@click="attentionAddCard()"
 		>
 			<transition name="placement-outline-fade">
 				<div class="card-placement-outline"></div>
@@ -66,10 +68,12 @@
 </template>
 
 <script>
+import cardListFunctions from '@/mixins/cardListFunctions'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
+	mixins: [cardListFunctions],
 	props: {
 		deck: Object
 	},
