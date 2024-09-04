@@ -17,7 +17,8 @@
 		background: $color-mana-white;
 
 		div {
-			transform: scaleX(.8);
+			transform: scaleX(.75);
+			font-weight: $font-weight-semibold*1.1667;
 		}
 	}
 	&.blue {
@@ -37,6 +38,7 @@
 	&.long-hybrid {
 		background: $color-mana-hybrid;
 		font-size: 120%;
+		font-weight: $font-weight-semibold*1.25;
 
 		div {
 			transform: scale(.5);
