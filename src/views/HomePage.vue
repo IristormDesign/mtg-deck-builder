@@ -42,7 +42,7 @@
 				<div class="app-features-text">
 					<h2>App Features</h2>
 					<ul>
-						<li>App is free of charge and free of advertisements</li>
+						<li>Free of charge and free of advertisements</li>
 						<li>No account registration required</li>
 						<li>Add <i>Magic</i> cards to your decks with the card name search engine (powered by Scryfall)</li>
 						<li>Analyze statistics about your decks such as their average mana value, percentage of cards by certain attributes, and more</li>
