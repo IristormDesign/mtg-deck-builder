@@ -142,7 +142,7 @@ export default {
 					case 'x': this.openScryfallSearch()
 						return
 				}
-			} else { // Else not holding Shift.
+			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
 					case 'r': this.switchCardGroup()
 						return
@@ -169,7 +169,7 @@ export default {
 						return
 					case 'd': this.adjustCardQty(-2)
 				}
-			} else { // Else not holding Shift.
+			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
 					case 'q': this.toggleCardImageEnlargement()
 						return
@@ -192,7 +192,7 @@ export default {
 				switch (keyEvent) {
 					case 'q': this.openCardScryfallPage()
 				}
-			} else {
+			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
 					case 'q': this.toggleCardImageEnlargement()
 						return
@@ -245,6 +245,10 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex - 1)
 			}
 
+			this.hideCardImagePopup()
+
+			if (this.$store.state.isMobileLayout()) return
+
 			this.viewCardImageAtHighlightedIndex()
 		},
 		highlightNextLI () {
@@ -254,14 +258,18 @@ export default {
 				this.setHighlightedIndex(this.highlightedIndex + 1)
 			}
 
+			this.hideCardImagePopup()
+
+			if (this.$store.state.isMobileLayout()) return
+
 			this.viewCardImageAtHighlightedIndex()
 		},
 		adjustCardQty (number) {
-			this.scrollLIIntoView()
-
 			const card = this.relevantCardAtHighlightedIndex()
 
 			if (!card) return
+
+			this.scrollLIIntoView()
 
 			card.qty = card.qty + number
 		},
@@ -295,25 +303,40 @@ export default {
 			this.$store.commit('showSideboard', !this.$store.state.showSideboard)
 		},
 		toggleCardImageEnlargement () {
-			const image = document.querySelector('.card-image .image-overlay')
+			if (this.$store.state.isMobileLayout()) {
+				if (this.$store.state.showCard) {
+					const closeButton = document.querySelector('.card-image .close')
+					const hi = this.highlightedIndex
 
-			if (!image) return // If no card image even exists, then exit this function now.
+					if (closeButton) {
+						closeButton.click()
+					}
 
-			const imageLinkCL = image.querySelector('a').classList
-			const imageCardShadowCL = image.querySelector('.card-shadow').classList
-
-			if (this.imageEnlarged) {
-				imageLinkCL.remove('kb-highlight')
-				imageCardShadowCL.remove('kb-highlight')
-
-				this.imageEnlarged = false
+					this.setHighlightedIndex(hi)
+				} else {
+					this.viewCardImageAtHighlightedIndex()
+				}
 			} else {
-				if (this.disableImageEnlargeAtIndex > -1) return
+				const image = document.querySelector('.card-image .image-overlay')
 
-				imageLinkCL.add('kb-highlight')
-				imageCardShadowCL.add('kb-highlight')
+				if (!image) return // If no card image even exists, then exit this function now.
 
-				this.imageEnlarged = true
+				const imageLinkCL = image.querySelector('a').classList
+				const imageCardShadowCL = image.querySelector('.card-shadow').classList
+
+				if (this.imageEnlarged) {
+					imageLinkCL.remove('kb-highlight')
+					imageCardShadowCL.remove('kb-highlight')
+
+					this.imageEnlarged = false
+				} else {
+					if (this.disableImageEnlargeAtIndex > -1) return
+
+					imageLinkCL.add('kb-highlight')
+					imageCardShadowCL.add('kb-highlight')
+
+					this.imageEnlarged = true
+				}
 			}
 		},
 		openCardScryfallPage () {
@@ -364,6 +387,8 @@ export default {
 			button.click()
 		},
 		scrollLIIntoView () {
+			this.hideCardImagePopup()
+
 			const li = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
 
 			if (li) {
@@ -386,6 +411,14 @@ export default {
 			return this.activeCardList.cards.find(card =>
 				this.activeCardList.cards.indexOf(card) === index
 			)
+		},
+		hideCardImagePopup () {
+			if (
+				this.$store.state.isMobileLayout() &&
+				this.$store.state.showCard
+			) {
+				this.toggleCardImageEnlargement()
+			}
 		}
 	}
 }

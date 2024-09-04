@@ -137,22 +137,13 @@ export default {
 			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 		},
 		showCard (isShowing) {
-			if (this.$store.state.isMobileLayout() && this.card) {
+			if (
+				this.$store.state.isMobileLayout() &&
+				this.card
+			) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
-					} else { // The card image popup has now been hidden.
-						const lis = document
-							.querySelector('.card-list-section')
-							.querySelectorAll('li')
-
-						for (let i = 0; i < lis.length; i++) {
-							if (i === this.$store.state.focusCardButton) {
-								lis[i].querySelector('.card-button').focus()
-
-								break
-							}
-						}
 					}
 				})
 			}
