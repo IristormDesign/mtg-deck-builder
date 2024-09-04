@@ -9,18 +9,19 @@
 				alt="Snippet of the Deck Analyzer mode" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>When in the Deck Analyzer mode, the page displays many data tables for various statistical categories about the cards in your deck’s main <a href="#m-card-groups">card group</a>. The categories are the following:</p>
+		<p>The page for the Deck Analyzer displays many data tables, each for a different category regarding the cards in your deck’s main <a href="#m-card-groups">card group</a>. Some categories can comprise multiple subcategories, with a thick border line in their tables separating each subcategory.</p>
+		<p>The following are the Deck Analyzer’s categories, along with any subcategories in parentheses:</p>
 		<ul>
-			<li>Colors of Spells</li>
-			<li>Mana Color Symbols</li>
-			<li>Mana Values of Spells (a.k.a. mana curve)</li>
+			<li>Colors of Spells (mono mana colors, mana color amounts per spell)</li>
+			<li>Mana Color Symbols (basic color symbols, hybrid symbol)</li>
+			<li>Mana Values of Spells (definite values, variable value)</li>
 			<li>Supertypes</li>
 			<li>Types</li>
 			<li>Creature Subtypes</li>
 			<li>Other Subtypes</li>
 			<li>Rarities</li>
 			<li>Keyword Abilities</li>
-			<li>Power & Toughness</li>
+			<li>Power & Toughness (greatest/average/least P/T, variable P/T)</li>
 			<li>Layouts</li>
 		</ul>
 		<p>For almost every category, their tables have the following columns:</p>
