@@ -73,11 +73,6 @@ export default {
 			allSpellsCount: 0
 		}
 	},
-	computed: {
-		analyzerFilter () {
-			return this.$store.state.analyzerFilter
-		}
-	},
 	watch: {
 		analyzerFilter () {
 			this.countManaValues()
@@ -90,79 +85,31 @@ export default {
 	},
 	methods: {
 		countManaValues () {
-			let cards
-
-			if (this.analyzerFilter) {
-				cards = this.deck.cards.filter(card => {
-					const colorName = (colorCode) => {
-						switch (colorCode) {
-							case 'W':
-								return 'White'
-							case 'U':
-								return 'Blue'
-							case 'B':
-								return 'Black'
-							case 'R':
-								return 'Red'
-							case 'G':
-								return 'Green'
-						}
-					}
-
-					for (const color of card.colors) {
-						if (this.analyzerFilter[1] === colorName(color)) {
-							return card
-						}
-					}
-
-					const length = card.colors.length
-
-					switch (this.analyzerFilter[1]) {
-						case 'Monocolored':
-							if (length === 1) {
-								return card
-							}
-							break
-						case 'Multicolored':
-							if (length > 1) {
-								return card
-							}
-							break
-						case 'Colorless':
-							if (length < 1) {
-								return card
-							}
-					}
-
-					return null
-				})
-			} else {
-				cards = this.deck.cards
-			}
+			const cards = this.filteredCards()
 
 			this.mvStats = {}
 			this.variableStat = { ct: 0 }
 			this.allSpellsCount = 0
 			const regexVariableCost = /\{X\}/
 
-			cards.forEach(card => {
-				const isNotSpell = /\bLand\b/.test(card.type)
+			cards.forEach(({ mana, cmc, type, qty }) => {
+				const isNotSpell = /\bLand\b/.test(type)
 
 				if (isNotSpell) return
 
-				if (!this.mvStats[card.cmc]) {
-					this.mvStats[card.cmc] = {
+				if (!this.mvStats[cmc]) {
+					this.mvStats[cmc] = {
 						ct: 0
 					}
 				}
 
-				this.mvStats[card.cmc].ct += card.qty
+				this.mvStats[cmc].ct += qty
 
-				if (regexVariableCost.test(card.mana)) {
-					this.variableStat.ct += card.qty
+				if (regexVariableCost.test(mana)) {
+					this.variableStat.ct += qty
 				}
 
-				this.allSpellsCount += card.qty
+				this.allSpellsCount += qty
 			})
 		},
 		calculatePercentageOfSpells () {

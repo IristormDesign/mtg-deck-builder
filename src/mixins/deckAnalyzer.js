@@ -1,5 +1,8 @@
 export default {
 	computed: {
+		analyzerFilter () {
+			return this.$store.state.analyzerFilter
+		},
 		tableHeadCommon () {
 			return `
 				<tr>
@@ -39,6 +42,57 @@ export default {
 						}
 					})
 			)
+		},
+		filteredCards () {
+			if (this.analyzerFilter) {
+				const cards = this.deck.cards.filter(card => {
+					const colorName = (colorCode) => {
+						switch (colorCode) {
+							case 'W':
+								return 'White'
+							case 'U':
+								return 'Blue'
+							case 'B':
+								return 'Black'
+							case 'R':
+								return 'Red'
+							case 'G':
+								return 'Green'
+						}
+					}
+
+					for (const color of card.colors) {
+						if (this.analyzerFilter[1] === colorName(color)) {
+							return card
+						}
+					}
+
+					const length = card.colors.length
+
+					switch (this.analyzerFilter[1]) {
+						case 'Monocolored':
+							if (length === 1) {
+								return card
+							}
+							break
+						case 'Multicolored':
+							if (length > 1) {
+								return card
+							}
+							break
+						case 'Colorless':
+							if (length < 1) {
+								return card
+							}
+					}
+
+					return null
+				})
+
+				return cards
+			} else {
+				return this.deck.cards
+			}
 		}
 	}
 }

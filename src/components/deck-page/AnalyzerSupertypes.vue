@@ -70,6 +70,13 @@ export default {
 			}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.countSupertypes()
+
+			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
+		}
+	},
 	computed: {
 		noData () {
 			return Object.values(this.supertypeStats).every(
@@ -84,7 +91,17 @@ export default {
 	},
 	methods: {
 		countSupertypes () {
-			this.deck.cards.forEach(card => {
+			for (const supertype in this.supertypeStats) {
+				const stat = this.supertypeStats[supertype]
+
+				if (stat.ct) {
+					stat.ct = 0
+				}
+			}
+
+			const cards = this.filteredCards()
+
+			cards.forEach(card => {
 				const countedOnFrontFace = {}
 
 				const supertypesPerFace = (typeLine) => {
