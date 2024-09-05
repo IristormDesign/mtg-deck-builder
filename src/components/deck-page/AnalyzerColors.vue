@@ -14,6 +14,8 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
+						@click="filterByColor(name)"
+						:ref="name"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -26,6 +28,7 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
+						@click="filterByColor(name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -180,6 +183,34 @@ export default {
 				const stat = stats[statName]
 
 				stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
+			}
+		},
+		filterByColor (name) {
+			const store = this.$store
+			const rowClassList = this.$refs[name][0].classList
+
+			if (
+				store.state.analyzerFilter &&
+				store.state.analyzerFilter[1] === name
+			) { // If the user has clicked on the same table row that's currently filtering...
+				store.commit('analyzerFilter', null)
+
+				rowClassList.remove('filtering')
+			} else { // Else the user has clicked on a different table row.
+				const prevFilter = store.state.analyzerFilter
+
+				if (
+					prevFilter &&
+					prevFilter[0] === 'colors'
+				) {
+					const prevName = prevFilter[1]
+
+					this.$refs[prevName][0].classList.remove('filtering')
+				}
+
+				store.commit('analyzerFilter', ['colors', name])
+
+				rowClassList.add('filtering')
 			}
 		}
 	}

@@ -184,6 +184,20 @@ $outline-width-stat-section: 2px;
 			margin: divide($lhse, 3) 0;
 		}
 	}
+	.filtering {
+		th,
+		td {
+			color: $color-app-header-link-active;
+			background: $color-input-bg-focus;
+		}
+		th {
+			&::before {
+				content: '🔎';
+				display: inline-block;
+				padding-right: .25em;
+			}
+		}
+	}
 }
 .vert-center-cell {
 	display: flex;

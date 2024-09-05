@@ -86,6 +86,18 @@ export default {
 	props: {
 		deck: Object
 	}
+	// computed: {
+	// 	analyzerFilter () {
+	// 		return this.$store.state.analyzerFilter
+	// 	}
+	// },
+	// watch: {
+	// 	analyzerFilter (value) {
+	// 		if (value) {
+
+	// 		}
+	// 	}
+	// }
 }
 </script>
 
