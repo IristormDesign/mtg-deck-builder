@@ -46,18 +46,15 @@ export default {
 		filteredCards () {
 			if (this.analyzerFilter) {
 				const cards = this.deck.cards.filter(card => {
+					if (/\bLand\b/.test(card.type)) return null
+
 					const colorName = (colorCode) => {
 						switch (colorCode) {
-							case 'W':
-								return 'White'
-							case 'U':
-								return 'Blue'
-							case 'B':
-								return 'Black'
-							case 'R':
-								return 'Red'
-							case 'G':
-								return 'Green'
+							case 'W': return 'White'
+							case 'U': return 'Blue'
+							case 'B': return 'Black'
+							case 'R': return 'Red'
+							case 'G': return 'Green'
 						}
 					}
 
