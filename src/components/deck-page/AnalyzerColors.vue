@@ -15,7 +15,7 @@
 						v-if="stats.ct > 0"
 						:key="name"
 						@click="filterByColor(name)"
-						:ref="name"
+						:ref="`colors-${name}`"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -29,6 +29,7 @@
 						v-if="stats.ct > 0"
 						:key="name"
 						@click="filterByColor(name)"
+						:ref="`colors-${name}`"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -187,7 +188,7 @@ export default {
 		},
 		filterByColor (name) {
 			const store = this.$store
-			const rowClassList = this.$refs[name][0].classList
+			const rowClassList = this.$refs[`colors-${name}`][0].classList
 
 			if (
 				store.state.analyzerFilter &&
@@ -205,7 +206,7 @@ export default {
 				) {
 					const prevName = prevFilter[1]
 
-					this.$refs[prevName][0].classList.remove('filtering')
+					this.$refs[`colors-${prevName}`][0].classList.remove('filtering')
 				}
 
 				store.commit('analyzerFilter', ['colors', name])

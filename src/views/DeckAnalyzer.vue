@@ -85,6 +85,9 @@ export default {
 	mixins: [deckAnalyzerSubtypes],
 	props: {
 		deck: Object
+	},
+	mounted () {
+		this.$store.commit('analyzerFilter', null)
 	}
 	// computed: {
 	// 	analyzerFilter () {

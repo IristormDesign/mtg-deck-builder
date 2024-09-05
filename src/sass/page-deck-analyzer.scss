@@ -191,10 +191,14 @@ $outline-width-stat-section: 2px;
 			background: $color-input-bg-focus;
 		}
 		th {
+			position: relative;
+
 			&::before {
 				content: '🔎';
 				display: inline-block;
 				padding-right: .25em;
+				position: absolute;
+				left: -$lhse*1.25;
 			}
 		}
 	}

@@ -90,8 +90,6 @@ export default {
 	},
 	methods: {
 		countManaValues () {
-			const regexVariableCost = /\{X\}/
-
 			let cards
 
 			if (this.analyzerFilter) {
@@ -116,6 +114,26 @@ export default {
 							return card
 						}
 					}
+
+					const length = card.colors.length
+
+					switch (this.analyzerFilter[1]) {
+						case 'Monocolored':
+							if (length === 1) {
+								return card
+							}
+							break
+						case 'Multicolored':
+							if (length > 1) {
+								return card
+							}
+							break
+						case 'Colorless':
+							if (length < 1) {
+								return card
+							}
+					}
+
 					return null
 				})
 			} else {
@@ -125,21 +143,12 @@ export default {
 			this.mvStats = {}
 			this.variableStat = { ct: 0 }
 			this.allSpellsCount = 0
+			const regexVariableCost = /\{X\}/
 
 			cards.forEach(card => {
 				const isNotSpell = /\bLand\b/.test(card.type)
 
 				if (isNotSpell) return
-
-				// if (this.analyzerFilter) {
-				// 	console.log(this.analyzerFilter)
-
-				// 	for (const color of card.colors) {
-				// 		if (this.analyzerFilter[1] === color) {
-				// 			console.log('🎉🎉🎉')
-				// 		}
-				// 	}
-				// }
 
 				if (!this.mvStats[card.cmc]) {
 					this.mvStats[card.cmc] = {
