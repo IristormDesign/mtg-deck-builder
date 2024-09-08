@@ -10,18 +10,18 @@
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody>
-				<template v-for="symbol in colorSymbolsMinusHybrid">
+				<template v-for="(symbol, symbolName) in colorSymbolsMinusHybrid">
 					<tr
 						v-if="symbol.ct > 0"
-						:key="symbol.name"
-						:ref="`colorSymbols-${symbol.name}`"
-						@click="filterFromTableRow('colorSymbols', symbol.name)"
+						:key="symbolName"
+						:ref="`colorSymbols-${symbolName}`"
+						@click="filterFromTableRow('colorSymbols', symbolName)"
 					>
 						<th>
 							<div
 								class="vert-center-cell"
 								v-html="`
-									<small>${symbol.name}</small>
+									<small>${symbolName}</small>
 									${manaSymbol[symbol.key]}
 								`"
 							></div>
@@ -31,19 +31,19 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody v-show="colorSymbols.hybrid.ct > 0">
+			<tbody v-show="colorSymbols.Hybrid.ct > 0">
 				<tr>
 					<th>
 						<div
 							class="vert-center-cell"
 							v-html="`
-								<small>${colorSymbols.hybrid.name}</small>
-								${manaSymbol[colorSymbols.hybrid.key]}
+								<small>Hybrid</small>
+								${manaSymbol[colorSymbols.Hybrid.key]}
 							`"
 						></div>
 					</th>
-					<td>{{ colorSymbols.hybrid.ct }}</td>
-					<td>{{ colorSymbols.hybrid.pct.toFixed(1) }}<span>%</span></td>
+					<td>{{ colorSymbols.Hybrid.ct }}</td>
+					<td>{{ colorSymbols.Hybrid.pct.toFixed(1) }}<span>%</span></td>
 				</tr>
 			</tbody>
 			<tbody class="total">
@@ -69,53 +69,37 @@ export default {
 	data () {
 		return {
 			colorSymbols: {
-				white: {
+				White: {
 					ct: 0,
-					key: 'w',
-					name: 'White',
-					regex: /.W./g
+					key: 'w'
 				},
-				blue: {
+				Blue: {
 					ct: 0,
-					key: 'u',
-					name: 'Blue',
-					regex: /.U./g
+					key: 'u'
 				},
-				black: {
+				Black: {
 					ct: 0,
-					key: 'b',
-					name: 'Black',
-					regex: /.B./g
+					key: 'b'
 				},
-				red: {
+				Red: {
 					ct: 0,
-					key: 'r',
-					name: 'Red',
-					regex: /.R./g
+					key: 'r'
 				},
-				green: {
+				Green: {
 					ct: 0,
-					key: 'g',
-					name: 'Green',
-					regex: /.G./g
+					key: 'g'
 				},
-				colorless: {
+				Colorless: {
 					ct: 0,
-					key: 'c',
-					name: 'Colorless',
-					regex: /.C./g
+					key: 'c'
 				},
-				snow: {
+				Snow: {
 					ct: 0,
-					key: 's',
-					name: 'Snow',
-					regex: /.S./g
+					key: 's'
 				},
-				hybrid: {
+				Hybrid: {
 					ct: 0,
-					key: 'hybrid',
-					name: 'Hybrid',
-					regex: /.\/./g
+					key: 'hybrid'
 				}
 			}
 		}
@@ -124,7 +108,7 @@ export default {
 		colorSymbolsMinusHybrid () {
 			const csCopy = { ...this.colorSymbols }
 
-			delete csCopy.hybrid
+			delete csCopy.Hybrid
 
 			return csCopy
 		},
@@ -154,7 +138,8 @@ export default {
 					const symbolsPerFace = (faceMana) => {
 						if (!faceMana) return
 
-						const allSymbolMatches = faceMana.match(this.colorSymbols[symbolName].regex)
+						const regex = this.$store.state.regex.manaSymbols[symbolName]
+						const allSymbolMatches = faceMana.match(regex)
 
 						if (!allSymbolMatches) return
 
