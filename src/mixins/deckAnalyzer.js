@@ -1,8 +1,8 @@
+import deckAnalyzerFiltering from './deckAnalyzerFiltering'
+
 export default {
+	mixins: [deckAnalyzerFiltering],
 	computed: {
-		analyzerFilter () {
-			return this.$store.state.analyzerFilter
-		},
 		tableHeadCommon () {
 			return `
 				<tr>
@@ -20,75 +20,6 @@ export default {
 		}
 	},
 	methods: {
-		filteredCards () {
-			if (this.analyzerFilter) {
-				switch (this.analyzerFilter[0]) {
-					case 'colors':
-						return this.filteredCardsByColorOfSpells()
-					case 'supertypes':
-						return this.filteredCardsBySupertype()
-					default:
-						return null
-				}
-			} else {
-				return this.deck.cards
-			}
-		},
-		filteredCardsByColorOfSpells () {
-			return this.deck.cards.filter(card => {
-				if (/\bLand\b/.test(card.type)) {
-					return null
-				}
-
-				const colorName = (colorCode) => {
-					switch (colorCode) {
-						case 'W': return 'White'
-						case 'U': return 'Blue'
-						case 'B': return 'Black'
-						case 'R': return 'Red'
-						case 'G': return 'Green'
-					}
-				}
-
-				for (const color of card.colors) {
-					if (this.analyzerFilter[1] === colorName(color)) {
-						return card
-					}
-				}
-
-				const length = card.colors.length
-
-				switch (this.analyzerFilter[1]) {
-					case 'Monocolored':
-						if (length === 1) {
-							return card
-						}
-						break
-					case 'Multicolored':
-						if (length > 1) {
-							return card
-						}
-						break
-					case 'Colorless':
-						if (length < 1) {
-							return card
-						}
-				}
-
-				return null
-			})
-		},
-		filteredCardsBySupertype () {
-			return this.deck.cards.filter(card => {
-				const supertypeString = card.type + ' '
-
-				if (supertypeString.includes(this.analyzerFilter[1])) {
-					return card
-				} else {
-					return null
-				}
-			})
-		},
 		/**
 		 * @param {number} count
 		 * @returns {string} Percentage
