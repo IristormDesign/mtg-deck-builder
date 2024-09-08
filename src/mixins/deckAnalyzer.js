@@ -13,7 +13,8 @@ export default {
 			`
 		},
 		totalCards () {
-			return this.deck.cards.reduce(
+			// return this.deck.cards.reduce(
+			return this.filteredCards().reduce(
 				(total, card) => total + card.qty,
 				0
 			)

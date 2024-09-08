@@ -14,8 +14,8 @@
 					<tr
 						v-if="supertype.ct > 0"
 						:key="supertypeName"
-						:ref="`supertypes-${supertypeName}`"
-						@click="filterFromTableRow('supertypes', supertypeName)"
+						:class="activeFilterClass('supertypes', supertypeName)"
+						@click="handleRowClick('supertypes', supertypeName)"
 					>
 						<th>{{ supertypeName }}</th>
 						<td>{{ supertype.ct }}</td>
@@ -72,13 +72,6 @@ export default {
 			}
 		}
 	},
-	watch: {
-		analyzerFilter () {
-			this.countSupertypes()
-
-			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
-		}
-	},
 	computed: {
 		noData () {
 			return Object.values(this.supertypeStats).every(
@@ -86,21 +79,25 @@ export default {
 			)
 		}
 	},
-	mounted () {
-		this.countSupertypes()
-
-		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
-	},
-	methods: {
-		countSupertypes () {
+	watch: {
+		analyzerFilter () {
 			for (const supertype in this.supertypeStats) {
-				const stat = this.supertypeStats[supertype]
-
-				if (stat.ct) {
-					stat.ct = 0
-				}
+				this.supertypeStats[supertype].ct = 0
 			}
 
+			this.prepareSupertypeStats()
+		}
+	},
+	mounted () {
+		this.prepareSupertypeStats()
+	},
+	methods: {
+		prepareSupertypeStats () {
+			this.countSupertypes()
+
+			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
+		},
+		countSupertypes () {
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 

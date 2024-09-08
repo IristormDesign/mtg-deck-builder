@@ -78,11 +78,12 @@ import AnalyzerRarities from '@/components/deck-page/AnalyzerRarities.vue'
 import AnalyzerKeywords from '@/components/deck-page/AnalyzerKeywords.vue'
 import AnalyzerPowerToughness from '@/components/deck-page/AnalyzerPowerToughness.vue'
 import AnalyzerLayouts from '@/components/deck-page/AnalyzerLayouts.vue'
+import deckAnalyzer from '@/mixins/deckAnalyzer.js'
 import deckAnalyzerSubtypes from '@/mixins/deckAnalyzerSubtypes.js'
 
 export default {
 	components: { AnalyzerColors, AnalyzerColorSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts },
-	mixins: [deckAnalyzerSubtypes],
+	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object
 	},

@@ -14,8 +14,8 @@
 					<tr
 						v-if="symbol.ct > 0"
 						:key="symbolName"
-						:ref="`colorSymbols-${symbolName}`"
-						@click="filterFromTableRow('colorSymbols', symbolName)"
+						:class="activeFilterClass('colorSymbols', symbolName)"
+						@click="handleRowClick('colorSymbols', symbolName)"
 					>
 						<th>
 							<div
@@ -33,8 +33,8 @@
 			</tbody>
 			<tbody v-show="colorSymbols.Hybrid.ct > 0">
 				<tr
-					ref="colorSymbols-Hybrid"
-					@click="filterFromTableRow('colorSymbols', 'Hybrid')"
+					:class="activeFilterClass('colorSymbols', 'Hybrid')"
+					@click="handleRowClick('colorSymbols', 'Hybrid')"
 				>
 					<th>
 						<div
@@ -126,15 +126,27 @@ export default {
 			)
 		}
 	},
-	mounted () {
-		this.countColorSymbols()
-		this.calculatePercentage()
+	watch: {
+		analyzerFilter () {
+			for (const symbol in this.colorSymbols) {
+				this.colorSymbols[symbol].ct = 0
+			}
 
-		this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
+			this.prepareColorSymbolStats()
+		}
+	},
+	mounted () {
+		this.prepareColorSymbolStats()
 	},
 	methods: {
+		prepareColorSymbolStats () {
+			this.countColorSymbols()
+			this.calculatePercentage()
+
+			this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
+		},
 		countColorSymbols () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				for (const symbolName in this.colorSymbols) {

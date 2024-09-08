@@ -5,6 +5,30 @@ export default {
 		}
 	},
 	methods: {
+		activeFilterClass (category, attribute) {
+			const filter = this.$store.state.analyzerFilter
+
+			if (!filter) return
+
+			if (
+				filter[0] === category &&
+				filter[1] === attribute
+			) {
+				return 'filtering'
+			}
+		},
+		handleRowClick (category, attribute) {
+			const store = this.$store
+
+			if (
+				store.state.analyzerFilter &&
+				store.state.analyzerFilter[1] === attribute
+			) {
+				store.commit('analyzerFilter', null)
+			} else {
+				store.commit('analyzerFilter', [category, attribute])
+			}
+		},
 		filteredCards () {
 			if (this.analyzerFilter) {
 				switch (this.analyzerFilter[0]) {
@@ -19,40 +43,6 @@ export default {
 				}
 			} else {
 				return this.deck.cards
-			}
-		},
-		filterFromTableRow (table, selectedRow) {
-			const rowRef = (row) => { // Inconsistently, `$refs` may return either an array of elements (even if it contains only one element) or an element directly.
-				const ref = this.$refs[`${table}-${row}`]
-
-				return ref[0] || ref
-			}
-
-			const rowClassList = rowRef(selectedRow).classList
-			const store = this.$store
-
-			if (
-				store.state.analyzerFilter &&
-				store.state.analyzerFilter[1] === selectedRow
-			) { // If the user has clicked on the same table row that's currently filtering...
-				store.commit('analyzerFilter', null)
-
-				rowClassList.remove('filtering')
-			} else { // Else the user has clicked on a different table row.
-				const prevFilter = store.state.analyzerFilter
-
-				if (
-					prevFilter &&
-					prevFilter[0] === table
-				) {
-					const prevSelectedRow = prevFilter[1]
-
-					rowRef(prevSelectedRow).classList.remove('filtering')
-				}
-
-				store.commit('analyzerFilter', [table, selectedRow])
-
-				rowClassList.add('filtering')
 			}
 		},
 		filteredCardsByColorOfSpells () {

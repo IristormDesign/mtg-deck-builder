@@ -14,8 +14,8 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
-						:ref="`colors-${name}`"
-						@click="filterFromTableRow('colors', name)"
+						:class="activeFilterClass('colors', name)"
+						@click="handleRowClick('colors', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -28,8 +28,8 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
-						:ref="`colors-${name}`"
-						@click="filterFromTableRow('colors', name)"
+						:class="activeFilterClass('colors', name)"
+						@click="handleRowClick('colors', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -105,15 +105,16 @@ export default {
 			for (const stat in this.colorStatsExtra) {
 				this.colorStatsExtra[stat].ct = 0
 			}
+			this.allSpellsCount = 0
 
-			this.prepareColorsStats()
+			this.prepareColorStats()
 		}
 	},
 	mounted () {
-		this.prepareColorsStats()
+		this.prepareColorStats()
 	},
 	methods: {
-		prepareColorsStats () {
+		prepareColorStats () {
 			this.countColors()
 
 			this.calculatePercentageOfSpells(this.colorStatsBasic)
