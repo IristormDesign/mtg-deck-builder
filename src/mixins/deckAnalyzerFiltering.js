@@ -21,13 +21,19 @@ export default {
 				return this.deck.cards
 			}
 		},
-		filterFromTableRow (table, row) {
+		filterFromTableRow (table, selectedRow) {
+			const rowRef = (row) => { // Inconsistently, `$refs` may return either an array of elements (even if it contains only one element) or an element directly.
+				const ref = this.$refs[`${table}-${row}`]
+
+				return ref[0] || ref
+			}
+
+			const rowClassList = rowRef(selectedRow).classList
 			const store = this.$store
-			const rowClassList = this.$refs[`${table}-${row}`][0].classList
 
 			if (
 				store.state.analyzerFilter &&
-				store.state.analyzerFilter[1] === row
+				store.state.analyzerFilter[1] === selectedRow
 			) { // If the user has clicked on the same table row that's currently filtering...
 				store.commit('analyzerFilter', null)
 
@@ -39,12 +45,12 @@ export default {
 					prevFilter &&
 					prevFilter[0] === table
 				) {
-					const prevName = prevFilter[1]
+					const prevSelectedRow = prevFilter[1]
 
-					this.$refs[`${table}-${prevName}`][0].classList.remove('filtering')
+					rowRef(prevSelectedRow).classList.remove('filtering')
 				}
 
-				store.commit('analyzerFilter', [table, row])
+				store.commit('analyzerFilter', [table, selectedRow])
 
 				rowClassList.add('filtering')
 			}

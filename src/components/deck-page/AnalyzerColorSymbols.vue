@@ -32,7 +32,10 @@
 				</template>
 			</tbody>
 			<tbody v-show="colorSymbols.Hybrid.ct > 0">
-				<tr>
+				<tr
+					ref="colorSymbols-Hybrid"
+					@click="filterFromTableRow('colorSymbols', 'Hybrid')"
+				>
 					<th>
 						<div
 							class="vert-center-cell"
