@@ -22,6 +22,18 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
+		regex: {
+			manaSymbols: {
+				White: /.W./g,
+				Blue: /.U./g,
+				Black: /.B./g,
+				Red: /.R./g,
+				Green: /.G./g,
+				Colorless: /.C./g,
+				Snow: /.S./g,
+				Hybrid: /.\/./g
+			}
+		},
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,

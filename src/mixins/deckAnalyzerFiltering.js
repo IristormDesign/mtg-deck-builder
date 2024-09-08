@@ -10,6 +10,8 @@ export default {
 				switch (this.analyzerFilter[0]) {
 					case 'colors':
 						return this.filteredCardsByColorOfSpells()
+					case 'colorSymbols':
+						return this.filteredCardsByColorSymbols()
 					case 'supertypes':
 						return this.filteredCardsBySupertype()
 					default:
@@ -100,6 +102,22 @@ export default {
 				} else {
 					return null
 				}
+			})
+		},
+		filteredCardsByColorSymbols () {
+			return this.deck.cards.filter(card => {
+				const regexSymbols = this.$store.state.regex.manaSymbols
+
+				for (const symbol in regexSymbols) {
+					if (
+						this.analyzerFilter[1] === symbol &&
+						card.mana.match(regexSymbols[symbol])
+					) {
+						return card
+					}
+				}
+
+				return null
 			})
 		}
 	}

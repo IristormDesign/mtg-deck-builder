@@ -14,6 +14,8 @@
 					<tr
 						v-if="symbol.ct > 0"
 						:key="symbol.name"
+						:ref="`colorSymbols-${symbol.name}`"
+						@click="filterFromTableRow('colorSymbols', symbol.name)"
 					>
 						<th>
 							<div
