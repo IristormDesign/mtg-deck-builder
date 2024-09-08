@@ -86,21 +86,9 @@ export default {
 	props: {
 		deck: Object
 	},
-	mounted () {
+	created () {
 		this.$store.commit('analyzerFilter', null)
 	}
-	// computed: {
-	// 	analyzerFilter () {
-	// 		return this.$store.state.analyzerFilter
-	// 	}
-	// },
-	// watch: {
-	// 	analyzerFilter (value) {
-	// 		if (value) {
-
-	// 		}
-	// 	}
-	// }
 }
 </script>
 

@@ -14,8 +14,8 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
-						@click="filterByColor(name)"
 						:ref="`colors-${name}`"
+						@click="filterByColor(name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -28,8 +28,8 @@
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
-						@click="filterByColor(name)"
 						:ref="`colors-${name}`"
+						@click="filterByColor(name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -97,18 +97,33 @@ export default {
 			)
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			for (const stat in this.colorStatsBasic) {
+				this.colorStatsBasic[stat].ct = 0
+			}
+			for (const stat in this.colorStatsExtra) {
+				this.colorStatsExtra[stat].ct = 0
+			}
+
+			this.prepareColorsStats()
+		}
+	},
 	mounted () {
-		this.countColors()
-
-		this.calculatePercentageOfSpells(this.colorStatsBasic)
-		this.calculatePercentageOfSpells(this.colorStatsExtra)
-
-		this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
-		this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
+		this.prepareColorsStats()
 	},
 	methods: {
+		prepareColorsStats () {
+			this.countColors()
+
+			this.calculatePercentageOfSpells(this.colorStatsBasic)
+			this.calculatePercentageOfSpells(this.colorStatsExtra)
+
+			this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
+			this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
+		},
 		countColors () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const qty = card.qty
 				const countedOnFrontFace = {}
 

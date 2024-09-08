@@ -14,6 +14,8 @@
 					<tr
 						v-if="supertype.ct > 0"
 						:key="supertypeName"
+						:ref="`supertypes-${supertypeName}`"
+						@click="filterBySupertype(supertypeName)"
 					>
 						<th>{{ supertypeName }}</th>
 						<td>{{ supertype.ct }}</td>
@@ -99,9 +101,7 @@ export default {
 				}
 			}
 
-			const cards = this.filteredCards()
-
-			cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const supertypesPerFace = (typeLine) => {
@@ -127,6 +127,34 @@ export default {
 				supertypesPerFace(card.type)
 				supertypesPerFace(card.type2)
 			})
+		},
+		filterBySupertype (name) {
+			const store = this.$store
+			const rowClassList = this.$refs[`supertypes-${name}`][0].classList
+
+			if (
+				store.state.analyzerFilter &&
+				store.state.analyzerFilter[1] === name
+			) { // If the user has clicked on the same table row that's currently filtering...
+				store.commit('analyzerFilter', null)
+
+				rowClassList.remove('filtering')
+			} else { // Else the user has clicked on a different table row.
+				const prevFilter = store.state.analyzerFilter
+
+				if (
+					prevFilter &&
+					prevFilter[0] === 'supertypes'
+				) {
+					const prevName = prevFilter[1]
+
+					this.$refs[`supertypes-${prevName}`][0].classList.remove('filtering')
+				}
+
+				store.commit('analyzerFilter', ['supertypes', name])
+
+				rowClassList.add('filtering')
+			}
 		}
 	}
 }
