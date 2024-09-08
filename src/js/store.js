@@ -14,7 +14,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		analyzerFilter: null,
-		analyzerPrevFilter: null,
 		decks: [],
 		focusCardButton: '',
 		highlightedCardLIIndex: -1,
@@ -52,9 +51,6 @@ export default new Vuex.Store({
 	mutations: {
 		analyzerFilter (state, payload) {
 			state.analyzerFilter = payload
-		},
-		analyzerPrevFilter (state, payload) {
-			state.analyzerPrevFilter = payload
 		},
 		decks (state, payload) {
 			state.decks = payload
