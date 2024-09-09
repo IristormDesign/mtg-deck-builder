@@ -107,11 +107,17 @@ export default {
 			}
 			this.allSpellsCount = 0
 
-			this.prepareColorStats()
+			this.countColors()
+
+			this.calculatePercentageOfSpells(this.colorStatsBasic)
+			this.calculatePercentageOfSpells(this.colorStatsExtra)
 		}
 	},
 	mounted () {
 		this.prepareColorStats()
+
+		this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
+		this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
 	},
 	methods: {
 		prepareColorStats () {
@@ -119,9 +125,6 @@ export default {
 
 			this.calculatePercentageOfSpells(this.colorStatsBasic)
 			this.calculatePercentageOfSpells(this.colorStatsExtra)
-
-			this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
-			this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
 		},
 		countColors () {
 			this.filteredCards().forEach(card => {

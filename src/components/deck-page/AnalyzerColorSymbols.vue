@@ -137,13 +137,13 @@ export default {
 	},
 	mounted () {
 		this.prepareColorSymbolStats()
+
+		this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
 	},
 	methods: {
 		prepareColorSymbolStats () {
 			this.countColorSymbols()
 			this.calculatePercentage()
-
-			this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
 		},
 		countColorSymbols () {
 			this.filteredCards().forEach(card => {

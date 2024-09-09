@@ -85,18 +85,15 @@ export default {
 				this.supertypeStats[supertype].ct = 0
 			}
 
-			this.prepareSupertypeStats()
+			this.countSupertypes()
 		}
 	},
 	mounted () {
-		this.prepareSupertypeStats()
+		this.countSupertypes()
+
+		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
 	},
 	methods: {
-		prepareSupertypeStats () {
-			this.countSupertypes()
-
-			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
-		},
 		countSupertypes () {
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
