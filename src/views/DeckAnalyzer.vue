@@ -86,6 +86,9 @@ export default {
 	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object
+	},
+	created () {
+		this.$store.commit('analyzerFilter', null) // Always turn off the filter if arriving from another page.
 	}
 }
 </script>
