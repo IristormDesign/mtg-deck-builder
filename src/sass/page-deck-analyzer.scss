@@ -71,10 +71,41 @@ $outline-width-stat-section: 2px;
 			position: relative;
 			border: $table-outer-borders;
 			border-top-width: 0;
-		}
-		tr {
-			&:hover {
-				background: rgba(#000, .25);
+
+			tr {
+				cursor: pointer;
+				outline: 1px solid transparent;
+
+				&:hover {
+					background: $color-group-bg-darker;
+
+					th,
+					td {
+						color: $color-link;
+					}
+				}
+				&:active {
+					background: $color-input-bg-focus;
+
+					th,
+					td {
+						color: $color-link-active;
+					}
+				}
+			}
+			&.total {
+				tr {
+					cursor: default;
+
+					&:hover {
+						background: none;
+
+						th,
+						td {
+							color: $color-text-darker;
+						}
+					}
+				}
 			}
 		}
 		th,
@@ -116,6 +147,34 @@ $outline-width-stat-section: 2px;
 				background: $color-mythic-very-dim;
 				border-color: $color-mythic-very-dim;
 				color: $color-text-over-mythic-very-dim;
+			}
+		}
+		.filtering {
+			position: relative;
+			background: $color-mythic-dim;
+			outline-color: $color-link;
+
+			th,
+			td {
+				color: $color-app-header-link-active;
+			}
+			&:hover {
+				background: $color-mythic-very-dim;
+				outline-color: $color-link-dim;
+
+				th,
+				td {
+					color: $color-app-header-link-hover;
+				}
+			}
+			&:active {
+				background: #000;
+				outline-color: $color-link-focus;
+
+				th,
+				td {
+					color: $color-link-dark;
+				}
 			}
 		}
 	}
@@ -182,24 +241,6 @@ $outline-width-stat-section: 2px;
 		}
 		p {
 			margin: divide($lhse, 3) 0;
-		}
-	}
-	.filtering {
-		th,
-		td {
-			color: $color-app-header-link-active;
-			background: $color-input-bg-focus;
-		}
-		th {
-			position: relative;
-
-			&::before {
-				content: '🔎';
-				display: inline-block;
-				padding-right: .25em;
-				position: absolute;
-				left: -$lhse*1.25;
-			}
 		}
 	}
 }
