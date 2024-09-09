@@ -8,6 +8,8 @@
 					<tr
 						v-if="type.ct > 0"
 						:key="typeName"
+						:class="activeFilterClass('types', typeName)"
+						@click="handleRowClick('types', typeName)"
 					>
 						<th>{{ typeName }}</th>
 						<td>{{ type.ct }}</td>
@@ -75,6 +77,15 @@ export default {
 			}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			for (const stat in this.typeStats) {
+				this.typeStats[stat].ct = 0
+			}
+
+			this.countTypes()
+		}
+	},
 	mounted () {
 		this.countTypes()
 
@@ -82,7 +93,7 @@ export default {
 	},
 	methods: {
 		countTypes () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const typesPerFace = (typeLine) => {

@@ -13,7 +13,6 @@ export default {
 			`
 		},
 		totalCards () {
-			// return this.deck.cards.reduce(
 			return this.filteredCards().reduce(
 				(total, card) => total + card.qty,
 				0
@@ -33,16 +32,15 @@ export default {
 		 * @returns {Object} Object with properties sorted by count
 		 */
 		sortTableByCounts (counts) {
-			return Object.fromEntries(
-				Object.entries(counts)
-					.sort((a, b) => {
-						if (a[1].ct) {
-							return b[1].ct - a[1].ct
-						} else {
-							return b[1] - a[1]
-						}
-					})
-			)
+			return Object.fromEntries(Object.entries(counts).sort(
+				(a, b) => {
+					if (a[1].ct) {
+						return b[1].ct - a[1].ct
+					} else {
+						return b[1] - a[1]
+					}
+				}
+			))
 		}
 	}
 }

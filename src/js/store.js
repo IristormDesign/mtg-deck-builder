@@ -32,6 +32,16 @@ export default new Vuex.Store({
 				Colorless: /.C./g,
 				Snow: /.S./g,
 				Hybrid: /.\/./g
+			},
+			cardTypes: {
+				Creature: /\bCreature\b/,
+				Planeswalker: /\bPlaneswalker\b/,
+				Battle: /\bBattle\b/,
+				Enchantment: /\bEnchantment\b/,
+				Artifact: /\bArtifact\b/,
+				Sorcery: /\bSorcery\b/,
+				Instant: /\bInstant\b/,
+				Land: /\bLand\b/
 			}
 		},
 		showingAnyPopup: false,

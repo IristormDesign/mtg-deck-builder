@@ -33,13 +33,15 @@ export default {
 			if (this.analyzerFilter) {
 				switch (this.analyzerFilter[0]) {
 					case 'colors':
-						return this.filteredCardsByColorOfSpells()
+						return this.filteredCardsByColorsOfSpells()
 					case 'colorSymbols':
 						return this.filteredCardsByColorSymbols()
 					case 'manaValues':
 						return this.filteredCardsByManaValues()
 					case 'supertypes':
-						return this.filteredCardsBySupertype()
+						return this.filteredCardsBySupertypes()
+					case 'types':
+						return this.filteredCardsByTypes()
 					default:
 						return null
 				}
@@ -47,7 +49,7 @@ export default {
 				return this.deck.cards
 			}
 		},
-		filteredCardsByColorOfSpells () {
+		filteredCardsByColorsOfSpells () {
 			return this.deck.cards.filter(card => {
 				if (/\bLand\b/.test(card.type)) {
 					return null
@@ -91,10 +93,24 @@ export default {
 				return null
 			})
 		},
+		filteredCardsByColorSymbols () {
+			return this.deck.cards.filter(card => {
+				const regexSymbols = this.$store.state.regex.manaSymbols
+
+				for (const symbol in regexSymbols) {
+					if (
+						this.analyzerFilter[1] === symbol &&
+						card.mana.match(regexSymbols[symbol])
+					) {
+						return card
+					}
+				}
+
+				return null
+			})
+		},
 		filteredCardsByManaValues () {
 			return this.deck.cards.filter(card => {
-				console.log(card.cmc, this.analyzerFilter[1])
-
 				if (String(card.cmc) === this.analyzerFilter[1]) {
 					return card
 				} else {
@@ -102,7 +118,7 @@ export default {
 				}
 			})
 		},
-		filteredCardsBySupertype () {
+		filteredCardsBySupertypes () {
 			return this.deck.cards.filter(card => {
 				const supertypeString = card.type + ' '
 
@@ -113,14 +129,14 @@ export default {
 				}
 			})
 		},
-		filteredCardsByColorSymbols () {
+		filteredCardsByTypes () {
 			return this.deck.cards.filter(card => {
-				const regexSymbols = this.$store.state.regex.manaSymbols
+				const regexTypes = this.$store.state.regex.cardTypes
 
-				for (const symbol in regexSymbols) {
+				for (const type in regexTypes) {
 					if (
-						this.analyzerFilter[1] === symbol &&
-						card.mana.match(regexSymbols[symbol])
+						this.analyzerFilter[1] === type &&
+						card.type.match(regexTypes[type])
 					) {
 						return card
 					}

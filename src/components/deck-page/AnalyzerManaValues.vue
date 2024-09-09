@@ -93,10 +93,9 @@ export default {
 			this.calculatePercentageOfSpells()
 		},
 		countManaValues () {
-			const cards = this.filteredCards()
 			const regexVariableCost = /\{X\}/
 
-			cards.forEach(({ mana, cmc, type, qty }) => {
+			this.filteredCards().forEach(({ mana, cmc, type, qty }) => {
 				const isNotSpell = /\bLand\b/.test(type)
 
 				if (isNotSpell) return
