@@ -18,6 +18,8 @@
 					<tr
 						v-for="(stats, name) in mvStats"
 						:key="name"
+						:class="activeFilterClass('manaValues', name)"
+						@click="handleRowClick('manaValues', name)"
 					>
 						<th>
 							<span class="mana-symbol">
@@ -75,21 +77,23 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			this.countManaValues()
-			this.calculatePercentageOfSpells()
+			this.mvStats = {}
+			this.variableStat.ct = 0
+			this.allSpellsCount = 0
+
+			this.prepareManaValueStats()
 		}
 	},
 	created () {
-		this.countManaValues()
-		this.calculatePercentageOfSpells()
+		this.prepareManaValueStats()
 	},
 	methods: {
+		prepareManaValueStats () {
+			this.countManaValues()
+			this.calculatePercentageOfSpells()
+		},
 		countManaValues () {
 			const cards = this.filteredCards()
-
-			this.mvStats = {}
-			this.variableStat = { ct: 0 }
-			this.allSpellsCount = 0
 			const regexVariableCost = /\{X\}/
 
 			cards.forEach(({ mana, cmc, type, qty }) => {

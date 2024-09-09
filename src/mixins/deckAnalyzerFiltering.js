@@ -36,6 +36,8 @@ export default {
 						return this.filteredCardsByColorOfSpells()
 					case 'colorSymbols':
 						return this.filteredCardsByColorSymbols()
+					case 'manaValues':
+						return this.filteredCardsByManaValues()
 					case 'supertypes':
 						return this.filteredCardsBySupertype()
 					default:
@@ -87,6 +89,17 @@ export default {
 				}
 
 				return null
+			})
+		},
+		filteredCardsByManaValues () {
+			return this.deck.cards.filter(card => {
+				console.log(card.cmc, this.analyzerFilter[1])
+
+				if (String(card.cmc) === this.analyzerFilter[1]) {
+					return card
+				} else {
+					return null
+				}
 			})
 		},
 		filteredCardsBySupertype () {
