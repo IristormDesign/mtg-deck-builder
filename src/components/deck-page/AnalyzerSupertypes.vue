@@ -72,9 +72,6 @@ export default {
 			}
 		}
 	},
-	computed: {
-
-	},
 	watch: {
 		analyzerFilter () {
 			for (const supertype in this.supertypeStats) {

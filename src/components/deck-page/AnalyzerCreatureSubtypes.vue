@@ -18,6 +18,8 @@
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"
+						:class="activeFilterClass('subtypes', name)"
+						@click="handleRowClick('subtypes', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ ct }}</td>
@@ -47,7 +49,7 @@ export default {
 	},
 	computed: {
 		totalCreatureCards () {
-			return this.deck.cards.reduce(
+			return this.filteredCards().reduce(
 				(total, { type, qty }) => {
 					if (/\bCreature\b/.test(type)) {
 						return total + qty

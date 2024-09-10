@@ -42,6 +42,8 @@ export default {
 						return this.filteredCardsBySupertypes()
 					case 'types':
 						return this.filteredCardsByTypes()
+					case 'subtypes':
+						return this.filteredCardsBySubtypes()
 					default:
 						return null
 				}
@@ -113,20 +115,18 @@ export default {
 			return this.deck.cards.filter(card => {
 				if (String(card.cmc) === this.analyzerFilter[1]) {
 					return card
-				} else {
-					return null
 				}
+
+				return null
 			})
 		},
 		filteredCardsBySupertypes () {
 			return this.deck.cards.filter(card => {
-				const supertypeString = card.type + ' '
-
-				if (supertypeString.includes(this.analyzerFilter[1])) {
+				if (card.type.includes(`${this.analyzerFilter[1]} `)) {
 					return card
-				} else {
-					return null
 				}
+
+				return null
 			})
 		},
 		filteredCardsByTypes () {
@@ -140,6 +140,15 @@ export default {
 					) {
 						return card
 					}
+				}
+
+				return null
+			})
+		},
+		filteredCardsBySubtypes () {
+			return this.deck.cards.filter(card => {
+				if (card.type.includes(` ${this.analyzerFilter[1]}`)) {
+					return card
 				}
 
 				return null
