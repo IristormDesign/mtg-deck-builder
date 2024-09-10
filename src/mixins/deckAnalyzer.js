@@ -47,6 +47,43 @@ export default {
 			} else {
 				return `All ${subjectString}`
 			}
+		},
+		determineVariablePowerToughness (card) {
+			if (!card.toughness) {
+				return 0
+			}
+
+			function hasVariablePT (forBackFace) {
+				if (forBackFace) {
+					return (
+						card.power2 === '*' ||
+						card.toughness2 === '*'
+					)
+				} else {
+					return (
+						card.power === '*' ||
+						card.toughness === '*'
+					)
+				}
+			}
+
+			let countedOnFrontFace = false
+			let variablePTCount = 0
+
+			const variablePTPerFace = (forBackFace) => {
+				if (
+					!countedOnFrontFace &&
+					hasVariablePT(forBackFace)
+				) {
+					variablePTCount += card.qty
+					countedOnFrontFace = true
+				}
+			}
+
+			variablePTPerFace()
+			variablePTPerFace(true)
+
+			return variablePTCount
 		}
 	}
 }

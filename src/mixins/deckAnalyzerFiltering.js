@@ -48,6 +48,8 @@ export default {
 						return this.filteredCardsByRarities()
 					case 'keywords':
 						return this.filteredCardsByKeywords()
+					case 'powerToughness':
+						return this.filteredCardsByPowerToughness()
 					default:
 						return null
 				}
@@ -198,6 +200,18 @@ export default {
 					if (this.analyzerFilter[1] === card.keywords[kw]) {
 						return card
 					}
+				}
+
+				return null
+			})
+		},
+		filteredCardsByPowerToughness () {
+			return this.deck.cards.filter(card => {
+				if (
+					this.analyzerFilter[1] === 'variable' &&
+					this.determineVariablePowerToughness(card) > 0
+				) {
+					return card
 				}
 
 				return null
