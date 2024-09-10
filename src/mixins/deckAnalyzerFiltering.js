@@ -46,6 +46,8 @@ export default {
 						return this.filteredCardsBySubtypes()
 					case 'rarities':
 						return this.filteredCardsByRarities()
+					case 'keywords':
+						return this.filteredCardsByKeywords()
 					default:
 						return null
 				}
@@ -184,6 +186,17 @@ export default {
 							return null
 						default:
 							return card
+					}
+				}
+
+				return null
+			})
+		},
+		filteredCardsByKeywords () {
+			return this.deck.cards.filter(card => {
+				for (const kw in card.keywords) {
+					if (this.analyzerFilter[1] === card.keywords[kw]) {
+						return card
 					}
 				}
 

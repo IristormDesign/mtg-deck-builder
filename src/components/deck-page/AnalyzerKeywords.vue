@@ -18,6 +18,8 @@
 					<tr
 						v-for="(ct, kwName) in keywordCounts"
 						:key="kwName"
+						:class="activeFilterClass('keywords', kwName)"
+						@click="handleRowClick('keywords', kwName)"
 					>
 						<th :class="kwName.length > 15 ? 'small' : null">{{ kwName }}</th>
 						<td>{{ ct }}</td>
@@ -49,17 +51,26 @@ export default {
 			keywordCounts: {}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.keywordCounts = {}
+			this.prepareKeywordStats()
+		}
+	},
 	mounted () {
-		this.countKeywords()
-		this.alphabetizeKeywords()
-
-		this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
+		this.prepareKeywordStats()
 	},
 	methods: {
+		prepareKeywordStats () {
+			this.countKeywords()
+			this.alphabetizeKeywords()
+
+			this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
+		},
 		countKeywords () {
 			const counts = this.keywordCounts
 
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				card.keywords.forEach(kw => {
 					if (!counts[kw]) {
 						counts[kw] = 0
