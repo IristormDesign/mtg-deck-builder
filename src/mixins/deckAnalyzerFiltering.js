@@ -112,8 +112,15 @@ export default {
 			})
 		},
 		filteredCardsByManaValues () {
+			const regexVariableCost = /\{X\}/
+
 			return this.deck.cards.filter(card => {
-				if (String(card.cmc) === this.analyzerFilter[1]) {
+				if (this.analyzerFilter[1] === String(card.cmc)) {
+					return card
+				} else if (
+					this.analyzerFilter[1] === 'variable' &&
+					regexVariableCost.test(card.mana)
+				) {
 					return card
 				}
 

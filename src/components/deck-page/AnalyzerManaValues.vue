@@ -42,7 +42,10 @@
 					v-show="variableStat.ct"
 					class="filterable-stats"
 				>
-					<tr>
+					<tr
+						:class="activeFilterClass('manaValues', 'variable')"
+						@click="handleRowClick('manaValues', 'variable')"
+					>
 						<th>
 							<small>Variable</small>
 							<span class="mana-symbol">X</span>
