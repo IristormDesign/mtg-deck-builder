@@ -8,6 +8,8 @@
 					<tr
 						v-if="ct > 0"
 						:key="name"
+						:class="activeFilterClass('rarities', name)"
+						@click="handleRowClick('rarities', name)"
 					>
 						<th>
 							<div
@@ -57,6 +59,15 @@ export default {
 			}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			for (const rarity in this.rarityCounts) {
+				this.rarityCounts[rarity] = 0
+			}
+
+			this.countRarities()
+		}
+	},
 	mounted () {
 		this.countRarities()
 	},
@@ -64,7 +75,7 @@ export default {
 		countRarities () {
 			const cts = this.rarityCounts
 
-			this.deck.cards.forEach(({ rarity, qty }) => {
+			this.filteredCards().forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
 						cts.Common += qty

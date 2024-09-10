@@ -44,6 +44,8 @@ export default {
 						return this.filteredCardsByTypes()
 					case 'subtypes':
 						return this.filteredCardsBySubtypes()
+					case 'rarities':
+						return this.filteredCardsByRarities()
 					default:
 						return null
 				}
@@ -156,6 +158,33 @@ export default {
 			return this.deck.cards.filter(card => {
 				if (card.type.includes(` ${this.analyzerFilter[1]}`)) {
 					return card
+				}
+
+				return null
+			})
+		},
+		filteredCardsByRarities () {
+			return this.deck.cards.filter(card => {
+				const filter = this.analyzerFilter[1].toLowerCase()
+
+				if (filter === card.rarity) {
+					return card
+				} else if (
+					filter === 'mythic rare' &&
+					card.rarity === 'mythic'
+				) {
+					return card
+				} else if (filter === 'other') {
+					switch (card.rarity) {
+						case 'common':
+						case 'uncommon':
+						case 'rare':
+						case 'mythic':
+						case 'special':
+							return null
+						default:
+							return card
+					}
 				}
 
 				return null
