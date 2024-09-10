@@ -14,8 +14,7 @@ export default {
 		},
 		totalCards () {
 			return this.filteredCards().reduce(
-				(total, card) => total + card.qty,
-				0
+				(total, card) => total + card.qty, 0
 			)
 		}
 	},

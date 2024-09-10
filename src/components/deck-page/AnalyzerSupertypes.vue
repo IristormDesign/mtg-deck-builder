@@ -2,7 +2,7 @@
 	<section>
 		<h4>Supertypes</h4>
 		<div
-			v-if="noData"
+			v-if="noData()"
 			class="no-data"
 		>
 			(None)
@@ -73,11 +73,7 @@ export default {
 		}
 	},
 	computed: {
-		noData () {
-			return Object.values(this.supertypeStats).every(
-				stat => stat.ct === 0
-			)
-		}
+
 	},
 	watch: {
 		analyzerFilter () {
@@ -94,6 +90,13 @@ export default {
 		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
 	},
 	methods: {
+		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			return Object.values(this.supertypeStats).every(
+				stat => stat.ct === 0
+			)
+		},
 		countSupertypes () {
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
