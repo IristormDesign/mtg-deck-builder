@@ -92,11 +92,15 @@ export default {
 	},
 	computed: {
 		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
+			const lackingBasicData = Object
+				.values(this.colorStatsBasic)
+				.every(stat => stat.ct === 0)
 
-			return Object.values(this.colorStatsBasic).every(
-				stat => stat.ct === 0
-			)
+			const lackingExtraData = Object
+				.values(this.colorStatsExtra)
+				.every(stat => stat.ct === 0)
+
+			return (lackingBasicData && lackingExtraData)
 		}
 	},
 	watch: {
