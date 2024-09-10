@@ -109,10 +109,7 @@ export default {
 			}
 			this.allSpellsCount = 0
 
-			this.countColors()
-
-			this.calculatePercentageOfSpells(this.colorStatsBasic)
-			this.calculatePercentageOfSpells(this.colorStatsExtra)
+			this.prepareColorStats()
 		}
 	},
 	mounted () {
@@ -170,12 +167,12 @@ export default {
 
 					statsObject = this.colorStatsExtra
 
-					if (faceColors.length === 1) {
+					if (faceColors.length < 1) {
+						count('Colorless')
+					} else if (faceColors.length === 1) {
 						count('Monocolored')
 					} else if (faceColors.length > 1) {
 						count('Multicolored')
-					} else {
-						count('Colorless')
 					}
 				}
 

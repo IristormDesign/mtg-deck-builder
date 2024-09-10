@@ -84,6 +84,11 @@ export default {
 				const length = card.colors.length
 
 				switch (this.analyzerFilter[1]) {
+					case 'Colorless':
+						if (length < 1) {
+							return card
+						}
+						break
 					case 'Monocolored':
 						if (length === 1) {
 							return card
@@ -91,11 +96,6 @@ export default {
 						break
 					case 'Multicolored':
 						if (length > 1) {
-							return card
-						}
-						break
-					case 'Colorless':
-						if (length < 1) {
 							return card
 						}
 				}
