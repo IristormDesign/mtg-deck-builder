@@ -36,7 +36,10 @@
 			</template>
 			<template v-if="variablePT.ct">
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody v-show="variablePT.ct">
+				<tbody
+					v-show="variablePT.ct"
+					class="filterable-stats"
+				>
 					<tr>
 						<th>Variable P/T</th>
 						<td>{{ variablePT.ct }}</td>

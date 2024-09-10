@@ -3,7 +3,7 @@
 		<h4>Rarities</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(ct, name) in rarityCounts">
 					<tr
 						v-if="ct > 0"

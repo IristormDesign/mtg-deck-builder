@@ -3,7 +3,7 @@
 		<h4>Layouts</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(layout, layoutKey) in layoutStats">
 					<tr
 						v-if="layout.ct > 0"

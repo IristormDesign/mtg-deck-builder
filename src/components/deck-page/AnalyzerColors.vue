@@ -9,7 +9,7 @@
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(stats, name) in colorStatsBasic">
 					<tr
 						v-if="stats.ct > 0"
@@ -23,7 +23,7 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(stats, name) in colorStatsExtra">
 					<tr
 						v-if="stats.ct > 0"

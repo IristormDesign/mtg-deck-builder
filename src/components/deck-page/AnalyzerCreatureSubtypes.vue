@@ -14,7 +14,7 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"

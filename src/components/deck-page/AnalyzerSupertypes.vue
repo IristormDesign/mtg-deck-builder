@@ -9,7 +9,7 @@
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(supertype, supertypeName) in supertypeStats">
 					<tr
 						v-if="supertype.ct > 0"

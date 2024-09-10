@@ -69,41 +69,6 @@ $outline-width-stat-section: 2px;
 			position: relative;
 			border: $table-outer-borders;
 			border-top-width: 0;
-
-			tr {
-				cursor: pointer;
-
-				&:hover {
-					background: $color-group-bg-darker;
-
-					th,
-					td {
-						color: $color-link;
-					}
-				}
-				&:active {
-					background: $color-input-bg-focus;
-
-					th,
-					td {
-						color: $color-link-active;
-					}
-				}
-			}
-			&.total {
-				tr {
-					cursor: default;
-
-					// &:hover {
-					// 	background: none;
-
-					// 	th,
-					// 	td {
-					// 		color: $color-text-darker;
-					// 	}
-					// }
-				}
-			}
 		}
 		th,
 		td {
@@ -144,6 +109,28 @@ $outline-width-stat-section: 2px;
 				background: $color-mythic-very-dim;
 				border-color: $color-mythic-very-dim;
 				color: $color-text-over-mythic-very-dim;
+			}
+		}
+	}
+	.filterable-stats {
+		tr {
+			cursor: pointer;
+
+			&:hover {
+				background: $color-group-bg-darker;
+
+				th,
+				td {
+					color: $color-link;
+				}
+			}
+			&:active {
+				background: $color-input-bg-focus;
+
+				th,
+				td {
+					color: $color-link-active;
+				}
 			}
 		}
 		.filtering {

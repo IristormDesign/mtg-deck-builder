@@ -14,7 +14,7 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(stats, name) in mvStats"
 						:key="name"
@@ -38,7 +38,10 @@
 						<td>{{ stats.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody v-show="variableStat.ct">
+				<tbody
+					v-show="variableStat.ct"
+					class="filterable-stats"
+				>
 					<tr>
 						<th>
 							<small>Variable</small>

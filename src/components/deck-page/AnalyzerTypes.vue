@@ -3,7 +3,7 @@
 		<h4>Types</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(type, typeName) in typeStats">
 					<tr
 						v-if="type.ct > 0"

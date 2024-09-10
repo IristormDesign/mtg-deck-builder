@@ -9,7 +9,7 @@
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(symbol, symbolName) in colorSymbolsMinusHybrid">
 					<tr
 						v-if="symbol.ct > 0"
@@ -31,7 +31,10 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody v-show="colorSymbols.Hybrid.ct > 0">
+			<tbody
+				v-show="colorSymbols.Hybrid.ct > 0"
+				class="filterable-stats"
+			>
 				<tr
 					:class="activeFilterClass('colorSymbols', 'Hybrid')"
 					@click="handleRowClick('colorSymbols', 'Hybrid')"
