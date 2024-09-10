@@ -13,16 +13,22 @@ export default {
 			this.creatureSubtypeCounts = {}
 			this.otherSubtypeCounts = {}
 
-			this.prepareSubtypeStats()
+			this.extractEverySubtype()
+
+			if (
+				!this.analyzerFilter ||
+				this.analyzerFilter[0] !== 'subtypes'
+			) {
+				this.organizeSubtypeStats()
+			}
 		}
 	},
 	mounted () {
-		this.prepareSubtypeStats()
+		this.extractEverySubtype()
+		this.organizeSubtypeStats()
 	},
 	methods: {
-		prepareSubtypeStats () {
-			this.extractEverySubtype()
-
+		organizeSubtypeStats () {
 			this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
 			this.creatureSubtypeCounts = this.sortTableByCounts(this.creatureSubtypeCounts)
 
