@@ -40,6 +40,13 @@ export default {
 					}
 				}
 			))
+		},
+		totalRowLabel (subjectString) {
+			if (this.$store.state.analyzerFilter) {
+				return `All filtered ${subjectString}`
+			} else {
+				return `All ${subjectString}`
+			}
 		}
 	}
 }

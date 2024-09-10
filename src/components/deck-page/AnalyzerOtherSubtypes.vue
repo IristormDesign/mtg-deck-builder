@@ -28,7 +28,7 @@
 				</tbody>
 				<tbody class="total">
 					<tr>
-						<th>All cards</th>
+						<th>{{ totalRowLabel('cards') }}</th>
 						<td>{{ totalCards }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>

@@ -50,7 +50,7 @@
 				</tbody>
 				<tbody class="total">
 					<tr>
-						<th>All spells</th>
+						<th>{{ totalRowLabel('spells') }}</th>
 						<td>{{ allSpellsCount }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>

@@ -2,9 +2,13 @@
 	font-family: 'Philosopher', $font-family-standard;
 	font-weight: bold;
 }
+@mixin small-font-size {
+	font-size: 80%;
+	letter-spacing: divide(1, 128)*1em;
+}
 @mixin tiny-font-size {
 	font-size: 66.67%;
-	letter-spacing: divide(1, 128)*1em;
+	letter-spacing: divide(1, 96)*1em;
 }
 @mixin label-text-style {
 	@include heading-font;

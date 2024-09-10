@@ -29,10 +29,8 @@ $outline-width-stat-section: 2px;
 		height: min-content;
 		border: 2px solid $color-group-bg;
 		outline: $outline-width-stat-section solid $color-section-border;
+		cursor: default;
 
-		tbody {
-			cursor: default;
-		}
 		h4 {
 			margin: 0;
 			border-bottom: 1px solid $color-group-bg;
@@ -96,14 +94,14 @@ $outline-width-stat-section: 2px;
 				tr {
 					cursor: default;
 
-					&:hover {
-						background: none;
+					// &:hover {
+					// 	background: none;
 
-						th,
-						td {
-							color: $color-text-darker;
-						}
-					}
+					// 	th,
+					// 	td {
+					// 		color: $color-text-darker;
+					// 	}
+					// }
 				}
 			}
 		}
@@ -117,6 +115,7 @@ $outline-width-stat-section: 2px;
 		}
 		th {
 			text-align: right;
+			text-wrap: balance;
 
 			small {
 				margin-right: .5em;
@@ -136,8 +135,7 @@ $outline-width-stat-section: 2px;
 		.total {
 			th,
 			td {
-				color: $color-text-darker;
-				font-size: $font-size-small;
+				@include small-font-size;
 				font-style: italic;
 			}
 		}

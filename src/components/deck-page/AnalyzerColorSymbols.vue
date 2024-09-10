@@ -51,7 +51,7 @@
 			</tbody>
 			<tbody class="total">
 				<tr>
-					<th>All mana symbols</th>
+					<th>{{ totalRowLabel('symbols') }}</th>
 					<td>{{ totalSymbolCount }}</td>
 					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
 				</tr>
