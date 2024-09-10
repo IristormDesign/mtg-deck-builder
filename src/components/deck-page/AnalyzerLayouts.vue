@@ -8,6 +8,8 @@
 					<tr
 						v-if="layout.ct > 0"
 						:key="layoutKey"
+						:class="activeFilterClass('layouts', layoutKey)"
+						@click="handleRowClick('layouts', layoutKey)"
 					>
 						<th :class="layout.label.length > 15 ? 'small' : null">
 							{{ layout.label }}
@@ -41,15 +43,24 @@ export default {
 			layoutStats: {}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.layoutStats = {}
+			this.prepareLayoutStats()
+		}
+	},
 	mounted () {
-		this.countLayouts()
-		this.setPreferredLayoutLabels()
+		this.prepareLayoutStats()
 
 		this.layoutStats = this.sortTableByCounts(this.layoutStats)
 	},
 	methods: {
+		prepareLayoutStats () {
+			this.countLayouts()
+			this.setPreferredLayoutLabels()
+		},
 		countLayouts () {
-			this.deck.cards.forEach(({ layout, qty }) => {
+			this.filteredCards().forEach(({ layout, qty }) => {
 				if (!layout) return
 
 				if (!this.layoutStats[layout]) {

@@ -50,6 +50,8 @@ export default {
 						return this.filteredCardsByKeywords()
 					case 'powerToughness':
 						return this.filteredCardsByPowerToughness()
+					case 'layouts':
+						return this.filteredCardsByLayouts()
 					default:
 						return null
 				}
@@ -211,6 +213,15 @@ export default {
 					this.analyzerFilter[1] === 'variable' &&
 					this.determineVariablePowerToughness(card) > 0
 				) {
+					return card
+				}
+
+				return null
+			})
+		},
+		filteredCardsByLayouts () {
+			return this.deck.cards.filter(card => {
+				if (this.analyzerFilter[1] === card.layout) {
 					return card
 				}
 
