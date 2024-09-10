@@ -92,6 +92,8 @@ export default {
 	},
 	computed: {
 		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
 			return Object.values(this.colorStatsBasic).every(
 				stat => stat.ct === 0
 			)
