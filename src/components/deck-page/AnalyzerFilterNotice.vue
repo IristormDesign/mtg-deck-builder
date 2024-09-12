@@ -95,7 +95,12 @@ export default {
 					}
 
 				case 'keywords':
-					return `cards with ${attr.toLowerCase()}`
+					switch (attr) {
+						case 'For Mirrodin!':
+							return 'cards with “For Mirrodin!”'
+						default:
+							return `cards with ${attr.toLowerCase()}`
+					}
 
 				case 'powerToughness':
 					if (attr === 'variable') {
