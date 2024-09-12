@@ -34,14 +34,14 @@ export default {
 		showNotice () {
 			return (
 				this.$route.name === 'deckAnalyzer' &&
-				this.$store.state.analyzerFilter
+				this.$store.state.analyzerFilter.attribute
 			)
 		},
 		activeFilterDescription () {
 			const filter = this.$store.state.analyzerFilter
-			const attr = filter[1]
+			const attr = filter.attribute
 
-			switch (filter[0]) {
+			switch (filter.category) {
 				case 'colors':
 					return `${attr.toLowerCase()} spells`
 
@@ -122,7 +122,10 @@ export default {
 	},
 	methods: {
 		stopFiltering () {
-			this.$store.commit('analyzerFilter', null)
+			this.$store.commit('analyzerFilter', {
+				category: null,
+				attribute: null
+			})
 		}
 	}
 }

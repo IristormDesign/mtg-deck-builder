@@ -8,11 +8,9 @@ export default {
 		activeFilterClass (category, attribute) {
 			const filter = this.$store.state.analyzerFilter
 
-			if (!filter) return
-
 			if (
-				filter[0] === category &&
-				filter[1] === attribute
+				filter.category === category &&
+				filter.attribute === attribute
 			) {
 				return 'filtering'
 			}
@@ -21,43 +19,45 @@ export default {
 			const store = this.$store
 
 			if (
-				store.state.analyzerFilter &&
-				store.state.analyzerFilter[1] === attribute
+				store.state.analyzerFilter.category === category &&
+				store.state.analyzerFilter.attribute === attribute
 			) {
-				store.commit('analyzerFilter', null)
+				this.$store.commit('analyzerFilter', {
+					category: null,
+					attribute: null
+				})
 			} else {
-				store.commit('analyzerFilter', [category, attribute])
+				this.$store.commit('analyzerFilter', {
+					category: category,
+					attribute: attribute
+				})
 			}
 		},
 		filteredCards () {
-			if (this.analyzerFilter) {
-				switch (this.analyzerFilter[0]) {
-					case 'colors':
-						return this.filteredCardsByColorsOfSpells()
-					case 'manaSymbols':
-						return this.filteredCardsByManaSymbols()
-					case 'manaValues':
-						return this.filteredCardsByManaValues()
-					case 'supertypes':
-						return this.filteredCardsBySupertypes()
-					case 'types':
-						return this.filteredCardsByTypes()
-					case 'creatureSubtypes':
-					case 'otherSubtypes':
-						return this.filteredCardsBySubtypes()
-					case 'rarities':
-						return this.filteredCardsByRarities()
-					case 'keywords':
-						return this.filteredCardsByKeywords()
-					case 'powerToughness':
-						return this.filteredCardsByPowerToughness()
-					case 'layouts':
-						return this.filteredCardsByLayouts()
-					default:
-						return null
-				}
-			} else {
-				return this.deck.cards
+			switch (this.analyzerFilter.category) {
+				case 'colors':
+					return this.filteredCardsByColorsOfSpells()
+				case 'manaSymbols':
+					return this.filteredCardsByManaSymbols()
+				case 'manaValues':
+					return this.filteredCardsByManaValues()
+				case 'supertypes':
+					return this.filteredCardsBySupertypes()
+				case 'types':
+					return this.filteredCardsByTypes()
+				case 'creatureSubtypes':
+				case 'otherSubtypes':
+					return this.filteredCardsBySubtypes()
+				case 'rarities':
+					return this.filteredCardsByRarities()
+				case 'keywords':
+					return this.filteredCardsByKeywords()
+				case 'powerToughness':
+					return this.filteredCardsByPowerToughness()
+				case 'layouts':
+					return this.filteredCardsByLayouts()
+				default:
+					return this.deck.cards
 			}
 		},
 		filteredCardsByColorsOfSpells () {
@@ -77,14 +77,14 @@ export default {
 				}
 
 				for (const color of card.colors) {
-					if (this.analyzerFilter[1] === colorName(color)) {
+					if (this.analyzerFilter.attribute === colorName(color)) {
 						return card
 					}
 				}
 
 				const length = card.colors.length
 
-				switch (this.analyzerFilter[1]) {
+				switch (this.analyzerFilter.attribute) {
 					case 'Colorless':
 						if (length < 1) {
 							return card
@@ -110,7 +110,7 @@ export default {
 
 				for (const symbol in regexSymbols) {
 					if (
-						this.analyzerFilter[1] === symbol &&
+						this.analyzerFilter.attribute === symbol &&
 						card.mana.match(regexSymbols[symbol])
 					) {
 						return card
@@ -124,10 +124,10 @@ export default {
 			const regexVariableCost = /\{X\}/
 
 			return this.deck.cards.filter(card => {
-				if (this.analyzerFilter[1] === String(card.cmc)) {
+				if (this.analyzerFilter.attribute === String(card.cmc)) {
 					return card
 				} else if (
-					this.analyzerFilter[1] === 'variable' &&
+					this.analyzerFilter.attribute === 'variable' &&
 					regexVariableCost.test(card.mana)
 				) {
 					return card
@@ -138,7 +138,7 @@ export default {
 		},
 		filteredCardsBySupertypes () {
 			return this.deck.cards.filter(card => {
-				if (card.type.includes(`${this.analyzerFilter[1]} `)) {
+				if (card.type.includes(`${this.analyzerFilter.attribute} `)) {
 					return card
 				}
 
@@ -151,7 +151,7 @@ export default {
 
 				for (const type in regexTypes) {
 					if (
-						this.analyzerFilter[1] === type &&
+						this.analyzerFilter.attribute === type &&
 						card.type.match(regexTypes[type])
 					) {
 						return card
@@ -163,7 +163,7 @@ export default {
 		},
 		filteredCardsBySubtypes () {
 			return this.deck.cards.filter(card => {
-				if (card.type.includes(` ${this.analyzerFilter[1]}`)) {
+				if (card.type.includes(` ${this.analyzerFilter.attribute}`)) {
 					return card
 				}
 
@@ -172,7 +172,7 @@ export default {
 		},
 		filteredCardsByRarities () {
 			return this.deck.cards.filter(card => {
-				const filter = this.analyzerFilter[1].toLowerCase()
+				const filter = this.analyzerFilter.attribute.toLowerCase()
 
 				if (filter === card.rarity) {
 					return card
@@ -200,7 +200,7 @@ export default {
 		filteredCardsByKeywords () {
 			return this.deck.cards.filter(card => {
 				for (const kw in card.keywords) {
-					if (this.analyzerFilter[1] === card.keywords[kw]) {
+					if (this.analyzerFilter.attribute === card.keywords[kw]) {
 						return card
 					}
 				}
@@ -211,7 +211,7 @@ export default {
 		filteredCardsByPowerToughness () {
 			return this.deck.cards.filter(card => {
 				if (
-					this.analyzerFilter[1] === 'variable' &&
+					this.analyzerFilter.attribute === 'variable' &&
 					this.determineVariablePowerToughness(card) > 0
 				) {
 					return card
@@ -222,7 +222,7 @@ export default {
 		},
 		filteredCardsByLayouts () {
 			return this.deck.cards.filter(card => {
-				if (this.analyzerFilter[1] === card.layout) {
+				if (this.analyzerFilter.attribute === card.layout) {
 					return card
 				}
 

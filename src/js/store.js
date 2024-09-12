@@ -13,7 +13,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		analyzerFilter: null,
+		analyzerFilter: {
+			category: null,
+			attribute: null
+		},
 		decks: [],
 		focusCardButton: '',
 		highlightedCardLIIndex: -1,

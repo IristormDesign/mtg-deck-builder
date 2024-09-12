@@ -88,9 +88,6 @@ export default {
 	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object
-	},
-	created () {
-		// this.stopFiltering() // Always turn off the filter if arriving from another page.
 	}
 }
 </script>

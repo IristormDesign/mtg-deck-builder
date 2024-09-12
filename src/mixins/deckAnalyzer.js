@@ -42,7 +42,7 @@ export default {
 			))
 		},
 		totalRowLabel (subjectString) {
-			if (this.$store.state.analyzerFilter) {
+			if (this.$store.state.analyzerFilter.attribute) {
 				return `All filtered ${subjectString}`
 			} else {
 				return `All ${subjectString}`
