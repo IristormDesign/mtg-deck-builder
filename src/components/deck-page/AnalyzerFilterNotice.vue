@@ -45,7 +45,7 @@ export default {
 				case 'colors':
 					return `${attr.toLowerCase()} spells`
 
-				case 'colorSymbols':
+				case 'manaSymbols':
 					return `spells with ${attr.toLowerCase()} mana symbols`
 
 				case 'manaValues':
@@ -95,7 +95,12 @@ export default {
 					}
 
 				case 'keywords':
-					return `cards with ${attr.toLowerCase()}`
+					switch (attr) {
+						case 'For Mirrodin!':
+							return 'cards with “For Mirrodin!”'
+						default:
+							return `cards with ${attr.toLowerCase()}`
+					}
 
 				case 'powerToughness':
 					if (attr === 'variable') {

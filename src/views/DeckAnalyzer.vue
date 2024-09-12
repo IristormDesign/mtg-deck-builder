@@ -13,7 +13,7 @@
 
 				<analyzer-colors :deck="deck" />
 
-				<analyzer-color-symbols :deck="deck" />
+				<analyzer-mana-symbols :deck="deck" />
 
 				<analyzer-mana-values :deck="deck" />
 
@@ -70,7 +70,7 @@
 <script>
 import AnalyzerFilterNotice from '@/components/deck-page/AnalyzerFilterNotice.vue'
 import AnalyzerColors from '@/components/deck-page/AnalyzerColors.vue'
-import AnalyzerColorSymbols from '@/components/deck-page/AnalyzerColorSymbols.vue'
+import AnalyzerManaSymbols from '@/components/deck-page/AnalyzerManaSymbols.vue'
 import AnalyzerManaValues from '@/components/deck-page/AnalyzerManaValues.vue'
 import AnalyzerSupertypes from '@/components/deck-page/AnalyzerSupertypes.vue'
 import AnalyzerTypes from '@/components/deck-page/AnalyzerTypes.vue'
@@ -84,7 +84,7 @@ import deckAnalyzer from '@/mixins/deckAnalyzer.js'
 import deckAnalyzerSubtypes from '@/mixins/deckAnalyzerSubtypes.js'
 
 export default {
-	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerColorSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts },
+	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts },
 	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object

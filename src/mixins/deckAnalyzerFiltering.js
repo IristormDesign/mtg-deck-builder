@@ -34,8 +34,8 @@ export default {
 				switch (this.analyzerFilter[0]) {
 					case 'colors':
 						return this.filteredCardsByColorsOfSpells()
-					case 'colorSymbols':
-						return this.filteredCardsByColorSymbols()
+					case 'manaSymbols':
+						return this.filteredCardsByManaSymbols()
 					case 'manaValues':
 						return this.filteredCardsByManaValues()
 					case 'supertypes':
@@ -104,7 +104,7 @@ export default {
 				return null
 			})
 		},
-		filteredCardsByColorSymbols () {
+		filteredCardsByManaSymbols () {
 			return this.deck.cards.filter(card => {
 				const regexSymbols = this.$store.state.regex.manaSymbols
 

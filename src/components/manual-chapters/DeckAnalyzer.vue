@@ -13,7 +13,7 @@
 		<p>The following are the Deck Analyzer’s categories, along with any subcategories in parentheses:</p>
 		<ul>
 			<li>Colors of Spells (mono mana colors, mana color amounts per spell)</li>
-			<li>Mana Color Symbols (basic color symbols, hybrid symbol)</li>
+			<li>Mana Color Symbols in Costs of Spells (basic color symbols, hybrid symbol)</li>
 			<li>Mana Values of Spells (definite values, variable value)</li>
 			<li>Supertypes</li>
 			<li>Types</li>
@@ -32,6 +32,6 @@
 		</ul>
 		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has a table subsection with columns for power and toughness instead of count and percentage, and also lacks the row for percentage basis.</p>
 		<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts.</p>
-		<p>In the “Mana Color Symbols” category, generic mana symbols and mana symbols in cards’ abilities are ignored. Hybrid mana symbols are each counted as multiple basic mana symbols. All Phyrexian mana symbols are counted as hybrid mana.</p>
+		<p>In the “Color Symbols in Mana Costs of Spells” category, hybrid mana symbols are each counted as multiple basic mana symbols, and all Phyrexian mana symbols are counted as hybrid mana.</p>
 	</section>
 </template>
