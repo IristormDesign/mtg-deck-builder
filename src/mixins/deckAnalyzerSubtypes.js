@@ -17,7 +17,10 @@ export default {
 
 			if (
 				!this.analyzerFilter ||
-				this.analyzerFilter[0] !== 'subtypes'
+				(
+					this.analyzerFilter[0] !== 'creatureSubtypes' &&
+					this.analyzerFilter[0] !== 'otherSubtypes'
+				)
 			) {
 				this.organizeSubtypeStats()
 			}

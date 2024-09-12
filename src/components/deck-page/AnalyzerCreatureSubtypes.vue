@@ -18,8 +18,8 @@
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"
-						:class="activeFilterClass('subtypes', name)"
-						@click="handleRowClick('subtypes', name)"
+						:class="activeFilterClass('creatureSubtypes', name)"
+						@click="handleRowClick('creatureSubtypes', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ ct }}</td>

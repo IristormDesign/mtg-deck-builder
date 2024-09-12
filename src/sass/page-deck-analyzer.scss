@@ -7,6 +7,7 @@ $outline-width-stat-section: 2px;
 .deck-analyzer {
 	margin: 0 auto $lhse*.5;
 	max-width: none;
+	position: relative;
 
 	.no-cards {
 		h4 {
@@ -117,15 +118,15 @@ $outline-width-stat-section: 2px;
 			cursor: pointer;
 
 			&:hover {
-				background: $color-group-bg-darker;
+				background: $color-input-bg-focus;
 
 				th,
 				td {
-					color: $color-link;
+					color: $color-link-focus;
 				}
 			}
 			&:active {
-				background: $color-input-bg-focus;
+				background: $color-input-bg-active;
 
 				th,
 				td {
@@ -151,7 +152,7 @@ $outline-width-stat-section: 2px;
 				}
 			}
 			&:active {
-				background: $color-heading-bg;
+				background: $color-group-bg-darker;
 
 				th,
 				td {
@@ -224,6 +225,64 @@ $outline-width-stat-section: 2px;
 		p {
 			margin: divide($lhse, 3) 0;
 		}
+	}
+}
+.analyzer-filter-notice {
+	z-index: index($layers, scroll-to-top);
+	grid-column: span 3;
+	padding: 0 $lhse*1.5;
+	margin: divide(-$lhse, 3) (-$lhse*1.5) 0;
+	border-width: 1px 0;
+	border-style: solid;
+	height: $lhse*1.6667;
+	transition: $transition-duration-standard ease-out;
+	transition-property: background, color, border;
+
+	&.filter-off {
+		border-color: $color-section-border;
+		background: $color-group-bg;
+	}
+	&.filter-on {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: $color-mythic-dim;
+		color: lighten($color-mythic-dim, 62.5%);
+		border-color: transparent;
+		box-shadow: $box-shadow-card-button-cluster;
+
+		h4,
+		strong {
+			color: #fff;
+		}
+	}
+	> div {
+		font-size: 87.5%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+	}
+	h4 {
+		margin: 0;
+		text-wrap: nowrap;
+	}
+	p {
+		margin: -$lhse*.125 $lhse 0;
+		text-wrap: balance;
+		text-align: center;
+		line-height: $line-height-standard*.8333;
+	}
+	.button-container {
+		height: $lhse*1.25;
+		display: flex;
+		align-items: center;
+	}
+	button {
+		text-wrap: nowrap;
+		font-size: 83.33%;
+		height: $lhse*1.5;
 	}
 }
 .vert-center-cell {

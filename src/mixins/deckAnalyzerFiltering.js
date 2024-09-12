@@ -42,7 +42,8 @@ export default {
 						return this.filteredCardsBySupertypes()
 					case 'types':
 						return this.filteredCardsByTypes()
-					case 'subtypes':
+					case 'creatureSubtypes':
+					case 'otherSubtypes':
 						return this.filteredCardsBySubtypes()
 					case 'rarities':
 						return this.filteredCardsByRarities()

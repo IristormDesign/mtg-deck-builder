@@ -84,6 +84,18 @@ export default {
 			variablePTPerFace(true)
 
 			return variablePTCount
+		},
+		layoutStatLabel (key) {
+			switch (key) {
+				case 'modal_dfc':
+					return 'Modal double-faced'
+				case 'double_faced_token':
+					return 'Double-faced token'
+				default:
+					return key
+						.replace(/_/g, ' ') // Replace any underscores with spaces.
+						.charAt(0).toUpperCase() + key.slice(1) // Capitalize the initial letter.
+			}
 		}
 	}
 }
