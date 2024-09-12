@@ -5,7 +5,7 @@
 	>
 		<div>
 			<h4>Filter: On</h4>
-			<p v-show="activeFilterDescription">The current statistics involve only <strong>{{ activeFilterDescription }}</strong>.</p>
+			<p v-show="activeFilterDescription">The displayed statistics involve only <strong>{{ activeFilterDescription }}</strong>.</p>
 			<div class="button-container">
 				<button @click="stopFiltering()">Stop Filtering</button>
 			</div>
@@ -17,7 +17,7 @@
 	>
 		<div>
 			<h4>Filter: Off</h4>
-			<p>The current statistics involve <strong>all cards</strong>.</p>
+			<p>The displayed statistics involve <strong>all cards</strong>.</p>
 			<div class="button-container">
 				<button disabled>Stop Filtering</button>
 			</div>

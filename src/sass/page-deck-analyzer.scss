@@ -258,6 +258,7 @@ $outline-width-stat-section: 2px;
 		}
 	}
 	> div {
+		@include small-font-size;
 		font-size: 87.5%;
 		display: flex;
 		justify-content: space-between;
@@ -269,7 +270,7 @@ $outline-width-stat-section: 2px;
 		text-wrap: nowrap;
 	}
 	p {
-		margin: -$lhse*.125 $lhse 0;
+		margin: -$lhse*.0625 $lhse 0;
 		text-wrap: balance;
 		text-align: center;
 		line-height: $line-height-standard*.8333;

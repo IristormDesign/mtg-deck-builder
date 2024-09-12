@@ -68,7 +68,7 @@
 		}
 	}
 	.toc-links {
-		font-size: 87.5%;
+		@include small-font-size;
 
 		a {
 			text-decoration: none;

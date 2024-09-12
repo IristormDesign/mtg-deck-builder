@@ -31,7 +31,6 @@
 		.text-label {
 			width: 0;
 			transition: all .5s ease;
-			text-transform: uppercase;
 			font-size: 75%;
 			overflow: hidden;
 			white-space: nowrap;
@@ -41,7 +40,7 @@
 		&:hover,
 		&:focus {
 			.text-label {
-				width: $lhse*5.5;
+				width: $lhse*4.25;
 				margin: 0 .25em;
 				opacity: 1;
 			}
