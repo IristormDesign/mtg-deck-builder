@@ -166,6 +166,13 @@ $outline-width-stat-section: 2px;
 			}
 		}
 	}
+	tbody:not(.filterable-stats) {
+		tr {
+			&:active {
+				cursor: not-allowed;
+			}
+		}
+	}
 	.height-limiter {
 		overflow-y: auto;
 		max-height: $lhse * 13.4;
@@ -232,9 +239,9 @@ $outline-width-stat-section: 2px;
 		}
 	}
 }
-.analyzer-filter-notice {
+.filter-notice {
 	z-index: index($layers, scroll-to-top);
-	grid-column: span 3;
+	grid-column: span 4;
 	padding: 0 $lhse*1.5;
 	margin: divide(-$lhse, 3) (-$lhse*1.5) 0;
 	border-width: 1px 0;
@@ -253,7 +260,7 @@ $outline-width-stat-section: 2px;
 		left: 0;
 		right: 0;
 		background: $color-mythic-dim;
-		color: lighten($color-mythic-dim, 62.5%);
+		color: lighten($color-mythic-dim, 56.25%);
 		border-color: transparent;
 		box-shadow: $box-shadow-card-button-cluster;
 
@@ -299,6 +306,9 @@ $outline-width-stat-section: 2px;
 
 @media (max-width: (1920px * divide(2, 3))) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 3;
+		}
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -310,6 +320,9 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app * 1.0625)) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 2;
+		}
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -317,6 +330,11 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app * .75)) {
 	.deck-analyzer {
+		.filter-notice {
+			margin-right: -$lhse;
+			margin-left: -$lhse;
+			padding: 0 $lhse;
+		}
 		.tables {
 			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
 		}
@@ -328,6 +346,9 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app*.6667)) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 1;
+		}
 		.tables {
 			grid-template-columns: 1fr;
 			width: 100%;
@@ -337,5 +358,30 @@ $outline-width-stat-section: 2px;
 @media (max-width: $width-mobile-breakpoint) {
 	.deck-analyzer {
 		border-radius: $border-radius-group;
+
+		.filter-notice {
+			grid-column: span 1;
+			height: auto;
+
+			> div {
+				@include tiny-font-size;
+			}
+			h4 {
+				display: none;
+			}
+			p {
+				text-align: left;
+				margin-left: 0;
+			}
+			p,
+			.button-container {
+				margin-top: $lhse*.25;
+				margin-bottom: $lhse*.25;
+			}
+		}
+		.filter-notice {
+			margin-right: -$lhse*.75;
+			margin-left: -$lhse*.75;
+		}
 	}
 }
