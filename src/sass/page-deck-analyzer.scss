@@ -35,7 +35,11 @@ $outline-width-stat-section: 2px;
 		h4 {
 			margin: 0;
 			border-bottom: 1px solid $color-group-bg;
-			padding: $lhse*.25;
+			padding: $lhse*.125 $lhse*.25;
+			min-height: $lhse*1.25;
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
 			background: $color-heading-bg;
 
 			div {
