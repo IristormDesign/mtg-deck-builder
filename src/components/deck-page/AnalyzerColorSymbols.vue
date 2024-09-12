@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h4>Mana Color Symbols</h4>
+		<h4>Color Symbols <div>in Mana Costs of Spells</div></h4>
 		<div
 			v-if="this.totalSymbolCount === 0"
 			class="no-data"

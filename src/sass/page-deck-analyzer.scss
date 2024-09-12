@@ -37,6 +37,11 @@ $outline-width-stat-section: 2px;
 			border-bottom: 1px solid $color-group-bg;
 			padding: $lhse*.25;
 			background: $color-heading-bg;
+
+			div {
+				@include tiny-font-size;
+				margin-top: $lhse*.1667;
+			}
 		}
 		.no-data {
 			padding: 0 $lhse*.25;
