@@ -58,7 +58,12 @@
 							<li><a href="#m-card-adder">Card Adder</a></li>
 						</ol>
 					</li>
-					<li><a href="#m-deck-analyzer">Deck Analyzer</a></li>
+					<li>
+						<a href="#m-deck-analyzer">Deck Analyzer</a>
+						<ol>
+							<li><a href="#m-statistics-filter">Statistics Filter</a></li>
+						</ol>
+					</li>
 					<li><a href="#m-draw-sim">Draw Simulator</a></li>
 					<li>
 						<a href="#m-keyboard-shortcuts">Keyboard Shortcuts</a>
