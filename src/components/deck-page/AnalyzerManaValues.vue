@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-manaValues">
 		<h4>Mana Values of Spells</h4>
 		<div
 			v-if="Object.keys(mvStats).length === 0"

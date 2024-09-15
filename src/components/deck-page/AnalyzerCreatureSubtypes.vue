@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-creatureSubtypes">
 		<h4>Creature Subtypes</h4>
 		<div
 			v-if="Object.keys(subtypeCounts).length === 0"

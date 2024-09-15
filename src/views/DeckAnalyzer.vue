@@ -88,6 +88,53 @@ export default {
 	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object
+	},
+	watch: {
+		analyzerFilter (curVal, prevVal) {
+			this.$nextTick(() => {
+				if (curVal && curVal.attribute) {
+					this.scrollFilteredRowIntoView()
+				} else if (prevVal && prevVal.attribute) {
+					this.highlightFormerlyFilteredCategory(prevVal)
+				}
+			})
+		}
+	},
+	methods: {
+		scrollFilteredRowIntoView () {
+			const section = document.querySelector('.filtering')
+
+			if (!section) return
+
+			section.scrollIntoView({ block: 'nearest' })
+		},
+		highlightFormerlyFilteredCategory (prevVal) {
+			const section = document.querySelector(`#stats-${prevVal.category}`)
+
+			if (!section) return
+
+			function isFilterNoticeInViewport () {
+				const filterNotice = document.querySelector('.filter-notice')
+				const rect = filterNotice.getBoundingClientRect()
+
+				return (
+					rect.top >= 0 &&
+					rect.left >= 0 &&
+					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+				)
+			}
+
+			if (!isFilterNoticeInViewport()) {
+				section.scrollIntoView({ block: 'nearest' })
+			}
+
+			section.classList.add('highlight-table')
+
+			setTimeout(() => {
+				section.classList.remove('highlight-table')
+			}, 200)
+		}
 	}
 }
 </script>

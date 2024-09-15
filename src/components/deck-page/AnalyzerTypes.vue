@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-types">
 		<h4>Types</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>

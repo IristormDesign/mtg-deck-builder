@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-rarities">
 		<h4>Rarities</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
@@ -60,12 +60,20 @@ export default {
 		}
 	},
 	watch: {
-		analyzerFilter () {
+		analyzerFilter (curFilter, prevFilter) {
 			for (const rarity in this.rarityCounts) {
 				this.rarityCounts[rarity] = 0
 			}
 
 			this.countRarities()
+
+			// if (
+			// 	curFilter.category === 'rarities'
+			// ) {
+			// 	const section = document.querySelector('.stats-rarities')
+
+			// 	section.scrollIntoView({ block: 'nearest' })
+			// }
 		}
 	},
 	mounted () {

@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-keywords">
 		<h4>Keyword Abilities</h4>
 		<div
 			v-if="Object.keys(keywordCounts).length === 0"

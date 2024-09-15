@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-powerToughness">
 		<h4>Power & Toughness</h4>
 		<div
 			v-if="ptTotal === 0 && variablePT.ct === 0"

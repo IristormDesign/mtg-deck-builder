@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-supertypes">
 		<h4>Supertypes</h4>
 		<div
 			v-if="noData()"

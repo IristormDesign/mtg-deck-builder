@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-colors">
 		<h4>Colors of Spells</h4>
 		<div
 			v-if="noData"

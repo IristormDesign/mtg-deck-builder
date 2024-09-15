@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-layouts">
 		<h4>Layouts</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
