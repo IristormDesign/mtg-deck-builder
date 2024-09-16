@@ -82,7 +82,6 @@ $outline-width-stat-section: 2px;
 			}
 		}
 		tbody {
-			position: relative;
 			border: $table-outer-borders;
 			border-top-width: 0;
 		}
@@ -132,47 +131,50 @@ $outline-width-stat-section: 2px;
 		tr {
 			cursor: pointer;
 
+			th {
+				color: $color-link;
+			}
 			&:hover {
-				background: $color-input-bg-focus;
+				background: $color-group-bg-darker;
 
-				th,
-				td {
+				th {
 					color: $color-link-focus;
 				}
 			}
 			&:active {
-				background: $color-input-bg-active;
+				background: $color-blue-highlight-dark;
 
+				th {
+					color: $color-link-active;
+				}
 				th,
 				td {
-					color: $color-link-active;
+					border-right-color: $color-blue-highlight-dim;
+					border-left-color: $color-blue-highlight-dim;
 				}
 			}
 		}
 		.filtering {
-			position: relative;
-			background: $color-mythic-dim;
-			outline: 1px solid $color-link;
+			background: $color-blue-highlight;
+			outline: 2px dashed desaturate(lighten($color-blue-highlight, 33.33%), 33.33%);
+			outline-offset: -1px;
 			scroll-margin: $lhse*2;
+			color: $color-text-brighter;
 
 			th,
 			td {
-				color: $color-app-header-link;
+				border-right-color: $color-blue-highlight-dim;
+				border-left-color: $color-blue-highlight-dim;
 			}
 			&:hover {
-				background: saturate(darken($color-mythic-dim, 8.33%), 6.25%); // The saturate and darken adjustments should match those of $color-group-bg-darker.
-
-				th,
-				td {
-					color: $color-app-header-link-hover;
-				}
+				background: $color-blue-highlight-dark;
 			}
 			&:active {
 				background: $color-group-bg-darker;
 
 				th,
 				td {
-					color: $color-app-header-link-active;
+					border-color: $color-heading-bg;
 				}
 			}
 		}
@@ -257,23 +259,22 @@ $outline-width-stat-section: 2px;
 	margin: divide(-$lhse, 3) (-$lhse*1.5) 0;
 	border-width: 1px 0;
 	border-style: solid;
+	border-color: $color-section-border;
+	background: $color-group-bg; // Needed for transition effect.
 	height: $lhse*1.6667;
 	transition: $transition-duration-standard ease-out;
 	transition-property: background, color, border;
+	cursor: default;
 
-	&.filter-off {
-		border-color: $color-section-border;
-		background: $color-group-bg;
-	}
-	&.filter-on {
+	&.active {
 		position: sticky;
 		top: 0;
 		left: 0;
 		right: 0;
-		background: $color-mythic-dim;
-		color: lighten($color-mythic-dim, 56.25%);
+		background: $color-blue-highlight;
 		border-color: transparent;
 		box-shadow: $box-shadow-card-button-cluster;
+		color: $color-text-brighter;
 
 		h4,
 		strong {
@@ -304,6 +305,7 @@ $outline-width-stat-section: 2px;
 		align-items: center;
 	}
 	button {
+		@include button(true);
 		text-wrap: nowrap;
 		font-size: 83.33%;
 		height: $lhse*1.5;

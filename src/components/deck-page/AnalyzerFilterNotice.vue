@@ -1,7 +1,7 @@
 <template>
 	<aside
 		v-if="showNotice"
-		class="filter-notice filter-on"
+		class="filter-notice active"
 	>
 		<div>
 			<h4>Filter: On</h4>
@@ -13,7 +13,7 @@
 	</aside>
 	<aside
 		v-else
-		class="filter-notice filter-off"
+		class="filter-notice"
 	>
 		<div>
 			<h4>Filter: Off</h4>
