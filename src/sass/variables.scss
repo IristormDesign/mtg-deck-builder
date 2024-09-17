@@ -43,8 +43,8 @@ $color-button-alt: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 4.17%);
 $color-section-border: $color-heading-bg;
 $color-blue-highlight: darken(desaturate($color-mythic-complement, 8.33%), 29.17%);
-$color-blue-highlight-dark: saturate(darken($color-blue-highlight, 8.33%), 50%);
-$color-blue-highlight-dim: desaturate(lighten($color-blue-highlight, 6.25%), 12.5%);
+$color-blue-highlight-dark: saturate(darken($color-blue-highlight, 6.25%), 33.33%);
+$color-blue-highlight-dim: desaturate(lighten($color-blue-highlight, 6.25%), 16.67%);
 
 // INDIGO-BASED COLORS
 $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
