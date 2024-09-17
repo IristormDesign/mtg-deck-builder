@@ -90,50 +90,26 @@ export default {
 		deck: Object
 	},
 	watch: {
-		analyzerFilter (curVal, prevVal) {
+		analyzerFilter (filter) {
 			this.$nextTick(() => {
-				if (curVal && curVal.attribute) {
-					this.scrollFilteredRowIntoView()
-				} else if (prevVal && prevVal.attribute) {
-					this.highlightFormerlyFilteredCategory(prevVal)
+				if (filter.category) {
+					this.scrollTableIntoView(filter.category)
+				} else {
+					this.scrollToFilterNotice()
 				}
 			})
 		}
 	},
 	methods: {
-		scrollFilteredRowIntoView () {
-			const section = document.querySelector('.filtering')
-
-			if (!section) return
+		scrollTableIntoView (category) {
+			const section = document.querySelector(`#stats-${category}`)
 
 			section.scrollIntoView({ block: 'nearest' })
 		},
-		highlightFormerlyFilteredCategory (prevVal) {
-			const section = document.querySelector(`#stats-${prevVal.category}`)
+		scrollToFilterNotice () {
+			const filterNotice = document.querySelector('.filter-notice')
 
-			if (!section) return
-
-			function isFilterNoticeInViewport () {
-				const filterNotice = document.querySelector('.filter-notice')
-				const rect = filterNotice.getBoundingClientRect()
-
-				return (
-					rect.top >= 0 &&
-					rect.left >= 0 &&
-					rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-					rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-				)
-			}
-
-			if (!isFilterNoticeInViewport()) {
-				section.scrollIntoView({ block: 'nearest' })
-			}
-
-			section.classList.add('highlight-table')
-
-			setTimeout(() => {
-				section.classList.remove('highlight-table')
-			}, 200)
+			filterNotice.scrollIntoView({ behavior: 'smooth' })
 		}
 	}
 }

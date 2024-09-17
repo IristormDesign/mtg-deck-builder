@@ -32,8 +32,14 @@ $outline-width-stat-section: 2px;
 		outline: $outline-width-stat-section solid $color-section-border;
 		cursor: default;
 		scroll-margin: $lhse*2;
-		transition: outline-color .8s ease;
+		transition: outline-color .875s ease;
+		transition-delay: .125s;
 
+		&:active {
+			outline-color: $color-text;
+			transition-duration: 0s;
+			transition-delay: 0s;
+		}
 		h4 {
 			margin: 0;
 			border-bottom: 1px solid $color-group-bg;
@@ -60,10 +66,6 @@ $outline-width-stat-section: 2px;
 			color: $color-text-darker;
 			cursor: default;
 		}
-	}
-	.highlight-table {
-		outline-color: $color-text;
-		transition-duration: .2s;
 	}
 	table {
 		border-collapse: collapse;
