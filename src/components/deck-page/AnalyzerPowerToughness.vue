@@ -49,14 +49,25 @@
 						<td>{{ variablePT.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tfoot>
-					<tr>
-						<th>{{ totalRowLabel('spells') }}</th>
-						<td>{{ allSpellsCount }}</td>
-						<td>100.0<span>%</span></td>
-					</tr>
-				</tfoot>
 			</template>
+			<thead v-if="variablePT.ct === 0">
+				<tr>
+					<th></th>
+					<th title="Count">Ct.</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>{{ this.totalRowLabel ('cards with P/T') }}</th>
+					<td>{{ allPTCardsCount }}</td>
+					<td v-if="variablePT.ct">100.0<span>%</span></td>
+					<td
+						v-else
+						class="empty-td"
+					></td>
+				</tr>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -78,7 +89,8 @@ export default {
 				ct: 0,
 				pct: 0
 			},
-			allSpellsCount: 0
+			allSpellsCount: 0,
+			allPTCardsCount: 0
 		}
 	},
 	watch: {
@@ -91,6 +103,7 @@ export default {
 				pct: 0
 			}
 			this.allSpellsCount = 0
+			this.allPTCardsCount = 0
 
 			this.preparePTStats()
 		}
@@ -102,7 +115,7 @@ export default {
 		preparePTStats () {
 			this.initializePTStats()
 
-			this.countVariablePT()
+			this.countPTCards()
 			this.calculatePercentageOfSpells(this.variablePT)
 		},
 		initializePTStats () {
@@ -174,21 +187,15 @@ export default {
 			}
 			stats.average = stats.average.toFixed(1)
 		},
-		countVariablePT () {
+		countPTCards () {
 			this.filteredCards().forEach(card => {
 				this.variablePT.ct += this.determineVariablePowerToughness(card)
 
-				function faceIsSpell (faceType) {
-					if (!faceType) return
-
-					return !/\bLand\b/.test(faceType)
-				}
-
 				if (
-					faceIsSpell(card.type) ||
-					faceIsSpell(card.type2)
+					card.toughness !== undefined ||
+					card.toughness2 !== undefined
 				) {
-					this.allSpellsCount += card.qty
+					this.allPTCardsCount += card.qty
 				}
 			})
 
@@ -210,7 +217,7 @@ export default {
 			}
 		},
 		calculatePercentageOfSpells (stat) {
-			stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
+			stat.pct = ((stat.ct / this.allPTCardsCount) * 100).toFixed(1)
 		}
 	}
 }

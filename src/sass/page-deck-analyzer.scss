@@ -90,6 +90,7 @@ $outline-width-stat-section: 2px;
 			td {
 				@include small-font-size;
 				font-style: italic;
+				line-height: $line-height-standard*.75;
 			}
 		}
 		th,
@@ -125,6 +126,9 @@ $outline-width-stat-section: 2px;
 				border-color: $color-mythic-very-dim;
 				color: $color-text-over-mythic-very-dim;
 			}
+		}
+		.empty-td {
+			background: $color-heading-bg;
 		}
 	}
 	.filterable-stats {
