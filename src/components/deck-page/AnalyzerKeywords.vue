@@ -54,19 +54,19 @@ export default {
 	watch: {
 		analyzerFilter () {
 			this.keywordCounts = {}
-			this.prepareKeywordStats()
+
+			this.countKeywords()
+
+			if (!this.analyzerFilter.attribute) {
+				this.sortKeywords()
+			}
 		}
 	},
 	mounted () {
-		this.prepareKeywordStats()
+		this.countKeywords()
+		this.sortKeywords()
 	},
 	methods: {
-		prepareKeywordStats () {
-			this.countKeywords()
-			this.alphabetizeKeywords()
-
-			this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
-		},
 		countKeywords () {
 			const counts = this.keywordCounts
 
@@ -80,10 +80,14 @@ export default {
 				})
 			})
 		},
-		alphabetizeKeywords () {
+		sortKeywords () {
+			/* First alphabetize the keywords. */
 			this.keywordCounts = Object.fromEntries(
 				Object.entries(this.keywordCounts).sort()
 			)
+
+			/* Then sort the keywords by counts. */
+			this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
 		}
 	}
 }

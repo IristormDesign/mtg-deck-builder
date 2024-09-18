@@ -32,13 +32,11 @@ $outline-width-stat-section: 2px;
 		outline: $outline-width-stat-section solid $color-section-border;
 		cursor: default;
 		scroll-margin: $lhse*2;
-		transition: outline-color .875s ease;
-		transition-delay: .125s;
+		transition: outline-color 1s ease;
 
 		&:active {
 			outline-color: $color-text;
 			transition-duration: 0s;
-			transition-delay: 0s;
 		}
 		h4 {
 			margin: 0;
