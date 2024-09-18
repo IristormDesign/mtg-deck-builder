@@ -26,13 +26,13 @@
 						<td>{{ calculatePercentageOfCreatureSubtype(ct) }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
 						<th>{{ totalRowLabel('creatures') }}</th>
 						<td>{{ totalCreatureCards }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 	</section>

@@ -49,13 +49,13 @@
 						<td>{{ variablePT.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
 						<th>{{ totalRowLabel('spells') }}</th>
 						<td>{{ allSpellsCount }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</template>
 		</table>
 	</section>

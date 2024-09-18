@@ -52,13 +52,13 @@
 					<td>{{ manaSymbols.Hybrid.pct.toFixed(1) }}<span>%</span></td>
 				</tr>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
 					<th>{{ totalRowLabel('symbols') }}</th>
 					<td>{{ totalSymbolCount }}</td>
 					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>

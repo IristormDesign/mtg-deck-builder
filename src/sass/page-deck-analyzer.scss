@@ -87,6 +87,13 @@ $outline-width-stat-section: 2px;
 			border: $table-outer-borders;
 			border-top-width: 0;
 		}
+		tfoot {
+			th,
+			td {
+				@include small-font-size;
+				font-style: italic;
+			}
+		}
 		th,
 		td {
 			padding: $lhse*.1667 $lhse*.25;
@@ -112,13 +119,6 @@ $outline-width-stat-section: 2px;
 			span {
 				font-size: 75%;
 				margin-left: .0417ch;
-			}
-		}
-		.total {
-			th,
-			td {
-				@include small-font-size;
-				font-style: italic;
 			}
 		}
 		.distinct-head {
