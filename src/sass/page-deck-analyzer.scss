@@ -142,6 +142,11 @@ $outline-width-stat-section: 2px;
 				th {
 					color: $color-link-focus;
 				}
+				.mana-symbol,
+				.rarity-symbol {
+					outline: 1px solid $color-link-focus;
+					outline-offset: 1px;
+				}
 			}
 			&:active {
 				background: $color-blue-highlight-dark;
@@ -153,6 +158,10 @@ $outline-width-stat-section: 2px;
 				td {
 					border-right-color: $color-blue-highlight-dim;
 					border-left-color: $color-blue-highlight-dim;
+				}
+				.mana-symbol,
+				.rarity-symbol {
+					outline-color: $color-link-active;
 				}
 			}
 		}
