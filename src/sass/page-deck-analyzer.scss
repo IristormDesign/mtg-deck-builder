@@ -159,6 +159,7 @@ $outline-width-stat-section: 2px;
 		.filtering {
 			background: $color-blue-highlight;
 			outline: 2px dashed $color-text-brighter;
+			outline: 2px dashed lighten($color-blue-highlight, 25%);
 			outline-offset: -1px;
 			scroll-margin: $lhse*2;
 			color: $color-text-brighter;

@@ -90,12 +90,12 @@ export default {
 		deck: Object
 	},
 	watch: {
-		analyzerFilter (filter) {
+		analyzerFilter (filter, prevFilter) {
 			this.$nextTick(() => {
 				if (filter.category) {
 					this.scrollTableIntoView(filter.category)
-				} else {
-					this.scrollToFilterNotice()
+				} else if (prevFilter && prevFilter.category) {
+					this.scrollTableIntoView(prevFilter.category)
 				}
 			})
 		}
@@ -105,11 +105,6 @@ export default {
 			const section = document.querySelector(`#stats-${category}`)
 
 			section.scrollIntoView({ block: 'nearest' })
-		},
-		scrollToFilterNotice () {
-			const filterNotice = document.querySelector('.filter-notice')
-
-			filterNotice.scrollIntoView({ behavior: 'smooth' })
 		}
 	}
 }
