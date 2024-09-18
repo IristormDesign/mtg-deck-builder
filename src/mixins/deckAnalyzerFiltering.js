@@ -62,46 +62,55 @@ export default {
 		},
 		filteredCardsByColorsOfSpells () {
 			return this.deck.cards.filter(card => {
-				if (/\bLand\b/.test(card.type)) {
+				const perFace = (type, colors) => {
+					if (!type) return null
+
+					if (/\bLand\b/.test(type)) {
+						return null
+					}
+
+					if (!colors) return null
+
+					const colorName = (colorCode) => {
+						switch (colorCode) {
+							case 'W': return 'White'
+							case 'U': return 'Blue'
+							case 'B': return 'Black'
+							case 'R': return 'Red'
+							case 'G': return 'Green'
+						}
+					}
+
+					for (const color of colors) {
+						if (this.analyzerFilter.attribute === colorName(color)) {
+							return card
+						}
+					}
+
+					switch (this.analyzerFilter.attribute) {
+						case 'Colorless':
+							if (colors.length < 1) {
+								return card
+							}
+							break
+						case 'Monocolored':
+							if (colors.length === 1) {
+								return card
+							}
+							break
+						case 'Multicolored':
+							if (colors.length > 1) {
+								return card
+							}
+					}
+
 					return null
 				}
 
-				const colorName = (colorCode) => {
-					switch (colorCode) {
-						case 'W': return 'White'
-						case 'U': return 'Blue'
-						case 'B': return 'Black'
-						case 'R': return 'Red'
-						case 'G': return 'Green'
-					}
-				}
+				const front = perFace(card.type, card.colors)
+				const back = perFace(card.type2, card.colors2)
 
-				for (const color of card.colors) {
-					if (this.analyzerFilter.attribute === colorName(color)) {
-						return card
-					}
-				}
-
-				const length = card.colors.length
-
-				switch (this.analyzerFilter.attribute) {
-					case 'Colorless':
-						if (length < 1) {
-							return card
-						}
-						break
-					case 'Monocolored':
-						if (length === 1) {
-							return card
-						}
-						break
-					case 'Multicolored':
-						if (length > 1) {
-							return card
-						}
-				}
-
-				return null
+				return front || back
 			})
 		},
 		filteredCardsByManaSymbols () {
@@ -109,11 +118,15 @@ export default {
 				const regexSymbols = this.$store.state.regex.manaSymbols
 
 				for (const symbol in regexSymbols) {
-					if (
-						this.analyzerFilter.attribute === symbol &&
-						card.mana.match(regexSymbols[symbol])
-					) {
-						return card
+					if (this.analyzerFilter.attribute === symbol) {
+						if (card.mana.match(regexSymbols[symbol])) {
+							return card
+						} else if (
+							card.mana2 &&
+							card.mana2.match(regexSymbols[symbol])
+						) {
+							return card
+						}
 					}
 				}
 
@@ -124,13 +137,19 @@ export default {
 			const regexVariableCost = /\{X\}/
 
 			return this.deck.cards.filter(card => {
-				if (this.analyzerFilter.attribute === String(card.cmc)) {
-					return card
-				} else if (
-					this.analyzerFilter.attribute === 'variable' &&
-					regexVariableCost.test(card.mana)
-				) {
-					return card
+				switch (this.analyzerFilter.attribute) {
+					case String(card.cmc):
+						return card
+
+					case 'variable':
+						if (regexVariableCost.test(card.mana)) {
+							return card
+						} else if (
+							card.mana2 &&
+							regexVariableCost.test(card.mana2)
+						) {
+							return card
+						}
 				}
 
 				return null
@@ -139,6 +158,11 @@ export default {
 		filteredCardsBySupertypes () {
 			return this.deck.cards.filter(card => {
 				if (card.type.includes(`${this.analyzerFilter.attribute} `)) {
+					return card
+				} else if (
+					card.type2 &&
+					card.type2.includes(`${this.analyzerFilter.attribute} `)
+				) {
 					return card
 				}
 
@@ -150,11 +174,15 @@ export default {
 				const regexTypes = this.$store.state.regex.cardTypes
 
 				for (const type in regexTypes) {
-					if (
-						this.analyzerFilter.attribute === type &&
-						card.type.match(regexTypes[type])
-					) {
-						return card
+					if (this.analyzerFilter.attribute === type) {
+						if (card.type.match(regexTypes[type])) {
+							return card
+						} else if (
+							card.type2 &&
+							card.type2.match(regexTypes[type])
+						) {
+							return card
+						}
 					}
 				}
 
@@ -164,6 +192,11 @@ export default {
 		filteredCardsBySubtypes () {
 			return this.deck.cards.filter(card => {
 				if (card.type.includes(` ${this.analyzerFilter.attribute}`)) {
+					return card
+				} else if (
+					card.type2 &&
+					card.type2.includes(` ${this.analyzerFilter.attribute}`)
+				) {
 					return card
 				}
 
