@@ -45,6 +45,7 @@
 			line-height: $common-mana-symbol-size*2;
 			letter-spacing: divide(1em, -12);
 			text-indent: divide(1em, -6);
+			white-space: nowrap
 		}
 	}
 	&.long-hybrid {

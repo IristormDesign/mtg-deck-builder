@@ -13,6 +13,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
+		analyzerFilter: {
+			category: null,
+			attribute: null
+		},
 		decks: [],
 		focusCardButton: '',
 		highlightedCardLIIndex: -1,
@@ -21,6 +25,28 @@ export default new Vuex.Store({
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
+		regex: {
+			manaSymbols: {
+				White: /.W./g,
+				Blue: /.U./g,
+				Black: /.B./g,
+				Red: /.R./g,
+				Green: /.G./g,
+				Colorless: /.C./g,
+				Snow: /.S./g,
+				Hybrid: /.\/./g
+			},
+			cardTypes: {
+				Creature: /\bCreature\b/,
+				Planeswalker: /\bPlaneswalker\b/,
+				Battle: /\bBattle\b/,
+				Enchantment: /\bEnchantment\b/,
+				Artifact: /\bArtifact\b/,
+				Sorcery: /\bSorcery\b/,
+				Instant: /\bInstant\b/,
+				Land: /\bLand\b/
+			}
+		},
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
@@ -36,6 +62,9 @@ export default new Vuex.Store({
 		}
 	},
 	mutations: {
+		analyzerFilter (state, payload) {
+			state.analyzerFilter = payload
+		},
 		decks (state, payload) {
 			state.decks = payload
 		},

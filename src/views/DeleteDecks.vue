@@ -116,28 +116,32 @@ export default {
 
 			if (this.numChecked === 1) {
 				return confirm(
-					message + `“${this.checkedDecks[0]}”?`)
+					message + `“${this.checkedDecks[0]}”?`
+				)
 			} else if (this.numChecked === 2) {
 				return confirm(
-					message + `“${this.checkedDecks[0]}” and “${this.checkedDecks[1]}”?`)
+					message + `“${this.checkedDecks[0]}” and “${this.checkedDecks[1]}”?`
+				)
 			} else if (this.numChecked === this.numExisting) {
 				return confirm(
-					message + `all ${this.numExisting} of your decks?`)
+					message + `all ${this.numExisting} of your decks?`
+				)
 			} else {
 				return confirm(
-					message + `the ${this.numChecked} decks you’ve selected?`)
+					message + `the ${this.numChecked} decks you’ve selected?`
+				)
 			}
 		},
 		removeSelectedDecks () {
-			let decks = this.$store.state.decks
-
-			for (const checkedDeckName of this.checkedDecks) {
-				decks = decks.filter(
-					deck => checkedDeckName !== deck.name
-				)
-			}
-
 			this.isDeleted = true
+
+			let decks = this.$store.state.decks
+			const checkedDeckNames = new Set(this.checkedDecks)
+
+			decks = decks.filter(
+				deck => !checkedDeckNames.has(deck.name)
+			)
+
 			this.$store.commit('decks', decks)
 		}
 	}

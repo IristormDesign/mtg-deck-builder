@@ -1,13 +1,15 @@
 <template>
-	<section>
+	<section id="stats-layouts">
 		<h4>Layouts</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(layout, layoutKey) in layoutStats">
 					<tr
 						v-if="layout.ct > 0"
 						:key="layoutKey"
+						:class="activeFilterClass('layouts', layoutKey)"
+						@click="handleRowClick('layouts', layoutKey)"
 					>
 						<th :class="layout.label.length > 15 ? 'small' : null">
 							{{ layout.label }}
@@ -17,13 +19,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All cards</th>
+					<th>{{ totalRowLabel('cards') }}</th>
 					<td>{{ totalCards }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -41,15 +43,24 @@ export default {
 			layoutStats: {}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.layoutStats = {}
+			this.prepareLayoutStats()
+		}
+	},
 	mounted () {
-		this.countLayouts()
-		this.setPreferredLayoutLabels()
+		this.prepareLayoutStats()
 
 		this.layoutStats = this.sortTableByCounts(this.layoutStats)
 	},
 	methods: {
+		prepareLayoutStats () {
+			this.countLayouts()
+			this.setPreferredLayoutLabels()
+		},
 		countLayouts () {
-			this.deck.cards.forEach(({ layout, qty }) => {
+			this.filteredCards().forEach(({ layout, qty }) => {
 				if (!layout) return
 
 				if (!this.layoutStats[layout]) {
@@ -63,26 +74,7 @@ export default {
 		},
 		setPreferredLayoutLabels () {
 			for (const key in this.layoutStats) {
-				this.layoutStats[key].label = setLabel()
-
-				function setLabel () {
-					switch (key) {
-						case 'modal_dfc':
-							return 'Modal double-faced'
-						case 'double_faced_token':
-							return 'Double-faced token'
-						default:
-							return makeLabelFromKeyName(key)
-					}
-				}
-
-				// Use the layout's key name directly as the label, with some modifications to it.
-				function makeLabelFromKeyName (key) {
-					key = key.charAt(0).toUpperCase() + key.slice(1) // Capitalize the initial letter.
-					key = key.replace(/_/g, ' ') // Replace any underscores with spaces.
-
-					return key
-				}
+				this.layoutStats[key].label = this.layoutStatLabel(key)
 			}
 		}
 	}

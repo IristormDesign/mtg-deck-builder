@@ -8,21 +8,41 @@ export default {
 			otherSubtypeCounts: {}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.creatureSubtypeCounts = {}
+			this.otherSubtypeCounts = {}
+
+			this.extractEverySubtype()
+
+			if (
+				!this.analyzerFilter.attribute ||
+				(
+					this.analyzerFilter.category !== 'creatureSubtypes' &&
+					this.analyzerFilter.category !== 'otherSubtypes'
+				)
+			) {
+				this.organizeSubtypeStats()
+			}
+		}
+	},
 	mounted () {
 		this.extractEverySubtype()
-
-		this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
-		this.creatureSubtypeCounts = this.sortTableByCounts(this.creatureSubtypeCounts)
-
-		this.otherSubtypeCounts = this.alphabetizeSubtypes(this.otherSubtypeCounts)
-		this.otherSubtypeCounts = this.sortTableByCounts(this.otherSubtypeCounts)
+		this.organizeSubtypeStats()
 	},
 	methods: {
+		organizeSubtypeStats () {
+			this.creatureSubtypeCounts = this.alphabetizeSubtypes(this.creatureSubtypeCounts)
+			this.creatureSubtypeCounts = this.sortTableByCounts(this.creatureSubtypeCounts)
+
+			this.otherSubtypeCounts = this.alphabetizeSubtypes(this.otherSubtypeCounts)
+			this.otherSubtypeCounts = this.sortTableByCounts(this.otherSubtypeCounts)
+		},
 		/**
 		 * Go through the deck, checking for each card's subtypes, then tally each subtype.
 		 */
 		extractEverySubtype () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const subtypesPerFace = (typeLine) => {

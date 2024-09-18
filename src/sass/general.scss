@@ -95,7 +95,7 @@ th {
 }
 small,
 .small {
-	font-size: $font-size-small;
+	@include small-font-size;
 }
 ul,
 ol {
@@ -193,7 +193,7 @@ kbd {
 	border: 1px solid $color-group-bg-darker;
 }
 ::-webkit-scrollbar-thumb {
-	background: $color-mythic-dim;
+	background: $color-mythic-very-dim;
 	border: 2px solid $color-button-border;
 	border-top-width: 0;
 	border-right-width: 0;
@@ -203,10 +203,10 @@ kbd {
 	cursor: grab;
 
 	&:hover {
-		background: $color-link;
+		background: $color-mythic-dim;
 	}
 	&:active {
-		background: $color-link-active;
+		background: $color-link-focus;
 		cursor: grabbing;
 	}
 }

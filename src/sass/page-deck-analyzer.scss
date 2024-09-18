@@ -7,6 +7,7 @@ $outline-width-stat-section: 2px;
 .deck-analyzer {
 	margin: 0 auto $lhse*.5;
 	max-width: none;
+	position: relative;
 
 	.no-cards {
 		h4 {
@@ -29,20 +30,33 @@ $outline-width-stat-section: 2px;
 		height: min-content;
 		border: 2px solid $color-group-bg;
 		outline: $outline-width-stat-section solid $color-section-border;
+		cursor: default;
+		scroll-margin: $lhse*2;
+		transition: outline-color 1s ease;
 
-		tbody {
-			cursor: default;
+		&:active {
+			outline-color: $color-text;
+			transition-duration: 0s;
 		}
 		h4 {
 			margin: 0;
 			border-bottom: 1px solid $color-group-bg;
-			padding: $lhse*.25;
+			padding: $lhse*.125 $lhse*.25;
+			min-height: $lhse*1.25;
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
 			background: $color-heading-bg;
+
+			div {
+				@include tiny-font-size;
+				margin-top: $lhse*.1667;
+			}
 		}
 		.no-data {
 			padding: 0 $lhse*.25;
 			font-style: italic;
-			min-height: $lhse*2.6667;
+			min-height: $lhse*2;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -68,13 +82,14 @@ $outline-width-stat-section: 2px;
 			}
 		}
 		tbody {
-			position: relative;
 			border: $table-outer-borders;
 			border-top-width: 0;
 		}
-		tr {
-			&:hover {
-				background: rgba(#000, .25);
+		tfoot {
+			th,
+			td {
+				@include small-font-size;
+				font-style: italic;
 			}
 		}
 		th,
@@ -87,10 +102,11 @@ $outline-width-stat-section: 2px;
 		}
 		th {
 			text-align: right;
+			text-wrap: balance;
 
 			small {
 				margin-right: .5em;
-				line-height: .875 * 1.25; // Tall enough to make the height of the Rarities table's rows match the heights of the other tables' rows.
+				line-height: .875 * 1.2; // Tall enough to make the height of the Rarities table's rows match the heights of the other tables' rows.
 			}
 		}
 		td {
@@ -103,19 +119,79 @@ $outline-width-stat-section: 2px;
 				margin-left: .0417ch;
 			}
 		}
-		.total {
-			th,
-			td {
-				color: $color-text-darker;
-				font-size: $font-size-small;
-				font-style: italic;
-			}
-		}
 		.distinct-head {
 			th {
 				background: $color-mythic-very-dim;
 				border-color: $color-mythic-very-dim;
 				color: $color-text-over-mythic-very-dim;
+			}
+		}
+	}
+	.filterable-stats {
+		tr {
+			cursor: pointer;
+
+			th {
+				color: $color-link;
+			}
+			&:hover {
+				background: $color-group-bg-darker;
+
+				th {
+					color: $color-link-focus;
+				}
+				.mana-symbol,
+				.rarity-symbol {
+					outline: 1px solid $color-link-focus;
+					outline-offset: 1px;
+				}
+			}
+			&:active {
+				background: $color-blue-highlight-dark;
+
+				th {
+					color: $color-link-active;
+				}
+				th,
+				td {
+					border-right-color: $color-blue-highlight-dim;
+					border-left-color: $color-blue-highlight-dim;
+				}
+				.mana-symbol,
+				.rarity-symbol {
+					outline-color: $color-link-active;
+				}
+			}
+		}
+		.filtering {
+			background: $color-blue-highlight;
+			outline: 2px dashed lighten($color-blue-highlight, 25%);
+			outline-offset: -1px;
+			scroll-margin: $lhse*2;
+			color: $color-text-brighter;
+
+			th,
+			td {
+				border-right-color: $color-blue-highlight-dim;
+				border-left-color: $color-blue-highlight-dim;
+			}
+			&:hover {
+				background: $color-blue-highlight-dark;
+			}
+			&:active {
+				background: $color-group-bg-darker;
+
+				th,
+				td {
+					border-color: $color-heading-bg;
+				}
+			}
+		}
+	}
+	tbody:not(.filterable-stats) {
+		tr {
+			&:active {
+				cursor: not-allowed;
 			}
 		}
 	}
@@ -185,6 +261,65 @@ $outline-width-stat-section: 2px;
 		}
 	}
 }
+.filter-notice {
+	z-index: index($layers, scroll-to-top);
+	grid-column: span 4;
+	padding: 0 $lhse*1.5;
+	margin: divide(-$lhse, 3) (-$lhse*1.5) 0;
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: $color-section-border;
+	background: $color-group-bg; // Needed for transition effect.
+	height: $lhse*1.6667;
+	transition: $transition-duration-standard ease-out;
+	transition-property: background, color, border;
+	cursor: default;
+
+	&.active {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: $color-blue-highlight;
+		border-color: transparent;
+		box-shadow: $box-shadow-card-button-cluster;
+		color: $color-text-brighter;
+
+		h4,
+		strong {
+			color: #fff;
+		}
+	}
+	> div {
+		@include small-font-size;
+		font-size: 87.5%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+	}
+	h4 {
+		margin: 0;
+		text-wrap: nowrap;
+	}
+	p {
+		margin: -$lhse*.0625 $lhse 0;
+		text-wrap: balance;
+		text-align: center;
+		line-height: $line-height-standard*.8333;
+	}
+	.button-container {
+		height: $lhse*1.25;
+		display: flex;
+		align-items: center;
+	}
+	button {
+		@include button(true);
+		text-wrap: nowrap;
+		font-size: 83.33%;
+		height: $lhse*1.5;
+	}
+}
 .vert-center-cell {
 	display: flex;
 	align-items: center;
@@ -193,6 +328,9 @@ $outline-width-stat-section: 2px;
 
 @media (max-width: (1920px * divide(2, 3))) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 3;
+		}
 		.tables {
 			grid-template-columns: repeat(3, 1fr);
 		}
@@ -204,6 +342,9 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app * 1.0625)) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 2;
+		}
 		.tables {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -211,6 +352,11 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app * .75)) {
 	.deck-analyzer {
+		.filter-notice {
+			margin-right: -$lhse;
+			margin-left: -$lhse;
+			padding: 0 $lhse;
+		}
 		.tables {
 			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
 		}
@@ -222,6 +368,9 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app*.6667)) {
 	.deck-analyzer {
+		.filter-notice {
+			grid-column: span 1;
+		}
 		.tables {
 			grid-template-columns: 1fr;
 			width: 100%;
@@ -231,5 +380,30 @@ $outline-width-stat-section: 2px;
 @media (max-width: $width-mobile-breakpoint) {
 	.deck-analyzer {
 		border-radius: $border-radius-group;
+
+		.filter-notice {
+			grid-column: span 1;
+			height: auto;
+
+			> div {
+				@include tiny-font-size;
+			}
+			h4 {
+				display: none;
+			}
+			p {
+				text-align: left;
+				margin-left: 0;
+			}
+			p,
+			.button-container {
+				margin-top: $lhse*.25;
+				margin-bottom: $lhse*.25;
+			}
+		}
+		.filter-notice {
+			margin-right: -$lhse*.75;
+			margin-left: -$lhse*.75;
+		}
 	}
 }

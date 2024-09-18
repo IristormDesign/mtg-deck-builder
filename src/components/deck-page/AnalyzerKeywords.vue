@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-keywords">
 		<h4>Keyword Abilities</h4>
 		<div
 			v-if="Object.keys(keywordCounts).length === 0"
@@ -14,23 +14,25 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(ct, kwName) in keywordCounts"
 						:key="kwName"
+						:class="activeFilterClass('keywords', kwName)"
+						@click="handleRowClick('keywords', kwName)"
 					>
 						<th :class="kwName.length > 15 ? 'small' : null">{{ kwName }}</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
-						<th>All cards</th>
+						<th>{{ totalRowLabel('cards') }}</th>
 						<td>{{ totalCards }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 	</section>
@@ -49,17 +51,26 @@ export default {
 			keywordCounts: {}
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.keywordCounts = {}
+
+			this.countKeywords()
+
+			if (!this.analyzerFilter.attribute) {
+				this.sortKeywords()
+			}
+		}
+	},
 	mounted () {
 		this.countKeywords()
-		this.alphabetizeKeywords()
-
-		this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
+		this.sortKeywords()
 	},
 	methods: {
 		countKeywords () {
 			const counts = this.keywordCounts
 
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				card.keywords.forEach(kw => {
 					if (!counts[kw]) {
 						counts[kw] = 0
@@ -69,10 +80,14 @@ export default {
 				})
 			})
 		},
-		alphabetizeKeywords () {
+		sortKeywords () {
+			/* First alphabetize the keywords. */
 			this.keywordCounts = Object.fromEntries(
 				Object.entries(this.keywordCounts).sort()
 			)
+
+			/* Then sort the keywords by counts. */
+			this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
-	<section>
-		<h4>Mana Color Symbols</h4>
+	<section id="stats-manaSymbols">
+		<h4>Mana Color Symbols<div> in Costs of Spells</div></h4>
 		<div
 			v-if="this.totalSymbolCount === 0"
 			class="no-data"
@@ -9,17 +9,19 @@
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
-				<template v-for="symbol in colorSymbolsMinusHybrid">
+			<tbody class="filterable-stats">
+				<template v-for="(symbol, symbolName) in manaSymbolsMinusHybrid">
 					<tr
 						v-if="symbol.ct > 0"
-						:key="symbol.name"
+						:key="symbolName"
+						:class="activeFilterClass('manaSymbols', symbolName)"
+						@click="handleRowClick('manaSymbols', symbolName)"
 					>
 						<th>
 							<div
 								class="vert-center-cell"
 								v-html="`
-									<small>${symbol.name}</small>
+									<small>${symbolName}</small>
 									${manaSymbol[symbol.key]}
 								`"
 							></div>
@@ -29,28 +31,34 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody v-show="colorSymbols.hybrid.ct > 0">
-				<tr>
+			<tbody
+				v-show="manaSymbols.Hybrid.ct > 0"
+				class="filterable-stats"
+			>
+				<tr
+					:class="activeFilterClass('manaSymbols', 'Hybrid')"
+					@click="handleRowClick('manaSymbols', 'Hybrid')"
+				>
 					<th>
 						<div
 							class="vert-center-cell"
 							v-html="`
-								<small>${colorSymbols.hybrid.name}</small>
-								${manaSymbol[colorSymbols.hybrid.key]}
+								<small>Hybrid</small>
+								${manaSymbol[manaSymbols.Hybrid.key]}
 							`"
 						></div>
 					</th>
-					<td>{{ colorSymbols.hybrid.ct }}</td>
-					<td>{{ colorSymbols.hybrid.pct.toFixed(1) }}<span>%</span></td>
+					<td>{{ manaSymbols.Hybrid.ct }}</td>
+					<td>{{ manaSymbols.Hybrid.pct.toFixed(1) }}<span>%</span></td>
 				</tr>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All mana symbols</th>
+					<th>{{ totalRowLabel('symbols') }}</th>
 					<td>{{ totalSymbolCount }}</td>
 					<td>{{ totalSymbolPercentage.toFixed(1) }}<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -66,93 +74,90 @@ export default {
 	},
 	data () {
 		return {
-			colorSymbols: {
-				white: {
+			manaSymbols: {
+				White: {
 					ct: 0,
-					key: 'w',
-					name: 'White',
-					regex: /.W./g
+					key: 'w'
 				},
-				blue: {
+				Blue: {
 					ct: 0,
-					key: 'u',
-					name: 'Blue',
-					regex: /.U./g
+					key: 'u'
 				},
-				black: {
+				Black: {
 					ct: 0,
-					key: 'b',
-					name: 'Black',
-					regex: /.B./g
+					key: 'b'
 				},
-				red: {
+				Red: {
 					ct: 0,
-					key: 'r',
-					name: 'Red',
-					regex: /.R./g
+					key: 'r'
 				},
-				green: {
+				Green: {
 					ct: 0,
-					key: 'g',
-					name: 'Green',
-					regex: /.G./g
+					key: 'g'
 				},
-				colorless: {
+				Colorless: {
 					ct: 0,
-					key: 'c',
-					name: 'Colorless',
-					regex: /.C./g
+					key: 'c'
 				},
-				snow: {
+				Snow: {
 					ct: 0,
-					key: 's',
-					name: 'Snow',
-					regex: /.S./g
+					key: 's'
 				},
-				hybrid: {
+				Hybrid: {
 					ct: 0,
-					key: 'hybrid',
-					name: 'Hybrid',
-					regex: /.\/./g
+					key: 'hybrid'
 				}
 			}
 		}
 	},
 	computed: {
-		colorSymbolsMinusHybrid () {
-			const csCopy = { ...this.colorSymbols }
+		manaSymbolsMinusHybrid () {
+			const csCopy = { ...this.manaSymbols }
 
-			delete csCopy.hybrid
+			delete csCopy.Hybrid
 
 			return csCopy
 		},
 		totalSymbolCount () {
-			return Object.values(this.colorSymbolsMinusHybrid).reduce(
+			return Object.values(this.manaSymbolsMinusHybrid).reduce(
 				(total, symbol) => total + symbol.ct, 0
 			)
 		},
 		totalSymbolPercentage () {
-			return Object.values(this.colorSymbolsMinusHybrid).reduce(
+			return Object.values(this.manaSymbolsMinusHybrid).reduce(
 				(total, symbol) => total + symbol.pct, 0
 			)
 		}
 	},
-	mounted () {
-		this.countColorSymbols()
-		this.calculatePercentage()
+	watch: {
+		analyzerFilter () {
+			for (const symbol in this.manaSymbols) {
+				this.manaSymbols[symbol].ct = 0
+			}
 
-		this.colorSymbols = this.sortTableByCounts(this.colorSymbols)
+			this.prepareManaSymbolStats()
+		}
+	},
+	mounted () {
+		this.prepareManaSymbolStats()
+
+		this.manaSymbols = this.sortTableByCounts(this.manaSymbols)
 	},
 	methods: {
-		countColorSymbols () {
-			this.deck.cards.forEach(card => {
+		prepareManaSymbolStats () {
+			this.countManaSymbols()
+			this.calculatePercentage()
+		},
+		countManaSymbols () {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
-				for (const symbolName in this.colorSymbols) {
+				for (const symbolName in this.manaSymbols) {
 					const symbolsPerFace = (faceMana) => {
 						if (!faceMana) return
 
-						const allSymbolMatches = faceMana.match(this.colorSymbols[symbolName].regex)
+						const regex = this.$store.state.regex.manaSymbols[symbolName]
+						const allSymbolMatches = faceMana.match(regex)
 
 						if (!allSymbolMatches) return
 
@@ -168,13 +173,13 @@ export default {
 					symbolsPerFace(card.mana2)
 
 					if (countedOnFrontFace[symbolName]) {
-						this.colorSymbols[symbolName].ct += countedOnFrontFace[symbolName] * card.qty
+						this.manaSymbols[symbolName].ct += countedOnFrontFace[symbolName] * card.qty
 					}
 				}
 			})
 		},
 		calculatePercentage () {
-			const cs = this.colorSymbols
+			const cs = this.manaSymbols
 
 			for (const symbol in cs) {
 				cs[symbol].pct = (cs[symbol].ct / this.totalSymbolCount * 100)

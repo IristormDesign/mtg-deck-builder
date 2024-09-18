@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-powerToughness">
 		<h4>Power & Toughness</h4>
 		<div
 			v-if="ptTotal === 0 && variablePT.ct === 0"
@@ -36,20 +36,26 @@
 			</template>
 			<template v-if="variablePT.ct">
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody v-show="variablePT.ct">
-					<tr>
+				<tbody
+					v-show="variablePT.ct"
+					class="filterable-stats"
+				>
+					<tr
+						:class="activeFilterClass('powerToughness', 'variable')"
+						@click="handleRowClick('powerToughness', 'variable')"
+					>
 						<th>Variable P/T</th>
 						<td>{{ variablePT.ct }}</td>
 						<td>{{ variablePT.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
-						<th>All spells</th>
+						<th>{{ totalRowLabel('spells') }}</th>
 						<td>{{ allSpellsCount }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</template>
 		</table>
 	</section>
@@ -75,15 +81,32 @@ export default {
 			allSpellsCount: 0
 		}
 	},
-	mounted () {
-		this.setUpPTStats()
+	watch: {
+		analyzerFilter () {
+			this.powerStats = {}
+			this.toughnessStats = {}
+			this.ptTotal = 0
+			this.variablePT = {
+				ct: 0,
+				pct: 0
+			}
+			this.allSpellsCount = 0
 
-		this.countVariablePT()
-		this.calculatePercentageOfSpells(this.variablePT)
+			this.preparePTStats()
+		}
+	},
+	mounted () {
+		this.preparePTStats()
 	},
 	methods: {
-		setUpPTStats () {
-			const cardsWithPT = this.deck.cards.filter(
+		preparePTStats () {
+			this.initializePTStats()
+
+			this.countVariablePT()
+			this.calculatePercentageOfSpells(this.variablePT)
+		},
+		initializePTStats () {
+			const cardsWithPT = this.filteredCards().filter(
 				card => card.toughness // Find only the cards that have the toughness attribute. If a card has it, then it'd be paired with the power attribute too.
 			)
 
@@ -105,6 +128,12 @@ export default {
 					if (
 						!isNaN(card.power) ||
 						!isNaN(card.toughness)
+					) { // If the P/T value is an integer (not a star symbol)...
+						this.ptTotal += card.qty
+					}
+					if (
+						!isNaN(card.power2) ||
+						!isNaN(card.toughness2)
 					) { // If the P/T value is an integer (not a star symbol)...
 						this.ptTotal += card.qty
 					}
@@ -146,35 +175,8 @@ export default {
 			stats.average = stats.average.toFixed(1)
 		},
 		countVariablePT () {
-			this.deck.cards.forEach(card => {
-				function hasVariablePT (forBackFace) {
-					if (forBackFace) {
-						return (
-							card.power2 === '*' ||
-							card.toughness2 === '*'
-						)
-					} else {
-						return (
-							card.power === '*' ||
-							card.toughness === '*'
-						)
-					}
-				}
-
-				let countedOnFrontFace = false
-
-				const variablePTPerFace = (forBackFace) => {
-					if (
-						!countedOnFrontFace &&
-						hasVariablePT(forBackFace)
-					) {
-						this.variablePT.ct += card.qty
-						countedOnFrontFace = true
-					}
-				}
-
-				variablePTPerFace()
-				variablePTPerFace(true)
+			this.filteredCards().forEach(card => {
+				this.variablePT.ct += this.determineVariablePowerToughness(card)
 
 				function faceIsSpell (faceType) {
 					if (!faceType) return
@@ -189,6 +191,23 @@ export default {
 					this.allSpellsCount += card.qty
 				}
 			})
+
+			/* In the condition that all of the deck's currently filtered cards are only cards that have variable P/T values, then the P/T stats would display confusing or misleading values, particularly the "Least" stat, which would display the word "Infinity." Under that condition, the following code replaces those stats' values with an asterisk instead. */
+			if (this.totalCards === this.variablePT.ct) {
+				const p = this.powerStats
+				const t = this.toughnessStats
+
+				if (p.least === Infinity) {
+					p.greatest = '*'
+					p.average = '*'
+					p.least = '*'
+				}
+				if (t.least === Infinity) {
+					t.greatest = '*'
+					t.average = '*'
+					t.least = '*'
+				}
+			}
 		},
 		calculatePercentageOfSpells (stat) {
 			stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)

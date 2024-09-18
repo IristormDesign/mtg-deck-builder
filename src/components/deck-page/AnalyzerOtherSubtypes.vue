@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-otherSubtypes">
 		<h4>Other Subtypes</h4>
 		<div
 			v-if="Object.keys(subtypeCounts).length === 0"
@@ -14,23 +14,25 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"
+						:class="activeFilterClass('otherSubtypes', name)"
+						@click="handleRowClick('otherSubtypes', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
-						<th>All cards</th>
+						<th>{{ totalRowLabel('cards') }}</th>
 						<td>{{ totalCards }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 	</section>

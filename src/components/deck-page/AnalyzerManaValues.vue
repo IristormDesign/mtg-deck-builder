@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-manaValues">
 		<h4>Mana Values of Spells</h4>
 		<div
 			v-if="Object.keys(mvStats).length === 0"
@@ -14,10 +14,12 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(stats, name) in mvStats"
 						:key="name"
+						:class="activeFilterClass('manaValues', name)"
+						@click="handleRowClick('manaValues', name)"
 					>
 						<th>
 							<span class="mana-symbol">
@@ -36,8 +38,14 @@
 						<td>{{ stats.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody v-show="variableStat.ct">
-					<tr>
+				<tbody
+					v-show="variableStat.ct"
+					class="filterable-stats"
+				>
+					<tr
+						:class="activeFilterClass('manaValues', 'variable')"
+						@click="handleRowClick('manaValues', 'variable')"
+					>
 						<th>
 							<small>Variable</small>
 							<span class="mana-symbol">X</span>
@@ -46,13 +54,13 @@
 						<td>{{ variableStat.pct }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
-						<th>All spells</th>
+						<th>{{ totalRowLabel('spells') }}</th>
 						<td>{{ allSpellsCount }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 	</section>
@@ -73,15 +81,27 @@ export default {
 			allSpellsCount: 0
 		}
 	},
+	watch: {
+		analyzerFilter () {
+			this.mvStats = {}
+			this.variableStat.ct = 0
+			this.allSpellsCount = 0
+
+			this.prepareManaValueStats()
+		}
+	},
 	created () {
-		this.countManaValues()
-		this.calculatePercentageOfSpells()
+		this.prepareManaValueStats()
 	},
 	methods: {
+		prepareManaValueStats () {
+			this.countManaValues()
+			this.calculatePercentageOfSpells()
+		},
 		countManaValues () {
 			const regexVariableCost = /\{X\}/
 
-			this.deck.cards.forEach(({ mana, cmc, type, qty }) => {
+			this.filteredCards().forEach(({ mana, cmc, type, qty }) => {
 				const isNotSpell = /\bLand\b/.test(type)
 
 				if (isNotSpell) return

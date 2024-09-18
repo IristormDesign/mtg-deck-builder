@@ -64,30 +64,15 @@ export default {
 
 			const keyEvent = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
 
-			switch (keyEvent) {
-				case 'escape': case 'esc':
-					if (this.highlightedIndex > -1) {
-						event.preventDefault()
-						this.setHighlightedIndex(-1)
-					} else {
-						document.activeElement.blur()
-					}
-
-					return
-			}
-
-			if (keyEvent === 'tab') {
-				this.$nextTick(() => {
-					this.setHighlightedIndex(-1)
-				})
-			} else {
-				if (this.anyInputActive()) return
-			}
-
-			if (this.$route.name === 'deckEditor') {
-				this.kbShortcutsDeckEditor(keyEvent, event)
-			} else if (this.$route.name === 'drawSim') {
-				this.kbShortcutsDrawSim(keyEvent, event)
+			switch (this.$route.name) {
+				case 'deckEditor':
+					this.kbShortcutsDeckEditor(keyEvent, event)
+					break
+				case 'deckAnalyzer':
+					this.kbShortcutsDeckAnalyzer(keyEvent)
+					break
+				case 'drawSim':
+					this.kbShortcutsDrawSim(keyEvent, event)
 			}
 
 			this.kbShortcutsAllDeckPageModes(keyEvent)
@@ -136,6 +121,14 @@ export default {
 			}
 		},
 		kbShortcutsDeckEditor (keyEvent, event) {
+			if (keyEvent === 'tab') {
+				this.$nextTick(() => {
+					this.setHighlightedIndex(-1)
+				})
+			} else {
+				if (this.anyInputActive()) return
+			}
+
 			// The following keyboard shortcuts can work at anytime, even when the card list is empty.
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
@@ -144,6 +137,16 @@ export default {
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
+					case 'escape': case 'esc':
+						if (this.highlightedIndex > -1) {
+							event.preventDefault()
+
+							this.setHighlightedIndex(-1)
+						} else {
+							document.activeElement.blur()
+						}
+
+						return
 					case 'r': this.switchCardGroup()
 						return
 					case 'x': this.focusOntoCardAdder(event)
@@ -185,6 +188,12 @@ export default {
 						return
 					case 'z': this.turnOverCardImage()
 				}
+			}
+		},
+		kbShortcutsDeckAnalyzer (keyEvent) {
+			switch (keyEvent) {
+				case 'escape': case 'esc':
+					this.stopAnalyzerFilter()
 			}
 		},
 		kbShortcutsDrawSim (keyEvent, event) {
@@ -368,6 +377,14 @@ export default {
 			const scryfallSearch = document.querySelector('.scryfall-button a')
 
 			scryfallSearch.click()
+		},
+		stopAnalyzerFilter () {
+			this.$store.commit('analyzerFilter', {
+				category: null,
+				attribute: null
+			})
+
+			document.activeElement.blur()
 		},
 		drawCard (event) {
 			event.preventDefault()

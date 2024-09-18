@@ -1,19 +1,21 @@
 <template>
-	<section>
+	<section id="stats-supertypes">
 		<h4>Supertypes</h4>
 		<div
-			v-if="noData"
+			v-if="noData()"
 			class="no-data"
 		>
 			(None)
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(supertype, supertypeName) in supertypeStats">
 					<tr
 						v-if="supertype.ct > 0"
 						:key="supertypeName"
+						:class="activeFilterClass('supertypes', supertypeName)"
+						@click="handleRowClick('supertypes', supertypeName)"
 					>
 						<th>{{ supertypeName }}</th>
 						<td>{{ supertype.ct }}</td>
@@ -21,13 +23,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All cards</th>
+					<th>{{ totalRowLabel('cards') }}</th>
 					<td>{{ totalCards }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -70,11 +72,13 @@ export default {
 			}
 		}
 	},
-	computed: {
-		noData () {
-			return Object.values(this.supertypeStats).every(
-				stat => stat.ct === 0
-			)
+	watch: {
+		analyzerFilter () {
+			for (const supertype in this.supertypeStats) {
+				this.supertypeStats[supertype].ct = 0
+			}
+
+			this.countSupertypes()
 		}
 	},
 	mounted () {
@@ -83,8 +87,15 @@ export default {
 		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
 	},
 	methods: {
+		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			return Object.values(this.supertypeStats).every(
+				stat => stat.ct === 0
+			)
+		},
 		countSupertypes () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const supertypesPerFace = (typeLine) => {

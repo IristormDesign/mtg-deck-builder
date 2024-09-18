@@ -1,13 +1,15 @@
 <template>
-	<section>
+	<section id="stats-rarities">
 		<h4>Rarities</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(ct, name) in rarityCounts">
 					<tr
 						v-if="ct > 0"
 						:key="name"
+						:class="activeFilterClass('rarities', name)"
+						@click="handleRowClick('rarities', name)"
 					>
 						<th>
 							<div
@@ -25,13 +27,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All cards</th>
+					<th>{{ totalRowLabel('cards') }}</th>
 					<td>{{ totalCards }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -57,6 +59,23 @@ export default {
 			}
 		}
 	},
+	watch: {
+		analyzerFilter (curFilter, prevFilter) {
+			for (const rarity in this.rarityCounts) {
+				this.rarityCounts[rarity] = 0
+			}
+
+			this.countRarities()
+
+			// if (
+			// 	curFilter.category === 'rarities'
+			// ) {
+			// 	const section = document.querySelector('.stats-rarities')
+
+			// 	section.scrollIntoView({ block: 'nearest' })
+			// }
+		}
+	},
 	mounted () {
 		this.countRarities()
 	},
@@ -64,7 +83,7 @@ export default {
 		countRarities () {
 			const cts = this.rarityCounts
 
-			this.deck.cards.forEach(({ rarity, qty }) => {
+			this.filteredCards().forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
 						cts.Common += qty

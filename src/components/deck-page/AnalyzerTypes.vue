@@ -1,13 +1,15 @@
 <template>
-	<section>
+	<section id="stats-types">
 		<h4>Types</h4>
 		<table>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(type, typeName) in typeStats">
 					<tr
 						v-if="type.ct > 0"
 						:key="typeName"
+						:class="activeFilterClass('types', typeName)"
+						@click="handleRowClick('types', typeName)"
 					>
 						<th>{{ typeName }}</th>
 						<td>{{ type.ct }}</td>
@@ -15,13 +17,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All cards</th>
+					<th>{{ totalRowLabel('cards') }}</th>
 					<td>{{ totalCards }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -37,42 +39,21 @@ export default {
 	data () {
 		return {
 			typeStats: {
-				Creature: {
-					ct: 0,
-					regex: /\bCreature\b/
-				},
-				Planeswalker: {
-					ct: 0,
-					regex: /\bPlaneswalker\b/
-				},
-				Battle: {
-					ct: 0,
-					regex: /\bBattle\b/
-				},
-				Enchantment: {
-					ct: 0,
-					regex: /\bEnchantment\b/
-				},
-				Artifact: {
-					ct: 0,
-					regex: /\bArtifact\b/
-				},
-				Sorcery: {
-					ct: 0,
-					regex: /\bSorcery\b/
-				},
-				Instant: {
-					ct: 0,
-					regex: /\bInstant\b/
-				},
-				Land: {
-					ct: 0,
-					regex: /\bLand\b/
-				},
-				Other: {
-					ct: 0
-				}
+				Creature: {},
+				Planeswalker: {},
+				Battle: {},
+				Enchantment: {},
+				Artifact: {},
+				Sorcery: {},
+				Instant: {},
+				Land: {},
+				Other: {}
 			}
+		}
+	},
+	watch: {
+		analyzerFilter () {
+			this.countTypes()
 		}
 	},
 	mounted () {
@@ -81,8 +62,15 @@ export default {
 		this.typeStats = this.sortTableByCounts(this.typeStats)
 	},
 	methods: {
+		initializeCounts () {
+			for (const stat in this.typeStats) {
+				this.typeStats[stat].ct = 0
+			}
+		},
 		countTypes () {
-			this.deck.cards.forEach(card => {
+			this.initializeCounts()
+
+			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const typesPerFace = (typeLine) => {
@@ -91,14 +79,14 @@ export default {
 					let recognizedType = false
 
 					for (const typeName in this.typeStats) {
-						const stat = this.typeStats[typeName]
+						const typeRegex = this.$store.state.regex.cardTypes[typeName]
 
 						if (
-							stat.regex &&
-							stat.regex.test(typeLine)
+							typeRegex &&
+							typeRegex.test(typeLine)
 						) {
 							if (!countedOnFrontFace[typeName]) {
-								stat.ct += card.qty
+								this.typeStats[typeName].ct += card.qty
 								countedOnFrontFace[typeName] = true
 							}
 

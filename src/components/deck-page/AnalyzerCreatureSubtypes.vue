@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-creatureSubtypes">
 		<h4>Creature Subtypes</h4>
 		<div
 			v-if="Object.keys(subtypeCounts).length === 0"
@@ -14,23 +14,25 @@
 		>
 			<table>
 				<thead v-html="tableHeadCommon"></thead>
-				<tbody>
+				<tbody class="filterable-stats">
 					<tr
 						v-for="(ct, name) in subtypeCounts"
 						:key="name"
+						:class="activeFilterClass('creatureSubtypes', name)"
+						@click="handleRowClick('creatureSubtypes', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentageOfCreatureSubtype(ct) }}<span>%</span></td>
 					</tr>
 				</tbody>
-				<tbody class="total">
+				<tfoot>
 					<tr>
-						<th>All creatures</th>
+						<th>{{ totalRowLabel('creatures') }}</th>
 						<td>{{ totalCreatureCards }}</td>
 						<td>100.0<span>%</span></td>
 					</tr>
-				</tbody>
+				</tfoot>
 			</table>
 		</div>
 	</section>
@@ -47,7 +49,7 @@ export default {
 	},
 	computed: {
 		totalCreatureCards () {
-			return this.deck.cards.reduce(
+			return this.filteredCards().reduce(
 				(total, { type, qty }) => {
 					if (/\bCreature\b/.test(type)) {
 						return total + qty

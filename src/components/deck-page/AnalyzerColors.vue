@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section id="stats-colors">
 		<h4>Colors of Spells</h4>
 		<div
 			v-if="noData"
@@ -9,11 +9,13 @@
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(stats, name) in colorStatsBasic">
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
+						:class="activeFilterClass('colors', name)"
+						@click="handleRowClick('colors', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -21,11 +23,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody>
+			<tbody class="filterable-stats">
 				<template v-for="(stats, name) in colorStatsExtra">
 					<tr
 						v-if="stats.ct > 0"
 						:key="name"
+						:class="activeFilterClass('colors', name)"
+						@click="handleRowClick('colors', name)"
 					>
 						<th>{{ name }}</th>
 						<td>{{ stats.ct }}</td>
@@ -33,13 +37,13 @@
 					</tr>
 				</template>
 			</tbody>
-			<tbody class="total">
+			<tfoot>
 				<tr>
-					<th>All spells</th>
+					<th>{{ totalRowLabel('spells') }}</th>
 					<td>{{ allSpellsCount }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 </template>
@@ -88,23 +92,47 @@ export default {
 	},
 	computed: {
 		noData () {
-			return Object.values(this.colorStatsBasic).every(
-				stat => stat.ct === 0
-			)
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			const lackingBasicData = Object
+				.values(this.colorStatsBasic)
+				.every(stat => stat.ct === 0)
+
+			const lackingExtraData = Object
+				.values(this.colorStatsExtra)
+				.every(stat => stat.ct === 0)
+
+			return (lackingBasicData && lackingExtraData)
+		}
+	},
+	watch: {
+		analyzerFilter () {
+			for (const stat in this.colorStatsBasic) {
+				this.colorStatsBasic[stat].ct = 0
+			}
+			for (const stat in this.colorStatsExtra) {
+				this.colorStatsExtra[stat].ct = 0
+			}
+			this.allSpellsCount = 0
+
+			this.prepareColorStats()
 		}
 	},
 	mounted () {
-		this.countColors()
-
-		this.calculatePercentageOfSpells(this.colorStatsBasic)
-		this.calculatePercentageOfSpells(this.colorStatsExtra)
+		this.prepareColorStats()
 
 		this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
 		this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
 	},
 	methods: {
+		prepareColorStats () {
+			this.countColors()
+
+			this.calculatePercentageOfSpells(this.colorStatsBasic)
+			this.calculatePercentageOfSpells(this.colorStatsExtra)
+		},
 		countColors () {
-			this.deck.cards.forEach(card => {
+			this.filteredCards().forEach(card => {
 				const qty = card.qty
 				const countedOnFrontFace = {}
 
@@ -145,12 +173,12 @@ export default {
 
 					statsObject = this.colorStatsExtra
 
-					if (faceColors.length === 1) {
+					if (faceColors.length < 1) {
+						count('Colorless')
+					} else if (faceColors.length === 1) {
 						count('Monocolored')
 					} else if (faceColors.length > 1) {
 						count('Multicolored')
-					} else {
-						count('Colorless')
 					}
 				}
 
