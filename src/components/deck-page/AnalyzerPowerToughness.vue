@@ -131,6 +131,12 @@ export default {
 					) { // If the P/T value is an integer (not a star symbol)...
 						this.ptTotal += card.qty
 					}
+					if (
+						!isNaN(card.power2) ||
+						!isNaN(card.toughness2)
+					) { // If the P/T value is an integer (not a star symbol)...
+						this.ptTotal += card.qty
+					}
 				})
 
 				this.calculatePTAverage('power')
