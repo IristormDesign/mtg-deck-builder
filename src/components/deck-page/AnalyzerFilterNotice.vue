@@ -19,7 +19,10 @@
 			<h4>Filter: Off</h4>
 			<p>The displayed statistics involve <strong>all cards</strong>.</p>
 			<div class="button-container">
-				<button disabled>Stop Filtering</button>
+				<button
+					disabled
+					title="No statistics filter is in use right now."
+				>Stop Filtering</button>
 			</div>
 		</div>
 	</aside>
@@ -32,10 +35,7 @@ export default {
 	mixins: [deckAnalyzer],
 	computed: {
 		showNotice () {
-			return (
-				this.$route.name === 'deckAnalyzer' &&
-				this.$store.state.analyzerFilter.attribute
-			)
+			return this.$store.state.analyzerFilter.attribute
 		},
 		activeFilterDescription () {
 			const filter = this.$store.state.analyzerFilter
