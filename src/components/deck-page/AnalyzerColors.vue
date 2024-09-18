@@ -2,7 +2,7 @@
 	<section id="stats-colors">
 		<h4>Colors of Spells</h4>
 		<div
-			v-if="noData"
+			v-if="this.allSpellsCount === 0"
 			class="no-data"
 		>
 			(None)
@@ -88,21 +88,6 @@ export default {
 				}
 			},
 			allSpellsCount: 0
-		}
-	},
-	computed: {
-		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
-
-			const lackingBasicData = Object
-				.values(this.colorStatsBasic)
-				.every(stat => stat.ct === 0)
-
-			const lackingExtraData = Object
-				.values(this.colorStatsExtra)
-				.every(stat => stat.ct === 0)
-
-			return (lackingBasicData && lackingExtraData)
 		}
 	},
 	watch: {
