@@ -3,8 +3,7 @@
 .scroll-to-top {
 	position: fixed;
 	bottom: 0;
-	right: 0;
-	left: 0;
+	right: $lhse*.25;
 	z-index: index($layers, scroll-to-top);
 	margin: 0 auto;
 	width: fit-content;
