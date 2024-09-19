@@ -245,3 +245,39 @@
 	border-radius: $border-radius-button;
 	outline-offset: 2px !important;
 }
+@mixin glowing-edges-of-scrollable-container {
+	$color-scroll-container-shadow: darken($color-mythic-orange, 12.5%);
+
+	background:
+		/* Top glow cover */
+		linear-gradient(
+			$color-group-bg 33.33%,
+			rgba($color-group-bg, 0)
+		) center top,
+
+		/* Bottom glow cover */
+		linear-gradient(
+			rgba($color-group-bg, 0),
+			$color-group-bg 66.67%
+		) center bottom,
+
+		/* Top glow */
+		radial-gradient(farthest-side at 50% 0,
+			rgba($color-scroll-container-shadow, .25),
+			rgba($color-scroll-container-shadow, 0)
+		) center top,
+
+		/* Bottom glow */
+		radial-gradient(farthest-side at 50% 100%,
+			rgba($color-scroll-container-shadow, .25),
+			rgba($color-scroll-container-shadow, 0)
+		) center bottom;
+	background-size:
+		100% $lhse*3,
+		100% $lhse*3,
+		100% $lhse*1.5,
+		100% $lhse*1.5;
+	background-attachment: local, local, scroll, scroll;
+	background-repeat: no-repeat;
+	background-color: $color-group-bg;
+}

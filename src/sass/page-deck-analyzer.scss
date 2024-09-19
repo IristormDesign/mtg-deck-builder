@@ -1,7 +1,6 @@
 @import 'variables';
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
-$color-scroll-limiter-shadow: darken($color-mythic-orange, 12.5%);
 $outline-width-stat-section: 2px;
 
 .deck-analyzer {
@@ -200,37 +199,9 @@ $outline-width-stat-section: 2px;
 		}
 	}
 	.height-limiter {
+		@include glowing-edges-of-scrollable-container;
 		overflow-y: auto;
 		max-height: $lhse * 13.4;
-		background:
-			/* Top shadow cover */
-			linear-gradient(
-				$color-group-bg 33.33%,
-				rgba($color-group-bg, 0)
-			) center top,
-
-			/* Bottom shadow cover */
-			linear-gradient(
-				rgba($color-group-bg, 0),
-				$color-group-bg 66.67%
-			) center bottom,
-
-			/* Top shadow */
-			radial-gradient(farthest-side at 50% 0,
-				rgba($color-scroll-limiter-shadow, .25),
-				rgba($color-scroll-limiter-shadow, 0)
-			) center top,
-
-			/* Bottom shadow */
-			radial-gradient(farthest-side at 50% 100%,
-				rgba($color-scroll-limiter-shadow, .25),
-				rgba($color-scroll-limiter-shadow, 0)
-			) center bottom;
-		background-repeat: no-repeat;
-		background-size:
-			100% $lhse*1.75, 100% $lhse*1.75,
-			100% $lhse*.875, 100% $lhse*.875;
-		background-attachment: local, local, scroll, scroll;
 	}
 	.mana-symbol {
 		font-size: 112.5%;
