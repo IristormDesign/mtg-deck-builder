@@ -73,6 +73,7 @@ $outline-width-stat-section: 2px;
 
 		thead {
 			th {
+				@include tiny-font-size;
 				@include heading-font;
 				font-size: 60%;
 				text-transform: uppercase;
@@ -168,7 +169,7 @@ $outline-width-stat-section: 2px;
 		}
 		.filtering {
 			background: $color-blue-highlight;
-			outline: 2px dashed lighten($color-blue-highlight, 25%);
+			outline: 2px dashed $color-blue-highlight-bright;
 			outline-offset: -1px;
 			scroll-margin: $lhse*2;
 			color: $color-text-brighter;
@@ -262,7 +263,7 @@ $outline-width-stat-section: 2px;
 
 		h4,
 		strong {
-			color: #fff;
+			color: $color-text-extra-brighter;
 		}
 	}
 	> div {

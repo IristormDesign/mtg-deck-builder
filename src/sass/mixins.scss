@@ -246,7 +246,8 @@
 	outline-offset: 2px !important;
 }
 @mixin glowing-edges-of-scrollable-container {
-	$color-scroll-container-shadow: darken($color-mythic-orange, 12.5%);
+	$color-scroll-container-shadow: darken($color-mythic-orange, 0%);
+	$color-scroll-container-shadow: $color-link-focus;
 
 	background:
 		/* Top glow cover */
