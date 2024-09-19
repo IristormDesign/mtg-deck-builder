@@ -61,6 +61,7 @@
 					<li>
 						<a href="#m-deck-analyzer">Deck Analyzer</a>
 						<ol>
+							<li><a href="#m-data-tables">Data Tables</a></li>
 							<li><a href="#m-statistics-filter">Statistics Filter</a></li>
 						</ol>
 					</li>
