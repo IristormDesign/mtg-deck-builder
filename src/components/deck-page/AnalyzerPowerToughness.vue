@@ -37,9 +37,23 @@
 						>{{ toughnessStats.greatest }}</td>
 					</tr>
 					<tr>
-						<th>Average</th>
-						<td>{{ powerStats.average }}</td>
-						<td>{{ toughnessStats.average }}</td>
+						<th>Median</th>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								medianPower: powerStats.median
+							})"
+							@click="handleRowClick('powerToughness', {
+								medianPower: powerStats.median
+							})"
+						>{{ powerStats.median }}</td>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								medianToughness: toughnessStats.median
+							})"
+							@click="handleRowClick('powerToughness', {
+								medianToughness: toughnessStats.median
+							})"
+						>{{ toughnessStats.median }}</td>
 					</tr>
 					<tr>
 						<th>Least</th>
@@ -87,7 +101,7 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<th>{{ this.totalRowLabel ('spells with P/T') }}</th>
+					<th>{{ this.totalRowLabel ('cards with P/T') }}</th>
 					<td>{{ allPTCardsCount }}</td>
 					<td v-if="variablePT.ct">100.0<span>%</span></td>
 					<td
@@ -142,7 +156,6 @@ export default {
 	methods: {
 		preparePTStats () {
 			this.initializePTStats()
-
 			this.countPTCards()
 			this.calculatePercentageOfSpells(this.variablePT)
 		},
@@ -157,8 +170,8 @@ export default {
 
 				p.greatest = 0
 				t.greatest = 0
-				p.average = 0
-				t.average = 0
+				p.median = 0
+				t.median = 0
 				p.least = Infinity
 				t.least = Infinity
 
@@ -166,22 +179,23 @@ export default {
 					this.determinePTStats(card, 'power')
 					this.determinePTStats(card, 'toughness')
 
+					/* If the P/T value is an integer (not a star symbol)... */
 					if (
 						!isNaN(card.power) ||
 						!isNaN(card.toughness)
-					) { // If the P/T value is an integer (not a star symbol)...
+					) {
 						this.ptTotal += card.qty
 					}
 					if (
 						!isNaN(card.power2) ||
 						!isNaN(card.toughness2)
-					) { // If the P/T value is an integer (not a star symbol)...
+					) {
 						this.ptTotal += card.qty
 					}
 				})
 
-				this.calculatePTAverage('power')
-				this.calculatePTAverage('toughness')
+				this.powerStats.median = this.calculateMedian('power')
+				this.toughnessStats.median = this.calculateMedian('toughness')
 			}
 		},
 		determinePTStats (card, ptLabel) {
@@ -194,8 +208,6 @@ export default {
 
 				const ptDataSet = this[ptLabel + 'Stats']
 
-				ptDataSet.average += ptNum * card.qty
-
 				if (ptNum > ptDataSet.greatest) {
 					ptDataSet.greatest = ptNum
 				}
@@ -207,13 +219,31 @@ export default {
 			ptPerFace(ptLabel)
 			ptPerFace(ptLabel + '2') // For P/T on card's back face, if available.
 		},
-		calculatePTAverage (ptLabel) {
-			const stats = this[ptLabel + 'Stats']
+		calculateMedian (ptLabel) {
+			const allPTValues = []
 
-			if (this.ptTotal > 0) {
-				stats.average /= this.ptTotal
+			this.filteredCards().forEach(card => {
+				if (card[ptLabel] === undefined) return
+
+				for (let i = 0; i < card.qty; i++) {
+					allPTValues.push(Number(card[ptLabel]))
+				}
+			})
+
+			allPTValues.sort((a, b) => a - b)
+
+			const indexAtHalf = Math.floor(allPTValues.length / 2)
+
+			if (allPTValues.length % 2) {
+				return allPTValues[indexAtHalf]
+			} else {
+				const mean = (
+					allPTValues[indexAtHalf - 1] +
+					allPTValues[indexAtHalf]
+				) / 2
+
+				return mean.toFixed(1)
 			}
-			stats.average = stats.average.toFixed(1)
 		},
 		countPTCards () {
 			this.filteredCards().forEach(card => {
@@ -234,12 +264,12 @@ export default {
 
 				if (p.least === Infinity) {
 					p.greatest = '*'
-					p.average = '*'
+					p.median = '*'
 					p.least = '*'
 				}
 				if (t.least === Infinity) {
 					t.greatest = '*'
-					t.average = '*'
+					t.median = '*'
 					t.least = '*'
 				}
 			}

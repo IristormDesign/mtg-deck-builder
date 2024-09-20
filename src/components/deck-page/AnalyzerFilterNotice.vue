@@ -106,14 +106,26 @@ export default {
 						case 'variable':
 							return 'cards with variable power or toughness'
 						default:
-							if (typeof attr.greatestPower === 'number') {
-								return `spells with power ${attr.greatestPower}`
-							} else if (typeof attr.greatestToughness === 'number') {
-								return `spells with toughness ${attr.greatestToughness}`
-							} else if (typeof attr.leastPower === 'number') {
-								return `spells with power ${attr.leastPower}`
-							} else if (typeof attr.leastToughness === 'number') {
-								return `spells with toughness ${attr.leastToughness}`
+							if (attr.greatestPower !== undefined) {
+								return `cards with power ${attr.greatestPower}`
+							} else if (attr.greatestToughness !== undefined) {
+								return `cards with toughness ${attr.greatestToughness}`
+							} else if (attr.medianPower !== undefined) {
+								if (Number.isInteger(Number(attr.medianPower))) {
+									return `cards with power ${Math.floor(attr.medianPower)}`
+								} else {
+									return `cards with power ${Math.floor(attr.medianPower)} or ${Math.ceil(attr.medianPower)}`
+								}
+							} else if (attr.medianToughness !== undefined) {
+								if (Number.isInteger(Number(attr.medianToughness))) {
+									return `cards with toughness ${Math.floor(attr.medianToughness)}`
+								} else {
+									return `cards with toughness ${Math.floor(attr.medianToughness)} or ${Math.ceil(attr.medianToughness)}`
+								}
+							} else if (attr.leastPower !== undefined) {
+								return `cards with power ${attr.leastPower}`
+							} else if (attr.leastToughness !== undefined) {
+								return `cards with toughness ${attr.leastToughness}`
 							} else {
 								return null
 							}

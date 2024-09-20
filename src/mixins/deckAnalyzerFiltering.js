@@ -8,8 +8,8 @@ export default {
 		checkForMatchingAttribute (filterAttr, clickedAttr) {
 			function objectAttr (value) {
 				return (
-					typeof filterAttr[value] === 'number' &&
-					filterAttr[value] === clickedAttr[value]
+					filterAttr[value] !== undefined &&
+					Number(filterAttr[value]) === Number(clickedAttr[value])
 				)
 			}
 
@@ -17,6 +17,8 @@ export default {
 				filterAttr === clickedAttr ||
 				objectAttr('greatestPower') ||
 				objectAttr('greatestToughness') ||
+				objectAttr('medianPower') ||
+				objectAttr('medianToughness') ||
 				objectAttr('leastPower') ||
 				objectAttr('leastToughness')
 			)
@@ -262,20 +264,42 @@ export default {
 		},
 		filteredCardsByPowerToughness () {
 			return this.deck.cards.filter(card => {
-				const filterPTNumber = (pt, adjectivePT) => {
-					const filteredAttr = this.analyzerFilter.attribute[adjectivePT]
+				const filterForPTValue = (pt, adjectivePT) => {
+					const filteredAttr = Number(this.analyzerFilter.attribute[adjectivePT])
 
 					if (isNaN(filteredAttr)) return
 
-					if (Number(card[pt]) === filteredAttr) {
-						return card
-					} else if (
-						card[pt + '2'] &&
-							Number(card[pt + '2']) === filteredAttr
-					) {
-						return card
+					const frontPT = Number(card[pt])
+					const backPT = Number(card[pt + '2'])
+
+					if (Number.isInteger(filteredAttr)) {
+						if (filteredAttr === frontPT) {
+							return card
+						} else if (
+							backPT &&
+							filteredAttr === backPT
+						) {
+							return card
+						} else {
+							return null
+						}
 					} else {
-						return null
+						if (
+							Math.floor(filteredAttr) === frontPT ||
+							Math.ceil(filteredAttr) === frontPT
+						) {
+							return card
+						} else if (
+							backPT &&
+							(
+								Math.floor(filteredAttr) === backPT ||
+								Math.ceil(filteredAttr) === backPT
+							)
+						) {
+							return card
+						} else {
+							return null
+						}
 					}
 				}
 
@@ -283,15 +307,17 @@ export default {
 					case 'variable':
 						if (this.determineVariablePowerToughness(card) > 0) {
 							return card
+						} else {
+							return null
 						}
-						return null
-
 					default:
 						return (
-							filterPTNumber('power', 'greatestPower') ||
-							filterPTNumber('toughness', 'greatestToughness') ||
-							filterPTNumber('power', 'leastPower') ||
-							filterPTNumber('toughness', 'leastToughness')
+							filterForPTValue('power', 'greatestPower') ||
+							filterForPTValue('toughness', 'greatestToughness') ||
+							filterForPTValue('power', 'medianPower') ||
+							filterForPTValue('toughness', 'medianToughness') ||
+							filterForPTValue('power', 'leastPower') ||
+							filterForPTValue('toughness', 'leastToughness')
 						)
 				}
 			})

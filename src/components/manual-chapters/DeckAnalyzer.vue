@@ -9,6 +9,7 @@
 				alt="Snippet of the Deck Analyzer mode" title="Screenshot" loading="lazy"
 			/>
 		</p>
+		<p>The major parts of the Deck Analyzer are the <a href="#m-data-tables">data tables</a> and the <a href="#m-statistics-filter">statistics filter</a>.</p>
 
 		<data-tables />
 		<statistics-filter />

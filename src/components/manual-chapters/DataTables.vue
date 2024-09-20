@@ -2,7 +2,7 @@
 	<section id="m-data-tables">
 		<h4>Data Tables</h4>
 		<p>The page for the <a href="#m-deck-analyzer">Deck Analyzer</a> displays many data tables, each for a different statistical category regarding the cards in your deck’s main <a href="#m-card-groups">card group</a>. Some categories can comprise multiple subcategories, with their tables having a thick border line separating each subcategory.</p>
-		<p>The following are the categories, along with any subcategories in parentheses:</p>
+		<p>The following are the statistical categories, with any of their subcategories in parentheses:</p>
 		<ul>
 			<li>Colors of Spells (mono mana colors, mana color amounts per spell)</li>
 			<li>Mana Color Symbols in Costs of Spells (basic color symbols, hybrid symbol)</li>
@@ -13,7 +13,7 @@
 			<li>Other Subtypes</li>
 			<li>Rarities</li>
 			<li>Keyword Abilities</li>
-			<li>Power & Toughness (greatest/average/least P/T, variable P/T)</li>
+			<li>Power & Toughness (greatest/median/least P/T, variable P/T)</li>
 			<li>Layouts</li>
 		</ul>
 		<p>For almost every category, their tables have the following columns:</p>
