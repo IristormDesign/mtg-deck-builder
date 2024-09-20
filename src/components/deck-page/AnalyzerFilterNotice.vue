@@ -38,10 +38,9 @@ export default {
 			return this.$store.state.analyzerFilter.attribute
 		},
 		activeFilterDescription () {
-			const filter = this.$store.state.analyzerFilter
-			const attr = filter.attribute
+			const attr = this.$store.state.analyzerFilter.attribute
 
-			switch (filter.category) {
+			switch (this.$store.state.analyzerFilter.category) {
 				case 'colors':
 					return `${attr.toLowerCase()} spells`
 
@@ -103,10 +102,21 @@ export default {
 					}
 
 				case 'powerToughness':
-					if (attr === 'variable') {
-						return 'spells with variable power or toughness'
-					} else {
-						return null
+					switch (attr) {
+						case 'variable':
+							return 'cards with variable power or toughness'
+						default:
+							if (typeof attr.greatestPower === 'number') {
+								return `spells with power ${attr.greatestPower}`
+							} else if (typeof attr.greatestToughness === 'number') {
+								return `spells with toughness ${attr.greatestToughness}`
+							} else if (typeof attr.leastPower === 'number') {
+								return `spells with power ${attr.leastPower}`
+							} else if (typeof attr.leastToughness === 'number') {
+								return `spells with toughness ${attr.leastToughness}`
+							} else {
+								return null
+							}
 					}
 
 				case 'layouts':

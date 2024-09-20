@@ -70,74 +70,75 @@ $outline-width-stat-section: 2px;
 		border: $table-outer-borders;
 		border-top-width: 0;
 		width: 100%;
-
-		thead {
-			th {
-				@include tiny-font-size;
-				@include heading-font;
-				font-size: 60%;
-				text-transform: uppercase;
-				text-align: right;
-				background: $color-heading-bg;
-			}
-		}
-		tbody {
-			border: $table-outer-borders;
-			border-top-width: 0;
-		}
-		tfoot {
-			th,
-			td {
-				@include small-font-size;
-				font-style: italic;
-				line-height: $line-height-standard*.75;
-			}
-		}
-		th,
-		td {
-			padding: $lhse*.1667 $lhse*.25;
-			border: $table-inner-borders;
-			border-width: 1px 2px;
-			text-align: right;
-			line-height: .875;
-		}
+	}
+	thead {
 		th {
+			@include tiny-font-size;
+			@include heading-font;
+			font-size: 60%;
+			text-transform: uppercase;
 			text-align: right;
-			text-wrap: balance;
-
-			small {
-				margin-right: .5em;
-				line-height: .875 * 1.2; // Tall enough to make the height of the Rarities table's rows match the heights of the other tables' rows.
-			}
-		}
-		td {
-			padding-top: 0;
-			padding-bottom: 0;
-			height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
-
-			span {
-				font-size: 75%;
-				margin-left: .0417ch;
-			}
-		}
-		.distinct-head {
-			th {
-				background: $color-mythic-very-dim;
-				border-color: $color-mythic-very-dim;
-				color: $color-text-over-mythic-very-dim;
-			}
-		}
-		.empty-td {
 			background: $color-heading-bg;
 		}
+	}
+	tbody {
+		border: $table-outer-borders;
+		border-top-width: 0;
+	}
+	tfoot {
+		th,
+		td {
+			@include small-font-size;
+			font-style: italic;
+			line-height: $line-height-standard*.75;
+		}
+	}
+	tr {
+		&:active {
+			cursor: not-allowed;
+		}
+	}
+	th,
+	td {
+		padding: $lhse*.1667 $lhse*.25;
+		border: $table-inner-borders;
+		border-width: 1px 2px;
+		text-align: right;
+		line-height: .875;
+	}
+	th {
+		text-align: right;
+		text-wrap: balance;
+
+		small {
+			margin-right: .5em;
+			line-height: .875 * 1.2; // Tall enough to make the height of the Rarities table's rows match the heights of the other tables' rows.
+		}
+	}
+	td {
+		padding-top: 0;
+		padding-bottom: 0;
+		height: calc(#{$lhse} - 1px); // `height` works like `min-height` on table cells.
+
+		span {
+			font-size: 75%;
+			margin-left: .0417ch;
+		}
+	}
+	.distinct-head {
+		th {
+			background: $color-mythic-very-dim;
+			border-color: $color-mythic-very-dim;
+			color: $color-text-over-mythic-very-dim;
+		}
+	}
+	.empty-td {
+		background: $color-heading-bg;
 	}
 	.filterable-stats {
 		tr {
 			cursor: pointer;
 
-			th {
-				color: $color-link;
-			}
 			&:hover {
 				background: $color-group-bg-darker;
 
@@ -166,6 +167,9 @@ $outline-width-stat-section: 2px;
 					outline-color: $color-link-active;
 				}
 			}
+			th {
+				color: $color-link;
+			}
 		}
 		.filtering {
 			background: $color-blue-highlight;
@@ -192,8 +196,38 @@ $outline-width-stat-section: 2px;
 			}
 		}
 	}
+	.filterable-stats-multiple-tds {
+		td {
+			color: $color-link;
+			cursor: pointer;
+
+			&:hover {
+				background: $color-group-bg-darker;
+				color: $color-link-focus;
+			}
+			&:active {
+				background: $color-blue-highlight-dark;
+				color: $color-link-active;
+			}
+			&.filtering {
+				background: $color-blue-highlight;
+				outline: 2px dashed $color-blue-highlight-bright;
+				outline-offset: -1px;
+				scroll-margin: $lhse*2;
+				border-right-color: $color-blue-highlight-dim;
+				border-left-color: $color-blue-highlight-dim;
+
+				&:hover {
+					background: $color-blue-highlight-dark;
+				}
+				&:active {
+					background: $color-group-bg-darker;
+				}
+			}
+		}
+	}
 	tbody:not(.filterable-stats) {
-		tr {
+		th {
 			&:active {
 				cursor: not-allowed;
 			}

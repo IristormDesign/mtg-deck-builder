@@ -5,13 +5,30 @@ export default {
 		}
 	},
 	methods: {
+		checkForMatchingAttribute (filterAttr, clickedAttr) {
+			function objectAttr (value) {
+				return (
+					typeof filterAttr[value] === 'number' &&
+					filterAttr[value] === clickedAttr[value]
+				)
+			}
+
+			return (
+				filterAttr === clickedAttr ||
+				objectAttr('greatestPower') ||
+				objectAttr('greatestToughness') ||
+				objectAttr('leastPower') ||
+				objectAttr('leastToughness')
+			)
+		},
 		activeFilterClass (category, attribute) {
 			const filter = this.$store.state.analyzerFilter
 
-			if (
-				filter.category === category &&
-				filter.attribute === attribute
-			) {
+			if (filter.category !== category) return
+
+			if (this.checkForMatchingAttribute(
+				filter.attribute, attribute
+			)) {
 				return 'filtering'
 			}
 		},
@@ -20,14 +37,16 @@ export default {
 
 			if (
 				store.state.analyzerFilter.category === category &&
-				store.state.analyzerFilter.attribute === attribute
+				this.checkForMatchingAttribute(
+					store.state.analyzerFilter.attribute, attribute
+				)
 			) {
-				this.$store.commit('analyzerFilter', {
+				store.commit('analyzerFilter', {
 					category: null,
 					attribute: null
 				})
 			} else {
-				this.$store.commit('analyzerFilter', {
+				store.commit('analyzerFilter', {
 					category: category,
 					attribute: attribute
 				})
@@ -243,14 +262,38 @@ export default {
 		},
 		filteredCardsByPowerToughness () {
 			return this.deck.cards.filter(card => {
-				if (
-					this.analyzerFilter.attribute === 'variable' &&
-					this.determineVariablePowerToughness(card) > 0
-				) {
-					return card
+				const filterPTNumber = (pt, adjectivePT) => {
+					const filteredAttr = this.analyzerFilter.attribute[adjectivePT]
+
+					if (isNaN(filteredAttr)) return
+
+					if (Number(card[pt]) === filteredAttr) {
+						return card
+					} else if (
+						card[pt + '2'] &&
+							Number(card[pt + '2']) === filteredAttr
+					) {
+						return card
+					} else {
+						return null
+					}
 				}
 
-				return null
+				switch (this.analyzerFilter.attribute) {
+					case 'variable':
+						if (this.determineVariablePowerToughness(card) > 0) {
+							return card
+						}
+						return null
+
+					default:
+						return (
+							filterPTNumber('power', 'greatestPower') ||
+							filterPTNumber('toughness', 'greatestToughness') ||
+							filterPTNumber('power', 'leastPower') ||
+							filterPTNumber('toughness', 'leastToughness')
+						)
+				}
 			})
 		},
 		filteredCardsByLayouts () {

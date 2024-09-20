@@ -16,11 +16,25 @@
 						<th>Tough.</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="filterable-stats-multiple-tds">
 					<tr>
 						<th>Greatest</th>
-						<td>{{ powerStats.greatest }}</td>
-						<td>{{ toughnessStats.greatest }}</td>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								greatestPower: powerStats.greatest
+							})"
+							@click="handleRowClick('powerToughness', {
+								greatestPower: powerStats.greatest
+							})"
+						>{{ powerStats.greatest }}</td>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								greatestToughness: toughnessStats.greatest
+							})"
+							@click="handleRowClick('powerToughness', {
+								greatestToughness: toughnessStats.greatest
+							})"
+						>{{ toughnessStats.greatest }}</td>
 					</tr>
 					<tr>
 						<th>Average</th>
@@ -29,8 +43,22 @@
 					</tr>
 					<tr>
 						<th>Least</th>
-						<td>{{ powerStats.least }}</td>
-						<td>{{ toughnessStats.least }}</td>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								leastPower: powerStats.least
+							})"
+							@click="handleRowClick('powerToughness', {
+								leastPower: powerStats.least
+							})"
+						>{{ powerStats.least }}</td>
+						<td
+							:class="activeFilterClass('powerToughness', {
+								leastToughness: toughnessStats.least
+							})"
+							@click="handleRowClick('powerToughness', {
+								leastToughness: toughnessStats.least
+							})"
+						>{{ toughnessStats.least }}</td>
 					</tr>
 				</tbody>
 			</template>
@@ -59,7 +87,7 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<th>{{ this.totalRowLabel ('cards with P/T') }}</th>
+					<th>{{ this.totalRowLabel ('spells with P/T') }}</th>
 					<td>{{ allPTCardsCount }}</td>
 					<td v-if="variablePT.ct">100.0<span>%</span></td>
 					<td
