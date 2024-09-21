@@ -158,22 +158,25 @@ export default {
 			const regexVariableCost = /\{X\}/
 
 			return this.deck.cards.filter(card => {
-				switch (this.analyzerFilter.attribute) {
-					case String(card.cmc):
-						return card
+				const perFace = (faceType, faceMana) => {
+					if (!faceType || !faceMana) return
+					if (/\bLand\b/.test(faceType)) return
 
-					case 'variable':
-						if (regexVariableCost.test(card.mana)) {
-							return card
-						} else if (
-							card.mana2 &&
-							regexVariableCost.test(card.mana2)
-						) {
-							return card
-						}
+					switch (this.analyzerFilter.attribute) {
+						case String(card.cmc):
+							return true
+						case 'variable':
+							return regexVariableCost.test(faceMana)
+					}
 				}
+				const front = perFace(card.type, card.mana)
+				const back = perFace(card.type2, card.mana2)
 
-				return null
+				if (front || back) {
+					return card
+				} else {
+					return null
+				}
 			})
 		},
 		filteredCardsBySupertypes () {
