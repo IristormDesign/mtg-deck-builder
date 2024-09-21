@@ -194,23 +194,42 @@ export default {
 			})
 		},
 		filteredCardsByTypes () {
-			return this.deck.cards.filter(card => {
-				const regexTypes = this.$store.state.regex.cardTypes
+			const regexTypes = this.$store.state.regex.cardTypes
 
-				for (const type in regexTypes) {
-					if (this.analyzerFilter.attribute === type) {
-						if (card.type.match(regexTypes[type])) {
-							return card
-						} else if (
-							card.type2 &&
-							card.type2.match(regexTypes[type])
-						) {
-							return card
+			const perFace = (faceType) => {
+				if (!faceType) return
+
+				switch (this.analyzerFilter.attribute) {
+					case 'Other':
+						for (const type in regexTypes) {
+							if (faceType.match(regexTypes[type])) {
+								return false
+							}
 						}
-					}
-				}
+						return true
 
-				return null
+					default:
+						for (const type in regexTypes) {
+							if (
+								this.analyzerFilter.attribute === type &&
+								faceType.match(regexTypes[type])
+							) {
+								return true
+							}
+						}
+						return false
+				}
+			}
+
+			return this.deck.cards.filter(card => {
+				const front = perFace(card.type)
+				const back = perFace(card.type2)
+
+				if (front || back) {
+					return card
+				} else {
+					return null
+				}
 			})
 		},
 		filteredCardsBySubtypes () {
