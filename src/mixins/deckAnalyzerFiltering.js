@@ -82,56 +82,55 @@ export default {
 			}
 		},
 		filteredCardsByColorsOfSpells () {
-			return this.deck.cards.filter(card => {
-				const perFace = (type, colors) => {
-					if (!type) return null
+			const perFace = (faceType, faceColors) => {
+				if (!faceType || !faceColors) return
+				if (/\bLand\b/.test(faceType)) return
 
-					if (/\bLand\b/.test(type)) {
-						return null
+				const colorName = (colorCode) => {
+					switch (colorCode) {
+						case 'W': return 'White'
+						case 'U': return 'Blue'
+						case 'B': return 'Black'
+						case 'R': return 'Red'
+						case 'G': return 'Green'
 					}
-
-					if (!colors) return null
-
-					const colorName = (colorCode) => {
-						switch (colorCode) {
-							case 'W': return 'White'
-							case 'U': return 'Blue'
-							case 'B': return 'Black'
-							case 'R': return 'Red'
-							case 'G': return 'Green'
-						}
-					}
-
-					for (const color of colors) {
-						if (this.analyzerFilter.attribute === colorName(color)) {
-							return card
-						}
-					}
-
-					switch (this.analyzerFilter.attribute) {
-						case 'Colorless':
-							if (colors.length < 1) {
-								return card
-							}
-							break
-						case 'Monocolored':
-							if (colors.length === 1) {
-								return card
-							}
-							break
-						case 'Multicolored':
-							if (colors.length > 1) {
-								return card
-							}
-					}
-
-					return null
 				}
 
+				for (const color of faceColors) {
+					if (this.analyzerFilter.attribute === colorName(color)) {
+						return true
+					}
+				}
+
+				switch (this.analyzerFilter.attribute) {
+					case 'Colorless':
+						if (faceColors.length < 1) {
+							return true
+						}
+						break
+					case 'Monocolored':
+						if (faceColors.length === 1) {
+							return true
+						}
+						break
+					case 'Multicolored':
+						if (faceColors.length > 1) {
+							return true
+						}
+				}
+
+				return false
+			}
+
+			return this.deck.cards.filter(card => {
 				const front = perFace(card.type, card.colors)
 				const back = perFace(card.type2, card.colors2)
 
-				return front || back
+				if (front || back) {
+					return card
+				} else {
+					return null
+				}
 			})
 		},
 		filteredCardsByManaSymbols () {
