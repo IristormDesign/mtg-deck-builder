@@ -71,6 +71,7 @@
 						<ol>
 							<li><a href="#m-kbsc-deck-page-modes">Deck Page Modes</a></li>
 							<li><a href="#m-kbsc-deck-editor">Deck Editor Actions</a></li>
+							<li><a href="#m-kbsc-deck-analyzer">Deck Analyzer Actions</a></li>
 							<li><a href="#m-kbsc-draw-sim">Draw Simulator Actions</a></li>
 						</ol>
 					</li>
