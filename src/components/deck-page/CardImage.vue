@@ -30,6 +30,7 @@
 									:href="card.link"
 									target="_blank"
 									ref="cardLink"
+									:class="isBattleType"
 								>
 									<div
 										class="card-shape"
@@ -112,6 +113,16 @@ export default {
 				return perFace(card.colors, card.type)
 			} else {
 				return perFace(card.colors2, card.type2)
+			}
+		},
+		isBattleType () {
+			if (
+				/\bBattle\b/.test(this.card.type) &&
+				this.showingFrontFace
+			) {
+				return 'sideways'
+			} else {
+				return null
 			}
 		},
 		showCard () {

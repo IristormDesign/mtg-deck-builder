@@ -27,6 +27,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 	animation-name: card-fan-in-#{$enter-from};
 }
 @mixin card-link ($rise-from) {
+	$scale: scale(1.3333);
 	$translate: none;
 	$rotate: none;
 
@@ -50,12 +51,22 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 		&:hover,
 		&:focus,
 		&.kb-highlight {
-			transform:
-				scale(1.3333)
-				$translate
-				$rotate;
+			transform: $scale $translate $rotate;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
+
+			&.sideways {
+				@if $rise-from == 'left' {
+					$translate: translate($lhse*2.5, $lhse*.25);
+					$rotate: rotate(90deg - (360/128) * 1deg);
+				}
+				@if $rise-from == 'right' {
+					$translate: translate(-$lhse*2.5, $lhse*.25);
+					$rotate: rotate(90deg + (360/128) * 1deg);
+				}
+
+				transform: $scale $translate $rotate;
+			}
 		}
 		&:focus,
 		&.kb-highlight {
