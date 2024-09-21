@@ -48,7 +48,7 @@
 						<h4>About These Statistics</h4>
 						<ul>
 							<li>
-								<p>Cards in the sideboard are ignored.</p>
+								<p>Cards in the sideboard are excluded.</p>
 							</li>
 							<li>
 								<p>Individual cards can be counted multiple times within a category if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category counts that card twice for being both an artifact and a creature.)</p>
