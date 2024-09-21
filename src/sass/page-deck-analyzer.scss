@@ -93,11 +93,6 @@ $outline-width-stat-section: 2px;
 			line-height: $line-height-standard*.75;
 		}
 	}
-	tr {
-		&:active {
-			cursor: not-allowed;
-		}
-	}
 	th,
 	td {
 		padding: $lhse*.1667 $lhse*.25;
@@ -197,6 +192,11 @@ $outline-width-stat-section: 2px;
 		}
 	}
 	.filterable-stats-multiple-tds {
+		tr {
+			&:active {
+				cursor: not-allowed;
+			}
+		}
 		td {
 			color: $color-link;
 			cursor: pointer;

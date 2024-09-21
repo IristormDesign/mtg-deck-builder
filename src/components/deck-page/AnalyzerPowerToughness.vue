@@ -132,7 +132,9 @@ export default {
 				pct: 0
 			},
 			allSpellsCount: 0,
-			allPTCardsCount: 0
+			allPTCardsCount: 0,
+			allPowerValues: [],
+			allToughnessValues: []
 		}
 	},
 	watch: {
@@ -146,6 +148,8 @@ export default {
 			}
 			this.allSpellsCount = 0
 			this.allPTCardsCount = 0
+			this.allPowerValues = []
+			this.allToughnessValues = []
 
 			this.preparePTStats()
 		}
@@ -194,8 +198,8 @@ export default {
 					}
 				})
 
-				this.powerStats.median = this.calculateMedian('power')
-				this.toughnessStats.median = this.calculateMedian('toughness')
+				this.powerStats.median = this.calculateMedian(this.allPowerValues)
+				this.toughnessStats.median = this.calculateMedian(this.allToughnessValues)
 			}
 		},
 		determinePTStats (card, ptLabel) {
@@ -214,32 +218,32 @@ export default {
 				if (ptNum < ptDataSet.least) {
 					ptDataSet.least = ptNum
 				}
+
+				for (let i = 0; i < card.qty; i++) {
+					switch (ptLabel) {
+						case 'power':
+							this.allPowerValues.push(Number(card[facePTLabel]))
+							break
+						case 'toughness':
+							this.allToughnessValues.push(Number(card[facePTLabel]))
+					}
+				}
 			}
 
 			ptPerFace(ptLabel)
 			ptPerFace(ptLabel + '2') // For P/T on card's back face, if available.
 		},
-		calculateMedian (ptLabel) {
-			const allPTValues = []
+		calculateMedian (values) {
+			values.sort((a, b) => a - b)
 
-			this.filteredCards().forEach(card => {
-				if (card[ptLabel] === undefined) return
+			const midIndex = Math.floor(values.length / 2)
 
-				for (let i = 0; i < card.qty; i++) {
-					allPTValues.push(Number(card[ptLabel]))
-				}
-			})
-
-			allPTValues.sort((a, b) => a - b)
-
-			const indexAtHalf = Math.floor(allPTValues.length / 2)
-
-			if (allPTValues.length % 2) {
-				return allPTValues[indexAtHalf]
+			if (values.length % 2) {
+				return values[midIndex]
 			} else {
 				const mean = (
-					allPTValues[indexAtHalf - 1] +
-					allPTValues[indexAtHalf]
+					values[midIndex - 1] +
+					values[midIndex]
 				) / 2
 
 				return mean.toFixed(1)
