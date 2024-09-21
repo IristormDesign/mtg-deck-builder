@@ -286,14 +286,16 @@ export default {
 					} else {
 						if (
 							Math.floor(filteredAttr) === frontPT ||
-							Math.ceil(filteredAttr) === frontPT
+							Math.ceil(filteredAttr) === frontPT ||
+							filteredAttr === frontPT // This last condition checks for the quirky half-value power/toughness attributes ("Little Girl"), but otherwise wouldn't be needed here.
 						) {
 							return card
 						} else if (
 							backPT &&
 							(
 								Math.floor(filteredAttr) === backPT ||
-								Math.ceil(filteredAttr) === backPT
+								Math.ceil(filteredAttr) === backPT ||
+								filteredAttr === backPT
 							)
 						) {
 							return card
