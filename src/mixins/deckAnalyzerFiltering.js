@@ -284,64 +284,51 @@ export default {
 			})
 		},
 		filteredCardsByPowerToughness () {
+			const filterForPTValue = (ptValue, adjectivePTLabel) => {
+				if (ptValue === undefined) return
+
+				const filteredAttr = Number(this.analyzerFilter.attribute[adjectivePTLabel])
+
+				if (isNaN(filteredAttr)) return
+
+				ptValue = Number(ptValue)
+
+				if (Number.isInteger(filteredAttr)) {
+					return filteredAttr === ptValue
+				} else {
+					return (
+						Math.floor(filteredAttr) === ptValue ||
+						Math.ceil(filteredAttr) === ptValue ||
+						filteredAttr === ptValue // This last condition checks for the quirky half-value power/toughness attributes ("Little Girl"), but otherwise wouldn't be needed here.
+					)
+				}
+			}
+
 			return this.deck.cards.filter(card => {
-				const filterForPTValue = (pt, adjectivePT) => {
-					const filteredAttr = Number(this.analyzerFilter.attribute[adjectivePT])
+				const perFace = (facePowerLabel, faceToughnessLabel) => {
+					switch (this.analyzerFilter.attribute) {
+						case 'variable':
+							return this.determineVariablePowerToughness(card) > 0
 
-					if (isNaN(filteredAttr)) return
-
-					const frontPT = Number(card[pt])
-					const backPT = Number(card[pt + '2'])
-
-					if (Number.isInteger(filteredAttr)) {
-						if (filteredAttr === frontPT) {
-							return card
-						} else if (
-							backPT &&
-							filteredAttr === backPT
-						) {
-							return card
-						} else {
-							return null
-						}
-					} else {
-						if (
-							Math.floor(filteredAttr) === frontPT ||
-							Math.ceil(filteredAttr) === frontPT ||
-							filteredAttr === frontPT // This last condition checks for the quirky half-value power/toughness attributes ("Little Girl"), but otherwise wouldn't be needed here.
-						) {
-							return card
-						} else if (
-							backPT &&
-							(
-								Math.floor(filteredAttr) === backPT ||
-								Math.ceil(filteredAttr) === backPT ||
-								filteredAttr === backPT
+						default:
+							return (
+								filterForPTValue(card[facePowerLabel], 'greatestPower') ||
+								filterForPTValue(card[faceToughnessLabel], 'greatestToughness') ||
+								filterForPTValue(card[facePowerLabel], 'medianPower') ||
+								filterForPTValue(card[faceToughnessLabel], 'medianToughness') ||
+								filterForPTValue(card[facePowerLabel], 'leastPower') ||
+								filterForPTValue(card[faceToughnessLabel], 'leastToughness')
 							)
-						) {
-							return card
-						} else {
-							return null
-						}
 					}
 				}
 
-				switch (this.analyzerFilter.attribute) {
-					case 'variable':
-						if (this.determineVariablePowerToughness(card) > 0) {
-							return card
-						} else {
-							return null
-						}
-					default:
-						return (
-							filterForPTValue('power', 'greatestPower') ||
-							filterForPTValue('toughness', 'greatestToughness') ||
-							filterForPTValue('power', 'medianPower') ||
-							filterForPTValue('toughness', 'medianToughness') ||
-							filterForPTValue('power', 'leastPower') ||
-							filterForPTValue('toughness', 'leastToughness')
-						)
+				const front = perFace('power', 'toughness')
+				const back = perFace('power2', 'toughness2')
+
+				if (front || back) {
+					return card
+				} else {
+					return null
 				}
 			})
 		},
