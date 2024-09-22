@@ -50,8 +50,11 @@ export default {
 	computed: {
 		totalCreatureCards () {
 			return this.filteredCards().reduce(
-				(total, { type, qty }) => {
-					if (/\bCreature\b/.test(type)) {
+				(total, { type, type2, qty }) => {
+					if (
+						/\bCreature\b/.test(type) ||
+						/\bCreature\b/.test(type2)
+					) {
 						return total + qty
 					}
 
