@@ -2,13 +2,13 @@
 	<section id="stats-powerToughness">
 		<h4>Power & Toughness</h4>
 		<div
-			v-if="ptTotal === 0 && variablePT.ct === 0"
+			v-if="allPTCardsCount === 0"
 			class="no-data"
 		>
 			(None)
 		</div>
 		<table v-else>
-			<template v-if="ptTotal > 0">
+			<template v-if="allPTCardsCount > 0">
 				<thead class="distinct-head">
 					<tr>
 						<th></th>
@@ -76,7 +76,7 @@
 					</tr>
 				</tbody>
 			</template>
-			<template v-if="variablePT.ct">
+			<template v-if="variablePT.ct > 0">
 				<thead v-html="tableHeadCommon"></thead>
 				<tbody
 					v-show="variablePT.ct"
@@ -92,7 +92,7 @@
 					</tr>
 				</tbody>
 			</template>
-			<thead v-if="variablePT.ct === 0">
+			<thead v-else>
 				<tr>
 					<th></th>
 					<th title="Count">Ct.</th>
@@ -126,12 +126,10 @@ export default {
 		return {
 			powerStats: {},
 			toughnessStats: {},
-			ptTotal: 0,
 			variablePT: {
 				ct: 0,
 				pct: 0
 			},
-			allSpellsCount: 0,
 			allPTCardsCount: 0,
 			allPowerValues: [],
 			allToughnessValues: []
@@ -141,12 +139,10 @@ export default {
 		analyzerFilter () {
 			this.powerStats = {}
 			this.toughnessStats = {}
-			this.ptTotal = 0
 			this.variablePT = {
 				ct: 0,
 				pct: 0
 			}
-			this.allSpellsCount = 0
 			this.allPTCardsCount = 0
 			this.allPowerValues = []
 			this.allToughnessValues = []
@@ -182,20 +178,6 @@ export default {
 				cardsWithPT.forEach(card => {
 					this.determinePTStats(card, 'power')
 					this.determinePTStats(card, 'toughness')
-
-					/* If the P/T value is an integer (not a star symbol)... */
-					if (
-						!isNaN(card.power) ||
-						!isNaN(card.toughness)
-					) {
-						this.ptTotal += card.qty
-					}
-					if (
-						!isNaN(card.power2) ||
-						!isNaN(card.toughness2)
-					) {
-						this.ptTotal += card.qty
-					}
 				})
 
 				this.powerStats.median = this.calculateMedian(this.allPowerValues)
