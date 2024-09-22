@@ -161,7 +161,12 @@ export default {
 		},
 		initializePTStats () {
 			const cardsWithPT = this.filteredCards().filter(
-				card => card.toughness // Find only the cards that have the toughness attribute. If a card has it, then it'd be paired with the power attribute too.
+				card => {
+					return ( // Find the cards that have only the toughness attribute. If a card has that, then it'd be paired with the power attribute too.
+						card.toughness ||
+						card.toughness2
+					)
+				}
 			)
 
 			if (cardsWithPT.length > 0) {
