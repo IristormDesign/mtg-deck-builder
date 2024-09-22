@@ -19,6 +19,7 @@
 				<tbody class="filterable-stats-multiple-tds">
 					<tr>
 						<th>Greatest</th>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								greatestPower: powerStats.greatest
@@ -28,8 +29,9 @@
 								{ greatestPower: powerStats.greatest },
 								disabledCell(powerStats.greatest)
 							)"
-							:disabled="disabledCell(powerStats.least)"
+							:disabled="disabledCell(powerStats.greatest)"
 						>{{ powerStats.greatest }}</td>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								greatestToughness: toughnessStats.greatest
@@ -37,13 +39,14 @@
 							@click="handleRowClick(
 								'powerToughness',
 								{ greatestToughness: toughnessStats.greatest },
-								disabledCell(powerStats.greatest)
+								disabledCell(toughnessStats.greatest)
 							)"
-							:disabled="disabledCell(powerStats.least)"
+							:disabled="disabledCell(toughnessStats.greatest)"
 						>{{ toughnessStats.greatest }}</td>
 					</tr>
 					<tr>
 						<th>Median</th>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								medianPower: powerStats.median
@@ -53,8 +56,9 @@
 								{ medianPower: powerStats.median },
 								disabledCell(powerStats.median)
 							)"
-							:disabled="disabledCell(powerStats.least)"
+							:disabled="disabledCell(powerStats.median)"
 						>{{ powerStats.median }}</td>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								medianToughness: toughnessStats.median
@@ -62,13 +66,14 @@
 							@click="handleRowClick(
 								'powerToughness',
 								{ medianToughness: toughnessStats.median },
-								disabledCell(powerStats.median)
+								disabledCell(toughnessStats.median)
 							)"
-							:disabled="disabledCell(powerStats.least)"
+							:disabled="disabledCell(toughnessStats.median)"
 						>{{ toughnessStats.median }}</td>
 					</tr>
 					<tr>
 						<th>Least</th>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								leastPower: powerStats.least
@@ -80,6 +85,7 @@
 							)"
 							:disabled="disabledCell(powerStats.least)"
 						>{{ powerStats.least }}</td>
+
 						<td
 							:class="activeFilterClass('powerToughness', {
 								leastToughness: toughnessStats.least
@@ -87,9 +93,9 @@
 							@click="handleRowClick(
 								'powerToughness',
 								{ leastToughness: toughnessStats.least },
-								disabledCell(powerStats.least)
+								disabledCell(toughnessStats.least)
 							)"
-							:disabled="disabledCell(powerStats.least)"
+							:disabled="disabledCell(toughnessStats.least)"
 						>{{ toughnessStats.least }}</td>
 					</tr>
 				</tbody>
