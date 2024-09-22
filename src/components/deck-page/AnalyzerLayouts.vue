@@ -51,26 +51,28 @@ export default {
 	},
 	mounted () {
 		this.prepareLayoutStats()
-
-		this.layoutStats = this.sortTableByCounts(this.layoutStats)
 	},
 	methods: {
 		prepareLayoutStats () {
 			this.countLayouts()
 			this.setPreferredLayoutLabels()
+
+			this.layoutStats = this.sortTableByCounts(this.layoutStats)
 		},
 		countLayouts () {
-			this.filteredCards().forEach(({ layout, qty }) => {
-				if (!layout) return
+			this.filteredCards().forEach(
+				({ layout, qty }) => {
+					if (!layout) return
 
-				if (!this.layoutStats[layout]) {
-					this.layoutStats[layout] = {
-						ct: 0
+					if (!this.layoutStats[layout]) {
+						this.layoutStats[layout] = {
+							ct: 0
+						}
 					}
-				}
 
-				this.layoutStats[layout].ct += qty
-			})
+					this.layoutStats[layout].ct += qty
+				}
+			)
 		},
 		setPreferredLayoutLabels () {
 			for (const key in this.layoutStats) {
