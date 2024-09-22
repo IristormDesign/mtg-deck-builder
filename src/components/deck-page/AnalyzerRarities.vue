@@ -60,20 +60,12 @@ export default {
 		}
 	},
 	watch: {
-		analyzerFilter (curFilter, prevFilter) {
+		analyzerFilter () {
 			for (const rarity in this.rarityCounts) {
 				this.rarityCounts[rarity] = 0
 			}
 
 			this.countRarities()
-
-			// if (
-			// 	curFilter.category === 'rarities'
-			// ) {
-			// 	const section = document.querySelector('.stats-rarities')
-
-			// 	section.scrollIntoView({ block: 'nearest' })
-			// }
 		}
 	},
 	mounted () {
