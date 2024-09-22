@@ -201,6 +201,18 @@ $outline-width-stat-section: 2px;
 			color: $color-link;
 			cursor: pointer;
 
+			&[disabled] {
+				&,
+				&:hover,
+				&:active {
+					cursor: default;
+					color: $color-text;
+					background: none;
+				}
+				&:active {
+					cursor: not-allowed;
+				}
+			}
 			&:hover {
 				background: $color-group-bg-darker;
 				color: $color-link-focus;

@@ -23,17 +23,23 @@
 							:class="activeFilterClass('powerToughness', {
 								greatestPower: powerStats.greatest
 							})"
-							@click="handleRowClick('powerToughness', {
-								greatestPower: powerStats.greatest
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ greatestPower: powerStats.greatest },
+								disabledCell(powerStats.greatest)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ powerStats.greatest }}</td>
 						<td
 							:class="activeFilterClass('powerToughness', {
 								greatestToughness: toughnessStats.greatest
 							})"
-							@click="handleRowClick('powerToughness', {
-								greatestToughness: toughnessStats.greatest
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ greatestToughness: toughnessStats.greatest },
+								disabledCell(powerStats.greatest)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ toughnessStats.greatest }}</td>
 					</tr>
 					<tr>
@@ -42,17 +48,23 @@
 							:class="activeFilterClass('powerToughness', {
 								medianPower: powerStats.median
 							})"
-							@click="handleRowClick('powerToughness', {
-								medianPower: powerStats.median
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ medianPower: powerStats.median },
+								disabledCell(powerStats.median)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ powerStats.median }}</td>
 						<td
 							:class="activeFilterClass('powerToughness', {
 								medianToughness: toughnessStats.median
 							})"
-							@click="handleRowClick('powerToughness', {
-								medianToughness: toughnessStats.median
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ medianToughness: toughnessStats.median },
+								disabledCell(powerStats.median)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ toughnessStats.median }}</td>
 					</tr>
 					<tr>
@@ -61,17 +73,23 @@
 							:class="activeFilterClass('powerToughness', {
 								leastPower: powerStats.least
 							})"
-							@click="handleRowClick('powerToughness', {
-								leastPower: powerStats.least
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ leastPower: powerStats.least },
+								disabledCell(powerStats.least)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ powerStats.least }}</td>
 						<td
 							:class="activeFilterClass('powerToughness', {
 								leastToughness: toughnessStats.least
 							})"
-							@click="handleRowClick('powerToughness', {
-								leastToughness: toughnessStats.least
-							})"
+							@click="handleRowClick(
+								'powerToughness',
+								{ leastToughness: toughnessStats.least },
+								disabledCell(powerStats.least)
+							)"
+							:disabled="disabledCell(powerStats.least)"
 						>{{ toughnessStats.least }}</td>
 					</tr>
 				</tbody>
@@ -267,6 +285,9 @@ export default {
 		},
 		calculatePercentageOfSpells (stat) {
 			stat.pct = ((stat.ct / this.allPTCardsCount) * 100).toFixed(1)
+		},
+		disabledCell (stat) {
+			return stat === '*'
 		}
 	}
 }

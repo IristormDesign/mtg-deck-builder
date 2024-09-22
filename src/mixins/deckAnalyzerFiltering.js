@@ -34,7 +34,9 @@ export default {
 				return 'filtering'
 			}
 		},
-		handleRowClick (category, attribute) {
+		handleRowClick (category, attribute, exception) {
+			if (exception) return
+
 			const store = this.$store
 
 			if (
@@ -47,6 +49,11 @@ export default {
 					category: null,
 					attribute: null
 				})
+			} else if (
+				category === 'powerToughness' &&
+				attribute === '*'
+			) {
+				console.log('😎')
 			} else {
 				store.commit('analyzerFilter', {
 					category: category,
