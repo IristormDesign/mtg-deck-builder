@@ -68,7 +68,7 @@ $color-mana-red: adjust_hue(#f9aa8f, -3.75deg); // Based on sample
 $color-mana-green: adjust_hue(#9bd3ae, -8.8888deg); // Based on sample
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
 $color-mana-hybrid: desaturate(lighten($color-rarity-gold, 4.17%), 6.25%);
-$color-frame-land: desaturate(lighten($color-mythic-yellow, 16.67%), 87.5%);
+$color-frame-land: desaturate(lighten($color-mythic-yellow, 16.67%), 91.67%);
 $color-frame-white: desaturate(darken($color-mana-white, 3.125%), 20%);
 $color-frame-blue: desaturate(lighten($color-mana-blue, 0%), 50%);
 $color-frame-black: darken($color-mana-black, 6.25%);
