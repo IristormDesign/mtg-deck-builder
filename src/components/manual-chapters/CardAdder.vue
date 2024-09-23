@@ -14,7 +14,7 @@
 		<ul>
 			<li>
 				<h5>Card Name</h5>
-				<p>Simply enter the name of a <i>Magic</i> card, and it’ll be added to your deck. While you start typing letters into the card adder’s text field, a small list of selectable suggestions for card names will appear by it.</p>
+				<p>Simply enter the certain name of a <i>Magic</i> card, and it’ll be added to your deck. While you start typing letters into the card adder’s text field, a small list of selectable suggestions for card names will appear by it.</p>
 				<p>When you submit a card name query, if it turns out to be an invalid name, the app will notify you of the mistake. If a card name has been printed in multiple sets, then the card name from the latest released set is retrieved.</p>
 			</li>
 			<li>
@@ -25,7 +25,7 @@
 			</li>
 			<li>
 				<h5>Random Card Code</h5>
-				<p>Add any <i>Magic</i> card name at random by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text field has focus.</p>
+				<p>Add a name of a <i>Magic</i> card at random (among modern-framed cards legal in Vintage tournaments) by entering the code “<strong>#random</strong>” in the card adder. Your web browser may also show this as a selectable option when the card adder’s text field has focus.</p>
 			</li>
 		</ul>
 		<p>Other notes about using the card adder:</p>
