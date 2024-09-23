@@ -10,10 +10,10 @@
 }
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
-	background-color: $color-mythic-very-dim;
 	background-image: $striped-pattern-background;
-	border: 2px solid $color-section-border-alt;
-	color: $color-text-over-mythic-very-dim;
+	background: $color-blue-highlight;
+	border: 2px solid $color-blue-highlight-bright;
+	color: $color-text-brighter;
 	padding: $lhse*.375 4.17% $lhse*.5;
 	margin: 0 auto $lhse*.25;
 	text-align: center;
@@ -22,7 +22,7 @@
 
 	h3 {
 		margin-top: $lhse*.5;
-		color: inherit;
+		color: $color-text-extra-brighter;
 	}
 	.button-group {
 		display: flex;
@@ -45,6 +45,7 @@
 		display: inline-block;
 		min-width: 4ch;
 		text-align: right;
+		color: $color-text-extra-brighter;
 	}
 }
 .deck-info {

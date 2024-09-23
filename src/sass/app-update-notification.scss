@@ -2,10 +2,9 @@
 
 .update-notification {
 	z-index: index($layers, update-notif);
-	background: $color-background-alt;
-	background: $striped-pattern-background;
+	background: $color-blue-highlight;
+	color: $color-text-brighter;
 	padding: 0 $lhse*.5;
-	color: $color-text-over-mythic-very-dim;
 	min-height: $height-app-header-short;
 	display: flex;
 	align-items: center;
@@ -17,7 +16,7 @@
 		text-align: center;
 	}
 	strong {
-		color: inherit;
+		color: $color-text-extra-brighter;
 	}
 	.button-container {
 		width: $lhse*3.5;
@@ -34,6 +33,7 @@
 	}
 	.reloading {
 		font-style: italic;
+		color: $color-text-extra-brighter;
 	}
 }
 
