@@ -130,93 +130,91 @@ export default {
 			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
 		assignCardData (data, oldCard) {
-			this.$nextTick(() => { // Using `$nextTick()` is probably helping prevent bugs involved with updating old card data sets.
-				const newCard = {}
+			const newCard = {}
 
-				if (data.card_faces) { // If the card is a double-faced or split card...
-					const dataFace1 = data.card_faces[0]
-					const dataFace2 = data.card_faces[1]
+			if (data.card_faces) { // If the card is a double-faced or split card...
+				const dataFace1 = data.card_faces[0]
+				const dataFace2 = data.card_faces[1]
 
-					newCard.name = this.curlApostrophes(dataFace1.name)
-					newCard.name2 = this.curlApostrophes(dataFace2.name)
+				newCard.name = this.curlApostrophes(dataFace1.name)
+				newCard.name2 = this.curlApostrophes(dataFace2.name)
 
-					if (data.mana) {
-						newCard.mana = data.mana_cost
-					} else {
-						newCard.mana = dataFace1.mana_cost
-						newCard.mana2 = dataFace2.mana_cost
-					}
-
-					newCard.type = dataFace1.type_line
-					newCard.type2 = dataFace2.type_line
-
-					if (!data.cmc) { // Needed for special exceptions such as: https://scryfall.com/card/sld/1544/adrix-and-nev-twincasters-adrix-and-nev-twincasters
-						newCard.cmc = dataFace1.cmc
-					}
-
-					if (data.colors) {
-						newCard.colors = data.colors
-					} else {
-						newCard.colors = dataFace1.colors
-						newCard.colors2 = dataFace2.colors
-					}
-
-					if (data.image_uris) {
-						newCard.img = data.image_uris.normal
-					} else {
-						newCard.img = dataFace1.image_uris.normal
-						newCard.img2 = dataFace2.image_uris.normal
-					}
-
-					if (data.power) {
-						newCard.power = data.power
-					} else {
-						newCard.power = dataFace1.power
-						newCard.power2 = dataFace2.power
-					}
-
-					if (data.toughness) {
-						newCard.toughness = data.toughness
-					} else {
-						newCard.toughness = dataFace1.toughness
-						newCard.toughness2 = dataFace2.toughness
-					}
-				} else { // Else the card is a single-faced card.
-					newCard.name = this.curlApostrophes(data.name)
+				if (data.mana) {
 					newCard.mana = data.mana_cost
-					newCard.type = data.type_line
-					newCard.colors = data.colors
-					newCard.img = data.image_uris.normal
-					newCard.power = data.power
-					newCard.toughness = data.toughness
-				}
-
-				if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
-					newCard.cmc = data.cmc
-				}
-				newCard.rarity = data.rarity
-				newCard.keywords = data.keywords
-				newCard.layout = data.layout
-				newCard.link = data.scryfall_uri
-				newCard.imgVersion = this.$store.state.latestImageVersion
-				newCard.qty = 1
-
-				if (oldCard) {
-					newCard.img = oldCard.img
-					newCard.imgVersion = oldCard.imgVersion
-					newCard.link = oldCard.link
-					newCard.gapAfter = oldCard.gapAfter
-					newCard.qty = oldCard.qty
-
-					if (oldCard.img2) {
-						newCard.img2 = oldCard.img2
-					}
-
-					this.updateOldCard(newCard, oldCard.inSideboard)
 				} else {
-					this.validateNewCard(newCard)
+					newCard.mana = dataFace1.mana_cost
+					newCard.mana2 = dataFace2.mana_cost
 				}
-			})
+
+				newCard.type = dataFace1.type_line
+				newCard.type2 = dataFace2.type_line
+
+				if (!data.cmc) { // Needed for special exceptions such as: https://scryfall.com/card/sld/1544/adrix-and-nev-twincasters-adrix-and-nev-twincasters
+					newCard.cmc = dataFace1.cmc
+				}
+
+				if (data.colors) {
+					newCard.colors = data.colors
+				} else {
+					newCard.colors = dataFace1.colors
+					newCard.colors2 = dataFace2.colors
+				}
+
+				if (data.image_uris) {
+					newCard.img = data.image_uris.normal
+				} else {
+					newCard.img = dataFace1.image_uris.normal
+					newCard.img2 = dataFace2.image_uris.normal
+				}
+
+				if (data.power) {
+					newCard.power = data.power
+				} else {
+					newCard.power = dataFace1.power
+					newCard.power2 = dataFace2.power
+				}
+
+				if (data.toughness) {
+					newCard.toughness = data.toughness
+				} else {
+					newCard.toughness = dataFace1.toughness
+					newCard.toughness2 = dataFace2.toughness
+				}
+			} else { // Else the card is a single-faced card.
+				newCard.name = this.curlApostrophes(data.name)
+				newCard.mana = data.mana_cost
+				newCard.type = data.type_line
+				newCard.colors = data.colors
+				newCard.img = data.image_uris.normal
+				newCard.power = data.power
+				newCard.toughness = data.toughness
+			}
+
+			if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
+				newCard.cmc = data.cmc
+			}
+			newCard.rarity = data.rarity
+			newCard.keywords = data.keywords
+			newCard.layout = data.layout
+			newCard.link = data.scryfall_uri
+			newCard.imgVersion = this.$store.state.latestImageVersion
+			newCard.qty = 1
+
+			if (oldCard) {
+				newCard.img = oldCard.img
+				newCard.imgVersion = oldCard.imgVersion
+				newCard.link = oldCard.link
+				newCard.gapAfter = oldCard.gapAfter
+				newCard.qty = oldCard.qty
+
+				if (oldCard.img2) {
+					newCard.img2 = oldCard.img2
+				}
+
+				this.updateOldCard(newCard, oldCard.inSideboard)
+			} else {
+				this.validateNewCard(newCard)
+			}
 		},
 		updateOldCard (newCard, inSideboard) {
 			this.$store.commit('showSideboard', inSideboard)
