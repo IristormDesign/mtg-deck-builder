@@ -9,11 +9,8 @@ $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 45.83%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: desaturate(lighten($color-mythic-orange, 12.5%), 16.67%);
-$color-link-focus: $color-mythic-orange;
-$color-link-dark: color.scale($color-link,
-	$lightness: -25%
-);
-$color-link-dim: desaturate(darken($color-link, 4.17%), 40%);
+$color-link-focus: saturate(lighten($color-link, 4.17%), 100%);
+$color-link-dim: desaturate(darken($color-link, 0%), 20%);
 $color-button: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
@@ -25,7 +22,7 @@ $color-link-active: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
-$color-input-bg-focus: desaturate(darken($color-mythic-yellow, 45.83%), 50%);
+$color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
 $color-background-alt: desaturate(lighten($color-mythic-yellow, 20.83%), 62.5%);
 $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 
@@ -140,6 +137,8 @@ $striped-pattern-background: repeating-linear-gradient(-45deg,
 	darken($color-mythic-very-dim, (1/64)*100%) .5em,
 	darken($color-mythic-very-dim, (1/64)*100%) 1em
 );
+$filter-brightness-button-hover: brightness(1.2);
+$filter-brightness-button-active: brightness(.8);
 $x: 2px dashed rgba(#c0f, .6);
 
 // MIXINS

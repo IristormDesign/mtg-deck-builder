@@ -143,8 +143,8 @@ $outline-width-stat-section: 2px;
 				.mana-symbol,
 				.rarity-symbol  {
 					box-shadow:
-						0 0 0 1px $color-group-bg,
-						0 0 0 2.25px $color-link-focus;
+						0 0 0 1.25px $color-group-bg-darker,
+						0 0 0 2.5px $color-link-focus;
 				}
 			}
 			&:active {
@@ -161,8 +161,8 @@ $outline-width-stat-section: 2px;
 				.mana-symbol,
 				.rarity-symbol {
 					box-shadow:
-						0 0 0 1px $color-group-bg,
-						0 0 0 2.25px $color-link-active;
+						0 0 0 1.25px $color-blue-highlight,
+						0 0 0 2.5px $color-link-active;
 				}
 			}
 			th {

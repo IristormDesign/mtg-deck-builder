@@ -147,7 +147,7 @@
 
 	&:hover,
 	&:focus {
-		filter: brightness(1.2);
+		filter: $filter-brightness-button-hover;
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;
 	}
@@ -158,7 +158,7 @@
 		border-bottom-width: 1px;
 		margin-top: 0;
 		margin-bottom: 0;
-		filter: brightness(.8);
+		filter: $filter-brightness-button-active;
 	}
 	&:active,
 	&:disabled {
@@ -180,11 +180,14 @@
 }
 @mixin link-colors($color) {
 	color: $color;
-	text-decoration-color: color.scale($color, $lightness: -50%);
+	text-decoration-color: color.scale($color,
+		$lightness: -40%, $saturation: 20%
+	);
 }
 @mixin link {
-	color: $color-link;
-	text-decoration: underline solid $color-link-dark;
+	@include link-colors($color-link);
+	text-decoration-line: underline;
+	text-decoration-style: solid;
 	text-decoration-thickness: 1px;
 	text-underline-offset: .125em;
 	padding: 0;
@@ -203,25 +206,10 @@
 
 	&:hover,
 	&:focus {
-		color: $color-link-focus;
-		text-decoration-color: color.scale($color-link-active,
-			$lightness: -37.5%
-		);
+		@include link-colors($color-link-focus);
 	}
 	&:active {
-		color: $color-link-active;
-		text-decoration-color: $color-link-focus;
-	}
-}
-@mixin link-alt {
-	color: saturate(darken($color-mythic-yellow-complement, 6.25%), 50%);
-
-	&:hover,
-	&:focus {
-		color: saturate(darken($color-mythic-complement, 6.25%), 50%);
-	}
-	&:active {
-		color: #fff;
+		@include link-colors($color-link-active);
 	}
 }
 @mixin screen-readers-only {

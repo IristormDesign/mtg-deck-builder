@@ -173,7 +173,8 @@ option {
 	width: $lhse*.8;
 	height: $lhse*.75;
 	cursor: pointer;
-	background: none;
+	border-width: 2px;
+	transition: none;
 
 	&:hover,
 	&:focus-visible {
@@ -184,31 +185,30 @@ option {
 	&:active {
 		+ label {
 			color: $color-link-active;
-			transition-duration: 0s;
 		}
 	}
 	&::after {
 		font: normal #{80%}/#{1} monospace; // Setting the font family to `monospace` is a hack for iOS that forces the text content (the check mark) to be displayed as colored plain text instead of as an emoji.
 		content: '\2714'; // Check mark sign.
-		color: $color-link-active;
+		color: $color-black-label-text;
 		opacity: 0;
 		text-align: center;
 		height: 80%;
-		transition: all $transition-duration-standard ease;
 	}
 	&:checked {
-		background: $color-link-dark;
+		background: $color-button;
 
 		&::after {
 			opacity: 1;
-			transition-duration: 0s;
+		}
+		&:hover {
+			filter: $filter-brightness-button-hover;
 		}
 		&:active {
-			background: $color-input-bg-active;
-
-			&::after {
-				color: $color-link;
-			}
+			filter: $filter-brightness-button-active;
 		}
+	}
+	+ label {
+		transition-duration: 0s;
 	}
 }
