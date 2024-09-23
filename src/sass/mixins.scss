@@ -204,15 +204,13 @@
 	&:hover,
 	&:focus {
 		color: $color-link-focus;
-		text-decoration-color: color.scale(
-			$color-link-focus, $lightness: -33.33%
-		); // Lightness scale should be equal to that of normal link's text-decoration-color.
+		text-decoration-color: color.scale($color-link-active,
+			$lightness: -37.5%
+		);
 	}
 	&:active {
 		color: $color-link-active;
-		text-decoration-color: color.scale(
-			$color-link-active, $lightness: -33.33%
-		); // Lightness scale should be equal to that of normal link's text-decoration-color.
+		text-decoration-color: $color-link-focus;
 	}
 }
 @mixin link-alt {
@@ -249,30 +247,35 @@
 	$color-scroll-container-shadow: darken($color-mythic-orange, 0%);
 	$color-scroll-container-shadow: $color-link-focus;
 
-	background:
+	background-image:
 		/* Top glow cover */
 		linear-gradient(
 			$color-group-bg 33.33%,
 			rgba($color-group-bg, 0)
-		) center top,
+		),
 
 		/* Bottom glow cover */
 		linear-gradient(
 			rgba($color-group-bg, 0),
 			$color-group-bg 66.67%
-		) center bottom,
+		),
 
 		/* Top glow */
 		radial-gradient(farthest-side at 50% 0,
 			rgba($color-scroll-container-shadow, .25),
 			rgba($color-scroll-container-shadow, 0)
-		) center top,
+		),
 
 		/* Bottom glow */
 		radial-gradient(farthest-side at 50% 100%,
 			rgba($color-scroll-container-shadow, .25),
 			rgba($color-scroll-container-shadow, 0)
-		) center bottom;
+		);
+	background-position:
+		center top,
+		center bottom,
+		center top,
+		center bottom;
 	background-size:
 		100% $lhse*3,
 		100% $lhse*3,

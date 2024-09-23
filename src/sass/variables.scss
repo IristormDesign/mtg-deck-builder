@@ -8,26 +8,24 @@
 $color-mythic-orange: #ea4b12; // Sampled
 $color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 45.83%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
-$color-link: lighten($color-mythic-orange, 16.67%);
-$color-link-focus: saturate(lighten($color-mythic-orange, 6.25%), 8.33%);
+$color-link: desaturate(lighten($color-mythic-orange, 12.5%), 16.67%);
+$color-link-focus: $color-mythic-orange;
 $color-link-dark: color.scale($color-link,
-	$lightness: -33.33%, $saturation: -16.67%
-); // Lightness darkened enough to just NOT pass color contrast accessibility check.
+	$lightness: -25%
+);
 $color-link-dim: desaturate(darken($color-link, 4.17%), 40%);
 $color-button: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
-$color-button-mythic-orange: desaturate(lighten($color-mythic-orange, 4.17%), 16.67%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: lighten($color-mythic-very-dim, 8.33%); // Lighten percentage matches that of $color-section-border.
 
 // YELLOW-BASED COLORS
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
-$color-link-active: lighten($color-mythic-yellow, 12.5%);
-$color-button-mythic-lighter: desaturate(lighten($color-mythic-yellow, 8.33%), 16.67%);
+$color-link-active: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
-$color-input-bg-focus: darken($color-mythic-yellow, 45.83%);
+$color-input-bg-focus: desaturate(darken($color-mythic-yellow, 45.83%), 50%);
 $color-background-alt: desaturate(lighten($color-mythic-yellow, 20.83%), 62.5%);
 $color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 
@@ -37,6 +35,7 @@ $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 56.25%);
 $color-group-bg-darker: saturate(darken($color-group-bg, 6.25%), 8.33%);
 $color-text: lighten($color-group-bg, 62.5%);
+$color-text: lighten($color-group-bg, 58.33%);
 $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);

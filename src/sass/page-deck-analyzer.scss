@@ -141,9 +141,10 @@ $outline-width-stat-section: 2px;
 					color: $color-link-focus;
 				}
 				.mana-symbol,
-				.rarity-symbol {
-					outline: 1px solid $color-link-focus;
-					outline-offset: 1px;
+				.rarity-symbol  {
+					box-shadow:
+						0 0 0 1px $color-group-bg,
+						0 0 0 2.25px $color-link-focus;
 				}
 			}
 			&:active {
@@ -159,7 +160,9 @@ $outline-width-stat-section: 2px;
 				}
 				.mana-symbol,
 				.rarity-symbol {
-					outline-color: $color-link-active;
+					box-shadow:
+						0 0 0 1px $color-group-bg,
+						0 0 0 2.25px $color-link-active;
 				}
 			}
 			th {
@@ -246,17 +249,15 @@ $outline-width-stat-section: 2px;
 		}
 	}
 	.height-limiter {
-		@include glowing-edges-of-scrollable-container;
+		// @include glowing-edges-of-scrollable-container;
 		overflow-y: auto;
 		max-height: $lhse * 13.4;
+		background-color: $color-group-bg; // This fixes a weird font-rendering glitch in Chrome that causes the element's text color to subtly dim while a scrollbar is present.
 	}
 	.mana-symbol {
 		font-size: 112.5%;
 		margin-top: -$lhse*.0625;
 		margin-bottom: -$lhse*.0625;
-	}
-	.rarity-symbol {
-		filter: saturate(.875);
 	}
 	footer {
 		display: flex;
