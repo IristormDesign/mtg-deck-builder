@@ -71,8 +71,10 @@ export default {
 					switch (attr) {
 						case 'Sorcery':
 							return 'sorceries'
+						case 'Kindred/Tribal':
+							return 'cards of the kindred or tribal type'
 						case 'Other':
-							return 'non-standard card types'
+							return 'cards of non-standard card types'
 						default:
 							return `${attr.toLowerCase()}s`
 					}

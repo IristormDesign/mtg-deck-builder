@@ -46,6 +46,7 @@ export default {
 				Artifact: {},
 				Sorcery: {},
 				Instant: {},
+				'Kindred/Tribal': {},
 				Land: {},
 				Other: {}
 			}

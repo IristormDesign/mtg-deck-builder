@@ -44,6 +44,7 @@ export default new Vuex.Store({
 				Artifact: /\bArtifact\b/,
 				Sorcery: /\bSorcery\b/,
 				Instant: /\bInstant\b/,
+				'Kindred/Tribal': /\bKindred\b/,
 				Land: /\bLand\b/
 			}
 		},
