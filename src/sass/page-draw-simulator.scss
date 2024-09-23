@@ -18,7 +18,7 @@
 		grid-template-columns: 1fr 1fr 2fr;
 		align-items: center;
 		overflow: hidden;
-		width: $width-card-buttons-wide + $width-card-star - $lhse*.5;
+		width: $width-card-bars-wide + $width-card-star - $lhse*.5;
 		height: $height-deck-header-component;
 	}
 	.deck-info {
@@ -61,7 +61,7 @@
 		li {
 			&:nth-last-of-type(8) {
 				margin-bottom: $margin-card-gap-after;
-				box-shadow: $box-shadow-card-button-cluster;
+				box-shadow: $box-shadow-card-bar-cluster;
 			}
 		}
 	}

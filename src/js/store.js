@@ -18,7 +18,7 @@ export default new Vuex.Store({
 			attribute: null
 		},
 		decks: [],
-		focusCardButton: '',
+		focusCardBar: '',
 		highlightedCardLIIndex: -1,
 		isMobileLayout: () => window.innerWidth <= 768, // Needs to be a function to return updated values if the viewport changes. The given number must match media query max-width in CSS.
 		latestDeckDataVersion: 3,
@@ -69,8 +69,8 @@ export default new Vuex.Store({
 		decks (state, payload) {
 			state.decks = payload
 		},
-		focusCardButton (state, payload) {
-			state.focusCardButton = payload
+		focusCardBar (state, payload) {
+			state.focusCardBar = payload
 		},
 		highlightedCardLIIndex (state, payload) {
 			state.highlightedCardLIIndex = payload

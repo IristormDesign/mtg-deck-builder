@@ -1,7 +1,7 @@
 <template>
 	<button
-		@click="clickCardButton()"
-		:class="['card-button', setButtonColor]"
+		@click="clickCardBar()"
+		:class="['card-bar', setButtonColor]"
 	>
 		<div class="card-label-group">
 			<h4 class="name" v-html="cardName"></h4>
@@ -105,8 +105,8 @@ export default {
 					return null
 			}
 		},
-		focusCardButton () {
-			return this.$store.state.focusCardButton
+		focusCardBar () {
+			return this.$store.state.focusCardBar
 		}
 	},
 	methods: {
@@ -136,16 +136,16 @@ export default {
 					'<span class="mana-symbol long-hybrid" title="Hybrid mana"><div>…</div></span>'
 				)
 		},
-		clickCardButton () {
+		clickCardBar () {
 			this.viewCard(this.card)
 
 			this.$store.commit('highlightedCardLIIndex', -1)
-			this.$store.commit('focusCardButton', this.i)
+			this.$store.commit('focusCardBar', this.i)
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-buttons.scss';
+	@import '@/sass/card-bars.scss';
 </style>

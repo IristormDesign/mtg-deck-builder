@@ -12,7 +12,7 @@
 				<a href="#m-card-list">Card list</a>
 				<ol>
 					<li><a href="#m-card-stars">Card stars</a></li>
-					<li><a href="#m-card-buttons">Card buttons</a></li>
+					<li><a href="#m-card-bars">Card bars</a></li>
 					<li><a href="#m-card-quantities">Card quantities</a></li>
 				</ol>
 			</li>

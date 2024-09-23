@@ -11,7 +11,7 @@
 			:class="(card.gapAfter) ? 'gap-after' : null"
 		>
 			<card-star :card="card" :deck="deck" :i="i" />
-			<card-button :card="card" :deck="deck" :i="i" />
+			<card-bar :card="card" :deck="deck" :i="i" />
 			<card-quantity :card="card" :deck="deck" :i="i" />
 		</li>
 	</transition-group>
@@ -19,12 +19,12 @@
 
 <script>
 import CardStar from '@/components/deck-page/CardStar.vue'
-import CardButton from '@/components/deck-page/CardButton.vue'
+import CardBar from '@/components/deck-page/CardBar.vue'
 import CardQuantity from '@/components/deck-page/CardQuantity.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 
 export default {
-	components: { CardStar, CardButton, CardQuantity },
+	components: { CardStar, CardBar, CardQuantity },
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object

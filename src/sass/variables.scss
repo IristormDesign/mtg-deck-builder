@@ -99,8 +99,8 @@ $height-app-header-short: $height-deck-header-component;
 $height-app-header-medium: $height-deck-header-component;
 $height-app-header-tall: $lhse*3;
 $margin-card-gap-after: 9px; // This value used to be `$lhse*.25`. However, that value sometimes caused inconsistent margins between cards. Making this a certain pixel value prevents those inconsistent margins.
-$width-card-buttons-wide: $lhse*23; // Set to have the width between the card name and the mana cost on the card buttons to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
-$width-card-buttons-narrow: $lhse*11.75;
+$width-card-bars-wide: $lhse*23; // Set to have the width between the card name and the mana cost on the card bars to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
+$width-card-bars-narrow: $lhse*11.75;
 $width-card-star: 2em;
 $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
@@ -119,7 +119,7 @@ $outline-keyboard-focus: 2px solid $color-button;
 // SHADOWS AND GLOWS
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
 $box-shadow-button-cast-shadow: -1px .167em .125em 1px rgba(#000, divide(1, 3));
-$box-shadow-card-button-cluster: 0 2px 2px rgba(#000, .25);
+$box-shadow-card-bar-cluster: 0 2px 2px rgba(#000, .25);
 
 // TRANSITIONS
 $transition-duration-standard: .25s;

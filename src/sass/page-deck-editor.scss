@@ -216,7 +216,7 @@ $width-card-adder-button: $lhse*2.3333;
 @mixin viewing-controls-single-layer-compressed {
 	.deck-editor {
 		.control-panel {
-			max-width: $width-card-buttons-wide + $width-card-star + $width-qty-column - $lhse*.5;
+			max-width: $width-card-bars-wide + $width-card-star + $width-qty-column - $lhse*.5;
 		}
 		.viewing-controls {
 			grid-template-columns: auto auto;
@@ -249,10 +249,10 @@ $width-card-adder-button: $lhse*2.3333;
 @mixin viewing-controls-single-layer {
 	.deck-editor {
 		.control-panel {
-			max-width: $width-card-buttons-narrow + $width-card-star + $width-qty-column - $lhse*.5;
+			max-width: $width-card-bars-narrow + $width-card-star + $width-qty-column - $lhse*.5;
 		}
 		.viewing-controls {
-			height: $lhse*3.0833; // Adjust to a height that prevents wide gaps between card buttons.
+			height: $lhse*3.0833; // Adjust to a height that prevents wide gaps between card bars.
 
 			.card-sorter label,
 			.card-group-switch h3 {
@@ -311,7 +311,7 @@ $width-card-adder-button: $lhse*2.3333;
 		grid-column: span 1;
 
 		form {
-			max-width: $width-card-buttons-narrow + $width-card-adder-button;
+			max-width: $width-card-bars-narrow + $width-card-adder-button;
 		}
 		label {
 			grid-column: span 2;

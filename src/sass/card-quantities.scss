@@ -1,6 +1,6 @@
 @import 'variables';
 
-@mixin long-card-buttons {
+@mixin long-card-bars {
 	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
@@ -10,7 +10,7 @@
 		}
 	}
 }
-@mixin condensed-card-buttons {
+@mixin condensed-card-bars {
 	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
@@ -26,7 +26,7 @@
 	}
 }
 
-@include long-card-buttons;
+@include long-card-bars;
 
 .qty {
 	display: flex;
@@ -168,10 +168,10 @@
 }
 
 @media (max-width: $width-app-breakpoint-tablet) {
-	@include condensed-card-buttons();
+	@include condensed-card-bars();
 }
 @media (max-width: ($min-width-app * .8)) {
-	@include long-card-buttons();
+	@include long-card-bars();
 
 	.card-list-section {
 		li {
@@ -182,7 +182,7 @@
 	}
 }
 @media (max-width: ($min-width-app * .6667)) {
-	@include condensed-card-buttons();
+	@include condensed-card-bars();
 
 	.qty {
 		.qty-buttons {

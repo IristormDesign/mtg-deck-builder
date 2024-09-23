@@ -1,25 +1,25 @@
 @use "sass:color";
 @import 'variables';
 
-@mixin box-shadow-hover-card-button($color) {
-	$border-width-card-button: 2.5px;
+@mixin box-shadow-hover-card-bar($color) {
+	$border-width-card-bar: 2.5px;
 
 	box-shadow:
 		0 0 0 .5px rgba(#000, .875),
-		0 0 0 $border-width-card-button $color,
-		.3333px -1px 0 $border-width-card-button color.scale($color,
+		0 0 0 $border-width-card-bar $color,
+		.3333px -1px 0 $border-width-card-bar color.scale($color,
 			$lightness: 50%
 		),
-		-.3333px 1px 0 $border-width-card-button color.scale($color,
+		-.3333px 1px 0 $border-width-card-bar color.scale($color,
 			$lightness: -50%, $saturation: -50%
 		),
-		0 -1px divide($lhse, 4) $border-width-card-button rgba(#000, .25);
+		0 -1px divide($lhse, 4) $border-width-card-bar rgba(#000, .25);
 }
-@mixin long-card-buttons {
-	.card-button {
+@mixin long-card-bars {
+	.card-bar {
 		display: flex;
 		height: 23px;
-		max-width: $width-card-buttons-wide;
+		max-width: $width-card-bars-wide;
 
 		.card-label-group {
 			width: 50%;
@@ -36,10 +36,10 @@
 		}
 	}
 }
-@mixin condensed-card-buttons {
-	.card-button {
+@mixin condensed-card-bars {
+	.card-bar {
 		display: block;
-		max-width: $width-card-buttons-narrow;
+		max-width: $width-card-bars-narrow;
 		height: 43px;
 
 		.card-label-group {
@@ -61,9 +61,9 @@
 	}
 }
 
-@include long-card-buttons();
+@include long-card-bars();
 
-.card-button {
+.card-bar {
 	margin: 0;
 	padding: 0;
 	border-radius: $border-radius-button;
@@ -160,7 +160,7 @@
 		&:hover,
 		&:focus-within,
 		&.highlight {
-			.card-button {
+			.card-bar {
 				filter: contrast(116.67%);
 				transition-duration: 0s;
 				transition-property: filter, box-shadow, border-color;
@@ -178,30 +178,30 @@
 		}
 		&:focus-within,
 		&.highlight {
-			.card-button {
+			.card-bar {
 				&.white {
-					@include box-shadow-hover-card-button(lighten($color-mana-white, 25%));
+					@include box-shadow-hover-card-bar(lighten($color-mana-white, 25%));
 				}
 				&.blue {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-blue, 40%), 16.67%));
+					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-blue, 40%), 16.67%));
 				}
 				&.black {
-					@include box-shadow-hover-card-button(darken($color-mana-black, 40%));
+					@include box-shadow-hover-card-bar(darken($color-mana-black, 40%));
 				}
 				&.red {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-red, 29.17%), 25%));
+					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-red, 29.17%), 25%));
 				}
 				&.green {
-					@include box-shadow-hover-card-button(desaturate(darken($color-mana-green, 25%), 16.67%));
+					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-green, 25%), 16.67%));
 				}
 				&.multi {
-					@include box-shadow-hover-card-button(desaturate($color-mana-hybrid, 16.67%));
+					@include box-shadow-hover-card-bar(desaturate($color-mana-hybrid, 16.67%));
 				}
 				&.colorless {
-					@include box-shadow-hover-card-button(darken($color-frame-generic, 4.17%));
+					@include box-shadow-hover-card-bar(darken($color-frame-generic, 4.17%));
 				}
 				&.land {
-					@include box-shadow-hover-card-button(darken($color-frame-land, 16.67%));
+					@include box-shadow-hover-card-bar(darken($color-frame-land, 16.67%));
 				}
 			}
 		}
@@ -209,10 +209,10 @@
 }
 
 @media (max-width: $width-app-breakpoint-tablet) {
-	@include condensed-card-buttons();
+	@include condensed-card-bars();
 }
 @media (max-width: ($min-width-app * .5)) {
-	.card-button {
+	.card-bar {
 		font-size: 87.5%;
 		height: 35px;
 
@@ -226,7 +226,7 @@
 }
 
 @media (pointer: coarse) {
-	.card-button {
+	.card-bar {
 		min-height: 27px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra pixels so that the list items appear to have consistent gaps between each other.
 	}
 }

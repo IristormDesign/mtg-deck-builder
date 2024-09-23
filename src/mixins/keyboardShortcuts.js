@@ -78,10 +78,10 @@ export default {
 			this.kbShortcutsAllDeckPageModes(keyEvent)
 		},
 		clickToQuitKeyboardShortcuts () {
-			const cardButtons = document.querySelectorAll('.card-button')
+			const cardBars = document.querySelectorAll('.card-bar')
 
-			for (let i = 0; i < cardButtons.length; i++) {
-				if (cardButtons[i] === document.activeElement) {
+			for (let i = 0; i < cardBars.length; i++) {
+				if (cardBars[i] === document.activeElement) {
 					return
 				}
 			}

@@ -61,7 +61,7 @@ export default {
 				this.showStarredCardIfAvailable()
 			}
 
-			this.$store.commit('focusCardButton', null)
+			this.$store.commit('focusCardBar', null)
 			this.$store.commit('showSideboard', false)
 		}
 	},

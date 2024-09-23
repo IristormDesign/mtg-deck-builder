@@ -38,7 +38,7 @@
 			<ul v-if="drawnList.length > 0">
 				<li v-for="(card, i) in drawnList" :key="i">
 					<card-star :card="card" :deck="deck" :i="i" />
-					<card-button :card="card" :deck="deck" :i="i" />
+					<card-bar :card="card" :deck="deck" :i="i" />
 				</li>
 			</ul>
 			<div
@@ -63,11 +63,11 @@
 <script>
 import CardImage from '@/components/deck-page/CardImage.vue'
 import CardStar from '@/components/deck-page/CardStar.vue'
-import CardButton from '@/components/deck-page/CardButton.vue'
+import CardBar from '@/components/deck-page/CardBar.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 
 export default {
-	components: { CardImage, CardStar, CardButton },
+	components: { CardImage, CardStar, CardBar },
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object

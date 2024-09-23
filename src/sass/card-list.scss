@@ -65,8 +65,8 @@ $min-height-card-list: $lhse*6;
 		&:last-of-type {
 			margin-bottom: $margin-card-gap-after;
 
-			.card-button {
-				box-shadow: $box-shadow-card-button-cluster;
+			.card-bar {
+				box-shadow: $box-shadow-card-bar-cluster;
 			}
 		}
 		&.highlight {
