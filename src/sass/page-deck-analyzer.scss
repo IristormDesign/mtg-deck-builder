@@ -1,6 +1,7 @@
 @import 'variables';
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
+$outline-table-row-hover: 1px solid link-decoration-color($color-link-focus);
 $outline-width-stat-section: 2px;
 
 .deck-analyzer {
@@ -136,15 +137,10 @@ $outline-width-stat-section: 2px;
 
 			&:hover {
 				background: $color-group-bg-darker;
+				outline: $outline-table-row-hover;
 
 				th {
 					color: $color-link-focus;
-				}
-				.mana-symbol,
-				.rarity-symbol  {
-					box-shadow:
-						0 0 0 1.25px $color-group-bg-darker,
-						0 0 0 2.5px $color-link-focus;
 				}
 			}
 			&:active {
@@ -157,12 +153,6 @@ $outline-width-stat-section: 2px;
 				td {
 					border-right-color: $color-blue-highlight-dim;
 					border-left-color: $color-blue-highlight-dim;
-				}
-				.mana-symbol,
-				.rarity-symbol {
-					box-shadow:
-						0 0 0 1.25px $color-blue-highlight,
-						0 0 0 2.5px $color-link-active;
 				}
 			}
 			th {
@@ -210,6 +200,7 @@ $outline-width-stat-section: 2px;
 				&:active {
 					cursor: default;
 					color: $color-text;
+					outline: none;
 					background: none;
 				}
 				&:active {
@@ -219,6 +210,7 @@ $outline-width-stat-section: 2px;
 			&:hover {
 				background: $color-group-bg-darker;
 				color: $color-link-focus;
+				outline: $outline-table-row-hover;
 			}
 			&:active {
 				background: $color-blue-highlight-dark;

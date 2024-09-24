@@ -178,11 +178,14 @@
 		}
 	}
 }
-@mixin link-colors($color) {
-	color: $color;
-	text-decoration-color: color.scale($color,
+@function link-decoration-color($color) {
+	@return color.scale($color,
 		$lightness: -40%, $saturation: 20%
 	);
+}
+@mixin link-colors($color) {
+	color: $color;
+	text-decoration-color: link-decoration-color($color);
 }
 @mixin link {
 	@include link-colors($color-link);
