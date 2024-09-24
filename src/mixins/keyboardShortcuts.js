@@ -126,7 +126,13 @@ export default {
 					this.setHighlightedIndex(-1)
 				})
 			} else {
-				if (this.anyInputActive()) return
+				if (this.anyInputActive()) {
+					if (document.activeElement.classList.contains('card-star')) {
+						document.activeElement.blur()
+					} else {
+						return
+					}
+				}
 			}
 
 			// The following keyboard shortcuts can work at anytime, even when the card list is empty.
