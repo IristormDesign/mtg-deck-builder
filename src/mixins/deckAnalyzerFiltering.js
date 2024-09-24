@@ -49,11 +49,6 @@ export default {
 					category: null,
 					attribute: null
 				})
-			} else if (
-				category === 'powerToughness' &&
-				attribute === '*'
-			) {
-				console.log('😎')
 			} else {
 				store.commit('analyzerFilter', {
 					category: category,

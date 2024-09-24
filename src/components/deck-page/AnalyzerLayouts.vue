@@ -53,8 +53,6 @@ export default {
 		analyzerFilter () {
 			this.layoutStats = {}
 			this.prepareLayoutStats()
-
-			console.log(Object.keys(this.layoutStats).length)
 		}
 	},
 	mounted () {
