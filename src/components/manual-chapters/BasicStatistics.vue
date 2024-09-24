@@ -1,5 +1,5 @@
-<template>
-	<section id="m-basic-statistics">
+<template functional>
+	<section id="m-basic-statistics" key="basic-statistics">
 		<h4>Basic Statistics</h4>
 		<p>
 			<img class="screenshot"

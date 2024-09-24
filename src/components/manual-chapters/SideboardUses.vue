@@ -1,5 +1,5 @@
-<template>
-	<section id="m-sideboard-uses">
+<template functional>
+	<section id="m-sideboard-uses" key="sideboard-uses">
 		<h5>Sideboard Uses</h5>
 		<p>The sideboard is a <a href="#m-card-groups">card group</a> containing cards that are related to your deck, but that aren’t in your deck’s main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 		<ul>

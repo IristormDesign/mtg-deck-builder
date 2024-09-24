@@ -1,5 +1,5 @@
-<template>
-	<section id="m-create-deck">
+<template functional>
+	<section id="m-create-deck" key="create-deck">
 		<h3>Create Deck Page</h3>
 		<p>The Create Deck page is where you can start on a new deck or import a pre-made deck. Either method adds the deck to the <a href="#m-deck-menu">deck menu</a>.</p>
 		<p>If you choose to start a new deck, you first give it a name, then the app takes you to an empty <a href="#m-deck-pages">deck page</a> for that deck.</p>

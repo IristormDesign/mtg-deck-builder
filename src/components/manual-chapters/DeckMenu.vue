@@ -1,5 +1,5 @@
-<template>
-	<section id="m-deck-menu">
+<template functional>
+	<section id="m-deck-menu" key="deck-menu">
 		<h4>Deck Menu</h4>
 		<p>When you click the Open Deck button in the <a href="#m-app-header">app header</a>, the deck menu appears. It lists of all of your currently unopened decks, in alphabetical order by name, that are <a href="#m-storage-of-deck-data">stored</a> in MTG Deck Builder.</p>
 		<p>Beside each deck’s name are the <a href="#m-symbols">symbols</a> of the mana colors required by the deck’s spells, ordered from the most frequent color to the least.</p>

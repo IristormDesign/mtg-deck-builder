@@ -1,5 +1,5 @@
-<template>
-	<section id="m-deck-page-modes">
+<template functional>
+	<section id="m-deck-page-modes" key="deck-page-modes">
 		<h3>Deck Page Modes</h3>
 		<p>A <a href="#m-deck-pages">deck page</a> is set to any one of three deck page modes at a time. These modes are the <a href="#m-deck-editor">Deck Editor</a>, the <a href="#m-deck-analyzer">Deck Analyzer</a>, and the <a href="#m-draw-sim">Draw Simulator</a>, and each provides you a different way to interact with your deck in the app.</p>
 		<p>The next chapters of this user manual explain in detail how each deck page mode works.</p>

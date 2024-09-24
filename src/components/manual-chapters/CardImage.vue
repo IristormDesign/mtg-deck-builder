@@ -1,5 +1,5 @@
-<template>
-	<section id="m-card-image">
+<template functional>
+	<section id="m-card-image" key="card-image">
 		<h4>Card Image</h4>
 		<p>
 			<img class="screenshot float-left"

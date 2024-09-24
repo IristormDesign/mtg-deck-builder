@@ -1,5 +1,5 @@
-<template>
-	<section id="m-kbsc-draw-sim">
+<template functional>
+	<section id="m-kbsc-draw-sim" key="kbsc-draw-sim">
 		<h4>Keyboard Shortcuts: Draw Simulator Actions</h4>
 		<p>The <a href="#m-draw-sim">Draw Simulator</a> accepts the following <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>:</p>
 

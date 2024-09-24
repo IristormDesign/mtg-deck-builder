@@ -1,4 +1,4 @@
-<template>
+<template functional>
 	<article class="content-box">
 		<h2>Privacy Policy</h2>
 

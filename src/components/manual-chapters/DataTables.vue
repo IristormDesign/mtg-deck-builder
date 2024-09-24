@@ -1,5 +1,5 @@
-<template>
-	<section id="m-data-tables">
+<template functional>
+	<section id="m-data-tables" key="data-tables">
 		<h4>Data Tables</h4>
 		<p>The page for the <a href="#m-deck-analyzer">Deck Analyzer</a> displays many data tables, each for a different statistical category regarding the cards in your deck’s main <a href="#m-card-groups">card group</a>. Some categories can comprise multiple subcategories, with their tables having a thick border line separating each subcategory.</p>
 		<p>The following are the statistical categories, with any of their subcategories in parentheses:</p>

@@ -1,5 +1,5 @@
-<template>
-	<section id="m-deck-name">
+<template functional>
+	<section id="m-deck-name" key="deck-name">
 		<h4>Deck Name</h4>
 		<p>
 			<img class="screenshot float-left"

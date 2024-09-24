@@ -1,5 +1,5 @@
-<template>
-	<section id="m-deck-actions">
+<template functional>
+	<section id="m-deck-actions" key="deck-actions">
 		<h4>Deck Actions</h4>
 		<p>In the <a href="#m-deck-page-header">deck page header</a>, the deck actions section has a button with a drop-down menu with options that let you do special actions to your decks. The options and their effects are the following:</p>
 		<ul>

@@ -1,5 +1,5 @@
-<template>
-	<section id="m-card-sorter">
+<template functional>
+	<section id="m-card-sorter" key="card-sorter">
 		<h4>Card Sorter</h4>
 		<p>
 			<img class="screenshot float-right"

@@ -1,5 +1,5 @@
-<template>
-	<section id="m-deck-data-files">
+<template functional>
+	<section id="m-deck-data-files" key="deck-data-files">
 		<h4>Deck Data Files</h4>
 		<p>These are files that contain data for certain decks made with MTG Deck Builder by you or other users. A single deck data file can have data for multiple decks.</p>
 		<p>You might export or import a deck data file for any of the following reasons:</p>

@@ -1,5 +1,5 @@
-<template>
-	<section id="m-card-bars">
+<template functional>
+	<section id="m-card-bars" key="card-bars">
 		<h5>Card Bars</h5>
 		<p>Card bars resemble the bar-shaped graphic elements depicted on modern <i>Magic</i> cards where the cards’ names and mana costs are printed on.</p>
 		<p>

@@ -1,4 +1,4 @@
-<template>
+<template functional>
 	<article class="content-box">
 		<h2>Terms of Service</h2>
 

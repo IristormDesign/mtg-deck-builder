@@ -1,5 +1,5 @@
-<template>
-	<section id="m-statistics-filter">
+<template functional>
+	<section id="m-statistics-filter" key="statistics-filter">
 		<h4>Statistics Filter</h4>
 		<p>When you’re on the <a href="#m-deck-analyzer">Deck Analyzer</a>, there may be times when you want to examine data about a specific aspect of your deck instead of your deck as a whole. For those times, you can use a statistics filter, which narrows down the information revealed to you based on any card attribute you choose.</p>
 		<p>To turn on a filter in the Deck Analyzer, click the row of the <a href="#m-data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>

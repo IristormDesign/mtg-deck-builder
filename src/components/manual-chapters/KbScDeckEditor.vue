@@ -1,5 +1,5 @@
-<template>
-	<section id="m-kbsc-deck-editor">
+<template functional>
+	<section id="m-kbsc-deck-editor" key="kbsc-deck-editor">
 		<h4>Keyboard Shortcuts: Deck Editor Actions</h4>
 		<p>The <a href="#m-deck-editor">Deck Editor</a> accepts several special <a href="#m-keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided among three categories, explained in the next subchapters.</p>
 

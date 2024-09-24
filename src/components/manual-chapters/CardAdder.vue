@@ -1,5 +1,5 @@
-<template>
-	<section id="m-card-adder">
+<template functional>
+	<section id="m-card-adder" key="card-adder">
 		<h4>Card Adder</h4>
 		<p>
 			<img class="screenshot"

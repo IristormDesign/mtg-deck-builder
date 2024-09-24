@@ -1,5 +1,5 @@
-<template>
-	<section id="m-scryfall-button">
+<template functional>
+	<section id="m-scryfall-button" key="scryfall-button">
 		<h4>Scryfall Advanced Search Button</h4>
 		<p>The number of distinct cards that exist in all of <i>Magic</i> is overwhelming, so how can you reasonably know which ones to consider for your deck? A helpful tool for this is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced card search</a>, where you can browse through a filtered list of <i>Magic</i> cards matching only the combination of attributes you specify.</p>
 		<p>In the <a href="#m-deck-editor">Deck Editor</a>, there’s a button labeled with the Scryfall logo. Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. Alternatively, <a href="#m-keyboard-shortcuts">press the <kbd class="shift-key">Shift</kbd>+<kbd>X</kbd> keys</a> to do that same action.</p>

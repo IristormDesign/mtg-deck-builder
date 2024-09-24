@@ -1,5 +1,5 @@
-<template>
-	<section id="m-draw-sim">
+<template functional>
+	<section id="m-draw-sim" key="draw-sim">
 		<h3>Draw Simulator</h3>
 		<p>The Draw Simulator is a <a href="#m-deck-page-modes">deck page mode</a> where you can test the experience of drawing from a shuffled library of your deck’s cards.</p>
 		<p>You might find the Draw Simulator helpful for gaining more insight into how your deck could turn out in a game of <i>Magic</i>. After testing a few rounds, if you’re unsatisfied with the drawing results, you always can go back to the <a href="#m-deck-editor">Deck Editor</a> to make adjustments.</p>

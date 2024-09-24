@@ -1,5 +1,5 @@
-<template>
-	<section id="m-card-quantities">
+<template functional>
+	<section id="m-card-quantities" key="card-quantities">
 		<h5>Card Quantities</h5>
 		<p>
 			<img class="screenshot float-right"
