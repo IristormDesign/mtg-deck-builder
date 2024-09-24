@@ -1,7 +1,7 @@
 <template>
 	<section id="m-card-bars">
 		<h5>Card Bars</h5>
-		<p>Card bars resemble the bar-shaped graphic elements depicted on modern <i>Magic</i> cards on which the cards’ names and mana costs are stated.</p>
+		<p>Card bars resemble the bar-shaped graphic elements depicted on modern <i>Magic</i> cards where the cards’ names and mana costs are printed on.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-card-list.jpg 1x, @/img/manual-card-list-2x.jpg 1.5x"
