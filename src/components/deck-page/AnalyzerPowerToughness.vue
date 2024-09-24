@@ -5,7 +5,7 @@
 			v-if="allPTCardsCount === 0"
 			class="no-data"
 		>
-			(None)
+			(No data)
 		</div>
 		<table v-else>
 			<template v-if="allPTCardsCount > 0">

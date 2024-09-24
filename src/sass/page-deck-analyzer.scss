@@ -9,9 +9,12 @@ $outline-width-stat-section: 2px;
 	max-width: none;
 	position: relative;
 
+	&:has(.no-cards) {
+		margin-top: $lhse*.75;
+	}
 	.no-cards {
 		h4 {
-			margin-top: 0;
+			margin-top: $lhse*.25;
 		}
 		p {
 			max-width: $max-width-narrow-message;
@@ -56,7 +59,7 @@ $outline-width-stat-section: 2px;
 		.no-data {
 			padding: 0 $lhse*.25;
 			font-style: italic;
-			min-height: $lhse*2;
+			min-height: $lhse*2.5;
 			display: flex;
 			justify-content: center;
 			align-items: center;

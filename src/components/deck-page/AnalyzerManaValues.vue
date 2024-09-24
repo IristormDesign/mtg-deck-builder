@@ -5,7 +5,7 @@
 			v-if="Object.keys(mvStats).length === 0"
 			class="no-data"
 		>
-			(None)
+			(No data)
 		</div>
 		<div
 			v-else

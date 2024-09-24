@@ -5,7 +5,7 @@
 			v-if="this.allSpellsCount === 0"
 			class="no-data"
 		>
-			(None)
+			(No data)
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>

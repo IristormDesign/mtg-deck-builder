@@ -5,7 +5,7 @@
 			v-if="noData()"
 			class="no-data"
 		>
-			(None)
+			(No data)
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
