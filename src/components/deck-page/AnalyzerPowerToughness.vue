@@ -257,7 +257,7 @@ export default {
 					values[midIndex]
 				) / 2
 
-				return mean.toFixed(1)
+				return Number(mean.toFixed(1)) // The `toFixed()` method causes the output to be a string that may sometimes result in the displayed number ending with an unwanted ".0". By using the `Number()` method to make the output have the number type instead of the string type, the extra ".0" disappears.
 			}
 		},
 		countPTCards () {
