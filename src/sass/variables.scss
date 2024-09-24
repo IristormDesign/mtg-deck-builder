@@ -6,10 +6,10 @@
 
 // ORANGE-BASED COLORS
 $color-mythic-orange: #ea4b12; // Sampled
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 45.83%);
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 50%);
 $color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: desaturate(lighten($color-mythic-orange, 12.5%), 16.67%);
-$color-link-focus: saturate(lighten($color-link, 4.17%), 100%);
+$color-link-focus: saturate(lighten($color-link, 8.33%), 100%);
 $color-link-dim: desaturate(darken($color-link, 0%), 20%);
 $color-button: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
 $color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
