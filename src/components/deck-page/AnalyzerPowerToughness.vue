@@ -262,13 +262,13 @@ export default {
 		},
 		countPTCards () {
 			this.filteredCards().forEach(card => {
-				this.variablePT.ct += this.determineVariablePowerToughness(card)
-
 				if (
 					card.toughness !== undefined ||
 					card.toughness2 !== undefined
 				) {
 					this.allPTCardsCount += card.qty
+
+					this.variablePT.ct += this.determineVariablePowerToughness(card)
 				}
 			})
 

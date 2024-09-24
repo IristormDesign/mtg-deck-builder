@@ -49,39 +49,23 @@ export default {
 			}
 		},
 		determineVariablePowerToughness (card) {
-			if (!card.toughness) {
-				return 0
-			}
-
-			function hasVariablePT (forBackFace) {
-				if (forBackFace) {
-					return (
-						card.power2 === '*' ||
-						card.toughness2 === '*'
-					)
-				} else {
-					return (
-						card.power === '*' ||
-						card.toughness === '*'
-					)
-				}
-			}
-
-			let countedOnFrontFace = false
 			let variablePTCount = 0
 
-			const variablePTPerFace = (forBackFace) => {
-				if (
-					!countedOnFrontFace &&
-					hasVariablePT(forBackFace)
-				) {
+			function perFace (p, t) {
+				if (!p || !t) return
+
+				const isVariablePT = (
+					isNaN(Number(p)) ||
+					isNaN(Number(t))
+				)
+
+				if (isVariablePT) {
 					variablePTCount += card.qty
-					countedOnFrontFace = true
 				}
 			}
 
-			variablePTPerFace()
-			variablePTPerFace(true)
+			perFace(card.power, card.toughness)
+			perFace(card.power2, card.toughness2)
 
 			return variablePTCount
 		},
