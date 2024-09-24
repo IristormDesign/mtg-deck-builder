@@ -1,7 +1,13 @@
 <template>
 	<section id="stats-layouts">
 		<h4>Layouts</h4>
-		<table>
+		<div
+			v-if="Object.keys(layoutStats).length === 0"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody class="filterable-stats">
 				<template v-for="(layout, layoutKey) in layoutStats">
@@ -47,6 +53,8 @@ export default {
 		analyzerFilter () {
 			this.layoutStats = {}
 			this.prepareLayoutStats()
+
+			console.log(Object.keys(this.layoutStats).length)
 		}
 	},
 	mounted () {

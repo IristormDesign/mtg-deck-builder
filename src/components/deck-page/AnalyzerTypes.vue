@@ -1,7 +1,13 @@
 <template>
 	<section id="stats-types">
 		<h4>Types</h4>
-		<table>
+		<div
+			v-if="noData()"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody class="filterable-stats">
 				<template v-for="(type, typeName) in typeStats">
@@ -63,6 +69,13 @@ export default {
 		this.typeStats = this.sortTableByCounts(this.typeStats)
 	},
 	methods: {
+		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			return Object.values(this.typeStats).every(
+				stat => stat.ct === 0
+			)
+		},
 		initializeCounts () {
 			for (const stat in this.typeStats) {
 				this.typeStats[stat].ct = 0

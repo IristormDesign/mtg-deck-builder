@@ -1,7 +1,13 @@
 <template>
 	<section id="stats-rarities">
 		<h4>Rarities</h4>
-		<table>
+		<div
+			v-if="noData()"
+			class="no-data"
+		>
+			(None)
+		</div>
+		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody class="filterable-stats">
 				<template v-for="(ct, name) in rarityCounts">
@@ -72,6 +78,13 @@ export default {
 		this.countRarities()
 	},
 	methods: {
+		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			return Object.values(this.rarityCounts).every(
+				ct => ct === 0
+			)
+		},
 		countRarities () {
 			const cts = this.rarityCounts
 
