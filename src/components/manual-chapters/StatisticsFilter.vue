@@ -1,9 +1,9 @@
 <template functional>
 	<section id="m-statistics-filter" key="statistics-filter">
 		<h4>Statistics Filter</h4>
-		<p>When you’re in the <a href="#m-deck-analyzer">Deck Analyzer</a>, there may be times when you want to examine data about a specific aspect of your deck rather than data about your whole deck in general. For those times, you can use a statistics filter, which narrows down the information revealed to you based on any card attribute you choose.</p>
+		<p>When you’re in the <a href="#m-deck-analyzer">Deck Analyzer</a>, at times you may want to examine data about a specific aspect of your deck rather than the data about your whole deck in general. For those times, you can use a statistics filter, which narrows down the information revealed to you based on any card attribute you choose.</p>
 		<p>To turn on a filter in the Deck Analyzer, click the row of the <a href="#m-data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>
-		<p>The exception to turning on and off filters is in the “Power & Toughness” category’s greatest/median/least subsection, where you click a particular cell of a row instead of any cell within a row.</p>
+		<p>The exception to turning on and off filters is the table for the “Power & Toughness” category’s greatest/median/least subsection, where you must click a particular cell on a row instead of just any cells on a row.</p>
 		<p>Whenever a filter is turned on, the following effects happen:</p>
 		<ul>
 			<li>Any data about your deck’s cards that doesn’t match the selected card attribute is temporarily hidden. All data will return when the filter is turned off.</li>
