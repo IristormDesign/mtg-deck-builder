@@ -273,7 +273,7 @@ export default {
 			})
 
 			/* In the condition that all of the deck's currently filtered cards are only cards that have variable P/T values, then the P/T stats would display confusing or misleading values, particularly the "Least" stat, which would display the word "Infinity." Under that condition, the following code replaces those stats' values with an asterisk instead. */
-			if (this.totalCards === this.variablePT.ct) {
+			if (this.filteredCards().length === this.variablePT.ct) {
 				const p = this.powerStats
 				const t = this.toughnessStats
 
