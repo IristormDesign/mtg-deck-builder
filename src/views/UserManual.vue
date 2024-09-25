@@ -122,6 +122,7 @@ export default {
 	mounted () {
 		if (window.innerWidth > 960) { // The exact window width is equal to the pixel breakpoint when the table of contents section no longer stays on the side of the page when scrolling down.
 			this.highlightTOCLinkOfVisibleSection()
+			this.highlightFirstTOCLinkWhenAtTopOfPage()
 		}
 	},
 	methods: {
@@ -134,7 +135,7 @@ export default {
 						}
 					})
 				}, {
-					rootMargin: '-33.3333%'
+					rootMargin: '-50%'
 				}
 			)
 
@@ -162,6 +163,19 @@ export default {
 
 			sections.forEach(section => {
 				observer.observe(section)
+			})
+		},
+		highlightFirstTOCLinkWhenAtTopOfPage () {
+			const tocLinks = document.querySelectorAll('.toc-links a')
+
+			window.addEventListener('scroll', () => {
+				if (window.scrollY === 0) {
+					tocLinks.forEach(link => {
+						link.classList.remove('visible')
+					})
+
+					tocLinks[0].classList.add('visible')
+				}
 			})
 		}
 	}

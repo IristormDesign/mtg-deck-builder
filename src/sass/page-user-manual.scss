@@ -35,10 +35,10 @@
 		color: $color-text-darker;
 		height: min-content;
 		max-width: $lhse*9;
-		max-height: calc(100vh - #{$lhse*.25});
+		max-height: calc(100vh);
 		overflow-y: auto;
 		position: sticky;
-		top: $lhse*.25;
+		top: 0;
 		left: 0;
 		padding: $lhse*.5;
 		padding-bottom: $lhse;
@@ -63,7 +63,7 @@
 			line-height: 1;
 
 			&:has(> .visible) {
-				color: $color-text-brighter;
+				color: $color-text;
 			}
 		}
 		a {
@@ -79,7 +79,7 @@
 			}
 			&.visible {
 				background: $color-blue-highlight;
-				border-radius: $border-radius-button;
+				outline: 1px solid $color-blue-highlight-bright;
 			}
 		}
 	}
