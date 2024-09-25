@@ -118,7 +118,53 @@ import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vu
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment }
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
+	mounted () {
+		if (window.innerWidth > 960) { // The exact window width is equal to the pixel breakpoint when the table of contents section no longer stays on the side of the page when scrolling down.
+			this.highlightTOCLinkOfVisibleSection()
+		}
+	},
+	methods: {
+		highlightTOCLinkOfVisibleSection () {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							doIntersectionEffect(entry)
+						}
+					})
+				}, {
+					rootMargin: '-33.3333%'
+				}
+			)
+
+			const tocLinks = document.querySelectorAll('.toc-links a')
+			const tocContainer = document.querySelector('.table-of-contents')
+
+			function doIntersectionEffect (entry) {
+				tocLinks.forEach(link => {
+					const linkMatchesWithSection = link.getAttribute('href').substring(1) === entry.target.id
+
+					link.classList.toggle(
+						'visible', linkMatchesWithSection
+					)
+
+					if (linkMatchesWithSection) {
+						tocContainer.scrollTo({
+							top: link.offsetTop - 83.3333, // The subtracted number is equal to five times the links' line-height in pixels.
+							behavior: 'smooth'
+						})
+					}
+				})
+			}
+
+			const sections = document.querySelectorAll('section')
+
+			sections.forEach(section => {
+				observer.observe(section)
+			})
+		}
+	}
 }
 </script>
 

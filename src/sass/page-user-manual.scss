@@ -40,13 +40,18 @@
 		position: sticky;
 		top: $lhse*.25;
 		left: 0;
-		padding: $lhse*.75;
+		padding: $lhse*.5;
 		padding-bottom: $lhse;
+		padding-left: $lhse*.75;
 
 		h3 {
 			margin: 0 0 $lhse*.5;
 			font-size: 100%;
 		}
+	}
+	.toc-links {
+		@include small-font-size;
+
 		ol,
 		li {
 			margin: 0;
@@ -56,23 +61,26 @@
 		}
 		li {
 			line-height: 1;
+
+			&:has(> .visible) {
+				color: $color-text-brighter;
+			}
 		}
 		a {
+			text-decoration-line: none;
 			display: block;
-			padding: divide($lhse, 6) 0;
+			padding: divide($lhse, 6) divide($lhse, 4);
+			margin-left: -$lhse*.25;
 
 			&:hover,
 			&:focus,
 			&:active {
-				background: $color-group-bg-darker;
+				text-decoration-line: underline;
 			}
-		}
-	}
-	.toc-links {
-		@include small-font-size;
-
-		a {
-			text-decoration: none;
+			&.visible {
+				background: $color-blue-highlight;
+				border-radius: $border-radius-button;
+			}
 		}
 	}
 	.manual-contents {
