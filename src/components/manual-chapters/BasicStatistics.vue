@@ -13,7 +13,7 @@
 		<p>The basic statistics section displays the following deck information:</p>
 		<ul>
 			<li>
-				<p><strong>Mana Colors</strong> – This shows the <a href="#m-symbols">symbols</a> of whichever of the five mana colors are required for mana costs among spells in the main card group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by Wizards of the Coast’s conventional order: white, blue, black, red, green.</p>
+				<p><strong>Mana Colors</strong> – This shows the symbols of whichever of the five mana colors are required for mana costs among spells in the main card group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by Wizards of the Coast’s conventional order: white, blue, black, red, green.</p>
 			</li>
 			<li>
 				<p><strong>Average Mana Value</strong> – This shows a number equal to the mean of the mana value among spells in the main card group. This calculation includes card names’ quantities and excludes land cards. (Mana value is also known by the older term “converted mana cost.”)</p>
