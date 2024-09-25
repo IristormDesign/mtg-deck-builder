@@ -23,7 +23,7 @@
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the quantity by 2.</li>
 			<li><kbd>A</kbd>: Toggle the <a href="#m-card-stars">star label</a> on or off.</li>
 			<li><kbd>Q</kbd>: View the <a href="#m-card-image">card image</a> up closer.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a tab to the card’s page on Scryfall.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new tab for the card’s page on Scryfall.</li>
 			<li><kbd>Z</kbd>: Turn over the card image (if it’s double-faced).</li>
 		</ul>
 
@@ -32,7 +32,7 @@
 		<ul class="keyboard-shortcuts">
 			<li><kbd>R</kbd>: Toggle the active <a href="#m-card-groups">card group</a> between main and sideboard.</li>
 			<li><kbd>X</kbd>: Focus onto the <a href="#m-card-adder">card adder</a>’s text field.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open a tab to the <a href="#m-scryfall-button">Scryfall advanced search</a> page.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open a new tab for <a href="#m-scryfall-button">Scryfall’s advanced search</a> page.</li>
 		</ul>
 	</section>
 </template>
