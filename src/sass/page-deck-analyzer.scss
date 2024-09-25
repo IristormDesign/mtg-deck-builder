@@ -1,8 +1,31 @@
 @import 'variables';
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
-$outline-table-row-hover: 1px solid link-decoration-color($color-link-focus);
 $outline-width-stat-section: 2px;
+
+@mixin filterable-table-component {
+	cursor: pointer;
+
+	&:hover {
+		background: $color-group-bg-darker;
+	}
+	&:active {
+		background: $color-blue-highlight-dark;
+	}
+}
+@mixin highlighted-table-component {
+	background: $color-blue-highlight;
+	outline: 3px dashed $color-blue-highlight-bright;
+	outline-offset: -1px;
+	scroll-margin: $lhse*2;
+
+	&:hover {
+		background: $color-blue-highlight-dark;
+	}
+	&:active {
+		background: $color-group-bg-darker;
+	}
+}
 
 .deck-analyzer {
 	margin: 0 auto $lhse*.5;
@@ -28,7 +51,7 @@ $outline-width-stat-section: 2px;
 		width: min-content;
 	}
 	section {
-		width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword with breaking layout.
+		width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword ability without breaking layout.
 		justify-self: center;
 		height: min-content;
 		border: 2px solid $color-group-bg;
@@ -136,19 +159,15 @@ $outline-width-stat-section: 2px;
 	}
 	.filterable-stats {
 		tr {
+			@include filterable-table-component;
 			cursor: pointer;
 
 			&:hover {
-				background: $color-group-bg-darker;
-				outline: $outline-table-row-hover;
-
 				th {
 					color: $color-link-focus;
 				}
 			}
 			&:active {
-				background: $color-blue-highlight-dark;
-
 				th {
 					color: $color-link-active;
 				}
@@ -163,10 +182,7 @@ $outline-width-stat-section: 2px;
 			}
 		}
 		.filtering {
-			background: $color-blue-highlight;
-			outline: 2px dashed $color-blue-highlight-bright;
-			outline-offset: -1px;
-			scroll-margin: $lhse*2;
+			@include highlighted-table-component;
 			color: $color-text-brighter;
 
 			th,
@@ -174,12 +190,7 @@ $outline-width-stat-section: 2px;
 				border-right-color: $color-blue-highlight-dim;
 				border-left-color: $color-blue-highlight-dim;
 			}
-			&:hover {
-				background: $color-blue-highlight-dark;
-			}
 			&:active {
-				background: $color-group-bg-darker;
-
 				th,
 				td {
 					border-color: $color-heading-bg;
@@ -194,10 +205,13 @@ $outline-width-stat-section: 2px;
 			}
 		}
 		td {
+			@include filterable-table-component;
 			color: $color-link;
-			cursor: pointer;
+			font-weight: $font-weight-label;
 
 			&[disabled] {
+				font-weight: normal;
+
 				&,
 				&:hover,
 				&:active {
@@ -211,28 +225,13 @@ $outline-width-stat-section: 2px;
 				}
 			}
 			&:hover {
-				background: $color-group-bg-darker;
 				color: $color-link-focus;
-				outline: $outline-table-row-hover;
 			}
 			&:active {
-				background: $color-blue-highlight-dark;
 				color: $color-link-active;
 			}
 			&.filtering {
-				background: $color-blue-highlight;
-				outline: 2px dashed $color-blue-highlight-bright;
-				outline-offset: -1px;
-				scroll-margin: $lhse*2;
-				border-right-color: $color-blue-highlight-dim;
-				border-left-color: $color-blue-highlight-dim;
-
-				&:hover {
-					background: $color-blue-highlight-dark;
-				}
-				&:active {
-					background: $color-group-bg-darker;
-				}
+				@include highlighted-table-component;
 			}
 		}
 	}
