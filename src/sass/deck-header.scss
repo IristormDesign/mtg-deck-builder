@@ -10,8 +10,8 @@
 	overflow: hidden;
 	width: 100%;
 	border-radius: #{$lhse} / #{50%};
-	border-bottom-right-radius: $border-radius-group;
-	border-bottom-left-radius: $border-radius-group;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 	background: $color-group-bg;
 
 	.deck-name {

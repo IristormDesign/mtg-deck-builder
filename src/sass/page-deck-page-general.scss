@@ -101,6 +101,11 @@
 		}
 	}
 }
+@media (max-width: ($min-width-app * .625)) {
+	.deck {
+		padding: 0;
+	}
+}
 @media (max-width: ($min-width-app * .5)) {
 	.deck {
 		padding: 0;

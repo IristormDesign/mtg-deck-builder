@@ -17,14 +17,13 @@
 	.manual-contents {
 		background: $color-group-bg;
 		padding: $lhse $lhse*1.5;
-		border-radius: $border-radius-group;
 	}
 	header {
 		grid-column: span 2;
 		text-align: center;
 		border-radius: #{$lhse} / #{50%};
-		border-bottom-right-radius: $border-radius-group;
-		border-bottom-left-radius: $border-radius-group;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
 
 		h2 {
 			margin: 0;
@@ -43,6 +42,7 @@
 		padding: $lhse*.5;
 		padding-bottom: $lhse;
 		padding-left: $lhse*.75;
+		border-bottom-left-radius: $border-radius-group;
 
 		h3 {
 			margin: 0 0 $lhse*.5;
@@ -99,13 +99,13 @@
 			background: $color-group-bg;
 			padding: $lhse $lhse*1.5 $lhse*.75;
 			margin-bottom: $lhse*.25;
-			border-radius: $border-radius-group;
 
 			&:first-child {
 				padding-top: $lhse*.5;
 			}
 			&:last-child {
 				margin-bottom: 0;
+				border-bottom-right-radius: $border-radius-group;
 			}
 			section {
 				&:first-of-type {
@@ -162,13 +162,13 @@
 			transform: scale(1.0833) translateY(-.0417em);
 		}
 	}
-}
-.keyboard-shortcuts {
-	padding-left: 0;
+	.keyboard-shortcuts {
+		padding-left: 0;
 
-	li {
-		list-style: none;
-		margin: $lhse*.25 0;
+		li {
+			list-style: none;
+			margin: $lhse*.25 0;
+		}
 	}
 }
 
@@ -186,6 +186,7 @@
 			width: 100%;
 			margin: $lhse*.25 auto;
 			padding: $lhse $lhse*1.5;
+			border-bottom-right-radius: $border-radius-group;
 
 			h3 {
 				text-align: center;
@@ -196,6 +197,13 @@
 			columns: 3;
 			column-gap: $lhse*1.5;
 			column-rule: $border-sections;
+		}
+		.manual-contents {
+			> section {
+				&:last-child {
+					border-bottom-left-radius: $border-radius-group;
+				}
+			}
 		}
 	}
 }

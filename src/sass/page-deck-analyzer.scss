@@ -399,6 +399,8 @@ $outline-width-stat-section: 2px;
 @media (max-width: $width-mobile-breakpoint) {
 	.deck-analyzer {
 		border-radius: $border-radius-group;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
 
 		.filter-notice {
 			grid-column: span 1;
@@ -428,6 +430,8 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck-analyzer {
+		border-radius: 0;
+
 		&:has(.no-cards) {
 			border-radius: 0;
 		}

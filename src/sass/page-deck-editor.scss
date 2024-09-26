@@ -26,15 +26,14 @@ $width-card-adder-button: $lhse*2.3333;
 		min-height: 0%; // Needed for Firefox on sideboard lists
 		height: $height-deck-header-component;
 		box-sizing: content-box;
-
-		.sideboard-visible & {
-			border-bottom-right-radius: 0;
-			border-bottom-left-radius: 0;
-		}
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
 	}
 	.adder-controls {
 		grid-area: panel-2;
 		align-self: flex-start;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
 	}
 }
 .card-sorter {
@@ -395,7 +394,6 @@ $width-card-adder-button: $lhse*2.3333;
 
 		.control-panel {
 			width: 100%;
-			border-radius: 0;
 		}
 	}
 	.card-adder {

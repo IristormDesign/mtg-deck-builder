@@ -4,6 +4,8 @@
 	grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
 	align-items: center;
 	border-radius: $border-radius-group;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
 	margin: 0 auto $lhse*.25;
 	width: 100%;
 	position: relative;
@@ -131,6 +133,11 @@
 		display: flex;
 		align-items: center;
 		justify-self: flex-end;
+	}
+}
+@media (max-width: $width-mobile-breakpoint) {
+	.deck-action-bar {
+		border-radius: 0;
 	}
 }
 @media (max-width: ($min-width-app*.6)) {

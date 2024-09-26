@@ -20,6 +20,8 @@
 		overflow: hidden;
 		width: $width-card-bars-wide + $width-card-star - $lhse*.5;
 		height: $height-deck-header-component;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
 	}
 	.deck-info {
 		@include deck-info-style;
