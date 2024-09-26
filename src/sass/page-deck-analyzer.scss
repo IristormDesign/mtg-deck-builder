@@ -111,6 +111,10 @@ $outline-width-stat-section: 2px;
 	tbody {
 		border: $table-outer-borders;
 		border-top-width: 0;
+
+		tr {
+			height: $lhse;
+		}
 	}
 	tfoot {
 		th,
