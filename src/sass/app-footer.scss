@@ -6,7 +6,7 @@
 		bottom right repeat url('@/img/turbulence-bg-tile.jpg'),
 		rgba($color-group-bg-darker, .6667);
 	background-blend-mode: overlay;
-	border-top: 2px solid lighten($color-content-bg, 4.17%);
+	border-top: 2px solid $color-content-bg-lighter;
 	color: $color-text-darker;
 	position: relative;
 	padding: $lhse*1.25 0;

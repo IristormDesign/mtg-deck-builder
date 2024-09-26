@@ -10,6 +10,10 @@
 	gap: $margin-card-gap-after $lhse*.5;
 	justify-content: center;
 
+	.no-cards {
+		border-bottom-right-radius: $border-radius-group;
+		border-bottom-left-radius: $border-radius-group;
+	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
 	}

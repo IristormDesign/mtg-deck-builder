@@ -4,23 +4,24 @@ $min-height-card-list: $lhse*6;
 .card-list-section {
 	min-height: $min-height-card-list;
 	grid-area: card-list;
-	// min-width: $width-deck-editor-region;
 
 	.no-cards {
-		display: block;
 		text-align: center;
-		line-height: $line-height-standard*.875;
 		min-height: $min-height-card-list;
-		text-shadow: $text-shadow-over-light-bg;
 		padding: $lhse*.5;
 		color: $color-text-brighter;
+		background: rgba($color-group-bg-darker, .3820);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-style: italic;
 
 		p {
 			max-width: $max-width-narrow-message;
 			text-wrap: balance;
 			margin-right: auto;
 			margin-left: auto;
-			margin-bottom: $lhse;
 		}
 		a {
 			text-shadow: revert;
