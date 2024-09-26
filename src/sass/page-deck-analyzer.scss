@@ -36,6 +36,7 @@ $outline-width-stat-section: 2px;
 		margin-top: $lhse*.75;
 	}
 	.no-cards {
+
 		h4 {
 			margin-top: $lhse*.25;
 		}
@@ -326,6 +327,7 @@ $outline-width-stat-section: 2px;
 		text-wrap: balance;
 		text-align: center;
 		line-height: $line-height-standard*.8333;
+		font-style: italic;
 	}
 	.button-container {
 		height: $lhse*1.25;
