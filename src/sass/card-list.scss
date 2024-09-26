@@ -4,7 +4,7 @@ $min-height-card-list: $lhse*6;
 .card-list-section {
 	min-height: $min-height-card-list;
 	grid-area: card-list;
-	min-width: $width-deck-editor-region;
+	// min-width: $width-deck-editor-region;
 
 	.no-cards {
 		display: block;

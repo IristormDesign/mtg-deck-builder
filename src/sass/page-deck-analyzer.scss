@@ -51,7 +51,7 @@ $outline-width-stat-section: 2px;
 		width: min-content;
 	}
 	section {
-		width: $lhse*9.5; // Wide enough to fit the "Undergrowth" keyword ability without breaking layout.
+		width: $lhse*10; // Wide enough to fit "Modal double-faced" layout label without breaking onto a new line.
 		justify-self: center;
 		height: min-content;
 		border: 2px solid $color-group-bg;
@@ -207,7 +207,6 @@ $outline-width-stat-section: 2px;
 		td {
 			@include filterable-table-component;
 			color: $color-link;
-			font-weight: $font-weight-label;
 
 			&[disabled] {
 				font-weight: normal;
@@ -243,7 +242,6 @@ $outline-width-stat-section: 2px;
 		}
 	}
 	.height-limiter {
-		// @include glowing-edges-of-scrollable-container;
 		overflow-y: auto;
 		max-height: $lhse * 13.4;
 		background-color: $color-group-bg; // This fixes a weird font-rendering glitch in Chrome that causes the element's text color to subtly dim while a scrollbar is present.
@@ -343,7 +341,7 @@ $outline-width-stat-section: 2px;
 	justify-content: flex-end;
 }
 
-@media (max-width: (1920px * divide(2, 3))) {
+@media (max-width: (1920px * .7083)) {
 	.deck-analyzer {
 		.filter-notice {
 			grid-column: span 3;
@@ -421,6 +419,13 @@ $outline-width-stat-section: 2px;
 		.filter-notice {
 			margin-right: -$lhse*.75;
 			margin-left: -$lhse*.75;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .5)) {
+	.deck-analyzer {
+		&:has(.no-cards) {
+			border-radius: 0;
 		}
 	}
 }

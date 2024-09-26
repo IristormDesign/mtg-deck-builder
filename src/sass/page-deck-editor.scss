@@ -365,6 +365,11 @@ $width-card-adder-button: $lhse*2.3333;
 			'panel-2';
 		grid-template-columns: auto;
 		gap: $margin-card-gap-after 0;
+
+		.viewing-controls,
+		.adder-controls {
+			min-width: 0;
+		}
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
@@ -390,11 +395,15 @@ $width-card-adder-button: $lhse*2.3333;
 
 		.control-panel {
 			width: 100%;
+			border-radius: 0;
 		}
 	}
 	.card-adder {
 		button {
 			width: auto;
 		}
+	}
+	.sideboard-header {
+		border-radius: 0;
 	}
 }

@@ -79,7 +79,11 @@
 			}
 			&.visible {
 				background: $color-blue-highlight;
-				outline: 1px solid $color-blue-highlight-bright;
+
+				&:not(:focus) {
+					outline: 1px solid $color-blue-highlight-dim;
+					outline-offset: -1px;
+				}
 			}
 		}
 	}

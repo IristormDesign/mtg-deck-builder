@@ -34,7 +34,7 @@ $color-group-bg-darker: saturate(darken($color-group-bg, 6.25%), 8.33%);
 $color-text: lighten($color-group-bg, 60%);
 $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
+$color-text-darker: desaturate(darken($color-text, 12.5%), 12.5%);
 $color-button-alt: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 4.17%);
 $color-section-border: $color-heading-bg;

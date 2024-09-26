@@ -142,12 +142,12 @@
 		}
 	}
 }
-@media (max-width: ($min-width-app*.375)) {
-	.mode-heading,
-	.mode-menu,
-	.deck-actions {
-		padding: 0 $lhse*.25;
+@media (max-width: ($min-width-app*.5)) {
+	.deck-action-bar {
+		border-radius: 0;
 	}
+}
+@media (max-width: ($min-width-app*.375)) {
 	.mode-menu {
 		a {
 			width: 100%;

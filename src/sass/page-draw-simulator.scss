@@ -149,6 +149,7 @@
 		.control-panel {
 			grid-template-rows: auto $height-deck-header-component;
 			width: 100%;
+			border-radius: 0;
 		}
 		.deck-info {
 			h3 {

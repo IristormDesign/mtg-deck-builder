@@ -103,6 +103,8 @@
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck {
+		padding: 0;
+
 		.wrap {
 			padding: 0 divide($lhse, 4);
 		}
