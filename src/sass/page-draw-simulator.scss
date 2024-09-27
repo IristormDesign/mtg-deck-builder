@@ -79,6 +79,7 @@
 			grid-template-rows: repeat(2, $height-deck-header-component);
 			grid-template-columns: repeat(2, 1fr);
 			width: fit-content;
+			// width: $lhse*20;
 			height: auto;
 			justify-self: center
 		}
@@ -104,9 +105,11 @@
 		}
 		.no-cards {
 			max-width: $lhse*15;
-			width: 100%;
 			margin-right: auto;
 			margin-left: auto;
+			padding-right: $lhse;
+			padding-left: $lhse;
+			border-radius: $border-radius-group;
 		}
 	}
 }
@@ -161,6 +164,9 @@
 			h3 {
 				width: min-content
 			}
+		}
+		.no-cards {
+			border-radius: 0;
 		}
 	}
 }

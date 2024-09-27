@@ -62,7 +62,7 @@ $outline-width-stat-section: 2px;
 		transition: outline-color 1s ease;
 
 		&:active {
-			outline-color: $color-text;
+			outline-color: $color-text-darker;
 			transition-duration: 0s;
 		}
 		h4 {
@@ -121,7 +121,7 @@ $outline-width-stat-section: 2px;
 		th,
 		td {
 			@include small-font-size;
-			font-style: italic;
+			color: $color-text-darker;
 			line-height: $line-height-standard*.75;
 		}
 	}
