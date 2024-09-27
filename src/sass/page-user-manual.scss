@@ -3,7 +3,7 @@
 .manual-page {
 	display: grid;
 	grid-template-columns: auto auto;
-	gap: $lhse*.25;
+	gap: $margin-sections;
 	position: relative;
 
 	&.content-box {
@@ -98,7 +98,7 @@
 		> section {
 			background: $color-group-bg;
 			padding: $lhse $lhse*1.5 $lhse*.75;
-			margin-bottom: $lhse*.25;
+			margin-bottom: $margin-sections;
 
 			&:first-child {
 				padding-top: $lhse*.5;
@@ -117,10 +117,12 @@
 			&:target {
 				@keyframes highlight-section {
 					0% {
-						outline-color: rgba($color-link-active, 0);
+						outline-color: rgba($color-blue-highlight-bright, 0);
+						background: rgba($color-blue-highlight-bright, 0);
 					}
 					12.5% {
-						outline-color: $color-link-active;
+						outline-color: $color-blue-highlight-bright;
+						background: $color-blue-highlight-bright;
 						color: #fff;
 					}
 				}
@@ -128,8 +130,7 @@
 				> h3:first-child,
 				> h4:first-child,
 				> h5:first-child {
-					outline: $lhse*.125 solid rgba($color-link-active, 0);
-					outline-offset: $lhse*.25;
+					outline: $lhse*.3333 solid rgba($color-blue-highlight-bright, 0);
 					animation: highlight-section 1s ease-in;
 					z-index: 1;
 					position: relative;
@@ -177,14 +178,14 @@
 		display: block;
 
 		header {
-			margin-bottom: $lhse*.25;
+			margin-bottom: $margin-sections;
 		}
 		.table-of-contents {
 			position: static;
 			max-width: 100%;
 			max-height: 100%;
 			width: 100%;
-			margin: $lhse*.25 auto;
+			margin: $margin-sections auto;
 			padding: $lhse $lhse*1.5;
 			border-bottom-right-radius: $border-radius-group;
 

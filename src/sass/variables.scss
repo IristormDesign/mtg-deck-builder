@@ -104,6 +104,7 @@ $width-card-star: 2em;
 $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 $width-deck-editor-region: $lhse*14.5;
+$margin-sections: divide($lhse, 3);
 
 // BORDERS
 $border-sections: 2px solid $color-section-border;

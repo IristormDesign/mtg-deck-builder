@@ -1,6 +1,6 @@
 .deck-header {
 	grid-column: span 6;
-	margin: $lhse auto $lhse*.25;
+	margin: $lhse auto $margin-sections;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;
