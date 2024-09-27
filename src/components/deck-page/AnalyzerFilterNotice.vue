@@ -17,7 +17,7 @@
 	>
 		<div>
 			<h4>Filter: Off</h4>
-			<p>The displayed statistics involve <strong>all cards</strong>.</p>
+			<p>The displayed statistics involve your <strong>whole deck</strong>.</p>
 			<div class="button-container">
 				<button
 					disabled
