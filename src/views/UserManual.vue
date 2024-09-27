@@ -119,6 +119,15 @@ import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
 	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
+	watch: {
+		$route () {
+			if (this.$route.hash === '') {
+				setTimeout(() => {
+					window.scrollTo(0, 0)
+				}, 1)
+			}
+		}
+	},
 	mounted () {
 		if (window.innerWidth > 960) { // The exact window width is equal to the pixel breakpoint when the table of contents section no longer stays on the side of the page when scrolling down.
 			this.highlightTOCLinkOfVisibleSection()
