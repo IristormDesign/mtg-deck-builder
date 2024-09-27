@@ -183,9 +183,10 @@ kbd {
 	}
 }
 ::selection {
-	background: $color-blue-highlight;
-	color: $color-app-header-link-active;
+	background: rgba($color-mythic-orange, .5);
+	color: #fff;
 	text-shadow: none;
+	text-decoration: none !important;
 }
 ::-webkit-scrollbar {
 	width: $line-height-standard * .6667rem;
