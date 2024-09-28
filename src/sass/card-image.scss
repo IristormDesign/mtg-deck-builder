@@ -121,13 +121,13 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 		position: relative;
 		z-index: 1;
 		margin: 0 auto;
-		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 $color-shadows);
 	}
 	.card-shadow {
 		position: absolute;
 		width: 100%;
 		transition: filter $transition-duration-card-image-hover-fast ease;
 		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
+		filter: drop-shadow(-$lhse*.0417 $lhse*.0833 $lhse*.0417 $color-shadows);
 
 		&:hover,
 		&:focus-within,
