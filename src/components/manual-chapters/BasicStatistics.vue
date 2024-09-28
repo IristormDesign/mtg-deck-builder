@@ -13,21 +13,21 @@
 		<p>The basic statistics section displays the following deck information:</p>
 		<ul>
 			<li>
-				<p><strong>Mana Colors</strong> – This shows the symbols of whichever of the five mana colors are required for mana costs among spells in the main card group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by Wizards of the Coast’s conventional order: white, blue, black, red, green.</p>
+				<p><strong>Mana Colors</strong> – This shows the symbols of whichever of the five mana colors are required for mana costs among spells in the main card group. The colors are ordered from most to least frequent. If a color is equal in number to another, then they’re ordered by Wizards of the Coast’s conventional order of them: white, blue, black, red, green.</p>
 			</li>
 			<li>
-				<p><strong>Average Mana Value</strong> – This shows a number equal to the mean of the mana value among spells in the main card group. This calculation includes card names’ quantities and excludes land cards. (Mana value is also known by the older term “converted mana cost.”)</p>
+				<p><strong>Average Mana Value</strong> – This shows the arithmetic mean of mana values among spells in the main card group. This calculation accounts for card names’ quantities. (Mana value is also known by the older term “converted mana cost.”)</p>
 			</li>
 			<li>
 				<p><strong>Last Edit</strong> – This shows the date and time of when your deck had been most recently modified (or created, if it’s a new deck). The actions of <a href="#m-card-adder">adding a new card name</a>, <a href="#m-card-quantities">changing a card name’s quantity</a>, <a href="#m-card-stars">starring a card name</a>, and <a href="#m-deck-name">renaming the deck</a> count as edits. Last Edit involves both the main and sideboard card groups.</p>
 			</li>
 			<li>
-				<p><strong>Card Names</strong> – This shows a number equal to the count of distinct card names in the main card group. (Having a plural quantity of cards of a certain name doesn’t increase the count of names.)</p>
+				<p><strong>Card Names</strong> – This shows the sum of distinct card names in the main card group. The sum doesn’t account for any plural quantities of card names.</p>
 			</li>
 			<li>
-				<p><strong>Total Cards</strong> – This shows a number equal to the total cards in the main card group. A “⚠” (warning symbol) appears beside the number when the total is fewer than 60, which is the minimum limit by <i>Magic</i>’s standard <a href="#m-game-rules">game rules</a>; or when the total is close to but not exactly 100, which is the requirement by the Commander format rules.</p>
+				<p><strong>Total Cards</strong> – This shows the sum of every card (including any repeated card names) in the main card group. A “⚠” (warning symbol) appears beside the number when the total is fewer than 60, which is the minimum limit for decks by <i>Magic</i>’s standard <a href="#m-game-rules">game rules</a>; or when the total is close to but not exactly 100, which is the requirement for decks in the Commander format.</p>
 			</li>
 		</ul>
-		<p>Note that these statistics in the deck page header are only a small portion of all the deck statistics available in MTG Deck Builder. To examine even more data, view the <a href="#m-deck-analyzer">Deck Analyzer mode</a>.</p>
+		<p>Note that these statistics in the deck page header are only a small portion of all the statistics available in MTG Deck Builder. There are even more you can view in the <a href="#m-deck-analyzer">Deck Analyzer</a>.</p>
 	</section>
 </template>
