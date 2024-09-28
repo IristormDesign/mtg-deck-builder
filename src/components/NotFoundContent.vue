@@ -8,7 +8,7 @@
 		</figure>
 
 		<p>Your web browser tried to go to a page that doesn’t exist at the given URL. If a page existed at this URL before, it has since been deleted or renamed.</p>
-		<p v-if="this.$route.path.includes(`/deck/`)">Did you expect to see a deck created by another user? If so, ask that user to export his or her deck, then send you the deck data file for you to import. For more info, see the user manual on <router-link to="/manual#m-storage-of-deck-data">how this app stores deck data</router-link>.</p>
+		<p v-if="this.$route.path.includes(`/deck/`)">Did you expect to see a deck created by another user? If so, ask that user to export his or her deck, then send you the deck data file for you to import. For more info, see the user manual on <router-link to="/manual#storage-of-deck-data">how this app stores deck data</router-link>.</p>
 	</article>
 </template>
 

@@ -19,7 +19,7 @@
 				key="sideboard-no-cards"
 			>
 				<p>This deck’s sideboard has no cards yet.</p>
-				<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#m-deck-editor">user manual</router-link>.</p>
+				<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
 			</div>
 			<card-list-items
 				v-else
@@ -41,7 +41,7 @@
 				key="main-deck-no-cards"
 			>
 				<p>This deck has no cards yet. (Add some!)</p>
-				<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#m-deck-editor">user manual</router-link>.</p>
+				<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
 			</div>
 			<card-list-items
 				v-else

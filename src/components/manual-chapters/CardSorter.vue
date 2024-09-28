@@ -1,5 +1,5 @@
 <template functional>
-	<section id="m-card-sorter" key="card-sorter">
+	<section id="card-sorter" key="card-sorter">
 		<h4>Card Sorter</h4>
 		<p>
 			<img class="screenshot float-right"
@@ -7,12 +7,12 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#m-deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#m-card-list">card list</a> in various ways.</p>
-		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#m-card-groups">groups</a> of your currently <a href="#m-deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter (the section labeled “Sort cards by” in the <a href="#deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways.</p>
+		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
-				<p><strong>Starred</strong> – Sorts between <a href="#m-card-stars">starred</a> and un-starred. If no card names in your deck have a star, this sorting option is hidden.</p>
+				<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and un-starred. If no card names in your deck have a star, this sorting option is hidden.</p>
 			</li>
 			<li>
 				<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
@@ -40,14 +40,14 @@
 				<p>Among cards having the same P/T sums as each other, they’re sorted by power alone from greatest to least. Cards without the power and toughness attribute are moved to the bottom.</p>
 			</li>
 			<li>
-				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#m-card-quantities">quantity</a>.</p>
+				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
 			</li>
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that never insert gaps are name, mana color, and rarity.</p>
 		<p>Under certain conditions, the card sorter’s sorting option resets to “(None),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
-				<li><a href="#m-card-adder">Add a card name</a> to the list</li>
+				<li><a href="#card-adder">Add a card name</a> to the list</li>
 				<li>Adjust the quantity of a card name while the sorter is set to “Quantity”</li>
 				<li>Star a card name while the sorter is set to “Starred”</li>
 			</ul>
