@@ -18,9 +18,15 @@
 		</ul>
 		<p>For almost every category, their tables have the following columns:</p>
 		<ul>
-			<li>The first column displays the names of card attributes relevant to the category. Only the attributes that exist among cards in your deck are shown.</li>
-			<li>The second column (“Ct.”) displays the counts of the attributes.</li>
-			<li>The third column (“Percent”) displays the percentages of the attributes. The basis of a table’s percentages, indicated on each table’s last row, varies among categories. The majority of the categories’ percentages are based on the total number of cards in your deck.</li>
+			<li>
+				<p>The first column displays the names of card attributes relevant to the category. Only the attributes that exist among cards in your deck are shown.</p>
+			</li>
+			<li>
+				<p>The second column (“Ct.”) displays the counts of the attributes.</p>
+			</li>
+			<li>
+				<p>The third column (“Percent”) displays the percentages of the attributes. The basis of a table’s percentages, indicated on each table’s last row, varies among categories. The majority of the categories’ percentages are based on the total number of cards in your deck.</p>
+			</li>
 		</ul>
 		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>
 		<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts, and all tables whenever a <a href="#m-statistics-filter">statistics filter</a> is on.</p>

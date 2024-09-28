@@ -30,7 +30,14 @@
 							<li><a href="#m-deck-name">Deck Name</a></li>
 							<li><a href="#m-basic-statistics">Basic Statistics</a></li>
 							<li><a href="#m-mode-menu">Mode Menu</a></li>
-							<li><a href="#m-deck-actions">Deck Actions</a></li>
+							<li>
+								<a href="#m-deck-actions">Deck Actions</a>
+								<ol>
+									<li><a href="#m-copy-action">Copy</a></li>
+									<li><a href="#m-export-action">Export</a></li>
+									<li><a href="#m-delete-action">Delete</a></li>
+								</ol>
+							</li>
 						</ol>
 					</li>
 					<li><a href="#m-deck-page-modes">Deck Page Modes</a></li>
@@ -55,7 +62,15 @@
 								</ol>
 							</li>
 							<li><a href="#m-scryfall-button">Scryfall Advanced Search Button</a></li>
-							<li><a href="#m-card-adder">Card Adder</a></li>
+							<li>
+								<a href="#m-card-adder">Card Adder</a>
+								<ol>
+									<li><a href="#m-card-name-query">Name Query</a></li>
+									<li><a href="#m-scryfall-url-query">Scryfall Page URL Query</a></li>
+									<li><a href="#m-random-card-query">Random Query</a></li>
+									<li><a href="#m-card-adder-other-info">Other Info</a></li>
+								</ol>
+							</li>
 						</ol>
 					</li>
 					<li>
