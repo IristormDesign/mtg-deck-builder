@@ -60,7 +60,16 @@ export default {
 	methods: {
 		listenForKeyboardShortcuts (event) {
 			if (!event.key) return // Exit this function now if there's no detected key press. Apparently this function is triggered whenever a card is added to the card list, even if no key has been pressed.
-			if (event.repeat) return // Ignore key events from held-down key presses, which would trigger multiple events too rapidly.
+			if (event.repeat) {
+				if (
+					this.$route.name === 'drawSim' &&
+					event.key === ' '
+				) {
+					event.preventDefault()
+				}
+
+				return // Ignore key events from held-down key presses, which would trigger multiple events too rapidly.
+			}
 
 			const keyEvent = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
 
