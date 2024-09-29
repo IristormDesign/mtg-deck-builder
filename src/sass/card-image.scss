@@ -135,7 +135,6 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 			filter: $drop-shadow-card-shadow;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			transition-delay: $transition-delay-card;
-			will-change: auto;
 		}
 		&:focus-within,
 		&.kb-highlight {
