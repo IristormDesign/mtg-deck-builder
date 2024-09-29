@@ -25,7 +25,7 @@
 				<p>The second column (“Ct.”) displays the counts of the attributes.</p>
 			</li>
 			<li>
-				<p>The third column (“Percent”) displays the percentages of the attributes. The basis of a table’s percentages, indicated on each table’s last row, varies among categories. The majority of the categories’ percentages are based on the total number of cards in your deck.</p>
+				<p>The third column (“Percent”) displays the percentages of the attributes. The basis of a table’s percentages, indicated on each table’s last row, varies between categories. The majority of the categories’ percentages are based on the total number of cards in your deck.</p>
 			</li>
 		</ul>
 		<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>

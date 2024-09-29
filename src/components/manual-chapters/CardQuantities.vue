@@ -8,7 +8,7 @@
 			/>
 		</p>
 		<p>To the right of each card name’s <a href="#card-bars">bar</a> in the <a href="#card-list">card list</a> is a number representing the quantity of that card name in your deck’s selected <a href="#card-groups">card group</a>.</p>
-		<p>To change a card name’s quantity, do any of the following methods:</p>
+		<p>To change a card name’s quantity, do any one of the following methods:</p>
 		<ul>
 			<li>
 				<p>Click the quantity number field, then use your keyboard to type in a new number.</p>

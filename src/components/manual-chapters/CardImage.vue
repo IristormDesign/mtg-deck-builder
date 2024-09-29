@@ -8,7 +8,7 @@
 				alt="Snippet of card image" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The card image section of the <a href="#deck-editor">Deck Editor</a> displays a scanned full-border picture of a <i>Magic</i> card.</p>
+		<p>The card image section of the <a href="#deck-editor">Deck Editor</a> displays a scanned full-border picture of a <i>Magic: The Gathering</i> card.</p>
 		<p>The particular image shown is usually of the card that relates to the <a href="#card-list">card list</a> element that you’ve most recently interacted with. (The card list elements are <a href="#card-bars">bars</a>, <a href="#card-quantities">quantities</a>, and <a href="#card-stars">stars</a>.)</p>
 		<p>Whenever you <a href="#card-adder">add a card name</a> to the card list, or whenever you navigate up or down the list’s rows by <a href="#keyboard-shortcuts">pressing the <kbd>W</kbd> or <kbd>S</kbd> keys</a>, the relevant image is automatically shown.</p>
 		<p>To look at the card image up closer, hover your mouse pointer over it, or press <kbd>Q</kbd>.</p>
