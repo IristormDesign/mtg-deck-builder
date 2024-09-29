@@ -301,7 +301,7 @@ $outline-width-stat-section: 2px;
 		left: 0;
 		right: 0;
 		background: $color-blue-highlight;
-		border-color: transparent;
+		border-color: $color-blue-highlight-dim;
 		box-shadow: $box-shadow-card-bar-cluster;
 		color: $color-text-brighter;
 

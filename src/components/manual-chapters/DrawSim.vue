@@ -12,11 +12,11 @@
 				<p><strong>“Drawn Cards” statistic</strong> – This shows the number of cards you’ve drawn since starting the current round.</p>
 			</li>
 			<li>
-				<p><strong>“Draw a Card” button</strong> – Click this button, or <a href="#kbsc-draw-sim">press the space bar</a>, to draw one card from your library.</p>
-				<p>The drawn card’s name appears at the top of the card list, and its image appears (if the card image section is already visible on your device’s screen). You can keep drawing cards until your library has none left.</p>
+				<p><strong>“Draw a Card” button</strong> – Click this button, or <a href="#kbsc-draw-sim">press the space bar</a>, to draw one card from your library. The drawn card’s name appears at the top of the card list, and its image appears (if the card image section is already visible on your device’s screen).</p>
+				<p>You can keep drawing cards until your library is emptied.</p>
 			</li>
 			<li>
-				<p><strong>“Restart” button</strong> – Click this button, or press the <kbd>R</kbd> key, anytime to begin a new testing round. This means that all drawn cards are returned to your library, then your library is shuffled (the cards are rearranged in a new randomized order).</p>
+				<p><strong>“Restart” button</strong> – Click this button, or press the <kbd>R</kbd> key, anytime to begin a new testing round. This means that all drawn cards are returned to your library, then your library is “shuffled” (the cards are rearranged in a new randomized order).</p>
 			</li>
 			<li>
 				<p><strong>Card list section</strong> – This shows the record of cards you’ve drawn in chronological order during the current round. The list features <a href="#card-bars">card bars</a> and <a href="#card-stars">card stars</a> that work like those same elements in the Deck Editor’s card list.</p>
