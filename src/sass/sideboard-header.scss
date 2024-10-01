@@ -1,7 +1,7 @@
 @import 'variables';
 
 .sideboard-header {
-	margin: -$margin-card-gap-after 0 $margin-card-gap-after;
+	margin: -$margin-card-gap-after 0 ($margin-card-gap-after + .25px);
 	background-color: $color-mythic-very-dim;
 	background-image: $striped-pattern-background;
 	color: $color-text-over-mythic-very-dim;

@@ -83,7 +83,7 @@
 
 @media (max-width: ($min-width-app*.875)) {
 	.mode-menu {
-		height: $lhse*2.25;
+		min-height: $lhse*2.25;
 
 		ul {
 			grid-template-columns: repeat(3, $lhse*3);

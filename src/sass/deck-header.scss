@@ -125,26 +125,31 @@
 	.deck-header {
 		.deck-info {
 			@include deck-info-box-narrow();
+			min-height: $height-deck-header-component*1.5;
 
 			h3 {
 				width: auto;
 			}
 		}
+		.deck-name {
+			min-height: $height-deck-header-component;
+		}
 	}
 }
 @media (max-width: ($min-width-app * .875)) {
 	.deck-header {
-		margin-top: $lhse*.5
+		margin-top: $lhse*.5;
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
 	.deck-header {
 		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1.3333fr;
 		min-width: 66.67vw;
 
 		.deck-info {
 			grid-column: span 2;
+			min-height: $height-deck-header-component;
 
 			&:nth-of-type(2),
 			&:nth-of-type(3) {
