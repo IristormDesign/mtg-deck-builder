@@ -7,7 +7,10 @@
 			@click="attentionAddCard()"
 		>
 			<transition name="placement-outline-fade">
-				<div class="card-placement-outline"></div>
+				<div
+					v-if="showPlacementOutline"
+					class="card-placement-outline"
+				></div>
 			</transition>
 			<div class="image-container">
 				<div
@@ -131,10 +134,12 @@ export default {
 		showPlacementOutline () {
 			if (this.$store.state.isMobileLayout()) {
 				return false
+			} else if (this.$route.name === 'deckEditor') {
+				return this.activeCardList.cards.length === 0
 			} else if (this.$route.name === 'drawSim') {
-				return true
+				return !this.$store.state.viewedDrawnCard
 			} else {
-				return this.deck.cards.length <= 0
+				return true
 			}
 		},
 		cardImage () {
