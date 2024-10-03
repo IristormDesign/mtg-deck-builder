@@ -1,8 +1,8 @@
 <template functional>
 	<section id="kbsc-deck-editor" key="kbsc-deck-editor">
 		<h4>Keyboard Shortcuts: Deck Editor Actions</h4>
-		<p>The <a href="#deck-editor">Deck Editor</a> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided into three categories, each explained in the next subchapters.</p>
-		<p>The majority of the keyboard shortcuts for the Deck Editor do actions involving the <a href="#card-list">card list</a>’s row that’s currently highlighted. If no row is highlighted yet, then using any keyboard shortcut that affects the card list will start highlighting the row associated with the currently shown <a href="#card-image">card image</a>.</p>
+		<p>The <a href="#deck-editor">Deck Editor</a> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all to be explained in the next subchapters of this user manual.</p>
+		<p>Among the Deck Editor’s keyboard shortcuts, the majority of them do actions that in some way involve the <a href="#card-list">card list</a>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <a href="#card-image">card image</a> becomes highlighted.</p>
 
 		<h5>Highlighting Rows in the Card List</h5>
 		<p>A <a href="#card-list">card list</a> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <a href="#card-image">card image</a> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
