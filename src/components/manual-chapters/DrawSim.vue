@@ -6,7 +6,7 @@
 		<p>The page for the Draw Simulator contains the following parts, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li>
-				<p><strong>“Cards in Library” statistic</strong> – This shows the number of remaining cards you could draw. Whenever you start a new round, the “Cards in Library” are the total cards in your deck’s main <a href="#card-groups">card group</a>. (Cards in the sideboard aren’t used in the Draw Simulator.)</p>
+				<p><strong>“Cards in Library” statistic</strong> – This shows the number of remaining cards you could draw. Whenever you start a new round, the “Cards in Library” are the total cards in your deck’s main <a href="#card-groups">card group</a>. (Cards in the sideboard aren’t used here.)</p>
 			</li>
 			<li>
 				<p><strong>“Drawn Cards” statistic</strong> – This shows the number of cards you’ve drawn since starting the current round.</p>

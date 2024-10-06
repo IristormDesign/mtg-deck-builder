@@ -14,7 +14,7 @@
 
 		<section id="card-name-query">
 			<h5>Card Name Query</h5>
-			<p>In the <a href="#card-adder">card adder</a>, simply enter the certain name of a <i>Magic</i> card, and it’ll be added to your deck. While you start typing letters into the card adder’s text field, a small list of selectable suggestions for card names will appear by it.</p>
+			<p>In the <a href="#card-adder">card adder</a>, simply enter the certain name of a <i>Magic</i> card, and that name will be included in the <a href="#card-list">card list</a>. While you start typing letters into the card adder’s text field, a small list of selectable suggestions for card names will appear by it.</p>
 			<p>When you submit a card name query, if it turns out to be an invalid name, the app will notify you of the mistake. If a card name has been printed in multiple sets, then the card name from the latest released set is retrieved.</p>
 		</section>
 		<section id="scryfall-url-query">
