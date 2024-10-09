@@ -10,20 +10,41 @@ $outline-width-stat-section: 2px;
 		background: $color-group-bg-darker;
 	}
 	&:active {
-		background: $color-blue-highlight-dark;
+		background: $color-highlight-bg;
+		color: $color-text-brighter-over-mythic-brown;
 	}
 }
 @mixin highlighted-table-component {
-	background: $color-blue-highlight;
-	outline: 3px dashed $color-blue-highlight-bright;
+	background: $color-highlight-bg;
 	outline-offset: -1px;
 	scroll-margin: $lhse*2;
 
+	th {
+		color: $color-app-header-link-active;
+	}
+	td {
+		color: $color-text-brighter-over-mythic-brown;
+	}
+	&,
 	&:hover {
-		background: $color-blue-highlight-dark;
+		outline: 3px dashed $color-mythic-orange;
+	}
+	&:hover {
+		background: desaturate(darken($color-highlight-bg, 6.25%), 6.25%);
+
+		th {
+			color: $color-app-header-link-hover;
+		}
 	}
 	&:active {
 		background: $color-group-bg-darker;
+
+		th {
+			color: $color-mythic-orange;
+		}
+		td {
+			color: $color-text;
+		}
 	}
 }
 
@@ -154,9 +175,9 @@ $outline-width-stat-section: 2px;
 	}
 	.distinct-head {
 		th {
-			background: $color-mythic-very-dim;
-			border-color: $color-mythic-very-dim;
-			color: $color-text-over-mythic-very-dim;
+			background: $color-mythic-brown;
+			border-color: $color-mythic-brown;
+			color: $color-text-over-mythic-brown;
 		}
 	}
 	.empty-td {
@@ -168,6 +189,9 @@ $outline-width-stat-section: 2px;
 			cursor: pointer;
 
 			&:hover {
+				outline: 1px solid $color-highlight-bg;
+				outline-offset: -1px;
+
 				th {
 					color: $color-link-focus;
 				}
@@ -178,8 +202,8 @@ $outline-width-stat-section: 2px;
 				}
 				th,
 				td {
-					border-right-color: $color-blue-highlight-dim;
-					border-left-color: $color-blue-highlight-dim;
+					border-right-color: $color-highlight-border;
+				border-left-color: $color-highlight-border;
 				}
 			}
 			th {
@@ -192,8 +216,8 @@ $outline-width-stat-section: 2px;
 
 			th,
 			td {
-				border-right-color: $color-blue-highlight-dim;
-				border-left-color: $color-blue-highlight-dim;
+				border-right-color: $color-highlight-border;
+				border-left-color: $color-highlight-border;
 			}
 			&:active {
 				th,
@@ -230,12 +254,22 @@ $outline-width-stat-section: 2px;
 			}
 			&:hover {
 				color: $color-link-focus;
+				outline: 1px solid $color-highlight-bg;
+				outline-offset: -1px;
 			}
 			&:active {
 				color: $color-link-active;
 			}
 			&.filtering {
 				@include highlighted-table-component;
+				color: $color-app-header-link-active;
+
+				&:hover {
+					color: $color-app-header-link-hover;
+				}
+				&:active {
+					color: $color-mythic-orange;
+				}
 			}
 		}
 	}
@@ -300,14 +334,15 @@ $outline-width-stat-section: 2px;
 		top: 0;
 		left: 0;
 		right: 0;
-		background: $color-blue-highlight;
-		border-color: $color-blue-highlight-dim;
 		box-shadow: $box-shadow-card-bar-cluster;
-		color: $color-text-brighter;
+		background: $color-mythic-dim;
+		background: $color-highlight-bg;
+		border-color: $color-highlight-border;
+		color: $color-text-over-mythic-brown;
 
 		h4,
 		strong {
-			color: $color-text-extra-brighter;
+			color: $color-text-brighter-over-mythic-brown;
 		}
 	}
 	> div {
@@ -327,7 +362,6 @@ $outline-width-stat-section: 2px;
 		text-wrap: balance;
 		text-align: center;
 		line-height: $line-height-standard*.8333;
-		font-style: italic;
 	}
 	.button-container {
 		height: $lhse*1.25;
@@ -335,7 +369,7 @@ $outline-width-stat-section: 2px;
 		align-items: center;
 	}
 	button {
-		@include button(true);
+		@include button('gray');
 		text-wrap: nowrap;
 		font-size: 83.33%;
 		height: $lhse*1.5;

@@ -17,21 +17,33 @@
 		list-style: none;
 		display: grid;
 		grid-template-columns: repeat(3, minmax(max-content, 1fr));
-		gap: $lhse*.5;
+		gap: $lhse;
 		align-items: center;
 	}
 	.header-menu-item {
-		@include button;
+		@include link;
+		@include heading-font;
 		white-space: nowrap;
 		margin-right: 0;
 		margin-left: 0;
 		width: 100%;
-		font-size: 87.5%;
 		min-height: $lhse*1.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background: none;
+		color: $color-app-header-link;
+		text-decoration: none;
+		font-size: 87.5%;
+		padding: $lhse*.25;
 
+		&:hover,
+		&:focus {
+			@include link-colors($color-app-header-link-hover);
+		}
+		&:active {
+			@include link-colors($color-app-header-link-active);
+		}
 		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerButtonAttention.js.
 			animation: flash .1667s ease-in;
 			animation-iteration-count: 6;
@@ -65,13 +77,13 @@
 
 		.hover-shield {
 			position: absolute;
-			margin-top: -$lhse*1.2;
 			width: 100%;
-			height: 100%;
+			height: $lhse*1.4;
+			margin-top: -$lhse*1.375;
 			border-radius: $border-radius-group;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
-			background: $color-background-alt;
+			background: $color-mythic-dimmer;
 		}
 		ul {
 			@include popup-menu-list;
@@ -100,11 +112,11 @@
 		height: 100%;
 	}
 	.deck-menu-deck-name {
-		font-weight: $font-weight-semibold;
+		font-weight: $font-weight-label;
 		max-width: 10em;
 		width: max-content;
 		line-height: 1;
-		padding: divide($lhse, 12) 0 divide($lhse, 6);
+		padding: divide($lhse, 8) 0 divide($lhse, 4);
 	}
 	.deck-menu-deck-colors {
 		display: flex;
@@ -117,19 +129,21 @@
 	.mana-symbol {
 		display: flex;
 		cursor: inherit;
-		box-shadow: 0 0 0 1px rgba(#000, .125);
 		opacity: $opacity-mana-symbols;
 	}
 }
 
 @media (max-width: $min-width-app) {
 	.header-menu {
+		ul {
+			gap: .75em;
+		}
 		.header-menu-item {
 			font-size: 80%;
 		}
 		.deck-menu {
 			.hover-shield {
-				margin-top: -$lhse*1.0417;
+				height: $lhse*3;
 			}
 		}
 	}
@@ -141,6 +155,11 @@
 	.header-menu {
 		max-width: $max-width-content*.6;
 		margin: 0 auto;
+
+		.header-menu-item {
+			min-height: 0;
+			height: $lhse;
+		}
 	}
 }
 @media (max-width: $max-width-mobile-header-menu) {
@@ -171,7 +190,7 @@
 			top: -$lhse*1.5;
 			right: 0;
 			margin: 0;
-			background: $color-background-alt;
+			background: $color-mythic-dimmer;
 			border-radius: $border-radius-group;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
@@ -190,8 +209,9 @@
 		.open-deck-heading {
 			display: block;
 			cursor: default;
-			color: rgba(#fff, .8333);
-			margin-left: $lhse*.375;
+			color: $color-text-over-mythic-brown;
+			margin-left: 0;
+			margin-bottom: $lhse*.125;
 
 			strong {
 				@include heading-font;
@@ -204,8 +224,8 @@
 			display: none !important;
 		}
 		.deck-menu {
-			background: desaturate(darken($color-background-alt, 25%), 25%);
-			padding: 0 0 divide($lhse, 3) divide($lhse, 3);
+			background: $color-mythic-dimmer;
+			padding: 0 0 0 divide($lhse, 3);
 
 			.hover-shield {
 				display: none;
@@ -215,6 +235,7 @@
 				border-radius: $border-radius-group*.5;
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
+				border-width: 0;
 				position: static;
 				overflow: hidden;
 				max-height: 100%;

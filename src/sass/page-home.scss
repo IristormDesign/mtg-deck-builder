@@ -80,7 +80,7 @@
 			left: $lhse*1.5;
 			background: $color-group-bg;
 			border: $border-image-thick;
-			border-color: $color-content-bg;
+			border-color: $color-heading-bg;
 			box-shadow: 0 0 $lhse*1.5 rgba(#000, .6667);
 			padding: $lhse*.25 $lhse*.875;
 			border-radius: $border-radius-group;
@@ -110,20 +110,22 @@
 			white-space: nowrap;
 
 			&:first-child {
-				@include button(true);
+				@include button('gray');
 			}
 		}
 	}
 	.app-features {
 		padding: $lhse*1.5 0;
 		position: relative;
-		background: $color-background-alt;
+		background: $color-mythic-brown;
 		scroll-margin-top: $lhse;
-		color: $color-text-over-background-alt;
+		color: $color-text-over-mythic-brown;
+		border-top: 1px solid $color-section-border-alt;
+		border-bottom: 1px solid $color-content-bg-lighter;
 
 		h2 {
 			margin-top: 0;
-			color: #000;
+			color: $color-text-brighter-over-mythic-brown;
 		}
 		.wrap {
 			display: grid;
@@ -137,6 +139,13 @@
 		ul {
 			font-size: $font-size-bigger;
 			margin-bottom: 0;
+		}
+		li {
+			margin: $lhse*.25 0;
+			line-height: $line-height-standard * .9167;
+		}
+		img {
+			border: 1px solid darken($color-mythic-brown, 6.25%);
 		}
 	}
 	.final-call-to-action {
@@ -153,7 +162,7 @@
 			margin: divide($lhse, 3) $lhse*.5;
 		}
 		.button {
-			@include button(true);
+			@include button('gray');
 		}
 		button,
 		.button {
@@ -238,7 +247,6 @@
 			}
 		}
 		.app-features {
-			border-top-width: 0;
 			box-shadow: none;
 		}
 	}

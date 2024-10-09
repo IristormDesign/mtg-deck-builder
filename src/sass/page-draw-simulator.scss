@@ -61,7 +61,7 @@
 			touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices when double-tapping on this button.
 		}
 		.restart {
-			@include button(true);
+			@include button('gray');
 		}
 	}
 	.card-list-section {

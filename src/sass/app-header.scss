@@ -31,7 +31,6 @@
 		@include heading-font;
 		display: flex;
 		align-items: flex-end;
-		font-size: 150%;
 		line-height: 1;
 		white-space: nowrap;
 
@@ -51,10 +50,10 @@
 	}
 	h1 {
 		margin: 0 .5em 0 0;
-		font-size: inherit;
+		font-size: 150%;
 	}
 	.by-iristorm {
-		font-size: 60%;
+		font-size: 87.5%;
 		margin: ($lhse*.0625) 1em;
 		margin-left: 0;
 		cursor: default;
@@ -68,7 +67,7 @@
 @media (max-width: $min-width-app) {
 	.app-header {
 		.app-title {
-			font-size: 125%;
+			font-size: 87.5%;
 		}
 	}
 }

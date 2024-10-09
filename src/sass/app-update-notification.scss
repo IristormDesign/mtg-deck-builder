@@ -2,8 +2,8 @@
 
 .update-notification {
 	z-index: index($layers, update-notif);
-	background: $color-blue-highlight;
-	color: $color-text-brighter;
+	background: $striped-pattern-background $color-mythic-brown;
+	color: $color-text-over-mythic-brown;
 	padding: 0 $lhse*.5;
 	min-height: $height-app-header-short;
 	display: flex;
@@ -16,7 +16,7 @@
 		text-align: center;
 	}
 	strong {
-		color: $color-text-extra-brighter;
+		color: $color-text-brighter-over-mythic-brown;
 	}
 	.button-container {
 		width: $lhse*3.5;
@@ -25,7 +25,7 @@
 		align-items: center;
 	}
 	button {
-		@include button(true);
+		@include button('gray');
 		display: block;
 		font-size: 87.5%;
 		margin-right: auto;

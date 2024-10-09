@@ -71,6 +71,7 @@
 			display: block;
 			padding: divide($lhse, 6) divide($lhse, 4);
 			margin-left: -$lhse*.25;
+			break-inside: avoid-column;
 
 			&:hover,
 			&:focus,
@@ -78,10 +79,11 @@
 				text-decoration-line: underline;
 			}
 			&.visible {
-				background: $color-blue-highlight;
+				background: $color-highlight-bg;
+				color: $color-link-active;
 
 				&:not(:focus) {
-					outline: 1px solid $color-blue-highlight-dim;
+					outline: 1px solid $color-highlight-border;
 					outline-offset: -1px;
 				}
 			}
@@ -116,13 +118,8 @@
 		section {
 			&:target {
 				@keyframes highlight-section {
-					0% {
-						outline-color: rgba($color-blue-highlight-bright, 0);
-						background: rgba($color-blue-highlight-bright, 0);
-					}
-					12.5% {
-						outline-color: $color-blue-highlight-bright;
-						background: $color-blue-highlight-bright;
+					20% {
+						outline-color: $color-app-header-link;
 						color: #fff;
 					}
 				}
@@ -130,7 +127,8 @@
 				> h3:first-child,
 				> h4:first-child,
 				> h5:first-child {
-					outline: $lhse*.3333 solid rgba($color-blue-highlight-bright, 0);
+					outline: $lhse*.125 solid rgba($color-app-header-link, 0);
+					outline-offset: $lhse*.25;
 					animation: highlight-section 1s ease-in;
 					z-index: 1;
 					position: relative;

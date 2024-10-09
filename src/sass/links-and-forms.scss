@@ -144,15 +144,15 @@ select {
 	border-radius: $border-radius-button;
 }
 option {
-	background: $color-background-alt;
-	color: $color-text-over-background-alt;
-	font: $font-weight-semibold #{112.5%}/#{1} $font-family-standard;
+	@include popup-menu-list-links;
+	background: $color-mythic-dim;
+	font-size: 112.5%;
 
 	&[value=""] {
 		display: none;
 	}
 	&:checked {
-		color: lighten($color-text-over-background-alt, 40%);
+		color: lighten($color-mythic-dim, 16.67%);
 	}
 }
 .checklist {
@@ -196,7 +196,7 @@ option {
 		height: 80%;
 	}
 	&:checked {
-		background: $color-button;
+		background: $color-button-orange;
 
 		&::after {
 			opacity: 1;

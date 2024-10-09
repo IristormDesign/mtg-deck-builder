@@ -6,25 +6,28 @@
 
 // ORANGE-BASED COLORS
 $color-mythic-orange: #ea4b12; // Sampled
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 16.67%), 50%);
-$color-mythic-very-dim: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
+$color-highlight-bg: desaturate(darken($color-mythic-orange, 20%), 20%);
+$color-highlight-border: desaturate(lighten($color-highlight-bg, 8.33%), 8.33%);
+$color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 45.83%);
+$color-mythic-dimmer: darken($color-mythic-dim, 8.33%);
+$color-mythic-brown: darken(desaturate($color-mythic-orange, 75%), 20.83%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: desaturate(lighten($color-mythic-orange, 12.5%), 16.67%);
 $color-link-focus: saturate(lighten($color-link, 8.33%), 100%);
 $color-link-dim: desaturate(darken($color-link, 0%), 20%);
-$color-button: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
-$color-text-over-mythic-very-dim: lighten($color-mythic-very-dim, 54.17%);
+$color-button-orange: lighten(desaturate($color-mythic-orange, 25%), 8.33%);
+$color-text-over-mythic-brown: lighten($color-mythic-brown, 54.17%);
+$color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: lighten($color-mythic-very-dim, 8.33%); // Lighten percentage matches that of $color-section-border.
+$color-section-border-alt: lighten($color-mythic-brown, 8.33%); // Lighten percentage matches that of $color-section-border.
 
 // YELLOW-BASED COLORS
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-link-active: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link: lighten($color-mythic-yellow, 16.67%);
+$color-app-header-link: desaturate(lighten($color-mythic-yellow, 8.33%), 12.5%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
 $color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
-$color-background-alt: desaturate(lighten($color-mythic-yellow, 20.83%), 62.5%);
-$color-text-over-background-alt: desaturate(darken($color-background-alt, 62.5%), 12.5%);
 
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
@@ -36,13 +39,9 @@ $color-text: lighten($color-group-bg, 60%);
 $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 8.33%);
-$color-button-alt: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
+$color-button-gray: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 4.17%);
 $color-section-border: $color-heading-bg;
-$color-blue-highlight: darken(desaturate($color-mythic-complement, 8.33%), 29.17%);
-$color-blue-highlight-dark: saturate(darken($color-blue-highlight, 6.25%), 33.33%);
-$color-blue-highlight-dim: desaturate(lighten($color-blue-highlight, 8.33%), 12.5%);
-$color-blue-highlight-bright: lighten($color-blue-highlight, 25%);
 
 // INDIGO-BASED COLORS
 $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
@@ -109,12 +108,12 @@ $margin-sections: divide($lhse, 3);
 // BORDERS
 $border-sections: 2px solid $color-section-border;
 $border-sections-alt: 2px solid $color-section-border-alt;
-$color-input-border: 1px solid $color-button;
+$color-input-border: 1px solid $color-button-orange;
 $border-image-thin: 1px solid $color-group-bg-darker;
 $border-image-thick: $lhse*.25 solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
 $outline-focus-visible: 2px solid $color-link-active;
-$outline-keyboard-focus: 2px solid $color-button;
+$outline-keyboard-focus: 2px solid $color-button-orange;
 
 // SHADOWS AND GLOWS
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
@@ -132,10 +131,10 @@ $border-radius-group: $lhse*.3820;
 $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
 $striped-pattern-background: repeating-linear-gradient(-45deg,
-	$color-mythic-very-dim 											0,
-	$color-mythic-very-dim 										  .5em,
-	darken($color-mythic-very-dim, (1/64)*100%) .5em,
-	darken($color-mythic-very-dim, (1/64)*100%) 1em
+	$color-mythic-brown 											0,
+	$color-mythic-brown 										  .5em,
+	darken($color-mythic-brown, (1/64)*100%) .5em,
+	darken($color-mythic-brown, (1/64)*100%) 1em
 );
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);

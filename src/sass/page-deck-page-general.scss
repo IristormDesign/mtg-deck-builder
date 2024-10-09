@@ -11,10 +11,10 @@
 .outdated-deck-data-notice {
 	border-radius: $border-radius-group;
 	background-image: $striped-pattern-background;
-	background: $color-blue-highlight;
-	border: 2px solid $color-blue-highlight-bright;
+	background-color: $color-mythic-brown;
+	border: 1px solid $color-section-border-alt;
 	color: $color-text-brighter;
-	padding: $lhse*.375 4.17% $lhse*.5;
+	padding: $lhse*.1667 4.17% $lhse*.3333;
 	margin: 0 auto $margin-sections;
 	text-align: center;
 	text-wrap: balance;
@@ -37,7 +37,7 @@
 
 		&:first-of-type {
 			button {
-				@include button(true)
+				@include button('gray')
 			}
 		}
 	}

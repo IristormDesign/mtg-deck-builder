@@ -62,8 +62,7 @@
 }
 @mixin popup {
 	box-shadow: -.125em .375em .5em rgba(#000, .25);
-	background: $color-background-alt;
-	border-radius: $border-radius-group*.5;
+	background: $color-mythic-dim;
 }
 @mixin popup-menu-list {
 	@include popup;
@@ -71,34 +70,33 @@
 	margin: 0;
 	padding: 0;
 	overflow: auto;
+	border-radius: $border-radius-group;
+	border: 4px solid $color-mythic-dimmer;
 }
 @mixin popup-menu-list-links {
 	min-width: 6em;
 	padding: 0 divide($lhse, 3);
 	min-height: $lhse*1.1667;
 	text-decoration: none;
-	color: $color-text-over-background-alt;
+	color: $color-app-header-link;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-top: 1px solid rgba(#fff, .3333);
-	border-bottom: 1px solid rgba(#000, .1667);
+	border-top: 1px solid rgba(#fff, .0833);
+	border-bottom: 1px solid rgba(#000, .3333);
 	background: none;
-	font: $font-weight-semibold 100%/#{$line-height-standard} $font-family-standard;
+	font: 100%/#{$line-height-standard} $font-family-standard;
 	border-radius: 0;
-	text-shadow: none;
 	box-shadow: none;
 	margin: 0;
 
 	&:hover,
 	&:focus {
-		background: rgba(#fff, .3820);
-		color: darken($color-mythic-orange, 8.33%);
-		filter: none;
+		background: $color-mythic-dimmer;
+		color: $color-app-header-link-hover;
 	}
 	&:active {
-		background: desaturate($color-mythic-orange, 33.33%);
-		color: #fff;
+		color: $color-app-header-link-active;
 	}
 	@media (pointer: coarse) {
 		min-height: $lhse*1.3333;
@@ -116,12 +114,12 @@
 	background: rgba($color-content-bg, .6667);
 	backdrop-filter: blur(3px);
 }
-@mixin button($alt-color: false) {
-	@if $alt-color == true {
-		background: $color-button-alt;
+@mixin button($alt-color: 'orange') {
+	@if $alt-color == 'orange' {
+		background: $color-button-orange;
 	}
-	@else {
-		background: $color-button;
+	@else if $alt-color == 'gray' {
+		background: $color-button-gray;
 	}
 
 	@include heading-font;
