@@ -6,7 +6,15 @@ export default {
 	mixins: [stringMethods, deckColors],
 	data () {
 		return {
-			regexScryfallCardURL: /^(https:\/\/)?scryfall\.com\/card\/(\w+|\d+)\/(\w+|\d+)\//i, // A string beginning with `https://scryfall.com/card/X/Y/`, possibly excluding the `https://` part, and where `X` (the card set codename) and `Y` (the card collector number) are each at least one letter or digit.
+			regexScryfallCardURL: /scryfall\.com\/card\/(.*\/)*(\w+|\d+)(-|\/)(\w+|\d+)\//i, /* This gets a string containing:
+				1. `scryfall.com/card/`
+				2. A possible but not required subdirectory of any name, which could include cards from "The List" set, such as `plst/`
+				3. The card set codename, which is at least one letter or digit
+				4. Either a `/` (slash) or a `-` (hyphen)
+				5. The card collector number, which is at least one letter or digit
+				6. A `/` (slash)
+				This regex is able to get Scryfall URLs of card prints from standard sets as well as "The List" set. For example, either `https://scryfall.com/card/c17/183/nin-the-pain-artist` or `https://scryfall.com/card/plst/C17-183/nin-the-pain-artist` work. (However, the image for a card from "The List" gets another print's image instead, which shouldn't happen, but isn't important enough to fix right now.)
+			*/
 			alertTimeoutDuration: 25
 		}
 	},
@@ -54,7 +62,7 @@ export default {
 		axiosCollectionRequest (query) {
 			const matchingQueryParts = query.match(this.regexScryfallCardURL)
 			const cardSet = matchingQueryParts[2]
-			const collectorNumber = matchingQueryParts[3]
+			const collectorNumber = matchingQueryParts[4]
 
 			console.info(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested with Scryfall API`)
 
@@ -76,6 +84,8 @@ export default {
 					try {
 						this.assignCardData(response.data.data[0])
 					} catch {
+						this.loadingCard = false
+
 						alert('⚠ The URL you’re submitting doesn’t go to a valid card page on Scryfall. No card could be added from it.')
 					}
 				})
