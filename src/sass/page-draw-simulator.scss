@@ -116,10 +116,6 @@
 @media (max-width: ($min-width-app * .75)) {
 	.draw-simulator {
 		max-width: $max-width-deck-page-layout;
-	}
-}
-@media (max-width: ($min-width-app * .75)) {
-	.draw-simulator {
 		grid-template-columns: 100%;
 		grid-template-areas:
 			'panel'

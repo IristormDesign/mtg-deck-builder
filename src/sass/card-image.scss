@@ -272,7 +272,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 	.card-image {
 		.card-placement-outline,
 		.image-container {
-			width: min(#{488px * .6667}, 38.20vw);
+			width: min(#{488px * .6667}, 33.33vw);
 		}
 	}
 }
