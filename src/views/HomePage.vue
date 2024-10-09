@@ -5,7 +5,7 @@
 			<div class="wrap">
 				<div
 					class="invisible-click-surface"
-					@click="headerButtonAttention()">
+					@click="headerLinkAttention()">
 				</div>
 				<div class="text-box">
 					<header>
@@ -84,10 +84,10 @@
 </template>
 
 <script>
-import headerButtonAttention from '@/mixins/headerButtonAttention'
+import headerLinkAttention from '@/mixins/headerLinkAttention'
 
 export default {
-	mixins: [headerButtonAttention],
+	mixins: [headerLinkAttention],
 	methods: {
 		scrollToAppFeaturesSection () {
 			document.querySelector('.app-features')

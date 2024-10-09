@@ -1,6 +1,6 @@
 export default {
 	methods: {
-		headerButtonAttention () {
+		headerLinkAttention () {
 			let button
 
 			if (this.$store.state.decks.length > 0) {

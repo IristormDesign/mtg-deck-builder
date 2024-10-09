@@ -47,7 +47,7 @@
 	<article
 		v-else
 		class="action-done content-box"
-		@click="headerButtonAttention()"
+		@click="headerLinkAttention()"
 	>
 		<figure>
 			<img class="intro-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="Illustration of myriad people being sucked up into a glowing, stormy sky" />
@@ -58,10 +58,10 @@
 </template>
 
 <script>
-import headerButtonAttention from '@/mixins/headerButtonAttention.js'
+import headerLinkAttention from '@/mixins/headerLinkAttention.js'
 
 export default {
-	mixins: [headerButtonAttention],
+	mixins: [headerLinkAttention],
 	props: {
 		presetDeckName: String
 	},

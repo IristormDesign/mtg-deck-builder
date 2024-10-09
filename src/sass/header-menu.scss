@@ -44,7 +44,7 @@
 		&:active {
 			@include link-colors($color-app-header-link-active);
 		}
-		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerButtonAttention.js.
+		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerLinkAttention.js.
 			animation: flash .1667s ease-in;
 			animation-iteration-count: 6;
 			animation-direction: alternate;

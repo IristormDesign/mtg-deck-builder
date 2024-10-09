@@ -31,7 +31,7 @@
 						class="deck-menu-toggler header-menu-item"
 						@click="toggleDeckMenu()"
 						:disabled="disableMenuButton"
-						:title="disabledMenuButtonTooltip"
+						:title="disabledMenuLinkTooltip"
 					>
 						Open Deck&hellip;
 						<div class="mouseover-area"></div>
@@ -101,7 +101,7 @@ export default {
 				return (this.$store.state.decks.length === 0)
 			}
 		},
-		disabledMenuButtonTooltip () {
+		disabledMenuLinkTooltip () {
 			if (this.disableMenuButton) {
 				if (this.$store.state.decks.length > 0) {
 					return 'You have no other decks to open.'
