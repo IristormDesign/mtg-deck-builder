@@ -23,7 +23,6 @@
 	border-right-width: 2px;
 	align-items: center;
 	justify-content: center;
-	background: $color-group-bg;
 	white-space: nowrap;
 	cursor: default;
 	color: $color-text-brighter;
@@ -37,6 +36,7 @@
 	.output {
 		line-height: 1;
 		margin-top: -$lhse*.1; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
+		font-weight: $font-weight-label;
 	}
 }
 @mixin deck-info-box-wide() {
