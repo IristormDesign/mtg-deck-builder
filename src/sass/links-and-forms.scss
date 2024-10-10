@@ -32,6 +32,15 @@ select {
 	transition: all $transition-duration-standard ease;
 	transition-property: color, background-color, border-color;
 
+	&::placeholder {
+		color: rgba($color-text, .6667);
+		font-weight: normal;
+		font-style: italic;
+		font-family: $font-family-standard;
+	}
+}
+input,
+select {
 	&:hover,
 	&:focus-visible {
 		text-decoration: none;
@@ -45,16 +54,6 @@ select {
 		color: $color-link-active;
 		border-color: $color-link-active;
 		transition-duration: 0s;
-	}
-	&::placeholder {
-		color: rgba($color-text, .6667);
-		font-weight: normal;
-		font-style: italic;
-		font-family: $font-family-standard;
-	}
-	&::selection {
-		background: $color-link-active;
-		color: #000;
 	}
 }
 input {

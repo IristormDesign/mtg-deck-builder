@@ -56,6 +56,36 @@
 	text-align: center;
 	text-wrap: balance;
 }
+.list-as-text {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: $lhse;
+	max-width: none;
+
+	section {
+		width: $lhse*12;
+	}
+	h4 {
+		margin: 0;
+	}
+	.text-card-list {
+		font-family: monospace;
+		font-weight: normal;
+		font-size: 75%;
+		line-height: normal;
+		border-radius: 0;
+		margin: $lhse*.5 auto;
+		width: 100%;
+		color: $color-text-brighter;
+		padding: $lhse*.5 $lhse*.6667;
+		border-color: $color-content-bg;
+	}
+	.no-cards {
+		font-style: italic;
+		color: $color-text-darker;
+	}
+}
 
 @media (max-width: $width-mobile-breakpoint) {
 	.deck-action-page {

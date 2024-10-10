@@ -47,6 +47,11 @@ const routes = [
 				name: 'drawSim',
 				path: 'draw-sim',
 				component: () => import(/* webpackChunkName: "draw-sim" */ '@/views/DrawSim.vue')
+			},
+			{
+				name: 'listAsText',
+				path: 'list-as-text',
+				component: () => import(/* webpackChunkName: "list-as-text" */ '@/views/ListAsText.vue')
 			}
 		]
 	},
