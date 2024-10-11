@@ -15,8 +15,6 @@ export default {
 					return 'Deck Analyzer'
 				case 'drawSim':
 					return 'Draw Simulator'
-				case 'listAsText':
-					return 'Card List as Text'
 				default:
 					return null
 			}

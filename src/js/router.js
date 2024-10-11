@@ -49,9 +49,9 @@ const routes = [
 				component: () => import(/* webpackChunkName: "draw-sim" */ '@/views/DrawSim.vue')
 			},
 			{
-				name: 'listAsText',
-				path: 'list-as-text',
-				component: () => import(/* webpackChunkName: "list-as-text" */ '@/views/ListAsText.vue')
+				name: 'convertToText',
+				path: 'convert-to-text',
+				component: () => import(/* webpackChunkName: "convert-to-text" */ '@/views/ConvertToText.vue')
 			}
 		]
 	},
