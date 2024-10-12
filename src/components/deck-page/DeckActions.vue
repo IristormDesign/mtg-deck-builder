@@ -80,6 +80,8 @@ export default {
 				name: 'deckAsText',
 				params: { activeDeck: this.deck }
 			})
+
+			document.activeElement.blur() // This is needed so that the browser focus doesn't remain on the Deck Actions select menu when using the keyboard.
 		},
 		exportDeck () {
 			this.$router.push({
