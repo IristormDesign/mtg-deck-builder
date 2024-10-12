@@ -7,7 +7,7 @@
 		>
 			<option value="">Deck Actions&hellip;</option>
 			<option value="copy">Copy</option>
-			<option value="convertToText">Convert to text</option>
+			<option value="deckAsText">Convert to text</option>
 			<option value="export">Export</option>
 			<option value="delete">Delete</option>
 		</select>
@@ -32,8 +32,8 @@ export default {
 			switch (this.deckAction) {
 				case 'copy':
 					this.copyDeck(); break
-				case 'convertToText':
-					this.convertToText(); break
+				case 'deckAsText':
+					this.deckAsText(); break
 				case 'export':
 					this.exportDeck(); break
 				case 'delete':
@@ -73,11 +73,11 @@ export default {
 				}
 			}
 		},
-		convertToText () {
-			if (this.$route.name === 'convertToText') return // Vue throws an error if the app would try to go to the "List as Text" page while already on that page, so don't let that happen.
+		deckAsText () {
+			if (this.$route.name === 'deckAsText') return // Vue throws an error if the app would try to go to the "List as Text" page while already on that page, so don't let that happen.
 
 			this.$router.push({
-				name: 'convertToText',
+				name: 'deckAsText',
 				params: { activeDeck: this.deck }
 			})
 		},

@@ -1,6 +1,6 @@
 <template>
-	<article class="convert-to-text content-box">
-		<h3>Convert Deck to Text</h3>
+	<article class="deck-as-text content-box">
+		<h3>Deck as Text</h3>
 
 		<div class="button-container">
 			<a
@@ -17,7 +17,7 @@
 			<section v-if="deck.cards.length > 0">
 				<header>
 					<h4>Main List</h4>
-					<button @click="copyList('mainList', 'deck’s main')">Copy List</button>
+					<button @click="copyList('mainList', 'main')">Copy List</button>
 				</header>
 				<textarea
 					v-text="listCards()"
@@ -106,8 +106,8 @@ export default {
 			navigator.clipboard.writeText(text.value + '\n')
 
 			setTimeout(() => {
-				alert(`The ${stringName} list is now copied to the clipboard.`)
-			}, 200)
+				alert(`The deck’s ${stringName} list is now copied to the clipboard.`)
+			}, 125)
 		}
 	}
 }

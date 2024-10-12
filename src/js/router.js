@@ -49,9 +49,9 @@ const routes = [
 				component: () => import(/* webpackChunkName: "draw-sim" */ '@/views/DrawSim.vue')
 			},
 			{
-				name: 'convertToText',
-				path: 'convert-to-text',
-				component: () => import(/* webpackChunkName: "convert-to-text" */ '@/views/ConvertToText.vue')
+				name: 'deckAsText',
+				path: 'deck-as-text',
+				component: () => import(/* webpackChunkName: "deck-as-text" */ '@/views/DeckAsText.vue')
 			}
 		]
 	},

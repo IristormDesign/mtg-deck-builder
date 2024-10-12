@@ -40,7 +40,7 @@ $color-text-brighter: lighten($color-text, 4.17%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 8.33%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 66.67%), 20%);
-$color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 4.17%);
+$color-heading-bg: desaturate(lighten($color-group-bg, 8.33%), 6.25%);
 $color-section-border: $color-heading-bg;
 
 // INDIGO-BASED COLORS
