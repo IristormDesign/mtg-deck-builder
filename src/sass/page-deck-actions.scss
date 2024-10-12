@@ -60,10 +60,12 @@
 	margin: 0 auto;
 	max-width: none;
 
+	&.no-cards {
+		max-width: $max-width-content;
+	}
 	h3 {
 		@include pronounced-heading;
-		margin: 0 auto $lhse*.5;
-		text-align: center;
+		margin-top: 0;
 	}
 	.button-container {
 		grid-column: span 2;
@@ -134,7 +136,7 @@
 @media (max-width: ($min-width-app * .8333)) {
 	.deck-as-text {
 		.lists {
-			&.one-column,
+			&,
 			&.two-columns {
 				grid-template-columns: 1fr;
 				grid-template-rows: auto auto;
