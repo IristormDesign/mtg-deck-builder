@@ -33,6 +33,7 @@
 							<li>
 								<a href="#deck-actions">Deck Actions</a>
 								<ol>
+									<li><a href="#convert-to-text-action">Convert to Text</a></li>
 									<li><a href="#copy-action">Copy</a></li>
 									<li><a href="#export-action">Export</a></li>
 									<li><a href="#delete-action">Delete</a></li>

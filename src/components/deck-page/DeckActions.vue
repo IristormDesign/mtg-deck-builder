@@ -6,8 +6,8 @@
 			id="deckActionSelect"
 		>
 			<option value="">Deck Actions&hellip;</option>
-			<option value="copy">Copy</option>
 			<option value="deckAsText">Convert to text</option>
+			<option value="copy">Copy</option>
 			<option value="export">Export</option>
 			<option value="delete">Delete</option>
 		</select>
@@ -30,10 +30,10 @@ export default {
 	methods: {
 		doDeckAction () {
 			switch (this.deckAction) {
-				case 'copy':
-					this.copyDeck(); break
 				case 'deckAsText':
 					this.deckAsText(); break
+				case 'copy':
+					this.copyDeck(); break
 				case 'export':
 					this.exportDeck(); break
 				case 'delete':
@@ -41,6 +41,16 @@ export default {
 			}
 
 			this.deckAction = ''
+		},
+		deckAsText () {
+			if (this.$route.name === 'deckAsText') return // Vue throws an error if the app would try to go to the "List as Text" page while already on that page, so don't let that happen.
+
+			this.$router.push({
+				name: 'deckAsText',
+				params: { activeDeck: this.deck }
+			})
+
+			document.activeElement.blur() // This is needed so that the browser focus doesn't remain on the Deck Actions select menu when using the keyboard.
 		},
 		copyDeck () {
 			const sourceDeck = this.deck
@@ -72,16 +82,6 @@ export default {
 					this.copyDeck(sourceDeck)
 				}
 			}
-		},
-		deckAsText () {
-			if (this.$route.name === 'deckAsText') return // Vue throws an error if the app would try to go to the "List as Text" page while already on that page, so don't let that happen.
-
-			this.$router.push({
-				name: 'deckAsText',
-				params: { activeDeck: this.deck }
-			})
-
-			document.activeElement.blur() // This is needed so that the browser focus doesn't remain on the Deck Actions select menu when using the keyboard.
 		},
 		exportDeck () {
 			this.$router.push({
