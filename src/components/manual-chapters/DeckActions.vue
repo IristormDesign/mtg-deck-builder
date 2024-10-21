@@ -6,7 +6,7 @@
 		<section id="convert-to-text-action">
 			<h5>Convert to Text</h5>
 			<p>From the <a href="#deck-actions">deck actions</a> menu, select “Convert to Text” to go to the “Deck as Text” page, where you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> as simple lists in the form of plain text. These plain text lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>.</p>
-			<p>To take these text lists outside MTG Deck Builder, you can copy the whole main or sideboard lists to the clipboard of your computer or device, or you can download a text file (.TXT) of both lists. If you choose to download a text file, it’s saved to wherever your web browser puts downloads.</p>
+			<p>To take these text lists outside MTG Deck Builder, you can copy the whole main or sideboard lists to the clipboard of your computer or mobile device, or you can download a text file (.TXT) of both lists. If you choose to download a text file, it’s saved to wherever your web browser puts downloads.</p>
 			<p>Why might you want to have your deck in the form of plain text?</p>
 			<ul>
 				<li>
@@ -30,7 +30,7 @@
 
 		<section id="export-action">
 			<h5>Export</h5>
-			<p>From the <a href="#deck-actions">deck actions</a> menu, select Export to go to the Export Decks page, where can select any of your decks in MTG Deck Builder to “export.” This means to have the app generate a <a href="#deck-data-files">deck data file</a> for those decks. The file is saved on your computer or device to wherever your web browser puts downloads.</p>
+			<p>From the <a href="#deck-actions">deck actions</a> menu, select Export to go to the Export Decks page, where can select any of your decks in MTG Deck Builder to “export.” This means to have the app generate a <a href="#deck-data-files">deck data file</a> for those decks. The file is saved on your computer or mobile device to wherever your web browser puts downloads.</p>
 			<p>Once you have a deck data file, you—or anyone whom you give the file to—can later “<a href="#create-deck">import</a>” it, which means to have the app recreate the decks from the data contained in that file.</p>
 			<p>If you export a single deck alone, then the deck data file is named after that deck’s name. If you export multiple decks together, then the file is named “My Decks.” In either case, the file has “.deck” as its file extension.</p>
 		</section>
