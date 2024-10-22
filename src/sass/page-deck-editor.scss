@@ -132,6 +132,13 @@ $width-card-adder-button: $lhse*2.3333;
 		height: $lhse*1.25;
 	}
 }
+.list-entry-button {
+	a {
+		@include button('gray');
+		font-size: 66.67%;
+		width: $lhse*4.5;
+	}
+}
 .card-adder {
 	label {
 		padding-bottom: $lhse*.25;

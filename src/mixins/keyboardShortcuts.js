@@ -98,6 +98,14 @@ export default {
 			this.setHighlightedIndex(-1, true)
 		},
 		kbShortcutsAllDeckPageModes (keyEvent) {
+			if (this.anyInputActive()) {
+				switch (keyEvent) {
+					case 'escape': case 'esc':
+						document.activeElement.blur()
+				}
+				return
+			}
+
 			const switchToMode = (routeName) => {
 				if (this.$route.name !== routeName) {
 					this.$router.push({ name: routeName })
@@ -249,6 +257,14 @@ export default {
 					document.activeElement === input &&
 					input.getAttribute('type') !== 'radio'
 				) {
+					return true
+				}
+			}
+
+			const allTextareas = document.getElementsByTagName('textarea')
+
+			for (const textarea of allTextareas) {
+				if (document.activeElement === textarea) {
 					return true
 				}
 			}

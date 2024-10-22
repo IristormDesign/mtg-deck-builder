@@ -1,0 +1,124 @@
+@import 'variables';
+
+.list-entry,
+.list-entry-results {
+	margin: 0 auto $lhse*.5;
+
+	h3 {
+		@include pronounced-heading;
+		margin-top: 0;
+	}
+}
+.list-entry {
+	// max-width: $max-width-app*.6;
+
+	.columns {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: $lhse;
+		align-items: flex-start;
+		margin-top: $lhse;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		width: max-content;
+		border: $border-sections;
+		padding: $lhse*.25 $lhse*.5;
+
+		label {
+			font-weight: $font-weight-label;
+			color: $color-text-brighter;
+		}
+		textarea {
+			margin: $lhse*.25 0;
+			font-size: 83.33%;
+			padding: $lhse*.5;
+		}
+		.button-container {
+			width: fit-content;
+			height: $lhse*1.5;
+			align-self: center;
+			display: flex;
+			align-items: center;
+		}
+		label {
+			font-weight: $font-weight-label;
+			color: $color-text-brighter;
+		}
+	}
+	.rules {
+		// @include small-font-size;
+		// line-height: $line-height-standard*.875;
+		// border: $border-sections;
+		// padding: $lhse*.5;
+		// position: relative;
+		// height: fit-content;
+
+		h4 {
+			margin-top: $lhse*.5;
+		}
+		*:last-child {
+			margin-bottom: 0;
+		}
+		code {
+			font-size: 83.33%;
+			line-height: normal;
+			letter-spacing: normal;
+			display: inline-block;
+			margin-left: $lhse*.75;
+		}
+	}
+	.loading-percentage {
+		text-align: center;
+
+		span {
+			font-size: 200%;
+		}
+	}
+}
+.list-entry-results {
+	.invalid-list {
+		li {
+			font-style: italic;
+		}
+	}
+	.ok {
+		margin-top: $lhse*.5;
+		height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+
+		a {
+			@include button;
+		}
+	}
+	.button-container {
+		height: $lhse*1.3333;
+		display: flex;
+		align-items: center;
+	}
+	.copy-button {
+		button {
+			@include button('gray');
+			font-size: 75%;
+			height: $lhse*1.5;
+		}
+		.v {
+			&-enter-active,
+			&-leave-active {
+				transition: opacity 1s ease;
+			}
+			&-enter-from,
+			&-leave-to {
+				opacity: 0;
+			}
+		}
+		.notification {
+			margin-top: -$lhse*.2;
+			margin-left: $lhse*.25;
+			font-style: italic;
+		}
+	}
+}

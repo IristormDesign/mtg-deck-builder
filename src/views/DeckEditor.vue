@@ -52,6 +52,7 @@
 
 		<div class="control-panel adder-controls">
 			<scryfall-button />
+			<list-entry-button />
 			<card-adder :deck="deck" />
 		</div>
 	</div>
@@ -64,11 +65,12 @@ import CardGroupSwitch from '@/components/deck-page/CardGroupSwitch.vue'
 import SideboardHeader from '@/components/deck-page/SideboardHeader.vue'
 import CardListItems from '@/components/deck-page/CardListItems.vue'
 import ScryfallButton from '@/components/deck-page/ScryfallButton.vue'
+import ListEntryButton from '@/components/deck-page/ListEntryButton.vue'
 import CardAdder from '@/components/deck-page/CardAdder.vue'
 import cardListFunctions from '@/mixins/cardListFunctions'
 
 export default {
-	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, CardAdder },
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, ListEntryButton, CardAdder },
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object

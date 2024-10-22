@@ -96,7 +96,7 @@
 		}
 	}
 	section {
-		width: $lhse*11.5; // Slightly wider than the width of a line with the card "Okina, Temple to the Grandfathers."
+		width: $width-textarea-card-list;
 		margin: 0 auto;
 
 		header {
@@ -116,15 +116,8 @@
 		margin: 0;
 	}
 	textarea {
-		font-family: monospace;
-		font-weight: normal;
-		font-size: 66.67%;
-		line-height: normal;
-		border-radius: 0;
 		margin: 0 auto;
 		width: 100%;
-		color: $color-text-brighter;
-		padding: $lhse*.6 $lhse*.75;
 		border: 2px solid $color-heading-bg;
 	}
 	.no-cards {

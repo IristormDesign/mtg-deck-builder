@@ -16,19 +16,13 @@ button,
 .button {
 	@include button;
 }
+
 input,
-textarea,
 select {
 	@include link;
 	@include heading-font;
 	font-size: 87.5%;
-	caret-color: $color-link-active;
-	background: $color-group-bg-darker;
-	appearance: none;
 	color: $color-link;
-	border: $color-input-border;
-	padding: 0 .5em;
-	text-decoration: none;
 	transition: all $transition-duration-standard ease;
 	transition-property: color, background-color, border-color;
 
@@ -38,9 +32,6 @@ select {
 		font-style: italic;
 		font-family: $font-family-standard;
 	}
-}
-input,
-select {
 	&:hover,
 	&:focus-visible {
 		text-decoration: none;
@@ -50,11 +41,25 @@ select {
 		outline-offset: 0px;
 	}
 	&:active {
-		background: $color-input-bg-active;
-		color: $color-link-active;
+		// background: $color-input-bg-active;
+		// color: $color-link-active;
 		border-color: $color-link-active;
 		transition-duration: 0s;
 	}
+}
+input,
+select,
+textarea {
+	background: $color-group-bg-darker;
+	caret-color: $color-link-focus;
+	border: $color-input-border;
+	padding: 0 .5em;
+	text-decoration: none;
+	appearance: none;
+}
+textarea {
+	border-radius: 0;
+	color: $color-text;
 }
 input {
 	line-height: 1;

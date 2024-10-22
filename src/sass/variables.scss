@@ -104,6 +104,7 @@ $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 $width-deck-editor-region: $lhse*14.5;
 $margin-sections: divide($lhse, 3);
+$width-textarea-card-list: $lhse*11.5; // Slightly wider than the width of a line with the card "Okina, Temple to the Grandfathers" (the longest Magic card name that's not a joke card).
 
 // BORDERS
 $border-sections: 2px solid $color-section-border;

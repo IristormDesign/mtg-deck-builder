@@ -49,6 +49,17 @@ const routes = [
 				component: () => import(/* webpackChunkName: "draw-sim" */ '@/views/DrawSim.vue')
 			},
 			{
+				name: 'listEntry',
+				path: 'list-entry',
+				component: () => import(/* webpackChunkName: "list-entry" */ '@/views/ListEntry.vue')
+			},
+			{
+				name: 'listEntryResults',
+				path: 'list-entry-results',
+				component: () => import(/* webpackChunkName: "list-entry-results" */ '@/views/ListEntryResults.vue'),
+				props: true
+			},
+			{
 				name: 'deckAsText',
 				path: 'deck-as-text',
 				component: () => import(/* webpackChunkName: "deck-as-text" */ '@/views/DeckAsText.vue')
