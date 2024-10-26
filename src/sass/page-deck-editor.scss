@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'card-list';
 
-$width-card-adder-button: $lhse*2.3333;
+$width-card-adder-button: $lhse*2.125;
 
 .deck-editor {
 	margin: 0 auto $lhse*.5;
@@ -106,44 +106,36 @@ $width-card-adder-button: $lhse*2.3333;
 		}
 	}
 }
-.card-adder {
-	form {
+.scryfall-button,
+.list-entry-button {
+	a {
+		@include button('gray');
+		min-width: 0;
+		width: $lhse*1.6667;
+		height: $lhse*1.6667;
+		border-radius: $border-radius-group;
+		display: flex;
 		align-items: center;
-		display: grid;
-		grid-template-rows: $lhse*.75 $lhse*1.5;
+		justify-content: center;
+		padding: 0 $lhse*.25;
 	}
 }
 .scryfall-button {
 	a {
-		@include button('gray');
-		min-width: $lhse*1.75;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transition: all $transition-duration-standard ease;
-		padding: $lhse*.125 $lhse*.25;
-
-		img {
-			opacity: .9167;
-		}
+		padding: 0;
 	}
 	img {
+		filter: brightness(.9167) saturate(1.1667);
 		width: $lhse*1.25;
 		height: $lhse*1.25;
 	}
 }
 .list-entry-button {
 	a {
-		@include button('gray');
-		font-size: 66.67%;
-		width: $lhse*4.5;
-	}
-}
-.card-adder {
-	label {
-		padding-bottom: $lhse*.25;
-		margin-bottom: -$lhse*.25;
-		width: max-content;
+		div {
+			@include tiny-font-size;
+			line-height: .875;
+		}
 	}
 }
 .card-adder {
@@ -151,6 +143,21 @@ $width-card-adder-button: $lhse*2.3333;
 	transition: background-color .5s ease;
 	background-color: $color-group-bg;
 
+	form {
+		align-items: center;
+		display: grid;
+		grid-template-rows: $lhse*.75 $lhse*1.5;
+		grid-template-columns: auto min-content;
+	}
+	form,
+	.loading-indicator {
+		width: 100%;
+	}
+	label {
+		padding-bottom: $lhse*.25;
+		margin-bottom: -$lhse*.25;
+		width: max-content;
+	}
 	.sideboard-visible & {
 		background-color: $color-mythic-brown;
 		background-image: $striped-pattern-background;
@@ -158,13 +165,6 @@ $width-card-adder-button: $lhse*2.3333;
 		label {
 			color: $color-text-over-mythic-brown;
 		}
-	}
-	form,
-	.loading-indicator {
-		width: 100%;
-	}
-	form {
-		grid-template-columns: auto min-content;
 	}
 	input {
 		border-radius: $border-radius-button;
@@ -189,7 +189,7 @@ $width-card-adder-button: $lhse*2.3333;
 	}
 	button {
 		width: $width-card-adder-button;
-		height: $height-control-panel-input;
+		height: $height-control-panel-input*1.0625;
 		min-width: min-content;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
@@ -299,7 +299,7 @@ $width-card-adder-button: $lhse*2.3333;
 	.deck-editor {
 		.adder-controls {
 			grid-template-rows: auto;
-			grid-template-columns: 1fr minmax(auto, 7fr);
+			grid-template-columns: 1fr minmax(auto, 7fr) 1fr;
 
 			section {
 				height: $lhse*3;
@@ -308,6 +308,10 @@ $width-card-adder-button: $lhse*2.3333;
 	}
 	.scryfall-button {
 		grid-row: 1;
+	}
+	.list-entry-button {
+		grid-row: 1;
+		border-left: $border-sections;
 	}
 	.card-adder {
 		border-bottom-width: 0;
@@ -328,7 +332,7 @@ $width-card-adder-button: $lhse*2.3333;
 	.deck-editor {
 		.adder-controls {
 			grid-template-rows: $lhse*2 $lhse*3;
-			grid-template-columns: auto;
+			grid-template-columns: 1fr 1fr;
 
 			section {
 				height: auto;
@@ -339,13 +343,11 @@ $width-card-adder-button: $lhse*2.3333;
 		border-left-width: 0;
 		border-top: $border-sections;
 		grid-row: 2;
+		grid-column: span 2;
 
 		input,
 		button {
-			font-size: 80%;
-		}
-		button {
-			height: 87.5%;
+			font-size: 87.5%;
 		}
 	}
 }
@@ -355,6 +357,7 @@ $width-card-adder-button: $lhse*2.3333;
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
+	@include adder-controls-double-layers;
 }
 @media (max-width: $min-width-app) {
 	.deck-editor {
@@ -363,6 +366,7 @@ $width-card-adder-button: $lhse*2.3333;
 }
 @media (max-width: $width-deck-hidden-image) {
 	@include viewing-controls-single-layer-compressed;
+	@include adder-controls-single-layer;
 
 	.deck-editor {
 		grid-template-areas:
@@ -392,9 +396,11 @@ $width-card-adder-button: $lhse*2.3333;
 		}
 	}
 }
+@media (max-width: ($min-width-app * .625)) {
+	@include adder-controls-double-layers;
+}
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
-	@include adder-controls-double-layers;
 
 	.deck-editor {
 		max-width: 100vw;

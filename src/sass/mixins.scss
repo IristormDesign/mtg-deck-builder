@@ -4,7 +4,6 @@
 }
 @mixin small-font-size {
 	font-size: 83.33%;
-	letter-spacing: divide(1, 128)*1em;
 }
 @mixin tiny-font-size {
 	font-size: 66.67%;

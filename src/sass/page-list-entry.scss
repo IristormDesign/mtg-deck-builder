@@ -10,12 +10,12 @@
 	}
 }
 .list-entry {
-	// max-width: $max-width-app*.6;
+	max-width: $lhse*32;
 
 	.columns {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: $lhse;
+		gap: $lhse $lhse*.5;
 		align-items: flex-start;
 		margin-top: $lhse;
 	}
@@ -23,39 +23,36 @@
 		display: flex;
 		flex-direction: column;
 		justify-items: center;
-		width: max-content;
 		border: $border-sections;
 		padding: $lhse*.25 $lhse*.5;
+	}
+	label {
+		font-weight: $font-weight-label;
+		color: $color-text-brighter;
+		text-align: center;
+	}
+	textarea {
+		margin: $lhse*.25 auto;
+		max-width: 100%;
+		width: 36ch;
+		box-sizing: content-box;
+	}
+	.button-container {
+		width: fit-content;
+		height: $lhse*1.6667;
+		align-self: center;
+		display: flex;
+		align-items: center;
 
-		label {
-			font-weight: $font-weight-label;
-			color: $color-text-brighter;
-		}
-		textarea {
-			margin: $lhse*.25 0;
-			font-size: 83.33%;
-			padding: $lhse*.5;
-		}
-		.button-container {
-			width: fit-content;
+		button {
 			height: $lhse*1.5;
-			align-self: center;
-			display: flex;
-			align-items: center;
-		}
-		label {
-			font-weight: $font-weight-label;
-			color: $color-text-brighter;
 		}
 	}
+	label {
+		font-weight: $font-weight-label;
+		color: $color-text-brighter;
+	}
 	.rules {
-		// @include small-font-size;
-		// line-height: $line-height-standard*.875;
-		// border: $border-sections;
-		// padding: $lhse*.5;
-		// position: relative;
-		// height: fit-content;
-
 		h4 {
 			margin-top: $lhse*.5;
 		}
@@ -63,7 +60,7 @@
 			margin-bottom: 0;
 		}
 		code {
-			font-size: 83.33%;
+			font-size: $font-size-card-list-textarea;
 			line-height: normal;
 			letter-spacing: normal;
 			display: inline-block;
@@ -119,6 +116,32 @@
 			margin-top: -$lhse*.2;
 			margin-left: $lhse*.25;
 			font-style: italic;
+		}
+	}
+}
+
+@media (max-width: ($min-width-app * .8333)) {
+	.list-entry {
+		max-width: $max-width-content;
+
+		.columns {
+			grid-template-columns: auto;
+		}
+		form {
+			width: 100%;
+			padding: 0;
+			border: 0;
+			border-top: $border-sections;
+			padding-top: $lhse*.75;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .4583)) {
+	.list-entry {
+		textarea {
+			width: 100%;
+			margin-left: -$lhse*.5;
+			margin-right: -$lhse*.5;
 		}
 	}
 }

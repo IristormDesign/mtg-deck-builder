@@ -25,7 +25,6 @@
 					</header>
 					<textarea
 						v-text="listCards()"
-						class="textarea-card-list"
 						ref="mainList"
 						readonly
 						:rows="textareaHeightMain"
@@ -38,7 +37,6 @@
 					</header>
 					<textarea
 						v-text="listCards(true)"
-						class="textarea-card-list"
 						ref="sideboardList"
 						:rows="textareaHeightSideboard"
 						readonly

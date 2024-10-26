@@ -1,5 +1,12 @@
-<template functional>
-	<section class="list-entry-button">
-		<router-link :to="{name: 'listEntry'}">Add Card List</router-link>
+<template>
+	<section
+		class="list-entry-button"
+	>
+		<router-link
+			:to="{name: 'listEntry'}"
+			v-show="!$store.state.showSideboard"
+		>
+			<div>Add Card List</div>
+		</router-link>
 	</section>
 </template>
