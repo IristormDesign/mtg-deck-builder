@@ -7,7 +7,7 @@
 				<section class="rules">
 					<h4>Rules for List Formatting</h4>
 					<p>Have only one card name per line of the list.</p>
-					<p>Each line must begin with a number for the card’s quantity, and follow with the card’s name. For example:</p>
+					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. For example:</p>
 					<p><code>
 						13 Mountain<br>
 						1 Balefire Dragon<br>
@@ -18,7 +18,6 @@
 				<form>
 					<label for="card-list-entry">Enter a list of cards:</label>
 					<textarea
-						class="textarea-card-list"
 						id="card-list-entry"
 						v-model.trim="textCardList"
 						ref="textCardList"
@@ -61,6 +60,7 @@ export default {
 			cardsToAdd: [],
 			cardsToAddZeroQty: [],
 			cardsToUpdate: [],
+			hasExcessiveQuantity: false,
 			invalidCardNames: [],
 			invalidEntries: [],
 			invalidQuantities: [],
@@ -98,6 +98,8 @@ export default {
 	},
 	methods: {
 		submitList () {
+			this.hasExcessiveQuantity = false
+
 			if (!this.textCardList) {
 				this.$refs.textCardList.focus()
 				return
@@ -106,6 +108,8 @@ export default {
 			if (!this.validateList) return
 
 			this.parseEntries()
+
+			if (this.hasExcessiveQuantity) return
 
 			if (this.submittedCards.length > 200) {
 				this.tooManyCards()
@@ -131,20 +135,25 @@ export default {
 			const regexName = /^\d+ (.+)/i // A substring of any characters that follow the `regexQuantity` pattern.
 
 			this.submittedCards = [] // Clear this array in case it contains leftover data from a previous submission attempt.
+			this.repeatedCardNames = [] // Clear this array in case it contains leftover data from a previous submission attempt.
 
-			this.listEntries.forEach(item => {
+			for (let item of this.listEntries) {
 				item = item.trim()
 
 				let qty = item.match(regexQuantity)[1]
 				let name = item.match(regexName)[1]
 
-				if (!qty && !name) return
+				if (!qty && !name) break
 
 				qty = Number(qty)
 				name = this.cleanedCardName(name)
 
 				if (qty > 99) {
-					qty = 99
+					alert(`⚠ Error: Excessive Card Quantity\n\nYour card list has been rejected because it includes a card name with an excessively large quantity (“${qty} ${name}”).\n\nEach name in your list must have a quantity less than 100.`)
+
+					this.hasExcessiveQuantity = true
+
+					return
 				}
 
 				const existingNameInAddList = this.submittedCards.find(existingCard =>
@@ -162,7 +171,7 @@ export default {
 						name: name
 					})
 				}
-			})
+			}
 		},
 		tooManyCards () {
 			alert('⚠ Error: Your list has too many card names. Please enter no more than 200.')
@@ -216,8 +225,6 @@ export default {
 					}
 
 					this.requestCardFromScryfallAPI(card, done)
-					// this.cardRequestOtherError.push(card)
-					// done()
 				}, ((index + 1) * 125))
 			})
 		},
