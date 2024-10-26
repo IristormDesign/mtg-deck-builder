@@ -34,7 +34,9 @@
 		</template>
 		<template v-else>
 			<p>Loading your cards now. Please wait.</p>
-			<p class="loading-percentage"><span>{{ loadingPercent }}%</span></p>
+			<p class="loading-percentage">
+				<span v-if="loadingPercent >= 0">{{ loadingPercent }}%</span>
+			</p>
 		</template>
 	</article>
 </template>
@@ -224,6 +226,8 @@ export default {
 						}
 					}
 
+					// this.cardsSuccessfullyAdded.push(card)
+					// done()
 					this.requestCardFromScryfallAPI(card, done)
 				}, ((index + 1) * 125))
 			})
