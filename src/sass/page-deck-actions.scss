@@ -57,7 +57,7 @@
 	text-wrap: balance;
 }
 .deck-as-text {
-	margin: 0 auto;
+	margin: 0 auto $lhse*.5;
 	max-width: none;
 
 	&.no-cards {
