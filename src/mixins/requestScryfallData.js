@@ -139,7 +139,12 @@ export default {
 		alertConnectionAborted () {
 			alert('⚠ Sorry, but your card name couldn’t be added right now. 😭\n\nMTG Deck Builder gets card data from Scryfall, but it seems Scryfall’s web servers can’t be reached at the moment. Try again at a later time.')
 		},
-		assignCardData (data, oldCard) {
+		/**
+		 * @param {Object} data - The card's data received straight from the Scryfall API.
+		 * @param {Object} [oldCard] - The card's existing data in the app. Param should be empty except when updating the card data version.
+		 * @param {Number} [enteredQty] - The number for the card's quantity. Param should be empty except when adding cards via card list entry.
+		 */
+		assignCardData (data, oldCard, enteredQty) {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
@@ -208,7 +213,12 @@ export default {
 			newCard.layout = data.layout
 			newCard.link = data.scryfall_uri
 			newCard.imgVersion = this.$store.state.latestImageVersion
-			newCard.qty = 1
+
+			if (enteredQty) {
+				newCard.qty = enteredQty
+			} else {
+				newCard.qty = 1
+			}
 
 			if (oldCard) {
 				newCard.img = oldCard.img

@@ -247,7 +247,7 @@ export default {
 				.then(response => {
 					const data = response.data
 
-					this.assignCardData(data)
+					this.assignCardData(data, null, card.qty)
 
 					const convertSubmittedNameToRealName = () => {
 						if (data.card_faces) {
@@ -273,6 +273,7 @@ export default {
 							this.cardRequestInvalid.push(card)
 							break
 						default:
+							console.error(error)
 							this.cardRequestOtherError.push(card)
 					}
 				})
