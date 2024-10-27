@@ -62,7 +62,7 @@
 				>{{ card.name }} (&times;{{ card.qty }})</li>
 			</ul>
 			<div class="button-container copy-button">
-				<button @click="copyFailedList()">Copy This Card List</button>
+				<button @click="copyFailedList('aborted')">Copy This Card List</button>
 				<transition>
 					<div
 						class="notification"
@@ -70,7 +70,7 @@
 					>→ Now copied.</div>
 				</transition>
 			</div>
-			<p>This error can happen if Scryfall’s web servers are down at the moment, or if your computer or mobile device is having an internet connection problem right now. Try adding these card names again at a later time.</p>
+			<p>This error can happen if Scryfall’s web servers are down at the moment, or if your computer or mobile device is having an internet connection problem. Try adding these card names again at a later time.</p>
 		</section>
 
 		<section v-if="cardRequestOtherError && cardRequestOtherError.length > 0">
@@ -83,7 +83,7 @@
 				>{{ card.name }} (&times;{{ card.qty }})</li>
 			</ul>
 			<div class="button-container copy-button">
-				<button @click="copyFailedList()">Copy This Card List</button>
+				<button @click="copyFailedList('other')">Copy This Card List</button>
 				<transition>
 					<div
 						class="notification"
@@ -96,7 +96,7 @@
 
 		<section v-if="repeatedCardNames && repeatedCardNames.length > 0">
 			<h4>❌ Repeated Cards</h4>
-			<p>The following card names were entered more than once in your submitted list, so each repeated name after its first instance in the list has been ignored.</p>
+			<p>The following entries are card names you included more than once in your submitted list, so each repeated name after its first instance in the list has been ignored.</p>
 			<ul>
 				<li
 					v-for="(card, index) of repeatedCardNames"
@@ -163,12 +163,21 @@ export default {
 				this.$router.replace('list-entry')
 			}
 		},
-		copyFailedList () {
+		copyFailedList (failedReason) {
 			let listText = ''
 
-			this.cardRequestsAborted.forEach(card => {
-				listText += `${card.qty} ${card.name}\n`
-			})
+			function renderFailedList (list) {
+				list.forEach(card => {
+					listText += `${card.qty} ${card.name}\n`
+				})
+			}
+			switch (failedReason) {
+				case 'aborted':
+					renderFailedList(this.cardRequestsAborted)
+					break
+				case 'other':
+					renderFailedList(this.cardRequestOtherError)
+			}
 
 			navigator.clipboard.writeText(listText)
 

@@ -228,7 +228,7 @@ export default {
 						}
 					}
 
-					// this.cardsSuccessfullyAdded.push(card)
+					// this.cardRequestsAborted.push(card)
 					// done()
 					this.requestCardFromScryfallAPI(card, done)
 				}, ((index + 1) * 125))
