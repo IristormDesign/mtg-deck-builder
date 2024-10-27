@@ -32,11 +32,11 @@
 
 <script>
 import cardListFunctions from '@/mixins/cardListFunctions.js'
+import removeCard from '@/mixins/removeCard.js'
 import deckColors from '@/mixins/deckColors.js'
-import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
-	mixins: [cardListFunctions, deckColors, sortingClusterGaps],
+	mixins: [cardListFunctions, removeCard, deckColors],
 	props: {
 		card: Object,
 		deck: Object,
@@ -140,7 +140,7 @@ export default {
 					const confirmRemoval = confirm(`Remove “${cardName()}” from the deck?`)
 
 					if (confirmRemoval) {
-						this.removeCard()
+						this.removeCard(this.i)
 					} else {
 						card.qty = 1
 					}
@@ -195,35 +195,6 @@ export default {
 			deck.editDate = new Date()
 			this.determineDeckColors()
 			this.$store.commit('decks', this.$store.state.decks)
-		},
-		removeCard () {
-			const list = this.activeCardList
-			const cards = list.cards
-			const index = this.i
-			const totalCards = cards.length - 1
-
-			// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
-			if (
-				list.viewedCard.name === this.card.name &&
-				totalCards > 0
-			) {
-				if (index === totalCards) { // If this card is last in the list...
-					list.viewedCard = cards[index - 1]
-				} else {
-					list.viewedCard = cards[index + 1]
-				}
-			} else {
-				list.viewedCard = null
-			}
-
-			// Now remove the card from the deck.
-			cards.splice(index, 1)
-
-			if (this.$store.state.sortAttribute !== '') {
-				this.addSortingClusterGaps(this.deck, this.$store.state.sortAttribute)
-			}
-
-			this.determineDeckColors()
 		},
 		focusedOnQtyInput () {
 			if (!this.$store.state.isMobileLayout()) {

@@ -19,13 +19,14 @@
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck, but their quantities have changed to the new quantities you set for them.<template v-if="this.anyCardRemoved"> Names with a quantity of zero have been removed from your deck.</template></p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck, but their quantities have changed to the new quantities you set for them.</p>
 			<ul>
 				<li
 					v-for="card of cardsToUpdate"
 					:key="card.name"
 				>{{ card.name }} (&times;{{ card.qty }})</li>
 			</ul>
+			<p v-if="this.anyCardRemoved">Names with a quantity of zero have been removed from your deck.</p>
 		</section>
 
 		<section v-if="cardsToAddZeroQty && cardsToAddZeroQty.length > 0">
@@ -34,7 +35,7 @@
 			<ul>
 				<li
 					v-for="card of cardsToAddZeroQty"
-					:key="card"
+					:key="card.name"
 				>{{ card.name }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>

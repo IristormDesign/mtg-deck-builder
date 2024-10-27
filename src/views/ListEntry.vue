@@ -46,12 +46,11 @@ import autosize from 'autosize'
 import axios from 'axios'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
-import deckColors from '@/mixins/deckColors.js'
-import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
+import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
 export default {
-	mixins: [getActiveDeck, requestScryfallData, deckColors, sortingClusterGaps, stringMethods],
+	mixins: [getActiveDeck, requestScryfallData, removeCard, stringMethods],
 	data () {
 		return {
 			anyCardRemoved: false,
@@ -137,7 +136,7 @@ export default {
 			const regexName = /^\d+ (.+)/i // A substring of any characters that follow the `regexQuantity` pattern.
 
 			this.submittedCards = [] // Clear this array in case it contains leftover data from a previous submission attempt.
-			this.repeatedCardNames = [] // Clear this array in case it contains leftover data from a previous submission attempt.
+			this.repeatedCardNames = []
 
 			for (let item of this.listEntries) {
 				item = item.trim()
@@ -198,14 +197,17 @@ export default {
 		},
 		updateExistingQuantities () {
 			this.cardsToUpdate.forEach(submittedCard => {
-				const cardToUpdate = this.deck.cards.find(existingCard =>
-					existingCard.name.toUpperCase() === submittedCard.name.toUpperCase()
-				)
+				const cardIndex = this.deck.cards.findIndex(foundCard => {
+					return foundCard.name.toUpperCase() === submittedCard.name.toUpperCase()
+				})
+				const existingCard = this.deck.cards[cardIndex]
 
-				cardToUpdate.qty = submittedCard.qty
+				existingCard.qty = submittedCard.qty
 
-				if (cardToUpdate.qty <= 0) {
-					this.removeCard(submittedCard)
+				if (existingCard.qty <= 0) {
+					this.removeCard(cardIndex, true)
+
+					this.anyCardRemoved = true
 				}
 			})
 
@@ -297,19 +299,6 @@ export default {
 					repeatedCardNames: this.repeatedCardNames
 				}
 			})
-		},
-		removeCard (cardToRemove) {
-			this.deck.cards = this.deck.cards.filter(filteringCard =>
-				filteringCard.name.toUpperCase() !== cardToRemove.name.toUpperCase()
-			)
-
-			if (this.$store.state.sortAttribute !== '') {
-				this.addSortingClusterGaps(this.deck, this.$store.state.sortAttribute)
-			}
-
-			this.determineDeckColors()
-
-			this.anyCardRemoved = true
 		},
 		cleanedCardName (cardName) {
 			cardName = this.removeExcessSpaces(cardName)
