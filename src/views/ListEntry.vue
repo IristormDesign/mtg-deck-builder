@@ -269,7 +269,14 @@ export default {
 
 					card.name = convertSubmittedNameToRealName(card.name)
 
-					this.cardsSuccessfullyAdded.push(card)
+					const existingCard = this.findExistingCardByName(card.name, this.deck)
+
+					if (existingCard) {
+						this.cardsToUpdate.push(card)
+						this.updateExistingQuantities()
+					} else {
+						this.cardsSuccessfullyAdded.push(card)
+					}
 				})
 				.catch(error => {
 					switch (error.code) {

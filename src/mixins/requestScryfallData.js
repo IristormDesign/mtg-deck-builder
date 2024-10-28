@@ -233,7 +233,7 @@ export default {
 
 				this.updateOldCard(newCard, oldCard.inSideboard)
 			} else {
-				this.validateNewCard(newCard)
+				this.validateNewCard(newCard, enteredQty)
 			}
 		},
 		updateOldCard (newCard, inSideboard) {
@@ -258,8 +258,9 @@ export default {
 		 * There are two reasons to do this: (1) It's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. (2) It's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
 		 *
 		 * @param {Object} newCard
+		 * @param {Number} [fromListEntry] - Taken from the variable for the quantity of an added card via card list entry. If this param is empty, then the validation is adding a card from the standard card adder.
 		*/
-		validateNewCard (newCard) {
+		validateNewCard (newCard, fromListEntry) {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
@@ -276,7 +277,7 @@ export default {
 							this.updateOldCard(newCard, this.$store.state.showSideboard)
 						} // Else do nothing, because the user has chosen to not replace the card.
 					}, this.alertTimeoutDuration)
-				} else {
+				} else if (isNaN(fromListEntry)) {
 					this.notifyCardExists(newCard)
 				}
 			} else {
@@ -325,8 +326,16 @@ export default {
 				)
 			} else {
 				setTimeout(() => {
+					function cardName () {
+						if (card.name2) {
+							return `${card.name} // ${card.name2}`
+						} else {
+							return card.name
+						}
+					}
+
 					alert(
-						`“${card.name}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
+						`“${cardName()}” is already in this ${stringActiveCardList()}.\n\n(If you were trying to add a duplicate of this card name, increase its quantity number in the card list.)`
 					)
 				}, this.alertTimeoutDuration)
 			}
