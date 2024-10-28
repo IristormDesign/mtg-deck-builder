@@ -252,31 +252,9 @@ export default {
 					{ timeout: 8000 }
 				)
 				.then(response => {
-					const data = response.data
+					this.assignCardData(response.data, null, card.qty)
 
-					this.assignCardData(data, null, card.qty)
-
-					const convertSubmittedNameToRealName = () => {
-						if (data.card_faces) {
-							const dataFace1 = data.card_faces[0]
-							const dataFace2 = data.card_faces[1]
-
-							return `${this.cleanedCardName(dataFace1.name)} // ${this.cleanedCardName(dataFace2.name)}`
-						} else {
-							return this.cleanedCardName(data.name)
-						}
-					}
-
-					card.name = convertSubmittedNameToRealName(card.name)
-
-					const existingCard = this.findExistingCardByName(card.name, this.deck)
-
-					if (existingCard) {
-						this.cardsToUpdate.push(card)
-						this.updateExistingQuantities()
-					} else {
-						this.cardsSuccessfullyAdded.push(card)
-					}
+					this.recordForResultsPage(response.data, card)
 				})
 				.catch(error => {
 					switch (error.code) {
@@ -294,6 +272,29 @@ export default {
 				.finally(() => {
 					return callback()
 				})
+		},
+		recordForResultsPage (data, card) {
+			const convertSubmittedNameToRealName = () => {
+				if (data.card_faces) {
+					const dataFace1 = data.card_faces[0]
+					const dataFace2 = data.card_faces[1]
+
+					return `${this.cleanedCardName(dataFace1.name)} // ${this.cleanedCardName(dataFace2.name)}`
+				} else {
+					return this.cleanedCardName(data.name)
+				}
+			}
+
+			card.name = convertSubmittedNameToRealName(card.name)
+
+			const existingCard = this.findExistingCardByName(card.name, this.deck)
+
+			if (existingCard) {
+				this.cardsToUpdate.push(card)
+				this.updateExistingQuantities()
+			} else {
+				this.cardsSuccessfullyAdded.push(card)
+			}
 		},
 		alertInvalidList () {
 			alert('⚠ Error: Invalid Card List\n\nNone of the text you’ve entered is in the valid format for a card list. See the rules for list formatting.')
