@@ -252,9 +252,9 @@ export default {
 					{ timeout: 8000 }
 				)
 				.then(response => {
-					this.assignCardData(response.data, null, card.qty)
-
 					this.recordForResultsPage(response.data, card)
+
+					this.assignCardData(response.data, null, card.qty)
 				})
 				.catch(error => {
 					switch (error.code) {
@@ -274,18 +274,12 @@ export default {
 				})
 		},
 		recordForResultsPage (data, card) {
-			const convertSubmittedNameToRealName = () => {
-				if (data.card_faces) {
-					const dataFace1 = data.card_faces[0]
-					const dataFace2 = data.card_faces[1]
-
-					return `${this.cleanedCardName(dataFace1.name)} // ${this.cleanedCardName(dataFace2.name)}`
-				} else {
-					return this.cleanedCardName(data.name)
-				}
+			if (data.card_faces) {
+				card.name = this.cleanedCardName(data.card_faces[0].name)
+				card.name2 = this.cleanedCardName(data.card_faces[1].name)
+			} else {
+				card.name = this.cleanedCardName(data.name)
 			}
-
-			card.name = convertSubmittedNameToRealName(card.name)
 
 			const existingCard = this.findExistingCardByName(card.name, this.deck)
 
