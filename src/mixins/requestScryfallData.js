@@ -284,11 +284,12 @@ export default {
 			}
 		},
 		/**
-		 * @param {string} cardName
+		 * @param {String} cardName
+		 * @param {Object} [cardGroup]
 		 * @returns {Object} The card object, if it's found.
 		 */
 		findExistingCardByName (cardName, cardGroup) {
-			cardName = this.curlApostrophes(cardName)
+			cardName = this.curlApostrophes(cardName).trim()
 
 			if (!cardGroup) {
 				cardGroup = this.activeCardList

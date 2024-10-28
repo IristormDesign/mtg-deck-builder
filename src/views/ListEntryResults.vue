@@ -9,7 +9,7 @@
 				<li
 					v-for="card of cardsSuccessfullyAdded"
 					:key="card.name"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>
 		<section v-else-if="cardsToUpdate && cardsToUpdate.length > 0">
@@ -19,24 +19,24 @@
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck, but their quantities have changed to the new quantities you set for them.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck, but their quantities have changed to the new quantities you’ve set for them.</p>
 			<ul>
 				<li
 					v-for="card of cardsToUpdate"
 					:key="card.name"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
-			<p v-if="this.anyCardRemoved">Names with a quantity of zero have been removed from your deck.</p>
+			<p v-if="this.anyCardRemoved">Names with a quantity of zero are removed from your deck.</p>
 		</section>
 
 		<section v-if="cardsToAddZeroQty && cardsToAddZeroQty.length > 0">
 			<h4>❌ New Zero-Quantity Cards</h4>
-			<p>The following new card names have <em>not</em> been added to your deck because you set their quantities to zero. 🤔</p>
+			<p>The following new card names have <em>not</em> been added to your deck because you’ve set their quantities to zero. 🤔</p>
 			<ul>
 				<li
 					v-for="card of cardsToAddZeroQty"
 					:key="card.name"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>
 
@@ -47,7 +47,7 @@
 				<li
 					v-for="card of cardRequestInvalid"
 					:key="card.name"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<p>If you’re sure these card names exist, check your entries for spelling mistakes, missing words, or excess words. (Letter case doesn’t matter, though.) If you find mistakes in them, you can submit the names again with the corrections.</p>
 		</section>
@@ -59,7 +59,7 @@
 				<li
 					v-for="card of cardRequestsAborted"
 					:key="card.name"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<div class="button-container copy-button">
 				<button @click="copyFailedList('aborted')">Copy This Card List</button>
@@ -80,7 +80,7 @@
 				<li
 					v-for="(card, index) of cardRequestOtherError"
 					:key="index"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<div class="button-container copy-button">
 				<button @click="copyFailedList('other')">Copy This Card List</button>
@@ -96,12 +96,12 @@
 
 		<section v-if="repeatedCardNames && repeatedCardNames.length > 0">
 			<h4>❌ Repeated Cards</h4>
-			<p>The following entries are card names you included more than once in your submitted list, so each repeated name after its first instance in the list has been ignored.</p>
+			<p>The following are card names you’ve included more than once in your submitted list, so each repeated name after its first instance has been ignored.</p>
 			<ul>
 				<li
 					v-for="(card, index) of repeatedCardNames"
 					:key="index"
-				>{{ card.name }} (&times;{{ card.qty }})</li>
+				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>
 
@@ -110,7 +110,7 @@
 			class="invalid-list"
 		>
 			<h4>❌ Non-List Text</h4>
-			<p>The following lines of text you submitted aren’t recognized to be in the valid format for card list entries, so these lines have been ignored for adding card names.</p>
+			<p>The following lines of text you’ve submitted aren’t recognized to be in the valid format for card list entries, so these lines have been ignored for adding card names.</p>
 			<ul>
 				<li
 					v-for="(entry, index) of invalidEntries"
@@ -161,6 +161,13 @@ export default {
 				!this.repeatedCardNames
 			) {
 				this.$router.replace('list-entry')
+			}
+		},
+		displayFullName (card) {
+			if (card.name2) {
+				return `${card.name} // ${card.name2}`
+			} else {
+				return card.name
 			}
 		},
 		copyFailedList (failedReason) {

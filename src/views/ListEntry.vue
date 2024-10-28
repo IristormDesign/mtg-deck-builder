@@ -134,6 +134,7 @@ export default {
 
 			const regexQuantity = /^(\d+)(?= )/i // A substring that begins with a number and ends with a space.
 			const regexName = /^\d+ (.+)/i // A substring of any characters that follow the `regexQuantity` pattern.
+			const regexFrontFaceName = /^\d+ (.[^/]+)(?= *\/+)/i // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
 
 			this.submittedCards = [] // Clear this array in case it contains leftover data from a previous submission attempt.
 			this.repeatedCardNames = []
@@ -142,7 +143,13 @@ export default {
 				item = item.trim()
 
 				let qty = item.match(regexQuantity)[1]
-				let name = item.match(regexName)[1]
+				let name
+
+				if (item.match(regexFrontFaceName)) {
+					name = item.match(regexFrontFaceName)[1]
+				} else {
+					name = item.match(regexName)[1]
+				}
 
 				if (!qty && !name) break
 
