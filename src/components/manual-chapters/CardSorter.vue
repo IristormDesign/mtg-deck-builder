@@ -43,7 +43,7 @@
 				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
 			</li>
 		</ul>
-		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
+		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that never insert gaps are name, mana color, and rarity.</p>
 		<p>Under certain conditions, the card sorter’s sorting option resets to “(None),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
