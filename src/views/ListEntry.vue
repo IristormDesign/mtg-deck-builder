@@ -127,6 +127,13 @@ export default {
 				this.updateExistingQuantities()
 				this.isLoadingCards = true
 			}
+			if (
+				this.cardsToAddZeroQty.length > 0 &&
+				this.cardsToAdd.length === 0 &&
+				this.cardsToUpdate.length === 0
+			) {
+				this.goToResultsPage()
+			}
 		},
 		parseEntries () {
 			const regexInvalidEntry = /^(?!(?:\s*)\d+ .+).+/gim // Any line in a multiline string that contains any characters but is NOT in the valid format for card list entries.
@@ -157,7 +164,7 @@ export default {
 				name = this.cleanedCardName(name)
 
 				if (qty > 99) {
-					alert(`⚠ Error: Excessive Card Quantity\n\nYour card list has been rejected because it includes a card name with an excessively large quantity (“${qty} ${name}”).\n\nEach name in your list must have a quantity less than 100.`)
+					alert(`⚠ Error: Excessive Card Quantity\n\nYour card list has been rejected because it includes a card name with an overly large quantity (“${qty} ${name}”). Each name in your list must have a quantity less than 100.`)
 
 					this.hasExcessiveQuantity = true
 
