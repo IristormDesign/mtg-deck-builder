@@ -120,7 +120,7 @@
 	.deck-header {
 		.deck-info {
 			@include deck-info-box-narrow();
-			min-height: $height-deck-header-component*1.5;
+			min-height: auto;
 
 			h3 {
 				width: auto;

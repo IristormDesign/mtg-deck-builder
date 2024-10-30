@@ -395,8 +395,16 @@ $width-card-adder-button: $lhse*2.125;
 		}
 	}
 }
+@media (max-width: ($min-width-app * .7083)) {
+	.deck-editor {
+		.viewing-controls {
+			height: $lhse*3.0417; // Adjust to a height that prevents wide gaps between card bars.
+		}
+	}
+}
 @media (max-width: ($min-width-app * .625)) {
 	@include adder-controls-double-layers;
+
 }
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;

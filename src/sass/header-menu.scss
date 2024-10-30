@@ -158,7 +158,7 @@
 
 		.header-menu-item {
 			min-height: 0;
-			height: $lhse;
+			height: $lhse*1.5;
 		}
 	}
 }
@@ -205,6 +205,9 @@
 		}
 		.header-menu-item {
 			@include popup-menu-list-links;
+			padding-top: $lhse;
+			padding-bottom: $lhse;
+			outline: $x;
 		}
 		.open-deck-heading {
 			display: block;

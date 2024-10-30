@@ -93,7 +93,7 @@ $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
 $max-width-narrow-message: $max-width-content * .75;
 $height-control-panel-input: $lhse * 1.5;
-$height-deck-header-component: $lhse*2; // Carefully adjusted to prevent large integer-rounded gaps between items in the card list.
+$height-deck-header-component: $lhse*2.125; // Carefully adjusted to prevent large integer-rounded gaps between items in the card list. (See also the height of .viewing-controls in page-deck-editor.scss.)
 $height-app-header-short: $height-deck-header-component;
 $height-app-header-medium: $height-deck-header-component;
 $height-app-header-tall: $lhse*3;
