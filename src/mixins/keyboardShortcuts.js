@@ -177,8 +177,6 @@ export default {
 				}
 			}
 
-			this.startKBShortcutsFromCardOfViewedImage()
-
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
 					case 'q': this.openCardScryfallPage()
@@ -196,6 +194,12 @@ export default {
 					case 'd': this.adjustCardQty(-2)
 				}
 			} else { // Else NOT holding Shift.
+				switch (keyEvent) {
+					case 'q': case 'w': case 'e':
+					case 'a': case 's': case 'd':
+					case 'z':
+						this.startKBShortcutsFromCardOfViewedImage()
+				}
 				switch (keyEvent) {
 					case 'q': this.toggleCardImageEnlargement()
 						return
