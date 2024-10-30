@@ -4,7 +4,7 @@
 
 		<section v-if="cardsSuccessfullyAdded && cardsSuccessfullyAdded.length > 0">
 			<h4>✅ New Cards</h4>
-			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to your deck.</p>
+			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to your deck’s main card group.</p>
 			<ul>
 				<li
 					v-for="card of cardsSuccessfullyAdded"
@@ -19,14 +19,14 @@
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck, but their quantities have changed to the new quantities you’ve set for them.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck’s main card group, but their quantities have changed to the new quantities you’ve set for them.</p>
 			<ul>
 				<li
 					v-for="card of cardsToUpdate"
 					:key="card.name"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
-			<p v-if="this.anyCardRemoved">Names with a quantity of zero are removed from your deck.</p>
+			<p v-if="this.anyCardRemoved">Names with a quantity of zero are removed from your deck’s main card group.</p>
 		</section>
 
 		<section v-if="cardsToAddZeroQty && cardsToAddZeroQty.length > 0">

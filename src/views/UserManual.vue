@@ -72,6 +72,12 @@
 									<li><a href="#card-adder-other-info">Other Info</a></li>
 								</ol>
 							</li>
+							<li>
+								<a href="#add-card-list">Add Card List Button</a>
+								<ol>
+									<li><a href="#card-list-entry">Card List Entry Page</a></li>
+								</ol>
+							</li>
 						</ol>
 					</li>
 					<li>
