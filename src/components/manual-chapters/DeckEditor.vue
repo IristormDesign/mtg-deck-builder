@@ -28,8 +28,8 @@
 		<sideboard-header />
 		<card-list />
 		<scryfall-button />
-		<card-adder />
 		<add-card-list />
+		<card-adder />
 	</section>
 </template>
 
@@ -40,10 +40,10 @@ import CardGroupSwitch from '@/components/manual-chapters/CardGroupSwitch.vue'
 import SideboardHeader from '@/components/manual-chapters/SideboardHeader.vue'
 import CardList from '@/components/manual-chapters/CardList.vue'
 import ScryfallButton from '@/components/manual-chapters/ScryfallButton.vue'
-import CardAdder from '@/components/manual-chapters/CardAdder.vue'
 import AddCardList from '@/components/manual-chapters/AddCardList.vue'
+import CardAdder from '@/components/manual-chapters/CardAdder.vue'
 
 export default {
-	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, CardAdder, AddCardList }
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, AddCardList, CardAdder }
 }
 </script>

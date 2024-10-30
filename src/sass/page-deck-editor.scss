@@ -298,7 +298,7 @@ $width-card-adder-button: $lhse*2.125;
 	.deck-editor {
 		.adder-controls {
 			grid-template-rows: auto;
-			grid-template-columns: 1fr minmax(auto, 7fr) 1fr;
+			grid-template-columns: 1fr 1fr minmax(auto, 6fr);
 
 			section {
 				height: $lhse*3;
@@ -313,7 +313,7 @@ $width-card-adder-button: $lhse*2.125;
 		border-left: $border-sections;
 	}
 	.card-adder {
-		border-bottom-width: 0;
+		border-top-width: 0;
 		border-left: $border-sections;
 		flex-grow: 2;
 		grid-row: 1;

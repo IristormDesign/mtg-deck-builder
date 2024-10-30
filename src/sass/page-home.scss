@@ -156,7 +156,7 @@
 			justify-content: space-evenly;
 			flex-wrap: wrap;
 			max-width: $max-width-content;
-			padding: $lhse*.6667 $lhse;
+			padding: $lhse;
 		}
 		.button-container {
 			margin: divide($lhse, 3) $lhse*.5;
@@ -186,8 +186,6 @@
 			}
 		}
 		.app-features {
-			padding-top: $lhse;
-
 			img {
 				max-width: 675px;
 				width: 100%;

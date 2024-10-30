@@ -64,18 +64,18 @@
 							</li>
 							<li><a href="#scryfall-button">Scryfall Advanced Search Button</a></li>
 							<li>
+								<a href="#add-card-list">Add Card List Button</a>
+								<ol>
+									<li><a href="#card-list-entry">Card List Entry Page</a></li>
+								</ol>
+							</li>
+							<li>
 								<a href="#card-adder">Card Adder</a>
 								<ol>
 									<li><a href="#card-name-query">Name Query</a></li>
 									<li><a href="#scryfall-url-query">Scryfall Page URL Query</a></li>
 									<li><a href="#random-card-query">Random Query</a></li>
 									<li><a href="#card-adder-other-info">Other Info</a></li>
-								</ol>
-							</li>
-							<li>
-								<a href="#add-card-list">Add Card List Button</a>
-								<ol>
-									<li><a href="#card-list-entry">Card List Entry Page</a></li>
 								</ol>
 							</li>
 						</ol>
