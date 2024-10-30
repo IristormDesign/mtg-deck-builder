@@ -131,6 +131,9 @@ $width-card-adder-button: $lhse*2.125;
 	}
 }
 .list-entry-button {
+	.sideboard-visible & {
+		display: none;
+	}
 	a {
 		div {
 			@include tiny-font-size;
@@ -214,6 +217,10 @@ $width-card-adder-button: $lhse*2.125;
 			color: $color-text;
 			font-style: italic;
 			font-size: $font-size-bigger;
+
+			.sideboard-visible & {
+				color: $color-text-over-mythic-brown;
+			}
 		}
 	}
 }
@@ -303,6 +310,9 @@ $width-card-adder-button: $lhse*2.125;
 			section {
 				height: $lhse*3;
 			}
+			.sideboard-visible & {
+				grid-template-columns: 1fr minmax(auto, 7fr);
+			}
 		}
 	}
 	.scryfall-button {
@@ -335,6 +345,9 @@ $width-card-adder-button: $lhse*2.125;
 
 			section {
 				height: auto;
+			}
+			.sideboard-visible & {
+				grid-template-columns: 2fr;
 			}
 		}
 	}
