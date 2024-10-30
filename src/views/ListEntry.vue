@@ -4,17 +4,6 @@
 		<template v-if="!isLoadingCards">
 			<p>Here you can add multiple cards at once to this deck’s main card group.</p>
 			<div class="columns">
-				<section class="rules">
-					<h4>Rules for List Formatting</h4>
-					<p>Have only one card name per line of the list.</p>
-					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. For example:</p>
-					<p><code>
-						13 Mountain<br>
-						1 Balefire Dragon<br>
-						4 Shock
-					</code></p>
-					<p>Spelling matters, but letter case doesn’t.</p>
-				</section>
 				<form>
 					<label for="card-list-entry">Enter a list of cards:</label>
 					<textarea
@@ -30,6 +19,17 @@
 						<button @click.prevent="submitList">Add Cards</button>
 					</div>
 				</form>
+				<section class="rules">
+					<h4>Rules for List Formatting</h4>
+					<p>Have only one card name per line of the list.</p>
+					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. For example:</p>
+					<p><code>
+						13 Mountain<br>
+						1 Balefire Dragon<br>
+						4 Shock
+					</code></p>
+					<p>Spelling matters, but letter case doesn’t.</p>
+				</section>
 			</div>
 		</template>
 		<template v-else>

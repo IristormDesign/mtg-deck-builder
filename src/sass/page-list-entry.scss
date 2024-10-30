@@ -15,20 +15,21 @@
 	.columns {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: $lhse $lhse*.5;
+		gap: $lhse $lhse;
 		align-items: flex-start;
-		margin-top: $lhse;
+		margin: $lhse 0 $lhse*.5;
 	}
 	form {
 		display: flex;
 		flex-direction: column;
 		justify-items: center;
-		border: $border-sections;
-		padding: $lhse*.25 $lhse*.5;
+		padding: divide($lhse, 3);
+		background: $color-heading-bg;
+		border-radius: $border-radius-group;
 	}
 	label {
 		font-weight: $font-weight-label;
-		color: $color-text-brighter;
+		color: $color-text-extra-brighter;
 		text-align: center;
 	}
 	textarea {
@@ -48,13 +49,9 @@
 			height: $lhse*1.5;
 		}
 	}
-	label {
-		font-weight: $font-weight-label;
-		color: $color-text-brighter;
-	}
 	.rules {
 		h4 {
-			margin-top: $lhse*.5;
+			margin-top: 0;
 		}
 		*:last-child {
 			margin-bottom: 0;
@@ -128,20 +125,32 @@
 			grid-template-columns: auto;
 		}
 		form {
-			width: 100%;
-			padding: 0;
+			width: fit-content;
 			border: 0;
-			border-top: $border-sections;
-			padding-top: $lhse*.75;
+			margin: 0 auto;
+		}
+		.rules {
+			h4 {
+				margin-top: $lhse*.5;
+			}
 		}
 	}
 }
 @media (max-width: ($min-width-app * .4583)) {
 	.list-entry {
+		form {
+			width: auto;
+			margin-right: -$lhse*.75;
+			margin-left: -$lhse*.75;
+			border-radius: 0;
+		}
 		textarea {
+			box-sizing: border-box;
 			width: 100%;
-			margin-left: -$lhse*.5;
-			margin-right: -$lhse*.5;
+			padding: divide($lhse, 3) $lhse*.5;
+			font-size: 80%;
+			// margin-left: -$lhse*.4;
+			// margin-right: -$lhse*.4;
 		}
 	}
 }
