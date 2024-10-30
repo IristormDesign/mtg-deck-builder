@@ -1,9 +1,8 @@
 @import 'variables';
 
 .update-notification {
+	@include sideboard-header-bg;
 	z-index: index($layers, update-notif);
-	background: $striped-pattern-background $color-mythic-brown;
-	color: $color-text-over-mythic-brown;
 	padding: 0 $lhse*.5;
 	min-height: $height-app-header-short;
 	display: flex;

@@ -1,17 +1,13 @@
 @import 'variables';
 
 .sideboard-header {
+	@include sideboard-header-bg;
 	margin: -$margin-card-gap-after 0 ($margin-card-gap-after + .25px);
-	background-color: $color-mythic-brown;
-	background-image: $striped-pattern-background;
-	color: $color-text-over-mythic-brown;
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;
 	cursor: default;
 	border-top: $border-sections;
-	border-bottom: 1px solid $color-section-border-alt;
-	box-shadow: 0 1px 0 rgba(#000, .125);
 	height: $height-deck-header-component;
 
 	h3,

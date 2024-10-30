@@ -231,6 +231,19 @@
 	border-radius: $border-radius-button;
 	outline-offset: 2px !important;
 }
+@mixin sideboard-header-bg {
+	background-color: $color-mythic-brown;
+	background-image: repeating-linear-gradient(-45deg,
+		$color-mythic-brown 											0,
+		$color-mythic-brown 										  .5em,
+		darken($color-mythic-brown, (1/64)*100%) .5em,
+		darken($color-mythic-brown, (1/64)*100%) 1em
+	);
+	color: $color-text-over-mythic-brown;
+	box-shadow:
+		inset -.5px 1px 0 0px rgba($color-text-over-mythic-brown, .125),
+		inset .5px -1px 0 0px rgba(#000, .1667);
+}
 @mixin glowing-edges-of-scrollable-container {
 	$color-scroll-container-shadow: darken($color-mythic-orange, 0%);
 	$color-scroll-container-shadow: $color-link-focus;

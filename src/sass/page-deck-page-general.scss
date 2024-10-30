@@ -9,11 +9,8 @@
 	width: 100%;
 }
 .outdated-deck-data-notice {
+	@include sideboard-header-bg;
 	border-radius: $border-radius-group;
-	background-image: $striped-pattern-background;
-	background-color: $color-mythic-brown;
-	border: 1px solid $color-section-border-alt;
-	color: $color-text-brighter;
 	padding: $lhse*.1667 4.17% $lhse*.3333;
 	margin: 0 auto $margin-sections;
 	text-align: center;
@@ -22,7 +19,7 @@
 
 	h3 {
 		margin-top: $lhse*.5;
-		color: $color-text-extra-brighter;
+		color: $color-text-brighter-over-mythic-brown;
 	}
 	.button-group {
 		display: flex;

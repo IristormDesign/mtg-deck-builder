@@ -159,8 +159,7 @@ $width-card-adder-button: $lhse*2.125;
 		width: max-content;
 	}
 	.sideboard-visible & {
-		background-color: $color-mythic-brown;
-		background-image: $striped-pattern-background;
+		@include sideboard-header-bg;
 
 		label {
 			color: $color-text-over-mythic-brown;
