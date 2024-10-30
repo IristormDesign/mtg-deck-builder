@@ -33,7 +33,7 @@
 									:href="card.link"
 									target="_blank"
 									ref="cardLink"
-									:class="isBattleType"
+									:class="shouldRotateSideways"
 								>
 									<div
 										class="card-shape"
@@ -118,10 +118,13 @@ export default {
 				return perFace(card.colors2, card.type2)
 			}
 		},
-		isBattleType () {
+		shouldRotateSideways () {
 			if (
-				/\bBattle\b/.test(this.card.type) &&
-				this.showingFrontFace
+				(
+					/\bBattle\b/.test(this.card.type) &&
+					this.showingFrontFace
+				) ||
+				this.card.layout === 'split'
 			) {
 				return 'sideways'
 			} else {
