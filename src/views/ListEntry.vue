@@ -10,7 +10,7 @@
 						id="card-list-entry"
 						v-model.trim="textCardList"
 						ref="textCardList"
-						rows="10"
+						rows="12"
 						cols="36"
 						maxlength="5000"
 						spellcheck="false"
@@ -164,7 +164,7 @@ export default {
 				name = this.cleanedCardName(name)
 
 				if (qty > 99) {
-					alert(`⚠ Error: Excessive Card Quantity\n\nYour card list has been rejected because it includes a card name with an overly large quantity (“${qty} ${name}”). Each name in your list must have a quantity less than 100.`)
+					alert(`⚠ Error: Excessive Quantity\n\nYour list has been rejected because it includes a card name with an overly huge quantity (“${qty} ${name}”). The quantity of each name must be no more than two digits.`)
 
 					this.hasExcessiveQuantity = true
 
