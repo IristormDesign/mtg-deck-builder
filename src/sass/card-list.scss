@@ -3,11 +3,12 @@ $min-height-card-list: $lhse*6;
 
 .card-list-section {
 	min-height: $min-height-card-list;
-	grid-area: card-list;
+	padding: $lhse*.5 0;
+	border-top: $border-sections-thick;
+	border-bottom: $border-sections-thick;
 
 	.no-cards {
 		text-align: center;
-		min-height: $min-height-card-list;
 		padding: $lhse*.5;
 		background: rgba($color-group-bg, 1);
 		display: flex;
@@ -63,10 +64,6 @@ $min-height-card-list: $lhse*6;
 		&.gap-after,
 		&:last-of-type {
 			margin-bottom: $margin-card-gap-after;
-
-			.card-bar {
-				box-shadow: $box-shadow-card-bar-cluster;
-			}
 		}
 		&.highlight {
 			outline: $outline-keyboard-focus;

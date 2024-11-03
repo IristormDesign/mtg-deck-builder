@@ -96,14 +96,18 @@
 		margin-left: auto;
 		background: none;
 		padding: 0;
+		margin-top: -$margin-sections;
 
 		> section {
 			background: $color-group-bg;
 			padding: $lhse $lhse*1.5 $lhse*.75;
 			margin-bottom: $margin-sections;
+			border-radius: $border-radius-group;
 
 			&:first-child {
-				padding-top: $lhse*.5;
+				padding-top: $lhse*.25;
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
 			}
 			&:last-child {
 				margin-bottom: 0;

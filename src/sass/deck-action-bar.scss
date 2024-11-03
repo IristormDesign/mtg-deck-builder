@@ -150,6 +150,7 @@
 @media (max-width: ($min-width-app*.5)) {
 	.deck-action-bar {
 		border-radius: 0;
+		margin-bottom: $lhse*.5;
 	}
 }
 @media (max-width: ($min-width-app*.375)) {

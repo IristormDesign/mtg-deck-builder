@@ -1,4 +1,8 @@
 @import 'variables';
+$width-card-list-section-wide:
+	$width-card-bars-wide + $width-card-star;
+$width-card-list-section-narrow:
+	$width-card-bars-narrow + $width-card-star;
 
 .draw-simulator {
 	margin: 0 auto $lhse*.5;
@@ -10,9 +14,10 @@
 	gap: $margin-card-gap-after $lhse*.5;
 	justify-content: center;
 
-	.no-cards {
-		border-bottom-right-radius: $border-radius-group;
-		border-bottom-left-radius: $border-radius-group;
+	.layout-column {
+		background: $color-group-bg;
+		border-radius: $border-radius-group;
+		width: $width-card-list-section-wide;
 	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
@@ -22,10 +27,10 @@
 		grid-template-columns: 1fr 1fr 2fr;
 		align-items: center;
 		overflow: hidden;
-		width: $width-card-bars-wide + $width-card-star - $lhse*.5;
 		height: $height-deck-header-component;
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
+		width: 100%;
 	}
 	.deck-info {
 		@include deck-info-style;
@@ -65,10 +70,16 @@
 		}
 	}
 	.card-list-section {
+		height: min-content;
+		border-bottom-right-radius: $border-radius-group;
+		border-bottom-left-radius: $border-radius-group;
+		border-bottom-width: 0;
+		padding-right: $lhse*.5;
+		padding-left: $lhse*.125;
+
 		li {
 			&:nth-last-of-type(8) {
 				margin-bottom: $margin-card-gap-after;
-				box-shadow: $box-shadow-card-bar-cluster;
 			}
 		}
 	}
@@ -76,10 +87,12 @@
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.draw-simulator {
+		.layout-column {
+			width: auto;
+		}
 		.control-panel {
 			grid-template-rows: repeat(2, $height-deck-header-component);
 			grid-template-columns: repeat(2, 1fr);
-			width: fit-content;
 			height: auto;
 			justify-self: center
 		}
@@ -131,8 +144,6 @@
 }
 @media (max-width: ($min-width-app * .6)) {
 	.draw-simulator {
-		width: 100%;
-
 		.control-panel {
 			grid-template-rows: 1fr 1fr;
 		}
@@ -150,7 +161,11 @@
 @media (max-width: ($min-width-app * .4)) {
 	.draw-simulator {
 		max-width: 100vw;
+		margin-bottom: $lhse*.5;
 
+		.layout-column {
+			border-radius: 0;
+		}
 		.control-panel {
 			grid-template-rows: auto $height-deck-header-component;
 			width: 100%;

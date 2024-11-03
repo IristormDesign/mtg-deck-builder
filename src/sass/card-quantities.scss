@@ -100,6 +100,10 @@
 		div {
 			margin-bottom: $lhse*.0625; // Makes the "+" and "-" signs look more vertically centered on the button surface.
 		}
+		&:disabled {
+			opacity: 1;
+			filter: contrast(.25) brightness(.75);
+		}
 	}
 	.increment {
 		border-bottom-right-radius: 0;

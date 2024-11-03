@@ -1,60 +1,62 @@
 <template>
 	<div class="draw-simulator">
-		<div class="control-panel">
-			<section class="deck-info">
-				<h3>Cards&nbsp;in Library</h3>
-				<div class="output">
-					{{ library.length }}
-					<span
-						class="warning-symbol"
-						v-show="(library.length === 0 && drawnList.length > 0)"
-						title="You’ve drawn every card from your library."
-					>⚠</span>
+		<div class="layout-column">
+			<div class="control-panel">
+				<section class="deck-info">
+					<h3>Cards&nbsp;in Library</h3>
+					<div class="output">
+						{{ library.length }}
+						<span
+							class="warning-symbol"
+							v-show="(library.length === 0 && drawnList.length > 0)"
+							title="You’ve drawn every card from your library."
+						>⚠</span>
+					</div>
+				</section>
+				<section class="deck-info">
+					<h3>Drawn Cards</h3>
+					<div class="output">{{ drawnList.length }}</div>
+				</section>
+				<div class="button-container">
+					<button
+						class="draw-card"
+						@click="drawCard()"
+						:disabled="library.length === 0"
+						:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : null"
+					>Draw a Card</button>
+					<button
+						class="restart"
+						@click="restart()"
+						:disabled="drawnList.length === 0"
+					>Restart</button>
+				</div>
+			</div>
+
+			<section class="card-list-section">
+				<header class="screen-readers-only">
+					<h3>Drawn Cards</h3>
+				</header>
+				<ul v-if="drawnList.length > 0">
+					<li v-for="(card, i) in drawnList" :key="i">
+						<card-star :card="card" :deck="deck" :i="i" />
+						<card-bar :card="card" :deck="deck" :i="i" />
+					</li>
+				</ul>
+				<div
+					v-else-if="library.length > 0"
+					class="no-cards"
+				>
+					<p>Your library is now shuffled.</p>
+					<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#draw-sim">user manual</router-link>.</p>
+				</div>
+				<div
+					v-else
+					class="no-cards"
+				>
+					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
 				</div>
 			</section>
-			<section class="deck-info">
-				<h3>Drawn Cards</h3>
-				<div class="output">{{ drawnList.length }}</div>
-			</section>
-			<div class="button-container">
-				<button
-					class="draw-card"
-					@click="drawCard()"
-					:disabled="library.length === 0"
-					:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : null"
-				>Draw a Card</button>
-				<button
-					class="restart"
-					@click="restart()"
-					:disabled="drawnList.length === 0"
-				>Restart</button>
-			</div>
 		</div>
-
-		<section class="card-list-section">
-			<header class="screen-readers-only">
-				<h3>Drawn Cards</h3>
-			</header>
-			<ul v-if="drawnList.length > 0">
-				<li v-for="(card, i) in drawnList" :key="i">
-					<card-star :card="card" :deck="deck" :i="i" />
-					<card-bar :card="card" :deck="deck" :i="i" />
-				</li>
-			</ul>
-			<div
-				v-else-if="library.length > 0"
-				class="no-cards"
-			>
-				<p>Your library is now shuffled.</p>
-				<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#draw-sim">user manual</router-link>.</p>
-			</div>
-			<div
-				v-else
-				class="no-cards"
-			>
-				<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
-			</div>
-		</section>
 
 		<card-image :deck="deck" />
 	</div>

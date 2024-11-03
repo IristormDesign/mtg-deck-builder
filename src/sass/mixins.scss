@@ -19,7 +19,7 @@
 	height: 100%;
 	padding: 0 $lhse*.5;
 	border: 0 solid $color-section-border;
-	border-right-width: 2px;
+	border-right-width: $border-width-sections;
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
@@ -236,13 +236,11 @@
 	background-image: repeating-linear-gradient(-45deg,
 		$color-mythic-brown 											0,
 		$color-mythic-brown 										  .5em,
-		darken($color-mythic-brown, (1/64)*100%) .5em,
-		darken($color-mythic-brown, (1/64)*100%) 1em
+		darken($color-mythic-brown, (1/80)*100%) .5em,
+		darken($color-mythic-brown, (1/80)*100%) 1em
 	);
 	color: $color-text-over-mythic-brown;
-	box-shadow:
-		inset -.5px 1px 0 0px rgba($color-text-over-mythic-brown, .125),
-		inset .5px -1px 0 0px rgba(#000, .1667);
+	box-shadow: inset 0 0 0 1px rgba(#000, .2);
 }
 @mixin glowing-edges-of-scrollable-container {
 	$color-scroll-container-shadow: darken($color-mythic-orange, 0%);

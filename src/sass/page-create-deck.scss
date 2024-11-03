@@ -13,7 +13,7 @@
 	}
 	.new-deck,
 	.import-data {
-		border: $border-sections;
+		border: $border-sections-thick;
 		padding: $lhse*.5 $lhse*.75;
 		margin: $margin-sections;
 	}
@@ -58,5 +58,18 @@
 	}
 	h3 {
 		margin-top: 0;
+	}
+}
+@media (max-width: ($min-width-app * .4)) {
+	.create-deck-page {
+		.new-deck {
+			margin-right: 0;
+			margin-left: 0;
+		}
+		.new-deck,
+		.import-data {
+			padding-right: $lhse*.5;
+			padding-left: $lhse*.5;
+		}
 	}
 }

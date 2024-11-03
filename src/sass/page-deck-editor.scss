@@ -2,27 +2,23 @@
 @import 'card-list';
 
 $width-card-adder-button: $lhse*2.125;
+$width-card-list-section-wide:
+	$width-card-bars-wide + $width-card-star + $width-qty-column;
+$width-card-list-section-narrow:
+	$width-card-bars-narrow + $width-card-star + $width-qty-column;
 
 .deck-editor {
 	margin: 0 auto $lhse*.5;
-	display: grid;
-	grid-template-areas:
-		'card-img panel-1'
-		'card-img card-list'
-		'card-img panel-2';
-	grid-template-rows: min-content max-content 100%;
-	grid-template-columns: auto auto;
+	display: flex;
 	gap: $margin-card-gap-after $lhse*.5;
-	justify-content: center;
 	position: relative;
 
-	.viewing-controls,
-	.adder-controls {
-		min-width: $width-deck-editor-region;
+	.layout-column {
+		background: $color-group-bg;
+		height: fit-content;
+		border-radius: $border-radius-group;
 	}
 	.viewing-controls {
-		grid-template-columns: 1fr 1fr;
-		grid-area: panel-1;
 		min-height: 0%; // Needed for Firefox on sideboard lists
 		height: $height-deck-header-component;
 		box-sizing: content-box;
@@ -30,12 +26,17 @@ $width-card-adder-button: $lhse*2.125;
 		border-bottom-left-radius: 0;
 	}
 	.adder-controls {
-		grid-area: panel-2;
 		align-self: flex-start;
-		border-top-left-radius: 0;
+		border-radius: $border-radius-group;
 		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+		overflow: hidden;
+	}
+	.card-list-section {
+		width: $width-card-list-section-wide;
 	}
 }
+
 .card-sorter {
 	fieldset {
 		padding: 0;
@@ -163,6 +164,7 @@ $width-card-adder-button: $lhse*2.125;
 	}
 	.sideboard-visible & {
 		@include sideboard-header-bg;
+		border-bottom-right-radius: $border-radius-group; // Needed for box-shadow outline.
 
 		label {
 			color: $color-text-over-mythic-brown;
@@ -227,9 +229,6 @@ $width-card-adder-button: $lhse*2.125;
 
 @mixin viewing-controls-single-layer-compressed {
 	.deck-editor {
-		.control-panel {
-			max-width: $width-card-bars-wide + $width-card-star + $width-qty-column - $lhse*.5;
-		}
 		.viewing-controls {
 			grid-template-columns: auto auto;
 			height: $height-deck-header-component;
@@ -260,9 +259,6 @@ $width-card-adder-button: $lhse*2.125;
 }
 @mixin viewing-controls-single-layer {
 	.deck-editor {
-		.control-panel {
-			max-width: $width-card-bars-narrow + $width-card-star + $width-qty-column - $lhse*.5;
-		}
 		.viewing-controls {
 			height: $lhse*3.0833; // Adjust to a height that prevents wide gaps between card bars.
 
@@ -370,6 +366,12 @@ $width-card-adder-button: $lhse*2.125;
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
 	@include adder-controls-double-layers;
+
+	.deck-editor {
+		.card-list-section {
+			width: $width-card-list-section-narrow;
+		}
+	}
 }
 @media (max-width: $min-width-app) {
 	.deck-editor {
@@ -391,6 +393,9 @@ $width-card-adder-button: $lhse*2.125;
 		.viewing-controls,
 		.adder-controls {
 			min-width: 0;
+		}
+		.card-list-section {
+			width: auto;
 		}
 	}
 }
@@ -423,10 +428,12 @@ $width-card-adder-button: $lhse*2.125;
 	@include viewing-controls-double-layers;
 
 	.deck-editor {
-		max-width: 100vw;
+		display: block;
+		max-width: 100%;
+		margin: 0;
 
-		.control-panel {
-			width: 100%;
+		.layout-column {
+			border-radius: 0;
 		}
 	}
 	.card-adder {

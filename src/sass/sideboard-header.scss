@@ -3,6 +3,7 @@
 .sideboard-header {
 	@include sideboard-header-bg;
 	margin: -$margin-card-gap-after 0 ($margin-card-gap-after + .25px);
+	margin: -$lhse*.5 0 $lhse*.5;
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;

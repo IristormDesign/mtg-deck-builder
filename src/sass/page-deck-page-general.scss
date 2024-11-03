@@ -55,10 +55,6 @@
 	}
 }
 .control-panel {
-	border-radius: $border-radius-group;
-	overflow: hidden;
-	background: $color-group-bg;
-	width: 100vw;
 	display: grid;
 
 	section {
@@ -88,8 +84,8 @@
 @media (max-width: $width-app-breakpoint) {
 	.deck-info {
 		border-width: 0;
-		border-top-width: 2px;
-		border-right-width: 2px;
+		border-top-width: $border-width-sections;
+		border-right-width: $border-width-sections;
 
 		.output {
 			display: flex;

@@ -1,6 +1,8 @@
 .deck-header {
 	grid-column: span 6;
-	margin: $lhse auto $margin-sections;
+	margin: $lhse auto 0;
+	border-bottom: $border-sections;
+	border-bottom-width: $border-width-sections-thicker;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;
@@ -9,7 +11,7 @@
 	justify-content: space-between;
 	overflow: hidden;
 	width: 100%;
-	border-radius: #{$lhse} / #{50%};
+	border-radius: $border-radius-group;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	background: $color-group-bg;
