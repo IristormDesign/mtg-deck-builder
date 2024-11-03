@@ -9,8 +9,9 @@
 		</p>
 		<p>The card adder (the section labeled “Add a card name to this deck/sideboard” in the <a href="#deck-editor">Deck Editor</a>) is where you indicate a new name of a <i>Magic: The Gathering</i> card to be put into your deck.</p>
 		<p>The new card name will appear in the <a href="#card-list">card list</a> for either the main or sideboard group, whichever is currently active in the <a href="#card-groups">card group switch</a>. The background color of the card adder section changes with the group: It’s dark gray when on main, and brown when on sideboard.</p>
-		<p>The card adder has a simple form including a text field where you can enter a query for a card. Then, submit your query by clicking the “Add” button, or by pressing the Enter/Return key on your keyboard.</p>
-		<p>The card adder accepts three kinds of queries: a <a href="#card-name-query">card name</a>, a <a href="#scryfall-url-query">Scryfall card page URL</a>, or the <a href="#random-card-query">“#random” code</a>.</p>
+		<p>The card adder section has a simple submission form that has a text field where you can enter a query for a card. There are three accepted kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>. Submit your query from the card adder by clicking the “Add” button, or by pressing the Enter/Return key on your keyboard.</p>
+		<p></p>
+		<p>The card adder can add only one card name at a time. If you want to add several card names at a time, use the <a href="#card-list-entry">Card List Entry</a> page instead.</p>
 
 		<section id="card-name-query">
 			<h5>Card Name Query</h5>
