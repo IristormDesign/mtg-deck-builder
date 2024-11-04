@@ -2,8 +2,7 @@
 
 .sideboard-header {
 	@include sideboard-header-bg;
-	margin: -$margin-card-gap-after 0 ($margin-card-gap-after + .25px);
-	margin: -$lhse*.5 0 $lhse*.5;
+	margin: -$lhse*.5 0 $lhse*.4583; // Margin-bottom is carefully adjusted to prevent integer-rounded gaps in the card list.
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;

@@ -260,7 +260,7 @@ $width-card-list-section-narrow:
 @mixin viewing-controls-single-layer {
 	.deck-editor {
 		.viewing-controls {
-			height: $lhse*3.0833; // Adjust to a height that prevents wide gaps between card bars.
+			height: $lhse*3;
 
 			.card-sorter label,
 			.card-group-switch h3 {
@@ -410,13 +410,6 @@ $width-card-list-section-narrow:
 		.adder-controls {
 			width: auto;
 			max-width: none;
-		}
-	}
-}
-@media (max-width: ($min-width-app * .7083)) {
-	.deck-editor {
-		.viewing-controls {
-			height: $lhse*3.0417; // Adjust to a height that prevents wide gaps between card bars.
 		}
 	}
 }

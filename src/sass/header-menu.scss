@@ -177,19 +177,22 @@
 		display: block;
 		font-size: 87.5%;
 		z-index: index($layers, app-menu-toggler);
+		height: $lhse*1.5;
+		width: $lhse*3;
+		min-width: 0;
 	}
 	.header-menu {
 		position: absolute;
-		top: $lhse*1.8;
+		top: $lhse*1.75;
 		right: 0;
 		width: auto;
 
 		> .hover-shield {
 			display: block;
-			width: ($lhse*.875)*3.375;
+			width: $lhse*2.625;
 			height: $lhse*1.5;
 			position: absolute;
-			top: -$lhse*1.5;
+			top: -$lhse*1.75;
 			right: 0;
 			margin: 0;
 			background: $color-mythic-dimmer;
@@ -207,9 +210,7 @@
 		}
 		.header-menu-item {
 			@include popup-menu-list-links;
-			padding-top: $lhse;
-			padding-bottom: $lhse;
-			outline: $x;
+			height: auto;
 		}
 		.open-deck-heading {
 			display: block;
@@ -244,6 +245,12 @@
 				position: static;
 				overflow: hidden;
 				max-height: 100%;
+			}
+			a {
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
 			}
 		}
 	}

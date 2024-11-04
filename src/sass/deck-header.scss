@@ -1,8 +1,7 @@
 .deck-header {
 	grid-column: span 6;
 	margin: $lhse auto 0;
-	border-bottom: $border-sections;
-	border-bottom-width: $border-width-sections-thicker;
+	border-bottom: $border-sections-thick;
 	display: grid;
 	grid-template-columns: 1fr repeat(5, min-content);
 	grid-template-rows: auto auto;

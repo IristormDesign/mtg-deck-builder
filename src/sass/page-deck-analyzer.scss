@@ -7,10 +7,10 @@ $outline-width-stat-section: 2px;
 	cursor: pointer;
 
 	&:hover {
-		background: $color-group-bg-darker;
+		background: $color-input-bg-focus;
 	}
 	&:active {
-		background: $color-highlight-bg;
+		background: $color-input-bg-active;
 		color: $color-text-brighter-over-mythic-brown;
 	}
 }
@@ -82,7 +82,7 @@ $outline-width-stat-section: 2px;
 		transition: outline-color 1s ease;
 
 		&:active {
-			outline-color: $color-text-darker;
+			outline-color: $color-text;
 			transition-duration: 0s;
 		}
 		h4 {
