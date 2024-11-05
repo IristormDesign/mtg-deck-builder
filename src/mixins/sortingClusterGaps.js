@@ -110,6 +110,11 @@ export default {
 						thisCard.gapAfter = true
 					}
 				}
+				function gapsRarity () {
+					if (thisCard.rarity !== nextCard.rarity) {
+						thisCard.gapAfter = true
+					}
+				}
 				function gapsPTSum () {
 					if (thisCard.power !== undefined && nextCard.power === undefined) {
 						thisCard.gapAfter = true
@@ -133,6 +138,8 @@ export default {
 							gapsType(); break
 						case 'subtype':
 							gapsSubtype(); break
+						case 'rarity':
+							gapsRarity(); break
 						case 'pt-sum':
 							gapsPTSum(); break
 						case 'qty':
