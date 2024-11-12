@@ -142,11 +142,11 @@ select {
 [type="radio"] {
 	cursor: pointer;
 	appearance: none;
-	width: 17px; // Use whole pixel values for width and height because they don't cause rendering inconsistencies.
-	height: 17px;
+	width: 20px; // Use whole pixel values for width and height because they don't cause rendering inconsistencies.
+	height: 20px;
 	margin: 0;
 	border-radius: 50%;
-	border: 3px solid $color-link;
+	border: 3.5px solid $color-link;
 	box-shadow: inset 0 0 0 1px $color-group-bg-darker;
 	outline: none;
 
@@ -172,14 +172,13 @@ select {
 }
 option {
 	@include popup-menu-list-links;
-	background: $color-mythic-dim;
-	font-size: 112.5%;
+	background: $color-mythic-brown;
 
 	&[value=""] {
 		display: none;
 	}
 	&:checked {
-		color: lighten($color-mythic-dim, 16.67%);
+		color: rgba($color-app-header-link, 1/3);
 	}
 }
 .checklist {

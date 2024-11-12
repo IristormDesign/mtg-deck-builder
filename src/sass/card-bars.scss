@@ -34,10 +34,6 @@
 		.mana {
 			margin-bottom: 0;
 		}
-		.rarity {
-			font-size: 100%;
-			margin-right: -$lhse*.0417;
-		}
 	}
 }
 @mixin condensed-card-bars {
@@ -227,20 +223,12 @@
 }
 @media (max-width: ($min-width-app * .5)) {
 	.card-bar {
-		font-size: 87.5%;
-		height: 35px;
-
-		.type {
-			line-height: 1;
-		}
-		.rarity-symbol {
-			line-height: 1;
-		}
+		font-size: 91.67%;
 	}
 }
 
 @media (pointer: coarse) {
 	.card-bar {
-		min-height: 27px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra pixels so that the list items appear to have consistent gaps between each other.
+		min-height: 24.6px; // 24px is the minimum passable size by WCAG's level "AA" accessibility guidelines. Then I've added a few extra sub-pixels so that the list items appear to have consistent gaps between each other.
 	}
 }

@@ -68,7 +68,7 @@ $width-card-list-section-narrow:
 		}
 	}
 	select {
-		height: $height-control-panel-input;
+		height: $height-control-panel-input*.875;
 		font-weight: $font-weight-semibold;
 	}
 }
@@ -89,7 +89,7 @@ $width-card-list-section-narrow:
 		div {
 			display: flex;
 			align-items: center;
-			margin: 0 .5em;
+			margin: 0 $lhse*.5;
 
 			&:first-child {
 				margin-left: 0;
@@ -114,7 +114,7 @@ $width-card-list-section-narrow:
 		min-width: 0;
 		width: $lhse*1.6667;
 		height: $lhse*1.6667;
-		border-radius: $border-radius-group;
+		border-radius: $border-radius-group*.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -369,7 +369,7 @@ $width-card-list-section-narrow:
 
 	.deck-editor {
 		.card-list-section {
-			width: $width-card-list-section-narrow;
+			width: 100%;
 		}
 	}
 }

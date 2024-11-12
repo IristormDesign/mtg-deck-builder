@@ -38,7 +38,6 @@ $min-height-card-list: $lhse*6;
 		transition: all .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
 		transition-property: transform, background-color, border-radius, opacity, filter;
 		position: relative;
-		background: $color-group-bg;
 		border-radius: $border-radius-button;
 		width: fit-content;
 

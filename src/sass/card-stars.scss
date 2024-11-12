@@ -1,12 +1,11 @@
 @import 'variables';
-$scale-card-star: scale(1.0833);
 
 @keyframes star-pulse {
 	from {
-		opacity: 0;
+		opacity: .25;
 	}
 	to {
-		opacity: 1;
+		opacity: .75;
 	}
 }
 
@@ -25,7 +24,7 @@ $scale-card-star: scale(1.0833);
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	transition: $transition-duration-standard ease;
-	transition-property: opacity, transform;
+	transition-property: opacity, transform, background-color;
 	box-shadow: none;
 
 	&:checked,
@@ -38,8 +37,8 @@ $scale-card-star: scale(1.0833);
 	}
 	&:hover,
 	&:focus-visible {
-		animation: star-pulse .25s ease 19 alternate;
-		background: $color-input-bg-focus !important;
+		animation: star-pulse .3333s ease-out 20 alternate;
+		filter: none !important;
 
 		&:not(:checked) {
 			opacity: .5;
@@ -58,7 +57,6 @@ $scale-card-star: scale(1.0833);
 	&:active,
 	&.flash {
 		opacity: 1 !important;
-		background: $color-input-bg-active !important;
 		animation: none;
 
 		&::before {
@@ -74,15 +72,18 @@ $scale-card-star: scale(1.0833);
 			animation: none;
 
 			&::before {
+				transform: rotate(360deg*3) !important;
+				transition: transform 5s linear !important;
+			}
+			&::before {
 				animation: none;
 			}
 		}
 		&:active,
 		&.flash {
-			background: $color-input-bg-active;
-
 			&::before {
 				transition-duration: 0s;
+				transition-delay: 0s;
 			}
 		}
 	}
@@ -91,7 +92,6 @@ $scale-card-star: scale(1.0833);
 		color: $color-card-star;
 		left: 4px;
 		position: absolute;
-		transform: $scale-card-star;
 	}
 	&::after {
 		display: none;
@@ -103,6 +103,7 @@ $scale-card-star: scale(1.0833);
 		&:focus-within,
 		&.highlight {
 			.card-star {
+				background: $color-heading-bg;
 
 				&:not(:checked) {
 					opacity: .25;
@@ -113,16 +114,6 @@ $scale-card-star: scale(1.0833);
 						transition-duration: 0s;
 					}
 				}
-				&::before {
-					transform: $scale-card-star rotate(360deg);
-					transition: transform 1.5s ease-in-out;
-				}
-			}
-		}
-		&:focus-within,
-		&.highlight {
-			.card-star {
-				background: $color-input-bg-focus;
 			}
 		}
 		&.highlight {
@@ -150,10 +141,6 @@ $scale-card-star: scale(1.0833);
 	.card-star {
 		opacity: 1;
 
-		&:hover,
-		&:focus-visible {
-			background: $color-input-bg-focus !important;
-		}
 		&:not(:checked) {
 			animation: none !important;
 			opacity: 1 !important;
