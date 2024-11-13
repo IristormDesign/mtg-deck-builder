@@ -24,7 +24,7 @@
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	transition: $transition-duration-standard ease;
-	transition-property: opacity, transform, background-color;
+	transition-property: opacity, transform, background;
 	box-shadow: none;
 
 	&:checked,
@@ -32,8 +32,8 @@
 	&:focus-visible {
 		background: $color-group-bg;
 		opacity: 1;
-		transition-duration: 0s !important;
-		transition-delay: 0s !important;
+		transition-duration: 0s, 0s, $transition-duration-standard !important;
+		transition-delay: 0s, 0s, 0s !important;
 	}
 	&:hover,
 	&:focus-visible {
