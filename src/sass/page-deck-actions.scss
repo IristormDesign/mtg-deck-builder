@@ -19,7 +19,7 @@
 	.multi-select-buttons,
 	.checklist {
 		padding: divide($lhse, 3) $lhse*.6667;
-		border: $border-sections;
+		border: $border-sections-thick;
 	}
 	.multi-select-buttons {
 		display: grid;

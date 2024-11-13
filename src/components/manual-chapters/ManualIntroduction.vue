@@ -6,7 +6,8 @@
 		</figure>
 		<p>This document is the user manual for <router-link :to="{name: 'home'}">MTG Deck Builder by Iristorm Design</router-link>. It should help you understand anything you want to know about how this web app works.</p>
 		<p>The manual is divided into many chapters. You can skip directly to a chapter you want to read by clicking the relevant link in the table of contents, or by clicking any chapter links throughout the manual’s text.</p>
-		<p>The manual displays screenshots of parts of MTG Deck Builder. Some of these screenshots were taken from earlier versions of the app, and so they may look slightly different from the current version.</p>
+		<p>You could also use your web browser’s “Find” tool (press <kbd class="ctrl-key">Ctrl</kbd>+<kbd>F</kbd> or <kbd class="ctrl-key">⌘</kbd>+<kbd>F</kbd>) to instantly scroll the page to an instance of a word or phrase you specify.</p>
+		<p>The manual displays screenshots of parts of MTG Deck Builder. Note that some of these screenshots were taken from earlier versions of the app, so they may look slightly different from the current version.</p>
 
 		<game-rules />
 	</section>

@@ -175,6 +175,9 @@ kbd {
 	margin-top: -.125em; // To vertically align the key letters with normal text.
 	margin-bottom: -.125em; // To maintain a consistent line height.
 
+	&.ctrl-key {
+		width: $kbd-height * 1.5;
+	}
 	&.shift-key {
 		width: $kbd-height * 2;
 	}
@@ -183,7 +186,7 @@ kbd {
 	}
 }
 ::selection {
-	background: rgba($color-mythic-orange, .5);
+	background: rgba(desaturate($color-mythic-orange, 12.5%), .5);
 	color: #fff;
 	text-shadow: none;
 	text-decoration: none !important;
