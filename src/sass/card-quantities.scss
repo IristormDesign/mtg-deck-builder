@@ -37,15 +37,12 @@
 	width: $width-qty-column;
 	padding-right: 2px;
 
-	> span {
+	label {
 		margin: -6.25% 1px 0 $lhse*.1667;
 		color: $color-text-darker;
 		cursor: default;
 		text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
 		transition: color $transition-duration-standard ease;
-	}
-	label {
-		@include screen-readers-only;
 	}
 	input {
 		color: $color-text;
@@ -138,12 +135,11 @@
 		&:hover,
 		&.highlight {
 			.qty {
-				> span {
+				label {
 					color: $color-text;
 					transition-duration: 0s;
 				}
 				input {
-					// transition: none;
 					color: $color-link;
 
 					&:hover,
@@ -198,8 +194,10 @@
 @media (max-width: ($min-width-app * .4)) {
 	.qty {
 		width: $width-qty-column*.6667;
+		margin-right: -$lhse*.125;
+		margin-left: $lhse*.125;
 
-		> span {
+		label {
 			display: none;
 		}
 	}

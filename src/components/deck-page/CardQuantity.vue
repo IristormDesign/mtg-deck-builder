@@ -1,7 +1,6 @@
 <template>
 	<div class="qty">
-		<label :for="qtyCardID(i)">Quantity</label>
-		<span>&times;</span>
+		<label :for="qtyCardID(i)">&times;</label>
 		<input
 			type="number"
 			:id="qtyCardID(i)"
