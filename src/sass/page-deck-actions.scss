@@ -56,7 +56,7 @@
 	text-align: center;
 	text-wrap: balance;
 }
-.deck-as-text {
+.render-as-text {
 	margin: 0 auto $lhse*.5;
 	max-width: none;
 
@@ -74,7 +74,7 @@
 		justify-content: center;
 		align-items: center;
 		height: $lhse*2.5;
-		margin: $lhse*.5 auto;
+		margin: $lhse auto $lhse;
 		border: $border-sections-thick;
 		width: fit-content;
 		padding: $lhse*.5;
@@ -94,11 +94,10 @@
 		&.two-columns {
 			grid-template-columns: 1fr 1fr;
 		}
-	}
-	section {
-		width: $width-textarea-card-list;
-		margin: 0 auto;
-
+		section {
+			width: $width-textarea-card-list;
+			margin: 0 auto;
+		}
 		header {
 			height: $lhse*1.5;
 			display: flex;
@@ -106,14 +105,15 @@
 			justify-content: space-between;
 			background: $color-heading-bg;
 			padding: $lhse*.5;
-
-			button {
-				font-size: 80%;
-			}
 		}
-	}
-	h4 {
-		margin: 0;
+		h4 {
+			margin: 0;
+			color: $color-text-extra-brighter;
+		}
+		button {
+			font-size: 75%;
+			height: $lhse*1.5;
+		}
 	}
 	textarea {
 		margin: 0 auto;
@@ -129,7 +129,7 @@
 }
 
 @media (max-width: ($min-width-app * .8333)) {
-	.deck-as-text {
+	.render-as-text {
 		.lists {
 			&,
 			&.two-columns {
@@ -159,7 +159,7 @@
 	}
 }
 @media (max-width: ($min-width-app * .625)) {
-	.deck-as-text {
+	.render-as-text {
 		width: 100%;
 
 		section {

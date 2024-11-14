@@ -1,11 +1,11 @@
 <template functional>
 	<section id="deck-actions" key="deck-actions">
 		<h4>Deck Actions</h4>
-		<p>In the <a href="#deck-page-header">deck page header</a>, the deck actions section has a button with a drop-down menu with options that let you do special actions to your decks. These options are <a href="#convert-to-text-action">convert to text</a>, <a href="#copy-action">copy</a>, <a href="#export-action">export</a>, and <a href="#delete-action">delete</a>. The effects of each of them are explained in the next subchapters.</p>
+		<p>In the <a href="#deck-page-header">deck page header</a>, the deck actions section has a button with a drop-down menu with options that let you do special actions to your decks. These options are <a href="#render-as-text-action">render as text</a>, <a href="#copy-action">copy</a>, <a href="#export-action">export</a>, and <a href="#delete-action">delete</a>. The effects of each of them are explained in the next subchapters.</p>
 
-		<section id="convert-to-text-action">
-			<h5>Convert to Text</h5>
-			<p>In the <a href="#deck-actions">deck actions</a> menu, select Convert to Text to go to the “Deck as Text” page. From there, you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> as simple lists in the form of plain text. These plain text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>.</p>
+		<section id="render-as-text-action">
+			<h5>Render as Text</h5>
+			<p>In the <a href="#deck-actions">deck actions</a> menu, select “Render as text” to go to the “Render Deck as Plain Text” page. From there, you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> as simple lists in the form of plain text. These plain text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>.</p>
 			<p>If you want to take these plain text card lists outside MTG Deck Builder, there are easy ways to do that:</p>
 			<ul>
 				<li>

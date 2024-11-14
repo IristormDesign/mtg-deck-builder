@@ -1,9 +1,9 @@
 <template>
 	<article
-		class="deck-as-text content-box"
+		class="render-as-text content-box"
 		:class="!mainNotEmpty && !sideboardNotEmpty ? 'no-cards' : null"
 	>
-		<h3>Deck as Text</h3>
+		<h3>Render Deck as Plain Text</h3>
 
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<div class="button-container">
@@ -21,7 +21,7 @@
 				<section v-if="mainNotEmpty">
 					<header>
 						<h4>Main List</h4>
-						<button @click="copyList('mainList', 'main')">Copy List</button>
+						<button @click="copyList('mainList', 'main')">Copy</button>
 					</header>
 					<textarea
 						v-text="listCards()"
@@ -33,7 +33,7 @@
 				<section v-if="sideboardNotEmpty">
 					<header>
 						<h4>Sideboard List</h4>
-						<button @click="copyList('sideboardList', 'sideboard')">Copy List</button>
+						<button @click="copyList('sideboardList', 'sideboard')">Copy</button>
 					</header>
 					<textarea
 						v-text="listCards(true)"

@@ -60,9 +60,9 @@ const routes = [
 				props: true
 			},
 			{
-				name: 'deckAsText',
-				path: 'deck-as-text',
-				component: () => import(/* webpackChunkName: "deck-as-text" */ '@/views/DeckAsText.vue')
+				name: 'renderAsText',
+				path: 'render-as-text',
+				component: () => import(/* webpackChunkName: "render-as-text" */ '@/views/RenderAsText.vue')
 			}
 		]
 	},

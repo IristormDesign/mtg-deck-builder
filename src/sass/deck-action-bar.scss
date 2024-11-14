@@ -69,6 +69,7 @@
 		@include button('gray');
 		font-size: 66.67%;
 		height: $lhse*1.75;
+		width: $lhse*5.6; // Short enough to contain the whole label ("Deck Actions..." without excess space. This is necessary because the label shifts to the left after the user opens the select menu.
 
 		&:active { // Prevent the appearance of the button pushing, because it causes the menu to bounce with it.
 			border-bottom-width: $border-bottom-width-button;
