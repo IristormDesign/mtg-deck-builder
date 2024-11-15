@@ -34,7 +34,7 @@
 								<a href="#deck-actions">Deck Actions</a>
 								<ol>
 									<li><a href="#render-as-text-action">Render as Text</a></li>
-									<li><a href="#copy-action">Copy</a></li>
+									<li><a href="#duplicate-action">Duplicate</a></li>
 									<li><a href="#export-action">Export</a></li>
 									<li><a href="#delete-action">Delete</a></li>
 								</ol>

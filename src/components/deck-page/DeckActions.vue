@@ -7,7 +7,7 @@
 		>
 			<option value="">Deck Actions&hellip;</option>
 			<option value="renderAsText">Render as text</option>
-			<option value="copy">Copy</option>
+			<option value="duplicate">Duplicate</option>
 			<option value="export">Export</option>
 			<option value="delete">Delete</option>
 		</select>
@@ -32,8 +32,8 @@ export default {
 			switch (this.deckAction) {
 				case 'renderAsText':
 					this.renderAsText(); break
-				case 'copy':
-					this.copyDeck(); break
+				case 'duplicate':
+					this.duplicateDeck(); break
 				case 'export':
 					this.exportDeck(); break
 				case 'delete':
@@ -52,29 +52,29 @@ export default {
 
 			document.activeElement.blur() // This is needed so that the browser focus doesn't remain on the Deck Actions select menu when using the keyboard.
 		},
-		copyDeck () {
+		duplicateDeck () {
 			const sourceDeck = this.deck
 
-			let deckCopyName = prompt(
-				'Give a new name for the deck copy:',
+			let dupDeckName = prompt(
+				'Give a new name for the duplicate deck:',
 				this.amendCopiedDeckName(sourceDeck).name
 			)
 
-			if (deckCopyName) {
-				deckCopyName = deckCopyName.trim()
+			if (dupDeckName) {
+				dupDeckName = dupDeckName.trim()
 			}
-			if (deckCopyName) { // Check for a string existing again after having trimmed it.
-				const deckCopyPath = this.stringToPath(deckCopyName)
+			if (dupDeckName) { // Check for a string existing again after having trimmed it.
+				const dupDeckPath = this.stringToPath(dupDeckName)
 
-				if (deckCopyPath === this.$route.params.deckPath) {
-					alert(this.alertNameExists(deckCopyName))
+				if (dupDeckPath === this.$route.params.deckPath) {
+					alert(this.alertNameExists(dupDeckName))
 
 					this.copyDeck(sourceDeck)
-				} else if (this.nameIsApproved(deckCopyName, deckCopyPath)) {
+				} else if (this.nameIsApproved(dupDeckName, dupDeckPath)) {
 					const copiedDeck = JSON.parse(JSON.stringify(sourceDeck)) // The technique for deep-cloning objects, which is necessary here.
 					const newData = {
-						name: deckCopyName,
-						path: deckCopyPath
+						name: dupDeckName,
+						path: dupDeckPath
 					}
 
 					this.storeCopiedDeckAndRedirect(copiedDeck, newData)
