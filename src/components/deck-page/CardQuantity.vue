@@ -12,7 +12,7 @@
 		<div class="qty-buttons">
 			<button
 				class="increment"
-				title="Increase quantity"
+				title="Increase quantity (E)"
 				@click="cardObject.qty++"
 				:disabled="card.qty >= card.maxQty"
 			>
@@ -20,7 +20,7 @@
 			</button>
 			<button
 				class="decrement"
-				title="Decrease quantity"
+				title="Decrease quantity (D)"
 				@click="cardObject.qty--"
 			>
 				<div>&minus;</div>

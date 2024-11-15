@@ -5,18 +5,21 @@
 				<router-link
 					:to="{ name: 'deckEditor' }"
 					:class="onPage('deckEditor')"
+					title="(1)"
 				>Deck Editor</router-link>
 			</li>
 			<li>
 				<router-link
 					:to="{ name: 'deckAnalyzer' }"
 					:class="onPage('deckAnalyzer')"
+					title="(2)"
 				>Deck Analyzer</router-link>
 			</li>
 			<li>
 				<router-link
 					:to="{ name: 'drawSim' }"
 					:class="onPage('drawSim')"
+					title="(3)"
 				>Draw Simulator</router-link>
 			</li>
 		</ul>

@@ -5,6 +5,7 @@
 		@change="toggleCardStar(card)"
 		v-model="cardObject.starred"
 		:name="'s' + i"
+		title="(A)"
 	>
 </template>
 

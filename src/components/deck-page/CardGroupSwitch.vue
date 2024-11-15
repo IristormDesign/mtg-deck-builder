@@ -2,7 +2,10 @@
 	<section class="card-group-switch">
 		<div>
 			<h3>Switch card group:</h3>
-			<fieldset class="radio-fieldset">
+			<fieldset
+				class="radio-fieldset"
+				title="(R)"
+			>
 				<div>
 					<label for="radio-main-group">Main</label>
 					<input

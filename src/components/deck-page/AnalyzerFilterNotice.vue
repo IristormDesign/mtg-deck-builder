@@ -7,7 +7,10 @@
 			<h4>Filter: On</h4>
 			<p v-show="activeFilterDescription">The displayed statistics involve only <strong>{{ activeFilterDescription }}</strong>.</p>
 			<div class="button-container">
-				<button @click="stopFiltering()">Stop Filtering</button>
+				<button
+					@click="stopFiltering()"
+					title="(Esc)"
+				>Stop Filtering</button>
 			</div>
 		</div>
 	</aside>

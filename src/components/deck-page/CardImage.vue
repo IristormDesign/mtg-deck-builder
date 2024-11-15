@@ -12,7 +12,10 @@
 					class="card-placement-outline"
 				></div>
 			</transition>
-			<div class="image-container">
+			<div
+				class="image-container"
+				title="(Shift+Q)"
+			>
 				<div
 					class="image-overlay"
 					v-if="card"
@@ -62,6 +65,7 @@
 					<button
 						v-if="card && card.img2"
 						@click="clickedTurnOver()"
+						title="(Z)"
 					>
 						Turn Over
 					</button>

@@ -22,12 +22,13 @@
 						class="draw-card"
 						@click="drawCard()"
 						:disabled="library.length === 0"
-						:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : null"
+						:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : '(Space)'"
 					>Draw a Card</button>
 					<button
 						class="restart"
 						@click="restart()"
 						:disabled="drawnList.length === 0"
+						title="(R)"
 					>Restart</button>
 				</div>
 			</div>
