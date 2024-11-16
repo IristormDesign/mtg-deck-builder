@@ -89,9 +89,8 @@ export default {
 
 			this.deckObject.sortBy = sortMenu
 
-			const deck = this.deck
-			const mainList = deck.cards
-			const sbList = deck.sideboard.cards
+			const mainList = this.deck.cards
+			const sbList = this.deck.sideboard.cards
 
 			switch (sortMenu) {
 				case 'starred':
@@ -131,7 +130,7 @@ export default {
 					sortDefault(sbList)
 			}
 
-			this.addSortingClusterGaps(deck, sortMenu)
+			this.addSortingClusterGaps(this.deck, sortMenu)
 			this.$store.commit('decks', this.$store.state.decks)
 
 			function sortByColor (cards) {
