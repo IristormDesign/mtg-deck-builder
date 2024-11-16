@@ -89,13 +89,22 @@ export default {
 					}
 				}
 				function gapsSubtype () {
-					const hasSubtype = (card) => {
-						const regexSubtype = / — \w/
+					const regexSubtype = / — \w+/
 
-						return regexSubtype.test(card.type)
+					function getSubtype (card) {
+						if (card.type.match(regexSubtype)) {
+							return card.type.match(regexSubtype)[0]
+						}
 					}
 
-					if (hasSubtype(thisCard) && !hasSubtype(nextCard)) {
+					if (
+						getSubtype(thisCard) &&
+						!getSubtype(nextCard)
+					) {
+						thisCard.gapAfter = true
+					} else if (
+						getSubtype(thisCard) !== getSubtype(nextCard)
+					) {
 						thisCard.gapAfter = true
 					}
 				}
