@@ -116,7 +116,24 @@ export default {
 					}
 				}
 				function gapsPTSum () {
-					if (thisCard.power !== undefined && nextCard.power === undefined) {
+					function ptSum (card) {
+						function setNaNToZero (pt) {
+							if (isNaN(pt)) {
+								return 0
+							} else {
+								return Number(pt)
+							}
+						}
+
+						return setNaNToZero(card.power) + setNaNToZero(card.toughness)
+					}
+
+					if (
+						thisCard.power !== undefined &&
+						nextCard.power === undefined
+					) {
+						thisCard.gapAfter = true
+					} else if (ptSum(thisCard) !== ptSum(nextCard)) {
 						thisCard.gapAfter = true
 					}
 				}
