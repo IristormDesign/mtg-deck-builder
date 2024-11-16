@@ -320,7 +320,7 @@ export default {
 			if (confirmToReplace) {
 				// (Can't use a timeout here because it messes with the return.)
 				return confirm(
-					`“${card.name}” is already in this deck${stringActiveCardList()}, but it’s in a different print from the one you request.\n\nDo you want your requested print to replace the existing print for this card?`
+					`“${card.name}” is already in this deck${stringActiveCardList()}, but it’s in a different print from the one you’re requesting.\n\nDo you want the requested print for this card to replace the existing print?`
 				)
 			} else {
 				setTimeout(() => {
