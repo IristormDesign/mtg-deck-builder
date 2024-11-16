@@ -310,19 +310,17 @@ export default {
 			this.activeCardList.viewedCard = this.findExistingCardByName(card.name)
 
 			const stringActiveCardList = () => {
-				let output = 'deck'
-
 				if (this.$store.state.showSideboard) {
-					output += '’s sideboard' // As in `this deck's sideboard`.
+					return '’s sideboard' // As in "deck's sideboard".
+				} else {
+					return ''
 				}
-
-				return output
 			}
 
 			if (confirmToReplace) {
 				// (Can't use a timeout here because it messes with the return.)
 				return confirm(
-					`“${card.name}” is already in this ${stringActiveCardList()}, but in a different print from the one you’re submitting.\n\nReplace the existing print?`
+					`“${card.name}” is already in this deck${stringActiveCardList()}, but it’s in a different print from the one you request.\n\nDo you want your requested print to replace the existing print for this card?`
 				)
 			} else {
 				setTimeout(() => {

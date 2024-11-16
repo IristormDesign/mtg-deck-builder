@@ -96,7 +96,7 @@
 
 		<section v-if="repeatedCardNames && repeatedCardNames.length > 0">
 			<h4>❌ Repeated Cards</h4>
-			<p>The following are card names you’ve included more than once in your submitted list, so each repeated name after its first instance has been ignored.</p>
+			<p>The following entries are card names you’ve included more than once in your submitted list, so each repeated name after its first instance has been ignored.</p>
 			<ul>
 				<li
 					v-for="(card, index) of repeatedCardNames"
