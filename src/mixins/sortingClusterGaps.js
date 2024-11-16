@@ -100,13 +100,22 @@ export default {
 					}
 				}
 				function gapsSupertype () {
-					const hasSupertype = (card) => {
-						const regexSupertype = /^\b(Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b \w/
+					const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b /
 
-						return regexSupertype.test(card.type)
+					function getSupertype (card) {
+						if (card.type.match(regexSupertype)) {
+							return card.type.match(regexSupertype)[0]
+						}
 					}
 
-					if (hasSupertype(thisCard) && !hasSupertype(nextCard)) {
+					if (
+						getSupertype(thisCard) &&
+						!getSupertype(nextCard)
+					) {
+						thisCard.gapAfter = true
+					} else if (
+						getSupertype(thisCard) !== getSupertype(nextCard)
+					) {
 						thisCard.gapAfter = true
 					}
 				}
