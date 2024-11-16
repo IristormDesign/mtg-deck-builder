@@ -163,7 +163,7 @@ export default {
 				})
 			}
 			function sortBySupertype (cards) {
-				const regexSupertype = /^\b(Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World) \w/ // Finds a string that begins with a certain supertype term (such as "Legendary") followed by a space and any word.
+				const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/ // Finds a string that begins with a supertype term.
 
 				// First, sort between cards with supertypes and cards without supertypes.
 				cards.sort((a, b) => {
@@ -230,7 +230,7 @@ export default {
 				})
 			}
 			function sortBySubtype (cards) {
-				const regexSubtype = / — \w/ // Finds ` — ` followed by a word.
+				const regexSubtype = / — \w+/ // Finds ` — ` followed by a word.
 
 				// First, sort between cards with subtypes and cards without subtypes.
 				cards.sort((a, b) => {

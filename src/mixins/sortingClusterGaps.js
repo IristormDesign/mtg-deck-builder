@@ -109,7 +109,7 @@ export default {
 					}
 				}
 				function gapsSupertype () {
-					const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b /
+					const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/
 
 					function getSupertype (card) {
 						if (card.type.match(regexSupertype)) {
