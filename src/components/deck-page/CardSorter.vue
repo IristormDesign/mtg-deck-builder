@@ -22,7 +22,8 @@
 					<option value="cmc">Mana Value</option>
 					<option value="supertype">Supertype</option>
 					<option value="type">Type</option>
-					<option value="subtype">Subtype</option>
+					<option value="firstSubtype">First Subtype</option>
+					<option value="lastSubtype">Last Subtype</option>
 					<option value="rarity">Rarity</option>
 					<option value="pt-sum">P/T Sum</option>
 					<option value="qty">Quantity</option>
@@ -109,9 +110,13 @@ export default {
 					sortByType(mainList)
 					sortByType(sbList)
 					break
-				case 'subtype':
-					sortBySubtype(mainList)
-					sortBySubtype(sbList)
+				case 'firstSubtype':
+					sortByFirstSubtype(mainList)
+					sortByFirstSubtype(sbList)
+					break
+				case 'lastSubtype':
+					sortByLastSubtype(mainList)
+					sortByLastSubtype(sbList)
 					break
 				case 'rarity':
 					sortByRarity(mainList)
@@ -229,25 +234,55 @@ export default {
 					return typeA - typeB
 				})
 			}
-			function sortBySubtype (cards) {
-				const regexSubtype = / — \w+/ // Finds ` — ` followed by a word.
+			function sortByFirstSubtype (cards) {
+				const regexFirstSubtype = /— \w+/ // Finds `— ` immediately followed by a word.
 
-				// First, sort between cards with subtypes and cards without subtypes.
+				/* First, sort between cards with subtypes and cards without subtypes. */
 				cards.sort((a, b) => {
-					const aHasSubtype = regexSubtype.test(a.type)
-					const bHasSubtype = regexSubtype.test(b.type)
+					const aHasSubtype = regexFirstSubtype.test(a.type)
+					const bHasSubtype = regexFirstSubtype.test(b.type)
 
 					return bHasSubtype - aHasSubtype
 				})
 
-				// Next, sort the cards with subtypes alphabetically by subtype.
+				/* Next, sort the cards with subtypes alphabetically by subtype. */
 				cards.sort((a, b) => {
-					const subtypeA = a.type.match(regexSubtype)
-					const subtypeB = b.type.match(regexSubtype)
+					const subtypeA = a.type.match(regexFirstSubtype)
+					const subtypeB = b.type.match(regexFirstSubtype)
 
 					if (subtypeA < subtypeB) {
 						return -1
 					} else if (subtypeA > subtypeB) {
+						return 1
+					} else {
+						return 0
+					}
+				})
+			}
+			function sortByLastSubtype (cards) {
+				const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Finds a string ending with a word but that includes the pattern for a card's type line with at least two subtypes.
+
+				/* First, sort between cards with subtypes and cards without subtypes. */
+
+				cards.sort((a, b) => {
+					const aHasSubtype = regexLastSubtype.test(a.type)
+					const bHasSubtype = regexLastSubtype.test(b.type)
+
+					return bHasSubtype - aHasSubtype
+				})
+
+				/* Next, sort the cards with subtypes alphabetically by subtype. */
+
+				function lastSubtype (typeLine) {
+					if (typeLine.match(regexLastSubtype)) {
+						return typeLine.match(regexLastSubtype)[1]
+					}
+				}
+
+				cards.sort((a, b) => {
+					if (lastSubtype(a.type) < lastSubtype(b.type)) {
+						return -1
+					} else if (lastSubtype(a.type) > lastSubtype(b.type)) {
 						return 1
 					} else {
 						return 0

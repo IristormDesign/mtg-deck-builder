@@ -88,12 +88,32 @@ export default {
 						}
 					}
 				}
-				function gapsSubtype () {
-					const regexSubtype = / — \w+/
+				function gapsFirstSubtype () {
+					const regexFirstSubtype = /— \w+/
 
 					function getSubtype (card) {
-						if (card.type.match(regexSubtype)) {
-							return card.type.match(regexSubtype)[0]
+						if (card.type.match(regexFirstSubtype)) {
+							return card.type.match(regexFirstSubtype)[0]
+						}
+					}
+
+					if (
+						getSubtype(thisCard) &&
+						!getSubtype(nextCard)
+					) {
+						thisCard.gapAfter = true
+					} else if (
+						getSubtype(thisCard) !== getSubtype(nextCard)
+					) {
+						thisCard.gapAfter = true
+					}
+				}
+				function gapsLastSubtype () {
+					const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Find a substring starting with an em dash between spaces, followed by zero or more words, and the whole string must end with a word. The final word is captured.
+
+					function getSubtype (card) {
+						if (card.type.match(regexLastSubtype)) {
+							return card.type.match(regexLastSubtype)[1]
 						}
 					}
 
@@ -171,8 +191,10 @@ export default {
 							gapsSupertype(); break
 						case 'type':
 							gapsType(); break
-						case 'subtype':
-							gapsSubtype(); break
+						case 'firstSubtype':
+							gapsFirstSubtype(); break
+						case 'lastSubtype':
+							gapsLastSubtype(); break
 						case 'rarity':
 							gapsRarity(); break
 						case 'pt-sum':
