@@ -12,10 +12,7 @@
 					class="card-placement-outline"
 				></div>
 			</transition>
-			<div
-				class="image-container"
-				title="(Shift+Q)"
-			>
+			<div class="image-container">
 				<div
 					class="image-overlay"
 					v-if="card"
