@@ -260,7 +260,7 @@ export default {
 				})
 			}
 			function sortByLastSubtype (cards) {
-				const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Finds a string ending with a word but that includes the pattern for a card's type line with at least two subtypes.
+				const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Find a substring starting with an em dash between spaces, followed by zero or more words, and the whole string must end with a word. The final word is captured.
 
 				/* First, sort between cards with subtypes and cards without subtypes. */
 
