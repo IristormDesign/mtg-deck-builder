@@ -30,7 +30,10 @@
 				<p><strong>Type</strong> – Sorts by card type in this order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
 			</li>
 			<li>
-				<p><strong>Subtype</strong> – Sorts alphabetically by subtype, and moves cards without subtypes to the bottom.</p>
+				<p><strong>First Subtype</strong> – Sorts alphabetically by the first-indicated subtype, and moves cards without subtypes to the bottom.</p>
+			</li>
+			<li>
+				<p><strong>Last Subtype</strong> – Sorts alphabetically by the last-indicated subtype, and moves cards without subtypes to the bottom.</p>
 			</li>
 			<li>
 				<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>
