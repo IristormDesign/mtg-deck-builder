@@ -1,11 +1,18 @@
 @use "sass:color";
 @import 'variables';
 
-@mixin box-shadow-hover-card-bar($color) {
+@mixin box-shadow-hover-card-bar($color, $darker-shadow: false) {
 	$border-width-card-bar: 2px;
+	$shadow-opacity: .25;
+	$black-border-opacity: .875;
+
+	@if ($darker-shadow == true) {
+		$shadow-opacity: .625;
+		$black-border-opacity: 1;
+	}
 
 	box-shadow:
-		0 0 0 .5px rgba(#000, .875),
+		0 0 0 .5px rgba(#000, $black-border-opacity),
 		0 0 0 $border-width-card-bar $color,
 		.3333px -1px 0 $border-width-card-bar color.scale($color,
 			$lightness: 50%
@@ -13,7 +20,7 @@
 		-.3333px 1px 0 $border-width-card-bar color.scale($color,
 			$lightness: -50%, $saturation: -50%
 		),
-		0 -1px divide($lhse, 4) $border-width-card-bar rgba(#000, .25);
+		0 -1px divide($lhse, 4) $border-width-card-bar rgba(#000, $shadow-opacity);
 }
 @mixin long-card-bars {
 	.card-bar {
@@ -196,7 +203,7 @@
 					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-blue, 40%), 16.67%));
 				}
 				&.black {
-					@include box-shadow-hover-card-bar(darken($color-mana-black, 40%));
+					@include box-shadow-hover-card-bar(darken($color-mana-black, 40%), true);
 				}
 				&.red {
 					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-red, 29.17%), 25%));

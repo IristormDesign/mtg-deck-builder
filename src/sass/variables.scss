@@ -64,14 +64,14 @@ $color-mana-red: adjust_hue(#f9aa8f, -3.75deg); // Based on sample
 $color-mana-green: adjust_hue(#9bd3ae, -8.8888deg); // Based on sample
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
 $color-mana-hybrid: desaturate(lighten($color-rarity-gold, 4.17%), 6.25%);
-$color-frame-land: desaturate(lighten($color-mythic-yellow, 12.5%), 87.5%);
+$color-frame-land: desaturate(lighten($color-mythic-yellow, 12.5%), 83.33%);
 $color-frame-white: desaturate(darken($color-mana-white, 3.125%), 20%);
-$color-frame-blue: desaturate(lighten($color-mana-blue, 0%), 45.83%);
+$color-frame-blue: desaturate(lighten($color-mana-blue, 0%), 40%);
 $color-frame-black: darken($color-mana-black, 6.25%);
-$color-frame-red: desaturate(lighten($color-mana-red, 6.25%), 50%);
-$color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 16.67%);
+$color-frame-red: desaturate(lighten($color-mana-red, 6.25%), 40%);
+$color-frame-green: desaturate(lighten($color-mana-green, 8.33%), 12.5%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
-$color-frame-generic: desaturate(lighten($color-rarity-silver, 8.33%), 4.17%);
+$color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 4.17%);
 $color-card-star: $color-link-active;
 
 // TEXT
