@@ -113,14 +113,16 @@
 	background: rgba($color-content-bg, .6667);
 	backdrop-filter: blur(3px);
 }
-@mixin button($alt-color: 'orange') {
-	@if $alt-color == 'orange' {
+@mixin button-color ($color: 'orange') {
+	@if $color == 'orange' {
 		background: $color-button-orange;
 	}
-	@else if $alt-color == 'gray' {
+	@else if $color == 'gray' {
 		background: $color-button-gray;
 	}
-
+}
+@mixin button($color: 'orange') {
+	@include button-color($color);
 	@include heading-font;
 	color: $color-black-label-text;
 	cursor: pointer;

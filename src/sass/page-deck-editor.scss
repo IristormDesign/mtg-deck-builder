@@ -36,7 +36,6 @@ $width-card-list-section-narrow:
 		width: $width-card-list-section-wide;
 	}
 }
-
 .card-sorter {
 	fieldset {
 		padding: 0;
@@ -114,7 +113,7 @@ $width-card-list-section-narrow:
 		min-width: 0;
 		width: $lhse*1.6667;
 		height: $lhse*1.6667;
-		border-radius: $border-radius-group*.5;
+		border-radius: $border-radius-small-button;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -363,11 +362,21 @@ $width-card-list-section-narrow:
 @include viewing-controls-single-layer-compressed;
 @include adder-controls-single-layer;
 
+@media (max-width: ($width-app-breakpoint-tablet * 1.03125)) {
+	.deck-editor {
+		.layout-column {
+			margin-right: $lhse; // Needed space for the quantity button cluster.
+		}
+	}
+}
 @media (max-width: $width-app-breakpoint-tablet) {
 	@include viewing-controls-single-layer;
 	@include adder-controls-double-layers;
 
 	.deck-editor {
+		.layout-column {
+			margin-right: 0;
+		}
 		.card-list-section {
 			width: 100%;
 		}

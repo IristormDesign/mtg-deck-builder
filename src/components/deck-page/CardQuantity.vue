@@ -9,7 +9,10 @@
 			@focus="focusedOnQtyInput()"
 			@blur="blurredFromQtyInput()"
 		/>
-		<div class="qty-buttons">
+		<div
+			class="hover-extension"
+		></div>
+		<div class="qty-button-cluster">
 			<button
 				class="increment"
 				title="Increase quantity (E)"
@@ -24,6 +27,13 @@
 				@click="cardObject.qty--"
 			>
 				<div>&minus;</div>
+			</button>
+			<button
+				class="move-to-group"
+				title="Move 1 to sideboard (F)"
+				@click="transferCardToOtherGroup()"
+			>
+				<div>▶ SB</div>
 			</button>
 		</div>
 	</div>
@@ -222,6 +232,9 @@ export default {
 			setTimeout(() => {
 				li.classList.remove('flash')
 			}, 125)
+		},
+		transferCardToOtherGroup () {
+			console.log(this.card.name, this.card.qty)
 		}
 	}
 }

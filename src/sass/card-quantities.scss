@@ -4,8 +4,8 @@
 	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
+				background: $color-heading-bg;
+				box-shadow: $box-shadow-card-list-row-bg-edge;
 			}
 		}
 	}
@@ -19,10 +19,8 @@
 		}
 	}
 	.qty {
-		.qty-buttons {
-			height: $lhse*1.75;
-			top: -$lhse*.0833;
-			bottom: 0;
+		.qty-button-cluster {
+			top: -$lhse*.0625;
 		}
 	}
 }
@@ -32,13 +30,14 @@
 .qty {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	line-height: 1;
 	width: $width-qty-column;
 	padding-right: 2px;
+	position: relative;
 
 	label {
-		margin: -6.25% 1px 0 $lhse*.1667;
+		margin: -6.25% 2px 0 $lhse*.125;
 		color: $color-text-darker;
 		cursor: default;
 		text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
@@ -49,6 +48,8 @@
 		background: none;
 		border: 0;
 		min-width: 0;
+		width: 2ch;
+		height: $lhse*.75;
 		text-align: center;
 		transition: none;
 		padding: 0;
@@ -58,6 +59,7 @@
 		appearance: textfield;
 		box-shadow: none;
 		position: relative;
+		z-index: 1;
 
 		&::-webkit-inner-spin-button,
 		&::-webkit-outer-spin-button {
@@ -71,45 +73,87 @@
 			outline: 1px solid $color-link-focus;
 			border-radius: divide($border-radius-group, 4);
 		}
-		.qty-buttons {
-			display: flex;
+		.hover-extension {
+			background: $color-heading-bg;
+			border: solid $color-content-bg;
+			border-width: 1px 0;
+		}
+		.qty-button-cluster {
+			display: grid;
 		}
 	}
-	.qty-buttons {
+	.hover-extension {
+		height: 100%;
+		width: $lhse*.75;
 		position: absolute;
-		right: -1.6667em;
-		top: (-$lhse*.4);
-		z-index: index($layers, card-list-item-hover);
+		top: 0;
+		bottom: 0;
+		right: -$lhse*.25;
+	}
+	.qty-button-cluster {
 		display: none;
-		flex-direction: column;
-		height: auto;
-		background: $color-group-bg;
-		border-radius: $border-radius-button;
+		position: absolute;
+		right: -$lhse*1.75;
+		top: divide($lhse, -3);
+		z-index: index($layers, card-list-item-hover);
+		width: auto;
+		height: $lhse*1.6667;
+		grid-template-areas:
+			'inc mov'
+			'dec mov';
+		gap: .6667px 1px;
+		transition: opacity $transition-duration-standard ease;
 	}
 	button {
 		border-bottom-width: 2px;
-		font: normal 133.33%/1 sans-serif;
-		min-width: auto;
-		width: 1.25em;
-		height: $lhse*.6667;
+		min-width: 0;
 		max-height: none;
-		padding: 0;
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding: 0;
+
+		&:disabled {
+			filter: contrast(.5) brightness(.6667);
+			opacity: 1;
+		}
+	}
+	.increment,
+	.decrement {
+		font-weight: normal;
+		font-family: sans-serif;
+		width: $lhse*1;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
 
 		div {
-			margin-bottom: $lhse*.0625; // Makes the "+" and "-" signs look more vertically centered on the button surface.
+			font-size: 133.33%;
+			margin-right: -$lhse*.0833;
 		}
 	}
 	.increment {
-		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
+		grid-area: inc;
 	}
 	.decrement {
-		border-top-right-radius: 0;
 		border-top-left-radius: 0;
+		grid-area: dec;
+	}
+	.move-to-group {
+		@include button-color('gray');
+		width: $lhse*.6667;
+		border-radius: $border-radius-button;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		grid-area: mov;
+
+		div {
+			font-size: 54.17%;
+			line-height: 1.125;
+			margin-top: $lhse*.0625;
+			margin-left: -1px;
+		}
 	}
 	&.kb-shortcut-highlight {
 		outline: $outline-focus-visible !important;
@@ -124,8 +168,11 @@
 			&:not(:hover) {
 				.qty {
 					&:focus-within {
-						.qty-buttons {
-							display: none;
+						.hover-extension {
+							visibility: hidden;
+						}
+						.qty-button-cluster {
+							opacity: .25;
 						}
 					}
 				}
@@ -173,23 +220,9 @@
 }
 @media (max-width: ($min-width-app * .8)) {
 	@include long-card-bars();
-
-	.card-list-section {
-		li {
-			&:has(.qty:hover)	{
-				border-radius: $border-radius-button;
-			}
-		}
-	}
 }
 @media (max-width: ($min-width-app * .6667)) {
 	@include condensed-card-bars();
-
-	.qty {
-		.qty-buttons {
-			display: none !important;
-		}
-	}
 }
 @media (max-width: ($min-width-app * .4)) {
 	.qty {

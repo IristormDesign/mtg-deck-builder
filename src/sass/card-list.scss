@@ -27,19 +27,19 @@ $min-height-card-list: $lhse*6;
 		}
 	}
 	ul {
-		margin: 0 0 (-$margin-card-gap-after);
+		margin: 0 auto (-$margin-card-gap-after);
 		padding: 0 0 0 $width-card-star*.6;
 		list-style: none;
 		position: relative;
+		width: fit-content;
 	}
 	li {
 		display: flex;
-		margin: 1px auto;
+		margin: 1px 0;
 		transition: all .5s cubic-bezier(.5, 0, 0, 1); // For card sorting
-		transition-property: transform, background-color, border-radius, opacity, filter;
+		transition-property: transform, filter, max-width;
 		position: relative;
 		border-radius: $border-radius-button;
-		width: fit-content;
 
 		&:last-of-type {
 			margin-bottom: $margin-card-gap-after;
@@ -116,6 +116,11 @@ $min-height-card-list: $lhse*6;
 	.card-list-section {
 		li {
 			max-width: 80vw;
+
+			&:has(.qty:focus-within),
+			&:has(.qty:hover) {
+				max-width: 66.67vw;
+			}
 		}
 	}
 }
