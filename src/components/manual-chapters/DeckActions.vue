@@ -9,10 +9,10 @@
 			<p>If you want to take these plain text card lists outside MTG Deck Builder, there are easy ways to do that:</p>
 			<ul>
 				<li>
-					<p>You can download a text file (.TXT) that has both the deck’s main and sideboard lists. The text file is saved to wherever your web browser puts downloads.</p>
+					<p>You can download a text file (.TXT) that lists the cards in both the deck’s main and sideboard groups. The text file is saved to wherever your web browser puts downloads.</p>
 				</li>
 				<li>
-					<p>For either the main or the sideboard lists of your deck, you can click its Copy List button to instantly select and copy the whole text list to the clipboard of your computer or mobile device. (Then you can paste it elsewhere.)</p>
+					<p>For either the main or the sideboard group of your deck, you can click the Copy button beside the list to instantly select and copy the whole text list to the clipboard of your computer or mobile device. (Then you can paste it elsewhere.)</p>
 				</li>
 			</ul>
 			<p>Why might you want to have your deck in the form of plain text?</p>

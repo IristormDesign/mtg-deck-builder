@@ -9,7 +9,7 @@
 			<li>Move your decks from one web browser to another (if you’re switching your preferred browser, for example).</li>
 			<li>If you’d ever empty your web browser’s data cache, then all of your decks in MTG Deck Builder, whose data is stored in the cache, will be gone. You can preserve your decks by exporting them as a deck data file beforehand.</li>
 		</ul>
-		<p>To <strong>export a deck</strong> (produce a deck data file), click the “<a href="#deck-actions">Deck Actions&hellip;</a>” button (in the <a href="#deck-page-header">deck page header</a>), then from the menu that appears, select Export.</p>
-		<p>To <strong>import a deck</strong> (view a deck made from exported data), go to the <a href="#create-deck">Create Deck page</a> and click the button in the Import Decks section. This lets you find and open a deck data file from the file system of your computer or mobile device.</p>
+		<p>To export a deck (produce a deck data file), click the “<a href="#deck-actions">Deck Actions&hellip;</a>” button (in the <a href="#deck-page-header">deck page header</a>), then from the menu that appears, select Export.</p>
+		<p>To import a deck (view a deck contained in a deck data file), go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the Import Decks section, which lets you find and open a deck data file from the file system of your computer or mobile device.</p>
 	</section>
 </template>
