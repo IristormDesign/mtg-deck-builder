@@ -34,7 +34,7 @@
 				title="Move 1 to main group (F)"
 				@click="moveToOtherGroup()"
 			>
-				<div>▶<br>M</div>
+				<div>◀<br>M</div>
 			</button>
 			<button
 				v-else

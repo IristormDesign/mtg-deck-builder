@@ -130,7 +130,7 @@ export default {
 			if (this.imageEnlarged) {
 				switch (keyEvent) {
 					case 'w': case 'e': case 'r':
-					case 'a': case 's': case 'd':
+					case 'a': case 's': case 'd': case 'f':
 					case 'z': case 'x':
 					case 'tab': case ' ':
 						this.toggleCardImageEnlargement()
@@ -196,7 +196,7 @@ export default {
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
 					case 'q': case 'w': case 'e':
-					case 'a': case 's': case 'd':
+					case 'a': case 's': case 'd': case 'f':
 					case 'z':
 						this.startKBShortcutsFromCardOfViewedImage()
 				}
@@ -212,6 +212,8 @@ export default {
 					case 's': this.highlightNextLI()
 						return
 					case 'd': this.adjustCardQty(-1)
+						return
+					case 'f': this.moveToOtherCardGroup()
 						return
 					case 'z': this.turnOverCardImage()
 				}
@@ -316,6 +318,15 @@ export default {
 			this.scrollLIIntoView()
 
 			card.qty = card.qty + number
+		},
+		moveToOtherCardGroup () {
+			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
+
+			if (!cardLI) return
+
+			const moveButton = cardLI.querySelector('.move-to-group')
+
+			moveButton.click()
 		},
 		starCard () {
 			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
