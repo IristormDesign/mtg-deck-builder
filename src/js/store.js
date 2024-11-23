@@ -51,6 +51,7 @@ export default new Vuex.Store({
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
+		showNoticeAboutMovingLastCard: true,
 		showSideboard: false,
 		viewedDrawnCard: null
 	},
@@ -102,6 +103,9 @@ export default new Vuex.Store({
 				else if (deckA < deckB) return -1
 				else return 0
 			})
+		},
+		showNoticeAboutMovingLastCard (state, payload) {
+			state.showNoticeAboutMovingLastCard = payload
 		},
 		viewedDrawnCard (state, payload) {
 			state.viewedDrawnCard = payload

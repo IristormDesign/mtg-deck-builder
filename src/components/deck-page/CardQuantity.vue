@@ -249,6 +249,28 @@ export default {
 
 			if (card.qty === 1) {
 				this.movingLastCardToOtherGroup = true
+
+				const cardGroupName = (other) => {
+					if (this.$store.state.showSideboard) {
+						if (other) {
+							return 'main card group'
+						} else {
+							return 'sideboard'
+						}
+					} else {
+						if (other) {
+							return 'sideboard'
+						} else {
+							return 'main card group'
+						}
+					}
+				}
+
+				if (this.$store.state.showNoticeAboutMovingLastCard) {
+					alert(`You’re moving “${card.name}” out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
+
+					this.$store.commit('showNoticeAboutMovingLastCard', false)
+				}
 			}
 
 			card.qty--
@@ -271,6 +293,13 @@ export default {
 					destGroup.cards.push(newCardToDest)
 
 					this.resetListSorting()
+				}
+
+				destGroup.viewedCard = card
+
+				if (card.starred) {
+					originGroup.viewedStarredCard = this.anotherStarredCard
+					destGroup.viewedStarredCard = card
 				}
 			}
 
