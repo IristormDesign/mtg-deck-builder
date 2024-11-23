@@ -49,13 +49,13 @@
 		border: 0;
 		min-width: 0;
 		width: 2ch;
-		height: $lhse*.75;
+		height: $lhse*.7083;
 		text-align: center;
 		transition: none;
 		padding: 0;
 		margin: -4.17% 0 0 0;
 		font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
-		border-radius: $border-radius-button;
+		border-radius: 0;
 		appearance: textfield;
 		box-shadow: none;
 		position: relative;
@@ -71,7 +71,6 @@
 		input {
 			background: $color-input-bg-focus;
 			outline: 1px solid $color-link-focus;
-			border-radius: divide($border-radius-group, 4);
 		}
 		.hover-extension {
 			background: $color-heading-bg;

@@ -84,7 +84,7 @@ export default {
 			const destCard = this.existingDestCard(destGroup)
 
 			if (!destCard) {
-				return true
+				return false
 			} else if (destCard.qty < 4) {
 				return false
 			} else if (
@@ -210,7 +210,7 @@ export default {
 
 			this.pressedKeyForQty = false
 
-			// Save the changes.
+			/* Save the changes. */
 			deck.editDate = new Date()
 			this.determineDeckColors()
 			this.$store.commit('decks', this.$store.state.decks)
