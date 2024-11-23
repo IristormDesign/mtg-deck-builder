@@ -29,11 +29,20 @@
 				<div>&minus;</div>
 			</button>
 			<button
+				v-if="$store.state.showSideboard"
+				class="move-to-group"
+				title="Move 1 to main group (F)"
+				@click="moveToOtherGroup()"
+			>
+				<div>▶<br>M</div>
+			</button>
+			<button
+				v-else
 				class="move-to-group"
 				title="Move 1 to sideboard (F)"
-				@click="transferCardToOtherGroup()"
+				@click="moveToOtherGroup()"
 			>
-				<div>▶ SB</div>
+				<div>▶<br>SB</div>
 			</button>
 		</div>
 	</div>
@@ -53,6 +62,7 @@ export default {
 	},
 	data () {
 		return {
+			movingLastCardToOtherGroup: false,
 			pressedKeyForQty: false
 		}
 	},
@@ -108,6 +118,7 @@ export default {
 			function isException () {
 				switch (card.name) {
 					case 'Dragon’s Approach':
+					case 'Hare Apparent':
 					case 'Nazgûl':
 					case 'Persistent Petitioners':
 					case 'Rat Colony':
@@ -137,30 +148,15 @@ export default {
 			if (card.qty < 0) {
 				card.qty = 0 // Don't allow negative numbers.
 			} else if (card.qty === 0) {
-				function cardName () {
-					switch (card.layout) {
-						case 'modal_dfc': case 'split':
-							return `${card.name} // ${card.name2}`
-						default:
-							return card.name
-					}
-				}
-				const effectOfConfirm = () => {
-					const confirmRemoval = confirm(`Remove “${cardName()}” from the deck?`)
-
-					if (confirmRemoval) {
-						this.removeCard(this.i)
-					} else {
-						card.qty = 1
-					}
-				}
+				if (this.movingLastCardToOtherGroup) {
+					this.removeCard(this.i)
 
 				/* The `setTimeout()` function causes the card-removal `confirm()` dialog to appear twice when the quantity input has been set to 0 by the user pressing the "0" key, or by the user pressing the backspace or delete keys to clear the quantity number. It seems the only way around this bug is to avoid `setTimeout()` under that condition. */
-				if (this.pressedKeyForQty) {
-					effectOfConfirm()
+				} else if (this.pressedKeyForQty) {
+					this.effectOfRemovalConfirm()
 				} else {
 					setTimeout(() => {
-						effectOfConfirm()
+						this.effectOfRemovalConfirm()
 					}, 100) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
 				}
 			} else if (isNaN(card.qty)) { // If the user somehow entered non-digits for the quantity, reset the quantity to 1 instead.
@@ -188,14 +184,7 @@ export default {
 			const deck = this.deck
 
 			if (deck.sortBy === 'qty') {
-				deck.sortBy = ''
-
-				deck.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
-				})
-				deck.sideboard.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
-				})
+				this.resetListSorting()
 			}
 
 			this.pressedKeyForQty = false
@@ -204,6 +193,26 @@ export default {
 			deck.editDate = new Date()
 			this.determineDeckColors()
 			this.$store.commit('decks', this.$store.state.decks)
+		},
+		effectOfRemovalConfirm () {
+			const card = this.card
+
+			function cardName () {
+				switch (card.layout) {
+					case 'modal_dfc': case 'split':
+						return `${card.name} // ${card.name2}`
+					default:
+						return card.name
+				}
+			}
+
+			const removalConfirmed = confirm(`Remove “${cardName()}” from this card list?`)
+
+			if (removalConfirmed) {
+				this.removeCard(this.i)
+			} else {
+				card.qty = 1
+			}
 		},
 		focusedOnQtyInput () {
 			if (!this.$store.state.isMobileLayout()) {
@@ -233,8 +242,61 @@ export default {
 				li.classList.remove('flash')
 			}, 125)
 		},
-		transferCardToOtherGroup () {
-			console.log(this.card.name, this.card.qty)
+		moveToOtherGroup () {
+			this.focusedOnQtyInput()
+
+			const card = this.cardObject
+
+			if (card.qty === 1) {
+				this.movingLastCardToOtherGroup = true
+			}
+
+			card.qty--
+
+			const doMove = (originGroup, destGroup) => {
+				const existingDestCard = destGroup.cards.find(
+					foundCard => foundCard.name === card.name
+				)
+
+				if (existingDestCard) {
+					existingDestCard.qty++
+				} else {
+					const originCard = originGroup.cards.find(
+						foundCard => foundCard.name === card.name
+					)
+					const newCardToDest = { ...originCard }
+
+					newCardToDest.qty = 1
+
+					destGroup.cards.push(newCardToDest)
+
+					this.resetListSorting()
+				}
+			}
+
+			const deck = this.deckObject
+
+			if (this.$store.state.showSideboard) {
+				doMove(deck.sideboard, deck)
+			} else {
+				doMove(deck, deck.sideboard)
+			}
+
+			this.$store.commit('decks', this.$store.state.decks)
+
+			this.$nextTick(() => {
+				this.movingLastCardToOtherGroup = false
+			})
+		},
+		resetListSorting () {
+			this.deckObject.sortBy = ''
+
+			this.deck.cards.forEach(eachCard => {
+				eachCard.gapAfter = false
+			})
+			this.deck.sideboard.cards.forEach(eachCard => {
+				eachCard.gapAfter = false
+			})
 		}
 	}
 }
