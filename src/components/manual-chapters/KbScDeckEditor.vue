@@ -18,11 +18,12 @@
 		<h5>Actions to Highlighted Row</h5>
 		<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list. If no row is highlighted yet, then using any of these shortcuts will highlight the row having the card name that’s associated with the currently displayed card image.</p>
 		<ul class="keyboard-shortcuts">
-			<li><kbd>E</kbd>: Raise the <a href="#card-quantities">quantity</a> by 1.</li>
-			<li><kbd>D</kbd>: Lower the quantity by 1.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the quantity by 2.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the quantity by 2.</li>
-			<li><kbd>A</kbd>: Toggle the <a href="#card-stars">star label</a> on or off.</li>
+			<li><kbd>E</kbd>: Raise the card name’s <a href="#card-quantities">quantity</a> by 1.</li>
+			<li><kbd>D</kbd>: Lower the card name’s quantity by 1.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the card name’s quantity by 2.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
+			<li><kbd>F</kbd>: Move 1 of the card name to the inactive <a href="#card-groups">card group</a> (from main to sideboard, or vice versa).</li>
+			<li><kbd>A</kbd>: Toggle the card name’s <a href="#card-stars">star label</a> on or off.</li>
 			<li><kbd>Q</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new tab for the card’s page on Scryfall.</li>
 			<li><kbd>Z</kbd>: Turn over the card image (if it’s double-faced).</li>
