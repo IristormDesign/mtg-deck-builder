@@ -33,7 +33,7 @@
 									:href="card.link"
 									target="_blank"
 									ref="cardLink"
-									:class="shouldRotateSideways"
+									:class="shouldRotateSideways ? 'sideways' : null"
 								>
 									<div
 										class="card-shape"
@@ -120,16 +120,19 @@ export default {
 			}
 		},
 		shouldRotateSideways () {
-			if (
-				(
-					/\bBattle\b/.test(this.card.type) &&
-					this.showingFrontFace
-				) ||
-				this.card.layout === 'split'
+			if (this.card.layout === 'split') {
+				const hasAftermathAbility = this.card.keywords.find(
+					keyword => keyword === 'Aftermath'
+				)
+
+				return !hasAftermathAbility
+			} else if (
+				this.showingFrontFace &&
+				/\bBattle\b/.test(this.card.type)
 			) {
-				return 'sideways'
+				return true
 			} else {
-				return null
+				return false
 			}
 		},
 		showCard () {
