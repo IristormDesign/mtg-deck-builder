@@ -192,6 +192,8 @@ export default {
 						this.highlightNextLI()
 						return
 					case 'd': this.adjustCardQty(-2)
+						return
+					case 'f': this.moveToOtherCardGroup(true)
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
@@ -319,14 +321,25 @@ export default {
 
 			card.qty = card.qty + number
 		},
-		moveToOtherCardGroup () {
+		moveToOtherCardGroup (double) {
+			console.log(double)
+
 			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
 
 			if (!cardLI) return
 
+			const currentIndex = this.highlightedIndex
 			const moveButton = cardLI.querySelector('.move-to-group')
 
+			this.scrollLIIntoView()
+
 			moveButton.click()
+
+			if (double) {
+				moveButton.click()
+			}
+
+			this.setHighlightedIndex(currentIndex)
 		},
 		starCard () {
 			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
