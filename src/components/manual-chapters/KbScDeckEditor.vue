@@ -22,7 +22,7 @@
 			<li><kbd>D</kbd>: Lower the card name’s quantity by 1.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the card name’s quantity by 2.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
-			<li><kbd>F</kbd>: Move 1 of the card name to the inactive <a href="#card-groups">card group</a> (from main to sideboard, or vice versa).</li>
+			<li><kbd>F</kbd>: Move 1 of the card name to the inactive <a href="#card-groups">card group</a>.</li>
 			<li><kbd>A</kbd>: Toggle the card name’s <a href="#card-stars">star label</a> on or off.</li>
 			<li><kbd>Q</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new tab for the card’s page on Scryfall.</li>

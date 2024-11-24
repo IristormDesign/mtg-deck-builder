@@ -7,20 +7,28 @@
 				alt="Snippet of card quantities" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>In the <a href="#card-list">card list</a>, to the right of each card name’s <a href="#card-bars">bar</a>, is a number representing the quantity of that name in your deck’s selected <a href="#card-groups">card group</a>.</p>
-		<p>To change a card name’s quantity, do any one of the following methods:</p>
+		<p>Each card name in the <a href="#deck-editor">Deck Editor</a>’s <a href="#card-list">card list</a> has a quantity section, located to the right of the name’s <a href="#card-bars">card bar</a>. This section shows the name’s quantity as it is within the active <a href="#card-groups">card group</a> of your deck, and provides you controls to change the quantity.</p>
+		<p>One way to edit a card name’s quantity is to click directly on the quantity number, which makes your web browser focus on the quantity input field. While the field has focus, you can use your keyboard to type in a new number.</p>
+		<p>Other ways to change a card name’s quantity are to click any of the buttons among the card name’s cluster of quantity-adjustment buttons. This button cluster is normally invisible, but it appears to the right of the quantity input field whenever that field has browser focus, or whenever you hover your mouse pointer over the field.</p>
+		<p>The cluster of quantity-adjustment buttons has the following buttons with their effects:</p>
 		<ul>
 			<li>
-				<p>Click the quantity number field, then use your keyboard to type in a new number.</p>
+				<p>Click the button labeled with the “+” (plus sign) to <i>increase</i> the card name’s quantity by 1.</p>
 			</li>
 			<li>
-				<p>If you’re on a large-screen device, hover your mouse pointer over the quantity number to make a pair of buttons appear beside it. Of that pair of buttons, click the “+” (plus sign) button to increase the quantity, or the “&minus;” (minus sign) to decrease it.</p>
+				<p>Click the button labeled with the “−” (minus sign) to <i>decrease</i> the card name’s quantity by 1.</p>
 			</li>
 			<li>
-				<p>With the card list row highlighted via <a href="#keyboard-shortcuts">keyboard shortcuts</a>, press <kbd>E</kbd> to increase the quantity, or <kbd>D</kbd> to decrease it. Or, while holding <kbd class="shift-key">Shift</kbd>, press <kbd>E</kbd> or <kbd>D</kbd> to adjust the quantity by 2 instead of 1.</p>
+				<p>There’s a third button labeled with either a “▶” (right-pointing triangle) and the letters “SB” (short for “sideboard”), or a “◀” (left-pointing triangle) and the letter “M” (short for “main”), depending on which card group is currently active. Click this button to move 1 of the card name out of the active card group and into the inactive one—i.e., from main <a href="#sideboard-uses">to sideboard</a>, or vice versa.</p>
 			</li>
 		</ul>
-		<p>To remove a card name from the card list, decrease its quantity to 0, or delete the quantity number itself. Before the name actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the name stays in your deck with its quantity reset to 1.</p>
-		<p>Conforming to <a href="#game-rules"><i>Magic</i>’s rules</a>, MTG Deck Builder prevents you from setting card names to a quantity greater than 4—except for the cards of the “basic land” type, and a few certain cards with abilities that specially raise their quantity limits.</p>
+		<p>To remove a card name from the card list, decrease its quantity down to 0, or delete the quantity number. Before the name actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the name stays in your deck with its quantity reset to 1.</p>
+		<p>You can adjust card names’ quantities using <a href="#keyboard-shortcuts">keyboard shortcuts</a> on the currently highlighted row of the card list:</p>
+		<ul>
+			<li>Press <kbd>E</kbd> to increase the quantity by 1, or <kbd>D</kbd> to decrease it by 1. </li>
+			<li>Press <kbd>F</kbd> to move 1 card into the inactive card group.</li>
+			<li>Hold down <kbd class="shift-key">Shift</kbd> while pressing one of the aforementioned keys to adjust the quantity by 2 instead of 1.</li>
+		</ul>
+		<p>Conforming to <a href="#game-rules"><i>Magic</i>’s rules</a>, MTG Deck Builder prevents you from setting card names to a quantity greater than 4—except for the basic land cards, and a few certain cards with abilities that specially raise their quantity limits.</p>
 	</section>
 </template>
