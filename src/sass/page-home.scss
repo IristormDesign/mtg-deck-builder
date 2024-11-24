@@ -110,7 +110,7 @@
 			white-space: nowrap;
 
 			&:first-child {
-				@include button('gray');
+				background: $color-button-gray;
 			}
 		}
 	}
@@ -162,7 +162,7 @@
 			margin: divide($lhse, 3) $lhse*.5;
 		}
 		.button {
-			@include button('gray');
+			background: $color-button-gray;
 		}
 		button,
 		.button {

@@ -24,7 +24,7 @@
 		align-items: center;
 	}
 	button {
-		@include button('gray');
+		background: $color-button-gray;
 		display: block;
 		font-size: 87.5%;
 		margin-right: auto;

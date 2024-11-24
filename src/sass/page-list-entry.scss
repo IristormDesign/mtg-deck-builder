@@ -95,7 +95,7 @@
 	}
 	.copy-button {
 		button {
-			@include button('gray');
+			background: $color-button-gray;
 			font-size: 75%;
 			height: $lhse*1.5;
 		}

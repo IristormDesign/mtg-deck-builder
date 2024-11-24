@@ -122,8 +122,15 @@
 	}
 }
 @mixin button($color: 'orange') {
-	@include button-color($color);
 	@include heading-font;
+
+	@if $color == 'orange' {
+		background: $color-button-orange;
+	}
+	@else if $color == 'gray' {
+		background: $color-button-gray;
+	}
+
 	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:

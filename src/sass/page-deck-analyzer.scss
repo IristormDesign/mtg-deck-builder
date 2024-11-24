@@ -368,7 +368,7 @@ $outline-width-stat-section: 2px;
 		align-items: center;
 	}
 	button {
-		@include button('gray');
+		background: $color-button-gray;
 		text-wrap: nowrap;
 		font-size: 83.33%;
 		height: $lhse*1.5;

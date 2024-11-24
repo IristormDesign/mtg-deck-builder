@@ -34,7 +34,7 @@
 
 		&:first-of-type {
 			button {
-				@include button('gray')
+				background: $color-button-gray;
 			}
 		}
 	}

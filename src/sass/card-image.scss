@@ -353,7 +353,7 @@ $drop-shadow-card-shadow: drop-shadow(0 $lhse*.5 $lhse*.75 rgba(#000, .5));
 			display: none;
 		}
 		.close {
-			@include button('gray');
+			background: $color-button-gray;
 			display: block;
 			position: absolute;
 			top: divide($lhse, 3);

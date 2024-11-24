@@ -32,7 +32,7 @@
 			height: $lhse*1.25;
 		}
 		button {
-			@include button('gray');
+			background: $color-button-gray;
 			font-size: 75%;
 			width: 100%;
 		}

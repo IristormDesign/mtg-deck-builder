@@ -61,12 +61,11 @@ $width-card-list-section-narrow:
 		button {
 			min-height: $lhse*1.5;
 			font-size: 87.5%;
-			padding-right: $lhse*.75;
-			padding-left: $lhse*.75;
 			touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices when double-tapping on this button.
 		}
 		.restart {
-			@include button('gray');
+			background: $color-button-gray;
+			font-size: 87.5% * .8333;
 		}
 	}
 	.card-list-section {
