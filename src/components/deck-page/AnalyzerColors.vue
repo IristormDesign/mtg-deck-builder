@@ -111,10 +111,19 @@ export default {
 	},
 	methods: {
 		prepareColorStats () {
+			this.initializeColorCounts()
 			this.countColors()
 
 			this.calculatePercentageOfSpells(this.colorStatsBasic)
 			this.calculatePercentageOfSpells(this.colorStatsExtra)
+		},
+		initializeColorCounts () {
+			for (const color in this.colorStatsBasic) {
+				this.colorStatsBasic[color].ct = 0
+			}
+			for (const color in this.colorStatsExtra) {
+				this.colorStatsExtra[color].ct = 0
+			}
 		},
 		countColors () {
 			this.filteredCards().forEach(card => {
