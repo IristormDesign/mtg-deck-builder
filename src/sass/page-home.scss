@@ -173,10 +173,10 @@
 			align-items: center;
 			justify-content: center;
 			font-size: $font-size-bigger;
+			color: $color-black-label-text;
 		}
 	}
 }
-
 
 @media (max-width: $width-app-breakpoint) {
 	.home-page {

@@ -10,14 +10,6 @@
 		<nav v-show="showHeaderMenu" class="header-menu">
 			<div v-show="showHeaderMenu" class="hover-shield"></div>
 			<ul>
-				<li>
-					<router-link
-						:to="{name: 'manual'}"
-						class="header-menu-item"
-					>
-						User Manual
-					</router-link>
-				</li>
 				<li class="create-deck">
 					<router-link
 						:to="{name: 'createDeck'}"
@@ -63,6 +55,14 @@
 							</router-link>
 						</li>
 					</ul>
+				</li>
+				<li>
+					<router-link
+						:to="{name: 'manual'}"
+						class="header-menu-item"
+					>
+						User Manual
+					</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -205,13 +205,13 @@ export default {
 
 			for (let i = 1; i < allLinks.length; i++) {
 				if (allLinks[i].matches('.header-menu-toggler')) {
-					// Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the former link is gone.
+					// Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the other link is gone.
 					listenForFocus(allLinks[i - 1])
 					listenForFocus(allLinks[i - 2])
 
 					for (let j = (i + 3); j < allLinks.length; j++) {
-						if (allLinks[j].matches('.deck-menu ul li:last-child a')) {
-							listenForFocus(allLinks[j + 1]) // The link just AFTER the app menu's last link.
+						if (allLinks[j].matches('.header-menu > ul > li:last-child a')) {
+							listenForFocus(allLinks[j + 1]) // The link on the page that comes just AFTER the app menu's last link.
 							break
 						}
 					}

@@ -70,32 +70,32 @@
 	padding: 0;
 	overflow: auto;
 	border-radius: $border-radius-group;
-	border: 4px solid $color-mythic-dimmer;
+	border: 3px solid $color-mythic-dim;
 }
 @mixin popup-menu-list-links {
 	min-width: 6em;
 	padding: 0 divide($lhse, 3);
 	min-height: $lhse*1.1667;
 	text-decoration: none;
-	color: $color-app-header-link;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	border-top: 1px solid rgba(#fff, .0833);
-	border-bottom: 1px solid rgba(#000, .3333);
-	background: none;
+	border-bottom: 1px solid rgba(#000, .5833);
+	background: $color-group-bg;
 	font: 100%/#{$line-height-standard} $font-family-standard;
 	border-radius: 0;
 	box-shadow: none;
 	margin: 0;
+	position: relative; // For link-tabbing outline along with z-index
 
 	&:hover,
 	&:focus {
-		color: $color-app-header-link-hover;
-		text-decoration: underline;
+		background: $color-mythic-dimmer;
+		z-index: 1;
 	}
 	&:active {
-		color: $color-app-header-link-active;
+		background: $color-input-bg-active;
 	}
 	@media (pointer: coarse) {
 		min-height: $lhse*1.3333;
@@ -110,16 +110,8 @@
 	width: 100%;
 	height: 100%;
 	z-index: index($layers, bg-overlay);
-	background: rgba($color-content-bg, .6667);
+	background: rgba($color-heading-bg, .6);
 	backdrop-filter: blur(3px);
-}
-@mixin button-color ($color: 'orange') {
-	@if $color == 'orange' {
-		background: $color-button-orange;
-	}
-	@else if $color == 'gray' {
-		background: $color-button-gray;
-	}
 }
 @mixin button($color: 'orange') {
 	@include heading-font;

@@ -85,7 +85,7 @@
 			border-radius: $border-radius-group;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
-			background: $color-mythic-dimmer;
+			background: $color-mythic-dim;
 		}
 		ul {
 			@include popup-menu-list;
@@ -94,6 +94,13 @@
 			top: $lhse*1.3333;
 			right: 0;
 			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
+		}
+		li {
+			&:first-of-type {
+				a {
+					border-top-right-radius: $border-radius-group;
+				}
+			}
 		}
 		a {
 			@include popup-menu-list-links;
@@ -115,10 +122,10 @@
 	}
 	.deck-menu-deck-name {
 		font-weight: $font-weight-label;
-		max-width: 10em;
+		max-width: calc(100vw - $lhse*5);
 		width: max-content;
-		line-height: 1;
-		padding: divide($lhse, 8) 0 divide($lhse, 4);
+		line-height: .9583;
+		padding: 0 0 $lhse*.0833 0;
 	}
 	.deck-menu-deck-colors {
 		display: flex;
@@ -162,6 +169,14 @@
 			min-height: 0;
 			height: $lhse*1.5;
 		}
+		.deck-menu {
+			ul {
+				right: -20vw;
+				left: -20vw;
+				max-width: 80vw;
+				border-radius: $border-radius-group;
+			}
+		}
 	}
 }
 @media (max-width: $max-width-mobile-header-menu) {
@@ -172,7 +187,7 @@
 	}
 	.header-menu-toggler {
 		position: absolute;
-		top: 0;
+		top: -$lhse*.0417;
 		right: 0;
 		display: block;
 		font-size: 87.5%;
@@ -180,6 +195,7 @@
 		height: $lhse*1.5;
 		width: $lhse*3;
 		min-width: 0;
+		background: $color-app-header-link;
 	}
 	.header-menu {
 		position: absolute;
@@ -195,7 +211,7 @@
 			top: -$lhse*1.75;
 			right: 0;
 			margin: 0;
-			background: $color-mythic-dimmer;
+			background: $color-mythic-dim;
 			border-radius: $border-radius-group;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
@@ -203,7 +219,6 @@
 		> ul {
 			@include popup-menu-list;
 			display: block;
-			border-top-right-radius: 0;
 			margin-top: -$lhse*.5;
 			position: relative;
 			max-height: calc(100vh - #{$height-app-header-medium + $lhse*.25});
@@ -211,12 +226,22 @@
 		.header-menu-item {
 			@include popup-menu-list-links;
 			height: auto;
+			color: $color-link;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				color: $color-link-focus;
+			}
+			&:active {
+				color: $color-link-active;
+			}
 		}
 		.open-deck-heading {
 			display: block;
 			cursor: default;
-			color: $color-text-over-mythic-brown;
-			margin-left: 0;
+			color: $color-text;
+			margin-left: $lhse*.0625;
 			margin-bottom: $lhse*.125;
 
 			strong {
@@ -230,8 +255,9 @@
 			display: none !important;
 		}
 		.deck-menu {
-			background: $color-mythic-dimmer;
-			padding: 0 0 0 divide($lhse, 3);
+			background: $color-group-bg-darker;
+			padding: 0 0 divide($lhse, 3) divide($lhse, 3);
+			height: 100%;
 
 			.hover-shield {
 				display: none;
@@ -243,13 +269,13 @@
 				border-bottom-right-radius: 0;
 				border-width: 0;
 				position: static;
-				overflow: hidden;
 				max-height: 100%;
 			}
-			a {
-				&:hover,
-				&:focus {
-					text-decoration: underline;
+			li {
+				&:first-of-type {
+					a {
+						border-top-right-radius: 0;
+					}
 				}
 			}
 		}

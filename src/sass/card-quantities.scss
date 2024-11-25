@@ -69,7 +69,7 @@
 	&:focus,
 	&:hover {
 		input {
-			background: $color-input-bg-focus;
+			background: $color-group-bg-darker;
 			outline: 1px solid $color-link-focus;
 		}
 		.hover-extension {
@@ -191,6 +191,7 @@
 					&:hover,
 					&:focus {
 						color: $color-link-focus;
+						background: $color-input-bg-focus;
 					}
 					&:focus-visible {
 						outline-offset: 0;
