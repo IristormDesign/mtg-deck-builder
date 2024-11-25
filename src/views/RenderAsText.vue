@@ -70,15 +70,15 @@ export default {
 			return this.deck.sideboard.cards.length
 		},
 		combinedMainAndSideboardLists () {
-			const title = this.deck.name.toUpperCase() + '\n\n'
+			const title = this.deck.name.toUpperCase() + '\r\n\r\n'
 
 			if (this.mainNotEmpty) {
 				if (this.sideboardNotEmpty) {
 					return (
 						title +
-						'Main List:\n\n' +
+						'Main List:\r\n\r\n' +
 						this.listCards() +
-						'\n\nSideboard List:\n\n' +
+						'\r\n\r\nSideboard List:\r\n\r\n' +
 						this.listCards(true)
 					)
 				} else {
@@ -106,13 +106,13 @@ export default {
 				arrayOfCardNames.push(line)
 			})
 
-			return arrayOfCardNames.join('\n')
+			return arrayOfCardNames.join('\r\n')
 		},
 		copyList (ref, stringName) {
 			const text = this.$refs[ref]
 
 			text.select()
-			navigator.clipboard.writeText(text.value + '\n')
+			navigator.clipboard.writeText(text.value + '\r\n')
 
 			setTimeout(() => {
 				alert(`The deck’s ${stringName} list is now copied to the clipboard.`)
