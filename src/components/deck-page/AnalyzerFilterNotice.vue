@@ -139,6 +139,9 @@ export default {
 				case 'layouts':
 					return `cards with the ${this.layoutStatLabel(attr).toLowerCase()} layout`
 
+				case 'starred':
+					return 'cards you’ve starred'
+
 				default:
 					return null
 			}

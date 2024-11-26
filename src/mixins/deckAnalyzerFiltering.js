@@ -79,6 +79,8 @@ export default {
 					return this.filteredCardsByPowerToughness()
 				case 'layouts':
 					return this.filteredCardsByLayouts()
+				case 'starred':
+					return this.filteredCardsByStarred()
 				default:
 					return this.deck.cards
 			}
@@ -337,6 +339,15 @@ export default {
 		filteredCardsByLayouts () {
 			return this.deck.cards.filter(card => {
 				if (this.analyzerFilter.attribute === card.layout) {
+					return card
+				}
+
+				return null
+			})
+		},
+		filteredCardsByStarred () {
+			return this.deck.cards.filter(card => {
+				if (card.starred) {
 					return card
 				}
 

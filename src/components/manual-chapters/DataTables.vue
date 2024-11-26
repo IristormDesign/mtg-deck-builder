@@ -15,6 +15,7 @@
 			<li>Keyword Abilities</li>
 			<li>Power & Toughness (greatest/median/least, variable)</li>
 			<li>Layouts</li>
+			<li>Starred</li>
 		</ul>
 		<p>For almost every category, their tables have the following columns:</p>
 		<ul>

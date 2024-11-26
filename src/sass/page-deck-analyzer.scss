@@ -292,7 +292,9 @@ $outline-width-stat-section: 2px;
 	}
 	footer {
 		display: flex;
-		grid-column: span 1;
+		grid-column: 2 / 4;
+		border: $border-sections-thick;
+		padding: $lhse*.75 $lhse*.75 $lhse*.25;
 	}
 	.note {
 		@include tiny-font-size;
@@ -383,7 +385,8 @@ $outline-width-stat-section: 2px;
 
 @media (max-width: (1920px * .7083)) {
 	.deck-analyzer {
-		.filter-notice {
+		.filter-notice,
+		footer {
 			grid-column: span 3;
 		}
 		.tables {
@@ -392,12 +395,12 @@ $outline-width-stat-section: 2px;
 		section {
 			grid-column: span 1;
 		}
-
 	}
 }
 @media (max-width: ($min-width-app * 1.0625)) {
 	.deck-analyzer {
-		.filter-notice {
+		.filter-notice,
+		footer {
 			grid-column: span 2;
 		}
 		.tables {
@@ -415,7 +418,6 @@ $outline-width-stat-section: 2px;
 		.tables {
 			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
 		}
-
 		footer {
 			margin-top: $lhse*.5;
 		}
@@ -423,7 +425,8 @@ $outline-width-stat-section: 2px;
 }
 @media (max-width: ($min-width-app*.6667)) {
 	.deck-analyzer {
-		.filter-notice {
+		.filter-notice,
+		footer {
 			grid-column: span 1;
 		}
 		.tables {

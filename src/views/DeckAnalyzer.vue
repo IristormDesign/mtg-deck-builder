@@ -43,6 +43,8 @@
 					<analyzer-layouts :deck="deck" />
 				</template>
 
+				<analyzer-starred :deck="deck" />
+
 				<footer>
 					<div class="note">
 						<h4>About These Statistics</h4>
@@ -80,11 +82,12 @@ import AnalyzerRarities from '@/components/deck-page/AnalyzerRarities.vue'
 import AnalyzerKeywords from '@/components/deck-page/AnalyzerKeywords.vue'
 import AnalyzerPowerToughness from '@/components/deck-page/AnalyzerPowerToughness.vue'
 import AnalyzerLayouts from '@/components/deck-page/AnalyzerLayouts.vue'
+import AnalyzerStarred from '@/components/deck-page/AnalyzerStarred.vue'
 import deckAnalyzer from '@/mixins/deckAnalyzer.js'
 import deckAnalyzerSubtypes from '@/mixins/deckAnalyzerSubtypes.js'
 
 export default {
-	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts },
+	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
 	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
 	props: {
 		deck: Object
