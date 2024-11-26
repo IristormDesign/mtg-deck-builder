@@ -2,7 +2,7 @@
 	<section id="stats-starred">
 		<h4>Starred</h4>
 		<div
-			v-if="starredCount === 0"
+			v-if="Object.keys(starredCounts).length === 0"
 			class="no-data"
 		>
 			(No data)
@@ -10,15 +10,18 @@
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody class="filterable-stats">
-				<tr
-					v-if="starredCount > 0"
-					:class="activeFilterClass('starred', 'starred')"
-					@click="handleRowClick('starred', 'starred')"
-				>
-					<th>Starred</th>
-					<td>{{ starredCount }}</td>
-					<td>{{ calculatePercentage(starredCount) }}<span>%</span></td>
-				</tr>
+				<template v-for="(starredStatus, starredStatusKey) in starredCounts">
+					<tr
+						v-if="starredStatus > 0"
+						:key="starredStatusKey"
+						:class="activeFilterClass('starred', starredStatusKey)"
+						@click="handleRowClick('starred', starredStatusKey)"
+					>
+						<th>{{ starredStatusKey }}</th>
+						<td>{{ starredStatus }}</td>
+						<td>{{ calculatePercentage(starredStatus) }}<span>%</span></td>
+					</tr>
+				</template>
 			</tbody>
 			<tfoot>
 				<tr>
@@ -41,30 +44,37 @@ export default {
 	},
 	data () {
 		return {
-			starredCount: 0
+			starredCounts: {
+				Starred: 0,
+				'Not starred': 0
+			}
 		}
 	},
 	watch: {
 		analyzerFilter () {
-			this.starredCount = 0
-			this.prepareStarredCount()
+			this.starredCounts.Starred = 0
+			this.starredCounts['Not starred'] = 0
+
+			this.prepareStarredCounts()
 		}
 	},
 	mounted () {
-		this.prepareStarredCount()
+		this.prepareStarredCounts()
 	},
 	methods: {
-		prepareStarredCount () {
+		prepareStarredCounts () {
 			this.countStarred()
 
-			// this.starredCount = this.sortTableByCounts(this.starredCount)
+			this.starredCounts = this.sortTableByCounts(this.starredCounts)
 		},
 		countStarred () {
 			this.filteredCards().forEach(
 				({ starred, qty }) => {
-					if (!starred) return
-
-					this.starredCount += qty
+					if (starred) {
+						this.starredCounts.Starred += qty
+					} else {
+						this.starredCounts['Not starred'] += qty
+					}
 				}
 			)
 		}

@@ -347,7 +347,15 @@ export default {
 		},
 		filteredCardsByStarred () {
 			return this.deck.cards.filter(card => {
-				if (card.starred) {
+				if (
+					this.analyzerFilter.attribute === 'Starred' &&
+					card.starred
+				) {
+					return card
+				} else if (
+					this.analyzerFilter.attribute === 'Not starred' &&
+					!card.starred
+				) {
 					return card
 				}
 
