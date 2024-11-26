@@ -94,6 +94,7 @@
 			top: $lhse*1.3333;
 			right: 0;
 			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
+			max-width: 48ch;
 		}
 		li {
 			&:first-of-type {

@@ -55,6 +55,7 @@ $outline-width-stat-section: 2px;
 
 	&:has(.no-cards) {
 		margin-top: $lhse*.75;
+		margin-bottom: $lhse*1.25;
 	}
 	.no-cards {
 		h4 {

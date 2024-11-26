@@ -26,7 +26,8 @@
 		border-bottom-left-radius: 0;
 
 		h2 {
-			margin: 0;
+			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 	.table-of-contents {
@@ -92,11 +93,11 @@
 	.manual-contents {
 		width: 100%;
 		max-width: $max-width-content;
+		margin-top: -$margin-sections;
 		margin-right: auto;
 		margin-left: auto;
 		background: none;
 		padding: 0;
-		margin-top: -$margin-sections;
 
 		> section {
 			background: $color-group-bg;
@@ -180,20 +181,22 @@
 		display: block;
 
 		header {
-			margin-bottom: $margin-sections;
+			border-radius: $border-radius-group;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			border-bottom: $border-sections-thick;
 		}
 		.table-of-contents {
 			position: static;
 			max-width: 100%;
 			max-height: 100%;
 			width: 100%;
-			margin: $margin-sections auto;
+			margin: 0 auto $margin-sections;
 			padding: $lhse $lhse*1.5;
 			border-bottom-right-radius: $border-radius-group;
-
 			h3 {
 				text-align: center;
-				margin-bottom: $line-height-standard*1rem;
+				margin-bottom: $lhse;
 			}
 		}
 		.toc-links {
@@ -202,7 +205,12 @@
 			column-rule: $border-sections;
 		}
 		.manual-contents {
+			margin-top: 0;
+
 			> section {
+				&:first-child {
+					border-radius: $border-radius-group;
+				}
 				&:last-child {
 					border-bottom-left-radius: $border-radius-group;
 				}
@@ -212,6 +220,10 @@
 }
 @media (max-width: ($min-width-app*.75)) {
 	.manual-page {
+		header {
+			padding-right: $lhse;
+			padding-left: $lhse;
+		}
 		.toc-links {
 			columns: 2;
 		}
@@ -229,18 +241,18 @@
 		header,
 		.manual-contents {
 			display: block;
-			border: 0;
 			border-radius: 0;
 		}
 		header {
-			border-bottom: $border-sections;
+			padding-right: $lhse*.75;
+			padding-left: $lhse*.75;
 		}
 		.table-of-contents {
 			border-radius: 0;
 		}
 		.manual-contents {
 			> section {
-				border-radius: 0;
+				border-radius: 0 !important;
 				padding-right: $lhse*.75;
 				padding-left: $lhse*.75;
 			}
