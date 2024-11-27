@@ -30,6 +30,7 @@
 
 		.card-label-group {
 			width: 50%;
+			max-width: calc(50% - ($lhse*.25));
 			padding: 0 divide($lhse, 8);
 
 			&:last-of-type {
@@ -51,6 +52,7 @@
 
 		.card-label-group {
 			width: 100%;
+			max-width: 100%;
 			height: auto;
 			padding: 0 divide($lhse, 5);
 
@@ -149,7 +151,6 @@
 		margin: 0;
 		font-size: 80%;
 		min-width: 33.33%;
-		max-width: $width-card-bars-wide*.476; // Carefully adjusted on extra-long truncated names so that the name doesn't push over the mana cost.
 		text-align: left;
 		color: inherit;
 	}
