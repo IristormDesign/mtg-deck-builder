@@ -19,8 +19,7 @@
 					class="no-cards"
 					key="sideboard-no-cards"
 				>
-					<p>This deck’s sideboard has no cards yet.</p>
-					<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
+					<p>No cards have been added here yet.</p>
 				</div>
 				<card-list-items
 					v-else
@@ -41,7 +40,7 @@
 					class="no-cards"
 					key="main-deck-no-cards"
 				>
-					<p>This deck has no cards yet. (Add some!)</p>
+					<p>No cards have been added here yet.</p>
 					<p>For help on how to use the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
 				</div>
 				<card-list-items
