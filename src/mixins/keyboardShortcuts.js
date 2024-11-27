@@ -98,6 +98,8 @@ export default {
 			this.setHighlightedIndex(-1, true)
 		},
 		kbShortcutsAllDeckPageModes (keyEvent) {
+			if (keyEvent === 'enter') return // Let the Enter key work as normal. This is needed for submitting any forms such as the card adder.
+
 			if (this.anyInputActive()) {
 				switch (keyEvent) {
 					case 'escape': case 'esc':
