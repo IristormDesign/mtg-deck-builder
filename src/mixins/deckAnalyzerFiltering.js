@@ -139,7 +139,7 @@ export default {
 		},
 		filteredCardsByManaSymbols () {
 			return this.deck.cards.filter(card => {
-				const regexSymbols = this.$store.state.regex.manaSymbols
+				const regexSymbols = this.regexManaSymbols
 
 				for (const symbol in regexSymbols) {
 					if (this.analyzerFilter.attribute === symbol) {
@@ -197,7 +197,7 @@ export default {
 			})
 		},
 		filteredCardsByTypes () {
-			const regexTypes = this.$store.state.regex.cardTypes
+			const regexTypes = this.regexCardTypes
 
 			const perFace = (faceType) => {
 				if (!faceType) return

@@ -1,7 +1,8 @@
 import deckAnalyzerFiltering from './deckAnalyzerFiltering'
+import regexPatterns from '@/mixins/regexPatterns.js'
 
 export default {
-	mixins: [deckAnalyzerFiltering],
+	mixins: [deckAnalyzerFiltering, regexPatterns],
 	computed: {
 		tableHeadCommon () {
 			return `

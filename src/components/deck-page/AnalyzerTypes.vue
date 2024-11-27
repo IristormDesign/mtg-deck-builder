@@ -93,7 +93,7 @@ export default {
 					let recognizedType = false
 
 					for (const typeName in this.typeStats) {
-						const typeRegex = this.$store.state.regex.cardTypes[typeName]
+						const typeRegex = this.regexCardTypes[typeName]
 
 						if (
 							typeRegex &&

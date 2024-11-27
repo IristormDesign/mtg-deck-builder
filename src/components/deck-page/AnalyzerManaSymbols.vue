@@ -156,7 +156,7 @@ export default {
 					const symbolsPerFace = (faceMana) => {
 						if (!faceMana) return
 
-						const regex = this.$store.state.regex.manaSymbols[symbolName]
+						const regex = this.regexManaSymbols[symbolName]
 						const allSymbolMatches = faceMana.match(regex)
 
 						if (!allSymbolMatches) return
