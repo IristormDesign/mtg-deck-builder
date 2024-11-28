@@ -1,7 +1,6 @@
 @import 'variables';
 $table-inner-borders: 1px solid $color-heading-bg;
 $table-outer-borders: 4px solid $color-heading-bg;
-$outline-width-stat-section: 2px;
 
 @mixin filterable-table-component {
 	cursor: pointer;
@@ -68,7 +67,7 @@ $outline-width-stat-section: 2px;
 	.tables {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: calc(#{$lhse} + #{$outline-width-stat-section * 2});
+		gap: $lhse;
 		margin-bottom: $lhse*.5;
 		width: min-content;
 	}
@@ -76,14 +75,13 @@ $outline-width-stat-section: 2px;
 		width: $lhse*10; // Wide enough to fit "Modal double-faced" layout label without breaking onto a new line.
 		justify-self: center;
 		height: min-content;
-		border: 2px solid $color-group-bg;
-		outline: $outline-width-stat-section solid $color-section-border;
+		border: 2px solid $color-content-bg;
 		cursor: default;
 		scroll-margin: $lhse*2;
-		transition: outline-color 1s ease;
+		transition: border-color 1s ease-out;
 
-		&:active {
-			outline-color: $color-text;
+		&:has(tbody:active){
+			border-color: $color-link-active;
 			transition-duration: 0s;
 		}
 		h4 {
@@ -336,7 +334,7 @@ $outline-width-stat-section: 2px;
 		top: 0;
 		left: 0;
 		right: 0;
-		box-shadow: 0 2px 2px rgba(#000, .25);
+		box-shadow: $box-shadow-sticky-header;
 		background: $color-mythic-dim;
 		background: $color-highlight-bg;
 		border-color: $color-highlight-border;
@@ -416,7 +414,7 @@ $outline-width-stat-section: 2px;
 			padding: 0 $lhse;
 		}
 		.tables {
-			gap: calc(#{$lhse*.5} + #{$outline-width-stat-section * 2});
+			gap: $lhse*.5;
 		}
 		footer {
 			margin-top: $lhse*.5;

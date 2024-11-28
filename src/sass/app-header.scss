@@ -18,7 +18,7 @@
 	.root-home-page & {
 		position: sticky;
 		top: 0;
-		box-shadow: 0 0 $lhse*.25 rgba(#000, .6667);
+		box-shadow: $box-shadow-sticky-header;
 	}
 	.wrap {
 		display: flex;
