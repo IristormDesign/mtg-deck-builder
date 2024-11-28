@@ -127,7 +127,7 @@ export default {
 					if (error.code === 'ECONNABORTED') {
 						this.alertConnectionAborted()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
-						alert(`⚠ No Magic card named “${name}” exists.`)
+						alert(`⚠ No card named “${name}” exists in Magic: The Gathering.`)
 					} else {
 						alert(`⚠ Error: ${error.message}`)
 					}
