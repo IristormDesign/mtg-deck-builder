@@ -25,10 +25,11 @@
 
 <script>
 import cardListFunctions from '@/mixins/cardListFunctions.js'
+import latestDataVersions from '@/mixins/latestDataVersions.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 
 export default {
-	mixins: [cardListFunctions, requestScryfallData],
+	mixins: [cardListFunctions, latestDataVersions, requestScryfallData],
 	props: {
 		deck: Object
 	},
@@ -48,7 +49,7 @@ export default {
 
 			return (
 				!this.deck.dataVersion ||
-				this.deck.dataVersion < this.$store.state.latestDeckDataVersion
+				this.deck.dataVersion < this.latestDeckDataVersion
 			)
 		},
 		/**
@@ -100,7 +101,7 @@ export default {
 			this.$store.commit('showSideboard', false)
 
 			if (this.cardsToUpdate.length === 0) {
-				this.deckObject.dataVersion = this.$store.state.latestDeckDataVersion
+				this.deckObject.dataVersion = this.latestDeckDataVersion
 
 				this.$store.commit('decks', this.$store.state.decks)
 			}
@@ -161,7 +162,7 @@ export default {
 			store.commit('showSideboard', false)
 
 			this.$nextTick(() => {
-				this.deckObject.dataVersion = store.state.latestDeckDataVersion
+				this.deckObject.dataVersion = this.latestDeckDataVersion
 				store.commit('decks', store.state.decks)
 			})
 

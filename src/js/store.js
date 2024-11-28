@@ -21,8 +21,6 @@ export default new Vuex.Store({
 		decks: [],
 		focusCardBar: '',
 		highlightedCardLIIndex: -1,
-		latestDeckDataVersion: 3,
-		latestImageVersion: 2,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
 		showingAnyPopup: false,

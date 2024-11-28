@@ -36,11 +36,12 @@
 </template>
 
 <script>
+import latestDataVersions from '@/mixins/latestDataVersions.js'
 import stringMethods from '@/mixins/stringMethods.js'
 import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
-	mixins: [stringMethods, copyDeck],
+	mixins: [latestDataVersions, stringMethods, copyDeck],
 	data () {
 		return {
 			deckNameInput: '',
@@ -88,18 +89,17 @@ export default {
 		},
 		createNewDeck (name) {
 			const path = this.stringToPath(name)
-			const store = this.$store
-			const deckExists = store.getters.deckExists(path)
+			const deckExists = this.$store.getters.deckExists(path)
 
 			if (deckExists) {
 				alert(this.alertNameExists(name))
 			} else {
-				const updatedDecksArray = store.state.decks
+				const updatedDecksArray = this.$store.state.decks
 
 				updatedDecksArray.push({
 					cards: [],
 					colors: [],
-					dataVersion: store.state.latestDeckDataVersion,
+					dataVersion: this.latestDeckDataVersion,
 					editDate: new Date(),
 					name: name,
 					path: path,
@@ -111,7 +111,7 @@ export default {
 					viewedCard: null
 				})
 
-				store.commit('decks', updatedDecksArray)
+				this.$store.commit('decks', updatedDecksArray)
 				this.goToDeckPage(path)
 			}
 		},

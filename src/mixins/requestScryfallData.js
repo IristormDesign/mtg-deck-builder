@@ -1,9 +1,10 @@
 import axios from 'axios'
+import latestDataVersions from '@/mixins/latestDataVersions.js'
 import stringMethods from '@/mixins/stringMethods.js'
 import deckColors from '@/mixins/deckColors.js'
 
 export default {
-	mixins: [stringMethods, deckColors],
+	mixins: [latestDataVersions, stringMethods, deckColors],
 	data () {
 		return {
 			regexScryfallCardURL: /scryfall\.com\/card\/(.*\/)*(\w+|\d+)(-|\/)(\w+|\d+)\//i, /* This gets a string containing:
@@ -212,7 +213,7 @@ export default {
 			newCard.keywords = data.keywords
 			newCard.layout = data.layout
 			newCard.link = data.scryfall_uri
-			newCard.imgVersion = this.$store.state.latestImageVersion
+			newCard.imgVersion = this.latestImageVersion
 
 			if (enteredQty) {
 				newCard.qty = enteredQty

@@ -74,11 +74,12 @@
 
 <script>
 import cardListFunctions from '@/mixins/cardListFunctions'
+import latestDataVersions from '@/mixins/latestDataVersions.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
 export default {
-	mixins: [cardListFunctions],
+	mixins: [cardListFunctions, latestDataVersions],
 	props: {
 		deck: Object
 	},
@@ -223,7 +224,7 @@ export default {
 
 			if (
 				!card ||
-				card.imgVersion === this.$store.state.latestImageVersion
+				card.imgVersion === this.latestImageVersion
 			) return
 
 			const regexOutdatedServer = /\/\/c(1|2|3)\.scryfall\.com/i // Detects the substrings `//c1.scryfall.com/`, `//c2.scryfall.com/`, or `//c3.scryfall.com/`.
@@ -260,7 +261,7 @@ export default {
 			}
 
 			card.link = data.scryfall_uri
-			card.imgVersion = this.$store.state.latestImageVersion
+			card.imgVersion = this.latestImageVersion
 
 			this.$nextTick(() => {
 				this.$store.commit('decks', this.$store.state.decks)
