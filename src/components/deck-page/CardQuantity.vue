@@ -236,7 +236,7 @@ export default {
 			}
 		},
 		focusedOnQtyInput () {
-			if (!this.$store.state.isMobileLayout()) {
+			if (!this.isMobileLayout()) {
 				this.viewCard(this.card)
 			}
 

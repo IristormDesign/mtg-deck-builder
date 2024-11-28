@@ -297,7 +297,7 @@ export default {
 
 			this.hideCardImagePopup()
 
-			if (this.$store.state.isMobileLayout()) return
+			if (this.isMobileLayout()) return
 
 			this.viewCardImageAtHighlightedIndex()
 		},
@@ -310,7 +310,7 @@ export default {
 
 			this.hideCardImagePopup()
 
-			if (this.$store.state.isMobileLayout()) return
+			if (this.isMobileLayout()) return
 
 			this.viewCardImageAtHighlightedIndex()
 		},
@@ -324,8 +324,6 @@ export default {
 			card.qty = card.qty + number
 		},
 		moveToOtherCardGroup (double) {
-			console.log(double)
-
 			const cardLI = document.querySelector(`.card-li:nth-of-type(${this.highlightedIndex + 1})`)
 
 			if (!cardLI) return
@@ -373,7 +371,7 @@ export default {
 			this.$store.commit('showSideboard', !this.$store.state.showSideboard)
 		},
 		toggleCardImageEnlargement () {
-			if (this.$store.state.isMobileLayout()) {
+			if (this.isMobileLayout()) {
 				if (this.$store.state.showCard) {
 					const closeButton = document.querySelector('.card-image .close')
 					const hi = this.highlightedIndex
@@ -492,7 +490,7 @@ export default {
 		},
 		hideCardImagePopup () {
 			if (
-				this.$store.state.isMobileLayout() &&
+				this.isMobileLayout() &&
 				this.$store.state.showCard
 			) {
 				this.toggleCardImageEnlargement()

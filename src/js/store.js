@@ -9,6 +9,7 @@ const vuexLocalStorage = new VuexPersist({
 		loadDefaultDecks: state.loadDefaultDecks
 	})
 })
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -20,7 +21,6 @@ export default new Vuex.Store({
 		decks: [],
 		focusCardBar: '',
 		highlightedCardLIIndex: -1,
-		isMobileLayout: () => window.innerWidth <= 768, // Needs to be a function to return updated values if the viewport changes. The given number must match media query max-width in CSS.
 		latestDeckDataVersion: 3,
 		latestImageVersion: 2,
 		loadDefaultDecks: true,
@@ -33,7 +33,7 @@ export default new Vuex.Store({
 		viewedDrawnCard: null
 	},
 	getters: {
-		// Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique.
+		/* Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique. */
 		deckExists: (state) => (testPath) => {
 			return state.decks.find(deck =>
 				testPath === deck.path

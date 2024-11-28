@@ -139,7 +139,7 @@ export default {
 			return this.$store.state.showCard
 		},
 		showPlacementOutline () {
-			if (this.$store.state.isMobileLayout()) {
+			if (this.isMobileLayout()) {
 				return false
 			} else if (this.$route.name === 'deckEditor') {
 				return this.activeCardList.cards.length === 0
@@ -165,7 +165,7 @@ export default {
 		},
 		showCard (isShowing) {
 			if (
-				this.$store.state.isMobileLayout() &&
+				this.isMobileLayout() &&
 				this.card
 			) {
 				this.$nextTick(() => {
@@ -193,7 +193,7 @@ export default {
 	methods: {
 		showCardPerViewport () {
 			this.$store.commit(
-				'showCard', !this.$store.state.isMobileLayout()
+				'showCard', !this.isMobileLayout()
 			)
 		},
 		letEscKeyCloseCardImagePopup () {
@@ -204,12 +204,12 @@ export default {
 			})
 		},
 		hideImageOverlay () {
-			if (this.$store.state.isMobileLayout()) {
+			if (this.isMobileLayout()) {
 				this.$store.commit('showCard', false)
 			}
 		},
 		resizingViewport () {
-			if (this.$store.state.isMobileLayout()) {
+			if (this.isMobileLayout()) {
 				this.hideImageOverlay()
 			} else {
 				this.$store.commit('showCard', true)
