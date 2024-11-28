@@ -64,10 +64,10 @@ export default {
 				Blue: {},
 				Black: {},
 				Red: {},
-				Green: {}
+				Green: {},
+				Colorless: {}
 			},
 			colorStatsExtra: {
-				Colorless: {},
 				Monocolored: {
 					isMatch: (card, backFace) => {
 						if (backFace && card.colors2) {
@@ -146,30 +146,35 @@ export default {
 
 					let statsObject = this.colorStatsBasic
 
-					faceColors.forEach(color => {
-						switch (color) {
-							case 'W':
-								count('White')
-								break
-							case 'U':
-								count('Blue')
-								break
-							case 'B':
-								count('Black')
-								break
-							case 'R':
-								count('Red')
-								break
-							case 'G':
-								count('Green')
-						}
-					})
+					if (faceColors.length < 1) {
+						count('Colorless')
+					} else {
+						faceColors.forEach(color => {
+							if (!color) {
+								return count('Colorless')
+							}
+							switch (color) {
+								case 'W':
+									count('White')
+									break
+								case 'U':
+									count('Blue')
+									break
+								case 'B':
+									count('Black')
+									break
+								case 'R':
+									count('Red')
+									break
+								case 'G':
+									count('Green')
+							}
+						})
+					}
 
 					statsObject = this.colorStatsExtra
 
-					if (faceColors.length < 1) {
-						count('Colorless')
-					} else if (faceColors.length === 1) {
+					if (faceColors.length === 1) {
 						count('Monocolored')
 					} else if (faceColors.length > 1) {
 						count('Multicolored')
