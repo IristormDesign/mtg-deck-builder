@@ -78,10 +78,10 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		border: 2px solid $color-content-bg;
 		cursor: default;
 		scroll-margin: $lhse*2;
-		transition: border-color 1s ease-out;
+		transition: border-color 1.125s ease;
 
 		&:has(tbody:active){
-			border-color: $color-link-active;
+			border-color: $color-text-extra-brighter;
 			transition-duration: 0s;
 		}
 		h4 {
@@ -291,7 +291,7 @@ $table-outer-borders: 4px solid $color-heading-bg;
 	footer {
 		display: flex;
 		grid-column: 2 / 4;
-		border: $border-sections-thick;
+		border: $border-sections;
 		padding: $lhse*.75 $lhse*.75 $lhse*.25;
 	}
 	.note {
@@ -335,7 +335,6 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		left: 0;
 		right: 0;
 		box-shadow: $box-shadow-sticky-header;
-		background: $color-mythic-dim;
 		background: $color-highlight-bg;
 		border-color: $color-highlight-border;
 		color: $color-text-over-mythic-brown;
