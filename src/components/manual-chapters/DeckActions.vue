@@ -5,7 +5,7 @@
 
 		<section id="render-as-text-action">
 			<h5>Render as Text</h5>
-			<p>In the <a href="#deck-actions">Deck Actions</a> menu, select “Render as text” to go to the “Render Deck as Plain Text” page. From there, you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> as simple lists in the form of plain text. These plain text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>.</p>
+			<p>In the <a href="#deck-actions">Deck Actions</a> menu, select “Render as text” to go to the “Deck in Plain Text” page. From there, you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> as simple lists in the form of plain text. These plain text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>.</p>
 			<p>If you want to take these plain text card lists outside MTG Deck Builder, there are easy ways to do that:</p>
 			<ul>
 				<li>

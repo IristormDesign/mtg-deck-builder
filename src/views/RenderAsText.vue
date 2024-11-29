@@ -3,7 +3,7 @@
 		class="render-as-text content-box"
 		:class="!mainNotEmpty && !sideboardNotEmpty ? 'no-cards' : null"
 	>
-		<h3>Render Deck as Plain Text</h3>
+		<h3>Deck in Plain Text</h3>
 
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<div class="button-container">

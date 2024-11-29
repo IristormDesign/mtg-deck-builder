@@ -120,6 +120,8 @@
 		width: 100%;
 		border: 2px solid $color-heading-bg;
 		font-size: 66.67%;
+		z-index: 1; // Needed for Safari when showing the focus outline.
+		position: relative;
 	}
 	.no-cards {
 		font-style: italic;
