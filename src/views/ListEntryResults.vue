@@ -175,7 +175,7 @@ export default {
 
 			function renderFailedList (list) {
 				list.forEach(card => {
-					listText += `${card.qty} ${card.name}\r\n`
+					listText += `${card.qty} ${card.name}\n`
 				})
 			}
 			switch (failedReason) {
