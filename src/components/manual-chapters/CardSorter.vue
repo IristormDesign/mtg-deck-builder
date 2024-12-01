@@ -18,7 +18,7 @@
 				<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
 			</li>
 			<li>
-				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
+				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green.</p>
 			</li>
 			<li>
 				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost).</p>
@@ -47,7 +47,7 @@
 			</li>
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and then sort by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
-		<p>For easier skimming of the card list, most sorting options insert small gaps between each sorted cluster of card names. The only options that never insert gaps are the ones for name and mana color.</p>
+		<p>For easier skimming of the card list, every sorting option except for name inserts small gaps between each sorted cluster of card names.</p>
 		<p>Under certain conditions, the card sorter’s sorting option resets to “(None),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
 				<li><a href="#card-adder">Add a card name</a> to the list</li>

@@ -19,6 +19,22 @@ export default {
 						thisCard.gapAfter = true
 					}
 				}
+				function gapsColor () {
+					if (
+						(
+							nextCard.colors.length === 1 &&
+							thisCard.colors[0] !== nextCard.colors[0]
+						) || (
+							thisCard.colors.length === 1 &&
+							nextCard.colors.length > 1
+						) || (
+							thisCard.colors.length > 1 &&
+							nextCard.colors.length === 0
+						)
+					) {
+						thisCard.gapAfter = true
+					}
+				}
 				function gapsCmc () {
 					if (thisCard.cmc < nextCard.cmc) {
 						thisCard.gapAfter = true
@@ -172,6 +188,8 @@ export default {
 					switch (this.deck.sortBy) {
 						case 'starred':
 							gapsStarred(); break
+						case 'color':
+							gapsColor(); break
 						case 'cmc':
 							gapsCmc(); break
 						case 'supertype':

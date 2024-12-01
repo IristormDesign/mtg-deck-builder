@@ -139,21 +139,12 @@ export default {
 			this.$store.commit('decks', this.$store.state.decks)
 
 			function sortByColor (cards) {
-				function isColorlessLand (card) {
-					const regexLand = /\bLand\b/
-
-					return regexLand.test(card.type)
-				}
 				const colorOrder = ['W', 'U', 'B', 'R', 'G']
 
 				cards.sort((a, b) => {
-					if (a.colors.length === 0 && isColorlessLand(a)) {
+					if (a.colors.length === 0) {
 						return 1
-					} else if (b.colors.length === 0 && isColorlessLand(b)) {
-						return -1
-					} else if (a.colors.length === 0 && !isColorlessLand(a)) {
-						return 1
-					} else if (b.colors.length === 0 && !isColorlessLand(b)) {
+					} else if (b.colors.length === 0) {
 						return -1
 					} else if (a.colors.length > 1) {
 						return 1
