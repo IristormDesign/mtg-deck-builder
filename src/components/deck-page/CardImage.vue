@@ -280,11 +280,11 @@ export default {
 			}
 		},
 		clickedTurnOver () {
-			// If the user has been using keyboard shortcuts, put the focus back onto keyboard shortcuts.
+			/* If the user has been using keyboard shortcuts, put the focus back onto keyboard shortcuts. */
 			const currentLIIndex = this.$store.state.highlightedCardLIIndex
 
 			if (currentLIIndex > -1) {
-				// In order to trigger behavior from Vue watching the keyboard-highlighted index (in @/mixin/keyboardShortcuts.js), set the index to -1, then immediately set it back to what the index was before.
+				/* In order to trigger behavior from Vue watching the keyboard-highlighted index (in @/mixin/keyboardShortcuts.js), set the index to -1, then immediately set it back to what the index was before. */
 
 				this.$store.commit('highlightedCardLIIndex', -1)
 

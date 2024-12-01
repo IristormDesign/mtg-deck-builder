@@ -33,10 +33,10 @@ export default {
 	},
 	methods: {
 		activateNewServiceWorker () {
-			// Make sure we only send a 'skip waiting' message if the Service Worker is waiting.
+			/* Make sure we only send a 'skip waiting' message if the Service Worker is waiting. */
 			if (!this.registration || !this.registration.waiting) return
 
-			// Send message to Service Worker to skip the waiting and activate the new Service Worker.
+			/* Send message to Service Worker to skip the waiting and activate the new Service Worker. */
 			this.registration.waiting.postMessage({ type: 'SKIP_WAITING' })
 		},
 		updateAvailable (event) {

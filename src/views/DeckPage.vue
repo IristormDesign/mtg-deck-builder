@@ -88,7 +88,7 @@ export default {
 
 			this.$store.commit('decks', this.$store.state.decks)
 		},
-		// If the deck action bar is in view on the page, then hold the page's existing position. Otherwise, make the page scroll to the deck action bar.
+		/* If the deck action bar is in view on the page, then hold the page's existing position. Otherwise, make the page scroll to the deck action bar. */
 		scrollToActionBar () {
 			const prevPagePosition = window.scrollY
 			const actionBar = document.querySelector('.deck-action-bar')

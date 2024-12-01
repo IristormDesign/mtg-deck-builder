@@ -125,7 +125,7 @@ export default {
 		},
 		showDeckMenu (show) {
 			if (show) {
-				// This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports.
+				/* This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports. */
 				this.showHeaderMenu = true
 				this.$store.commit('showingAnyPopup', true)
 			}
@@ -159,11 +159,11 @@ export default {
 			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
 
 			headerMenuFirstLevelLinks.forEach(link => {
-				// Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the deck menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.)
+				/* Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the deck menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.) */
 				link.addEventListener('click', this.closeAllPopups)
 
 				link.addEventListener('focus', () => {
-					// If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu.
+					/* If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu. */
 					if (this.showDeckMenu && !this.mobileView()) {
 						this.closeAllPopups()
 					}
@@ -205,7 +205,7 @@ export default {
 
 			for (let i = 1; i < allLinks.length; i++) {
 				if (allLinks[i].matches('.header-menu-toggler')) {
-					// Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the other link is gone.
+					/* Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the other link is gone. */
 					listenForFocus(allLinks[i - 1])
 					listenForFocus(allLinks[i - 2])
 

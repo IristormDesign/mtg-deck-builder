@@ -139,7 +139,7 @@ export default {
 
 				data += JSON.stringify(deck)
 
-				// When there are multiple decks to export, insert a comma after each card object, except the last card object.
+				/* When there are multiple decks to export, insert a comma after each card object, except the last card object. */
 				if (this.numChecked > 1 && i !== this.numChecked - 1) {
 					data += ','
 				}

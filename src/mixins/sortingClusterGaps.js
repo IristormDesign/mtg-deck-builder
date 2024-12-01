@@ -42,7 +42,7 @@ export default {
 				}
 				function gapsType () {
 					const regexFrontFaceType = (card) => {
-						// If the card is double-faced, get only the type of its front face (any string up to a slash character).
+						/* If the card is double-faced, get only the type of its front face (any string up to a slash character). */
 						return card.type.match(/[^/]*/)[0]
 					}
 					const thisCardType = regexFrontFaceType(thisCard)

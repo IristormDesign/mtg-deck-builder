@@ -99,7 +99,7 @@ select {
 	margin: 0;
 	display: flex;
 
-	// For users' browsers that don't yet support the `:has` pseudo-class, provide fallback pseudo-classes.
+	/* For users' browsers that don't yet support the `:has` pseudo-class, provide fallback pseudo-classes. */
 	&:has(input:focus-visible) {
 		outline: $outline-focus-visible;
 		outline-offset: -1px;

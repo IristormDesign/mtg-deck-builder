@@ -15,7 +15,7 @@ export default {
 	},
 	computed: {
 		averageManaValue () {
-			// Any card with a mana cost counts as a spell.
+			/* Any card with a mana cost counts as a spell. */
 			const spellsOnly = this.deck.cards.filter(card => card.mana)
 			let avg = 0
 			let totalSpells = 0

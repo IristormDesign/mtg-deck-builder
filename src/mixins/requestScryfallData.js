@@ -81,7 +81,7 @@ export default {
 					}
 				)
 				.then(response => {
-					// The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number.
+					/* The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number. */
 					try {
 						this.assignCardData(response.data.data[0])
 					} catch {
@@ -319,7 +319,7 @@ export default {
 			}
 
 			if (confirmToReplace) {
-				// (Can't use a timeout here because it messes with the return.)
+				/* (Can't use a timeout here because it messes with the return.) */
 				return confirm(
 					`“${card.name}” is already in this deck${stringActiveCardList()}, but it’s in a different print from the one you’re requesting.\n\nDo you want the requested print for this card to replace the existing print?`
 				)

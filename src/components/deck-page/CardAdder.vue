@@ -77,7 +77,7 @@ export default {
 		cardQueryInput () {
 			this.debouncedAutocomplete()
 
-			// If the user pastes the URL of a Scryfall card page into the card adder's text input, then automatically submit the query.
+			/* If the user pastes the URL of a Scryfall card page into the card adder's text input, then automatically submit the query. */
 			if (this.regexScryfallCardURL.test(this.cardQueryInput)) {
 				this.handleSubmit()
 			}
@@ -113,7 +113,7 @@ export default {
 				console.info(`Query "${query}" autocompleted with Scryfall API`)
 
 				const queryCardSuggestions = (data) => {
-					// Limit the number of autocomplete suggestions to 5.
+					/* Limit the number of autocomplete suggestions to 5. */
 					while (data.length > 6) {
 						data.pop()
 					}
@@ -177,10 +177,10 @@ export default {
 				)
 
 				if (foundExistingCardByLink) {
-					// The URL query matches an existing card's link URL, which means the queried card is an identical variation match to an existing card.
+					/* The URL query matches an existing card's link URL, which means the queried card is an identical variation match to an existing card. */
 					this.notifyCardExists(foundExistingCardByLink)
 				} else {
-					// The URL query does NOT match an existing card's link URL, which means the queried card doesn't have an identical variation match. (The queried card may or may not have the same name as an existing card, but that's checked in a separate method.)
+					/* The URL query does NOT match an existing card's link URL, which means the queried card doesn't have an identical variation match. (The queried card may or may not have the same name as an existing card, but that's checked in a separate method.) */
 					this.optionalReplacement = true
 					this.axiosCollectionRequest(query)
 				}
@@ -188,7 +188,7 @@ export default {
 				alert('⚠ No card can be added because the URL you’re submitting is not a URL to an individual card page on Scryfall.')
 				this.loadingCard = false
 
-			// Else the query is a card name (or at least it's going to be handled like a card name).
+			/* Else the query is a card name (or at least it's going to be handled like a card name). */
 			} else {
 				const foundExistingCardByName = this.findExistingCardByName(query)
 

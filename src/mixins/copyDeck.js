@@ -14,7 +14,7 @@ export default {
 			let copiedDeckName = sourceDeck.name
 			let copiedDeckPath
 
-			// It's possible the copied deck's name could match an existing deck's name. In this case, keep increasing the copy suffix's number by 1 until it no longer matches another deck's name.
+			/* It's possible the copied deck's name could match an existing deck's name. In this case, keep increasing the copy suffix's number by 1 until it no longer matches another deck's name. */
 			const makeUniqueDeckName = (copyNum) => {
 				copiedDeckPath = this.stringToPath(copiedDeckName)
 

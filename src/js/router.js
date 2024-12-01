@@ -94,7 +94,7 @@ const routes = [
 		component: () => import(/* webpackChunkName: "privacy" */ '@/views/PrivacyPolicy.vue')
 	},
 	{
-		// This route should always be the last item in the `routes` array.
+		/* This route should always be the last item in the `routes` array. */
 		name: 'notFound',
 		path: '*',
 		component: () => import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue')

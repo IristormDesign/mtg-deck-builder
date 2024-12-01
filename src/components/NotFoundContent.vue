@@ -15,7 +15,7 @@
 <script>
 export default {
 	created () {
-		// Scroll the page to the top in case the 404 page is accessed from the back button and the page had been previously scrolled down.
+		/* Scroll the page to the top in case the 404 page is accessed from the back button and the page had been previously scrolled down. */
 		this.$nextTick(() => {
 			window.scrollTo(0, 0)
 		})

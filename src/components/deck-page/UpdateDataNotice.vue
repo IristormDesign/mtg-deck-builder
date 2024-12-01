@@ -80,7 +80,7 @@ export default {
 		prepareDataUpdate () {
 			if (!this.isDeckDataOutdated) return
 
-			// Reset the following data variables in case an update check is done more than once.
+			/* Reset the following data variables in case an update check is done more than once. */
 			this.updatingDeckData = false
 			this.cardsToUpdate = []
 			this.numberOfCardsUpdated = 0

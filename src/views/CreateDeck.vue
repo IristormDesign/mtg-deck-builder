@@ -133,7 +133,7 @@ export default {
 					} else if (this.formatVer === 1) {
 						this.handleFormatVer1(data)
 					} else {
-						// Clear the deck file input in case the user tries to load a file of the same name again.
+						/* Clear the deck file input in case the user tries to load a file of the same name again. */
 						this.fileInput.value = null
 					}
 				}

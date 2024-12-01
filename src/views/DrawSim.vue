@@ -90,7 +90,7 @@ export default {
 			return (
 				!this.afterReshuffle && // If the library had *not* just been reshuffled, and...
 				Math.random() < (2 / 3) && // With a little randomness mixed in, and...
-				(	// If the drawn card has the same name as either the 1st-, 2nd-, or 3rd-previous drawn card...
+				( // If the drawn card has the same name as either the 1st-, 2nd-, or 3rd-previous drawn card...
 					(drawnList[0] && drawnList[0].name === cardName) ||
 					(drawnList[1] && drawnList[1].name === cardName) ||
 					(drawnList[2] && drawnList[2].name === cardName)
@@ -125,15 +125,14 @@ export default {
 			const array = this.library
 			let counter = array.length
 
-			// While there are elements in the array...
 			while (counter > 0) {
-				// Pick a random index.
+				/* Pick a random index. */
 				const index = Math.floor(Math.random() * counter)
 
-				// Decrease counter by 1.
+				/* Decrease counter by 1. */
 				counter--
 
-				// Swap the last element with it.
+				/* Swap the last element with the element at the randomly picked index. */
 				const temp = array[counter]
 				array[counter] = array[index]
 				array[index] = temp

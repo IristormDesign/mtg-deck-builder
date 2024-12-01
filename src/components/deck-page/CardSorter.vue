@@ -69,7 +69,7 @@ export default {
 	},
 	watch: {
 		deckSortAttribute (attribute) {
-			// Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.)
+			/* Make the card sorter menu change to the "(None)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that could occur when a card's quantity changes while the list has been sorted by quantity.) */
 			if (attribute === '') {
 				this.sortMenu = attribute
 			}
@@ -81,7 +81,7 @@ export default {
 		}
 	},
 	updated () {
-		// When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's.
+		/* When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's. */
 		this.sortMenu = this.deck.sortBy
 	},
 	methods: {
@@ -161,7 +161,7 @@ export default {
 			function sortBySupertype (cards) {
 				const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/ // Finds a string that begins with a supertype term.
 
-				// First, sort between cards with supertypes and cards without supertypes.
+				/* First, sort between cards with supertypes and cards without supertypes. */
 				cards.sort((a, b) => {
 					const aHasSupertype = regexSupertype.test(a.type)
 					const bHasSupertype = regexSupertype.test(b.type)
@@ -169,7 +169,7 @@ export default {
 					return bHasSupertype - aHasSupertype
 				})
 
-				// Next, sort the cards with supertypes alphabetically by supertype.
+				/* Next, sort the cards with supertypes alphabetically by supertype. */
 				cards.sort((a, b) => {
 					const supertypeA = a.type.match(regexSupertype)
 					const supertypeB = b.type.match(regexSupertype)
@@ -291,7 +291,7 @@ export default {
 				})
 			}
 			function sortByPTSum (cards) {
-				// First, sort between cards that have the power attribute and cards that don't.
+				/* First, sort between cards that have the power attribute and cards that don't. */
 				cards.sort((a, b) => {
 					if (a.power !== undefined) {
 						return -1
@@ -302,7 +302,7 @@ export default {
 					}
 				})
 
-				// Next, sort the cards by their P/T sum.
+				/* Next, sort the cards by their P/T sum. */
 				cards.sort((a, b) => {
 					let cardAPower = a.power
 					let cardBPower = b.power
@@ -349,7 +349,7 @@ export default {
 			}
 			function sortByStarred (cards) {
 				cards.sort((a, b) => {
-					// Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property.
+					/* Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property. */
 					if (b.starred) {
 						return 1
 					} else if (a.starred) {

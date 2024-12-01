@@ -14,7 +14,7 @@ export default {
 			const cards = list.cards
 			const totalCards = cards.length - 1
 
-			// If the card to be removed happens to be the currently displayed card, then display the next card in the list.
+			/* If the card to be removed happens to be the currently displayed card, then display the next card in the list. */
 			if (
 				totalCards > 0 && (
 					list.viewedCard.name === cards[index].name ||
@@ -30,7 +30,7 @@ export default {
 				list.viewedCard = null
 			}
 
-			// Now remove the card from the deck.
+			/* Now remove the card from the deck. */
 			cards.splice(index, 1)
 
 			if (this.$store.state.sortAttribute !== '') {

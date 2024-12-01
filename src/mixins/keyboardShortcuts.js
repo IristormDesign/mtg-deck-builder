@@ -154,7 +154,7 @@ export default {
 				}
 			}
 
-			// The following keyboard shortcuts can work at anytime, even when the card list is empty.
+			/* The following keyboard shortcuts can work at anytime, even when the card list is empty. */
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
 					case 'x': this.openScryfallSearch()
