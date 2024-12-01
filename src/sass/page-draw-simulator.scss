@@ -70,6 +70,7 @@ $width-card-list-section-narrow:
 	}
 	.card-list-section {
 		height: min-content;
+		min-height: 0;
 		border-bottom-right-radius: $border-radius-group;
 		border-bottom-left-radius: $border-radius-group;
 		border-bottom-width: 0;
