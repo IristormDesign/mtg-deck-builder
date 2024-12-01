@@ -22,7 +22,8 @@
 				<section class="rules">
 					<h4>Rules for List Formatting</h4>
 					<p>Have only one card name per line of the list.</p>
-					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. For example:</p>
+					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name.</p>
+					<p>For example:</p>
 					<p><code>
 						13 Mountain<br>
 						1 Balefire Dragon<br>
