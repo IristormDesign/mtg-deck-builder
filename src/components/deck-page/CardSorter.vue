@@ -86,293 +86,290 @@ export default {
 	},
 	methods: {
 		sortCards () {
-			const sortMenu = this.sortMenu
-
-			this.deckObject.sortBy = sortMenu
+			this.deckObject.sortBy = this.sortMenu
 
 			const mainList = this.deck.cards
 			const sbList = this.deck.sideboard.cards
 
-			switch (sortMenu) {
+			switch (this.sortMenu) {
 				case 'starred':
-					sortByStarred(mainList)
-					sortByStarred(sbList)
+					this.sortByStarred(mainList)
+					this.sortByStarred(sbList)
 					break
 				case 'color':
-					sortByColor(mainList)
-					sortByColor(sbList)
+					this.sortByColor(mainList)
+					this.sortByColor(sbList)
 					break
 				case 'supertype':
-					sortBySupertype(mainList)
-					sortBySupertype(sbList)
+					this.sortBySupertype(mainList)
+					this.sortBySupertype(sbList)
 					break
 				case 'type':
-					sortByType(mainList)
-					sortByType(sbList)
+					this.sortByType(mainList)
+					this.sortByType(sbList)
 					break
 				case 'firstSubtype':
-					sortByFirstSubtype(mainList)
-					sortByFirstSubtype(sbList)
+					this.sortByFirstSubtype(mainList)
+					this.sortByFirstSubtype(sbList)
 					break
 				case 'lastSubtype':
-					sortByLastSubtype(mainList)
-					sortByLastSubtype(sbList)
+					this.sortByLastSubtype(mainList)
+					this.sortByLastSubtype(sbList)
 					break
 				case 'rarity':
-					sortByRarity(mainList)
-					sortByRarity(sbList)
+					this.sortByRarity(mainList)
+					this.sortByRarity(sbList)
 					break
 				case 'pt-sum':
-					sortByPTSum(mainList)
-					sortByPTSum(sbList)
+					this.sortByPTSum(mainList)
+					this.sortByPTSum(sbList)
 					break
 				case 'qty':
-					sortByQuantity(mainList)
-					sortByQuantity(sbList)
+					this.sortByQuantity(mainList)
+					this.sortByQuantity(sbList)
 					break
 				default:
-					sortDefault(mainList)
-					sortDefault(sbList)
+					this.sortDefault(mainList)
+					this.sortDefault(sbList)
 			}
 
-			this.addSortingClusterGaps(this.deck, sortMenu)
+			this.addSortingClusterGaps(this.deck, this.sortMenu)
 			this.$store.commit('decks', this.$store.state.decks)
+		},
+		sortByColor (cards) {
+			const colorOrder = ['W', 'U', 'B', 'R', 'G']
 
-			function sortByColor (cards) {
-				const colorOrder = ['W', 'U', 'B', 'R', 'G']
+			cards.sort((a, b) => {
+				if (a.colors.length === 0) {
+					return 1
+				} else if (b.colors.length === 0) {
+					return -1
+				} else if (a.colors.length >= 2) {
+					return 1
+				} else if (b.colors.length >= 2) {
+					return -1
+				} else {
+					const colorA = colorOrder.indexOf(a.colors[0])
+					const colorB = colorOrder.indexOf(b.colors[0])
 
-				cards.sort((a, b) => {
-					if (a.colors.length === 0) {
-						return 1
-					} else if (b.colors.length === 0) {
-						return -1
-					} else if (a.colors.length >= 2) {
-						return 1
-					} else if (b.colors.length >= 2) {
-						return -1
-					} else {
-						const colorA = colorOrder.indexOf(a.colors[0])
-						const colorB = colorOrder.indexOf(b.colors[0])
+					return colorA - colorB
+				}
+			})
+		},
+		sortBySupertype (cards) {
+			const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/ // Finds a string that begins with a supertype term.
 
-						return colorA - colorB
-					}
-				})
+			/* First, sort between cards with supertypes and cards without supertypes. */
+			cards.sort((a, b) => {
+				const aHasSupertype = regexSupertype.test(a.type)
+				const bHasSupertype = regexSupertype.test(b.type)
+
+				return bHasSupertype - aHasSupertype
+			})
+
+			/* Next, sort the cards with supertypes alphabetically by supertype. */
+			cards.sort((a, b) => {
+				const supertypeA = a.type.match(regexSupertype)
+				const supertypeB = b.type.match(regexSupertype)
+
+				if (supertypeA < supertypeB) {
+					return -1
+				} else if (supertypeA > supertypeB) {
+					return 1
+				} else {
+					return 0
+				}
+			})
+		},
+		sortByType (cards) {
+			const typeOrder = ['creature', 'planeswalker', 'battle', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
+
+			function determineType (card) {
+				const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
+				const regexCreature = /\bCreature\b/
+				const regexPlaneswalker = /\bPlaneswalker\b/
+				const regexBattle = /\bBattle\b/
+				const regexEnchantment = /\bEnchantment\b/
+				const regexArtifact = /\bArtifact\b/
+				const regexSorcery = /\bSorcery\b/
+				const regexInstant = /\bInstant\b/
+				const regexLand = /\bLand\b/
+
+				if (regexCreature.test(cardType)) {
+					return 'creature'
+				} else if (regexPlaneswalker.test(cardType)) {
+					return 'planeswalker'
+				} else if (regexBattle.test(cardType)) {
+					return 'battle'
+				} else if (regexEnchantment.test(cardType)) {
+					return 'enchantment'
+				} else if (regexArtifact.test(cardType)) {
+					return 'artifact'
+				} else if (regexSorcery.test(cardType)) {
+					return 'sorcery'
+				} else if (regexInstant.test(cardType)) {
+					return 'instant'
+				} else if (regexLand.test(cardType)) {
+					return 'land'
+				} else {
+					return 'other'
+				}
 			}
-			function sortBySupertype (cards) {
-				const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/ // Finds a string that begins with a supertype term.
 
-				/* First, sort between cards with supertypes and cards without supertypes. */
-				cards.sort((a, b) => {
-					const aHasSupertype = regexSupertype.test(a.type)
-					const bHasSupertype = regexSupertype.test(b.type)
+			cards.sort((a, b) => {
+				const typeA = typeOrder.indexOf(determineType(a))
+				const typeB = typeOrder.indexOf(determineType(b))
 
-					return bHasSupertype - aHasSupertype
-				})
+				return typeA - typeB
+			})
+		},
+		sortByFirstSubtype (cards) {
+			const regexFirstSubtype = /— \w+/ // Finds `— ` immediately followed by a word.
 
-				/* Next, sort the cards with supertypes alphabetically by supertype. */
-				cards.sort((a, b) => {
-					const supertypeA = a.type.match(regexSupertype)
-					const supertypeB = b.type.match(regexSupertype)
+			/* First, sort between cards with subtypes and cards without subtypes. */
+			cards.sort((a, b) => {
+				const aHasSubtype = regexFirstSubtype.test(a.type)
+				const bHasSubtype = regexFirstSubtype.test(b.type)
 
-					if (supertypeA < supertypeB) {
-						return -1
-					} else if (supertypeA > supertypeB) {
-						return 1
-					} else {
-						return 0
-					}
-				})
+				return bHasSubtype - aHasSubtype
+			})
+
+			/* Next, sort the cards with subtypes alphabetically by subtype. */
+			cards.sort((a, b) => {
+				const subtypeA = a.type.match(regexFirstSubtype)
+				const subtypeB = b.type.match(regexFirstSubtype)
+
+				if (subtypeA < subtypeB) {
+					return -1
+				} else if (subtypeA > subtypeB) {
+					return 1
+				} else {
+					return 0
+				}
+			})
+		},
+		sortByLastSubtype (cards) {
+			const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Find a substring starting with an em dash between spaces, followed by zero or more words, and the whole string must end with a word. The final word is captured.
+
+			/* First, sort between cards with subtypes and cards without subtypes. */
+
+			cards.sort((a, b) => {
+				const aHasSubtype = regexLastSubtype.test(a.type)
+				const bHasSubtype = regexLastSubtype.test(b.type)
+
+				return bHasSubtype - aHasSubtype
+			})
+
+			/* Next, sort the cards with subtypes alphabetically by subtype. */
+
+			function lastSubtype (typeLine) {
+				if (typeLine.match(regexLastSubtype)) {
+					return typeLine.match(regexLastSubtype)[1]
+				}
 			}
-			function sortByType (cards) {
-				const typeOrder = ['creature', 'planeswalker', 'battle', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
 
-				function determineType (card) {
-					const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
-					const regexCreature = /\bCreature\b/
-					const regexPlaneswalker = /\bPlaneswalker\b/
-					const regexBattle = /\bBattle\b/
-					const regexEnchantment = /\bEnchantment\b/
-					const regexArtifact = /\bArtifact\b/
-					const regexSorcery = /\bSorcery\b/
-					const regexInstant = /\bInstant\b/
-					const regexLand = /\bLand\b/
+			cards.sort((a, b) => {
+				if (lastSubtype(a.type) < lastSubtype(b.type)) {
+					return -1
+				} else if (lastSubtype(a.type) > lastSubtype(b.type)) {
+					return 1
+				} else {
+					return 0
+				}
+			})
+		},
+		sortByRarity (cards) {
+			const rarityOrder = ['special', 'mythic', 'rare', 'uncommon', 'common', '']
 
-					if (regexCreature.test(cardType)) {
-						return 'creature'
-					} else if (regexPlaneswalker.test(cardType)) {
-						return 'planeswalker'
-					} else if (regexBattle.test(cardType)) {
-						return 'battle'
-					} else if (regexEnchantment.test(cardType)) {
-						return 'enchantment'
-					} else if (regexArtifact.test(cardType)) {
-						return 'artifact'
-					} else if (regexSorcery.test(cardType)) {
-						return 'sorcery'
-					} else if (regexInstant.test(cardType)) {
-						return 'instant'
-					} else if (regexLand.test(cardType)) {
-						return 'land'
-					} else {
-						return 'other'
-					}
+			cards.sort((a, b) => {
+				const rarityA = rarityOrder.indexOf(a.rarity)
+				const rarityB = rarityOrder.indexOf(b.rarity)
+
+				return rarityA - rarityB
+			})
+		},
+		sortByPTSum (cards) {
+			/* First, sort between cards that have the power attribute and cards that don't. */
+			cards.sort((a, b) => {
+				if (a.power !== undefined) {
+					return -1
+				} else if (b.power === undefined) {
+					return 1
+				} else {
+					return 0
+				}
+			})
+
+			/* Next, sort the cards by their P/T sum. */
+			cards.sort((a, b) => {
+				let cardAPower = a.power
+				let cardBPower = b.power
+				let cardATough = a.toughness
+				let cardBTough = b.toughness
+
+				if (isNaN(cardAPower)) {
+					cardAPower = 0
+				} else {
+					cardAPower = Number(cardAPower)
+				}
+				if (isNaN(cardBPower)) {
+					cardBPower = 0
+				} else {
+					cardBPower = Number(cardBPower)
+				}
+				if (isNaN(cardATough)) {
+					cardATough = 0
+				} else {
+					cardATough = Number(cardATough)
+				}
+				if (isNaN(cardBTough)) {
+					cardBTough = 0
+				} else {
+					cardBTough = Number(cardBTough)
 				}
 
-				cards.sort((a, b) => {
-					const typeA = typeOrder.indexOf(determineType(a))
-					const typeB = typeOrder.indexOf(determineType(b))
+				const cardASum = cardAPower + cardATough
+				const cardBSum = cardBPower + cardBTough
 
-					return typeA - typeB
-				})
-			}
-			function sortByFirstSubtype (cards) {
-				const regexFirstSubtype = /— \w+/ // Finds `— ` immediately followed by a word.
-
-				/* First, sort between cards with subtypes and cards without subtypes. */
-				cards.sort((a, b) => {
-					const aHasSubtype = regexFirstSubtype.test(a.type)
-					const bHasSubtype = regexFirstSubtype.test(b.type)
-
-					return bHasSubtype - aHasSubtype
-				})
-
-				/* Next, sort the cards with subtypes alphabetically by subtype. */
-				cards.sort((a, b) => {
-					const subtypeA = a.type.match(regexFirstSubtype)
-					const subtypeB = b.type.match(regexFirstSubtype)
-
-					if (subtypeA < subtypeB) {
-						return -1
-					} else if (subtypeA > subtypeB) {
-						return 1
-					} else {
-						return 0
-					}
-				})
-			}
-			function sortByLastSubtype (cards) {
-				const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Find a substring starting with an em dash between spaces, followed by zero or more words, and the whole string must end with a word. The final word is captured.
-
-				/* First, sort between cards with subtypes and cards without subtypes. */
-
-				cards.sort((a, b) => {
-					const aHasSubtype = regexLastSubtype.test(a.type)
-					const bHasSubtype = regexLastSubtype.test(b.type)
-
-					return bHasSubtype - aHasSubtype
-				})
-
-				/* Next, sort the cards with subtypes alphabetically by subtype. */
-
-				function lastSubtype (typeLine) {
-					if (typeLine.match(regexLastSubtype)) {
-						return typeLine.match(regexLastSubtype)[1]
-					}
+				if (cardASum < cardBSum) {
+					return 1
+				} else if (cardASum > cardBSum) {
+					return -1
+				} else { // If cards A and B have equal P/T sums, then sort them by power alone.
+					return cardBPower - cardAPower
 				}
+			})
+		},
+		sortByQuantity (cards) {
+			cards.sort((a, b) => {
+				return b.qty - a.qty
+			})
+		},
+		sortByStarred (cards) {
+			cards.sort((a, b) => {
+				/* Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property. */
+				if (b.starred) {
+					return 1
+				} else if (a.starred) {
+					return -1
+				} else {
+					return 0
+				}
+			})
+		},
+		sortDefault (cards) { // For card name and mana value
+			cards.sort((a, b) => {
+				const cardA = a[this.sortMenu]
+				const cardB = b[this.sortMenu]
 
-				cards.sort((a, b) => {
-					if (lastSubtype(a.type) < lastSubtype(b.type)) {
-						return -1
-					} else if (lastSubtype(a.type) > lastSubtype(b.type)) {
-						return 1
-					} else {
-						return 0
-					}
-				})
-			}
-			function sortByRarity (cards) {
-				const rarityOrder = ['special', 'mythic', 'rare', 'uncommon', 'common', '']
-
-				cards.sort((a, b) => {
-					const rarityA = rarityOrder.indexOf(a.rarity)
-					const rarityB = rarityOrder.indexOf(b.rarity)
-
-					return rarityA - rarityB
-				})
-			}
-			function sortByPTSum (cards) {
-				/* First, sort between cards that have the power attribute and cards that don't. */
-				cards.sort((a, b) => {
-					if (a.power !== undefined) {
-						return -1
-					} else if (b.power === undefined) {
-						return 1
-					} else {
-						return 0
-					}
-				})
-
-				/* Next, sort the cards by their P/T sum. */
-				cards.sort((a, b) => {
-					let cardAPower = a.power
-					let cardBPower = b.power
-					let cardATough = a.toughness
-					let cardBTough = b.toughness
-
-					if (isNaN(cardAPower)) {
-						cardAPower = 0
-					} else {
-						cardAPower = Number(cardAPower)
-					}
-					if (isNaN(cardBPower)) {
-						cardBPower = 0
-					} else {
-						cardBPower = Number(cardBPower)
-					}
-					if (isNaN(cardATough)) {
-						cardATough = 0
-					} else {
-						cardATough = Number(cardATough)
-					}
-					if (isNaN(cardBTough)) {
-						cardBTough = 0
-					} else {
-						cardBTough = Number(cardBTough)
-					}
-
-					const cardASum = cardAPower + cardATough
-					const cardBSum = cardBPower + cardBTough
-
-					if (cardASum < cardBSum) {
-						return 1
-					} else if (cardASum > cardBSum) {
-						return -1
-					} else { // If cards A and B have equal P/T sums, then sort them by power alone.
-						return cardBPower - cardAPower
-					}
-				})
-			}
-			function sortByQuantity (cards) {
-				cards.sort((a, b) => {
-					return b.qty - a.qty
-				})
-			}
-			function sortByStarred (cards) {
-				cards.sort((a, b) => {
-					/* Use a series of `if`/`else` statements for this sorting method, because the shorter subtraction sorting method doesn't always work properly if a `card` object lacks the `starred` property. */
-					if (b.starred) {
-						return 1
-					} else if (a.starred) {
-						return -1
-					} else {
-						return 0
-					}
-				})
-			}
-			function sortDefault (cards) { // For card name and mana value
-				cards.sort((a, b) => {
-					const cardA = a[sortMenu]
-					const cardB = b[sortMenu]
-
-					if (cardA < cardB) {
-						return -1
-					} else if (cardA > cardB) {
-						return 1
-					} else {
-						return 0
-					}
-				})
-			}
+				if (cardA < cardB) {
+					return -1
+				} else if (cardA > cardB) {
+					return 1
+				} else {
+					return 0
+				}
+			})
 		}
 	}
 }
