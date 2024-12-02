@@ -128,7 +128,7 @@
 		border-top: $border-sections;
 
 		p {
-			@include small-font-size;
+			font-size: $font-size-small;
 		}
 	}
 	.no-cards {

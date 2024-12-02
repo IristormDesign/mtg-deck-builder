@@ -139,7 +139,7 @@ $table-outer-borders: 4px solid $color-heading-bg;
 	tfoot {
 		th,
 		td {
-			@include small-font-size;
+			font-size: $font-size-small;
 			color: $color-text-darker;
 			line-height: $line-height-standard*.75;
 		}
@@ -296,7 +296,7 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		margin-top: $lhse*.5;
 	}
 	.note {
-		@include small-font-size;
+		font-size: $font-size-small;
 
 		h4 {
 			margin-top: 0;
@@ -335,18 +335,18 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		left: 0;
 		right: 0;
 		box-shadow: $box-shadow-sticky-header;
-		background: $color-highlight-bg;
+		background: rgba($color-highlight-bg, .8);
+		backdrop-filter: blur(5px);
 		border-color: $color-highlight-border;
-		color: $color-text-over-mythic-brown;
+		color: $color-text-brighter-over-mythic-brown;
 
 		h4,
 		strong {
-			color: $color-text-brighter-over-mythic-brown;
+			color: #fff;
 		}
 	}
 	> div {
-		@include small-font-size;
-		font-size: 87.5%;
+		font-size: $font-size-small;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

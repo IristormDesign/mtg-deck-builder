@@ -95,7 +95,7 @@ th {
 }
 small,
 .small {
-	@include small-font-size;
+	font-size: $font-size-small;
 }
 ul,
 ol {

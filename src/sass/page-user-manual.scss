@@ -51,7 +51,7 @@
 		}
 	}
 	.toc-links {
-		@include small-font-size;
+		font-size: $font-size-small;
 
 		ol,
 		li {
