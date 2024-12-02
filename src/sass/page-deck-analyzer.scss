@@ -291,12 +291,12 @@ $table-outer-borders: 4px solid $color-heading-bg;
 	footer {
 		display: flex;
 		grid-column: 2 / 4;
-		border: $border-sections;
-		padding: $lhse*.75 $lhse*.75 $lhse*.25;
+		border-top: $border-sections;
+		padding-top: $lhse;
+		margin-top: $lhse*.5;
 	}
 	.note {
-		@include tiny-font-size;
-		line-height: $line-height-standard*.875;
+		@include small-font-size;
 
 		h4 {
 			margin-top: 0;

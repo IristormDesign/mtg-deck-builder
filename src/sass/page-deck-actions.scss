@@ -123,6 +123,14 @@
 		z-index: 1; // Needed for Safari when showing the focus outline.
 		position: relative;
 	}
+	footer {
+		margin-top: $lhse*1.5;
+		border-top: $border-sections;
+
+		p {
+			@include small-font-size;
+		}
+	}
 	.no-cards {
 		font-style: italic;
 		text-align: center;

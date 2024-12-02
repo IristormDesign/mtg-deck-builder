@@ -43,6 +43,10 @@
 					></textarea>
 				</section>
 			</div>
+
+			<footer>
+				<p>For more information about this page, see the <router-link to="/manual#render-as-text-action">user manual</router-link>.</p>
+			</footer>
 		</template>
 
 		<template v-else>
