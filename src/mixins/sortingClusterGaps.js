@@ -12,55 +12,44 @@ export default {
 				const thisCard = cards[i]
 				const nextCard = cards[(i + 1)]
 
-				thisCard.gapAfter = false
-
-				if (nextCard) {
-					switch (this.deck.sortBy) {
-						case 'starred':
-							this.gapsStarred(thisCard, nextCard)
-							break
-						case 'color':
-							this.gapsColor(thisCard, nextCard)
-							break
-						case 'cmc':
-							this.gapsCmc(thisCard, nextCard)
-							break
-						case 'supertype':
-							this.gapsSupertype(thisCard, nextCard)
-							break
-						case 'type':
-							this.gapsType(thisCard, nextCard)
-							break
-						case 'firstSubtype':
-							this.gapsSubtype(thisCard, nextCard, false)
-							break
-						case 'lastSubtype':
-							this.gapsSubtype(thisCard, nextCard, true)
-							break
-						case 'rarity':
-							this.gapsRarity(thisCard, nextCard)
-							break
-						case 'pt-sum':
-							this.gapsPTSum(thisCard, nextCard)
-							break
-						case 'qty':
-							this.gapsQty(thisCard, nextCard)
-							break
-					}
-				} else { // The last card in the list (before any newly added cards)
-					setTimeout(() => {
-						thisCard.gapAfter = true
-					}, 1000) // Delay long enough for the `.card-li-fade` transition to finish.
+				thisCard.gapAfter = this.insertClusterGap(thisCard, nextCard)
+			}
+		},
+		insertClusterGap (thisCard, nextCard) {
+			if (nextCard) {
+				switch (this.deck.sortBy) {
+					case 'starred':
+						return this.gapsStarred(thisCard, nextCard)
+					case 'color':
+						return this.gapsColor(thisCard, nextCard)
+					case 'cmc':
+						return this.gapsCmc(thisCard, nextCard)
+					case 'supertype':
+						return this.gapsSupertype(thisCard, nextCard)
+					case 'type':
+						return this.gapsType(thisCard, nextCard)
+					case 'firstSubtype':
+						return this.gapsSubtype(thisCard, nextCard, false)
+					case 'lastSubtype':
+						return this.gapsSubtype(thisCard, nextCard, true)
+					case 'rarity':
+						return this.gapsRarity(thisCard, nextCard)
+					case 'pt-sum':
+						return this.gapsPTSum(thisCard, nextCard)
+					case 'qty':
+						return this.gapsQty(thisCard, nextCard)
 				}
+			} else { // The last card in the list (before any newly added cards)
+				setTimeout(() => {
+					return true
+				}, 1000) // Delay long enough for the `.card-li-fade` transition to finish.
 			}
 		},
 		gapsStarred (thisCard, nextCard) {
-			if (thisCard.starred && !nextCard.starred) {
-				thisCard.gapAfter = true
-			}
+			return (thisCard.starred && !nextCard.starred)
 		},
 		gapsColor (thisCard, nextCard) {
-			if (
+			return (
 				(
 					nextCard.colors.length === 1 &&
 					thisCard.colors[0] !== nextCard.colors[0]
@@ -71,14 +60,10 @@ export default {
 					thisCard.colors.length > 1 &&
 					nextCard.colors.length === 0
 				)
-			) {
-				thisCard.gapAfter = true
-			}
+			)
 		},
 		gapsCmc (thisCard, nextCard) {
-			if (thisCard.cmc < nextCard.cmc) {
-				thisCard.gapAfter = true
-			}
+			return (thisCard.cmc < nextCard.cmc)
 		},
 		gapsType (thisCard, nextCard) {
 			const regexFrontFaceType = (card) => {
@@ -111,37 +96,29 @@ export default {
 			}
 
 			if (isCreature(thisCardType)) {
-				if (!isCreature(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isCreature(nextCardType)
 			} else if (isPlaneswalker(thisCardType)) {
-				if (!isPlaneswalker(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isPlaneswalker(nextCardType)
 			} else if (isEnchantment(thisCardType)) {
-				if (!isEnchantment(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isEnchantment(nextCardType)
 			} else if (isArtifact(thisCardType)) {
-				if (!isArtifact(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isArtifact(nextCardType)
 			} else if (isSorcery(thisCardType)) {
-				if (!isSorcery(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isSorcery(nextCardType)
 			} else if (isInstant(thisCardType)) {
-				if (!isInstant(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isInstant(nextCardType)
 			} else if (isLand(thisCardType)) {
-				if (!isLand(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return !isLand(nextCardType)
 			} else { // A card type other than any of the standard card types
-				if (isCreature(nextCardType) || isPlaneswalker(nextCardType) || isEnchantment(nextCardType) || isArtifact(nextCardType) || isSorcery(nextCardType) || isInstant(nextCardType) || isLand(nextCardType)) {
-					thisCard.gapAfter = true
-				}
+				return (
+					isCreature(nextCardType) ||
+					isPlaneswalker(nextCardType) ||
+					isEnchantment(nextCardType) ||
+					isArtifact(nextCardType) ||
+					isSorcery(nextCardType) ||
+					isInstant(nextCardType) ||
+					isLand(nextCardType)
+				)
 			}
 		},
 		gapsSubtype (thisCard, nextCard, lastPosition) {
@@ -164,11 +141,11 @@ export default {
 				getSubtype(thisCard) &&
 				!getSubtype(nextCard)
 			) {
-				thisCard.gapAfter = true
+				return true
 			} else if (
 				getSubtype(thisCard) !== getSubtype(nextCard)
 			) {
-				thisCard.gapAfter = true
+				return true
 			}
 		},
 		gapsSupertype (thisCard, nextCard) {
@@ -184,16 +161,16 @@ export default {
 				getSupertype(thisCard) &&
 				!getSupertype(nextCard)
 			) {
-				thisCard.gapAfter = true
+				return true
 			} else if (
 				getSupertype(thisCard) !== getSupertype(nextCard)
 			) {
-				thisCard.gapAfter = true
+				return true
 			}
 		},
 		gapsRarity (thisCard, nextCard) {
 			if (thisCard.rarity !== nextCard.rarity) {
-				thisCard.gapAfter = true
+				return true
 			}
 		},
 		gapsPTSum (thisCard, nextCard) {
@@ -213,14 +190,14 @@ export default {
 				thisCard.power !== undefined &&
 				nextCard.power === undefined
 			) {
-				thisCard.gapAfter = true
+				return true
 			} else if (ptSum(thisCard) !== ptSum(nextCard)) {
-				thisCard.gapAfter = true
+				return true
 			}
 		},
 		gapsQty (thisCard, nextCard) {
 			if (thisCard.qty > nextCard.qty) {
-				thisCard.gapAfter = true
+				return true
 			}
 		}
 	}
