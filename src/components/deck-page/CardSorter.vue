@@ -146,9 +146,9 @@ export default {
 						return 1
 					} else if (b.colors.length === 0) {
 						return -1
-					} else if (a.colors.length > 1) {
+					} else if (a.colors.length >= 2) {
 						return 1
-					} else if (b.colors.length > 1) {
+					} else if (b.colors.length >= 2) {
 						return -1
 					} else {
 						const colorA = colorOrder.indexOf(a.colors[0])
