@@ -21,7 +21,7 @@
 				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
 			</li>
 			<li>
-				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost).</p>
+				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost), and moves land cards to the top.</p>
 			</li>
 			<li>
 				<p><strong>Supertype</strong> – Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Common supertypes are “basic” [on land cards] and “legendary.”)</p>

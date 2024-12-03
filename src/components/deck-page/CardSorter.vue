@@ -100,6 +100,10 @@ export default {
 					this.sortByColor(mainList)
 					this.sortByColor(sbList)
 					break
+				case 'cmc':
+					this.sortByManaValue(mainList)
+					this.sortByManaValue(sbList)
+					break
 				case 'supertype':
 					this.sortBySupertype(mainList)
 					this.sortBySupertype(sbList)
@@ -170,6 +174,20 @@ export default {
 					}
 				}
 				return 0
+			})
+		},
+		sortByManaValue (cards) {
+			cards.sort((a, b) => {
+				const aIsLand = this.isLand(a.type)
+				const bIsLand = this.isLand(b.type)
+
+				if (aIsLand && !bIsLand) {
+					return -1
+				} else if (!aIsLand && bIsLand) {
+					return 1
+				} else {
+					return a.cmc - b.cmc
+				}
 			})
 		},
 		sortBySupertype (cards) {
@@ -267,7 +285,6 @@ export default {
 			const regexLastSubtype = /— (?:\w+ )*(\w+)$/ // Find a substring starting with an em dash between spaces, followed by zero or more words, and the whole string must end with a word. The final word is captured.
 
 			/* First, sort between cards with subtypes and cards without subtypes. */
-
 			cards.sort((a, b) => {
 				const aHasSubtype = regexLastSubtype.test(a.type)
 				const bHasSubtype = regexLastSubtype.test(b.type)
@@ -276,7 +293,6 @@ export default {
 			})
 
 			/* Next, sort the cards with subtypes alphabetically by subtype. */
-
 			function lastSubtype (typeLine) {
 				if (typeLine.match(regexLastSubtype)) {
 					return typeLine.match(regexLastSubtype)[1]
@@ -372,7 +388,7 @@ export default {
 				}
 			})
 		},
-		sortDefault (cards) { // For card name and mana value
+		sortDefault (cards) { // For sorting by card name
 			cards.sort((a, b) => {
 				const cardA = a[this.sortMenu]
 				const cardB = b[this.sortMenu]

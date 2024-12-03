@@ -72,7 +72,14 @@ export default {
 			)
 		},
 		gapsCmc (thisCard, nextCard) {
-			return (thisCard.cmc < nextCard.cmc)
+			if (
+				this.isLand(thisCard.type) &&
+				!this.isLand(nextCard.type)
+			) {
+				return true
+			} else {
+				return (thisCard.cmc < nextCard.cmc)
+			}
 		},
 		gapsType (thisCard, nextCard) {
 			const regexFrontFaceType = (card) => {
