@@ -155,6 +155,22 @@ export default {
 					return colorA - colorB
 				}
 			})
+			cards.sort((a, b) => {
+				if (a.colors.length === 0) {
+					if (
+						this.isLand(a.type) &&
+						!this.isLand(b.type)
+					) {
+						return 1
+					} else if (
+						!this.isLand(a.type) &&
+						this.isLand(b.type)
+					) {
+						return -1
+					}
+				}
+				return 0
+			})
 		},
 		sortBySupertype (cards) {
 			const regexSupertype = /^\b(?:Basic|Elite|Host|Legendary|Ongoing|Snow|Token|World)\b/ // Finds a string that begins with a supertype term.
@@ -184,7 +200,7 @@ export default {
 		sortByType (cards) {
 			const typeOrder = ['creature', 'planeswalker', 'battle', 'enchantment', 'artifact', 'sorcery', 'instant', 'land', 'other']
 
-			function determineType (card) {
+			const determineType = (card) => {
 				const cardType = card.type.match(/[^/]*/)[0] // Front-face only.
 				const regexCreature = /\bCreature\b/
 				const regexPlaneswalker = /\bPlaneswalker\b/
@@ -193,7 +209,6 @@ export default {
 				const regexArtifact = /\bArtifact\b/
 				const regexSorcery = /\bSorcery\b/
 				const regexInstant = /\bInstant\b/
-				const regexLand = /\bLand\b/
 
 				if (regexCreature.test(cardType)) {
 					return 'creature'
@@ -209,7 +224,7 @@ export default {
 					return 'sorcery'
 				} else if (regexInstant.test(cardType)) {
 					return 'instant'
-				} else if (regexLand.test(cardType)) {
+				} else if (this.isLand(cardType)) {
 					return 'land'
 				} else {
 					return 'other'

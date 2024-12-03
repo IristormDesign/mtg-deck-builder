@@ -12,10 +12,10 @@ export default {
 				const thisCard = cards[i]
 				const nextCard = cards[(i + 1)]
 
-				thisCard.gapAfter = this.insertClusterGap(thisCard, nextCard)
+				thisCard.gapAfter = this.hasGapAfter(thisCard, nextCard)
 			}
 		},
-		insertClusterGap (thisCard, nextCard) {
+		hasGapAfter (thisCard, nextCard) {
 			if (nextCard) {
 				switch (this.deck.sortBy) {
 					case 'starred':
@@ -45,6 +45,11 @@ export default {
 				}, 1000) // Delay long enough for the `.card-li-fade` transition to finish.
 			}
 		},
+		isLand (cardType) {
+			const regexLand = /\bLand\b/
+
+			return regexLand.test(cardType)
+		},
 		gapsStarred (thisCard, nextCard) {
 			return (thisCard.starred && !nextCard.starred)
 		},
@@ -55,10 +60,14 @@ export default {
 					thisCard.colors[0] !== nextCard.colors[0]
 				) || (
 					thisCard.colors.length === 1 &&
-					nextCard.colors.length > 1
+					nextCard.colors.length >= 2
 				) || (
-					thisCard.colors.length > 1 &&
+					thisCard.colors.length >= 2 &&
 					nextCard.colors.length === 0
+				) || (
+					thisCard.colors.length === 0 &&
+					!this.isLand(thisCard.type) &&
+					this.isLand(nextCard.type)
 				)
 			)
 		},
