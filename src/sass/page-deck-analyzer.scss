@@ -75,14 +75,17 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		width: $lhse*10; // Wide enough to fit "Modal double-faced" layout label without breaking onto a new line.
 		justify-self: center;
 		height: min-content;
-		border: 2px solid $color-content-bg;
+		border: 1px solid $color-content-bg;
 		cursor: default;
 		scroll-margin: $lhse*2;
-		transition: border-color 1.125s ease;
+		transition: 1s ease;
+		transition-property: border-color, box-shadow;
 
 		&:has(tbody:active){
-			border-color: $color-text-extra-brighter;
+			border-color: $color-highlight-bg;
+			box-shadow: 0 0 $lhse*4 $color-highlight-bg;
 			transition-duration: 0s;
+			z-index: 1;
 		}
 		h4 {
 			margin: 0;
@@ -201,7 +204,7 @@ $table-outer-borders: 4px solid $color-heading-bg;
 				th,
 				td {
 					border-right-color: $color-highlight-border;
-				border-left-color: $color-highlight-border;
+					border-left-color: $color-highlight-border;
 				}
 			}
 			th {
@@ -434,9 +437,9 @@ $table-outer-borders: 4px solid $color-heading-bg;
 }
 @media (max-width: $width-mobile-breakpoint) {
 	.deck-analyzer {
-		border-radius: $border-radius-group;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
+		margin-bottom: $lhse*.25;
 
 		.filter-notice {
 			grid-column: span 1;

@@ -432,10 +432,16 @@ $width-card-list-section-narrow:
 	.deck-editor {
 		display: block;
 		max-width: 100%;
-		margin: 0;
+		margin: 0 0 $lhse*.25;
 
 		.layout-column {
 			border-radius: 0;
+		}
+		.sideboard-visible & {
+			.adder-controls,
+			.card-adder {
+				border-radius: 0;
+			}
 		}
 	}
 	.card-adder {

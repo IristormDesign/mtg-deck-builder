@@ -13,13 +13,13 @@
 			<card-total :deck="deck" />
 		</header>
 
-		<update-data-notice :deck="deck" />
-
 		<div class="deck-action-bar">
 			<deck-mode-heading />
 			<mode-menu />
 			<deck-actions :deck="deck" />
 		</div>
+
+		<update-data-notice :deck="deck" />
 
 		<router-view :deck="deck" />
 	</article>

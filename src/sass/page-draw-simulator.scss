@@ -161,7 +161,8 @@ $width-card-list-section-narrow:
 @media (max-width: ($min-width-app * .4)) {
 	.draw-simulator {
 		max-width: 100vw;
-		margin-bottom: $lhse*.5;
+		margin-bottom: 0;
+		width: 100%;
 
 		.layout-column {
 			border-radius: 0;

@@ -11,8 +11,8 @@
 .outdated-deck-data-notice {
 	@include sideboard-header-bg;
 	border-radius: $border-radius-group;
-	padding: $lhse*.1667 4.17% $lhse*.3333;
-	margin: 0 auto $margin-sections;
+	padding: $lhse*.1667 4.17% $lhse*.25;
+	margin: -$lhse*.5 auto $lhse*.5;
 	text-align: center;
 	text-wrap: balance;
 	max-width: $max-width-content*.75;
@@ -26,16 +26,19 @@
 		justify-content: center;
 	}
 	.button-container {
-		height: $lhse*1.5;
+		height: $lhse*1.25;
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		margin: $lhse*.5 $lhse*.5 $lhse*.25;
+		margin: divide($lhse, 3) $lhse*.5 $lhse*.25;
 
 		&:first-of-type {
 			button {
 				background: $color-button-gray;
 			}
+		}
+		button {
+			font-size: 87.5%;
 		}
 	}
 	.updated-percentage {
@@ -98,6 +101,10 @@
 	.deck {
 		padding: 0;
 	}
+	.outdated-deck-data-notice {
+		max-width: none;
+		border-radius: 0;
+	}
 }
 @media (max-width: ($min-width-app * .5)) {
 	.deck {
@@ -106,5 +113,8 @@
 		.wrap {
 			padding: 0 divide($lhse, 4);
 		}
+	}
+	.outdated-deck-data-notice {
+		margin: 0 auto $lhse*.5;
 	}
 }
