@@ -4,7 +4,7 @@
 		<p>The page for the <a href="#deck-analyzer">Deck Analyzer</a> displays many data tables, each for a different statistical category about the cards in your deck’s main <a href="#card-groups">card group</a>. Some categories can comprise multiple subcategories, with their tables having a thick border line separating each subcategory.</p>
 		<p>The following are the categories, with any subcategories in parentheses:</p>
 		<ul>
-			<li>Colors of Spells (mono mana colors, mana color amounts per spell)</li>
+			<li>Colors of Spells (mana colors, mana color amounts per spell)</li>
 			<li>Mana Color Symbols in Costs of Spells (basic color symbols, hybrid symbol)</li>
 			<li>Mana Values of Spells (defined values, variable value)</li>
 			<li>Supertypes</li>
