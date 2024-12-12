@@ -343,6 +343,11 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		border-color: $color-highlight-border;
 		color: $color-text-brighter-over-mythic-brown;
 
+		header {
+			svg {
+				fill: #fff;
+			}
+		}
 		h4,
 		strong {
 			color: #fff;
@@ -354,6 +359,17 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
+	}
+	header {
+		display: flex;
+		align-items: center;
+
+		svg {
+			fill: $color-text-brighter;
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
+			margin-right: .5ch;
+		}
 	}
 	h4 {
 		margin: 0;
@@ -375,6 +391,15 @@ $table-outer-borders: 4px solid $color-heading-bg;
 		text-wrap: nowrap;
 		font-size: 83.33%;
 		height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+
+		svg {
+			width: $lhse;
+			height: $lhse;
+			margin-right: .5ch;
+			fill: $color-black-label-text;
+		}
 	}
 }
 .vert-center-cell {

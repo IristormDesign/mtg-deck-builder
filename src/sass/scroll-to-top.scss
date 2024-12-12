@@ -26,6 +26,11 @@
 		justify-content: center;
 		height: $lhse*1.25;
 
+		svg {
+			fill: $color-black-label-text;
+			width: $lhse;
+			height: $lhse;
+		}
 		.text-label {
 			width: 0;
 			transition: all .5s ease;

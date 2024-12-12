@@ -41,10 +41,18 @@
 		&:focus {
 			@include link-colors($color-app-header-link-hover);
 			text-decoration: underline;
+
+			svg {
+				fill: $color-app-header-link-hover;
+			}
 		}
 		&:active {
 			@include link-colors($color-app-header-link-active);
 			text-decoration-color: inherit;
+
+			svg {
+				fill: $color-app-header-link-active;
+			}
 		}
 		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerLinkAttention.js.
 			animation: flash .1667s ease-in;
@@ -59,6 +67,12 @@
 					filter: brightness(133.33%) contrast(133.33%);
 				}
 			}
+		}
+		svg {
+			width: $lhse;
+			height: $lhse;
+			fill: $color-app-header-link;
+			margin-right: .5ch;
 		}
 	}
 	.open-deck-heading {
