@@ -51,11 +51,19 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
+		padding-top: 0;
+		padding-bottom: 0;
 
 		&.current-page {
 			opacity: .3820;
 			cursor: default;
 		}
+	}
+	svg {
+		fill: $color-black-label-text;
+		width: $lhse*1.125;
+		height: $lhse*1.125;
+		margin-right: .5ch;
 	}
 }
 .deck-actions {

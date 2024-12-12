@@ -138,7 +138,7 @@ $transition-duration-card-image-hover-fast: $transition-duration-card-image-hove
 // MISCELLANEOUS VARIABLES
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
-$border-radius-small-button: $border-radius-group * .5;
+$border-radius-small-button: divide($border-radius-group, 2);
 $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);

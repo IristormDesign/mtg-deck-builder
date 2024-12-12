@@ -1,12 +1,16 @@
 <template>
-	<input
-		type="checkbox"
+	<label
 		class="card-star"
-		@change="toggleCardStar(card)"
-		v-model="cardObject.starred"
-		:name="'s' + i"
 		title="(A)"
 	>
+		<input
+			type="checkbox"
+			@change="toggleCardStar(card)"
+			v-model="cardObject.starred"
+			:name="'s' + i"
+		>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m244-136 89-290L98-595h290l92-305 92 305h290L627-426l89 290-236-179-236 179Z"/></svg>
+	</label>
 </template>
 
 <script>

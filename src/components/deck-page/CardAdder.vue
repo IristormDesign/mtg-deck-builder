@@ -28,7 +28,12 @@
 					🎲 Add a random Magic card
 				</option>
 			</datalist>
-			<button :disabled="delay">Add</button>
+			<button
+				:disabled="delay"
+				title="Add card to list"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M434.5-434.5H191.87v-91H434.5v-242.63h91v242.63h242.63v91H525.5v242.63h-91V-434.5Z"/></svg>
+			</button>
 		</form>
 		<div v-else class="loading-indicator">
 			<span>Loading card&hellip;</span>

@@ -144,13 +144,13 @@ export default {
 				this.$nextTick(() => {
 					this.setHighlightedIndex(-1)
 				})
-			} else {
-				if (this.anyInputActive()) {
-					if (document.activeElement.classList.contains('card-star')) {
-						document.activeElement.blur()
-					} else {
-						return
-					}
+			} else if (this.anyInputActive()) {
+				if (
+					document.activeElement.parentElement.classList.contains('card-star')
+				) {
+					document.activeElement.blur()
+				} else {
+					return
 				}
 			}
 

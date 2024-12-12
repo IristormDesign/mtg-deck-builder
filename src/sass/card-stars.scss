@@ -1,100 +1,89 @@
 @import 'variables';
 
-@keyframes star-pulse {
-	from {
-		opacity: .25;
-	}
-	to {
-		opacity: .75;
-	}
-}
-
 .card-star {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -1.3333em;
+	left: -$lhse;
 	width: $width-card-star;
-	height: 100%;
-	padding: 0;
-	border: 0;
-	background: $color-group-bg;
-	opacity: 0;
 	border-radius: $border-radius-button;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
-	transition: $transition-duration-standard ease;
-	transition-property: opacity, transform, background, box-shadow;
-	box-shadow: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 
-	&:checked,
 	&:hover,
-	&:focus-visible {
-		background: $color-group-bg;
-		opacity: 1;
-		transition-duration: 0s, 0s, $transition-duration-standard, $transition-duration-standard !important;
-		transition-delay: 0s, 0s, 0s !important;
-	}
-	&:hover,
-	&:focus-visible {
-		animation: star-pulse .3333s ease-out 20 alternate;
-		filter: none !important;
+	&:focus-within,
+	&:active {
+		background: $color-heading-bg;
+		box-shadow: $box-shadow-card-list-row-bg-edge;
 
-		&:not(:checked) {
-			opacity: .5;
-		}
-		&::before {
-			transition: none !important;
-			color: saturate($color-card-star, 100%) !important;
-		}
-	}
-	&:hover:focus {
-		&:not(:checked) {
-			animation-delay: 2s; // This delay is for the moment immediately after the user un-stars a card while still having the mouse pointer hovering over the star checkbox input.
-			opacity: 0;
+		input {
+			&:checked {
+				+ svg {
+					fill: lighten($color-card-star, 16.67%);
+					filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
+					transition-delay: 0s;
+				}
+			}
 		}
 	}
 	&:active,
 	&.flash {
-		opacity: 1 !important;
-		animation: none;
-
-		&::before {
-			color: saturate(lighten($color-card-star, 20%), 50%) !important;
-		}
-	}
-	&:checked {
-		&::before {
-			color: $color-card-star;
-		}
-		&:hover,
-		&:focus-visible {
-			animation: none;
-
-			&::before {
-				transform: rotate(360deg*3) !important;
-				transition: transform 5s linear !important;
+		input {
+			&:not(:checked) {
+				+ svg {
+					transition-delay: 0s !important;
+					transform: scale(.75);
+				}
 			}
-			&::before {
-				animation: none;
-			}
-		}
-		&:active,
-		&.flash {
-			&::before {
-				transition-duration: 0s;
-				transition-delay: 0s;
+			+ svg {
+				transform: scale(1.3333);
+				z-index: 2;
+				transition-delay: 0s !important;
+				transition-duration: 0s !important;
 			}
 		}
 	}
-	&::before {
-		content: '★';
-		color: $color-card-star;
-		left: 4px;
+	input {
 		position: absolute;
-	}
-	&::after {
-		display: none;
+		right: $lhse*.625;
+		width: $lhse;
+		height: 100%;
+		padding: 0;
+		border: 0;
+		box-shadow: none;
+		background: none;
+
+		&:checked {
+			background: none;
+
+			+ svg {
+				opacity: 1;
+			}
+		}
+		&:not(:checked) {
+			+ svg {
+				transition-delay: 0s;
+				transition-duration: $transition-duration-standard*2;
+			}
+		}
+		&::after {
+			content: none;
+			display: none;
+		}
+		+ svg {
+			opacity: 0;
+			fill: $color-card-star;
+			width: $lhse*.8333;
+			height: $lhse*.8333;
+			position: relative;
+			left: $lhse*.125;
+			transition: $transition-duration-standard ease;
+			transition-property: opacity, fill, transform, filter;
+			z-index: 1;
+		}
 	}
 }
 .card-list-section {
@@ -103,16 +92,35 @@
 		&:focus-within,
 		&.highlight {
 			.card-star {
-				background: $color-heading-bg;
-				box-shadow: $box-shadow-card-list-row-bg-edge;
-
-				&:not(:checked) {
-					opacity: .25;
-					transition-delay: .75s;
-					transition-duration: 1.5s;
-
-					&::before {
-						transition-duration: 0s;
+				input {
+					&:checked {
+						+ svg {
+							opacity: 1;
+							fill: lighten($color-card-star, 16.67%);
+							filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
+							transition-delay: 0s;
+							transition-duration: $transition-duration-standard;
+						}
+					}
+					+ svg {
+						opacity: .25;
+					}
+				}
+				&:not(:hover),
+				&:not(:focus-within) {
+					input {
+						&:checked {
+							+ svg {
+								transition-delay: 0s;
+								transition-duration: $transition-duration-standard;
+							}
+						}
+						&:not(:checked) {
+							+ svg {
+								transition-delay: 1s, 0s, 0s, 0s !important;
+								transition-duration: 2s, $transition-duration-standard, $transition-duration-standard, $transition-duration-standard !important;
+							}
+						}
 					}
 				}
 			}
@@ -120,43 +128,19 @@
 		&.highlight {
 			.card-star {
 				outline: $outline-keyboard-focus;
-				transition-delay: 0s !important;
-				transition-duration: 0s !important;
 
 				&.flash {
+					background: $color-input-bg-active;
 					outline-color: $color-link-focus;
-				}
-				&:not(:checked) {
-					&:not(.flash) {
-						&::before {
-							transition: none !important; // Prevents the spinning star animation while the card item is focused and the user has just removed the star from the card.
+
+					input {
+						&:not(:checked) {
+							+ svg {
+								opacity: 0 !important;
+								transition-delay: 0s !important;
+								transition-duration: $transition-duration-standard !important;
+							}
 						}
-					}
-				}
-			}
-		}
-	}
-}
-
-@media (pointer: coarse) {
-	.card-star {
-		opacity: 1;
-
-		&:not(:checked) {
-			animation: none !important;
-			opacity: 1 !important;
-
-			&::before{
-				content: '';
-			}
-		}
-	}
-	@supports selector(:has(.card-star:checked)) {
-		.card-list-section {
-			&:has(.card-star:checked) {
-				.card-star {
-					&:not(:checked) {
-						opacity: 0 !important;
 					}
 				}
 			}

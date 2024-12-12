@@ -117,6 +117,9 @@
 			filter: contrast(.5) brightness(.6667);
 			opacity: 1;
 		}
+		svg {
+			fill: $color-black-label-text;
+		}
 	}
 	.increment,
 	.decrement {
@@ -150,8 +153,12 @@
 		div {
 			font-size: 54.17%;
 			line-height: 1.125;
-			margin-top: $lhse*.0625;
 			margin-left: -1px;
+		}
+		svg {
+			width: $lhse*1.0833;
+			height: $lhse*1.0833;
+			margin-bottom: -$lhse*.1667;
 		}
 	}
 	&.kb-shortcut-highlight {

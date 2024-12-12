@@ -18,6 +18,9 @@ $width-card-list-section-narrow:
 		height: fit-content;
 		border-radius: $border-radius-group;
 	}
+	svg {
+		fill: $color-text;
+	}
 	.viewing-controls {
 		min-height: 0%; // Needed for Firefox on sideboard lists
 		height: $height-deck-header-component;
@@ -40,16 +43,25 @@ $width-card-list-section-narrow:
 	fieldset {
 		padding: 0;
 		border: 0;
-		margin: $lhse*.25 0;
+		margin: 0;
 		display: flex;
 		align-items: center;
-		flex-wrap: wrap;
-		justify-content: center;
-		width: min-content;
+		justify-content: space-evenly;
 
 		label {
-			white-space: nowrap;
-			padding-bottom: $lhse*.25;
+			@include tiny-font-size;
+			font-weight: $font-weight-label;
+			grid-row: 2;
+			grid-column: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: -$lhse*.25 !important;
+		}
+		svg {
+			width: 36px;
+			height: 36px;
 		}
 		&:disabled {
 			opacity: divide(1, 3);
@@ -67,20 +79,35 @@ $width-card-list-section-narrow:
 		}
 	}
 	select {
+		grid-row: span 2;
+		grid-column: 2;
 		height: $height-control-panel-input*.875;
-		font-weight: $font-weight-semibold;
 	}
 }
 .card-group-switch {
 	> div {
-		display: flex;
 		justify-content: center;
+		display: flex;
+		align-items: center;
+	}
+	header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: -$lhse*.1667;
+		margin-right: $lhse*.25;
+	}
+	svg {
+		width: 36px;
+		height: 36px;
 	}
 	h3 {
-		margin-bottom: $lhse*.25;
+		@include tiny-font-size;
+		font-weight: $font-weight-label;
 		align-self: center;
 		cursor: default;
 		text-align: center;
+		padding: 0 !important;
 	}
 	fieldset {
 		padding: 0 divide($lhse, 3);
@@ -108,16 +135,30 @@ $width-card-list-section-narrow:
 }
 .scryfall-button,
 .list-entry-button {
+	display: flex;
+	flex-direction: column;
+	padding-right: $lhse*.125 !important;
+	padding-left: $lhse*.125 !important;
+	text-align: center;
+
 	a {
 		@include button('gray');
 		min-width: 0;
-		width: $lhse*1.6667;
-		height: $lhse*1.6667;
+		width: $lhse*2;
+		height: $lhse*2;
 		border-radius: $border-radius-small-button;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 0 $lhse*.25;
+		font-size: 80%
+	}
+	.label {
+		@include tiny-font-size;
+		font-weight: $font-weight-label;
+		line-height: $line-height-standard*.75;
+		width: $lhse*4;
+		margin-bottom: -$lhse*.125;
 	}
 }
 .scryfall-button {
@@ -126,8 +167,8 @@ $width-card-list-section-narrow:
 	}
 	img {
 		filter: brightness(.9167) saturate(1.1667);
-		width: $lhse*1.25;
-		height: $lhse*1.25;
+		width: $lhse*1.6;
+		height: $lhse*1.6;
 	}
 }
 .list-entry-button {
@@ -135,10 +176,12 @@ $width-card-list-section-narrow:
 		display: none;
 	}
 	a {
-		div {
-			@include tiny-font-size;
-			line-height: .875;
-		}
+		padding: 0;
+	}
+	svg {
+		fill: $color-black-label-text;
+		width: $lhse*1.75;
+		height: $lhse*1.75;
 	}
 }
 .card-adder {
@@ -197,6 +240,15 @@ $width-card-list-section-narrow:
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		margin-left: 1px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			fill: $color-black-label-text !important;
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
+		}
 	}
 	.loading-indicator {
 		display: flex;
