@@ -185,6 +185,9 @@ kbd {
 		width: $kbd-height * 4;
 	}
 }
+svg {
+	fill: currentColor;
+}
 ::selection {
 	background: rgba(desaturate($color-mythic-orange, 12.5%), .5);
 	color: #fff;

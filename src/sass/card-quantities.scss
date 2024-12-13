@@ -117,9 +117,6 @@
 			filter: contrast(.5) brightness(.6667);
 			opacity: 1;
 		}
-		svg {
-			fill: $color-black-label-text;
-		}
 	}
 	.increment,
 	.decrement {

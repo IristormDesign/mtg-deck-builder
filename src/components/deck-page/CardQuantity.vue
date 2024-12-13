@@ -36,7 +36,7 @@
 				:disabled="disableMoveToGroup"
 			>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m326.15-434.5 218.74 218.74L480-151.87 151.87-480 480-808.13l64.89 63.89L326.15-525.5h481.98v91H326.15Z"/></svg>
+					<svg><use href="#left-arrow-icon" /></svg>
 					<br>M</div>
 			</button>
 			<button
@@ -47,7 +47,7 @@
 				:disabled="disableMoveToGroup"
 			>
 				<div>
-					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M633.85-434.5H151.87v-91h481.98L415.11-744.24 480-808.13 808.13-480 480-151.87l-64.89-63.89L633.85-434.5Z"/></svg>
+					<svg><use href="#right-arrow-icon" /></svg>
 					<br>SB
 				</div>
 			</button>

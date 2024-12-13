@@ -18,9 +18,6 @@ $width-card-list-section-narrow:
 		height: fit-content;
 		border-radius: $border-radius-group;
 	}
-	svg {
-		fill: $color-text;
-	}
 	.viewing-controls {
 		min-height: 0%; // Needed for Firefox on sideboard lists
 		height: $height-deck-header-component;
@@ -245,7 +242,7 @@ $width-card-list-section-narrow:
 		justify-content: center;
 
 		svg {
-			fill: $color-black-label-text !important;
+			fill: currentColor !important;
 			width: $lhse*1.3333;
 			height: $lhse*1.3333;
 		}
