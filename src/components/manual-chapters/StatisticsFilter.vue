@@ -1,14 +1,14 @@
 <template functional>
 	<section id="statistics-filter" key="statistics-filter">
 		<h4>Statistics Filter</h4>
-		<p>At times when you’re in the <a href="#deck-analyzer">Deck Analyzer</a>, you may want to examine statistics about a specific aspect of your deck rather than about your whole deck in general. For those times, you can use a statistics filter, which narrows down the data presented to you based on any card attribute you choose.</p>
-		<p>To turn on a filter in the Deck Analyzer, click the row of the <a href="#data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>
+		<p>When you’re in the <a href="#deck-analyzer">Deck Analyzer</a>, you may sometimes want to examine statistics about a specific aspect of your deck rather than about your deck as a whole. For those times, you can use a statistics filter, which narrows down the data presented to you based on any card attribute you choose.</p>
+		<p>To turn on a statistics filter in the Deck Analyzer, click the row of the <a href="#data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>
 		<p>The exception to toggling filters is the table for the “Power & Toughness” category’s greatest/median/least subsection, where you must click a particular cell on a row instead of just any cell on a row.</p>
 		<p>When a filter is on, the following effects happen:</p>
 		<ul>
 			<li><p>Any data about your deck that doesn’t match the selected card attribute is temporarily hidden. All data will return once the filter is turned off.</p></li>
 			<li><p>For the table row relating to the filtered attribute, it distinctly appears highlighted orange with a bright orange dashed outline.</p></li>
-			<li><p>The filter notification banner, which is at the top of the Deck Analyzer, indicates the specific attribute, if any, that’s currently being filtered for.</p></li>
+			<li><p>At the top of the Deck Analyzer is the filter notification banner. It indicates the specific attribute that’s currently being filtered for, if any.</p></li>
 			<li><p>In each statistic category, the numbers for the total counts and percentages update to count only your deck’s remaining cards after filtering.</p></li>
 			<li><p>No more than one filter can be active at a time. If you turn on a filter while another is already on, then the new filter replaces (rather than adds upon) the prior one.</p></li>
 		</ul>
