@@ -49,8 +49,8 @@
 		class="action-done content-box"
 	>
 		<figure>
-			<img class="intro-illustration" src="~@/img/island.jpg" width="626" height="457" alt="Illustration of ships sailing away from a port town" />
-			<figcaption>(Illustration: <a href="https://scryfall.com/card/afr/268/island" target="_blank"><i>Island</i> </a> [AFR] by Titus Lunter)</figcaption>
+			<img class="intro-illustration" src="~@/img/island.jpg" width="626" height="457" alt="An illustration of ships sailing away from a port town" />
+			<figcaption>Illustration: <a href="https://scryfall.com/card/afr/268/island" target="_blank"><i>Island</i> </a> [AFR] by Titus Lunter</figcaption>
 		</figure>
 		<p class="bigger">{{ this.exportedDecksMessage }}</p>
 	</article>
