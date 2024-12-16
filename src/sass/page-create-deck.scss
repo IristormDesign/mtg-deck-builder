@@ -1,49 +1,75 @@
 @import 'variables';
 
 .create-deck-page {
+	max-width: $max-width-app*.6667;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: $lhse;
+	align-items: flex-start;
+
 	h2 {
+		grid-column: span 2;
 		text-align: center;
-		margin-bottom: $lhse*.5;
+		margin-bottom: 0;
+	}
+	.intro {
+		p {
+			margin-bottom: 0;
+		}
+	}
+	figure {
+		margin: 0;
 	}
 	.columns {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
-		margin: $lhse*.5 0;
+		gap: $lhse*.5;
+		height: 100%;
+	}
+	.button-container {
+		display: flex;
+		align-items: center;
 	}
 	.new-deck,
 	.import-data {
 		border: $border-sections-thick;
 		padding: $lhse*.5 $lhse*.75;
-		margin: $margin-sections;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 	.new-deck {
 		form {
-			display: grid;
-			grid-template-columns: 4fr 1fr;
-			grid-template-rows: min-content $lhse;
-			gap: $lhse*.25 0;
+			display: flex;
+			flex-direction: column;
+			gap: $lhse*.25;
+			width: 100%;
 			align-items: center;
-			margin: $margin-sections 0;
 		}
 		label {
-			font-family: $font-family-standard;
-			font-weight: normal;
-			grid-column: span 2;
-			padding-left: divide($lhse, 4);
+			font-weight: $font-weight-label;
 		}
 		input {
 			border-radius: $border-radius-button;
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
 			width: 100%;
+			max-width: (50ch * .5);
+			text-align: center;
+			font-size: $font-size-bigger;
+			height: $lhse*1.25;
+		}
+		.button-container {
+			height: $lhse*1.5;
+			margin-top: $lhse*.125;
+			margin-bottom: $lhse*.125;
 		}
 		button {
 			min-width: auto;
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
-			height: $height-control-panel-input;
-			margin-left: 1px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 	.import-data {
@@ -52,24 +78,75 @@
 		align-items: center;
 		justify-content: space-evenly;
 
+		h3 {
+			margin: 0;
+		}
+		.button-container {
+			height: $lhse*2;
+		}
 		button {
-			min-height: $lhse*2.25; // Needed to prevent the heading from jumping on button press
+			display: flex;
+			font-size: $font-size-small;
+		}
+		svg {
+			width: $lhse*1.5;
+			height: $lhse*1.5;
 		}
 	}
 	h3 {
 		margin-top: 0;
+		display: flex;
+		align-items: center;
+	}
+	svg {
+		width: $lhse;
+		height: $lhse;
+	}
+	.for-more-info {
+		grid-column: span 2;
 	}
 }
-@media (max-width: ($min-width-app * .4)) {
+
+@media (max-width: ($min-width-app)) {
 	.create-deck-page {
-		.new-deck {
-			margin-right: 0;
-			margin-left: 0;
+		grid-template-columns: auto;
+		max-width: $max-width-content;
+
+		h2 {
+			margin-bottom: 0;
+			grid-column: 1;
+		}
+		.columns {
+			display: flex;
+			gap: $lhse*.5;
 		}
 		.new-deck,
 		.import-data {
+			width: auto;
 			padding-right: $lhse*.5;
 			padding-left: $lhse*.5;
+		}
+		.new-deck {
+			flex-grow: 1;
+		}
+		.import-data {
+			flex-grow: .25;
+
+			h3 {
+				margin-bottom: divide($lhse, 3);
+			}
+		}
+		.for-more-info {
+			grid-column: 1;
+		}
+	}
+}
+@media (max-width: ($min-width-app*.4)) {
+	.create-deck-page {
+		.new-deck {
+			input {
+				font-size: 100%;
+			}
 		}
 	}
 }

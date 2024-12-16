@@ -47,3 +47,10 @@
 .svg-symbols {
 	display: none;
 }
+.for-more-info {
+	border-top: $border-sections;
+	text-align: center;
+	margin-top: $lhse*.5;
+	font-size: $font-size-small;
+	font-style: italic;
+}

@@ -1,15 +1,17 @@
 <template>
 	<article class="create-deck-page content-box">
 		<h2>Create Deck</h2>
-		<figure>
-			<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
-			<figcaption>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank">Armillary Sphere</a></i> by Franz Vohwinkel)</figcaption>
-		</figure>
-		<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import a pre-made deck from a deck data file.</p>
 
+		<div class="intro">
+			<figure>
+				<img class="intro-illustration" src="~@/img/armillary-sphere.jpg" width="626" height="457" alt="Illustration of a large, detailed, open book" />
+				<figcaption>(Illustration: <i><a href="https://scryfall.com/card/cmr/298/armillary-sphere" target="_blank">Armillary Sphere</a></i> by Franz Vohwinkel)</figcaption>
+			</figure>
+			<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import pre-made decks from a deck data file you may have.</p>
+		</div>
 		<div class="columns">
 			<div class="new-deck">
-				<h3>Start a New Deck</h3>
+				<h3>New Deck</h3>
 				<form @submit.prevent="submitDeckName()">
 					<label for="deck-name">Give your deck a name:</label>
 					<input
@@ -19,7 +21,12 @@
 						ref="focus"
 						autocomplete="off"
 					/>
-					<button>Start</button>
+					<div class="button-container">
+						<button>
+							Start
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M630-444H192v-72h438L429-717l51-51 288 288-288 288-51-51 201-201Z"/></svg>
+						</button>
+					</div>
 				</form>
 			</div>
 			<div class="import-data">
@@ -29,9 +36,17 @@
 					type="file" accept=".deck"
 					style="display: none"
 				/>
-				<button id="file-btn">Open Deck<br> Data File</button>
+				<div class="button-container">
+					<button id="file-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M450-224.62h60V-402l74 74 42.15-42.77L480-516.92 333.85-370.77l42.77 42.15L450-402v177.38ZM180-100v-760h390l210 210v550H180Zm360-520v-180H240v640h480v-460H540ZM240-800v180-180 640-640Z"/></svg>
+						Open Deck<br> Data File
+					</button>
+				</div>
 			</div>
 		</div>
+		<footer class="for-more-info">
+			<p>For more information about creating decks in this app, see the <router-link to="/manual/#create-deck">user manual</router-link>.</p>
+		</footer>
 	</article>
 </template>
 

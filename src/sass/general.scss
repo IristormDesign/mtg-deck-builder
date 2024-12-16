@@ -146,8 +146,7 @@ figure {
 	}
 }
 figcaption {
-	font-size: 80%;
-	letter-spacing: (1/128)*1em;
+	@include tiny-font-size;
 	text-align: center;
 	margin: $lhse*.125;
 	color: $color-text-darker;
