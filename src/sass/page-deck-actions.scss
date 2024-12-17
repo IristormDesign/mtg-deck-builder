@@ -51,6 +51,19 @@
 	.submit-button {
 		grid-column: span 2;
 	}
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: $lhse*.0833;
+		padding-bottom: $lhse*.0833;
+
+		svg {
+			margin-right: .5ch;
+			width: $lhse*1.25;
+			height: $lhse*1.25;
+		}
+	}
 }
 .action-done {
 	text-align: center;

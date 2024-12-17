@@ -19,14 +19,20 @@
 							@click="selectAll()"
 							:disabled="numChecked === numExisting"
 							type="button"
-						>Select All</button>
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M293-288 100-482l50-50 143 142 51 51-51 51Zm204 0L303-482l51-51 143 143 324-324 51 51-375 375Zm0-203-51-51 172-172 51 51-172 172Z"/></svg>
+							Select All
+						</button>
 					</div>
 					<div class="button-container">
 						<button
 							@click="selectNone()"
 							:disabled="numChecked === 0"
 							type="button"
-						>Deselect All</button>
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M823-86 588-321l-91 91-170-170 51-51 119 119 40-40-393-393 51-51 679 679-51 51ZM293-230 123-400l51-51 116 116 54 54-51 51Zm397-193-51-51 147-147 51 51-147 147ZM588-525l-51-51 45-44 51 51-45 44Z"/></svg>
+							Deselect All
+						</button>
 					</div>
 				</div>
 				<ul class="checklist">
@@ -39,7 +45,10 @@
 					<button
 						@click.prevent="handleSubmit()"
 						:disabled="numChecked <= 0"
-					>Delete Selected</button>
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M200.67-120v-620H160v-66.67h192V-840h256v33.33h192V-740h-40.67v620H200.67Zm66.66-66.67h425.34V-740H267.33v553.33Zm97.34-84h66.66v-386h-66.66v386Zm164 0h66.66v-386h-66.66v386ZM267.33-740v553.33V-740Z"/></svg>
+						Delete Selected
+					</button>
 				</div>
 			</form>
 		</template>

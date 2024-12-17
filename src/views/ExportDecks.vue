@@ -19,14 +19,20 @@
 							@click="selectAll()"
 							:disabled="numChecked === numExisting"
 							type="button"
-						>Select All</button>
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M293-288 100-482l50-50 143 142 51 51-51 51Zm204 0L303-482l51-51 143 143 324-324 51 51-375 375Zm0-203-51-51 172-172 51 51-172 172Z"/></svg>
+							Select All
+						</button>
 					</div>
 					<div class="button-container">
 						<button
 							@click="selectNone()"
 							:disabled="numChecked === 0"
 							type="button"
-						>Deselect All</button>
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M823-86 588-321l-91 91-170-170 51-51 119 119 40-40-393-393 51-51 679 679-51 51ZM293-230 123-400l51-51 116 116 54 54-51 51Zm397-193-51-51 147-147 51 51-147 147ZM588-525l-51-51 45-44 51 51-45 44Z"/></svg>
+							Deselect All
+						</button>
 					</div>
 				</div>
 				<ul class="checklist">
@@ -39,7 +45,10 @@
 					<button
 						@click.prevent="exportSelectedDecks()"
 						:disabled="numChecked <= 0"
-					>Export Selected</button>
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-480ZM201.33-74.33 154.67-122l124.66-124.67h-114v-66.66h227.34V-86H326v-113L201.33-74.33Zm258-5.67v-66.67h274V-600H520v-213.33H226.67V-380H160v-500h400l240 240v560H459.33Z"/></svg>
+						Export Selected
+					</button>
 				</div>
 			</form>
 		</template>

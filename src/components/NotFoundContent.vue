@@ -4,7 +4,7 @@
 
 		<figure>
 			<img class="intro-illustration" src="~@/img/one-with-nothing.jpg" width="616" height="412" alt="One with Nothing" />
-			<figcaption>(Illustration: <i><a href="https://scryfall.com/card/sok/84/one-with-nothing" target="_blank">One with Nothing</a></i> by Jim Nelson)</figcaption>
+			<figcaption>Illustration: <i><a href="https://scryfall.com/card/sok/84/one-with-nothing" target="_blank">One with Nothing</a></i> by Jim Nelson</figcaption>
 		</figure>
 
 		<p>Your web browser tried to go to a page that doesn’t exist at the given URL. If a page existed at this URL before, it has since been deleted or renamed.</p>
