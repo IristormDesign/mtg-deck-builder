@@ -10,7 +10,7 @@
 			<p>Why might you want to see your deck in the form of plain text?</p>
 			<ul>
 				<li>
-					<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic</i> card singles, they provide a way to search for a whole list of cards at once. Stores may call this list-searching method “mass entry,” “deck builder,” etc. You can copy your plain-text deck lists from this app, then paste it into an online store’s mass entry search.</p>
+					<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic</i> card singles, they provide you a way to search for a list of cards at once. Stores may call this list-searching method “mass entry,” “deck builder,” etc. You can copy your plain-text deck lists from this app, then paste it into an online store’s mass entry search.</p>
 				</li>
 				<li>
 					<p><strong>Print out your deck lists.</strong> A plain text document is better suited for printing on paper than the web page of the <a href="#deck-editor">Deck Editor</a>.</p>
