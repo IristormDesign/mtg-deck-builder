@@ -2,7 +2,7 @@
 	<section id="add-card-list" key="add-card-list">
 		<h4>Add Card List Button</h4>
 		<p>When creating a <a href="#create-deck">new deck</a>, you might know many or all of the certain <i>Magic</i> cards that you plan to include in it. Though you can use the <a href="#card-adder">card adder</a> to add those card names to your deck one by one, a faster method is to use the submission form on the <a href="#card-list-entry">Card List Entry page</a> instead.</p>
-		<p>To go to the Card List Entry page, click the Add Card List button, which is next to the card adder section in the <a href="#list-editor">List Editor</a>.</p>
+		<p>To go to the Card List Entry page, click the Add Card List button. That button is located in the <a href="#list-editor">List Editor</a>, next to the card adder section.</p>
 
 		<section id="card-list-entry">
 			<h5>Card List Entry Page</h5>

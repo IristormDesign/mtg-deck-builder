@@ -7,8 +7,9 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The card sorter (the section labeled “Sort By” in the <a href="#list-editor">List Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways.</p>
-		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you choose. It appears in the section labeled “Sort By” in the <a href="#list-editor">List Editor</a>.</p>
+
+		<p>The card sorter has a drop-down menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but doesn’t affect other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
@@ -21,7 +22,7 @@
 				<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
 			</li>
 			<li>
-				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost), and moves land cards to the top.</p>
+				<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost). Cards of mana value 0 are sorted between lands and spells.</p>
 			</li>
 			<li>
 				<p><strong>Supertype</strong> – Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Common supertypes are “basic” [on land cards] and “legendary.”)</p>
@@ -39,8 +40,7 @@
 				<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>
 			</li>
 			<li>
-				<p><strong>P/T Sum</strong> – Sorts from greatest to least by “P/T sum,” which is a number equal to the combined power and toughness (P/T) numbers of a card. (For example, the P/T sum of a 3/2 creature is 5.)</p>
-				<p>Among cards having the same P/T sums as each other, they’re sorted by power alone from greatest to least. Cards without the power and toughness attribute are moved to the bottom.</p>
+				<p><strong>P/T Sum</strong> – Sorts from greatest to least by “P/T sum,” which is a number equal to the combined power and toughness (P/T) numbers of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted by power alone from greatest to least. Cards without the power and toughness attribute are moved to the bottom.</p>
 			</li>
 			<li>
 				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
