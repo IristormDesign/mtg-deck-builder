@@ -54,11 +54,22 @@
 		padding: 0;
 		border: 0;
 		box-shadow: none;
-		background: none;
+		background: none !important;
 
 		&:checked {
 			background: none;
 
+			&:hover {
+				+ svg {
+					@keyframes spin {
+						100% {
+							transform: rotate(360deg);
+						}
+					}
+
+					animation: spin 1.6667s ease-out;
+				}
+			}
 			+ svg {
 				opacity: 1;
 			}
