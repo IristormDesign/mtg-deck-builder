@@ -60,7 +60,7 @@
 					v-else
 					class="no-cards"
 				>
-					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
+					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 				</div>
 			</section>
 		</div>

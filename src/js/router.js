@@ -34,9 +34,9 @@ const routes = [
 		component: () => import(/* webpackChunkName: "deck" */ '@/views/DeckPage.vue'),
 		children: [
 			{
-				name: 'deckEditor',
+				name: 'listEditor',
 				path: '',
-				component: () => import(/* webpackChunkName: "deck-editor" */ '@/views/DeckEditor.vue')
+				component: () => import(/* webpackChunkName: "list-editor" */ '@/views/ListEditor.vue')
 			},
 			{
 				name: 'deckAnalyzer',

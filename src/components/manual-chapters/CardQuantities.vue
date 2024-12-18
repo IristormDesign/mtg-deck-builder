@@ -7,7 +7,7 @@
 				alt="Snippet of card quantities" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>Each card name in the <a href="#deck-editor">Deck Editor</a>’s <a href="#card-list">card list</a> has a quantity section, located to the right of the name’s <a href="#card-bars">card bar</a>. This section shows the name’s quantity as it is within the active <a href="#card-groups">card group</a> of your deck, and provides you controls to change the quantity.</p>
+		<p>Each card name in the <a href="#list-editor">List Editor</a>’s <a href="#card-list">card list</a> has a quantity section, located to the right of the name’s <a href="#card-bars">card bar</a>. This section shows the name’s quantity as it is within the active <a href="#card-groups">card group</a> of your deck, and provides you controls to change the quantity.</p>
 		<p>One way to edit a card name’s quantity is to click directly on the quantity number, which makes your web browser focus on the quantity input field. While the field has focus, you can use your keyboard to type in a new number.</p>
 		<p>Other ways to change a card name’s quantity are to click any of the buttons among the card name’s cluster of quantity-adjustment buttons. This button cluster is normally invisible, but it appears to the right of the quantity input field whenever that field has browser focus, or whenever you hover your mouse pointer over the field.</p>
 		<p>The cluster of quantity-adjustment buttons has the following buttons with their effects:</p>

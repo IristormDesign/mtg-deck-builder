@@ -275,7 +275,7 @@ export default {
 			this.$store.commit('sortDeckMenu')
 
 			this.$router.push({
-				name: 'deckEditor',
+				name: 'listEditor',
 				params: { deckPath: path }
 			})
 		}

@@ -43,7 +43,7 @@
 					</li>
 					<li><a href="#deck-page-modes">Deck Page Modes</a></li>
 					<li>
-						<a href="#deck-editor">Deck Editor</a>
+						<a href="#list-editor">List Editor</a>
 						<ol>
 							<li><a href="#card-image">Card Image</a></li>
 							<li><a href="#card-sorter">Card Sorter</a></li>
@@ -92,7 +92,7 @@
 						<a href="#keyboard-shortcuts">Keyboard Shortcuts</a>
 						<ol>
 							<li><a href="#kbsc-deck-page-modes">Deck Page Modes</a></li>
-							<li><a href="#kbsc-deck-editor">Deck Editor Actions</a></li>
+							<li><a href="#kbsc-list-editor">List Editor Actions</a></li>
 							<li><a href="#kbsc-deck-analyzer">Deck Analyzer Actions</a></li>
 							<li><a href="#kbsc-draw-sim">Draw Simulator Actions</a></li>
 						</ol>
@@ -115,7 +115,7 @@
 			<deck-pages />
 			<deck-page-header />
 			<deck-page-modes />
-			<deck-editor />
+			<list-editor />
 			<deck-analyzer />
 			<draw-sim />
 			<keyboard-shortcuts />
@@ -132,7 +132,7 @@ import CreateDeckPage from '@/components/manual-chapters/CreateDeckPage.vue'
 import DeckPages from '@/components/manual-chapters/DeckPages.vue'
 import DeckPageHeader from '@/components/manual-chapters/DeckPageHeader.vue'
 import DeckPageModes from '@/components/manual-chapters/DeckPageModes.vue'
-import DeckEditor from '@/components/manual-chapters/DeckEditor.vue'
+import ListEditor from '@/components/manual-chapters/ListEditor.vue'
 import DeckAnalyzer from '@/components/manual-chapters/DeckAnalyzer.vue'
 import DrawSim from '@/components/manual-chapters/DrawSim.vue'
 import KeyboardShortcuts from '@/components/manual-chapters/KeyboardShortcuts.vue'
@@ -140,7 +140,7 @@ import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vu
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, DeckEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, ListEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
 	watch: {
 		$route () {
 			if (this.$route.hash === '') {

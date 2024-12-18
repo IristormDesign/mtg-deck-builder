@@ -9,8 +9,8 @@ export default {
 	computed: {
 		deckModeHeading () {
 			switch (this.$route.name) {
-				case 'deckEditor':
-					return 'Deck Editor'
+				case 'listEditor':
+					return 'List Editor'
 				case 'deckAnalyzer':
 					return 'Deck Analyzer'
 				case 'drawSim':

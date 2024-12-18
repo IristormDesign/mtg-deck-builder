@@ -1,8 +1,8 @@
 <template>
-	<section id="deck-editor">
-		<h3>Deck Editor</h3>
-		<p>The Deck Editor is a <a href="#deck-page-modes">deck page mode</a> where you can view, add, remove, and organize every card in your deck.</p>
-		<p>The page for the Deck Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page from top to bottom, left to right:</p>
+	<section id="list-editor">
+		<h3>List Editor</h3>
+		<p>The List Editor is a <a href="#deck-page-modes">deck page mode</a> where you can view, add, remove, and organize every card in your deck.</p>
+		<p>The page for the List Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#card-image">Card image</a></li>
 			<li><a href="#card-sorter">Card sorter</a></li>
@@ -20,7 +20,7 @@
 			<li><a href="#card-adder">Card adder</a></li>
 			<li><a href="#add-card-list">Add Card List button</a></li>
 		</ol>
-		<p>Each of the Deck Editor’s sections is going to be explained in further detail.</p>
+		<p>Each of the List Editor’s sections is going to be explained in further detail.</p>
 
 		<card-image />
 		<card-sorter />

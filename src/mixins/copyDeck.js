@@ -58,7 +58,7 @@ export default {
 			store.commit('sortDeckMenu')
 
 			router.push({
-				name: 'deckEditor',
+				name: 'listEditor',
 				params: { deckPath: deck.path }
 			})
 		}

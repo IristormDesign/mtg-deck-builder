@@ -9,7 +9,7 @@
 				alt="Snippet of card list" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>In the <a href="#deck-editor">Deck Editor</a>’s <a href="#card-list">card list</a>, card bars represent the certain names of <i>Magic</i> cards in your deck’s active <a href="#card-groups">card group</a>. Each bar is labeled with the following characteristics of the card it represents:</p>
+		<p>In the <a href="#list-editor">List Editor</a>’s <a href="#card-list">card list</a>, card bars represent the certain names of <i>Magic</i> cards in your deck’s active <a href="#card-groups">card group</a>. Each bar is labeled with the following characteristics of the card it represents:</p>
 		<ul>
 			<li>Name</li>
 			<li>Mana cost (if any)</li>

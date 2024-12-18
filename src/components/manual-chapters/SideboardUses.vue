@@ -13,6 +13,6 @@
 				<p>Some cards have abilities that specially let you get cards from “outside the game.” The sideboard can contain the outside cards that you intend to play with your deck.</p>
 			</li>
 		</ul>
-		<p>Of the three <a href="#deck-page-modes">deck page modes</a>, only the <a href="#deck-editor">Deck Editor</a> uses the sideboard.</p>
+		<p>Of the three <a href="#deck-page-modes">deck page modes</a>, only the <a href="#list-editor">List Editor</a> uses the sideboard.</p>
 	</section>
 </template>

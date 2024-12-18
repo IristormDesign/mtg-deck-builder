@@ -7,7 +7,7 @@ $width-card-list-section-wide:
 $width-card-list-section-narrow:
 	$width-card-bars-narrow + $width-card-star + $width-qty-column;
 
-.deck-editor {
+.list-editor {
 	margin: 0 auto $lhse*.5;
 	display: flex;
 	gap: $margin-card-gap-after $lhse*.5;
@@ -279,7 +279,7 @@ $width-card-list-section-narrow:
 }
 
 @mixin viewing-controls-single-layer-compressed {
-	.deck-editor {
+	.list-editor {
 		.viewing-controls {
 			grid-template-columns: auto auto;
 			height: $height-deck-header-component;
@@ -309,7 +309,7 @@ $width-card-list-section-narrow:
 	}
 }
 @mixin viewing-controls-single-layer {
-	.deck-editor {
+	.list-editor {
 		.viewing-controls {
 			height: $lhse*3;
 
@@ -334,7 +334,7 @@ $width-card-list-section-narrow:
 	}
 }
 @mixin viewing-controls-double-layers {
-	.deck-editor {
+	.list-editor {
 		.viewing-controls {
 			grid-template-rows: 1fr 1fr;
 			grid-template-columns: auto;
@@ -349,7 +349,7 @@ $width-card-list-section-narrow:
 	}
 }
 @mixin adder-controls-single-layer {
-	.deck-editor {
+	.list-editor {
 		.adder-controls {
 			grid-template-rows: auto;
 			grid-template-columns: 1fr 1fr minmax(auto, 6fr);
@@ -385,7 +385,7 @@ $width-card-list-section-narrow:
 	}
 }
 @mixin adder-controls-double-layers {
-	.deck-editor {
+	.list-editor {
 		.adder-controls {
 			grid-template-rows: $lhse*2 $lhse*3;
 			grid-template-columns: 1fr 1fr;
@@ -415,7 +415,7 @@ $width-card-list-section-narrow:
 @include adder-controls-single-layer;
 
 @media (max-width: ($width-app-breakpoint-tablet * 1.03125)) {
-	.deck-editor {
+	.list-editor {
 		.layout-column {
 			margin-right: $lhse; // Needed space for the quantity button cluster.
 		}
@@ -425,7 +425,7 @@ $width-card-list-section-narrow:
 	@include viewing-controls-single-layer;
 	@include adder-controls-double-layers;
 
-	.deck-editor {
+	.list-editor {
 		.layout-column {
 			margin-right: 0;
 		}
@@ -435,7 +435,7 @@ $width-card-list-section-narrow:
 	}
 }
 @media (max-width: $min-width-app) {
-	.deck-editor {
+	.list-editor {
 		max-width: $max-width-deck-page-layout;
 	}
 }
@@ -443,7 +443,7 @@ $width-card-list-section-narrow:
 	@include viewing-controls-single-layer-compressed;
 	@include adder-controls-single-layer;
 
-	.deck-editor {
+	.list-editor {
 		grid-template-areas:
 			'panel-1'
 			'card-list'
@@ -463,7 +463,7 @@ $width-card-list-section-narrow:
 @media (max-width: ($min-width-app * .75)) {
 	@include viewing-controls-single-layer;
 
-	.deck-editor {
+	.list-editor {
 		.viewing-controls {
 			width: 100%;
 			max-width: none;
@@ -480,7 +480,7 @@ $width-card-list-section-narrow:
 @media (max-width: ($min-width-app * .5)) {
 	@include viewing-controls-double-layers;
 
-	.deck-editor {
+	.list-editor {
 		display: block;
 		max-width: 100%;
 		margin: 0 0 $lhse*.25;

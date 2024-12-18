@@ -142,7 +142,7 @@ export default {
 		showPlacementOutline () {
 			if (this.isMobileLayout()) {
 				return false
-			} else if (this.$route.name === 'deckEditor') {
+			} else if (this.$route.name === 'listEditor') {
 				return this.activeCardList.cards.length === 0
 			} else if (this.$route.name === 'drawSim') {
 				return !this.$store.state.viewedDrawnCard

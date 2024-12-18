@@ -5,7 +5,7 @@
 			class="no-cards"
 		>
 			<h4>No Data Yet</h4>
-			<p>Statistics about your deck will appear here once you’ve added cards to the main card group in the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
+			<p>Statistics about your deck will appear here once you’ve added cards to the main card group in the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 		</div>
 		<template v-else>
 			<div class="tables">

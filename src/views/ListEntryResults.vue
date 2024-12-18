@@ -121,7 +121,7 @@
 
 		<div class="ok button-container">
 			<router-link
-				:to="{ name: 'deckEditor'}"
+				:to="{ name: 'listEditor'}"
 			>OK</router-link>
 		</div>
 	</article>

@@ -242,7 +242,7 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.2917 $lhse*.875 $lhse*.375 $color-
 		animation-fill-mode: backwards;
 	}
 }
-.deck-editor {
+.list-editor {
 	.card-image {
 		@include card-link('left');
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="deck-editor">
+	<div class="list-editor">
 		<card-image :deck="deck" />
 
 		<div class="layout-column">
@@ -41,7 +41,7 @@
 					key="main-deck-no-cards"
 				>
 					<p>No cards have been added yet.</p>
-					<p>For help on how to use any part of the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
+					<p>For help on how to use any part of the List Editor, see the <router-link to="/manual/#list-editor">user manual</router-link>.</p>
 				</div>
 				<card-list-items
 					v-else
@@ -80,5 +80,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck-editor.scss';
+	@import '@/sass/page-list-editor.scss';
 </style>

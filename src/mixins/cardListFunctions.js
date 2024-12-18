@@ -63,7 +63,7 @@ export default {
 			setTimeout(() => {
 				cardAdderInput.classList.remove('attention')
 				alreadyAttending = false
-			}, 500) // Timeout duration equal to CSS animation duration (page-deck-editor.scss).
+			}, 500) // Timeout duration equal to CSS animation duration (page-list-editor.scss).
 		}
 	}
 }

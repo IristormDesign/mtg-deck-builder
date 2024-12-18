@@ -39,7 +39,7 @@
 							<router-link
 								v-show="$route.params.deckPath !== deck.path"
 								:to="{
-									name: 'deckEditor',
+									name: 'listEditor',
 									params: {
 										deck: deck,
 										deckPath: deck.path

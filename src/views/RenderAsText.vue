@@ -50,7 +50,7 @@
 		</template>
 
 		<template v-else>
-			<p>This deck currently has no cards, so there’s nothing to show here. Add cards to the deck using the <router-link :to="{name: 'deckEditor'}">Deck Editor</router-link>.</p>
+			<p>This deck currently has no cards, so there’s nothing to show here. Add cards to the deck using the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 		</template>
 	</article>
 </template>

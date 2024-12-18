@@ -3,7 +3,7 @@
 		<h4>Keyboard Shortcuts: Deck Page Modes</h4>
 		<p>While you’re on a <a href="#deck-pages">deck page</a>, you can switch between the <a href="#deck-page-modes">deck page modes</a> by pressing one of the following keys:</p>
 		<ul class="keyboard-shortcuts">
-			<li><kbd>1</kbd>: Set to the <a href="#deck-editor">Deck Editor</a>.</li>
+			<li><kbd>1</kbd>: Set to the <a href="#list-editor">List Editor</a>.</li>
 			<li><kbd>2</kbd>: Set to the <a href="#deck-analyzer">Deck Analyzer</a>.</li>
 			<li><kbd>3</kbd>: Set to the <a href="#draw-sim">Draw Simulator</a>.</li>
 		</ul>

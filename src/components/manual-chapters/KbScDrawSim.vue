@@ -9,7 +9,7 @@
 			<li><kbd>R</kbd>: Restart in a new testing round.</li>
 		</ul>
 
-		<h5>Matching Shortcuts with Deck Editor</h5>
+		<h5>Matching Shortcuts with List Editor</h5>
 		<ul class="keyboard-shortcuts">
 			<li><kbd>Q</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new tab for the displayed card’s page on Scryfall.</li>

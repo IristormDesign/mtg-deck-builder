@@ -74,8 +74,8 @@ export default {
 			const keyEvent = event.key.toLowerCase() // If the shift or caps lock keys have been pressed, then the letter keys may not respond as expected. So, force the key events to always be lowercase.
 
 			switch (this.$route.name) {
-				case 'deckEditor':
-					this.kbShortcutsDeckEditor(keyEvent, event)
+				case 'listEditor':
+					this.kbShortcutsListEditor(keyEvent, event)
 					break
 				case 'deckAnalyzer':
 					this.kbShortcutsDeckAnalyzer(keyEvent)
@@ -122,7 +122,7 @@ export default {
 			}
 
 			switch (keyEvent) {
-				case '1': switchToMode('deckEditor')
+				case '1': switchToMode('listEditor')
 					break
 				case '2': switchToMode('deckAnalyzer')
 					break
@@ -139,7 +139,7 @@ export default {
 				}
 			}
 		},
-		kbShortcutsDeckEditor (keyEvent, event) {
+		kbShortcutsListEditor (keyEvent, event) {
 			if (keyEvent === 'tab') {
 				this.$nextTick(() => {
 					this.setHighlightedIndex(-1)

@@ -7,7 +7,7 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The card sorter (the section labeled “Sort By” in the <a href="#deck-editor">Deck Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways.</p>
+		<p>The card sorter (the section labeled “Sort By” in the <a href="#list-editor">List Editor</a>) lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways.</p>
 		<p>The card sorter has a drop-down menu providing you several card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. This affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
@@ -55,6 +55,6 @@
 				<li>Star a card name while the sorter is set to “Starred”</li>
 			</ul>
 		</p>
-		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the Deck Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
+		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the List Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
 	</section>
 </template>
