@@ -193,26 +193,37 @@
 	}
 	.header-menu-toggler {
 		position: absolute;
-		top: -$lhse*.0417;
+		top: -$lhse*.2917;
 		right: 0;
 		display: block;
-		font-size: 87.5%;
 		z-index: index($layers, app-menu-toggler);
-		height: $lhse*1.5;
-		width: $lhse*3;
+		width: $lhse*2.25;
+		height: $lhse*1.75;
 		min-width: 0;
 		background: $color-app-header-link;
+		line-height: 0;
+		border-radius: $border-radius-small-button;
+
+		svg {
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
+			margin-top: -.6667em;
+			margin-bottom: -.0625em;
+		}
+		span {
+			@include tiny-font-size;
+		}
 	}
 	.header-menu {
 		position: absolute;
-		top: $lhse*1.75;
+		top: $lhse*1.9167;
 		right: 0;
 		width: auto;
 
 		> .hover-shield {
 			display: block;
-			width: $lhse*2.625;
-			height: $lhse*1.5;
+			width: $lhse*2.25;
+			height: $lhse*1.75;
 			position: absolute;
 			top: -$lhse*1.75;
 			right: 0;
