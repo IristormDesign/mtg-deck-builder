@@ -1,11 +1,13 @@
 @import 'variables';
-$min-height-card-list: $lhse*6;
 
 .card-list-section {
-	min-height: $min-height-card-list;
 	padding: $lhse*.5 0;
 	border-top: $border-sections-thick;
 	border-bottom: $border-sections-thick;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
 	.no-cards {
 		text-align: center;
@@ -15,6 +17,7 @@ $min-height-card-list: $lhse*6;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		flex-grow: 1;
 
 		p {
 			max-width: $max-width-narrow-message;

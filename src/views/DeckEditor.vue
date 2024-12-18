@@ -40,7 +40,7 @@
 					class="no-cards"
 					key="main-deck-no-cards"
 				>
-					<p>No cards have been added here yet.</p>
+					<p>No cards have been added yet.</p>
 					<p>For help on how to use any part of the Deck Editor, see the <router-link to="/manual/#deck-editor">user manual</router-link>.</p>
 				</div>
 				<card-list-items

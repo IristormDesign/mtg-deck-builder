@@ -17,6 +17,8 @@ $width-card-list-section-narrow:
 		background: $color-group-bg;
 		height: fit-content;
 		border-radius: $border-radius-group;
+		display: flex;
+		flex-direction: column;
 	}
 	.viewing-controls {
 		min-height: 0%; // Needed for Firefox on sideboard lists
@@ -31,6 +33,7 @@ $width-card-list-section-narrow:
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
 		overflow: hidden;
+		width: 100%;
 	}
 	.card-list-section {
 		width: $width-card-list-section-wide;
@@ -466,7 +469,6 @@ $width-card-list-section-narrow:
 			max-width: none;
 		}
 		.adder-controls {
-			width: auto;
 			max-width: none;
 		}
 	}
