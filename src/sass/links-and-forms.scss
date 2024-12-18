@@ -54,6 +54,10 @@ textarea {
 		background: $color-input-bg-focus;
 		color: $color-text-brighter-over-mythic-brown;
 	}
+	&:read-only {
+		background: $color-group-bg-darker;
+		color: $color-text;
+	}
 }
 input,
 select,

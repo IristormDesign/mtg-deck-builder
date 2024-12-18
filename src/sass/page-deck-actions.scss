@@ -91,7 +91,16 @@
 			@include button;
 			font-size: 80%;
 			height: max-content;
-			width: $lhse*5;
+
+			span {
+				text-align: left;
+				width: $lhse*4;
+			}
+			svg {
+				width: $lhse*1.5;
+				height: $lhse*1.5;
+				margin-right: .5ch;
+			}
 		}
 	}
 	.lists {
@@ -121,12 +130,18 @@
 		button {
 			font-size: 75%;
 			height: $lhse*1.5;
+
+			svg {
+				width: $lhse;
+				height: $lhse;
+				margin-right: .25ch;
+			}
 		}
 	}
 	textarea {
 		margin: 0 auto;
 		width: 100%;
-		border: 2px solid $color-heading-bg;
+		border-color: $color-heading-bg;
 		font-size: 66.67%;
 		z-index: 1; // Needed for Safari when showing the focus outline.
 		position: relative;

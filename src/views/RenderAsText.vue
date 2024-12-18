@@ -11,7 +11,10 @@
 					v-show="mainNotEmpty || sideboardNotEmpty"
 					:download="`${deck.name}.txt`"
 					:href="`data:text/plain;charset=utf-8,${combinedMainAndSideboardLists}`"
-				>Save Deck as Text File</a>
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m724.87-136.13 139-139-35-35L750-231.25v-188.01h-50.26v188.01l-78.87-78.88-35 35 139 139ZM579.74-10v-50.26H870V-10H579.74ZM170-170v-700h352.97L750-642.97v145.77h-50.26v-122.54h-200v-200H220.26v599.48H501.8V-170H170Zm50.26-50.26v-599.48 599.48Z"/></svg>
+					<span>Save Deck as Text File</span>
+				</a>
 			</div>
 
 			<div
@@ -19,9 +22,18 @@
 				:class="mainNotEmpty && sideboardNotEmpty ? 'two-columns' : null"
 			>
 				<section v-if="mainNotEmpty">
+					<svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg">
+						<symbol id="copy-icon" viewBox="0 -960 960 960">
+							<path d="M298-260v-584h488v584H298Zm52-52h384v-480H350v480ZM174-136v-571.69h52V-188h423.69v52H174Zm176-176v-480 480Z"/>
+						</symbol>
+					</svg>
+
 					<header>
 						<h4>Main List</h4>
-						<button @click="copyList('mainList', 'main')">Copy</button>
+						<button @click="copyList('mainList', 'main')">
+							<svg><use href="#copy-icon" /></svg>
+							Copy
+						</button>
 					</header>
 					<textarea
 						v-text="listCards()"
@@ -33,7 +45,10 @@
 				<section v-if="sideboardNotEmpty">
 					<header>
 						<h4>Sideboard List</h4>
-						<button @click="copyList('sideboardList', 'sideboard')">Copy</button>
+						<button @click="copyList('sideboardList', 'sideboard')">
+							<svg><use href="#copy-icon" /></svg>
+							Copy
+						</button>
 					</header>
 					<textarea
 						v-text="listCards(true)"
