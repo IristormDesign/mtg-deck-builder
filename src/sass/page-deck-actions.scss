@@ -4,8 +4,6 @@
 	.multi-select-buttons,
 	.button-container {
 		height: $lhse*1.5;
-		display: flex;
-		align-items: center;
 	}
 	form {
 		display: grid;
@@ -83,9 +81,6 @@
 	}
 	.button-container {
 		grid-column: span 2;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		height: $lhse*2.5;
 		margin: $lhse auto $lhse;
 		border: $border-sections-thick;

@@ -137,7 +137,9 @@
 	line-height: 1;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	will-change: filter; // Prevents an odd hover glitch in Safari.
 
 	&:hover,

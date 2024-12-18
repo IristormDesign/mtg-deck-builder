@@ -55,8 +55,8 @@ $width-card-list-section-narrow:
 		}
 	}
 	.button-container {
-		display: flex;
 		justify-content: space-evenly;
+		align-items: stretch;
 
 		button {
 			min-height: $lhse*1.5;
@@ -117,8 +117,6 @@ $width-card-list-section-narrow:
 			}
 		}
 		.button-container {
-			display: flex;
-			justify-content: space-evenly;
 			grid-column: span 2;
 
 			button {

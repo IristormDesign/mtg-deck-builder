@@ -27,9 +27,7 @@
 	}
 	.button-container {
 		height: $lhse*1.25;
-		display: flex;
 		align-items: flex-start;
-		justify-content: center;
 		margin: divide($lhse, 3) $lhse*.5 $lhse*.25;
 
 		&:first-of-type {

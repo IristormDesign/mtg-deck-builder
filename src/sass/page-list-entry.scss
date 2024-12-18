@@ -48,19 +48,21 @@
 		width: fit-content;
 		height: $lhse*2;
 		align-self: center;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		background: $color-heading-bg;
 		border-top-width: 0;
 		padding: $lhse*.0833 $lhse*.75 0;
 		border-radius: $border-radius-button;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
+	}
+	button {
+		height: $lhse*1.5;
+		font-size: 87.5%;
 
-		button {
-			height: $lhse*1.5;
-			font-size: 87.5%;
+		svg {
+			margin-right: .5ch;
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
 		}
 	}
 	.rules {
@@ -106,8 +108,6 @@
 	}
 	.button-container {
 		height: $lhse*1.3333;
-		display: flex;
-		align-items: center;
 	}
 	.copy-button {
 		button {

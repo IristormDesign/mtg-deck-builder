@@ -16,7 +16,10 @@
 						spellcheck="false"
 					></textarea><!-- The `cols` property is set to fit a list entry with the card name "Okina, Temple to the Grandfathers" (the longest name of a non-joke card), plus one extra character. -->
 					<div class="button-container">
-						<button @click.prevent="submitList">Add Cards</button>
+						<button @click.prevent="submitList">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M130-330v-60h280v60H130Zm0-160v-60h440v60H130Zm0-160v-60h440v60H130Zm520 480v-160H490v-60h160v-160h60v160h160v60H710v160h-60Z"/></svg>
+							Add Cards
+						</button>
 					</div>
 				</form>
 				<section class="rules">

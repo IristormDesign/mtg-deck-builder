@@ -12,6 +12,11 @@ a {
 		hyphens: none;
 	}
 }
+.button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 button,
 .button {
 	@include button;
