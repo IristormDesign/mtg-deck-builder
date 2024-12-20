@@ -13,7 +13,7 @@ $color-mythic-dimmer: darken($color-mythic-dim, 12.5%);
 $color-mythic-brown: darken(desaturate($color-mythic-orange, 75%), 20%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
 $color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
-$color-button-orange: lighten(desaturate($color-mythic-orange, 29.17%), 8.33%);
+$color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
 $color-text-over-mythic-brown: lighten($color-mythic-brown, 50%);
 $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
@@ -27,7 +27,7 @@ $color-app-header-link: desaturate(lighten($color-mythic-yellow, 8.33%), 12.5%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
 $color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
-$color-card-star: saturate(lighten($color-mythic-yellow, 20%), 50%);
+$color-card-star: saturate(lighten($color-mythic-yellow, 16.67%), 50%);
 
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
@@ -39,7 +39,7 @@ $color-text: lighten($color-group-bg, 60%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
 $color-text-darker: desaturate(darken($color-text, 12.5%), 12.5%);
-$color-button-gray: lighten(desaturate($color-mythic-complement, 66.67%), 20.83%);
+$color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 16.67%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
 

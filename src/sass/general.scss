@@ -16,8 +16,8 @@ body {
 }
 .fade-bg {
 	background:
-	  linear-gradient(
-	   rgba(#fff, 6.25%) 0,
+	  linear-gradient((180deg + 11.25),
+	   rgba(#fff, 8.33%) 0,
 	   rgba(#fff, 0%) 100vh
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
