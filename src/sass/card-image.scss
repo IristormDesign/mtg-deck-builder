@@ -73,8 +73,8 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.2917 $lhse*.875 $lhse*.375 $color-
 			transition-delay: 0s;
 		}
 		&:active {
-			filter: contrast(125%);
-			transition-duration: 0s;
+			filter: brightness(112.5%);
+			transition-duration: .2s;
 			transition-delay: 0s;
 		}
 	}

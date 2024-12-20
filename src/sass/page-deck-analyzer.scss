@@ -1,6 +1,6 @@
 @import 'variables';
 $table-inner-borders: 1px solid $color-heading-bg;
-$table-outer-borders: 3px solid $color-heading-bg;
+$table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 
 @mixin filterable-table-component {
 	cursor: pointer;
@@ -26,7 +26,7 @@ $table-outer-borders: 3px solid $color-heading-bg;
 	}
 	&,
 	&:hover {
-		outline: 3px dashed $color-mythic-orange;
+		outline: $border-width-sections-medium dashed $color-mythic-orange;
 	}
 	&:hover {
 		background: desaturate(darken($color-highlight-bg, 6.25%), 6.25%);
@@ -138,7 +138,7 @@ $table-outer-borders: 3px solid $color-heading-bg;
 	tbody {
 		border: $table-outer-borders;
 		border-top-width: 0;
-		border-bottom-width: 5px;
+		border-bottom-width: $border-width-sections-thickest;
 
 		tr {
 			height: $lhse;

@@ -126,9 +126,10 @@
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 
-		div {
-			font-size: 133.33%;
-			margin-right: -$lhse*.0833;
+		svg {
+			margin-right: -$lhse*.125;
+			width: $lhse;
+			height: $lhse;
 		}
 	}
 	.increment {

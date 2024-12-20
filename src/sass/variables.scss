@@ -109,17 +109,18 @@ $width-list-editor-region: $lhse*14.5;
 $margin-sections: divide($lhse, 3);
 $width-textarea-card-list: $lhse*11.5; // Slightly wider than the width of a line with the card "Okina, Temple to the Grandfathers" (the longest Magic card name that's not a joke card).
 $border-width-sections: 1px;
-$border-width-sections-thicker: $border-width-sections * 4;
-$margin-card-gap-after: $border-width-sections-thicker + 1.8; // Carefully adjusted to prevent integer-rounded gaps in card lists.
+$border-width-sections-medium: 3px;
+$border-width-sections-thickest: 5px;
+$margin-card-gap-after: $border-width-sections-thickest + 1.8; // Carefully adjusted to prevent integer-rounded gaps in card lists.
 
 // BORDERS
 $border-sections: $border-width-sections solid $color-section-border;
-$border-sections-thick: $border-width-sections-thicker solid $color-section-border;
+$border-sections-medium: $border-width-sections-medium solid $color-section-border;
+$border-sections-thick: $border-width-sections-thickest solid $color-section-border;
 $border-sections-alt: 2px solid $color-section-border-alt;
 $color-input-border: 1px solid $color-button-orange;
 $border-image-thin: 1px solid $color-group-bg-darker;
-$border-image-thick: $lhse*.25 solid $color-heading-bg;
-$border-image-thick: $border-width-sections-thicker solid $color-heading-bg;
+$border-image-thick: $border-width-sections-thickest solid $color-heading-bg;
 $border-bottom-width-button: $lhse*.125;
 $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;

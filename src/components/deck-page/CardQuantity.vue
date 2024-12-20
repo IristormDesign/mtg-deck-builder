@@ -19,14 +19,14 @@
 				@click="cardObject.qty++"
 				:disabled="card.qty >= card.maxQty"
 			>
-				<div>+</div>
+				<svg><use href="#plus-icon" /></svg>
 			</button>
 			<button
 				class="decrement"
 				title="Decrease quantity (D)"
 				@click="cardObject.qty--"
 			>
-				<div>&minus;</div>
+				<svg><use href="#minus-icon" /></svg>
 			</button>
 			<button
 				v-if="$store.state.showSideboard"
