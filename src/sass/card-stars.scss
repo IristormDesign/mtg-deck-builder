@@ -18,16 +18,6 @@
 	&:active {
 		background: $color-heading-bg;
 		box-shadow: $box-shadow-card-list-row-bg-edge;
-
-		input {
-			&:checked {
-				+ svg {
-					fill: lighten($color-card-star, 16.67%);
-					filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
-					transition-delay: 0s;
-				}
-			}
-		}
 	}
 	&:active,
 	&.flash {
@@ -107,7 +97,7 @@
 					&:checked {
 						+ svg {
 							opacity: 1;
-							fill: lighten($color-card-star, 16.67%);
+							fill: lighten($color-card-star, 12.5%);
 							filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
 							transition-delay: 0s;
 							transition-duration: $transition-duration-standard;

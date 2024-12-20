@@ -12,7 +12,6 @@ $color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 45.83%);
 $color-mythic-dimmer: darken($color-mythic-dim, 12.5%);
 $color-mythic-brown: darken(desaturate($color-mythic-orange, 75%), 20%); // Darkened to match brightness level of $color-heading-bg.
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
-$color-link-focus: saturate(lighten($color-mythic-orange, 8.33%), 50%);
 $color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
 $color-button-orange: lighten(desaturate($color-mythic-orange, 29.17%), 8.33%);
 $color-text-over-mythic-brown: lighten($color-mythic-brown, 50%);
@@ -24,11 +23,11 @@ $color-section-border-alt: lighten($color-mythic-brown, 8.33%); // Lighten perce
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-link-focus: lighten($color-mythic-yellow, 12.5%);
 $color-link-active: saturate(lighten($color-mythic-yellow, 25%), 50%);
-$color-app-header-link: lighten($color-mythic-yellow, 16.67%);
 $color-app-header-link: desaturate(lighten($color-mythic-yellow, 8.33%), 12.5%);
 $color-app-header-link-hover: saturate(darken($color-app-header-link, 12.5%), 50%);
 $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
 $color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
+$color-card-star: saturate(lighten($color-mythic-yellow, 20%), 50%);
 
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
@@ -74,7 +73,6 @@ $color-frame-red: desaturate(lighten($color-mana-red, 4.17%), 45.83%);
 $color-frame-green: desaturate(lighten($color-mana-green, 6.25%), 16.67%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 8.33%);
-$color-card-star: $color-link-active;
 
 // TEXT
 $font-family-standard: 'Crimson Pro', serif;
