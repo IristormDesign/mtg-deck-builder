@@ -42,7 +42,7 @@ $table-outer-borders: 3px solid $color-heading-bg;
 			color: $color-mythic-orange;
 		}
 		td {
-			color: $color-text;
+			color: $color-text-brighter;
 		}
 	}
 }
@@ -80,6 +80,7 @@ $table-outer-borders: 3px solid $color-heading-bg;
 		transition: 1s ease;
 		transition-property: outline-color, box-shadow;
 		outline: 1px solid transparent;
+		// outline: 1px solid $color-content-bg-lighter;
 
 		&:has(tbody:active){
 			outline-color: $color-highlight-bg;
@@ -200,10 +201,16 @@ $table-outer-borders: 3px solid $color-heading-bg;
 				th {
 					color: $color-link-focus;
 				}
+				td {
+					color: $color-text-over-mythic-brown;
+				}
 			}
 			&:active {
 				th {
 					color: $color-link-active;
+				}
+				td {
+					color: $color-text-brighter-over-mythic-brown;
 				}
 				th,
 				td {

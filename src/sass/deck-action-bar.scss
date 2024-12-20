@@ -55,14 +55,14 @@
 		padding-bottom: 0;
 
 		&.current-page {
-			opacity: .3820;
+			opacity: .25;
 			cursor: default;
 		}
 	}
 	svg {
-		width: $lhse*1.125;
-		height: $lhse*1.125;
-		margin-right: .5ch;
+		width: $lhse*1.3333;
+		height: $lhse*1.3333;
+		margin-right: .25ch;
 	}
 }
 .deck-actions {

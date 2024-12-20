@@ -87,12 +87,10 @@
 	position: relative; // For link-tabbing outline along with z-index
 
 	&:hover,
-	&:focus {
-		background: $color-mythic-dimmer;
-		z-index: 1;
-	}
+	&:focus,
 	&:active {
-		background: $color-input-bg-active;
+		background: $color-group-bg-darker;
+		z-index: 1;
 	}
 	@media (pointer: coarse) {
 		min-height: $lhse*1.3333;
