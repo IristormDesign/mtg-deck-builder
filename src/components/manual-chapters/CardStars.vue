@@ -11,7 +11,7 @@
 				<p>In a deck for the Commander (or EDH) format, you could star the name of the designated commander card.</p>
 			</li>
 			<li>
-				<p>When you’re in the process of building a new deck, you could star a  certain combination of some card names. Then, go to the <a href="#deck-analyzer">Deck Analyzer</a> and <a href="#statistics-filter">filter the data</a> by the starred attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred names, which may help you decide whether to keep or remove certain cards.</p>
+				<p>When you’re in the process of building a new deck, you could star a  certain combination of some card names. Then, go to the <a href="#stats-analyzer">Stats Analyzer</a> and <a href="#statistics-filter">filter the data</a> by the starred attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred names, which may help you decide whether to keep or remove certain cards.</p>
 			</li>
 		</ul>
 		<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <a href="#keyboard-shortcuts">keyboard shortcuts</a>.</p>

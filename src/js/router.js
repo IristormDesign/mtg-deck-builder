@@ -39,9 +39,9 @@ const routes = [
 				component: () => import(/* webpackChunkName: "list-editor" */ '@/views/ListEditor.vue')
 			},
 			{
-				name: 'deckAnalyzer',
-				path: 'deck-analyzer',
-				component: () => import(/* webpackChunkName: "deck-analyzer" */ '@/views/DeckAnalyzer.vue')
+				name: 'statsAnalyzer',
+				path: 'stats-analyzer',
+				component: () => import(/* webpackChunkName: "stats-analyzer" */ '@/views/StatsAnalyzer.vue')
 			},
 			{
 				name: 'drawSim',

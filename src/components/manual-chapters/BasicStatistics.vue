@@ -28,6 +28,6 @@
 				<p><strong>Total Cards</strong> – This shows the sum of every card (including any repeated card names) in the main card group. A “⚠” (warning symbol) appears beside the number when the total is fewer than 60, which is the minimum limit for decks by <i>Magic</i>’s standard <a href="#game-rules">game rules</a>; or when the total is close to but not exactly 100, which is the requirement for decks in the Commander format.</p>
 			</li>
 		</ul>
-		<p>Note that these statistics in the deck page header are only a small portion of all the statistics available in MTG Deck Builder. There are even more you can view in the <a href="#deck-analyzer">Deck Analyzer</a>.</p>
+		<p>Note that these statistics in the deck page header are only a small portion of all the statistics available in MTG Deck Builder. There are even more you can view in the <a href="#stats-analyzer">Stats Analyzer</a>.</p>
 	</section>
 </template>

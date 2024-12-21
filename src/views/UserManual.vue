@@ -81,7 +81,7 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#deck-analyzer">Deck Analyzer</a>
+						<a href="#stats-analyzer">Stats Analyzer</a>
 						<ol>
 							<li><a href="#data-tables">Data Tables</a></li>
 							<li><a href="#statistics-filter">Statistics Filter</a></li>
@@ -93,7 +93,7 @@
 						<ol>
 							<li><a href="#kbsc-deck-page-modes">Deck Page Modes</a></li>
 							<li><a href="#kbsc-list-editor">List Editor Actions</a></li>
-							<li><a href="#kbsc-deck-analyzer">Deck Analyzer Actions</a></li>
+							<li><a href="#kbsc-stats-analyzer">Stats Analyzer Actions</a></li>
 							<li><a href="#kbsc-draw-sim">Draw Simulator Actions</a></li>
 						</ol>
 					</li>
@@ -116,7 +116,7 @@
 			<deck-page-header />
 			<deck-page-modes />
 			<list-editor />
-			<deck-analyzer />
+			<stats-analyzer />
 			<draw-sim />
 			<keyboard-shortcuts />
 			<storage-of-deck-data />
@@ -133,14 +133,14 @@ import DeckPages from '@/components/manual-chapters/DeckPages.vue'
 import DeckPageHeader from '@/components/manual-chapters/DeckPageHeader.vue'
 import DeckPageModes from '@/components/manual-chapters/DeckPageModes.vue'
 import ListEditor from '@/components/manual-chapters/ListEditor.vue'
-import DeckAnalyzer from '@/components/manual-chapters/DeckAnalyzer.vue'
+import StatsAnalyzer from '@/components/manual-chapters/StatsAnalyzer.vue'
 import DrawSim from '@/components/manual-chapters/DrawSim.vue'
 import KeyboardShortcuts from '@/components/manual-chapters/KeyboardShortcuts.vue'
 import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vue'
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, ListEditor, DeckAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, ListEditor, StatsAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
 	watch: {
 		$route () {
 			if (this.$route.hash === '') {

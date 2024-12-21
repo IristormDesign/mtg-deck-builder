@@ -4,7 +4,7 @@
 		<p>The sideboard is a <a href="#card-groups">card group</a> containing cards that are related to your <i>Magic</i> deck, but that aren’t in your deck’s main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 		<ul>
 			<li>
-				<p>When you’re in the process of making a new deck, the sideboard group can hold cards you’re considering to put in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards contained in it don’t meddle with the data in your deck’s <a href="#basic-statistics">basic statistics</a> or the <a href="#deck-analyzer">Deck Analyzer</a>, except for the Last Edit statistic.</p>
+				<p>When you’re in the process of making a new deck, the sideboard group can hold cards you’re considering to put in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards contained in it don’t meddle with the data in your deck’s <a href="#basic-statistics">basic statistics</a> or the <a href="#stats-analyzer">Stats Analyzer</a>, except for the Last Edit statistic.</p>
 			</li>
 			<li>
 				<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch against an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>

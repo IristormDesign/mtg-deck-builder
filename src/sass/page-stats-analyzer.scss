@@ -47,7 +47,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 
-.deck-analyzer {
+.stats-analyzer {
 	margin: 0 auto $lhse*.5;
 	max-width: none;
 	position: relative;
@@ -417,7 +417,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 }
 
 @media (max-width: (1920px * .7083)) {
-	.deck-analyzer {
+	.stats-analyzer {
 		.filter-notice,
 		footer {
 			grid-column: span 3;
@@ -431,7 +431,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 @media (max-width: ($min-width-app * 1.0625)) {
-	.deck-analyzer {
+	.stats-analyzer {
 		.filter-notice,
 		footer {
 			grid-column: span 2;
@@ -442,7 +442,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
-	.deck-analyzer {
+	.stats-analyzer {
 		.filter-notice {
 			margin-right: -$lhse;
 			margin-left: -$lhse;
@@ -457,7 +457,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 @media (max-width: ($min-width-app*.6667)) {
-	.deck-analyzer {
+	.stats-analyzer {
 		.filter-notice,
 		footer {
 			grid-column: span 1;
@@ -469,7 +469,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
-	.deck-analyzer {
+	.stats-analyzer {
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 		margin-bottom: $lhse*.25;
@@ -501,7 +501,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
-	.deck-analyzer {
+	.stats-analyzer {
 		border-radius: 0;
 
 		&:has(.no-cards) {

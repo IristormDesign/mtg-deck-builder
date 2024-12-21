@@ -1,7 +1,7 @@
-import deckAnalyzer from '@/mixins/deckAnalyzer.js'
+import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 
 export default {
-	mixins: [deckAnalyzer],
+	mixins: [statsAnalyzer],
 	data () {
 		return {
 			creatureSubtypeCounts: {},

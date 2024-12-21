@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import deckAnalyzer from '@/mixins/deckAnalyzer.js'
+import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 
 export default {
-	mixins: [deckAnalyzer],
+	mixins: [statsAnalyzer],
 	computed: {
 		showNotice () {
 			return this.$store.state.analyzerFilter.attribute

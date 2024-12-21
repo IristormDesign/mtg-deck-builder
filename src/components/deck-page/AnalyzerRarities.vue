@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import deckAnalyzer from '@/mixins/deckAnalyzer.js'
+import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [deckAnalyzer, symbolsMarkup],
+	mixins: [statsAnalyzer, symbolsMarkup],
 	props: {
 		deck: Object
 	},

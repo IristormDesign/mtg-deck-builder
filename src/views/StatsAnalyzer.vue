@@ -1,5 +1,5 @@
 <template>
-	<div class="deck-analyzer content-box">
+	<div class="stats-analyzer content-box">
 		<div
 			v-if="deck.cards.length <= 0"
 			class="no-cards"
@@ -53,13 +53,13 @@
 								<p>Cards in the sideboard are excluded.</p>
 							</li>
 							<li>
-								<p>Within each statistics category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category has that card as both an artifact and a creature.) Cards counted in this way don’t inflate the total number.</p>
+								<p>Within each statistical category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category has that card as both an artifact and a creature.) Cards counted in this way don’t inflate the total number.</p>
 							</li>
 							<li>
 								<p>For double-faced cards, most categories count the attributes of both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
 							</li>
 							<li>
-								<p>To learn more about the Deck Analyzer, see the <router-link to="/manual/#deck-analyzer">user manual</router-link>.</p>
+								<p>To learn more about the Stats Analyzer, see the <router-link to="/manual/#stats-analyzer">user manual</router-link>.</p>
 							</li>
 						</ul>
 					</div>
@@ -83,12 +83,12 @@ import AnalyzerKeywords from '@/components/deck-page/AnalyzerKeywords.vue'
 import AnalyzerPowerToughness from '@/components/deck-page/AnalyzerPowerToughness.vue'
 import AnalyzerLayouts from '@/components/deck-page/AnalyzerLayouts.vue'
 import AnalyzerStarred from '@/components/deck-page/AnalyzerStarred.vue'
-import deckAnalyzer from '@/mixins/deckAnalyzer.js'
-import deckAnalyzerSubtypes from '@/mixins/deckAnalyzerSubtypes.js'
+import statsAnalyzer from '@/mixins/statsAnalyzer.js'
+import statsAnalyzerSubtypes from '@/mixins/statsAnalyzerSubtypes.js'
 
 export default {
 	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
-	mixins: [deckAnalyzer, deckAnalyzerSubtypes],
+	mixins: [statsAnalyzer, statsAnalyzerSubtypes],
 	props: {
 		deck: Object
 	},
@@ -114,5 +114,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck-analyzer.scss';
+	@import '@/sass/page-stats-analyzer.scss';
 </style>

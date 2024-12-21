@@ -11,8 +11,8 @@ export default {
 			switch (this.$route.name) {
 				case 'listEditor':
 					return 'List Editor'
-				case 'deckAnalyzer':
-					return 'Deck Analyzer'
+				case 'statsAnalyzer':
+					return 'Stats Analyzer'
 				case 'drawSim':
 					return 'Draw Simulator'
 				default:

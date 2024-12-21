@@ -77,8 +77,8 @@ export default {
 				case 'listEditor':
 					this.kbShortcutsListEditor(keyEvent, event)
 					break
-				case 'deckAnalyzer':
-					this.kbShortcutsDeckAnalyzer(keyEvent)
+				case 'statsAnalyzer':
+					this.kbShortcutsStatsAnalyzer(keyEvent)
 					break
 				case 'drawSim':
 					this.kbShortcutsDrawSim(keyEvent, event)
@@ -124,7 +124,7 @@ export default {
 			switch (keyEvent) {
 				case '1': switchToMode('listEditor')
 					break
-				case '2': switchToMode('deckAnalyzer')
+				case '2': switchToMode('statsAnalyzer')
 					break
 				case '3': switchToMode('drawSim')
 			}
@@ -223,7 +223,7 @@ export default {
 				}
 			}
 		},
-		kbShortcutsDeckAnalyzer (keyEvent) {
+		kbShortcutsStatsAnalyzer (keyEvent) {
 			switch (keyEvent) {
 				case 'escape': case 'esc':
 					this.stopAnalyzerFilter()
