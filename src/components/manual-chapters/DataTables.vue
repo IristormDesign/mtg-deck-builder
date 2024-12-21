@@ -1,7 +1,7 @@
 <template functional>
 	<section id="data-tables" key="data-tables">
 		<h4>Data Tables</h4>
-		<p>The page for the <a href="#deck-analyzer">Deck Analyzer</a> displays many data tables, each for a different statistical category about the cards in your deck’s main <a href="#card-groups">card group</a>. Some categories can comprise multiple subcategories, with their tables having a thick border line separating each subcategory.</p>
+		<p>The page for the <a href="#deck-analyzer">Deck Analyzer</a> displays many data tables. Each table is for a different statistical category about the cards in your deck’s main <a href="#card-groups">card group</a>. Some categories can have subcategories, with their tables having a thick border line separating each subcategory.</p>
 		<p>The following are the categories, with any subcategories in parentheses:</p>
 		<ul>
 			<li>Colors of Spells (mana colors, mana color amounts per spell)</li>
