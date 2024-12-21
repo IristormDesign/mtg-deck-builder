@@ -1,6 +1,5 @@
 <template>
 	<section id="intro">
-		<h3>Introduction</h3>
 		<figure>
 			<img class="intro-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="An illustration of a large, detailed, open book" />
 			<figcaption>Illustration: <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank">Urza’s Tome</a></i> by Aaron Miller</figcaption>

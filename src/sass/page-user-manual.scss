@@ -93,7 +93,7 @@
 	.manual-contents {
 		width: 100%;
 		max-width: $max-width-content;
-		margin-top: -$margin-sections;
+		margin-top: -$margin-sections - $lhse*.5;
 		margin-right: auto;
 		margin-left: auto;
 		background: none;
