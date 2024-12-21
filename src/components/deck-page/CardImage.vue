@@ -26,7 +26,7 @@
 						<div
 							class="card-shadow"
 							:class="(turningOverCard) ? 'card-turning-over' : null"
-							:key="card.name"
+							:key="card.uniqueID"
 						><!-- The shadow is needed as its own element because Safari doesn't support more than drop-shadow filter on one element. -->
 							<div class="card-edge">
 								<a
