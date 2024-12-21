@@ -38,7 +38,7 @@ $color-group-bg-darker: saturate(darken($color-group-bg, 4.17%), 6.25%);
 $color-text: lighten($color-group-bg, 60%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 12.5%);
+$color-text-darker: desaturate(darken($color-text, 12.5%), 8.33%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 16.67%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
@@ -120,7 +120,7 @@ $border-sections-thick: $border-width-sections-thickest solid $color-section-bor
 $border-sections-alt: 2px solid $color-section-border-alt;
 $color-input-border: 1px solid $color-button-orange;
 $border-image-thin: 1px solid $color-group-bg-darker;
-$border-image-thick: $border-width-sections-thickest solid $color-heading-bg;
+$border-image-thick: $border-width-sections-thickest solid $color-group-bg-darker;
 $border-bottom-width-button: $lhse*.125;
 $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;
