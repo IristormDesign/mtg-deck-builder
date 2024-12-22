@@ -8,10 +8,10 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.2917 $lhse*.875 $lhse*.375 $color-
 	$transform: none;
 
 	@if $enter-from == 'left' {
-		$transform: rotate(-11.25deg) translateY(-$lhse*.5) translateX(-$lhse*8) scale(1.0833);
+		$transform: rotate(-10deg) translateY($lhse*.5) translateX(-$lhse*8) scale(1.0833);
 	}
 	@if $enter-from == 'right' {
-		$transform: rotate(11.25deg) translateY(-$lhse*.5) translateX($lhse*8) scale(1.0833);
+		$transform: rotate(10deg) translateY($lhse*.5) translateX($lhse*8) scale(1.0833);
 	}
 
 	@keyframes card-fan-in-#{$enter-from} {
