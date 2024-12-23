@@ -53,7 +53,7 @@
 								<p>Cards in the sideboard are excluded.</p>
 							</li>
 							<li>
-								<p>Within each statistical category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category has that card as both an artifact and a creature.) Cards counted in this way don’t inflate the total number.</p>
+								<p>Within each category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category has that card as both an artifact and a creature.) Cards counted in this way don’t inflate the total number.</p>
 							</li>
 							<li>
 								<p>For double-faced cards, most categories count the attributes of both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
