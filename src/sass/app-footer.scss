@@ -2,12 +2,8 @@
 @import 'variables';
 
 .app-footer {
-	background:
-		bottom right repeat url('@/img/turbulence-bg-tile.jpg'),
-		rgba($color-group-bg-darker, .6667);
-	background-blend-mode: overlay;
-	border-top: 2px solid $color-content-bg-lighter;
-	color: $color-text-darker;
+	background: rgba(desaturate(lighten($color-group-bg, 8.33%), 6.25%), .6667);
+	border-top: 1px solid $color-content-bg-lighter;
 	position: relative;
 	padding: $lhse*2 0;
 	margin-top: $lhse*.5;
@@ -28,7 +24,7 @@
 		margin: 0 .25em;
 	}
 	a {
-		@include link-colors($color-link-dim);
+		@include link-colors(desaturate(lighten($color-link, 6.25%), 40%));
 
 		&:hover,
 		&:focus {

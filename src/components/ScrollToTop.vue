@@ -5,7 +5,7 @@
 			class="scroll-to-top"
 		>
 			<button @click="scrollToTop()">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M434.5-151.87v-481.98L215.76-415.11 151.87-480 480-808.13 808.13-480l-63.89 64.89L525.5-633.85v481.98h-91Z"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M180-760v-60h600v60H180Zm270 620v-411.85l-114 114L293.85-480 480-666.15 666.15-480 624-437.85l-114-114V-140h-60Z"/></svg>
 				<span class="text-label"> Scroll to Top</span>
 			</button>
 		</div>
@@ -16,7 +16,8 @@
 export default {
 	data () {
 		return {
-			atTop: true
+			atTop: true,
+			pausePositionCheck: false
 		}
 	},
 	mounted () {
@@ -24,15 +25,22 @@ export default {
 	},
 	methods: {
 		checkScrollPosition () {
-			this.atTop = window.scrollY <= 0
+			if (!this.pausePositionCheck) {
+				this.atTop = window.scrollY <= 0
+			}
 		},
 		scrollToTop () {
+			this.pausePositionCheck = true
+			this.atTop = true
+
 			window.scrollTo({
 				top: 0,
-				behavior: window.scrollY < 10000 ? 'smooth' : 'instant'
+				behavior: window.scrollY < 1024 ? 'smooth' : 'instant'
 			})
 
-			this.atTop = true
+			setTimeout(() => {
+				this.pausePositionCheck = false
+			}, 1000)
 		}
 	}
 }

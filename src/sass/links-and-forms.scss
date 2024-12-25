@@ -113,17 +113,7 @@ select {
 		outline: $outline-focus-visible;
 		outline-offset: -1px;
 	}
-	&:hover,
-	&:focus-within,
-	&:active {
-		> div {
-			&:has(input:not(:checked)) {
-				label {
-					color: $color-link;
-				}
-			}
-		}
-	}
+
 	@supports not (selector(:has(input))) { // For Firefox
 		&:focus-within,
 		&:active {
@@ -136,18 +126,11 @@ select {
 
 		&:has(input:not(:checked):hover) {
 			label {
-				color: $color-link-focus;
-			}
-		}
-		&:has(input:active) {
-			label {
-				color: $color-link-active !important;
-				transition-duration: 0s;
+				color: $color-text-brighter;
 			}
 		}
 	}
 	label {
-		@include label-text-style;
 		padding-right: .25em;
 		cursor: pointer;
 		text-align: right;
@@ -176,7 +159,7 @@ select {
 	}
 	&:checked {
 		background: $color-card-star;
-		border-color: $color-text;
+		border-color: $color-content-bg-lighter;
 	}
 }
 select {

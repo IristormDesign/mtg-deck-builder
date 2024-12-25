@@ -80,7 +80,6 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		transition: 1s ease;
 		transition-property: outline-color, box-shadow;
 		outline: 1px solid transparent;
-		// outline: 1px solid $color-content-bg-lighter;
 
 		&:has(tbody:active){
 			outline-color: $color-highlight-bg;
@@ -127,12 +126,11 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 	thead {
 		th {
-			@include tiny-font-size;
+			@include tiny-font-size(true);
 			@include heading-font;
-			font-size: 60%;
-			text-transform: uppercase;
 			text-align: right;
 			background: $color-heading-bg;
+			color: $color-text-brighter;
 		}
 	}
 	tbody {
@@ -148,7 +146,8 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		th,
 		td {
 			font-size: $font-size-small;
-			color: $color-text-darker;
+			// color: $color-text-darker;
+			font-style: italic;
 			line-height: $line-height-standard*.75;
 		}
 	}
@@ -163,6 +162,8 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	th {
 		text-align: right;
 		text-wrap: balance;
+		font-weight: normal;
+		color: $color-text;
 
 		small {
 			margin-right: .5em;

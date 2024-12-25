@@ -1,5 +1,7 @@
 @import 'variables';
 
+$height-button-scroll-to-top: $lhse*1.25;
+
 .scroll-to-top {
 	position: fixed;
 	bottom: 0;
@@ -7,11 +9,12 @@
 	z-index: index($layers, scroll-to-top);
 	margin: 0 auto;
 	width: fit-content;
-	outline: 3px solid $color-section-border;
+	outline: $border-image-thin;
 	background: $color-input-border;
 	border-radius: $border-radius-button;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
+	height: $height-button-scroll-to-top;
 
 	button {
 		min-width: $lhse*2;
@@ -24,7 +27,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: $lhse*1.25;
 
 		svg {
 			width: $lhse;
@@ -55,9 +57,9 @@
 }
 .stt-fade-enter-active,
 .stt-fade-leave-active {
-  transition: opacity .5s ease;
+  transition: bottom .25s ease;
 }
 .stt-fade-enter,
 .stt-fade-leave-to {
-  opacity: 0;
+	bottom: -$height-button-scroll-to-top;
 }

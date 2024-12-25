@@ -7,6 +7,6 @@
 		>
 			<img src="@/img/scryfall-logo.svg" alt="Scryfall logo" />
 		</a>
-		<div class="label">Card Search</div>
+		<div class="section-label">Card search</div>
 	</section>
 </template>

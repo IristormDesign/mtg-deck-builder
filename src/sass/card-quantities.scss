@@ -128,8 +128,8 @@
 
 		svg {
 			margin-right: -$lhse*.125;
-			width: $lhse;
-			height: $lhse;
+			width: $lhse*.8;
+			height: $lhse*.8;
 		}
 	}
 	.increment {
@@ -147,16 +147,33 @@
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		grid-area: mov;
+		display: flex;
+		flex-direction: column;
+		padding-right: 2px;
 
-		div {
-			font-size: 54.17%;
-			line-height: 1.125;
-			margin-left: -1px;
+		&.m {
+			span {
+				font-size: 66.67%;
+			}
+		}
+		&.sb {
+			span {
+				font-size: 50%
+			}
 		}
 		svg {
-			width: $lhse*1.0833;
-			height: $lhse*1.0833;
-			margin-bottom: -$lhse*.1667;
+			width: $lhse*1.25;
+			height: $lhse*1.25;
+			margin-top: -$lhse*.2;
+		}
+		div {
+			margin-top: -$lhse*.3333;
+			display: flex;
+			align-items: center;
+			height: .75em;
+		}
+		span {
+			line-height: 1;
 		}
 	}
 	&.kb-shortcut-highlight {

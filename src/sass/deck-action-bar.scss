@@ -51,8 +51,8 @@
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding-top: 0;
-		padding-bottom: 0;
+		padding-top: $lhse*.0833;
+		padding-bottom: $lhse*.0833;
 
 		&.current-page {
 			opacity: .25;
@@ -62,7 +62,7 @@
 	svg {
 		width: $lhse*1.3333;
 		height: $lhse*1.3333;
-		margin-right: .25ch;
+		margin-right: .25em;
 	}
 }
 .deck-actions {

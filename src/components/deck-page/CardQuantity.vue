@@ -30,25 +30,26 @@
 			</button>
 			<button
 				v-if="$store.state.showSideboard"
-				class="move-to-group"
+				class="move-to-group m"
 				title="Move 1 to main group (F)"
 				@click="moveToOtherGroup()"
 				:disabled="disableMoveToGroup"
 			>
+				<svg><use href="#left-arrow-icon" /></svg>
 				<div>
-					<svg><use href="#left-arrow-icon" /></svg>
-					<br>M</div>
+					<span>M</span>
+				</div>
 			</button>
 			<button
 				v-else
-				class="move-to-group"
+				class="move-to-group sb"
 				title="Move 1 to sideboard (F)"
 				@click="moveToOtherGroup()"
 				:disabled="disableMoveToGroup"
 			>
+				<svg><use href="#right-arrow-icon" /></svg>
 				<div>
-					<svg><use href="#right-arrow-icon" /></svg>
-					<br>SB
+					<span>SB</span>
 				</div>
 			</button>
 		</div>

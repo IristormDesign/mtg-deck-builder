@@ -64,22 +64,6 @@
 		align-items: center;
 		justify-content: center;
 	}
-	label,
-	h3 {
-		display: block;
-		margin-top: -$lhse*.125;
-		margin-right: divide(1em, 3);
-		margin-left: divide(1em, 3);
-		color: $color-text;
-		font: $font-weight-label #{83.33%}/#{1} $font-family-standard;
-	}
-	.radio-fieldset {
-		label {
-			@include heading-font;
-			@include label-text-style;
-			margin-top: 0;
-		}
-	}
 }
 
 @media (max-width: $width-app-breakpoint) {

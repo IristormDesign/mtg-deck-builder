@@ -4,7 +4,7 @@
 			v-if="!loadingCard"
 			@submit.prevent="handleSubmit()"
 		>
-			<label for="card-input">Add a card name to this {{activeCardListString}}:</label>
+			<label for="card-input">Add a new card name:</label>
 			<input
 				@input="submitSuggestion()"
 				@focus="adderFocused()"
@@ -32,7 +32,7 @@
 				:disabled="delay"
 				title="Add card to list"
 			>
-				<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M434.5-434.5H191.87v-91H434.5v-242.63h91v242.63h242.63v91H525.5v242.63h-91V-434.5Z"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M446.54-446.87H198.67v-67.59h247.87v-247.87h67.59v247.87h247.2v67.59h-247.2v247.2h-67.59v-247.2Z"/></svg>
 			</button>
 		</form>
 		<div v-else class="loading-indicator">
@@ -63,13 +63,6 @@ export default {
 		}
 	},
 	computed: {
-		activeCardListString () {
-			if (this.$store.state.showSideboard) {
-				return 'sideboard'
-			} else {
-				return 'deck'
-			}
-		},
 		inputPlaceholder () {
 			if (this.deck.cards.length === 0) {
 				return '(Enter a card’s name here.)'

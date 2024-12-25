@@ -14,7 +14,7 @@ $color-mythic-brown: darken(desaturate($color-mythic-orange, 75%), 20%); // Dark
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
 $color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
 $color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
-$color-text-over-mythic-brown: lighten($color-mythic-brown, 50%);
+$color-text-over-mythic-brown: desaturate(lighten($color-mythic-brown, 56.25%), 8.33%);
 $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: lighten($color-mythic-brown, 8.33%); // Lighten percentage matches that of $color-section-border.
@@ -32,14 +32,14 @@ $color-card-star: saturate(lighten($color-mythic-yellow, 16.67%), 50%);
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
-$color-content-bg-lighter: lighten($color-content-bg, 4.17%);
+$color-content-bg-lighter: lighten($color-content-bg, 6.25%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 60%);
 $color-group-bg-darker: saturate(darken($color-group-bg, 4.17%), 6.25%);
-$color-text: lighten($color-group-bg, 60%);
+$color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 8.33%);
-$color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 16.67%);
+$color-text-darker: darken($color-text, 12.5%);
+$color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
 
@@ -51,9 +51,9 @@ $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scry
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
-$opacity-black-label-text: .8;
+$opacity-black-label-text: .75;
 $color-black-label-text: rgba(#000, $opacity-black-label-text);
-$color-darker-black-label-text: rgba(#000, .875);
+$color-darker-black-label-text: rgba(#000, .8333);
 $color-button-border: rgba(#000, 1/3);
 $color-shadows: rgba(#000, .5);
 

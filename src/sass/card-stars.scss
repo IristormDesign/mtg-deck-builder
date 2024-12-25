@@ -97,7 +97,7 @@
 					&:checked {
 						+ svg {
 							opacity: 1;
-							fill: lighten($color-card-star, 12.5%);
+							fill: lighten($color-card-star, 16.67%);
 							filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
 							transition-delay: 0s;
 							transition-duration: $transition-duration-standard;

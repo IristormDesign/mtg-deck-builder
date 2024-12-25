@@ -179,7 +179,7 @@
 		&:focus-within,
 		&.highlight {
 			.card-bar {
-				filter: contrast(116.67%);
+				filter: contrast(116.67%) brightness(104.17%);
 				transition-duration: 0s;
 				transition-property: filter, box-shadow, border-color;
 				border-top-color: rgba(#fff, .5);

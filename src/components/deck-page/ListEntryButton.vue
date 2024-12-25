@@ -5,8 +5,8 @@
 			v-show="!$store.state.showSideboard"
 			title="Add a list of cards"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M110.39-314.17v-79.79h326v79.79h-326Zm0-178.57v-79.22h489.22v79.22H110.39Zm0-178v-79.22h489.22v79.22H110.39Zm543 519.78v-163.21H489.61v-79.79h163.78v-163.78h79.79v163.78h163.21v79.79H733.18v163.21h-79.79Z"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M114-318.87v-67.59h312.41v67.59H114Zm0-174.57v-67.58h478.62v67.58H114Zm0-175.64v-67.59h478.62v67.59H114Zm542.21 517.75v-167.54H490v-67.59h166.21v-166.21h67.58v166.21h167.54v67.59H723.79v167.54h-67.58Z"/></svg>
 		</router-link>
-		<div class="label">Add List</div>
+		<div class="section-label">Add multiple</div>
 	</section>
 </template>
