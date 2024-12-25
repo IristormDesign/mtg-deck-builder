@@ -405,9 +405,9 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		align-items: center;
 
 		svg {
-			width: $lhse;
-			height: $lhse;
-			margin-right: .5ch;
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
+			margin-right: .25ch;
 		}
 	}
 }

@@ -41,12 +41,12 @@
 		form {
 			display: flex;
 			flex-direction: column;
-			gap: $lhse*.25;
 			width: 100%;
 			align-items: center;
 		}
 		label {
 			font-weight: $font-weight-label;
+			padding-bottom: $lhse*.125;
 		}
 		input {
 			border-radius: $border-radius-button;
@@ -58,7 +58,7 @@
 		}
 		.button-container {
 			height: $lhse*1.5;
-			margin-top: $lhse*.125;
+			margin-top: $lhse*.375;
 			margin-bottom: $lhse*.125;
 		}
 		button {

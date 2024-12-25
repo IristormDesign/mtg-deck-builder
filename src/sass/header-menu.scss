@@ -211,7 +211,7 @@
 			margin-bottom: -.0625em;
 		}
 		span {
-			@include tiny-font-size;
+			@include tiny-font-size(true);
 		}
 	}
 	.header-menu {

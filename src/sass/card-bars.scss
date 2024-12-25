@@ -83,7 +83,6 @@
 	border: 2px solid transparent;
 	text-shadow: none;
 	transition: all $transition-duration-standard ease;
-	transition-property: border, color, filter, transform;
 	width: 100vw;
 	align-items: center;
 	box-shadow: none;
@@ -92,7 +91,6 @@
 
 	&:active {
 		transform: none;
-		transition-duration: 0s;
 		border-bottom-width: 0px;
 
 		.card-label-group {
@@ -180,8 +178,8 @@
 		&.highlight {
 			.card-bar {
 				filter: contrast(116.67%) brightness(104.17%);
-				transition-duration: 0s;
-				transition-property: filter, box-shadow, border-color;
+				transition-property: all, filter, box-shadow;
+				transition-duration: 0s, $transition-duration-standard, $transition-duration-standard;
 				border-top-color: rgba(#fff, .5);
 				border-right-color: rgba(#fff, .25);
 				border-bottom-color: rgba(#000, .5);
@@ -221,6 +219,11 @@
 				&.land {
 					@include box-shadow-hover-card-bar(darken($color-frame-land, 16.67%));
 				}
+			}
+		}
+		&.highlight {
+			.card-bar {
+				transition-duration: 0s;
 			}
 		}
 	}

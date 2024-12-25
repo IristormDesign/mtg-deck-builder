@@ -49,15 +49,15 @@
 		&:checked {
 			background: none;
 
-			&:hover {
+			&:hover:not(:focus) {
 				+ svg {
 					@keyframes spin {
 						100% {
-							transform: rotate(360deg);
+							transform: rotate(360deg*3);
 						}
 					}
 
-					animation: spin 1.6667s ease-out;
+					animation: spin 5s linear;
 				}
 			}
 			+ svg {
@@ -77,10 +77,10 @@
 		+ svg {
 			opacity: 0;
 			fill: $color-card-star;
-			width: $lhse*.8333;
-			height: $lhse*.8333;
+			width: $lhse*.9583;
+			height: $lhse*.9583;
 			position: relative;
-			left: $lhse*.125;
+			left: 0;
 			transition: $transition-duration-standard ease;
 			transition-property: opacity, fill, transform, filter;
 			z-index: 1;

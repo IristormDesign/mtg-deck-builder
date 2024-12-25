@@ -4,7 +4,7 @@
 			class="header-menu-toggler"
 			@click="toggleHeaderMenu()"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M118.67-242.62v-67.58h722.66v67.58H118.67Zm0-204.25v-67.59h722.66v67.59H118.67Zm0-204.26v-67.59h722.66v67.59H118.67Z"/></svg>
 			<span>Menu</span>
 		</button>
 
@@ -16,7 +16,7 @@
 						:to="{name: 'createDeck'}"
 						class="header-menu-item"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M450-140v-310H140v-60h310v-310h60v310h310v60H510v310h-60Z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M450-290h60v-160h160v-60H510v-160h-60v160H290v60h160v160ZM212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-760v560-560Z"/></svg>
 						Create Deck
 					</router-link>
 				</li>
