@@ -10,7 +10,7 @@
 		font-size: 66.67%;
 	}
 
-	letter-spacing: divide(1, 96)*1em;
+	letter-spacing: $letter-spacing-tiny-font;
 }
 @mixin label-text-style {
 	@include heading-font;

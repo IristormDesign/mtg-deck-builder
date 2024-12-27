@@ -153,7 +153,7 @@
 
 		&.m {
 			span {
-				font-size: 66.67%;
+				font-size: 62.5%;
 			}
 		}
 		&.sb {
@@ -162,9 +162,9 @@
 			}
 		}
 		svg {
-			width: $lhse*1.25;
-			height: $lhse*1.25;
-			margin-top: -$lhse*.2;
+			width: $lhse*1.2;
+			height: $lhse*1.2;
+			margin-top: -$lhse*.1667;
 		}
 		div {
 			margin-top: -$lhse*.375;
