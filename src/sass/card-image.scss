@@ -200,7 +200,12 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.2917 $lhse*.875 $lhse*.375 $color-
 		min-height: $lhse*1.6667;
 
 		button {
-			font-size: 80%;
+			font-size: 75%;
+			height: $lhse*1.6667;
+		}
+		svg {
+			margin-right: .25ch;
+			width: $lhse*1.5;
 			height: $lhse*1.5;
 		}
 	}
