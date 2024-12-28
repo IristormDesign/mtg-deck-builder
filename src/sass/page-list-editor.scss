@@ -133,7 +133,7 @@ $width-card-list-section-narrow:
 	padding-right: $lhse*.125;
 	padding-left: $lhse*.125;
 	text-align: center;
-	gap: 0 $lhse*.3333;
+	gap: 0 divide($lhse, 3);
 
 	a {
 		@include button('gray');
@@ -146,10 +146,6 @@ $width-card-list-section-narrow:
 		justify-content: center;
 		font-size: 80%
 	}
-	.section-label {
-		padding: 0 !important;
-		text-transform: none;
-	}
 }
 .scryfall-button {
 	a {
@@ -159,18 +155,6 @@ $width-card-list-section-narrow:
 		filter: brightness(.9167) saturate(1.1667);
 		width: $lhse*1.6;
 		height: $lhse*1.6;
-	}
-}
-.list-entry-button {
-	.sideboard-visible & {
-		display: none;
-	}
-	a {
-		padding: 0;
-	}
-	svg {
-		width: $lhse*1.75;
-		height: $lhse*1.75;
 	}
 }
 .card-adder {
@@ -267,6 +251,18 @@ $width-card-list-section-narrow:
 		}
 	}
 }
+.list-entry-button {
+	.sideboard-visible & {
+		display: none;
+	}
+	a {
+		padding: 0;
+	}
+	svg {
+		width: $lhse*1.75;
+		height: $lhse*1.75;
+	}
+}
 
 @mixin viewing-controls-single-layer {
 	.list-editor {
@@ -301,7 +297,7 @@ $width-card-list-section-narrow:
 	.list-editor {
 		.adder-controls {
 			grid-template-rows: auto;
-			grid-template-columns: 1fr 1fr minmax(auto, 4fr);
+			grid-template-columns: 1fr minmax(auto, 4fr)  1fr;
 
 			section {
 				height: $lhse*3;
