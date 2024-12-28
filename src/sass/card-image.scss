@@ -364,6 +364,7 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.2917 $lhse*.875 $lhse*.375 $color-
 			right: $lhse*.25;
 			min-width: $lhse;
 			padding: 0;
+			z-index: 1;
 		}
 		.card-browse {
 			&-enter-active {
