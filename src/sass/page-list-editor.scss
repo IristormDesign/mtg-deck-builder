@@ -43,8 +43,7 @@ $width-card-list-section-narrow:
 		@include tiny-font-size(true);
 		line-height: 1;
 		color: $color-text;
-		padding-bottom: $lhse*.125 !important;
-		margin: 0 !important;
+		margin: 0;
 	}
 }
 .card-sorter,
@@ -55,7 +54,8 @@ $width-card-list-section-narrow:
 		margin-right: $lhse*.25;
 	}
 	.section-label {
-		padding-left: $lhse*.625 !important;
+		padding-left: $lhse*.625;
+		padding-bottom: $lhse*.125;
 		line-height: $line-height-standard;
 	}
 }
@@ -107,7 +107,6 @@ $width-card-list-section-narrow:
 		grid-row: 2;
 		display: flex;
 		gap: $lhse;
-		width: 100% !important;
 
 		> div {
 			display: flex;
@@ -119,7 +118,6 @@ $width-card-list-section-narrow:
 		cursor: default;
 		grid-column: 2;
 		grid-row: 1;
-		width: fit-content;
 	}
 	label {
 		margin-top: -$lhse*.0417;
@@ -132,9 +130,10 @@ $width-card-list-section-narrow:
 .list-entry-button {
 	display: flex;
 	flex-direction: column;
-	padding-right: $lhse*.125 !important;
-	padding-left: $lhse*.125 !important;
+	padding-right: $lhse*.125;
+	padding-left: $lhse*.125;
 	text-align: center;
+	gap: 0 $lhse*.3333;
 
 	a {
 		@include button('gray');
@@ -269,59 +268,18 @@ $width-card-list-section-narrow:
 	}
 }
 
-@mixin viewing-controls-single-layer-compressed {
+@mixin viewing-controls-single-layer {
 	.list-editor {
 		.viewing-controls {
 			grid-template-columns: auto auto;
 			height: $height-deck-header-component;
-
-			.card-sorter label,
-			.card-group-switch h3 {
-				padding: 0 divide($lhse, 3) 0 0;
-				margin: divide(-$lhse, 12) 0 0 0;
-			}
 		}
 	}
 	.card-sorter {
-		fieldset {
-			flex-wrap: nowrap;
-		}
+		border-bottom-width: 0;
 	}
 	.card-group-switch {
 		border-left: $border-sections;
-
-		> div {
-			flex-wrap: nowrap;
-			width: auto;
-		}
-		h3 {
-			text-align: right;
-		}
-	}
-}
-@mixin viewing-controls-single-layer {
-	.list-editor {
-		.viewing-controls {
-			height: $lhse*3;
-
-			.card-sorter label,
-			.card-group-switch h3 {
-				padding-right: 0;
-				padding-bottom: $lhse*.25;
-				margin-top: -$lhse*.125;
-			}
-		}
-	}
-	.card-sorter {
-		fieldset {
-			flex-wrap: wrap;
-		}
-	}
-	.card-group-switch {
-		> div {
-			flex-wrap: wrap;
-			width: min-content;
-		}
 	}
 }
 @mixin viewing-controls-double-layers {
@@ -336,7 +294,7 @@ $width-card-list-section-narrow:
 		border-bottom: $border-sections;
 	}
 	.card-group-switch {
-		border-left-width: 0 !important;
+		border-left-width: 0;
 	}
 }
 @mixin adder-controls-single-layer {
@@ -352,6 +310,10 @@ $width-card-list-section-narrow:
 				grid-template-columns: 1fr minmax(auto, 5fr);
 			}
 		}
+	}
+	.scryfall-button,
+	.list-entry-button {
+		flex-direction: column;
 	}
 	.scryfall-button {
 		grid-row: 1;
@@ -389,6 +351,14 @@ $width-card-list-section-narrow:
 			}
 		}
 	}
+	.scryfall-button,
+	.list-entry-button {
+		flex-direction: row;
+
+		.section-label {
+			width: auto;
+		}
+	}
 	.card-adder {
 		border-left-width: 0;
 		border-top: $border-sections;
@@ -402,7 +372,7 @@ $width-card-list-section-narrow:
 	}
 }
 
-@include viewing-controls-single-layer-compressed;
+@include viewing-controls-single-layer;
 @include adder-controls-single-layer;
 
 @media (max-width: ($width-app-breakpoint-tablet * 1.03125)) {
@@ -413,7 +383,7 @@ $width-card-list-section-narrow:
 	}
 }
 @media (max-width: $width-app-breakpoint-tablet) {
-	@include viewing-controls-single-layer;
+	@include viewing-controls-double-layers;
 	@include adder-controls-double-layers;
 
 	.list-editor {
@@ -431,7 +401,7 @@ $width-card-list-section-narrow:
 	}
 }
 @media (max-width: $width-deck-hidden-image) {
-	@include viewing-controls-single-layer-compressed;
+	@include viewing-controls-single-layer;
 	@include adder-controls-single-layer;
 
 	.list-editor {
@@ -441,19 +411,15 @@ $width-card-list-section-narrow:
 			'panel-2';
 		grid-template-columns: auto;
 		gap: $margin-card-gap-after 0;
-
-		.viewing-controls,
-		.adder-controls {
-			min-width: 0;
-		}
-		.card-list-section {
-			width: auto;
+	}
+	.scryfall-button,
+	.list-entry-button {
+		.section-label {
+			width: min-content;
 		}
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
-	@include viewing-controls-single-layer;
-
 	.list-editor {
 		.viewing-controls {
 			width: 100%;
@@ -465,12 +431,11 @@ $width-card-list-section-narrow:
 	}
 }
 @media (max-width: ($min-width-app * .625)) {
+	@include viewing-controls-double-layers;
 	@include adder-controls-double-layers;
 
 }
 @media (max-width: ($min-width-app * .5)) {
-	@include viewing-controls-double-layers;
-
 	.list-editor {
 		display: block;
 		max-width: 100%;

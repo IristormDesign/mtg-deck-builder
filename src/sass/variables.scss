@@ -32,7 +32,7 @@ $color-card-star: saturate(lighten($color-mythic-yellow, 16.67%), 50%);
 // SKY-BLUE-BASED COLORS
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
-$color-content-bg-lighter: lighten($color-content-bg, 6.25%);
+$color-content-bg-lighter: lighten($color-content-bg, 4.17%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 60%);
 $color-group-bg-darker: saturate(darken($color-group-bg, 4.17%), 6.25%);
 $color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
