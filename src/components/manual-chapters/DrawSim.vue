@@ -20,8 +20,8 @@
 			</li>
 			<li>
 				<p><strong>Card list section</strong> – This shows the record of cards you’ve drawn in chronological order during the current round. The list features <a href="#card-bars">card bars</a> and <a href="#card-stars">stars</a> that work like those same elements in the List Editor’s card list.</p>
-				<p>Unlike the List Editor, however, the Draw Simulator lacks card quantity elements. This is because each item of the Draw Simulator’s card list always represents a single individual card rather than a card name of variable quantity. The Draw Simulator’s list can repeat a card name if your deck has multiple cards of that name.</p>
-				<p>A gap will always appear in the list between the seventh and eighth drawn cards. This gap visually separates what represents your starting hand (normally 7 cards, according to <a href="#game-rules"><i>Magic</i>’s rules</a>) and the rest of your deck.</p>
+				<p><em>Unlike</em> the List Editor, however, the Draw Simulator lacks card quantity elements. This is because each item of the Draw Simulator’s card list always represents a single individual card rather than a card name of variable quantity. The Draw Simulator’s list can repeat a card name if your deck has multiple cards of that name.</p>
+				<p>A gap will always appear in the list between the seventh and eighth drawn cards. This gap separates what represent your starting hand (usually 7 cards, according to <a href="#game-rules"><i>Magic</i>’s rules</a>) and the rest of your deck.</p>
 			</li>
 			<li>
 				<p><strong>Card image section</strong> – This works like the List Editor’s <a href="#card-image">card image section</a>.</p>
