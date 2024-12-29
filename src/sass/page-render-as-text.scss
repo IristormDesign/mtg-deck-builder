@@ -1,0 +1,112 @@
+@import 'variables';
+
+.render-as-text {
+	margin: 0 auto $lhse*.5;
+	max-width: none;
+
+	&.no-cards {
+		max-width: $max-width-content;
+	}
+	h3 {
+		@include pronounced-heading;
+		text-align: center;
+		margin-top: 0;
+	}
+	.button-container {
+		grid-column: span 2;
+		height: $lhse*2.5;
+		margin: $lhse auto $lhse;
+		border: $border-sections-thick;
+		width: fit-content;
+		padding: $lhse*.5;
+
+		a {
+			@include button;
+			font-size: 80%;
+			height: max-content;
+
+			span {
+				text-align: left;
+				width: $lhse*4;
+			}
+			svg {
+				width: $lhse*1.5;
+				height: $lhse*1.5;
+				margin-right: .5ch;
+			}
+		}
+	}
+	.lists {
+		display: grid;
+		gap: $lhse*.5 $lhse;
+		margin-top: $lhse*.5;
+
+		&.two-columns {
+			grid-template-columns: 1fr 1fr;
+		}
+		section {
+			width: $width-textarea-card-list;
+			margin: 0 auto;
+		}
+		header {
+			height: $lhse*1.5;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: $color-heading-bg;
+			padding: $lhse*.5;
+		}
+		h4 {
+			margin: 0;
+			color: $color-text-extra-brighter;
+		}
+		button {
+			font-size: 75%;
+			height: $lhse*1.5;
+
+			svg {
+				width: $lhse;
+				height: $lhse;
+				margin-right: .25ch;
+			}
+		}
+	}
+	textarea {
+		margin: 0 auto;
+		width: 100%;
+		border-color: $color-heading-bg;
+		font-size: 66.67%;
+		z-index: 1; // Needed for Safari when showing the focus outline.
+		position: relative;
+	}
+	footer {
+		margin-top: $lhse;
+	}
+	.no-cards {
+		font-style: italic;
+		text-align: center;
+		margin-top: $lhse*.25;
+	}
+}
+
+@media (max-width: ($min-width-app * .8333)) {
+	.render-as-text {
+		.lists {
+			&,
+			&.two-columns {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto auto;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .625)) {
+	.render-as-text {
+		width: 100%;
+
+		section {
+			width: 100%;
+			max-width: $lhse*11.5;
+		}
+	}
+}
