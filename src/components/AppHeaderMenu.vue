@@ -281,5 +281,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/header-menu.scss';
+	@import '@/sass/app-header-menu.scss';
 </style>

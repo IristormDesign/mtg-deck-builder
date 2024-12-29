@@ -9,16 +9,16 @@
 				</div>
 			</div>
 
-			<header-menu />
+			<app-header-menu />
 		</div>
 	</header>
 </template>
 
 <script>
-import HeaderMenu from '@/components/HeaderMenu.vue'
+import AppHeaderMenu from '@/components/AppHeaderMenu.vue'
 
 export default {
-	components: { HeaderMenu }
+	components: { AppHeaderMenu }
 }
 </script>
 
