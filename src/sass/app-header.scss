@@ -66,13 +66,6 @@
 }
 
 @media (max-width: $min-width-app) {
-	.app-header {
-		.app-title {
-			font-size: 87.5%;
-		}
-	}
-}
-@media (max-width: ($min-width-app*.8)) {
 	:root {
 		--header-height: #{$height-app-header-tall};
 	}
@@ -85,6 +78,7 @@
 			align-content: center;
 		}
 		.app-title {
+			font-size: 87.5%;
 			margin: 0 auto (-$lhse*.125);
 		}
 	}
