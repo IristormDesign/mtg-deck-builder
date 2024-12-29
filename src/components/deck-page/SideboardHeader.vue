@@ -8,7 +8,7 @@
 				{{ sideboardTotalCards }}
 				<span
 					class="warning-symbol" v-show="sideboardTotalCards > 15"
-					title="Sideboards cannot have more than 15 cards."
+					title="Sideboards can’t have more than 15 cards."
 				>⚠</span>
 			</div>
 		</section>

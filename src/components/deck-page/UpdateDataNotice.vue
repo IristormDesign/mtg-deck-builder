@@ -134,7 +134,7 @@ export default {
 		},
 		userEngagedUpdate () {
 			if (this.cardsToUpdate > 200) {
-				alert('⚠ Sorry, this deck’s data set cannot be updated because it has too many cards.')
+				alert('⚠ Sorry, this deck’s data set can’t be updated because it has too many cards.')
 			} else {
 				this.updatingDeckData = true
 

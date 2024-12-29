@@ -8,7 +8,7 @@
 			<p>You have no more decks. <router-link :to="{name: 'createDeck'}">(Create one?)</router-link></p>
 		</template>
 		<template v-else>
-			<p>In the checklist below, select the decks that you want to remove, then click the Delete Selected button. Warning: Deleted decks cannot be restored.</p>
+			<p>In the checklist below, select the decks that you want to remove, then click the Delete Selected button. Warning: Deleted decks can’t be restored.</p>
 			<form>
 				<div
 					class="multi-select-buttons"

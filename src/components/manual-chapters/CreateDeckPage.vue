@@ -8,7 +8,7 @@
 
 		<h4>Import Deck Data File</h4>
 		<p>What if you have a <a href="#deck-data-files">deck data file</a> (“.deck” file extension) and you want to see any of the decks contained in it? Then what you do is import the deck data file. When importing, the app promptly creates all the decks from that file’s data.</p>
-		<p>Note that this app can only import deck data files that had been exported from MTG Deck Builder by Iristorm Design. It cannot import files made from any other apps, even if they involve <i>Magic: The Gathering</i>.</p>
+		<p>Note that this app can only import deck data files that had been exported from MTG Deck Builder by Iristorm Design. It can’t import files made from any other apps, even if they involve <i>Magic: The Gathering</i>.</p>
 
 		<h4>Create Decks from Plain Text Lists</h4>
 		<p>If you have a deck’s card list as plain text, such as one copied from the “<a href="#render-as-text-action">render as text</a>” deck action, then you can have that deck displayed in MTG Deck Builder. To do this, start a new deck, and then paste the text list into the submission form of the <a href="#card-list-entry">Card List Entry</a> page. You can access that page by clicking the “<a href="#add-multiple">Add multiple</a>” button in the <a href="#list-editor">List Editor</a> deck page mode.</p>

@@ -42,7 +42,7 @@
 
 		<section v-if="cardRequestInvalid && cardRequestInvalid.length > 0">
 			<h4>❌ Invalid Cards</h4>
-			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, so they cannot be added to your deck.</p>
+			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, so they can’t be added to your deck.</p>
 			<ul>
 				<li
 					v-for="card of cardRequestInvalid"
