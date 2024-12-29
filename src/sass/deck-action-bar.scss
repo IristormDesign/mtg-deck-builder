@@ -46,13 +46,11 @@
 	a {
 		@include button;
 		font-size: 80%;
-		min-height: $lhse*1.5;
+		text-align: left;
+		padding-top: $lhse*.0417;
+		padding-bottom: $lhse*.0417;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding-top: $lhse*.0833;
-		padding-bottom: $lhse*.0833;
+		gap: 0 .25em;
 
 		&.current-page {
 			opacity: .25;
@@ -60,9 +58,8 @@
 		}
 	}
 	svg {
-		width: $lhse*1.3333;
-		height: $lhse*1.3333;
-		margin-right: .25em;
+		width: $lhse*1.5;
+		height: $lhse*1.5;
 	}
 }
 .deck-actions {
@@ -89,16 +86,7 @@
 	}
 }
 
-@media (max-width: ($min-width-app*.875)) {
-	.mode-menu {
-		min-height: $lhse*2.25;
-
-		ul {
-			grid-template-columns: repeat(3, $lhse*3);
-		}
-	}
-}
-@media (max-width: ($min-width-app*.7083)) {
+@media (max-width: ($min-width-app*.9583)) {
 	.deck-action-bar {
 		display: flex;
 		flex-wrap: wrap;
@@ -123,17 +111,12 @@
 		box-sizing: content-box;
 
 		ul {
-			grid-template-columns: repeat(3, 1fr);
-			gap: divide($lhse, 3);
-			justify-content: space-around;
+			display: flex;
+			justify-content: space-evenly;
 		}
 		li {
-			display: flex;
-			justify-content: center;
-			margin: $lhse*.25 0;
-		}
-		a {
-			width: 25vw;
+			max-width: $lhse*6.5;
+			width: 100%;
 		}
 	}
 	.deck-actions {
@@ -150,8 +133,19 @@
 }
 @media (max-width: ($min-width-app*.6)) {
 	.mode-menu {
+		ul {
+			gap: $lhse*.25;
+		}
+		li {
+			max-width: $lhse*4.75;
+		}
 		a {
-			height: $lhse*1.875;
+			padding-top: $lhse*.1667;
+			padding-bottom: $lhse*.1667;
+		}
+		.text-label {
+			width: min-content;
+			margin-top: 0;
 		}
 	}
 }
@@ -159,6 +153,24 @@
 	.deck-action-bar {
 		border-radius: 0;
 		margin-bottom: $lhse*.5;
+	}
+	.mode-menu {
+		height: $lhse*3.375;
+
+		li {
+			max-width: $lhse*3.25;
+		}
+		a {
+			flex-wrap: wrap;
+			text-align: center;
+			border-radius: $border-radius-small-button;
+		}
+		svg {
+			width: 100%;
+		}
+		.text-label {
+			padding-bottom: $lhse*.125;
+		}
 	}
 }
 @media (max-width: ($min-width-app*.375)) {

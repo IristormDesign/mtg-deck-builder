@@ -122,7 +122,7 @@ $border-sections-alt: $border-width-sections solid $color-section-border-alt;
 $color-input-border: $border-width-sections solid $color-button-orange;
 $border-image-thin: $border-width-sections solid $color-group-bg-darker;
 $border-image-thick: $border-width-sections-thickest solid $color-group-bg-darker;
-$border-bottom-width-button: $lhse*.125;
+$border-bottom-width-button: 3px;
 $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;
 $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-content-bg;
@@ -145,7 +145,7 @@ $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-h
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);
-$x: 2px dashed rgba(#c0f, .6);
+$x: .125em dashed rgba(#0f0, .5);
 
 // MIXINS
 @import 'mixins';
