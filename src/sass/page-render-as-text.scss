@@ -104,9 +104,11 @@
 	.render-as-text {
 		width: 100%;
 
-		section {
-			width: 100%;
-			max-width: $lhse*11.5;
+		.lists {
+			section {
+				max-width: $width-textarea-card-list;
+				width: 100%;
+			}
 		}
 	}
 }
