@@ -19,6 +19,7 @@
 		padding: 0 $lhse*.5 0 $lhse*.75;
 		justify-content: left;
 		overflow: hidden;
+		min-height: $height-deck-header-component;
 
 		button {
 			@include link;
@@ -41,11 +42,10 @@
 			width: max-content;
 
 			&.size-mana-symbols {
-				margin-top: $lhse*.125;
-				margin-bottom: $lhse*.125;
+				margin-top: 0;
 			}
 			&.no-colors {
-				font-size: 200%;
+				font-size: $font-size-stat-value;
 				display: flex;
 			}
 			.mana-symbol {
@@ -53,9 +53,11 @@
 			}
 		}
 	}
-	.average-mana-value {
+	.average-mana-value,
+	.card-names,
+	.card-total {
 		.output {
-			font-size: 200%;
+			font-size: $font-size-stat-value;
 		}
 	}
 	.date-edited {
@@ -63,16 +65,13 @@
 			white-space: normal;
 		}
 		.output {
-			font-size: 87.5%;
+			@include tiny-font-size;
 		}
 	}
 	.card-names,
 	.card-total {
 		h3 {
 			white-space: normal;
-		}
-		.output {
-			font-size: 200%;
 		}
 	}
 	.card-total {
@@ -89,7 +88,7 @@
 	}
 }
 
-@media (max-width: $width-app-breakpoint) {
+@media (max-width: ($min-width-app*1.25)) {
 	.deck-header {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
@@ -117,8 +116,21 @@
 		}
 	}
 }
-@media (max-width: $min-width-app) {
+@media (max-width: ($min-width-app * .875)) {
 	.deck-header {
+		margin-top: $lhse*.5;
+	}
+}
+@media (max-width: ($min-width-app * .8333)) {
+	.deck-header {
+		grid-template-columns: repeat(5, auto);
+		justify-content: stretch;
+	}
+}
+@media (max-width: ($min-width-app * .75)) {
+	.deck-header {
+		min-width: 66.67vw;
+
 		.deck-info {
 			@include deck-info-box-narrow();
 			min-height: auto;
@@ -127,25 +139,12 @@
 				width: auto;
 			}
 		}
-		.deck-name {
-			min-height: $height-deck-header-component;
-		}
 	}
 }
-@media (max-width: ($min-width-app * .875)) {
+@media (max-width: ($min-width-app * .5)) {
 	.deck-header {
-		margin-top: $lhse*.5;
-	}
-}
-@media (max-width: ($min-width-app * .75)) {
-	.deck-header {
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: 1fr 1fr 1.3333fr;
-		min-width: 66.67vw;
-
 		.deck-info {
 			grid-column: span 2;
-			min-height: $height-deck-header-component;
 
 			&:nth-of-type(2),
 			&:nth-of-type(3) {
@@ -164,19 +163,6 @@
 		}
 		.deck-name {
 			grid-column: span 6;
-		}
-	}
-}
-@media (max-width: ($min-width-app * .5)) {
-	.deck-header {
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
-
-		.deck-info {
-			&:nth-of-type(2),
-			&:nth-of-type(3) {
-				@include deck-info-box-narrow();
-			}
 		}
 	}
 }

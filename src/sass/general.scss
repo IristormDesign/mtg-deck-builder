@@ -16,7 +16,7 @@ body {
 }
 .fade-bg {
 	background:
-	  linear-gradient((180deg + 11.25),
+	  linear-gradient((180deg + 5.625),
 	   rgba(#fff, 8.33%) 0,
 	   rgba(#fff, 0%) 100vh
 		),
@@ -201,8 +201,7 @@ svg {
 }
 ::-webkit-scrollbar {
 	width: $line-height-standard * .6667rem;
-	background: $color-group-bg-darker;
-	border: 1px solid $color-group-bg-darker;
+	background: $color-group-bg-lighter;
 }
 ::-webkit-scrollbar-thumb {
 	background: $color-mythic-brown;
@@ -210,7 +209,7 @@ svg {
 	border-top-width: 0;
 	border-right-width: 0;
 	border-left-width: 1px;
-	box-shadow: $box-shadow-button-shine, $box-shadow-button-cast-shadow;
+	box-shadow: $box-shadow-button-shine, 0 2px 1px rgba(#000, 1/3);
 	cursor: grab;
 
 	&:hover {
@@ -222,7 +221,7 @@ svg {
 	}
 }
 ::-webkit-scrollbar-corner {
-	color: $color-group-bg;
+	background: $color-group-bg;
 }
 .fade-from-black {
 	&-enter-active {

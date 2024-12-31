@@ -49,11 +49,7 @@
 .deck-info {
 	@include deck-info-style;
 	color: $color-text;
-	min-height: $height-deck-header-component;
-
-	h3 {
-		color: $color-text;
-	}
+	min-height: $height-deck-header-component*.75;
 }
 .control-panel {
 	display: grid;
@@ -66,7 +62,7 @@
 	}
 }
 
-@media (max-width: $width-app-breakpoint) {
+@media (max-width: ($min-width-app*1.25)) {
 	.deck-info {
 		border-width: 0;
 		border-top-width: $border-width-sections;

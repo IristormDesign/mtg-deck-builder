@@ -69,9 +69,12 @@
 	.mana-symbol {
 		margin: 0;
 	}
+
+	$size-mana-symbol-base: $font-size-stat-value * 1.125;
+
 	&.one {
 		.mana-symbol {
-			font-size: 200%;
+			font-size: $size-mana-symbol-base;
 		}
 	}
 	&.two {
@@ -80,7 +83,7 @@
 		grid-template-rows: 1fr;
 
 		.mana-symbol {
-			font-size: 150%;
+			font-size: $font-size-stat-value*.8;
 		}
 	}
 	&.three {
@@ -91,6 +94,7 @@
 		.mana-symbol {
 			grid-row: 2;
 			grid-column: span 3;
+			font-size: $font-size-stat-value*.8*.8;
 
 			&:first-of-type {
 				grid-row: 1;
@@ -103,6 +107,10 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr 1fr;
 		grid-gap: 2px;
+
+		.mana-symbol {
+			font-size: $font-size-stat-value*.8*.8*.8;
+		}
 	}
 	&.five {
 		display: grid;
@@ -110,7 +118,7 @@
 		grid-template-rows: 1fr 1fr;
 
 		.mana-symbol {
-			font-size: 83.33%;
+			font-size: $font-size-stat-value*.8*.8*.8*.8;
 			grid-row: 2;
 			grid-column: span 4;
 

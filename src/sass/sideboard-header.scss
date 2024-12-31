@@ -7,7 +7,6 @@
 	justify-content: space-between;
 	align-items: stretch;
 	cursor: default;
-	border-top: $border-sections;
 	height: $height-deck-header-component;
 	width: 100%;
 
@@ -62,6 +61,7 @@
 			align-items: center;
 			justify-content: center;
 			width: 100%;
+			height: $height-deck-header-component*.75;
 		}
 		.sideboard-card-total {
 			justify-content: center;

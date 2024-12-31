@@ -120,7 +120,7 @@
 				<tr>
 					<th></th>
 					<th title="Count">Ct.</th>
-					<th></th>
+					<th class="empty-cell"></th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -130,7 +130,7 @@
 					<td v-if="variablePT.ct">100.0<span>%</span></td>
 					<td
 						v-else
-						class="empty-td"
+						class="empty-cell"
 					></td>
 				</tr>
 			</tfoot>

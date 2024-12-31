@@ -2,7 +2,7 @@
 @import 'variables';
 
 .app-footer {
-	background: rgba(desaturate(lighten($color-group-bg, 8.33%), 6.25%), .6667);
+	background: rgba($color-group-bg-lighter, .5);
 	border-top: 1px solid $color-content-bg-lighter;
 	position: relative;
 	padding: $lhse*2 0;

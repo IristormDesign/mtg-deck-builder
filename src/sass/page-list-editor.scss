@@ -22,7 +22,6 @@ $width-card-list-section-narrow:
 	}
 	.viewing-controls {
 		min-height: 0%; // Needed for Firefox on sideboard lists
-		height: $height-deck-header-component;
 		box-sizing: content-box;
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
@@ -268,7 +267,7 @@ $width-card-list-section-narrow:
 	.list-editor {
 		.viewing-controls {
 			grid-template-columns: auto auto;
-			height: $height-deck-header-component;
+			height: $height-deck-header-component * 1.25;
 		}
 	}
 	.card-sorter {
