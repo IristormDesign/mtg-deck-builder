@@ -12,8 +12,8 @@
 		<h5>Matching Shortcuts with List Editor</h5>
 		<ul class="keyboard-shortcuts">
 			<li><kbd>Q</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new tab for the displayed card’s page on Scryfall.</li>
-			<li><kbd>Z</kbd>: Turn over the card image (if it’s double-faced).</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new browser tab for the card’s page on Scryfall.</li>
+			<li><kbd>Z</kbd>: Turn over the card image (if the card is double-faced).</li>
 		</ul>
 	</section>
 </template>

@@ -43,6 +43,7 @@
 		box-sizing: content-box;
 		box-shadow: 0 0 0 $lhse*.25 $color-heading-bg;
 		position: relative;
+		z-index: 1;
 	}
 	.button-container {
 		width: fit-content;

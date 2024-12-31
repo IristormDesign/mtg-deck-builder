@@ -162,11 +162,10 @@ figcaption {
 	}
 }
 kbd {
-	$kbd-height: $lhse*1.375;
+	$kbd-height: $lhse*1.3333;
 
 	background: $color-heading-bg;
 	color: $color-text-brighter;
-	border: 1px solid $color-group-bg-darker;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
