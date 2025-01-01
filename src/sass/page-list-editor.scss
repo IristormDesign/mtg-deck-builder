@@ -267,6 +267,7 @@ $width-card-list-section-narrow:
 @mixin viewing-controls-single-layer {
 	.list-editor {
 		.viewing-controls {
+			grid-template-rows: auto;
 			grid-template-columns: auto auto;
 			height: $height-deck-header-component * 1.25;
 		}
