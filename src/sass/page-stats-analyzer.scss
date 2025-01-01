@@ -337,7 +337,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	border-style: solid;
 	border-color: $color-section-border;
 	background: $color-group-bg; // Needed for transition effect.
-	height: $lhse*1.6667;
+	min-height: $lhse*1.6667;
 	transition: $transition-duration-standard ease-out;
 	transition-property: background, color, border;
 	cursor: default;
@@ -368,6 +368,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
+		padding: $lhse*.1667 0;
 	}
 	header {
 		display: flex;
@@ -385,7 +386,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		text-wrap: nowrap;
 	}
 	p {
-		margin: -$lhse*.0625 $lhse 0;
+		margin: -$lhse*.125 $lhse 0;
 		text-wrap: balance;
 		text-align: center;
 		line-height: $line-height-standard*.8333;
