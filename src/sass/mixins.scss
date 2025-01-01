@@ -128,7 +128,7 @@
 	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:
-		0 1px 0 .5px rgba(#000, .75), // Rim around button
+		0 1px 0 .5px rgba(#000, .5), // Rim around button
 		$box-shadow-button-shine;
 	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
@@ -164,7 +164,7 @@
 	}
 	&:active,
 	&:disabled {
-		box-shadow: 0 0 0 .5px #000;
+		box-shadow: 0 0 0 .5px rgba(#000, .5);
 	}
 	&:disabled {
 		opacity: .25;

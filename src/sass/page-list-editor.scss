@@ -59,6 +59,10 @@ $width-card-list-section-narrow:
 	}
 }
 .card-sorter {
+	&:has(:disabled) {
+		opacity: .25;
+		filter: saturate(.5);
+	}
 	form {
 		display: flex;
 		align-items: center;
@@ -72,9 +76,6 @@ $width-card-list-section-narrow:
 		flex-direction: column;
 
 		&:disabled {
-			opacity: .25;
-			filter: saturate(.5);
-
 			&:active {
 				select {
 					cursor: not-allowed;
@@ -387,6 +388,11 @@ $width-card-list-section-narrow:
 		}
 		.card-list-section {
 			width: 100%;
+
+			ul {
+				margin-right: $lhse*.3333;
+				margin-left: $lhse*.3333;
+			}
 		}
 	}
 }

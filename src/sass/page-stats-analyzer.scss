@@ -108,6 +108,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			justify-content: center;
 			align-items: center;
 			border: $table-outer-borders;
+			border-top-width: 0;
 			color: $color-text-darker;
 			cursor: default;
 			background: $color-group-bg-darker;

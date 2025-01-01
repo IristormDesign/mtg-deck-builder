@@ -17,7 +17,7 @@ $color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
 $color-text-over-mythic-brown: desaturate(lighten($color-mythic-brown, 54.17%), 8.33%);
 $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4.17%);
 $color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: lighten($color-mythic-brown, 8.33%); // Lighten percentage matches that of $color-section-border.
+$color-section-border-alt: lighten($color-mythic-brown, 12.5%); // Lighten percentage matches that of $color-section-border.
 
 // YELLOW-BASED COLORS
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
