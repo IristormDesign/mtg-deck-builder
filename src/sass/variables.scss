@@ -4,7 +4,7 @@
 	@return math.div($dividend, $divisor);
 }
 
-// ORANGE-BASED COLORS
+/* ORANGE-BASED COLORS */
 $color-mythic-orange: #ea4b12; // Sampled
 $color-highlight-bg: desaturate(darken($color-mythic-orange, 20%), 20%);
 $color-highlight-border: desaturate(lighten($color-highlight-bg, 8.33%), 8.33%);
@@ -19,7 +19,7 @@ $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: lighten($color-mythic-brown, 12.5%); // Lighten percentage matches that of $color-section-border.
 
-// YELLOW-BASED COLORS
+/* YELLOW-BASED COLORS */
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-link-focus: lighten($color-mythic-yellow, 12.5%);
 $color-link-active: saturate(lighten($color-mythic-yellow, 25%), 50%);
@@ -29,7 +29,7 @@ $color-app-header-link-active: lighten($color-app-header-link, 12.5%);
 $color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
 $color-card-star: saturate(lighten($color-mythic-yellow, 16.67%), 50%);
 
-// SKY-BLUE-BASED COLORS
+/* SKY-BLUE-BASED COLORS */
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-content-bg-lighter: lighten($color-content-bg, 4.17%);
@@ -44,10 +44,10 @@ $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
 
-// INDIGO-BASED COLORS
-$color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
+/* INDIGO-BASED COLORS */
+// $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
 
-// MISCELLANEOUS COLORS
+/* MISCELLANEOUS COLORS */
 $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
@@ -58,7 +58,7 @@ $color-darker-black-label-text: rgba(#000, .875);
 $color-button-border: rgba(#000, 1/3);
 $color-shadows: rgba(#000, .5);
 
-// MANA-BASED COLORS
+/* MANA-BASED COLORS */
 $color-mana-white: desaturate(#fffcd5, 66.67%); // Based on sample
 $color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
 $color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 100%);
@@ -75,7 +75,7 @@ $color-frame-green: desaturate(lighten($color-mana-green, 6.25%), 16.67%);
 $color-frame-multi: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
 $color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 8.33%);
 
-// TEXT
+/* TEXT */
 $font-family-standard: 'Crimson Pro', serif;
 $line-height-standard: 1 + divide(1, 3);
 $lhse: $line-height-standard * 1em;
@@ -87,7 +87,7 @@ $font-size-card-list-textarea: 83.33%;
 $font-size-stat-value: 166.67%;
 $letter-spacing-tiny-font: divide(1, 96)*1em;
 
-// WIDTHS & HEIGHTS
+/* WIDTHS & HEIGHTS */
 $min-width-app: 960px;
 $width-mobile-breakpoint: $min-width-app * .625;
 $width-app-breakpoint: $min-width-app*1.375;
@@ -102,7 +102,7 @@ $height-deck-header-component: $lhse*2.1667;
 $height-deck-header-component: $lhse*2;
 $height-app-header-short: $height-deck-header-component;
 $height-app-header-medium: $height-deck-header-component;
-$height-app-header-tall: $lhse*2.9583;
+$height-app-header-tall: $lhse*3;
 $width-card-bars-wide: $lhse*22; // Set to have the width between the card name and the mana cost on the card bars to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
 $width-card-bars-narrow: $lhse*11;
 $width-card-star: 2em;
@@ -116,7 +116,7 @@ $border-width-sections-medium: 3px;
 $border-width-sections-thickest: 5px;
 $margin-card-gap-after: $border-width-sections-thickest + 1.8; // Carefully adjusted to prevent integer-rounded gaps in card lists.
 
-// BORDERS
+/* BORDERS */
 $border-sections: $border-width-sections solid $color-section-border;
 $border-sections-medium: $border-width-sections-medium solid $color-section-border;
 $border-sections-thick: $border-width-sections-thickest solid $color-section-border;
@@ -129,17 +129,17 @@ $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;
 $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-content-bg;
 
-// SHADOWS AND GLOWS
+/* SHADOWS AND GLOWS */
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
 $box-shadow-button-cast-shadow: -1px .167em .125em 1px rgba(#000, divide(1, 3));
 $box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba(#000, 1/3);
 
-// TRANSITIONS
+/* TRANSITIONS */
 $transition-duration-standard: .25s;
 $transition-duration-card-image-hover-slow: .75s;
 $transition-duration-card-image-hover-fast: $transition-duration-card-image-hover-slow * .3820;
 
-// MISCELLANEOUS VARIABLES
+/* MISCELLANEOUS VARIABLES */
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
 $border-radius-small-button: divide($border-radius-group, 2);
@@ -149,5 +149,5 @@ $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);
 $x: .125em dashed rgba(#0f0, .5);
 
-// MIXINS
+/* MIXINS */
 @import 'mixins';

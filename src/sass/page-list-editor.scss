@@ -52,6 +52,7 @@ $width-card-list-section-narrow:
 		height: $lhse*1.8;
 		margin-right: $lhse*.25;
 	}
+
 	.section-label {
 		padding-left: $lhse*.625;
 		padding-bottom: $lhse*.125;
@@ -67,6 +68,7 @@ $width-card-list-section-narrow:
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-top: -$lhse*.125;
 	}
 	fieldset {
 		padding: 0 0 $lhse*.0625;
@@ -99,7 +101,7 @@ $width-card-list-section-narrow:
 		grid-row: 1 / 3;
 	}
 	form {
-		margin-top: -$lhse*.0417;
+		margin-top: -$lhse*.1667;
 	}
 	fieldset {
 		padding: $lhse*.0417 divide($lhse, 3);
@@ -121,8 +123,6 @@ $width-card-list-section-narrow:
 	}
 	label {
 		margin-top: -$lhse*.0417;
-		padding-top: $lhse*.0;
-		padding-bottom: $lhse*.0;
 		font-weight: $font-weight-label;
 	}
 }
