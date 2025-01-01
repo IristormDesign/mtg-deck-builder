@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'card-list';
 
-$width-card-adder-button: $lhse*2.125;
+$width-card-adder-button: $lhse*2;
 $width-card-list-section-wide:
 	$width-card-bars-wide + $width-card-star + $width-qty-column;
 $width-card-list-section-narrow:
@@ -210,7 +210,7 @@ $width-card-list-section-narrow:
 	button {
 		width: $width-card-adder-button;
 		height: $height-control-panel-input*1.0625;
-		min-width: min-content;
+		min-width: 0;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		margin-left: 1px;

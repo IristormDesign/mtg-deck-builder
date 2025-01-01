@@ -52,7 +52,7 @@ $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scry
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
-$opacity-black-label-text: .8;
+$opacity-black-label-text: .8333;
 $color-black-label-text: rgba(#000, $opacity-black-label-text);
 $color-darker-black-label-text: rgba(#000, .875);
 $color-button-border: rgba(#000, 1/3);
