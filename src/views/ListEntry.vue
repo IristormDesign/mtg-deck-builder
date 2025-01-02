@@ -2,7 +2,7 @@
 	<article class="list-entry content-box">
 		<h3>Card List Entry</h3>
 		<template v-if="!isLoadingCards">
-			<p>Here you can add multiple cards at once to the main card group of this deck.</p>
+			<p>Here you can add multiple cards at once to the main card group of this deck. For more info about how this page works, see the <router-link to="/manual/#card-list-entry">user manual</router-link>.</p>
 			<div class="columns">
 				<form>
 					<label for="card-list-entry">Enter a list of cards:</label>
@@ -35,9 +35,6 @@
 					<p>Spelling matters, but letter case doesn’t.</p>
 				</section>
 			</div>
-			<footer class="for-more-info">
-				<p>For more info about entering a card list, see the <router-link to="/manual/#card-list-entry">user manual</router-link>.</p>
-			</footer>
 		</template>
 		<template v-else>
 			<p>Loading your cards now. Please wait.</p>
@@ -103,6 +100,17 @@ export default {
 		autosize(this.$refs.textCardList)
 
 		this.$refs.textCardList.focus()
+	},
+	beforeRouteLeave (to, from, next) {
+		if (this.textCardList.length < 10) {
+			next()
+		} else {
+			const confirmLeave = confirm('If you leave this page, then the list you’ve entered in the submission form will be lost. Continue?')
+
+			if (confirmLeave) {
+				next()
+			}
+		}
 	},
 	methods: {
 		submitList () {

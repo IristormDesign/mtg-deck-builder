@@ -17,13 +17,12 @@
 		grid-template-columns: 1fr 1fr;
 		gap: $lhse $lhse;
 		align-items: flex-start;
-		margin: $lhse 0 $lhse*.5;
+		margin: $lhse*1.5 0 $lhse*.5;
 	}
 	form {
 		display: flex;
 		flex-direction: column;
 		justify-items: center;
-		margin-bottom: $lhse*.5;
 	}
 	label {
 		font-weight: $font-weight-label;
