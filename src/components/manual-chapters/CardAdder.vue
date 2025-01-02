@@ -26,7 +26,7 @@
 		</section>
 		<section id="random-card-query">
 			<h5>Random Card Query</h5>
-			<p>Add a name of a <i>Magic</i> card at random (among modern-framed cards legal in Vintage tournaments) by entering the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>. Your web browser may also show this as a selectable option when the card adder’s text field has focus.</p>
+			<p>You can add the name of a <i>Magic</i> card at random (among Vintage-legal cards) by entering the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>. Your web browser may also show “#random” as a selectable option when the card adder’s text field has browser focus.</p>
 		</section>
 		<section id="card-adder-other-info">
 			<h5>Other Information About the Card Adder</h5>

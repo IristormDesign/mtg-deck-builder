@@ -40,8 +40,8 @@ export default {
 
 			axios
 				.get(
-					'https://api.scryfall.com/cards/random?q=legal%3Avintage+lang%3Aen+-is%3Aold+-is%3Afuture+-is%3Adigital', // Get a random card that's legal in Vintage tournaments, is in English text, does NOT have the old-style nor "future"-style card frames, and is NOT a digital (MTG Arena) edition.
-					{ timeout: 8000 }
+					'https://api.scryfall.com/cards/random?q=legal%3Avintage+lang%3Aen+-is%3Adigital', // Get a random card that's legal in Vintage tournaments, is in English text, and is NOT a digital (MTG Arena) edition.
+					{ timeout: 10000 }
 				)
 				.then(response => {
 					this.assignCardData(response.data)
@@ -77,7 +77,7 @@ export default {
 						}]
 					}, {
 						headers: { 'Content-Type': 'application/json' },
-						timeout: 8000
+						timeout: 10000
 					}
 				)
 				.then(response => {
@@ -117,7 +117,7 @@ export default {
 			axios
 				.get(
 					`https://api.scryfall.com/cards/named?fuzzy=${urlEncodedQuery}`,
-					{ timeout: 8000 }
+					{ timeout: 10000 }
 				)
 				.then(response => {
 					this.assignCardData(response.data, oldCardData)

@@ -24,7 +24,7 @@
 				>
 					{{ name }}
 				</option>
-				<option value="#Random">
+				<option value="#random">
 					🎲 Add a random Magic card
 				</option>
 			</datalist>
