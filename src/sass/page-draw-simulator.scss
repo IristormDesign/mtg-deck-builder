@@ -1,8 +1,4 @@
 @import 'variables';
-$width-card-list-section-wide:
-	$width-card-bars-wide + $width-card-star;
-$width-card-list-section-narrow:
-	$width-card-bars-narrow + $width-card-star;
 
 .draw-simulator {
 	margin: 0 auto $lhse*.5;
@@ -17,7 +13,7 @@ $width-card-list-section-narrow:
 	.layout-column {
 		background: $color-group-bg;
 		border-radius: $border-radius-group;
-		width: $width-card-list-section-wide;
+		width: $width-card-bars-wide + $width-card-star + divide($lhse, 3);
 	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
@@ -84,8 +80,7 @@ $width-card-list-section-narrow:
 		border-bottom-right-radius: $border-radius-group;
 		border-bottom-left-radius: $border-radius-group;
 		border-bottom-width: 0;
-		padding-right: $lhse*.5;
-		padding-left: $lhse*.25;
+		padding: $lhse*.4167 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
 
 		li {
 			&:nth-last-of-type(8) {
@@ -163,6 +158,8 @@ $width-card-list-section-narrow:
 }
 @media (max-width: ($min-width-app * .6)) {
 	.draw-simulator {
+		max-width: none;
+
 		.control-panel {
 			grid-template-rows: 1fr 1fr;
 		}
@@ -174,6 +171,10 @@ $width-card-list-section-narrow:
 			.output {
 				min-width: auto;
 			}
+		}
+		.card-list-section {
+			padding-right: divide($lhse, 3);
+			padding-left: divide($lhse, 3);
 		}
 	}
 }
