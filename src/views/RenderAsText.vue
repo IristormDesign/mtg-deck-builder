@@ -60,7 +60,7 @@
 			</div>
 
 			<footer class="for-more-info">
-				<p>For more information about rendering deck lists as text, see the <router-link to="/manual#render-as-text-action">user manual</router-link>.</p>
+				<p>For more info about rendering deck lists as text, see the <router-link to="/manual#render-as-text-action">user manual</router-link>.</p>
 			</footer>
 		</template>
 

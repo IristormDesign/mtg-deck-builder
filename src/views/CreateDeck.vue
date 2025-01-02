@@ -45,7 +45,7 @@
 			</div>
 		</div>
 		<footer class="for-more-info">
-			<p>For more information about creating decks in this app, see the <router-link to="/manual/#create-deck">user manual</router-link>.</p>
+			<p>For more info about creating decks in this app, see the <router-link to="/manual/#create-deck">user manual</router-link>.</p>
 		</footer>
 	</article>
 </template>

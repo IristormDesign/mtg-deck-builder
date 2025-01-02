@@ -35,6 +35,9 @@
 					<p>Spelling matters, but letter case doesn’t.</p>
 				</section>
 			</div>
+			<footer class="for-more-info">
+				<p>For more info about entering a card list, see the <router-link to="/manual/#card-list-entry">user manual</router-link>.</p>
+			</footer>
 		</template>
 		<template v-else>
 			<p>Loading your cards now. Please wait.</p>
