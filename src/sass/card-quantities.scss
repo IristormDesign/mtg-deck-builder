@@ -4,7 +4,7 @@
 	.card-list-section {
 		li {
 			&:has(.qty:hover)	{
-				background: $color-heading-bg;
+				background: $color-group-bg-lighter;
 				box-shadow: $box-shadow-card-list-row-bg-edge;
 			}
 		}
@@ -49,11 +49,13 @@
 		border: 0;
 		min-width: 0;
 		width: 2ch;
-		height: $lhse*.7083;
+		height: $lhse*.75;
 		text-align: center;
 		transition: none;
 		padding: 0;
+		padding-bottom: $lhse*.0833;
 		margin: -4.17% 0 0 0;
+		margin: 0;
 		font: $font-weight-semibold #{100%}/#{1} $font-family-standard;
 		border-radius: 0;
 		appearance: textfield;
@@ -73,8 +75,8 @@
 			outline: 1px solid $color-link-focus;
 		}
 		.hover-extension {
-			background: $color-heading-bg;
-			border: solid $color-content-bg;
+			background: $color-group-bg-lighter;
+			border: solid $color-heading-bg;
 			border-width: 1px 0;
 		}
 		.qty-button-cluster {
