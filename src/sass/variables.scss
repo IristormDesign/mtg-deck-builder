@@ -105,6 +105,7 @@ $height-app-header-tall: $lhse*3;
 $width-card-bars-wide: $lhse*22; // Set to have the width between the card name and the mana cost on the card bars to match the width of those labels on the actual cards. Add a little extra space to avoid text overflow.
 $width-card-bars-narrow: $lhse*11;
 $width-card-star: 2em;
+$width-card-star: $lhse*1.25;
 $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 $width-list-editor-region: $lhse*14.5;

@@ -4,7 +4,7 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -$lhse;
+	left: -$lhse*.9167;
 	width: $width-card-star;
 	border-radius: $border-radius-button;
 	border-top-right-radius: 0;
@@ -88,8 +88,8 @@
 		+ svg {
 			opacity: 0;
 			fill: $color-card-star;
-			width: $lhse*.9583;
-			height: $lhse*.9583;
+			width: $lhse*.9167;
+			height: $lhse*.9167;
 			position: relative;
 			left: 0;
 			transition: $transition-duration-standard ease;
@@ -108,8 +108,8 @@
 				&:focus-within {
 					input {
 						+ svg {
-							transition-duration: $transition-duration-standard;
-							transition-delay: 0s;
+							transition-duration: $transition-duration-standard !important;
+							transition-delay: 0s !important;
 						}
 					}
 				}
