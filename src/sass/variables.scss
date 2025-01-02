@@ -98,7 +98,6 @@ $max-width-content: 64ch;
 $max-width-mobile-header-menu: 512px; // This must match the value from the `mobileView()` method in HeaderMenu.vue.
 $max-width-narrow-message: $max-width-content * .75;
 $height-control-panel-input: $lhse * 1.5;
-$height-deck-header-component: $lhse*2.1667;
 $height-deck-header-component: $lhse*2;
 $height-app-header-short: $height-deck-header-component;
 $height-app-header-medium: $height-deck-header-component;
@@ -114,7 +113,7 @@ $width-textarea-card-list: $lhse*11.5; // Slightly wider than the width of a lin
 $border-width-sections: 1px;
 $border-width-sections-medium: 3px;
 $border-width-sections-thickest: 5px;
-$margin-card-gap-after: $border-width-sections-thickest + 1.8; // Carefully adjusted to prevent integer-rounded gaps in card lists.
+$margin-card-gap-after: $border-width-sections-thickest;
 
 /* BORDERS */
 $border-sections: $border-width-sections solid $color-section-border;
@@ -147,7 +146,7 @@ $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-h
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);
-$x: .125em dashed rgba(#0f0, .5);
+$x: .0833em dashed rgba(#0f0, .6667);
 
 /* MIXINS */
 @import 'mixins';

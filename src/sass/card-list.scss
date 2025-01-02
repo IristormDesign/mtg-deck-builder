@@ -1,7 +1,7 @@
 @import 'variables';
 
 .card-list-section {
-	padding: $lhse*.5 0;
+	padding: $lhse*.4583 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
 	border-top: $border-sections-thick;
 	border-bottom: $border-sections-thick;
 	flex-grow: 1;
@@ -110,13 +110,22 @@
 }
 @media (max-width: $width-deck-hidden-image) {
 	.card-list-section {
+		padding: $lhse*.4167 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
+
 		.no-cards {
 			max-width: none;
 		}
 	}
 }
+@media (max-width: ($max-width-mobile-header-menu)) {
+	.card-list-section {
+		padding: $lhse*.4583 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
+	}
+}
 @media (max-width: ($min-width-app * .5)) {
 	.card-list-section {
+		padding: $lhse*.5 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
+
 		li {
 			max-width: 80vw;
 

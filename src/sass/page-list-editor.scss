@@ -387,12 +387,16 @@ $width-card-list-section-narrow:
 		.layout-column {
 			margin-right: 0;
 		}
+		.card-sorter,
+		.card-group-switch {
+			min-height: $lhse*2.3333;
+		}
 		.card-list-section {
 			width: 100%;
 
 			ul {
-				margin-right: $lhse*.3333;
-				margin-left: $lhse*.3333;
+				margin-right: divide($lhse, 3);
+				margin-left: divide($lhse, 3);
 			}
 		}
 	}
