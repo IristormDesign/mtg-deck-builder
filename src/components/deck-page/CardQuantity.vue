@@ -200,7 +200,7 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						setTimeout(() => {
-							alert('A deck can’t have more than 4 cards of a particular name, except if they’re basic land cards.')
+							alert('A deck can’t have more than 4 cards of the same name, except for the basic land cards.')
 						}, 100)
 
 						card.qty = 4

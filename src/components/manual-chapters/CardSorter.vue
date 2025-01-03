@@ -25,16 +25,16 @@
 				<p><strong>Mana value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost). Cards of mana value 0 are sorted between lands and spells.</p>
 			</li>
 			<li>
-				<p><strong>Supertype</strong> – Sorts alphabetically by supertype, and moves cards without supertypes to the bottom. (Common supertypes are “basic” [on land cards] and “legendary.”)</p>
+				<p><strong>Supertype</strong> – Sorts alphabetically by first-indicated supertype, and moves cards without supertypes to the bottom. (Common supertypes are “basic” [on land cards] and “legendary.”)</p>
 			</li>
 			<li>
 				<p><strong>Type</strong> – Sorts by card type in this order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
 			</li>
 			<li>
-				<p><strong>First subtype</strong> – Sorts alphabetically by the first-indicated subtype, and moves cards without subtypes to the bottom.</p>
+				<p><strong>First subtype</strong> – Sorts alphabetically by first-indicated subtype, and moves cards without subtypes to the bottom.</p>
 			</li>
 			<li>
-				<p><strong>Last subtype</strong> – Sorts alphabetically by the last-indicated subtype, and moves cards without subtypes to the bottom.</p>
+				<p><strong>Last subtype</strong> – Sorts alphabetically by last-indicated subtype, and moves cards without subtypes to the bottom.</p>
 			</li>
 			<li>
 				<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>

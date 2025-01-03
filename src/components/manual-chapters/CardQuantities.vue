@@ -29,6 +29,6 @@
 			<li>Press <kbd>F</kbd> to move 1 card into the inactive card group.</li>
 			<li>Hold down <kbd class="shift-key">Shift</kbd> while pressing one of the aforementioned keys to adjust the quantity by 2 instead of 1.</li>
 		</ul>
-		<p>Conforming to <a href="#game-rules"><i>Magic</i>’s rules</a>, MTG Deck Builder prevents you from setting card names to a quantity greater than 4—except for the basic land cards, and a few certain cards with abilities that specially raise their quantity limits.</p>
+		<p>Conforming to the standard gameplay <a href="#game-rules">rules of <i>Magic</i></a>, MTG Deck Builder prevents you from setting almost any card name to a quantity greater than 4. Exceptions are the basic lands, and a few certain cards with abilities that specially raise their quantity limits.</p>
 	</section>
 </template>
