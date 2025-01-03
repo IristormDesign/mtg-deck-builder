@@ -17,7 +17,7 @@ body {
 .fade-bg {
 	background:
 	  linear-gradient((180deg + 5.625),
-	   rgba(#fff, 8.33%) 0,
+	   rgba(#fff, 12.5%) 0,
 	   rgba(#fff, 0%) 100vh
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
@@ -135,7 +135,7 @@ li {
 	}
 	&:last-child {
 		p:last-child {
-			margin-bottom: $lhse*.75;
+			margin-bottom: 0;
 		}
 	}
 }
@@ -148,7 +148,7 @@ figure {
 	margin: $lhse*.5;
 
 	img {
-		background-color: $color-group-bg-darker;
+		background-color: $color-group-bg-lighter;
 	}
 }
 figcaption {
@@ -162,7 +162,7 @@ figcaption {
 	}
 }
 kbd {
-	$kbd-height: $lhse*1.3333;
+	$kbd-height: $lhse*1.25;
 
 	background: $color-heading-bg;
 	color: $color-text-brighter;
@@ -172,10 +172,10 @@ kbd {
 	margin: 0 1px;
 	width: $kbd-height;
 	height: $kbd-height;
-	border-radius: $kbd-height*.125;
-	font-size: 70.83%;
-	font-family: "Segoe UI Semibold", ui-sans-serif, system-ui, sans-serif;
-	vertical-align: text-top;
+	border-radius: $kbd-height*.0833;
+	font-size: 75%;
+	font-family: ui-sans-serif, system-ui, sans-serif;
+	font-weight: 400;
 	margin-top: -.125em; // To vertically align the key letters with normal text.
 	margin-bottom: -.125em; // To maintain a consistent line height.
 

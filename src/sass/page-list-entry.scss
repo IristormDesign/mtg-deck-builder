@@ -2,7 +2,7 @@
 
 .list-entry,
 .list-entry-results {
-	margin: 0 auto $lhse*.5;
+	margin: 0 auto $lhse;
 
 	h3 {
 		@include pronounced-heading;
@@ -10,14 +10,14 @@
 	}
 }
 .list-entry {
-	max-width: $lhse*32;
-
 	.columns {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: $lhse $lhse;
 		align-items: flex-start;
-		margin: $lhse*1.5 0 $lhse*.5;
+		margin: $lhse*.75 0 $lhse*.5;
+		border-top: $border-sections;
+		padding-top: $lhse;
 	}
 	form {
 		display: flex;
@@ -67,6 +67,8 @@
 		}
 	}
 	.rules {
+		font-size: $font-size-small;
+
 		h4 {
 			margin-top: 0;
 		}
@@ -134,7 +136,7 @@
 	}
 }
 
-@media (max-width: ($min-width-app * .8333)) {
+@media (max-width: ($min-width-app * .7083)) {
 	.list-entry {
 		max-width: $max-width-content;
 
@@ -156,6 +158,7 @@
 @media (max-width: ($min-width-app * .4583)) {
 	.list-entry {
 		form {
+			justify-self: center;
 			margin-right: -$lhse*.5;
 			margin-left: -$lhse*.5;
 		}

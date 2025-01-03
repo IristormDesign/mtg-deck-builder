@@ -54,35 +54,3 @@
 	font-size: $font-size-small;
 	font-style: italic;
 }
-.contact-page {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: $lhse;
-	max-width: $max-width-content*1.3333;
-
-	h2 {
-		text-align: center;
-		grid-column: span 2;
-		margin-bottom: 0;
-	}
-	figure {
-		margin: 0;
-	}
-	.column {
-		h3 {
-			&:first-child {
-				margin-top: 0;
-			}
-		}
-	}
-}
-
-@media (max-width: ($min-width-app*.8)) {
-	.contact-page {
-		grid-template-columns: auto;
-
-		h2 {
-			grid-column: 1;
-		}
-	}
-}

@@ -39,7 +39,7 @@ $color-group-bg-lighter: desaturate(lighten($color-group-bg, 6.25%), 6.25%);
 $color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: darken($color-text, 12.5%);
+$color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
@@ -122,7 +122,7 @@ $border-sections-thick: $border-width-sections-thickest solid $color-section-bor
 $border-sections-alt: $border-width-sections solid $color-section-border-alt;
 $color-input-border: $border-width-sections solid $color-button-orange;
 $border-image-thin: $border-width-sections solid $color-group-bg-darker;
-$border-image-thick: $border-width-sections-thickest solid $color-group-bg-lighter;
+$border-image-thick: divide($lhse, 3) solid $color-group-bg-lighter;
 $border-bottom-width-button: 3px;
 $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;

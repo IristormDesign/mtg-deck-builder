@@ -30,11 +30,12 @@
 		margin-right: $lhse*.5;
 	}
 	.output {
-		font-size: 200%;
+		font-size: $font-size-stat-value;
 		line-height: 1;
 		margin-top: divide(-$lhse, 12);
 		display: flex;
 		align-items: center;
+		font-weight: $font-weight-label;
 	}
 	.warning-symbol {
 		margin-left: .25em;

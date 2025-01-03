@@ -6,7 +6,6 @@
 	border-top: 1px solid $color-content-bg-lighter;
 	position: relative;
 	padding: $lhse*2 0;
-	margin-top: $lhse*.5;
 	transform: translateZ(0); // This is to fix an odd page-rendering glitch in Chrome. Without it, the text in the footer dims whenever a button elsewhere on the page is hovered/focused.
 
 	.root-home-page & {

@@ -40,7 +40,7 @@
 				<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>
 			</li>
 			<li>
-				<p><strong>P/T sum</strong> – Sorts from greatest to least by “P/T sum,” which is a number equal to the combined power and toughness (P/T) numbers of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted by power alone from greatest to least. Cards without the power and toughness attribute are moved to the bottom.</p>
+				<p><strong>P/T sum</strong> – Sorts from greatest to least by “P/T sum,” which is a number equal to combining the power and toughness (P/T) numbers of a card. (For example, the P/T sum of a 3/2 creature is 5.) Among cards having the same P/T sums as each other, they’re sorted by power alone from greatest to least. Cards without the power and toughness attribute are moved to the bottom.</p>
 			</li>
 			<li>
 				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>

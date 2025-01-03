@@ -5,6 +5,7 @@
 	grid-template-columns: auto auto;
 	gap: $margin-sections;
 	position: relative;
+	border-radius: 0;
 
 	&.content-box {
 		max-width: 100%;
@@ -213,6 +214,11 @@
 				}
 			}
 		}
+	}
+}
+@media (max-width: ($min-width-app*.875)) {
+	.manual-page {
+		margin-bottom: $lhse;
 	}
 }
 @media (max-width: ($min-width-app*.75)) {
