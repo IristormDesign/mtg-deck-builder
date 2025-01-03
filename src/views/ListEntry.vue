@@ -102,7 +102,11 @@ export default {
 		this.$refs.textCardList.focus()
 	},
 	beforeRouteLeave (to, from, next) {
-		if (this.textCardList.length < 10) {
+		if (
+			this.submittedCards.length > 0 ||
+			this.repeatedCardNames.length > 0 ||
+			this.textCardList.length < 10
+		) {
 			next()
 		} else {
 			const confirmLeave = confirm('If you leave this page, then the list you’ve entered in the submission form will be lost. Continue?')

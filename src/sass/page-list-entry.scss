@@ -37,7 +37,7 @@
 		color: $color-text-extra-brighter;
 	}
 	textarea {
-		margin: 0 auto;
+		margin: 0 $lhse*.25; // Horizontal margins are to be equal to the width of the pseudo-border from box-shadow.
 		max-width: 100%;
 		width: 36ch;
 		box-sizing: content-box;
@@ -68,6 +68,7 @@
 	}
 	.rules {
 		font-size: $font-size-small;
+		line-height: $line-height-standard*.9167;
 
 		h4 {
 			margin-top: 0;
@@ -80,7 +81,7 @@
 			line-height: normal;
 			letter-spacing: normal;
 			display: inline-block;
-			margin-top: -$lhse*.5;
+			margin-top: -$lhse*.375;
 			background: $color-group-bg-darker;
 			padding: divide(1em, 3) .6667em;
 		}
@@ -149,6 +150,10 @@
 			margin: 0 auto;
 		}
 		.rules {
+			line-height: $line-height-standard;
+			margin: 0 auto;
+			max-width: $max-width-content * .75;
+
 			h4 {
 				margin-top: $lhse*.5;
 			}
@@ -167,6 +172,8 @@
 			width: 100%;
 			padding: divide($lhse, 3) $lhse*.5;
 			font-size: 80%;
+			margin-right: 0;
+			margin-left: 0;
 		}
 	}
 }
