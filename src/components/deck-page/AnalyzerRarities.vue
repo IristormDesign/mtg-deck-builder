@@ -61,6 +61,7 @@ export default {
 				Rare: 0,
 				'Mythic rare': 0,
 				Special: 0,
+				Bonus: 0,
 				Other: 0
 			}
 		}
@@ -104,6 +105,9 @@ export default {
 						break
 					case 'special':
 						cts.Special += qty
+						break
+					case 'bonus':
+						cts.Bonus += qty
 						break
 					default:
 						cts.Other += qty

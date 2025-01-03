@@ -311,7 +311,7 @@ export default {
 			})
 		},
 		sortByRarity (cards) {
-			const rarityOrder = ['special', 'mythic', 'rare', 'uncommon', 'common', '']
+			const rarityOrder = ['bonus', 'special', 'mythic', 'rare', 'uncommon', 'common', '']
 
 			cards.sort((a, b) => {
 				const rarityA = rarityOrder.indexOf(a.rarity)

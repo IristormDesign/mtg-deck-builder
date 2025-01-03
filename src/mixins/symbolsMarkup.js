@@ -16,7 +16,8 @@ export default {
 				u: '<div class="rarity-symbol uncommon"><div>U</div></div>',
 				r: '<div class="rarity-symbol rare"><div>R</div></div>',
 				m: '<div class="rarity-symbol mythic"><div>M</div></div>',
-				s: '<div class="rarity-symbol special"><div>S</div></div>'
+				s: '<div class="rarity-symbol special"><div>S</div></div>',
+				b: '<div class="rarity-symbol special"><div>B</div></div>'
 			}
 		}
 	}

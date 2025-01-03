@@ -189,7 +189,7 @@
 			saturate(lighten($color-rarity-special, 20%), 25%),
 			darken($color-rarity-special, 25%)
 		) $color-rarity-special;
-		text-shadow: .375px -.5px 0 rgba(#000, .5);
+		text-shadow: .375px -.5px 0 rgba(#000, .6667);
 	}
 }
 .warning-symbol {

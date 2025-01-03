@@ -101,6 +101,8 @@ export default {
 					return symbol.m
 				case 'special':
 					return symbol.s
+				case 'bonus':
+					return symbol.b
 				default:
 					return null
 			}
