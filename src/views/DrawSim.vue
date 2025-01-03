@@ -65,7 +65,10 @@
 			</section>
 		</div>
 
-		<card-image :deck="deck" />
+		<card-image
+			:deck="deck"
+			:drawnCards="drawnList.length"
+		/>
 	</div>
 </template>
 
@@ -154,6 +157,7 @@ export default {
 					this.drawCard()
 				} else {
 					this.library.splice(0, 1)
+					card.uniqueID = this.drawnList.length
 					this.drawnList.unshift(card)
 					if (!this.isMobileLayout()) {
 						this.viewCard(card)
