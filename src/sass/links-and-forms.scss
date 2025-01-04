@@ -107,6 +107,8 @@ select {
 	padding: 0;
 	margin: 0;
 	display: flex;
+	background: $color-group-bg-lighter;
+	color: $color-text-brighter;
 
 	/* For users' browsers that don't yet support the `:has` pseudo-class, provide fallback pseudo-classes. */
 	&:has(input:focus-visible) {
