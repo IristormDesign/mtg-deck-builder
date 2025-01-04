@@ -146,7 +146,6 @@
 				width: auto;
 				height: $lhse*1.25;
 				display: flex;
-				padding-top: $lhse*.1667;
 			}
 			.output {
 				height: $line-height-standard*1.5rem;
@@ -166,6 +165,7 @@
 
 				h3 {
 					width: min-content;
+					padding-bottom: $lhse*.125;
 				}
 			}
 			&:nth-of-type(2) {

@@ -185,12 +185,12 @@
 	}
 	.header-menu-toggler {
 		position: absolute;
-		top: -$lhse*.2917;
+		top: -$lhse*.25;
 		right: 0;
 		display: block;
 		z-index: index($layers, app-menu-toggler);
-		width: $lhse*2.25;
-		height: $lhse*1.75;
+		width: $lhse*2;
+		height: $lhse*1.6667;
 		min-width: 0;
 		background: $color-app-header-link;
 		line-height: 0;
@@ -214,7 +214,7 @@
 
 		> .hover-shield {
 			display: block;
-			width: $lhse*2.25;
+			width: $lhse*2;
 			height: $lhse*1.75;
 			position: absolute;
 			top: -$lhse*1.75;

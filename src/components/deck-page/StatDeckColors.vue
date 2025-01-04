@@ -8,9 +8,13 @@
 		>0</div>
 		<div
 			v-else
-			class="output" :class="sizeManaSymbols(deck)"
-			v-html="renderManaSymbols(deck)"
-		></div>
+			class="output"
+		>
+			<div
+				v-html="renderManaSymbols(deck)"
+				:class="sizeManaSymbols(deck)"
+			></div>
+		</div>
 	</section>
 </template>
 
