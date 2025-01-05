@@ -2,7 +2,7 @@
 	<article class="list-entry content-box">
 		<h3>Card List Entry</h3>
 		<template v-if="!isLoadingCards">
-			<p>Here you can add multiple cards at once to the main card group of this deck. For more info, see the <router-link to="/manual/#add-multiple">user manual</router-link>.</p>
+			<p>Here you can add multiple cards at once to the main card group of this deck. For more info, see the <router-link to="/manual/#card-list-entry">user manual</router-link>.</p>
 			<div class="columns">
 				<form>
 					<label for="card-list-entry">Enter a list of cards:</label>

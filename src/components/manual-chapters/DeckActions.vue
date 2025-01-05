@@ -6,7 +6,7 @@
 		<section id="render-as-text-action">
 			<h5>Render as Text</h5>
 			<p>In the <a href="#deck-actions">Deck Actions</a> menu, select the “Render as text” option to go to the “Deck in Plain Text” page. From there, you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> in the form of simple lists in plain text.</p>
-			<p>These plain-text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>. (This textual card list format is the same one used for <a href="#add-multiple">adding card lists</a> to your deck.)</p>
+			<p>These plain-text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>. (This textual card list format is the same one used for <a href="#card-list-entry">adding card lists</a> to your deck.)</p>
 			<p>Why would you want to see your deck in the form of plain text?</p>
 			<ul>
 				<li>
