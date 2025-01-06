@@ -252,7 +252,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 				&,
 				&:hover,
 				&:active {
-					cursor: default;
+					pointer-events: none;
 					color: $color-text;
 					outline: none;
 					background: none;

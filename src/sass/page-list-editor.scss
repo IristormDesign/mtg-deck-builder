@@ -85,7 +85,7 @@ $width-card-list-section-narrow:
 			}
 			select {
 				opacity: 1;
-				cursor: default;
+				pointer-events: none;
 			}
 		}
 	}
