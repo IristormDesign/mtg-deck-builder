@@ -1,7 +1,7 @@
 .deck-action-bar {
 	background: $color-group-bg;
 	display: grid;
-	grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
+	grid-template-columns: 3fr 1fr;
 	align-items: center;
 	border-radius: $border-radius-group;
 	border-top-right-radius: 0;
@@ -11,30 +11,20 @@
 	position: relative;
 	min-height: $height-deck-header-component;
 }
-.mode-heading,
 .mode-menu,
 .deck-actions {
 	margin: 0;
 	padding: 0 $lhse*.5;
-}
-.mode-heading {
-	width: max-content;
-	cursor: default;
-
-	h3 {
-		font-size: 112.5%;
-		margin: 0;
-	}
+	align-items: center;
 }
 .mode-menu {
 	align-self: stretch;
-	border-left: $border-sections;
 	border-right: $border-sections;
 
 	ul {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: $lhse*.5;
+		gap: $lhse*.25;
 		margin: 0 auto;
 		padding: 0;
 		height: 100%;
@@ -44,22 +34,37 @@
 		list-style: none;
 	}
 	a {
-		@include button;
-		font-size: 80%;
-		text-align: left;
-		padding-top: $lhse*.0417;
-		padding-bottom: $lhse*.0417;
+		@include heading-font;
 		display: flex;
-		gap: 0 .25em;
+		gap: 0 $lhse*.125;
+		align-items: center;
+		justify-content: center;
+		border: $border-width-sections solid transparent;
+		padding: 0 divide($lhse, 3);
+		transition: all $transition-duration-standard ease;
 
+		&:hover,
+		&:focus {
+			background: $color-mythic-brown;
+		}
+		&:active {
+			transition-duration: 0s;
+			background: $color-mythic-dim;
+		}
 		&.current-page {
-			opacity: .25;
-			cursor: default;
+			text-decoration: none;
+			pointer-events: none;
+			background: $color-heading-bg;
+			color: $color-text-extra-brighter;
 		}
 	}
 	svg {
 		width: $lhse*1.5;
 		height: $lhse*1.5;
+		margin-left: -$lhse*.125;
+	}
+	.text-label {
+		font-size: 87.5%;
 	}
 }
 .deck-actions {
@@ -86,44 +91,24 @@
 	}
 }
 
-@media (max-width: ($min-width-app*.9583)) {
+@media (max-width: ($min-width-app*.9167)) {
 	.deck-action-bar {
 		display: flex;
-		flex-wrap: wrap;
-		align-items: stretch;
+		justify-content: space-between;
 	}
-	.mode-heading,
-	.mode-menu,
-	.deck-actions {
-		min-height: $lhse*2;
-		padding: 0 $lhse*.5;
-	}
-	.mode-heading {
-		display: flex;
-		align-items: center;
-		flex-grow: 1;
-	}
+}
+@media (max-width: ($min-width-app*.8)) {
 	.mode-menu {
-		order: 3;
-		width: 100%;
-		border-width: 0;
-		border-top: $border-sections;
-		box-sizing: content-box;
+		flex-grow: 1;
 
 		ul {
-			display: flex;
-			justify-content: space-evenly;
+			gap: $lhse*.25;
 		}
-		li {
-			max-width: $lhse*6.5;
-			width: 100%;
+		.text-label {
+			font-size: 75%;
+			width: min-content;
+			line-height: $line-height-standard*.8;
 		}
-	}
-	.deck-actions {
-		border-left: $border-sections;
-		display: flex;
-		align-items: center;
-		justify-self: flex-end;
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
@@ -131,55 +116,45 @@
 		border-radius: 0;
 	}
 }
-@media (max-width: ($min-width-app*.6)) {
+@media (max-width: ($min-width-app*.5625)) {
 	.mode-menu {
-		ul {
-			gap: $lhse*.25;
-		}
-		li {
-			max-width: $lhse*4.75;
-		}
+		min-height: $lhse*3.3333;
+
 		a {
-			padding-top: $lhse*.1667;
-			padding-bottom: $lhse*.1667;
+			flex-wrap: wrap;
+			border-radius: $border-radius-small-button;
+			padding-bottom: $lhse*.125;
+		}
+		svg {
+			width: 100%;
+			margin: 0;
 		}
 		.text-label {
-			width: min-content;
-			margin-top: 0;
+			text-align: center;
 		}
 	}
 }
 @media (max-width: ($min-width-app*.5)) {
 	.deck-action-bar {
-		border-radius: 0;
 		margin-bottom: $lhse*.5;
+		flex-wrap: wrap;
 	}
 	.mode-menu {
-		height: $lhse*3.375;
+		width: 100%;
+		border-right-width: 0;
+		border-top: $border-sections;
+		order: 2;
 
-		li {
-			max-width: $lhse*3.25;
-		}
 		a {
-			flex-wrap: wrap;
-			text-align: center;
-			border-radius: $border-radius-small-button;
-		}
-		svg {
-			width: 100%;
+			padding-bottom: 0;
 		}
 		.text-label {
-			padding-bottom: $lhse*.125;
+			margin-bottom: $lhse*.1667;
 		}
 	}
-}
-@media (max-width: ($min-width-app*.375)) {
-	.mode-menu {
-		a {
-			width: 100%;
-		}
-	}
-	.mode-heading {
-		justify-content: center;
+	.deck-actions {
+		order: 1;
+		height: $height-deck-header-component*.75;
+		width: 100%;
 	}
 }

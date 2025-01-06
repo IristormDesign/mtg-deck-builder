@@ -14,7 +14,6 @@
 		</header>
 
 		<div class="deck-action-bar">
-			<deck-mode-heading />
 			<mode-menu />
 			<deck-actions :deck="deck" />
 		</div>
@@ -52,7 +51,6 @@ import AverageManaValue from '@/components/deck-page/StatAverageManaValue.vue'
 import DateEdited from '@/components/deck-page/StatDateEdited.vue'
 import CardNames from '@/components/deck-page/StatCardNames.vue'
 import CardTotal from '@/components/deck-page/StatCardTotal.vue'
-import DeckModeHeading from '@/components/deck-page/DeckModeHeading.vue'
 import ModeMenu from '@/components/deck-page/ModeMenu.vue'
 import DeckActions from '@/components/deck-page/DeckActions.vue'
 import UpdateDataNotice from '@/components/deck-page/UpdateDataNotice.vue'
@@ -62,7 +60,7 @@ import cardListFunctions from '@/mixins/cardListFunctions.js'
 import keyboardShortcuts from '@/mixins/keyboardShortcuts.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, DeckModeHeading, ModeMenu, DeckActions, UpdateDataNotice, NotFoundContent },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ModeMenu, DeckActions, UpdateDataNotice, NotFoundContent },
 	mixins: [getActiveDeck, cardListFunctions, keyboardShortcuts],
 	computed: {
 		validDeck () {

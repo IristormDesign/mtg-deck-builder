@@ -110,7 +110,7 @@
 }
 @media (max-width: $width-deck-hidden-image) {
 	.card-list-section {
-		padding: $lhse*.4167 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
+		padding: $lhse*.5 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
 
 		.no-cards {
 			max-width: none;
