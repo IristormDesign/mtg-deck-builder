@@ -46,7 +46,6 @@
 						v-text="listCards()"
 						ref="mainList"
 						readonly
-						:rows="textareaHeightMain"
 					></textarea>
 				</section>
 				<section v-if="sideboardNotEmpty">
@@ -60,7 +59,6 @@
 					<textarea
 						v-text="listCards(true)"
 						ref="sideboardList"
-						:rows="textareaHeightSideboard"
 						readonly
 					></textarea>
 				</section>
@@ -76,6 +74,7 @@
 </template>
 
 <script>
+import autosize from 'autosize'
 import DeckPrint from '@/components/deck-page/DeckPrint.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
@@ -88,12 +87,6 @@ export default {
 		},
 		sideboardNotEmpty () {
 			return this.deck.sideboard.cards.length > 0
-		},
-		textareaHeightMain () {
-			return this.deck.cards.length
-		},
-		textareaHeightSideboard () {
-			return this.deck.sideboard.cards.length
 		},
 		combinedMainAndSideboardLists () {
 			let output = this.deck.name.toUpperCase() + '\n\n'
@@ -119,6 +112,10 @@ export default {
 			return `data:text/plain;charset=utf-8,${encodeURIComponent(this.combinedMainAndSideboardLists)}`
 		}
 	},
+	mounted () {
+		autosize(this.$refs.mainList)
+		autosize(this.$refs.sideboardList)
+	},
 	methods: {
 		listCards (forSideboard) {
 			const cards = () => {
@@ -132,7 +129,15 @@ export default {
 			const arrayOfCardNames = []
 
 			cards().forEach(card => {
-				const line = `${card.qty} ${card.name}`
+				const lineCardName = () => {
+					if (card.name2) {
+						return `${card.name} // ${card.name2}`
+					} else {
+						return card.name
+					}
+				}
+				const line = `${card.qty} ${lineCardName()}`
+
 				arrayOfCardNames.push(line)
 			})
 
