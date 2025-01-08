@@ -2,37 +2,42 @@
 
 .render-as-text {
 	margin: 0 auto $lhse*.5;
-	max-width: none;
+	padding-bottom: $lhse;
 
-	&.no-cards {
-		max-width: $max-width-content;
-	}
 	h3 {
 		@include pronounced-heading;
-		text-align: center;
 		margin-top: 0;
 	}
-	.button-container {
-		grid-column: span 2;
-		height: $lhse*2.5;
-		margin: $lhse auto $lhse;
+	.control-panel {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: $lhse*.25 $lhse;
+		margin: $lhse auto;
 		border: $border-sections-thick;
+		padding: $lhse*.25 $lhse*.5;
 		width: fit-content;
-		padding: $lhse*.5;
+		flex-wrap: wrap;
+	}
+	.button-container {
+		height: $lhse*2;
 
 		a {
 			@include button;
+		}
+		a,
+		button {
 			font-size: 80%;
 			height: max-content;
 
-			span {
-				text-align: left;
-				width: $lhse*4;
-			}
 			svg {
 				width: $lhse*1.5;
 				height: $lhse*1.5;
 				margin-right: .5ch;
+			}
+			span {
+				text-align: left;
+				width: $lhse*4;
 			}
 		}
 	}
@@ -88,6 +93,66 @@
 		margin-top: $lhse*.25;
 	}
 }
+:root {
+	.deck-print-area {
+		$print-font-size: 16px;
+		$line-height-standard: 1.125;
+		$lhsp: $print-font-size * $line-height-standard;
+
+		display: none; // Hidden by default, shown when printing.
+		font-size: $print-font-size;
+		line-height: $line-height-standard;
+
+		* {
+			color: #000;
+		}
+		h2,
+		h3 {
+			padding: 0;
+			text-align: left;
+			margin: $lhsp*.5 0;
+		}
+		h2 {
+			font-size: $print-font-size*1.3820;
+			margin: 0 0 $lhsp;
+		}
+		h3 {
+			font-size: $print-font-size;
+			margin: $lhsp 0 $lhsp*.5;
+		}
+		ul {
+			column-count: 3;
+			column-gap: $lhsp;
+			padding: 0;
+			margin: $lhsp*.5 0;
+
+			&.short-list {
+				column-count: 1;
+			}
+		}
+		li {
+			list-style: none;
+			margin: 0;
+			display: flex;
+
+			&.starred {
+				font-weight: $font-weight-semibold;
+			}
+		}
+		.qty-print {
+			min-width: 1.3333em;
+			text-align: right;
+		}
+		footer {
+			margin-top: $lhsp*1.5;
+
+			p {
+				font-style: italic;
+				font-size: 80%;
+			}
+		}
+	}
+}
 
 @media (max-width: ($min-width-app * .8333)) {
 	.render-as-text {
@@ -109,6 +174,26 @@
 				max-width: $width-textarea-card-list;
 				width: 100%;
 			}
+		}
+	}
+}
+@media print {
+	* {
+		background: none !important;
+	}
+	.paint-container > :not(main),
+	.scroll-to-top,
+	.deck > :not(.render-as-text) {
+		display: none !important;
+	}
+	.render-as-text {
+		width: 100%;
+
+		> :not(.deck-print-area) {
+			display: none !important;
+		}
+		.deck-print-area {
+			display: block;
 		}
 	}
 }

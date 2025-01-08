@@ -7,7 +7,7 @@
 				<img class="intro-illustration" src="~@/img/terramorphic-expanse.jpg" width="626" height="457" alt="An illustration of a landscape magically transforming into various types of terrain" />
 				<figcaption>Illustration: <i><a href="https://scryfall.com/card/j25/156/terramorphic-expanse" target="_blank">Terramorphic Expanse</a></i> by Alayna Danner</figcaption>
 			</figure>
-			<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import pre-made decks from a deck data file you may have.</p>
+			<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import pre-made decks from a deck data file you may have. (<router-link to="/manual/#create-deck">More info&hellip;</router-link>)</p>
 		</div>
 		<div class="columns">
 			<div class="new-deck">
@@ -44,9 +44,6 @@
 				</div>
 			</div>
 		</div>
-		<footer class="for-more-info">
-			<p>For more info about creating decks in this app, see the <router-link to="/manual/#create-deck">user manual</router-link>.</p>
-		</footer>
 	</article>
 </template>
 

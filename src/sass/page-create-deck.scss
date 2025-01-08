@@ -6,6 +6,7 @@
 	grid-template-columns: 1fr 1fr;
 	gap: $lhse;
 	align-items: flex-start;
+	padding-bottom: $lhse;
 
 	h2 {
 		grid-column: span 2;
@@ -98,9 +99,6 @@
 		width: $lhse;
 		height: $lhse;
 	}
-	.for-more-info {
-		grid-column: span 2;
-	}
 }
 
 @media (max-width: ($min-width-app)) {
@@ -131,9 +129,6 @@
 			h3 {
 				margin-bottom: divide($lhse, 3);
 			}
-		}
-		.for-more-info {
-			grid-column: 1;
 		}
 	}
 }
