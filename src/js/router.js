@@ -63,6 +63,11 @@ const routes = [
 				name: 'textRenderer',
 				path: 'text-renderer',
 				component: () => import(/* webpackChunkName: "text-renderer" */ '@/views/TextRenderer.vue')
+			},
+			{
+				/* For any URLs with an invalid subdirectory within a deck page directory, automatically redirect to the List Editor. */
+				path: '*',
+				redirect: { name: 'listEditor' }
 			}
 		]
 	},
