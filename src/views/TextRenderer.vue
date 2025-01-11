@@ -1,12 +1,12 @@
 <template>
 	<article
-		class="render-as-text content-box"
+		class="text-renderer content-box"
 		:class="!mainNotEmpty && !sideboardNotEmpty ? 'no-cards' : null"
 	>
-		<h3>Deck in Plain Text</h3>
-
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
-			<p>The main and sideboard card lists for <i>{{ deck.name }}</i> are available in a plain text format. You can copy the lists as text, save them as a text file, or print them out on paper. (<router-link to="/manual#render-as-text-action">More info&hellip;</router-link>)</p>
+			<header class="intro">
+				<p>The card lists for <i>{{ deck.name }}</i> are provided here in simplified text versions, which let you easily take the lists outside MTG Deck Builder. <router-link to="/manual#text-renderer">(More info&hellip;)</router-link></p>
+			</header>
 			<div class="control-panel">
 				<div class="button-container">
 					<a
@@ -150,7 +150,7 @@ export default {
 			navigator.clipboard.writeText(text.value + '\n')
 
 			setTimeout(() => {
-				alert(`The deck’s ${stringName} list is now copied to the clipboard.`)
+				alert(`This deck’s ${stringName} list is now copied to the clipboard.`)
 			}, 125)
 		},
 		printLists () {
@@ -161,5 +161,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-render-as-text.scss';
+	@import '@/sass/page-text-renderer.scss';
 </style>

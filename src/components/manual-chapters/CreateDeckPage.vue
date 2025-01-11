@@ -11,7 +11,7 @@
 		<p>Note that this app can only import deck data files that had been exported from MTG Deck Builder by Iristorm Design. It can’t import files made from any other apps, even if they involve <i>Magic: The Gathering</i>.</p>
 
 		<h4>Create Decks from Plain Text Lists</h4>
-		<p>If you have a deck’s card list as plain text, such as one copied from the “<a href="#render-as-text-action">render as text</a>” deck action, then you can have that deck displayed in MTG Deck Builder. To do this, start a new deck, and then paste the text list into the submission form of the <a href="#card-list-entry">Card List Entry</a> page. You can access that page by clicking the “<a href="#add-multiple">Add multiple</a>” button in the <a href="#list-editor">List Editor</a> deck page mode.</p>
+		<p>If you have a deck’s card list as plain text, then you can have that deck displayed in MTG Deck Builder. To do this, start a new deck, and then paste the text list into the submission form of the <a href="#card-list-entry">Card List Entry</a> page. You can access that page by clicking the “<a href="#add-multiple">Add multiple</a>” button in the <a href="#list-editor">List Editor</a> deck page mode.</p>
 
 		<h4>Deck Names</h4>
 		<p>Every deck you have in the app must have a unique name. When you’re starting a new deck, if you try to submit a name that another one of your decks already has, you’ll be asked to give a different name. Or, if you import a deck with the same name as an existing deck, then the imported deck’s name will automatically have a unique number within parentheses appended to it. (You could <a href="#deck-name">rename</a> it afterward.)</p>

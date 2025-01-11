@@ -127,6 +127,8 @@ export default {
 				case '2': switchToMode('statsAnalyzer')
 					break
 				case '3': switchToMode('drawSim')
+					break
+				case '4': switchToMode('textRenderer')
 			}
 
 			if (this.imageEnlarged) {

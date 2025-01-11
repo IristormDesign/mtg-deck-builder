@@ -6,6 +6,15 @@
 	max-width: $max-width-content;
 	min-width: 0;
 
+	.intro {
+		border-bottom: $border-sections;
+		margin-bottom: $lhse;
+
+		p {
+			font-size: $font-size-small;
+			text-wrap: pretty;
+		}
+	}
 	section {
 		&::after {
 			content: '';

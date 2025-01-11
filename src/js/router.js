@@ -60,9 +60,9 @@ const routes = [
 				props: true
 			},
 			{
-				name: 'renderAsText',
-				path: 'render-as-text',
-				component: () => import(/* webpackChunkName: "render-as-text" */ '@/views/RenderAsText.vue')
+				name: 'textRenderer',
+				path: 'text-renderer',
+				component: () => import(/* webpackChunkName: "text-renderer" */ '@/views/TextRenderer.vue')
 			}
 		]
 	},

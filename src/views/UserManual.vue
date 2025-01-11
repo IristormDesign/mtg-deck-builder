@@ -33,7 +33,6 @@
 							<li>
 								<a href="#deck-actions">Deck Actions</a>
 								<ol>
-									<li><a href="#render-as-text-action">Render as Text</a></li>
 									<li><a href="#duplicate-action">Duplicate</a></li>
 									<li><a href="#export-action">Export</a></li>
 									<li><a href="#delete-action">Delete</a></li>
@@ -89,6 +88,9 @@
 					</li>
 					<li><a href="#draw-sim">Draw Simulator</a></li>
 					<li>
+						<a href="#text-renderer">Text Renderer</a>
+					</li>
+					<li>
 						<a href="#keyboard-shortcuts">Keyboard Shortcuts</a>
 						<ol>
 							<li><a href="#kbsc-deck-page-modes">Deck Page Modes</a></li>
@@ -118,6 +120,7 @@
 			<list-editor />
 			<stats-analyzer />
 			<draw-sim />
+			<text-renderer />
 			<keyboard-shortcuts />
 			<storage-of-deck-data />
 			<app-development />
@@ -135,12 +138,13 @@ import DeckPageModes from '@/components/manual-chapters/DeckPageModes.vue'
 import ListEditor from '@/components/manual-chapters/ListEditor.vue'
 import StatsAnalyzer from '@/components/manual-chapters/StatsAnalyzer.vue'
 import DrawSim from '@/components/manual-chapters/DrawSim.vue'
+import TextRenderer from '@/components/manual-chapters/TextRenderer.vue'
 import KeyboardShortcuts from '@/components/manual-chapters/KeyboardShortcuts.vue'
 import StorageOfDeckData from '@/components/manual-chapters/StorageOfDeckData.vue'
 import AppDevelopment from '@/components/manual-chapters/AppDevelopment.vue'
 
 export default {
-	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, ListEditor, StatsAnalyzer, DrawSim, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
+	components: { ManualIntroduction, AppHeader, CreateDeckPage, DeckPages, DeckPageHeader, DeckPageModes, ListEditor, StatsAnalyzer, DrawSim, TextRenderer, KeyboardShortcuts, StorageOfDeckData, AppDevelopment },
 	watch: {
 		$route () {
 			if (this.$route.hash === '') {

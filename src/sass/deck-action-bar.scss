@@ -1,7 +1,6 @@
 .deck-action-bar {
 	background: $color-group-bg;
-	display: grid;
-	grid-template-columns: 3fr 1fr;
+	display: flex;
 	align-items: center;
 	border-radius: $border-radius-group;
 	border-top-right-radius: 0;
@@ -20,11 +19,12 @@
 .mode-menu {
 	align-self: stretch;
 	border-right: $border-sections;
+	flex-grow: 1;
 
 	ul {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: $lhse*.25;
+		grid-template-columns: repeat(4, 1fr);
+		gap: $lhse*.2;
 		margin: 0 auto;
 		padding: 0;
 		height: 100%;
@@ -36,7 +36,7 @@
 	a {
 		@include heading-font;
 		display: flex;
-		gap: 0 $lhse*.125;
+		gap: 0 $lhse*.25;
 		align-items: center;
 		justify-content: center;
 		border: $border-width-sections solid transparent;
@@ -97,19 +97,8 @@
 	}
 }
 
-@media (max-width: ($min-width-app*.9167)) {
-	.deck-action-bar {
-		display: flex;
-		justify-content: space-between;
-	}
-}
-@media (max-width: ($min-width-app*.8)) {
+@media (max-width: ($width-app-breakpoint-tablet)) {
 	.mode-menu {
-		flex-grow: 1;
-
-		ul {
-			gap: $lhse*.25;
-		}
 		.text-label {
 			font-size: 75%;
 			width: min-content;
@@ -117,12 +106,13 @@
 		}
 	}
 }
-@media (max-width: $width-mobile-breakpoint) {
+@media (max-width: ($min-width-app*.9167)) {
 	.deck-action-bar {
-		border-radius: 0;
+		display: flex;
+		justify-content: space-between;
 	}
 }
-@media (max-width: ($min-width-app*.5625)) {
+@media (max-width: ($min-width-app*.75)) {
 	.mode-menu {
 		min-height: $lhse*3.3333;
 
@@ -140,7 +130,12 @@
 		}
 	}
 }
-@media (max-width: ($min-width-app*.5)) {
+@media (max-width: $width-mobile-breakpoint) {
+	.deck-action-bar {
+		border-radius: 0;
+	}
+}
+@media (max-width: ($min-width-app*.5417)) {
 	.deck-action-bar {
 		margin-bottom: $lhse*.5;
 		flex-wrap: wrap;
@@ -162,5 +157,21 @@
 		order: 1;
 		height: $height-deck-header-component*.75;
 		width: 100%;
+	}
+}
+@media (max-width: ($min-width-app*.5)) {
+	.mode-menu {
+		padding: 0 $lhse*.25;
+
+		ul {
+			gap: $border-width-sections-medium;
+		}
+		a {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		.text-label {
+			font-size: 62.5%;
+		}
 	}
 }

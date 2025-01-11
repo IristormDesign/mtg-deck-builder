@@ -15,9 +15,7 @@
 		grid-template-columns: 1fr 1fr;
 		gap: $lhse $lhse;
 		align-items: flex-start;
-		margin: $lhse*.75 0 $lhse*.5;
-		border-top: $border-sections;
-		padding-top: $lhse;
+		margin: $lhse 0 $lhse*.5;
 	}
 	form {
 		display: flex;

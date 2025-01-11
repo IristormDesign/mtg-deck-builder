@@ -2,7 +2,9 @@
 	<article class="list-entry content-box">
 		<h3>Card List Entry</h3>
 		<template v-if="!isLoadingCards">
-			<p>Here you can add multiple cards at once to the main card group of <i>{{ deck.name }}</i>. (<router-link to="/manual/#card-list-entry">More info&hellip;</router-link>)</p>
+			<header class="intro">
+				<p>Here you can add multiple cards at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/manual/#card-list-entry">(More info&hellip;)</router-link></p>
+			</header>
 			<div class="columns">
 				<form>
 					<label for="card-list-entry">Enter a list of cards:</label>
@@ -17,7 +19,7 @@
 					></textarea><!-- The `cols` property is set to fit a list entry with the card name "Okina, Temple to the Grandfathers" (the longest name of a non-joke card), plus one extra character. -->
 					<div class="button-container">
 						<button @click.prevent="submitList">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M130-330v-60h280v60H130Zm0-160v-60h440v60H130Zm0-160v-60h440v60H130Zm520 480v-160H490v-60h160v-160h60v160h160v60H710v160h-60Z"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M650-131v-120H530v-60h120v-120h60v120h120v60H710v120h-60ZM130-250v-60h60v60h-60Zm140 0v-60h181.85q-1.85 15.8-1.35 30.09t2.35 29.91H270ZM130-410v-60h60v60h-60Zm140 0v-60h279.08q-17.23 12.15-31.5 27.15-14.27 15-25.96 32.85H270ZM130-570v-60h60v60h-60Zm140 0v-60h480v60H270ZM130-730v-60h60v60h-60Zm140 0v-60h480v60H270Z"/></svg>
 							Add Cards
 						</button>
 					</div>

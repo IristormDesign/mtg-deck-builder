@@ -1,13 +1,10 @@
 @import 'variables';
 
-.render-as-text {
+.text-renderer {
 	margin: 0 auto $lhse*.5;
+	padding-top: $lhse*.5;
 	padding-bottom: $lhse;
 
-	h3 {
-		@include pronounced-heading;
-		margin-top: 0;
-	}
 	.control-panel {
 		display: flex;
 		justify-content: center;
@@ -155,7 +152,7 @@
 }
 
 @media (max-width: ($min-width-app * .8333)) {
-	.render-as-text {
+	.text-renderer {
 		.lists {
 			&,
 			&.two-columns {
@@ -166,7 +163,7 @@
 	}
 }
 @media (max-width: ($min-width-app * .625)) {
-	.render-as-text {
+	.text-renderer {
 		width: 100%;
 
 		.lists {
@@ -183,10 +180,10 @@
 	}
 	.paint-container > :not(main),
 	.scroll-to-top,
-	.deck > :not(.render-as-text) {
+	.deck > :not(.text-renderer) {
 		display: none !important;
 	}
-	.render-as-text {
+	.text-renderer {
 		width: 100%;
 
 		> :not(.deck-print-area) {

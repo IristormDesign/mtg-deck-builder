@@ -6,7 +6,6 @@
 			id="deckActionSelect"
 		>
 			<option value="">Deck Actions&hellip;</option>
-			<option value="renderAsText">Render as text</option>
 			<option value="duplicate">Duplicate</option>
 			<option value="export">Export</option>
 			<option value="delete">Delete</option>
@@ -30,8 +29,6 @@ export default {
 	methods: {
 		doDeckAction () {
 			switch (this.deckAction) {
-				case 'renderAsText':
-					this.renderAsText(); break
 				case 'duplicate':
 					this.duplicateDeck(); break
 				case 'export':
@@ -41,16 +38,6 @@ export default {
 			}
 
 			this.deckAction = ''
-		},
-		renderAsText () {
-			if (this.$route.name === 'renderAsText') return // Vue throws an error if the app would try to go to the "Render as Text" page while already on that page, so don't let that happen.
-
-			this.$router.push({
-				name: 'renderAsText',
-				params: { activeDeck: this.deck }
-			})
-
-			document.activeElement.blur() // This is needed so that the browser focus doesn't remain on the Deck Actions select menu when using the keyboard.
 		},
 		duplicateDeck () {
 			const sourceDeck = this.deck

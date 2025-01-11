@@ -7,7 +7,7 @@
 	}
 	form {
 		display: grid;
-		gap: $lhse*.5;
+		gap: $lhse $lhse*.5;
 		grid-template-columns: auto auto;
 		grid-template-rows: auto auto;
 		justify-content: center;
