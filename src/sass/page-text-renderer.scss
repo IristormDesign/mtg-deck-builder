@@ -116,7 +116,7 @@
 		}
 		h2 {
 			font-size: $print-font-size*1.3820;
-			margin: 0 0 $lhsp;
+			margin: $lhsp*.5 0 $lhsp;
 		}
 		h3 {
 			font-size: $print-font-size;
