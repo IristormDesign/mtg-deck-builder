@@ -12,7 +12,7 @@
 				<p><strong>Print out your deck lists.</strong> A text document is better suited for printing on paper than the web page of the <a href="#list-editor">List Editor</a>.</p>
 			</li>
 			<li>
-				<p><strong>Share over the Internet.</strong> Plain-text card lists are in a human-readable format that doesn’t require other people to use MTG Deck Builder, unlike <a href="#deck-data-files">deck data files</a>. (However, a deck data file can <a href="#export-action">export</a> and import multiple decks together, and includes extra data about decks that a plain-text list lacks.)</p>
+				<p><strong>Share over the Internet.</strong> A plain-text card list is in a human-readable format. It also doesn’t require other people to use MTG Deck Builder to see the list, unlike <a href="#deck-archive-files">deck archive files</a>. (However, a deck archive file can <a href="#archive-action">save</a> and <a href="#create-deck">reproduce</a> multiple decks together, and has additional data about decks that’s missing in a plain-text list.)</p>
 			</li>
 		</ul>
 		<p>If you want to take these plain-text card lists outside MTG Deck Builder, there are easy ways to do that:</p>
@@ -21,7 +21,7 @@
 				<p>You can download a text (.txt) file that lists the cards in both the main and sideboard groups of your deck. The file is saved to wherever your web browser puts downloads.</p>
 			</li>
 			<li>
-				<p>For either the main or the sideboard group of your deck, you can click the Copy button beside the list to instantly select and copy the whole text list to the clipboard of your computer or mobile device. (Then you can paste it elsewhere.)</p>
+				<p>For either the main or the sideboard group of your deck, you can click the Copy button beside the list to instantly select and copy the whole text list to the clipboard of your computer or phone. (Then you can paste it elsewhere.)</p>
 			</li>
 		</ul>
 		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <a href="#card-list">card lists</a>. If you care about the order, use the List Editor’s <a href="#card-sorter">card sorter</a> to rearrange the names in the way you prefer before you <a href="#mode-menu">switch to</a> the Text Renderer.</p>

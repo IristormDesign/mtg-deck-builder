@@ -34,7 +34,7 @@
 								<a href="#deck-actions">Deck Actions</a>
 								<ol>
 									<li><a href="#duplicate-action">Duplicate</a></li>
-									<li><a href="#export-action">Export</a></li>
+									<li><a href="#archive-action">Archive</a></li>
 									<li><a href="#delete-action">Delete</a></li>
 								</ol>
 							</li>
@@ -102,7 +102,7 @@
 					<li>
 						<a href="#storage-of-deck-data">Storage of Deck Data</a>
 						<ol>
-							<li><a href="#deck-data-files">Deck Data Files</a></li>
+							<li><a href="#deck-archive-files">Deck Archive Files</a></li>
 						</ol>
 					</li>
 					<li><a href="#app-dev">App Development</a></li>

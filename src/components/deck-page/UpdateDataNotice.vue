@@ -6,10 +6,10 @@
 			<template v-if="!updatingDeckData">
 				<h3>Card Data Update</h3>
 				<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
-				<p>Before updating, you should have a backup copy of your deck data, which you can make by exporting your deck.</p>
+				<p>Before updating, you should make a backup copy of your deck’s data by saving a deck archive file.</p>
 				<div class="button-group">
 					<div class="button-container">
-						<button @click="exportDeck()">Export</button>
+						<button @click="archiveDeck()">Archive</button>
 					</div>
 					<div class="button-container">
 						<button @click="userEngagedUpdate()">Update</button>
@@ -170,9 +170,9 @@ export default {
 				alert('Update completed!')
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		},
-		exportDeck () {
+		archiveDeck () {
 			this.$router.push({
-				name: 'exportDecks',
+				name: 'archiveDecks',
 				params: { presetDeckName: this.deck.name }
 			})
 		}

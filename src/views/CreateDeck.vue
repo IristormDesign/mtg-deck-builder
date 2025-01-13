@@ -7,7 +7,7 @@
 				<img class="intro-illustration" src="~@/img/terramorphic-expanse.jpg" width="626" height="457" alt="An illustration of a landscape magically transforming into various types of terrain" />
 				<figcaption>Illustration: <i><a href="https://scryfall.com/card/j25/156/terramorphic-expanse" target="_blank">Terramorphic Expanse</a></i> by Alayna Danner</figcaption>
 			</figure>
-			<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or import pre-made decks from a deck data file you may have. <router-link to="/manual/#create-deck">(More info&hellip;)</router-link></p>
+			<p>You can create a deck in two ways: Either start from a new, empty deck page and add cards to it, or reproduce pre-made decks from a deck archive file you may have. <router-link to="/manual/#create-deck">(More info&hellip;)</router-link></p>
 		</div>
 		<div class="columns">
 			<div class="new-deck">
@@ -29,17 +29,17 @@
 					</div>
 				</form>
 			</div>
-			<div class="import-data">
-				<h3>Import Decks</h3>
+			<div class="reproduce-decks">
+				<h3>Reproduce Archived Decks</h3>
 				<input
-					id="data-file"
+					id="archive-file"
 					type="file" accept=".deck"
 					style="display: none"
 				/>
 				<div class="button-container">
 					<button id="file-btn">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M455.95-225.69h50.25v-193.9l82.67 82.92 35.39-35.59L480-514.62 336.82-371.18l35.33 35.13 83.8-83.54v193.9ZM242.57-100q-25.79 0-44.18-18.39T180-162.57v-634.86q0-25.79 18.39-44.18T242.57-860h337.58L780-660.15v497.58q0 25.79-18.39 44.18T717.43-100H242.57Zm312.46-536.51v-173.23H242.57q-4.62 0-8.47 3.84-3.84 3.85-3.84 8.47v634.86q0 4.62 3.84 8.47 3.85 3.84 8.47 3.84h474.86q4.62 0 8.47-3.84 3.84-3.85 3.84-8.47v-473.94H555.03ZM230.26-809.74v173.23-173.23 659.48-659.48Z"/></svg>
-						Open Deck<br> Data File
+						Open Deck<br> Archive File
 					</button>
 				</div>
 			</div>
@@ -63,7 +63,7 @@ export default {
 	},
 	computed: {
 		fileInput () {
-			return document.getElementById('data-file')
+			return document.getElementById('archive-file')
 		}
 	},
 	mounted () {
@@ -165,10 +165,10 @@ export default {
 					const deckExtRegex = /\.deck$/i
 
 					if (deckExtRegex.test(this.fileName)) {
-						this.alertFileImportError(this.fileName)
+						this.alertFileReproductionError(this.fileName)
 					} else {
 						alert(
-							`⚠ Error\n\nThe file you’ve selected (${this.fileName}) is not a deck data file for MTG Deck Builder. Deck data files are in the “.deck” file format.`
+							`⚠ Error\n\nThe file you’ve selected (${this.fileName}) is not a deck archive file for MTG Deck Builder. Deck archive files are in the “.deck” file format.`
 						)
 					}
 				} else {
@@ -205,7 +205,7 @@ export default {
 						deck.editDate = new Date()
 					}
 
-					this.createImportedDeck(deck)
+					this.reproduceDeck(deck)
 
 					if (i === decks.length - 1) {
 						this.$nextTick(() => {
@@ -218,11 +218,11 @@ export default {
 					this.alertSingleExistingDeck(existingDeckName, firstAmendedDeckName)
 				} else if (numExistingDecks > 1) {
 					alert(
-						`There are ${numExistingDecks} decks you’re importing that have the same names as decks you already have, so those imported decks are going to be renamed as if they were copies.\n\nFor example, the imported “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
+						`There are ${numExistingDecks} decks you’re reproducing that have the same names as decks you already have, so those reproduced decks are going to be renamed as if they were copies.\n\nFor example, the reproduced “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
 					)
 				}
 			} else {
-				this.alertFileImportError(this.fileName)
+				this.alertFileReproductionError(this.fileName)
 			}
 		},
 		handleFormatVer1 (data) {
@@ -234,14 +234,14 @@ export default {
 				this.alertSingleExistingDeck(deck.name, amendedDeckData.name)
 				this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 			} else {
-				this.createImportedDeck(deck)
+				this.reproduceDeck(deck)
 
 				this.$nextTick(() => {
 					this.goToDeckPage(deck.path)
 				})
 			}
 		},
-		createImportedDeck (deck) {
+		reproduceDeck (deck) {
 			const updatedDecksArray = this.$store.state.decks
 
 			updatedDecksArray.push({
@@ -258,14 +258,14 @@ export default {
 
 			this.$store.commit('decks', updatedDecksArray)
 		},
-		alertSingleExistingDeck (existingName, importingName) {
+		alertSingleExistingDeck (existingName, reproducedName) {
 			alert(
-				`Because you already have a deck named “${existingName},” the deck you’re importing with that same name is going to be renamed “${importingName}.”`
+				`Because you already have a deck named “${existingName},” the deck you’re reproducing with that same name is going to be renamed “${reproducedName}.”`
 			)
 		},
-		alertFileImportError (fileName) {
+		alertFileReproductionError (fileName) {
 			alert(
-				`⚠ Error\n\nSorry, no deck could be imported from the deck data file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
+				`⚠ Error\n\nSorry, no deck could be reproduced from the deck archive file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
 			)
 		},
 		goToDeckPage (path) {

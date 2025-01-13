@@ -240,5 +240,8 @@ option {
 	}
 	+ label {
 		transition-duration: 0s;
+		line-height: 1;
+		margin-top: $lhse*.125;
+		margin-bottom: $lhse*.125;
 	}
 }

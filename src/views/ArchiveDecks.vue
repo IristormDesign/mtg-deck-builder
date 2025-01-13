@@ -1,15 +1,15 @@
 <template>
 	<article
-		v-if="!isExported"
-		class="deck-action-page export-decks content-box"
+		v-if="!isArchived"
+		class="deck-action-page archive-decks content-box"
 	>
-		<h2>Export Decks</h2>
+		<h2>Archive Decks</h2>
 		<template v-if="numExisting <= 0">
 			<p>You have no decks. <router-link :to="{name: 'createDeck'}">(Create one?)</router-link></p>
 		</template>
 		<template v-else>
 			<header class="intro">
-				<p>In the checklist below, select the decks that you want to download as a deck data file, then click the Export Selected button. <router-link :to="{path: '/manual/#storage-of-deck-data'}">(More info about how this app stores deck data&hellip;)</router-link></p>
+				<p>In the checklist below, select the decks that you want to save as a deck archive file, then click the Archive Selected button. <router-link :to="{path: '/manual/#storage-of-deck-data'}">(Learn about how this app stores deck data.)</router-link></p>
 			</header>
 			<form>
 				<div
@@ -45,11 +45,11 @@
 				</ul>
 				<div class="button-container submit-button">
 					<button
-						@click.prevent="exportSelectedDecks()"
+						@click.prevent="archiveSelectedDecks()"
 						:disabled="numChecked <= 0"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-480ZM209.67-86l-35-36 132.87-132.87H185.33v-50.26h207.46v207.46h-50.25v-121.2L209.67-86Zm261.07-14v-50.26h246.69q5.39 0 8.85-3.46t3.46-8.85V-620H540v-189.74H242.57q-5.39 0-8.85 3.46t-3.46 8.85v414.35H180v-414.35q0-25.71 18.43-44.14T242.57-860H570l210 210v487.43q0 25.71-18.43 44.14T717.43-100H470.74Z"/></svg>
-						Export Selected
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-270.77 144.26-144.26-34.31-34.3-84.82 84.82v-194.1h-50.26v194.1l-84.82-84.82-34.31 34.3L480-270.77ZM190.26-660.36v457.79q0 5.39 3.46 8.85t8.85 3.46h554.86q5.39 0 8.85-3.46t3.46-8.85v-457.79H190.26ZM205.64-140q-25.7 0-45.67-19.97Q140-179.94 140-205.64v-479q0-10.61 3.37-20.53 3.37-9.91 10.12-18.29l57.23-72.8q8.36-11.1 21.42-17.42Q245.2-820 259.8-820h439.22q14.6 0 27.85 6.32 13.26 6.32 21.62 17.42l58.02 73.57q6.75 8.37 10.12 18.48Q820-694.1 820-683.49v477.85q0 25.7-19.97 45.67Q780.06-140 754.36-140H205.64Zm.64-570.61h546.39l-44.78-54.9q-1.93-1.93-4.43-3.08-2.5-1.15-5.19-1.15H260.59q-2.69 0-5.32 1.15-2.63 1.15-4.29 3.08l-44.7 54.9ZM480-425.31Z"/></svg>
+						Archive Selected
 					</button>
 				</div>
 			</form>
@@ -60,10 +60,10 @@
 		class="action-done content-box"
 	>
 		<figure>
-			<img class="intro-illustration" src="~@/img/island.jpg" width="626" height="457" alt="An illustration of ships sailing away from a port town" />
-			<figcaption>Illustration: <a href="https://scryfall.com/card/afr/268/island" target="_blank"><i>Island</i> </a> [AFR] by Titus Lunter</figcaption>
+			<img class="intro-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of ships sailing away from a port town" />
+			<figcaption>Illustration: <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank"><i>Sage’s Reverie</i> </a> by Jason Rainville</figcaption>
 		</figure>
-		<p class="bigger">{{ this.exportedDecksMessage }}</p>
+		<p class="bigger">{{ this.archivedDecksMessage }}</p>
 	</article>
 </template>
 
@@ -75,11 +75,11 @@ export default {
 	data () {
 		return {
 			checkedDecks: [],
-			isExported: false
+			isArchived: false
 		}
 	},
 	computed: {
-		exportedDecksMessage () {
+		archivedDecksMessage () {
 			let message = ''
 
 			if (this.numChecked === 1) {
@@ -90,11 +90,11 @@ export default {
 				message += `The ${this.numChecked} decks you’ve selected have`
 			}
 
-			message += ' now been exported'
+			message += ' been saved'
 
 			if (this.numChecked > 1) message += ' together'
 
-			return message + ' as a deck data file.'
+			return message + ' as a deck archive file.'
 		},
 		numChecked () {
 			return this.checkedDecks.length
@@ -111,7 +111,7 @@ export default {
 	methods: {
 		selectAll () {
 			const checkboxes = document
-				.querySelector('.export-decks .checklist')
+				.querySelector('.archive-decks .checklist')
 				.querySelectorAll('input')
 
 			this.checkedDecks = [] // First uncheck all decks in case any of them are already checked.
@@ -123,7 +123,7 @@ export default {
 		selectNone () {
 			this.checkedDecks = []
 		},
-		exportSelectedDecks () {
+		archiveSelectedDecks () {
 			const transitoryLink = document.createElement('a')
 
 			transitoryLink.style.display = 'none'
@@ -136,7 +136,7 @@ export default {
 			transitoryLink.click()
 			document.body.removeChild(transitoryLink)
 
-			this.isExported = true
+			this.isArchived = true
 		},
 		generateJSON () {
 			let data = '{"decks":['
@@ -150,7 +150,7 @@ export default {
 
 				data += JSON.stringify(deck)
 
-				/* When there are multiple decks to export, insert a comma after each card object, except the last card object. */
+				/* When there are multiple decks to archive, insert a comma after each card object, except the last card object. */
 				if (this.numChecked > 1 && i !== this.numChecked - 1) {
 					data += ','
 				}

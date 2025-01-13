@@ -6,7 +6,8 @@
 	padding-bottom: $lhse;
 
 	.control-panel {
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 		justify-content: center;
 		align-items: center;
 		gap: $lhse*.25 $lhse;
@@ -21,20 +22,24 @@
 
 		a {
 			@include button;
+
+			span {
+				font-size: 87.5%;
+			}
 		}
 		a,
 		button {
-			font-size: 80%;
-			height: max-content;
+			width: 100%;
+			height: $lhse*2;
+			font-size: 83.33%;
 
 			svg {
 				width: $lhse*1.5;
 				height: $lhse*1.5;
-				margin-right: .5ch;
+				margin-right: .25em;
 			}
 			span {
 				text-align: left;
-				width: $lhse*4;
 			}
 		}
 	}
@@ -67,9 +72,9 @@
 			height: $lhse*1.5;
 
 			svg {
-				width: $lhse;
-				height: $lhse;
-				margin-right: .25ch;
+				width: $lhse*1.2;
+				height: $lhse*1.2;
+				margin-right: .25em;
 			}
 		}
 	}
@@ -171,6 +176,13 @@
 				max-width: $width-textarea-card-list;
 				width: 100%;
 			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .4583)) {
+	.text-renderer {
+		.control-panel {
+			grid-template-columns: 1fr;
 		}
 	}
 }

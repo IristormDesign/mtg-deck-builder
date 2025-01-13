@@ -5,10 +5,10 @@
 			@change="doDeckAction()"
 			id="deckActionSelect"
 		>
-			<option value="">Deck Actions&hellip;</option>
+			<option value="">Deck Actions ▾</option>
 			<option value="duplicate">Duplicate</option>
-			<option value="export">Export</option>
-			<option value="delete">Delete</option>
+			<option value="archive">Archive&hellip;</option>
+			<option value="delete">Delete&hellip;</option>
 		</select>
 	</section>
 </template>
@@ -31,8 +31,8 @@ export default {
 			switch (this.deckAction) {
 				case 'duplicate':
 					this.duplicateDeck(); break
-				case 'export':
-					this.exportDeck(); break
+				case 'archive':
+					this.archiveDeck(); break
 				case 'delete':
 					this.deleteDeck(); break
 			}
@@ -70,9 +70,9 @@ export default {
 				}
 			}
 		},
-		exportDeck () {
+		archiveDeck () {
 			this.$router.push({
-				name: 'exportDecks',
+				name: 'archiveDecks',
 				params: { presetDeckName: this.deck.name }
 			})
 		},

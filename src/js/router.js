@@ -72,9 +72,9 @@ const routes = [
 		]
 	},
 	{
-		name: 'exportDecks',
-		path: '/export-decks',
-		component: () => import(/* webpackChunkName: "export-decks" */ '@/views/ExportDecks.vue'),
+		name: 'archiveDecks',
+		path: '/archive-decks',
+		component: () => import(/* webpackChunkName: "archive-decks" */ '@/views/ArchiveDecks.vue'),
 		props: true
 	},
 	{

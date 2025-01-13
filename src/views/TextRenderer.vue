@@ -5,16 +5,16 @@
 	>
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
-				<p>The card lists for <i>{{ deck.name }}</i> are provided here in simplified text versions, which let you easily take the lists outside MTG Deck Builder. <router-link to="/manual#text-renderer">(More info&hellip;)</router-link></p>
+				<p>The main and sideboard card lists for <i>{{ deck.name }}</i> are provided here in simplified text versions, which let you easily take copies of these lists outside MTG Deck Builder. <router-link to="/manual#text-renderer">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="control-panel">
 				<div class="button-container">
 					<a
 						:download="`${deck.name}.txt`"
-						:href="saveAsFileHref"
+						:href="exportFileHref"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m724.87-136.13 139-139-35-35L750-231.25v-188.01h-50.26v188.01l-78.87-78.88-35 35 139 139ZM579.74-10v-50.26H870V-10H579.74ZM232.56-170q-25.01 0-43.79-18.77Q170-207.55 170-232.56v-574.88q0-25.01 18.77-43.79Q207.55-870 232.56-870h290.41L750-642.97v145.77h-50.26v-122.54h-200v-200H232.56q-4.61 0-8.46 3.84-3.84 3.85-3.84 8.46v574.88q0 4.61 3.84 8.46 3.85 3.84 8.46 3.84H501.8V-170H232.56Zm-12.3-50.26v-599.48 599.48Z"/></svg>
-						<span>Save Deck as Text File</span>
+						<span>Export Deck<br>as Text File</span>
 					</a>
 				</div>
 				<div class="button-container">
@@ -108,7 +108,7 @@ export default {
 
 			return output
 		},
-		saveAsFileHref () {
+		exportFileHref () {
 			return `data:text/plain;charset=utf-8,${encodeURIComponent(this.combinedMainAndSideboardLists)}`
 		}
 	},
@@ -150,7 +150,7 @@ export default {
 			navigator.clipboard.writeText(text.value + '\n')
 
 			setTimeout(() => {
-				alert(`This deck’s ${stringName} list is now copied to the clipboard.`)
+				alert(`The ${stringName} list is now copied to the clipboard of your computer or phone.`)
 			}, 125)
 		},
 		printLists () {

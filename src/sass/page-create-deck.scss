@@ -32,7 +32,7 @@
 		height: 100%;
 	}
 	.new-deck,
-	.import-data {
+	.reproduce-decks {
 		border: $border-sections-medium;
 		padding: $lhse*.5 $lhse*.75;
 		width: 100%;
@@ -72,7 +72,7 @@
 			justify-content: center;
 		}
 	}
-	.import-data {
+	.reproduce-decks {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -118,7 +118,7 @@
 			gap: $lhse*.5;
 		}
 		.new-deck,
-		.import-data {
+		.reproduce-decks {
 			width: auto;
 			padding-right: $lhse*.5;
 			padding-left: $lhse*.5;
@@ -126,7 +126,7 @@
 		.new-deck {
 			flex-grow: 1;
 		}
-		.import-data {
+		.reproduce-decks {
 			flex-grow: .25;
 
 			h3 {

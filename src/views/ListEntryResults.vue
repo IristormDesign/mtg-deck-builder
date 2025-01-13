@@ -70,7 +70,7 @@
 					>→ Now copied.</div>
 				</transition>
 			</div>
-			<p>This error can happen if Scryfall’s web servers are down at the moment, or if your computer or mobile device is having an internet connection problem. Try adding these card names again at a later time.</p>
+			<p>This error can happen if Scryfall’s web servers are down at the moment, or if your computer or phone is having an internet connection problem. Try adding these card names again at a later time.</p>
 		</section>
 
 		<section v-if="cardRequestOtherError && cardRequestOtherError.length > 0">
