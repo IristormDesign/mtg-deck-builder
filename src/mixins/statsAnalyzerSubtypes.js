@@ -53,7 +53,7 @@ export default {
 
 					if (!hasSubtype) return
 
-					const regexWholeWords = /\w+/g
+					const regexWholeWords = /[^\s—]+/g // Gets all substrings between spaces, except em dashes. This allows getting any whole words, including apostrophes, as in the subtype "Urza's."
 					const individualSubtypes = hasSubtype[0].match(regexWholeWords) // Isolate each subtype from the subtypes string.
 
 					this.countSubtypes(individualSubtypes, countedOnFrontFace, typeLine, card.qty)
