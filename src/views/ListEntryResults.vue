@@ -4,7 +4,7 @@
 
 		<section v-if="cardsSuccessfullyAdded && cardsSuccessfullyAdded.length > 0">
 			<h4>✅ New Cards</h4>
-			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to your deck’s main card group.</p>
+			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to the main card group of <i>{{ deck.name }}</i>.</p>
 			<ul>
 				<li
 					v-for="card of cardsSuccessfullyAdded"
@@ -14,12 +14,12 @@
 		</section>
 		<section v-else-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>❌ New Cards</h4>
-			<p>No new card names have been added to your deck.</p>
+			<p>No new card names have been added to <i>{{ deck.name }}</i>.</p>
 		</section>
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in your deck’s main card group, but their quantities have been updated to the new quantities you’ve set.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities have been updated to the new quantities you’ve set.</p>
 			<ul>
 				<li
 					v-for="card of cardsToUpdate"
@@ -31,7 +31,7 @@
 
 		<section v-if="cardsToAddZeroQty && cardsToAddZeroQty.length > 0">
 			<h4>❌ New Zero-Quantity Cards</h4>
-			<p>The following new card names have <em>not</em> been added to your deck because you’ve set their quantities to zero. 🤔</p>
+			<p>The following new card names have <em>not</em> been added to <i>{{ deck.name }}</i> because you’ve set their quantities to zero. 🤔</p>
 			<ul>
 				<li
 					v-for="card of cardsToAddZeroQty"
@@ -54,7 +54,7 @@
 
 		<section v-if="cardRequestsAborted && cardRequestsAborted.length > 0">
 			<h4>❌ Data Retrieval Failure</h4>
-			<p>The following card names couldn’t be added to your deck because the data for them couldn’t be retrieved from the Scryfall web servers right now.</p>
+			<p>The following card names couldn’t be added to <i>{{ deck.name }}</i> because the data for them couldn’t be retrieved from the Scryfall web servers right now.</p>
 			<ul>
 				<li
 					v-for="card of cardRequestsAborted"
@@ -75,7 +75,7 @@
 
 		<section v-if="cardRequestOtherError && cardRequestOtherError.length > 0">
 			<h4>❌ Miscellaneous Technical Error</h4>
-			<p>The following card names couldn’t be added to your deck because of an unusual error that involves trying to retrieve card data from Scryfall.</p>
+			<p>The following card names couldn’t be added to <i>{{ deck.name }}</i> because of an unusual technical error that involves trying to retrieve card data from Scryfall.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardRequestOtherError"
@@ -128,7 +128,10 @@
 </template>
 
 <script>
+import getActiveDeck from '@/mixins/getActiveDeck.js'
+
 export default {
+	mixins: [getActiveDeck],
 	props: {
 		anyCardRemoved: Boolean,
 		cardRequestsAborted: Array,
