@@ -14,6 +14,6 @@
 		<p>Note that this app can reproduce decks only from archive files that were saved from MTG Deck Builder by Iristorm Design. Decks can’t be reproduced from other files saved from other apps, even if those other apps involve <i>Magic: The Gathering</i>.</p>
 
 		<h4>Create Deck from Plain-Text List</h4>
-		<p>If you have a deck’s card list in the form of plain text, then you can display that deck in MTG Deck Builder. To do so, start a new deck (as explained above), and then paste the text list into the submission form of the <a href="#card-list-entry">Card List Entry</a> page. You can access that page by clicking the “<a href="#add-multiple">Add multiple</a>” button in the <a href="#list-editor">List Editor</a> deck page mode.</p>
+		<p>If you have a deck’s card list in the form of plain text, then you can display that deck in MTG Deck Builder. To do so, start a new deck (as explained above), and then paste the text list into the submission form of the <a href="#card-list-entry">Card List Entry</a> page. You can access that page by clicking the <a href="#add-multiple">“Add multiple” button</a> in the <a href="#list-editor">List Editor mode</a>.</p>
 	</section>
 </template>

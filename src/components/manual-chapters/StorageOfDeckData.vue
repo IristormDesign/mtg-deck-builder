@@ -30,7 +30,7 @@
 					<p>Use the archive to migrate all your decks from one web browser to another (if you’re switching your preferred browser, for example).</p>
 				</li>
 			</ul>
-			<p>To make an archive file of any of your decks, click the <a href="#deck-actions">Deck Actions</a> button in the <a href="#deck-page-header">deck page header</a>, which makes a menu appear. From that menu, select the “Archive&hellip;” option.</p>
+			<p>To make an archive file of any of your decks, click the <a href="#deck-actions">Deck Actions button</a> in the <a href="#deck-page-header">deck page header</a>, which makes a menu appear. From that menu, select the “Archive&hellip;” option.</p>
 			<p>To view the decks contained in an archive, go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the “Reproduce Archived Decks” section, which lets you find and open a deck archive through the file browser of your computer or phone.</p>
 		</section>
 	</section>

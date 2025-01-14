@@ -8,6 +8,7 @@
 		<p>The user manual is divided into many chapters. You can skip directly to a chapter you want to read by clicking the relevant link in the table of contents, or by clicking any chapter links throughout the manual’s text. You could also use your web browser’s “Find” tool (press <span class="no-text-break"><kbd class="ctrl-key">Ctrl</kbd>+<kbd>F</kbd></span> or <span class="no-text-break"><kbd class="ctrl-key">⌘</kbd>+<kbd>F</kbd>)</span> to instantly scroll the page to an instance of a word or phrase you specify.</p>
 		<p>The user manual displays screenshots of parts of MTG Deck Builder. Note that some of these screenshots had been taken from earlier versions of the app, so they may look slightly different from the current version.</p>
 		<p>After reading over the user manual, if you still have an unanswered question about how to use MTG Deck Builder, you can <router-link :to="{name: 'contact'}">ask the app developer</router-link>.</p>
+		<p>Enjoy using MTG Deck Builder!</p>
 
 		<game-rules />
 	</section>

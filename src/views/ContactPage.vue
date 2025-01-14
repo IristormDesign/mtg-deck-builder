@@ -14,7 +14,7 @@
 					<p><strong>Email</strong> – Send an email to <a href="mailto:damian@iristormdesign.com">damian@iristormdesign.com</a>.</p>
 				</li>
 				<li>
-					<p><strong>GitHub</strong> – MTG Deck Builder’s source code, though copyrighted, is viewable on <a href="https://github.com/IristormDesign/mtg-deck-builder" target="_blank">GitHub</a>. You can open a GitHub issue or discussion, to which the developer (@IristormDesign) could respond.</p>
+					<p><strong>GitHub</strong> – MTG Deck Builder’s source code, though copyrighted, is viewable on <a href="https://github.com/IristormDesign/mtg-deck-builder" target="_blank">GitHub</a>. You can open a GitHub issue or discussion, which the developer (@IristormDesign) could respond to.</p>
 				</li>
 				<li>
 					<p><strong>X</strong> – Send a direct message on X (Twitter) to <a href="https://x.com/IristormDesign" target="_blank">@IristormDesign</a>.</p>
