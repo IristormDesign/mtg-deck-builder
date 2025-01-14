@@ -1,8 +1,8 @@
 <template functional>
 	<section id="text-renderer" key="text-renderer">
 		<h3>Text Renderer</h3>
-		<p>The Text Renderer is a <a href="#deck-page-modes">deck page mode</a> where you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> in the form of simplified lists in plain text.</p>
-		<p>These plain-text card lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>. (This textual card list format is the same one used for <a href="#card-list-entry">adding card lists</a> to your deck.)</p>
+		<p>The Text Renderer is a <a href="#deck-page-modes">deck page mode</a> where you can view the cards in your deck’s <a href="#card-groups">main and sideboard groups</a> in the form of simplified card lists in plain text.</p>
+		<p>These plain-text lists have one card name per line, with each name preceded by its <a href="#card-quantities">quantity</a>. (This textual card list format is the same one used for <a href="#card-list-entry">adding card lists</a> to your deck.)</p>
 		<p>Why would you want to see your deck in the form of plain text?</p>
 		<ul>
 			<li>
