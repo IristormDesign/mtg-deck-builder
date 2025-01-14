@@ -1,7 +1,7 @@
 <template functional>
 	<section id="deck-archive-files" key="deck-archive-files">
 		<h4>Deck Archive Files</h4>
-		<p>Deck archive files are files that contain data for certain decks made with MTG Deck Builder by you or other users. An archive file can have data for one or more decks.</p>
+		<p>Deck archive files are files that contain data for certain decks made with MTG Deck Builder by you or other users. An archive can have data for one or more decks.</p>
 		<p>You might want to have a deck archive file for any of the following reasons:</p>
 		<ul>
 			<li>
@@ -18,6 +18,6 @@
 			</li>
 		</ul>
 		<p>To make an archive file of any of your decks, click the <a href="#deck-actions">Deck Actions</a> button in the <a href="#deck-page-header">deck page header</a>, which makes a menu appear. From that menu, select the “Archive&hellip;” option.</p>
-		<p>To view decks contained in an archive file, go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the “Reproduce Archived Decks” section, which lets you find and open a deck archive file from the file system of your computer or phone.</p>
+		<p>To view the decks contained in an archive, go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the “Reproduce Archived Decks” section, which lets you find and open a deck archive file from the file system of your computer or phone.</p>
 	</section>
 </template>
