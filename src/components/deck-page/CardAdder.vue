@@ -79,17 +79,6 @@ export default {
 			if (this.regexScryfallCardURL.test(this.cardQueryInput)) {
 				this.handleSubmit()
 			}
-		},
-		loadingCard (loading) {
-			this.$nextTick(() => {
-				if (
-					!loading &&
-					this.focusedViaKBShortcut
-				) {
-					this.$store.commit('highlightedCardLIIndex', this.activeCardList.cards.length - 1)
-					this.focusedViaKBShortcut = false
-				}
-			})
 		}
 	},
 	created () {

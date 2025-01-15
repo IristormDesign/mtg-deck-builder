@@ -18,7 +18,7 @@
 			</li>
 			<li><a href="#scryfall-button">Scryfall advanced search button</a></li>
 			<li><a href="#card-adder">Card adder</a></li>
-			<li><a href="#add-multiple">“Add multiple” button</a></li>
+			<li><a href="#add-multiple">“Add Multiple” button</a></li>
 		</ol>
 		<p>Each of the List Editor’s sections is going to be explained in further detail.</p>
 
