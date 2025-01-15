@@ -70,6 +70,16 @@
 					v-else
 					class="no-cards"
 				>
+					<div
+						v-if="deck.cards.some(card => card.starred)"
+						class="checkbox-container"
+					>
+						<input
+							type="checkbox" id="exclude-starred"
+							v-model="isExcludingStarred"
+						/>
+						<label for="exclude-starred">Exclude starred cards</label>
+					</div>
 					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 				</div>
 			</section>
@@ -98,7 +108,7 @@ export default {
 		return {
 			afterReshuffle: false,
 			drawnList: [],
-			isExcludingStarred: false,
+			isExcludingStarred: this.deck.drawingExcludeStarred,
 			library: []
 		}
 	},
@@ -124,6 +134,9 @@ export default {
 		isExcludingStarred () {
 			this.library = []
 			this.prepareCards()
+
+			this.deckObject.drawingExcludeStarred = this.isExcludingStarred
+			this.$store.commit('decks', this.$store.state.decks)
 		}
 	},
 	methods: {
