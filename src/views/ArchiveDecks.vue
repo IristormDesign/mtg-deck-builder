@@ -63,7 +63,23 @@
 			<img class="intro-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of ships sailing away from a port town" />
 			<figcaption>Illustration: <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank"><i>Sage’s Reverie</i> </a> by Jason Rainville</figcaption>
 		</figure>
-		<p class="bigger">{{ this.archivedDecksMessage }}</p>
+		<p class="bigger">
+			<template v-if="numChecked === 1">
+				<i>{{ checkedDecks[0] }}</i> has
+			</template>
+			<template v-else-if="numChecked === 2">
+				<i>{{ checkedDecks[0] }}</i> and <i>{{ checkedDecks[1] }}</i> have
+			</template>
+			<template v-else>
+				The {{ numChecked }} decks you’ve selected have
+			</template>
+
+			been saved
+
+			<template v-if="numChecked > 1"> together</template>
+
+			as a deck archive file.
+		</p>
 	</article>
 </template>
 
@@ -79,23 +95,6 @@ export default {
 		}
 	},
 	computed: {
-		archivedDecksMessage () {
-			let message = ''
-
-			if (this.numChecked === 1) {
-				message += `“${this.checkedDecks[0]}” has`
-			} else if (this.numChecked === 2) {
-				message += `“${this.checkedDecks[0]}” and “${this.checkedDecks[1]}” have`
-			} else {
-				message += `The ${this.numChecked} decks you’ve selected have`
-			}
-
-			message += ' been saved'
-
-			if (this.numChecked > 1) message += ' together'
-
-			return message + ' as a deck archive file.'
-		},
 		numChecked () {
 			return this.checkedDecks.length
 		},
