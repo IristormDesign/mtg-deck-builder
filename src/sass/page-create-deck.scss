@@ -80,6 +80,7 @@
 
 		h3 {
 			margin: 0;
+			text-align: center;
 		}
 		.button-container {
 			height: $lhse*2;
@@ -119,7 +120,6 @@
 		}
 		.new-deck,
 		.reproduce-decks {
-			width: auto;
 			padding-right: $lhse*.5;
 			padding-left: $lhse*.5;
 		}
