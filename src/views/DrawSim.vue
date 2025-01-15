@@ -54,6 +54,16 @@
 					class="no-cards"
 				>
 					<p>Your library is now shuffled.</p>
+					<div
+						v-if="deck.cards.some(card => card.starred)"
+						class="checkbox-container"
+					>
+						<input
+							type="checkbox" id="exclude-starred"
+							v-model="isExcludingStarred"
+						/>
+						<label for="exclude-starred">Exclude starred cards</label>
+					</div>
 					<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#draw-sim">user manual</router-link>.</p>
 				</div>
 				<div
@@ -88,6 +98,7 @@ export default {
 		return {
 			afterReshuffle: false,
 			drawnList: [],
+			isExcludingStarred: false,
 			library: []
 		}
 	},
@@ -97,28 +108,37 @@ export default {
 			const cardName = this.library[0].name
 
 			return (
-				!this.afterReshuffle && // If the library had *not* just been reshuffled, and...
-				Math.random() < (2 / 3) && // With a little randomness mixed in, and...
-				( // If the drawn card has the same name as either the 1st-, 2nd-, or 3rd-previous drawn card...
+				!this.afterReshuffle && // If the library was *not* just reshuffled, and...
+				( // If the drawn card has the same name as either the 1st- or 2nd-previously drawn cards...
 					(drawnList[0] && drawnList[0].name === cardName) ||
-					(drawnList[1] && drawnList[1].name === cardName) ||
-					(drawnList[2] && drawnList[2].name === cardName)
-				)
+					(drawnList[1] && drawnList[1].name === cardName)
+				) &&
+				Math.random() < 2 / 3 // With a little extra randomness mixed in
 			)
 		}
 	},
 	mounted () {
 		this.prepareCards()
 	},
+	watch: {
+		isExcludingStarred () {
+			this.library = []
+			this.prepareCards()
+		}
+	},
 	methods: {
 		prepareCards () {
 			this.$store.commit('viewedDrawnCard', null)
 
 			if (this.drawnList.length === 0) {
-				this.deck.cards.forEach(card => {
-					for (let i = 0; i < card.qty; i++) {
-						this.library.push(card)
-					}
+				this.$nextTick(() => {
+					this.deck.cards.forEach(card => {
+						if (this.isExcludingStarred && card.starred) return
+
+						for (let i = 0; i < card.qty; i++) {
+							this.library.push(card)
+						}
+					})
 				})
 			} else {
 				this.library.push(...this.drawnList)
