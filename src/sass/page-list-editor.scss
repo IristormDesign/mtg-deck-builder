@@ -78,6 +78,11 @@ $width-card-list-section-narrow:
 		flex-direction: column;
 
 		&:disabled {
+			&:hover {
+				select {
+					cursor: default;
+				}
+			}
 			&:active {
 				select {
 					cursor: not-allowed;
@@ -85,7 +90,6 @@ $width-card-list-section-narrow:
 			}
 			select {
 				opacity: 1;
-				pointer-events: none;
 			}
 		}
 	}

@@ -2,9 +2,12 @@
 
 .text-renderer {
 	margin: 0 auto $lhse*.5;
-	padding-top: $lhse*.5;
-	padding-bottom: $lhse;
 
+	.intro {
+		:first-child {
+			margin-top: 0;
+		}
+	}
 	.control-panel {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -46,7 +49,7 @@
 	.lists {
 		display: grid;
 		gap: $lhse*.5 $lhse;
-		margin-top: $lhse*.5;
+		margin: $lhse*.5 0;
 
 		&.two-columns {
 			grid-template-columns: 1fr 1fr;
@@ -90,8 +93,7 @@
 		margin-top: $lhse;
 	}
 	.no-cards {
-		font-style: italic;
-		text-align: center;
+		max-width: $max-width-narrow-message;
 		margin-top: $lhse*.25;
 	}
 }

@@ -1,8 +1,5 @@
 <template>
-	<article
-		class="text-renderer content-box"
-		:class="!mainNotEmpty && !sideboardNotEmpty ? 'no-cards' : null"
-	>
+	<div class="text-renderer content-box">
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
 				<p>The main and sideboard card lists for <i>{{ deck.name }}</i> are provided here in simplified text versions, which let you easily take copies of these lists outside MTG Deck Builder. <router-link to="/manual#text-renderer">(More info&hellip;)</router-link></p>
@@ -63,14 +60,12 @@
 					></textarea>
 				</section>
 			</div>
+			<deck-print :deck="deck" :mainNotEmpty="mainNotEmpty" :sideboardNotEmpty="sideboardNotEmpty" />
 		</template>
-
 		<template v-else>
-			<p>This deck currently has no cards, so there’s nothing to show here. Add cards to the deck using the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
+			<p class="no-cards">Plain-text card lists will be provided here once you’ve added cards to this deck from the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 		</template>
-
-		<deck-print :deck="deck" :mainNotEmpty="mainNotEmpty" :sideboardNotEmpty="sideboardNotEmpty" />
-	</article>
+	</div>
 </template>
 
 <script>

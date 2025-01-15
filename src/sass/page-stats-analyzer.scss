@@ -52,17 +52,9 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	max-width: none;
 	position: relative;
 
-	&:has(.no-cards) {
-		margin-top: $lhse*.75;
-		margin-bottom: $lhse*1.25;
-	}
 	.no-cards {
-		h4 {
-			margin-top: $lhse*.25;
-		}
-		p {
-			max-width: $max-width-narrow-message;
-		}
+		max-width: $max-width-narrow-message;
+		margin-top: $lhse*.25;
 	}
 	.tables {
 		display: grid;
