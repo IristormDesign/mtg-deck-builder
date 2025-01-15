@@ -14,7 +14,7 @@
 		</header>
 
 		<div class="deck-action-bar">
-			<mode-menu />
+			<mode-menu :deck="deck" />
 			<deck-actions :deck="deck" />
 		</div>
 

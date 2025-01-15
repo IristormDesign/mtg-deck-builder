@@ -121,7 +121,7 @@
 			padding-top: 2px;
 		}
 		&:disabled {
-			filter: contrast(.5) brightness(.75);
+			filter: contrast(.3333) brightness(.6667);
 			opacity: 1;
 		}
 	}
@@ -200,7 +200,7 @@
 							visibility: hidden;
 						}
 						.qty-button-cluster {
-							opacity: .25;
+							@include disabled-style;
 						}
 					}
 				}

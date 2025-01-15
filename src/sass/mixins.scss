@@ -115,6 +115,10 @@
 	background: rgba($color-heading-bg, .6);
 	backdrop-filter: blur(3px);
 }
+@mixin disabled-style {
+	opacity: .2;
+	filter: saturate(.2);
+}
 @mixin button($color: 'orange') {
 	@include heading-font;
 
@@ -167,12 +171,11 @@
 		box-shadow: 0 0 0 .5px rgba(#000, .5);
 	}
 	&:disabled {
-		opacity: .25;
+		@include disabled-style;
 		border-bottom-width: 1px;
 		margin-top: 0;
 		margin-bottom: 0;
 		cursor: default;
-		filter: none; // Prevents hover effects while disabled.
 
 		&:active {
 			cursor: not-allowed;

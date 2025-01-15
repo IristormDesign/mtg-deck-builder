@@ -17,7 +17,7 @@
 					<div class="text-label">List Editor</div>
 				</router-link>
 			</li>
-			<li>
+			<li :class="disableModeLink()">
 				<router-link
 					:to="{ name: 'statsAnalyzer' }"
 					:class="onPage('statsAnalyzer')"
@@ -34,7 +34,7 @@
 					<div class="text-label">Stats Analyzer</div>
 				</router-link>
 			</li>
-			<li>
+			<li :class="disableModeLink()">
 				<router-link
 					:to="{ name: 'drawSim' }"
 					:class="onPage('drawSim')"
@@ -51,7 +51,7 @@
 					<div class="text-label">Draw Simulator</div>
 				</router-link>
 			</li>
-			<li>
+			<li :class="disableModeLink(true)">
 				<router-link
 					:to="{ name: 'textRenderer' }"
 					:class="onPage('textRenderer')"
@@ -74,7 +74,21 @@
 
 <script>
 export default {
+	props: {
+		deck: Object
+	},
 	methods: {
+		disableModeLink (checkSideboardToo) {
+			if (this.deck.cards.length === 0) {
+				if (checkSideboardToo) {
+					if (this.deck.sideboard.cards.length === 0) {
+						return 'disabled'
+					}
+				} else {
+					return 'disabled'
+				}
+			}
+		},
 		onPage (routeName) {
 			if (this.$route.name === routeName) {
 				return 'current-page'

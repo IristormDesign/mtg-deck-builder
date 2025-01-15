@@ -32,6 +32,16 @@
 	}
 	li {
 		list-style: none;
+
+		&.disabled {
+			&:not(:has(.current-page)) {
+				@include disabled-style;
+
+				a {
+					cursor: default;
+				}
+			}
+		}
 	}
 	a {
 		@include heading-font;

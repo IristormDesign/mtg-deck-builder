@@ -61,8 +61,7 @@ $width-card-list-section-narrow:
 }
 .card-sorter {
 	&:has(:disabled) {
-		opacity: .25;
-		filter: saturate(.5);
+		@include disabled-style;
 	}
 	form {
 		display: flex;

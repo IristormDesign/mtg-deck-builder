@@ -137,7 +137,7 @@
 						}
 					}
 					+ svg {
-						opacity: .25;
+						@include disabled-style;
 					}
 				}
 				&:not(:hover),
