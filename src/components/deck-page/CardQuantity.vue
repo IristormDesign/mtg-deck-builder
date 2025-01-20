@@ -210,7 +210,7 @@ export default {
 
 			const deck = this.deck
 
-			if (deck.sortBy === 'qty') {
+			if (deck.sortBy === 'Quantity') {
 				this.resetListSorting()
 			}
 
@@ -346,7 +346,7 @@ export default {
 			})
 		},
 		resetListSorting () {
-			this.deckObject.sortBy = ''
+			this.deckObject.sortBy = '(Unsorted)'
 
 			this.deck.cards.forEach(eachCard => {
 				eachCard.gapAfter = false

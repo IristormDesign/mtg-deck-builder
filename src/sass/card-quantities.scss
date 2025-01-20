@@ -6,6 +6,10 @@
 			&:has(.qty:hover)	{
 				background: $color-group-bg-lighter;
 				box-shadow: $box-shadow-card-list-row-bg-edge;
+
+				input {
+					background: $color-input-bg;
+				}
 			}
 		}
 	}
@@ -71,7 +75,6 @@
 	&:focus,
 	&:hover {
 		input {
-			background: $color-group-bg-darker;
 			outline: 1px solid $color-link-focus;
 		}
 		.hover-extension {

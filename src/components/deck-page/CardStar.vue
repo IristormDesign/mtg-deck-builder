@@ -31,8 +31,9 @@ export default {
 			this.activeCardList.viewedCard = card
 			this.activeCardList.viewedStarredCard = card
 
-			if (deck.sortBy === 'starred') {
-				deck.sortBy = ''
+			if (deck.sortBy === 'Starred') {
+				deck.sortBy = '(Unsorted)'
+
 				deck.cards.forEach(eachCard => {
 					eachCard.gapAfter = false
 				})

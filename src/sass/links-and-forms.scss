@@ -26,7 +26,6 @@ select {
 	@include link;
 	@include heading-font;
 	color: $color-link;
-	background: $color-group-bg-darker;
 	padding: 0 .5em;
 	font-size: 87.5%;
 
@@ -55,8 +54,11 @@ textarea {
 		color: $color-text-brighter-over-mythic-brown;
 	}
 	&:read-only {
-		background: $color-group-bg-darker;
-		color: $color-text;
+		&:hover,
+		&:focus {
+			background: inherit;
+			color: inherit;
+		}
 	}
 }
 input,
@@ -64,7 +66,9 @@ select,
 textarea {
 	transition: all $transition-duration-standard ease;
 	transition-property: color, background-color, border-color;
-	background: $color-group-bg-darker;
+	background: $color-group-bg;
+	background: desaturate(darken($color-mythic-orange, 33.33%), 100%);
+	background: $color-input-bg;
 	caret-color: $color-mythic-orange;
 	border: $color-input-border;
 	text-decoration: none;
@@ -170,7 +174,6 @@ select {
 }
 option {
 	@include popup-menu-list-links;
-	background: $color-group-bg-darker;
 	color: $color-link;
 
 	&[value=""] {

@@ -25,9 +25,9 @@
 				<p>If a list has a large number of card names, then the list’s printed version will be automatically laid out as three columns to conserve paper. (However, if you’re on Apple’s Safari browser, then it’ll always print the lists in only one column, because unfortunately, Safari doesn’t support multi-column layouts in printing. Other modern web browsers will print multi-column layouts normally.) </p>
 			</li>
 			<li>
-				<p><strong>Copy</strong> – For either the main or the sideboard list of your deck, click the “Copy” button beside that list in the Text Renderer to instantly select and copy the whole text list to the clipboard of your computer or phone. (Then you can paste that text list elsewhere.)</p>
+				<p><strong>Copy</strong> – The Text Renderer has sections displaying the plain-text card lists for your deck’s main and sideboard groups. Both sections have a “Copy” button, either one of which you can click to have the respective section’s whole list instantly copied to the clipboard of your computer or phone. (Then you can paste that list elsewhere.)</p>
 			</li>
 		</ul>
-		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <a href="#card-list">card lists</a>. If you care about the order, use the List Editor’s <a href="#card-sorter">card sorter</a> to rearrange the names in the way you prefer before you <a href="#mode-menu">switch to</a> the Text Renderer.</p>
+		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <a href="#card-list">card lists</a>. So if you care about the order, use the List Editor’s <a href="#card-sorter">card sorter</a> to rearrange the names in the way you prefer before you <a href="#mode-menu">switch to</a> the Text Renderer.</p>
 	</section>
 </template>

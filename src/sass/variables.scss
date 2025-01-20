@@ -14,8 +14,8 @@ $color-mythic-brown: darken(desaturate($color-mythic-orange, 80%), 25%); // Dark
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
 $color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
 $color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
-$color-text-over-mythic-brown: lighten($color-mythic-brown, 54.17%);
-$color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 4.17%);
+$color-text-over-mythic-brown: lighten($color-mythic-brown, 56.25%);
+$color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 6.25%);
 $color-input-bg-active: darken($color-link, 37.5%);
 $color-section-border-alt: lighten($color-mythic-brown, 12.5%); // Lighten percentage matches that of $color-section-border.
 
@@ -43,20 +43,24 @@ $color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
+$color-subtle-bluish-shadow-base: darken($color-mythic-complement, 50%);
+$color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .5);
 
 /* INDIGO-BASED COLORS */
 // $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
+
+/* GRAYSCALE COLORS */
+$opacity-black-label-text: .8333;
+$color-black-label-text: rgba(#000, $opacity-black-label-text);
+$color-darker-black-label-text: rgba(#000, .875);
+$color-button-border: rgba(#000, 1/3);
+$color-input-bg: lighten(#000, 16.67%); // Technically pure gray, but appears subtly orangish when surrounded by the bluish-tinted gray of $color-group-bg.
 
 /* MISCELLANEOUS COLORS */
 $color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scryfall
 $color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
 $color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
-$opacity-black-label-text: .8333;
-$color-black-label-text: rgba(#000, $opacity-black-label-text);
-$color-darker-black-label-text: rgba(#000, .875);
-$color-button-border: rgba(#000, 1/3);
-$color-shadows: rgba(#000, .5);
 
 /* MANA-BASED COLORS */
 $color-mana-white: desaturate(#fffcd5, 66.67%); // Based on sample
@@ -79,6 +83,7 @@ $color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 8.33%);
 $font-family-standard: 'Crimson Pro', serif;
 $line-height-standard: 1 + divide(1, 3);
 $lhse: $line-height-standard * 1em;
+$font-weight-regular: 367;
 $font-weight-label: 500;
 $font-weight-semibold: 600;
 $font-size-bigger: 112.5%;
@@ -130,8 +135,7 @@ $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-heading-bg;
 
 /* SHADOWS AND GLOWS */
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
-$box-shadow-button-cast-shadow: -1px .167em .125em 1px rgba(#000, divide(1, 3));
-$box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba(#000, 1/3);
+$box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba($color-subtle-bluish-shadow-base, 1/3);
 
 /* TRANSITIONS */
 $transition-duration-standard: .25s;
@@ -146,7 +150,7 @@ $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-h
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);
-$x: .0833em dashed rgba(#0f0, .6667);
+$x: 1px dashed rgba(#0f0, .6667);
 
 /* MIXINS */
 @import 'mixins';

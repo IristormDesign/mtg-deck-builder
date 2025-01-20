@@ -12,10 +12,9 @@
 
 		p {
 			font-size: $font-size-small;
-			text-wrap: pretty;
 		}
 		a {
-			white-space: nowrap; // In case `text-wrap: pretty` is unsupported.
+			white-space: nowrap;
 		}
 	}
 	section {

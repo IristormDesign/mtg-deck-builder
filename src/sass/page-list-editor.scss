@@ -52,10 +52,8 @@ $width-card-list-section-narrow:
 		height: $lhse*1.8;
 		margin-right: $lhse*.25;
 	}
-
 	.section-label {
-		padding-left: $lhse*.625;
-		padding-bottom: $lhse*.125;
+		padding: 0 $lhse*.625 $lhse*.125;
 		line-height: $line-height-standard;
 	}
 }
@@ -92,11 +90,173 @@ $width-card-list-section-narrow:
 			}
 		}
 	}
-	select {
+	> svg {
+		transition: opacity $transition-duration-standard ease;
+	}
+	label {
+		transition: $transition-duration-standard ease;
+		transition-property: color, background-color;
+		width: fit-content;
+		border-radius: $border-radius-button;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	input {
 		height: $lhse*1.25;
 		padding-top: $lhse*.0417;
 		padding-bottom: $lhse*.0417;
 		font-size: 87.5%;
+	}
+	.dropdown-menu-component {
+		position: relative;
+
+		&.opened {
+			input {
+				opacity: 0;
+				transition: opacity $transition-duration-standard ease;
+			}
+		}
+		input {
+			cursor: pointer;
+			width: $lhse*6; // Just wide enough to fit the widest available option ("First subtype").
+			min-width: auto;
+
+			&:hover,
+			&:focus {
+				+ .dropdown-arrow {
+					fill: $color-link-focus;
+				}
+			}
+			&:active {
+				background: $color-input-bg-active;
+				color: $color-link-active;
+
+				+ .dropdown-arrow {
+					fill: $color-link-active;
+				}
+			}
+		}
+		.dropdown-arrow {
+			right: -$lhse*.2;
+			position: absolute;
+			fill: $color-link;
+			width: auto;
+			height: 100%;
+			cursor: pointer;
+			transition: $transition-duration-standard ease;
+			transition-property: opacity, fill, transform;
+
+			&:hover {
+				fill: $color-link-focus;
+			}
+			&:active {
+				fill: $color-link-active;
+			}
+		}
+		.dropdown-transition-enter {
+			transform: translate(0, -25%) scale(.5);
+		}
+		.dropdown-transition-leave-to {
+			transition-duration: $transition-duration-standard*.5;
+		}
+		.dropdown-transition-enter,
+		.dropdown-transition-leave-to {
+			opacity: 0;
+		}
+		ul {
+			@include popup-menu-list;
+			width: max-content;
+			column-count: 2;
+			column-gap: $border-width-sections-medium;
+			padding: 1.5px;
+			background: $color-group-bg-darker;
+			position: absolute;
+			top: 0;
+			left: -$lhse*2.8333;
+			transition: $transition-duration-standard ease;
+			transition-property: opacity, transform;
+			will-change: transform;
+			border: 1px solid $color-link;
+			box-shadow: (-$lhse*.3333) $lhse*1 $lhse*1.5 $lhse*.1667 $color-subtle-bluish-shadow;
+			z-index: index($layers, card-overlay);
+
+			.selected {
+				button {
+					&,
+					&:hover,
+					&:focus,
+					&:active {
+						background: $color-group-bg-lighter;
+						color: $color-text-darker;
+						cursor: default;
+
+						svg {
+							fill: $color-group-bg-darker;
+						}
+					}
+				}
+			}
+			button {
+				@include link;
+				@include popup-menu-list-links;
+				justify-content: flex-start;
+				width: 100%;
+				font-size: $font-size-small;
+				font-weight: $font-weight-regular;
+				height: $lhse*1.5;
+				color: $color-text-brighter;
+
+				svg {
+					width: $lhse;
+					height: $lhse;
+					fill: $color-link;
+					margin: 0 0 0 divide(-$lhse, 3);
+					transition: fill $transition-duration-standard ease;
+				}
+				&:hover,
+				&:focus {
+					color: $color-text-brighter-over-mythic-brown;
+
+					svg {
+						fill: $color-link-focus;
+					}
+				}
+				&:active {
+					color: #fff;
+
+					svg {
+						fill: $color-link-active;
+					}
+				}
+			}
+		}
+	}
+	&:has(.opened) {
+		> svg {
+			opacity: (1/3);
+		}
+		label {
+			color: $color-text-brighter-over-mythic-brown;
+			background: $color-mythic-dim;
+			z-index: index($layers, card-overlay) + 1;
+			cursor: pointer;
+
+			&:hover,
+			&:focus-within {
+				filter: $filter-brightness-button-hover;
+			}
+			&:active {
+				filter: $filter-brightness-button-active;
+			}
+		}
+	}
+	&:has(.closed) {
+		> svg {
+			transition-duration: $transition-duration-standard*.5;
+		}
+		label {
+			transition-duration: $transition-duration-standard*.5;
+		}
 	}
 }
 .card-group-switch {

@@ -48,7 +48,7 @@
 		</ul>
 		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and next sort by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 		<p>For easier skimming of the card list, every sorting option, except for name, inserts small gaps between each sorted cluster of card names.</p>
-		<p>Under certain conditions, the card sorter’s sorting option resets to “(None),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
+		<p>Under certain conditions, the card sorter’s sorting option resets to “(Unsorted),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
 				<li><a href="#card-adder">Add a card name</a> to the list</li>
 				<li>Change the quantity of a card name while the sorter is set to “Quantity”</li>

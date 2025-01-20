@@ -33,7 +33,7 @@ export default {
 			/* Now remove the card from the deck. */
 			cards.splice(index, 1)
 
-			if (this.$store.state.sortAttribute !== '') {
+			if (this.$store.state.sortAttribute !== '(Unsorted)') {
 				this.addSortingClusterGaps(this.deck, this.$store.state.sortAttribute)
 			}
 

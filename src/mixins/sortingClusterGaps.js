@@ -17,26 +17,26 @@ export default {
 		},
 		hasGapAfter (thisCard, nextCard) {
 			if (nextCard) {
-				switch (this.deck.sortBy) {
+				switch (this.deck.sortBy.toLowerCase()) {
 					case 'starred':
 						return this.gapsStarred(thisCard, nextCard)
-					case 'color':
+					case 'mana color':
 						return this.gapsColor(thisCard, nextCard)
-					case 'cmc':
+					case 'mana value':
 						return this.gapsCmc(thisCard, nextCard)
 					case 'supertype':
 						return this.gapsSupertype(thisCard, nextCard)
 					case 'type':
 						return this.gapsType(thisCard, nextCard)
-					case 'firstSubtype':
+					case 'first subtype':
 						return this.gapsSubtype(thisCard, nextCard, false)
-					case 'lastSubtype':
+					case 'last subtype':
 						return this.gapsSubtype(thisCard, nextCard, true)
 					case 'rarity':
 						return this.gapsRarity(thisCard, nextCard)
-					case 'pt-sum':
+					case 'p/t sum':
 						return this.gapsPTSum(thisCard, nextCard)
-					case 'qty':
+					case 'quantity':
 						return this.gapsQty(thisCard, nextCard)
 				}
 			} else { // The last card in the list (before any newly added cards)

@@ -20,7 +20,7 @@
 		-.3333px 1px 0 $border-width-card-bar color.scale($color,
 			$lightness: -50%, $saturation: -50%
 		),
-		0 -.5px 3px ($border-width-card-bar + 1px) rgba(#000, $shadow-opacity);
+		0 -.5px 3px ($border-width-card-bar + 1px) rgba($color-subtle-bluish-shadow-base, $shadow-opacity);
 }
 @mixin long-card-bars {
 	.card-bar {
@@ -182,8 +182,8 @@
 				transition-duration: 0s, $transition-duration-standard, $transition-duration-standard;
 				border-top-color: rgba(#fff, .5);
 				border-right-color: rgba(#fff, .25);
-				border-bottom-color: rgba(#000, .5);
-				border-left-color: rgba(#000, .25);
+				border-bottom-color: rgba($color-subtle-bluish-shadow-base, .5);
+				border-left-color: rgba($color-subtle-bluish-shadow-base, .25);
 				outline-offset: 2.5px;
 
 				&:active {

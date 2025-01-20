@@ -64,7 +64,7 @@
 	}
 }
 @mixin popup {
-	box-shadow: -.125em .375em .5em rgba(#000, .25);
+	box-shadow: -.125em .375em .5em $color-subtle-bluish-shadow;
 	background: $color-mythic-dim;
 }
 @mixin popup-menu-list {
@@ -73,7 +73,7 @@
 	margin: 0;
 	padding: 0;
 	overflow: auto;
-	border-radius: $border-radius-group;
+	border-radius: $border-radius-small-button;
 	border: 3px solid $color-mythic-dim;
 }
 @mixin popup-menu-list-links {
@@ -85,7 +85,7 @@
 	align-items: center;
 	justify-content: space-between;
 	border-top: 1px solid rgba(#fff, .0833);
-	border-bottom: 1px solid rgba(#000, .5833);
+	border-bottom: 1px solid rgba($color-subtle-bluish-shadow-base, .5833);
 	background: $color-group-bg;
 	font: 100%/#{$line-height-standard} $font-family-standard;
 	border-radius: 0;
@@ -96,8 +96,11 @@
 	&:hover,
 	&:focus,
 	&:active {
-		background: $color-group-bg-lighter;
+		background: $color-mythic-brown;
 		z-index: 1;
+	}
+	&:active {
+		background: $color-mythic-dim;
 	}
 	@media (pointer: coarse) {
 		min-height: $lhse*1.3333;
@@ -132,7 +135,7 @@
 	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:
-		0 1px 0 .5px rgba(#000, .5), // Rim around button
+		0 1px 0 .5px $color-subtle-bluish-shadow, // Rim around button
 		$box-shadow-button-shine;
 	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
@@ -168,7 +171,7 @@
 	}
 	&:active,
 	&:disabled {
-		box-shadow: 0 0 0 .5px rgba(#000, .5);
+		box-shadow: 0 0 0 .5px $color-subtle-bluish-shadow;
 	}
 	&:disabled {
 		@include disabled-style;

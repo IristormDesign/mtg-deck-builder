@@ -347,7 +347,7 @@ export default {
 			const deck = this.deck
 
 			deck.editDate = new Date()
-			deck.sortBy = ''
+			deck.sortBy = '(Unsorted)'
 			this.determineDeckColors()
 
 			deck.cards.forEach(eachCard => {
