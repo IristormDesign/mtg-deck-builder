@@ -72,11 +72,6 @@
 	.deck-menu-toggler {
 		position: relative;
 		z-index: index($layers, app-menu-toggler);
-
-		span {
-			font-size: 75%;
-			margin-left: .5ch;
-		}
 	}
 	.deck-menu {
 		position: relative;
@@ -94,7 +89,7 @@
 		}
 		ul {
 			@include popup-menu-list;
-			top: $lhse*1.5;
+			top: $lhse*1.6667;
 			right: 0;
 			max-height: calc(100vh - #{$height-app-header-short + $lhse*.5});
 			max-width: 48ch;
@@ -104,16 +99,22 @@
 
 			&:hover,
 			&:focus,
-			&:active,
-			&.opened {
+			&:active {
 				.mana-symbol {
 					opacity: 1;
 				}
 			}
-			&.opened {
-				background: $color-heading-bg;
-				color: $color-text-extra-brighter;
-				cursor: default;
+		}
+		.selected {
+			a {
+				&,
+				&:hover,
+				&:focus,
+				&:active {
+					.mana-symbol {
+						opacity: .75;
+					}
+				}
 			}
 		}
 	}
@@ -125,13 +126,13 @@
 	}
 	.deck-menu-deck-name {
 		max-width: calc(100vw - $lhse*5);
-		width: max-content;
 		line-height: .9583;
 		padding: 0 0 $lhse*.0833 0;
+		flex-grow: 1;
 	}
 	.deck-menu-deck-colors {
 		display: flex;
-		font-size: 66.67%;
+		font-size: 75%;
 		margin-left: .5em;
 		min-width: $lhse*2;
 		justify-content: center;
@@ -165,9 +166,11 @@
 				height: $lhse*3;
 			}
 			ul {
-				// right: -20vw;
-				// left: -20vw;
 				max-width: 80vw;
+				position: fixed;
+				top: $height-app-header-tall;
+				left: 0;
+				margin: 0 auto;
 			}
 		}
 	}
@@ -192,8 +195,6 @@
 		border-radius: $border-radius-small-button;
 
 		svg {
-			width: $lhse*1.3333;
-			height: $lhse*1.3333;
 			margin-top: -.6667em;
 			margin-bottom: -.0625em;
 		}
@@ -239,6 +240,10 @@
 			}
 			&:active {
 				color: $color-link-active;
+			}
+
+			> svg {
+				margin-right: .25em;
 			}
 		}
 		.open-deck-heading {

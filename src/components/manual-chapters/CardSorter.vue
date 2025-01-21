@@ -7,9 +7,9 @@
 				alt="Snippet of card sorter" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
+		<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
 		<p>The card sorter has a drop-down menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute.</p>
-		<p>Sorting affects both the main and the sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>Sorting cards affects both the main and the sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>

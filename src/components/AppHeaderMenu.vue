@@ -39,6 +39,7 @@
 						<li
 							v-for="deck in $store.state.decks"
 							:key="deck.name"
+							:class="{selected: $route.params.deckPath === deck.path}"
 						>
 							<router-link
 								:to="{
@@ -49,7 +50,6 @@
 									}
 								}"
 								@click.native="closeAllPopups()"
-								:class="{opened: $route.params.deckPath === deck.path}"
 							>
 								<span class="deck-menu-deck-name">{{ deck.name }}</span>
 								<div class="deck-menu-deck-colors">
@@ -74,19 +74,19 @@
 			</ul>
 		</nav>
 
-		<bg-overlay @closePopups="closeAllPopups()" />
+		<!-- <bg-overlay @closePopups="closeAllPopups()" /> -->
 	</div>
 </template>
 
 <script>
 import debounce from 'debounce'
-import BgOverlay from '@/components/BgOverlay.vue'
+// import BgOverlay from '@/components/BgOverlay.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	components: { BgOverlay },
+	// components: { BgOverlay },
 	mixins: [getActiveDeck, deckColors, symbolsMarkup],
 	data () {
 		return {

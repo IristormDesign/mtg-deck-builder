@@ -170,57 +170,13 @@ $width-card-list-section-narrow:
 			top: 0;
 			left: -$lhse*2.8;
 			z-index: index($layers, card-overlay);
-
-			.selected {
-				button {
-					&,
-					&:hover,
-					&:focus,
-					&:active {
-						background: $color-group-bg-lighter;
-						color: $color-text-darker;
-						cursor: default;
-
-						svg {
-							fill: $color-group-bg-darker;
-						}
-					}
-				}
-			}
-			button {
-				@include link;
-				@include popup-menu-list-links;
-				justify-content: flex-start;
-				width: 100%;
-				font-size: $font-size-small;
-				font-weight: $font-weight-regular;
-				height: $lhse*1.5;
-				color: $color-text-brighter;
-
-				svg {
-					width: $lhse;
-					height: $lhse;
-					fill: $color-button-orange;
-					margin: 0 0 0 divide(-$lhse, 3);
-					transition: fill $transition-duration-standard ease;
-				}
-				&:hover,
-				&:focus {
-					color: $color-text-brighter-over-mythic-brown;
-
-					svg {
-						fill: $color-link-focus;
-						transition-duration: 0s;
-					}
-				}
-				&:active {
-					color: #fff;
-
-					svg {
-						fill: $color-link-active;
-					}
-				}
-			}
+		}
+		button {
+			@include link;
+			@include popup-menu-list-links;
+			width: 100%;
+			font-size: $font-size-small;
+			height: $lhse*1.5;
 		}
 	}
 	&:has(.opened) {
