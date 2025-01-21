@@ -165,19 +165,10 @@ $width-card-list-section-narrow:
 		}
 		ul {
 			@include popup-menu-list;
-			width: max-content;
 			column-count: 2;
 			column-gap: $border-width-sections-medium;
-			padding: 1.5px;
-			background: $color-group-bg-darker;
-			position: absolute;
 			top: 0;
-			left: -$lhse*2.8333;
-			transition: $transition-duration-standard ease;
-			transition-property: opacity, transform;
-			will-change: transform;
-			border: 1px solid $color-link;
-			box-shadow: (-$lhse*.3333) $lhse*1 $lhse*1.5 $lhse*.1667 $color-subtle-bluish-shadow;
+			left: -$lhse*2.8;
 			z-index: index($layers, card-overlay);
 
 			.selected {
@@ -209,7 +200,7 @@ $width-card-list-section-narrow:
 				svg {
 					width: $lhse;
 					height: $lhse;
-					fill: $color-link;
+					fill: $color-button-orange;
 					margin: 0 0 0 divide(-$lhse, 3);
 					transition: fill $transition-duration-standard ease;
 				}
@@ -219,6 +210,7 @@ $width-card-list-section-narrow:
 
 					svg {
 						fill: $color-link-focus;
+						transition-duration: 0s;
 					}
 				}
 				&:active {

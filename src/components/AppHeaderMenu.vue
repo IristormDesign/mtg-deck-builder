@@ -36,9 +36,11 @@
 					</div>
 					<div v-show="showDeckMenu" class="hover-shield"></div>
 					<ul v-show="showDeckMenu">
-						<li v-for="deck in $store.state.decks" :key="deck.name">
+						<li
+							v-for="deck in $store.state.decks"
+							:key="deck.name"
+						>
 							<router-link
-								v-show="$route.params.deckPath !== deck.path"
 								:to="{
 									name: 'listEditor',
 									params: {
@@ -47,6 +49,7 @@
 									}
 								}"
 								@click.native="closeAllPopups()"
+								:class="{opened: $route.params.deckPath === deck.path}"
 							>
 								<span class="deck-menu-deck-name">{{ deck.name }}</span>
 								<div class="deck-menu-deck-colors">

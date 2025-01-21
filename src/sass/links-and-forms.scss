@@ -54,10 +54,11 @@ textarea {
 		color: $color-text-brighter-over-mythic-brown;
 	}
 	&:read-only {
+		&,
 		&:hover,
 		&:focus {
-			background: inherit;
-			color: inherit;
+			background: $color-group-bg-darker;
+			color: $color-text;
 		}
 	}
 }
