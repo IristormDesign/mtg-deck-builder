@@ -26,28 +26,32 @@ import ScrollToTop from '@/components/ScrollToTop.vue'
 export default {
 	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
 	mounted () {
-		this.preventMiddleClicking()
+		document.addEventListener(
+			'auxclick', this.preventMiddleClicking
+		)
+
 		this.loadDefaultDecks()
 	},
 	methods: {
 		/**
 		 * Prevent all links from opening a new tab via middle-click, with the exception of the links that are always set to open in a new tab.
 		 */
-		preventMiddleClicking () {
-			document.addEventListener('auxclick', (event) => {
-				function conditions (el) {
-					if (el !== null) {
-						return (el.matches('a') && el.getAttribute('target') !== '_blank')
-					}
+		preventMiddleClicking (event) {
+			function conditions (el) {
+				if (el !== null) {
+					return (
+						el.matches('a') &&
+						!el.getAttribute('target')
+					)
 				}
+			}
 
-				if (
-					conditions(event.target) ||
-					conditions(event.target.closest('a'))
-				) {
-					event.preventDefault()
-				}
-			})
+			if (
+				conditions(event.target) ||
+				conditions(event.target.closest('a'))
+			) {
+				event.preventDefault()
+			}
 		},
 		/**
 		 * Load the two default decks if needed.

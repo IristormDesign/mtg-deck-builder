@@ -124,10 +124,14 @@ export default {
 		}
 	},
 	mounted () {
-		document.addEventListener('click', this.closeSorterMenuOnOutsideClick)
+		document.addEventListener(
+			'click', this.closeSorterMenuOnOutsideClick
+		)
 	},
 	destroyed () {
-		document.removeEventListener('click', this.closeSorterMenuOnOutsideClick)
+		document.removeEventListener(
+			'click', this.closeSorterMenuOnOutsideClick
+		)
 	},
 	updated () {
 		/* When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's. */
