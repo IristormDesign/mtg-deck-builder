@@ -12,10 +12,10 @@
 
 		<section id="archive-action">
 			<h5>Archive</h5>
-			<p>In MTG Deck Builder, to “archive” means to have the app make you a <a href="#deck-archive-files">deck archive file</a>.</p>
-			<p>A deck archive file has the complete copied data of chosen decks created in MTG Deck Builder. Anyone who has an archive file—whether yourself or someone whom you’ve sent the file to—can later <a href="#create-deck">reproduce the decks</a> from its data.</p>
-			<p>In the <a href="#deck-actions">Deck Actions</a> menu, select the “Archive&hellip;” option to go to the “Archive Decks” page. From there, select one or more of your decks to archive. The deck archive file is saved on your computer or phone to wherever your web browser puts downloads.</p>
-			<p>If you archive one deck alone, the archive file is automatically named after that deck’s name. If you archive multiple decks together, the file is automatically named “My Decks.” In either case, “.deck” is its file extension.</p>
+			<p>In MTG Deck Builder, to “archive” means to have the app make you a <a href="#deck-archive-files">deck archive file</a> from any of your <a href="#storage-of-deck-data">decks stored</a> in MTG Deck Builder.</p>
+			<p>A deck archive file has the complete copied data of chosen decks. Anyone who has a deck archive file—whether yourself or someone whom you’ve sent the file to—can later <a href="#create-deck">reproduce the decks</a> from its data.</p>
+			<p>In the <a href="#deck-actions">Deck Actions</a> menu, select the “Archive&hellip;” option to go to the “Archive Decks” page. From there, select at least one deck to archive. The archive file is saved on your computer or phone to wherever your web browser puts downloads.</p>
+			<p>If you archive one deck alone, then the archive file is automatically named after that deck’s name. If you archive multiple decks together, then the file is automatically named “My Decks.” In either case, “.deck” is its file extension.</p>
 		</section>
 
 		<section id="delete-action">
