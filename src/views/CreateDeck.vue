@@ -76,10 +76,14 @@ export default {
 		hideFileInput () {
 			const openFileButton = document.getElementById('file-btn')
 
-			openFileButton.addEventListener('click', () => {
-				this.fileInput.click()
-			})
-			this.fileInput.addEventListener('change', this.loadFile)
+			openFileButton.addEventListener(
+				'click', () => {
+					this.fileInput.click()
+				}
+			)
+			this.fileInput.addEventListener(
+				'change', this.loadFile
+			)
 		},
 		submitDeckName () {
 			let name = this.deckNameInput

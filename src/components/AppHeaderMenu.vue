@@ -148,7 +148,9 @@ export default {
 		}
 	},
 	mounted () {
-		this.letEscKeyClosePopups()
+		document.addEventListener(
+			'keydown', this.letEscKeyClosePopups
+		)
 		this.closeMenusAutomatically()
 		this.applyHoverEffectToOpenDeckButton()
 		this.debounceWindowResizing()
@@ -157,28 +159,32 @@ export default {
 		/**
 		 * Users can press the "Esc" key to close any popups.
 		 */
-		letEscKeyClosePopups () {
-			document.addEventListener('keyup', (event) => {
-				if (event.key === 'Escape' || event.key === 'Esc') {
-					if (this.$store.state.showingAnyPopup) {
-						this.closeAllPopups()
-					}
-				}
-			})
+		letEscKeyClosePopups (event) {
+			if (!this.$store.state.showingAnyPopup) return
+
+			switch (event.key) {
+				case 'Escape':
+				case 'Esc':
+					this.closeAllPopups()
+			}
 		},
 		closeMenusAutomatically () {
 			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
 
 			headerMenuFirstLevelLinks.forEach(link => {
 				/* Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the deck menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.) */
-				link.addEventListener('click', this.closeAllPopups)
+				link.addEventListener(
+					'click', this.closeAllPopups
+				)
 
-				link.addEventListener('focus', () => {
-					/* If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu. */
-					if (this.showDeckMenu && !this.mobileView()) {
-						this.closeAllPopups()
+				link.addEventListener(
+					'focus', () => {
+						/* If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu. */
+						if (this.showDeckMenu && !this.mobileView()) {
+							this.closeAllPopups()
+						}
 					}
-				})
+				)
 			})
 		},
 		/**
@@ -189,29 +195,40 @@ export default {
 			const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
 			let deckMenuMOTimer
 
-			deckMenuMOArea.addEventListener('mouseover', () => {
-				if (!deckMenuToggler.hasAttribute('disabled')) {
-					deckMenuMOTimer = setTimeout(() => {
-						this.toggleDeckMenu(true)
-					}, 250)
-				}
-			})
-			deckMenuMOArea.addEventListener('mouseout', () => {
+			const mouseoverDeckMenuMOArea = () => {
+				if (deckMenuToggler.hasAttribute('disabled')) return
+
+				deckMenuMOTimer = setTimeout(() => {
+					this.toggleDeckMenu(true)
+				}, 250)
+			}
+			const mouseoutDeckMenuMOArea = () => {
 				clearTimeout(deckMenuMOTimer)
-			})
+			}
+
+			deckMenuMOArea.addEventListener(
+				'mouseover', mouseoverDeckMenuMOArea
+			)
+			deckMenuMOArea.addEventListener(
+				'mouseout', mouseoutDeckMenuMOArea
+			)
 		},
 		debounceWindowResizing () {
 			const resizingViewport = () => {
 				this.showHeaderMenu = !this.mobileView()
 			}
 
-			window.addEventListener('resize', debounce(resizingViewport, 125))
+			window.addEventListener(
+				'resize', debounce(resizingViewport, 125)
+			)
 		},
 		addFocusListenerToClosePopups () {
 			const allLinks = document.querySelectorAll('a, button')
 
 			const listenForFocus = (link) => {
-				link.addEventListener('focus', this.closePopupsOnFocus)
+				link.addEventListener(
+					'focus', this.closePopupsOnFocus
+				)
 			}
 
 			for (let i = 1; i < allLinks.length; i++) {

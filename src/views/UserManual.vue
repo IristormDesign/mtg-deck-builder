@@ -203,15 +203,17 @@ export default {
 		highlightFirstTOCLinkWhenAtTopOfPage () {
 			const tocLinks = document.querySelectorAll('.toc-links a')
 
-			window.addEventListener('scroll', () => {
-				if (window.scrollY === 0) {
-					tocLinks.forEach(link => {
-						link.classList.remove('visible')
-					})
+			window.addEventListener(
+				'scroll', () => {
+					if (window.scrollY === 0) {
+						tocLinks.forEach(link => {
+							link.classList.remove('visible')
+						})
 
-					tocLinks[0].classList.add('visible')
+						tocLinks[0].classList.add('visible')
+					}
 				}
-			})
+			)
 		}
 	}
 }

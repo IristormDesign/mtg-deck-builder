@@ -50,12 +50,20 @@ export default {
 		}
 	},
 	mounted () {
-		document.addEventListener('keydown', this.listenForKeyboardShortcuts)
-		document.addEventListener('click', this.clickToQuitKeyboardShortcuts)
+		document.addEventListener(
+			'keydown', this.listenForKeyboardShortcuts
+		)
+		document.addEventListener(
+			'click', this.clickToQuitKeyboardShortcuts
+		)
 	},
 	destroyed () {
-		document.removeEventListener('keydown', this.listenForKeyboardShortcuts)
-		document.removeEventListener('click', this.clickToQuitKeyboardShortcuts)
+		document.removeEventListener(
+			'keydown', this.listenForKeyboardShortcuts
+		)
+		document.removeEventListener(
+			'click', this.clickToQuitKeyboardShortcuts
+		)
 	},
 	methods: {
 		listenForKeyboardShortcuts (event) {
