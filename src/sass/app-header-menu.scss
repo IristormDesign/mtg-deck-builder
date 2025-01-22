@@ -77,15 +77,24 @@
 		position: relative;
 		z-index: index($layers, above-overlay);
 
+		.hover-shield-transition-leave-to {
+			transition-duration: $transition-duration-standard*.5;
+		}
+		.hover-shield-transition-enter,
+		.hover-shield-transition-leave-to {
+			opacity: 0;
+		}
 		.hover-shield {
 			position: absolute;
 			width: 100%;
-			height: $lhse*1.4;
-			margin-top: -$lhse*1.375;
+			height: $lhse*1.8333;
+			margin-top: -$lhse*1.6667;
 			border-radius: $border-radius-small-button;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
 			background: $color-mythic-dim;
+			transition: $transition-duration-standard ease;
+			transition-property: opacity, transform;
 		}
 		ul {
 			@include popup-menu-list;
@@ -116,6 +125,9 @@
 					}
 				}
 			}
+		}
+		.dropdown-transition-enter {
+			transform: translate(25%, -25%) scale(.5);
 		}
 	}
 	.mouseover-area {
@@ -163,7 +175,7 @@
 		}
 		.deck-menu {
 			.hover-shield {
-				height: $lhse*3;
+				top: $lhse*1.5;
 			}
 			ul {
 				max-width: 80vw;
@@ -171,6 +183,9 @@
 				top: $height-app-header-tall;
 				left: 0;
 				margin: 0 auto;
+			}
+			.dropdown-transition-enter {
+				transform: translate(0%, -25%) scale(.5);
 			}
 		}
 	}
@@ -243,7 +258,7 @@
 			}
 
 			> svg {
-				margin-right: .25em;
+				margin-right: .125em;
 			}
 		}
 		.open-deck-heading {
@@ -286,6 +301,11 @@
 						border-top-right-radius: 0;
 					}
 				}
+			}
+			.dropdown-transition-enter,
+			.dropdown-transition-leave-to {
+				transform: none;
+				opacity: 1;
 			}
 		}
 	}

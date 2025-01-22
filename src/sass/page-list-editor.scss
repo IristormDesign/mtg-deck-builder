@@ -153,16 +153,6 @@ $width-card-list-section-narrow:
 				fill: $color-link-active;
 			}
 		}
-		.dropdown-transition-enter {
-			transform: translate(0, -25%) scale(.5);
-		}
-		.dropdown-transition-leave-to {
-			transition-duration: $transition-duration-standard*.5;
-		}
-		.dropdown-transition-enter,
-		.dropdown-transition-leave-to {
-			opacity: 0;
-		}
 		ul {
 			@include popup-menu-list;
 			column-count: 2;
@@ -291,7 +281,6 @@ $width-card-list-section-narrow:
 	}
 	.sideboard-visible & {
 		@include sideboard-header-bg;
-		border-bottom-right-radius: $border-radius-group; // Needed for box-shadow outline.
 
 		label {
 			color: $color-text-over-mythic-brown;

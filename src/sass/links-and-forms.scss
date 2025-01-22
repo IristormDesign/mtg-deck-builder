@@ -249,3 +249,13 @@ option {
 		margin-bottom: $lhse*.125;
 	}
 }
+.dropdown-transition-enter {
+	transform: translate(0, -25%) scale(.5);
+}
+.dropdown-transition-leave-to {
+	transition-duration: $transition-duration-standard*.5;
+}
+.dropdown-transition-enter,
+.dropdown-transition-leave-to {
+	opacity: 0;
+}

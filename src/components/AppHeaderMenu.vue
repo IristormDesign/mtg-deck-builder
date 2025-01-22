@@ -34,33 +34,37 @@
 					<div class="open-deck-heading">
 						<strong>Open Deck:</strong>
 					</div>
-					<div v-show="showDeckMenu" class="hover-shield"></div>
-					<ul v-show="showDeckMenu">
-						<li
-							v-for="deck in $store.state.decks"
-							:key="deck.name"
-							:class="{selected: $route.params.deckPath === deck.path}"
-						>
-							<router-link
-								:to="{
-									name: 'listEditor',
-									params: {
-										deck: deck,
-										deckPath: deck.path
-									}
-								}"
-								@click.native="closeAllPopups()"
+					<transition name="hover-shield-transition">
+						<div v-show="showDeckMenu" class="hover-shield"></div>
+					</transition>
+					<transition name="dropdown-transition">
+						<ul v-show="showDeckMenu">
+							<li
+								v-for="deck in $store.state.decks"
+								:key="deck.name"
+								:class="{selected: $route.params.deckPath === deck.path}"
 							>
-								<span class="deck-menu-deck-name">{{ deck.name }}</span>
-								<div class="deck-menu-deck-colors">
-									<div
-										:class="sizeManaSymbols(deck)"
-										v-html="renderManaSymbols(deck)"
-									></div>
-								</div>
-							</router-link>
-						</li>
-					</ul>
+								<router-link
+									:to="{
+										name: 'listEditor',
+										params: {
+											deck: deck,
+											deckPath: deck.path
+										}
+									}"
+									@click.native="closeAllPopups()"
+								>
+									<span class="deck-menu-deck-name">{{ deck.name }}</span>
+									<div class="deck-menu-deck-colors">
+										<div
+											:class="sizeManaSymbols(deck)"
+											v-html="renderManaSymbols(deck)"
+										></div>
+									</div>
+								</router-link>
+							</li>
+						</ul>
+					</transition>
 				</li>
 				<li>
 					<router-link
@@ -74,19 +78,19 @@
 			</ul>
 		</nav>
 
-		<!-- <bg-overlay @closePopups="closeAllPopups()" /> -->
+		<bg-overlay @closePopups="closeAllPopups()" />
 	</div>
 </template>
 
 <script>
 import debounce from 'debounce'
-// import BgOverlay from '@/components/BgOverlay.vue'
+import BgOverlay from '@/components/BgOverlay.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import deckColors from '@/mixins/deckColors.js'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	// components: { BgOverlay },
+	components: { BgOverlay },
 	mixins: [getActiveDeck, deckColors, symbolsMarkup],
 	data () {
 		return {

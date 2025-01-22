@@ -150,7 +150,7 @@ $layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, app-h
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);
-$x: 1px dashed rgba(#0f0, .6667);
+$x: 2px dashed rgba(#0f0, .5);
 
 /* MIXINS */
 @import 'mixins';
