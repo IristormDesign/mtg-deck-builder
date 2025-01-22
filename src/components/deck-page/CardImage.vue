@@ -187,10 +187,20 @@ export default {
 	},
 	mounted () {
 		this.showCardPerViewport()
-		this.letEscKeyCloseCardImagePopup()
 
+		document.addEventListener(
+			'keydown', this.hideImageOverlayByKeyPress
+		)
 		window.addEventListener(
-			'resize', debounce(this.resizingViewport, 125)
+			'resize', this.debounceResizingViewport
+		)
+	},
+	destroyed () {
+		document.removeEventListener(
+			'keydown', this.hideImageOverlayByKeyPress
+		)
+		window.removeEventListener(
+			'resize', this.debounceResizingViewport
 		)
 	},
 	methods: {
@@ -199,17 +209,20 @@ export default {
 				'showCard', !this.isMobileLayout()
 			)
 		},
-		letEscKeyCloseCardImagePopup () {
-			document.addEventListener('keyup', (event) => {
-				if (event.key === 'Escape' || event.key === 'Esc') {
-					this.hideImageOverlay()
-				}
-			})
-		},
 		hideImageOverlay () {
 			if (this.isMobileLayout()) {
 				this.$store.commit('showCard', false)
 			}
+		},
+		hideImageOverlayByKeyPress (event) {
+			switch (event.key) {
+				case 'Escape':
+				case 'Esc':
+					this.hideImageOverlay()
+			}
+		},
+		debounceResizingViewport () {
+			debounce(this.resizingViewport, 125)
 		},
 		resizingViewport () {
 			if (this.isMobileLayout()) {

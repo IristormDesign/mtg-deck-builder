@@ -246,10 +246,10 @@ export default {
 				this.viewCard(this.card)
 			}
 
-			document.addEventListener('keydown', this.listenForKeyboardShortcuts)
+			document.addEventListener('keyup', this.listenForKeyboardShortcuts)
 		},
 		blurredFromQtyInput () {
-			document.removeEventListener('keydown', this.listenForKeyboardShortcuts)
+			document.removeEventListener('keyup', this.listenForKeyboardShortcuts)
 		},
 		qtyCardID (cardIndex) {
 			const deckIndex = () => {
