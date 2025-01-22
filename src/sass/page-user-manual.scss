@@ -115,11 +115,6 @@
 				margin-bottom: 0;
 				border-bottom-right-radius: $border-radius-group;
 			}
-			section {
-				&:first-of-type {
-					margin-top: $lhse*1.5;
-				}
-			}
 		}
 		section {
 			&:target {
@@ -139,6 +134,14 @@
 					z-index: 1;
 					position: relative;
 					border-radius: $border-radius-button;
+				}
+			}
+			section {
+				&:last-child {
+					margin-bottom: $lhse*.5;
+				}
+				> :last-child {
+					margin-bottom: 0;
 				}
 			}
 		}
