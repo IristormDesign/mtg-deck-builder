@@ -8,12 +8,11 @@
 			/>
 		</p>
 		<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
-		<p>The card sorter has a drop-down menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute.</p>
-		<p>Sorting cards affects both the main and the sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter has a drop-down menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
-				<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and non-starred. If no card names in your deck have a star, this sorting option is hidden.</p>
+				<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and non-starred. If your deck has no card names with a star, then this sorting option is hidden.</p>
 			</li>
 			<li>
 				<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
@@ -46,7 +45,7 @@
 				<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
 			</li>
 		</ul>
-		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example, let’s say you first sort by rarity, and next sort by type. In effect, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
+		<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example: Let’s say you first sort by rarity, and next sort by type. As the result, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 		<p>For easier skimming of the card list, every sorting option, except for name, inserts small gaps between each sorted cluster of card names.</p>
 		<p>Under certain conditions, the card sorter’s sorting option resets to “(Unsorted),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 			<ul>
