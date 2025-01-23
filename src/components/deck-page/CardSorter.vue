@@ -25,12 +25,12 @@
 						id="sortMenuInput"
 						type="text"
 						v-model="deckSortAttribute"
-						@click="menuIsOpen = !menuIsOpen"
+						@click="toggleSorterMenu()"
 						readonly
 					/>
 					<svg
 						class="dropdown-arrow"
-						@click="menuIsOpen = !menuIsOpen"
+						@click="toggleSorterMenu()"
 						xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
 					/></svg>
 					<transition name="dropdown-transition">
@@ -108,6 +108,9 @@ export default {
 		},
 		regularMenuItems () {
 			return ['Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'P/T Sum', 'Quantity']
+		},
+		showingAnyPopup () {
+			return this.$store.state.showingAnyPopup
 		}
 	},
 	watch: {
@@ -115,6 +118,11 @@ export default {
 			/* Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that can occur when a card's quantity changes while the list has been sorted by quantity.) */
 			if (attribute === '(Unsorted)') {
 				this.sortMenu = attribute
+			}
+		},
+		showingAnyPopup () {
+			if (!this.showingAnyPopup) {
+				this.menuIsOpen = false
 			}
 		}
 	},
@@ -146,6 +154,11 @@ export default {
 			}
 
 			this.menuIsOpen = false
+		},
+		toggleSorterMenu () {
+			this.menuIsOpen = !this.menuIsOpen
+
+			this.$store.commit('showingAnyPopup', this.menuIsOpen)
 		},
 		setSortMenuSelection (value) {
 			this.sortMenu = value

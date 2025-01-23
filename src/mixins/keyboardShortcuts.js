@@ -173,6 +173,8 @@ export default {
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
 					case 'escape': case 'esc':
+						this.$store.commit('showingAnyPopup', false)
+
 						if (this.highlightedIndex > -1) {
 							event.preventDefault()
 

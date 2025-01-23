@@ -1,7 +1,7 @@
 <template>
 	<transition name="overlay">
 		<div
-			v-show="$store.state.showingAnyPopup"
+			v-show="$store.state.showingAnyPopup && $store.state.showDeckMenu"
 			class="bg-overlay"
 			@click="hideOverlay(true)"
 			@mouseover="hideOverlay(false)"
