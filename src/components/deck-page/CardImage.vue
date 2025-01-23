@@ -122,6 +122,9 @@ export default {
 				return perFace(card.colors2, card.type2)
 			}
 		},
+		debounceResizingViewport () {
+			return debounce(this.applyEffectsOnViewportResizing, 125)
+		},
 		shouldRotateSideways () {
 			if (this.card.layout === 'split') {
 				const hasAftermathAbility = this.card.keywords.find(
@@ -221,10 +224,7 @@ export default {
 					this.hideImageOverlay()
 			}
 		},
-		debounceResizingViewport () {
-			debounce(this.resizingViewport, 125)
-		},
-		resizingViewport () {
+		applyEffectsOnViewportResizing () {
 			if (this.isMobileLayout()) {
 				this.hideImageOverlay()
 			} else {

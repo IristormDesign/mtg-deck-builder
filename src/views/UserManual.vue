@@ -159,6 +159,15 @@ export default {
 			this.highlightTOCLinkOfVisibleSection()
 			this.highlightFirstTOCLinkWhenAtTopOfPage()
 		}
+
+		window.addEventListener(
+			'scroll', this.highlightFirstTOCLinkWhenAtTopOfPage
+		)
+	},
+	destroyed () {
+		window.removeEventListener(
+			'scroll', this.highlightFirstTOCLinkWhenAtTopOfPage
+		)
 	},
 	methods: {
 		highlightTOCLinkOfVisibleSection () {
@@ -201,19 +210,17 @@ export default {
 			})
 		},
 		highlightFirstTOCLinkWhenAtTopOfPage () {
-			const tocLinks = document.querySelectorAll('.toc-links a')
+			console.log(window.scrollY)
 
-			window.addEventListener(
-				'scroll', () => {
-					if (window.scrollY === 0) {
-						tocLinks.forEach(link => {
-							link.classList.remove('visible')
-						})
+			if (window.scrollY === 0) {
+				const tocLinks = document.querySelectorAll('.toc-links a')
 
-						tocLinks[0].classList.add('visible')
-					}
-				}
-			)
+				tocLinks.forEach(link => {
+					link.classList.remove('visible')
+				})
+
+				tocLinks[0].classList.add('visible')
+			}
 		}
 	}
 }

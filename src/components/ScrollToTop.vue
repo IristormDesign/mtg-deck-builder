@@ -21,7 +21,9 @@ export default {
 		}
 	},
 	mounted () {
-		window.addEventListener('scroll', this.checkScrollPosition)
+		window.addEventListener(
+			'scroll', this.checkScrollPosition
+		)
 	},
 	methods: {
 		checkScrollPosition () {

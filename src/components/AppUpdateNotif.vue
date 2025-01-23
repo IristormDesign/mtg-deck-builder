@@ -27,7 +27,9 @@ export default {
 		}
 	},
 	created () {
-		document.addEventListener('swUpdated', this.updateAvailable, { once: true })
+		document.addEventListener(
+			'swUpdated', this.updateAvailable, { once: true }
+		)
 
 		this.reloadPage()
 	},
@@ -44,13 +46,14 @@ export default {
 			this.updateExists = true
 		},
 		reloadPage () {
-			navigator.serviceWorker.addEventListener('controllerchange', () => {
-				if (!this.reloading) {
-					this.reloading = true
+			navigator.serviceWorker.addEventListener(
+				'controllerchange', () => {
+					if (this.reloading) return
 
+					this.reloading = true
 					window.location.reload()
 				}
-			})
+			)
 		}
 	}
 }
