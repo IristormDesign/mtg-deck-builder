@@ -12,16 +12,20 @@ export default {
 		removeCard (index, isRemoteRemoval) {
 			const list = this.activeCardList
 			const cards = list.cards
-			const totalCards = cards.length - 1
+
+			if (list.viewedStarredCard === list.viewedCard) {
+				list.viewedStarredCard = null
+			}
 
 			/* If the card to be removed happens to be the currently displayed card, then display the next card in the list. */
 			if (
-				totalCards > 0 && (
+				cards.length > 1 &&
+				(
 					list.viewedCard.name === cards[index].name ||
 					isRemoteRemoval
 				)
 			) {
-				if (index === totalCards) { // If this card is last in the list...
+				if (index + 1 === cards.length) { // If this card is last in the list...
 					list.viewedCard = cards[index - 1]
 				} else {
 					list.viewedCard = cards[index + 1]
