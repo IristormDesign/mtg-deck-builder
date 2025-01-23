@@ -49,6 +49,11 @@ export default {
 			store.commit('decks', store.state.decks)
 			store.commit('showCard', true)
 		},
+		reactToHoverOverImage () {
+			this.attentionAddCard()
+
+			this.$store.commit('showingAnyPopup', false)
+		},
 		attentionAddCard (alreadyAttending) {
 			if (
 				alreadyAttending ||

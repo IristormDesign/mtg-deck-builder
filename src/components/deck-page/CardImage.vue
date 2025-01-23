@@ -3,7 +3,7 @@
 		<section
 			class="card-image"
 			v-if="showCard"
-			@mouseover="attentionAddCard()"
+			@mouseover="reactToHoverOverImage()"
 			@click="attentionAddCard()"
 		>
 			<transition name="placement-outline-fade">
