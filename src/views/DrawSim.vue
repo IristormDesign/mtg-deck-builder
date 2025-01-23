@@ -156,7 +156,9 @@ export default {
 				this.drawnList = []
 			}
 
-			this.shuffleLibrary()
+			this.$nextTick(() => { // `$nextTick()` might not be absolutely needed here, but it ensures that all the cards have been prepared before shuffling.
+				this.shuffleLibrary()
+			})
 		},
 		/**
 		 * Shuffle the deck's cards using the Fisher-Yates method of array randomization.
