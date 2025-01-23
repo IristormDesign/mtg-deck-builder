@@ -144,14 +144,12 @@ export default {
 			this.$store.commit('viewedDrawnCard', null)
 
 			if (this.drawnList.length === 0) {
-				this.$nextTick(() => {
-					this.deck.cards.forEach(card => {
-						if (this.isExcludingStarred && card.starred) return
+				this.deck.cards.forEach(card => {
+					if (this.isExcludingStarred && card.starred) return
 
-						for (let i = 0; i < card.qty; i++) {
-							this.library.push(card)
-						}
-					})
+					for (let i = 0; i < card.qty; i++) {
+						this.library.push(card)
+					}
 				})
 			} else {
 				this.library.push(...this.drawnList)
@@ -183,20 +181,20 @@ export default {
 		drawCard () {
 			const card = this.library[0]
 
-			if (card) {
-				if (this.reshuffleConditions) {
-					this.shuffleLibrary()
-					this.afterReshuffle = true
-					this.drawCard()
-				} else {
-					this.library.splice(0, 1)
-					card.uniqueID = this.drawnList.length
-					this.drawnList.unshift(card)
-					if (!this.isMobileLayout()) {
-						this.viewCard(card)
-					}
-					this.afterReshuffle = false
+			if (!card) return
+
+			if (this.reshuffleConditions) {
+				this.shuffleLibrary()
+				this.afterReshuffle = true
+				this.drawCard()
+			} else {
+				this.library.splice(0, 1)
+				card.uniqueID = this.drawnList.length
+				this.drawnList.unshift(card)
+				if (!this.isMobileLayout()) {
+					this.viewCard(card)
 				}
+				this.afterReshuffle = false
 			}
 		},
 		restart () {
