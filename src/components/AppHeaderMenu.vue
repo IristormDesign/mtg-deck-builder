@@ -151,6 +151,9 @@ export default {
 		document.addEventListener(
 			'keydown', this.letEscKeyClosePopups
 		)
+		document.addEventListener(
+			'focusin', this.closeHeaderMenuOnOutsideFocus
+		)
 		this.closeMenusAutomatically()
 		this.applyHoverEffectToOpenDeckButton()
 		this.debounceWindowResizing()
@@ -222,30 +225,17 @@ export default {
 				'resize', debounce(resizingViewport, 125)
 			)
 		},
-		addFocusListenerToClosePopups () {
-			const allLinks = document.querySelectorAll('a, button')
+		closeHeaderMenuOnOutsideFocus (event) {
+			if (!this.showHeaderMenu) return
 
-			const listenForFocus = (link) => {
-				link.addEventListener(
-					'focus', this.closePopupsOnFocus
-				)
-			}
+			const headerMenu = document.querySelector('.header-menu')
+			const headerMenuToggler = document.querySelector('.header-menu-toggler')
 
-			for (let i = 1; i < allLinks.length; i++) {
-				if (allLinks[i].matches('.header-menu-toggler')) {
-					/* Listen for focus on the two links just before the app menu toggler. One of these should be the "Iristorm Design" link, which, depending on the viewport, may not appear. The main app title link is also affected in case the other link is gone. */
-					listenForFocus(allLinks[i - 1])
-					listenForFocus(allLinks[i - 2])
-
-					for (let j = (i + 3); j < allLinks.length; j++) {
-						if (allLinks[j].matches('.header-menu > ul > li:last-child a')) {
-							listenForFocus(allLinks[j + 1]) // The link on the page that comes just AFTER the app menu's last link.
-							break
-						}
-					}
-
-					break
-				}
+			if (
+				headerMenuToggler !== event.target &&
+				!headerMenu.contains(event.target)
+			) {
+				this.closeAllPopups()
 			}
 		},
 		closePopupsOnFocus () {
@@ -269,33 +259,27 @@ export default {
 				this.showHeaderMenu = true
 				this.$store.commit('showDeckMenu', true)
 				this.$store.commit('overlayHoverEnabled', false)
-				this.addFocusListenerToClosePopups()
 			}
 		},
 		toggleDeckMenu (triggeredByHover) {
-			if (!this.freezeDeckMenu) {
-				const store = this.$store
+			if (this.freezeDeckMenu) return
 
-				if (this.showDeckMenu) {
-					store.commit('overlayHoverEnabled', false)
-					store.commit('showDeckMenu', false)
-					store.commit('showingAnyPopup', false)
-				} else {
-					if (triggeredByHover) {
-						store.commit('overlayHoverEnabled', true)
-					} else {
-						store.commit('overlayHoverEnabled', false)
-					}
-					store.commit('showDeckMenu', true)
-					store.commit('showingAnyPopup', true)
-					this.addFocusListenerToClosePopups()
-				}
+			const store = this.$store
 
-				this.freezeDeckMenu = true
-				setTimeout(() => {
-					this.freezeDeckMenu = false
-				}, 500)
+			if (this.showDeckMenu) {
+				store.commit('overlayHoverEnabled', false)
+				store.commit('showDeckMenu', false)
+				store.commit('showingAnyPopup', false)
+			} else {
+				store.commit('overlayHoverEnabled', triggeredByHover)
+				store.commit('showDeckMenu', true)
+				store.commit('showingAnyPopup', true)
 			}
+
+			this.freezeDeckMenu = true
+			setTimeout(() => {
+				this.freezeDeckMenu = false
+			}, 500)
 		},
 		mobileView () {
 			return window.innerWidth <= 512 // This number must match the CSS media query width.
