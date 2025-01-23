@@ -210,8 +210,6 @@ export default {
 			})
 		},
 		highlightFirstTOCLinkWhenAtTopOfPage () {
-			console.log(window.scrollY)
-
 			if (window.scrollY === 0) {
 				const tocLinks = document.querySelectorAll('.toc-links a')
 
