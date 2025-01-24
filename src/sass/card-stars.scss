@@ -36,6 +36,13 @@
 						transition-property: opacity, fill, filter; // Exclude "transform" as a transition property while keeping the other properties. This is needed for Safari, because apparently `transition` and `animation` clash with each other on that browser when they both affect the same property, `transform` in this case.
 					}
 				}
+				&:not(:checked) {
+					+ svg {
+						opacity: .5;
+						filter: saturate(.5);
+						transition-duration: 0;
+					}
+				}
 			}
 		}
 	}
