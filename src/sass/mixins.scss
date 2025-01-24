@@ -166,8 +166,8 @@
 	backdrop-filter: blur(3px);
 }
 @mixin disabled-style {
-	opacity: .2;
-	filter: saturate(.2);
+	opacity: .25;
+	filter: saturate(.25);
 }
 @mixin button($color: 'orange') {
 	@include heading-font;

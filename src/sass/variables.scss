@@ -66,7 +66,7 @@ $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-mana-white: desaturate(#fffcd5, 66.67%); // Based on sample
 $color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
 $color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 100%);
-$color-mana-red: desaturate(adjust_hue(#f9aa8f, -3.75deg), 4.17%); // Based on sample
+$color-mana-red: adjust_hue(#f9aa8f, -3.75deg); // Based on sample
 $color-mana-green: adjust_hue(#9bd3ae, -8.8888deg); // Based on sample
 $color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
 $color-mana-hybrid: desaturate(lighten($color-rarity-gold, 4.17%), 6.25%);
