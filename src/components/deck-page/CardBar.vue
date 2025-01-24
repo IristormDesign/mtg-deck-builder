@@ -131,11 +131,11 @@ export default {
 				)
 				.replaceAll(
 					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`.
-					'<span class="mana-symbol hybrid" title="Hybrid mana"><div>$1</div></span>'
+					'<span class="mana-symbol hybrid"><div>$1</div></span>'
 				)
 				.replaceAll(
 					/{\w+\/\w+\/.*}/g, // Find hybrid mana symbols having 2 or more slashes, such as `{G/U/P}`. (These symbols are very rare but they do exist.)
-					'<span class="mana-symbol long-hybrid" title="Hybrid mana"><div>…</div></span>'
+					'<span class="mana-symbol long-hybrid"><div>…</div></span>'
 				)
 		},
 		clickCardBar () {
