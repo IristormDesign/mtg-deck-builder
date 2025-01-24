@@ -25,12 +25,12 @@
 						id="sortMenuInput"
 						type="text"
 						v-model="deckSortAttribute"
-						@click="toggleSorterMenu()"
+						@click="menuIsOpen = !menuIsOpen"
 						readonly
 					/>
 					<svg
 						class="dropdown-arrow"
-						@click="toggleSorterMenu()"
+						@click="menuIsOpen = !menuIsOpen"
 						xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
 					/></svg>
 					<transition name="dropdown-transition">
@@ -109,8 +109,12 @@ export default {
 				this.sortMenu = attribute
 			}
 		},
-		showingAnyPopup () {
-			if (!this.showingAnyPopup) {
+		menuIsOpen () {
+			this.$store.commit('showingAnyPopup', this.menuIsOpen)
+		},
+		showingAnyPopup (isShowing) {
+			/* Automatically close the menu by alternative triggers, such as the user pressing the Esc key or opening another popup element. */
+			if (!isShowing) {
 				this.menuIsOpen = false
 			}
 		}
@@ -144,15 +148,11 @@ export default {
 
 			this.menuIsOpen = false
 		},
-		toggleSorterMenu () {
-			this.menuIsOpen = !this.menuIsOpen
-
-			this.$store.commit('showingAnyPopup', this.menuIsOpen)
-		},
 		selectSorterMenuOption (attribute) {
-			if (this.sortMenu === attribute) return // Prevents the sort function from running if the user selects the same sorting option. This is mainly needed for P/T sum, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
-
 			this.menuIsOpen = false
+
+			if (this.sortMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T sum option, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
+
 			this.sortMenu = attribute
 			this.sortCards()
 		},

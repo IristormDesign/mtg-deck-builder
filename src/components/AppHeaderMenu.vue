@@ -226,7 +226,7 @@ export default {
 			)
 		},
 		closeHeaderMenuOnOutsideFocus (event) {
-			if (!this.showHeaderMenu) return
+			if (!this.showHeaderMenu || !this.mobileView()) return
 
 			const headerMenu = document.querySelector('.header-menu')
 			const headerMenuToggler = document.querySelector('.header-menu-toggler')
