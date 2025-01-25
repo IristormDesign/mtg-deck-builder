@@ -155,7 +155,7 @@ export default {
 			'focusin', this.closeHeaderMenuOnOutsideFocus
 		)
 		this.closeMenusAutomatically()
-		this.applyHoverEffectToOpenDeckButton()
+		this.applyHoverEffectToOpenDeckMenu()
 		this.debounceWindowResizing()
 	},
 	methods: {
@@ -193,7 +193,7 @@ export default {
 		/**
 		 * Add hover interaction with the Open Deck button.
 		 */
-		applyHoverEffectToOpenDeckButton () {
+		applyHoverEffectToOpenDeckMenu () {
 			const deckMenuToggler = document.querySelector('.deck-menu-toggler')
 			const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
 			let deckMenuMOTimer
@@ -253,12 +253,16 @@ export default {
 			}
 		},
 		toggleHeaderMenu () {
+			this.$store.commit('showingAnyPopup', false) // Always close all popups before opening or closing the app header menu.
+
 			if (this.showHeaderMenu) {
 				this.closeAllPopups()
 			} else {
-				this.showHeaderMenu = true
-				this.$store.commit('showDeckMenu', true)
-				this.$store.commit('overlayHoverEnabled', false)
+				this.$nextTick(() => {
+					this.showHeaderMenu = true
+					this.$store.commit('showDeckMenu', true)
+					this.$store.commit('showingAnyPopup', true)
+				})
 			}
 		},
 		toggleDeckMenu (triggeredByHover) {
@@ -266,14 +270,17 @@ export default {
 
 			const store = this.$store
 
+			store.commit('showingAnyPopup', false) // Always close all popups before opening or closing the deck menu.
+
 			if (this.showDeckMenu) {
 				store.commit('overlayHoverEnabled', false)
 				store.commit('showDeckMenu', false)
-				store.commit('showingAnyPopup', false)
 			} else {
-				store.commit('overlayHoverEnabled', triggeredByHover)
-				store.commit('showDeckMenu', true)
-				store.commit('showingAnyPopup', true)
+				this.$nextTick(() => {
+					store.commit('overlayHoverEnabled', triggeredByHover)
+					store.commit('showDeckMenu', true)
+					store.commit('showingAnyPopup', true)
+				})
 			}
 
 			this.freezeDeckMenu = true
