@@ -25,24 +25,25 @@
 
 		a {
 			@include button;
-
-			span {
-				font-size: 87.5%;
-			}
 		}
 		a,
 		button {
 			width: 100%;
-			height: $lhse*2;
-			font-size: 83.33%;
+			height: $lhse*1.75;
 
 			svg {
-				width: $lhse*1.5;
-				height: $lhse*1.5;
+				width: $lhse*1.25;
+				height: $lhse*1.25;
 				margin-right: .25em;
 			}
 			span {
+				font-size: 75%;
 				text-align: left;
+			}
+		}
+		button {
+			span {
+				font-size: 87.5%;
 			}
 		}
 	}
@@ -72,11 +73,11 @@
 		}
 		button {
 			font-size: 75%;
-			height: $lhse*1.5;
+			height: $lhse*1.625;
 
 			svg {
-				width: $lhse*1.2;
-				height: $lhse*1.2;
+				width: $lhse*1.25;
+				height: $lhse*1.25;
 				margin-right: .25em;
 			}
 		}

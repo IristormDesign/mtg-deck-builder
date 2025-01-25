@@ -107,6 +107,8 @@
 			'dec mov';
 		gap: .6667px 1px;
 		transition: opacity $transition-duration-standard ease;
+		background: $color-group-bg;
+		border-radius: $border-radius-button;
 	}
 	button {
 		border-bottom-width: 2px;
