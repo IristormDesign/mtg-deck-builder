@@ -111,6 +111,12 @@ export default {
 		},
 		menuIsOpen () {
 			this.$store.commit('showingAnyPopup', this.menuIsOpen)
+
+			this.$nextTick(() => {
+				const sorterInput = document.querySelector('#sortMenuInput')
+
+				sorterInput.focus() // This allows the user to press the tab key once and the browser will focus on the sorter's first menu item.
+			})
 		},
 		showingAnyPopup (isShowing) {
 			/* Automatically close the menu by alternative triggers, such as the user pressing the Esc key or opening another popup element. */
