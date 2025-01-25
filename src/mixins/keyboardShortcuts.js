@@ -141,9 +141,9 @@ export default {
 
 			if (this.imageEnlarged) {
 				switch (keyEvent) {
-					case 'w': case 'e': case 'r':
+					case 'q': case 'w': case 'e': case 'r':
 					case 'a': case 's': case 'd': case 'f':
-					case 'z': case 'x': case 'c':
+					case 'z': case 'x':
 					case 'tab': case ' ':
 						this.toggleCardImageEnlargement()
 				}
@@ -184,18 +184,16 @@ export default {
 						}
 
 						return
+					case 'q': this.openSorterMenu()
+						return
 					case 'r': this.switchCardGroup()
 						return
 					case 'x': this.focusOntoCardAdder(event)
-						return
-					case 'c': this.openSorterMenu()
 				}
 			}
 
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
-					case 'q': this.openCardScryfallPage()
-						return
 					case 'w':
 						this.highlightPrevLI()
 						this.highlightPrevLI()
@@ -209,17 +207,17 @@ export default {
 					case 'd': this.adjustCardQty(-2)
 						return
 					case 'f': this.moveToOtherCardGroup(true)
+						return
+					case 'c': this.openCardScryfallPage()
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
-					case 'q': case 'w': case 'e':
+					case 'w': case 'e':
 					case 'a': case 's': case 'd': case 'f':
-					case 'z':
+					case 'z': case 'c':
 						this.startKBShortcutsFromCardOfViewedImage()
 				}
 				switch (keyEvent) {
-					case 'q': this.toggleCardImageEnlargement()
-						return
 					case 'w': this.highlightPrevLI()
 						return
 					case 'e': this.adjustCardQty(1)
@@ -233,6 +231,8 @@ export default {
 					case 'f': this.moveToOtherCardGroup()
 						return
 					case 'z': this.turnOverCardImage()
+						return
+					case 'c': this.toggleCardImageEnlargement()
 				}
 			}
 		},
@@ -245,15 +245,15 @@ export default {
 		kbShortcutsDrawSim (keyEvent, event) {
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
-					case 'q': this.openCardScryfallPage()
+					case 'c': this.openCardScryfallPage()
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
-					case 'q': this.toggleCardImageEnlargement()
-						return
 					case 'r': this.restartDrawSim()
 						return
 					case 'z': this.turnOverCardImage()
+						return
+					case 'c': this.toggleCardImageEnlargement()
 						return
 					case ' ': this.drawCard(event)
 				}

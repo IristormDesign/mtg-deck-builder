@@ -5,13 +5,13 @@
 		<p>Basically, that means this app’s storage of deck data has the following conditions:</p>
 		<ul>
 			<li>
-				<p>Anyone can create and save decks in MTG Deck Builder right away, without even needing to register for a user account.</p>
+				<p>Anyone can <a href="#create-deck">create</a> and save decks in MTG Deck Builder right away, without even needing to register for a user account.</p>
 			</li>
 			<li>
-				<p>The custom decks you’ve made in MTG Deck Builder are available only in the particular web browser on the particular computer or phone that you’ve been using this app on. If you’d need to access your pre-made decks elsewhere, you can transfer their data at the source location by <a href="#archive-action">archiving the decks</a> beforehand, then <a href="#create-deck-page">replicating the archived decks</a> at the other location.</p>
+				<p>The custom decks you’ve made in MTG Deck Builder are available only in the particular web browser on the particular computer or phone that you’ve been using this app on. If you’d need to access the decks you’ve made elsewhere, there’s a way you can do that: Transfer their data at the original location by <a href="#archive-action">archiving the decks</a> beforehand, then have those decks <a href="#replicate-archived-decks">replicated from the archive</a> at the new location.</p>
 			</li>
 			<li>
-				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <a href="#text-renderer">Text Renderer mode</a>.</p>
+				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except through <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <a href="#text-renderer">Text Renderer mode</a>.</p>
 			</li>
 		</ul>
 

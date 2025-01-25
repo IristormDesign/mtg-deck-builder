@@ -24,15 +24,15 @@
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
 			<li><kbd>F</kbd>: Move 1 of the card name into the inactive <a href="#card-groups">card group</a>.</li>
 			<li><kbd>A</kbd>: Toggle the card name’s <a href="#card-stars">star label</a> on or off.</li>
-			<li><kbd>Q</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>Q</kbd>: Open a new browser tab for the card’s page on Scryfall.</li>
+			<li><kbd>C</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open a new browser tab for the card’s page on Scryfall.</li>
 			<li><kbd>Z</kbd>: Turn over the card image (if the card is double-faced).</li>
 		</ul>
 
 		<h5>Other List Editor Actions</h5>
 		<p>The following keyboard shortcuts work in the List Editor regardless of whichever card list row is highlighted, if any.</p>
 		<ul class="keyboard-shortcuts">
-			<li><kbd>C</kbd>: Toggle the <a href="#card-sorter">card sorter</a>’s menu between visible and hidden.</li>
+			<li><kbd>Q</kbd>: Toggle the <a href="#card-sorter">card sorter</a>’s menu between visible and hidden.</li>
 			<li><kbd>R</kbd>: Toggle the active <a href="#card-groups">card group</a> between main and sideboard.</li>
 			<li><kbd>X</kbd>: Focus onto the <a href="#card-adder">card adder</a>’s text field.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open a new tab for <a href="#scryfall-button">Scryfall’s advanced search</a> page.</li>
