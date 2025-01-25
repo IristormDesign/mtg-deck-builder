@@ -55,5 +55,6 @@
 			</ul>
 		</p>
 		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the List Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
+		<p>To show or hide the card sorter’s menu as a <a href="#keyboard-shortcuts">keyboard shortcut</a>, press <kbd>C</kbd>. When you use this shortcut to show the menu, if the card sorter isn’t currently visible within your web browser’s window, then the page automatically scrolls it into view.</p>
 	</section>
 </template>

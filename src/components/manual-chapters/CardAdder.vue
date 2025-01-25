@@ -10,7 +10,7 @@
 		<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to be put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
 		<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one the <a href="#card-groups">group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
 		<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three accepted kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>. Submit your query from the card adder by clicking the “Add” button, or by pressing the Enter/Return key on your keyboard.</p>
-		<p>The card adder adds only one card name at a time. To add multiple names at a time, you can do that on the <a href="#card-list-entry">Card List Entry</a> page.</p>
+		<p>The card adder adds only one card name at a time. If you want to add multiple names at a time, do that on the <a href="#card-list-entry">Card List Entry</a> page.</p>
 
 		<section id="card-name-query">
 			<h5>Card Name Query</h5>
@@ -26,7 +26,7 @@
 		</section>
 		<section id="random-card-query">
 			<h5>Random Card Query</h5>
-			<p>You can add the name of a <i>Magic</i> card at random (among Vintage-legal cards) by entering the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>. Your web browser may also show “#random” as a selectable option when the card adder’s text field has browser focus.</p>
+			<p>You can add the name of a <i>Magic</i> card at random (among cards legal in Vintage tournaments). To do so, enter the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>. Your web browser probably also shows “#random” as a selectable option when the card adder’s text field has browser focus.</p>
 		</section>
 		<section id="card-adder-other-info">
 			<h5>Other Information About the Card Adder</h5>

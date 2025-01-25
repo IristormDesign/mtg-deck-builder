@@ -122,6 +122,9 @@ export default {
 			} else {
 				return null
 			}
+		},
+		showingAnyPopup () {
+			return this.$store.state.showingAnyPopup
 		}
 	},
 	watch: {
@@ -139,6 +142,11 @@ export default {
 				/* This is needed so that the "Open Deck" button in the home page's intro section opens the menu on mobile viewports. */
 				this.showHeaderMenu = true
 				this.$store.commit('showingAnyPopup', true)
+			}
+		},
+		showingAnyPopup (isShowing) {
+			if (!isShowing) {
+				this.closeAllPopups()
 			}
 		}
 	},

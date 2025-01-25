@@ -32,6 +32,7 @@
 		<h5>Other List Editor Actions</h5>
 		<p>The following keyboard shortcuts work in the List Editor regardless of whichever card list row is highlighted, if any.</p>
 		<ul class="keyboard-shortcuts">
+			<li><kbd>C</kbd>: Toggle the <a href="#card-sorter">card sorter</a>’s menu between visible and hidden.</li>
 			<li><kbd>R</kbd>: Toggle the active <a href="#card-groups">card group</a> between main and sideboard.</li>
 			<li><kbd>X</kbd>: Focus onto the <a href="#card-adder">card adder</a>’s text field.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open a new tab for <a href="#scryfall-button">Scryfall’s advanced search</a> page.</li>

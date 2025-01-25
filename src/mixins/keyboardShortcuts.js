@@ -143,7 +143,7 @@ export default {
 				switch (keyEvent) {
 					case 'w': case 'e': case 'r':
 					case 'a': case 's': case 'd': case 'f':
-					case 'z': case 'x':
+					case 'z': case 'x': case 'c':
 					case 'tab': case ' ':
 						this.toggleCardImageEnlargement()
 				}
@@ -188,6 +188,7 @@ export default {
 						return
 					case 'x': this.focusOntoCardAdder(event)
 						return
+					case 'c': this.openSorterMenu()
 				}
 			}
 
@@ -412,6 +413,8 @@ export default {
 				} else {
 					if (this.disableImageEnlargeAtIndex > -1) return
 
+					this.$store.commit('showingAnyPopup', false) // Close any popups that may already be open before the card image is enlarged.
+
 					imageLinkCL.add('kb-highlight')
 					imageCardShadowCL.add('kb-highlight')
 
@@ -448,6 +451,24 @@ export default {
 			const scryfallSearch = document.querySelector('.scryfall-button a')
 
 			scryfallSearch.click()
+		},
+		openSorterMenu () {
+			this.$store.commit('showingAnyPopup', false) // Close any popups that may already be open before the sorter menu is opened.
+
+			const sorterInput = document.querySelector('#sortMenuInput')
+
+			sorterInput.click()
+
+			this.$nextTick(() => {
+				const sorterDropdown = document.querySelector('.card-sorter .opened')
+
+				if (!sorterDropdown) return
+
+				sorterDropdown.scrollIntoView({
+					behavior: 'smooth',
+					block: 'nearest'
+				})
+			})
 		},
 		stopAnalyzerFilter () {
 			this.$store.commit('analyzerFilter', {
