@@ -60,7 +60,7 @@
 		class="action-done content-box"
 	>
 		<figure>
-			<img class="intro-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of ships sailing away from a port town" />
+			<img class="card-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of a monk magically moving many scrolls from glowing slots among many huge shelves of scrolls" />
 			<figcaption>Illustration: <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank"><i>Sage’s Reverie</i> </a> by Jason Rainville</figcaption>
 		</figure>
 		<p class="bigger">

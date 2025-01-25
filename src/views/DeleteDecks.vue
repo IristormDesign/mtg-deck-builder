@@ -61,7 +61,7 @@
 		@click="headerLinkAttention()"
 	>
 		<figure>
-			<img class="intro-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of myriad people being sucked up into a glowing, stormy sky" />
+			<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
 			<figcaption>Illustration: <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
 		</figure>
 		<p class="bigger">{{ this.deletedDecksMessage }}</p>

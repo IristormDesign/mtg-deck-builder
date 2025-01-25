@@ -33,10 +33,9 @@
 .overlay-leave-to {
   opacity: 0;
 }
-.intro-illustration {
-	width: $max-width-content*.6180;
-	margin: 0 auto;
-	border: $border-image-thick;
+.card-illustration {
+	max-width: $max-width-content*.6667;
+	width: 100%;
 }
 .bigger {
 	font-size: $font-size-bigger;

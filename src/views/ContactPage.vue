@@ -3,7 +3,7 @@
 		<h2>Contact</h2>
 
 		<figure>
-			<img class="intro-illustration" src="~@/img/tidings.jpg" width="626" height="457" alt="An illustration of a man's hand pressing a wax seal onto a scroll by candlelight" />
+			<img class="card-illustration" src="~@/img/tidings.jpg" width="626" height="457" alt="An illustration of a man's hand pressing a wax seal onto a scroll by candlelight" />
 			<figcaption>Illustration: <i><a href="https://scryfall.com/card/c18/108/tidings" target="_blank">Tidings</a></i> by Pete Venters</figcaption>
 		</figure>
 

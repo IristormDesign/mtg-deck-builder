@@ -13,6 +13,7 @@ $color-mythic-dimmer: darken($color-mythic-dim, 12.5%);
 $color-mythic-brown: darken(desaturate($color-mythic-orange, 80%), 25%); // Darkened to match brightness level of $color-group-bg-lighter.
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
 $color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
+$color-link-dim: desaturate($color-link, 33.33%);
 $color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
 $color-text-over-mythic-brown: lighten($color-mythic-brown, 56.25%);
 $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 6.25%);
@@ -39,7 +40,7 @@ $color-group-bg-lighter: desaturate(lighten($color-group-bg, 6.25%), 4.17%);
 $color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
+$color-text-darker: desaturate(darken($color-text, 12.5%), 4.17%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
@@ -127,7 +128,6 @@ $border-sections-thick: $border-width-sections-thickest solid $color-section-bor
 $border-sections-alt: $border-width-sections solid $color-section-border-alt;
 $color-input-border: $border-width-sections solid $color-button-orange;
 $border-image-thin: $border-width-sections solid $color-group-bg-darker;
-$border-image-thick: divide($lhse, 3) solid $color-group-bg-lighter;
 $border-bottom-width-button: 3px;
 $outline-focus-visible: 2px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;

@@ -17,7 +17,7 @@ body {
 .fade-bg {
 	background:
 	  linear-gradient((180deg + 5.625),
-	   rgba($color-text-extra-brighter, 12.5%) 0,
+	   rgba($color-text-extra-brighter, 16.67%) 0,
 	   rgba($color-text-extra-brighter, 0%) 100vh
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
@@ -145,17 +145,16 @@ img {
 	display: block;
 }
 figure {
-	margin: $lhse*.5;
-
-	img {
-		background-color: $color-group-bg-lighter;
-	}
+	margin: $lhse*.5 auto;
+	background-color: $color-group-bg-darker;
+	padding: divide($lhse, 3);
+	color: $color-text-darker;
+	width: fit-content;
 }
 figcaption {
 	@include tiny-font-size;
 	text-align: center;
-	margin: $lhse*.125;
-	color: $color-text-darker;
+	margin: $lhse*.1667 0 (-$lhse*.1667);
 
 	a {
 		@include link-colors($color-link-dim);
