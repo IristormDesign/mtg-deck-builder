@@ -176,7 +176,7 @@ $width-card-list-section-narrow:
 		label {
 			color: $color-text-brighter-over-mythic-brown;
 			background: $color-mythic-dim;
-			z-index: index($layers, card-overlay) + 1;
+			z-index: index($layers, dropdown-label);
 			cursor: pointer;
 
 			&:hover,

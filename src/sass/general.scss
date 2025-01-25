@@ -203,7 +203,7 @@ svg {
 	background: $color-group-bg-lighter;
 }
 ::-webkit-scrollbar-thumb {
-	background: $color-mythic-brown;
+	background: $color-mythic-dimmer;
 	border: 2px solid $color-button-border;
 	border-top-width: 0;
 	border-right-width: 0;
@@ -215,7 +215,7 @@ svg {
 		background: $color-mythic-dim;
 	}
 	&:active {
-		background: $color-link;
+		background: $color-app-header-link-hover;
 		cursor: grabbing;
 	}
 }
