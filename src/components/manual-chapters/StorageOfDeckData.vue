@@ -8,7 +8,7 @@
 				<p>Anyone can create and save decks in MTG Deck Builder right away, without even needing to register for a user account.</p>
 			</li>
 			<li>
-				<p>The custom decks you’ve made in MTG Deck Builder are available only in the particular web browser on the particular computer or phone that you’ve been using this app on. If you’d need to access your pre-made decks elsewhere, you can transfer their data at the source location by <a href="#archive-action">archiving the decks</a> beforehand, then <a href="#create-deck-page">reproducing the archived decks</a> at the other location.</p>
+				<p>The custom decks you’ve made in MTG Deck Builder are available only in the particular web browser on the particular computer or phone that you’ve been using this app on. If you’d need to access your pre-made decks elsewhere, you can transfer their data at the source location by <a href="#archive-action">archiving the decks</a> beforehand, then <a href="#create-deck-page">replicating the archived decks</a> at the other location.</p>
 			</li>
 			<li>
 				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <a href="#text-renderer">Text Renderer mode</a>.</p>
@@ -31,7 +31,7 @@
 				</li>
 			</ul>
 			<p>To make an archive file of any of your decks, click the <a href="#deck-actions">Deck Actions button</a> in the <a href="#deck-page-header">deck page header</a>, which makes a menu appear. From that menu, select the “Archive&hellip;” option.</p>
-			<p>To view the decks contained in an archive, go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the “Reproduce Archived Decks” section, which lets you find and open a deck archive through the file browser of your computer or phone.</p>
+			<p>To view the decks contained in an archive, go to the <a href="#create-deck">Create Deck page</a>. From there, click the button in the “Replicate Archived Decks” section, which lets you find and open a deck archive through the file browser of your computer or phone.</p>
 		</section>
 	</section>
 </template>

@@ -12,7 +12,7 @@
 				<p><strong>Print out a hard copy of your deck lists.</strong> A text document is better suited for printing on paper than the web page of the <a href="#list-editor">List Editor</a>.</p>
 			</li>
 			<li>
-				<p><strong>Share your deck over the Internet.</strong> A plain-text card list is in a human-readable format as it is. It doesn’t require other people to use MTG Deck Builder to see the list, unlike <a href="#deck-archive-files">deck archive files</a>. (However, an archive file can <a href="#archive-action">save</a> and <a href="#create-deck">reproduce</a> multiple decks together, and has additional data about decks that’s missing from plain-text lists.)</p>
+				<p><strong>Share your deck over the Internet.</strong> A plain-text card list is in a human-readable format as it is. It doesn’t require other people to use MTG Deck Builder to see the list, unlike <a href="#deck-archive-files">deck archive files</a>. (However, an archive file can <a href="#archive-action">save</a> and <a href="#create-deck">replicate</a> multiple decks together, and has additional data about decks that’s missing from plain-text lists.)</p>
 			</li>
 		</ul>
 		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <a href="#card-list">card lists</a>. So, if you care about the order, then use the <a href="#card-sorter">card sorter</a> in the List Editor to rearrange the names in the way you prefer before you <a href="#mode-menu">switch to</a> the Text Renderer.</p>

@@ -7,7 +7,7 @@
 				<img class="card-illustration" src="~@/img/terramorphic-expanse.jpg" width="626" height="457" alt="An illustration of a landscape magically transforming into various types of terrain" />
 				<figcaption>Illustration: <i><a href="https://scryfall.com/card/j25/156/terramorphic-expanse" target="_blank">Terramorphic Expanse</a></i> by Alayna Danner</figcaption>
 			</figure>
-			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or reproduce the decks from a deck archive file you may have. <router-link to="/manual/#create-deck">(More info&hellip;)</router-link></p>
+			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or replicate the decks from a deck archive file you may have. <router-link to="/manual/#create-deck">(More info&hellip;)</router-link></p>
 		</div>
 		<div class="columns">
 			<div class="new-deck">
@@ -29,8 +29,8 @@
 					</div>
 				</form>
 			</div>
-			<div class="reproduce-decks">
-				<h3>Reproduce Archived Decks</h3>
+			<div class="replicate-decks">
+				<h3>Replicate Archived Decks</h3>
 				<input
 					id="archive-file"
 					type="file" accept=".deck"
@@ -209,7 +209,7 @@ export default {
 						deck.editDate = new Date()
 					}
 
-					this.reproduceDeck(deck)
+					this.replicateDeck(deck)
 
 					if (i === decks.length - 1) {
 						this.$nextTick(() => {
@@ -222,7 +222,7 @@ export default {
 					this.alertSingleExistingDeck(existingDeckName, firstAmendedDeckName)
 				} else if (numExistingDecks > 1) {
 					alert(
-						`There are ${numExistingDecks} decks you’re reproducing that have the same names as decks you already have, so those reproduced decks are going to be renamed as if they were copies.\n\nFor example, the reproduced “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
+						`There are ${numExistingDecks} archived decks you’re replicating that have the same names as decks you already have, so those replicated decks are going to be renamed as if they were copies.\n\nFor example, the replicated “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
 					)
 				}
 			} else {
@@ -238,14 +238,14 @@ export default {
 				this.alertSingleExistingDeck(deck.name, amendedDeckData.name)
 				this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 			} else {
-				this.reproduceDeck(deck)
+				this.replicateDeck(deck)
 
 				this.$nextTick(() => {
 					this.goToDeckPage(deck.path)
 				})
 			}
 		},
-		reproduceDeck (deck) {
+		replicateDeck (deck) {
 			const updatedDecksArray = this.$store.state.decks
 
 			updatedDecksArray.push({
@@ -262,14 +262,14 @@ export default {
 
 			this.$store.commit('decks', updatedDecksArray)
 		},
-		alertSingleExistingDeck (existingName, reproducedName) {
+		alertSingleExistingDeck (existingName, replicatedName) {
 			alert(
-				`Because you already have a deck named “${existingName},” the deck you’re reproducing with that same name is going to be renamed “${reproducedName}.”`
+				`Because you already have a deck named “${existingName},” the archived deck you’re replicating with that same name is going to be renamed “${replicatedName}.”`
 			)
 		},
 		alertFileReproductionError (fileName) {
 			alert(
-				`⚠ Error\n\nSorry, no deck could be reproduced from the deck archive file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
+				`⚠ Error\n\nSorry, no deck could be replicated from the deck archive file you’ve selected (${fileName}) because the file’s data is invalid or corrupted.`
 			)
 		},
 		goToDeckPage (path) {

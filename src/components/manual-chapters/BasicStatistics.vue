@@ -19,7 +19,7 @@
 				<p><strong>Average Mana Value</strong> – This shows the arithmetic mean of mana values among spells in the main card group. (Mana value is also known by the older term “converted mana cost.”)</p>
 			</li>
 			<li>
-				<p><strong>Last Edit</strong> – This shows the date and time of when your deck was most recently modified (or created, if it’s a new deck). The actions of <a href="#card-adder">adding a new card name</a>, <a href="#card-quantities">changing a card name’s quantity</a>, <a href="#card-stars">starring a card name</a>, and <a href="#deck-name">renaming the deck</a> count as edits. Last Edit involves both card groups (main and sideboard).</p>
+				<p><strong>Last Edit</strong> – This shows the date and time of when your deck was most recently modified (or <a href="#create-deck">created</a>, if it’s a new deck). The actions of <a href="#card-adder">adding a new card name</a>, <a href="#card-quantities">changing a card name’s quantity</a>, <a href="#card-stars">starring a card name</a>, and <a href="#deck-name">renaming the deck</a> count as edits. Last Edit involves both card groups (main and sideboard).</p>
 			</li>
 			<li>
 				<p><strong>Card Names</strong> – This shows the sum of distinct card names in the main card group. The sum doesn’t account for any plural quantities of card names.</p>
