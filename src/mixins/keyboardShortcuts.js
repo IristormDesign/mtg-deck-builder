@@ -181,15 +181,15 @@ export default {
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
 					case 'w':
-						this.highlightPrevLI()
-						this.highlightPrevLI()
+						this.highlightPrevLI(true)
+						this.highlightPrevLI(true)
 						this.highlightPrevLI()
 						return
 					case 'e': this.adjustCardQty(2)
 						return
 					case 's':
-						this.highlightNextLI()
-						this.highlightNextLI()
+						this.highlightNextLI(true)
+						this.highlightNextLI(true)
 						this.highlightNextLI()
 						return
 					case 'd': this.adjustCardQty(-2)
@@ -289,7 +289,7 @@ export default {
 
 			this.$store.commit('highlightedCardLIIndex', index)
 		},
-		highlightPrevLI () {
+		highlightPrevLI (moveOnly) {
 			if (this.highlightedIndex === 0) {
 				this.setHighlightedIndex(this.activeCardList.cards.length - 1)
 			} else {
@@ -298,11 +298,12 @@ export default {
 
 			this.hideCardImagePopup()
 
+			if (moveOnly) return
 			if (this.isMobileLayout()) return
 
 			this.viewCardImageAtHighlightedIndex()
 		},
-		highlightNextLI () {
+		highlightNextLI (moveOnly) {
 			if (this.highlightedIndex === this.activeCardList.cards.length - 1) {
 				this.setHighlightedIndex(0)
 			} else {
@@ -311,6 +312,7 @@ export default {
 
 			this.hideCardImagePopup()
 
+			if (moveOnly) return
 			if (this.isMobileLayout()) return
 
 			this.viewCardImageAtHighlightedIndex()
@@ -497,6 +499,8 @@ export default {
 			}
 		},
 		viewCardImageAtHighlightedIndex () {
+			console.log('viewCardImageAtHighlightedIndex')
+
 			const card = this.relevantCardAtHighlightedIndex()
 
 			if (!card) return
