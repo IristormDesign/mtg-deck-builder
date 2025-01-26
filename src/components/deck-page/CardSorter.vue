@@ -112,10 +112,15 @@ export default {
 		menuIsOpen () {
 			this.$store.commit('showingAnyPopup', this.menuIsOpen)
 
-			this.$nextTick(() => {
-				const sorterInput = document.querySelector('#sorterMenuInput')
+			const sorterInput = document.querySelector('#sorterMenuInput')
 
-				sorterInput.focus() // This allows the user to press the tab key once and the browser will focus on the sorter's first menu item.
+			this.$nextTick(() => {
+				if (this.menuIsOpen) {
+					sorterInput.focus() // This allows the user to press the tab key once and the browser will focus on the sorter's first menu item.
+					document.activeElement.blur() // Immediately blur to allow the user could then close it via keyboard shortcut, while still having the browser remember the previous focus position.
+				} else {
+					sorterInput.blur()
+				}
 			})
 		},
 		showingAnyPopup (isShowing) {
