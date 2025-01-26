@@ -12,8 +12,7 @@ $color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 45.83%);
 $color-mythic-dimmer: darken($color-mythic-dim, 12.5%);
 $color-mythic-brown: darken(desaturate($color-mythic-orange, 80%), 25%); // Darkened to match brightness level of $color-group-bg-lighter.
 $color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
-$color-link-dim: color.adjust($color-link, $saturation: -33.33%, $lightness: -4.17%);
-$color-link-dim: desaturate($color-link, 33.33%);
+$color-link-dim: desaturate($color-link, 37.5%);
 $color-button-orange: lighten(desaturate($color-mythic-orange, 33.33%), 6.25%);
 $color-text-over-mythic-brown: lighten($color-mythic-brown, 56.25%);
 $color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 6.25%);
