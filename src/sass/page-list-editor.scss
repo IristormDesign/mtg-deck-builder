@@ -153,7 +153,7 @@ $width-card-list-section-narrow:
 			column-count: 2;
 			column-gap: $border-width-sections-medium;
 			top: 0;
-			left: -$lhse*2.8;
+			left: -$lhse*2.8333;
 			z-index: index($layers, card-overlay);
 		}
 		button {
@@ -162,6 +162,10 @@ $width-card-list-section-narrow:
 			width: 100%;
 			font-size: $font-size-small;
 			height: $lhse*1.5;
+
+			&:focus {
+				outline-offset: -2px; // This is needed to prevent a bizarre bug in Safari. The bug causes the button in the dropdown menu's top row of the second column to disappear while it has focus.
+			}
 		}
 	}
 	&:has(.opened) {
