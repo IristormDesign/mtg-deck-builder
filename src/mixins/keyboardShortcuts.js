@@ -150,20 +150,6 @@ export default {
 			}
 		},
 		kbShortcutsListEditor (keyEvent, event) {
-			if (keyEvent === 'tab') {
-				this.$nextTick(() => {
-					this.setHighlightedIndex(-1)
-				})
-			} else if (this.anyInputActive()) {
-				if (
-					document.activeElement.parentElement.classList.contains('card-star')
-				) {
-					document.activeElement.blur()
-				} else {
-					return
-				}
-			}
-
 			/* The following keyboard shortcuts can work at anytime, even when the card list is empty. */
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
