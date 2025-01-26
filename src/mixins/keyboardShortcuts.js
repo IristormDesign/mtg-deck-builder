@@ -158,6 +158,8 @@ export default {
 					this.$store.commit('showingAnyPopup', false)
 			}
 
+			if (this.anyInputActive()) return
+
 			/* The following keyboard shortcuts can work at anytime, even when the card list is empty. */
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
