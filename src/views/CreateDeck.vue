@@ -50,10 +50,11 @@
 <script>
 import latestDataVersions from '@/mixins/latestDataVersions.js'
 import stringMethods from '@/mixins/stringMethods.js'
+import sortDeckMenu from '@/mixins/sortDeckMenu.js'
 import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
-	mixins: [latestDataVersions, stringMethods, copyDeck],
+	mixins: [latestDataVersions, stringMethods, sortDeckMenu, copyDeck],
 	data () {
 		return {
 			deckNameInput: '',
@@ -273,7 +274,7 @@ export default {
 			)
 		},
 		goToDeckPage (path) {
-			this.$store.commit('sortDeckMenu')
+			this.sortDeckMenu()
 
 			this.$router.push({
 				name: 'listEditor',

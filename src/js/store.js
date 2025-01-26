@@ -69,16 +69,6 @@ export default new Vuex.Store({
 		showSideboard (state, payload) {
 			state.showSideboard = payload
 		},
-		sortDeckMenu (state) {
-			state.decks.sort((a, b) => {
-				const deckA = a.name.toUpperCase()
-				const deckB = b.name.toUpperCase()
-
-				if (deckA > deckB) return 1
-				else if (deckA < deckB) return -1
-				else return 0
-			})
-		},
 		showNoticeAboutMovingLastCard (state, payload) {
 			state.showNoticeAboutMovingLastCard = payload
 		},

@@ -1,9 +1,10 @@
 import stringMethods from '@/mixins/stringMethods.js'
+import sortDeckMenu from '@/mixins/sortDeckMenu.js'
 import store from '@/js/store.js'
 import router from '@/js/router.js'
 
 export default {
-	mixins: [stringMethods],
+	mixins: [stringMethods, sortDeckMenu],
 	methods: {
 		/**
 		 * @param {Object} sourceDeck
@@ -54,8 +55,8 @@ export default {
 			deck.editDate = new Date()
 
 			store.state.decks.push(deck)
+			this.sortDeckMenu()
 			store.commit('decks', store.state.decks)
-			store.commit('sortDeckMenu')
 
 			router.push({
 				name: 'listEditor',

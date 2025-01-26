@@ -11,9 +11,10 @@
 
 <script>
 import stringMethods from '@/mixins/stringMethods.js'
+import sortDeckMenu from '@/mixins/sortDeckMenu.js'
 
 export default {
-	mixins: [stringMethods],
+	mixins: [stringMethods, sortDeckMenu],
 	props: {
 		deck: Object
 	},
@@ -32,8 +33,8 @@ export default {
 					deck.path = path
 					deck.editDate = new Date()
 
+					this.sortDeckMenu()
 					this.$store.commit('decks', this.$store.state.decks)
-					this.$store.commit('sortDeckMenu')
 
 					if (path !== this.$route.params.deckPath) {
 						this.$router.replace({
