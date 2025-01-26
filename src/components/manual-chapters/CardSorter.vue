@@ -8,7 +8,7 @@
 			/>
 		</p>
 		<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
-		<p>The card sorter has a drop-down menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
+		<p>The card sorter has a dropdown menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
 		<p>The card sorter’s options and their effects are the following:</p>
 		<ul>
 			<li>
@@ -55,6 +55,6 @@
 			</ul>
 		</p>
 		<p>Name is the most distinguishable card attribute to sort by. This is because every name in the List Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
-		<p>To show or hide the card sorter’s menu as a <a href="#keyboard-shortcuts">keyboard shortcut</a>, press <kbd>Q</kbd>. When you use this shortcut to show the menu, if the card sorter isn’t currently visible within your web browser’s window, then the page automatically scrolls it into view.</p>
+		<p>To show or hide the card sorter’s menu via a <a href="#keyboard-shortcuts">keyboard shortcut</a>, press <kbd>Q</kbd>. When you use this shortcut to show the menu, if the card sorter isn’t currently visible within your web browser’s window, then the page automatically scrolls it into view.</p>
 	</section>
 </template>

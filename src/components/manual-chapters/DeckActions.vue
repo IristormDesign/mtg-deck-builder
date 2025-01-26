@@ -1,7 +1,7 @@
 <template functional>
 	<section id="deck-actions" key="deck-actions">
 		<h4>Deck Actions</h4>
-		<p>In the <a href="#deck-page-header">deck page header</a>, click the “Deck Actions” button to display a drop-down menu with options that let you do special actions to your decks. These options are “<a href="#duplicate-action">duplicate</a>,” “<a href="#archive-action">archive</a>,” and “<a href="#delete-action">delete</a>,” and their effects are explained in the next subchapters.</p>
+		<p>In the <a href="#deck-page-header">deck page header</a>, click the “Deck Actions” button to display a dropdown menu with options that let you do special actions to your decks. These options are “<a href="#duplicate-action">duplicate</a>,” “<a href="#archive-action">archive</a>,” and “<a href="#delete-action">delete</a>,” and their effects are explained in the next subchapters.</p>
 
 		<section id="duplicate-action">
 			<h5>Duplicate</h5>

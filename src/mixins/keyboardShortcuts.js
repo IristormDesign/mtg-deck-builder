@@ -465,7 +465,6 @@ export default {
 				if (!sorterDropdown) return
 
 				sorterDropdown.scrollIntoView({
-					behavior: 'smooth',
 					block: 'nearest'
 				})
 			})
