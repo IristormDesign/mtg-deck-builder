@@ -26,6 +26,7 @@
 						type="text"
 						v-model="deckSortAttribute"
 						@click="menuIsOpen = !menuIsOpen"
+						@keydown.enter="menuIsOpen = !menuIsOpen"
 						readonly
 					/>
 					<svg
