@@ -34,6 +34,7 @@
 									target="_blank"
 									ref="cardLink"
 									:class="shouldRotateSideways ? 'sideways' : null"
+									@focus="$store.commit('showingAnyPopup', false)"
 								>
 									<div
 										class="card-shape"

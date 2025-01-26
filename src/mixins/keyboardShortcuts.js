@@ -150,6 +150,14 @@ export default {
 			}
 		},
 		kbShortcutsListEditor (keyEvent, event) {
+			/* Any of the List Editor's keyboard shortcuts should automatically close any popup that might already be visible and that don't already trigger this same effect. */
+			switch (keyEvent) {
+				case 'w': case 'e': case 'r':
+				case 'a': case 's': case 'd': case 'f':
+				case 'z': case 'x': case 'c':
+					this.$store.commit('showingAnyPopup', false)
+			}
+
 			/* The following keyboard shortcuts can work at anytime, even when the card list is empty. */
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
@@ -402,8 +410,6 @@ export default {
 					this.imageEnlarged = false
 				} else {
 					if (this.disableImageEnlargeAtIndex > -1) return
-
-					this.$store.commit('showingAnyPopup', false) // Close any popups that may already be open before the card image is enlarged.
 
 					imageLinkCL.add('kb-highlight')
 					imageCardShadowCL.add('kb-highlight')
