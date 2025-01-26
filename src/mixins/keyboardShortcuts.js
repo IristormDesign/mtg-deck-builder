@@ -188,6 +188,12 @@ export default {
 
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
+					case 'w': case 'e':
+					case 's': case 'd': case 'f':
+					case 'c':
+						this.startKBShortcutsFromCardOfViewedImage()
+				}
+				switch (keyEvent) {
 					case 'w':
 						this.highlightPrevLI(true)
 						this.highlightPrevLI(true)
