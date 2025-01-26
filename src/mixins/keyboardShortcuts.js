@@ -499,8 +499,6 @@ export default {
 			}
 		},
 		viewCardImageAtHighlightedIndex () {
-			console.log('viewCardImageAtHighlightedIndex')
-
 			const card = this.relevantCardAtHighlightedIndex()
 
 			if (!card) return
