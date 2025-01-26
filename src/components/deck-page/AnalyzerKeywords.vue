@@ -21,7 +21,9 @@
 						:class="activeFilterClass('keywords', kwName)"
 						@click="handleRowClick('keywords', kwName)"
 					>
-						<th :class="kwName.length > 15 ? 'small' : null">{{ kwName }}</th>
+						<th :class="kwName.length > 14 ? 'small' : null">
+							{{ kwName }}
+						</th>
 						<td>{{ ct }}</td>
 						<td>{{ calculatePercentage(ct) }}<span>%</span></td>
 					</tr>
