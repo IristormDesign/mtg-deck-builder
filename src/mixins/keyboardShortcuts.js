@@ -197,10 +197,12 @@ export default {
 					case 'w':
 						this.highlightPrevLI()
 						this.highlightPrevLI()
+						this.highlightPrevLI()
 						return
 					case 'e': this.adjustCardQty(2)
 						return
 					case 's':
+						this.highlightNextLI()
 						this.highlightNextLI()
 						this.highlightNextLI()
 						return
