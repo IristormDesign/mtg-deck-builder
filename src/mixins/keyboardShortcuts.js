@@ -195,22 +195,22 @@ export default {
 				}
 				switch (keyEvent) {
 					case 'w':
-						this.highlightPrevLI(true)
-						this.highlightPrevLI(true)
-						this.highlightPrevLI()
+						this.highlightDistantLI(this.highlightPrevLI)
 						return
-					case 'e': this.adjustCardQty(2)
+					case 'e':
+						this.adjustCardQty(2)
 						return
 					case 's':
-						this.highlightNextLI(true)
-						this.highlightNextLI(true)
-						this.highlightNextLI()
+						this.highlightDistantLI(this.highlightNextLI)
 						return
-					case 'd': this.adjustCardQty(-2)
+					case 'd':
+						this.adjustCardQty(-2)
 						return
-					case 'f': this.moveToOtherCardGroup(true)
+					case 'f':
+						this.moveToOtherCardGroup(true)
 						return
-					case 'c': this.openCardScryfallPage()
+					case 'c':
+						this.openCardScryfallPage()
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
@@ -330,6 +330,29 @@ export default {
 			if (this.isMobileLayout()) return
 
 			this.viewCardImageAtHighlightedIndex()
+		},
+		highlightDistantLI (highlightFunc) {
+			const numberToMove = () => {
+				let number = this.activeCardList.cards.length / 5
+
+				number = Math.round(number)
+
+				if (number < 2) {
+					number = 2
+				}
+
+				return number
+			}
+
+			for (let i = 0; i < numberToMove(); i++) {
+				setTimeout(() => {
+					if (i < numberToMove() - 1) {
+						highlightFunc(true)
+					} else {
+						highlightFunc()
+					}
+				}, 12.5 * i)
+			}
 		},
 		adjustCardQty (number) {
 			const card = this.relevantCardAtHighlightedIndex()
