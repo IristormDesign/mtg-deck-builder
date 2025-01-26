@@ -6,59 +6,57 @@
 			</symbol>
 		</svg>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M145.39-490.54q0 87.23 61.34 145.73 61.35 58.5 147.58 57.73H377l-68.69-70.69 31.61-32 121.77 124.38L338.08-140l-32-32 67.08-70.08h-22.7q-103.46.77-176.96-71.31Q100-385.46 100-490.54 100-593 170.27-666.5 240.54-740 341-740h138.54v45.39H341q-82 0-138.81 59.73-56.8 59.73-56.8 144.34Zm425.07 248.46v-45.38H860v45.38H570.46Zm0-225.77v-46.38H860v46.38H570.46Zm-17.84-226.76V-740H860v45.39H552.62Z"/></svg>
-		<form>
-			<fieldset :disabled="(
-				deck.cards.length <= 1 && deck.sideboard.cards.length <= 1
-			)">
-				<label
-					class="section-label"
-					for="sorterMenuInput"
-				>Sort cards by:</label>
-				<div
-					class="dropdown-menu-component"
-					:class="menuIsOpen ? 'opened' : 'closed'"
-					role="menu"
-					aria-haspopup="true"
-					:aria-expanded="menuIsOpen.toString()"
-				>
-					<input
-						id="sorterMenuInput"
-						type="text"
-						v-model="deckSortAttribute"
-						@click="menuIsOpen = !menuIsOpen"
-						@keydown.enter="menuIsOpen = !menuIsOpen"
-						readonly
-					/>
-					<svg
-						class="dropdown-arrow"
-						@click="menuIsOpen = !menuIsOpen"
-						xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
-					/></svg>
-					<transition name="dropdown-transition">
-						<ul
-							v-show="menuIsOpen"
-							ref="sorterDropdownMenu"
+		<fieldset :disabled="(
+			deck.cards.length <= 1 && deck.sideboard.cards.length <= 1
+		)">
+			<label
+				class="section-label"
+				for="sorterMenuInput"
+			>Sort cards by:</label>
+			<div
+				class="dropdown-menu-component"
+				:class="menuIsOpen ? 'opened' : 'closed'"
+				role="menu"
+				aria-haspopup="true"
+				:aria-expanded="menuIsOpen.toString()"
+			>
+				<input
+					id="sorterMenuInput"
+					type="text"
+					v-model="deckSortAttribute"
+					@click="menuIsOpen = !menuIsOpen"
+					@keydown.enter="menuIsOpen = !menuIsOpen"
+					readonly
+				/>
+				<svg
+					class="dropdown-arrow"
+					@click="menuIsOpen = !menuIsOpen"
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
+				/></svg>
+				<transition name="dropdown-transition">
+					<ul
+						v-show="menuIsOpen"
+						ref="sorterDropdownMenu"
+					>
+						<li
+							v-for="option in sorterMenuOptions"
+							v-show="option !== 'Starred' || listHasStarredCard"
+							:key="option"
+							:class="deck.sortBy === option ? 'selected' : ''"
+							role="menuitem"
 						>
-							<li
-								v-for="option in sorterMenuOptions"
-								v-show="option !== 'Starred' || listHasStarredCard"
-								:key="option"
-								:class="deck.sortBy === option ? 'selected' : ''"
-								role="menuitem"
+							<button
+								type="button"
+								@click="selectSorterMenuOption(option)"
 							>
-								<button
-									type="button"
-									@click="selectSorterMenuOption(option)"
-								>
-									<svg><use href="#right-triangle-icon" /></svg>
-									<span>{{ option }}</span>
-								</button>
-							</li>
-						</ul>
-					</transition>
-				</div>
-			</fieldset>
-		</form>
+								<svg><use href="#right-triangle-icon" /></svg>
+								<span>{{ option }}</span>
+							</button>
+						</li>
+					</ul>
+				</transition>
+			</div>
+		</fieldset>
 	</section>
 </template>
 
