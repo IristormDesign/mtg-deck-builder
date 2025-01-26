@@ -455,7 +455,7 @@ export default {
 		openSorterMenu () {
 			this.$store.commit('showingAnyPopup', false) // Close any popups that may already be open before the sorter menu is opened.
 
-			const sorterInput = document.querySelector('#sortMenuInput')
+			const sorterInput = document.querySelector('#sorterMenuInput')
 
 			sorterInput.click()
 

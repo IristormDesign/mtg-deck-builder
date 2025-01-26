@@ -12,7 +12,7 @@
 			)">
 				<label
 					class="section-label"
-					for="sortMenuInput"
+					for="sorterMenuInput"
 				>Sort cards by:</label>
 				<div
 					class="dropdown-menu-component"
@@ -22,7 +22,7 @@
 					:aria-expanded="menuIsOpen.toString()"
 				>
 					<input
-						id="sortMenuInput"
+						id="sorterMenuInput"
 						type="text"
 						v-model="deckSortAttribute"
 						@click="menuIsOpen = !menuIsOpen"
@@ -72,7 +72,7 @@ export default {
 	data () {
 		return {
 			menuIsOpen: false,
-			sortMenu: this.deck.sortBy
+			sorterMenu: this.deck.sortBy
 		}
 	},
 	computed: {
@@ -106,14 +106,14 @@ export default {
 		deckSortAttribute (attribute) {
 			/* Make the card sorter menu change to the "(Unsorted)" value when the deck's sorting attribute has been automatically set to an empty string. (For example, that can occur when a card's quantity changes while the list has been sorted by quantity.) */
 			if (attribute === '(Unsorted)') {
-				this.sortMenu = attribute
+				this.sorterMenu = attribute
 			}
 		},
 		menuIsOpen () {
 			this.$store.commit('showingAnyPopup', this.menuIsOpen)
 
 			this.$nextTick(() => {
-				const sorterInput = document.querySelector('#sortMenuInput')
+				const sorterInput = document.querySelector('#sorterMenuInput')
 
 				sorterInput.focus() // This allows the user to press the tab key once and the browser will focus on the sorter's first menu item.
 			})
@@ -126,8 +126,8 @@ export default {
 		}
 	},
 	created () {
-		if (!this.sortMenu) {
-			this.sortMenu = '(Unsorted)'
+		if (!this.sorterMenu) {
+			this.sorterMenu = '(Unsorted)'
 		}
 	},
 	mounted () {
@@ -142,7 +142,7 @@ export default {
 	},
 	updated () {
 		/* When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's. */
-		this.sortMenu = this.deck.sortBy
+		this.sorterMenu = this.deck.sortBy
 	},
 	methods: {
 		closeSorterMenuOnOutsideClick (event) {
@@ -157,18 +157,18 @@ export default {
 		selectSorterMenuOption (attribute) {
 			this.menuIsOpen = false
 
-			if (this.sortMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T sum option, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
+			if (this.sorterMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T sum option, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
 
-			this.sortMenu = attribute
+			this.sorterMenu = attribute
 			this.sortCards()
 		},
 		sortCards () {
-			this.deckObject.sortBy = this.sortMenu
+			this.deckObject.sortBy = this.sorterMenu
 
 			const mainList = this.deck.cards
 			const sbList = this.deck.sideboard.cards
 
-			switch (this.sortMenu.toLowerCase()) {
+			switch (this.sorterMenu.toLowerCase()) {
 				case 'starred':
 					this.sortByStarred(mainList)
 					this.sortByStarred(sbList)
@@ -215,7 +215,7 @@ export default {
 					break
 			}
 
-			this.addSortingClusterGaps(this.deck, this.sortMenu)
+			this.addSortingClusterGaps(this.deck, this.sorterMenu)
 			this.$store.commit('decks', this.$store.state.decks)
 		},
 		sortByStarred (cards) {
