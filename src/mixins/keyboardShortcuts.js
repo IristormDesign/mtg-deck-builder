@@ -334,26 +334,25 @@ export default {
 			this.viewCardImageAtHighlightedIndex()
 		},
 		highlightDistantLI (highlightFunc) {
-			const numberToMove = () => {
-				let number = this.activeCardList.cards.length / 5
+			let numberToMove = this.activeCardList.cards.length / 5
 
-				number = Math.round(number)
-
-				if (number < 2) {
-					number = 2
-				}
-
-				return number
+			if (numberToMove < 2) {
+				numberToMove = 2
+			} else if (numberToMove > 10) {
+				numberToMove = 10
+			} else {
+				numberToMove = Math.round(numberToMove)
 			}
 
-			for (let i = 0; i < numberToMove(); i++) {
+			for (let i = 0; i < numberToMove; i++) {
 				setTimeout(() => {
-					if (i < numberToMove() - 1) {
+					/* Don't show the images from card bars in passing. Only show the card image of the card bar at the end of the movement. */
+					if (i < numberToMove - 1) {
 						highlightFunc(true)
 					} else {
 						highlightFunc()
 					}
-				}, 12.5 * i)
+				}, 20 * i)
 			}
 		},
 		adjustCardQty (number) {

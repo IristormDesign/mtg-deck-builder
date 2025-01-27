@@ -27,6 +27,7 @@
 					@click="menuIsOpen = !menuIsOpen"
 					@keydown.enter="menuIsOpen = !menuIsOpen"
 					readonly
+					title="(Q)"
 				/>
 				<svg
 					class="dropdown-arrow"
