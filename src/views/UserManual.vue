@@ -20,7 +20,14 @@
 							<li><a href="#deck-menu">Deck Menu</a></li>
 						</ol>
 					</li>
-					<li><a href="#create-deck">“Create Deck” Page</a></li>
+					<li>
+						<a href="#create-deck">“Create Deck” Page</a>
+						<ol>
+							<li><a href="#start-new-deck">Start New Deck</a></li>
+							<li><a href="#replicate-archived-decks">Replicate Archived Decks</a></li>
+							<li><a href="#create-from-plain-text-list">Create Deck from Plain-Text List</a></li>
+						</ol>
+					</li>
 					<li>
 						<a href="#deck-pages">Deck Pages</a>
 					</li>
