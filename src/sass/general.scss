@@ -150,6 +150,7 @@ figure {
 	padding: divide($lhse, 3);
 	color: $color-text-darker;
 	width: fit-content;
+	height: fit-content;
 }
 figcaption {
 	@include tiny-font-size;
