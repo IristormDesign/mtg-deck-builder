@@ -172,28 +172,15 @@
 			}
 		}
 		h3 {
-			margin-top: $lhse*.25;
+			&:first-child {
+				margin-top: $lhse*.25;
+			}
 		}
 		h4 {
 			margin-top: $lhse*1.25;
 		}
-		.mana-symbol,
-		.rarity-symbol {
-			&:first-child {
-				margin: 0 1px;
-			}
-		}
-		.mana-symbol {
-			font-size: 116.67%;
-			transform: translateY(.075em);
-
-			&.hybrid {
-				font-size: 120% * 1.1667;
-			}
-		}
-		.rarity-symbol {
-			display: inline-block;
-			transform: scale(1.0833) translateY(-.0417em);
+		figure {
+			margin: 0 auto $lhse;
 		}
 	}
 	.keyboard-shortcuts {

@@ -22,11 +22,13 @@
 			<h4>Export Deck as Text File</h4>
 			<p>Click the “Export Deck as Text File” button to have the app generate a plain-text file (.txt) that has your deck’s main and sideboard card lists. The file gets saved to wherever your web browser puts downloads.</p>
 		</section>
+
 		<section id="print-deck">
 			<h4>Print Deck</h4>
 			<p>Click the “Print Deck” button to print your deck’s main and sideboard card lists onto paper. Doing this method automatically applies some basic styling to the lists’ text. Any card names you’ve <a href="#card-stars">starred</a> (from the List Editor) will appear bold in the printed list.</p>
 			<p>If a list has a large number of card names, then the list’s printed version will be automatically laid out into three columns to conserve paper. (However, if you’re on Apple’s Safari browser, then it’ll always print the lists in only one column, because unfortunately, Safari doesn’t support multi-column layouts in printing. Other modern web browsers will print multi-column layouts normally.)</p>
 		</section>
+
 		<section id="copy-card-lists">
 			<h4>Copy Card Lists</h4>
 			<p>The Text Renderer has sections displaying the plain-text card lists for your deck’s main and sideboard groups. Both sections have a “Copy” button, either one of which you can click to have the respective section’s whole list instantly copied to the clipboard of your computer or phone. (Then you can paste that list elsewhere.)</p>
