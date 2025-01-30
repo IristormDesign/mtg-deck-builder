@@ -42,11 +42,6 @@ const routes = [
 				component: () => import(/* webpackChunkName: "manual-deck-page-header" */ '@/views/manual-chapters/DeckPageHeader.vue')
 			},
 			{
-				name: 'manualDeckPageModes',
-				path: 'deck-page-modes',
-				component: () => import(/* webpackChunkName: "manual-deck-page-modes" */ '@/views/manual-chapters/DeckPageModes.vue')
-			},
-			{
 				name: 'manualListEditor',
 				path: 'list-editor',
 				component: () => import(/* webpackChunkName: "manual-list-editor" */ '@/views/manual-chapters/ListEditor.vue')

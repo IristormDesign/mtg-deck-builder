@@ -113,7 +113,13 @@ export default {
 					]
 				}, {
 					name: 'Deck Pages',
-					path: 'deck-pages'
+					path: 'deck-pages',
+					subchapters: [
+						{
+							name: 'Deck Page Modes',
+							hash: '#deck-page-modes'
+						}
+					]
 				}, {
 					name: 'Deck Page Header',
 					path: 'deck-page-header',
@@ -144,9 +150,6 @@ export default {
 							]
 						}
 					]
-				}, {
-					name: 'Deck Page Modes',
-					path: 'deck-page-modes'
 				}, {
 					name: 'List Editor',
 					path: 'list-editor',
