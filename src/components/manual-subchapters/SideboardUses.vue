@@ -7,7 +7,7 @@
 				<p>When you’re in the process of making a <a href="#start-new-deck">new deck</a>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards it contains don’t meddle with the data in your deck’s <a href="#basic-statistics">basic statistics</a> or the <a href="#stats-analyzer">Stats Analyzer</a>, except for the Last Edit statistic.</p>
 			</li>
 			<li>
-				<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch against an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>
+				<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch versus an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>
 			</li>
 			<li>
 				<p>Some cards have abilities that specially let you get cards from “outside the game.” The sideboard can contain the outside cards that you intend to play with your deck.</p>

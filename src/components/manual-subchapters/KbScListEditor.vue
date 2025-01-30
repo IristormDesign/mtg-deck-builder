@@ -13,14 +13,14 @@
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works the same as <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd></span> but in the opposite direction.)</li>
 			<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 		</ul>
-		<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the opposite end of the list instead.</p>
+		<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the list’s opposite end instead.</p>
 
 		<h5>Actions to Highlighted Row</h5>
-		<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list. If no row is highlighted yet, then using any of these shortcuts will highlight the row having the card name that’s associated with the currently displayed card image.</p>
+		<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list.</p>
 		<ul class="keyboard-shortcuts">
-			<li><kbd>C</kbd>: See the <a href="#card-image">card image</a> up closer.</li>
+			<li><kbd>C</kbd>: View the <a href="#card-image">card image</a> up closer.</li>
 			<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the card’s page on Scryfall in a new browser tab.</li>
-			<li><kbd>Z</kbd>: Turn over the card image (if it’s double-faced).</li>
+			<li><kbd>Z</kbd>: Turn over the card image (only when it’s double-faced).</li>
 			<li><kbd>A</kbd>: Toggle the card name’s <a href="#card-stars">star label</a> on or off.</li>
 			<li><kbd>E</kbd>: Raise the card name’s <a href="#card-quantities">quantity</a> by 1.</li>
 			<li><kbd>D</kbd>: Lower the card name’s quantity by 1.</li>
@@ -35,7 +35,7 @@
 			<li><kbd>Q</kbd>: Toggle the <a href="#card-sorter">card sorter</a>’s menu between visible and hidden.</li>
 			<li><kbd>R</kbd>: Toggle the active <a href="#card-groups">card group</a> between main and sideboard.</li>
 			<li><kbd>X</kbd>: Focus onto the <a href="#card-adder">card adder</a>’s text field.</li>
-			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open <a href="#scryfall-button">Scryfall’s advanced search</a> page in a new browser tab.</li>
+			<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open <a href="#scryfall-button">Scryfall’s advanced card search</a> page in a new browser tab.</li>
 		</ul>
 	</section>
 </template>

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import DeckMenu from '@/components/manual-chapters/DeckMenu.vue'
+import DeckMenu from '@/components/manual-subchapters/DeckMenu.vue'
 
 export default {
 	components: { DeckMenu }

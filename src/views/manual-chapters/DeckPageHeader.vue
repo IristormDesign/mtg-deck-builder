@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import DeckName from '@/components/manual-chapters/DeckName.vue'
-import BasicStatistics from '@/components/manual-chapters/BasicStatistics.vue'
-import ModeMenu from '@/components/manual-chapters/ModeMenu.vue'
-import DeckActions from '@/components/manual-chapters/DeckActions.vue'
+import DeckName from '@/components/manual-subchapters/DeckName.vue'
+import BasicStatistics from '@/components/manual-subchapters/BasicStatistics.vue'
+import ModeMenu from '@/components/manual-subchapters/ModeMenu.vue'
+import DeckActions from '@/components/manual-subchapters/DeckActions.vue'
 
 export default {
 	components: { DeckName, BasicStatistics, ModeMenu, DeckActions }

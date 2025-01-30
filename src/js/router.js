@@ -13,7 +13,75 @@ const routes = [
 	{
 		name: 'manual',
 		path: '/manual',
-		component: () => import(/* webpackChunkName: "manual" */ '@/views/UserManual.vue')
+		component: () => import(/* webpackChunkName: "manual" */ '@/views/UserManual.vue'),
+		redirect: { name: 'manualIntro' },
+		children: [
+			{
+				name: 'manualIntro',
+				path: 'intro',
+				component: () => import(/* webpackChunkName: "manual-intro" */ '@/views/manual-chapters/ManualIntro.vue')
+			},
+			{
+				name: 'manualAppHeader',
+				path: 'app-header',
+				component: () => import(/* webpackChunkName: "manual-app-header" */ '@/views/manual-chapters/AppHeader.vue')
+			},
+			{
+				name: 'manualCreateDeck',
+				path: 'create-deck',
+				component: () => import(/* webpackChunkName: "manual-create-deck" */ '@/views/manual-chapters/CreateDeckPage.vue')
+			},
+			{
+				name: 'manualDeckPages',
+				path: 'deck-pages',
+				component: () => import(/* webpackChunkName: "manual-deck-pages" */ '@/views/manual-chapters/DeckPages.vue')
+			},
+			{
+				name: 'manualDeckPageHeader',
+				path: 'deck-page-header',
+				component: () => import(/* webpackChunkName: "manual-deck-page-header" */ '@/views/manual-chapters/DeckPageHeader.vue')
+			},
+			{
+				name: 'manualDeckPageModes',
+				path: 'deck-page-modes',
+				component: () => import(/* webpackChunkName: "manual-deck-page-modes" */ '@/views/manual-chapters/DeckPageModes.vue')
+			},
+			{
+				name: 'manualListEditor',
+				path: 'list-editor',
+				component: () => import(/* webpackChunkName: "manual-list-editor" */ '@/views/manual-chapters/ListEditor.vue')
+			},
+			{
+				name: 'manualStatsAnalyzer',
+				path: 'stats-analyzer',
+				component: () => import(/* webpackChunkName: "manual-stats-analyzer" */ '@/views/manual-chapters/StatsAnalyzer.vue')
+			},
+			{
+				name: 'manualDrawSim',
+				path: 'draw-sim',
+				component: () => import(/* webpackChunkName: "manual-draw-sim" */ '@/views/manual-chapters/DrawSim.vue')
+			},
+			{
+				name: 'manualTextRenderer',
+				path: 'text-renderer',
+				component: () => import(/* webpackChunkName: "manual-text-renderer" */ '@/views/manual-chapters/TextRenderer.vue')
+			},
+			{
+				name: 'manualKeyboardShortcuts',
+				path: 'keyboard-shortcuts',
+				component: () => import(/* webpackChunkName: "manual-keyboard-shortcuts" */ '@/views/manual-chapters/KeyboardShortcuts.vue')
+			},
+			{
+				name: 'manualStorageOfDeckData',
+				path: 'storage-of-deck-data',
+				component: () => import(/* webpackChunkName: "manual-storage-of-deck-data" */ '@/views/manual-chapters/StorageOfDeckData.vue')
+			},
+			{
+				name: 'manualAppDevelopment',
+				path: 'app-dev',
+				component: () => import(/* webpackChunkName: "manual-app-development" */ '@/views/manual-chapters/AppDevelopment.vue')
+			}
+		]
 	},
 	{
 		name: 'createDeck',
@@ -119,10 +187,7 @@ const router = new VueRouter({
 		} else if (savedPosition) {
 			return savedPosition
 		} else {
-			return {
-				x: 0,
-				y: 0
-			}
+			return { x: 0, y: 0 }
 		}
 	}
 })

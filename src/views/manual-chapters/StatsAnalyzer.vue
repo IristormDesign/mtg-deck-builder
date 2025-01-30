@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import DataTables from './DataTables.vue'
-import StatisticsFilter from './StatisticsFilter.vue'
+import DataTables from '@/components/manual-subchapters/DataTables.vue'
+import StatisticsFilter from '@/components/manual-subchapters/StatisticsFilter.vue'
 
 export default {
 	components: { DataTables, StatisticsFilter }

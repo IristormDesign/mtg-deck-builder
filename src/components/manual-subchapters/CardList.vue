@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import CardBars from '@/components/manual-chapters/CardBars.vue'
-import CardQuantities from '@/components/manual-chapters/CardQuantities.vue'
-import CardStars from '@/components/manual-chapters/CardStars.vue'
+import CardBars from '@/components/manual-subchapters/CardBars.vue'
+import CardQuantities from '@/components/manual-subchapters/CardQuantities.vue'
+import CardStars from '@/components/manual-subchapters/CardStars.vue'
 
 export default {
 	components: { CardBars, CardQuantities, CardStars }

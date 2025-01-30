@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import CardImage from '@/components/manual-chapters/CardImage.vue'
-import CardSorter from '@/components/manual-chapters/CardSorter.vue'
-import CardGroupSwitch from '@/components/manual-chapters/CardGroupSwitch.vue'
-import SideboardHeader from '@/components/manual-chapters/SideboardHeader.vue'
-import CardList from '@/components/manual-chapters/CardList.vue'
-import ScryfallButton from '@/components/manual-chapters/ScryfallButton.vue'
-import AddMultiple from '@/components/manual-chapters/AddMultiple.vue'
-import CardAdder from '@/components/manual-chapters/CardAdder.vue'
+import CardImage from '@/components/manual-subchapters/CardImage.vue'
+import CardSorter from '@/components/manual-subchapters/CardSorter.vue'
+import CardGroupSwitch from '@/components/manual-subchapters/CardGroupSwitch.vue'
+import SideboardHeader from '@/components/manual-subchapters/SideboardHeader.vue'
+import CardList from '@/components/manual-subchapters/CardList.vue'
+import ScryfallButton from '@/components/manual-subchapters/ScryfallButton.vue'
+import AddMultiple from '@/components/manual-subchapters/AddMultiple.vue'
+import CardAdder from '@/components/manual-subchapters/CardAdder.vue'
 
 export default {
 	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardList, ScryfallButton, AddMultiple, CardAdder }

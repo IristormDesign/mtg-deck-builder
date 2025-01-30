@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import SideboardUses from '@/components/manual-chapters/SideboardUses.vue'
+import SideboardUses from '@/components/manual-subchapters/SideboardUses.vue'
 
 export default {
 	components: { SideboardUses }
