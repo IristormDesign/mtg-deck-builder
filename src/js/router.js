@@ -62,6 +62,11 @@ const routes = [
 				component: () => import(/* webpackChunkName: "manual-text-renderer" */ '@/views/manual-chapters/TextRenderer.vue')
 			},
 			{
+				name: 'manualCardListEntry',
+				path: 'card-list-entry',
+				component: () => import(/* webpackChunkName: "manual-card-list-entry" */ '@/views/manual-chapters/CardListEntry.vue')
+			},
+			{
 				name: 'manualKeyboardShortcuts',
 				path: 'keyboard-shortcuts',
 				component: () => import(/* webpackChunkName: "manual-keyboard-shortcuts" */ '@/views/manual-chapters/KeyboardShortcuts.vue')

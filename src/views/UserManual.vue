@@ -220,6 +220,9 @@ export default {
 						}
 					]
 				}, {
+					name: 'Card List Entry Page',
+					path: 'card-list-entry'
+				}, {
 					name: 'Stats Analyzer',
 					path: 'stats-analyzer',
 					subchapters: [
