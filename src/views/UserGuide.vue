@@ -210,13 +210,7 @@ export default {
 							]
 						}, {
 							name: '“Add Multiple” Button',
-							hash: '#add-multiple',
-							subchapters: [
-								{
-									name: 'Card List Entry Page',
-									hash: '#card-list-entry'
-								}
-							]
+							hash: '#add-multiple'
 						}
 					]
 				}, {
@@ -318,11 +312,11 @@ export default {
 		},
 		scrollToTopOfGuideContents () {
 			this.$nextTick(() => {
-				const manualContents = document.querySelector('.guide-contents')
+				const guideContents = document.querySelector('.guide-contents')
 
-				if (!manualContents) return
+				if (!guideContents) return
 
-				manualContents.scrollIntoView({
+				guideContents.scrollIntoView({
 					behavior: 'auto',
 					block: 'start'
 				})

@@ -1,7 +1,7 @@
 <template functional>
 	<section id="stats-analyzer" key="stats-analyzer">
 		<h3>Stats Analyzer</h3>
-		<p>The Stats Analyzer is a <a href="#deck-page-modes">deck page mode</a> where you can inspect lots of data about how your deck is composed. While the <a href="#deck-page-header">deck page header</a> shows a few <a href="#basic-statistics">basic statistics</a>, the Stats Analyzer shows additional statistics that go much further in depth.</p>
+		<p>The Stats Analyzer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can inspect lots of data about how your deck is composed. While the <router-link to="deck-page-header">deck page header</router-link> shows a few <router-link to="deck-page-header#basic-statistics">basic statistics</router-link>, the Stats Analyzer shows additional statistics that go much further in depth.</p>
 		<p>
 			<img class="screenshot"
 				srcset="@/img/manual-more-stats-page.jpg 1x, @/img/manual-more-stats-page-2x.jpg 1.5x"
@@ -13,7 +13,7 @@
 
 		<section id="data-tables">
 			<h4>Data Tables</h4>
-			<p>The page for the <a href="#stats-analyzer">Stats Analyzer</a> displays many data tables. Each table is for a different statistical category about the cards in your deck’s main <a href="#card-groups">card group</a>. Some categories can have subcategories, with their tables having a thick border line separating each subcategory.</p>
+			<p>The page for the <a href="#stats-analyzer">Stats Analyzer</a> displays many data tables. Each table is for a different statistical category about the cards in your deck’s main <router-link to="list-editor#card-groups">card group</router-link>. Some categories can have subcategories, with their tables having a thick border line separating each subcategory.</p>
 			<p>The following are the categories, with any subcategories in parentheses:</p>
 			<ul>
 				<li>Colors of Spells (mana colors, mana color amounts per spell)</li>
@@ -63,7 +63,7 @@
 			<ul>
 				<li>On the filter notification banner, click the “Stop Filtering” button.</li>
 				<li>Click the currently filtered card attribute’s table row (highlighted orange).</li>
-				<li><a href="#keyboard-shortcuts">Press the <kbd>Esc</kbd> key</a>.</li>
+				<li><router-link to="keyboard-shortcuts">Press the <kbd>Esc</kbd> key</router-link>.</li>
 			</ul>
 		</section>
 	</section>

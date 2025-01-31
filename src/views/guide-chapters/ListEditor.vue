@@ -1,7 +1,7 @@
 <template functional>
 	<section id="list-editor" key="list-editor">
 		<h3>List Editor</h3>
-		<p>The List Editor is a <a href="#deck-page-modes">deck page mode</a> where you can view, add, remove, and organize every card in your deck.</p>
+		<p>The List Editor is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view, add, remove, and organize every card in your deck.</p>
 		<p>The page for the List Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page (as they appear on a wide computer screen) from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#card-image">Card image</a></li>
@@ -33,7 +33,7 @@
 			</p>
 			<p>The card image section of the <a href="#list-editor">List Editor</a> displays a scanned full-border picture of a <i>Magic: The Gathering</i> card.</p>
 			<p>The image shown is usually of the card that relates to the <a href="#card-list">card list</a> element that you’ve most recently interacted with. (The card list elements are <a href="#card-bars">bars</a>, <a href="#card-quantities">quantities</a>, and <a href="#card-stars">stars</a>.)</p>
-			<p>Whenever you <a href="#card-adder">add a card name</a> to the card list, or whenever you navigate up or down the list’s rows by <a href="#keyboard-shortcuts">pressing the <kbd>W</kbd> or <kbd>S</kbd> keys</a>, the relevant image is automatically shown.</p>
+			<p>Whenever you <a href="#card-adder">add a card name</a> to the card list, or whenever you navigate up or down the list’s rows by <router-link to="keyboard-shortcuts">pressing the <kbd>W</kbd> or <kbd>S</kbd> keys</router-link>, the relevant image is automatically shown.</p>
 			<p>To look at the card image up closer, hover your mouse pointer over it, or press <kbd>C</kbd>.</p>
 			<p>If you’re using MTG Deck Builder on a phone instead of a computer with a larger screen, then the card image is normally invisible. You can still look at any card’s image by tapping the card’s bar in the card list, which makes the image appear hovering over the page. Then, to hide the image, tap the “X” button by the page’s top-right corner.</p>
 			<p>Click/tap the image, or press <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd></span>, to see that card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall</a>, which opens in a new browser tab. Scryfall is a search engine and database for <i>Magic</i> cards.</p>
@@ -49,7 +49,7 @@
 				/>
 			</p>
 			<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
-			<p>The card sorter has a dropdown menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <a href="#deck-menu">open deck</a> (but not other decks you may have).</p>
+			<p>The card sorter has a dropdown menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <router-link to="app-header#deck-menu">open deck</router-link> (but not other decks you may have).</p>
 			<p>The card sorter’s options and their effects are the following:</p>
 			<ul>
 				<li>
@@ -96,14 +96,14 @@
 				</ul>
 			</p>
 			<p>Name is the most distinguishable card attribute to sort by. This is because every name in the List Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
-			<p>To show or hide the card sorter’s menu via a <a href="#keyboard-shortcuts">keyboard shortcut</a>, press <kbd>Q</kbd>. When you use this shortcut to show the menu, if the card sorter isn’t currently visible within your web browser’s window, then the page automatically scrolls it into view.</p>
+			<p>To show or hide the card sorter’s menu via a <router-link to="keyboard-shortcuts">keyboard shortcut</router-link>, press <kbd>Q</kbd>. When you use this shortcut to show the menu, if the card sorter isn’t currently visible within your web browser’s window, then the page automatically scrolls it into view.</p>
 		</section>
 
 		<section id="card-groups">
 			<h4>Card Group Switch</h4>
 			<p>Each deck has two independent groups of cards called “main” and “<a href="#sideboard-uses">sideboard</a>.” The <a href="#list-editor">List Editor</a> displays only one card group at a time.</p>
 			<p>The card group switch is a pair of buttons that appears in the section of the List Editor labeled “View card group.” The switch lets you toggle between your deck’s main and sideboard groups for viewing in the List Editor. The <a href="#card-list">card list</a> and <a href="#card-adder">card adder</a> interact with whichever group is currently visible.</p>
-			<p>Alternatively, press the <kbd>R</kbd> key to switch card groups via <a href="#keyboard-shortcuts">keyboard shortcut</a>.</p>
+			<p>Alternatively, press the <kbd>R</kbd> key to switch card groups via <router-link to="keyboard-shortcuts">keyboard shortcut</router-link>.</p>
 			<p>Whenever you arrive on any deck page, the card group is automatically set to main at first. Whenever you switch to the sideboard, the <a href="#sideboard-header">sideboard header</a> appears.</p>
 
 			<section id="sideboard-uses">
@@ -111,7 +111,7 @@
 				<p>The sideboard is a <a href="#card-groups">card group</a> containing cards that are related to your <i>Magic</i> deck, but that aren’t in your deck’s main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 				<ul>
 					<li>
-						<p>When you’re in the process of making a <a href="#start-new-deck">new deck</a>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards it contains don’t meddle with the data in your deck’s <a href="#basic-statistics">basic statistics</a> or the <a href="#stats-analyzer">Stats Analyzer</a>, except for the Last Edit statistic.</p>
+						<p>When you’re in the process of making a <router-link to="create-deck#start-new-deck">new deck</router-link>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards it contains don’t meddle with the data in your deck’s <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> or the <router-link to="stats-analyzer">Stats Analyzer</router-link>, except for the Last Edit statistic.</p>
 					</li>
 					<li>
 						<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch versus an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>
@@ -120,22 +120,22 @@
 						<p>Some cards have abilities that specially let you get cards from “outside the game.” The sideboard can contain the outside cards that you intend to play with your deck.</p>
 					</li>
 				</ul>
-				<p>Of the four <a href="#deck-page-modes">deck page modes</a>, only the <a href="#list-editor">List Editor</a> and <a href="#text-renderer">Text Renderer</a> use the sideboard.</p>
+				<p>Of the four <router-link to="deck-pages#deck-page-modes">deck page modes</router-link>, only the <a href="#list-editor">List Editor</a> and <router-link to="text-renderer">Text Renderer</router-link> use the sideboard.</p>
 			</section>
 		</section>
 
 		<section id="sideboard-header">
 			<h4>Sideboard Header</h4>
 			<p>In the <a href="#list-editor">List Editor</a>, the sideboard header is a brown banner with the word “Sideboard” on it. Though it’s normally hidden, it becomes visible above the <a href="#card-list">card list</a> whenever you set the <a href="#card-groups">card group switch</a> to the sideboard option.</p>
-			<p>The sideboard header also shows the total number of cards contained within your <a href="#sideboard-uses">deck’s sideboard</a>. If there are more than 15 cards, which is the maximum limit for sideboards according to <a href="#game-rules"><i>Magic</i>’s rules</a>, then a “⚠” (warning symbol) appears beside the total.</p>
+			<p>The sideboard header also shows the total number of cards contained within your <a href="#sideboard-uses">deck’s sideboard</a>. If there are more than 15 cards, which is the maximum limit for sideboards according to <router-link to="intro#game-rules"><i>Magic</i>’s rules</router-link>, then a “⚠” (warning symbol) appears beside the total.</p>
 		</section>
 
 		<section id="card-list">
 			<h4>Card List</h4>
-			<p>The card list is a major section of the <a href="#list-editor">List Editor</a>. It displays the names and some attributes of every <i>Magic</i> card belonging to the currently viewed card group (either main or sideboard) of your currently <a href="#deck-menu">open deck</a>.</p>
+			<p>The card list is a major section of the <a href="#list-editor">List Editor</a>. It displays the names and some attributes of every <i>Magic</i> card belonging to the currently viewed card group (either main or sideboard) of your currently <router-link to="app-header#deck-menu">open deck</router-link>.</p>
 			<p>Each distinct card name among your deck’s cards has a row in the list, and each row has three interactive elements: a <a href="#card-bars">card bar</a>, a <a href="#card-quantities">card quantity</a>, and a <a href="#card-stars">card star</a>. These elements are going to be explained in more detail in the next subchapters of this user guide.</p>
 			<p>You can also manipulate the card list in ways with the <a href="#card-sorter">card sorter</a>, the <a href="#card-groups">card group switch</a>, and the <a href="#card-adder">card adder</a>.</p>
-			<p>Many <a href="#kbsc-list-editor">keyboard shortcuts</a> are available for doing actions involving the card list’s currently highlighted row. A row is highlighted when the card bar in that row has its colored outline appear, and the adjacent card quantity and star elements have an orange outline appear. You can change which row is highlighted by pressing the <kbd>S</kbd> key to move the highlight down the list by one row, or <kbd>W</kbd> to move it up. Hold <kbd class="shift-key">Shift</kbd> while pressing <kbd>S</kbd> or <kbd>W</kbd> to multiply the highlight’s movement rate. Press <kbd>Esc</kbd> to stop highlighting.</p>
+			<p>Many <router-link to="keyboard-shortcuts#kbsc-list-editor">keyboard shortcuts</router-link> are available for doing actions involving the card list’s currently highlighted row. A row is highlighted when the card bar in that row has its colored outline appear, and the adjacent card quantity and star elements have an orange outline appear. You can change which row is highlighted by pressing the <kbd>S</kbd> key to move the highlight down the list by one row, or <kbd>W</kbd> to move it up. Hold <kbd class="shift-key">Shift</kbd> while pressing <kbd>S</kbd> or <kbd>W</kbd> to multiply the highlight’s movement rate. Press <kbd>Esc</kbd> to stop highlighting.</p>
 
 			<section id="card-stars">
 				<h5>Card Stars</h5>
@@ -149,10 +149,10 @@
 						<p>In a deck for the Commander (or EDH) format, you could star the name of the designated commander card.</p>
 					</li>
 					<li>
-						<p>When you’re in the process of building a <a href="#start-new-deck">new deck</a>, you could star a  certain combination of some card names. Then, go to the <a href="#stats-analyzer">Stats Analyzer</a> and <a href="#statistics-filter">filter the data</a> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
+						<p>When you’re in the process of building a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a  certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
 					</li>
 				</ul>
-				<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <a href="#keyboard-shortcuts">keyboard shortcuts</a>.</p>
+				<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>
 				<p>If your deck has at least one card name that’s starred, then the next time you open the deck, the last starred card you had viewed will have its <a href="#card-image">card image</a> shown.</p>
 			</section>
 
@@ -202,20 +202,20 @@
 					</li>
 				</ul>
 				<p>To completely remove a card name from a card list, decrease its quantity down to 0, or delete the quantity number. Before the name actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the name stays in your deck with its quantity reset to 1.</p>
-				<p>You can adjust card names’ quantities using <a href="#keyboard-shortcuts">keyboard shortcuts</a> on the currently highlighted row of the card list:</p>
+				<p>You can adjust card names’ quantities using <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link> on the currently highlighted row of the card list:</p>
 				<ul>
 					<li>Press <kbd>E</kbd> to increase the quantity by 1, or <kbd>D</kbd> to decrease it by 1. </li>
 					<li>Press <kbd>F</kbd> to move 1 card into the inactive card group.</li>
 					<li>Hold down <kbd class="shift-key">Shift</kbd> while pressing one of the aforementioned keys to adjust the quantity by 2 instead of 1.</li>
 				</ul>
-				<p>Conforming to the standard gameplay <a href="#game-rules">rules of <i>Magic</i></a>, MTG Deck Builder prevents you from setting almost any card name to a quantity greater than 4. Exceptions are the basic lands, and a few certain cards with abilities that specially raise their quantity limits.</p>
+				<p>Conforming to the standard gameplay <router-link to="intro#game-rules">rules of <i>Magic</i></router-link>, MTG Deck Builder prevents you from setting almost any card name to a quantity greater than 4. Exceptions are the basic lands, and a few certain cards with abilities that specially raise their quantity limits.</p>
 			</section>
 		</section>
 
 		<section id="scryfall-button">
 			<h4>Scryfall Advanced Search Button</h4>
 			<p>The number of distinct cards that exist in all of <i>Magic: The Gathering</i> is overwhelmingly huge. So, how can you reasonably know which ones to consider for your deck? A helpful solution to this is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced card search</a>, where you can browse through a filtered list of <i>Magic</i> cards matching only the combination of attributes you specify.</p>
-			<p>In the <a href="#list-editor">List Editor</a>, there’s a button labeled with the Scryfall logo and the words “Card Search.” Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. Alternatively, <a href="#keyboard-shortcuts">press the <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd></span> keys</a> to do that same action.</p>
+			<p>In the <a href="#list-editor">List Editor</a>, there’s a button labeled with the Scryfall logo and the words “Card Search.” Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. Alternatively, <router-link to="keyboard-shortcuts">press the <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd></span> keys</router-link> to do that same action.</p>
 			<p>(Note that Scryfall is a separate website from MTG Deck Builder, and Iristorm Design has no affiliation with Scryfall.)</p>
 			<p>Although MTG Deck Builder has been designed to be used alongside searches on Scryfall, it’s not required. You could use instead any other search engine for <i>Magic</i> cards, such as <a href="https://gatherer.wizards.com/" target="_blank">Gatherer</a>, or many online stores that sell <i>Magic</i> card singles.</p>
 			<p>Whenever you find a good card for your deck from your search, you can then return to MTG Deck Builder and enter that card’s name in the <a href="#card-adder">card adder</a>.</p>
@@ -232,7 +232,7 @@
 			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to be put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
 			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one the <a href="#card-groups">group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
 			<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three accepted kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>. Submit your query from the card adder by clicking the “Add” button, or by pressing the Enter/Return key on your keyboard.</p>
-			<p>The card adder adds only one card name at a time. If you want to add multiple names at a time, do that on the <a href="#card-list-entry">Card List Entry</a> page.</p>
+			<p>The card adder adds only one card name at a time. If you want to add multiple names at a time, do that on the <router-link to="card-list-entry">Card List Entry</router-link> page.</p>
 
 			<section id="card-name-query">
 				<h5>Card Name Query</h5>
@@ -254,7 +254,7 @@
 				<h5>Other Information About the Card Adder</h5>
 				<ul>
 					<li>
-						<p>You can press the <kbd>X</kbd> key to have your web browser focus onto the <a href="#card-adder">card adder</a>’s text field. Press <kbd class="">Esc</kbd> to cancel your web browser’s focus on the text field, allowing the use of other <a href="#keyboard-shortcuts">keyboard shortcuts</a>.</p>
+						<p>You can press the <kbd>X</kbd> key to have your web browser focus onto the <a href="#card-adder">card adder</a>’s text field. Press <kbd class="">Esc</kbd> to cancel your web browser’s focus on the text field, allowing the use of other <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>
 					</li>
 					<li>
 						<p>Card queries are case insensitive (meaning it doesn’t matter whether you type letters as uppercase or lowercase).</p>
@@ -274,7 +274,7 @@
 
 		<section id="add-multiple">
 			<h4>“Add Multiple” Button</h4>
-			<p>Located next to the <a href="#card-adder">card adder</a> in the <a href="#list-editor">List Editor</a> is the “Add Multiple” button. Click it if you want to go to the <a href="#card-list-entry">Card List Entry page</a>.</p>
+			<p>Located next to the <a href="#card-adder">card adder</a> in the <a href="#list-editor">List Editor</a> is the “Add Multiple” button. Click it if you want to go to the <router-link to="card-list-entry">Card List Entry page</router-link>.</p>
 		</section>
 	</section>
 </template>
