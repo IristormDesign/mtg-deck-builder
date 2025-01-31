@@ -210,6 +210,9 @@
 			border-top-right-radius: 0;
 			border-top-left-radius: 0;
 
+			.scrollable-region {
+				max-height: 100%;
+			}
 			h3 {
 				text-align: center;
 				margin-bottom: $lhse;
@@ -271,10 +274,6 @@
 		}
 		.table-of-contents {
 			border-radius: 0;
-
-			.scrollable-region {
-				max-height: 100%;
-			}
 		}
 		.manual-contents {
 			> section {
