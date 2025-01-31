@@ -38,7 +38,7 @@
 
 		<section id="exclude-starred-cards">
 			<h4>“Exclude Starred Cards” Checkbox</h4>
-			<p>This appears only under the conditions that your deck’s main <router-link to="list-editor#card-groups">card group</router-link> has at least one <a href="#card-stars">starred</a> card, and that the Draw Simulator’s <a href="#draw-sim-card-list">card list</a> is currently empty.</p>
+			<p>This appears only under the conditions that your deck’s main <router-link to="list-editor#card-groups">card group</router-link> has at least one <router-link to="list-editor#card-stars">starred</router-link> card, and that the Draw Simulator’s <a href="#draw-sim-card-list">card list</a> is currently empty.</p>
 			<p>Check the “Exclude starred cards” checkbox to prevent <a href="#draw-a-card">drawing</a> any cards with a star during your next testing round. Uncheck it to be able to draw all cards regardless of whether they have a star.</p>
 			<p>This option is especially intended for Commander-format decks, where the commander card exists outside the library from the beginning of a game, and it’s the only starred card in your deck in this app.</p>
 		</section>
