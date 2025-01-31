@@ -42,7 +42,7 @@
 
 		.scrollable-region {
 			overflow-y: auto;
-			max-height: calc(100vh - $margin-sections*2 - $lhse);
+			max-height: calc(100vh - $margin-sections*2);
 			padding: $lhse*.5 $lhse*.5;
 		}
 		h3 {
