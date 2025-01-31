@@ -278,10 +278,9 @@ export default {
 		)
 	},
 	updated () {
-		if (
-			this.$route.path !== '/guide/intro' &&
-			!this.$route.hash
-		) {
+		if (this.$route.hash) {
+			this.setTargetedSection(this.$route.hash)
+		} else if (this.$route.path !== '/guide/intro') {
 			this.scrollToTopOfGuideContents()
 		}
 
