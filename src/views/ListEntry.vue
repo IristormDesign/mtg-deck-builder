@@ -3,7 +3,7 @@
 		<h3>Card List Entry</h3>
 		<template v-if="!isLoadingCards">
 			<header class="intro">
-				<p>Here you can add multiple card names at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/manual/#card-list-entry">(More info&hellip;)</router-link></p>
+				<p>Here you can add multiple card names at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/guide/#card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="columns">
 				<form>

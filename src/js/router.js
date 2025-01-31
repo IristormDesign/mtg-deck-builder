@@ -11,75 +11,75 @@ const routes = [
 		component: HomePage
 	},
 	{
-		name: 'manual',
-		path: '/manual',
-		component: () => import(/* webpackChunkName: "manual" */ '@/views/UserManual.vue'),
+		name: 'guide',
+		path: '/guide',
+		component: () => import(/* webpackChunkName: "guide" */ '@/views/UserGuide.vue'),
 		redirect: { name: 'manualIntro' },
 		children: [
 			{
 				name: 'manualIntro',
 				path: 'intro',
-				component: () => import(/* webpackChunkName: "manual-intro" */ '@/views/manual-chapters/ManualIntro.vue')
+				component: () => import(/* webpackChunkName: "guide-intro" */ '@/views/guide-chapters/GuideIntro.vue')
 			},
 			{
 				name: 'manualAppHeader',
 				path: 'app-header',
-				component: () => import(/* webpackChunkName: "manual-app-header" */ '@/views/manual-chapters/AppHeader.vue')
+				component: () => import(/* webpackChunkName: "guide-app-header" */ '@/views/guide-chapters/AppHeader.vue')
 			},
 			{
 				name: 'manualCreateDeck',
 				path: 'create-deck',
-				component: () => import(/* webpackChunkName: "manual-create-deck" */ '@/views/manual-chapters/CreateDeckPage.vue')
+				component: () => import(/* webpackChunkName: "guide-create-deck" */ '@/views/guide-chapters/CreateDeckPage.vue')
 			},
 			{
 				name: 'manualDeckPages',
 				path: 'deck-pages',
-				component: () => import(/* webpackChunkName: "manual-deck-pages" */ '@/views/manual-chapters/DeckPages.vue')
+				component: () => import(/* webpackChunkName: "guide-deck-pages" */ '@/views/guide-chapters/DeckPages.vue')
 			},
 			{
 				name: 'manualDeckPageHeader',
 				path: 'deck-page-header',
-				component: () => import(/* webpackChunkName: "manual-deck-page-header" */ '@/views/manual-chapters/DeckPageHeader.vue')
+				component: () => import(/* webpackChunkName: "guide-deck-page-header" */ '@/views/guide-chapters/DeckPageHeader.vue')
 			},
 			{
 				name: 'manualListEditor',
 				path: 'list-editor',
-				component: () => import(/* webpackChunkName: "manual-list-editor" */ '@/views/manual-chapters/ListEditor.vue')
+				component: () => import(/* webpackChunkName: "guide-list-editor" */ '@/views/guide-chapters/ListEditor.vue')
 			},
 			{
 				name: 'manualStatsAnalyzer',
 				path: 'stats-analyzer',
-				component: () => import(/* webpackChunkName: "manual-stats-analyzer" */ '@/views/manual-chapters/StatsAnalyzer.vue')
+				component: () => import(/* webpackChunkName: "guide-stats-analyzer" */ '@/views/guide-chapters/StatsAnalyzer.vue')
 			},
 			{
 				name: 'manualDrawSim',
 				path: 'draw-sim',
-				component: () => import(/* webpackChunkName: "manual-draw-sim" */ '@/views/manual-chapters/DrawSim.vue')
+				component: () => import(/* webpackChunkName: "guide-draw-sim" */ '@/views/guide-chapters/DrawSim.vue')
 			},
 			{
 				name: 'manualTextRenderer',
 				path: 'text-renderer',
-				component: () => import(/* webpackChunkName: "manual-text-renderer" */ '@/views/manual-chapters/TextRenderer.vue')
+				component: () => import(/* webpackChunkName: "guide-text-renderer" */ '@/views/guide-chapters/TextRenderer.vue')
 			},
 			{
 				name: 'manualCardListEntry',
 				path: 'card-list-entry',
-				component: () => import(/* webpackChunkName: "manual-card-list-entry" */ '@/views/manual-chapters/CardListEntry.vue')
+				component: () => import(/* webpackChunkName: "guide-card-list-entry" */ '@/views/guide-chapters/CardListEntry.vue')
 			},
 			{
 				name: 'manualKeyboardShortcuts',
 				path: 'keyboard-shortcuts',
-				component: () => import(/* webpackChunkName: "manual-keyboard-shortcuts" */ '@/views/manual-chapters/KeyboardShortcuts.vue')
+				component: () => import(/* webpackChunkName: "guide-keyboard-shortcuts" */ '@/views/guide-chapters/KeyboardShortcuts.vue')
 			},
 			{
 				name: 'manualStorageOfDeckData',
 				path: 'storage-of-deck-data',
-				component: () => import(/* webpackChunkName: "manual-storage-of-deck-data" */ '@/views/manual-chapters/StorageOfDeckData.vue')
+				component: () => import(/* webpackChunkName: "guide-storage-of-deck-data" */ '@/views/guide-chapters/StorageOfDeckData.vue')
 			},
 			{
 				name: 'manualAppDevelopment',
 				path: 'app-dev',
-				component: () => import(/* webpackChunkName: "manual-app-development" */ '@/views/manual-chapters/AppDevelopment.vue')
+				component: () => import(/* webpackChunkName: "guide-app-development" */ '@/views/guide-chapters/AppDevelopment.vue')
 			}
 		]
 	},

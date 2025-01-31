@@ -41,7 +41,7 @@
 					key="main-deck-no-cards"
 				>
 					<p>No cards have been added yet.</p>
-					<p>For help on how to use any part of the List Editor, see the <router-link to="/manual/#list-editor">user manual</router-link>.</p>
+					<p>For help on how to use any part of the List Editor, see the <router-link to="/guide/#list-editor">user guide</router-link>.</p>
 				</div>
 				<card-list-items
 					v-else

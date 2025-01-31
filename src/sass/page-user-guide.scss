@@ -1,6 +1,6 @@
 @import 'variables';
 
-.manual-page {
+.guide-page {
 	display: grid;
 	grid-template-columns: auto auto;
 	gap: $margin-sections;
@@ -15,7 +15,7 @@
 	}
 	header,
 	.table-of-contents,
-	.manual-contents {
+	.guide-contents {
 		background: $color-group-bg;
 		padding: $lhse $lhse*1.5;
 		border-radius: $border-radius-group;
@@ -99,7 +99,7 @@
 			}
 		}
 	}
-	.manual-contents {
+	.guide-contents {
 		width: 100%;
 		max-width: $max-width-content;
 		margin-right: auto;
@@ -192,7 +192,7 @@
 }
 
 @media (max-width: $min-width-app) {
-	.manual-page {
+	.guide-page {
 		display: block;
 
 		header {
@@ -224,7 +224,7 @@
 			column-gap: $lhse*2;
 			column-rule: $border-sections;
 		}
-		.manual-contents {
+		.guide-contents {
 			margin-top: 0;
 
 			> section {
@@ -239,12 +239,12 @@
 	}
 }
 @media (max-width: ($min-width-app*.875)) {
-	.manual-page {
+	.guide-page {
 		margin-bottom: $lhse;
 	}
 }
 @media (max-width: ($min-width-app*.75)) {
-	.manual-page {
+	.guide-page {
 		header {
 			padding-right: $lhse;
 			padding-left: $lhse;
@@ -252,7 +252,7 @@
 		.toc-links {
 			columns: 2;
 		}
-		.manual-contents {
+		.guide-contents {
 			padding: 0;
 
 			> section {
@@ -262,9 +262,9 @@
 	}
 }
 @media (max-width: $width-mobile-breakpoint) {
-	.manual-page {
+	.guide-page {
 		header,
-		.manual-contents {
+		.guide-contents {
 			display: block;
 			border-radius: 0;
 		}
@@ -275,7 +275,7 @@
 		.table-of-contents {
 			border-radius: 0;
 		}
-		.manual-contents {
+		.guide-contents {
 			> section {
 				border-radius: 0 !important;
 				padding-right: $lhse*.75;
@@ -291,13 +291,13 @@
 	}
 }
 @media (max-width: ($width-mobile-breakpoint*.8)) {
-	.manual-page {
+	.guide-page {
 		.toc-links {
 			columns: 1;
 			margin-right: auto;
 			margin-left: auto;
 		}
-		.manual-contents {
+		.guide-contents {
 			footer {
 				ul {
 					flex-wrap: wrap;
@@ -321,7 +321,7 @@
 	}
 }
 @media (pointer: coarse) {
-	.manual-page {
+	.guide-page {
 		.table-of-contents {
 			a {
 				min-height: $lhse*1.25;

@@ -58,8 +58,8 @@
 		<div class="final-call-to-action texture-bg">
 			<div class="wrap">
 				<div class="button-container">
-					<router-link to="manual" :class="'button'">
-						<div>Read the<br/> User Manual</div>
+					<router-link to="guide" :class="'button'">
+						<div>Read the<br/> User Guide</div>
 					</router-link>
 				</div>
 

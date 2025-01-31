@@ -81,7 +81,7 @@ export default {
 					}
 				)
 				.then(response => {
-					/* The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user manually typed in a URL with an incorrect card set codename or collector number. */
+					/* The app has successfully connected to the Scryfall API, but still check that valid card data exists from the user's query. The data could be invalid at this step if the user guidely typed in a URL with an incorrect card set codename or collector number. */
 					try {
 						this.assignCardData(response.data.data[0])
 					} catch {

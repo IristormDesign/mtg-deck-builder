@@ -20,7 +20,7 @@
 
 		<section id="kbsc-list-editor">
 			<h4>Keyboard Shortcuts: List Editor Actions</h4>
-			<p>The <a href="#list-editor">List Editor mode</a> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all to be explained in the next subchapters of this user manual.</p>
+			<p>The <a href="#list-editor">List Editor mode</a> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all to be explained in the next subchapters of this user guide.</p>
 			<p>Among the List Editor’s keyboard shortcuts, the majority of them do actions that in some way involve the <a href="#card-list">card list</a>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <a href="#card-image">card image</a> becomes highlighted.</p>
 
 			<h5>Highlighting Rows in the Card List</h5>

@@ -1,7 +1,7 @@
 <template>
-	<article class="manual-page content-box">
+	<article class="guide-page content-box">
 		<header>
-			<h2>User Manual</h2>
+			<h2>User Guide</h2>
 		</header>
 
 		<nav class="table-of-contents" aria-label="Table of Contents">
@@ -11,8 +11,8 @@
 					<ol>
 						<li v-for="chapter in chapters" :key="chapter.path">
 							<router-link
-								:to="{path: `/manual/${chapter.path}`}"
-								@click.native="scrollToTopOfManualContents()"
+								:to="{path: `/guide/${chapter.path}`}"
+								@click.native="scrollToTopOfGuideContents()"
 							>
 								{{ chapter.name }}
 							</router-link>
@@ -23,19 +23,19 @@
 									:key="subchapter.hash"
 								>
 									<router-link
-										:to="{path: '/manual/' + chapter.path + subchapter.hash}"
+										:to="{path: '/guide/' + chapter.path + subchapter.hash}"
 										@click.native="setTargetedSection(subchapter.hash)"
 									>
 										{{ subchapter.name }}
 									</router-link>
 
-									<ol v-if="subchapter.subchapters && $route.path === '/manual/' + chapter.path">
+									<ol v-if="subchapter.subchapters && $route.path === '/guide/' + chapter.path">
 										<li
 											v-for="subSubchapter in subchapter.subchapters"
 											:key="subSubchapter.hash"
 										>
 											<router-link
-												:to="{path: '/manual/' + chapter.path + subSubchapter.hash}"
+												:to="{path: '/guide/' + chapter.path + subSubchapter.hash}"
 												@click.native="setTargetedSection(subSubchapter.hash)"
 											>
 												{{ subSubchapter.name }}
@@ -50,20 +50,20 @@
 			</div>
 		</nav>
 
-		<div class="manual-contents">
+		<div class="guide-contents">
 			<router-view />
 
 			<footer>
 				<ul>
 					<li v-if="getAdjacentChapters().prev">
 						<strong>Previous Chapter</strong>
-						<router-link :to="{path: `/manual/${getAdjacentChapters().prev.path}`}">
+						<router-link :to="{path: `/guide/${getAdjacentChapters().prev.path}`}">
 							← {{ getAdjacentChapters().prev.name }}
 						</router-link>
 					</li>
 					<li v-if="getAdjacentChapters().next">
 						<strong>Next Chapter</strong>
-						<router-link :to="{path: `/manual/${getAdjacentChapters().next.path}`}">
+						<router-link :to="{path: `/guide/${getAdjacentChapters().next.path}`}">
 							{{ getAdjacentChapters().next.name }} →
 						</router-link>
 					</li>
@@ -285,10 +285,10 @@ export default {
 	},
 	updated () {
 		if (
-			this.$route.path !== '/manual/intro' &&
+			this.$route.path !== '/guide/intro' &&
 			!this.$route.hash
 		) {
-			this.scrollToTopOfManualContents()
+			this.scrollToTopOfGuideContents()
 		}
 
 		document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
@@ -303,7 +303,7 @@ export default {
 	methods: {
 		setTargetedSection (target) {
 			this.$nextTick(() => {
-				const sections = document.querySelectorAll('.manual-contents section')
+				const sections = document.querySelectorAll('.guide-contents section')
 
 				for (const section of sections) {
 					if ('#' + section.id === target) {
@@ -316,9 +316,9 @@ export default {
 				}
 			})
 		},
-		scrollToTopOfManualContents () {
+		scrollToTopOfGuideContents () {
 			this.$nextTick(() => {
-				const manualContents = document.querySelector('.manual-contents')
+				const manualContents = document.querySelector('.guide-contents')
 
 				if (!manualContents) return
 
@@ -360,7 +360,7 @@ export default {
 
 			const doIntersectionEffect = (observedSection) => {
 				tocLinks.forEach(link => {
-					const regexPrimaryChapter = new RegExp(`/manual/${observedSection.target.id}$`, 'i')
+					const regexPrimaryChapter = new RegExp(`/guide/${observedSection.target.id}$`, 'i')
 					const regexChapterID = new RegExp(`#${observedSection.target.id}$`, 'i')
 
 					const linkMatchesWithChapter = () => {
@@ -391,7 +391,7 @@ export default {
 		},
 		highlightPrimaryTOCLinkWhenAtPrimaryChapter () {
 			let lastElInTopChapterSection = document.querySelectorAll(
-				'.manual-contents > section > :not(section)'
+				'.guide-contents > section > :not(section)'
 			)
 			lastElInTopChapterSection = lastElInTopChapterSection[
 				lastElInTopChapterSection.length - 1
@@ -416,7 +416,7 @@ export default {
 		},
 		getAdjacentChapters () {
 			const index = this.chapters.findIndex(
-				chapter => '/manual/' + chapter.path === this.$route.path
+				chapter => '/guide/' + chapter.path === this.$route.path
 			)
 			const prev = this.chapters[index - 1]
 			const next = this.chapters[index + 1]
@@ -428,5 +428,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-user-manual.scss';
+	@import '@/sass/page-user-guide.scss';
 </style>

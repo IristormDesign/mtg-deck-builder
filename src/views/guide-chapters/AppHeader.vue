@@ -5,7 +5,7 @@
 		<ul>
 			<li><strong>Create Deck</strong> – Takes you to the <a href="#create-deck">Create Deck page</a>.</li>
 			<li><strong>Open Deck</strong> – Shows the <a href="#deck-menu">deck menu</a>.</li>
-			<li><strong>User Manual</strong> – Takes you to the page you’re reading right now.</li>
+			<li><strong>User Guide</strong> – Takes you to the page you’re reading right now.</li>
 		</ul>
 
 		<section id="deck-menu">

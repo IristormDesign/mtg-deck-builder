@@ -64,7 +64,7 @@
 						/>
 						<label for="exclude-starred">Exclude starred cards</label>
 					</div>
-					<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/manual/#draw-sim">user manual</router-link>.</p>
+					<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/guide/#draw-sim">user guide</router-link>.</p>
 				</div>
 				<div
 					v-else
