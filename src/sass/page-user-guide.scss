@@ -33,7 +33,7 @@
 		// @include glowing-edges-of-scrollable-container; // Disabling this until I can think of another way to do this effect without causing the text color to dim in Chrome.
 		color: $color-text-darker;
 		height: min-content;
-		max-width: $lhse*9;
+		width: $lhse*9;
 		position: sticky;
 		top: $margin-sections;
 		left: 0;

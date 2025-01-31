@@ -17,7 +17,7 @@
 								{{ chapter.name }}
 							</router-link>
 
-							<ol v-if="chapter.subchapters">
+							<ol v-if="chapter.subchapters && $route.path === '/guide/' + chapter.path">
 								<li
 									v-for="subchapter in chapter.subchapters"
 									:key="subchapter.hash"
@@ -29,7 +29,7 @@
 										{{ subchapter.name }}
 									</router-link>
 
-									<ol v-if="subchapter.subchapters && $route.path === '/guide/' + chapter.path">
+									<ol v-if="subchapter.subchapters">
 										<li
 											v-for="subSubchapter in subchapter.subchapters"
 											:key="subSubchapter.hash"
@@ -230,10 +230,46 @@ export default {
 					]
 				}, {
 					name: 'Draw Simulator',
-					path: 'draw-sim'
+					path: 'draw-sim',
+					subchapters: [
+						{
+							name: '“Cards in Library” Statistic',
+							hash: '#cards-in-library'
+						}, {
+							name: '“Drawn Cards” Statistic',
+							hash: '#drawn-cards'
+						}, {
+							name: '“Draw a Card” Button',
+							hash: '#draw-a-card'
+						}, {
+							name: '“Restart” Button',
+							hash: '#restart'
+						}, {
+							name: '“Exclude Starred Cards” Checkbox',
+							hash: '#exclude-starred-cards'
+						}, {
+							name: 'Card List Section',
+							hash: '#draw-sim-card-list'
+						}, {
+							name: 'Card Image Section',
+							hash: '#draw-sim-card-image'
+						}
+					]
 				}, {
 					name: 'Text Renderer',
-					path: 'text-renderer'
+					path: 'text-renderer',
+					subchapters: [
+						{
+							name: 'Export Deck as Text File',
+							hash: '#export-deck-as-text-file'
+						}, {
+							name: 'Print Deck',
+							hash: '#print-deck'
+						}, {
+							name: 'Copy Card Lists',
+							hash: '#copy-card-lists'
+						}
+					]
 				}, {
 					name: 'Keyboard Shortcuts',
 					path: 'keyboard-shortcuts',
