@@ -84,6 +84,16 @@ const routes = [
 		]
 	},
 	{
+		path: '/manual',
+		redirect: { name: 'guide' },
+		children: [
+			{
+				path: '*',
+				redirect: { name: 'guide' }
+			}
+		]
+	},
+	{
 		name: 'createDeck',
 		path: '/create-deck',
 		component: () => import(/* webpackChunkName: "create-deck" */ '@/views/CreateDeck.vue')

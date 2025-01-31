@@ -9,7 +9,7 @@
 		</template>
 		<template v-else>
 			<header class="intro">
-				<p>In the checklist below, select the decks that you want to save as a deck archive file, then click the Archive Selected button. <router-link :to="{path: '/guide/#archive-action'}">(More info&hellip;)</router-link></p>
+				<p>In the checklist below, select the decks that you want to save as a deck archive file, then click the Archive Selected button. <router-link to="/guide/deck-page-header#archive-action">(More info&hellip;)</router-link></p>
 			</header>
 			<form>
 				<div
