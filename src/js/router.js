@@ -179,13 +179,13 @@ const router = new VueRouter({
 	base: process.env.BASE_URL,
 	routes,
 	scrollBehavior (to, from, savedPosition) {
-		if (to.hash) {
+		if (savedPosition) {
+			return savedPosition
+		} else if (to.hash) {
 			return {
 				selector: to.hash,
 				offset: { y: 26.6667 } // Equal to $lhse at standard font size
 			}
-		} else if (savedPosition) {
-			return savedPosition
 		} else {
 			return { x: 0, y: 0 }
 		}
