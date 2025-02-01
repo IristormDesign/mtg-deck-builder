@@ -33,7 +33,7 @@
 				/>
 			</p>
 			<p>The <a href="#deck-page-header">deck page header</a>’s basic statistics section shows some data about how your currently <router-link to="app-header#deck-menu">open deck</router-link> is composed.</p>
-			<p>All but one of these statistics regard your deck’s main <router-link to="list-editor#card-groups">card group</router-link> alone (not also the sideboard). Also all but one of these statistics account for card names’s quantities. Whenever you modify your deck, the statistics immediately update as needed.</p>
+			<p>All but one of these statistics regard your deck’s main card group alone (not also the <router-link to="list-editor#sideboard-uses">sideboard group</router-link>). Also all but one of these statistics account for card names’s quantities. Whenever you modify your deck, the statistics immediately update as needed.</p>
 			<p>The basic statistics section displays the following deck information:</p>
 			<ul>
 				<li>
@@ -57,7 +57,7 @@
 
 		<section id="mode-menu">
 			<h4>Mode Menu</h4>
-			<p>The mode menu is a section of the <router-link to="deck-page-header">deck page header</router-link> that features a tab for each <router-link to="deck-pages#deck-page-modes">deck page mode</router-link>. (The modes are the <router-link to="list-editor">List Editor</router-link>, <router-link to="stats-analyzer">Stats Analyzer</router-link>, <router-link to="draw-sim">Draw Simulator</router-link>, and <router-link to="text-renderer">Text Renderer</router-link>.)</p>
+			<p>The mode menu is a section of the <router-link to="deck-page-header">deck page header</router-link> that features a row of tabs, one for each <router-link to="deck-pages#deck-page-modes">deck page mode</router-link>. (The modes are the <router-link to="list-editor">List Editor</router-link>, <router-link to="stats-analyzer">Stats Analyzer</router-link>, <router-link to="draw-sim">Draw Simulator</router-link>, and <router-link to="text-renderer">Text Renderer</router-link>.)</p>
 			<p>Click a tab in the mode menu, or use a <router-link to="keyboard-shortcuts#kbsc-deck-page-modes">keyboard shortcut</router-link>, to set the <router-link to="deck-pages">deck page</router-link> to your chosen mode. The active mode’s tab is highlighted with a gray background.</p>
 		</section>
 

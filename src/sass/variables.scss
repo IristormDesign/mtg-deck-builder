@@ -45,7 +45,7 @@ $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
 $color-subtle-bluish-shadow-base: darken($color-mythic-complement, 50%);
-$color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .5);
+$color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .3820);
 
 /* INDIGO-BASED COLORS */
 // $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement

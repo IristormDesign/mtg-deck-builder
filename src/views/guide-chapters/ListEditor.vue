@@ -1,8 +1,9 @@
 <template functional>
 	<section id="list-editor" key="list-editor">
 		<h3>List Editor</h3>
-		<p>The List Editor is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view, add, remove, and organize every card in your deck.</p>
-		<p>The page for the List Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page (as they appear on a wide computer screen) from top to bottom, left to right:</p>
+		<p>The List Editor is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view, add, remove, and organize every card in your deck. You’ll probably spend more time in the List Editor than in the other modes.</p>
+		<p>Whenever you open a deck from the <router-link to="app-header#deck-menu">deck menu</router-link>, the List Editor is the deck page mode that you’re shown by default. If you’ve set the <router-link to="deck-pages">deck page</router-link> to another mode, you can return to the List Editor by clicking its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link> or by <router-link to="keyboard-shortcuts">pressing the <kbd>1</kbd> key</router-link>.</p>
+		<p>The content of the List Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page (as they appear on a wide computer screen) from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#card-image">Card image</a></li>
 			<li><a href="#card-sorter">Card sorter</a></li>
@@ -111,7 +112,7 @@
 				<p>The sideboard is a <a href="#card-groups">card group</a> containing cards that are related to your <i>Magic</i> deck, but that aren’t in your deck’s main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 				<ul>
 					<li>
-						<p>When you’re in the process of making a <router-link to="create-deck#start-new-deck">new deck</router-link>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might find the sideboard helpful for this purpose because the cards it contains don’t meddle with the data in your deck’s <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> or the <router-link to="stats-analyzer">Stats Analyzer</router-link>, except for the Last Edit statistic.</p>
+						<p>When you’re in the process of making a <router-link to="create-deck#start-new-deck">new deck</router-link>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might like the sideboard for this purpose because the cards it contains don’t meddle with the data in the  <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> or <router-link to="stats-analyzer">Stats Analyzer</router-link>, with the special exception of the “Last Edit” statistic.</p>
 					</li>
 					<li>
 						<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch versus an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>

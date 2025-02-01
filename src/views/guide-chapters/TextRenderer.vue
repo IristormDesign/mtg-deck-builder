@@ -1,8 +1,7 @@
 <template functional>
 	<section id="text-renderer" key="text-renderer">
 		<h3>Text Renderer</h3>
-		<p>The Text Renderer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view the cards in your deck’s <a href="list-editor#card-groups">main and sideboard groups</a> in the form of simplified card lists in plain text.</p>
-		<p>These plain-text lists have one card name per line, with each name preceded by its <router-link to="list-editor#card-quantities">quantity</router-link>. (This textual card list format is the same one used for <router-link to="card-list-entry">adding card lists</router-link> to your deck.)</p>
+		<p>The Text Renderer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view the card lists of your deck in the form of plain text.</p>
 		<p>Why would you want to see your deck in the form of plain text?</p>
 		<ul>
 			<li>
@@ -12,10 +11,12 @@
 				<p><strong>Print out a hard copy of your deck lists.</strong> A text document is better suited for printing on paper than the web page of the <router-link to="list-editor">List Editor</router-link>.</p>
 			</li>
 			<li>
-				<p><strong>Share your deck over the Internet.</strong> A plain-text card list is in a human-readable format as it is. It doesn’t require other people to use MTG Deck Builder to see the list, unlike <router-link to="storage-of-deck-data#deck-archive-files">deck archive files</router-link>. (However, an archive file can <router-link to="deck-page-header#archive-action">save</router-link> and <router-link to="create-deck#replicate-archived-decks">replicate</router-link> multiple decks together, and has additional data about decks that’s missing from plain-text lists.)</p>
+				<p><strong>Share your deck over the Internet.</strong> A plain-text card list is in a human-readable format as it is. It doesn’t require other people to use MTG Deck Builder to see the list, unlike <router-link to="storage-of-deck-data#deck-archive-files">deck archive files</router-link>. (However, an archive file can <router-link to="deck-page-header#archive-action">save</router-link> and <router-link to="create-deck#replicate-archived-decks">replicate</router-link> multiple decks together, and has extra data about decks that’s missing from plain-text lists.)</p>
 			</li>
 		</ul>
-		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <router-link to="list-editor#card-list">card lists</router-link>. So, if you care about the order, then use the <router-link to="list-editor#card-sorter">card sorter</router-link> in the List Editor to rearrange the names in the way you prefer before you <router-link to="deck-page-header#mode-menu">switch to</router-link> the Text Renderer.</p>
+		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Text Renderer mode, click its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>4</kbd> key</router-link> (while on the deck page).</p>
+		<p>The plain-text card lists from the Text Renderer have one card name per line, with each name preceded by its <router-link to="list-editor#card-quantities">quantity</router-link>. (This textual list format is the same one used by the <router-link to="card-list-entry">Card List Entry page</router-link>.) Lists are provided for both the main and <router-link to="list-editor#sideboard-uses">sideboard</router-link> card groups.</p>
+		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <router-link to="list-editor#card-list">card lists</router-link>. So, if you care about the order, then use the <router-link to="list-editor#card-sorter">card sorter</router-link> in the List Editor to rearrange the names in the way you prefer before you switch to the Text Renderer.</p>
 		<p>If you want to take these plain-text card lists outside MTG Deck Builder, the Text Renderer has various buttons you can click that let you readily <a href="#export-deck-as-text-file">export</a>, <a href="#print-deck">print</a>, or <a href="#copy-card-lists">copy</a> them. These controls are explained in the next subchapters.</p>
 
 		<section id="export-deck-as-text-file">
