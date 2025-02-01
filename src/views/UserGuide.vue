@@ -308,23 +308,9 @@ export default {
 			})
 		},
 		scrollToTopOfGuideContents () {
-			this.$nextTick(() => {
-				const guideContents = document.querySelector('.guide-contents')
+			const guideContents = document.querySelector('.guide-contents')
 
-				if (!guideContents) return
-
-				guideContents.scrollIntoView()
-
-				const tocLinks = document.querySelectorAll('.toc-links a')
-
-				tocLinks.forEach(link => {
-					link.classList.remove('visible')
-
-					if (this.$route.path.includes(link.getAttribute('href'))) {
-						link.classList.add('visible')
-					}
-				})
-			})
+			guideContents.scrollIntoView()
 		},
 		getAdjacentChapters () {
 			const index = this.chapters.findIndex(
