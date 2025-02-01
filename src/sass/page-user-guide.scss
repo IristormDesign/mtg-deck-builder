@@ -30,7 +30,6 @@
 		}
 	}
 	.table-of-contents {
-		// @include glowing-edges-of-scrollable-container; // Disabling this until I can think of another way to do this effect without causing the text color to dim in Chrome.
 		color: $color-text-darker;
 		height: min-content;
 		width: $lhse*9;
@@ -41,6 +40,7 @@
 		overflow: hidden;
 
 		.scrollable-region {
+			@include glowing-edges-of-scrollable-container;
 			overflow-y: auto;
 			max-height: calc(100vh - $margin-sections*2);
 			padding: $lhse*.5 $lhse*.5;
@@ -53,7 +53,7 @@
 	.toc-links {
 		font-size: $font-size-small;
 		padding-left: $lhse*.25;
-		padding-bottom: $lhse*.75;
+		padding-bottom: $lhse*.25;
 
 		ol,
 		li {
@@ -114,10 +114,12 @@
 			padding: $lhse $lhse*1.5;
 		}
 		section {
+			scroll-margin: $lhse;
+
 			&:target,
 			&.target {
 				@keyframes highlight-section {
-					20% {
+					50% {
 						outline-color: $color-app-header-link;
 						color: #fff;
 					}
@@ -128,7 +130,7 @@
 				> h5:first-child {
 					outline: $lhse*.125 solid rgba($color-app-header-link, 0);
 					outline-offset: $lhse*.25;
-					animation: highlight-section 1s ease-in;
+					animation: highlight-section 1s ease-in-out;
 					z-index: 1;
 					position: relative;
 					border-radius: $border-radius-button;

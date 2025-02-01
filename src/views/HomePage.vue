@@ -44,12 +44,13 @@
 					<ul>
 						<li>Free of charge and free of advertisements</li>
 						<li>No account registration required</li>
-						<li>Add <i>Magic</i> cards to your decks with the card name search engine (powered by Scryfall)</li>
-						<li>Analyze statistics about your decks such as their average mana value, percentage of cards by certain attributes, and more</li>
-						<li>Instantly sort all cards in card lists by various methods to choose from</li>
+						<li>Add <i>Magic: The Gathering</i> cards to your decks with the card search engine (powered by Scryfall)</li>
+						<li>Instantly sort all cards in card lists by various methods you can choose from</li>
 						<li>See the image of any card in your decks</li>
-						<li>Switch between main and sideboard card lists per deck</li>
+						<li>See statistics about your decks, including their average mana value, the percentage of cards by various attributes, and more</li>
 						<li>Simulate drawing cards from your shuffled decks</li>
+						<li>Export your decks from this app to plain-text lists</li>
+						<li>Sideboard list per deck also provided</li>
 						<li>Attractive, user-friendly graphical interface</li>
 					</ul>
 				</div>

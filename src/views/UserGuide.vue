@@ -4,51 +4,11 @@
 			<h2>User Guide</h2>
 		</header>
 
-		<nav class="table-of-contents" aria-label="Table of Contents">
-			<div class="scrollable-region">
-				<h3>Table of Contents</h3>
-				<div class="toc-links">
-					<ol>
-						<li v-for="chapter in chapters" :key="chapter.path">
-							<router-link
-								:to="{path: `/guide/${chapter.path}`}"
-								@click.native="scrollToTopOfGuideContents()"
-							>
-								{{ chapter.name }}
-							</router-link>
-
-							<ol v-if="chapter.subchapters && $route.path === '/guide/' + chapter.path">
-								<li
-									v-for="subchapter in chapter.subchapters"
-									:key="subchapter.hash"
-								>
-									<router-link
-										:to="{path: '/guide/' + chapter.path + subchapter.hash}"
-										@click.native="setTargetedSection(subchapter.hash)"
-									>
-										{{ subchapter.name }}
-									</router-link>
-
-									<ol v-if="subchapter.subchapters">
-										<li
-											v-for="subSubchapter in subchapter.subchapters"
-											:key="subSubchapter.hash"
-										>
-											<router-link
-												:to="{path: '/guide/' + chapter.path + subSubchapter.hash}"
-												@click.native="setTargetedSection(subSubchapter.hash)"
-											>
-												{{ subSubchapter.name }}
-											</router-link>
-										</li>
-									</ol>
-								</li>
-							</ol>
-						</li>
-					</ol>
-				</div>
-			</div>
-		</nav>
+		<guide-table-of-contents
+			:chapters="chapters"
+			@clickedChapterLink="scrollToTopOfGuideContents"
+			@clickedSubchapterLink="setTargetedSection"
+		/>
 
 		<div class="guide-contents">
 			<router-view />
@@ -74,7 +34,10 @@
 </template>
 
 <script>
+import GuideTableOfContents from '@/components/GuideTableOfContents.vue'
+
 export default {
+	components: { GuideTableOfContents },
 	data () {
 		return {
 			chapters: [
@@ -304,30 +267,23 @@ export default {
 			]
 		}
 	},
-	mounted () {
-		// if (window.innerWidth > 960) { // The exact window width is equal to the pixel breakpoint when the table of contents section no longer stays on the side of the page when scrolling down.
-		this.highlightTOCLinkOfVisibleSection()
-		// }
-
-		window.addEventListener(
-			'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter
-		)
-	},
 	updated () {
 		if (this.$route.hash) {
-			this.setTargetedSection(this.$route.hash)
-		} else if (this.$route.path !== '/guide/intro') {
-			this.scrollToTopOfGuideContents()
+			const sections = document.querySelectorAll('.guide-contents section')
+			const targetSection = [...sections].find(
+				section => '#' + section.id === this.$route.hash
+			)
+
+			if (targetSection) {
+				this.setTargetedSection(this.$route.hash)
+			}
+		} else {
+			document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
+
+			if (this.$route.path !== '/guide/intro') {
+				this.scrollToTopOfGuideContents()
+			}
 		}
-
-		document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
-
-		this.highlightTOCLinkOfVisibleSection()
-	},
-	destroyed () {
-		window.removeEventListener(
-			'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter
-		)
 	},
 	methods: {
 		setTargetedSection (target) {
@@ -336,9 +292,11 @@ export default {
 
 				for (const section of sections) {
 					if ('#' + section.id === target) {
-						setTimeout(() => {
-							section.classList.add('target')
-						}, 125)
+						section.scrollIntoView({
+							behavior: 'instant',
+							block: 'start'
+						})
+						section.classList.add('target')
 					} else {
 						section.classList.remove('target')
 					}
@@ -356,8 +314,6 @@ export default {
 					block: 'start'
 				})
 
-				this.forceHighlightTOCLink()
-
 				const tocLinks = document.querySelectorAll('.toc-links a')
 
 				setTimeout(() => {
@@ -370,78 +326,6 @@ export default {
 					})
 				}, 1) // The timeout is needed to ensure the correct ToC link is highlighted after the scroll event.
 			})
-		},
-		highlightTOCLinkOfVisibleSection () {
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach(entry => {
-						if (entry.isIntersecting) {
-							doIntersectionEffect(entry)
-						}
-					})
-				}, {
-					rootMargin: '-50%'
-				}
-			)
-
-			const tocLinks = document.querySelectorAll('.toc-links a')
-			const tocContainer = document.querySelector('.table-of-contents .scrollable-region')
-
-			const doIntersectionEffect = (observedSection) => {
-				tocLinks.forEach(link => {
-					const regexPrimaryChapter = new RegExp(`/guide/${observedSection.target.id}$`, 'i')
-					const regexChapterID = new RegExp(`#${observedSection.target.id}$`, 'i')
-
-					const linkMatchesWithChapter = () => {
-						return (
-							regexPrimaryChapter.test(link.getAttribute('href')) ||
-							regexChapterID.test(link.getAttribute('href'))
-						)
-					}
-
-					if (linkMatchesWithChapter()) {
-						link.classList.add('visible')
-
-						tocContainer.scrollTo({
-							top: link.offsetTop - (16.6667 * 6), // The subtracted number is equal the links' line-height in pixels multiplied by an arbitrary number.
-							behavior: 'smooth'
-						})
-					} else {
-						link.classList.remove('visible')
-					}
-				})
-			}
-
-			const sections = document.querySelectorAll('section')
-
-			sections.forEach(section => {
-				observer.observe(section)
-			})
-		},
-		highlightPrimaryTOCLinkWhenAtPrimaryChapter () {
-			let lastElInTopChapterSection = document.querySelectorAll(
-				'.guide-contents > section > :not(section)'
-			)
-			lastElInTopChapterSection = lastElInTopChapterSection[
-				lastElInTopChapterSection.length - 1
-			]
-
-			if (window.scrollY <= lastElInTopChapterSection.getBoundingClientRect().bottom) {
-				this.forceHighlightTOCLink()
-			}
-		},
-		forceHighlightTOCLink () {
-			const tocLinks = document.querySelectorAll('.toc-links a')
-
-			setTimeout(() => {
-				tocLinks.forEach(link => {
-					link.classList.remove('visible')
-
-					if (this.$route.path.includes(link.getAttribute('href'))) {
-						link.classList.add('visible')
-					}
-				})
-			}, 1) // The timeout is needed to consistently ensure that the correct ToC link is highlighted after the scroll event.
 		},
 		getAdjacentChapters () {
 			const index = this.chapters.findIndex(

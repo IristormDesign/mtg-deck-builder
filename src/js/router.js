@@ -84,7 +84,7 @@ const routes = [
 		]
 	},
 	{
-		path: '/manual',
+		path: '/manual', // For any old links to the user guide.
 		redirect: { name: 'guide' },
 		children: [
 			{
@@ -193,8 +193,7 @@ const router = new VueRouter({
 			return savedPosition
 		} else if (to.hash) {
 			return {
-				selector: to.hash,
-				offset: { y: 26.6667 } // Equal to $lhse at standard font size
+				selector: to.hash
 			}
 		} else {
 			return { x: 0, y: 0 }

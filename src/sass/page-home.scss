@@ -83,7 +83,7 @@
 			color: $color-text-brighter;
 			border: $border-width-sections-thickest solid $color-group-bg-lighter;
 			border-color: $color-heading-bg;
-			box-shadow: 0 0 $lhse*1.5 rgba($color-subtle-bluish-shadow-base, .6667);
+			box-shadow: 0 0 $lhse*1.5 rgba($color-subtle-bluish-shadow-base, .75);
 			padding: $lhse*.25 $lhse*.875;
 			border-radius: $border-radius-small-button;
 			animation: .5s ease-in-out 2.25s forwards fade-in-text-box;
@@ -121,9 +121,9 @@
 		padding: $lhse*1.5 $lhse*.5;
 		position: relative;
 		background: $color-group-bg;
-		scroll-margin-top: $lhse;
 		border: solid $color-mythic-dim;
 		border-width: $border-width-sections-thickest 0 0;
+		scroll-margin: $height-app-header-short - $lhse*.5;
 
 		h2 {
 			margin-top: 0;
@@ -207,6 +207,13 @@
 		}
 	}
 }
+@media (max-width: $min-width-app) {
+	.home-page {
+		.app-features {
+			scroll-margin: $height-app-header-tall - $lhse*.5;
+		}
+	}
+}
 @media (max-width: ($min-width-app*.8333)) {
 	.home-page {
 		.intro {
@@ -267,6 +274,13 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 			li {
 				padding: 0;
 			}
+		}
+	}
+}
+@media (max-width: $max-width-mobile-header-menu) {
+	.home-page {
+		.app-features {
+			scroll-margin: $height-app-header-medium - $lhse*.5;
 		}
 	}
 }
