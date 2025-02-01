@@ -31,7 +31,7 @@
 				</li>
 			</ul>
 			<p>To make an archive file from a deck, click the <router-link to="deck-page-header#deck-actions">Deck Actions button</router-link> in the <router-link to="deck-page-header">deck page header</router-link>, which makes a menu appear. From that menu, select the “Archive&hellip;” option.</p>
-			<p>To view a deck from an archive, go to the <router-link to="create-deck">Create Deck page</router-link>. From there, click the button in the “Replicate Archived Decks” section, which lets you find and open a deck archive through the file browser of your computer or phone.</p>
+			<p>To view a deck from an archive, go to the <router-link to="create-deck">Create Deck page</router-link>. From there, click the button in the <router-link to="create-deck#replicate-archived-decks">Replicate Archived Decks</router-link> section.</p>
 		</section>
 	</section>
 </template>
