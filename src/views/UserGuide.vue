@@ -267,21 +267,23 @@ export default {
 			]
 		}
 	},
-	updated () {
-		if (this.$route.hash) {
-			const sections = document.querySelectorAll('.guide-contents section')
-			const targetSection = [...sections].find(
-				section => '#' + section.id === this.$route.hash
-			)
+	watch: {
+		'$route' () {
+			if (this.$route.hash) {
+				const sections = document.querySelectorAll('.guide-contents section')
+				const targetSection = [...sections].find(
+					section => '#' + section.id === this.$route.hash
+				)
 
-			if (targetSection) {
-				this.setTargetedSection(this.$route.hash)
-			}
-		} else {
-			document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
+				if (targetSection) {
+					this.setTargetedSection(this.$route.hash)
+				}
+			} else {
+				document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
 
-			if (this.$route.path !== '/guide/intro') {
-				this.scrollToTopOfGuideContents()
+				if (this.$route.path !== '/guide/intro') {
+					this.scrollToTopOfGuideContents()
+				}
 			}
 		}
 	},
