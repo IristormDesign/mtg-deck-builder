@@ -3,7 +3,7 @@
 		<h3>Draw Simulator</h3>
 		<p>The Draw Simulator is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can test the experience of drawing from a shuffled library of your deck’s cards. The Draw Simulator may help you gain more insight into how your deck could turn out in a game of <i>Magic</i>.</p>
 		<p>To set the <router-link to="deck-pages">deck page</router-link> to this mode, click the “Draw Simulator” tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>3</kbd> key</router-link> (while on the deck page). After testing a few rounds, if you’re dissatisfied with your deck’s drawing results, you always can go back to the <router-link to="list-editor">List Editor</router-link> to make adjustments.</p>
-		<p>The page for the Draw Simulator contains the following elements, listed by the order of their positions on the page from top to bottom, left to right:</p>
+		<p>The Draw Simulator contains the following elements, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#cards-in-library">“Cards in Library” statistic</a></li>
 			<li><a href="#drawn-cards">“Drawn Cards” statistic</a></li>
@@ -14,7 +14,7 @@
 			<li><a href="#draw-sim-card-image">Card image section</a></li>
 		</ol>
 		<p>Each of those elements is going to be explained in the next subchapters.</p>
-		<p>Note that the Draw Simulator does only a <em>simple</em> simulation of card drawing. During a real game, you could eventually encounter effects that change the original order of the cards to be drawn from your library. Such effects may include taking out a card from the middle of your library, and rearranging the order of some cards within your library.</p>
+		<p>Note that the Draw Simulator does only a <em>simple</em> simulation of card drawing. During a real game, you could eventually encounter effects that would somehow change the original order of the cards to be drawn. Such effects may include taking out a card from the middle of your library, and rearranging the order of some cards within your library.</p>
 
 		<section id="cards-in-library">
 			<h4>“Cards in Library” Statistic</h4>

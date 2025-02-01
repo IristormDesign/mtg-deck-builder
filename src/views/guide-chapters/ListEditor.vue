@@ -3,7 +3,7 @@
 		<h3>List Editor</h3>
 		<p>The List Editor is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view, add, remove, and organize every card in your deck. You’ll probably spend more time in the List Editor than in the other modes.</p>
 		<p>Whenever you open a deck from the <router-link to="app-header#deck-menu">deck menu</router-link>, the List Editor is the deck page mode that you’re shown by default. If you’ve set the <router-link to="deck-pages">deck page</router-link> to another mode, you can return to the List Editor by clicking its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link> or by <router-link to="keyboard-shortcuts">pressing the <kbd>1</kbd> key</router-link>.</p>
-		<p>The content of the List Editor comprises several different sections. These sections include the following, listed by the order of their positions on the page (as they appear on a wide computer screen) from top to bottom, left to right:</p>
+		<p>The List Editor contains several different sections. These sections are the following, listed by the order of their positions on the page (as they appear on a wide computer screen) from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#card-image">Card image</a></li>
 			<li><a href="#card-sorter">Card sorter</a></li>

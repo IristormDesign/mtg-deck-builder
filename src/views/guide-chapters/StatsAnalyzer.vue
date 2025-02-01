@@ -11,7 +11,7 @@
 				alt="Snippet of the Stats Analyzer mode" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The content of the Stats Analyzer has two major parts: the <a href="#data-tables">data tables</a> and the <a href="#statistics-filter">statistics filter</a>.</p>
+		<p>The Stats Analyzer contains two major elements: the array of <a href="#data-tables">data tables</a> and the <a href="#statistics-filter">statistics filter</a>.</p>
 
 		<section id="data-tables">
 			<h4>Data Tables</h4>

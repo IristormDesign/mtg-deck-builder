@@ -294,10 +294,10 @@ export default {
 
 				for (const section of sections) {
 					if ('#' + section.id === target) {
-						section.scrollIntoView({
-							behavior: 'instant',
-							block: 'start'
-						})
+						setTimeout(() => {
+							section.scrollIntoView()
+						}, 1)
+
 						section.classList.add('target')
 					} else {
 						section.classList.remove('target')
@@ -311,22 +311,17 @@ export default {
 
 				if (!guideContents) return
 
-				guideContents.scrollIntoView({
-					behavior: 'auto',
-					block: 'start'
-				})
+				guideContents.scrollIntoView()
 
 				const tocLinks = document.querySelectorAll('.toc-links a')
 
-				setTimeout(() => {
-					tocLinks.forEach(link => {
-						link.classList.remove('visible')
+				tocLinks.forEach(link => {
+					link.classList.remove('visible')
 
-						if (this.$route.path.includes(link.getAttribute('href'))) {
-							link.classList.add('visible')
-						}
-					})
-				}, 1) // The timeout is needed to ensure the correct ToC link is highlighted after the scroll event.
+					if (this.$route.path.includes(link.getAttribute('href'))) {
+						link.classList.add('visible')
+					}
+				})
 			})
 		},
 		getAdjacentChapters () {
