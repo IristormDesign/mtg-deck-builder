@@ -2,16 +2,16 @@
 	<section id="text-renderer" key="text-renderer">
 		<h3>Text Renderer</h3>
 		<p>The Text Renderer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view the card lists of your deck in the form of plain text.</p>
-		<p>Why would you want to see your deck in the form of plain text?</p>
+		<p>Why would you want to render your deck like this? Here are some reasons:</p>
 		<ul>
 			<li>
 				<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic</i> card singles, they provide you a way to search for a list of cards at once. Stores may call this list-searching method “mass entry,” “deck builder,” etc. You can copy your deck’s plain-text list from this app, then paste it into an online store’s mass entry search.</p>
 			</li>
 			<li>
-				<p><strong>Print out a hard copy of your deck lists.</strong> A text document is better suited for printing on paper than the web page of the <router-link to="list-editor">List Editor</router-link>.</p>
+				<p><strong>Print out a hard copy of your deck lists.</strong> A text document is well suited for printing on paper (unlike the web page of the <router-link to="list-editor">List Editor</router-link>).</p>
 			</li>
 			<li>
-				<p><strong>Share your deck over the Internet.</strong> A plain-text card list is in a human-readable format as it is. It doesn’t require other people to use MTG Deck Builder to see the list, unlike <router-link to="storage-of-deck-data#deck-archive-files">deck archive files</router-link>. (However, an archive file can <router-link to="deck-page-header#archive-action">save</router-link> and <router-link to="create-deck#replicate-archived-decks">replicate</router-link> multiple decks together, and has extra data about decks that’s missing from plain-text lists.)</p>
+				<p><strong>Easily share your deck over the Internet.</strong> A plain-text card list is in a simple, human-readable format, so you can show it to other people as it is. They don’t need to use MTG Deck Builder to view it, unlike <router-link to="storage-of-deck-data#deck-archive-files">deck archive files</router-link>. (However, a deck archive file can <router-link to="deck-page-header#archive-action">save</router-link> and <router-link to="create-deck#replicate-archived-decks">replicate</router-link> multiple decks together, and has extra data that’s missing from plain-text lists.)</p>
 			</li>
 		</ul>
 		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Text Renderer mode, click its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>4</kbd> key</router-link> (while on the deck page).</p>
