@@ -7,7 +7,7 @@
 			<h4>Start New Deck</h4>
 			<p>To start a new deck, go to the <a href="#create-deck">Create Deck page</a>. In the “New Deck” section, enter a name for your deck in the text input field, and click the Start button. Your deck is then created, and you’re automatically taken to its vacant <router-link to="deck-pages">deck page</router-link>.</p>
 			<p>Every deck you have in MTG Deck Builder must have a unique name. If you try to submit a deck name that another one of your decks already has, you’ll be prompted to give a different name instead.</p>
-			<p>Assemble your new deck in the <router-link to="list-editor">List Editor mode</router-link> using the <router-link to="list-editor#card-adder">card adder tool</router-link> or the <router-link to="list-editor#add-multiple">card list entry form</router-link>. For gaining ideas of cards to include, you can also browse through a <router-link to="list-editor#scryfall-button">Scryfall advanced search</router-link>.</p>
+			<p>Assemble your new deck in the <router-link to="list-editor">List Editor mode</router-link> using the <router-link to="list-editor#card-adder">card adder tool</router-link> or the <router-link to="card-list-entry">card list entry form</router-link>. For gaining ideas of cards you could include, you can also browse through a <router-link to="list-editor#scryfall-button">Scryfall advanced search</router-link>.</p>
 		</section>
 
 		<section id="replicate-archived-decks">
@@ -16,7 +16,7 @@
 			<p>To do so, click the “Open Deck Archive File” button on the <a href="#create-deck">Create Deck page</a>. This displays your computer’s or phone’s file browser, from where you can find the deck archive file (“.deck” extension) to open.</p>
 			<p>When opening an archive file, the app instantly creates replicas of every deck from that archive, putting the replicas’ data into this app’s <router-link to="storage-of-deck-data">data storage</router-link>. If an archive contains multiple decks but you don’t want to replicate <em>all</em> of them, you can <router-link to="deck-page-header#delete-action">delete</router-link> the unwanted ones afterward.</p>
 			<p>If you replicate an archived deck that happens to have the same name as an existing deck, then the replica <router-link to="deck-page-header#deck-name">deck’s name</router-link> is automatically changed to have a unique number within parentheses appended to it.</p>
-			<p>You can <router-link to="#list-editor">edit</router-link> replicated decks as you want, since their data is made independent of the archived decks’ data.</p>
+			<p>You can <router-link to="list-editor">edit</router-link> replicated decks as you want, since their data is made independent of the archived decks’ data.</p>
 			<p>Note that this app can replicate decks only from archive files that were <router-link to="deck-page-header#archive-action">saved</router-link> specifically from MTG Deck Builder by Iristorm Design. You can’t replicate decks from files saved from other apps, even if those other apps involve <i>Magic: The Gathering</i> or if they export files with a “.deck” extension. If you’d want to view a <i>Magic</i> deck that comes from somewhere other than MTG Deck Builder by Iristorm Design, you can <a href="#create-from-plain-text-list">create from a plain-text card list</a> instead.</p>
 		</section>
 

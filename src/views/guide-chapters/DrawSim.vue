@@ -29,13 +29,13 @@
 
 		<section id="draw-a-card">
 			<h4 id="draw-a-card">“Draw a Card” Button</h4>
-			<p>Click this button, or <router-link to="keyboard-shortcuts#kbsc-draw-sim">press the space bar</router-link>, to draw one card from your library. The drawn card’s name appears at the top of the <a href="#draw-sim-card-list">card list</a>, and the <a href="#draw-sim-card-image">card image</a> appears too (if the card image section is already visible on your device’s screen).</p>
+			<p>Click this button, or <router-link to="keyboard-shortcuts">press the space bar</router-link>, to draw one card from your library. The drawn card’s name appears at the top of the <a href="#draw-sim-card-list">card list</a>, and the <a href="#draw-sim-card-image">card image</a> appears too (if the card image section is already visible on your device’s screen).</p>
 			<p>You can keep drawing cards until your library is <a href="#cards-in-library">emptied</a>.</p>
 		</section>
 
 		<section id="restart">
 			<h4>“Restart” Button</h4>
-			<p>Click this button, or press the <kbd>R</kbd> key, anytime to begin a new testing round. This means that all drawn cards are returned to your <a href="#cards-in-library">library</a>, then your library is “shuffled” (the cards are rearranged in a new randomized order).</p>
+			<p>Click this button, or <router-link to="keyboard-shortcuts">press the <kbd>R</kbd> key</router-link>, anytime to begin a new testing round. This means that all drawn cards are returned to your <a href="#cards-in-library">library</a>, then your library is “shuffled” (the cards are rearranged in a new randomized order).</p>
 		</section>
 
 		<section id="exclude-starred-cards">

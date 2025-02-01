@@ -242,13 +242,37 @@ export default {
 							hash: '#kbsc-deck-page-modes'
 						}, {
 							name: 'List Editor Actions',
-							hash: '#kbsc-list-editor'
+							hash: '#kbsc-list-editor',
+							subchapters: [
+								{
+									name: 'Highlighting Rows in Card List',
+									hash: '#highlighting-rows'
+								},
+								{
+									name: 'Actions to Highlighted Row',
+									hash: '#actions-to-highlighted-row'
+								},
+								{
+									name: 'Other List Editor Actions',
+									hash: '#other-list-editor-actions'
+								}
+							]
 						}, {
 							name: 'Stats Analyzer Actions',
 							hash: '#kbsc-stats-analyzer'
 						}, {
 							name: 'Draw Simulator Actions',
-							hash: '#kbsc-draw-sim'
+							hash: '#kbsc-draw-sim',
+							subchapters: [
+								{
+									name: 'Unique Shortcuts to Draw Simulator',
+									hash: '#unique-shortcuts-to-draw-sim'
+								},
+								{
+									name: 'Matching Shortcuts with List Editor',
+									hash: '#matching-shortcuts-with-list-editor'
+								}
+							]
 						}
 					]
 				}, {
@@ -271,14 +295,7 @@ export default {
 		'$route' () {
 			this.$nextTick(() => {
 				if (this.$route.hash) {
-					const sections = this.$refs.guideContents.querySelectorAll('section')
-					const targetSection = [...sections].find(
-						section => '#' + section.id === this.$route.hash
-					)
-
-					if (targetSection) {
-						this.setTargetedSection(this.$route.hash)
-					}
+					this.setTargetedSection(this.$route.hash)
 				} else {
 					document.activeElement.blur() // Needed to prevent the adjacent chapter links from remaining focused when clicked.
 
@@ -288,6 +305,9 @@ export default {
 				}
 			})
 		}
+	},
+	mounted () {
+		this.setTargetedSection(this.$route.hash)
 	},
 	methods: {
 		setTargetedSection (target) {

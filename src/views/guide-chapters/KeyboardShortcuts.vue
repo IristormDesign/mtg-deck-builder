@@ -23,39 +23,45 @@
 			<p>The <router-link to="list-editor">List Editor mode</router-link> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all to be explained in the next subchapters of this user guide.</p>
 			<p>Among the List Editor’s keyboard shortcuts, the majority of them do actions that in some way involve the <router-link to="list-editor#card-list">card list</router-link>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <router-link to="list-editor#card-image">card image</router-link> becomes highlighted.</p>
 
-			<h5>Highlighting Rows in the Card List</h5>
-			<p>A <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
-			<ul class="keyboard-shortcuts">
-				<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
-				<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to a distant row above. (Specifically, the distance moved is equal to one-fifth of the card list’s total number of rows, to a maximum limit of 10 rows and a minimum of 2.)</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works the same as <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd></span> but in the opposite direction.)</li>
-				<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
-			</ul>
-			<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the list’s opposite end instead.</p>
+			<section id="highlighting-rows">
+				<h5>Highlighting Rows in the Card List</h5>
+				<p>A <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
+				<ul class="keyboard-shortcuts">
+					<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
+					<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to a distant row above. (Specifically, the distance moved is equal to one-fifth of the card list’s total number of rows, to a maximum limit of 10 rows and a minimum of 2.)</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works the same as <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd></span> but in the opposite direction.)</li>
+					<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
+				</ul>
+				<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the list’s opposite end instead.</p>
+			</section>
 
-			<h5>Actions to Highlighted Row</h5>
-			<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list.</p>
-			<ul class="keyboard-shortcuts">
-				<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the card’s page on Scryfall in a new browser tab.</li>
-				<li><kbd>Z</kbd>: Turn over the card image (only when it’s double-faced).</li>
-				<li><kbd>A</kbd>: Toggle the card name’s <router-link to="list-editor#card-stars">star label</router-link> on or off.</li>
-				<li><kbd>E</kbd>: Raise the card name’s <router-link to="list-editor#card-quantities">quantity</router-link> by 1.</li>
-				<li><kbd>D</kbd>: Lower the card name’s quantity by 1.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the card name’s quantity by 2.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
-				<li><kbd>F</kbd>: Move 1 of the card name into the inactive <router-link to="list-editor#card-groups">card group</router-link>.</li>
-			</ul>
+			<section id="actions-to-highlighted-row">
+				<h5>Actions to Highlighted Row</h5>
+				<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list.</p>
+				<ul class="keyboard-shortcuts">
+					<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the card’s page on Scryfall in a new browser tab.</li>
+					<li><kbd>Z</kbd>: Turn over the card image (only when it’s double-faced).</li>
+					<li><kbd>A</kbd>: Toggle the card name’s <router-link to="list-editor#card-stars">star label</router-link> on or off.</li>
+					<li><kbd>E</kbd>: Raise the card name’s <router-link to="list-editor#card-quantities">quantity</router-link> by 1.</li>
+					<li><kbd>D</kbd>: Lower the card name’s quantity by 1.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the card name’s quantity by 2.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
+					<li><kbd>F</kbd>: Move 1 of the card name into the inactive <router-link to="list-editor#card-groups">card group</router-link>.</li>
+				</ul>
+			</section>
 
-			<h5>Other List Editor Actions</h5>
-			<p>The following keyboard shortcuts work in the List Editor regardless of whichever card list row is highlighted, if any.</p>
-			<ul class="keyboard-shortcuts">
-				<li><kbd>Q</kbd>: Toggle the <router-link to="list-editor#card-sorter">card sorter</router-link>’s menu between visible and hidden.</li>
-				<li><kbd>R</kbd>: Toggle the active <router-link to="list-editor#card-groups">card group</router-link> between main and sideboard.</li>
-				<li><kbd>X</kbd>: Focus onto the <router-link to="list-editor#card-adder">card adder</router-link>’s text field.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open <router-link to="list-editor#scryfall-button">Scryfall’s advanced card search</router-link> page in a new browser tab.</li>
-			</ul>
+			<section id="other-list-editor-actions">
+				<h5>Other List Editor Actions</h5>
+				<p>The following keyboard shortcuts work in the List Editor regardless of whichever card list row is highlighted, if any.</p>
+				<ul class="keyboard-shortcuts">
+					<li><kbd>Q</kbd>: Toggle the <router-link to="list-editor#card-sorter">card sorter</router-link>’s menu between visible and hidden.</li>
+					<li><kbd>R</kbd>: Toggle the active <router-link to="list-editor#card-groups">card group</router-link> between main and sideboard.</li>
+					<li><kbd>X</kbd>: Focus onto the <router-link to="list-editor#card-adder">card adder</router-link>’s text field.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open <router-link to="list-editor#scryfall-button">Scryfall’s advanced card search</router-link> page in a new browser tab.</li>
+				</ul>
+			</section>
 		</section>
 
 		<section id="kbsc-stats-analyzer">
@@ -71,18 +77,22 @@
 			<h4>Keyboard Shortcuts: Draw Simulator Actions</h4>
 			<p>The <router-link to="draw-sim">Draw Simulator mode</router-link> accepts the following <a href="#keyboard-shortcuts">keyboard shortcuts</a>:</p>
 
-			<h5>Unique Shortcuts to Draw Simulator</h5>
-			<ul class="keyboard-shortcuts">
-				<li><kbd class="space-bar">Space</kbd>: <router-link to="draw-sim#draw-a-card">Draw a card</router-link>.</li>
-				<li><kbd>R</kbd>: <router-link to="draw-sim#restart">Restart</router-link> as a new testing round.</li>
-			</ul>
+			<section id="unique-shortcuts-to-draw-sim">
+				<h5>Unique Shortcuts to Draw Simulator</h5>
+				<ul class="keyboard-shortcuts">
+					<li><kbd class="space-bar">Space</kbd>: <router-link to="draw-sim#draw-a-card">Draw a card</router-link>.</li>
+					<li><kbd>R</kbd>: <router-link to="draw-sim#restart">Restart</router-link> as a new testing round.</li>
+				</ul>
+			</section>
 
-			<h5>Matching Shortcuts with List Editor</h5>
-			<ul class="keyboard-shortcuts">
-				<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
-				<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the displayed card’s page on Scryfall in a new browser tab.</li>
-				<li><kbd>Z</kbd>: Turn over the card image (only when it’s double-faced).</li>
-			</ul>
+			<section id="matching-shortcuts-with-list-editor">
+				<h5>Matching Shortcuts with List Editor</h5>
+				<ul class="keyboard-shortcuts">
+					<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the displayed card’s page on Scryfall in a new browser tab.</li>
+					<li><kbd>Z</kbd>: Turn over the card image (only when it’s double-faced).</li>
+				</ul>
+			</section>
 		</section>
 	</section>
 </template>
