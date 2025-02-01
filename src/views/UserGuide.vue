@@ -10,7 +10,7 @@
 			@clickedSubchapterLink="setTargetedSection"
 		/>
 
-		<div class="guide-contents">
+		<div class="guide-contents" ref="guideContents">
 			<router-view />
 
 			<footer>
@@ -271,7 +271,7 @@ export default {
 		'$route' () {
 			this.$nextTick(() => {
 				if (this.$route.hash) {
-					const sections = document.querySelectorAll('.guide-contents section')
+					const sections = this.$refs.guideContents.querySelectorAll('section')
 					const targetSection = [...sections].find(
 						section => '#' + section.id === this.$route.hash
 					)
@@ -292,13 +292,11 @@ export default {
 	methods: {
 		setTargetedSection (target) {
 			this.$nextTick(() => {
-				const sections = document.querySelectorAll('.guide-contents section')
+				const sections = this.$refs.guideContents.querySelectorAll('section')
 
 				for (const section of sections) {
 					if ('#' + section.id === target) {
-						setTimeout(() => {
-							section.scrollIntoView()
-						}, 1)
+						section.scrollIntoView()
 
 						section.classList.add('target')
 					} else {
@@ -308,9 +306,7 @@ export default {
 			})
 		},
 		scrollToTopOfGuideContents () {
-			const guideContents = document.querySelector('.guide-contents')
-
-			guideContents.scrollIntoView()
+			this.$refs.guideContents.scrollIntoView()
 		},
 		getAdjacentChapters () {
 			const index = this.chapters.findIndex(

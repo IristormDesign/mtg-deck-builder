@@ -93,7 +93,7 @@ export default {
 			const tocContainer = document.querySelector('.table-of-contents .scrollable-region')
 
 			const doIntersectionEffect = (observedSection) => {
-				tocLinks.forEach(link => {
+				for (const link of tocLinks) {
 					const regexPrimaryChapter = new RegExp(`/guide/${observedSection.target.id}$`, 'i')
 					const regexChapterID = new RegExp(`#${observedSection.target.id}$`, 'i')
 
@@ -114,7 +114,7 @@ export default {
 					} else {
 						link.classList.remove('visible')
 					}
-				})
+				}
 			}
 
 			const sections = document.querySelectorAll('section')

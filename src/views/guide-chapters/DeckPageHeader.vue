@@ -1,15 +1,14 @@
 <template functional>
 	<section id="deck-page-header" key="deck-page-header">
 		<h3>Deck Page Header</h3>
-		<p>By the top of a <router-link to="deck-pages">deck page</router-link> is the deck page header, which comprises the following sections:</p>
+		<p>By the top of a <router-link to="deck-pages">deck page</router-link> is the deck page header, which is always present across every <router-link to="deck-pages#deck-page-modes">deck page mode</router-link>. The deck page header consists of the following sections:</p>
 		<ul>
 			<li><a href="#deck-name">Deck name</a></li>
 			<li><a href="#basic-statistics">Basic statistics</a></li>
 			<li><a href="#mode-menu">Mode menu</a></li>
 			<li><a href="#deck-actions">Deck actions</a></li>
 		</ul>
-		<p>Each of these sections is going to be explained in more detail.</p>
-		<p>The deck page header always exists on a deck page, regardless of whichever <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> is active.</p>
+		<p>The next subchapters of this user guide explain each of those sections in more detail.</p>
 
 		<section id="deck-name">
 			<h4>Deck Name</h4>
@@ -33,7 +32,7 @@
 				/>
 			</p>
 			<p>The <a href="#deck-page-header">deck page header</a>’s basic statistics section shows some data about how your currently <router-link to="app-header#deck-menu">open deck</router-link> is composed.</p>
-			<p>All but one of these statistics regard your deck’s main card group alone (not also the <router-link to="list-editor#sideboard-uses">sideboard group</router-link>). Also all but one of these statistics account for card names’s quantities. Whenever you modify your deck, the statistics immediately update as needed.</p>
+			<p>All but one of these statistics regard your deck’s main card group alone (<em>not</em> also the <router-link to="list-editor#sideboard-uses">sideboard group</router-link>). Also all but one of these statistics account for the <router-link to="list-editor#card-quantities">quantities</router-link> of each card name. Whenever you modify your deck, these statistics immediately update as needed.</p>
 			<p>The basic statistics section displays the following deck information:</p>
 			<ul>
 				<li>
