@@ -8,7 +8,7 @@
 			<li><a href="#mode-menu">Mode menu</a></li>
 			<li><a href="#deck-actions">Deck actions</a></li>
 		</ul>
-		<p>The next subchapters of this user guide explain each of those sections in more detail.</p>
+		<p>The next subchapters explain each of those sections in more detail.</p>
 
 		<section id="deck-name">
 			<h4>Deck Name</h4>

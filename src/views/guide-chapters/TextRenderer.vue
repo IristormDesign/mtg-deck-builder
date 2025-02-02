@@ -16,7 +16,7 @@
 		</ul>
 		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Text Renderer mode, click its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>4</kbd> key</router-link> (while on the deck page).</p>
 		<p>The plain-text card lists from the Text Renderer have one card name per line, with each name preceded by its <router-link to="list-editor#card-quantities">quantity</router-link>. (This textual list format is the same one used by the <router-link to="card-list-entry">Card List Entry page</router-link>.) Lists are provided for both the main and <router-link to="list-editor#sideboard-uses">sideboard</router-link> card groups.</p>
-		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <router-link to="list-editor#card-list">card lists</router-link>. So, if you care about the order, then use the <router-link to="list-editor#card-sorter">card sorter</router-link> in the List Editor to rearrange the names in the way you prefer before you switch to the Text Renderer.</p>
+		<p>The order of card names in the Text Renderer’s card lists matches that of the List Editor’s <router-link to="list-editor#card-list">card lists</router-link>. So, if you care about the order, use the <router-link to="list-editor#card-sorter">card sorter</router-link> in the List Editor to rearrange the names in the way you prefer before you switch to the Text Renderer.</p>
 		<p>If you want to take these plain-text card lists outside MTG Deck Builder, the Text Renderer has various buttons you can click that let you readily <a href="#export-deck-as-text-file">export</a>, <a href="#print-deck">print</a>, or <a href="#copy-card-lists">copy</a> them. These controls are explained in the next subchapters.</p>
 
 		<section id="export-deck-as-text-file">
@@ -27,7 +27,7 @@
 		<section id="print-deck">
 			<h4>Print Deck</h4>
 			<p>Click the “Print Deck” button to print your deck’s main and sideboard card lists onto paper. Doing this method automatically applies some basic styling to the lists’ text. Any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor) will appear bold in the printed list.</p>
-			<p>If a list has a large number of card names, then the list’s printed version will be automatically laid out into three columns to conserve paper. (However, if you’re on Apple’s Safari browser, then it’ll always print the lists in only one column, because unfortunately, Safari doesn’t support multi-column layouts in printing. Other modern web browsers will print multi-column layouts normally.)</p>
+			<p>If a list has a large number of card names, then the list’s printed version will be automatically laid out into three columns to conserve paper. (However, if you’re on Apple’s Safari browser, then it’ll always print the lists in only one column, because unfortunately, Safari doesn’t support multi-column layouts in printing. Other modern web browsers print multi-column layouts normally.)</p>
 		</section>
 
 		<section id="copy-card-lists">

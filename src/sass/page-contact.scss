@@ -3,7 +3,7 @@
 .contact-page {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: $lhse;
+	gap: $lhse $lhse*1.5;
 	max-width: $max-width-content*1.5;
 
 	h2 {
@@ -12,7 +12,7 @@
 		margin-bottom: 0;
 	}
 	figure {
-		margin: 0;
+		margin: 0 auto;
 	}
 	.column {
 		> p:first-child {

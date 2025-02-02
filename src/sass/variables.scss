@@ -40,7 +40,7 @@ $color-group-bg-lighter: desaturate(lighten($color-group-bg, 6.25%), 4.17%);
 $color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
 $color-text-brighter: lighten($color-text, 6.25%);
 $color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 4.17%);
+$color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
 $color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
 $color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
 $color-section-border: $color-heading-bg;
