@@ -1,8 +1,9 @@
 <template functional>
 	<section id="draw-sim" key="draw-sim">
 		<h3>Draw Simulator</h3>
-		<p>The Draw Simulator is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you test the process of drawing cards from your deck as a shuffled library. It may give you more insight into how your deck could turn out in a game of <i>Magic</i>.</p>
-		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Draw Simulator mode, click its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>3</kbd> key</router-link> (while on the deck page). After you’ve simulated a few rounds, if you’re dissatisfied with your deck’s drawing results, you always can go back to the <router-link to="list-editor">List Editor</router-link> to make adjustments, and then test your deck again.</p>
+		<p>The Draw Simulator is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you test the process of drawing cards from your deck as a shuffled library. It gives you more insight into how the deck you’ve made in this app could turn out in a game of <i>Magic</i>.</p>
+		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Draw Simulator mode, click its tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>3</kbd> key</router-link> (while on the deck page).</p>
+		<p>After you’ve simulated a few rounds, if you’re dissatisfied with your deck’s drawing results, you always can go back to the <router-link to="list-editor">List Editor</router-link> to make adjustments, and then test your deck in the Draw Simulator again.</p>
 		<p>The Draw Simulator contains the following elements, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#cards-in-library">“Cards in Library” statistic</a></li>

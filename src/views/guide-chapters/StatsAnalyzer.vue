@@ -11,7 +11,7 @@
 				alt="Snippet of the Stats Analyzer mode" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>The Stats Analyzer contains two major elements: the array of <a href="#data-tables">data tables</a> and the <a href="#statistics-filter">statistics filter</a>.</p>
+		<p>The Stats Analyzer contains two major parts: the array of <a href="#data-tables">data tables</a> and the <a href="#statistics-filter">statistics filter</a>.</p>
 
 		<section id="data-tables">
 			<h4>Data Tables</h4>
@@ -50,7 +50,7 @@
 
 		<section id="statistics-filter">
 			<h4>Statistics Filter</h4>
-			<p>When you’re in the <a href="#stats-analyzer">Stats Analyzer</a>, you may sometimes want to examine statistics about a specific aspect of your deck rather than about your deck as a whole. For those times, you can use a statistics filter, which narrows down the data presented to you based on any card attribute you choose.</p>
+			<p>When you’re in the <a href="#stats-analyzer">Stats Analyzer</a>, you sometimes may want to examine statistics about a specific aspect of your deck rather than about your deck as a whole. For those times, you can use a statistics filter, which narrows down the data presented to you based on any card attribute you choose.</p>
 			<p>To turn on a filter in the Stats Analyzer, click the row of the <a href="#data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>
 			<p>The exception to toggling filters is the table for the “Power & Toughness” category’s greatest/median/least subsection, where you must click a particular cell on a row instead of just any cell on a row.</p>
 			<p>When a filter is on, the following effects happen:</p>
@@ -64,7 +64,7 @@
 			<p>To turn <em>off</em> a filter, thus restoring the complete statistics about your deck, do any one of the following actions:</p>
 			<ul>
 				<li>On the filter notification banner, click the “Stop Filtering” button.</li>
-				<li>Click the currently filtered card attribute’s table row (highlighted orange).</li>
+				<li>Click the table row of the currently filtered card attribute, which is highlighted orange.</li>
 				<li><router-link to="keyboard-shortcuts">Press the <kbd>Esc</kbd> key</router-link>.</li>
 			</ul>
 		</section>
