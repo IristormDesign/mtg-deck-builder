@@ -77,18 +77,16 @@
 			break-inside: avoid-column;
 
 			&:hover,
-			&:focus,
+			&:focus {
+				background: $color-mythic-brown;
+			}
 			&:active {
-				text-decoration-line: underline;
+				background: $color-mythic-dim;
 			}
 			&.visible {
 				background: $color-highlight-bg;
-				color: $color-link-active;
-
-				&:not(:focus) {
-					outline: 1px solid $color-highlight-border;
-					outline-offset: -1px;
-				}
+				background: $color-heading-bg;
+				color: $color-text-brighter;
 			}
 		}
 		> ol > li {

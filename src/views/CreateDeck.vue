@@ -7,7 +7,7 @@
 				<img class="card-illustration" src="~@/img/terramorphic-expanse.jpg" width="626" height="457" alt="An illustration of a landscape magically transforming into various types of terrain" />
 				<figcaption>Illustration: <i><a href="https://scryfall.com/card/j25/156/terramorphic-expanse" target="_blank">Terramorphic Expanse</a></i> by Alayna Danner</figcaption>
 			</figure>
-			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or replicate the decks from a deck archive file. <router-link to="/guide/create-deck">(More info&hellip;)</router-link></p>
+			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or replicate the pre-made decks from a deck archive file. <router-link to="/guide/create-deck">(More info&hellip;)</router-link></p>
 		</div>
 		<div class="columns">
 			<div class="new-deck">
@@ -223,7 +223,7 @@ export default {
 					this.alertSingleExistingDeck(existingDeckName, firstAmendedDeckName)
 				} else if (numExistingDecks > 1) {
 					alert(
-						`There are ${numExistingDecks} archived decks you’re replicating that have the same names as decks you already have, so those replicated decks are going to be renamed as if they were copies.\n\nFor example, the replicated “${existingDeckName}” is going to be named “${decks[decks.length - 1].name}” instead.`
+						`There are ${numExistingDecks} archived decks you’re replicating that have the same names as decks you already have. So, those replicated decks are going to be renamed as if they were copies.\n\nFor example, the replicated deck “${existingDeckName}” is going to be renamed “${decks[decks.length - 1].name}” instead.`
 					)
 				}
 			} else {

@@ -146,13 +146,18 @@ img {
 	display: block;
 }
 figure {
-	margin: $lhse*.5 auto;
+	margin: $lhse*.6667 auto;
 	background-color: $color-group-bg-darker;
-	box-shadow: inset 0 0 0 1px $color-group-bg-extra-darker;
+	outline: 1px solid $color-group-bg-extra-darker;
+	outline-offset: -1px;
 	padding: divide($lhse, 3);
 	color: $color-text-darker;
 	width: fit-content;
 	height: fit-content;
+
+	img {
+		outline: 1px solid $color-group-bg-extra-darker;
+	}
 }
 figcaption {
 	@include tiny-font-size;

@@ -1,20 +1,18 @@
 <template>
-	<article
-		v-if="!isDeleted"
-		class="deck-action-page delete-decks content-box"
-	>
+	<article class="deck-action-page content-box">
 		<h2>Delete Decks</h2>
-		<template v-if="numExisting <= 0">
-			<p>You have no more decks. <router-link :to="{name: 'createDeck'}">(Create one?)</router-link></p>
-		</template>
-		<template v-else>
-			<header class="intro">
-				<p>In the checklist below, select the decks that you want to remove, then click the Delete Selected button. Warning: Deleted decks can’t be restored.</p>
-			</header>
-			<form>
+		<div class="intro">
+			<figure>
+				<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
+				<figcaption>Illustration: <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
+			</figure>
+			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks that you want to remove from this app. Warning: Decks can’t be restored once deleted.</p>
+		</div>
+		<template v-if="!hasBeenDeleted">
+			<form v-if="numExisting > 0">
 				<div
 					class="multi-select-buttons"
-					v-show="numExisting >= 4"
+					v-show="numExisting >= 3"
 				>
 					<div class="button-container">
 						<button
@@ -37,7 +35,7 @@
 						</button>
 					</div>
 				</div>
-				<ul class="checklist">
+				<ul class="checklist" ref="checklist">
 					<li v-for="deck in $store.state.decks" :key="deck.name">
 						<input type="checkbox" :id="deck.name" :value="deck.name" v-model="checkedDecks">
 						<label :for="deck.name">{{ deck.name }}</label>
@@ -48,23 +46,26 @@
 						@click.prevent="handleSubmit()"
 						:disabled="numChecked <= 0"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M282.98-140q-25.71 0-44.14-18.43t-18.43-44.14v-532.05H180v-50.25h174.05v-30.51h251.9v30.51H780v50.25h-40.41v532.05q0 25.79-18.39 44.18T677.02-140H282.98Zm406.35-594.62H270.67v532.05q0 5.39 3.59 8.85t8.72 3.46h394.04q4.62 0 8.47-3.84 3.84-3.85 3.84-8.47v-532.05ZM379.54-273.23h50.25v-379.08h-50.25v379.08Zm150.67 0h50.25v-379.08h-50.25v379.08ZM270.67-734.62v544.36V-734.62Z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>
 						Delete Selected
 					</button>
 				</div>
 			</form>
+			<div v-else class="result-message">
+				<p>You have no decks.<br><router-link :to="{name: 'createDeck'}" class="no-text-break">(Create one!)</router-link></p>
+			</div>
 		</template>
-	</article>
-	<article
-		v-else
-		class="action-done content-box"
-		@click="headerLinkAttention()"
-	>
-		<figure>
-			<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
-			<figcaption>Illustration: <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
-		</figure>
-		<p class="bigger">{{ this.deletedDecksMessage }}</p>
+		<div v-else class="result-message">
+			<p>
+				<template v-if="numChecked === 1">
+					That deck is
+				</template>
+				<template v-else>
+					Those decks are
+				</template>
+				now deleted.
+			</p>
+		</div>
 	</article>
 </template>
 
@@ -79,17 +80,10 @@ export default {
 	data () {
 		return {
 			checkedDecks: [],
-			isDeleted: false
+			hasBeenDeleted: false
 		}
 	},
 	computed: {
-		deletedDecksMessage () {
-			if (this.numChecked === 1) {
-				return 'That deck is now deleted.'
-			} else {
-				return 'Those decks are now deleted.'
-			}
-		},
 		numChecked () {
 			return this.checkedDecks.length
 		},
@@ -104,9 +98,7 @@ export default {
 	},
 	methods: {
 		selectAll () {
-			const checkboxes = document
-				.querySelector('.delete-decks .checklist')
-				.querySelectorAll('input')
+			const checkboxes = this.$refs.checklist.querySelectorAll('input')
 
 			this.checkedDecks = [] // First uncheck all decks in case any of them are already checked.
 
@@ -144,7 +136,7 @@ export default {
 			}
 		},
 		removeSelectedDecks () {
-			this.isDeleted = true
+			this.hasBeenDeleted = true
 
 			let decks = this.$store.state.decks
 			const checkedDeckNames = new Set(this.checkedDecks)

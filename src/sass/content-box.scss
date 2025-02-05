@@ -79,11 +79,3 @@ img {
 		padding-left: $lhse*.75;
 	}
 }
-@media (max-width: 24em) {
-	.content-box {
-		p,
-		li {
-			hyphens: auto;
-		}
-	}
-}

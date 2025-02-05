@@ -1,65 +1,112 @@
 @import 'variables';
 
 .deck-action-page {
-	.multi-select-buttons,
-	.button-container {
-		height: $lhse*1.5;
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	gap: 0 $lhse;
+	max-width: $max-width-app*.625;
+	align-items: center;
+	justify-content: space-around;
+	padding-bottom: $lhse;
+
+	h2 {
+		grid-column: span 2;
+		text-align: center;
+		margin-bottom: $lhse*.6667;
 	}
-	form {
-		display: grid;
-		gap: $lhse $lhse*.5;
-		grid-template-columns: auto auto;
-		grid-template-rows: auto auto;
-		justify-content: center;
-		justify-items: center;
+	figure {
+		grid-column: 1;
+		margin-top: 0;
 		margin-bottom: $lhse*.5;
 	}
-	.multi-select-buttons,
-	.checklist {
-		padding: divide($lhse, 3) $lhse*.6667;
+	.intro {
+		margin-bottom: 0;
+		border: 0;
+
+		> :last-child { // Gets either <p> or <figure> depending on the state of `isArchiveActionCompleted`.
+			margin-bottom: 0;
+		}
+	}
+	form,
+	.result-message {
 		border: $border-sections-medium;
+		grid-row: 2 / 4;
+		grid-column: 2;
+		display: flex;
+		flex-direction: column;
+		gap: $lhse*.5;
+		justify-content: center;
+		align-items: center;
+		padding: divide($lhse, 3);
+		height: 100%;
+	}
+	.result-message {
+		padding: $lhse*.5;
+		align-items: center;
+
+		p {
+			text-wrap: balance;
+			text-align: center;
+
+			&:first-child {
+				font-weight: $font-weight-label;
+				color: $color-text-brighter;
+			}
+			&:last-child {
+				font-size: $font-size-small;
+			}
+			&:only-child {
+				font-size: 100%;
+				font-weight: $font-weight-regular;
+			}
+		}
 	}
 	.multi-select-buttons {
-		display: grid;
-		grid-template-rows: 1fr 1fr;
-		width: max-content;
-		grid-gap: $lhse*.25 $lhse*.5;
-		height: min-content;
+		padding: divide($lhse, 3);
+		display: flex;
+		gap: $lhse*.5;
+		border: $border-sections;
+		justify-content: space-evenly;
+		margin: $lhse*.125 0;
 
 		.button-container {
-			height: $lhse*1.25;
+			width: $lhse*4;
 		}
 		button {
+			@include tiny-font-size(true);
 			background: $color-button-gray;
-			font-size: 75%;
 			width: 100%;
+			height: $lhse*1.75;
+
+			svg {
+				width: $lhse*1.5;
+				height: $lhse*1.5;
+			}
 		}
 	}
 	.checklist {
 		margin: 0;
+		padding: 0 $lhse*.125;
 
 		li {
-			font-size: $font-size-bigger;
-
-			&:first-child {
-				margin-top: -$lhse*.0625;
-			}
+			margin: $lhse*.125 0;
+		}
+		label {
+			font-weight: $font-weight-label;
 		}
 	}
 	.submit-button {
 		grid-column: span 2;
+		padding: $lhse*.25;
 	}
 	button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding-top: $lhse*.0833;
-		padding-bottom: $lhse*.0833;
+		font-size: 87.5%;
+		height: $lhse*1.6667;
 
 		svg {
-			margin-right: .25em;
-			width: $lhse*1.25;
-			height: $lhse*1.25;
+			margin-right: $lhse*.125;
+			width: $lhse*1.3333;
+			height: $lhse*1.3333;
 		}
 	}
 }
@@ -68,22 +115,45 @@
 	text-wrap: balance;
 }
 
-@media (max-width: $width-mobile-breakpoint) {
+@media (max-width: ($min-width-app*.9167)) {
 	.deck-action-page {
-		form {
-			display: block;
+		gap: 0 $lhse*.5;
+	}
+}
+@media (max-width: ($min-width-app*.8333)) {
+	.deck-action-page {
+		grid-template-columns: auto;
+
+		h2,
+		.intro,
+		form,
+		.result-message {
+			grid-row: auto;
+			grid-column: 1;
+			justify-self: center;
 		}
-		.multi-select-buttons,
-		.checklist {
-			margin: $lhse*.5 0;
+		h2 {
+			margin-bottom: $lhse*.6667;
+			justify-self: stretch;
 		}
-		.multi-select-buttons {
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 1fr;
+		.intro {
+			margin-bottom: $lhse;
+			max-width: 462px; // Equal to 75% of the width of the card illustration image (616px).
 		}
-		.checklist {
-			width: max-content;
-			max-width: 100%;
+		form,
+		.result-message {
+			padding: divide($lhse, 3) $lhse*.6667;
+			margin-left: $lhse*.5;
+			margin-right: $lhse*.5;
 		}
+		.result-message {
+			width: 100%;
+		}
+	}
+}
+@media (max-width: ($min-width-app*.625)) {
+	.deck-action-page {
+		width: 100%;
+		justify-content: stretch;
 	}
 }
