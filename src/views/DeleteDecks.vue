@@ -55,7 +55,11 @@
 				<p>You have no decks.<br><router-link :to="{name: 'createDeck'}" class="no-text-break">(Create one!)</router-link></p>
 			</div>
 		</template>
-		<div v-else class="result-message">
+		<div
+			v-else
+			class="result-message"
+			@click="headerLinkAttention()"
+		>
 			<p>
 				<template v-if="numChecked === 1">
 					That deck is
