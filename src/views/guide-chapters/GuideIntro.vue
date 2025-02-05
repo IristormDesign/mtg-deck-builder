@@ -13,8 +13,8 @@
 
 		<section id="game-rules">
 			<h4>Game Rules</h4>
-			<p>MTG Deck Builder assumes you’re familiar with <a href="https://magic.wizards.com/" target="_blank"><i>Magic: The Gathering</i></a> and you know how to play it, so this user guide doesn’t cover those subjects.</p>
-			<p>If you have an issue concerning the rules of the game, you can refer to them on the <a href="https://magic.wizards.com/rules" target="_blank">official <i>Magic</i> website</a> or the <a href="https://mtg.fandom.com/wiki/Comprehensive_Rules" target="_blank">Fandom MTG Wiki</a>.</p>
+			<p>MTG Deck Builder assumes you’re familiar with <a href="https://magic.wizards.com/" target="_blank"><i>Magic: The Gathering</i></a> and you know how to play it, and so this user guide doesn’t cover that information.</p>
+			<p>If you need to refer to the game’s rules, they’re available on the <a href="https://mtg.wiki/page/Portal:Rules" target="_blank">MTG Wiki</a> and the <a href="https://magic.wizards.com/rules" target="_blank">official <i>Magic</i> website</a>.</p>
 		</section>
 	</section>
 </template>

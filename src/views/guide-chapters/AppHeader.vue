@@ -4,8 +4,8 @@
 		<p>At the top of any page of MTG Deck Builder is the app header, which has the following links:</p>
 		<ul>
 			<li><strong>Create Deck</strong> – Takes you to the <router-link to="create-deck">Create Deck page</router-link>.</li>
-			<li><strong>Open Deck</strong> – Shows the <a href="#deck-menu">deck menu</a>.</li>
-			<li><strong>User Guide</strong> – Takes you to the page you’re reading right now.</li>
+			<li><strong>Open Deck&hellip;</strong> – Shows the <a href="#deck-menu">deck menu</a>.</li>
+			<li><strong>User Guide</strong> – Takes you to the section you’re reading now.</li>
 		</ul>
 
 		<section id="deck-menu">

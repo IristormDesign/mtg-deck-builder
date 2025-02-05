@@ -7,7 +7,7 @@
 			<h4>Start New Deck</h4>
 			<p>To start a new deck, go to the <a href="#create-deck">Create Deck page</a>. In the “New Deck” section, enter a name for your deck in the text input field, and click the Start button. Your deck is then created, and you’re automatically taken to its vacant <router-link to="deck-pages">deck page</router-link>.</p>
 			<p>Every deck you have in MTG Deck Builder must have a unique name. If you try to submit a deck name that another one of your decks already has, you’ll be prompted to give a different name instead.</p>
-			<p>Assemble your new deck in the <router-link to="list-editor">List Editor mode</router-link> using the <router-link to="list-editor#card-adder">card adder tool</router-link> or the <router-link to="card-list-entry">card list entry form</router-link>. For gaining ideas of cards you could include, you can also browse through a <router-link to="list-editor#scryfall-button">Scryfall advanced search</router-link>.</p>
+			<p>Assemble your new deck in the <router-link to="list-editor">List Editor mode</router-link> using the <router-link to="list-editor#card-adder">card adder tool</router-link> or the <router-link to="card-list-entry">card list entry form</router-link>. For ideas of the cards you could include in your deck, you can browse through an <router-link to="list-editor#scryfall-button">advanced card search</router-link> on Scryfall.</p>
 		</section>
 
 		<section id="replicate-archived-decks">
