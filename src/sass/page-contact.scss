@@ -11,31 +11,32 @@
 		text-align: center;
 		margin-bottom: 0;
 	}
+	> p {
+		&:first-of-type {
+			grid-column: span 2;
+			margin-top: 0;
+		}
+	}
 	figure {
 		margin: 0 auto;
 	}
 	.column {
-		> p:first-child {
-			margin-top: -$lhse*.25;
+		> :first-child {
+			margin-top: 0;
 		}
 	}
 }
 
 @media (max-width: ($min-width-app)) {
 	.contact-page {
-		grid-template-columns: auto;
-		gap: $lhse;
+		display: block;
 		max-width: $max-width-content;
 
 		h2 {
-			grid-column: 1;
+			margin-bottom: $lhse*.5;
 		}
 		.column {
-			margin-top: -$lhse*.5;
-
-			> p:first-child {
-				margin-top: 0;
-			}
+			margin-top: $lhse;
 		}
 	}
 }
