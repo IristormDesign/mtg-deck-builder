@@ -37,8 +37,8 @@
 			width: min-content;
 		}
 		.output {
-			font-size: 200%;
-			min-width: 2.6667ch;
+			font-size: $font-size-stat-value;
+			min-width: 2ch;
 			color: $color-text;
 			justify-content: center;
 			align-items: center;
@@ -47,7 +47,6 @@
 		}
 		.warning-symbol {
 			margin-left: .25em;
-			display: block;
 		}
 	}
 	.button-container {
@@ -106,10 +105,6 @@
 		display: flex;
 		align-items: center;
 
-		input {
-			width: $lhse*.875;
-			height: $lhse*.875;
-		}
 		label {
 			padding-left: $lhse*.25;
 			cursor: pointer;

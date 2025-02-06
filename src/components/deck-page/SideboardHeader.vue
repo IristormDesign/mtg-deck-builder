@@ -6,10 +6,11 @@
 			<h4>Total Cards<br> in Sideboard</h4>
 			<div class="output">
 				{{ sideboardTotalCards }}
-				<span
-					class="warning-symbol" v-show="sideboardTotalCards > 15"
-					title="Sideboards can’t have more than 15 cards."
-				>⚠</span>
+				<svg
+					v-show="sideboardTotalCards > 15"
+					class="warning-symbol"
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M22.62-98 480-886 937.38-98H22.62ZM481-220.69q18.73 0 32.02-13.29 13.29-13.29 13.29-32.02 0-18.73-13.29-32.02-13.29-13.29-32.02-13.29-18.73 0-32.02 13.29-13.29 13.29-13.29 32.02 0 18.73 13.29 32.02 13.29 13.29 32.02 13.29Zm-43-127.62h86v-204h-86v204Z"
+				/></svg>
 			</div>
 		</section>
 	</header>
