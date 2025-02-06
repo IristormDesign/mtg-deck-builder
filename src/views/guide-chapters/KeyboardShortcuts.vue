@@ -49,6 +49,8 @@
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>E</kbd>: Raise the card name’s quantity by 2.</li>
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>D</kbd>: Lower the card name’s quantity by 2.</li>
 					<li><kbd>F</kbd>: Move 1 of the card name into the inactive <router-link to="list-editor#card-groups">card group</router-link>.</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>F</kbd>: Move 2 of the card name into the inactive card group.</li>
+
 				</ul>
 			</section>
 
@@ -56,9 +58,9 @@
 				<h5>Other List Editor Actions</h5>
 				<p>The following keyboard shortcuts work in the List Editor regardless of whichever card list row is highlighted, if any.</p>
 				<ul class="keyboard-shortcuts">
-					<li><kbd>Q</kbd>: Toggle the <router-link to="list-editor#card-sorter">card sorter</router-link>’s menu between visible and hidden.</li>
+					<li><kbd>Q</kbd>: Show or hide the <router-link to="list-editor#card-sorter">card sorter</router-link>’s menu.</li>
 					<li><kbd>R</kbd>: Toggle the active <router-link to="list-editor#card-groups">card group</router-link> between main and sideboard.</li>
-					<li><kbd>X</kbd>: Focus onto the <router-link to="list-editor#card-adder">card adder</router-link>’s text field.</li>
+					<li><kbd>X</kbd>: Focus onto the <router-link to="list-editor#card-adder">card adder</router-link>’s text field. (Press <kbd>Esc</kbd> to leave the focus.)</li>
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd>: Open <router-link to="list-editor#scryfall-button">Scryfall’s advanced card search</router-link> page in a new browser tab.</li>
 				</ul>
 			</section>
