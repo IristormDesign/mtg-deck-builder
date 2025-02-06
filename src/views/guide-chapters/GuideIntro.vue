@@ -8,7 +8,7 @@
 		<p>This documentation is the user guide to <router-link to="/">MTG Deck Builder by Iristorm Design</router-link>. It should help you understand anything you’d want to know about how this web app works.</p>
 		<p>This user guide consists of many chapters. You can skip directly to a chapter you want to read by clicking the relevant link in the table of contents, or by clicking any chapter links existing throughout the guide’s text.</p>
 		<p>The user guide displays screenshots of parts of MTG Deck Builder. Note that some of these screenshots had been taken from earlier versions of the app, so they may look slightly different from the current version.</p>
-		<p>After reading over the guide, if you still have an unanswered question about how to use MTG Deck Builder, you can <router-link to="/contact">ask the app developer</router-link>.</p>
+		<p>After reading over the guide, if you still have an unanswered question about MTG Deck Builder, you can <router-link to="/contact">ask the app developer</router-link>.</p>
 		<p>Enjoy using MTG Deck Builder!</p>
 
 		<section id="game-rules">

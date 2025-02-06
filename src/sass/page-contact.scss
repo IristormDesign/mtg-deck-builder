@@ -3,13 +3,12 @@
 .contact-page {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: $lhse $lhse*1.5;
+	gap: 0 $lhse;
 	max-width: $max-width-content*1.5;
 
 	h2 {
 		grid-column: span 2;
 		text-align: center;
-		margin-bottom: 0;
 	}
 	> p {
 		&:first-of-type {
@@ -17,12 +16,9 @@
 			margin-top: 0;
 		}
 	}
-	figure {
-		margin: 0 auto;
-	}
 	.column {
 		> :first-child {
-			margin-top: 0;
+			margin-top: $lhse*.5;
 		}
 	}
 }
@@ -32,9 +28,6 @@
 		display: block;
 		max-width: $max-width-content;
 
-		h2 {
-			margin-bottom: $lhse*.5;
-		}
 		.column {
 			margin-top: $lhse;
 		}
