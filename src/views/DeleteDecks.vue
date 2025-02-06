@@ -4,7 +4,7 @@
 		<div class="intro">
 			<figure>
 				<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
-				<figcaption>Illustration: <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
+				<figcaption>Illustration from <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
 			</figure>
 			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks that you want to remove from this app. Warning: Decks can’t be restored once deleted.</p>
 		</div>
