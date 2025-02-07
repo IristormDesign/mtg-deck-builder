@@ -92,13 +92,24 @@
 			top: $lhse*1.3333;
 			right: 0;
 		}
+		li {
+			button {
+				padding-left: $lhse*.5;
+			}
+			svg {
+				width: $lhse*1.0;
+				height: $lhse*1.0;
+				margin-right: .25em;
+				fill: $color-link;
+			}
+		}
 	}
-	button {
+	.dropdown-menu-toggler {
 		background: $color-button-gray;
 		font-size: 66.67%;
 		height: $lhse*2;
 		width: min-content;
-		padding-right: $lhse;
+		padding-right: $lhse*1.0625;
 
 		.dropdown-arrow {
 			fill: $color-black-label-text;
@@ -169,6 +180,16 @@
 		order: 1;
 		height: $height-deck-header-component*.75;
 		width: 100%;
+
+		.dropdown-menu-component {
+			ul {
+				top: $lhse;
+			}
+		}
+		.dropdown-menu-toggler {
+			width: auto;
+			height: $lhse*1.5;
+		}
 	}
 }
 @media (max-width: ($min-width-app*.5)) {
