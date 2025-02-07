@@ -87,23 +87,25 @@
 	display: flex;
 	justify-content: flex-end;
 
-	label {
-		white-space: nowrap;
-	}
-	select {
-		@include button('gray');
-		font-size: 66.67%;
-		height: $lhse*1.75;
-		width: $lhse*5.9; // Short enough to contain the whole label ("Deck Actions..." without excess space. This is necessary because the label shifts to the left after the user opens the select menu.
-
-		&:active { // Prevent the appearance of the button pushing, because it causes the menu to bounce with it.
-			border-bottom-width: $border-bottom-width-button;
-			margin: -2px 0 2px;
+	.dropdown-menu-component {
+		ul {
+			top: $lhse*1.3333;
+			right: 0;
 		}
 	}
-	option {
-		text-align: left;
-		font-size: 150%;
+	button {
+		background: $color-button-gray;
+		font-size: 66.67%;
+		height: $lhse*2;
+		width: min-content;
+		padding-right: $lhse;
+
+		.dropdown-arrow {
+			fill: $color-black-label-text;
+			width: $lhse*1.5;
+			height: $lhse*1.5;
+			right: -$lhse*.2;
+		}
 	}
 }
 

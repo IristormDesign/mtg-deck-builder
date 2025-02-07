@@ -1,44 +1,64 @@
 <template>
 	<section class="deck-actions">
-		<select
-			v-model="deckAction"
-			@change="doDeckAction()"
-			id="deckActionSelect"
+		<dropdown-menu
+			:isShowingDropdown="isMenuOpen"
+			togglerRef="deckActionsToggler"
+			@hideDropdown="isMenuOpen = false"
 		>
-			<option value="">Deck Actions ▾</option>
-			<option value="duplicate">Duplicate</option>
-			<option value="archive">Archive&hellip;</option>
-			<option value="delete">Delete&hellip;</option>
-		</select>
+			<button
+				slot="menuToggler"
+				class="dropdown-menu-toggler"
+				ref="deckActionsToggler"
+				@click="isMenuOpen = !isMenuOpen"
+				type="button"
+			>
+				Deck Actions
+				<svg
+					class="dropdown-arrow"
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
+				/></svg>
+			</button>
+			<ul
+				slot="menuList"
+				v-show="isMenuOpen"
+				role="menu"
+			>
+				<li role="menuitem">
+					<button @click="duplicateDeck()" type="button">
+						Duplicate
+					</button>
+				</li>
+				<li role="menuitem">
+					<button @click="archiveDeck()" type="button">
+						Archive&hellip;
+					</button>
+				</li>
+				<li role="menuitem">
+					<button @click="deleteDeck()" type="button">
+						Delete&hellip;
+					</button>
+				</li>
+			</ul>
+		</dropdown-menu>
 	</section>
 </template>
 
 <script>
+import DropdownMenu from '@/components/DropdownMenu.vue'
 import copyDeck from '@/mixins/copyDeck.js'
 
 export default {
+	components: { DropdownMenu },
 	mixins: [copyDeck],
 	props: {
 		deck: Object
 	},
 	data () {
 		return {
-			deckAction: ''
+			isMenuOpen: false
 		}
 	},
 	methods: {
-		doDeckAction () {
-			switch (this.deckAction) {
-				case 'duplicate':
-					this.duplicateDeck(); break
-				case 'archive':
-					this.archiveDeck(); break
-				case 'delete':
-					this.deleteDeck(); break
-			}
-
-			this.deckAction = ''
-		},
 		duplicateDeck () {
 			const sourceDeck = this.deck
 

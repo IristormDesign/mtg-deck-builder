@@ -53,7 +53,7 @@ $width-card-list-section-narrow:
 		margin-right: $lhse*.25;
 	}
 	.section-label {
-		padding: 0 $lhse*.625 $lhse*.125;
+		padding: 0 $lhse*.6 $lhse*.125;
 		line-height: $line-height-standard;
 	}
 }
@@ -102,70 +102,23 @@ $width-card-list-section-narrow:
 		padding-bottom: $lhse*.0417;
 		font-size: 87.5%;
 	}
+	.dropdown-arrow {
+		fill: $color-link;
+		cursor: pointer;
+		transition: $transition-duration-standard ease;
+		transition-property: opacity, fill, transform;
+
+		&:hover {
+			fill: $color-link-focus;
+		}
+		&:active {
+			fill: $color-link-active;
+		}
+	}
 	.dropdown-menu-component {
-		position: relative;
-
-		&.opened {
-			input {
-				opacity: 0;
-				transition: opacity $transition-duration-standard ease;
-			}
-		}
-		input {
-			cursor: pointer;
-			width: $lhse*6; // Just wide enough to fit the widest available option ("First subtype").
-			min-width: auto;
-
-			&:hover,
-			&:focus {
-				+ .dropdown-arrow {
-					fill: $color-link-focus;
-				}
-			}
-			&:active {
-				background: $color-input-bg-active;
-				color: $color-link-active;
-
-				+ .dropdown-arrow {
-					fill: $color-link-active;
-				}
-			}
-		}
-		.dropdown-arrow {
-			right: -$lhse*.25;
-			position: absolute;
-			fill: $color-link;
-			width: auto;
-			height: 100%;
-			cursor: pointer;
-			transition: $transition-duration-standard ease;
-			transition-property: opacity, fill, transform;
-
-			&:hover {
-				fill: $color-link-focus;
-			}
-			&:active {
-				fill: $color-link-active;
-			}
-		}
 		ul {
-			@include popup-menu-list;
+			left: -$lhse*2.875;
 			column-count: 2;
-			column-gap: $border-width-sections-medium;
-			top: 0;
-			left: -$lhse*2.8333;
-			z-index: index($layers, card-overlay);
-		}
-		button {
-			@include link;
-			@include popup-menu-list-links;
-			width: 100%;
-			font-size: $font-size-small;
-			height: $lhse*1.5;
-
-			&:focus {
-				outline-offset: -2px; // This is needed to prevent a bizarre bug in Safari. The bug causes the button in the dropdown menu's top row of the second column to disappear while it has focus.
-			}
 		}
 	}
 	&:has(.opened) {

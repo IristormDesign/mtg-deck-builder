@@ -246,6 +246,60 @@ option {
 		margin-bottom: $lhse*.125;
 	}
 }
+.dropdown-menu-component {
+	position: relative;
+
+	&.opened {
+		input {
+			opacity: 0;
+			transition: opacity $transition-duration-standard ease;
+		}
+	}
+	input {
+		cursor: pointer;
+		width: $lhse*6; // Just wide enough to fit the widest available option ("First subtype").
+		min-width: auto;
+
+		&:hover,
+		&:focus {
+			+ .dropdown-arrow {
+				fill: $color-link-focus;
+			}
+		}
+		&:active {
+			background: $color-input-bg-active;
+			color: $color-link-active;
+
+			+ .dropdown-arrow {
+				fill: $color-link-active;
+			}
+		}
+	}
+	.dropdown-arrow {
+		right: -$lhse*.25;
+		position: absolute;
+		width: auto;
+		height: 100%;
+	}
+	ul {
+		@include popup-menu-list;
+		top: 0;
+		z-index: index($layers, card-overlay);
+		column-gap: $border-width-sections-medium;
+
+		button {
+			@include link;
+			@include popup-menu-list-links;
+			width: 100%;
+			font-size: $font-size-small;
+			height: $lhse*1.5;
+
+			&:focus {
+				outline-offset: -2px; // This is needed to prevent a bizarre bug in Safari. The bug causes the button in the dropdown menu's top row of the second column to disappear while it has focus.
+			}
+		}
+	}
+}
 .dropdown-transition-enter {
 	transform: translate(0, -25%) scale(.5);
 }

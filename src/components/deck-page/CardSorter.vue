@@ -6,72 +6,78 @@
 			</symbol>
 		</svg>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M145.39-490.54q0 87.23 61.34 145.73 61.35 58.5 147.58 57.73H377l-68.69-70.69 31.61-32 121.77 124.38L338.08-140l-32-32 67.08-70.08h-22.7q-103.46.77-176.96-71.31Q100-385.46 100-490.54 100-593 170.27-666.5 240.54-740 341-740h138.54v45.39H341q-82 0-138.81 59.73-56.8 59.73-56.8 144.34Zm425.07 248.46v-45.38H860v45.38H570.46Zm0-225.77v-46.38H860v46.38H570.46Zm-17.84-226.76V-740H860v45.39H552.62Z"/></svg>
-		<fieldset :disabled="(
-			deck.cards.length <= 1 && deck.sideboard.cards.length <= 1
-		)">
+		<fieldset
+			:disabled="(deck.cards.length <= 1 && deck.sideboard.cards.length <= 1)"
+			ref="dropdownToggleRegion"
+		>
 			<label
 				class="section-label"
 				for="sorterMenuInput"
-			>Sort cards by:</label>
-			<div
-				class="dropdown-menu-component"
-				:class="menuIsOpen ? 'opened' : 'closed'"
-				role="menu"
-				aria-haspopup="true"
-				:aria-expanded="menuIsOpen.toString()"
 			>
-				<input
-					id="sorterMenuInput"
-					type="text"
-					v-model="deckSortAttribute"
-					@click="menuIsOpen = !menuIsOpen"
-					@keydown.enter="menuIsOpen = !menuIsOpen"
-					readonly
-					title="(Q)"
-				/>
-				<svg
-					class="dropdown-arrow"
-					@click="menuIsOpen = !menuIsOpen"
-					xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
-				/></svg>
-				<transition name="dropdown-transition">
-					<ul
-						v-show="menuIsOpen"
-						ref="sorterDropdownMenu"
+				Sort cards by:
+			</label>
+			<dropdown-menu
+				:isShowingDropdown="isMenuOpen"
+				togglerRef="sorterMenuInput"
+				togglerRegionRef="dropdownToggleRegion"
+				@hideDropdown="isMenuOpen = false"
+			>
+				<template #menuToggler>
+					<input
+						id="sorterMenuInput"
+						ref="sorterMenuInput"
+						type="text"
+						v-model="deckSortAttribute"
+						@click="toggleSorterMenu()"
+						@keydown.enter="toggleSorterMenu()"
+						readonly
+						title="(Q)"
+					/>
+					<svg
+						class="dropdown-arrow"
+						@click="toggleSorterMenu()"
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
+					/></svg>
+				</template>
+				<ul
+					slot="menuList"
+					v-show="isMenuOpen"
+					role="menu"
+				>
+					<li
+						v-for="option in sorterMenuOptions"
+						v-show="option !== 'Starred' || listHasStarredCard"
+						:key="option"
+						:class="deck.sortBy === option ? 'selected' : ''"
+						role="menuitem"
 					>
-						<li
-							v-for="option in sorterMenuOptions"
-							v-show="option !== 'Starred' || listHasStarredCard"
-							:key="option"
-							:class="deck.sortBy === option ? 'selected' : ''"
-							role="menuitem"
+						<button
+							type="button"
+							@click="selectSorterMenuOption(option)"
 						>
-							<button
-								type="button"
-								@click="selectSorterMenuOption(option)"
-							>
-								<svg><use href="#right-triangle-icon" /></svg>
-								<span>{{ option }}</span>
-							</button>
-						</li>
-					</ul>
-				</transition>
-			</div>
+							<svg><use href="#right-triangle-icon" /></svg>
+							<span>{{ option }}</span>
+						</button>
+					</li>
+				</ul>
+			</dropdown-menu>
 		</fieldset>
 	</section>
 </template>
 
 <script>
+import DropdownMenu from '@/components/DropdownMenu.vue'
 import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
+	components: { DropdownMenu },
 	mixins: [sortingClusterGaps],
 	props: {
 		deck: Object
 	},
 	data () {
 		return {
-			menuIsOpen: false,
+			isMenuOpen: false,
 			sorterMenu: this.deck.sortBy
 		}
 	},
@@ -97,9 +103,6 @@ export default {
 		},
 		sorterMenuOptions () {
 			return ['Starred', 'Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'P/T Sum', 'Quantity']
-		},
-		showingAnyPopup () {
-			return this.$store.state.showingAnyPopup
 		}
 	},
 	watch: {
@@ -108,26 +111,6 @@ export default {
 			if (attribute === '(Unsorted)') {
 				this.sorterMenu = attribute
 			}
-		},
-		menuIsOpen () {
-			this.$store.commit('showingAnyPopup', this.menuIsOpen)
-
-			const sorterInput = document.querySelector('#sorterMenuInput')
-
-			this.$nextTick(() => {
-				if (this.menuIsOpen) {
-					sorterInput.focus() // This allows the user to press the tab key once and the browser will focus on the sorter's first menu item.
-					document.activeElement.blur() // Immediately blur to allow the user could then close it via keyboard shortcut, while still having the browser remember the previous focus position.
-				} else {
-					sorterInput.blur()
-				}
-			})
-		},
-		showingAnyPopup (isShowing) {
-			/* Automatically close the menu by alternative triggers, such as the user pressing the Esc key or opening another popup element. */
-			if (!isShowing) {
-				this.menuIsOpen = false
-			}
 		}
 	},
 	created () {
@@ -135,32 +118,16 @@ export default {
 			this.sorterMenu = '(Unsorted)'
 		}
 	},
-	mounted () {
-		document.addEventListener(
-			'click', this.closeSorterMenuOnOutsideClick
-		)
-	},
-	destroyed () {
-		document.removeEventListener(
-			'click', this.closeSorterMenuOnOutsideClick
-		)
-	},
 	updated () {
 		/* When going from one deck page to another, the card sorter is to change to the current deck's sorting option, which may differ from the previous deck's. */
 		this.sorterMenu = this.deck.sortBy
 	},
 	methods: {
-		closeSorterMenuOnOutsideClick (event) {
-			if (!this.menuIsOpen) return
-
-			if (document.querySelector('.card-sorter fieldset').contains(event.target)) {
-				return
-			}
-
-			this.menuIsOpen = false
+		toggleSorterMenu () {
+			this.isMenuOpen = !this.isMenuOpen
 		},
 		selectSorterMenuOption (attribute) {
-			this.menuIsOpen = false
+			this.isMenuOpen = false
 
 			if (this.sorterMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T sum option, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
 
