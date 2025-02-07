@@ -50,6 +50,12 @@
 	@include deck-info-style;
 	color: $color-text;
 	min-height: $height-deck-header-component*.75;
+
+	.output {
+		&[title] {
+			cursor: help;
+		}
+	}
 }
 .control-panel {
 	display: grid;

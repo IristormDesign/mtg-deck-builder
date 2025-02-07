@@ -4,13 +4,15 @@
 			<div class="control-panel">
 				<section class="deck-info">
 					<h3>Cards&nbsp;in Library</h3>
-					<div class="output">
+					<div
+						class="output"
+						:title="(library.length === 0 && drawnList.length > 0) ? 'You’ve drawn every card from your library.' : null"
+					>
 						{{ library.length }}
 						<svg
 							v-show="(library.length === 0 && drawnList.length > 0)"
 							class="warning-symbol"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M22.62-98 480-886 937.38-98H22.62ZM481-220.69q18.73 0 32.02-13.29 13.29-13.29 13.29-32.02 0-18.73-13.29-32.02-13.29-13.29-32.02-13.29-18.73 0-32.02 13.29-13.29 13.29-13.29 32.02 0 18.73 13.29 32.02 13.29 13.29 32.02 13.29Zm-43-127.62h86v-204h-86v204Z"
-							title="You’ve drawn every card from your library."
 						/></svg>
 					</div>
 				</section>
