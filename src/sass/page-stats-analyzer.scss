@@ -16,7 +16,6 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 @mixin highlighted-table-component {
 	background: $color-highlight-bg;
 	outline-offset: -1px;
-	scroll-margin: $lhse*2;
 
 	th {
 		color: $color-app-header-link-active;
@@ -68,7 +67,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		justify-self: center;
 		height: min-content;
 		cursor: default;
-		scroll-margin: $lhse*2;
+		scroll-margin: $lhse*1.5;
 		transition: 1s ease;
 		transition-property: outline-color, box-shadow;
 		outline: 1px solid transparent;

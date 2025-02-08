@@ -4,6 +4,9 @@
 	box-sizing: border-box;
 	backface-visibility: hidden;
 }
+html {
+	scroll-padding: $lhse;
+}
 body {
 	font: 20px/#{$line-height-standard} $font-family-standard;
 	font-weight: $font-weight-regular;

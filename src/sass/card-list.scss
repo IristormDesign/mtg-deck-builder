@@ -68,8 +68,7 @@
 		}
 		&.highlight {
 			outline: $outline-keyboard-focus;
-			scroll-margin-top: $lhse*2;
-			scroll-margin-bottom: $lhse*2;
+			scroll-margin: 50vh;
 		}
 	}
 	.card-list-section-main-leave-active {

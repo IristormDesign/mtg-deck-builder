@@ -123,7 +123,7 @@
 		background: $color-group-bg;
 		border: solid $color-mythic-dim;
 		border-width: $border-width-sections-thickest 0 0;
-		scroll-margin: $height-app-header-short - $lhse*.5;
+		scroll-margin: $height-app-header-short - $lhse;
 
 		h2 {
 			margin-top: 0;
@@ -210,7 +210,7 @@
 @media (max-width: $min-width-app) {
 	.home-page {
 		.app-features {
-			scroll-margin: $height-app-header-tall - $lhse*.5;
+			scroll-margin: $height-app-header-tall - $lhse;
 		}
 	}
 }
@@ -280,7 +280,7 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 @media (max-width: $max-width-mobile-header-menu) {
 	.home-page {
 		.app-features {
-			scroll-margin: $height-app-header-medium - $lhse*.5;
+			scroll-margin: $height-app-header-medium - $lhse;
 		}
 	}
 }

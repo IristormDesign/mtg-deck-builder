@@ -112,8 +112,6 @@
 			padding: $lhse $lhse*1.5;
 		}
 		section {
-			scroll-margin: $lhse;
-
 			&:target,
 			&.target {
 				@keyframes highlight-section {
