@@ -23,7 +23,7 @@
 		margin: 0 .25em;
 	}
 	a {
-		@include link-colors(desaturate(lighten($color-link, 6.25%), 40%));
+		@include link-colors(desaturate(lighten($color-link, 4.17%), 25%));
 
 		&:hover,
 		&:focus {

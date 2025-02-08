@@ -248,6 +248,7 @@ option {
 }
 .dropdown-menu-component {
 	position: relative;
+	z-index: index($layers, dropdown-label);
 
 	&.opened {
 		input {
