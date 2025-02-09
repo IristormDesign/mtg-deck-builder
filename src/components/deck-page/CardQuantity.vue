@@ -140,26 +140,17 @@ export default {
 		listenForKeyboardShortcuts (event) {
 			if (event.repeat) return
 
-			switch (event.key) {
-				case 'Enter':
+			switch (event.key.toLowerCase()) {
+				case 'enter':
 					document.activeElement.blur()
+					return
+				case 'e': case '-': case '+': case '.': // These are certain characters that are considered to be the "number" type, but that should be disallowed from appearing in the quantity inputs.
+					event.preventDefault()
 					return
 			}
 
 			if (event.key) {
 				this.pressedKeyForQty = true
-
-				return
-			}
-
-			const disallowedKeyEvents = () => {
-				const regexDisallowed = /[^e.-]/i // A character that's NOT the letter E, or a period (decimal point), or a hyphen (minus sign). These are the certain non-digit characters that are allowed by a number-type input, but that should never be used for the card quantity inputs.
-
-				return !regexDisallowed.test(event.key) // Having the regex be negative ("^") and this function's return value also be negative ("!") is intentional. This lets certain keyboard events that regex can't test to still be used as normal, such as the events for the backspace, enter, and arrow keys.
-			}
-
-			if (disallowedKeyEvents()) {
-				event.preventDefault()
 			}
 		},
 		validateQty () {
