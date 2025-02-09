@@ -1,5 +1,8 @@
 <template>
-	<div class="stats-analyzer content-box">
+	<div
+		class="stats-analyzer content-box"
+		role="tabpanel" aria-labelledby="stats-analyzer-tab"
+	>
 		<p
 			v-if="deck.cards.length <= 0"
 			class="no-cards"

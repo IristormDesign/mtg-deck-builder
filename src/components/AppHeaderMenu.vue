@@ -38,11 +38,12 @@
 						<div v-show="showDeckMenu" class="hover-shield"></div>
 					</transition>
 					<transition name="dropdown-transition">
-						<ul v-show="showDeckMenu">
+						<ul v-show="showDeckMenu" role="menu">
 							<li
 								v-for="deck in $store.state.decks"
 								:key="deck.name"
 								:class="{selected: $route.params.deckPath === deck.path}"
+								role="menuitem"
 							>
 								<router-link
 									:to="{

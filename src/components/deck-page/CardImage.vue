@@ -5,6 +5,7 @@
 			v-if="showCard"
 			@mouseover="reactToHoverOverImage()"
 			@click="attentionAddCard()"
+			aria-label="Card Image"
 		>
 			<transition name="placement-outline-fade">
 				<div

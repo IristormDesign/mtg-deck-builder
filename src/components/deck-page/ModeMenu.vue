@@ -1,11 +1,14 @@
 <template>
 	<nav class="mode-menu">
-		<ul>
+		<ul role="tablist" aria-label="Deck Page Mode Menu">
 			<li>
 				<router-link
 					:to="{ name: 'listEditor' }"
 					:class="onPage('listEditor')"
 					title="(1)"
+					role="tab"
+					:aria-selected="onPage('listEditor') ? 'true' : 'false'"
+					id="list-editor-tab"
 				>
 					<svg
 						v-if="onPage('listEditor')"
@@ -22,6 +25,9 @@
 					:to="{ name: 'statsAnalyzer' }"
 					:class="onPage('statsAnalyzer')"
 					title="(2)"
+					role="tab"
+					:aria-selected="onPage('statsAnalyzer') ? 'true' : 'false'"
+					id="stats-analyzer-tab"
 				>
 					<svg
 						v-if="onPage('statsAnalyzer')"
@@ -39,6 +45,9 @@
 					:to="{ name: 'drawSim' }"
 					:class="onPage('drawSim')"
 					title="(3)"
+					role="tab"
+					:aria-selected="onPage('drawSim') ? 'true' : 'false'"
+					id="draw-simulator-tab"
 				>
 					<svg
 						v-if="onPage('drawSim')"
@@ -56,6 +65,9 @@
 					:to="{ name: 'textRenderer' }"
 					:class="onPage('textRenderer')"
 					title="(4)"
+					role="tab"
+					:aria-selected="onPage('textRenderer') ? 'true' : 'false'"
+					id="text-renderer-tab"
 				>
 					<svg
 						v-if="onPage('textRenderer')"

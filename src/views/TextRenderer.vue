@@ -1,5 +1,8 @@
 <template>
-	<div class="text-renderer content-box">
+	<div
+		class="text-renderer content-box"
+		role="tabpanel" aria-labelledby="text-renderer-tab"
+	>
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
 				<p>The main and sideboard card lists for <i>{{ deck.name }}</i> are provided here in simplified text versions, which let you easily take copies of these lists outside MTG Deck Builder. <router-link to="/guide/text-renderer">(More info&hellip;)</router-link></p>

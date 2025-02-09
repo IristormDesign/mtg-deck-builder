@@ -1,5 +1,8 @@
 <template>
-	<div class="draw-simulator">
+	<div
+		class="draw-simulator"
+		role="tabpanel" aria-labelledby="draw-simulator-tab"
+	>
 		<div class="layout-column">
 			<div class="control-panel">
 				<section class="deck-info">

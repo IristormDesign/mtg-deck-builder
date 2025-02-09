@@ -1,5 +1,8 @@
 <template>
-	<div class="list-editor">
+	<div
+		class="list-editor"
+		role="tabpanel" aria-labelledby="list-editor-tab"
+	>
 		<card-image :deck="deck" />
 
 		<div class="layout-column">
