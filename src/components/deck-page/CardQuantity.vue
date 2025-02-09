@@ -156,7 +156,6 @@ export default {
 		validateQty () {
 			const card = this.card
 
-			card.qty = Math.round(card.qty)
 			this.activeCardList.viewedCard = card
 
 			if (card.qty < 0) {
@@ -197,6 +196,8 @@ export default {
 						card.qty = 4
 					}
 				}
+
+				card.qty = Math.round(card.qty)
 			}
 
 			const deck = this.deck
