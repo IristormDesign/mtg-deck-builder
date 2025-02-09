@@ -51,7 +51,8 @@
 		justify-content: center;
 		border: $border-width-sections solid transparent;
 		padding: 0 divide($lhse, 3);
-		transition: all $transition-duration-standard ease;
+		transition: $transition-duration-standard ease;
+		transition-property: color, background-color, text-decoration-color;
 
 		&:hover,
 		&:focus {
@@ -67,7 +68,7 @@
 			}
 		}
 		&.current-page {
-			text-decoration: none;
+			text-decoration-color: transparent;
 			pointer-events: none;
 			background: $color-heading-bg;
 			color: $color-text-extra-brighter;
