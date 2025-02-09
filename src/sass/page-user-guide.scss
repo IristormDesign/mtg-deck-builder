@@ -84,9 +84,8 @@
 				background: $color-mythic-dim;
 			}
 			&.visible {
-				background: $color-highlight-bg;
 				background: $color-heading-bg;
-				color: $color-text-brighter;
+				color: $color-text-extra-brighter;
 			}
 		}
 		> ol > li {

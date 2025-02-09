@@ -117,6 +117,8 @@ export default {
 			}
 
 			const switchToMode = (routeName) => {
+				document.activeElement.blur() // Prevents the focus outline from appearing if a mode tab had been clicked before the keyboard shortcut was used.
+
 				if (this.$route.name !== routeName) {
 					this.$router.push({ name: routeName })
 				} else {
