@@ -203,7 +203,7 @@ svg {
 	fill: currentColor;
 }
 ::selection {
-	background: rgba(desaturate($color-mythic-orange, 12.5%), .5);
+	background: rgba(darken(desaturate($color-mythic-yellow, 37.5%), 8.33%), .5);
 	color: #fff;
 	text-shadow: none;
 	text-decoration: none !important;

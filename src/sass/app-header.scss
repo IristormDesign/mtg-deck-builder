@@ -36,13 +36,12 @@
 
 		a {
 			color: $color-app-header-link;
-			text-decoration: none;
-			text-shadow: 0 0 2px rgba(#000, .2);
+			text-shadow: 0 0 2px rgba(#000, .25);
+			padding: $lhse*.0833 $lhse*.2;
 
 			&:hover,
 			&:focus {
 				color: $color-app-header-link-hover;
-				text-decoration: underline;
 			}
 			&:active {
 				color: $color-app-header-link-active;
@@ -50,22 +49,43 @@
 		}
 	}
 	h1 {
-		margin: 0 .5em 0 0;
+		margin: 0 $lhse*.125 0 0;
 		font-size: 150%;
 	}
 	.by-iristorm {
-		font-size: 87.5%;
-		margin: ($lhse*.0625) 1em;
-		margin-left: 0;
+		font-size: 75%; // Half the size of the h1.
+		margin: ($lhse*.125) 0;
 		cursor: default;
 
+		a {
+			padding-top: $lhse*.3333;
+			padding-bottom: $lhse*.3333;
+		}
 		> span {
 			display: none;
+		}
+		a,
+		> span {
+			margin-left: -$lhse*.2; // Inverse of its padding-left.
+		}
+	}
+	.app-title a,
+	.header-menu-item {
+		text-decoration: none;
+		transition: all $transition-duration-standard*.5 ease;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: lighten($color-mythic-dim, 8.33%);
+		}
+		&:active {
+			background: darken($color-mythic-dim, 4.17%);
 		}
 	}
 }
 
-@media (max-width: $min-width-app) {
+@media (max-width: ($min-width-app * .9167)) {
 	:root {
 		--header-height: #{$height-app-header-tall};
 	}
@@ -102,18 +122,19 @@
 			flex-wrap: wrap;
 			justify-content: flex-end;
 			width: min-content;
-			margin: 0;
+			margin: $lhse*.125 0 0;
 		}
 		h1 {
 			margin: 0;
 		}
 		.by-iristorm {
-			margin-right: $lhse*.125;
+			margin-right: $lhse*.625;
 
 			a {
 				display: none;
 			}
 			> span {
+				margin: 0;
 				display: inline;
 			}
 		}

@@ -17,34 +17,32 @@
 		list-style: none;
 		display: grid;
 		grid-template-columns: repeat(3, minmax(max-content, 1fr));
-		gap: $lhse*.6667;
+		gap: $lhse*.5;
 		align-items: center;
 	}
 	.header-menu-item {
 		@include link;
-		@include heading-font;
+		font-family: $font-family-standard;
+		font-weight: $font-weight-label;
+		font-size: $font-size-small;
 		white-space: nowrap;
 		margin-right: 0;
 		margin-left: 0;
 		width: 100%;
-		min-height: $lhse*1.5;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: none;
 		color: $color-app-header-link;
 		text-decoration: none;
-		font-size: 87.5%;
-		padding: $lhse*.25;
+		padding: $lhse*.2083 $lhse*.375;
 
 		&:hover,
 		&:focus {
 			@include link-colors($color-app-header-link-hover);
-			text-decoration: underline;
 		}
 		&:active {
 			@include link-colors($color-app-header-link-active);
-			text-decoration-color: inherit;
 		}
 		&.attention:not(:disabled) { // Match the animation's total duration (duration * iterations) with the timeout duration in headerLinkAttention.js.
 			animation: flash .1667s ease-in;
@@ -88,7 +86,7 @@
 			position: absolute;
 			width: 100%;
 			height: $lhse*1.8333;
-			margin-top: -$lhse*1.6667;
+			margin-top: -$lhse*1.5;
 			border-radius: $border-radius-small-button;
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
@@ -158,6 +156,13 @@
 }
 
 @media (max-width: $min-width-app) {
+	.header-menu {
+		> ul {
+			gap: $lhse*.0833;
+		}
+	}
+}
+@media (max-width: ($min-width-app * .9167)) {
 	.header-menu-positioner {
 		width: 100%;
 	}

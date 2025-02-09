@@ -345,7 +345,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		left: 0;
 		right: 0;
 		box-shadow: $box-shadow-sticky-header;
-		background: rgba($color-mythic-dim, .9167);
+		background: rgba(saturate($color-highlight-bg, 8.33%), .9167);
 		border-color: $color-highlight-border;
 		color: $color-text-brighter-over-mythic-brown;
 
@@ -398,7 +398,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		background: $color-button-gray;
 		text-wrap: nowrap;
 		font-size: 83.33%;
-		height: $lhse*1.5;
+		height: $lhse*1.6667;
 		display: flex;
 		align-items: center;
 

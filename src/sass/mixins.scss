@@ -234,7 +234,7 @@
 }
 @function link-decoration-color($color) {
 	@return color.scale($color,
-		$lightness: -50%, $saturation: -25%
+		$lightness: -40%, $saturation: -20%
 	);
 }
 @mixin link-colors($color) {
@@ -245,7 +245,7 @@
 	@include link-colors($color-link);
 	text-decoration-line: underline;
 	text-decoration-style: solid;
-	text-decoration-thickness: 1px;
+	text-decoration-thickness: .0417em;
 	text-underline-offset: .125em;
 	padding: 0;
 	margin: 0;

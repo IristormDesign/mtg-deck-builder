@@ -80,7 +80,7 @@ $drop-shadow-card-shadow: drop-shadow(-$lhse*.5 $lhse*1.5 $lhse*.5 $color-subtle
 	}
 }
 @mixin card-edge-filters ($position) {
-	$color-card-edge: darken(#fff, 70.83%);
+	$color-card-edge: darken(#fff, 66.67%);
 	will-change: filter;
 
 	@if $position == 'left' {

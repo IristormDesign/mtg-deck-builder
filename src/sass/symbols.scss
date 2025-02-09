@@ -193,7 +193,7 @@
 	}
 }
 .warning-symbol {
-	color: desaturate(darken($color-rarity-gold, 0%), 29.17%);
+	color: desaturate(darken($color-rarity-gold, 8.33%), 25%);
 	font-size: 50%;
 	margin-top: divide($lhse, 6);
 	width: $lhse;
