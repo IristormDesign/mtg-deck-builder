@@ -225,7 +225,7 @@ export default {
 				}
 			}
 
-			const removalConfirmed = confirm(`Remove “${cardName()}” from this card list?`)
+			const removalConfirmed = confirm(`Remove ${cardName()} from this card list?`)
 
 			if (removalConfirmed) {
 				this.removeCard(this.i)
@@ -295,7 +295,7 @@ export default {
 				}
 
 				if (this.$store.state.showNoticeAboutMovingLastCard) {
-					alert(`You’re moving “${card.name}” out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
+					alert(`You’re moving ${card.name} out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
 
 					this.$store.commit('showNoticeAboutMovingLastCard', false)
 				}
