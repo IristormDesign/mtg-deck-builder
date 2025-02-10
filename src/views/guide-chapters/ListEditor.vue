@@ -112,7 +112,7 @@
 				<p>The sideboard is a <a href="#card-groups">card group</a> containing cards that are related to your <i>Magic</i> deck, but that aren’t in your deck’s main card group. In MTG Deck Builder, you could use the sideboard for any of these purposes:</p>
 				<ul>
 					<li>
-						<p>When you’re in the process of making a <router-link to="create-deck#start-new-deck">new deck</router-link>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might like the sideboard for this purpose because the cards it contains don’t meddle with the data in the  <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> or <router-link to="stats-analyzer">Stats Analyzer</router-link>, with the special exception of the “Last Edit” statistic.</p>
+						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, the sideboard group can temporarily hold cards you’re considering to include in the main group, but you haven’t firmly decided on yet. You might like the sideboard for this purpose because the cards it contains don’t meddle with the data in the  <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> or <router-link to="stats-analyzer">Stats Analyzer</router-link>, with the special exception of the “Last Edit” statistic.</p>
 					</li>
 					<li>
 						<p>When you’ve finished making your deck, the sideboard group can keep extra cards as potential substitutes for cards in the main group. You can temporarily swap in cards from the sideboard to adapt your deck for a rematch versus an opponent whose deck you’ve realized has certain strengths and weaknesses against yours.</p>
@@ -150,7 +150,7 @@
 						<p>In a deck for the Commander (or EDH) format, you could star the name of the designated commander card.</p>
 					</li>
 					<li>
-						<p>When you’re in the process of building a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a  certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
+						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a  certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
 					</li>
 				</ul>
 				<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>

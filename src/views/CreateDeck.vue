@@ -7,7 +7,7 @@
 				<img class="card-illustration" src="~@/img/terramorphic-expanse.jpg" width="626" height="457" alt="An illustration of a landscape magically transforming into various types of terrain" />
 				<figcaption>Illustration from <i><a href="https://scryfall.com/card/j25/156/terramorphic-expanse" target="_blank">Terramorphic Expanse</a></i> by Alayna Danner</figcaption>
 			</figure>
-			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or replicate the pre-made decks from a deck archive file. <router-link to="/guide/create-deck">(More info&hellip;)</router-link></p>
+			<p>Create a deck in two ways: Either start from a new, empty deck page and add cards to it, or replicate the pre-constructed decks from a deck archive file. <router-link to="/guide/create-deck">(More info&hellip;)</router-link></p>
 		</div>
 		<div class="columns">
 			<div class="new-deck">
