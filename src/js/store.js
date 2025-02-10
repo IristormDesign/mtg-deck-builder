@@ -20,13 +20,16 @@ export default new Vuex.Store({
 		},
 		decks: [],
 		focusCardBar: '',
+		hasNotifiedOnceAbout: {
+			quantityLimit: false,
+			movingCardGroup: false
+		},
 		highlightedCardLIIndex: -1,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
-		showNoticeAboutMovingLastCard: true,
 		showSideboard: false,
 		viewedDrawnCard: null
 	},
@@ -48,6 +51,12 @@ export default new Vuex.Store({
 		focusCardBar (state, payload) {
 			state.focusCardBar = payload
 		},
+		hasNotifiedOnceAbout (state, payload) {
+			state.hasNotifiedOnceAbout = {
+				...state.hasNotifiedOnceAbout,
+				...payload
+			}
+		},
 		highlightedCardLIIndex (state, payload) {
 			state.highlightedCardLIIndex = payload
 		},
@@ -68,9 +77,6 @@ export default new Vuex.Store({
 		},
 		showSideboard (state, payload) {
 			state.showSideboard = payload
-		},
-		showNoticeAboutMovingLastCard (state, payload) {
-			state.showNoticeAboutMovingLastCard = payload
 		},
 		viewedDrawnCard (state, payload) {
 			state.viewedDrawnCard = payload

@@ -189,9 +189,15 @@ export default {
 					}
 				} else {
 					if (card.qty > 4) {
-						setTimeout(() => {
-							alert('A deck can’t have more than 4 cards of the same name, except for the basic land cards.')
-						}, 100)
+						if (!this.$store.state.hasNotifiedOnceAbout.quantityLimit) {
+							setTimeout(() => {
+								alert('A deck may not have more than 4 of any card with a particular name, other than the basic land cards.')
+							}, 100)
+
+							this.$store.commit(
+								'hasNotifiedOnceAbout', { quantityLimit: true }
+							)
+						}
 
 						card.qty = 4
 					}
@@ -294,10 +300,12 @@ export default {
 					}
 				}
 
-				if (this.$store.state.showNoticeAboutMovingLastCard) {
+				if (!this.$store.state.hasNotifiedOnceAbout.movingCardGroup) {
 					alert(`You’re moving ${card.name} out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
 
-					this.$store.commit('showNoticeAboutMovingLastCard', false)
+					this.$store.commit(
+						'hasNotifiedOnceAbout', { movingCardGroup: true }
+					)
 				}
 			}
 
