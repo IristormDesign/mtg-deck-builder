@@ -10,6 +10,9 @@ export default {
 	computed: {
 		highlightedIndex () {
 			return this.$store.state.highlightedCardLIIndex // A value of -1 means no card list item currently has attention by keyboard shortcuts. A value of any higher number means the index position of the list item that's currently highlighted by keyboard shortcuts.
+		},
+		showSideboard () {
+			return this.$store.state.showSideboard
 		}
 	},
 	watch: {
@@ -47,6 +50,9 @@ export default {
 					allLIs[i].classList.remove('highlight')
 				}
 			}
+		},
+		showSideboard () {
+			this.setHighlightedIndex(-1)
 		}
 	},
 	mounted () {
@@ -70,8 +76,8 @@ export default {
 			if (!event.key) return // Exit this function now if there's no detected key press. Apparently this function is triggered whenever a card is added to the card list, even if no key has been pressed.
 			if (event.repeat) {
 				if (
-					event.key === ' ' &&
-					this.$route.name === 'drawSim'
+					this.$route.name === 'drawSim' &&
+					event.key === ' '
 				) {
 					event.preventDefault()
 				}
