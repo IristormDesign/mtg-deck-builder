@@ -23,14 +23,10 @@ export default {
 	},
 	computed: {
 		sideboardTotalCards () {
-			let total = 0
-
-			this.deck.sideboard.cards.forEach(card => {
-				for (let i = 0; i < card.qty; i++) {
-					total++
-				}
-			})
-			return total
+			return this.deck.sideboard.cards.reduce(
+				(total, card) => total + Number(card.qty),
+				0
+			)
 		}
 	}
 }

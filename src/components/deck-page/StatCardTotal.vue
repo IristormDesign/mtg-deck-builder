@@ -24,7 +24,7 @@ export default {
 	computed: {
 		totalCards () {
 			return this.deck.cards.reduce(
-				(total, card) => total + card.qty,
+				(total, card) => total + Number(card.qty),
 				0
 			)
 		},

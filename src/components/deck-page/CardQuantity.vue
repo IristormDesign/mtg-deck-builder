@@ -4,10 +4,13 @@
 		<input
 			type="number"
 			:id="qtyCardID(i)"
+			:ref="qtyCardID(i)"
 			min="0"
-			v-model.lazy="cardObject.qty"
+			:max="card.maxQty"
+			v-model="cardObject.qty"
 			@focus="focusedOnQtyInput()"
 			@blur="blurredFromQtyInput()"
+			@input="checkForHugeQuantity()"
 		/>
 		<div
 			class="hover-extension"
@@ -128,11 +131,12 @@ export default {
 		}
 	},
 	watch: {
-		cardQtyValue () {
-			this.validateQty()
-
+		'cardObject.qty' () {
 			if (this.$store.state.highlightedCardLIIndex > -1) {
 				this.flashQty()
+			}
+			if (document.activeElement !== this.$refs[this.qtyCardID(this.i)]) {
+				this.validateQty()
 			}
 		}
 	},
@@ -151,6 +155,12 @@ export default {
 
 			if (event.key) {
 				this.pressedKeyForQty = true
+			}
+		},
+		/* Prevent the user from entering overly large numbers. They're not only unnecessary, but in extreme cases they can also cause the web page to crash. */
+		checkForHugeQuantity () {
+			if (this.cardObject.qty > 99) {
+				this.cardObject.qty = 99
 			}
 		},
 		validateQty () {
@@ -253,6 +263,8 @@ export default {
 			document.removeEventListener(
 				'keydown', this.listenForKeyboardShortcuts
 			)
+
+			this.validateQty()
 		},
 		qtyCardID (cardIndex) {
 			const deckIndex = () => {
