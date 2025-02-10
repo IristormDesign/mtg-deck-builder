@@ -155,6 +155,7 @@ export default {
 		},
 		validateQty () {
 			const card = this.card
+			const store = this.$store
 
 			this.activeCardList.viewedCard = card
 
@@ -189,12 +190,12 @@ export default {
 					}
 				} else {
 					if (card.qty > 4) {
-						if (!this.$store.state.hasNotifiedOnceAbout.quantityLimit) {
+						if (!store.state.hasNotifiedOnceAbout.quantityLimit) {
 							setTimeout(() => {
 								alert('A deck may not have more than 4 of any card with a particular name, other than the basic land cards.')
 							}, 100)
 
-							this.$store.commit(
+							store.commit(
 								'hasNotifiedOnceAbout', { quantityLimit: true }
 							)
 						}
@@ -217,7 +218,7 @@ export default {
 			/* Save the changes. */
 			deck.editDate = new Date()
 			this.determineDeckColors()
-			this.$store.commit('decks', this.$store.state.decks)
+			store.commit('decks', store.state.decks)
 		},
 		effectOfRemovalConfirm () {
 			const card = this.card
@@ -280,12 +281,13 @@ export default {
 			this.focusedOnQtyInput()
 
 			const card = this.cardObject
+			const store = this.$store
 
 			if (card.qty === 1) {
 				this.movingLastCardToOtherGroup = true
 
 				const cardGroupName = (other) => {
-					if (this.$store.state.showSideboard) {
+					if (store.state.showSideboard) {
 						if (other) {
 							return 'main card group'
 						} else {
@@ -300,10 +302,10 @@ export default {
 					}
 				}
 
-				if (!this.$store.state.hasNotifiedOnceAbout.movingCardGroup) {
+				if (!store.state.hasNotifiedOnceAbout.movingCardGroup) {
 					alert(`You’re moving ${card.name} out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
 
-					this.$store.commit(
+					store.commit(
 						'hasNotifiedOnceAbout', { movingCardGroup: true }
 					)
 				}
@@ -337,13 +339,13 @@ export default {
 
 			const deck = this.deckObject
 
-			if (this.$store.state.showSideboard) {
+			if (store.state.showSideboard) {
 				doMove(deck.sideboard, deck)
 			} else {
 				doMove(deck, deck.sideboard)
 			}
 
-			this.$store.commit('decks', this.$store.state.decks)
+			store.commit('decks', store.state.decks)
 
 			this.$nextTick(() => {
 				this.movingLastCardToOtherGroup = false
