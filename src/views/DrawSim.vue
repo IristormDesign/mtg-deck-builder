@@ -26,12 +26,12 @@
 				<div class="button-container">
 					<button
 						class="draw-card"
-						@click="drawCard()"
+						@click="handleClickOfDrawButton()"
 						:disabled="library.length === 0"
 						:title="(library.length === 0 && drawnList.length > 0) ? 'There are no cards left to draw.' : '(Space)'"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M602.61-383.39 642.85-529l-124.7-86.08-40.23 145.62 124.69 86.07Zm-430.3 185.62-24.92-11.77Q116-222.92 105-254.61q-11-31.7 3-62.31l64.31-138.69v257.84ZM340-124.62q-33 0-56.5-23.8-23.5-23.81-23.5-56.81v-214l97.77 268.61q3 7.39 5.38 13.7 2.39 6.3 7.39 12.3H340Zm190.23-21.92q-28.31 10.23-55.84-2.23-27.54-12.46-37.77-40.77L266.92-657q-10.23-28.31 2.43-55.54Q282-739.77 310.31-750L589-851.92q28.31-10.23 55.54 2.42 27.23 12.66 37.46 40.96l170.31 467.46q10.23 28.31-2.23 55.54-12.47 27.23-40.77 37.46L530.23-146.54Zm-20.69-56.92L788.46-305q5-1.92 7.12-6.35 2.11-4.42.19-9.42L625.62-787.69q-1.93-5-6.35-7.12-4.42-2.11-9.42-.19L331.54-693.46q-5 1.92-7.12 6.34-2.11 4.43-.19 9.43l169.54 466.92q1.92 5 6.35 7.12 4.42 2.11 9.42.19ZM560-499.23Z"/></svg>
-						Draw a Card
+						Draw {{ isHoldingShift ? '10 Cards' : 'a Card' }}
 					</button>
 					<button
 						class="restart"
@@ -70,7 +70,9 @@
 						/>
 						<label for="exclude-starred">Exclude starred cards</label>
 					</div>
-					<p>To begin, click the “Draw a Card” button. For help, see the <router-link to="/guide/draw-sim">user guide</router-link>.</p>
+					<footer class="notes">
+						<p>To begin, click the Draw a Card button. Click it while holding <kbd class="shift-key">Shift</kbd> to draw 10 at once. Learn more in the <router-link to="/guide/draw-sim">user guide</router-link>.</p>
+					</footer>
 				</div>
 				<div
 					v-else
@@ -114,6 +116,7 @@ export default {
 		return {
 			afterReshuffle: false,
 			drawnList: [],
+			isHoldingShift: false,
 			isExcludingStarred: this.deck.drawingExcludeStarred,
 			library: []
 		}
@@ -135,6 +138,21 @@ export default {
 	},
 	mounted () {
 		this.prepareCards()
+
+		document.addEventListener(
+			'keydown', this.listenForKeydownEvents
+		)
+		document.addEventListener(
+			'keyup', this.listenForKeyupEvents
+		)
+	},
+	destroyed () {
+		document.removeEventListener(
+			'keydown', this.listenForKeydownEvents
+		)
+		document.removeEventListener(
+			'keyup', this.listenForKeyupEvents
+		)
 	},
 	watch: {
 		isExcludingStarred () {
@@ -146,6 +164,12 @@ export default {
 		}
 	},
 	methods: {
+		listenForKeydownEvents (event) {
+			this.isHoldingShift = event.shiftKey
+		},
+		listenForKeyupEvents (event) {
+			this.isHoldingShift = false
+		},
 		prepareCards () {
 			this.$store.commit('viewedDrawnCard', null)
 
@@ -186,7 +210,20 @@ export default {
 				array[index] = temp
 			}
 		},
-		drawCard () {
+		handleClickOfDrawButton () {
+			if (this.isHoldingShift) {
+				for (let i = 0; i < 10; i++) {
+					if (i === 0) {
+						this.drawCard()
+					} else {
+						this.drawCard(false)
+					}
+				}
+			} else {
+				this.drawCard()
+			}
+		},
+		drawCard (showCard = true) {
 			const card = this.library[0]
 
 			if (!card) return
@@ -194,12 +231,18 @@ export default {
 			if (this.reshuffleConditions) {
 				this.shuffleLibrary()
 				this.afterReshuffle = true
-				this.drawCard()
+				this.drawCard(showCard)
 			} else {
 				this.library.splice(0, 1)
 				card.uniqueID = this.drawnList.length
 				this.drawnList.unshift(card)
-				if (!this.isMobileLayout()) {
+				if (
+					!this.isMobileLayout() &&
+					(
+						showCard ||
+						this.library.length === 0
+					)
+				) {
 					this.viewCard(card)
 				}
 				this.afterReshuffle = false

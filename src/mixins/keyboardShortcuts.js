@@ -258,6 +258,8 @@ export default {
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
 					case 'c': this.openCardScryfallPage()
+						return
+					case ' ': this.drawCard(event)
 				}
 			} else { // Else NOT holding Shift.
 				switch (keyEvent) {
@@ -512,8 +514,9 @@ export default {
 			document.activeElement.blur()
 		},
 		drawCard (event) {
-			event.preventDefault()
-
+			if (event.key === ' ') {
+				event.preventDefault()
+			}
 			if (this.imageEnlarged) {
 				this.toggleCardImageEnlargement()
 			}

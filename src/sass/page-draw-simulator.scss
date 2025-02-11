@@ -75,7 +75,7 @@
 	}
 	.card-list-section {
 		height: min-content;
-		min-height: 0;
+		min-height: $lhse*8; // Prevents the page from bouncing at certain viewports when drawing a card with an empty card list.
 		border-bottom-right-radius: $border-radius-group;
 		border-bottom-left-radius: $border-radius-group;
 		border-bottom-width: 0;
@@ -84,6 +84,19 @@
 		li {
 			&:nth-last-of-type(8) {
 				margin-bottom: $margin-card-gap-after;
+			}
+		}
+		.no-cards {
+			margin-right: auto;
+			margin-left: auto;
+			padding-right: $lhse;
+			padding-left: $lhse;
+			justify-content: space-evenly;
+
+			footer {
+				p {
+					margin-bottom: 0;
+				}
 			}
 		}
 	}
@@ -108,6 +121,14 @@
 		label {
 			padding-left: $lhse*.25;
 			cursor: pointer;
+		}
+	}
+	.notes {
+		border-top: $border-sections;
+		margin-top: $lhse;
+
+		p {
+			font-size: $font-size-small;
 		}
 	}
 }
@@ -140,14 +161,6 @@
 				padding-right: $lhse*.75;
 				padding-left: $lhse*.75;
 			}
-		}
-		.no-cards {
-			max-width: $lhse*15;
-			margin-right: auto;
-			margin-left: auto;
-			padding-right: $lhse;
-			padding-left: $lhse;
-			border-radius: $border-radius-group;
 		}
 	}
 }
@@ -206,9 +219,6 @@
 			h3 {
 				width: min-content
 			}
-		}
-		.no-cards {
-			border-radius: 0;
 		}
 	}
 }

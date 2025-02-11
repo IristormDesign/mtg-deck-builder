@@ -141,7 +141,7 @@ export default {
 		}
 	},
 	methods: {
-		listenForKeyboardShortcuts (event) {
+		listenForKeyEvents (event) {
 			if (event.repeat) return
 
 			switch (event.key.toLowerCase()) {
@@ -256,12 +256,12 @@ export default {
 			}
 
 			document.addEventListener(
-				'keydown', this.listenForKeyboardShortcuts
+				'keydown', this.listenForKeyEvents
 			)
 		},
 		blurredFromQtyInput () {
 			document.removeEventListener(
-				'keydown', this.listenForKeyboardShortcuts
+				'keydown', this.listenForKeyEvents
 			)
 
 			this.validateQty()

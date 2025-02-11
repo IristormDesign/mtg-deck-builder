@@ -31,7 +31,7 @@
 
 		<section id="draw-a-card">
 			<h4 id="draw-a-card">“Draw a Card” Button</h4>
-			<p>Click this button, or <router-link to="keyboard-shortcuts">press the space bar</router-link>, to draw one card from your library.</p>
+			<p>Click this button, or <router-link to="keyboard-shortcuts">press the space bar</router-link>, to draw one card from your library. You can also hold down the <kbd class="shift-key">Shift</kbd> key while clicking the Draw a Card button or pressing the space bar to draw 10 cards at a time instead.</p>
 			<p>The drawn card’s name appears at the top of the <a href="#draw-sim-card-list">card list</a>, and its <a href="#draw-sim-card-image">card image</a> appears too (if the card image section is already visible on your device’s screen).</p>
 			<p>You can keep drawing cards until your <a href="#cards-in-library">library</a> is emptied.</p>
 		</section>
