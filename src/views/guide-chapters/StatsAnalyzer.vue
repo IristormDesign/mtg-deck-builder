@@ -43,7 +43,7 @@
 					<p>The third column (“Percent”) displays the percentages of the attributes. The basis of a table’s percentages, indicated on each table’s last row, varies between categories. The majority of the categories’ percentages are based on the total number of cards in your deck.</p>
 				</li>
 			</ul>
-			<p>The exception to the aforementioned table layout is the one for the “Power & Toughness” category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>
+			<p>The exception to the aforementioned table layout is the one for the Power & Toughness category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>
 			<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts, and all tables whenever a <a href="#statistics-filter">statistics filter</a> is on.</p>
 			<p>In the “Color Symbols in Mana Costs of Spells” category, hybrid mana symbols are each counted as multiple basic mana symbols, and all Phyrexian mana symbols are counted as hybrid mana.</p>
 		</section>
@@ -52,7 +52,7 @@
 			<h4>Statistics Filter</h4>
 			<p>When you’re in the <a href="#stats-analyzer">Stats Analyzer</a>, you sometimes may want to examine statistics about a specific aspect of your deck rather than about your deck as a whole. For those times, you can use a statistics filter, which narrows down the data presented to you based on any card attribute you choose.</p>
 			<p>To turn on a filter in the Stats Analyzer, click the row of the <a href="#data-tables">data table</a> regarding the card attribute that you want the statistics to focus on. The rows that can activate filters are the ones with the attributes’ names colored orange instead of white.</p>
-			<p>The exception to toggling filters is the table for the “Power & Toughness” category’s greatest/median/least subsection, where you must click a particular cell on a row instead of just any cell on a row.</p>
+			<p>The exception to toggling filters is the table for the Power & Toughness category’s greatest/median/least subsection, where you must click a particular cell on a row instead of just any cell on a row.</p>
 			<p>When a filter is on, the following effects happen:</p>
 			<ul>
 				<li><p>Any data about your deck that doesn’t match the selected card attribute is temporarily hidden. All data will return once the filter is turned off.</p></li>
@@ -63,7 +63,7 @@
 			</ul>
 			<p>To turn <em>off</em> a filter, thus restoring the complete statistics about your deck, do any one of the following actions:</p>
 			<ul>
-				<li>On the filter notification banner, click the “Stop Filtering” button.</li>
+				<li>On the filter notification banner, click the Stop Filtering button.</li>
 				<li>Click the table row of the currently filtered card attribute, which is highlighted orange.</li>
 				<li><router-link to="keyboard-shortcuts">Press the <kbd>Esc</kbd> key</router-link>.</li>
 			</ul>

@@ -6,10 +6,10 @@
 		<p>After you’ve tested a few rounds, depending on how you’ve constructed your deck, you might be dissatisfied with its drawing results. That’s okay—you can switch to the <router-link to="list-editor">List Editor mode</router-link> anytime to improve your deck, and then return to the Draw Simulator to test your revisions.</p>
 		<p>The Draw Simulator contains the following elements, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
-			<li><a href="#cards-in-library">“Cards in Library” statistic</a></li>
-			<li><a href="#drawn-cards">“Drawn Cards” statistic</a></li>
-			<li><a href="#draw-a-card">“Draw a Card” button</a></li>
-			<li><a href="#restart">“Restart” button</a></li>
+			<li><a href="#cards-in-library">Cards in Library statistic</a></li>
+			<li><a href="#drawn-cards">Drawn Cards statistic</a></li>
+			<li><a href="#draw-a-card">Draw a Card button</a></li>
+			<li><a href="#restart">Restart button</a></li>
 			<li><a href="#exclude-starred-cards">“Exclude starred cards” checkbox</a></li>
 			<li><a href="#draw-sim-card-list">Card list section</a></li>
 			<li><a href="#draw-sim-card-image">Card image section</a></li>

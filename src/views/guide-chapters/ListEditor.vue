@@ -19,7 +19,7 @@
 			</li>
 			<li><a href="#scryfall-button">Scryfall advanced search button</a></li>
 			<li><a href="#card-adder">Card adder</a></li>
-			<li><a href="#add-multiple">“Add Multiple” button</a></li>
+			<li><a href="#add-multiple">Add Multiple button</a></li>
 		</ol>
 		<p>Each of the List Editor’s sections is going to be explained in further detail.</p>
 
@@ -92,8 +92,8 @@
 			<p>Under certain conditions, the card sorter’s sorting option resets to “(Unsorted),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
 				<ul>
 					<li><a href="#card-adder">Add a card name</a> to the list</li>
-					<li>Change the quantity of a card name while the sorter is set to “Quantity”</li>
-					<li>Star a card name while the sorter is set to “Starred”</li>
+					<li>Change the quantity of a card name while the sorter is set to Quantity</li>
+					<li>Star a card name while the sorter is set to Starred</li>
 				</ul>
 			</p>
 			<p>Name is the most distinguishable card attribute to sort by. This is because every name in the List Editor’s card list must be unique, which isn’t necessarily true for the other attributes.</p>
@@ -275,7 +275,7 @@
 
 		<section id="add-multiple">
 			<h4>“Add Multiple” Button</h4>
-			<p>Located next to the <a href="#card-adder">card adder</a> in the <a href="#list-editor">List Editor</a> is the “Add Multiple” button. Click it if you want to go to the <router-link to="card-list-entry">Card List Entry page</router-link>.</p>
+			<p>Located next to the <a href="#card-adder">card adder</a> in the <a href="#list-editor">List Editor</a> is the Add Multiple button. Click it if you want to go to the <router-link to="card-list-entry">Card List Entry page</router-link>.</p>
 		</section>
 	</section>
 </template>
