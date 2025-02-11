@@ -140,8 +140,14 @@ export default {
 			}
 		}
 	},
+	destroyed () {
+		/* This listener might persist onto other pages in some circumstances if it's not removed when the Vue component is destroyed. */
+		document.removeEventListener(
+			'keydown', this.listenForQtyKeydown
+		)
+	},
 	methods: {
-		listenForKeyEvents (event) {
+		listenForQtyKeydown (event) {
 			if (event.repeat) return
 
 			switch (event.key.toLowerCase()) {
@@ -256,12 +262,12 @@ export default {
 			}
 
 			document.addEventListener(
-				'keydown', this.listenForKeyEvents
+				'keydown', this.listenForQtyKeydown
 			)
 		},
 		blurredFromQtyInput () {
 			document.removeEventListener(
-				'keydown', this.listenForKeyEvents
+				'keydown', this.listenForQtyKeydown
 			)
 
 			this.validateQty()

@@ -140,18 +140,18 @@ export default {
 		this.prepareCards()
 
 		document.addEventListener(
-			'keydown', this.listenForKeydownEvents
+			'keydown', this.listenForDrawSimKeydownEvents
 		)
 		document.addEventListener(
-			'keyup', this.listenForKeyupEvents
+			'keyup', this.listenForDrawSimKeyupEvents
 		)
 	},
 	destroyed () {
 		document.removeEventListener(
-			'keydown', this.listenForKeydownEvents
+			'keydown', this.listenForDrawSimKeydownEvents
 		)
 		document.removeEventListener(
-			'keyup', this.listenForKeyupEvents
+			'keyup', this.listenForDrawSimKeyupEvents
 		)
 	},
 	watch: {
@@ -164,10 +164,10 @@ export default {
 		}
 	},
 	methods: {
-		listenForKeydownEvents (event) {
+		listenForDrawSimKeydownEvents (event) {
 			this.isHoldingShift = event.shiftKey
 		},
-		listenForKeyupEvents (event) {
+		listenForDrawSimKeyupEvents () {
 			this.isHoldingShift = false
 		},
 		prepareCards () {
