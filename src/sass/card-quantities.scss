@@ -44,7 +44,6 @@
 		margin: -6.25% 2px 0 $lhse*.125;
 		color: $color-text-darker;
 		cursor: default;
-		text-indent: -1.5px; // Using text-indent instead of margin to prevent disrupting other elements' positions.
 		transition: color $transition-duration-standard ease;
 	}
 	input {
