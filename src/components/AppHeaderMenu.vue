@@ -20,7 +20,11 @@
 						Create Deck
 					</router-link>
 				</li>
-				<li class="deck-menu">
+				<li
+					class="deck-menu"
+					aria-haspopup="true"
+					:aria-expanded="showDeckMenu"
+				>
 					<button
 						class="deck-menu-toggler header-menu-item"
 						@click="toggleDeckMenu()"
@@ -54,6 +58,7 @@
 										}
 									}"
 									@click.native="closeAllPopups()"
+									:aria-selected="$route.params.deckPath === deck.path ? 'true' : 'false'"
 								>
 									<span class="deck-menu-deck-name">{{ deck.name }}</span>
 									<div class="deck-menu-deck-colors">
