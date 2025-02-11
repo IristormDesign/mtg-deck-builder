@@ -9,6 +9,7 @@
 	grid-template-rows: min-content 100%;
 	gap: $margin-card-gap-after $lhse*.5;
 	justify-content: center;
+	min-height: $lhse*16; // Prevents the page from bouncing at certain viewports when drawing a card with an empty card list.
 
 	.layout-column {
 		background: $color-group-bg;
@@ -75,7 +76,6 @@
 	}
 	.card-list-section {
 		height: min-content;
-		min-height: $lhse*10; // Prevents the page from bouncing at certain viewports when drawing a card with an empty card list.
 		border-bottom-right-radius: $border-radius-group;
 		border-bottom-left-radius: $border-radius-group;
 		border-bottom-width: 0;
@@ -93,6 +93,11 @@
 			padding-left: $lhse;
 			justify-content: space-evenly;
 
+			> p {
+				&:first-child {
+					margin: $lhse 0;
+				}
+			}
 			footer {
 				p {
 					margin-bottom: 0;
@@ -114,7 +119,7 @@
 	.checkbox-container {
 		border: $border-sections-medium;
 		padding: divide($lhse, 3) $lhse*.5;
-		margin: $lhse*.25 0;
+		margin: $lhse*.5 0;
 		display: flex;
 		align-items: center;
 
@@ -136,7 +141,7 @@
 @media (max-width: $width-app-breakpoint-tablet) {
 	.draw-simulator {
 		.layout-column {
-			width: auto;
+			width: $width-card-bars-narrow + $width-card-star + $lhse*1.5;
 		}
 		.control-panel {
 			grid-template-rows: repeat(2, $height-deck-header-component);
@@ -202,14 +207,21 @@
 		}
 	}
 }
+@media (max-width: ($min-width-app * .5)) {
+	.draw-simulator {
+		width: 100%;
+
+		.layout-column {
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+}
 @media (max-width: ($min-width-app * .4)) {
 	.draw-simulator {
 		max-width: 100vw;
 		width: 100%;
 
-		.layout-column {
-			border-radius: 0;
-		}
 		.control-panel {
 			grid-template-rows: auto $height-deck-header-component;
 			width: 100%;
