@@ -17,10 +17,10 @@
 			<h4>Deck Page Modes</h4>
 			<p>A <a href="#deck-pages">deck page</a> can be set to any one of four “deck page modes” at a time. The deck page modes are the following:</p>
 			<ul>
-				<li><router-link to="list-editor">The List Editor</router-link></li>
-				<li><router-link to="stats-analyzer">The Stats Analyzer</router-link></li>
-				<li><router-link to="draw-sim">The Draw Simulator</router-link></li>
-				<li><router-link to="text-renderer">The Text Renderer</router-link></li>
+				<li><router-link to="list-editor">List Editor</router-link></li>
+				<li><router-link to="stats-analyzer">Stats Analyzer</router-link></li>
+				<li><router-link to="draw-sim">Draw Simulator</router-link></li>
+				<li><router-link to="text-renderer">Text Renderer</router-link></li>
 			</ul>
 			<p>These modes each provide you a different way to interact with your deck through MTG Deck Builder. The later chapters of this user guide explain in detail how each mode works.</p>
 			<p>A deck page mode’s content appears below the <router-link to="deck-page-header">deck page header</router-link>. Switch from one mode to another via the <router-link to="deck-page-header#mode-menu">mode menu</router-link> or a <router-link to="keyboard-shortcuts#kbsc-deck-page-modes">keyboard shortcut</router-link>.</p>

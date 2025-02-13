@@ -3,37 +3,38 @@
 		<h3>Keyboard Shortcuts</h3>
 		<p>If you’re using MTG Deck Builder on a computer with a physical keyboard (instead of on a touchscreen device), then you have the option to use keyboard shortcuts. With keyboard shortcuts, you can press designated keys to perform tasks in the app, which let you interact with the app faster than by a mouse or trackpad alone.</p>
 		<p>Special keyboard shortcuts are available for <a href="#kbsc-deck-page-modes">switching between deck page modes</a> and for doing various actions in each the <a href="#kbsc-list-editor">List Editor</a>, <a href="#kbsc-stats-analyzer">Stats Analyzer</a>, and <a href="#kbsc-draw-sim">Draw Simulator</a> modes. (No shortcuts are in the Text Renderer.)</p>
-		<p>Be aware that the app’s keyboard shortcuts can’t work while your web browser is actively focused on any kind of text field, such as the ones in the <router-link to="list-editor#card-adder">card adder</router-link>, <router-link to="list-editor#card-quantities">card quantities</router-link>, or your browser’s web address bar. Under that condition, pressing a letter or digit key will enter that key’s character into the text field instead of doing the shortcut’s action. If you’d want to use a keyboard shortcut but your browser is focusing on a text field, stop the focus by pressing the <kbd>Esc</kbd> key or by clicking on a spot elsewhere on the page.</p>
-		<p>The app’s scheme of keyboard shortcuts is designed for left-handed ergonomics on the standard English-language layout of keys (QWERTY). If your keyboard has a different layout, then the shortcuts won’t be as ergonomic.</p>
+		<p>Be aware that the app’s keyboard shortcuts can’t work while your web browser is actively focused on any kind of text field, such as the ones in the <router-link to="list-editor#card-adder">card adder</router-link> or the <router-link to="list-editor#card-quantities">card quantity</router-link> numbers, or your browser’s web address bar. Under that condition, pressing a letter or digit key will enter that key’s character into the text field instead of doing the shortcut’s action.</p>
+		<p>If you’d want to use a keyboard shortcut but your web browser is focusing on a text field, you must first stop the browser’s focus. You can do so by pressing the <kbd>Esc</kbd> key or by clicking a spot elsewhere on the page.</p>
+		<p>The app’s scheme of keyboard shortcuts is designed for left-handed ergonomics on the standard English-language layout of keys (“QWERTY”). If your keyboard has a different layout, the shortcuts probably won’t be as ergonomic or logical.</p>
 
 		<section id="kbsc-deck-page-modes">
 			<h4>Keyboard Shortcuts: Deck Page Modes</h4>
-			<p>When you’re viewing a <router-link to="deck-pages">deck page</router-link>, you can switch between the <router-link to="deck-pages#deck-page-modes">deck page modes</router-link> by pressing one of the following keys:</p>
+			<p>While viewing a <router-link to="deck-pages">deck page</router-link>, you can switch between <router-link to="deck-pages#deck-page-modes">deck page modes</router-link> by pressing the following keys:</p>
 			<ul class="keyboard-shortcuts">
 				<li><kbd>1</kbd>: Set to the <router-link to="list-editor">List Editor</router-link>.</li>
 				<li><kbd>2</kbd>: Set to the <router-link to="stats-analyzer">Stats Analyzer</router-link>.</li>
 				<li><kbd>3</kbd>: Set to the <router-link to="draw-sim">Draw Simulator</router-link>.</li>
 				<li><kbd>4</kbd>: Set to the <router-link to="text-renderer">Text Renderer</router-link>.</li>
 			</ul>
-			<p>If you use any of these mode-setting <a href="#keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, then the shortcut will scroll the page upward to the <router-link to="deck-page-header#mode-menu">mode menu</router-link> (if it’s not already in view).</p>
+			<p>If you use any of these mode-setting <a href="#keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, the shortcut will scroll the page upward to the <router-link to="deck-page-header#mode-menu">mode menu</router-link> (if it’s not already in view).</p>
 		</section>
 
 		<section id="kbsc-list-editor">
 			<h4>Keyboard Shortcuts: List Editor Actions</h4>
-			<p>The <router-link to="list-editor">List Editor mode</router-link> accepts several special <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all to be explained in the next subchapters.</p>
-			<p>Among the List Editor’s keyboard shortcuts, the majority of them do actions that in some way involve the <router-link to="list-editor#card-list">card list</router-link>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <router-link to="list-editor#card-image">card image</router-link> becomes highlighted.</p>
+			<p>The <router-link to="list-editor">List Editor mode</router-link> accepts several <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all explained in the next subchapters.</p>
+			<p>The majority of the List Editor’s keyboard shortcuts do actions that in some way involve the <router-link to="list-editor#card-list">card list</router-link>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <router-link to="list-editor#card-image">card image</router-link> becomes highlighted.</p>
 
 			<section id="highlighting-rows">
 				<h5>Highlighting Rows in the Card List</h5>
-				<p>A <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
+				<p>The <router-link to="list-editor">List Editor</router-link>’s <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
 				<ul class="keyboard-shortcuts">
 					<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
 					<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to a distant row above. (Specifically, the distance moved is equal to one-fifth of the card list’s total number of rows, to a maximum limit of 10 rows and a minimum of 2.)</li>
-					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works the same as <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd></span> but in the opposite direction.)</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works like the previous shortcut but in the opposite direction.)</li>
 					<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 				</ul>
-				<p>If the highlighted row is at either the first or last position of the card list, and you use a keyboard shortcut that would seem to move the highlight out of the list, then the shortcut highlights the row at the list’s opposite end instead.</p>
+				<p>If the highlighted row is the row at either the very top or the very bottom of the list, and you use a shortcut to move the highlight where it couldn’t be moved farther in that direction, then the shortcut instead highlights the row at the list’s opposite end.</p>
 			</section>
 
 			<section id="actions-to-highlighted-row">
