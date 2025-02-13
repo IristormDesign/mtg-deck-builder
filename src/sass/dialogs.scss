@@ -1,0 +1,58 @@
+$transform-dialog: scale(1.0625);
+
+dialog {
+	background: $color-group-bg;
+	color: $color-text;
+	padding: $lhse*.75 $lhse;
+	max-width: $max-width-content*.875;
+	width: 87.5vw;
+	border: $border-width-sections-thickest solid $color-heading-bg;
+	box-shadow: 0 0 0 .5px $color-group-bg-darker;
+	flex-direction: column;
+	align-items: center;
+	filter: $drop-shadow-card-shadow;
+	opacity: 0;
+  transition: all .5s ease allow-discrete;
+  transform: $transform-dialog;
+	border-radius: $border-radius-group;
+
+	&[open] {
+		display: flex;
+		opacity: 1;
+		transform: scale(1);
+
+		&::backdrop {
+			opacity: 1;
+		}
+	}
+	&::backdrop {
+		@include dialog-backdrop;
+		transition: all .5s ease allow-discrete;
+		opacity: 0;
+	}
+	:first-child {
+		margin-top: 0;
+	}
+	p {
+		text-wrap: pretty;
+	}
+	form {
+		height: $lhse*1.5;
+		display: flex;
+		align-items: center;
+	}
+	button {
+		font-size: 87.5%;
+		height: $lhse*1.5;
+	}
+}
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: $transform-dialog;
+
+		&::backdrop {
+			opacity: 0;
+		}
+  }
+}

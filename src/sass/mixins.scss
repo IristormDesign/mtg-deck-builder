@@ -65,7 +65,6 @@
 }
 @mixin popup-menu-list {
 	list-style: none;
-	border-radius: $border-radius-small-button;
 	width: max-content;
 	padding: $border-width-sections-medium;
 	margin: 0;
@@ -153,7 +152,12 @@
 		min-height: $lhse*1.3333;
 	}
 }
+@mixin dialog-backdrop {
+	background: rgba($color-content-bg, .3820);
+	backdrop-filter: blur(3px);
+}
 @mixin overlay-bg {
+	@include dialog-backdrop;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -162,8 +166,6 @@
 	width: 100%;
 	height: 100%;
 	z-index: index($layers, bg-overlay);
-	background: rgba($color-heading-bg, .6);
-	backdrop-filter: blur(3px);
 }
 @mixin disabled-style {
 	opacity: .25;
@@ -182,15 +184,14 @@
 	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:
-		0 1px 0 .5px $color-subtle-bluish-shadow, // Rim around button
+		0 1px 0 1px $color-subtle-bluish-shadow, // Rim around button
 		$box-shadow-button-shine;
 	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
 	border-radius: $border-radius-button;
-	outline-offset: 2px;
 	padding: $lhse*.25 .5em;
 	margin: -2px 0 2px;
-	min-width: 4.5em;
+	min-width: $lhse*3;
 	filter: brightness(1);
 	transition: filter $transition-duration-standard ease;
 	line-height: 1;

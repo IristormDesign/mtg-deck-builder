@@ -207,9 +207,7 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						if (!store.state.hasNotifiedOnceAbout.quantityLimit) {
-							setTimeout(() => {
-								alert('A deck may not have more than 4 of any card with a particular name, other than the basic land cards.')
-							}, 100)
+							store.commit('idOfShowingDialog', 'quantityLimitWarning')
 
 							store.commit(
 								'hasNotifiedOnceAbout', { quantityLimit: true }

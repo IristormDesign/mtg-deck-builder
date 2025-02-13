@@ -25,6 +25,7 @@ export default new Vuex.Store({
 			movingCardGroup: false
 		},
 		highlightedCardLIIndex: -1,
+		idOfShowingDialog: null,
 		loadDefaultDecks: true,
 		overlayHoverEnabled: false,
 		showingAnyPopup: false,
@@ -59,6 +60,9 @@ export default new Vuex.Store({
 		},
 		highlightedCardLIIndex (state, payload) {
 			state.highlightedCardLIIndex = payload
+		},
+		idOfShowingDialog (state, payload) {
+			state.idOfShowingDialog = payload
 		},
 		loadDefaultDecks (state, payload) {
 			state.loadDefaultDecks = payload

@@ -129,13 +129,14 @@ $border-sections-alt: $border-width-sections solid $color-section-border-alt;
 $color-input-border: $border-width-sections solid $color-button-orange;
 $border-image-thin: $border-width-sections solid $color-group-bg-extra-darker;
 $border-bottom-width-button: 3px;
-$outline-focus-visible: 2px solid $color-link-active;
+$outline-focus-visible: 1px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;
 $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-heading-bg;
 
 /* SHADOWS AND GLOWS */
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
 $box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba($color-subtle-bluish-shadow-base, 1/3);
+$drop-shadow-card-shadow: drop-shadow(-$lhse*.5 $lhse*1.5 $lhse*.5 $color-subtle-bluish-shadow);
 
 /* TRANSITIONS */
 $transition-duration-standard: .25s;
@@ -146,7 +147,7 @@ $transition-duration-card-image-hover-fast: $transition-duration-card-image-hove
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
 $border-radius-small-button: divide($border-radius-group, 2);
-$layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, dropdown-label, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
+$layers: card-li-focus-within, card-li-hover, scroll-to-top, card-overlay, dropdown-label, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler, dialog;
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.2);
 $filter-brightness-button-active: brightness(.8);

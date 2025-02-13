@@ -1,6 +1,6 @@
 :focus-visible {
 	outline: $outline-focus-visible;
-	outline-offset: 1px;
+	outline-offset: 2px;
 }
 :focus:not(:focus-visible) {
 	outline-width: 0;
@@ -31,7 +31,6 @@ select {
 		background: $color-input-bg-focus;
 		color: $color-link-focus;
 		border-color: $color-link-focus;
-		outline-offset: 0px;
 	}
 }
 textarea {
@@ -61,10 +60,8 @@ textarea {
 input,
 select,
 textarea {
-	transition: all $transition-duration-standard ease;
+	transition: $transition-duration-standard ease;
 	transition-property: color, background-color, border-color;
-	background: $color-group-bg;
-	background: desaturate(darken($color-mythic-orange, 33.33%), 100%);
 	background: $color-input-bg;
 	caret-color: $color-mythic-orange;
 	border: $color-input-border;
@@ -81,7 +78,6 @@ textarea {
 	&:focus-visible {
 		text-decoration: none;
 		border-color: $color-link-focus;
-		outline-offset: 0px;
 	}
 	&:active {
 		border-color: $color-link-active;
@@ -114,14 +110,11 @@ select {
 	/* For users' browsers that don't yet support the `:has` pseudo-class, provide fallback pseudo-classes. */
 	&:has(input:focus-visible) {
 		outline: $outline-focus-visible;
-		outline-offset: -1px;
 	}
-
 	@supports not (selector(:has(input))) { // For Firefox
 		&:focus-within,
 		&:active {
 			outline: $outline-focus-visible;
-			outline-offset: -1px;
 		}
 	}
 	> div {

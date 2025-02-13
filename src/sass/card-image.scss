@@ -2,7 +2,6 @@
 $height-card-image-section: #{680px * .6667};
 $transition-delay-card: divide(1, 3) * 1s;
 $animation-duration-card-browse: (1s / 3);
-$drop-shadow-card-shadow: drop-shadow(-$lhse*.5 $lhse*1.5 $lhse*.5 $color-subtle-bluish-shadow);
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;

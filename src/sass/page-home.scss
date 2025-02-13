@@ -78,11 +78,9 @@
 			position: absolute;
 			bottom: $lhse*1.5;
 			left: $lhse*1.5;
-			background: $color-group-bg;
 			background: $color-group-bg-lighter;
 			color: $color-text-brighter;
-			border: $border-width-sections-thickest solid $color-group-bg-lighter;
-			border-color: $color-heading-bg;
+			border: $border-width-sections-thickest solid $color-heading-bg;
 			box-shadow: 0 0 $lhse*1.5 rgba($color-subtle-bluish-shadow-base, .75);
 			padding: $lhse*.25 $lhse*.875;
 			border-radius: $border-radius-small-button;
