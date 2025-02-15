@@ -184,7 +184,8 @@
 	color: $color-black-label-text;
 	cursor: pointer;
 	box-shadow:
-		0 1px 0 1px $color-subtle-bluish-shadow, // Rim around button
+		-1px 1px 0 $color-subtle-bluish-shadow-base, // Rim around button
+		1px 1px 0 $color-subtle-bluish-shadow-base, // Rim around button
 		$box-shadow-button-shine;
 	border: 0px solid $color-button-border;
 	border-bottom-width: $border-bottom-width-button;
@@ -215,11 +216,13 @@
 		border-bottom-width: 1px;
 		margin-top: 0;
 		margin-bottom: 0;
-		filter: $filter-brightness-button-active;
+		filter: none;
 	}
 	&:active,
 	&:disabled {
-		box-shadow: 0 0 0 .5px $color-subtle-bluish-shadow;
+		box-shadow:
+			1px 0 0 $color-subtle-bluish-shadow-base,
+			(-1px) 0 0 $color-subtle-bluish-shadow-base;
 	}
 	&:disabled {
 		@include disabled-style;

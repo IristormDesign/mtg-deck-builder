@@ -229,7 +229,7 @@ option {
 			filter: $filter-brightness-button-hover;
 		}
 		&:active {
-			filter: $filter-brightness-button-active;
+			filter: none;
 		}
 	}
 	+ label {

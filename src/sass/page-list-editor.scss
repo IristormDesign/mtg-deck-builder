@@ -136,7 +136,7 @@ $width-card-list-section-narrow:
 				filter: $filter-brightness-button-hover;
 			}
 			&:active {
-				filter: $filter-brightness-button-active;
+				filter: none;
 			}
 		}
 	}
