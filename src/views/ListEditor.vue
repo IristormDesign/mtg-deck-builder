@@ -59,6 +59,10 @@
 				<list-entry-button />
 			</div>
 		</div>
+
+		<standard-dialog dialogID="quantityLimitWarning">
+			<p>A deck may not have more than 4 of any card with a particular name, other than the basic land cards.</p>
+		</standard-dialog>
 	</div>
 </template>
 
@@ -71,10 +75,11 @@ import CardListItems from '@/components/deck-page/CardListItems.vue'
 import ScryfallButton from '@/components/deck-page/ScryfallButton.vue'
 import ListEntryButton from '@/components/deck-page/ListEntryButton.vue'
 import CardAdder from '@/components/deck-page/CardAdder.vue'
+import StandardDialog from '@/components/StandardDialog.vue'
 import cardListFunctions from '@/mixins/cardListFunctions'
 
 export default {
-	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, ListEntryButton, CardAdder },
+	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, ListEntryButton, CardAdder, StandardDialog },
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object

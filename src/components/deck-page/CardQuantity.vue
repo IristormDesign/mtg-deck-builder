@@ -207,13 +207,8 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						if (!store.state.hasNotifiedOnceAbout.quantityLimit) {
-							setTimeout(() => {
-								store.commit('idOfShowingDialog', 'quantityLimitWarning')
-							}, 0) // Timeout needed to show warning dialogs after pressing the Escape or Enter keys.
-
-							store.commit(
-								'hasNotifiedOnceAbout', { quantityLimit: true }
-							)
+							store.commit('idOfShowingDialog', 'quantityLimitWarning')
+							store.commit('hasNotifiedOnceAbout', { quantityLimit: true })
 						}
 
 						card.qty = 4

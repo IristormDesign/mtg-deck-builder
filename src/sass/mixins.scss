@@ -73,7 +73,7 @@
 	transition: $transition-duration-standard ease;
 	transition-property: opacity, transform;
 	will-change: transform;
-	border: 1px solid $color-link;
+	border: 1px solid $color-button-orange;
 	box-shadow: (-$lhse*.3333) $lhse*1 $lhse*1.5 $lhse*.1667 $color-subtle-bluish-shadow;
 
 	.selected {
@@ -153,7 +153,7 @@
 	}
 }
 @mixin dialog-backdrop {
-	background: rgba($color-content-bg, .3820);
+	background: rgba($color-content-bg, .5);
 	backdrop-filter: blur(3px);
 }
 @mixin overlay-bg {
