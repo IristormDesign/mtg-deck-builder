@@ -24,7 +24,7 @@
 				role="menu"
 			>
 				<li role="menuitem">
-					<button @click="promptDuplicateDeckName()" type="button">
+					<button @click="duplicateDeck()" type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M747.69-220H332.31Q302-220 281-241q-21-21-21-51.31v-535.38Q260-858 281-879q21-21 51.31-21H610l210 210v397.69Q820-262 799-241q-21 21-51.31 21ZM580-660v-180H332.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h415.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-660H580ZM172.31-60Q142-60 121-81q-21-21-21-51.31V-660h60v527.69q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85H580v60H172.31ZM320-840v180-180V-280v-560Z"/></svg>
 						Duplicate
 					</button>
@@ -43,78 +43,27 @@
 				</li>
 			</ul>
 		</dropdown-menu>
-		<standard-dialog
-			dialogID="duplicateDeckNamePrompt"
-			class="with-text-input"
-		>
-			<p>Enter a unique name for the duplicate deck:</p>
-			<form slot="form" method="dialog">
-				<input
-					v-model.trim="dupDeckName"
-					type="text"
-					autofocus
-				/>
-				<button
-					@click.prevent="createDuplicateDeck()"
-					:disabled="isInvalidDeckName"
-				>Create Deck</button>
-				<button formmethod="dialog">Cancel</button>
-			</form>
-		</standard-dialog>
-		<standard-dialog dialogID="duplicationSuccess">
-			<p><i>{{ dupDeckName }}</i> is now created.</p>
-		</standard-dialog>
+		<duplicate-deck-dialogs :deck="deck" />
 	</section>
 </template>
 
 <script>
 import DropdownMenu from '@/components/DropdownMenu.vue'
-import StandardDialog from '@/components/StandardDialog.vue'
-import copyDeck from '@/mixins/copyDeck.js'
+import DuplicateDeckDialogs from '@/components/deck-page/DuplicateDeckDialogs.vue'
 
 export default {
-	components: { DropdownMenu, StandardDialog },
-	mixins: [copyDeck],
+	components: { DropdownMenu, DuplicateDeckDialogs },
 	props: {
 		deck: Object
 	},
 	data () {
 		return {
-			dupDeckName: '',
 			isMenuOpen: false
 		}
 	},
-	computed: {
-		isInvalidDeckName () {
-			return (
-				!this.dupDeckName ||
-				this.dupDeckPath === this.$route.params.deckPath
-			)
-		},
-		dupDeckPath () {
-			return this.stringToPath(this.dupDeckName)
-		}
-	},
 	methods: {
-		promptDuplicateDeckName () {
-			this.dupDeckName = this.amendCopiedDeckName(this.deck).name
+		duplicateDeck () {
 			this.$store.commit('idOfShowingDialog', 'duplicateDeckNamePrompt')
-		},
-		createDuplicateDeck () {
-			if (this.nameIsApproved(this.dupDeckName, this.dupDeckPath)) {
-				const dupDeckData = JSON.parse(JSON.stringify(this.deck)) // The technique for deep-cloning objects, which is necessary here.
-				const modifiedData = {
-					name: this.dupDeckName,
-					path: this.dupDeckPath
-				}
-
-				this.storeCopiedDeckAndRedirect(dupDeckData, modifiedData)
-				this.$store.commit('idOfShowingDialog', null)
-
-				setTimeout(() => {
-					this.$store.commit('idOfShowingDialog', 'duplicationSuccess')
-				}, 1)
-			}
 		},
 		archiveDeck () {
 			this.$router.push({
