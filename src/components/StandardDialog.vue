@@ -21,8 +21,12 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (value) {
-			if (value === this.dialogID) {
-				this.dialog.showModal()
+			switch (value) {
+				case this.dialogID:
+					this.dialog.showModal()
+					return
+				case null:
+					this.dialog.close()
 			}
 		}
 	},

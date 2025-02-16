@@ -3,20 +3,18 @@ $transform-dialog: scale(1.0625);
 dialog {
 	background: $color-group-bg;
 	color: $color-text;
-	padding: $lhse*.75 $lhse;
+	padding: $lhse $lhse*1.25;
 	width: fit-content;
-	max-width: $max-width-content;
+	max-width: $max-width-content*.875;
 	border: 1px solid $color-button-orange;
 	box-shadow: inset 0 0 0 $border-width-sections-medium $color-group-bg-darker;
-	flex-direction: column;
-	align-items: center;
 	filter: $drop-shadow-card-shadow;
 	opacity: 0;
   transition: all .5s ease allow-discrete;
   transform: $transform-dialog;
 
 	&[open] {
-		display: flex;
+		display: block;
 		opacity: 1;
 		transform: scale(1);
 
@@ -34,15 +32,45 @@ dialog {
 	}
 	p {
 		text-wrap: pretty;
+		text-align: center;
 	}
 	form {
-		height: $lhse*1.5;
+		min-height: $lhse*1.5;
 		display: flex;
 		align-items: center;
 	}
 	button {
-		font-size: 87.5%;
+		font-size: 83.33%;
 		height: $lhse*1.5;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	&.with-text-input {
+		form {
+			display: grid;
+			grid-template-columns: 1fr auto auto 1fr;
+			width: 100%;
+			gap: $lhse $lhse*.5;
+			margin-top: $lhse*.75;
+		}
+		input {
+			grid-column: span 4;
+			max-width: 20em;
+			width: 100%;
+			text-align: center;
+			margin: 0 auto;
+		}
+		button {
+			grid-row: 2;
+
+			&:first-of-type {
+				grid-column-start: 2;
+			}
+			&[formmethod="dialog"] {
+				background: $color-button-gray;
+				grid-column-start: 3;
+			}
+		}
 	}
 }
 @starting-style {
