@@ -43,16 +43,16 @@
 				</li>
 			</ul>
 		</dropdown-menu>
-		<duplicate-deck-dialogs :deck="deck" />
+		<dialogs-duplicate-deck :deck="deck" />
 	</section>
 </template>
 
 <script>
 import DropdownMenu from '@/components/DropdownMenu.vue'
-import DuplicateDeckDialogs from '@/components/deck-page/DuplicateDeckDialogs.vue'
+import DialogsDuplicateDeck from '@/components/deck-page/DialogsDuplicateDeck.vue'
 
 export default {
-	components: { DropdownMenu, DuplicateDeckDialogs },
+	components: { DropdownMenu, DialogsDuplicateDeck },
 	props: {
 		deck: Object
 	},
