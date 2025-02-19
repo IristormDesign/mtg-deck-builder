@@ -6,7 +6,7 @@
 	grid-template-columns: 5fr 4fr;
 	gap: $lhse;
 	align-items: flex-start;
-	padding-bottom: $lhse*0;
+	padding-bottom: $lhse;
 
 	h2 {
 		grid-column: span 2;
@@ -73,9 +73,6 @@
 		}
 	}
 	.replicate-decks {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		justify-content: space-evenly;
 
 		h3 {
