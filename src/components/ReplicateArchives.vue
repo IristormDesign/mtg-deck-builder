@@ -24,7 +24,7 @@
 			<p>Because you already have a deck named <i>{{existingDeckName}}</i>, the archived deck you’re replicating with that same name is going to be renamed <span class="no-text-break"><i>{{firstAmendedDeckName}}</i></span>.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="multipleExistingDecks">
-			<p>There are archived decks you’re replicating that share the same names as decks you already have. To make each name unique, the replicated decks are going to be slightly renamed as if they were duplicates.</p>
+			<p>There are archived decks you’re replicating that share the same names as decks you already have. So, the replicating decks that don’t have a unique name are going to be slightly renamed as if they were duplicates.</p>
 		</standard-dialog>
 	</section>
 </template>
@@ -120,41 +120,36 @@ export default {
 		handleFormatVersion2 () {
 			const archDecks = this.parsedJSON.decks
 			const store = this.$store
+			let numExistingDecks = 0
 
 			for (let i = 0; i < archDecks.length; i++) {
 				const deck = archDecks[i]
 
 				if (this.deckExists(deck.path)) {
+					numExistingDecks++
 					this.existingDeckName = this.deckExists(deck.path).name
 
 					const amendedDeck = this.amendCopiedDeckName(deck)
 
-					if (i === 0) {
+					if (numExistingDecks === 1) {
 						this.firstAmendedDeckName = amendedDeck.name
 					}
 
 					deck.name = amendedDeck.name
 					deck.path = amendedDeck.path
-
-					this.replicateDeck(deck)
-
-					if (archDecks.length === 1) {
-						store.commit('idOfShowingDialog', 'singleExistingDeck')
-					} else if (archDecks.length > 1) {
-						store.commit('idOfShowingDialog', 'multipleExistingDecks')
-					} else {
-						store.commit('idOfShowingDialog', 'errorCorruptedData')
-					}
-				} else {
-					this.replicateDeck(deck)
-
-					if (
-						i === archDecks.length - 1 &&
-						store.state.idOfShowingDialog === null
-					) {
-						this.$parent.goToDeckPage(archDecks[0].path)
-					}
 				}
+
+				this.replicateDeck(deck)
+			}
+
+			if (numExistingDecks === 1) {
+				store.commit('idOfShowingDialog', 'singleExistingDeck')
+			} else if (numExistingDecks > 1) {
+				store.commit('idOfShowingDialog', 'multipleExistingDecks')
+			} else if (archDecks.length === 0) {
+				store.commit('idOfShowingDialog', 'errorCorruptedData')
+			} else {
+				this.$parent.goToDeckPage(archDecks[0].path)
 			}
 		},
 		handleFormatVersion1 () {
