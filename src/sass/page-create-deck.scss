@@ -6,7 +6,7 @@
 	grid-template-columns: 5fr 4fr;
 	gap: $lhse;
 	align-items: flex-start;
-	padding-bottom: $lhse;
+	padding-bottom: $lhse*0;
 
 	h2 {
 		grid-column: span 2;
@@ -57,7 +57,7 @@
 			width: 100%;
 			max-width: (50ch * .5);
 			text-align: center;
-			font-size: $font-size-bigger;
+			font-size: 100%;
 			height: $lhse*1.25;
 		}
 		.button-container {

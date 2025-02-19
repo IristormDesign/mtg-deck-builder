@@ -60,7 +60,7 @@
 			</div>
 		</div>
 
-		<standard-dialog dialogID="quantityLimitWarning">
+		<standard-dialog dialogID="quantityMaxLimit">
 			<p>A deck may not have more than 4 of any card with a particular name, other than the basic land cards.</p>
 		</standard-dialog>
 	</div>

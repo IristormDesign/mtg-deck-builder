@@ -168,8 +168,8 @@
 	z-index: index($layers, bg-overlay);
 }
 @mixin disabled-style {
-	opacity: .25;
-	filter: saturate(.25);
+	opacity: (1/3);
+	filter: saturate(1/3);
 }
 @mixin button($color: 'orange') {
 	@include heading-font;

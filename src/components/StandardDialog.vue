@@ -20,8 +20,8 @@ export default {
 		}
 	},
 	watch: {
-		'$store.state.idOfShowingDialog' (value) {
-			switch (value) {
+		'$store.state.idOfShowingDialog' (id) {
+			switch (id) {
 				case this.dialogID:
 					this.dialog.showModal()
 					return

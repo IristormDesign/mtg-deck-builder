@@ -63,7 +63,7 @@ export default {
 	},
 	methods: {
 		duplicateDeck () {
-			this.$store.commit('idOfShowingDialog', 'duplicateDeckNamePrompt')
+			this.$store.commit('idOfShowingDialog', 'duplicateDeck')
 		},
 		archiveDeck () {
 			this.$router.push({

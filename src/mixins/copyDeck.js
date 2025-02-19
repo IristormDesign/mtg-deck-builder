@@ -19,7 +19,7 @@ export default {
 			const makeUniqueDeckName = (copyNum) => {
 				copiedDeckPath = this.stringToPath(copiedDeckName)
 
-				if (store.getters.deckExists(copiedDeckPath)) {
+				if (this.deckExists(copiedDeckPath)) {
 					copyNum++
 
 					copiedDeckName = copiedDeckName.replace(

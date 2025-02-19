@@ -207,7 +207,7 @@ export default {
 				} else {
 					if (card.qty > 4) {
 						if (!store.state.hasNotifiedOnceAbout.quantityLimit) {
-							store.commit('idOfShowingDialog', 'quantityLimitWarning')
+							store.commit('idOfShowingDialog', 'quantityMaxLimit')
 							store.commit('hasNotifiedOnceAbout', { quantityLimit: true })
 						}
 

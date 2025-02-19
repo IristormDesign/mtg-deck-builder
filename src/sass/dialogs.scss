@@ -34,7 +34,6 @@ dialog {
 	}
 	p {
 		text-wrap: pretty;
-		text-align: center;
 	}
 	form {
 		min-height: $lhse*1.5;
@@ -61,6 +60,7 @@ dialog {
 			width: 100%;
 			text-align: center;
 			margin: 0 auto;
+			height: $lhse*1.25;
 		}
 		button {
 			grid-row: 2;

@@ -35,12 +35,6 @@ export default new Vuex.Store({
 		viewedDrawnCard: null
 	},
 	getters: {
-		/* Check whether another deck exists with the same name. If one does, return that deck object (not the name). The name check is actually based on the deck's path because the path must be unique. */
-		deckExists: (state) => (testPath) => {
-			return state.decks.find(deck =>
-				testPath === deck.path
-			)
-		}
 	},
 	mutations: {
 		analyzerFilter (state, payload) {

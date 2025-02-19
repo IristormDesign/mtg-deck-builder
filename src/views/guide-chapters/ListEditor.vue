@@ -150,7 +150,7 @@
 						<p>In a deck for the Commander (or EDH) format, you could star the name of the designated commander card.</p>
 					</li>
 					<li>
-						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a  certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
+						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
 					</li>
 				</ul>
 				<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>
@@ -215,11 +215,11 @@
 
 		<section id="scryfall-button">
 			<h4>Scryfall Advanced Search Button</h4>
-			<p>The number of distinct cards that exist in all of <i>Magic: The Gathering</i> is so huge it’s overwhelming. So, how can you reasonably figure out which ones to consider for your deck? A helpful solution is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced search</a>: It lets you browse through a list of <i>Magic</i> cards, but only the ones that match the combination of attributes you’ve specified.</p>
-			<p>In the <a href="#list-editor">List Editor</a>, there’s a button labeled with the Scryfall logo and the words “Card Search.” Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. You can also <router-link to="keyboard-shortcuts">press the <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd></span> keys</router-link> instead to do this same action.</p>
+			<p>The number of distinct cards that exist in all of <i>Magic: The Gathering</i> is so huge it’s overwhelming. So, how can you reasonably figure out which ones to consider for your deck? A helpful solution is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced search</a>: It lets you browse through a list of <i>Magic</i> cards, but only the ones that match your specified criteria.</p>
+			<p>In the <a href="#list-editor">List Editor</a> is a button labeled with the Scryfall logo and the words “Card Search.” Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. You can also <router-link to="keyboard-shortcuts">press the <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd></span> keys</router-link> instead to do this same action.</p>
 			<p>Note that Scryfall is a separate website from MTG Deck Builder, and Iristorm Design has no affiliation with Scryfall. The Scryfall card search button in MTG Deck Builder is only a shortcut for your convenience. You can still go to the Scryfall website by other ways as well.</p>
-			<p>Though MTG Deck Builder has been designed to be used alongside searches on Scryfall, you don’t have to use it. Alternative search engines for <i>Magic</i> cards exist too, such as <a href="https://gatherer.wizards.com/" target="_blank">Gatherer</a>, and several online stores that sell <i>Magic</i> card singles.</p>
-			<p>Whenever you find a good card for your deck from your search, you can then return to MTG Deck Builder and enter that card’s name in the <a href="#card-adder">card adder</a>.</p>
+			<p>Though MTG Deck Builder has been designed to be used alongside searches on Scryfall, it’s not required. Other search engines for <i>Magic</i> cards exist too—such as <a href="https://gatherer.wizards.com/" target="_blank">Gatherer</a>, and several online stores that sell <i>Magic</i> card singles—which you may prefer instead.</p>
+			<p>Whenever you find a good card for your deck from your search, you can then return to MTG Deck Builder and enter the name (or the Scryfall page URL) of that card in the <a href="#card-adder">card adder</a>.</p>
 		</section>
 
 		<section id="card-adder">

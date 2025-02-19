@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<standard-dialog
-			dialogID="duplicateDeckNamePrompt"
+			dialogID="duplicateDeck"
 			class="with-text-input"
 		>
 			<p>Enter a unique name for the duplicate deck:</p>
@@ -52,7 +52,7 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (value) {
-			if (value === 'duplicateDeckNamePrompt') {
+			if (value === 'duplicateDeck') {
 				this.dupDeckName = this.amendCopiedDeckName(this.deck).name
 			}
 		}
