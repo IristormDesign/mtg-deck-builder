@@ -21,7 +21,7 @@
 			<p>Sorry, no deck could be replicated from the archive file you’ve selected ({{fileName}}). That file’s data has been somehow corrupted.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="singleExistingDeck">
-			<p>Because you already have a deck named <i>{{existingDeckName}}</i>, the archived deck you’re replicating with that same name is going to be renamed <span class="no-text-break"><i>{{firstAmendedDeckName}}</i></span>.</p>
+			<p>Because you already have a deck named <i>{{existingDeckName}}</i>, the archived deck you’re replicating with that same name is going to be renamed <span class="no-text-break"><i>{{amendedDeckName}}</i></span>.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="multipleExistingDecks">
 			<p>There are archived decks you’re replicating that share the same names as decks you already have. So, the replicating decks that don’t have a unique name are going to be slightly renamed as if they were duplicates.</p>
@@ -42,7 +42,7 @@ export default {
 		return {
 			existingDeckName: '',
 			fileName: '',
-			firstAmendedDeckName: '',
+			amendedDeckName: '',
 			parsedJSON: {}
 		}
 	},
@@ -59,9 +59,13 @@ export default {
 					prevID === 'multipleExistingDecks'
 				)
 			) { // Once the user closes the opened dialog...
-				this.$parent.goToDeckPage(
-					this.parsedJSON.decks[0].path
-				)
+				if (this.parsedJSON.decks) { // If the data is in the version 2 form...
+					this.$parent.goToDeckPage(
+						this.parsedJSON.decks[0].path
+					)
+				} else { // Else the data is version 1...
+					this.$parent.goToDeckPage(this.parsedJSON.path)
+				}
 			}
 		}
 	},
@@ -128,11 +132,10 @@ export default {
 				if (this.deckExists(deck.path)) {
 					numExistingDecks++
 					this.existingDeckName = this.deckExists(deck.path).name
-
 					const amendedDeck = this.amendCopiedDeckName(deck)
 
 					if (numExistingDecks === 1) {
-						this.firstAmendedDeckName = amendedDeck.name
+						this.amendedDeckName = amendedDeck.name
 					}
 
 					deck.name = amendedDeck.name
@@ -153,19 +156,23 @@ export default {
 			}
 		},
 		handleFormatVersion1 () {
-			const deck = this.parsedJSON
+			const archDeck = this.parsedJSON
+			const existingDeck = this.deckExists(archDeck.path)
 
-			if (this.deckExists(deck.path)) {
-				const amendedDeckData = this.amendCopiedDeckName(deck)
+			if (existingDeck) {
+				this.existingDeckName = existingDeck.name
+				const amendedDeck = this.amendCopiedDeckName(archDeck)
+				this.amendedDeckName = amendedDeck.name
+				archDeck.name = amendedDeck.name
+				archDeck.path = amendedDeck.path
+			}
+
+			this.replicateDeck(archDeck)
+
+			if (existingDeck) {
 				this.$store.commit('idOfShowingDialog', 'singleExistingDeck')
-
-				this.storeCopiedDeckAndRedirect(deck, amendedDeckData)
 			} else {
-				this.replicateDeck(deck)
-
-				this.$nextTick(() => {
-					this.$parent.goToDeckPage(deck.path)
-				})
+				this.$parent.goToDeckPage(archDeck.path)
 			}
 		},
 		replicateDeck (deck) {
