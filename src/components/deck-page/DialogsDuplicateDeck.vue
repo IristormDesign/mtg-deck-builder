@@ -26,11 +26,11 @@
 
 <script>
 import StandardDialog from '@/components/StandardDialog.vue'
-import copyDeck from '@/mixins/copyDeck.js'
+import amendCopiedDeckName from '@/mixins/amendCopiedDeckName.js'
 
 export default {
 	components: { StandardDialog },
-	mixins: [copyDeck],
+	mixins: [amendCopiedDeckName],
 	props: {
 		deck: Object
 	},
@@ -60,13 +60,20 @@ export default {
 	methods: {
 		createDuplicateDeck () {
 			if (this.nameIsApproved(this.dupDeckName, this.dupDeckPath)) {
-				const dupDeckData = JSON.parse(JSON.stringify(this.deck)) // The technique for deep-cloning objects, which is necessary here.
-				const modifiedData = {
-					name: this.dupDeckName,
-					path: this.dupDeckPath
-				}
+				const dupDeck = JSON.parse(JSON.stringify(this.deck)) // The technique for deep-cloning objects, which is necessary here.
+				dupDeck.name = this.dupDeckName
+				dupDeck.path = this.dupDeckPath
+				dupDeck.editDate = new Date()
 
-				this.storeCopiedDeckAndRedirect(dupDeckData, modifiedData)
+				this.$store.state.decks.push(dupDeck)
+				this.sortDeckMenu()
+				this.$store.commit('decks', this.$store.state.decks)
+
+				this.$router.push({
+					name: 'listEditor',
+					params: { deckPath: dupDeck.path }
+				})
+
 				this.$store.commit('idOfShowingDialog', null)
 
 				setTimeout(() => {

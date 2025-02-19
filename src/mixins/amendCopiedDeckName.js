@@ -1,7 +1,5 @@
 import stringMethods from '@/mixins/stringMethods.js'
 import sortDeckMenu from '@/mixins/sortDeckMenu.js'
-import store from '@/js/store.js'
-import router from '@/js/router.js'
 
 export default {
 	mixins: [stringMethods, sortDeckMenu],
@@ -48,20 +46,6 @@ export default {
 				name: copiedDeckName,
 				path: copiedDeckPath
 			}
-		},
-		storeCopiedDeckAndRedirect (deck, newData) {
-			deck.name = newData.name
-			deck.path = newData.path
-			deck.editDate = new Date()
-
-			store.state.decks.push(deck)
-			this.sortDeckMenu()
-			store.commit('decks', store.state.decks)
-
-			router.push({
-				name: 'listEditor',
-				params: { deckPath: deck.path }
-			})
 		}
 	}
 }

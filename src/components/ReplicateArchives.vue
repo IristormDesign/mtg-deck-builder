@@ -33,11 +33,11 @@
 import StandardDialog from '@/components/StandardDialog.vue'
 import latestDataVersions from '@/mixins/latestDataVersions.js'
 import stringMethods from '@/mixins/stringMethods.js'
-import copyDeck from '@/mixins/copyDeck.js'
+import amendCopiedDeckName from '@/mixins/amendCopiedDeckName.js'
 
 export default {
 	components: { StandardDialog },
-	mixins: [latestDataVersions, stringMethods, copyDeck],
+	mixins: [latestDataVersions, stringMethods, amendCopiedDeckName],
 	data () {
 		return {
 			existingDeckName: '',
