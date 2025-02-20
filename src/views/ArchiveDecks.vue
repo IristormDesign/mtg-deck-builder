@@ -26,7 +26,7 @@
 					</div>
 					<div class="button-container">
 						<button
-							@click="selectNone()"
+							@click="checkedDecks = []"
 							:disabled="numChecked === 0"
 							type="button"
 						>
@@ -117,9 +117,6 @@ export default {
 			checkboxes.forEach(checkbox => {
 				this.checkedDecks.push(checkbox.value)
 			})
-		},
-		selectNone () {
-			this.checkedDecks = []
 		},
 		archiveSelectedDecks () {
 			const transitoryLink = document.createElement('a')
