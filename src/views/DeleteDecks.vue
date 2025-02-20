@@ -6,7 +6,7 @@
 				<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
 				<figcaption>Illustration from <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank"><i>Planar Cleansing</i></a> by Michael Komarck</figcaption>
 			</figure>
-			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks that you want to remove from this app. Warning: Decks can’t be restored once deleted.</p>
+			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks you want to erase. Warning: Deleted decks can’t be restored.</p>
 		</div>
 		<template v-if="!hasBeenDeleted">
 			<form v-if="numExisting > 0">
@@ -26,7 +26,7 @@
 					</div>
 					<div class="button-container">
 						<button
-							@click="selectNone()"
+							@click="checkedDecks = []"
 							:disabled="numChecked === 0"
 							type="button"
 						>
@@ -43,7 +43,7 @@
 				</ul>
 				<div class="button-container submit-button">
 					<button
-						@click.prevent="handleSubmit()"
+						@click.prevent="$store.commit('idOfShowingDialog', 'confirmDeletion')"
 						:disabled="numChecked <= 0"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z"/></svg>
@@ -65,18 +65,44 @@
 					That deck is
 				</template>
 				<template v-else>
-					Those decks are
+					Those {{ checkedDecks.length }} decks are
 				</template>
 				now deleted.
 			</p>
 		</div>
+		<standard-dialog
+			dialogID="confirmDeletion"
+			class="with-two-buttons"
+		>
+			<p>
+				⚠ Are you sure you want to permanently delete
+				<template v-if="numChecked === 1">
+					<i>{{ checkedDecks[0] }}</i>?
+				</template>
+				<template v-else-if="numChecked === 2">
+					<i>{{ checkedDecks[0] }}</i> and <i>{{ checkedDecks[1] }}</i>?
+				</template>
+				<template v-else-if="numExisting === numChecked">
+					all {{ numExisting }} of your decks?
+				</template>
+				<template v-else>
+					the <strong>{{ numChecked }}</strong> decks you’ve selected?
+				</template>
+			</p>
+			<form slot="form" method="dialog">
+				<button @click="removeSelectedDecks()" autofocus>Yes</button>
+				<button class="cancel">No</button>
+			</form>
+		</standard-dialog>
 	</article>
 </template>
 
 <script>
+import StandardDialog from '@/components/StandardDialog.vue'
 import headerLinkAttention from '@/mixins/headerLinkAttention.js'
 
 export default {
+	components: { StandardDialog },
 	mixins: [headerLinkAttention],
 	props: {
 		presetDeckName: String
@@ -109,35 +135,6 @@ export default {
 			checkboxes.forEach(checkbox => {
 				this.checkedDecks.push(checkbox.value)
 			})
-		},
-		selectNone () {
-			this.checkedDecks = []
-		},
-		handleSubmit () {
-			if (this.confirmedDelete()) {
-				this.removeSelectedDecks()
-			}
-		},
-		confirmedDelete () {
-			const message = '⚠ Are you sure you want to permanently delete '
-
-			if (this.numChecked === 1) {
-				return confirm(
-					message + `“${this.checkedDecks[0]}”?`
-				)
-			} else if (this.numChecked === 2) {
-				return confirm(
-					message + `“${this.checkedDecks[0]}” and “${this.checkedDecks[1]}”?`
-				)
-			} else if (this.numChecked === this.numExisting) {
-				return confirm(
-					message + `all ${this.numExisting} of your decks?`
-				)
-			} else {
-				return confirm(
-					message + `the ${this.numChecked} decks you’ve selected?`
-				)
-			}
 		},
 		removeSelectedDecks () {
 			this.hasBeenDeleted = true

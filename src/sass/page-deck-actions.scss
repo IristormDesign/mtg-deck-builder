@@ -27,7 +27,7 @@
 			margin-bottom: 0;
 		}
 	}
-	form,
+	> form,
 	.result-message {
 		border: $border-sections-medium;
 		grid-row: 2 / 4;
@@ -98,11 +98,13 @@
 	.submit-button {
 		grid-column: span 2;
 		padding: $lhse*.25;
+
+		button {
+			height: $lhse*1.6667;
+			font-size: 87.5%;
+		}
 	}
 	button {
-		font-size: 87.5%;
-		height: $lhse*1.6667;
-
 		svg {
 			margin-right: $lhse*.125;
 			width: $lhse*1.3333;
@@ -126,7 +128,7 @@
 
 		h2,
 		.intro,
-		form,
+		> form,
 		.result-message {
 			grid-row: auto;
 			grid-column: 1;
@@ -140,7 +142,7 @@
 			margin-bottom: $lhse;
 			max-width: 462px; // Equal to 75% of the width of the card illustration image (616px).
 		}
-		form,
+		> form,
 		.result-message {
 			padding: divide($lhse, 3) $lhse*.6667;
 			margin-left: $lhse*.5;

@@ -51,8 +51,8 @@ export default {
 		}
 	},
 	watch: {
-		'$store.state.idOfShowingDialog' (value) {
-			if (value === 'duplicateDeck') {
+		'$store.state.idOfShowingDialog' (id) {
+			if (id === 'duplicateDeck') {
 				this.dupDeckName = this.amendCopiedDeckName(this.deck).name
 			}
 		}

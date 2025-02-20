@@ -45,6 +45,10 @@ dialog {
 		height: $lhse*1.5;
 		margin-right: auto;
 		margin-left: auto;
+
+		&.cancel {
+			background: $color-button-gray;
+		}
 	}
 	&.with-text-input {
 		form {
@@ -72,6 +76,12 @@ dialog {
 				background: $color-button-gray;
 				grid-column-start: 3;
 			}
+		}
+	}
+	&.with-two-buttons {
+		form {
+			justify-self: center;
+			gap: $lhse;
 		}
 	}
 }
