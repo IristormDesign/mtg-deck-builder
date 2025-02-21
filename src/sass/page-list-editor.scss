@@ -215,14 +215,32 @@ $width-card-list-section-narrow:
 	transition: background-color .5s ease;
 	background-color: $color-group-bg;
 
-	form {
+	> form {
 		align-items: center;
 		display: grid;
 		grid-template-rows: $lhse*.75 $lhse*1.5;
 		grid-template-columns: auto min-content;
 		padding-bottom: $lhse*.2;
+
+		button {
+			width: $width-card-adder-button;
+			height: $height-control-panel-input*1.0625;
+			min-width: 0;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			margin-left: 1px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			svg {
+				fill: currentColor !important;
+				width: $lhse*1.3333;
+				height: $lhse*1.3333;
+			}
+		}
 	}
-	form,
+	> form,
 	.loading-indicator {
 		width: 100%;
 	}
@@ -258,23 +276,6 @@ $width-card-list-section-narrow:
 			animation-iteration-count: 2;
 			animation-direction: alternate;
 			animation-timing-function: ease-in-out;
-		}
-	}
-	button {
-		width: $width-card-adder-button;
-		height: $height-control-panel-input*1.0625;
-		min-width: 0;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		margin-left: 1px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		svg {
-			fill: currentColor !important;
-			width: $lhse*1.3333;
-			height: $lhse*1.3333;
 		}
 	}
 	.loading-indicator {
@@ -379,7 +380,7 @@ $width-card-list-section-narrow:
 		grid-row: 1;
 		grid-column: span 1;
 
-		form {
+		> form {
 			max-width: $width-card-bars-narrow + $width-card-adder-button;
 		}
 		label {
@@ -416,7 +417,7 @@ $width-card-list-section-narrow:
 		grid-column: span 2;
 
 		input,
-		button {
+		> form button {
 			font-size: 87.5%;
 		}
 	}
@@ -511,8 +512,10 @@ $width-card-list-section-narrow:
 		}
 	}
 	.card-adder {
-		button {
-			width: auto;
+		> form {
+			button {
+				width: auto;
+			}
 		}
 	}
 	.sideboard-header {
