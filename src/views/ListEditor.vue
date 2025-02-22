@@ -10,7 +10,6 @@
 				<card-sorter :deck="deck" />
 				<card-group-switch :deck="deck" />
 			</div>
-
 			<section
 				v-if="$store.state.showSideboard"
 				class="card-list-section"
@@ -52,16 +51,17 @@
 					key="main-deck-cards"
 				/>
 			</section>
-
 			<div class="control-panel adder-controls">
 				<scryfall-button />
 				<card-adder :deck="deck" />
 				<list-entry-button />
 			</div>
 		</div>
-
 		<standard-dialog dialogID="quantityMaxLimit">
 			<p>A deck may not have more than 4 of any card with a particular name, other than the basic land cards.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="movingCardGroup">
+			<p>You’re moving {{ dialogData.card }} out of the {{ dialogData.activeGroup }} into the {{ dialogData.inactiveGroup }}.</p>
 		</standard-dialog>
 	</div>
 </template>
@@ -83,6 +83,15 @@ export default {
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object
+	},
+	computed: {
+		dialogData () {
+			if (this.$store.state.dialogVariableData) {
+				return this.$store.state.dialogVariableData
+			} else {
+				return ''
+			}
+		}
 	}
 }
 </script>

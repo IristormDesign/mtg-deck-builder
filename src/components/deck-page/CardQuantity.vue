@@ -12,9 +12,7 @@
 			@blur="blurredFromQtyInput()"
 			@input="checkForHugeQuantity()"
 		/>
-		<div
-			class="hover-extension"
-		></div>
+		<div class="hover-extension"></div>
 		<div class="qty-button-cluster">
 			<button
 				class="increment"
@@ -316,11 +314,15 @@ export default {
 				}
 
 				if (!store.state.hasNotifiedOnceAbout.movingCardGroup) {
-					alert(`You’re moving ${card.name} out of the ${cardGroupName()} into the ${cardGroupName(true)}.`)
-
-					store.commit(
-						'hasNotifiedOnceAbout', { movingCardGroup: true }
-					)
+					store.commit('idOfShowingDialog', {
+						dialogID: 'movingCardGroup',
+						variableData: {
+							card: card.name,
+							activeGroup: cardGroupName(),
+							inactiveGroup: cardGroupName(true)
+						}
+					})
+					store.commit('hasNotifiedOnceAbout', { movingCardGroup: true })
 				}
 			}
 
