@@ -39,6 +39,8 @@
 		</svg>
 
 		<router-view :deck="deck" />
+
+		<dialogs-card-requests />
 	</article>
 
 	<not-found-content v-else />
@@ -54,13 +56,14 @@ import CardTotal from '@/components/deck-page/StatCardTotal.vue'
 import ModeMenu from '@/components/deck-page/ModeMenu.vue'
 import DeckActions from '@/components/deck-page/DeckActions.vue'
 import UpdateDataNotice from '@/components/deck-page/UpdateDataNotice.vue'
+import DialogsCardRequests from '@/components/deck-page/DialogsCardRequests.vue'
 import NotFoundContent from '@/components/NotFoundContent.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 import keyboardShortcuts from '@/mixins/keyboardShortcuts.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ModeMenu, DeckActions, UpdateDataNotice, NotFoundContent },
+	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ModeMenu, DeckActions, UpdateDataNotice, DialogsCardRequests, NotFoundContent },
 	mixins: [getActiveDeck, cardListFunctions, keyboardShortcuts],
 	computed: {
 		validDeck () {

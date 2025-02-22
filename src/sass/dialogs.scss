@@ -4,7 +4,7 @@ $transition-duration-dialog: .5s;
 dialog {
 	background: $color-group-bg;
 	color: $color-text;
-	padding: $lhse $lhse*1.25;
+	padding: $lhse*.75 $lhse;
 	width: fit-content;
 	max-width: $max-width-content*.875;
 	border: 1px solid $color-button-orange;

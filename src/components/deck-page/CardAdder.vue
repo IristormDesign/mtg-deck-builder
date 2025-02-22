@@ -39,9 +39,8 @@
 		<div v-else class="loading-indicator">
 			<span>Loading card&hellip;</span>
 		</div>
-		<standard-dialog dialogID="invalidURLQuery">
-			<h4>Error: Invalid URL Query</h4>
-			<p>Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall</a>.</p>
+		<standard-dialog dialogID="nonScryfallURLQuery">
+			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall</a>.</p>
 		</standard-dialog>
 	</section>
 </template>
@@ -179,7 +178,7 @@ export default {
 					this.axiosCollectionRequest(query)
 				}
 			} else if (regexURL.test(query)) { // If the user mistakenly submits any URL (but that isn't a Scryfall card page URL, because that was just checked in the previous `if` statement)...
-				this.$store.commit('idOfShowingDialog', 'invalidURLQuery')
+				this.$store.commit('idOfShowingDialog', 'nonScryfallURLQuery')
 				this.loadingCard = false
 
 			/* Else the query is a card name (or at least it's going to be handled like a card name). */
