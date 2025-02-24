@@ -41,7 +41,7 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (curID, prevID) {
-			if (prevID === 'confirmCardRemoval') { // If a dialog has asked the user to confirm whether to remove a certain card, and then the user declined...
+			if (prevID === 'confirmCardRemoval') { // If the user just closed a dialog confirming whether to remove a certain card...
 				const card = this.activeCardList.cards.find(unremovedCard => {
 					return unremovedCard.name === this.$store.state.dialogVariableData.cardName
 				})

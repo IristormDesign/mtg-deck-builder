@@ -23,7 +23,7 @@ export default {
 				if (curIndex !== this.disableImageEnlargeAtIndex) return
 
 				this.disableImageEnlargeAtIndex = -1
-			}, 382) // This timeout's duration is to be equal to the CSS card browse transition's duration. This delay is needed so that the card browse transition doesn't interfere with the image-enlarge transition.
+			}, (750 * 0.3820)) // This timeout's duration is to be equal to the CSS card browse transition's duration. This delay is needed so that the card browse transition doesn't interfere with the image-enlarge transition.
 
 			if (curIndex > -1) {
 				this.scrollLIIntoView()
