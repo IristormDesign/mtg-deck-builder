@@ -1,34 +1,43 @@
 <template>
-		<aside
-			v-if="isDeckDataOutdated"
-			class="outdated-deck-data-notice"
-		>
-			<template v-if="!updatingDeckData">
-				<h3>Card Data Update</h3>
-				<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
-				<p>Before updating, you should make a backup copy of your deck’s data by saving a deck archive file.</p>
-				<div class="button-group">
-					<div class="button-container">
-						<button @click="archiveDeck()">Archive</button>
-					</div>
-					<div class="button-container">
-						<button @click="userEngagedUpdate()">Update</button>
-					</div>
+	<aside
+		v-if="isDeckDataOutdated"
+		class="outdated-deck-data-notice"
+	>
+		<template v-if="!updatingDeckData">
+			<h3>Card Data Update</h3>
+			<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
+			<p>Before updating, you should make a backup copy of your deck’s data by saving a deck archive file.</p>
+			<div class="button-group">
+				<div class="button-container">
+					<button @click="archiveDeck()">Archive</button>
 				</div>
-			</template>
-			<template v-else>
-				<p>Updating now&hellip;</p>
-				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
-			</template>
-		</aside>
+				<div class="button-container">
+					<button @click="userEngagedUpdate()">Update</button>
+				</div>
+			</div>
+		</template>
+		<template v-else>
+			<p>Updating now&hellip;</p>
+			<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
+		</template>
+
+		<standard-dialog dialogID="tooManyCardsToUpdate">
+			<p>⚠ Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="cardDataUpdateComplete">
+			<p>✅ Update completed!</p>
+		</standard-dialog>
+	</aside>
 </template>
 
 <script>
+import StandardDialog from '@/components/StandardDialog.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
 import latestDataVersions from '@/mixins/latestDataVersions.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 
 export default {
+	components: { StandardDialog },
 	mixins: [cardListFunctions, latestDataVersions, requestScryfallData],
 	props: {
 		deck: Object
@@ -134,7 +143,7 @@ export default {
 		},
 		userEngagedUpdate () {
 			if (this.cardsToUpdate > 200) {
-				alert('⚠ Sorry, this deck’s data set can’t be updated because it has too many cards.')
+				this.$store.commit('idOfShowingDialog', 'tooManyCardsToUpdate')
 			} else {
 				this.updatingDeckData = true
 
@@ -167,7 +176,7 @@ export default {
 			})
 
 			setTimeout(() => {
-				alert('Update completed!')
+				store.commit('idOfShowingDialog', 'cardDataUpdateComplete')
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		},
 		archiveDeck () {
