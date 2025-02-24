@@ -21,12 +21,18 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (id) {
+			const dialogData = this.$store.state.dialogVariableData
+
 			switch (id) {
 				case this.dialogID:
 					this.dialog.showModal()
 					return
 				case null:
 					this.dialog.close()
+
+					if (dialogData && dialogData.callback) {
+						dialogData.callback()
+					}
 			}
 		}
 	},

@@ -43,10 +43,22 @@
 				<span v-if="loadingPercent >= 0">{{ loadingPercent }}%</span>
 			</p>
 		</template>
+
+		<standard-dialog dialogID="excessiveQuantity">
+			<h4>Error: Excessive Quantity</h4>
+			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dialogData.qty }} {{ dialogData.name }}”). The quantity of each name must be no longer than two digits.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="tooManyCardNames">
+			<p><strong>Error</strong>: Your list has too many card names. Please enter no more than 200.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="invalidListFormat">
+			<p><strong>Error</strong>: The text you’ve entered isn’t in the valid format for a card list.</p>
+		</standard-dialog>
 	</article>
 </template>
 
 <script>
+import StandardDialog from '@/components/StandardDialog.vue'
 import autosize from 'autosize'
 import axios from 'axios'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
@@ -55,6 +67,7 @@ import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
 export default {
+	components: { StandardDialog },
 	mixins: [getActiveDeck, requestScryfallData, removeCard, stringMethods],
 	data () {
 		return {
@@ -85,7 +98,13 @@ export default {
 		},
 		validateList () {
 			if (!this.listEntries) {
-				this.alertInvalidList()
+				this.$store.commit('idOfShowingDialog', {
+					dialogID: 'invalidListFormat',
+					variableData: {
+						callback: this.focusOnTextarea
+					}
+				})
+
 				return false
 			} else {
 				return true
@@ -95,6 +114,9 @@ export default {
 			return Math.floor(
 				this.numberOfNewCardsRequested / this.cardsToAdd.length * 100
 			)
+		},
+		dialogData () {
+			return this.$store.state.dialogVariableData || ''
 		}
 	},
 	mounted () {
@@ -120,7 +142,7 @@ export default {
 			this.hasExcessiveQuantity = false
 
 			if (!this.textCardList) {
-				this.$refs.textCardList.focus()
+				this.focusOnTextarea()
 				return
 			}
 
@@ -131,7 +153,13 @@ export default {
 			if (this.hasExcessiveQuantity) return
 
 			if (this.submittedCards.length > 200) {
-				this.tooManyCards()
+				this.$store.commit('idOfShowingDialog', {
+					dialogID: 'tooManyCardNames',
+					variableData: {
+						callback: this.focusOnTextarea
+					}
+				})
+
 				return
 			}
 
@@ -182,7 +210,14 @@ export default {
 				name = this.cleanedCardName(name)
 
 				if (qty > 99) {
-					alert(`⚠ Error: Excessive Quantity\n\nYour list has been rejected because it includes a card name with an overly huge quantity (“${qty} ${name}”). The quantity of each name must be no more than two digits.`)
+					this.$store.commit('idOfShowingDialog', {
+						dialogID: 'excessiveQuantity',
+						variableData: {
+							qty: qty,
+							name: name,
+							callback: this.focusOnTextarea
+						}
+					})
 
 					this.hasExcessiveQuantity = true
 
@@ -205,11 +240,6 @@ export default {
 					})
 				}
 			}
-		},
-		tooManyCards () {
-			alert('⚠ Error: Your list has too many card names. Please enter no more than 200.')
-
-			this.$refs.textCardList.focus()
 		},
 		determineNewOrExistingCardNames () {
 			this.submittedCards.forEach(card => {
@@ -315,9 +345,6 @@ export default {
 				this.cardsSuccessfullyAdded.push(card)
 			}
 		},
-		alertInvalidList () {
-			alert('⚠ Error: Invalid Card List\n\nNone of the text you’ve entered is in the valid format for a card list. See the rules for list formatting.')
-		},
 		goToResultsPage () {
 			this.$router.replace({
 				name: 'listEntryResults',
@@ -340,6 +367,9 @@ export default {
 			cardName = this.curlApostrophes(cardName)
 
 			return cardName
+		},
+		focusOnTextarea () {
+			this.$refs.textCardList.focus()
 		}
 	}
 }
