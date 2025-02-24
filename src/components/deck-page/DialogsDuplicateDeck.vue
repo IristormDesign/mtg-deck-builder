@@ -18,6 +18,7 @@
 				<button formmethod="dialog">Cancel</button>
 			</form>
 		</standard-dialog>
+
 		<standard-dialog dialogID="duplicationSuccess">
 			<p><i>{{ dupDeckName }}</i> is now created.</p>
 		</standard-dialog>
