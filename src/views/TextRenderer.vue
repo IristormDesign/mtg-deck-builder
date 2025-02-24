@@ -68,16 +68,21 @@
 		<template v-else>
 			<p class="no-cards">Plain-text card lists will be provided here once you’ve added cards to this deck from the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 		</template>
+
+		<standard-dialog dialogID="listCopied">
+			<p>The {{ this.$store.state.dialogVariableData ? this.$store.state.dialogVariableData.list : '' }} list is now copied to the clipboard of your computer or phone.</p>
+		</standard-dialog>
 	</div>
 </template>
 
 <script>
-import autosize from 'autosize'
+import StandardDialog from '@/components/StandardDialog.vue'
 import DeckPrint from '@/components/deck-page/DeckPrint.vue'
+import autosize from 'autosize'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { DeckPrint },
+	components: { StandardDialog, DeckPrint },
 	mixins: [getActiveDeck],
 	computed: {
 		mainNotEmpty () {
@@ -148,7 +153,10 @@ export default {
 			navigator.clipboard.writeText(text.value + '\n')
 
 			setTimeout(() => {
-				alert(`The ${stringName} list is now copied to the clipboard of your computer or phone.`)
+				this.$store.commit('idOfShowingDialog', {
+					dialogID: 'listCopied',
+					variableData: { list: stringName }
+				})
 			}, 125)
 		},
 		printLists () {
