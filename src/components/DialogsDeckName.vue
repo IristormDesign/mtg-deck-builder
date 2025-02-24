@@ -7,7 +7,7 @@
 			<p><strong>Error</strong>: The deck’s name must include an English letter or a digit.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="deckNameExists">
-			<p><strong>Error</strong>: You already have a deck named <i>{{ deckName }}</i>. Please give a different name.</p>
+			<p><strong>Error</strong>: You already have a deck named <i>{{ $store.state.dialogData }}</i>. Please give a different name.</p>
 		</standard-dialog>
 	</div>
 </template>
@@ -16,10 +16,6 @@
 import StandardDialog from '@/components/StandardDialog.vue'
 
 export default {
-	components: { StandardDialog },
-	props: {
-		deckName: String,
-		miscErrorMessage: String
-	}
+	components: { StandardDialog }
 }
 </script>

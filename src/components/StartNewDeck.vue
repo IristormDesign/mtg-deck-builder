@@ -19,7 +19,7 @@
 				</button>
 			</div>
 		</form>
-		<dialogs-deck-name :deckName="deckNameInput" />
+		<dialogs-deck-name />
 	</section>
 </template>
 
@@ -42,15 +42,19 @@ export default {
 			}
 		},
 		submitDeckName () {
+			const store = this.$store
 			const name = this.curlApostrophes(this.deckNameInput.trim()) // String trimming should happen here instead of in the component template. Otherwise, the dialog warning about overly long deck names won't appear if the deck name string begins with one or more spaces.
 			const path = this.stringToPath(name)
 
 			if (!this.hasLetterOrDigit(name)) {
-				this.$store.commit('idOfShowingDialog', 'missingLetterOrDigit')
+				store.commit('idOfShowingDialog', 'missingLetterOrDigit')
 			} else if (this.deckExists(path)) {
-				this.$store.commit('idOfShowingDialog', 'deckNameExists')
+				store.commit('idOfShowingDialog', {
+					id: 'deckNameExists',
+					data: name
+				})
 			} else {
-				const updatedDecksArray = this.$store.state.decks
+				const updatedDecksArray = store.state.decks
 
 				updatedDecksArray.push({
 					cards: [],
@@ -67,7 +71,7 @@ export default {
 					viewedCard: null
 				})
 
-				this.$store.commit('decks', updatedDecksArray)
+				store.commit('decks', updatedDecksArray)
 				this.$parent.goToDeckPage(path)
 			}
 		}

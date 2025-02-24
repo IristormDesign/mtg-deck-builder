@@ -1,27 +1,5 @@
 export default {
 	methods: {
-		// /**
-		//  * @param {string} name
-		//  */
-		// alertNameExists (name) {
-		// 	return `Error: You already have a deck named “${name}.” Please give a different name.`
-		// },
-		// alertNameTooLong (length) {
-		// 	const stringExcessChars = () => {
-		// 		const numExcess = length - 50
-
-		// 		if (numExcess === 1) {
-		// 			return '1 character'
-		// 		} else {
-		// 			return `${numExcess} characters`
-		// 		}
-		// 	}
-
-		// 	return `Error: That deck name is too long by ${stringExcessChars()}. Please revise it to have 50 characters or fewer.`
-		// },
-		// alertNoLetters () {
-		// 	return 'Error: The deck name must have at least one letter.'
-		// },
 		hasLetterOrDigit (string) {
 			return /\w+/.test(string)
 		},
@@ -50,17 +28,26 @@ export default {
 		 * @returns {Boolean}
 		 */
 		nameIsApproved (name, path) {
+			const commitDialog = secondParam => {
+				return this.$store.commit('idOfShowingDialog', secondParam)
+			}
+
 			if (name.length > 50) {
-				alert(this.alertNameTooLong(name.length))
+				// this.$store.commit('idOfShowingDialog', 'nameIsTooLong')
+				commitDialog('nameIsTooLong')
 				return false
 			} else if (!this.hasLetterOrDigit(name)) {
-				alert(this.alertNoLetters())
+				// this.$store.commit('idOfShowingDialog', 'missingLetterOrDigit')
+				commitDialog('missingLetterOrDigit')
 				return false
 			} else if ( // If the submitted deck name already exists (based on the deck path), unless that name is of the currently active deck (because letters' cases have been edited)...
 				this.deckExists(path) &&
 				path !== this.$route.params.deckPath
 			) {
-				alert(this.alertNameExists(name))
+				commitDialog({
+					id: 'deckNameExists',
+					data: name
+				})
 				return false
 			} else {
 				name = this.curlApostrophes(name)
