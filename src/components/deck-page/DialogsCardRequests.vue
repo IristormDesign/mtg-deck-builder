@@ -22,14 +22,14 @@
 			dialogID="replaceExistingPrint"
 			class="with-two-buttons"
 		>
-			<p>{{ dd.cardName }} already exists in this {{ stringActiveList }}, though in a different print.</p>
-			<p>Do you want to replace your requested print of {{ dd.cardName }} with the existing print?</p>
+			<p>{{ dd.name }} already exists in this {{ stringActiveList }}, though in a different print from the print you’re requesting.</p>
+			<p>Do you want your requested print of {{ dd.name }} to replace the existing one?</p>
 			<form slot="form" method="dialog">
 				<button
 					@click="updateOldCard(dd, $store.state.showSideboard)"
 					autofocus
-				>Yes, Replace</button>
-				<button class="cancel">No, Cancel</button>
+				>Replace</button>
+				<button class="cancel">Cancel</button>
 			</form>
 		</standard-dialog>
 
