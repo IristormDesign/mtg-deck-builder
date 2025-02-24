@@ -14,7 +14,7 @@
 		</div>
 		<standard-dialog dialogID="errorWrongFile">
 			<h4>Error: Wrong File</h4>
-			<p>The file you’ve selected ({{this.fileName}}) isn’t a deck archive for MTG Deck Builder. Deck archive files have the “.deck” file extension.</p>
+			<p>The file you’ve selected ({{fileName}}) isn’t a deck archive for MTG Deck Builder. Deck archive files have the “.deck” file extension.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="errorCorruptedData">
 			<h4>Error: Corrupted Data</h4>

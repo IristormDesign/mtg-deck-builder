@@ -5,13 +5,13 @@
 		</standard-dialog>
 
 		<standard-dialog dialogID="movingCardGroup">
-			<p>You’re moving {{ dialogData.card }} out of the {{ dialogData.activeGroup }} into the {{ dialogData.inactiveGroup }}.</p>
+			<p>You’re moving {{ dd.card }} out of the {{ dd.activeGroup }} into the {{ dd.inactiveGroup }}.</p>
 		</standard-dialog>
 
 		<standard-dialog dialogID="confirmCardRemoval">
-			<p>Remove {{ dialogData.cardName }} from this card list?</p>
+			<p>Remove {{ dd.cardName }} from this card list?</p>
 			<form slot="form" method="dialog">
-				<button @click="removeCard(dialogData.cardIndex)" autofocus>Yes, Remove</button>
+				<button @click="removeCard(dd.cardIndex)" autofocus>Yes, Remove</button>
 				<button class="cancel">No, Cancel</button>
 			</form>
 		</standard-dialog>
@@ -31,19 +31,15 @@ export default {
 		deck: Object
 	},
 	computed: {
-		dialogData () {
-			if (this.$store.state.dialogVariableData) {
-				return this.$store.state.dialogVariableData
-			} else {
-				return ''
-			}
+		dd () {
+			return this.$store.state.dialogData
 		}
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (curID, prevID) {
 			if (prevID === 'confirmCardRemoval') { // If the user just closed a dialog confirming whether to remove a certain card...
 				const card = this.activeCardList.cards.find(unremovedCard => {
-					return unremovedCard.name === this.$store.state.dialogVariableData.cardName
+					return unremovedCard.name === this.$store.state.dialogData.cardName
 				})
 
 				if (card) { // If the card is found, that means the user has canceled its removal.

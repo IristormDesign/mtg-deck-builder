@@ -21,7 +21,7 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (id) {
-			const dialogData = this.$store.state.dialogVariableData
+			const dialogData = this.$store.state.dialogData
 
 			switch (id) {
 				case this.dialogID:
@@ -30,7 +30,7 @@ export default {
 				case null:
 					this.dialog.close()
 
-					if (dialogData && dialogData.callback) {
+					if (dialogData.callback) {
 						dialogData.callback()
 					}
 			}

@@ -70,7 +70,7 @@
 		</template>
 
 		<standard-dialog dialogID="listCopied">
-			<p>The {{ this.$store.state.dialogVariableData ? this.$store.state.dialogVariableData.list : '' }} list is now copied to the clipboard of your computer or phone.</p>
+			<p>The {{ this.$store.state.dialogData }} list is now copied to the clipboard of your computer or phone.</p>
 		</standard-dialog>
 	</div>
 </template>
@@ -154,8 +154,8 @@ export default {
 
 			setTimeout(() => {
 				this.$store.commit('idOfShowingDialog', {
-					dialogID: 'listCopied',
-					variableData: { list: stringName }
+					id: 'listCopied',
+					data: stringName
 				})
 			}, 125)
 		},

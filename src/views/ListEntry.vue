@@ -46,7 +46,7 @@
 
 		<standard-dialog dialogID="excessiveQuantity">
 			<h4>Error: Excessive Quantity</h4>
-			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dialogData.qty }} {{ dialogData.name }}”). The quantity of each name must be no longer than two digits.</p>
+			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dd.qty }} {{ dd.name }}”). The quantity of each name must be no longer than two digits.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="tooManyCardNames">
 			<p><strong>Error</strong>: Your list has too many card names. Please enter no more than 200.</p>
@@ -99,8 +99,8 @@ export default {
 		validateList () {
 			if (!this.listEntries) {
 				this.$store.commit('idOfShowingDialog', {
-					dialogID: 'invalidListFormat',
-					variableData: {
+					id: 'invalidListFormat',
+					data: {
 						callback: this.focusOnTextarea
 					}
 				})
@@ -115,8 +115,8 @@ export default {
 				this.numberOfNewCardsRequested / this.cardsToAdd.length * 100
 			)
 		},
-		dialogData () {
-			return this.$store.state.dialogVariableData || ''
+		dd () {
+			return this.$store.state.dialogData
 		}
 	},
 	mounted () {
@@ -154,8 +154,8 @@ export default {
 
 			if (this.submittedCards.length > 200) {
 				this.$store.commit('idOfShowingDialog', {
-					dialogID: 'tooManyCardNames',
-					variableData: {
+					id: 'tooManyCardNames',
+					data: {
 						callback: this.focusOnTextarea
 					}
 				})
@@ -211,8 +211,8 @@ export default {
 
 				if (qty > 99) {
 					this.$store.commit('idOfShowingDialog', {
-						dialogID: 'excessiveQuantity',
-						variableData: {
+						id: 'excessiveQuantity',
+						data: {
 							qty: qty,
 							name: name,
 							callback: this.focusOnTextarea

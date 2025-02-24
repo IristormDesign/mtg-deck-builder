@@ -127,8 +127,8 @@ export default {
 						this.alertConnectionTimeout()
 					} else if (error.code === 'ERR_BAD_REQUEST') {
 						this.$store.commit('idOfShowingDialog', {
-							dialogID: 'invalidCardName',
-							variableData: name
+							id: 'invalidCardName',
+							data: name
 						})
 					} else {
 						this.alertMiscErrorMessage(error)
@@ -143,8 +143,8 @@ export default {
 		},
 		alertMiscErrorMessage (error) {
 			this.$store.commit('idOfShowingDialog', {
-				dialogID: 'miscError',
-				errorMessage: error.message
+				id: 'miscError',
+				data: error.message
 			})
 		},
 		/**
@@ -316,13 +316,13 @@ export default {
 
 			if (confirmToReplace) {
 				this.$store.commit('idOfShowingDialog', {
-					dialogID: 'replaceExistingPrint',
-					variableData: card
+					id: 'replaceExistingPrint',
+					data: card
 				})
 			} else {
 				this.$store.commit('idOfShowingDialog', {
-					dialogID: 'cardAlreadyInDeck',
-					variableData: (() => {
+					id: 'cardAlreadyInDeck',
+					data: (() => {
 						if (card.name2) {
 							return `${card.name} // ${card.name2}`
 						} else {

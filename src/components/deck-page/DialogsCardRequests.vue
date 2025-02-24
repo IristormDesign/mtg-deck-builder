@@ -10,11 +10,11 @@
 		</standard-dialog>
 
 		<standard-dialog dialogID="invalidCardName">
-			<p><strong>Error</strong>: No card named “{{ varData }}” exists in <i>Magic: The Gathering</i>.</p>
+			<p><strong>Error</strong>: No card named “{{ dd }}” exists in <i>Magic: The Gathering</i>.</p>
 		</standard-dialog>
 
 		<standard-dialog dialogID="cardAlreadyInDeck">
-			<p>{{ varData }} already exists in this {{ stringActiveList }}.</p>
+			<p>{{ dd }} already exists in this {{ stringActiveList }}.</p>
 			<p>(If you were trying to add a duplicate of this card, do that by increasing the card’s quantity number in the card list.)</p>
 		</standard-dialog>
 
@@ -22,11 +22,11 @@
 			dialogID="replaceExistingPrint"
 			class="with-two-buttons"
 		>
-			<p>{{ cardName }} already exists in this {{ stringActiveList }}, though in a different print.</p>
-			<p>Do you want to replace your requested print of {{ cardName }} with the existing print?</p>
+			<p>{{ dd.cardName }} already exists in this {{ stringActiveList }}, though in a different print.</p>
+			<p>Do you want to replace your requested print of {{ dd.cardName }} with the existing print?</p>
 			<form slot="form" method="dialog">
 				<button
-					@click="updateOldCard(varData, $store.state.showSideboard)"
+					@click="updateOldCard(dd, $store.state.showSideboard)"
 					autofocus
 				>Yes, Replace</button>
 				<button class="cancel">No, Cancel</button>
@@ -34,7 +34,7 @@
 		</standard-dialog>
 
 		<standard-dialog dialogID="miscError">
-			<p><strong>Error</strong>: {{ varData }}</p>
+			<p><strong>Error</strong>: {{ dd }}</p>
 		</standard-dialog>
 	</div>
 </template>
@@ -48,15 +48,8 @@ export default {
 	components: { StandardDialog },
 	mixins: [getActiveDeck, requestScryfallData],
 	computed: {
-		cardName () {
-			if (this.varData) {
-				return this.varData.name
-			} else {
-				return ''
-			}
-		},
-		varData () {
-			return this.$store.state.dialogVariableData
+		dd () {
+			return this.$store.state.dialogData
 		},
 		stringActiveList () {
 			if (this.$store.state.showSideboard) {

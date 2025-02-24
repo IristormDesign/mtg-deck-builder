@@ -19,7 +19,7 @@ export default new Vuex.Store({
 			attribute: null
 		},
 		decks: [],
-		dialogVariableData: null,
+		dialogData: {},
 		focusCardBar: '',
 		hasNotifiedOnceAbout: {
 			quantityLimit: false,
@@ -59,11 +59,11 @@ export default new Vuex.Store({
 		idOfShowingDialog (state, payload) {
 			if (
 				payload &&
-				payload.dialogID !== undefined &&
-				payload.variableData !== undefined
+				payload.id !== undefined &&
+				payload.data !== undefined
 			) {
-				state.idOfShowingDialog = payload.dialogID
-				state.dialogVariableData = payload.variableData
+				state.idOfShowingDialog = payload.id
+				state.dialogData = payload.data
 			} else {
 				state.idOfShowingDialog = payload
 			}

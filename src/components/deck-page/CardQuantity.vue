@@ -181,8 +181,8 @@ export default {
 				} else {
 					setTimeout(() => {
 						store.commit('idOfShowingDialog', {
-							dialogID: 'confirmCardRemoval',
-							variableData: {
+							id: 'confirmCardRemoval',
+							data: {
 								cardName: (() => {
 									switch (card.layout) {
 										case 'modal_dfc': case 'split':
@@ -304,8 +304,8 @@ export default {
 
 				if (!store.state.hasNotifiedOnceAbout.movingCardGroup) {
 					store.commit('idOfShowingDialog', {
-						dialogID: 'movingCardGroup',
-						variableData: {
+						id: 'movingCardGroup',
+						data: {
 							card: card.name,
 							activeGroup: cardGroupName(),
 							inactiveGroup: cardGroupName(true)
