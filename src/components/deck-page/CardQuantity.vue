@@ -178,16 +178,25 @@ export default {
 			} else if (card.qty === 0) {
 				if (this.movingLastCardToOtherGroup) {
 					this.removeCard(this.i)
-
-				/* The `setTimeout()` function causes the card-removal `confirm()` dialog to appear twice when the quantity input has been set to 0 by the user pressing the "0" key, or by the user pressing the backspace or delete keys to clear the quantity number. It seems the only way around this bug is to avoid `setTimeout()` under that condition. */
-				} else if (this.pressedKeyForQty) {
-					this.effectOfRemovalConfirm()
 				} else {
 					setTimeout(() => {
-						this.effectOfRemovalConfirm()
-					}, 100) // This split-second delay lets the quantity input display "0" and the card image show the to-be-removed card before the confirmation dialog to remove the card appears.
+						store.commit('idOfShowingDialog', {
+							dialogID: 'confirmCardRemoval',
+							variableData: {
+								cardName: (() => {
+									switch (card.layout) {
+										case 'modal_dfc': case 'split':
+											return `${card.name} // ${card.name2}`
+										default:
+											return card.name
+									}
+								})(),
+								cardIndex: this.i
+							}
+						})
+					}, 1) // Timeout is needed here to prevent the dialog from immediately closing if it was opened by entering 0 or deleting the number in the quantity input.
 				}
-			} else if (isNaN(card.qty)) { // If the user somehow entered non-digits for the quantity, reset the quantity to 1 instead.
+			} else if (isNaN(card.qty)) { // If the user somehow entered non-digit characters for the quantity, set the quantity to 1 instead.
 				card.qty = 1
 			} else {
 				if (!card.maxQty) {
@@ -228,26 +237,6 @@ export default {
 			deck.editDate = new Date()
 			this.determineDeckColors()
 			store.commit('decks', store.state.decks)
-		},
-		effectOfRemovalConfirm () {
-			const card = this.card
-
-			function cardName () {
-				switch (card.layout) {
-					case 'modal_dfc': case 'split':
-						return `${card.name} // ${card.name2}`
-					default:
-						return card.name
-				}
-			}
-
-			const removalConfirmed = confirm(`Remove ${cardName()} from this card list?`)
-
-			if (removalConfirmed) {
-				this.removeCard(this.i)
-			} else {
-				card.qty = 1
-			}
 		},
 		focusedOnQtyInput () {
 			if (!this.isMobileLayout()) {

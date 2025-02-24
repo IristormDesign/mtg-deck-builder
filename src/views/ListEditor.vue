@@ -63,6 +63,13 @@
 		<standard-dialog dialogID="movingCardGroup">
 			<p>You’re moving {{ dialogData.card }} out of the {{ dialogData.activeGroup }} into the {{ dialogData.inactiveGroup }}.</p>
 		</standard-dialog>
+		<standard-dialog dialogID="confirmCardRemoval">
+			<p>Remove {{ dialogData.cardName }} from this card list?</p>
+			<form slot="form" method="dialog">
+				<button @click="removeCard(dialogData.cardIndex)" autofocus>Yes, Remove</button>
+				<button class="cancel">No, Cancel</button>
+			</form>
+		</standard-dialog>
 	</div>
 </template>
 
@@ -77,10 +84,12 @@ import ListEntryButton from '@/components/deck-page/ListEntryButton.vue'
 import CardAdder from '@/components/deck-page/CardAdder.vue'
 import StandardDialog from '@/components/StandardDialog.vue'
 import cardListFunctions from '@/mixins/cardListFunctions'
+import deckColors from '@/mixins/deckColors.js'
+import removeCard from '@/mixins/removeCard.js'
 
 export default {
 	components: { CardImage, CardSorter, CardGroupSwitch, SideboardHeader, CardListItems, ScryfallButton, ListEntryButton, CardAdder, StandardDialog },
-	mixins: [cardListFunctions],
+	mixins: [cardListFunctions, deckColors, removeCard],
 	props: {
 		deck: Object
 	},
@@ -90,6 +99,19 @@ export default {
 				return this.$store.state.dialogVariableData
 			} else {
 				return ''
+			}
+		}
+	},
+	watch: {
+		'$store.state.idOfShowingDialog' (curID, prevID) {
+			if (prevID === 'confirmCardRemoval') { // If a dialog has asked the user to confirm whether to remove a certain card, and then the user declined...
+				const card = this.activeCardList.cards.find(unremovedCard => {
+					return unremovedCard.name === this.$store.state.dialogVariableData.cardName
+				})
+
+				if (card) { // If the card is found, that means the user has canceled its removal.
+					card.qty = 1
+				}
 			}
 		}
 	}
