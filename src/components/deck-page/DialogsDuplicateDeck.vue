@@ -63,7 +63,12 @@ export default {
 			const store = this.$store
 			const isApproved = this.deckNameIsApproved(
 				this.dupDeckName, this.dupDeckPath, () => {
-					store.commit('idOfShowingDialog', 'duplicateDeck')
+					store.commit('idOfShowingDialog', null)
+					store.commit('dialogData', {})
+
+					setTimeout(() => {
+						store.commit('idOfShowingDialog', 'duplicateDeck')
+					}, 1)
 				}
 			)
 			if (!isApproved) return
