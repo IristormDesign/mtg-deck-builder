@@ -6,7 +6,7 @@
 				<p>Here you can add multiple card names at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="columns">
-				<form>
+				<form class="list-entry-form">
 					<label for="card-list-entry">Enter a list of cards:</label>
 					<textarea
 						id="card-list-entry"
@@ -54,6 +54,21 @@
 		<standard-dialog dialogID="invalidListFormat">
 			<p><strong>Error</strong>: The text you’ve entered isn’t in the valid format for a card list.</p>
 		</standard-dialog>
+		<standard-dialog dialogID="leavingPageWarning">
+			<p>⚠ If you leave this page now, then the card list you’ve entered in the submission form will be lost.</p>
+			<form slot="form" method="dialog">
+				<button
+					@click="leaveWarningUserResponse = true"
+					formmethod="dialog"
+				>Leave</button>
+				<button
+					@click="leaveWarningUserResponse = false"
+					class="cancel"
+					formmethod="dialog"
+					autofocus
+				>Cancel</button>
+			</form>
+		</standard-dialog>
 	</article>
 </template>
 
@@ -87,7 +102,8 @@ export default {
 			numberOfNewCardsRequested: 0,
 			repeatedCardNames: [],
 			submittedCards: [],
-			textCardList: ''
+			textCardList: '',
+			leaveWarningUserResponse: false
 		}
 	},
 	computed: {
@@ -130,11 +146,18 @@ export default {
 		) {
 			next()
 		} else {
-			const confirmLeave = confirm('If you leave this page, then the list you’ve entered in the submission form will be lost. Continue?')
-
-			if (confirmLeave) {
-				next()
-			}
+			this.$store.commit('idOfShowingDialog', {
+				id: 'leavingPageWarning',
+				data: {
+					callback: () => {
+						if (this.leaveWarningUserResponse) {
+							next()
+						} else {
+							next(false)
+						}
+					}
+				}
+			})
 		}
 	},
 	methods: {
