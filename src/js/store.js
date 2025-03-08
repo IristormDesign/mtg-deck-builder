@@ -44,6 +44,9 @@ export default new Vuex.Store({
 		decks (state, payload) {
 			state.decks = payload
 		},
+		dialogData (state, payload) {
+			state.dialogData = payload
+		},
 		focusCardBar (state, payload) {
 			state.focusCardBar = payload
 		},

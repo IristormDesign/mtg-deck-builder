@@ -7,7 +7,7 @@
 			<p><strong>Error</strong>: The deck’s name must include an English letter or a digit.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="deckNameExists">
-			<p><strong>Error</strong>: You already have a deck named <i>{{ $store.state.dialogData }}</i>. Please give a different name.</p>
+			<p><strong>Error</strong>: You already have a deck named <i>{{ $store.state.dialogData.name }}</i>. Please give a different name.</p>
 		</standard-dialog>
 	</div>
 </template>

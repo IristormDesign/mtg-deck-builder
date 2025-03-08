@@ -8,12 +8,11 @@ export default {
 		 * @returns {string}
 		 */
 		removeExcessSpaces (string) {
-			if (string) {
-				string = string.replace(/\s\s+/g, ' ') // Replace each group of multiple consecutive spaces with a single space.
-				string = string.trim()
+			if (!string) return
 
-				return string
-			}
+			return string
+				.trim()
+				.replace(/\s\s+/g, ' ') // Replace each group of multiple consecutive spaces with a single space.
 		},
 		/**
 		 * Turn each straight apostrophe (or single closing quotation mark) into a curly one.
@@ -25,20 +24,35 @@ export default {
 		/**
 		 * @param {string} name
 		 * @param {string} path
+		 * @param {Function} callback
 		 * @returns {Boolean}
 		 */
-		nameIsApproved (name, path) {
+		deckNameIsApproved (name, path, callback) {
 			const commitDialog = secondParam => {
-				return this.$store.commit('idOfShowingDialog', secondParam)
+				this.$store.commit('idOfShowingDialog', null)
+
+				setTimeout(() => {
+					this.$store.commit('idOfShowingDialog', secondParam)
+				}, 1)
 			}
 
 			if (name.length > 50) {
-				// this.$store.commit('idOfShowingDialog', 'nameIsTooLong')
-				commitDialog('nameIsTooLong')
+				commitDialog({
+					id: 'nameIsTooLong',
+					data: {
+						callback: callback
+					}
+				})
+
 				return false
 			} else if (!this.hasLetterOrDigit(name)) {
-				// this.$store.commit('idOfShowingDialog', 'missingLetterOrDigit')
-				commitDialog('missingLetterOrDigit')
+				commitDialog({
+					id: 'missingLetterOrDigit',
+					data: {
+						callback: callback
+					}
+				})
+
 				return false
 			} else if ( // If the submitted deck name already exists (based on the deck path), unless that name is of the currently active deck (because letters' cases have been edited)...
 				this.deckExists(path) &&
@@ -46,8 +60,12 @@ export default {
 			) {
 				commitDialog({
 					id: 'deckNameExists',
-					data: name
+					data: {
+						name: name,
+						callback: callback
+					}
 				})
+
 				return false
 			} else {
 				name = this.curlApostrophes(name)

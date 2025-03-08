@@ -60,27 +60,33 @@ export default {
 	},
 	methods: {
 		createDuplicateDeck () {
-			if (this.nameIsApproved(this.dupDeckName, this.dupDeckPath)) {
-				const dupDeck = JSON.parse(JSON.stringify(this.deck)) // The technique for deep-cloning objects, which is necessary here.
-				dupDeck.name = this.dupDeckName
-				dupDeck.path = this.dupDeckPath
-				dupDeck.editDate = new Date()
+			const store = this.$store
+			const isApproved = this.deckNameIsApproved(
+				this.dupDeckName, this.dupDeckPath, () => {
+					store.commit('idOfShowingDialog', 'duplicateDeck')
+				}
+			)
+			if (!isApproved) return
 
-				this.$store.state.decks.push(dupDeck)
-				this.sortDeckMenu()
-				this.$store.commit('decks', this.$store.state.decks)
+			const dupDeck = JSON.parse(JSON.stringify(this.deck)) // The technique for deep-cloning objects, which is necessary here.
+			dupDeck.name = this.dupDeckName
+			dupDeck.path = this.dupDeckPath
+			dupDeck.editDate = new Date()
 
-				this.$router.push({
-					name: 'listEditor',
-					params: { deckPath: dupDeck.path }
-				})
+			store.state.decks.push(dupDeck)
+			this.sortDeckMenu()
+			store.commit('decks', store.state.decks)
 
-				this.$store.commit('idOfShowingDialog', null)
+			this.$router.push({
+				name: 'listEditor',
+				params: { deckPath: this.dupDeckPath }
+			})
 
-				setTimeout(() => {
-					this.$store.commit('idOfShowingDialog', 'duplicationSuccess')
-				}, 1)
-			}
+			store.commit('idOfShowingDialog', null)
+
+			setTimeout(() => {
+				store.commit('idOfShowingDialog', 'duplicationSuccess')
+			}, 1)
 		}
 	}
 }

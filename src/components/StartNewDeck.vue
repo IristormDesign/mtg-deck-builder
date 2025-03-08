@@ -51,7 +51,9 @@ export default {
 			} else if (this.deckExists(path)) {
 				store.commit('idOfShowingDialog', {
 					id: 'deckNameExists',
-					data: name
+					data: {
+						name: name
+					}
 				})
 			} else {
 				const updatedDecksArray = store.state.decks
