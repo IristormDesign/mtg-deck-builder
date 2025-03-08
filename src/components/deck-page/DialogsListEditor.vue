@@ -8,10 +8,7 @@
 			<p>You’re moving {{ dd.card }} out of the {{ dd.activeGroup }} into the {{ dd.inactiveGroup }}.</p>
 		</standard-dialog>
 
-		<standard-dialog
-			dialogID="confirmCardRemoval"
-			class="with-two-buttons"
-		>
+		<standard-dialog dialogID="confirmCardRemoval">
 			<p>Remove {{ dd.cardName }} from this card list?</p>
 			<form slot="form" method="dialog">
 				<button @click="removeCard(dd.cardIndex)" autofocus>Remove</button>

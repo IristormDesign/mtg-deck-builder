@@ -18,10 +18,7 @@
 			<p>(If you were trying to add a duplicate of this card, do that by increasing the card’s quantity number in the card list.)</p>
 		</standard-dialog>
 
-		<standard-dialog
-			dialogID="replaceExistingPrint"
-			class="with-two-buttons"
-		>
+		<standard-dialog dialogID="replaceExistingPrint">
 			<p>{{ dd.name }} already exists in this {{ stringActiveList }}, though in a different print from the print you’re requesting.</p>
 			<p>Do you want your requested print of {{ dd.name }} to replace the existing one?</p>
 			<form slot="form" method="dialog">

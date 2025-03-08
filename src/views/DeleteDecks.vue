@@ -70,10 +70,7 @@
 				now deleted.
 			</p>
 		</div>
-		<standard-dialog
-			dialogID="confirmDeletion"
-			class="with-two-buttons"
-		>
+		<standard-dialog dialogID="confirmDeletion">
 			<p>
 				⚠ Are you sure you want to permanently delete
 				<template v-if="numChecked === 1">
