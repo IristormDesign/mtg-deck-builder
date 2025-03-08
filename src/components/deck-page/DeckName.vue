@@ -9,7 +9,7 @@
 
 		<standard-dialog
 			dialogID="renameDeck"
-			class="with-two-buttons"
+			class="with-text-input"
 		>
 			<p>Rename this deck:</p>
 			<form slot="form" method="dialog">
@@ -22,7 +22,10 @@
 					@click="renameDeck(newName)"
 					:disabled="!newName || newName === deck.name"
 				>Rename</button>
-				<button @click="$store.commit('dialogData', {})">Cancel</button>
+				<button
+					@click="$store.commit('dialogData', {})"
+					formmethod="dialog"
+				>Cancel</button>
 			</form>
 		</standard-dialog>
 		<dialogs-deck-name />

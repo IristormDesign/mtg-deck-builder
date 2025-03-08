@@ -26,7 +26,7 @@
 		overflow: hidden;
 		min-height: $height-deck-header-component;
 
-		button {
+		> button {
 			@include link;
 			text-decoration-thickness: 1.5px;
 
