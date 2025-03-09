@@ -21,8 +21,6 @@ export default {
 	},
 	watch: {
 		'$store.state.idOfShowingDialog' (id) {
-			const dialogData = this.$store.state.dialogData
-
 			switch (id) {
 				case this.dialogID:
 					this.dialog.showModal()
@@ -30,10 +28,13 @@ export default {
 				case null:
 					this.dialog.close()
 
-					if (dialogData.callback) {
-						dialogData.callback()
+					if (this.$store.state.dialogData.callback) {
+						this.$store.state.dialogData.callback()
 					}
 			}
+		},
+		'$route' () {
+			this.closeDialog()
 		}
 	},
 	mounted () {
