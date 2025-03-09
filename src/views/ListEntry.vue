@@ -59,12 +59,10 @@
 			<form slot="form" method="dialog">
 				<button
 					@click="leaveWarningUserResponse = true"
-					formmethod="dialog"
 				>Leave</button>
 				<button
 					@click="leaveWarningUserResponse = false"
 					class="cancel"
-					formmethod="dialog"
 					autofocus
 				>Cancel</button>
 			</form>

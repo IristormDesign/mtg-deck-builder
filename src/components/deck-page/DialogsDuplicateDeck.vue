@@ -15,7 +15,7 @@
 					@click.prevent="createDuplicateDeck()"
 					:disabled="isInvalidDeckName"
 				>Create Deck</button>
-				<button formmethod="dialog">Cancel</button>
+				<button class="cancel">Cancel</button>
 			</form>
 		</standard-dialog>
 

@@ -73,8 +73,7 @@ dialog {
 			&:first-of-type {
 				grid-column-start: 2;
 			}
-			&[formmethod="dialog"] {
-				background: $color-button-gray;
+			&.cancel {
 				grid-column-start: 3;
 			}
 		}

@@ -24,7 +24,7 @@
 				>Rename</button>
 				<button
 					@click="$store.commit('dialogData', {})"
-					formmethod="dialog"
+					class="cancel"
 				>Cancel</button>
 			</form>
 		</standard-dialog>
