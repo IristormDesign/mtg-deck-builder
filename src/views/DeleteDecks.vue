@@ -70,7 +70,7 @@
 				now deleted.
 			</p>
 		</div>
-		<standard-dialog dialogID="confirmDeletion">
+		<standard-dialog dialogID="confirmDeletion" class="with-two-buttons">
 			<p>
 				⚠ Are you sure you want to permanently delete
 				<template v-if="numChecked === 1">
@@ -87,7 +87,7 @@
 				</template>
 			</p>
 			<form slot="form" method="dialog">
-				<button @click="removeSelectedDecks()" autofocus>Yes</button>
+				<button @click="removeSelectedDecks()">Yes</button>
 				<button class="cancel">No</button>
 			</form>
 		</standard-dialog>

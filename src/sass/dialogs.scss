@@ -1,4 +1,5 @@
-$transform-dialog: scale(1.0625);
+/* I've made the dialog exit transition duration 0s because Safari doesn't work well with it. */
+
 $transition-duration-dialog: .5s;
 
 dialog {
@@ -8,20 +9,21 @@ dialog {
 	width: fit-content;
 	max-width: $max-width-content*.875;
 	border: 1px solid $color-button-orange;
-	box-shadow: inset 0 0 0 $border-width-sections-medium $color-group-bg-darker;
 	opacity: 0;
-	filter: $drop-shadow-card-shadow;
-  transition: all ($transition-duration-dialog*.5) ease allow-discrete;
+	filter: brightness(1) saturate(1);
+	box-shadow:
+		inset 0 0 0 $border-width-sections-medium $color-group-bg-darker,
+		-$lhse*.25 $lhse*.75 $lhse $color-subtle-bluish-shadow;
+  transition: all 0s ease allow-discrete;
 
 	&::backdrop {
 		@include dialog-backdrop;
-		transition: all ($transition-duration-dialog*.5) ease allow-discrete;
+		transition: all 0s ease allow-discrete;
 		opacity: 0;
 	}
 	&[open] {
 		display: block;
 		opacity: 1;
-		filter: $drop-shadow-card-shadow;
 		transition-duration: $transition-duration-dialog;
 
 		&::backdrop {
@@ -52,20 +54,14 @@ dialog {
 			background: $color-button-gray;
 		}
 	}
+	&.with-two-buttons,
 	&.with-text-input {
 		form {
 			display: grid;
 			grid-template-columns: 1fr auto auto 1fr;
 			width: 100%;
 			margin-top: $lhse*.75;
-		}
-		input {
-			grid-column: span 4;
-			max-width: 20em;
-			width: 100%;
-			text-align: center;
-			margin: 0 auto;
-			height: $lhse*1.25;
+			gap: 0 $lhse;
 		}
 		button {
 			grid-row: 2;
@@ -78,11 +74,22 @@ dialog {
 			}
 		}
 	}
+	&.with-text-input {
+		input {
+			grid-column: span 4;
+			max-width: 20em;
+			width: 100%;
+			text-align: center;
+			margin: 0 auto $lhse;
+			height: $lhse*1.25;
+			min-width: $lhse*12;
+		}
+	}
 }
 @starting-style {
   dialog[open] {
     opacity: 0;
-		filter: $drop-shadow-card-shadow brightness(2.5) saturate(1.25);
+		filter: brightness(2.5) saturate(1.25);
 
 		&::backdrop {
 			opacity: 0;
