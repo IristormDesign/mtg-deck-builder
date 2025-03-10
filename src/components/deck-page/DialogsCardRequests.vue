@@ -18,15 +18,15 @@
 			<p>(If you were trying to add a duplicate of this card, do that by increasing the card’s quantity number in the card list.)</p>
 		</standard-dialog>
 
-		<standard-dialog dialogID="replaceExistingPrint">
+		<standard-dialog
+			dialogID="replaceExistingPrint"
+			class="with-two-buttons"
+		>
 			<p>{{ dd.name }} already exists in this {{ stringActiveList }}, though in a different print from the print you’re requesting.</p>
 			<p>Do you want your requested print of {{ dd.name }} to replace the existing one?</p>
 			<form slot="form" method="dialog">
-				<button
-					@click="updateOldCard(dd, $store.state.showSideboard)"
-					autofocus
-				>Replace</button>
-				<button class="cancel">Cancel</button>
+				<button @click="updateOldCard(dd, $store.state.showSideboard)">Yes, Replace</button>
+				<button class="cancel">No, Cancel</button>
 			</form>
 		</standard-dialog>
 

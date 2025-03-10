@@ -15,7 +15,7 @@
 			<form slot="form" method="dialog">
 				<input
 					v-model.trim="newName"
-					type="text" autofocus
+					type="text"
 					maxlength="50"
 				/>
 				<button

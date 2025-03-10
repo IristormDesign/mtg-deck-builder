@@ -9,7 +9,6 @@
 				<input
 					v-model.trim="dupDeckName"
 					type="text"
-					autofocus
 				/>
 				<button
 					@click.prevent="createDuplicateDeck()"

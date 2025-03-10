@@ -54,12 +54,13 @@
 		<standard-dialog dialogID="invalidListFormat">
 			<p><strong>Error</strong>: The text you’ve entered isn’t in the valid format for a card list.</p>
 		</standard-dialog>
-		<standard-dialog dialogID="leavingPageWarning">
+		<standard-dialog
+			dialogID="leavingPageWarning"
+			class="with-two-buttons"
+		>
 			<p>⚠ If you leave this page now, then the card list you’ve entered in the submission form will be lost.</p>
 			<form slot="form" method="dialog">
-				<button
-					@click="leaveWarningUserResponse = true"
-				>Leave</button>
+				<button @click="leaveWarningUserResponse = true">Leave</button>
 				<button
 					@click="leaveWarningUserResponse = false"
 					class="cancel"

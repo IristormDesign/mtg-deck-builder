@@ -70,25 +70,28 @@
 				now deleted.
 			</p>
 		</div>
-		<standard-dialog dialogID="confirmDeletion" class="with-two-buttons">
+		<standard-dialog
+			dialogID="confirmDeletion"
+			class="with-two-buttons"
+		>
 			<p>
-				⚠ Are you sure you want to permanently delete
+				⚠ You’re about to permanently delete
 				<template v-if="numChecked === 1">
-					<i>{{ checkedDecks[0] }}</i>?
+					<i>{{ checkedDecks[0] }}</i>.
 				</template>
 				<template v-else-if="numChecked === 2">
-					<i>{{ checkedDecks[0] }}</i> and <i>{{ checkedDecks[1] }}</i>?
+					<i>{{ checkedDecks[0] }}</i> and <i>{{ checkedDecks[1] }}</i>.
 				</template>
 				<template v-else-if="numExisting === numChecked">
-					all {{ numExisting }} of your decks?
+					all {{ numExisting }} of your decks.
 				</template>
 				<template v-else>
-					the <strong>{{ numChecked }}</strong> decks you’ve selected?
+					the <strong>{{ numChecked }}</strong> decks you’ve selected.
 				</template>
 			</p>
 			<form slot="form" method="dialog">
-				<button @click="removeSelectedDecks()">Yes</button>
-				<button class="cancel">No</button>
+				<button @click="removeSelectedDecks()">Delete</button>
+				<button class="cancel" autofocus>Cancel</button>
 			</form>
 		</standard-dialog>
 	</article>
