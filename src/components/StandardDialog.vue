@@ -32,15 +32,13 @@ export default {
 						this.$store.state.dialogData.callback()
 					}
 			}
-		},
-		'$route' () {
-			this.closeDialog()
 		}
 	},
 	mounted () {
 		this.dialog.addEventListener('close', this.closeDialog)
 	},
 	destroyed () {
+		this.closeDialog()
 		this.dialog.removeEventListener('close', this.closeDialog)
 	},
 	methods: {
