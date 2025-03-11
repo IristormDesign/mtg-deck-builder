@@ -25,8 +25,12 @@
 			<p>{{ dd.name }} already exists in this {{ stringActiveList }}, though in a different print from the print you’re requesting.</p>
 			<p>Do you want your requested print of {{ dd.name }} to replace the existing one?</p>
 			<form slot="form" method="dialog">
-				<button @click="updateOldCard(dd, $store.state.showSideboard)">Yes, Replace</button>
-				<button class="cancel">No, Cancel</button>
+				<div class="button-container">
+					<button @click="updateOldCard(dd, $store.state.showSideboard)">Yes, Replace</button>
+				</div>
+				<div class="button-container">
+					<button class="cancel">No, Cancel</button>
+				</div>
 			</form>
 		</standard-dialog>
 

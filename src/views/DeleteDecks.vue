@@ -90,8 +90,12 @@
 				</template>
 			</p>
 			<form slot="form" method="dialog">
-				<button @click="removeSelectedDecks()">Delete</button>
-				<button class="cancel" autofocus>Cancel</button>
+				<div class="button-container">
+					<button @click="removeSelectedDecks()">Delete</button>
+				</div>
+				<div class="button-container">
+					<button class="cancel">Cancel</button>
+				</div>
 			</form>
 		</standard-dialog>
 	</article>

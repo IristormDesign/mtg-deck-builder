@@ -60,12 +60,16 @@
 		>
 			<p>⚠ If you leave this page now, then the card list you’ve entered in the submission form will be lost.</p>
 			<form slot="form" method="dialog">
-				<button @click="leaveWarningUserResponse = true">Leave</button>
-				<button
-					@click="leaveWarningUserResponse = false"
-					class="cancel"
-					autofocus
-				>Cancel</button>
+				<div class="button-container">
+					<button @click="leaveWarningUserResponse = true">Leave</button>
+				</div>
+				<div class="button-container">
+					<button
+						@click="leaveWarningUserResponse = false"
+						class="cancel"
+						autofocus
+					>Cancel</button>
+				</div>
 			</form>
 		</standard-dialog>
 	</article>

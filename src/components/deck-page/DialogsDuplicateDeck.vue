@@ -10,11 +10,15 @@
 					v-model.trim="dupDeckName"
 					type="text"
 				/>
-				<button
-					@click.prevent="createDuplicateDeck()"
-					:disabled="isInvalidDeckName"
-				>Create Deck</button>
-				<button class="cancel">Cancel</button>
+				<div class="button-container">
+					<button
+						@click.prevent="createDuplicateDeck()"
+						:disabled="isInvalidDeckName"
+					>Create Deck</button>
+				</div>
+				<div class="button-container">
+					<button class="cancel">Cancel</button>
+				</div>
 			</form>
 		</standard-dialog>
 

@@ -18,14 +18,18 @@
 					type="text"
 					maxlength="50"
 				/>
-				<button
-					@click="renameDeck(newName)"
-					:disabled="!newName || newName === deck.name"
-				>Rename</button>
-				<button
-					@click="$store.commit('dialogData', {})"
-					class="cancel"
-				>Cancel</button>
+				<div class="button-container">
+					<button
+						@click="renameDeck(newName)"
+						:disabled="!newName || newName === deck.name"
+					>Rename</button>
+				</div>
+				<div class="button-container">
+					<button
+						@click="$store.commit('dialogData', {})"
+						class="cancel"
+					>Cancel</button>
+				</div>
 			</form>
 		</standard-dialog>
 		<dialogs-deck-name />
