@@ -22,7 +22,7 @@
 		</template>
 
 		<standard-dialog dialogID="tooManyCardsToUpdate">
-			<p>⚠ Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
+			<p>Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="cardDataUpdateComplete">
 			<p>✅ Update completed!</p>
