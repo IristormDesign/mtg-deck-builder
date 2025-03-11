@@ -41,13 +41,12 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.new-deck {
-		form {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			align-items: center;
-		}
+	.new-deck-form {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		align-items: center;
+
 		label {
 			font-weight: $font-weight-label;
 			padding-bottom: $lhse*.125;
@@ -82,7 +81,7 @@
 		.button-container {
 			height: $lhse*2;
 		}
-		button {
+		#file-button {
 			display: flex;
 			font-size: $font-size-small;
 		}

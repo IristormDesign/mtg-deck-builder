@@ -1,7 +1,10 @@
 <template>
 	<section class="new-deck">
 		<h3>New Deck</h3>
-		<form @submit.prevent="submitDeckName()">
+		<form
+			class="new-deck-form"
+			@submit.prevent="submitDeckName()"
+		>
 			<label for="deck-name">Give your deck a name:</label>
 			<input
 				autocomplete="off"

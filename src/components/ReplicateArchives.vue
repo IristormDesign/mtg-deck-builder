@@ -7,7 +7,7 @@
 			style="display: none"
 		/>
 		<div class="button-container">
-			<button id="file-btn">
+			<button id="file-button">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-558.61 335.74-414.62l34.31 34.57 84.82-84.82v194.1h50.26v-194.1l84.82 84.82 34.31-34.57L480-558.61ZM190.26-660.36v457.79q0 5.39 3.46 8.85t8.85 3.46h554.86q5.39 0 8.85-3.46t3.46-8.85v-457.79H190.26ZM205.64-140q-25.7 0-45.67-19.97Q140-179.94 140-205.64v-479q0-10.61 3.37-20.53 3.37-9.91 10.12-18.29l57.23-72.8q8.36-11.1 21.42-17.42Q245.2-820 259.8-820h439.22q14.6 0 27.85 6.32 13.26 6.32 21.62 17.42l58.02 73.57q6.75 8.37 10.12 18.48Q820-694.1 820-683.49v477.85q0 25.7-19.97 45.67Q780.06-140 754.36-140H205.64Zm.64-570.61h546.39l-44.78-54.9q-1.93-1.93-4.43-3.08-2.5-1.15-5.19-1.15H260.59q-2.69 0-5.32 1.15-2.63 1.15-4.29 3.08l-44.7 54.9ZM480-425.31Z"/></svg>
 				Open Deck<br> Archive File
 			</button>
@@ -77,7 +77,7 @@ export default {
 		 * Hide the file input element and make the Open File button gain its functionality.
 		 */
 		hideFileInput () {
-			const openFileButton = document.getElementById('file-btn')
+			const openFileButton = document.getElementById('file-button')
 
 			openFileButton.addEventListener('click', () => {
 				this.fileInput.click()
