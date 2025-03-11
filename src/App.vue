@@ -1,5 +1,8 @@
 <template>
-	<transition appear name="fade-from-black">
+	<transition
+		v-if="hasBrowserSupport"
+		appear name="fade-from-black"
+	>
 		<div
 			class="fade-bg"
 			:class="this.$route.name === 'home' ? 'root-home-page' : null"
@@ -15,6 +18,11 @@
 			<scroll-to-top />
 		</div>
 	</transition>
+	<article v-else class="browser-unsupported">
+		<h2>Browser Unsupported</h2>
+		<p>Sorry, but <strong>MTG Deck Builder by Iristorm Design</strong> can’t be displayed because the web browser you’re currently using doesn’t pass the technical requirements to run it.</p>
+		<p>To use this web app, please do it on one of the major web browsers, and ensure that the browser is updated to the newest version.</p>
+	</article>
 </template>
 
 <script>
@@ -25,6 +33,11 @@ import ScrollToTop from '@/components/ScrollToTop.vue'
 
 export default {
 	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
+	computed: {
+		hasBrowserSupport () {
+			return ('HTMLDialogElement' in window)
+		}
+	},
 	mounted () {
 		document.addEventListener(
 			'auxclick', this.preventMiddleClicking
