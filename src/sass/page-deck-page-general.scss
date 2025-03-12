@@ -67,6 +67,11 @@
 		justify-content: center;
 	}
 }
+.no-cards {
+	a {
+		white-space: nowrap;
+	}
+}
 
 @media (max-width: ($min-width-app*1.25)) {
 	.deck-info {
