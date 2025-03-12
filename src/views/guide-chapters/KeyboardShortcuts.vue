@@ -30,8 +30,8 @@
 				<ul class="keyboard-shortcuts">
 					<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
 					<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
-					<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to a distant row above. (Specifically, the distance moved is equal to one-fifth of the card list’s total number of rows, to a maximum limit of 10 rows and a minimum of 2.)</li>
-					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works like the previous shortcut but in the opposite direction.)</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd>: Move the highlight up to a distant row above. (Specifically, the distance moved is based on the current card list’s total number of rows. If the total is fewer than 8, then the highlight moves by half the total number of rows. If the total is 8 or more, then the highlight moves by 5 rows.)</li>
+					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works like the previous shortcut in the opposite direction.)</li>
 					<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 				</ul>
 				<p>If the highlighted row is the row at either the very top or the very bottom of the list, and you use a shortcut to move the highlight where it couldn’t be moved farther in that direction, then the shortcut instead highlights the row at the list’s opposite end.</p>

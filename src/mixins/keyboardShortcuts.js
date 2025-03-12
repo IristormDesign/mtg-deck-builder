@@ -346,15 +346,13 @@ export default {
 			this.viewCardImageAtHighlightedIndex()
 		},
 		highlightDistantLI (highlightFunc) {
-			let numberToMove = this.activeCardList.cards.length / 5
-
-			if (numberToMove < 2) {
-				numberToMove = 2
-			} else if (numberToMove > 10) {
-				numberToMove = 10
-			} else {
-				numberToMove = Math.round(numberToMove)
-			}
+			const numberToMove = (() => {
+				if (this.activeCardList.cards.length >= 8) {
+					return 5
+				} else {
+					return Math.round(this.activeCardList.cards.length / 2)
+				}
+			})()
 
 			for (let i = 0; i < numberToMove; i++) {
 				setTimeout(() => {
