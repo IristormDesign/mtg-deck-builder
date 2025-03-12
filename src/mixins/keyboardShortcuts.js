@@ -257,6 +257,8 @@ export default {
 		kbShortcutsDrawSim (keyEvent, event) {
 			if (event.shiftKey) { // If pressing Shift + another key...
 				switch (keyEvent) {
+					case 'r': this.restartDrawSim() // This isn't truly needed here, because pressing the R key restarts the sim round without needing to hold Shift. But including it here in case the user has already been holding down Shift while pressing space bar to draw 10 cards at once.
+						return
 					case 'c': this.openCardScryfallPage()
 						return
 					case ' ': this.drawCard(event)
