@@ -73,7 +73,7 @@ export default {
 			if (this.deck.cards.length === 0) {
 				return '(Enter a card’s name here.)'
 			} else {
-				return null
+				return ''
 			}
 		}
 	},

@@ -10,9 +10,6 @@ export default {
 	computed: {
 		highlightedIndex () {
 			return this.$store.state.highlightedCardLIIndex // A value of -1 means no card list item currently has attention by keyboard shortcuts. A value of any higher number means the index position of the list item that's currently highlighted by keyboard shortcuts.
-		},
-		showSideboard () {
-			return this.$store.state.showSideboard
 		}
 	},
 	watch: {
@@ -51,7 +48,7 @@ export default {
 				}
 			}
 		},
-		showSideboard () {
+		'$store.state.showSideboard' () {
 			this.setHighlightedIndex(-1)
 		}
 	},

@@ -128,9 +128,6 @@ export default {
 			} else {
 				return null
 			}
-		},
-		showingAnyPopup () {
-			return this.$store.state.showingAnyPopup
 		}
 	},
 	watch: {
@@ -150,7 +147,7 @@ export default {
 				this.$store.commit('showingAnyPopup', true)
 			}
 		},
-		showingAnyPopup (isShowing) {
+		'$store.state.showingAnyPopup' (isShowing) {
 			if (!isShowing) {
 				this.closeAllPopups()
 			}

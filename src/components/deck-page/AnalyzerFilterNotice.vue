@@ -1,6 +1,6 @@
 <template>
 	<aside
-		v-if="showNotice"
+		v-if="$store.state.analyzerFilter.attribute"
 		class="filter-notice active"
 	>
 		<div>
@@ -49,9 +49,6 @@ import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 export default {
 	mixins: [statsAnalyzer],
 	computed: {
-		showNotice () {
-			return this.$store.state.analyzerFilter.attribute
-		},
 		activeFilterDescription () {
 			const attr = this.$store.state.analyzerFilter.attribute
 

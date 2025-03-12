@@ -26,11 +26,6 @@ export default {
 		},
 		togglerRegionRef: String
 	},
-	computed: {
-		showingAnyPopup () {
-			return this.$store.state.showingAnyPopup
-		}
-	},
 	watch: {
 		isShowingDropdown (value) {
 			if (value) {
@@ -48,7 +43,7 @@ export default {
 				}
 			})
 		},
-		showingAnyPopup (isShowing) {
+		'$store.state.showingAnyPopup' (isShowing) {
 			/* Automatically close the dropdown by alternative triggers, such as the user pressing the Esc key or opening another popup element. */
 			if (!isShowing) {
 				this.$emit('hideDropdown')

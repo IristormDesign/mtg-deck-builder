@@ -35,14 +35,9 @@ export default {
 	props: {
 		deck: Object
 	},
-	computed: {
-		showSideboard () {
-			return this.$store.state.showSideboard
-		}
-	},
 	watch: {
-		showSideboard () {
-			if (this.showSideboard) {
+		'$store.state.showSideboard' () {
+			if (this.$store.state.showSideboard) {
 				this.$refs.radioSideboardGroup.checked = true
 			} else {
 				this.$refs.radioMainGroup.checked = true

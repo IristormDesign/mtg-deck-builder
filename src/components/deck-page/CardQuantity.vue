@@ -76,9 +76,6 @@ export default {
 		}
 	},
 	computed: {
-		cardQtyValue () { // Needed for keyboard shortcuts.
-			return this.cardObject.qty
-		},
 		disableMoveToGroup () {
 			let destGroup
 

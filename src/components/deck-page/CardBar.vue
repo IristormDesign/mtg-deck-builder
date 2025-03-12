@@ -106,9 +106,6 @@ export default {
 				default:
 					return null
 			}
-		},
-		focusCardBar () {
-			return this.$store.state.focusCardBar
 		}
 	},
 	methods: {
