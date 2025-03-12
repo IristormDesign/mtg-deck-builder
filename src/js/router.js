@@ -84,7 +84,7 @@ const routes = [
 		]
 	},
 	{
-		path: '/manual', // For any old links to the user guide.
+		path: '/manual', // For any old links to the User Guide.
 		redirect: { name: 'guide' },
 		children: [
 			{

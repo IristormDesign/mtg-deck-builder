@@ -10,7 +10,7 @@
 				alt="Snippet of a deck page on MTG Deck Builder" title="Screenshot" loading="lazy"
 			/>
 		</p>
-		<p>A deck page’s contents has two major sections—the <router-link to="deck-page-header">deck page header</router-link> and the <a href="#deck-page-modes">deck page mode</a> section—and both have their own subsections. The next chapters of this user guide are going to explain every part of a deck page.</p>
+		<p>A deck page’s contents has two major sections—the <router-link to="deck-page-header">deck page header</router-link> and the <a href="#deck-page-modes">deck page mode</a> section—and both have their own subsections. The next chapters of the User Guide are going to explain every part of a deck page.</p>
 		<p>Whenever you’re viewing a deck page, you’re optionally able to use special <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>, which let you do commands by pressing keys on a keyboard.</p>
 
 		<section id="deck-page-modes">
@@ -22,7 +22,7 @@
 				<li><router-link to="draw-sim">Draw Simulator</router-link></li>
 				<li><router-link to="text-renderer">Text Renderer</router-link></li>
 			</ul>
-			<p>These modes each provide you a different way to interact with your deck through MTG Deck Builder. The later chapters of this user guide explain in detail how each mode works.</p>
+			<p>These modes each provide you a different way to interact with your deck through MTG Deck Builder. The later chapters of the User Guide explain in detail how each mode works.</p>
 			<p>A deck page mode’s content appears below the <router-link to="deck-page-header">deck page header</router-link>. Switch from one mode to another via the <router-link to="deck-page-header#mode-menu">mode menu</router-link> or a <router-link to="keyboard-shortcuts#kbsc-deck-page-modes">keyboard shortcut</router-link>.</p>
 		</section>
 	</section>

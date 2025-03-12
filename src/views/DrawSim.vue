@@ -71,7 +71,7 @@
 						<label for="exclude-starred">Exclude starred cards</label>
 					</div>
 					<footer class="notes">
-						<p>To begin, click the Draw a Card button. Click it while holding <kbd class="shift-key">Shift</kbd> to draw 10 at once. Learn more in the <router-link to="/guide/draw-sim">user guide</router-link>.</p>
+						<p>To begin, click the Draw a Card button. Click it while holding <kbd class="shift-key">Shift</kbd> to draw 10 at once. Learn more in the <router-link to="/guide/draw-sim">User Guide</router-link>.</p>
 					</footer>
 				</div>
 				<div
