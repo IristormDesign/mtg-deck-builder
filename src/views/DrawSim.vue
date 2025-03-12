@@ -167,8 +167,8 @@ export default {
 		listenForDrawSimKeydownEvents (event) {
 			this.isHoldingShift = event.shiftKey
 		},
-		listenForDrawSimKeyupEvents () {
-			this.isHoldingShift = false
+		listenForDrawSimKeyupEvents (event) {
+			this.isHoldingShift = event.shiftKey
 		},
 		prepareCards () {
 			this.$store.commit('viewedDrawnCard', null)
