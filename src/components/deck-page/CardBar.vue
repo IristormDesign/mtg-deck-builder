@@ -40,19 +40,23 @@ export default {
 			}
 		},
 		setButtonColor () {
-			const colors = this.card.colors
+			const found = (colorSymbol) => {
+				return this.card.colors.find(
+					color => color === colorSymbol
+				)
+			}
 
-			if (colors.length > 1) {
+			if (this.card.colors.length > 1) {
 				return 'multi'
-			} else if (colors.find(c => c === 'W')) {
+			} else if (found('W')) {
 				return 'white'
-			} else if (colors.find(c => c === 'U')) {
+			} else if (found('U')) {
 				return 'blue'
-			} else if (colors.find(c => c === 'B')) {
+			} else if (found('B')) {
 				return 'black'
-			} else if (colors.find(c => c === 'R')) {
+			} else if (found('R')) {
 				return 'red'
-			} else if (colors.find(c => c === 'G')) {
+			} else if (found('G')) {
 				return 'green'
 			} else if (/\bLand\b/.test(this.card.type)) {
 				return 'land'
@@ -61,31 +65,25 @@ export default {
 			}
 		},
 		cardName () {
-			let output = this.card.name
-
-			if (this.hasDoubleCastableFaces) {
-				output += `<span title="${this.card.name2}"> // ${this.card.name2}</span>`
-			}
-
-			return output
+			return this.card.name + (
+				this.hasDoubleCastableFaces
+					? `<span title="${this.card.name2}"> // ${this.card.name2}</span>`
+					: ''
+			)
 		},
 		cardMana () {
-			const card = this.card
-
-			if (card.layout === 'split') {
-				return `${this.styleManaSymbols(card.mana)} // ${this.styleManaSymbols(card.mana2)}`
-			} else {
-				return this.styleManaSymbols(card.mana)
-			}
+			return this.styleManaSymbols(this.card.mana) + (
+				this.hasDoubleCastableFaces
+					? ` // ${this.styleManaSymbols(this.card.mana2)}`
+					: ''
+			)
 		},
 		cardType () {
-			let output = this.card.type
-
-			if (this.hasDoubleCastableFaces) {
-				output += `<span title="${this.card.type2}"> // ${this.card.type2}</span>`
-			}
-
-			return output
+			return this.card.type + (
+				this.hasDoubleCastableFaces
+					? `<span title="${this.card.type2}"> // ${this.card.type2}</span>`
+					: ''
+			)
 		},
 		setRaritySymbol () {
 			const symbol = this.raritySymbol
