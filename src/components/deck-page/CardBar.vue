@@ -46,23 +46,15 @@ export default {
 				)
 			}
 
-			if (this.card.colors.length > 1) {
-				return 'multi'
-			} else if (found('W')) {
-				return 'white'
-			} else if (found('U')) {
-				return 'blue'
-			} else if (found('B')) {
-				return 'black'
-			} else if (found('R')) {
-				return 'red'
-			} else if (found('G')) {
-				return 'green'
-			} else if (/\bLand\b/.test(this.card.type)) {
-				return 'land'
-			} else {
-				return 'colorless'
-			}
+			if (this.card.colors.length > 1) return 'multi'
+			if (found('W')) return 'white'
+			if (found('U')) return 'blue'
+			if (found('B')) return 'black'
+			if (found('R')) return 'red'
+			if (found('G')) return 'green'
+			if (/\bLand\b/.test(this.card.type)) return 'land'
+
+			return 'colorless'
 		},
 		cardName () {
 			return this.card.name + (
