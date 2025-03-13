@@ -236,11 +236,11 @@
 	.toc-subchapters-transition {
 		&-enter-active,
 		&-leave-active {
-			transition: all $transition-duration-standard ease-out;
+			transition: all $transition-duration-standard ease;
 		}
 		&-enter,
 		&-leave-to {
-			transform: translateX(-$lhse);
+			transform: translateX(-$lhse*1.5);
 			opacity: 0;
 		}
 	}
