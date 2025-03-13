@@ -1,5 +1,13 @@
 <template>
 	<nav class="table-of-contents" aria-label="Table of Contents">
+		<svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg">
+			<symbol id="expand-down-icon" viewBox="0 -960 960 960">
+				<path d="m480-340 180-180-57-56-123 123-123-123-57 56 180 180Zm0 260q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+			</symbol>
+			<symbol id="expand-up-icon" viewBox="0 -960 960 960">
+				<path d="m357-384 123-123 123 123 57-56-180-180-180 180 57 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+			</symbol>
+		</svg>
 		<div class="scrollable-region">
 			<h3>Table of Contents</h3>
 			<div class="toc-links">
@@ -11,8 +19,32 @@
 						>
 							{{ chapter.name }}
 						</router-link>
-
-						<ol v-if="chapter.subchapters && $route.path === '/guide/' + chapter.path">
+						<template v-if="chapter.subchapters">
+							<button
+								v-if="$route.path !== '/guide/' + chapter.path"
+								@click="manuallyToggleSubchapterList(chapter.path)"
+								class="toggle-subchapters-button"
+								type="button"
+								title="Show/hide subchapter list"
+							>
+								<svg v-if="chapterManuallyOpened === chapter.path">
+									<use href="#expand-up-icon" />
+								</svg>
+								<svg v-else>
+									<use href="#expand-down-icon" />
+								</svg>
+							</button>
+							<div
+								v-else
+								class="toggle-subchapters-button disabled"
+							>
+								<svg><use href="#expand-up-icon" /></svg>
+							</div>
+						</template>
+						<ol v-if="(
+							chapter.subchapters && $route.path === '/guide/' + chapter.path ||
+							chapterManuallyOpened === chapter.path
+						)">
 							<li
 								v-for="subchapter in chapter.subchapters"
 								:key="subchapter.hash"
@@ -50,6 +82,16 @@
 export default {
 	props: {
 		chapters: Array
+	},
+	data () {
+		return {
+			chapterManuallyOpened: ''
+		}
+	},
+	watch: {
+		$route () {
+			this.chapterManuallyOpened = ''
+		}
 	},
 	mounted () {
 		if (window.innerWidth > 960) { // The exact window width is equal to the pixel breakpoint when the table of contents section no longer stays on the side of the page when scrolling down.
@@ -147,6 +189,13 @@ export default {
 					}
 				})
 			}, 1) // The timeout is needed to consistently ensure that the correct ToC link is highlighted after the scroll event.
+		},
+		manuallyToggleSubchapterList (chapter) {
+			if (this.chapterManuallyOpened === chapter) {
+				this.chapterManuallyOpened = ''
+			} else {
+				this.chapterManuallyOpened = chapter
+			}
 		}
 	}
 }

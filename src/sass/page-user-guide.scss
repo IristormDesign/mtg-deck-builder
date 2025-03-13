@@ -62,8 +62,16 @@
 		ol {
 			padding-left: 1em;
 		}
+		> ol {
+			> li {
+				> a {
+					margin-right: $lhse;
+				}
+			}
+		}
 		li {
 			line-height: 1;
+			position: relative;
 
 			&:has(> .visible) {
 				color: $color-text-brighter;
@@ -93,6 +101,45 @@
 
 			> a {
 				font-weight: $font-weight-semibold;
+			}
+		}
+		.toggle-subchapters-button {
+			@include link;
+			text-decoration: none;
+			font-size: 116.67%;
+			text-align: center;
+			align-self: center;
+			width: $lhse*.8333;
+			height: $lhse*.8333;
+			position: absolute;
+			border-radius: 50%;
+			top: 0;
+			right: 0;
+
+			&:hover,
+			&:focus {
+				background: $color-mythic-brown;
+				background: $color-mythic-dim;
+				border-color: $color-link-focus;
+				color: $color-app-header-link-hover;
+			}
+			&:active {
+				background: $color-mythic-dim;
+				border-color: $color-link-active;;
+				background: $color-input-bg-active;
+				color: $color-app-header-link-active;
+			}
+			&.disabled {
+				@include disabled-style;
+				pointer-events: none;
+
+				svg {
+					fill: $color-text-brighter;
+				}
+			}
+			svg {
+				width: 100%;
+				height: 100%;
 			}
 		}
 	}
