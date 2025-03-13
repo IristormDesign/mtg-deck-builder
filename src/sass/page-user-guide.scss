@@ -233,6 +233,17 @@
 			text-wrap: pretty;
 		}
 	}
+	.toc-subchapters-transition {
+		&-enter-active,
+		&-leave-active {
+			transition: all $transition-duration-standard ease-out;
+		}
+		&-enter,
+		&-leave-to {
+			transform: translateX(-$lhse);
+			opacity: 0;
+		}
+	}
 }
 
 @media (max-width: $min-width-app) {

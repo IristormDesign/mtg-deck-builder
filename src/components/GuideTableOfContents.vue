@@ -2,10 +2,10 @@
 	<nav class="table-of-contents" aria-label="Table of Contents">
 		<svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg">
 			<symbol id="expand-down-icon" viewBox="0 -960 960 960">
-				<path d="m480-340 180-180-57-56-123 123-123-123-57 56 180 180Zm0 260q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+				<path d="M480-336.23 663.77-520 603-579.77l-123 123-123-123L296.23-520 480-336.23ZM480.07-68q-85.48 0-160.69-32.44t-130.84-88.05q-55.63-55.61-88.09-130.79Q68-394.46 68-479.93q0-85.74 32.5-161.17 32.5-75.43 88.21-131.23 55.71-55.8 130.79-87.74Q394.57-892 479.93-892q85.73 0 161.15 31.92 75.43 31.92 131.24 87.71 55.81 55.79 87.75 131.21Q892-565.74 892-479.98q0 85.75-31.92 160.62t-87.7 130.6q-55.78 55.73-131.18 88.25Q565.8-68 480.07-68Z"/>
 			</symbol>
 			<symbol id="expand-up-icon" viewBox="0 -960 960 960">
-				<path d="m357-384 123-123 123 123 57-56-180-180-180 180 57 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+				<path d="m357-380.23 123-123 123 123L663.77-440 480-623.77 296.23-440 357-380.23ZM480.07-68q-85.48 0-160.69-32.44t-130.84-88.05q-55.63-55.61-88.09-130.79Q68-394.46 68-479.93q0-85.74 32.5-161.17 32.5-75.43 88.21-131.23 55.71-55.8 130.79-87.74Q394.57-892 479.93-892q85.73 0 161.15 31.92 75.43 31.92 131.24 87.71 55.81 55.79 87.75 131.21Q892-565.74 892-479.98q0 85.75-31.92 160.62t-87.7 130.6q-55.78 55.73-131.18 88.25Q565.8-68 480.07-68Zm-.07-86q136.51 0 231.26-94.74Q806-343.49 806-480t-94.74-231.26Q616.51-806 480-806t-231.26 94.74Q154-616.51 154-480t94.74 231.26Q343.49-154 480-154Zm0-326Z"/>
 			</symbol>
 		</svg>
 		<div class="scrollable-region">
@@ -41,36 +41,38 @@
 								<svg><use href="#expand-up-icon" /></svg>
 							</div>
 						</template>
-						<ol v-if="(
-							chapter.subchapters && $route.path === '/guide/' + chapter.path ||
-							chapterManuallyOpened === chapter.path
-						)">
-							<li
-								v-for="subchapter in chapter.subchapters"
-								:key="subchapter.hash"
-							>
-								<router-link
-									:to="'/guide/' + chapter.path + subchapter.hash"
-									@click.native="$emit('clickedSubchapterLink', subchapter.hash)"
+						<transition appear name="toc-subchapters-transition">
+							<ol v-if="(
+								chapter.subchapters && $route.path === '/guide/' + chapter.path ||
+								chapterManuallyOpened === chapter.path
+							)">
+								<li
+									v-for="subchapter in chapter.subchapters"
+									:key="subchapter.hash"
 								>
-									{{ subchapter.name }}
-								</router-link>
-
-								<ol v-if="subchapter.subchapters">
-									<li
-										v-for="subSubchapter in subchapter.subchapters"
-										:key="subSubchapter.hash"
+									<router-link
+										:to="'/guide/' + chapter.path + subchapter.hash"
+										@click.native="$emit('clickedSubchapterLink', subchapter.hash)"
 									>
-										<router-link
-											:to="'/guide/' + chapter.path + subSubchapter.hash"
-											@click.native="$emit('clickedSubchapterLink', subSubchapter.hash)"
+										{{ subchapter.name }}
+									</router-link>
+
+									<ol v-if="subchapter.subchapters">
+										<li
+											v-for="subSubchapter in subchapter.subchapters"
+											:key="subSubchapter.hash"
 										>
-											{{ subSubchapter.name }}
-										</router-link>
-									</li>
-								</ol>
-							</li>
-						</ol>
+											<router-link
+												:to="'/guide/' + chapter.path + subSubchapter.hash"
+												@click.native="$emit('clickedSubchapterLink', subSubchapter.hash)"
+											>
+												{{ subSubchapter.name }}
+											</router-link>
+										</li>
+									</ol>
+								</li>
+							</ol>
+						</transition>
 					</li>
 				</ol>
 			</div>
