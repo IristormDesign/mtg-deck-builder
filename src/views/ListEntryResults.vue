@@ -7,8 +7,8 @@
 			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to the main card group of <i>{{ deck.name }}</i>.</p>
 			<ul>
 				<li
-					v-for="card of cardsSuccessfullyAdded"
-					:key="card.name"
+					v-for="(card, index) of cardsSuccessfullyAdded"
+					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>
@@ -22,8 +22,8 @@
 			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities have been updated to the new quantities you’ve set.</p>
 			<ul>
 				<li
-					v-for="card of cardsToUpdate"
-					:key="card.name"
+					v-for="(card, index) of cardsToUpdate"
+					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<p v-if="this.anyCardRemoved">Card names set to a quantity of zero have been removed.</p>
@@ -34,8 +34,8 @@
 			<p>The following new card names have <em>not</em> been added to <i>{{ deck.name }}</i> because you’ve set their quantities to zero. 🤔</p>
 			<ul>
 				<li
-					v-for="card of cardsToAddZeroQty"
-					:key="card.name"
+					v-for="(card, index) of cardsToAddZeroQty"
+					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 		</section>
@@ -45,8 +45,8 @@
 			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, so they can’t be added to your deck.</p>
 			<ul>
 				<li
-					v-for="card of cardRequestInvalid"
-					:key="card.name"
+					v-for="(card, index) of cardRequestInvalid"
+					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<p>If you’re sure these card names exist, check your entries for spelling mistakes, missing words, or excess words. (Letter case doesn’t matter, though.) If you find mistakes in them, you can submit the names again with the corrections.</p>
@@ -57,8 +57,8 @@
 			<p>The following card names couldn’t be added to <i>{{ deck.name }}</i> because the data for them couldn’t be retrieved from the Scryfall web servers right now.</p>
 			<ul>
 				<li
-					v-for="card of cardRequestsAborted"
-					:key="card.name"
+					v-for="(card, index) of cardRequestsAborted"
+					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
 			<div class="button-container copy-button">
@@ -167,11 +167,9 @@ export default {
 			}
 		},
 		displayFullName (card) {
-			if (card.name2) {
-				return `${card.name} // ${card.name2}`
-			} else {
-				return card.name
-			}
+			return card.name + (
+				card.name2 ? ` // ${card.name2}` : ''
+			)
 		},
 		copyFailedList (failedReason) {
 			let listText = ''

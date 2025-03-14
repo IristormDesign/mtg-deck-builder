@@ -16,10 +16,11 @@
 
 <script>
 import cardListFunctions from '@/mixins/cardListFunctions.js'
+import doubleFacedCards from '@/mixins/doubleFacedCards'
 import symbolsMarkup from '@/mixins/symbolsMarkup.js'
 
 export default {
-	mixins: [cardListFunctions, symbolsMarkup],
+	mixins: [cardListFunctions, doubleFacedCards, symbolsMarkup],
 	props: {
 		card: Object,
 		deck: Object,
@@ -31,14 +32,6 @@ export default {
 		}
 	},
 	computed: {
-		hasDoubleCastableFaces () {
-			switch (this.card.layout) {
-				case 'adventure': case 'modal_dfc': case 'split':
-					return true
-				default:
-					return false
-			}
-		},
 		setButtonColor () {
 			const found = (colorSymbol) => {
 				return this.card.colors.find(
@@ -56,23 +49,26 @@ export default {
 
 			return 'colorless'
 		},
+		thisCardHasDoubleCastableFaces () {
+			return this.hasDoubleCastableFaces(this.card)
+		},
 		cardName () {
 			return this.card.name + (
-				this.hasDoubleCastableFaces
+				this.thisCardHasDoubleCastableFaces
 					? `<span title="${this.card.name2}"> // ${this.card.name2}</span>`
 					: ''
 			)
 		},
 		cardMana () {
 			return this.styleManaSymbols(this.card.mana) + (
-				this.hasDoubleCastableFaces
+				this.thisCardHasDoubleCastableFaces
 					? ` // ${this.styleManaSymbols(this.card.mana2)}`
 					: ''
 			)
 		},
 		cardType () {
 			return this.card.type + (
-				this.hasDoubleCastableFaces
+				this.thisCardHasDoubleCastableFaces
 					? `<span title="${this.card.type2}"> // ${this.card.type2}</span>`
 					: ''
 			)

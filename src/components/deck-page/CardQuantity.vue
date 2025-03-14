@@ -59,11 +59,12 @@
 
 <script>
 import cardListFunctions from '@/mixins/cardListFunctions.js'
+import doubleFacedCards from '@/mixins/doubleFacedCards'
 import removeCard from '@/mixins/removeCard.js'
 import deckColors from '@/mixins/deckColors.js'
 
 export default {
-	mixins: [cardListFunctions, removeCard, deckColors],
+	mixins: [cardListFunctions, doubleFacedCards, removeCard, deckColors],
 	props: {
 		card: Object,
 		deck: Object,
@@ -180,14 +181,7 @@ export default {
 						store.commit('idOfShowingDialog', {
 							id: 'confirmCardRemoval',
 							data: {
-								cardName: (() => {
-									switch (card.layout) {
-										case 'modal_dfc': case 'split':
-											return `${card.name} // ${card.name2}`
-										default:
-											return card.name
-									}
-								})(),
+								cardName: this.doubleFacedCardName(card),
 								cardIndex: this.i
 							}
 						})

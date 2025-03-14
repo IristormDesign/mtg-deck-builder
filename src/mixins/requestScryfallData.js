@@ -1,10 +1,11 @@
 import axios from 'axios'
 import latestDataVersions from '@/mixins/latestDataVersions.js'
 import stringMethods from '@/mixins/stringMethods.js'
+import doubleFacedCards from './doubleFacedCards'
 import deckColors from '@/mixins/deckColors.js'
 
 export default {
-	mixins: [latestDataVersions, stringMethods, deckColors],
+	mixins: [latestDataVersions, stringMethods, doubleFacedCards, deckColors],
 	data () {
 		return {
 			regexScryfallCardURL: /scryfall\.com\/card\/(.*\/)*(\w+|\d+)(-|\/)(\w+|\d+)\//i /* This gets a string containing:
@@ -322,13 +323,7 @@ export default {
 			} else {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'cardAlreadyInDeck',
-					data: (() => {
-						if (card.name2) {
-							return `${card.name} // ${card.name2}`
-						} else {
-							return card.name
-						}
-					})()
+					data: this.doubleFacedCardName(card)
 				})
 			}
 		},

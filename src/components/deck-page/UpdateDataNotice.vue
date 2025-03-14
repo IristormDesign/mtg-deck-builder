@@ -33,12 +33,13 @@
 <script>
 import StandardDialog from '@/components/StandardDialog.vue'
 import cardListFunctions from '@/mixins/cardListFunctions.js'
+import doubleFacedCards from '@/mixins/doubleFacedCards'
 import latestDataVersions from '@/mixins/latestDataVersions.js'
 import requestScryfallData from '@/mixins/requestScryfallData.js'
 
 export default {
 	components: { StandardDialog },
-	mixins: [cardListFunctions, latestDataVersions, requestScryfallData],
+	mixins: [cardListFunctions, doubleFacedCards, latestDataVersions, requestScryfallData],
 	props: {
 		deck: Object
 	},
@@ -121,23 +122,13 @@ export default {
 					this.cardsToUpdate.push({
 						gapAfter: card.gapAfter,
 						inSideboard: this.$store.state.showSideboard,
-						name: fullDFCName(),
+						name: this.doubleFacedCardName(card),
 						qty: card.qty,
 						img: card.img,
 						img2: card.img2,
 						imgVersion: card.imgVersion,
 						link: card.link
 					})
-				}
-
-				function fullDFCName () {
-					let output = card.name
-
-					if (card.name2) {
-						output += ` // ${card.name2}`
-					}
-
-					return output
 				}
 			}
 		},

@@ -79,11 +79,12 @@
 import StandardDialog from '@/components/StandardDialog.vue'
 import DeckPrint from '@/components/deck-page/DeckPrint.vue'
 import autosize from 'autosize'
+import doubleFacedCards from '@/mixins/doubleFacedCards'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
 	components: { StandardDialog, DeckPrint },
-	mixins: [getActiveDeck],
+	mixins: [doubleFacedCards, getActiveDeck],
 	computed: {
 		mainNotEmpty () {
 			return this.deck.cards.length > 0
@@ -132,16 +133,9 @@ export default {
 			const arrayOfCardNames = []
 
 			cards().forEach(card => {
-				const lineCardName = () => {
-					if (card.name2) {
-						return `${card.name} // ${card.name2}`
-					} else {
-						return card.name
-					}
-				}
-				const line = `${card.qty} ${lineCardName()}`
-
-				arrayOfCardNames.push(line)
+				arrayOfCardNames.push(
+					`${card.qty} ${this.doubleFacedCardName(card)}`
+				)
 			})
 
 			return arrayOfCardNames.join('\n')

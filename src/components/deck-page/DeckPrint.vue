@@ -7,14 +7,14 @@
 			<ul :class="classShortList">
 				<li
 					v-for="card in deck.cards"
-					:key="getFullName(card)"
+					:key="doubleFacedCardName(card)"
 					:class="card.starred ? 'starred' : ''"
 				>
 					<span class="qty-print">
 						{{ card.qty }}
 						&nbsp;
 					</span>
-					{{ getFullName(card) }}
+					{{ doubleFacedCardName(card) }}
 				</li>
 			</ul>
 		</section>
@@ -23,14 +23,14 @@
 			<ul :class="classShortList">
 				<li
 					v-for="card in deck.sideboard.cards"
-					:key="getFullName(card)"
+					:key="doubleFacedCardName(card)"
 					:class="card.starred ? 'starred' : ''"
 				>
 					<span class="qty-print">
 						{{ card.qty }}
 						&nbsp;
 					</span>
-					{{ getFullName(card) }}
+					{{ doubleFacedCardName(card) }}
 				</li>
 			</ul>
 		</section>
@@ -41,7 +41,10 @@
 </template>
 
 <script>
+import doubleFacedCards from '@/mixins/doubleFacedCards'
+
 export default {
+	mixins: [doubleFacedCards],
 	props: {
 		deck: Object,
 		mainNotEmpty: Boolean,
@@ -52,15 +55,6 @@ export default {
 			const totalItems = this.deck.cards.length + this.deck.sideboard.cards.length
 
 			return totalItems < 33 ? 'short-list' : ''
-		}
-	},
-	methods: {
-		getFullName (card) {
-			if (card.name2) {
-				return `${card.name} // ${card.name2}`
-			} else {
-				return card.name
-			}
 		}
 	}
 }
