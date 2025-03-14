@@ -182,7 +182,10 @@ export default {
 							id: 'confirmCardRemoval',
 							data: {
 								cardName: this.doubleFacedCardName(card),
-								cardIndex: this.i
+								cardIndex: this.i,
+								callback: () => {
+									card.qty = 1
+								}
 							}
 						})
 					}, 1) // Timeout is needed here to prevent the dialog from immediately closing if it was opened by entering 0 or deleting the number in the quantity input.
@@ -297,7 +300,7 @@ export default {
 					store.commit('idOfShowingDialog', {
 						id: 'movingCardGroup',
 						data: {
-							card: card.name,
+							card: this.doubleFacedCardName(card),
 							activeGroup: cardGroupName(),
 							inactiveGroup: cardGroupName(true)
 						}

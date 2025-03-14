@@ -6,7 +6,6 @@ export default {
 		/**
 		 * Remove a specified card name from the deck's active card list.
 		 * @param {number} index - The card name's index in the `cards` array.
-		 * @param {string} name - The card's name.
 		 * @param {boolean} isRemoteRemoval - Used for removing cards outside the List Editor's quantity elements.
 		 */
 		removeCard (index, isRemoteRemoval) {
@@ -19,8 +18,7 @@ export default {
 
 			/* If the card to be removed happens to be the currently displayed card, then display the next card in the list. */
 			if (
-				cards.length > 1 &&
-				(
+				cards.length > 1 && (
 					list.viewedCard.name === cards[index].name ||
 					isRemoteRemoval
 				)
