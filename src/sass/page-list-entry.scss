@@ -2,7 +2,7 @@
 
 .list-entry,
 .list-entry-results {
-	margin: 0 auto $lhse;
+	margin: 0 auto $lhse*.5;
 
 	h3 {
 		@include pronounced-heading;
