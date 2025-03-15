@@ -238,10 +238,10 @@ export default {
 					path: 'keyboard-shortcuts',
 					subchapters: [
 						{
-							name: 'Deck Page Modes',
+							name: 'Setting Deck Page Modes',
 							hash: '#kbsc-deck-page-modes'
 						}, {
-							name: 'List Editor Actions',
+							name: 'List Editor',
 							hash: '#kbsc-list-editor',
 							subchapters: [
 								{
@@ -258,10 +258,10 @@ export default {
 								}
 							]
 						}, {
-							name: 'Stats Analyzer Actions',
+							name: 'Stats Analyzer',
 							hash: '#kbsc-stats-analyzer'
 						}, {
-							name: 'Draw Simulator Actions',
+							name: 'Draw Simulator',
 							hash: '#kbsc-draw-sim',
 							subchapters: [
 								{
