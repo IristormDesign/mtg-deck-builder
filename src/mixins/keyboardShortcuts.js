@@ -197,54 +197,60 @@ export default {
 			}
 
 			if (event.shiftKey) { // If pressing Shift + another key...
-				switch (keyEvent) {
-					case 'w': case 'e':
-					case 's': case 'd': case 'f':
-					case 'c':
-						this.startKBShortcutsFromCardOfViewedImage()
-				}
-				switch (keyEvent) {
-					case 'w':
-						this.highlightDistantLI(this.highlightPrevLI)
-						return
-					case 'e':
-						this.adjustCardQty(2)
-						return
-					case 's':
-						this.highlightDistantLI(this.highlightNextLI)
-						return
-					case 'd':
-						this.adjustCardQty(-2)
-						return
-					case 'f':
-						this.moveToOtherCardGroup(true)
-						return
-					case 'c':
-						this.openCardScryfallPage()
+				if (this.highlightedIndex < 0) {
+					switch (keyEvent) {
+						case 'w': case 'e':
+						case 's': case 'd': case 'f':
+						case 'c':
+							this.startKBShortcutsFromCardOfViewedImage()
+					}
+				} else {
+					switch (keyEvent) {
+						case 'w':
+							this.highlightDistantLI(this.highlightPrevLI)
+							return
+						case 'e':
+							this.adjustCardQty(2)
+							return
+						case 's':
+							this.highlightDistantLI(this.highlightNextLI)
+							return
+						case 'd':
+							this.adjustCardQty(-2)
+							return
+						case 'f':
+							this.moveToOtherCardGroup(true)
+							return
+						case 'c':
+							this.openCardScryfallPage()
+					}
 				}
 			} else { // Else NOT holding Shift.
-				switch (keyEvent) {
-					case 'w': case 'e':
-					case 'a': case 's': case 'd': case 'f':
-					case 'z': case 'c':
-						this.startKBShortcutsFromCardOfViewedImage()
-				}
-				switch (keyEvent) {
-					case 'w': this.highlightPrevLI()
-						return
-					case 'e': this.adjustCardQty(1)
-						return
-					case 'a': this.starCard()
-						return
-					case 's': this.highlightNextLI()
-						return
-					case 'd': this.adjustCardQty(-1)
-						return
-					case 'f': this.moveToOtherCardGroup()
-						return
-					case 'z': this.turnOverCardImage()
-						return
-					case 'c': this.toggleCardImageEnlargement()
+				if (this.highlightedIndex < 0) {
+					switch (keyEvent) {
+						case 'w': case 'e':
+						case 'a': case 's': case 'd': case 'f':
+						case 'z': case 'c':
+							this.startKBShortcutsFromCardOfViewedImage()
+					}
+				} else {
+					switch (keyEvent) {
+						case 'w': this.highlightPrevLI()
+							return
+						case 'e': this.adjustCardQty(1)
+							return
+						case 'a': this.starCard()
+							return
+						case 's': this.highlightNextLI()
+							return
+						case 'd': this.adjustCardQty(-1)
+							return
+						case 'f': this.moveToOtherCardGroup()
+							return
+						case 'z': this.turnOverCardImage()
+							return
+						case 'c': this.toggleCardImageEnlargement()
+					}
 				}
 			}
 		},
