@@ -136,9 +136,8 @@ export default {
 			}
 		}
 	},
-	destroyed () {
-		/* This listener might persist onto other pages in some circumstances if it's not removed when the Vue component is destroyed. */
-		document.removeEventListener(
+	beforeDestroy () {
+		this.$refs[this.qtyCardID(this.i)].removeEventListener(
 			'keydown', this.listenForQtyKeydown
 		)
 	},
@@ -237,12 +236,12 @@ export default {
 				this.viewCard(this.card)
 			}
 
-			document.addEventListener(
+			this.$refs[this.qtyCardID(this.i)].addEventListener(
 				'keydown', this.listenForQtyKeydown
 			)
 		},
 		blurredFromQtyInput () {
-			document.removeEventListener(
+			this.$refs[this.qtyCardID(this.i)].removeEventListener(
 				'keydown', this.listenForQtyKeydown
 			)
 

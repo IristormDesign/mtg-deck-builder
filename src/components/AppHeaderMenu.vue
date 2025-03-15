@@ -15,6 +15,8 @@
 					<router-link
 						:to="{name: 'createDeck'}"
 						class="header-menu-item"
+						ref="headerMenuFirstLevelLink"
+						@focus.native="conditionallyCloseAllPopups()"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" ><path d="M450-290h60v-160h160v-60H510v-160h-60v160H290v60h160v160ZM212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-760v560-560Z"/></svg>
 						Create Deck
@@ -33,7 +35,7 @@
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M140-58.08v-843.46h60v81.93h560v-81.93h60v843.46h-60V-140H200v81.92h-60ZM200-520h92.31v-155.38h215.38V-520H760v-239.62H200V-520Zm0 320h252.31v-155.38h215.38V-200H760v-260H200v260Zm152.31-320h95.38v-95.39h-95.38V-520Zm160 320h95.38v-95.39h-95.38V-200Zm-160-320h95.38-95.38Zm160 320h95.38-95.38Z"/></svg>
 						Open Deck&hellip;
-						<div class="mouseover-area"></div>
+						<div class="mouseover-area" ref="deckMenuMOArea"></div>
 					</button>
 					<div class="open-deck-heading">
 						<strong>Open Deck:</strong>
@@ -76,6 +78,7 @@
 					<router-link
 						:to="{name: 'guide'}"
 						class="header-menu-item"
+						@focus.native="conditionallyCloseAllPopups()"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M479.56-255.39q17.13 0 28.94-11.82 11.81-11.83 11.81-28.97 0-17.13-11.83-28.94-11.83-11.8-28.96-11.8-17.13 0-28.94 11.83-11.81 11.83-11.81 28.96 0 17.13 11.83 28.94 11.83 11.8 28.96 11.8Zm-28.33-143.23h56.31q.77-29.53 8.65-47.19 7.89-17.65 38.27-46.8 26.39-26.39 40.42-48.74 14.04-22.34 14.04-52.77 0-51.65-37.11-80.69-37.12-29.03-87.81-29.03-50.08 0-82.88 26.73-32.81 26.73-46.81 62.96l51.38 20.61q7.31-19.92 25-38.81 17.69-18.88 52.54-18.88 35.46 0 52.42 19.42 16.97 19.43 16.97 42.73 0 20.39-11.62 37.31-11.61 16.92-29.61 32.69-39.39 35.54-49.77 56.7-10.39 21.15-10.39 63.76ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
 						User Guide
@@ -100,6 +103,8 @@ export default {
 	mixins: [getActiveDeck, deckColors, symbolsMarkup],
 	data () {
 		return {
+			debouncedResizingViewport: debounce(this.heardViewportResize, 50),
+			deckMenuMOTimer: 0,
 			freezeDeckMenu: false,
 			showHeaderMenu: true
 		}
@@ -165,9 +170,32 @@ export default {
 		document.addEventListener(
 			'focusin', this.closeHeaderMenuOnOutsideFocus
 		)
-		this.closeMenusAutomatically()
-		this.applyHoverEffectToOpenDeckMenu()
-		this.debounceWindowResizing()
+		window.addEventListener(
+			'resize', this.debouncedResizingViewport
+		)
+		this.$refs.deckMenuMOArea.addEventListener(
+			'mouseover', this.mouseoverDeckMenuMOArea
+		)
+		this.$refs.deckMenuMOArea.addEventListener(
+			'mouseout', this.mouseoutDeckMenuMOArea
+		)
+	},
+	beforeDestroy () {
+		document.removeEventListener(
+			'keydown', this.letEscKeyClosePopups
+		)
+		document.removeEventListener(
+			'focusin', this.closeHeaderMenuOnOutsideFocus
+		)
+		window.removeEventListener(
+			'resize', this.debouncedResizingViewport
+		)
+		this.$refs.deckMenuMOArea.removeEventListener(
+			'mouseover', this.mouseoverDeckMenuMOArea
+		)
+		this.$refs.deckMenuMOArea.removeEventListener(
+			'mouseout', this.mouseoutDeckMenuMOArea
+		)
 	},
 	methods: {
 		/**
@@ -182,59 +210,20 @@ export default {
 					this.closeAllPopups()
 			}
 		},
-		closeMenusAutomatically () {
-			const headerMenuFirstLevelLinks = document.querySelectorAll('.header-menu > ul > li > a')
-
-			headerMenuFirstLevelLinks.forEach(link => {
-				/* Close the mobile header or deck popup menu whenever any of their contained links are clicked. (Links to decks in the deck menu have Vue `@click` events instead, in case a deck gets renamed and thus its link loses the event listener.) */
-				link.addEventListener(
-					'click', this.closeAllPopups
-				)
-
-				link.addEventListener(
-					'focus', () => {
-						/* If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu. */
-						if (this.showDeckMenu && !this.mobileView()) {
-							this.closeAllPopups()
-						}
-					}
-				)
-			})
-		},
-		/**
-		 * Add hover interaction with the Open Deck button.
-		 */
-		applyHoverEffectToOpenDeckMenu () {
+		mouseoverDeckMenuMOArea () {
 			const deckMenuToggler = document.querySelector('.deck-menu-toggler')
-			const deckMenuMOArea = deckMenuToggler.querySelector('.mouseover-area')
-			let deckMenuMOTimer
 
-			const mouseoverDeckMenuMOArea = () => {
-				if (deckMenuToggler.hasAttribute('disabled')) return
+			if (deckMenuToggler.hasAttribute('disabled')) return
 
-				deckMenuMOTimer = setTimeout(() => {
-					this.toggleDeckMenu(true)
-				}, 250)
-			}
-			const mouseoutDeckMenuMOArea = () => {
-				clearTimeout(deckMenuMOTimer)
-			}
-
-			deckMenuMOArea.addEventListener(
-				'mouseover', mouseoverDeckMenuMOArea
-			)
-			deckMenuMOArea.addEventListener(
-				'mouseout', mouseoutDeckMenuMOArea
-			)
+			this.deckMenuMOTimer = setTimeout(() => {
+				this.toggleDeckMenu(true)
+			}, 250)
 		},
-		debounceWindowResizing () {
-			const resizingViewport = () => {
-				this.showHeaderMenu = !this.mobileView()
-			}
-
-			window.addEventListener(
-				'resize', debounce(resizingViewport, 125)
-			)
+		mouseoutDeckMenuMOArea () {
+			clearTimeout(this.deckMenuMOTimer)
+		},
+		heardViewportResize () {
+			this.showHeaderMenu = !this.mobileView()
 		},
 		closeHeaderMenuOnOutsideFocus (event) {
 			if (!this.showHeaderMenu || !this.mobileView()) return
@@ -261,6 +250,12 @@ export default {
 
 			if (this.mobileView()) {
 				this.showHeaderMenu = false
+			}
+		},
+		conditionallyCloseAllPopups () {
+			/* If the user tab-focuses onto another first-level link in the app header menu, then close the Open Deck menu. */
+			if (this.showDeckMenu && !this.mobileView()) {
+				this.closeAllPopups()
 			}
 		},
 		toggleHeaderMenu () {

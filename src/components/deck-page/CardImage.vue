@@ -2,9 +2,10 @@
 	<transition name="image-fade">
 		<section
 			class="card-image"
-			v-if="showCard"
+			v-show="showCard"
 			@mouseover="reactToHoverOverImage()"
 			@click="attentionAddCard()"
+			ref="cardImage"
 			aria-label="Card Image"
 		>
 			<transition name="placement-outline-fade">
@@ -193,15 +194,15 @@ export default {
 	mounted () {
 		this.showCardPerViewport()
 
-		document.addEventListener(
+		this.$refs.cardImage.addEventListener(
 			'keydown', this.hideImageOverlayByKeyPress
 		)
 		window.addEventListener(
 			'resize', this.debounceResizingViewport
 		)
 	},
-	destroyed () {
-		document.removeEventListener(
+	beforeDestroy () {
+		this.$refs.cardImage.removeEventListener(
 			'keydown', this.hideImageOverlayByKeyPress
 		)
 		window.removeEventListener(
