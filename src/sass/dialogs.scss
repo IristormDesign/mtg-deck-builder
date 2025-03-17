@@ -11,9 +11,7 @@ dialog {
 	border: 1px solid $color-button-orange;
 	opacity: 0;
 	filter: brightness(1) saturate(1);
-	box-shadow:
-		0 0 0 1px $color-group-bg-darker,
-		-$lhse*.25 $lhse*.75 $lhse 1px $color-subtle-bluish-shadow;
+	box-shadow: $box-shadow-popups;
   transition: all 0s ease allow-discrete;
 
 	&::backdrop {

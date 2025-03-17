@@ -137,6 +137,9 @@ $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-heading-bg;
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
 $box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba($color-subtle-bluish-shadow-base, 1/3);
 $drop-shadow-card-shadow: drop-shadow(-$lhse*.5 $lhse*1.5 $lhse*.5 $color-subtle-bluish-shadow);
+$box-shadow-popups:
+	0 0 0 1px $color-mythic-dim,
+	(-$lhse*.25) $lhse*.75 $lhse*.6667 1px $color-subtle-bluish-shadow;
 
 /* TRANSITIONS */
 $transition-duration-standard: .25s;
