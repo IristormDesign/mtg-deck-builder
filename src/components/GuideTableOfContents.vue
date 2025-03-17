@@ -41,8 +41,8 @@
 								<svg><use href="#expand-up-icon" /></svg>
 							</div>
 						</template>
-						<transition appear name="toc-subchapters-transition">
-							<ol v-if="(
+						<transition name="toc-subchapters-transition">
+							<ol v-show="(
 								chapter.subchapters && $route.path === '/guide/' + chapter.path ||
 								chapterManuallyOpened === chapter.path
 							)">

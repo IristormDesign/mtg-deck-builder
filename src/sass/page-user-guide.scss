@@ -233,14 +233,13 @@
 		}
 	}
 	.toc-subchapters-transition {
-		&-enter-active,
-		&-leave-active {
+		&-enter-active {
 			transition: all $transition-duration-standard ease;
 		}
-		&-enter,
-		&-leave-to {
+		&-enter {
 			transform: translateX(-$lhse*1.5);
 			opacity: 0;
+			height: 0;
 		}
 	}
 }
