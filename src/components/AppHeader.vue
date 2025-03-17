@@ -4,7 +4,7 @@
 			<div class="app-title">
 				<h1><a href="/">MTG Deck Builder</a></h1>
 				<div class="by-iristorm">by
-					<a href="https://iristormdesign.com/" target="_blank">Iristorm Design</a>
+					<a href="https://iristormdesign.com/" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>
 					<span>Iristorm Design</span>
 				</div>
 			</div>

@@ -37,7 +37,7 @@
 			<p>Whenever you <a href="#card-adder">add a card name</a> to the card list, or whenever you navigate up or down the list’s rows by <router-link to="keyboard-shortcuts">pressing the <kbd>W</kbd> or <kbd>S</kbd> keys</router-link>, the relevant image is automatically shown.</p>
 			<p>To look at the card image up closer, hover your mouse pointer over it, or press <kbd>C</kbd>.</p>
 			<p>If you’re using MTG Deck Builder on a phone instead of a computer with a larger screen, then the card image is normally invisible. You can still look at any card’s image by tapping the card’s bar in the card list, which makes the image appear hovering over the page. Then, to hide the image, tap the “X” button by the page’s top-right corner.</p>
-			<p>Click/tap the image, or press <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd></span>, to see that card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall</a>, which opens in a new browser tab. Scryfall is a search engine and database for <i>Magic</i> cards.</p>
+			<p>Click/tap the image, or press <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd></span>, to see that card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>, which opens in a new browser tab. Scryfall is a search engine and database for <i>Magic</i> cards.</p>
 			<p>Whenever the displayed image is of a double-faced card, a button labeled “Turn Over” appears below the image. Click that button, or press <kbd>Z</kbd>, to see the card’s back face.</p>
 		</section>
 
@@ -215,10 +215,10 @@
 
 		<section id="scryfall-button">
 			<h4>Scryfall Advanced Search Button</h4>
-			<p>The number of distinct cards that exist in all of <i>Magic: The Gathering</i> is so huge it’s overwhelming. So, how can you reasonably figure out which ones to consider for your deck? A helpful solution is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced search</a>: It lets you browse through a list of <i>Magic</i> cards, but only the ones that match your specified criteria.</p>
+			<p>The number of distinct cards that exist in all of <i>Magic: The Gathering</i> is so huge it’s overwhelming. So, how can you reasonably figure out which ones to consider for your deck? A helpful solution is <a href="https://scryfall.com/advanced" target="_blank">Scryfall’s advanced search<svg><use href="#open-in-new-icon" /></svg></a>: It lets you browse through a list of <i>Magic</i> cards, but only the ones that match your specified criteria.</p>
 			<p>In the <a href="#list-editor">List Editor</a> is a button labeled with the Scryfall logo and the words “Card Search.” Click that button to be taken directly to the page for Scryfall’s advanced search, which opens in a new browser tab. You can also <router-link to="keyboard-shortcuts">press the <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>X</kbd></span> keys</router-link> instead to do this same action.</p>
 			<p>Note that Scryfall is a separate website from MTG Deck Builder, and Iristorm Design has no affiliation with Scryfall. The Scryfall card search button in MTG Deck Builder is only a shortcut for your convenience. You can still go to the Scryfall website by other ways as well.</p>
-			<p>Though MTG Deck Builder has been designed to be used alongside searches on Scryfall, it’s not required. Other search engines for <i>Magic</i> cards exist too—such as <a href="https://gatherer.wizards.com/" target="_blank">Gatherer</a>, and several online stores that sell <i>Magic</i> card singles—which you may prefer instead.</p>
+			<p>Though MTG Deck Builder has been designed to be used alongside searches on Scryfall, it’s not required. Other search engines for <i>Magic</i> cards exist too—such as <a href="https://gatherer.wizards.com/" target="_blank">Gatherer<svg><use href="#open-in-new-icon" /></svg></a>, and several online stores that sell <i>Magic</i> card singles—which you may prefer instead.</p>
 			<p>Whenever you find a good card for your deck from your search, you can then return to MTG Deck Builder and enter the name (or the Scryfall page URL) of that card in the <a href="#card-adder">card adder</a>.</p>
 		</section>
 
@@ -242,7 +242,7 @@
 			</section>
 			<section id="scryfall-url-query">
 				<h5 >Scryfall Card Page URL Query</h5>
-				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall</a> has individual pages for every print of every card in <i>Magic</i>. For any card’s Scryfall page, you can copy that page’s URL from your web browser’s web address bar, then paste the URL into the <a href="#card-adder">card adder</a> on MTG Deck Builder. The respective card name will be automatically added to your deck.</p>
+				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> has individual pages for every print of every card in <i>Magic</i>. For any card’s Scryfall page, you can copy that page’s URL from your web browser’s web address bar, then paste the URL into the <a href="#card-adder">card adder</a> on MTG Deck Builder. The respective card name will be automatically added to your deck.</p>
 				<p>The URL to a Scryfall card page begins with “https://scryfall.com/card/”, followed by the details of the specific card.</p>
 				<p>The query for a Scryfall card page URL is useful for adding a card of a certain name that has been printed in multiple sets, and the print you get by default through the <a href="#card-name-query">card name query</a> isn’t the one you prefer. For example, maybe you want another print of a card whose <a href="#card-image">image</a> depicts a different illustration or card set symbol.</p>
 				<p>You can submit a Scryfall URL for a card name that already exists in the active <a href="#card-list">card list</a>, but is in a different print. In this case, the app will ask you to confirm whether you want the queried print to replace the existing print.</p>

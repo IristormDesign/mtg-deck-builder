@@ -54,12 +54,26 @@
 	}
 	.by-iristorm {
 		font-size: 75%; // Half the size of the h1.
-		margin: ($lhse*.125) 0;
+		margin: ($lhse*.1667) 0;
 		cursor: default;
 
 		a {
 			padding-top: $lhse*.3333;
 			padding-bottom: $lhse*.3333;
+
+			&:hover,
+			&:focus,
+			&:active {
+				svg {
+					opacity: 1;
+				}
+			}
+			svg {
+				opacity: 0;
+				width: 20px;
+				height: 20px;
+				margin-bottom: -.3333em;
+			}
 		}
 		> span {
 			display: none;

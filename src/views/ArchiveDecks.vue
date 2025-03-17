@@ -4,7 +4,7 @@
 		<div class="intro">
 			<figure>
 				<img class="card-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of a monk magically moving many scrolls from glowing slots among many huge shelves of scrolls" />
-				<figcaption>Illustration from <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank"><i>Sage’s Reverie</i> </a> by Jason Rainville</figcaption>
+				<figcaption>Illustration from <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank"><i>Sage’s Reverie</i><svg><use href="#open-in-new-icon" /></svg></a> by Jason Rainville</figcaption>
 			</figure>
 			<p v-if="numExisting > 0 && !hasBeenArchived">In the checklist, select the decks you want to save as a deck archive file. <router-link to="/guide/deck-page-header#archive-action" class="no-text-break">(More info&hellip;)</router-link></p>
 		</div>

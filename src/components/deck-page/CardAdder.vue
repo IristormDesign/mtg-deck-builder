@@ -40,7 +40,7 @@
 			<span>Loading card&hellip;</span>
 		</div>
 		<standard-dialog dialogID="nonScryfallURLQuery">
-			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall</a>.</p>
+			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>.</p>
 		</standard-dialog>
 	</section>
 </template>

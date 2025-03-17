@@ -4,7 +4,7 @@
 
 		<figure>
 			<img class="card-illustration" src="~@/img/reject.jpg" width="626" height="457" alt="An illustration of a confused man" />
-			<figcaption>Illustration from <i><a href="https://scryfall.com/card/stx/50/reject" target="_blank">Reject</a></i> by Zoltan Boros</figcaption>
+			<figcaption>Illustration from <i><a href="https://scryfall.com/card/stx/50/reject" target="_blank">Reject<svg><use href="#open-in-new-icon" /></svg></a></i> by Zoltan Boros</figcaption>
 		</figure>
 
 		<p>Your web browser tried to go to a page that doesn’t exist. If a page did exist at this URL before, it’s been deleted or renamed since then.</p>
