@@ -110,7 +110,7 @@
 			class="invalid-list"
 		>
 			<h4>❌ Non-List Text</h4>
-			<p>The following lines of text you’ve submitted aren’t recognized to be in the valid format for card list entries, so these lines have been ignored for adding card names.</p>
+			<p>The following lines of text you’ve submitted aren’t in the valid format for card list entries, so these lines have been ignored for adding card names.</p>
 			<ul>
 				<li
 					v-for="(entry, index) of invalidEntries"
