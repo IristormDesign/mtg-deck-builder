@@ -97,6 +97,8 @@ export default {
 		homeOpenDeckButton () {
 			this.$store.commit('overlayHoverEnabled', false)
 			this.$store.commit('showDeckMenu', true)
+
+			document.querySelector('.deck-menu-toggler').focus()
 		}
 	}
 }
