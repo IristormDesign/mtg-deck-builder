@@ -207,7 +207,7 @@ export default {
 			} else { // Else the card is a single-faced card.
 				newCard.name = this.curlApostrophes(data.name)
 				newCard.mana = data.mana_cost
-				newCard.type = data.type_line
+				newCard.type = this.curlApostrophes(data.type_line)
 				newCard.colors = data.colors
 				newCard.img = data.image_uris.normal
 				newCard.power = data.power
