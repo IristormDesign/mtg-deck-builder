@@ -13,6 +13,7 @@ body {
 	color: $color-text;
 	background: $color-content-bg;
 	min-width: 320px;
+	overflow-x: clip; // Needed for the Draw Simulator's card image animations that appear from outside the viewport, and doesn't affect `sticky` positioning.
 
 	:target {
 		scroll-margin: $lhse;
@@ -26,13 +27,9 @@ body {
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
 		$color-content-bg;
-}
-.paint-container {
-	contain: paint; // Needed for the draw simulator page's card image animations that appear from out of the viewport, and doesn't affect `sticky` positioning.
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	position: relative;
 }
 .wrap {
 	max-width: $max-width-app;
