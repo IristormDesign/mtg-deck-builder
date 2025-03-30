@@ -253,16 +253,6 @@
 		.header-menu-item {
 			@include popup-menu-list-links;
 			height: auto;
-			color: $color-link;
-
-			&:hover,
-			&:focus {
-				text-decoration: none;
-				color: $color-link-focus;
-			}
-			&:active {
-				color: $color-link-active;
-			}
 
 			> svg {
 				margin-right: .125em;
@@ -314,6 +304,17 @@
 			.dropdown-transition-leave-to {
 				transform: none;
 				opacity: 1;
+			}
+		}
+	}
+	.app-header {
+		.header-menu {
+			.header-menu-item {
+				@include popup-menu-list-links;
+
+				> svg {
+					margin-right: $lhse*.125;
+				}
 			}
 		}
 	}
