@@ -57,7 +57,6 @@
 		button {
 			min-height: $lhse*1.5;
 			font-size: 87.5%;
-			touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices when double-tapping on this button.
 			display: flex;
 			align-items: center;
 			padding-top: 0;

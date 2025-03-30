@@ -202,6 +202,7 @@
 	align-items: center;
 	justify-content: center;
 	will-change: filter; // Prevents an odd hover glitch in Safari.
+	touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices if the user ever double-taps on the button.
 
 	&:hover,
 	&:focus {
