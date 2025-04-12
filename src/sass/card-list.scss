@@ -102,8 +102,10 @@
 
 @media (max-width: $width-app-breakpoint-tablet) {
 	.card-list-section {
+		min-width: $width-list-editor-region;
+
 		.no-cards {
-			max-width: $width-list-editor-region;
+			width: $width-list-editor-region;
 		}
 	}
 }
