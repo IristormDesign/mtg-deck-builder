@@ -15,12 +15,11 @@
 			<li><a href="#draw-sim-card-image">Card image section</a></li>
 		</ol>
 		<p>Each of those elements is going to be explained in the next subchapters.</p>
-		<p>Note that the Draw Simulator performs only a <em>simple</em> simulation of card drawing. In a real game, your library may eventually encounter an effect that changes the original order of the cards to be drawn. Such an effect could include taking out a card from the middle of your library, or rearranging some cards within your library.</p>
+		<p>Note that the Draw Simulator performs only a <em>simple</em> simulation of card drawing. During a real game, there may eventually come an action that changes the order of the cards that would be drawn. Such an action could include searching your library for a particular card to take out from it, or returning a drawn card to your library. Consider those possibilities when you use the Draw Simulator.</p>
 
 		<section id="cards-in-library">
 			<h4>“Cards in Library” Statistic</h4>
-			<p>This shows the number of remaining cards you could <a href="#draw-a-card">draw</a>.</p>
-			<p>Whenever you start a new testing round, the cards in your library are the cards in your deck’s main card group. (Cards in the sideboard are never used here.)</p>
+			<p>This shows the number of remaining cards you could <a href="#draw-a-card">draw</a>. Whenever you start a new testing round, the cards in your library are the cards in your deck’s main card group. (Cards in the sideboard aren’t used in the Draw Simulator.)</p>
 			<p>The <a href="#exclude-starred-cards">“exclude starred cards” option</a>, when available and enabled, reduces the library’s total cards from the start.</p>
 		</section>
 
@@ -31,9 +30,9 @@
 
 		<section id="draw-a-card">
 			<h4 id="draw-a-card">“Draw a Card” Button</h4>
-			<p>Click this button, or <router-link to="keyboard-shortcuts">press the space bar</router-link>, to draw one card from your library. You can also hold down the <kbd class="shift-key">Shift</kbd> key while clicking the Draw a Card button or pressing the space bar to draw 10 cards at a time instead.</p>
-			<p>The drawn card’s name appears at the top of the <a href="#draw-sim-card-list">card list</a>, and its <a href="#draw-sim-card-image">card image</a> appears too (if the card image section is already visible on your device’s screen).</p>
-			<p>You can keep drawing cards until your <a href="#cards-in-library">library</a> is emptied.</p>
+			<p>Click this button, or <router-link to="keyboard-shortcuts">press the space bar</router-link>, to draw one card from your library. If you hold down the <kbd class="shift-key">Shift</kbd> key while clicking the Draw a Card button or pressing the space bar, then you draw 10 cards at a time instead of 1.</p>
+			<p>The drawn card’s name appears at the top of the <a href="#draw-sim-card-list">card list</a>. If the <a href="#draw-sim-card-image">card image section</a> is visible on your device’s screen, then the drawn card’s image appears too.</p>
+			<p>You can keep drawing cards until your <a href="#cards-in-library">library</a> is emptied. (Once that happens, you can <a href="#restart">restart</a> the Simulator.)</p>
 		</section>
 
 		<section id="restart">
@@ -43,9 +42,9 @@
 
 		<section id="exclude-starred-cards">
 			<h4>“Exclude Starred Cards” Checkbox</h4>
-			<p>This checkbox appears only under the conditions that your deck’s main card group has at least one <router-link to="list-editor#card-stars">card with a star</router-link>, and that the Draw Simulator’s <a href="#draw-sim-card-list">card list</a> is currently empty.</p>
-			<p>Check the checkbox labeled “Exclude starred cards” to prevent <a href="#draw-a-card">drawing</a> any cards with a star in your next testing round. Uncheck it to be able to draw all cards regardless of whether they’re starred.</p>
-			<p>This option is especially intended for decks for the Commander format. The commander should be the only starred card in your deck, and Commander games always begin with your commander outside your library.</p>
+			<p>This checkbox is invisible except under two conditions: that the Draw Simulator’s <a href="#draw-sim-card-list">card list</a> is currently empty, and that your deck’s main card group includes at least one <router-link to="list-editor#card-stars">card with a star</router-link>.</p>
+			<p>If that checkbox is present, then you may check it to prevent the possibility of <a href="#draw-a-card">drawing</a> any starred card during your testing. Or, leave the checkbox unchecked to allow every card, whether starred or not, to be drawn.</p>
+			<p>This “exclude starred cards” option is especially intended for decks for the Commander format, where your deck’s commander should be the one and only card that’s starred. Because Commander games always begin with your commander card outside your library, you shouldn’t want to draw it during testing in the Simulator.</p>
 		</section>
 
 		<section id="draw-sim-card-list">
