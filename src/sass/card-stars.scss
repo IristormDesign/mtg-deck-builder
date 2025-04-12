@@ -19,8 +19,7 @@
 		background: $color-group-bg-lighter;
 		box-shadow: $box-shadow-card-list-row-bg-edge;
 	}
-	&:hover,
-	&:active {
+	&:hover {
 		&:not(:focus-within) {
 			input {
 				&:checked {
