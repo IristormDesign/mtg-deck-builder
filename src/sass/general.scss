@@ -200,10 +200,9 @@ svg {
 	fill: currentColor;
 }
 ::selection {
-	background: rgba(darken(desaturate($color-mythic-yellow, 37.5%), 8.33%), .5);
-	color: #fff;
+	background: rgba($color-content-bg, .5);
+	color: $color-link-active;
 	text-shadow: none;
-	text-decoration: none !important;
 }
 ::-webkit-scrollbar {
 	width: $line-height-standard * .6667rem;
