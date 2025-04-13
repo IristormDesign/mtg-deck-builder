@@ -79,6 +79,7 @@
 		height: $lhse*1.5;
 		margin-left: -$lhse*.125;
 		transition: transform $transition-duration-standard ease;
+		will-change: transform;
 	}
 	.text-label {
 		font-size: 87.5%;
