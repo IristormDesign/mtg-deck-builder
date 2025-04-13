@@ -61,11 +61,6 @@
 		&:active {
 			transition-duration: 0s;
 			background: $color-mythic-dim;
-
-			svg {
-				transform: scale(.875);
-				transition-duration: 0s;
-			}
 		}
 		&.current-page {
 			text-decoration-color: transparent;
@@ -78,8 +73,6 @@
 		width: $lhse*1.5;
 		height: $lhse*1.5;
 		margin-left: -$lhse*.125;
-		transition: transform $transition-duration-standard ease;
-		will-change: transform;
 	}
 	.text-label {
 		font-size: 87.5%;
