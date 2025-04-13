@@ -34,6 +34,7 @@
 						title="(Q)"
 					/>
 					<svg
+						v-show="(deck.cards.length > 1 || deck.sideboard.cards.length > 1)"
 						class="dropdown-arrow"
 						@click="toggleSorterMenu()"
 						xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-373.85 303.85-550h352.3L480-373.85Z"
