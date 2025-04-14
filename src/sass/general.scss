@@ -4,8 +4,8 @@
 	box-sizing: border-box;
 	backface-visibility: hidden;
 }
-html {
-	scroll-padding: $lhse;
+* {
+	scroll-margin: $lhse;
 }
 body {
 	font: 20px/#{$line-height-standard} $font-family-standard;
@@ -15,10 +15,6 @@ body {
 	min-width: 320px;
 	overflow-x: clip; // Needed for the Draw Simulator's card image animations that appear from outside the viewport, and doesn't affect `sticky` positioning.
 	touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices if the user ever double-taps.
-
-	:target {
-		scroll-margin: $lhse;
-	}
 }
 .fade-bg {
 	background:
