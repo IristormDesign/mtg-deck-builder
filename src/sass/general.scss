@@ -14,7 +14,6 @@ body {
 	background: $color-content-bg;
 	min-width: 320px;
 	overflow-x: clip; // Needed for the Draw Simulator's card image animations that appear from outside the viewport, and doesn't affect `sticky` positioning.
-	touch-action: manipulation; // Prevents the page zoom-in effect on mobile devices if the user ever double-taps.
 }
 .fade-bg {
 	background:

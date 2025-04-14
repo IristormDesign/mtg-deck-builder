@@ -201,6 +201,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	touch-action: manipulation; // Prevents the page zoom-in effect on touchscreen devices if the user ever double-taps, while still allowing other touchscreen gestures such as panning.
 	will-change: filter; // Prevents an odd hover glitch in Safari.
 
 	&:hover,
@@ -230,6 +231,7 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		cursor: default;
+		touch-action: manipulation;
 
 		&:active {
 			cursor: not-allowed;
