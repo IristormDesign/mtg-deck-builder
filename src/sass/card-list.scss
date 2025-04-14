@@ -101,15 +101,6 @@
 	}
 }
 
-@media (max-width: $width-app-breakpoint-tablet) {
-	.card-list-section {
-		min-width: $width-list-editor-region;
-
-		.no-cards {
-			width: $width-list-editor-region;
-		}
-	}
-}
 @media (max-width: $width-deck-hidden-image) {
 	.card-list-section {
 		padding: $lhse*.5 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.

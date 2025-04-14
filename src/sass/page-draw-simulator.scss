@@ -15,6 +15,7 @@
 		background: $color-group-bg;
 		border-radius: $border-radius-group;
 		width: $width-card-bars-wide + $width-card-star + divide($lhse, 3);
+		min-width: $width-list-editor-region;
 	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
