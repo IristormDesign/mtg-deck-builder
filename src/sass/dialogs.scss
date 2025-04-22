@@ -47,7 +47,7 @@ dialog {
 	}
 	button {
 		font-size: 83.33%;
-		height: $lhse*1.5;
+		min-height: $lhse*1.5;
 		margin-right: auto;
 		margin-left: auto;
 
@@ -94,4 +94,32 @@ dialog {
 			opacity: 0;
 		}
   }
+}
+
+@media (max-width: ($min-width-app * .4)) {
+	dialog {
+		&.with-two-buttons,
+		&.with-text-input {
+			form {
+				grid-template-columns: auto auto;
+			}
+			input {
+				grid-column: span 2;
+			}
+			.button-container {
+				&:first-of-type,
+				&:last-of-type {
+					grid-column-start: unset;
+					justify-content: flex-start;
+				}
+				&:first-of-type {
+					justify-content: flex-end;
+				}
+				button {
+					margin-right: 0;
+					margin-left: 0;
+				}
+			}
+		}
+	}
 }
