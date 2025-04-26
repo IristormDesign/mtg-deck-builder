@@ -4,12 +4,6 @@
 			<h2>User Guide</h2>
 		</header>
 
-		<guide-table-of-contents
-			:chapters="chapters"
-			@clickedChapterLink="scrollToTopOfGuideContents"
-			@clickedSubchapterLink="setTargetedSection"
-		/>
-
 		<div class="guide-contents" ref="guideContents">
 			<router-view />
 
@@ -30,6 +24,12 @@
 				</ul>
 			</footer>
 		</div>
+
+		<guide-table-of-contents
+			:chapters="chapters"
+			@clickedChapterLink="scrollToTopOfGuideContents"
+			@clickedSubchapterLink="setTargetedSection"
+		/>
 	</article>
 </template>
 
