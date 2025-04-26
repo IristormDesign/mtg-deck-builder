@@ -32,12 +32,16 @@ export default {
 
 			if (!toc) return
 
-			toc.querySelector('a').focus()
+			function inViewport () {
+				const rect = toc.getBoundingClientRect()
 
-			const rect = toc.getBoundingClientRect()
-			const inViewport = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+				return (
+					rect.top >= 0 &&
+					rect.bottom <= document.documentElement.clientHeight
+				)
+			}
 
-			if (!inViewport) {
+			if (!inViewport()) {
 				toc.scrollIntoView({ behavior: 'smooth' })
 			}
 
@@ -48,7 +52,9 @@ export default {
 				setTimeout(() => {
 					toc.classList.remove('target')
 					this.TOCIsFlashing = false
-				}, 1000)
+
+					toc.querySelector('a').focus() // The link focus should be delayed or else the page-scroll effect won't consistently happen.
+				}, 1000) // Timeout duration should be equal to the CSS animation duration of the flashing effect.
 			}
 		}
 	}
