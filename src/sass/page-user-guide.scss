@@ -1,5 +1,23 @@
 @import 'variables';
 
+@keyframes highlight-chapter {
+	50% {
+		outline-color: $color-app-header-link;
+		color: #fff;
+	}
+}
+@keyframes highlight-toc {
+	50% {
+		outline-color: $color-app-header-link;
+		color: #fff;
+		background: $color-highlight-bg;
+	}
+}
+
+$animation-highlight-attributes: 1s ease-in-out;
+$animation-highlight-chapter: highlight-chapter $animation-highlight-attributes;
+$animation-highlight-toc: highlight-toc $animation-highlight-attributes;
+
 .guide-page {
 	display: grid;
 	grid-template-columns: auto auto;
@@ -30,7 +48,6 @@
 		}
 	}
 	.table-of-contents {
-		color: $color-text-darker;
 		height: min-content;
 		width: $lhse*9;
 		position: sticky;
@@ -50,6 +67,19 @@
 		h3 {
 			margin: 0 0 $lhse*.5;
 			font-size: 91.67%;
+		}
+		&.target {
+			outline: $border-width-sections-medium solid rgba($color-app-header-link, 0);
+			animation: $animation-highlight-toc;
+
+			.scrollable-region {
+				animation: $animation-highlight-toc;
+				background-image: none;
+			}
+			h3 {
+				animation: $animation-highlight-toc;
+				background: none !important;
+			}
 		}
 	}
 	.toc-links {
@@ -160,19 +190,12 @@
 		section {
 			&:target,
 			&.target {
-				@keyframes highlight-section {
-					50% {
-						outline-color: $color-app-header-link;
-						color: #fff;
-					}
-				}
-
 				> h3:first-child,
 				> h4:first-child,
 				> h5:first-child {
-					outline: $lhse*.125 solid rgba($color-app-header-link, 0);
+					outline: $border-width-sections-medium solid rgba($color-app-header-link, 0);
 					outline-offset: $lhse*.25;
-					animation: highlight-section 1s ease-in-out;
+					animation: $animation-highlight-chapter;
 					z-index: 1;
 					position: relative;
 					border-radius: $border-radius-button;

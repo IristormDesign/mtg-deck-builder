@@ -17,7 +17,7 @@
 			<p>MTG Deck Builder’s source code, though copyrighted, is viewable on <a href="https://github.com/IristormDesign/mtg-deck-builder" target="_blank">GitHub<svg><use href="#open-in-new-icon" /></svg></a>. You can open a GitHub issue or discussion, which the developer (@IristormDesign) could respond to.</p>
 
 			<h3>X</h3>
-			<p>Send a direct message on X (Twitter) to <a href="https://x.com/IristormDesign" target="_blank">@IristormDesign<svg><use href="#open-in-new-icon" /></svg></a>.</p>
+			<p>Send a post or direct message on X (Twitter) to <a href="https://x.com/IristormDesign" target="_blank">@IristormDesign<svg><use href="#open-in-new-icon" /></svg></a>.</p>
 		</div>
 	</article>
 </template>
