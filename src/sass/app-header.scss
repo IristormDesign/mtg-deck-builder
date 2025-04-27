@@ -73,6 +73,7 @@
 				width: 20px;
 				height: 20px;
 				margin-bottom: -.3333em;
+				transition: all $transition-duration-standard*.5 ease;
 			}
 		}
 		> span {

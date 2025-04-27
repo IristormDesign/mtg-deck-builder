@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @mixin heading-font {
 	font-family: 'Philosopher', $font-family-standard;
 	font-weight: bold;
