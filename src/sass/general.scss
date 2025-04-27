@@ -8,8 +8,8 @@
 	scroll-margin: $lhse;
 }
 body {
-	font: 20px/#{$line-height-standard} $font-family-standard;
-	font-weight: $font-weight-regular;
+	font: (20px + (1/3))/#{$line-height-standard} $font-family-standard;
+	font-weight: $font-weight-regular; // The font size is precisely set to make the lowercase E in the standard font family to have a sharp-looking crossbar instead of a blurry one.
 	color: $color-text;
 	background: $color-content-bg;
 	min-width: 320px;
