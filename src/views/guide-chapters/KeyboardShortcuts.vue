@@ -26,7 +26,8 @@
 
 			<section id="highlighting-rows">
 				<h5>Highlighting Rows in the Card List</h5>
-				<p>The <router-link to="list-editor">List Editor</router-link>’s <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck. One row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to that card name.</p>
+				<p>The <router-link to="list-editor">List Editor</router-link>’s <router-link to="list-editor#card-list">card list</router-link> comprises one row for each card name in your deck, and one row at a time can be highlighted via keyboard shortcuts. When a row is highlighted, the card name in that row has its <router-link to="list-editor#card-image">card image</router-link> shown, and you can use other keyboard shortcuts to do actions to the card name in the highlighted row.</p>
+				<p>To highlight a different row in the card list, press any of the following keys:</p>
 				<ul class="keyboard-shortcuts">
 					<li><kbd>W</kbd>: Move the highlight up to the previous row.</li>
 					<li><kbd>S</kbd>: Move the highlight down to the next row.</li>
@@ -34,7 +35,7 @@
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>S</kbd>: Move the highlight down to a distant row below. (This works like <span class="no-text-break"><kbd class="shift-key">Shift</kbd>+<kbd>W</kbd></span> in the opposite direction.)</li>
 					<li><kbd>Esc</kbd>: Quit highlighting any row.</li>
 				</ul>
-				<p>If the highlighted row is the row at either the very top or the very bottom of the list, and you use a shortcut to move the highlight where it couldn’t be moved farther in that direction, then the shortcut instead highlights the row at the list’s opposite end.</p>
+				<p>If the highlighted row is the row positioned at either the very top or the very bottom of the list, and you use a shortcut to move the highlight where it couldn’t be moved farther in that direction, then the shortcut instead highlights the row at the list’s opposite end.</p>
 			</section>
 
 			<section id="actions-to-highlighted-row">

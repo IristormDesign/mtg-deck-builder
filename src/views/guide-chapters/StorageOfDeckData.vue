@@ -2,7 +2,7 @@
 	<section id="storage-of-deck-data" key="storage-of-deck-data">
 		<h3>Storage of Deck Data</h3>
 		<p>In MTG Deck Builder, the data for your decks is stored only in your web browser’s local data cache. The data isn’t stored in a remote database over the Internet.</p>
-		<p>Basically, that means this app’s storage of deck data has the following conditions:</p>
+		<p>That means this app’s storage of deck data has the following conditions:</p>
 		<ul>
 			<li>
 				<p>Anyone can <router-link to="create-deck">create</router-link> and save their decks in MTG Deck Builder right away, without even needing to register for a user account.</p>
@@ -14,6 +14,7 @@
 				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <router-link to="text-renderer">Text Renderer mode</router-link>.</p>
 			</li>
 		</ul>
+		<p>Be aware that, due to how this app stores data, you should never have MTG Deck Builder opened in multiple tabs at once in your web browser. Otherwise, you’ll accidentally undo any recent changes you may have made for any decks in this app on the inactive tabs. So, always use MTG Deck Builder on only one browser tab at a time.</p>
 
 		<section id="deck-archive-files">
 			<h4>Deck Archive Files</h4>
