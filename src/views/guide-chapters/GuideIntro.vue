@@ -6,7 +6,7 @@
 		</figure>
 		<h3>Introduction</h3>
 		<p>This documentation is the User Guide to <router-link to="/">MTG Deck Builder by Iristorm Design</router-link>. It should help you understand anything you’d want to know about how this web app works.</p>
-		<p>The User Guide consists of many chapters. You can skip directly to a chapter you want to read by clicking the relevant link in the <a href="#toc" @click.prevent="heardTOCLinkClick()">table of contents</a>, or by clicking any chapter links existing throughout the Guide’s text.</p>
+		<p>The User Guide consists of many chapters. You can skip directly to a chapter you want to read by clicking the relevant link in the <a href="#toc" @click.prevent="$emit('tocLinkClicked')">table of contents</a>, or by clicking any chapter links existing throughout the Guide’s text.</p>
 		<p>The User Guide displays screenshots of parts of MTG Deck Builder. Note that some of these screenshots had been taken from earlier versions of the app, so they may look slightly different from the current version.</p>
 		<p>After reading over the User Guide, if you still have an unanswered question about MTG Deck Builder, feel free to <router-link to="/contact">ask the app developer</router-link>.</p>
 		<p>Enjoy using MTG Deck Builder!</p>
@@ -18,45 +18,3 @@
 		</section>
 	</section>
 </template>
-
-<script>
-export default {
-	data () {
-		return {
-			TOCIsFlashing: false
-		}
-	},
-	methods: {
-		heardTOCLinkClick () {
-			const toc = document.querySelector('.table-of-contents')
-
-			if (!toc) return
-
-			function inViewport () {
-				const rect = toc.getBoundingClientRect()
-
-				return (
-					rect.top >= 0 &&
-					rect.bottom <= document.documentElement.clientHeight
-				)
-			}
-
-			if (!inViewport()) {
-				toc.scrollIntoView({ behavior: 'smooth' })
-			}
-
-			if (!this.TOCIsFlashing) {
-				this.TOCIsFlashing = true
-				toc.classList.add('target')
-
-				setTimeout(() => {
-					toc.classList.remove('target')
-					this.TOCIsFlashing = false
-
-					toc.querySelector('a').focus() // The link focus should be delayed or else the page-scroll effect won't consistently happen.
-				}, 1000) // Timeout duration should be equal to the CSS animation duration of the flashing effect.
-			}
-		}
-	}
-}
-</script>

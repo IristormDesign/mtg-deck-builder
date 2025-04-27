@@ -2,10 +2,17 @@
 	<article class="guide-page content-box">
 		<header>
 			<h2>User Guide</h2>
+			<a
+				v-if="mobileView()"
+				@click.prevent="heardTOCLinkClick()"
+				href="#toc"
+			>
+				See table of contents
+			</a>
 		</header>
 
 		<div class="guide-contents" ref="guideContents">
-			<router-view />
+			<router-view @tocLinkClicked="heardTOCLinkClick" />
 
 			<footer>
 				<ul>
@@ -288,7 +295,8 @@ export default {
 					name: 'App Development',
 					path: 'app-dev'
 				}
-			]
+			],
+			tocIsFlashing: false
 		}
 	},
 	watch: {
@@ -336,6 +344,40 @@ export default {
 			const next = this.chapters[index + 1]
 
 			return { prev, next }
+		},
+		mobileView () {
+			return window.innerWidth <= 960 // This number must match the width of the page layout when it has the table of contents section moved from the left side to the bottom.
+		},
+		heardTOCLinkClick () {
+			const toc = document.querySelector('.table-of-contents')
+
+			if (!toc) return
+
+			const rect = toc.getBoundingClientRect()
+
+			if (
+				this.mobileView() &&
+				(
+					rect.top >= 0 ||
+					rect.bottom <= document.documentElement.clientHeight
+				)
+			) {
+				toc.scrollIntoView({
+					behavior: rect.top < 1024 ? 'smooth' : 'instant'
+				})
+			} else {
+				if (this.tocIsFlashing) return
+
+				this.tocIsFlashing = true
+				toc.classList.add('target')
+
+				setTimeout(() => {
+					toc.classList.remove('target')
+					this.tocIsFlashing = false
+
+					toc.querySelector('a').focus() // The link focus should be delayed or else the page-scroll effect won't consistently happen.
+				}, 1000) // Timeout duration should be equal to the CSS animation duration of the flashing effect.
+			}
 		}
 	}
 }

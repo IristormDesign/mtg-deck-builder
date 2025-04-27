@@ -46,6 +46,14 @@ $animation-highlight-toc: highlight-toc $animation-highlight-attributes;
 			margin-top: 0;
 			margin-bottom: 0;
 		}
+		a {
+			font-size: $font-size-small;
+			padding: $lhse*.125;
+			margin: $lhse*.5 auto (-$lhse*.6667);
+			display: block;
+			text-align: center;
+			width: fit-content;
+		}
 	}
 	.table-of-contents {
 		height: min-content;
@@ -268,7 +276,7 @@ $animation-highlight-toc: highlight-toc $animation-highlight-attributes;
 	}
 }
 
-@media (max-width: $min-width-app) {
+@media (max-width: $min-width-app) { // In UserGuide.vue, the number returned by the `mobileView()` method must match this media query width
 	.guide-page {
 		display: block;
 
