@@ -190,7 +190,7 @@
 				<p>Each card name in the <a href="#list-editor">List Editor</a>’s <a href="#card-list">card list</a> has a quantity section, located to the right of the name’s <a href="#card-bars">card bar</a>. This section shows the name’s quantity as it is within the <a href="#card-groups">card group</a> you’re currently viewing, and provides you controls to change the quantity.</p>
 				<p>One way to edit a card name’s quantity is to click directly on the quantity number, which makes your web browser focus on the quantity input field. While the field has focus, you can use your keyboard to type in a new number.</p>
 				<p>Other ways to change a card name’s quantity are to click any of the buttons among the card name’s cluster of quantity-adjustment buttons. This button cluster is normally invisible, but it appears to the right of the quantity input field whenever that field has browser focus, or whenever you hover your mouse pointer over the field.</p>
-				<p>The cluster of quantity-adjustment buttons has the following buttons with their effects:</p>
+				<p>The cluster of quantity-adjustment buttons are the following:</p>
 				<ul>
 					<li>
 						<p><strong>Increase quantity</strong> – Click the button labeled with the “+” (plus sign) to raise the card name’s quantity in the current card group by 1.</p>
@@ -199,7 +199,7 @@
 						<p><strong>Decrease quantity</strong> – Click the button labeled with the “−” (minus sign) to lower the card name’s quantity in the current card group by 1.</p>
 					</li>
 					<li>
-						<p><strong>Move to other group</strong> – There’s a third button whose label changes depending on which of the two card groups you’re currently viewing. This label appears as either a right-pointing triangle and the letters “SB” (short for “sideboard”), or a left-pointing triangle and the letter “M” (for “main”). Click this button to take 1 of the card name out of the <i>active</i> card group, and put that name into the <i>inactive</i> group—i.e., move the card from main <a href="#sideboard-uses">to sideboard</a>, or vice versa.</p>
+						<p><strong>Move to other group</strong> – There’s a third type of quantity button whose label varies depending on which of the two card groups you’re currently viewing. This button’s label displays either a right-pointing triangle and the letters “SB” (short for “sideboard”), or a left-pointing triangle and the letter “M” (“main”). Click this button to take 1 of the card name out of the active card group, and put that name into the inactive one—i.e., move the card from main <a href="#sideboard-uses">to sideboard</a>, or vice versa.</p>
 					</li>
 				</ul>
 				<p>To completely remove a card name from a card list, decrease its quantity down to 0, or delete the quantity number. Before the name actually gets removed, the app asks you to confirm the removal. If you choose to cancel instead, then the name stays in your deck with its quantity reset to 1.</p>

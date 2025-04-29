@@ -1,8 +1,8 @@
 <template functional>
 	<section id="keyboard-shortcuts" key="keyboard-shortcuts">
 		<h3>Keyboard Shortcuts</h3>
-		<p>If you’re using MTG Deck Builder on a computer with a physical keyboard (instead of on a touchscreen device), then you have the option to use keyboard shortcuts. With keyboard shortcuts, you can press designated keys to perform tasks in the app, which let you interact with the app faster than by a mouse or trackpad alone.</p>
-		<p>Special keyboard shortcuts are available for <a href="#kbsc-deck-page-modes">setting deck page modes</a> and for doing various actions each in the <a href="#kbsc-list-editor">List Editor</a>, <a href="#kbsc-stats-analyzer">Stats Analyzer</a>, and <a href="#kbsc-draw-sim">Draw Simulator</a> modes. (No shortcuts are in the Text Renderer.)</p>
+		<p>If you’re using MTG Deck Builder on a computer with a physical keyboard (rather than on a touchscreen device), then you have the option to use keyboard shortcuts. With keyboard shortcuts, you can press designated keys to perform tasks in the app, which let you interact with the app faster than by a mouse or trackpad alone.</p>
+		<p>Special keyboard shortcuts are available for <a href="#kbsc-deck-page-modes">setting deck page modes</a> and for doing various actions each in the <a href="#kbsc-list-editor">List Editor</a>, <a href="#kbsc-stats-analyzer">Stats Analyzer</a>, and <a href="#kbsc-draw-sim">Draw Simulator</a> modes. (No keyboard shortcuts are in the Text Renderer mode.)</p>
 		<p>Be aware that the app’s keyboard shortcuts can’t work while your web browser is actively focused on any kind of text field, such as the ones in the List Editor’s <router-link to="list-editor#card-adder">card adder</router-link> or <router-link to="list-editor#card-quantities">card quantities</router-link>, or your browser’s web address bar. Under that condition, pressing a letter or digit key will enter that key’s character into the text field instead of doing the shortcut’s action.</p>
 		<p>If you’d want to use a keyboard shortcut but your web browser is focusing on a text field, you must first stop the browser’s focus. You can do that by pressing the <kbd>Esc</kbd> key or by clicking a spot elsewhere on the page.</p>
 		<p>The app’s scheme of keyboard shortcuts is designed for left-handed ergonomics on the standard English-language layout of keys (“QWERTY”). If your keyboard has a different layout, the shortcuts probably won’t be as ergonomic or logical.</p>
@@ -40,7 +40,7 @@
 
 			<section id="actions-to-highlighted-row">
 				<h5>Actions to Highlighted Row</h5>
-				<p>The following keyboard shortcuts do actions that affect the card name in the currently highlighted row of the card list.</p>
+				<p>The following keys do actions that affect the card name in the currently highlighted row of the card list.</p>
 				<ul class="keyboard-shortcuts">
 					<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the card’s page on Scryfall in a new browser tab.</li>
@@ -89,8 +89,8 @@
 				</ul>
 			</section>
 
-			<section id="matching-shortcuts-with-list-editor">
-				<h5>Matching Shortcuts with List Editor</h5>
+			<section id="same-shortcuts-as-list-editor">
+				<h5>Same Shortcuts as List Editor</h5>
 				<ul class="keyboard-shortcuts">
 					<li><kbd>C</kbd>: View the <router-link to="list-editor#card-image">card image</router-link> up closer.</li>
 					<li><kbd class="shift-key">Shift</kbd>+<kbd>C</kbd>: Open the displayed card’s page on Scryfall in a new browser tab.</li>

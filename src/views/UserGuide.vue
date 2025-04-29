@@ -276,8 +276,8 @@ export default {
 									hash: '#unique-shortcuts-to-draw-sim'
 								},
 								{
-									name: 'Matching Shortcuts with List Editor',
-									hash: '#matching-shortcuts-with-list-editor'
+									name: 'Same Shortcuts as List Editor',
+									hash: '#same-shortcuts-as-list-editor'
 								}
 							]
 						}
