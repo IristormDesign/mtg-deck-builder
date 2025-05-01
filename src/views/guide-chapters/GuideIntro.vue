@@ -2,7 +2,7 @@
 	<section id="guide-intro" key="guide-intro">
 		<figure>
 			<img class="card-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="An illustration of a large, detailed, open book" />
-			<figcaption>Illustration from <i><a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank">Urza’s Tome<svg><use href="#open-in-new-icon" /></svg></a></i> by Aaron Miller</figcaption>
+			<figcaption>Illustration from <a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank">Urza’s Tome<svg><use href="#open-in-new-icon" /></svg></a> by Aaron Miller</figcaption>
 		</figure>
 		<h3>Introduction</h3>
 		<p>This documentation is the User Guide to <router-link to="/">MTG Deck Builder by Iristorm Design</router-link>. It should help you understand anything you’d want to know about how this web app works.</p>

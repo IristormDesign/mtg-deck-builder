@@ -42,7 +42,7 @@
 
 		<section v-if="cardRequestInvalid && cardRequestInvalid.length > 0">
 			<h4>❌ Invalid Cards</h4>
-			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, so they can’t be added to your deck.</p>
+			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, and so they can’t be added to your deck.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardRequestInvalid"
@@ -96,7 +96,7 @@
 
 		<section v-if="repeatedCardNames && repeatedCardNames.length > 0">
 			<h4>❌ Repeated Cards</h4>
-			<p>The following entries are card names you’ve included more than once in your submitted list, so each repeated name after its first instance has been ignored.</p>
+			<p>The following entries are card names you’ve included more than once in your submitted list, and so each repeated name after its first instance has been ignored.</p>
 			<ul>
 				<li
 					v-for="(card, index) of repeatedCardNames"
@@ -110,7 +110,7 @@
 			class="invalid-list"
 		>
 			<h4>❌ Non-List Text</h4>
-			<p>The following lines of text you’ve submitted aren’t in the valid format for card list entries, so these lines have been ignored for adding card names.</p>
+			<p>The following lines of text you’ve submitted aren’t in the valid format for card list entries, and so these lines have been ignored for adding card names.</p>
 			<ul>
 				<li
 					v-for="(entry, index) of invalidEntries"
