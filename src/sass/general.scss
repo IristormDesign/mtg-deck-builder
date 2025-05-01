@@ -144,7 +144,6 @@ img {
 figure {
 	margin: $lhse*.6667 auto;
 	background-color: $color-group-bg-darker;
-	outline: 1px solid $color-group-bg-extra-darker;
 	outline-offset: -1px;
 	padding: divide($lhse, 3);
 	color: $color-text-darker;
@@ -152,7 +151,6 @@ figure {
 	height: fit-content;
 
 	img {
-		outline: 1px solid $color-group-bg-extra-darker;
 		margin: auto;
 	}
 }
