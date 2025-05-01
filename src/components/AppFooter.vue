@@ -13,6 +13,9 @@
 					<router-link to="/privacy">Privacy Policy</router-link>
 
 					<span class="divider"> // </span>
+					<router-link to="/donate">Donate</router-link>
+
+					<span class="divider"> // </span>
 					<router-link to="/contact">Contact</router-link>
 				</span>
 			</p>

@@ -153,12 +153,14 @@ figure {
 
 	img {
 		outline: 1px solid $color-group-bg-extra-darker;
+		margin: auto;
 	}
 }
 figcaption {
 	@include tiny-font-size;
 	text-align: center;
 	margin: $lhse*.1667 0 (-$lhse*.3333);
+	text-wrap: pretty;
 
 	a {
 		@include link-colors($color-link-dim);

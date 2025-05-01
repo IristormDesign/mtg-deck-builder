@@ -1,0 +1,43 @@
+@import 'variables';
+
+.donate-page {
+	max-width: $max-width-content*1.5;
+
+	h2 {
+		text-align: center;
+	}
+	figure {
+		float: right;
+		position: relative;
+		margin-top: 0;
+		margin-left: $lhse;
+		width: 50%;
+	}
+	.donate-button {
+		height: $lhse*2.75;
+
+		a {
+			@include button;
+			margin-left: 0;
+		}
+		img {
+			height: $lhse*2;
+			width: auto;
+		}
+		span {
+			margin: 0 $lhse*.2;
+		}
+	}
+}
+
+@media (max-width: ($min-width-app)) {
+	.donate-page {
+		max-width: $max-width-content;
+
+		figure {
+			float: none;
+			margin: $lhse*.5 auto;
+			width: fit-content;
+		}
+	}
+}
