@@ -17,7 +17,7 @@
 		list-style: none;
 		display: grid;
 		grid-template-columns: repeat(4, minmax(max-content, 1fr));
-		gap: $lhse;
+		gap: $lhse*.125;
 		align-items: center;
 	}
 	.header-menu-item {
@@ -35,7 +35,7 @@
 		background: none;
 		color: $color-app-header-link;
 		text-decoration: none;
-		padding: $lhse*.2083 $lhse*.375;
+		padding: $lhse*.2083 $lhse*.75;
 
 		&:hover,
 		&:focus {
@@ -158,8 +158,8 @@
 
 @media (max-width: ($min-width-app*1.25)) {
 	.header-menu {
-		> ul {
-			gap: $lhse*.25;
+		.header-menu-item {
+			padding: $lhse*.2083 $lhse*.5;
 		}
 	}
 }
@@ -171,7 +171,7 @@
 		margin: 0 auto;
 
 		> ul {
-			gap: .75em;
+			// gap: .75em;
 		}
 		.header-menu-item {
 			font-size: 80%;
