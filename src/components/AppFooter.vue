@@ -8,19 +8,14 @@
 				<span class="group">
 					<span class="divider"> // </span>
 					<router-link to="/terms">Terms of Service</router-link>
-
 					<span class="divider"> // </span>
 					<router-link to="/privacy">Privacy Policy</router-link>
-
-					<span class="divider"> // </span>
-					<router-link to="/donate">Donate</router-link>
-
 					<span class="divider"> // </span>
 					<router-link to="/contact">Contact</router-link>
 				</span>
 			</p>
 			<p v-if="$route.name === 'home'">Intro background illustration from <a href="https://magic.wizards.com/en/news#wallpapers" target="_blank">Invasion of Dominaria<svg><use href="#open-in-new-icon" /></svg></a> by Denys Tsiperko.</p>
-			<p><a href="https://magic.wizards.com" target="_blank"><i>Magic: The Gathering</i><svg><use href="#open-in-new-icon" /></svg></a> brand and material is TM and &copy; by Wizards of the Coast, LLC. All other material, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design. MTG Deck Builder is not sponsored or endorsed by Wizards of the Coast, but is allowed under its Fan Content Policy.</p>
+			<p><i>Magic: The Gathering</i> brand and content are TM and &copy; by Wizards of the Coast, LLC. All other content, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design. MTG Deck Builder is not sponsored or endorsed by Wizards of the Coast, but is allowed under its Fan Content Policy.</p>
 		</div>
 	</footer>
 </template>

@@ -119,7 +119,7 @@
 		padding: $lhse*1.5 $lhse*.5;
 		position: relative;
 		background: $color-group-bg;
-		border: solid $color-mythic-dim;
+		border: solid $color-group-bg-darker;
 		border-width: $border-width-sections-thickest 0 0;
 		scroll-margin: $height-app-header-short - $lhse;
 
@@ -320,15 +320,7 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 		}
 	}
 }
-// @media (max-width: 480px) {
-// 	.home-page {
-// 		.intro {
-// 			.image-bg {
-// 				background-image: url('/src/img/hero-510.webp');
-// 			}
-// 		}
-// 	}
-// }
+
 @supports not (gap: 1px) { // If the user's browser doesn't support `gap`, then it probably doesn't support WebP images either.
 	.home-page {
 		.intro {

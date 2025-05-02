@@ -100,7 +100,7 @@
 	}
 }
 
-@media (max-width: ($min-width-app * .9167)) {
+@media (max-width: ($min-width-app*1.125)) {
 	:root {
 		--header-height: #{$height-app-header-tall};
 	}

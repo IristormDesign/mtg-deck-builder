@@ -15,7 +15,7 @@
 
 		<p>My name is Damian Schmidt, and I’m the sole designer and developer of MTG Deck Builder by Iristorm Design.</p>
 		<p>This app has taken me a lot of turns and mana—ahem, time and effort—to create. As an independent fan project, it’s never been funded by Wizards of the Coast or any other company.</p>
-		<p>I also have a long, ever-expanding to-do list of things in MTG Deck Builder I could add or improve for future updates. So, I could be busy tinkering on this app for years to come if I’ll still have the motivation for it.</p>
+		<p>I also have a long, ever-expanding to-do list of things in MTG Deck Builder I could add or improve for future updates. So, I could be busy tinkering on this app for more years to come if I’ll still have the motivation for it.</p>
 		<p>Despite all that, I’ve made MTG Deck Builder available to everyone for free, and without displaying advertisements. That means this app earns me zero income—except, possibly, for some users’ generosity to me.</p>
 		<p>So, if you’ve been using MTG Deck Builder and you respect my work in creating it, would you consider a donation? I’d gladly appreciate even a small amount, though you’re not obligated to give anything. (Maybe you’re not drawing enough lands yourself. I get it.)</p>
 		<p>If you’re willing to donate, click the button below, which takes you to a donation page on PayPal. (That page should say the donation goes to Damian Schmidt, me.) Thanks for your support!</p>
