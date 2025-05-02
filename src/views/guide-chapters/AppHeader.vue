@@ -3,9 +3,10 @@
 		<h3>App Header</h3>
 		<p>At the top of any page of MTG Deck Builder is the app header, which has the following links:</p>
 		<ul>
-			<li><strong>Create Deck</strong> – Takes you to the <router-link to="create-deck">Create Deck page</router-link>.</li>
+			<li><strong>Create Deck</strong> – Takes you to the <router-link to="create-deck">Create Deck page</router-link> (to be explained in the next chapter of this User Guide).</li>
 			<li><strong>Open Deck&hellip;</strong> – Shows the <a href="#deck-menu">deck menu</a>.</li>
-			<li><strong>User Guide</strong> – Takes you to the section you’re reading now.</li>
+			<li><strong>User Guide</strong> – Takes you to the <router-link to="intro#intro">User Guide</router-link> (as you know).</li>
+			<li><strong>Donate</strong> – Takes you to a page explaining why donate, and from where you can make a donation.</li>
 		</ul>
 
 		<section id="deck-menu">
