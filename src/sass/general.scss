@@ -157,7 +157,7 @@ figure {
 figcaption {
 	@include tiny-font-size;
 	text-align: center;
-	margin: $lhse*.1667 0 (-$lhse*.3333);
+	margin: $lhse*.25 0 (-$lhse*.2);
 	text-wrap: pretty;
 
 	a {
