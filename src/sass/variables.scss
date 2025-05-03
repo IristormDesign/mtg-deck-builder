@@ -34,7 +34,8 @@ $color-mythic-complement: #15b4ed; // Inverted mythic-orange
 $color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
 $color-content-bg-lighter: lighten($color-content-bg, 4.17%);
 $color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 58.33%);
-$color-group-bg-darker: saturate(darken($color-group-bg, 6.25%), 8.33%);
+$color-group-bg-darker: saturate(darken($color-group-bg, 4.17%), 6.25%);
+$color-group-bg-extra-darker: saturate(darken($color-group-bg, 6.25%), 8.33%);
 $color-group-bg-lighter: desaturate(lighten($color-group-bg, 6.25%), 4.17%);
 $color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
 $color-text-brighter: lighten($color-text, 6.25%);
@@ -126,7 +127,7 @@ $border-sections-medium: $border-width-sections-medium solid $color-section-bord
 $border-sections-thick: $border-width-sections-thickest solid $color-section-border;
 $border-sections-alt: $border-width-sections solid $color-section-border-alt;
 $color-input-border: $border-width-sections solid $color-button-orange;
-$border-image-thin: $border-width-sections solid $color-group-bg-darker;
+$border-image-thin: $border-width-sections solid $color-group-bg-extra-darker;
 $border-bottom-width-button: 3px;
 $outline-focus-visible: 1px solid $color-link-active;
 $outline-keyboard-focus: 2px solid $color-button-orange;

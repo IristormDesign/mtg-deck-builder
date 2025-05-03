@@ -70,7 +70,7 @@
 	width: max-content;
 	padding: $border-width-sections-medium;
 	margin: 0;
-	background: $color-group-bg-darker;
+	background: $color-group-bg-extra-darker;
 	position: absolute;
 	transition: $transition-duration-standard ease;
 	transition-property: opacity, transform;
@@ -96,7 +96,7 @@
 			&:focus,
 			&:active {
 				svg {
-					fill: $color-group-bg-darker;
+					fill: $color-group-bg-extra-darker;
 				}
 			}
 		}
