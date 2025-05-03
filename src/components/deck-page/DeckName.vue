@@ -89,7 +89,7 @@ export default {
 
 			if (this.nameToPath !== this.$route.params.deckPath) {
 				this.$router.replace({
-					name: 'listEditor',
+					name: this.$route.name,
 					params: { deckPath: this.nameToPath }
 				})
 			}
