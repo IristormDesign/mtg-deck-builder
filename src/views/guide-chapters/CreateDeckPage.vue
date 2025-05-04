@@ -10,7 +10,7 @@
 			<ul>
 				<li>Be fewer than 50 characters in length.</li>
 				<li>Have at least one English letter or digit.</li>
-				<li>Be unique compared to the names of any other decks you have in MTG Deck Builder.</li>
+				<li>Be unique compared to the names of other decks you have in MTG Deck Builder.</li>
 			</ul>
 			<p>If you’d try to submit a deck name that’s already taken, regardless of its letters being in uppercase or lowercase, then you’ll be prompted to give a different name instead.</p>
 			<p>Once you’ve entered a name for your deck, click the adjacent Start button. The deck is created, and you’re automatically taken to its vacant <router-link to="deck-pages">deck page</router-link>.</p>

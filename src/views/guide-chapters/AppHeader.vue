@@ -6,7 +6,7 @@
 			<li><strong>Create Deck</strong> – Takes you to the <router-link to="create-deck">Create Deck page</router-link> (to be explained in the next chapter of this User Guide).</li>
 			<li><strong>Open Deck&hellip;</strong> – Shows the <a href="#deck-menu">deck menu</a>.</li>
 			<li><strong>User Guide</strong> – Takes you to the <router-link to="intro#intro">User Guide</router-link> (as you know).</li>
-			<li><strong>Donate</strong> – Takes you to a page explaining why donate, and from where you can make a donation.</li>
+			<li><strong>Donate</strong> – Takes you to a page explaining why and how to donate.</li>
 		</ul>
 
 		<section id="deck-menu">
