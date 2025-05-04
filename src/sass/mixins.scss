@@ -7,9 +7,11 @@
 @mixin tiny-font-size($for-heading-font: false) {
 	@if ($for-heading-font) {
 		font-size: 60%;
+		font-size: 66.67%;
 	}
 	@else {
 		font-size: 66.67%;
+		font-size: 75%;
 	}
 
 	letter-spacing: $letter-spacing-tiny-font;
@@ -33,14 +35,14 @@
 
 	h3 {
 		@include label-text-style;
-		margin: 0 $lhse*.5 $lhse*.0833 0;
+		margin: 0 $lhse*.5 0 0;
 		text-align: right;
 		width: min-content;
 		color: $color-text;
 	}
 	.output {
 		line-height: 1;
-		margin-top: -$lhse*.0417; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
+		margin-top: -$lhse*.0833; // Aligns the output text with the label text. They're normally unaligned because they use different fonts with different letter heights.
 		font-weight: $font-weight-label;
 	}
 }

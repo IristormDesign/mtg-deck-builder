@@ -88,10 +88,10 @@ $font-weight-regular: 367;
 $font-weight-label: 459; // = $font-weight-regular * 1.25
 $font-weight-semibold: 573; // = $font-weight-label * 1.25
 $font-size-bigger: 112.5%;
-$font-size-small: 83.33%;
+$font-size-small: 87.5%;
 $font-size-card-list-textarea: 83.33%;
 $font-size-stat-value: 166.67%;
-$letter-spacing-tiny-font: divide(1, 64)*1em;
+$letter-spacing-tiny-font: divide(1, 128)*1em;
 
 /* WIDTHS & HEIGHTS */
 $min-width-app: 960px;

@@ -20,6 +20,9 @@
 		> :first-child {
 			margin-top: $lhse*.5;
 		}
+		[href^="mailto:"] {
+			white-space: nowrap; // Needed for certain viewport widths.
+		}
 	}
 }
 
