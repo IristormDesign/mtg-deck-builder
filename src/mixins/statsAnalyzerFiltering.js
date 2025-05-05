@@ -352,7 +352,7 @@ export default {
 				) {
 					return card
 				} else if (
-					this.analyzerFilter.attribute === 'Not starred' &&
+					this.analyzerFilter.attribute === 'Un-starred' &&
 					!card.starred
 				) {
 					return card

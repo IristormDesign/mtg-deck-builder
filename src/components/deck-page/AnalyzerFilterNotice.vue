@@ -152,7 +152,7 @@ export default {
 					switch (attr) {
 						case 'Starred':
 							return 'starred cards'
-						case 'Not starred':
+						case 'Un-starred':
 							return 'cards that aren’t starred'
 						default:
 							return null

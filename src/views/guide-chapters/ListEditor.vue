@@ -54,7 +54,7 @@
 			<p>The card sorter’s options and their effects are the following:</p>
 			<ul>
 				<li>
-					<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and non-starred. If your deck has no card names with a star, then this sorting option is hidden.</p>
+					<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and un-starred. If your deck has no card names with a star, then this sorting option is hidden.</p>
 				</li>
 				<li>
 					<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
@@ -150,7 +150,7 @@
 						<p>In a deck for the Commander (or EDH) format, you could star the name of the designated commander card.</p>
 					</li>
 					<li>
-						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “not starred” one). This lets you compare the statistics between your deck’s starred and non-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
+						<p>When you’re in the process of constructing a <router-link to="create-deck#start-new-deck">new deck</router-link>, you could star a certain combination of some card names. Then, go to the <router-link to="stats-analyzer">Stats Analyzer</router-link> and <router-link to="stats-analyzer#statistics-filter">filter the data</router-link> by the “starred” attribute (or the “un-starred” one). This lets you compare the statistics between your deck’s starred and un-starred cards, thus possibly helping you decide on which ones to keep or remove.</p>
 					</li>
 				</ul>
 				<p>To star a card name, click the blank space just to the left side of the card bar. To un-star a name, click the star label. Alternatively, press the <kbd>A</kbd> key to star and un-star the name in the card list row that’s highlighted via <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>

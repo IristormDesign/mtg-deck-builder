@@ -46,14 +46,14 @@ export default {
 		return {
 			starredCounts: {
 				Starred: 0,
-				'Not starred': 0
+				'Un-starred': 0
 			}
 		}
 	},
 	watch: {
 		analyzerFilter () {
 			this.starredCounts.Starred = 0
-			this.starredCounts['Not starred'] = 0
+			this.starredCounts['Un-starred'] = 0
 
 			this.prepareStarredCounts()
 		}
@@ -73,7 +73,7 @@ export default {
 					if (starred) {
 						this.starredCounts.Starred += qty
 					} else {
-						this.starredCounts['Not starred'] += qty
+						this.starredCounts['Un-starred'] += qty
 					}
 				}
 			)
