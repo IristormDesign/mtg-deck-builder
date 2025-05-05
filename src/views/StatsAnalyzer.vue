@@ -119,5 +119,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-stats-analyzer.scss';
+	@use '@/sass/page-stats-analyzer.scss';
 </style>

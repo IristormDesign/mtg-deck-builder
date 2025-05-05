@@ -256,6 +256,6 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-list.scss';
-	@import '@/sass/page-draw-simulator.scss';
+	@use '@/sass/card-list.scss';
+	@use '@/sass/page-draw-simulator.scss';
 </style>

@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 .list-entry,
 .list-entry-results {
@@ -32,7 +33,7 @@
 			display: inline-block;
 			margin-top: -$lhse*.375;
 			background: $color-group-bg-darker;
-			padding: divide(1em, 3) .6667em;
+			padding: math.div(1em, 3) .6667em;
 		}
 	}
 	.loading-percentage {
@@ -167,7 +168,7 @@
 		textarea {
 			box-sizing: border-box;
 			width: 100%;
-			padding: divide($lhse, 3) $lhse*.5;
+			padding: math.div($lhse, 3) $lhse*.5;
 			font-size: 80%;
 			margin-right: 0;
 			margin-left: 0;

@@ -162,5 +162,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-deck-actions.scss';
+	@use '@/sass/page-deck-actions.scss';
 </style>

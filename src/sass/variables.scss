@@ -1,50 +1,48 @@
 @use "sass:math";
 @use "sass:color";
-@function divide($dividend, $divisor) {
-	@return math.div($dividend, $divisor);
-}
 
 /* ORANGE-BASED COLORS */
 $color-mythic-orange: #ea4b12; // Sampled
-$color-highlight-bg: desaturate(darken($color-mythic-orange, 20%), 20%);
-$color-highlight-border: desaturate(lighten($color-highlight-bg, 8.33%), 8.33%);
-$color-mythic-dim: desaturate(darken($color-mythic-orange, 20%), 56.25%);
-$color-mythic-dimmer: darken($color-mythic-dim, 12.5%);
-$color-mythic-brown: darken(desaturate($color-mythic-orange, 75%), 25%); // Darkened to match brightness level of $color-group-bg-lighter.
-$color-link: desaturate(lighten($color-mythic-orange, 16.67%), 8.33%);
-$color-link-dim: desaturate($color-link, 37.5%);
-$color-button-orange: lighten(desaturate($color-mythic-orange, 29.17%), 8.33%);
-$color-text-over-mythic-brown: lighten($color-mythic-brown, 56.25%);
-$color-text-brighter-over-mythic-brown: lighten($color-text-over-mythic-brown, 6.25%);
-$color-input-bg-active: darken($color-link, 37.5%);
-$color-section-border-alt: lighten($color-mythic-brown, 12.5%); // Lighten percentage matches that of $color-section-border.
+$color-highlight-bg: color.adjust($color-mythic-orange, $lightness: -20%, $saturation: -20%);
+$color-highlight-bg-hover: color.adjust($color-highlight-bg, $lightness: -6.25%, $saturation: -6.25%);
+$color-highlight-border: color.adjust($color-highlight-bg, $lightness: 8.33%, $saturation: -8.33%);
+$color-mythic-dim: color.adjust($color-mythic-orange, $lightness: -20%, $saturation: -56.25%);
+$color-mythic-dimmer: color.adjust($color-mythic-dim, $lightness: -12.5%);
+$color-mythic-brown: color.adjust($color-mythic-orange, $saturation: -75%, $lightness: -25%); // Darkened to match brightness level of $color-group-bg-lighter.
+$color-link: color.adjust($color-mythic-orange, $lightness: 16.67%, $saturation: -8.33%);
+$color-link-dim: color.adjust($color-link, $saturation: -37.5%);
+$color-button-orange: color.adjust($color-mythic-orange, $saturation: -29.17%, $lightness: 8.33%);
+$color-text-over-mythic-brown: color.adjust($color-mythic-brown, $lightness: 56.25%);
+$color-text-brighter-over-mythic-brown: color.adjust($color-text-over-mythic-brown, $lightness: 6.25%);
+$color-input-bg-active: color.adjust($color-link, $lightness: -37.5%);
+$color-section-border-alt: color.adjust($color-mythic-brown, $lightness: 12.5%); // Lighten percentage matches that of $color-section-border.
 
 /* YELLOW-BASED COLORS */
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
-$color-link-focus: lighten($color-mythic-yellow, 12.5%);
-$color-link-active: saturate(lighten($color-mythic-yellow, 25%), 50%);
-$color-app-header-link: desaturate(lighten($color-mythic-yellow, 16.67%), 12.5%);
-$color-app-header-link-hover: lighten($color-app-header-link, 12.5%);
-$color-app-header-link-active: saturate(darken($color-app-header-link, 6.25%), 25%);
-$color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
-$color-card-star: saturate(lighten($color-mythic-yellow, 16.67%), 50%);
+$color-link-focus: color.adjust($color-mythic-yellow, $lightness: 12.5%);
+$color-link-active: color.adjust($color-mythic-yellow, $lightness: 25%, $saturation: 50%);
+$color-app-header-link: color.adjust($color-mythic-yellow, $lightness: 16.67%, $saturation: -12.5%);
+$color-app-header-link-hover: color.adjust($color-app-header-link, $lightness: 12.5%);
+$color-app-header-link-active: color.adjust($color-app-header-link, $lightness: -6.25%, $saturation: 25%);
+$color-input-bg-focus: color.adjust($color-mythic-yellow, $lightness: -41.67%, $saturation: -62.5%);
+$color-card-star: color.adjust($color-mythic-yellow, $lightness: 16.67%, $saturation: 50%);
 
 /* SKY-BLUE-BASED COLORS */
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange
-$color-content-bg: darken(desaturate($color-mythic-complement, 75%), 12.5%);
-$color-content-bg-lighter: lighten($color-content-bg, 4.17%);
-$color-group-bg: desaturate(darken($color-mythic-complement, 33.33%), 58.33%);
-$color-group-bg-darker: saturate(darken($color-group-bg, 4.17%), 6.25%);
-$color-group-bg-extra-darker: saturate(darken($color-group-bg, 6.25%), 8.33%);
-$color-group-bg-lighter: desaturate(lighten($color-group-bg, 6.25%), 4.17%);
-$color-text: desaturate(lighten($color-group-bg, 60%), 8.33%);
-$color-text-brighter: lighten($color-text, 6.25%);
-$color-text-extra-brighter: lighten($color-text, 12.5%);
-$color-text-darker: desaturate(darken($color-text, 12.5%), 6.25%);
-$color-button-gray: lighten(desaturate($color-mythic-complement, 75%), 20%);
-$color-heading-bg: desaturate(lighten($color-group-bg, 12.5%), 8.33%);
+$color-content-bg: color.adjust($color-mythic-complement, $lightness: -12.5%, $saturation: -75%);
+$color-content-bg-lighter: color.adjust($color-content-bg, $lightness: 4.17%);
+$color-group-bg: color.adjust($color-mythic-complement, $lightness: -33.33%, $saturation: -58.33%);
+$color-group-bg-darker: color.adjust($color-group-bg, $lightness: -4.17%, $saturation: 6.25%);
+$color-group-bg-extra-darker: color.adjust($color-group-bg, $lightness: -6.25%, $saturation: 8.33%);
+$color-group-bg-lighter: color.adjust($color-group-bg, $lightness: 6.25%, $saturation: -4.17%);
+$color-text: color.adjust($color-group-bg, $lightness: 60%, $saturation: -8.33%);
+$color-text-brighter: color.adjust($color-text, $lightness: 6.25%);
+$color-text-extra-brighter: color.adjust($color-text, $lightness: 12.5%);
+$color-text-darker: color.adjust($color-text, $lightness: -12.5%, $saturation: -6.25%);
+$color-button-gray: color.adjust($color-mythic-complement, $lightness: 20%, $saturation: -75%);
+$color-heading-bg: color.adjust($color-group-bg, $lightness: 12.5%, $saturation: -8.33%);
 $color-section-border: $color-heading-bg;
-$color-subtle-bluish-shadow-base: darken($color-mythic-complement, 50%);
+$color-subtle-bluish-shadow-base: color.adjust($color-mythic-complement, $lightness: -50%);
 $color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .3820);
 
 /* INDIGO-BASED COLORS */
@@ -54,35 +52,35 @@ $color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .3820);
 $opacity-black-label-text: .8333;
 $color-black-label-text: rgba(#000, $opacity-black-label-text);
 $color-darker-black-label-text: rgba(#000, .875);
-$color-button-border: rgba(#000, 1/3);
-$color-input-bg: lighten(#000, 16.67%); // Technically pure gray, but appears subtly orangish when surrounded by the bluish-tinted gray of $color-group-bg.
+$color-button-border: rgba(#000, math.div(1, 3));
+$color-input-bg: color.adjust(#000, $lightness: 16.67%); // Technically pure gray, but appears subtly orangish when surrounded by the bluish-tinted gray of $color-group-bg.
 
 /* MISCELLANEOUS COLORS */
-$color-rarity-gold: desaturate(lighten(#C19C00, 20%), 20%); // Sampled from Scryfall
-$color-rarity-silver: lighten(#6C848C, 25%); // Sampled from Scryfall
-$color-rarity-mythic: desaturate($color-mythic-orange, 16.67%);
+$color-rarity-gold: color.adjust(#C19C00, $lightness: 20%, $saturation: -20%); // Sampled from Scryfall
+$color-rarity-silver: color.adjust(#6C848C, $lightness: 25%); // Sampled from Scryfall
+$color-rarity-mythic: color.adjust($color-mythic-orange, $saturation: -16.67%);
 $color-rarity-special: #905D98; // Sampled from Scryfall
 
 /* MANA-BASED COLORS */
-$color-mana-white: desaturate(#fffcd5, 66.67%); // Based on sample
-$color-mana-blue: adjust_hue(#aae1fa, 5.625deg); // Based on sample
-$color-mana-black: desaturate(lighten(invert($color-mana-white), 62.5%), 100%);
-$color-mana-red: adjust_hue(#f9aa8f, -3.75deg); // Based on sample
-$color-mana-green: adjust_hue(#9bd3ae, -8.8888deg); // Based on sample
-$color-mana-generic: desaturate(#ccc2c0, 50%); // Based on sample
-$color-mana-hybrid: desaturate(lighten($color-rarity-gold, 4.17%), 6.25%);
-$color-frame-land: desaturate(lighten($color-mythic-yellow, 12.5%), 83.33%);
-$color-frame-white: desaturate(darken($color-mana-white, 4.17%), 16.67%);
-$color-frame-blue: desaturate(darken($color-mana-blue, 3.125%), 45.83%);
-$color-frame-black: darken($color-mana-black, 6.25%);
-$color-frame-red: desaturate(lighten($color-mana-red, 4.17%), 45.83%);
-$color-frame-green: desaturate(lighten($color-mana-green, 6.25%), 16.67%);
-$color-frame-multi: desaturate(lighten($color-mana-hybrid, 6.25%), 25%);
-$color-frame-generic: desaturate(lighten($color-rarity-silver, 6.25%), 8.33%);
+$color-mana-white: color.adjust(#fffcd5, $saturation: -66.67%); // Based on sample
+$color-mana-blue: color.adjust(#aae1fa, $hue: 5.625deg); // Based on sample
+$color-mana-black: color.adjust(color.invert($color-mana-white), $lightness: 62.5%, $saturation: -100%);
+$color-mana-red: color.adjust(#f9aa8f, $hue: -3.75deg); // Based on sample
+$color-mana-green: color.adjust(#9bd3ae, $hue: -8.8888deg); // Based on sample
+$color-mana-generic: color.adjust(#ccc2c0, $saturation: -50%); // Based on sample
+$color-mana-hybrid: color.adjust($color-rarity-gold, $lightness: 4.17%, $saturation: -6.25%);
+$color-frame-land: color.adjust($color-mythic-yellow, $lightness: 12.5%, $saturation: -83.33%);
+$color-frame-white: color.adjust($color-mana-white, $lightness: -4.17%, $saturation: -16.67%);
+$color-frame-blue: color.adjust($color-mana-blue, $lightness: -3.125%, $saturation: -45.83%);
+$color-frame-black: color.adjust($color-mana-black, $lightness: -6.25%);
+$color-frame-red: color.adjust($color-mana-red, $lightness: 4.17%, $saturation: -45.83%);
+$color-frame-green: color.adjust($color-mana-green, $lightness: 6.25%, $saturation: -16.67%);
+$color-frame-multi: color.adjust($color-mana-hybrid, $lightness: 6.25%, $saturation: -25%);
+$color-frame-generic: color.adjust($color-rarity-silver, $lightness: 6.25%, $saturation: -8.33%);
 
 /* TEXT */
 $font-family-standard: 'Crimson Pro', serif;
-$line-height-standard: 1 + divide(1, 3);
+$line-height-standard: 1 + math.div(1, 3);
 $lhse: $line-height-standard * 1em;
 $font-weight-regular: 367;
 $font-weight-label: 459; // = $font-weight-regular * 1.25
@@ -91,7 +89,7 @@ $font-size-bigger: 112.5%;
 $font-size-small: 87.5%;
 $font-size-card-list-textarea: 83.33%;
 $font-size-stat-value: 166.67%;
-$letter-spacing-tiny-font: divide(1, 128)*1em;
+$letter-spacing-tiny-font: math.div(1, 128)*1em;
 
 /* WIDTHS & HEIGHTS */
 $min-width-app: 960px;
@@ -114,7 +112,7 @@ $width-card-star: $lhse*1.25;
 $width-qty-column: $lhse*1.5;
 $max-width-deck-page-layout: calc(100vw - #{$lhse*3});
 $width-list-editor-region: $lhse*14.5;
-$margin-sections: divide($lhse, 3);
+$margin-sections: math.div($lhse, 3);
 $width-textarea-card-list: $lhse*11.5; // Slightly wider than the width of a line with the card "Okina, Temple to the Grandfathers" (the longest Magic card name that's not a joke card).
 $border-width-sections: 1px;
 $border-width-sections-medium: 3px;
@@ -135,7 +133,7 @@ $box-shadow-card-list-row-bg-edge: inset 0 0 0 1px $color-heading-bg;
 
 /* SHADOWS AND GLOWS */
 $box-shadow-button-shine: inset -.5px 1px 1px rgba(#fff, .25);
-$box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba($color-subtle-bluish-shadow-base, 1/3);
+$box-shadow-sticky-header: 0 $lhse*.0833 $lhse*.125 rgba($color-subtle-bluish-shadow-base, math.div(1, 3));
 $drop-shadow-card-shadow: drop-shadow(-$lhse*.5 $lhse*1.5 $lhse*.5 $color-subtle-bluish-shadow);
 $box-shadow-popups:
 	0 0 0 1px $color-mythic-dim,
@@ -149,11 +147,8 @@ $transition-duration-card-image-hover-fast: $transition-duration-card-image-hove
 /* MISCELLANEOUS VARIABLES */
 $border-radius-button: #{$lhse} / #{$lhse * 2};
 $border-radius-group: $lhse*.5;
-$border-radius-small-button: divide($border-radius-group, 2);
+$border-radius-small-button: math.div($border-radius-group, 2);
 $layers: card-li-focus-within, card-li-hover, scroll-to-top, dropdown-label, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $opacity-mana-symbols: .9167;
 $filter-brightness-button-hover: brightness(1.1667) saturate(1.0833);
 $x: 2px dashed rgba(#0f0, .5);
-
-/* MIXINS */
-@import 'mixins';

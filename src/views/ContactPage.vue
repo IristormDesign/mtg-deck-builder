@@ -28,5 +28,5 @@
 </template>
 
 <style lang="scss">
-	@import '@/sass/page-contact.scss';
+	@use '@/sass/page-contact.scss';
 </style>

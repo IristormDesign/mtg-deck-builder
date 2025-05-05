@@ -1,3 +1,7 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
+
 .mana-symbol {
 	$common-mana-symbol-size: .8em;
 
@@ -43,8 +47,8 @@
 		div {
 			transform: scale(.5);
 			line-height: $common-mana-symbol-size*2;
-			letter-spacing: divide(1em, -12);
-			text-indent: divide(1em, -6);
+			letter-spacing: math.div(1em, -12);
+			text-indent: math.div(1em, -6);
 			white-space: nowrap
 		}
 	}
@@ -141,7 +145,7 @@
 	text-align: center;
 	font: 800 11px/#{9px} 'Ysabeau', 'Trebuchet MS', sans-serif;
 	height: 11px;
-	outline: 1px solid rgba(#000, 2/3);
+	outline: 1px solid rgba(#000, math.div(2, 3));
 	color: $color-black-label-text;
 	text-shadow: none;
 
@@ -154,49 +158,47 @@
 	}
 	&.common,
 	&.special {
-		outline-color: darken(#fff, 8.33%);
-		color: darken(#fff, 8.33%);
+		outline-color: color.adjust(#fff, $lightness: -8.33%);
+		color: color.adjust(#fff, $lightness: -8.33%);
 	}
 	&.common {
-		background: lighten(#000, 20%);
+		background: color.adjust(#000, $lightness: 20%);
 	}
 	&.uncommon {
 		background: linear-gradient(-60deg,
-			saturate(darken($color-rarity-silver, 25%), 4.17%),
-			saturate(lighten($color-rarity-silver, 12.5%), 4.17%),
-			saturate(darken($color-rarity-silver, 25%), 4.17%)
-		) $color-rarity-silver;
+			color.adjust($color-rarity-silver, $lightness: -25%, $saturation: 4.17%),
+			color.adjust($color-rarity-silver, $lightness: 12.5%, $saturation: 4.17%),
+			color.adjust($color-rarity-silver, $lightness: -25%, $saturation: 4.17%)
+		);
 		text-shadow: -.375px .5px 0 rgba(#fff, .5);
 	}
 	&.rare {
 		background: linear-gradient(-60deg,
-			desaturate(darken($color-rarity-gold, 20%), 12.5%),
-			desaturate(lighten($color-rarity-gold, 20%), 12.5%),
-			desaturate(darken($color-rarity-gold, 20%), 12.5%)
-		) $color-rarity-gold;
+			color.adjust($color-rarity-gold, $lightness: -20%, $saturation: -12.5%),
+			color.adjust($color-rarity-gold, $lightness: 20%, $saturation: -12.5%),
+			color.adjust($color-rarity-gold, $lightness: -20%, $saturation: -12.5%)
+		);
 		text-shadow: -.375px .5px 0 rgba(#fff, .5);
 	}
 	&.mythic {
 		background: linear-gradient(-60deg,
-			saturate(darken($color-rarity-mythic, 6.25%), 25%),
-			saturate(lighten($color-mythic-yellow, 8.33%), 12.5%),
-			saturate(darken($color-rarity-mythic, 6.25%), 25%)
-		) $color-mythic-yellow;
-		text-shadow: -.375px .5px 0 rgba(#fff, .5);
+			color.adjust($color-rarity-mythic, $lightness: -6.25%, $saturation: 25%),
+			color.adjust($color-mythic-yellow, $lightness: 8.33%, $saturation: 12.5%),
+			color.adjust($color-rarity-mythic, $lightness: -6.25%, $saturation: 25%)
+		);
 	}
 	&.special {
 		background: linear-gradient(-60deg,
-			darken($color-rarity-special, 25%),
-			saturate(lighten($color-rarity-special, 20%), 25%),
-			darken($color-rarity-special, 25%)
-		) $color-rarity-special;
-		text-shadow: .375px -.5px 0 rgba(#000, .6667);
+			color.adjust($color-rarity-special, $lightness: -25%),
+			color.adjust($color-rarity-special, $lightness: 20%, $saturation: 25%),
+			color.adjust($color-rarity-special, $lightness: -25%)
+		);
 	}
 }
 .warning-symbol {
-	color: desaturate(darken($color-rarity-gold, 8.33%), 25%);
+	color: color.adjust($color-rarity-gold, $lightness: -8.33%, $saturation: -25%);
 	font-size: 50%;
-	margin-top: divide($lhse, 6);
+	margin-top: math.div($lhse, 6);
 	width: $lhse;
 	height: $lhse;
 }

@@ -51,8 +51,7 @@ export default {
 				})
 			} else {
 				store.commit('analyzerFilter', {
-					category: category,
-					attribute: attribute
+					category, attribute
 				})
 			}
 		},

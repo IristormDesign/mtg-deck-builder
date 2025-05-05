@@ -23,5 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/app-header.scss';
+	@use '@/sass/app-header.scss';
 </style>

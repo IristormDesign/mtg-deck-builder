@@ -105,5 +105,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-home.scss';
+	@use '@/sass/page-home.scss';
 </style>

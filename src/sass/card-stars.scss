@@ -1,4 +1,11 @@
-@import 'variables';
+@use 'sass:color';
+@use 'variables-and-mixins' as *;
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
 
 .card-star {
 	position: absolute;
@@ -24,12 +31,6 @@
 			input {
 				&:checked {
 					+ svg {
-						@keyframes spin {
-							100% {
-								transform: rotate(360deg);
-							}
-						}
-
 						animation: spin 2s linear;
 						transition: $transition-duration-standard ease;
 						transition-property: opacity, fill, filter; // Exclude "transform" as a transition property while keeping the other properties. This is needed for Safari, because apparently `transition` and `animation` clash with each other on that browser when they both affect the same property, `transform` in this case.
@@ -136,7 +137,7 @@
 					&:checked {
 						+ svg {
 							opacity: 1;
-							fill: lighten($color-card-star, 16.67%);
+							fill: color.adjust($color-card-star, $lightness: 16.67%);
 							filter: drop-shadow(0 0 $lhse*.125 $color-mythic-yellow);
 							transition-delay: 0s;
 							transition-duration: $transition-duration-standard;

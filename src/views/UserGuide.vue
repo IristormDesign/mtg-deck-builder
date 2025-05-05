@@ -384,5 +384,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-user-guide.scss';
+	@use '@/sass/page-user-guide.scss';
 </style>

@@ -132,5 +132,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-bars.scss';
+	@use '@/sass/card-bars.scss';
 </style>

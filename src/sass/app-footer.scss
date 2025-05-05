@@ -1,5 +1,5 @@
 @use "sass:color";
-@import 'variables';
+@use 'variables-and-mixins' as *;
 
 .app-footer {
 	background: rgba($color-group-bg-lighter, .5);
@@ -26,7 +26,7 @@
 		margin: 0 .25em;
 	}
 	a {
-		@include link-colors(desaturate(lighten($color-link, 8.33%), 29.17%));
+		@include link-colors(color.adjust($color-link, $lightness: 8.33%, $saturation: -29.17%));
 
 		&:hover,
 		&:focus {

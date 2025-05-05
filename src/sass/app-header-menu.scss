@@ -1,4 +1,6 @@
-@import 'variables';
+@use 'sass:list';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 .header-menu-toggler {
 	display: none;
@@ -6,7 +8,7 @@
 .header-menu {
 	width: 100%;
 	max-width: max-content;
-	z-index: index($layers, above-overlay);
+	z-index: list.index($layers, above-overlay);
 
 	> .hover-shield {
 		display: none;
@@ -69,11 +71,11 @@
 	}
 	.deck-menu-toggler {
 		position: relative;
-		z-index: index($layers, app-menu-toggler);
+		z-index: list.index($layers, app-menu-toggler);
 	}
 	.deck-menu {
 		position: relative;
-		z-index: index($layers, above-overlay);
+		z-index: list.index($layers, above-overlay);
 
 		.hover-shield-transition-leave-to {
 			transition-duration: $transition-duration-standard*.5;
@@ -170,9 +172,6 @@
 	.header-menu {
 		margin: 0 auto;
 
-		> ul {
-			// gap: .75em;
-		}
 		.header-menu-item {
 			font-size: 80%;
 			min-height: 0;
@@ -198,7 +197,7 @@
 @media (max-width: $max-width-mobile-header-menu) {
 	.header-menu-positioner {
 		position: relative;
-		z-index: index($layers, app-menu-toggler);
+		z-index: list.index($layers, app-menu-toggler);
 		margin-top: -$lhse*1.125;
 	}
 	.header-menu-toggler {
@@ -206,7 +205,7 @@
 		top: -$lhse*.25;
 		right: 0;
 		display: block;
-		z-index: index($layers, app-menu-toggler);
+		z-index: list.index($layers, app-menu-toggler);
 		width: $lhse*2;
 		height: $lhse*1.6667;
 		min-width: 0;
@@ -276,7 +275,7 @@
 		}
 		.deck-menu {
 			background: $color-group-bg-extra-darker;
-			padding: 0 0 divide($lhse, 3) divide($lhse, 3);
+			padding: 0 0 math.div($lhse, 3) math.div($lhse, 3);
 			height: 100%;
 
 			.hover-shield {

@@ -39,18 +39,14 @@ export default {
 			if (name.length > 50) {
 				commitDialog({
 					id: 'nameIsTooLong',
-					data: {
-						callback: callback
-					}
+					data: { callback }
 				})
 
 				return false
 			} else if (!this.hasLetterOrDigit(name)) {
 				commitDialog({
 					id: 'missingLetterOrDigit',
-					data: {
-						callback: callback
-					}
+					data: { callback }
 				})
 
 				return false
@@ -60,10 +56,7 @@ export default {
 			) {
 				commitDialog({
 					id: 'deckNameExists',
-					data: {
-						name: name,
-						callback: callback
-					}
+					data: { name, callback }
 				})
 
 				return false

@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-create-deck.scss';
+	@use '@/sass/page-create-deck.scss';
 </style>

@@ -1,3 +1,5 @@
+@use 'variables-and-mixins' as *;
+
 .deck-header {
 	grid-column: span 6;
 	margin: $lhse auto 0;

@@ -32,5 +32,5 @@
 </template>
 
 <style lang="scss">
-	@import '@/sass/page-donate.scss';
+	@use '@/sass/page-donate.scss';
 </style>

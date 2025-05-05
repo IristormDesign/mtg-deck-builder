@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 @keyframes highlight-chapter {
 	50% {
@@ -120,7 +121,7 @@ $animation-highlight-toc: highlight-toc $animation-highlight-attributes;
 		a {
 			text-decoration-line: none;
 			display: block;
-			padding: $lhse*.125 divide($lhse, 4);
+			padding: $lhse*.125 math.div($lhse, 4);
 			margin-left: -$lhse*.25;
 
 			&:hover,
@@ -220,8 +221,8 @@ $animation-highlight-toc: highlight-toc $animation-highlight-attributes;
 		}
 		footer {
 			border-top: $border-sections-medium;
-			padding-top: divide($lhse, 4);
-			padding-bottom: divide($lhse, 4);
+			padding-top: math.div($lhse, 4);
+			padding-bottom: math.div($lhse, 4);
 
 			ul {
 				display: flex;

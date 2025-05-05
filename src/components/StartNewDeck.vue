@@ -54,9 +54,7 @@ export default {
 			} else if (this.deckExists(path)) {
 				store.commit('idOfShowingDialog', {
 					id: 'deckNameExists',
-					data: {
-						name: name
-					}
+					data: { name }
 				})
 			} else {
 				const updatedDecksArray = store.state.decks
@@ -66,8 +64,8 @@ export default {
 					colors: [],
 					dataVersion: this.latestDeckDataVersion,
 					editDate: new Date(),
-					name: name,
-					path: path,
+					name,
+					path,
 					sideboard: {
 						cards: [],
 						viewedCard: null

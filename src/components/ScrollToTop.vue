@@ -49,5 +49,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/scroll-to-top.scss';
+	@use '@/sass/scroll-to-top.scss';
 </style>

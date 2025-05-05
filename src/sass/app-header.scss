@@ -1,17 +1,20 @@
-// NOTE: This SCSS file excludes the styles for the app header menu, which are in app-header-menu.scss.
+/* NOTE: This SCSS file excludes the styles for the app header menu, which are in app-header-menu.scss. */
 
-@import 'variables';
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 :root {
 	--header-height: #{$height-app-header-short};
 }
 .app-header {
 	background: $color-mythic-dim;
-	color: desaturate(lighten($color-mythic-dim, 40%), 6.25%);
-	border: solid darken($color-mythic-dim, 12.5%);
+	color: color.adjust($color-mythic-dim, $lightness: 40%, $saturation: -6.25%);
+	border: solid color.adjust($color-mythic-dim, $lightness: -12.5%);
 	border-width: 1px 0;
 	border-top-color: $color-mythic-dim;
-	z-index: index($layers, app-header);
+	z-index: list.index($layers, app-header);
 	height: var(--header-height);
 	box-shadow: 0 0 0 1px rgba(#fff, .125);
 
@@ -92,10 +95,10 @@
 		&:hover,
 		&:focus,
 		&:active {
-			background: lighten($color-mythic-dim, 8.33%);
+			background: color.adjust($color-mythic-dim, $lightness: 8.33%);
 		}
 		&:active {
-			background: darken($color-mythic-dim, 4.17%);
+			background: color.adjust($color-mythic-dim, $lightness: -4.17%);
 		}
 	}
 }
@@ -109,7 +112,7 @@
 
 		.wrap {
 			flex-wrap: wrap;
-			gap: divide($lhse, 3);
+			gap: math.div($lhse, 3);
 			align-content: center;
 		}
 		.app-title {

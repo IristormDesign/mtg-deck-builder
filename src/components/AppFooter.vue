@@ -31,5 +31,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/app-footer.scss';
+	@use '@/sass/app-footer.scss';
 </style>

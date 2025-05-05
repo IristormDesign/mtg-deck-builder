@@ -94,5 +94,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/index.scss';
+	@use '@/sass/index.scss';
 </style>

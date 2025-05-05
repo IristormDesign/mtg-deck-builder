@@ -1,5 +1,6 @@
+@use 'sass:math';
 @use "sass:color";
-@import 'variables';
+@use 'variables-and-mixins' as *;
 
 @mixin box-shadow-hover-card-bar($color, $darker-shadow: false) {
 	$border-width-card-bar: 2.3333px;
@@ -31,7 +32,7 @@
 		.card-label-group {
 			width: 50%;
 			max-width: calc(50% - ($lhse*.25));
-			padding: 0 divide($lhse, 8);
+			padding: 0 math.div($lhse, 8);
 
 			&:last-of-type {
 				border-top: none;
@@ -54,7 +55,7 @@
 			width: 100%;
 			max-width: 100%;
 			height: auto;
-			padding: 0 divide($lhse, 5);
+			padding: 0 math.div($lhse, 5);
 
 			&:last-of-type {
 				margin-left: 0;
@@ -196,28 +197,28 @@
 		&.highlight {
 			.card-bar {
 				&.white {
-					@include box-shadow-hover-card-bar(lighten($color-mana-white, 25%));
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-white, $lightness: 25%));
 				}
 				&.blue {
-					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-blue, 40%), 16.67%));
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-blue, $lightness: -40%, $saturation: -16.67%));
 				}
 				&.black {
-					@include box-shadow-hover-card-bar(darken($color-mana-black, 40%), true);
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-black, $lightness: -40%), true);
 				}
 				&.red {
-					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-red, 29.17%), 25%));
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-red, $lightness: -29.17%, $saturation: -25%));
 				}
 				&.green {
-					@include box-shadow-hover-card-bar(desaturate(darken($color-mana-green, 25%), 16.67%));
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-green, $lightness: -25%, $saturation: -16.67%));
 				}
 				&.multi {
-					@include box-shadow-hover-card-bar(desaturate($color-mana-hybrid, 16.67%));
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-hybrid, $saturation: -16.67%));
 				}
 				&.colorless {
-					@include box-shadow-hover-card-bar(darken($color-frame-generic, 4.17%));
+					@include box-shadow-hover-card-bar(color.adjust($color-frame-generic, $lightness: -4.17%));
 				}
 				&.land {
-					@include box-shadow-hover-card-bar(darken($color-frame-land, 16.67%));
+					@include box-shadow-hover-card-bar(color.adjust($color-frame-land, $lightness: -16.67%));
 				}
 			}
 		}

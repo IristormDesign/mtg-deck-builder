@@ -84,5 +84,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-list-editor.scss';
+	@use '@/sass/page-list-editor.scss';
 </style>

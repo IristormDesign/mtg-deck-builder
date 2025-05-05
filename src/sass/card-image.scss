@@ -1,7 +1,11 @@
-@import 'variables';
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
+
 $height-card-image-section: #{680px * .6667};
-$transition-delay-card: divide(1, 3) * 1s;
-$animation-duration-card-browse: (1s / 3);
+$transition-delay-card: math.div(1, 3) * 1s;
+$animation-duration-card-browse: $transition-delay-card;
 
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
@@ -12,18 +16,19 @@ $animation-duration-card-browse: (1s / 3);
 	@if $enter-from == 'right' {
 		$transform: rotate(10deg) translateY($lhse*.25) translateX($lhse*8) scale(1.0833);
 	}
+		@keyframes card-fan-in-#{$enter-from} {
+			0% {
+				opacity: 0;
+				transform: $transform translateY(-$lhse*2) scale(1.0833);
+			}
+			50% {
+				opacity: 1;
+			}
+		}
 
-	@keyframes card-fan-in-#{$enter-from} {
-		0% {
-			opacity: 0;
-			transform: $transform translateY(-$lhse*2) scale(1.0833);
-		}
-		50% {
-			opacity: 1;
-		}
+	& {
+		animation-name: card-fan-in-#{$enter-from};
 	}
-
-	animation-name: card-fan-in-#{$enter-from};
 }
 @mixin card-link ($rise-from) {
 	$scale: scale(1.3333);
@@ -32,11 +37,11 @@ $animation-duration-card-browse: (1s / 3);
 
 	@if $rise-from == 'left' {
 		$translate: translate($lhse*1.375, $lhse*2);
-		$rotate: rotate((-360/192) * 1deg);
+		$rotate: rotate(math.div(-360, 192) * 1deg);
 	}
 	@if $rise-from == 'right' {
 		$translate: translate(-$lhse*1.375, $lhse*2);
-		$rotate: rotate((360/192) * 1deg);
+		$rotate: rotate(math.div(360, 192) * 1deg);
 	}
 
 	a {
@@ -57,11 +62,11 @@ $animation-duration-card-browse: (1s / 3);
 			&.sideways {
 				@if $rise-from == 'left' {
 					$translate: translate($lhse*2.5, $lhse*.25);
-					$rotate: rotate(90deg - (360/128) * 1deg);
+					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
 				}
 				@if $rise-from == 'right' {
 					$translate: translate(-$lhse*2.5, $lhse*.25);
-					$rotate: rotate(90deg + (360/128) * 1deg);
+					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
 				}
 
 				transform: $scale $translate $rotate;
@@ -79,7 +84,8 @@ $animation-duration-card-browse: (1s / 3);
 	}
 }
 @mixin card-edge-filters ($position) {
-	$color-card-edge: darken(#fff, 66.67%);
+	$color-card-edge: color.adjust(#fff, $lightness: -66.67%);
+
 	will-change: filter;
 
 	@if $position == 'left' {
@@ -102,7 +108,7 @@ $animation-duration-card-browse: (1s / 3);
 	grid-area: card-img;
 	position: sticky;
 	top: $lhse*.5;
-	z-index: index($layers, card-overlay);
+	z-index: list.index($layers, card-overlay);
 	height: min-content; // Needed so that the app footer links positioned directly beneath the card image can still be clicked.
 
 	.card-placement-outline {
@@ -110,7 +116,7 @@ $animation-duration-card-browse: (1s / 3);
 		width: min(#{488px * .6667}, 25vw);
 		max-height: $height-card-image-section;
 		aspect-ratio: 488 / 680;
-		outline: divide($lhse, 3) dashed rgba(#fff, .1667);
+		outline: math.div($lhse, 3) dashed rgba(#fff, .1667);
 		outline-offset: -$lhse*.75;
 	}
 	.image-container {
@@ -141,33 +147,33 @@ $animation-duration-card-browse: (1s / 3);
 	}
 	.card-shape {
 		mask-image: url('~@/img/card-mask.svg');
-		box-shadow: inset 0 0 0 10px lighten(#000, 8.33%); // Black card border without card image
-		background: desaturate(darken($color-frame-generic, 33.33%), 4.17%);
+		box-shadow: inset 0 0 0 10px color.adjust(#000, $lightness: 8.33%); // Black card border without card image
+		background: color.adjust($color-frame-generic, $lightness: -33.33%, $saturation: -4.17%);
 
 		&.land {
-			background: desaturate(darken($color-frame-land, 37.5%), 0%);
+			background: color.adjust($color-frame-land, $lightness: -37.5%);
 		}
 		&.W {
-			background: desaturate(darken($color-frame-white, 16.67%), 8.33%);
+			background: color.adjust($color-frame-white, $lightness: -16.67%, $saturation: -8.33%);
 
 			.loading-indicator {
 				color: #000;
 			}
 		}
 		&.U {
-			background: desaturate(darken($color-frame-blue, 50%), 8.33%);
+			background: color.adjust($color-frame-blue, $lightness: -50%, $saturation: -8.33%);
 		}
 		&.B {
-			background: desaturate(darken($color-frame-black, 50%), 0%);
+			background: color.adjust($color-frame-black, $lightness: -50%);
 		}
 		&.R {
-			background: desaturate(darken($color-frame-red, 50%), 8.33%);
+			background: color.adjust($color-frame-red, $lightness: -50%, $saturation: -8.33%);
 		}
 		&.G {
-			background: desaturate(darken($color-frame-green, 50%), 8.33%);
+			background: color.adjust($color-frame-green, $lightness: -50%, $saturation: -8.33%);
 		}
 		&.multi {
-			background: desaturate(darken($color-frame-multi, 25%), 16.67%);
+			background: color.adjust($color-frame-multi, $lightness: -25%, $saturation: -16.67%);
 		}
 	}
 	img {
@@ -281,7 +287,7 @@ $animation-duration-card-browse: (1s / 3);
 }
 @media (max-width: $width-deck-hidden-image) {
 	.card-image {
-		z-index: index($layers, app-header);
+		z-index: list.index($layers, app-header);
 		position: fixed;
 
 		&.image-fade {
@@ -346,7 +352,7 @@ $animation-duration-card-browse: (1s / 3);
 		}
 		.turn-over {
 			position: fixed;
-			bottom: divide($lhse, 3);
+			bottom: math.div($lhse, 3);
 			left: $lhse*.5;
 			display: block;
 			min-height: auto;
@@ -359,7 +365,7 @@ $animation-duration-card-browse: (1s / 3);
 			background: $color-button-gray;
 			display: block;
 			position: absolute;
-			top: divide($lhse, 3);
+			top: math.div($lhse, 3);
 			right: $lhse*.25;
 			min-width: $lhse;
 			padding: 0;

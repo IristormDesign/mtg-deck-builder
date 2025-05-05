@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables-and-mixins' as *;
 
 .donate-page {
 	max-width: $max-width-content*1.5;

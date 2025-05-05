@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables-and-mixins' as *;
 
 .text-renderer {
 	margin: 0 auto $lhse*.5;

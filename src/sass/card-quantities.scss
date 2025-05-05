@@ -1,4 +1,6 @@
-@import 'variables';
+@use 'sass:list';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 @mixin long-card-bars {
 	.card-list-section {
@@ -97,8 +99,8 @@
 		display: none;
 		position: absolute;
 		right: -$lhse*1.75;
-		top: divide($lhse, -3);
-		z-index: index($layers, card-list-item-hover);
+		top: math.div($lhse, -3);
+		z-index: list.index($layers, card-list-item-hover);
 		width: auto;
 		height: $lhse*1.6667;
 		grid-template-areas:

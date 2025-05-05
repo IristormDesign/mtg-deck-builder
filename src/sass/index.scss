@@ -1,9 +1,7 @@
-@import 'normalize';
-@import 'variables';
-
-@import 'general';
-@import 'links-and-forms';
-@import 'content-box';
-@import 'symbols';
-@import 'misc';
-@import 'dialogs';
+@use 'normalize';
+@use 'general';
+@use 'links-and-forms';
+@use 'content-box';
+@use 'symbols';
+@use 'misc';
+@use 'dialogs';

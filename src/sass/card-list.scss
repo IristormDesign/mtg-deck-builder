@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'sass:list';
+@use 'variables-and-mixins' as *;
 
 .card-list-section {
 	padding: $lhse*.4583 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
@@ -54,11 +55,11 @@
 			transition-duration: 0s;
 		}
 		&:hover {
-			z-index: index($layers, card-li-hover);
+			z-index: list.index($layers, card-li-hover);
 		}
 		&:focus-within,
 		&.highlight {
-			z-index: index($layers, card-li-focus-within);
+			z-index: list.index($layers, card-li-focus-within);
 		}
 		&:first-child {
 			margin-top: 0;

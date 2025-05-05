@@ -1,3 +1,5 @@
+@use 'variables-and-mixins' as *;
+
 /* I've made the dialog exit transition duration 0s because Safari doesn't work well with it. */
 
 $transition-duration-dialog: .5s;

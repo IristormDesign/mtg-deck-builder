@@ -161,5 +161,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-text-renderer.scss';
+	@use '@/sass/page-text-renderer.scss';
 </style>

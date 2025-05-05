@@ -1,3 +1,5 @@
+@use 'variables-and-mixins' as *;
+
 .content-box {
 	background: $color-group-bg;
 	border-radius: $border-radius-group;

@@ -239,8 +239,8 @@ export default {
 					this.$store.commit('idOfShowingDialog', {
 						id: 'excessiveQuantity',
 						data: {
-							qty: qty,
-							name: name,
+							qty,
+							name,
 							callback: this.focusOnTextarea
 						}
 					})
@@ -256,13 +256,13 @@ export default {
 
 				if (existingNameInAddList) {
 					this.repeatedCardNames.push({
-						qty: qty,
-						name: name
+						qty,
+						name
 					})
 				} else {
 					this.submittedCards.push({
-						qty: qty,
-						name: name
+						qty,
+						name
 					})
 				}
 			}
@@ -402,5 +402,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-list-entry.scss';
+	@use '@/sass/page-list-entry.scss';
 </style>

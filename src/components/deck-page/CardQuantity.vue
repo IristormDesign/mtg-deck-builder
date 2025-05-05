@@ -363,5 +363,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-quantities.scss';
+	@use '@/sass/card-quantities.scss';
 </style>

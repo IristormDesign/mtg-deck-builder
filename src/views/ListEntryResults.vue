@@ -200,5 +200,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/page-list-entry.scss';
+	@use '@/sass/page-list-entry.scss';
 </style>

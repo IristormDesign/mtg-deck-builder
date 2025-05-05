@@ -331,5 +331,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/card-image.scss';
+	@use '@/sass/card-image.scss';
 </style>

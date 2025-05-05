@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
 
 .create-deck-page {
 	max-width: $max-width-content*1.5;
@@ -126,7 +127,7 @@
 			flex-grow: .25;
 
 			h3 {
-				margin-bottom: divide($lhse, 3);
+				margin-bottom: math.div($lhse, 3);
 			}
 		}
 	}

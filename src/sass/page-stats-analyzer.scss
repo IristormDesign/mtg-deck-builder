@@ -1,4 +1,7 @@
-@import 'variables';
+@use 'sass:color';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
+
 $table-inner-borders: 1px solid $color-group-bg-lighter;
 $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 
@@ -28,7 +31,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		outline: $border-width-sections-medium dashed $color-mythic-orange;
 	}
 	&:hover {
-		background: desaturate(darken($color-highlight-bg, 6.25%), 6.25%);
+		background: $color-highlight-bg-hover;
 
 		th {
 			color: $color-app-header-link-hover;
@@ -213,9 +216,11 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			}
 		}
 		.filtering {
-			@include highlighted-table-component;
 			color: $color-text-brighter;
 
+			& {
+				@include highlighted-table-component;
+			}
 			th,
 			td {
 				border-right-color: $color-highlight-border;
@@ -266,9 +271,11 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 				color: $color-link-active;
 			}
 			&.filtering {
-				@include highlighted-table-component;
 				color: $color-app-header-link-active;
 
+				& {
+					@include highlighted-table-component;
+				}
 				&:hover {
 					color: $color-app-header-link-hover;
 				}
@@ -320,15 +327,15 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			padding-left: 0;
 		}
 		p {
-			margin: divide($lhse, 3) 0;
+			margin: math.div($lhse, 3) 0;
 		}
 	}
 }
 .filter-notice {
-	z-index: index($layers, scroll-to-top);
+	z-index: list($layers, scroll-to-top);
 	grid-column: span 4;
 	padding: 0 $lhse*1.5;
-	margin: divide(-$lhse, 3) (-$lhse*1.5) 0;
+	margin: math.div(-$lhse, 3) (-$lhse*1.5) 0;
 	border-width: 1px 0;
 	border-style: solid;
 	border-color: $color-section-border;
@@ -344,7 +351,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		left: 0;
 		right: 0;
 		box-shadow: $box-shadow-sticky-header;
-		background: rgba(saturate($color-highlight-bg, 8.33%), .9167);
+		background: color.adjust($color-highlight-bg, $alpha: 0.9167, $saturation: 8.33%);
 		border-color: $color-highlight-border;
 		color: $color-text-brighter-over-mythic-brown;
 

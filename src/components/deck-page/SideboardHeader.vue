@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@import '@/sass/sideboard-header.scss';
+	@use '@/sass/sideboard-header.scss';
 </style>

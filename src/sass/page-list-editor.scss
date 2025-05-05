@@ -1,11 +1,20 @@
-@import 'variables';
-@import 'card-list';
+@use 'sass:list';
+@use 'sass:math';
+@use 'variables-and-mixins' as *;
+@use 'card-list';
 
 $width-card-adder-button: $lhse*2;
 $width-card-list-section-wide:
 	$width-card-bars-wide + $width-card-star + $width-qty-column;
 $width-card-list-section-narrow:
 	$width-card-bars-narrow + $width-card-star + $width-qty-column;
+
+@keyframes pulsate-input {
+	100% {
+		background-color: $color-input-bg-active;
+		color: $color-link-active;
+	}
+}
 
 .list-editor {
 	margin: 0 auto $lhse*.5;
@@ -123,12 +132,12 @@ $width-card-list-section-narrow:
 	}
 	&:has(.opened) {
 		> svg {
-			opacity: (1/3);
+			opacity: math.div(1, 3);
 		}
 		label {
 			color: $color-text-brighter-over-mythic-brown;
 			background: $color-mythic-dim;
-			z-index: index($layers, dropdown-label);
+			z-index: list.index($layers, dropdown-label);
 			cursor: pointer;
 
 			&:hover,
@@ -162,7 +171,7 @@ $width-card-list-section-narrow:
 		grid-row: 1;
 	}
 	fieldset {
-		padding: $lhse*.0417 divide($lhse, 3);
+		padding: $lhse*.0417 math.div($lhse, 3);
 		grid-column: 2;
 		grid-row: 2;
 		display: flex;
@@ -186,7 +195,7 @@ $width-card-list-section-narrow:
 	padding-right: $lhse*.125;
 	padding-left: $lhse*.125;
 	text-align: center;
-	gap: 0 divide($lhse, 3);
+	gap: 0 math.div($lhse, 3);
 
 	a {
 		@include button('gray');
@@ -265,12 +274,7 @@ $width-card-list-section-narrow:
 		padding-right: 0;
 
 		&.attention {
-			@keyframes pulsate-input {
-				100% {
-					background-color: $color-input-bg-active;
-					color: $color-link-active;
-				}
-			}
+
 			animation-name: pulsate-input;
 			animation-duration: .25s;
 			animation-iteration-count: 2;
@@ -449,8 +453,8 @@ $width-card-list-section-narrow:
 			width: 100%;
 
 			ul {
-				margin-right: divide($lhse, 3);
-				margin-left: divide($lhse, 3);
+				margin-right: math.div($lhse, 3);
+				margin-left: math.div($lhse, 3);
 			}
 		}
 	}

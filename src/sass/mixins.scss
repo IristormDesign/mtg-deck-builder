@@ -1,4 +1,7 @@
-@use "sass:color";
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:color';
+@use 'variables' as *;
 
 @mixin heading-font {
 	font-family: 'Philosopher', $font-family-standard;
@@ -106,7 +109,7 @@
 }
 @mixin popup-menu-list-links {
 	min-width: 6em;
-	padding: 0 divide($lhse, 3);
+	padding: 0 math.div($lhse, 3);
 	min-height: $lhse*1.1667;
 	text-decoration: none;
 	display: flex;
@@ -148,7 +151,7 @@
 		width: $lhse;
 		height: $lhse;
 		fill: $color-button-orange;
-		margin: 0 0 0 divide(-$lhse, 3);
+		margin: 0 0 0 math.div(-$lhse, 3);
 		transition: fill $transition-duration-standard ease;
 	}
 
@@ -169,11 +172,11 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: index($layers, bg-overlay);
+	z-index: list.index($layers, bg-overlay);
 }
 @mixin disabled-style {
-	opacity: (1/3);
-	filter: saturate(1/3);
+	opacity: math.div(1, 3);
+	filter: saturate(math.div(1, 3));
 }
 @mixin button($color: 'orange') {
 	@include heading-font;
@@ -294,18 +297,24 @@
 @mixin pronounced-heading {
 	background: $color-heading-bg;
 	color: $color-text-extra-brighter;
-	padding: divide($lhse, 4) divide($lhse, 3);
-	margin: $lhse divide(-$lhse, 3) ($lhse*.5);
+	padding: math.div($lhse, 4) math.div($lhse, 3);
+	margin: $lhse math.div(-$lhse, 3) ($lhse*.5);
 	border-radius: $border-radius-button;
 	outline-offset: 2px !important;
 }
 @mixin sideboard-header-bg {
+	$adjustment-amount: (math.div(1, 160))*100%;
+
 	background-color: $color-mythic-brown;
 	background-image: repeating-linear-gradient(-45deg,
-		lighten($color-mythic-brown, (1/160)*100%) 0,
-		lighten($color-mythic-brown, (1/160)*100%) .5em,
-		darken( $color-mythic-brown, (1/160)*100%) .5em,
-		darken( $color-mythic-brown, (1/160)*100%) 1em
+		color.adjust($color-mythic-brown, $lightness: $adjustment-amount)
+			0,
+		color.adjust($color-mythic-brown, $lightness: $adjustment-amount)
+			.5em,
+		color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount))
+			.5em,
+		color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount))
+			1em
 	);
 	color: $color-text-over-mythic-brown;
 }
