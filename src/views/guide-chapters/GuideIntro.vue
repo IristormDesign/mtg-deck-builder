@@ -1,7 +1,12 @@
 <template>
 	<section id="guide-intro" key="guide-intro">
-		<figure>
-			<img class="card-illustration" src="~@/img/urzas-tome.jpg" width="626" height="457" alt="An illustration of a large, detailed, open book" />
+		<figure class="card-illustration">
+			<img
+				src="@/img/urza's-tome.jpg"
+				srcset="@/img/urza's-tome.jpg 1x, @/img/urza's-tome@2x.jpg 2x"
+				width="469" height="364"
+				alt="An illustration of a huge book, opened to pages displaying detailed diagrams"
+			/>
 			<figcaption>Illustration from <a href="https://scryfall.com/card/dom/235/urzas-tome" target="_blank">Urza’s Tome<svg><use href="#open-in-new-icon" /></svg></a> by Aaron Miller</figcaption>
 		</figure>
 		<h3>Introduction</h3>

@@ -36,8 +36,8 @@
 
 		figure {
 			float: none;
-			margin: $lhse*.5 auto;
-			width: fit-content;
+			margin: $lhse*.5 auto ($lhse*.5 + $margin-sections);
+			width: auto;
 		}
 	}
 }

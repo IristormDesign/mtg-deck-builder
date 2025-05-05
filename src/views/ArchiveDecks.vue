@@ -2,11 +2,16 @@
 	<article class="deck-action-page content-box">
 		<h2>Archive Decks</h2>
 		<div class="intro">
-			<figure>
-				<img class="card-illustration" src="~@/img/sages-reverie.jpg" width="626" height="457" alt="An illustration of a monk magically moving many scrolls from glowing slots among many huge shelves of scrolls" />
+			<figure class="card-illustration">
+				<img
+					src="@/img/sage's-reverie.jpg"
+					srcset="@/img/sage's-reverie.jpg 1x, @/img/sage's-reverie@2x.jpg 2x"
+					width="469" height="344"
+					alt="An illustration of a monk magically moving many scrolls from glowing slots among many huge shelves of scrolls"
+				/>
 				<figcaption>Illustration from <a href="https://scryfall.com/card/woc/73/sages-reverie" target="_blank">Sage’s Reverie<svg><use href="#open-in-new-icon" /></svg></a> by Jason Rainville</figcaption>
 			</figure>
-			<p v-if="numExisting > 0 && !hasBeenArchived">In the checklist, select the decks you want to save as a deck archive file. <router-link to="/guide/deck-page-header#archive-action" class="no-text-break">(More info&hellip;)</router-link></p>
+			<p v-if="numExisting > 0 && !hasBeenArchived">In the checklist, select the decks that you want to save as a deck archive file. <router-link to="/guide/deck-page-header#archive-action" class="no-text-break">(More info&hellip;)</router-link></p>
 		</div>
 		<template v-if="!hasBeenArchived">
 			<form v-if="numExisting > 0">

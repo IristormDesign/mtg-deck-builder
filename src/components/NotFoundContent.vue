@@ -2,8 +2,13 @@
 	<article class="page-not-found content-box wrap">
 		<h2>Error: Page Not Found</h2>
 
-		<figure>
-			<img class="card-illustration" src="~@/img/reject.jpg" width="626" height="457" alt="An illustration of a confused man" />
+		<figure class="card-illustration">
+			<img
+				src="@/img/reject.jpg"
+				srcset="@/img/reject.jpg 1x, @/img/reject@2x.jpg 2x"
+				width="469" height="344"
+				alt="An illustration of a befuddled goblin who just got a stamped imprint of a letter X on his forehead"
+			/>
 			<figcaption>Illustration from <a href="https://scryfall.com/card/stx/50/reject" target="_blank">Reject<svg><use href="#open-in-new-icon" /></svg></a> by Zoltan Boros</figcaption>
 		</figure>
 

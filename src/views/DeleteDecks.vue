@@ -2,11 +2,16 @@
 	<article class="deck-action-page content-box">
 		<h2>Delete Decks</h2>
 		<div class="intro">
-			<figure>
-				<img class="card-illustration" src="~@/img/planar-cleansing.jpg" width="626" height="457" alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky" />
+			<figure class="card-illustration">
+				<img
+					src="@/img/planar-cleansing.jpg"
+					srcset="@/img/planar-cleansing.jpg 1x, @/img/planar-cleansing@2x.jpg 2x"
+					width="469" height="344"
+					alt="An illustration of a crowd of people getting sucked upward into a glowing, stormy sky"
+				/>
 				<figcaption>Illustration from <a href="https://scryfall.com/card/m20/33/planar-cleansing" target="_blank">Planar Cleansing<svg><use href="#open-in-new-icon" /></svg></a> by Michael Komarck</figcaption>
 			</figure>
-			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks you want to erase. Warning: Deleted decks can’t be restored.</p>
+			<p v-if="numExisting > 0 && !hasBeenDeleted">In the checklist, select the decks that you want to erase from this app. Warning: Deleted decks can’t be restored.</p>
 		</div>
 		<template v-if="!hasBeenDeleted">
 			<form v-if="numExisting > 0">

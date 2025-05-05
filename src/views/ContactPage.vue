@@ -4,8 +4,13 @@
 
 		<p>The creator of MTG Deck Builder is Damian Schmidt of <a href="https://iristormdesign.com/" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>. You can reach him for questions, praise, or insults via any of the following media. Bug reports are appreciated.</p>
 
-		<figure>
-			<img class="card-illustration" src="~@/img/tidings.jpg" width="626" height="457" alt="An illustration of a man's hand pressing a wax seal onto a scroll by candlelight" />
+		<figure class="card-illustration">
+			<img
+				src="@/img/tidings.jpg"
+				srcset="@/img/tidings.jpg 1x, @/img/tidings@2x.jpg 2x"
+				width="469" height="343"
+				alt="An illustration of a man's hand pressing a wax seal onto a scroll by candlelight"
+			/>
 			<figcaption>Illustration from <a href="https://scryfall.com/card/c18/108/tidings" target="_blank">Tidings<svg><use href="#open-in-new-icon" /></svg></a> by Pete Venters</figcaption>
 		</figure>
 

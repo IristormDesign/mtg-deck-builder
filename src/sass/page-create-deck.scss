@@ -1,9 +1,9 @@
 @import 'variables';
 
 .create-deck-page {
-	max-width: $max-width-app*.6667;
+	max-width: $max-width-content*1.5;
 	display: grid;
-	grid-template-columns: 5fr 4fr;
+	grid-template-columns: 1fr 1fr;
 	gap: $lhse;
 	align-items: flex-start;
 	padding-bottom: $lhse;

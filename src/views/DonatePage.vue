@@ -2,12 +2,11 @@
 	<article class="donate-page content-box">
 		<h2>Donation Request</h2>
 
-		<figure>
+		<figure class="card-illustration">
 			<img
-				class="card-illustration"
 				src="@/img/beloved-beggar.jpg"
 				srcset="@/img/beloved-beggar.jpg 1x, @/img/beloved-beggar@2x.jpg 2x"
-				width="487" height="358"
+				width="469" height="345"
 				alt="An illustration of an old homeless man happily receiving coins from a passerby"
 			/>
 			<figcaption>Illustration from <a href="https://scryfall.com/card/mid/3/beloved-beggar-generous-soul" target="_blank">Beloved Beggar<svg><use href="#open-in-new-icon" /></svg></a> by Francisco Miyara</figcaption>
