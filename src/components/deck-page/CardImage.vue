@@ -140,6 +140,8 @@ export default {
 				/\bBattle\b/.test(this.card.type)
 			) {
 				return true
+			} else if (this.card.type.includes('Plane ')) {
+				return true
 			} else {
 				return false
 			}

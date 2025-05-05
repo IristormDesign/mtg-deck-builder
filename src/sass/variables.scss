@@ -23,7 +23,7 @@ $color-section-border-alt: lighten($color-mythic-brown, 12.5%); // Lighten perce
 $color-mythic-yellow: #ff9624; // #FFF with overlay blend on mythic-orange
 $color-link-focus: lighten($color-mythic-yellow, 12.5%);
 $color-link-active: saturate(lighten($color-mythic-yellow, 25%), 50%);
-$color-app-header-link: desaturate(lighten($color-mythic-yellow, 12.5%), 12.5%);
+$color-app-header-link: desaturate(lighten($color-mythic-yellow, 16.67%), 12.5%);
 $color-app-header-link-hover: lighten($color-app-header-link, 12.5%);
 $color-app-header-link-active: saturate(darken($color-app-header-link, 6.25%), 25%);
 $color-input-bg-focus: desaturate(darken($color-mythic-yellow, 41.67%), 62.5%);
