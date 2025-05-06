@@ -367,6 +367,12 @@ $width-card-list-section-narrow:
 	.card-group-switch {
 		border-left-width: 0;
 	}
+	.scryfall-button,
+	.list-entry-button {
+		.section-label {
+			margin-top: 0;
+		}
+	}
 }
 @mixin adder-controls-single-layer {
 	.list-editor {
@@ -385,6 +391,10 @@ $width-card-list-section-narrow:
 	.scryfall-button,
 	.list-entry-button {
 		flex-direction: column;
+
+		.section-label {
+			margin-top: $lhse*.2;
+		}
 	}
 	.scryfall-button {
 		grid-row: 1;
