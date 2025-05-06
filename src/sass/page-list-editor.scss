@@ -40,7 +40,6 @@ $width-card-list-section-narrow:
 		border-radius: $border-radius-group;
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
-		overflow: hidden;
 		width: 100%;
 	}
 	.card-list-section {
@@ -223,6 +222,7 @@ $width-card-list-section-narrow:
 	flex-grow: 1;
 	transition: background-color .5s ease;
 	background-color: $color-group-bg;
+	position: relative;
 
 	> form {
 		align-items: center;
@@ -274,12 +274,28 @@ $width-card-list-section-narrow:
 		padding-right: 0;
 
 		&.attention {
-
 			animation-name: pulsate-input;
 			animation-duration: .25s;
 			animation-iteration-count: 2;
 			animation-direction: alternate;
 			animation-timing-function: ease-in-out;
+		}
+	}
+	.tip {
+		position: absolute;
+		top: $lhse*.0833;
+		right: $lhse*.0833;
+
+		button {
+			@include link;
+			width: $lhse;
+			height: $lhse;
+			min-width: 0;
+			border-radius: 50%;
+		}
+		svg {
+			width: $lhse;
+			height: $lhse;
 		}
 	}
 	.loading-indicator {
@@ -419,6 +435,8 @@ $width-card-list-section-narrow:
 		border-top: $border-sections;
 		grid-row: 2;
 		grid-column: span 2;
+		border-bottom-right-radius: $lhse;
+		border-bottom-left-radius: $lhse;
 
 		input,
 		> form button {
@@ -497,7 +515,6 @@ $width-card-list-section-narrow:
 @media (max-width: ($min-width-app * .625)) {
 	@include viewing-controls-double-layers;
 	@include adder-controls-double-layers;
-
 }
 @media (max-width: ($min-width-app * .5)) {
 	.list-editor {

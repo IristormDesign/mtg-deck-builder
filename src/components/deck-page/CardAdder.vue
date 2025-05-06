@@ -5,6 +5,15 @@
 			@submit.prevent="handleSubmit()"
 		>
 			<label for="card-input">Add a new card name:</label>
+			<div class="tip">
+				<button
+					type="button"
+					@click="$store.commit('idOfShowingDialog', 'adderTip')"
+					title="Card adder tips"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M450-290h60v-230h-60v230Zm30-298.46q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm.07 488.46q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+				</button>
+			</div>
 			<input
 				@input="submitSuggestion()"
 				@focus="adderFocused()"
@@ -41,6 +50,22 @@
 		</div>
 		<standard-dialog dialogID="nonScryfallURLQuery">
 			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="adderTip">
+			<h3>Card Adder Tips</h3>
+			<p>You can include new names in the card list by any of three different kinds of queries:</p>
+			<ul>
+				<li>
+					<p>Submit the <strong>name</strong> of a certain <i>Magic</i> card to add that card.</p>
+				</li>
+				<li>
+					<p>Submit the <strong>URL</strong> of a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that print. For example:<br>“<span class="url">https://scryfall.com/card/wc97/sg299/giant-growth</span>”</p>
+				</li>
+				<li>
+					<p>Submit the code “<strong>#random</strong>” to add a random <i>Magic</i> card.</p>
+				</li>
+			</ul>
+			<p>For more info about the card adder, see the <router-link to="/guide/list-editor#card-adder">User Guide</router-link>.</p>
 		</standard-dialog>
 	</section>
 </template>
