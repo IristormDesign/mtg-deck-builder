@@ -231,9 +231,10 @@
 				/>
 			</p>
 			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to be put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
-			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one the <a href="#card-groups">group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
-			<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three accepted kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>. Submit your query from the card adder by clicking the “Add” button, or by pressing the Enter/Return key on your keyboard.</p>
-			<p>The card adder adds only one card name at a time. If you want to add multiple names at a time, do that on the <router-link to="card-list-entry">Card List Entry</router-link> page.</p>
+			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one the <a href="#card-groups">card group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
+			<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>.</p>
+			<p>To submit your query in the card adder, click the “+” (plus sign) button (located to the right of the text field), or by pressing the Enter/Return key on your keyboard.</p>
+			<p>The card adder works with only one card name at a time. To add <em>multiple</em> names at a time, go to the <router-link to="card-list-entry">Card List Entry</router-link> page instead.</p>
 
 			<section id="card-name-query">
 				<h5>Card Name Query</h5>
@@ -249,25 +250,26 @@
 			</section>
 			<section id="random-card-query">
 				<h5>Random Card Query</h5>
-				<p>You can add the name of a <i>Magic</i> card at random (among cards legal in Vintage tournaments). To do so, enter the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>. Your web browser probably also shows “#random” as a selectable option when the card adder’s text field has browser focus.</p>
+				<p>You can add the name of a <i>Magic</i> card at random (among cards legal in Vintage tournaments). To do so, enter the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>.</p>
+				<p>Your web browser may also show “#random” as a selectable option when the card adder’s text field gains browser focus.</p>
 			</section>
 			<section id="card-adder-other-info">
 				<h5>Other Information About the Card Adder</h5>
 				<ul>
 					<li>
-						<p>You can press the <kbd>X</kbd> key to have your web browser focus onto the <a href="#card-adder">card adder</a>’s text field. Press <kbd class="">Esc</kbd> to cancel your web browser’s focus on the text field, allowing the use of other <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>
+						<p>You can press the <kbd>X</kbd> key to have your web browser focus onto the <a href="#card-adder">card adder</a>’s text field. Then, if you change your mind, press <kbd class="">Esc</kbd> to cancel your browser’s focus on the text field, letting you use other <router-link to="keyboard-shortcuts">keyboard shortcuts</router-link>.</p>
 					</li>
 					<li>
-						<p>Card queries are case insensitive (meaning it doesn’t matter whether you type letters as uppercase or lowercase).</p>
+						<p>Card queries are case insensitive (meaning it doesn’t matter whether you type any letters as uppercase or lowercase).</p>
 					</li>
 					<li>
-						<p>The card adder won’t add a name that already exists in the <a href="#card-list">card list</a>. (To add duplicates of an existing name, <a href="#card-quantities">increase its quantity</a> instead.)</p>
+						<p>The card adder won’t add a name that already exists in the present <a href="#card-list">card list</a>. (If you intend to add duplicates of an existing name, <a href="#card-quantities">increase its quantity</a> from the list instead.)</p>
 					</li>
 					<li>
 						<p>When submitting a query, MTG Deck Builder sends an external data request to the Scryfall web servers, and so retrieving your card’s data may take a second or two to complete.</p>
 					</li>
 					<li>
-						<p>Every newly added card name is put at the bottom of the card list. You can use the <a href="#card-sorter">card sorter</a> afterward to rearrange the newly added names among the rest.</p>
+						<p>Every newly added card name is put at the bottom of the card list. You can use the <a href="#card-sorter">card sorter</a> afterward to rearrange the newly added names among the rest of the list.</p>
 					</li>
 				</ul>
 			</section>

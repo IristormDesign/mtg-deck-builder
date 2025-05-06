@@ -2,7 +2,7 @@
 	<section class="card-adder">
 		<form
 			v-if="!loadingCard"
-			@submit.prevent="handleSubmit()"
+			@submit.prevent="heardSubmit()"
 		>
 			<label for="card-input">Add a new card name:</label>
 			<div class="tip">
@@ -52,14 +52,14 @@
 			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="adderTip">
-			<h3>Tips for Adding Cards</h3>
-			<p>You can include new names in the card list with any of three kinds of queries:</p>
+			<h4>Tips for Adding Cards</h4>
+			<p>You can include new names in the card list with three kinds of queries:</p>
 			<ul>
 				<li>
 					<p>Submit the <strong>name</strong> of a certain <i>Magic</i> card to add that card.</p>
 				</li>
 				<li>
-					<p>Submit the <strong>URL</strong> of a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that particular print. For example:<br>“<span class="url">https://scryfall.com/card/wc97/sg299/giant-growth</span>”</p>
+					<p>Submit the <strong>URL</strong> of a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print. For example:<br><i class="url">https://scryfall.com/card/wc97/sg299/giant-growth</i></p>
 				</li>
 				<li>
 					<p>Submit the code “<strong>#random</strong>” to add a random <i>Magic</i> card.</p>
@@ -108,7 +108,7 @@ export default {
 
 			/* If the user pastes the URL of a Scryfall card page into the card adder's text input, then automatically submit the query. */
 			if (this.regexScryfallCardURL.test(this.cardQueryInput)) {
-				this.handleSubmit()
+				this.heardSubmit()
 			}
 		}
 	},
@@ -155,12 +155,12 @@ export default {
 
 			for (const option of options) {
 				if (this.cardQueryInput === option.value) {
-					this.handleSubmit()
+					this.heardSubmit()
 					break
 				}
 			}
 		},
-		handleSubmit () {
+		heardSubmit () {
 			if (this.cardQueryInput === '') {
 				this.$refs.focusCardAdder.focus()
 			} else {
