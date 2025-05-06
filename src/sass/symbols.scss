@@ -143,8 +143,8 @@
 	border-radius: $border-radius-button;
 	min-width: 16px; // Needed so that the .rarity element doesn't get squished by a very long .type element.
 	text-align: center;
-	font: 800 11px/#{9px} 'Ysabeau', 'Trebuchet MS', sans-serif;
-	height: 11px;
+	font: 800 11px/#{11px} 'Ysabeau', 'Trebuchet MS', sans-serif;
+	height: 12px;
 	outline: 1px solid rgba(#000, math.div(2, 3));
 	color: $color-black-label-text;
 	text-shadow: none;
