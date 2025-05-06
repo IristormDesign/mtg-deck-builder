@@ -29,8 +29,6 @@ export default {
 			const deck = this.deck
 
 			if (this.$route.name === 'drawSim') {
-				card.uniqueID = new Date().getTime() // This is needed so that if a certain card name would be drawn more than once in a row, then each drawn instance after the first would be made to always show the card image transition, even despite sharing the same card name.
-
 				store.commit('viewedDrawnCard', card)
 			} else if (store.state.showSideboard) {
 				deck.sideboard.viewedCard = card

@@ -234,7 +234,6 @@ export default {
 				this.drawCard(showCard)
 			} else {
 				this.library.splice(0, 1)
-				card.uniqueID = this.drawnList.length
 				this.drawnList.unshift(card)
 				if (
 					!this.isMobileLayout() &&
