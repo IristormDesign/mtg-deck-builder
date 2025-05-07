@@ -45,6 +45,7 @@
 		transition-property: transform, filter, max-width;
 		position: relative;
 		border-radius: $border-radius-button;
+		will-change: contents; // Prevents odd gaps that tend to appear between some <li> elements after sorting cards.
 
 		&:last-of-type {
 			margin-bottom: $margin-card-gap-after;
