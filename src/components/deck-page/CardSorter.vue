@@ -394,55 +394,46 @@ export default {
 			})
 		},
 		sortByPTSum (cards) {
-			/* First, sort between cards that have the power attribute and cards that don't. */
 			cards.sort((a, b) => {
-				if (a.power !== undefined) {
+				const determineAttributes = (card) => {
+					let power = 0
+					let toughness = 0
+
+					if (card.loyalty !== undefined) {
+						toughness = Number(card.loyalty)
+					} else if (card.toughness !== undefined) {
+						power = isNaN(card.power) ? 0 : Number(card.power)
+
+						toughness = isNaN(card.toughness) ? 0 : Number(card.toughness)
+					}
+
+					return {
+						power,
+						sum: power + toughness,
+						hasPTOrL: (
+							card.toughness !== undefined ||
+							card.loyalty !== undefined
+						)
+					}
+				}
+
+				const aAtts = determineAttributes(a)
+				const bAtts = determineAttributes(b)
+
+				// First, prioritize cards with the power/toughness or loyalty attributes.
+				if (aAtts.hasPTOrL && !bAtts.hasPTOrL) {
 					return -1
-				} else if (b.power === undefined) {
+				} else if (!aAtts.hasPTOrL && bAtts.hasPTOrL) {
 					return 1
-				} else {
-					return 0
-				}
-			})
-
-			/* Next, sort the cards by their P/T sum. */
-			cards.sort((a, b) => {
-				let cardAPower = a.power
-				let cardBPower = b.power
-				let cardATough = a.toughness
-				let cardBTough = b.toughness
-
-				if (isNaN(cardAPower)) {
-					cardAPower = 0
-				} else {
-					cardAPower = Number(cardAPower)
-				}
-				if (isNaN(cardBPower)) {
-					cardBPower = 0
-				} else {
-					cardBPower = Number(cardBPower)
-				}
-				if (isNaN(cardATough)) {
-					cardATough = 0
-				} else {
-					cardATough = Number(cardATough)
-				}
-				if (isNaN(cardBTough)) {
-					cardBTough = 0
-				} else {
-					cardBTough = Number(cardBTough)
 				}
 
-				const cardASum = cardAPower + cardATough
-				const cardBSum = cardBPower + cardBTough
-
-				if (cardASum < cardBSum) {
-					return 1
-				} else if (cardASum > cardBSum) {
-					return -1
-				} else { // If cards A and B have equal P/T sums, then sort them by power alone.
-					return cardBPower - cardAPower
+				// Then, sort by P/T sum.
+				if (aAtts.sum !== bAtts.sum) {
+					return bAtts.sum - aAtts.sum
 				}
+
+				// Finally, if P/T sums are equal, sort by power alone.
+				return bAtts.power - aAtts.power
 			})
 		},
 		sortByQuantity (cards) {

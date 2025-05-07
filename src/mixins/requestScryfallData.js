@@ -204,14 +204,29 @@ export default {
 					newCard.toughness = dataFace1.toughness
 					newCard.toughness2 = dataFace2.toughness
 				}
+
+				if (data.loyalty) {
+					newCard.loyalty = data.loyalty
+				} else {
+					newCard.loyalty = dataFace1.loyalty
+					newCard.loyalty2 = dataFace2.loyalty
+				}
 			} else { // Else the card is a single-faced card.
 				newCard.name = this.curlApostrophes(data.name)
 				newCard.mana = data.mana_cost
 				newCard.type = this.curlApostrophes(data.type_line)
 				newCard.colors = data.colors
 				newCard.img = data.image_uris.normal
-				newCard.power = data.power
-				newCard.toughness = data.toughness
+
+				if (data.power) {
+					newCard.power = data.power
+				}
+				if (data.toughness) {
+					newCard.toughness = data.toughness
+				}
+				if (data.loyalty) {
+					newCard.loyalty = data.loyalty
+				}
 			}
 
 			if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...

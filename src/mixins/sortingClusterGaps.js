@@ -199,13 +199,20 @@ export default {
 					}
 				}
 
-				return setNaNToZero(card.power) + setNaNToZero(card.toughness)
+				if (card.toughness) {
+					return setNaNToZero(card.power) + setNaNToZero(card.toughness)
+				} else if (card.loyalty) {
+					return setNaNToZero(card.loyalty)
+				}
 			}
 
-			if (
-				thisCard.power !== undefined &&
-				nextCard.power === undefined
-			) {
+			if ((
+				thisCard.toughness !== undefined ||
+				thisCard.loyalty !== undefined
+			) && (
+				nextCard.toughness === undefined &&
+				nextCard.loyalty === undefined
+			)) {
 				return true
 			} else if (ptSum(thisCard) !== ptSum(nextCard)) {
 				return true
