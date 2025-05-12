@@ -1,7 +1,7 @@
 export default {
 	computed: {
 		latestDeckDataVersion () {
-			return 3
+			return 4
 		},
 		latestImageVersion () {
 			return 2

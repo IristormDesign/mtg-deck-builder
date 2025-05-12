@@ -1,9 +1,9 @@
 <template>
 	<aside
-		v-if="isDeckDataOutdated"
+		v-if="deckDataIsOutdated || deckDataIsUpdating"
 		class="outdated-deck-data-notice"
 	>
-		<template v-if="!updatingDeckData">
+		<template v-if="!deckDataIsUpdating">
 			<h3>Card Data Update</h3>
 			<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
 			<p>Before updating, you should make a backup copy of your deck’s data by saving a deck archive file.</p>
@@ -46,15 +46,15 @@ export default {
 	data () {
 		return {
 			cardsToUpdate: [],
-			numberOfCardsUpdated: 0,
-			updatingDeckData: false
+			deckDataIsUpdating: false,
+			numberOfCardsUpdated: 0
 		}
 	},
 	computed: {
 		/**
 		* @returns {boolean}
 		*/
-		isDeckDataOutdated () {
+		deckDataIsOutdated () {
 			if (!this.deck) return // This condition is needed for 404 error pages.
 
 			return (
@@ -73,10 +73,6 @@ export default {
 		'$route' (to, from) {
 			if (to.params.deckPath === from.params.deckPath) return // Exit now if the route is only switching modes on the same deck page
 
-			this.cardsToUpdate = []
-			this.numberOfCardsUpdated = 0
-			this.updatingDeckData = false
-
 			this.prepareDataUpdate()
 		}
 	},
@@ -88,11 +84,11 @@ export default {
 		 * Add the `sideboard` object for any decks that may be lacking it. (Decks created from earlier app versions didn't have sideboards.)
 		 */
 		prepareDataUpdate () {
-			if (!this.isDeckDataOutdated) return
+			if (!this.deckDataIsOutdated) return
 
 			/* Reset the following data variables in case an update check is done more than once. */
-			this.updatingDeckData = false
 			this.cardsToUpdate = []
+			this.deckDataIsUpdating = false
 			this.numberOfCardsUpdated = 0
 
 			if (!this.deck.sideboard) { // Early versions of deck data didn't have the sideboard list. If the `sideboard` key is still missing from the `deck` object, then add it.
@@ -102,41 +98,44 @@ export default {
 				}
 			}
 
-			this.$store.commit('showSideboard', false)
-			this.determineOutdatedCard(this.deck)
+			const store = this.$store
 
-			this.$store.commit('showSideboard', true)
-			this.determineOutdatedCard(this.deck.sideboard)
+			store.commit('showSideboard', false)
+			this.determineOutdatedCards(this.deck)
 
-			this.$store.commit('showSideboard', false)
+			store.commit('showSideboard', true)
+			this.determineOutdatedCards(this.deck.sideboard)
+
+			store.commit('showSideboard', false)
 
 			if (this.cardsToUpdate.length === 0) {
 				this.deckObject.dataVersion = this.latestDeckDataVersion
-
-				this.$store.commit('decks', this.$store.state.decks)
+				store.commit('decks', store.state.decks)
 			}
 		},
-		determineOutdatedCard (list) {
+		determineOutdatedCards (list) {
 			for (const card of list.cards) {
-				if (!card.layout) { // Any `card` object lacking the `layout` key means the card's data set is outdated by at least one version.
-					this.cardsToUpdate.push({
-						gapAfter: card.gapAfter,
-						inSideboard: this.$store.state.showSideboard,
-						name: this.doubleFacedCardName(card),
-						qty: card.qty,
-						img: card.img,
-						img2: card.img2,
-						imgVersion: card.imgVersion,
-						link: card.link
-					})
-				}
+				if (card.type.includes('Planeswalker')) {
+					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on the newest version.
+				} else if (card.layout) continue // Any non-planeswalker card object with the `layout` key means that card's data set is on the newest version.
+
+				this.cardsToUpdate.push({
+					gapAfter: card.gapAfter,
+					inSideboard: this.$store.state.showSideboard,
+					name: this.doubleFacedCardName(card),
+					qty: card.qty,
+					img: card.img,
+					img2: card.img2,
+					imgVersion: card.imgVersion,
+					link: card.link
+				})
 			}
 		},
 		userEngagedUpdate () {
-			if (this.cardsToUpdate > 200) {
+			if (this.cardsToUpdate.length > 200) {
 				this.$store.commit('idOfShowingDialog', 'tooManyCardsToUpdate')
 			} else {
-				this.updatingDeckData = true
+				this.deckDataIsUpdating = true
 
 				const cardsToUpdate = this.cardsToUpdate
 
@@ -150,6 +149,9 @@ export default {
 					}
 
 					setTimeout(() => {
+						// console.log(`Updating card data for ${cardsToUpdate[i].name}...`)
+						// callback()
+
 						this.axiosRequestName(cardsToUpdate[i].name, callback(), cardsToUpdate[i])
 					}, (i + 1) * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
 				}
@@ -167,7 +169,14 @@ export default {
 			})
 
 			setTimeout(() => {
-				store.commit('idOfShowingDialog', 'cardDataUpdateComplete')
+				store.commit('idOfShowingDialog', {
+					id: 'cardDataUpdateComplete',
+					data: {
+						callback: () => {
+							this.deckDataIsUpdating = false
+						}
+					}
+				})
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		},
 		archiveDeck () {
