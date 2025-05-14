@@ -23,20 +23,11 @@
 		margin-top: $lhse*.5;
 		color: $color-text-brighter-over-mythic-brown;
 	}
-	.button-group {
-		display: flex;
-		justify-content: center;
-	}
 	.button-container {
 		height: $lhse*1.25;
 		align-items: flex-start;
 		margin: math.div($lhse, 3) $lhse*.5 $lhse*.25;
 
-		&:first-of-type {
-			button {
-				background: $color-button-gray;
-			}
-		}
 		button {
 			font-size: 87.5%;
 		}

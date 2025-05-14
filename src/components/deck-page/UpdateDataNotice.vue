@@ -1,31 +1,25 @@
 <template>
 	<aside
-		v-if="deckDataIsOutdated || deckDataIsUpdating"
+		v-if="showingOutdatedDataNotice"
 		class="outdated-deck-data-notice"
 	>
-		<template v-if="!deckDataIsUpdating">
-			<h3>Card Data Update</h3>
-			<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
-			<p>Before updating, you should make a backup copy of your deck’s data by saving a deck archive file.</p>
-			<div class="button-group">
-				<div class="button-container">
-					<button @click="archiveDeck()">Archive</button>
-				</div>
-				<div class="button-container">
-					<button @click="userEngagedUpdate()">Update</button>
-				</div>
-			</div>
-		</template>
-		<template v-else>
-			<p>Updating now&hellip;</p>
-			<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
-		</template>
+		<h3>Card Data Update</h3>
+		<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
+		<div class="button-container">
+			<button @click="userEngagedUpdate()">Update</button>
+		</div>
 
 		<standard-dialog dialogID="tooManyCardsToUpdate">
 			<p>Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
 		</standard-dialog>
-		<standard-dialog dialogID="cardDataUpdateComplete">
-			<p>✅ Update completed!</p>
+		<standard-dialog dialogID="cardDataUpdateProgress">
+			<template v-if="updateInProgress">
+				<p>Updating now&hellip;</p>
+				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
+			</template>
+			<template v-else>
+				<p>✅ Update completed!</p>
+			</template>
 		</standard-dialog>
 	</aside>
 </template>
@@ -46,8 +40,9 @@ export default {
 	data () {
 		return {
 			cardsToUpdate: [],
-			deckDataIsUpdating: false,
-			numberOfCardsUpdated: 0
+			updateInProgress: true,
+			numberOfCardsUpdated: 0,
+			showingOutdatedDataNotice: false
 		}
 	},
 	computed: {
@@ -80,16 +75,17 @@ export default {
 		this.prepareDataUpdate()
 	},
 	methods: {
-		/**
-		 * Add the `sideboard` object for any decks that may be lacking it. (Decks created from earlier app versions didn't have sideboards.)
-		 */
 		prepareDataUpdate () {
-			if (!this.deckDataIsOutdated) return
+			if (!this.deckDataIsOutdated) {
+				this.showingOutdatedDataNotice = false
+				return
+			} else {
+				this.showingOutdatedDataNotice = true
+			}
 
 			/* Reset the following data variables in case an update check is done more than once. */
 			this.cardsToUpdate = []
-			this.deckDataIsUpdating = false
-			this.numberOfCardsUpdated = 0
+			this.updateInProgress = true
 
 			if (!this.deck.sideboard) { // Early versions of deck data didn't have the sideboard list. If the `sideboard` key is still missing from the `deck` object, then add it.
 				this.deckObject.sideboard = {
@@ -132,10 +128,12 @@ export default {
 			}
 		},
 		userEngagedUpdate () {
+			this.numberOfCardsUpdated = 0
+
 			if (this.cardsToUpdate.length > 200) {
 				this.$store.commit('idOfShowingDialog', 'tooManyCardsToUpdate')
 			} else {
-				this.deckDataIsUpdating = true
+				this.$store.commit('idOfShowingDialog', 'cardDataUpdateProgress')
 
 				const cardsToUpdate = this.cardsToUpdate
 
@@ -160,24 +158,23 @@ export default {
 		finishUpdating () {
 			const store = this.$store
 
-			this.deckObject.editDate = new Date()
-			store.commit('showSideboard', false)
-
 			this.$nextTick(() => {
+				this.deckObject.editDate = new Date()
 				this.deckObject.dataVersion = this.latestDeckDataVersion
 				store.commit('decks', store.state.decks)
 			})
-
 			setTimeout(() => {
-				store.commit('idOfShowingDialog', {
-					id: 'cardDataUpdateComplete',
-					data: {
-						callback: () => {
-							this.deckDataIsUpdating = false
-						}
-					}
-				})
+				this.updateInProgress = false
 			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
+
+			store.commit('idOfShowingDialog', {
+				id: 'cardDataUpdateComplete',
+				data: {
+					callback: () => {
+						this.showingOutdatedDataNotice = false
+					}
+				}
+			})
 		},
 		archiveDeck () {
 			this.$router.push({
