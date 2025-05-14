@@ -3,7 +3,8 @@
 		<h3>Draw Simulator</h3>
 		<p>The Draw Simulator is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you test the process of drawing cards from your deck as a shuffled library. It gives you insight into how your deck could play out during a game of <i>Magic</i>.</p>
 		<p>To set the <router-link to="deck-pages">deck page</router-link> to the Draw Simulator mode, click the “Draw Simulator” tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>3</kbd> key</router-link> (while on the deck page).</p>
-		<p>After you’ve tested a few rounds, depending on how you’ve constructed your deck, you might be dissatisfied with its drawing results. That’s okay—you can switch to the <router-link to="list-editor">List Editor mode</router-link> anytime to improve your deck, and then return to the Draw Simulator to test your revisions.</p>
+		<p>After you’ve tested a few rounds, depending on how you’ve constructed your deck, you might be dissatisfied with its drawing results. If so, don’t worry—you can switch to the <router-link to="list-editor">List Editor mode</router-link> anytime to improve your deck, and then return to the Draw Simulator to test your revisions.</p>
+		<p>Note that the Draw Simulator performs only a <em>simple</em> simulation of card drawing in <i>Magic</i>. During a real game, there may eventually come an action that changes the order of the cards that would be drawn. Such an action could include searching for a particular card to take out from your library, or returning an already drawn card to your library. Consider those possibilities when you use the Draw Simulator.</p>
 		<p>The Draw Simulator contains the following elements, listed by the order of their positions on the page from top to bottom, left to right:</p>
 		<ol>
 			<li><a href="#cards-in-library">Cards in Library statistic</a></li>
@@ -15,7 +16,6 @@
 			<li><a href="#draw-sim-card-image">Card image section</a></li>
 		</ol>
 		<p>Each of those elements is going to be explained in the next subchapters.</p>
-		<p>Note that the Draw Simulator performs only a <em>simple</em> simulation of card drawing. During a real game, there may eventually come an action that changes the order of the cards that would be drawn. Such an action could include searching your library for a particular card to take out from it, or returning a drawn card to your library. Consider those possibilities when you use the Draw Simulator.</p>
 
 		<section id="cards-in-library">
 			<h4>“Cards in Library” Statistic</h4>
