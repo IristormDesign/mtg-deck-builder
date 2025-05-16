@@ -195,6 +195,10 @@ kbd {
 		width: $kbd-height * 4;
 	}
 }
+code {
+	font-size: 83.33%;
+	background: $color-group-bg-darker;
+}
 svg {
 	fill: currentColor;
 }

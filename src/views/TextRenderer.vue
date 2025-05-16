@@ -5,7 +5,7 @@
 	>
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
-				<p>The Text Renderer provides you the card lists of <i>{{ deck.name }}</i> in simplified text versions, which you can take for use outside MTG Deck Builder. <router-link to="/guide/text-renderer">(More info&hellip;)</router-link></p>
+				<p>The Text Renderer provides the card lists of <i>{{ deck.name }}</i> in simplified text versions, which you can take for uses outside MTG Deck Builder. <router-link to="/guide/text-renderer">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="control-panel">
 				<div class="button-container">

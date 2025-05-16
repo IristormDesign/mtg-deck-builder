@@ -59,10 +59,10 @@
 					<p>Submit the <strong>name</strong> of a certain <i>Magic</i> card to add that card.</p>
 				</li>
 				<li>
-					<p>Submit the <strong>URL</strong> of a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print. For example:<br><i class="url">https://scryfall.com/card/wc97/sg299/giant-growth</i></p>
+					<p>Submit the <strong>URL</strong> to a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print.</p>
 				</li>
 				<li>
-					<p>Submit the code “<strong>#random</strong>” to add a random <i>Magic</i> card.</p>
+					<p>Submit the code <strong><code>#random</code></strong> to add a random <i>Magic</i> card.</p>
 				</li>
 			</ul>
 			<p>For more info about the card adder, see the <router-link to="/guide/list-editor#card-adder">User Guide</router-link>.</p>

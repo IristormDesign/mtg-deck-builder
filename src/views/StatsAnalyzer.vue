@@ -59,13 +59,13 @@
 							<p>Cards in the sideboard are excluded.</p>
 						</li>
 						<li>
-							<p>Within each category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category has that card as both an artifact and a creature.) Cards counted in this way don’t inflate the total number.</p>
+							<p>Within each category, individual cards can be counted multiple times if they match more than one attribute. (For example, if a card’s type line says “Artifact Creature,” then the Types category includes that card as both an artifact <em>and</em> a creature.) Cards counted in this way don’t inflate the overall number of cards.</p>
 						</li>
 						<li>
-							<p>For double-faced cards, most categories count the attributes of both faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
+							<p>For every double-faced card, most categories count the attributes of the front and back faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
 						</li>
 						<li>
-							<p>To learn more about the Stats Analyzer, see the <router-link to="/guide/stats-analyzer">User Guide</router-link>.</p>
+							<p>Learn more about the Stats Analyzer in the <router-link to="/guide/stats-analyzer">User Guide</router-link>.</p>
 						</li>
 					</ul>
 				</div>

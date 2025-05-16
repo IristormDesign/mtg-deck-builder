@@ -231,8 +231,8 @@
 					alt="Snippet of card adder" title="Screenshot" loading="lazy"
 				/>
 			</p>
-			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to be put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
-			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one the <a href="#card-groups">card group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
+			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
+			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one that the <a href="#card-groups">card group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
 			<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>.</p>
 			<p>To submit your query in the card adder, click the “+” (plus sign) button (located to the right of the text field), or by pressing the Enter/Return key on your keyboard.</p>
 			<p>The card adder works with only one card name at a time. To add <em>multiple</em> names at a time, go to the <router-link to="card-list-entry">Card List Entry</router-link> page instead.</p>
@@ -240,19 +240,21 @@
 			<section id="card-name-query">
 				<h5>Card Name Query</h5>
 				<p>In the <a href="#card-adder">card adder</a>, simply enter the certain name of a <i>Magic</i> card, and that name will be included in the <a href="#card-list">card list</a>. While you start typing letters into the card adder’s text field, a small list of selectable suggestions for card names will appear by it.</p>
-				<p>When you submit a card name query, if it turns out to be an invalid name, the app will notify you of the mistake. If a card name has been printed in multiple sets, then usually the one from the last released set is retrieved.</p>
+				<p>When you submit a card name query, if it turns out to be an invalid name, the app will notify you of the mistake. If a card name has been printed in multiple <i>Magic</i> sets, then usually the one from the last released set is retrieved.</p>
 			</section>
 			<section id="scryfall-url-query">
 				<h5 >Scryfall Card Page URL Query</h5>
-				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> has individual pages for every print of every card in <i>Magic</i>. For any card’s Scryfall page, you can copy that page’s URL from your web browser’s web address bar, then paste the URL into the <a href="#card-adder">card adder</a> on MTG Deck Builder. The respective card name will be automatically added to your deck.</p>
-				<p>The URL to a Scryfall card page begins with “https://scryfall.com/card/”, followed by the details of the specific card.</p>
-				<p>The query for a Scryfall card page URL is useful for adding a card of a certain name that has been printed in multiple sets, and the print you get by default through the <a href="#card-name-query">card name query</a> isn’t the one you prefer. For example, maybe you want another print of a card whose <a href="#card-image">image</a> depicts a different illustration or card set symbol.</p>
-				<p>You can submit a Scryfall URL for a card name that already exists in the active <a href="#card-list">card list</a>, but is in a different print. In this case, the app will ask you to confirm whether you want the queried print to replace the existing print.</p>
+				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> has individual pages for every print of every card in <i>Magic</i>. For any card’s page on Scryfall, you can copy that page’s URL from your web browser’s web address bar, then paste that URL into the <a href="#card-adder">card adder</a> on MTG Deck Builder. The respective card name will be automatically added to your deck.</p>
+				<p>The query for a Scryfall card page URL is useful for adding a card of a certain name that has been printed in multiple <i>Magic</i> sets, but the print you get by default through the <a href="#card-name-query">card name query</a> isn’t the one you prefer. You may want a specific alternative print of card because that print’s <a href="#card-image">image</a> depicts a different illustration or card set symbol from the other prints’ images.</p>
+				<p>For example, if you’d submit the URL<br>
+				<code class="url">https://scryfall.com/card/wc97/sg299/giant-growth</code><br>
+				in the card adder, then you’d get the card Giant Growth in a particular special edition print that had been released in 1997. That Giant Growth print is different from the one you’d get if instead you had submitted just the name “Giant Growth” in the card adder.</p>
+				<p>You can submit a Scryfall URL for a card name that already exists in your deck’s active <a href="#card-list">card list</a>, but is in a different print. In this case, the app will ask you to confirm whether you want the queried print to replace the existing one.</p>
 			</section>
 			<section id="random-card-query">
 				<h5>Random Card Query</h5>
-				<p>You can add the name of a <i>Magic</i> card at random (among cards legal in Vintage tournaments). To do so, enter the code “<strong>#random</strong>” in the <a href="#card-adder">card adder</a>.</p>
-				<p>Your web browser may also show “#random” as a selectable option when the card adder’s text field gains browser focus.</p>
+				<p>You can add the name of any <i>Magic</i> card at random to your deck. To do so, submit the special code <strong><code>#random</code></strong> in the <a href="#card-adder">card adder</a>. Your web browser may also show “#random” as a selectable option when the card adder’s text field gains browser focus.</p>
+				<p>This random method adds a card only from among physical (not <i>MTG Arena</i>) cards that are legal to play in Vintage tournaments. That comprises almost all (but not absolutely all) physical cards that have been printed in almost all <i>Magic</i> sets, from the original to the latest.</p>
 			</section>
 			<section id="card-adder-other-info">
 				<h5>Other Information About the Card Adder</h5>

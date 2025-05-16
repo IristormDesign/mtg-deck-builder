@@ -13,7 +13,7 @@
 		</figure>
 
 		<p>Your web browser tried to go to a page that doesn’t exist. If a page did exist at this URL before, it’s been deleted or renamed since then.</p>
-		<p v-if="this.$route.path.includes(`/deck/`)">Were you expecting to see a deck page by another user? If so, ask that user to archive his or her deck and send the archive file to you. Then you can open the archive file on the <router-link :to="{name: 'createDeck'}">Create Deck page</router-link> to replicate that user’s deck. <router-link to="/guide/storage-of-deck-data" class="no-text-break">(More info&hellip;)</router-link></p>
+		<p v-if="this.$route.path.includes(`/deck/`)">Were you expecting to see the page for a deck made by another user? If so, ask that user to archive his or her deck and send the archive file to you. Then you can open the archive file on the <router-link :to="{name: 'createDeck'}">Create Deck page</router-link> to replicate that user’s deck. <router-link to="/guide/storage-of-deck-data" class="no-text-break">(More info&hellip;)</router-link></p>
 	</article>
 </template>
 
