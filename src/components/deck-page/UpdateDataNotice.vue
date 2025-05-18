@@ -142,29 +142,27 @@ export default {
 			}
 		},
 		userEngagedUpdate () {
-			this.numberOfCardsUpdated = 0
-
 			if (this.cardsToUpdate.length > 200) {
 				this.$store.commit('idOfShowingDialog', 'tooManyCardsToUpdate')
 			} else {
 				this.$store.commit('idOfShowingDialog', 'cardUpdateProgress')
-				this.cardUpdateStatus = 2
 
+				this.cardUpdateStatus = 2
+				this.numberOfCardsUpdated = 0
 				const cardsToUpdate = this.cardsToUpdate
+				const callback = (hasError) => {
+					if (hasError) {
+						this.cardUpdateStatus = 3
+					} else {
+						this.numberOfCardsUpdated++
+
+						if (this.numberOfCardsUpdated < cardsToUpdate.length) return
+
+						this.finishUpdating()
+					}
+				}
 
 				for (let i = 0; i < cardsToUpdate.length; i++) {
-					const callback = (hasError) => {
-						if (hasError) {
-							this.cardUpdateStatus = 3
-						} else {
-							this.numberOfCardsUpdated++
-
-							if (this.numberOfCardsUpdated < cardsToUpdate.length) return
-
-							this.finishUpdating()
-						}
-					}
-
 					setTimeout(() => {
 						this.axiosRequestName(cardsToUpdate[i].name, callback, cardsToUpdate[i])
 					}, i * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
