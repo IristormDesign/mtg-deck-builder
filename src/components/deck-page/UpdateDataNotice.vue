@@ -1,27 +1,37 @@
 <template>
-	<aside
-		v-if="showingOutdatedDataNotice"
+	<div
+		v-if="cardUpdateStatus > 0"
 		class="outdated-deck-data-notice"
 	>
-		<h3>Card Data Update</h3>
-		<p>This deck has an outdated set of card data. Update it to get new or enhanced app features!</p>
-		<div class="button-container">
-			<button @click="userEngagedUpdate()">Update</button>
-		</div>
+		<aside v-if="cardUpdateStatus === 1">
+			<h3>Card Data Update</h3>
+			<p>This deck has an outdated set of card data. Update it now to get new or enhanced app features!</p>
+			<div class="button-container">
+				<button @click="userEngagedUpdate()">Update</button>
+			</div>
+		</aside>
 
 		<standard-dialog dialogID="tooManyCardsToUpdate">
 			<p>Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
 		</standard-dialog>
-		<standard-dialog dialogID="cardDataUpdateProgress">
-			<template v-if="updateInProgress">
+		<standard-dialog dialogID="cardUpdateProgress">
+			<template v-if="cardUpdateStatus === 2">
 				<p>Updating now&hellip;</p>
 				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
 			</template>
-			<template v-else>
-				<p>✅ Update completed!</p>
+
+			<template v-else-if="cardUpdateStatus === 3">
+				<h3>Update Countered</h3>
+				<p>😖 Sorry—MTG Deck Builder couldn’t update your card data right now.</p>
+				<p>Make sure that your computer or phone is currently connected to the Internet, and that the <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> website (where the card data is retrieved from) is live.</p>
+				<p>If this error persists, try updating at a later time, or report this problem to the <router-link to="/contact">app developer</router-link>.</p>
+			</template>
+
+			<template v-else-if="cardUpdateStatus === 4">
+				<p>✅ Update finished!</p>
 			</template>
 		</standard-dialog>
-	</aside>
+	</div>
 </template>
 
 <script>
@@ -40,23 +50,18 @@ export default {
 	data () {
 		return {
 			cardsToUpdate: [],
-			updateInProgress: true,
-			numberOfCardsUpdated: 0,
-			showingOutdatedDataNotice: false
+			cardUpdateStatus: 0, /*
+				Status codes:
+				0 = No update available
+				1 = Update available but not started yet
+				2 = Update in progress
+				3 = Update failed
+				4 = Update successfully completed
+			*/
+			numberOfCardsUpdated: 0
 		}
 	},
 	computed: {
-		/**
-		* @returns {boolean}
-		*/
-		deckDataIsOutdated () {
-			if (!this.deck) return // This condition is needed for 404 error pages.
-
-			return (
-				!this.deck.dataVersion ||
-				this.deck.dataVersion < this.latestDeckDataVersion
-			)
-		},
 		/**
 		* @returns {number}
 		*/
@@ -68,24 +73,28 @@ export default {
 		'$route' (to, from) {
 			if (to.params.deckPath === from.params.deckPath) return // Exit now if the route is only switching modes on the same deck page
 
-			this.prepareDataUpdate()
+			this.determineDeckDataVersion()
 		}
 	},
 	mounted () {
-		this.prepareDataUpdate()
+		this.determineDeckDataVersion()
 	},
 	methods: {
-		prepareDataUpdate () {
-			if (!this.deckDataIsOutdated) {
-				this.showingOutdatedDataNotice = false
-				return
-			} else {
-				this.showingOutdatedDataNotice = true
-			}
+		determineDeckDataVersion () {
+			if (!this.deck) return // This condition is needed for 404 error pages.
 
-			/* Reset the following data variables in case an update check is done more than once. */
-			this.cardsToUpdate = []
-			this.updateInProgress = true
+			if (
+				!this.deck.dataVersion ||
+				this.deck.dataVersion < this.latestDeckDataVersion
+			) {
+				this.prepareDataUpdate()
+			} else {
+				this.cardUpdateStatus = 0
+			}
+		},
+		prepareDataUpdate () {
+			const store = this.$store
+			this.cardsToUpdate = [] // Reset this array in case an update check is done more than once.
 
 			if (!this.deck.sideboard) { // Early versions of deck data didn't have the sideboard list. If the `sideboard` key is still missing from the `deck` object, then add it.
 				this.deckObject.sideboard = {
@@ -94,22 +103,23 @@ export default {
 				}
 			}
 
-			const store = this.$store
-
 			store.commit('showSideboard', false)
-			this.determineOutdatedCards(this.deck)
+			this.findOutdatedCards(this.deck)
 
 			store.commit('showSideboard', true)
-			this.determineOutdatedCards(this.deck.sideboard)
+			this.findOutdatedCards(this.deck.sideboard)
 
 			store.commit('showSideboard', false)
 
-			if (this.cardsToUpdate.length === 0) {
+			if (this.cardsToUpdate.length > 0) {
+				this.cardUpdateStatus = 1
+			} else {
 				this.deckObject.dataVersion = this.latestDeckDataVersion
 				store.commit('decks', store.state.decks)
+				this.cardUpdateStatus = 0
 			}
 		},
-		determineOutdatedCards (list) {
+		findOutdatedCards (list) {
 			for (const card of list.cards) {
 				if (card.type.includes('Planeswalker')) {
 					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on the newest version.
@@ -133,25 +143,27 @@ export default {
 			if (this.cardsToUpdate.length > 200) {
 				this.$store.commit('idOfShowingDialog', 'tooManyCardsToUpdate')
 			} else {
-				this.$store.commit('idOfShowingDialog', 'cardDataUpdateProgress')
+				this.$store.commit('idOfShowingDialog', 'cardUpdateProgress')
+				this.cardUpdateStatus = 2
 
 				const cardsToUpdate = this.cardsToUpdate
 
 				for (let i = 0; i < cardsToUpdate.length; i++) {
-					const callback = () => {
-						this.numberOfCardsUpdated++
+					const callback = (hasError) => {
+						if (hasError) {
+							this.cardUpdateStatus = 3
+						} else {
+							this.numberOfCardsUpdated++
 
-						if (this.numberOfCardsUpdated < cardsToUpdate.length) return
+							if (this.numberOfCardsUpdated < cardsToUpdate.length) return
 
-						this.finishUpdating()
+							this.finishUpdating()
+						}
 					}
 
 					setTimeout(() => {
-						// console.log(`Updating card data for ${cardsToUpdate[i].name}...`)
-						// callback()
-
-						this.axiosRequestName(cardsToUpdate[i].name, callback(), cardsToUpdate[i])
-					}, (i + 1) * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
+						this.axiosRequestName(cardsToUpdate[i].name, callback, cardsToUpdate[i])
+					}, i * 125) // Delay each request so that the Scryfall API doesn't get overloaded.
 				}
 			}
 		},
@@ -164,17 +176,8 @@ export default {
 				store.commit('decks', store.state.decks)
 			})
 			setTimeout(() => {
-				this.updateInProgress = false
-			}, 125) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
-
-			store.commit('idOfShowingDialog', {
-				id: 'cardDataUpdateComplete',
-				data: {
-					callback: () => {
-						this.showingOutdatedDataNotice = false
-					}
-				}
-			})
+				this.cardUpdateStatus = 4
+			}, 250) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
 		},
 		archiveDeck () {
 			this.$router.push({

@@ -118,9 +118,20 @@ export default {
 					`https://api.scryfall.com/cards/named?fuzzy=${urlEncodedQuery}`,
 					{ timeout: 10000 }
 				)
-				.then(response => {
-					this.assignCardData(response.data, oldCardData)
-				})
+				.then(
+					response => {
+						this.assignCardData(response.data, oldCardData)
+
+						if (typeof callback === 'function') {
+							callback()
+						}
+					},
+					noResponse => {
+						if (typeof callback === 'function') {
+							callback(noResponse)
+						}
+					}
+				)
 				.catch(error => {
 					this.loadingCard = false
 
@@ -134,9 +145,6 @@ export default {
 					} else {
 						this.alertMiscErrorMessage(error)
 					}
-				})
-				.finally(() => {
-					return callback
 				})
 		},
 		alertConnectionTimeout () {

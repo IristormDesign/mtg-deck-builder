@@ -11,25 +11,25 @@
 	margin-bottom: $lhse*.5;
 }
 .outdated-deck-data-notice {
-	@include sideboard-header-bg;
-	border-radius: $border-radius-group;
-	padding: $lhse*.1667 4.17% $lhse*.25;
-	margin: -$lhse*.5 auto $lhse*.5;
-	text-align: center;
-	text-wrap: balance;
-	max-width: $max-width-content*.75;
 
-	h3 {
-		margin-top: $lhse*.5;
-		color: $color-text-brighter-over-mythic-brown;
-	}
-	.button-container {
-		height: $lhse*1.25;
-		align-items: flex-start;
-		margin: math.div($lhse, 3) $lhse*.5 $lhse*.25;
 
-		button {
-			font-size: 87.5%;
+	aside {
+		@include sideboard-header-bg;
+		border-radius: $border-radius-group;
+		max-width: $max-width-content*.75;
+		text-align: center;
+		text-wrap: balance;
+		margin: -$lhse*.5 auto $lhse*.5;
+		padding: $lhse*.1667 4.17% $lhse*.5;
+
+		h3 {
+			margin-top: $lhse*.5;
+			color: $color-text-brighter-over-mythic-brown;
+		}
+		.button-container {
+			height: $lhse*1.25;
+			align-items: flex-start;
+			margin: math.div($lhse, 3) $lhse*.5 $lhse*.25;
 		}
 	}
 	.updated-percentage {
