@@ -153,14 +153,7 @@ export default {
 				}
 			}
 
-			if (
-				getSubtype(thisCard) &&
-				!getSubtype(nextCard)
-			) {
-				return true
-			} else if (
-				getSubtype(thisCard) !== getSubtype(nextCard)
-			) {
+			if (getSubtype(thisCard) && !getSubtype(nextCard)) {
 				return true
 			}
 		},
@@ -173,14 +166,9 @@ export default {
 				}
 			}
 
-			if (
-				getSupertype(thisCard) &&
-				!getSupertype(nextCard)
-			) {
+			if (getSupertype(thisCard) && !getSupertype(nextCard)) {
 				return true
-			} else if (
-				getSupertype(thisCard) !== getSupertype(nextCard)
-			) {
+			} else if (getSupertype(thisCard) !== getSupertype(nextCard)) {
 				return true
 			}
 		},
