@@ -11,8 +11,6 @@
 	margin-bottom: $lhse*.5;
 }
 .outdated-deck-data-notice {
-
-
 	aside {
 		@include sideboard-header-bg;
 		border-radius: $border-radius-group;
@@ -30,6 +28,13 @@
 			height: $lhse*1.25;
 			align-items: flex-start;
 			margin: math.div($lhse, 3) $lhse*.5 $lhse*.25;
+		}
+	}
+	.card-update-progress {
+		p {
+			&:last-child {
+				margin-bottom: $lhse*.25;
+			}
 		}
 	}
 	.updated-percentage {

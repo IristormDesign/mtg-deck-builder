@@ -15,10 +15,14 @@
 			<p>Sorry, this deck’s data set can’t be updated because it has too many cards.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="cardUpdateProgress">
-			<template v-if="cardUpdateStatus === 2">
+			<div
+				v-if="cardUpdateStatus === 2"
+				slot="form" method="dialog"
+				class="card-update-progress"
+			>
 				<p>Updating now&hellip;</p>
 				<p>Progress: <strong class="updated-percentage">{{ updatedPercent }}%</strong></p>
-			</template>
+			</div>
 
 			<template v-else-if="cardUpdateStatus === 3">
 				<h3>Update Countered</h3>
