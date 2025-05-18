@@ -107,13 +107,8 @@ export default {
 				}
 			}
 
-			store.commit('showSideboard', false)
 			this.findOutdatedCards(this.deck)
-
-			store.commit('showSideboard', true)
 			this.findOutdatedCards(this.deck.sideboard)
-
-			store.commit('showSideboard', false)
 
 			if (this.cardsToUpdate.length > 0) {
 				this.cardUpdateStatus = 1
@@ -131,7 +126,7 @@ export default {
 
 				this.cardsToUpdate.push({
 					gapAfter: card.gapAfter,
-					inSideboard: this.$store.state.showSideboard,
+					inSideboard: list === this.deck.sideboard,
 					name: this.doubleFacedCardName(card),
 					qty: card.qty,
 					img: card.img,
