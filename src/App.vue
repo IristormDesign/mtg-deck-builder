@@ -45,10 +45,6 @@ export default {
 		window.addEventListener('storage', this.syncStorage)
 	},
 	mounted () {
-		document.addEventListener(
-			'auxclick', this.preventMiddleClicking
-		)
-
 		this.loadDefaultDecks()
 	},
 	methods: {
@@ -69,26 +65,6 @@ export default {
 
 					window.__mdbSyncingFromStorage = false
 				}
-			}
-		},
-		/**
-		 * Prevent all links from opening a new tab via middle-click, with the exception of the links that are always set to open in a new tab.
-		 */
-		preventMiddleClicking (event) {
-			function conditions (el) {
-				if (el !== null) {
-					return (
-						el.matches('a') &&
-						!el.getAttribute('target')
-					)
-				}
-			}
-
-			if (
-				conditions(event.target) ||
-				conditions(event.target.closest('a'))
-			) {
-				event.preventDefault()
 			}
 		},
 		/**
