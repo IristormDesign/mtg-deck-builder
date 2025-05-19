@@ -41,6 +41,9 @@ export default {
 			return ('HTMLDialogElement' in window)
 		}
 	},
+	created () {
+		window.addEventListener('storage', this.syncStorage)
+	},
 	mounted () {
 		document.addEventListener(
 			'auxclick', this.preventMiddleClicking
@@ -49,6 +52,25 @@ export default {
 		this.loadDefaultDecks()
 	},
 	methods: {
+		/**
+		 * Listen to the storage event to sync the Vuex store with the browser's localStorage. This is needed for when the app is opened in multiple browser tabs at once.
+		 */
+		syncStorage (event) {
+			if (event.key === 'vuex') {
+				const newStates = JSON.parse(event.newValue)
+				const store = this.$store
+
+				if (newStates.timeAppLastModified > store.state.timeAppLastModified) {
+					window.__mdbSyncingFromStorage = true
+
+					store.commit('decks', newStates.decks)
+					store.commit('loadDefaultDecks', newStates.loadDefaultDecks)
+					store.commit('timeAppLastModified', newStates.timeAppLastModified)
+
+					window.__mdbSyncingFromStorage = false
+				}
+			}
+		},
 		/**
 		 * Prevent all links from opening a new tab via middle-click, with the exception of the links that are always set to open in a new tab.
 		 */

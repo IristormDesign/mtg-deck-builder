@@ -2,12 +2,21 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 
-const vuexLocalStorage = new VuexPersist({
+window.__mdbSyncingFromStorage = false
+
+const VuexPersistence = new VuexPersist({
 	storage: window.localStorage,
-	reducer: (state) => ({
-		decks: state.decks,
-		loadDefaultDecks: state.loadDefaultDecks
-	})
+	saveState: (key, state, storage) => {
+		if (window.__mdbSyncingFromStorage) return // Prevent save during sync
+
+		const data = {
+			decks: state.decks,
+			loadDefaultDecks: state.loadDefaultDecks,
+			timeAppLastModified: Date.now()
+		}
+
+		storage.setItem('vuex', JSON.stringify(data))
+	}
 })
 
 Vue.use(Vuex)
@@ -33,6 +42,7 @@ export default new Vuex.Store({
 		showCard: false,
 		showDeckMenu: false,
 		showSideboard: false,
+		timeAppLastModified: 0,
 		viewedDrawnCard: null
 	},
 	getters: {
@@ -89,11 +99,14 @@ export default new Vuex.Store({
 		showSideboard (state, payload) {
 			state.showSideboard = payload
 		},
+		timeAppLastModified (state, payload) {
+			state.timeAppLastModified = payload
+		},
 		viewedDrawnCard (state, payload) {
 			state.viewedDrawnCard = payload
 		}
 	},
 	actions: {
 	},
-	plugins: [vuexLocalStorage.plugin]
+	plugins: [VuexPersistence.plugin]
 })
