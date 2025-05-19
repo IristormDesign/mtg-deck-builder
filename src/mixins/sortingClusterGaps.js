@@ -60,7 +60,7 @@ export default {
 					thisCard.colors[0] !== nextCard.colors[0]
 				) || (
 					thisCard.colors.length === 1 &&
-					nextCard.colors.length >= 2
+					nextCard.colors.length !== 1 // If next card is either multicolored or colorless
 				) || (
 					thisCard.colors.length >= 2 &&
 					nextCard.colors.length === 0
