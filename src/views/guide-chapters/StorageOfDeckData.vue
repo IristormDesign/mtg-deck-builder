@@ -14,7 +14,7 @@
 				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <router-link to="text-renderer">Text Renderer mode</router-link>.</p>
 			</li>
 		</ul>
-		<p>(Note that, since version 3.55.0 of MTG Deck Builder, you now can have multiple browser tabs of MTG Deck Builder opened at once if you want to, and you won’t risk overwriting any deck data on the other tabs. That used to be a problem in the earlier versions of this app, but it’s been fixed in an update and shouldn’t be a concern anymore.)</p>
+		<p>(Note that <router-link to="/release-notes">since version 4.0.0</router-link> of MTG Deck Builder, you now can have multiple browser tabs of MTG Deck Builder opened at once if you want to, and you won’t risk overwriting any deck data on the other tabs. That used to be a problem in the earlier versions of this app, but it’s been fixed in an update and shouldn’t be a concern anymore.)</p>
 
 		<section id="deck-archive-files">
 			<h4>Deck Archive Files</h4>

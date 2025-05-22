@@ -47,6 +47,24 @@
 .svg-symbols {
 	display: none;
 }
+.release-notes {
+	section {
+		border-top: $border-sections;
+		margin-top: $lhse;
+
+		h3 {
+			&:first-child {
+				margin-top: $lhse*.75;
+			}
+		}
+	}
+	.side-note {
+		font-family: $font-family-standard;
+		font-weight: $font-weight-regular;
+		color: $color-text;
+	}
+}
+
 .browser-unsupported {
 	padding: 6.25% $lhse;
 	max-width: $max-width-content;
