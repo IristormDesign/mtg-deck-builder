@@ -1,10 +1,7 @@
 <template>
 	<section id="stats-starred">
 		<h4>Starred</h4>
-		<div
-			v-if="Object.keys(starredCounts).length === 0"
-			class="no-data"
-		>
+		<div v-if="noData()" class="no-data">
 			(No data)
 		</div>
 		<table v-else>
@@ -62,6 +59,13 @@ export default {
 		this.prepareStarredCounts()
 	},
 	methods: {
+		noData () {
+			this.filteredCards() // This is needed here to make the table's data update after filtering.
+
+			return Object.values(this.starredCounts).every(
+				ct => ct === 0
+			)
+		},
 		prepareStarredCounts () {
 			this.countStarred()
 
