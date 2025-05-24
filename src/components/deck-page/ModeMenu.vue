@@ -5,7 +5,7 @@
 				<router-link
 					:to="{ name: 'listEditor' }"
 					:class="onPage('listEditor')"
-					title="(1)"
+					title="[1]"
 					role="tab"
 					:aria-selected="onPage('listEditor') ? 'true' : 'false'"
 					id="list-editor-tab"
@@ -24,7 +24,7 @@
 				<router-link
 					:to="{ name: 'statsAnalyzer' }"
 					:class="onPage('statsAnalyzer')"
-					title="(2)"
+					title="[2]"
 					role="tab"
 					:aria-selected="onPage('statsAnalyzer') ? 'true' : 'false'"
 					id="stats-analyzer-tab"
@@ -44,7 +44,7 @@
 				<router-link
 					:to="{ name: 'drawSim' }"
 					:class="onPage('drawSim')"
-					title="(3)"
+					title="[3]"
 					role="tab"
 					:aria-selected="onPage('drawSim') ? 'true' : 'false'"
 					id="draw-simulator-tab"
@@ -64,7 +64,7 @@
 				<router-link
 					:to="{ name: 'textRenderer' }"
 					:class="onPage('textRenderer')"
-					title="(4)"
+					title="[4]"
 					role="tab"
 					:aria-selected="onPage('textRenderer') ? 'true' : 'false'"
 					id="text-renderer-tab"

@@ -3,7 +3,7 @@
 		<a
 			href="https://scryfall.com/advanced"
 			target="_blank"
-			title="(Shift+X)"
+			title="[Shift+X]"
 		>
 			<img src="@/img/scryfall-logo.svg" alt="Scryfall logo" />
 		</a>

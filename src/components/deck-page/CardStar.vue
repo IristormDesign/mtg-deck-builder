@@ -1,5 +1,5 @@
 <template>
-	<label class="card-star" title="(A)">
+	<label class="card-star" title="[A]">
 		<input
 			type="checkbox"
 			@change="toggleCardStar(card)"

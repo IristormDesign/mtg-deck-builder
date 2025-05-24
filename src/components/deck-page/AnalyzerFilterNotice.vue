@@ -12,7 +12,7 @@
 			<div class="button-container">
 				<button
 					@click="stopFiltering()"
-					title="(Esc)"
+					title="[Esc]"
 				>
 					<svg><use href="#cancel-icon" /></svg>
 					Stop Filtering

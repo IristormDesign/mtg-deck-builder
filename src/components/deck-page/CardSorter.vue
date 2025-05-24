@@ -31,7 +31,7 @@
 						@click="toggleSorterMenu()"
 						@keydown.enter="toggleSorterMenu()"
 						readonly
-						title="(Q)"
+						title="[Q]"
 					/>
 					<svg
 						v-show="(deck.cards.length > 1 || deck.sideboard.cards.length > 1)"

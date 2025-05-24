@@ -24,7 +24,7 @@
 				ref="focusCardAdder"
 				type="text"
 				v-model.trim="cardQueryInput"
-				title="Enter the name of a Magic card or the URL to a Scryfall card page (X)"
+				title="Enter the name of a Magic card or the URL to a Scryfall card page [X]"
 				maxlength="99"
 			/>
 			<datalist id="card-suggestions">

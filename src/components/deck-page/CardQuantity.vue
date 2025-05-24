@@ -16,7 +16,7 @@
 		<div class="qty-button-cluster">
 			<button
 				class="increment"
-				title="Increase quantity (E)"
+				title="Increase quantity [E]"
 				@click="cardObject.qty++"
 				:disabled="card.qty >= this.maxQty"
 			>
@@ -24,7 +24,7 @@
 			</button>
 			<button
 				class="decrement"
-				title="Decrease quantity (D)"
+				title="Decrease quantity [D]"
 				@click="cardObject.qty--"
 			>
 				<svg><use href="#minus-icon" /></svg>
@@ -32,7 +32,7 @@
 			<button
 				v-if="$store.state.showSideboard"
 				class="move-to-group m"
-				title="Move 1 to main group (F)"
+				title="Move 1 to main group [F]"
 				@click="moveToOtherGroup()"
 				:disabled="disableMoveToGroup"
 			>
@@ -44,7 +44,7 @@
 			<button
 				v-else
 				class="move-to-group sb"
-				title="Move 1 to sideboard (F)"
+				title="Move 1 to sideboard [F]"
 				@click="moveToOtherGroup()"
 				:disabled="disableMoveToGroup"
 			>
