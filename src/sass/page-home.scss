@@ -160,6 +160,12 @@
 		}
 		.button-container {
 			margin: math.div($lhse, 3) $lhse*.5;
+
+			&:last-of-type {
+				.button {
+					background: $color-button-orange; // Needed for "Create Deck" button, which appears when there are zero stored decks.
+				}
+			}
 		}
 		.button {
 			background: $color-button-gray;
