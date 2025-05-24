@@ -103,13 +103,11 @@ export default {
 
 			import('@/js/default-decks.json')
 				.then(data => {
-					store.commit('decks', data.decks)
-				})
-				.then(() => {
-					store.state.decks.forEach(deck => {
+					data.decks.forEach(deck => {
 						deck.editDate = new Date()
-						store.commit('decks', store.state.decks)
 					})
+
+					store.commit('decks', data.decks)
 				})
 
 			store.commit('loadDefaultDecks', false)
