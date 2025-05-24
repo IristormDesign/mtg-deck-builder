@@ -5,12 +5,12 @@
 
 			<figure class="card-illustration">
 				<img
-					src="@/img/sylvan-messenger.jpg"
-					srcset="@/img/sylvan-messenger.jpg 1x, @/img/sylvan-messenger@2x.jpg 2x"
-					width="469" height="342"
-					alt="An illustration of an elf blowing a horn"
+					src="@/img/take-flight.jpg"
+					srcset="@/img/take-flight.jpg 1x, @/img/take-flight@2x.jpg 2x"
+					width="469" height="344"
+					alt="An illustration of a crowd of amazed people running alongside a flying dragon-like fantasy vehicle"
 				/>
-				<figcaption>Illustration from <a href="https://scryfall.com/card/ori/199/sylvan-messenger" target="_blank">Sylvan Messenger<svg><use href="#open-in-new-icon" /></svg></a> by Anthony Palumbo</figcaption>
+				<figcaption>Illustration from <a href="https://scryfall.com/card/bro/65/take-flight" target="_blank">Take Flight<svg><use href="#open-in-new-icon" /></svg></a> by Joshua Cairos</figcaption>
 			</figure>
 
 			<p>MTG Deck Builder by Iristorm Design gets updates for improving the app’s user experience. This page logs the changes in each updated version, starting from the most recent release.</p>
@@ -66,9 +66,10 @@
 				<li>A graphical glitch in the Stats Analyzer is fixed.</li>
 			</ul>
 		</section>
+
 		<section>
-		<h3>Earlier Releases</h3>
-			<p>MTG Deck Builder has had many other versions since its original in 2021, but release notes hadn’t been written before what’s published on this page.</p>
+			<h3>Earlier Releases</h3>
+			<p>MTG Deck Builder has been through many other versions since its original in 2021, but release notes hadn’t been written before what’s published on this page.</p>
 		</section>
 	</article>
 </template>
