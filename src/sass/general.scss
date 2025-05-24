@@ -232,14 +232,6 @@ svg {
 ::-webkit-scrollbar-corner {
 	background: $color-group-bg;
 }
-.fade-from-black {
-	&-enter-active {
-		transition: filter 1s ease;
-	}
-	&-enter {
-		filter: brightness(0);
-	}
-}
 
 @media (max-width: ($min-width-app*.875)) {
 	.wrap {

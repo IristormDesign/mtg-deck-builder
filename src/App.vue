@@ -1,8 +1,5 @@
 <template>
-	<transition
-		v-if="hasBrowserSupport"
-		appear name="fade-from-black"
-	>
+	<transition v-if="hasBrowserSupport">
 		<div
 			class="fade-bg"
 			:class="this.$route.name === 'home' ? 'root-home-page' : null"

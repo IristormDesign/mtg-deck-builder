@@ -44,6 +44,7 @@
 		max-height: calc(100vh - var(--header-height));
 		margin: 0 auto;
 		position: relative;
+		box-shadow: inset 0 0 $lhse*2 $lhse #000; // This disguises the outside of the hero image while the blur filter is applied.
 
 		.image-bg {
 			width: 100%;
@@ -122,7 +123,7 @@
 		background: $color-group-bg;
 		border: solid $color-group-bg-extra-darker;
 		border-width: $border-width-sections-thickest 0 0;
-		scroll-margin: $height-app-header-short - $lhse;
+		scroll-margin: $height-app-header-short - $lhse*.25;
 
 		h2 {
 			margin-top: 0;
@@ -215,7 +216,7 @@
 @media (max-width: $min-width-app) {
 	.home-page {
 		.app-features {
-			scroll-margin: $height-app-header-tall - $lhse;
+			scroll-margin: $height-app-header-tall - $lhse*.25;
 		}
 	}
 }
@@ -285,7 +286,7 @@ $width-app-features-img: 675px; // Should match the `img` element's width.
 @media (max-width: $max-width-mobile-header-menu) {
 	.home-page {
 		.app-features {
-			scroll-margin: $height-app-header-medium - $lhse;
+			scroll-margin: $height-app-header-medium - $lhse*.25;
 		}
 	}
 }
