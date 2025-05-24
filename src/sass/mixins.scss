@@ -216,6 +216,7 @@
 		filter: $filter-brightness-button-hover;
 		transition: filter $transition-duration-standard ease;
 		text-decoration: none;
+		color: $color-black-label-text; // Needed for links disguised with a button style.
 	}
 	&:focus-visible {
 		outline: $outline-focus-visible;
@@ -225,6 +226,7 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		filter: none;
+		color: $color-black-label-text;
 	}
 	&:active,
 	&:disabled {

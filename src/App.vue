@@ -41,13 +41,39 @@ export default {
 			return ('HTMLDialogElement' in window)
 		}
 	},
+	watch: {
+		'$route' (to, from) {
+			this.automaticallyHideUpdateNotif(to, from)
+		}
+	},
 	created () {
+		this.showUpToDateNotifForReturningUsersFromOldVersion()
+
 		window.addEventListener('storage', this.syncStorage)
 	},
 	mounted () {
 		this.loadDefaultDecks()
 	},
 	methods: {
+		automaticallyHideUpdateNotif (to, from) {
+			if (
+				this.$store.state.updateJustInstalled &&
+				from.name !== null
+			) {
+				this.$store.commit('updateJustInstalled', false)
+			}
+		},
+		/**
+		 * Show the "up to date" notification banner for returning users who've just updated the app from a version older than the version that introduced the "up to date" banner.
+		 * This method is only necessary for returning users who don't have the store state `updateJustInstalled` in their browser's localstorage because they're on an old version where that state wasn't created yet. In the future, this method could be removed because everyone should be off of those very old versions by then. */
+		showUpToDateNotifForReturningUsersFromOldVersion () {
+			if (
+				!this.$store.state.loadDefaultDecks && // If the default decks don't need to be loaded, that implies the user is a returning user rather than a new one.
+				this.$store.state.updateJustInstalled === undefined // This state would be `undefined` if the returning user hasn't updated the app to the newest version yet.
+			) {
+				this.$store.commit('updateJustInstalled', true)
+			}
+		},
 		/**
 		 * Listen to the storage event to sync the Vuex store with the browser's localStorage. This is needed for when the app is opened in multiple browser tabs at once.
 		 */
@@ -73,19 +99,21 @@ export default {
 		loadDefaultDecks () {
 			const store = this.$store
 
-			if (store.state.loadDefaultDecks) {
-				import('@/js/default-decks.json')
-					.then(data => {
-						store.commit('decks', data.decks)
-						store.commit('loadDefaultDecks', false)
+			if (!store.state.loadDefaultDecks) return
+
+			import('@/js/default-decks.json')
+				.then(data => {
+					store.commit('decks', data.decks)
+				})
+				.then(() => {
+					store.state.decks.forEach(deck => {
+						deck.editDate = new Date()
+						store.commit('decks', store.state.decks)
 					})
-					.then(() => {
-						store.state.decks.forEach(deck => {
-							deck.editDate = new Date()
-							store.commit('decks', store.state.decks)
-						})
-					})
-			}
+				})
+
+			store.commit('loadDefaultDecks', false)
+			store.commit('updateJustInstalled', false) // Needed to prevent showing the "up to date" notification banner, which can conditionally appear based on the state of `loadDefaultDecks`, but shouldn't appear at this time.
 		}
 	}
 }

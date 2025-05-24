@@ -13,12 +13,12 @@
 				<figcaption>Illustration from <a href="https://scryfall.com/card/ori/199/sylvan-messenger" target="_blank">Sylvan Messenger<svg><use href="#open-in-new-icon" /></svg></a> by Anthony Palumbo</figcaption>
 			</figure>
 
-			<p>MTG Deck Builder by Iristorm Design has often released updates to improve the app’s user experience. This page logs the changes in each update, starting from the most recent release.</p>
+			<p>MTG Deck Builder by Iristorm Design gets updates for improving the app’s user experience. This page logs the changes in each updated version, starting from the most recent release.</p>
 			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text edits. Because those types of changes are trivial and frequent, they’re not announced in every release note, even when those changes are made.</p>
 		</header>
 
 		<section>
-			<h3>2025</h3>
+			<h3>2025 Releases</h3>
 
 			<h4>May 23</h4>
 			<h5>Major Changes</h5>
@@ -31,26 +31,26 @@
 					<p>This change might not take effect immediately for you. If you have a deck that already contained a planeswalker before this app release, then you’ll see a notice on the deck page informing you to update the deck’s data set. For decks to which you add planeswalkers <em>after</em> this app release, they won’t need a data set update.</p>
 				</li>
 				<li>
-					<p>✨ <strong>Release Notes</strong> ✨ – The app has a new page, Release Notes. (But you already know that!) The app’s footer includes a link to this page, too.</p>
+					<p>✨ <strong>Release Notes</strong> ✨ – The app has a new page, Release Notes. (But you already know that!) Additionally, the app’s footer and the app update notification banner each provide a link to this page.</p>
 				</li>
 			</ul>
 
 			<h5>Minor Changes</h5>
 			<ul>
 				<li>
-					<p>From now on, app updates will be identified by their date of release instead of a version number.</p>
+					<p>From now on, app updates are identified by their date of release instead of a version number.</p>
 				</li>
 				<li>
 					<p>The user interface for updating decks’ data sets is improved, and the update process is better prepared to handle failed attempts.</p>
 				</li>
 				<li>
-					<p>Bug fix: In the List Editor, when sorting by mana color, a sorting cluster gap failed to appear in the card list under certain conditions.</p>
+					<p>Bug fix: When you sort cards by mana color, a sorting cluster gap failed to appear in the card list under a certain condition.</p>
 				</li>
 				<li>
-					<p>In the List Editor, when you sort by first subtype or last subtype, list gaps are no longer inserted between every sorted cluster of subtypes. The reason for this change is that the usually large number of gaps had made the list look too cluttered. One gap is still inserted in the list between the cards with subtypes and the cards without.</p>
+					<p>When you sort cards by first subtype or last subtype, list gaps are no longer inserted between every sorted cluster of subtypes. The reason for this change is that the usually large number of gaps had made the list look too cluttered. One gap is still inserted in the list between the cards with subtypes and the cards without.</p>
 				</li>
 				<li>
-					<p>If you’re using a mouse, you can now middle-click any link to open the linked page in a new tab in your web browser. This is the standard browser behavior restored. (Formerly, middle-clicking on internal links in this app had been purposely disabled. The reason was to avoid the bug involving multiple browser tabs, but that’s fixed now.)</p>
+					<p>If you use a mouse, the standard web browser behavior of middle-clicking links is restored. That is, you can middle-click any link to open the linked page in a new browser tab. (Formerly, middle-clicking on internal links in this app had been purposely disabled. The reason was to avoid the bug about opening multiple tabs, but that’s fixed now, as explained in a note above.)</p>
 				</li>
 			</ul>
 
@@ -68,7 +68,7 @@
 		</section>
 		<section>
 		<h3>Earlier Releases</h3>
-			<p>MTG Deck Builder has had many other releases since its first in 2021, but release notes weren’t written before May 23, 2025.</p>
+			<p>MTG Deck Builder has had many other versions since its original in 2021, but release notes hadn’t been written before what’s published on this page.</p>
 		</section>
 	</article>
 </template>

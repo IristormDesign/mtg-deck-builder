@@ -1,18 +1,35 @@
 <template>
 	<aside
-		v-if="updateExists"
+		v-if="updateReady"
 		class="update-notification"
 	>
-		<p>✨ There’s an <strong>app update ready</strong>! Reload the page to use the newest version now.</p>
+		<template v-if="!reloading">
+			<p>🔔 An <strong>update is ready</strong>! Reload the page to use the newest version now.&nbsp;</p>
+			<div class="button-container reload">
+				<button @click="activateNewServiceWorker()">Reload</button>
+			</div>
+		</template>
+		<p
+			v-else
+			class="reloading-message"
+		>Reloading…</p>
+	</aside>
+	<aside
+		v-else-if="!reloading && $store.state.updateJustInstalled"
+		class="update-notification"
+	>
+		<p>✅ MTG Deck Builder is now up to date.&nbsp;</p>
 		<div class="button-container">
-			<button
-				v-if="!reloading"
-				@click="activateNewServiceWorker()"
-			>Reload</button>
-			<p
-				v-else
-				class="reloading"
-			>Reloading&hellip;</p>
+			<router-link
+				class="button"
+				to="/release-notes"
+				@click.native="$store.commit('updateJustInstalled', false)"
+			>
+				What’s New?
+			</router-link>
+			<button @click="$store.commit('updateJustInstalled', false)">
+				OK
+			</button>
 		</div>
 	</aside>
 </template>
@@ -23,37 +40,36 @@ export default {
 		return {
 			reloading: false,
 			registration: null,
-			updateExists: false
+			updateReady: false
 		}
 	},
 	created () {
 		document.addEventListener(
-			'swUpdated', this.updateAvailable, { once: true }
+			'swUpdated', this.notifyAboutAppUpdate, { once: true }
+		)
+		navigator.serviceWorker.addEventListener(
+			'controllerchange', this.reloadPageOnNewSWController, { once: true }
 		)
 
-		this.reloadPage()
+		/* For testing purposes only: */
+		// this.$store.commit('updateJustInstalled', true)
 	},
 	methods: {
 		activateNewServiceWorker () {
-			/* Make sure we only send a 'skip waiting' message if the Service Worker is waiting. */
 			if (!this.registration || !this.registration.waiting) return
 
-			/* Send message to Service Worker to skip the waiting and activate the new Service Worker. */
 			this.registration.waiting.postMessage({ type: 'SKIP_WAITING' })
 		},
-		updateAvailable (event) {
+		notifyAboutAppUpdate (event) {
 			this.registration = event.detail
-			this.updateExists = true
-		},
-		reloadPage () {
-			navigator.serviceWorker.addEventListener(
-				'controllerchange', () => {
-					if (this.reloading) return
+			this.updateReady = true
 
-					this.reloading = true
-					window.location.reload()
-				}
-			)
+			this.$store.commit('updateJustInstalled', true)
+		},
+		reloadPageOnNewSWController () {
+			this.reloading = true
+
+			window.location.reload()
 		}
 	}
 }

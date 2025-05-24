@@ -12,7 +12,8 @@ const VuexPersistence = new VuexPersist({
 		const data = {
 			decks: state.decks,
 			loadDefaultDecks: state.loadDefaultDecks,
-			timeAppLastModified: Date.now()
+			timeAppLastModified: Date.now(),
+			updateJustInstalled: state.updateJustInstalled
 		}
 
 		storage.setItem('vuex', JSON.stringify(data))
@@ -36,13 +37,14 @@ export default new Vuex.Store({
 		},
 		highlightedCardLIIndex: -1,
 		idOfShowingDialog: null,
-		loadDefaultDecks: true,
+		loadDefaultDecks: true, // `true` means the default decks need to be loaded; `false` means the decks have already been loaded
 		overlayHoverEnabled: false,
 		showingAnyPopup: false,
 		showCard: false,
 		showDeckMenu: false,
 		showSideboard: false,
 		timeAppLastModified: 0,
+		updateJustInstalled: undefined,
 		viewedDrawnCard: null
 	},
 	getters: {
@@ -101,6 +103,9 @@ export default new Vuex.Store({
 		},
 		timeAppLastModified (state, payload) {
 			state.timeAppLastModified = payload
+		},
+		updateJustInstalled (state, payload) {
+			state.updateJustInstalled = payload
 		},
 		viewedDrawnCard (state, payload) {
 			state.viewedDrawnCard = payload

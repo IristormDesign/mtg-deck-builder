@@ -19,19 +19,21 @@
 		color: $color-text-brighter-over-mythic-brown;
 	}
 	.button-container {
-		width: $lhse*3.5;
 		height: $lhse*1.25;
+		gap: $lhse*.5;
 	}
-	button {
+	button,
+	.button {
 		background: $color-button-gray;
-		display: block;
 		font-size: 87.5%;
 		margin-right: auto;
 		margin-left: auto;
+		height: $lhse*1.5;
 	}
-	.reloading {
+	.reloading-message {
 		font-style: italic;
-		color: $color-text-extra-brighter;
+		font-weight: $font-weight-label;
+		color: $color-text-brighter-over-mythic-brown;
 	}
 }
 
