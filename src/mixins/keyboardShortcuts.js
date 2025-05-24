@@ -144,7 +144,7 @@ export default {
 					break
 				case '3': switchToMode('drawSim')
 					break
-				case '4': switchToMode('textRenderer')
+				case '4': switchToMode('listTakeout')
 			}
 
 			if (this.imageEnlarged) {

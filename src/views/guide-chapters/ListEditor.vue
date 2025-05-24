@@ -122,7 +122,7 @@
 						<p>Some cards have abilities that specially let you get cards from “outside the game.” The sideboard can contain the outside cards that you intend to play with your deck.</p>
 					</li>
 				</ul>
-				<p>Of the four <router-link to="deck-pages#deck-page-modes">deck page modes</router-link>, only the <a href="#list-editor">List Editor</a> and <router-link to="text-renderer">Text Renderer</router-link> use the sideboard.</p>
+				<p>Of the four <router-link to="deck-pages#deck-page-modes">deck page modes</router-link>, only the <a href="#list-editor">List Editor</a> and <router-link to="list-takeout">List Takeout</router-link> use the sideboard.</p>
 			</section>
 		</section>
 

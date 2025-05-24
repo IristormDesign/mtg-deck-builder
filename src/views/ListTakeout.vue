@@ -1,11 +1,11 @@
 <template>
 	<div
-		class="text-renderer content-box"
-		role="tabpanel" aria-labelledby="text-renderer-tab"
+		class="list-takeout content-box"
+		role="tabpanel" aria-labelledby="list-takeout-tab"
 	>
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
-				<p>The Text Renderer provides the card lists of <i>{{ deck.name }}</i> in simplified text versions, which you can take for uses outside MTG Deck Builder. <router-link to="/guide/text-renderer">(More info&hellip;)</router-link></p>
+				<p>List Takeout renders copies of the card lists of <i>{{ deck.name }}</i> in simplified text versions. You may have uses for them outside MTG Deck Builder. <router-link to="/guide/list-takeout">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="control-panel">
 				<div class="button-container">
@@ -161,5 +161,5 @@ export default {
 </script>
 
 <style lang="scss">
-	@use '@/sass/page-text-renderer.scss';
+	@use '@/sass/page-list-takeout.scss';
 </style>

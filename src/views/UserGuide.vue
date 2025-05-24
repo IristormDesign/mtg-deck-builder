@@ -226,8 +226,8 @@ export default {
 						}
 					]
 				}, {
-					name: 'Text Renderer',
-					path: 'text-renderer',
+					name: 'List Takeout',
+					path: 'list-takeout',
 					subchapters: [
 						{
 							name: 'Export Deck as Text File',

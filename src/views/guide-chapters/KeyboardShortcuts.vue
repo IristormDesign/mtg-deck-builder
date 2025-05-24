@@ -2,7 +2,7 @@
 	<section id="keyboard-shortcuts" key="keyboard-shortcuts">
 		<h3>Keyboard Shortcuts</h3>
 		<p>If you’re using MTG Deck Builder on a computer with a physical keyboard (rather than on a touchscreen device), then you have the option to use keyboard shortcuts. With keyboard shortcuts, you can press designated keys to perform tasks in the app, which let you interact with the app faster than by a mouse or trackpad alone.</p>
-		<p>Special keyboard shortcuts are available for <a href="#kbsc-deck-page-modes">setting deck page modes</a> and for doing various actions each in the <a href="#kbsc-list-editor">List Editor</a>, <a href="#kbsc-stats-analyzer">Stats Analyzer</a>, and <a href="#kbsc-draw-sim">Draw Simulator</a> modes. (No keyboard shortcuts are in the Text Renderer mode.)</p>
+		<p>Special keyboard shortcuts are available for <a href="#kbsc-deck-page-modes">setting deck page modes</a> and for doing various actions each in the <a href="#kbsc-list-editor">List Editor</a>, <a href="#kbsc-stats-analyzer">Stats Analyzer</a>, and <a href="#kbsc-draw-sim">Draw Simulator</a> modes. (No keyboard shortcuts are in the List Takeout mode.)</p>
 		<p>Be aware that the app’s keyboard shortcuts can’t work while your web browser is actively focused on any kind of text field, such as the ones in the List Editor’s <router-link to="list-editor#card-adder">card adder</router-link> or <router-link to="list-editor#card-quantities">card quantities</router-link>, or your browser’s web address bar. Under that condition, pressing a letter or digit key will enter that key’s character into the text field instead of doing the shortcut’s action.</p>
 		<p>If you’d want to use a keyboard shortcut but your web browser is focusing on a text field, you must first stop the browser’s focus. You can do that by pressing the <kbd>Esc</kbd> key or by clicking a spot elsewhere on the page.</p>
 		<p>The app’s scheme of keyboard shortcuts is designed for left-handed ergonomics on the standard English-language layout of keys (“QWERTY”). If your keyboard has a different layout, the shortcuts probably won’t be as ergonomic or logical.</p>
@@ -11,17 +11,17 @@
 			<h4>Keyboard Shortcuts for Setting Deck Page Modes</h4>
 			<p>While viewing a <router-link to="deck-pages">deck page</router-link>, you can switch between the <router-link to="deck-pages#deck-page-modes">deck page modes</router-link> by pressing any of the following keys:</p>
 			<ul class="keyboard-shortcuts">
-				<li><kbd>1</kbd>: Set to the <router-link to="list-editor">List Editor</router-link>.</li>
-				<li><kbd>2</kbd>: Set to the <router-link to="stats-analyzer">Stats Analyzer</router-link>.</li>
-				<li><kbd>3</kbd>: Set to the <router-link to="draw-sim">Draw Simulator</router-link>.</li>
-				<li><kbd>4</kbd>: Set to the <router-link to="text-renderer">Text Renderer</router-link>.</li>
+				<li><kbd>1</kbd>: Set to the <router-link to="list-editor">List Editor</router-link> mode.</li>
+				<li><kbd>2</kbd>: Set to the <router-link to="stats-analyzer">Stats Analyzer</router-link> mode.</li>
+				<li><kbd>3</kbd>: Set to the <router-link to="draw-sim">Draw Simulator</router-link> mode.</li>
+				<li><kbd>4</kbd>: Set to the <router-link to="list-takeout">List Takeout</router-link> mode.</li>
 			</ul>
 			<p>If you use any of these mode-setting <a href="#keyboard-shortcuts">keyboard shortcuts</a> for the mode that’s already active, then the shortcut will scroll the page upward to the <router-link to="deck-page-header#mode-menu">mode menu</router-link> (if it’s not already in view).</p>
 		</section>
 
 		<section id="kbsc-list-editor">
 			<h4>Keyboard Shortcuts for List Editor</h4>
-			<p>The <router-link to="list-editor">List Editor mode</router-link> accepts numerous <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all explained in the next subchapters.</p>
+			<p>The <router-link to="list-editor">List Editor</router-link> accepts numerous <a href="#keyboard-shortcuts">keyboard shortcuts</a>. These shortcuts are divided between three categories, all explained in the next subchapters.</p>
 			<p>The majority of the List Editor’s keyboard shortcuts do actions that in some way involve the <router-link to="list-editor#card-list">card list</router-link>’s currently highlighted row. If you’d use one of these shortcuts when no row is highlighted yet, then the row associated with the currently displayed <router-link to="list-editor#card-image">card image</router-link> becomes highlighted.</p>
 
 			<section id="highlighting-rows">
@@ -79,7 +79,7 @@
 
 		<section id="kbsc-draw-sim">
 			<h4>Keyboard Shortcuts for Draw Simulator</h4>
-			<p>The <router-link to="draw-sim">Draw Simulator mode</router-link> accepts the following <a href="#keyboard-shortcuts">keyboard shortcuts</a>:</p>
+			<p>The <router-link to="draw-sim">Draw Simulator</router-link> accepts the following <a href="#keyboard-shortcuts">keyboard shortcuts</a>:</p>
 
 			<section id="unique-shortcuts-to-draw-sim">
 				<h5>Unique Shortcuts to Draw Simulator</h5>

@@ -20,7 +20,7 @@
 				<li><router-link to="list-editor">List Editor</router-link></li>
 				<li><router-link to="stats-analyzer">Stats Analyzer</router-link></li>
 				<li><router-link to="draw-sim">Draw Simulator</router-link></li>
-				<li><router-link to="text-renderer">Text Renderer</router-link></li>
+				<li><router-link to="list-takeout">List Takeout</router-link></li>
 			</ul>
 			<p>These modes each provide you a different way to interact with your deck through MTG Deck Builder. The later chapters of the User Guide explain in detail how each mode works.</p>
 			<p>A deck page mode’s content appears below the <router-link to="deck-page-header">deck page header</router-link>. Switch from one mode to another via the <router-link to="deck-page-header#mode-menu">mode menu</router-link> or a <router-link to="keyboard-shortcuts#kbsc-deck-page-modes">keyboard shortcut</router-link>.</p>

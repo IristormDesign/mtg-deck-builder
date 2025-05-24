@@ -57,9 +57,13 @@ const routes = [
 				component: () => import(/* webpackChunkName: "guide-draw-sim" */ '@/views/guide-chapters/DrawSim.vue')
 			},
 			{
-				name: 'guideTextRenderer',
+				name: 'guideListTakeout',
+				path: 'list-takeout',
+				component: () => import(/* webpackChunkName: "guide-list-takeout" */ '@/views/guide-chapters/ListTakeout.vue')
+			},
+			{ // Outdated links may still point to the old name of the User Guide's List Takeout page. This redirect could be removed in the future.
 				path: 'text-renderer',
-				component: () => import(/* webpackChunkName: "guide-text-renderer" */ '@/views/guide-chapters/TextRenderer.vue')
+				redirect: { name: 'guideListTakeout' }
 			},
 			{
 				name: 'guideCardListEntry',
@@ -84,7 +88,7 @@ const routes = [
 		]
 	},
 	{
-		path: '/manual', // For any old links to the User Guide.
+		path: '/manual', // For any old links to the User Guide. This redirect could be removed in the future.
 		redirect: { name: 'guide' },
 		children: [
 			{
@@ -138,9 +142,13 @@ const routes = [
 				props: true
 			},
 			{
-				name: 'textRenderer',
+				name: 'listTakeout',
+				path: 'list-takeout',
+				component: () => import(/* webpackChunkName: "list-takeout" */ '@/views/ListTakeout.vue')
+			},
+			{ // Outdated links may still point to the old name of the List Takeout mode page. This redirect could be removed in the future.
 				path: 'text-renderer',
-				component: () => import(/* webpackChunkName: "text-renderer" */ '@/views/TextRenderer.vue')
+				redirect: { name: 'listTakeout' }
 			},
 			{
 				/* For any URLs with an invalid subdirectory within a deck page directory, automatically redirect to the List Editor. */

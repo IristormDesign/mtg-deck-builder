@@ -1,6 +1,6 @@
 @use 'variables-and-mixins' as *;
 
-.text-renderer {
+.list-takeout {
 	margin: 0 auto $lhse*.5;
 
 	.intro {
@@ -160,7 +160,7 @@
 }
 
 @media (max-width: ($min-width-app * .8333)) {
-	.text-renderer {
+	.list-takeout {
 		.lists {
 			&,
 			&.two-columns {
@@ -171,7 +171,7 @@
 	}
 }
 @media (max-width: ($min-width-app * .625)) {
-	.text-renderer {
+	.list-takeout {
 		width: 100%;
 
 		.lists {
@@ -183,7 +183,7 @@
 	}
 }
 @media (max-width: ($min-width-app * .4583)) {
-	.text-renderer {
+	.list-takeout {
 		.control-panel {
 			grid-template-columns: 1fr;
 		}
@@ -195,10 +195,10 @@
 	}
 	.fade-bg > :not(main),
 	.scroll-to-top,
-	.deck > :not(.text-renderer) {
+	.deck > :not(.list-takeout) {
 		display: none !important;
 	}
-	.text-renderer {
+	.list-takeout {
 		width: 100%;
 
 		> :not(.deck-print-area) {

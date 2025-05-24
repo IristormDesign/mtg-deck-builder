@@ -11,7 +11,7 @@
 				<p>The custom decks you’ve made in MTG Deck Builder are available only in the particular web browser on the particular computer or phone that you’ve been using this app on. If you’d need to access the decks you’ve made elsewhere, there’s a way you can do that: Transfer their data at the original location by <router-link to="deck-page-header#archive-action">archiving the decks</router-link> beforehand, then have those decks <router-link to="create-deck#replicate-archived-decks">replicated from the archive</router-link> at the new location.</p>
 			</li>
 			<li>
-				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <router-link to="text-renderer">Text Renderer mode</router-link>.</p>
+				<p>Similarly, other users of MTG Deck Builder on their own web browsers can’t view your decks, or you theirs—except by sharing <a href="#deck-archive-files">deck archive files</a>, or by the list-sharing methods via the <router-link to="list-takeout">List Takeout mode</router-link>.</p>
 			</li>
 		</ul>
 

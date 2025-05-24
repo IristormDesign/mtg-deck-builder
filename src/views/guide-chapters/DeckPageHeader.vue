@@ -56,7 +56,7 @@
 
 		<section id="mode-menu">
 			<h4>Mode Menu</h4>
-			<p>The mode menu is a section of the <router-link to="deck-page-header">deck page header</router-link> that consists of a row of tabs, one for each <router-link to="deck-pages#deck-page-modes">deck page mode</router-link>: the <router-link to="list-editor">List Editor</router-link>, the <router-link to="stats-analyzer">Stats Analyzer</router-link>, the <router-link to="draw-sim">Draw Simulator</router-link>, and the <router-link to="text-renderer">Text Renderer</router-link>.</p>
+			<p>The mode menu is a section of the <router-link to="deck-page-header">deck page header</router-link> that consists of a row of tabs, one for each <router-link to="deck-pages#deck-page-modes">deck page mode</router-link>: the <router-link to="list-editor">List Editor</router-link>, the <router-link to="stats-analyzer">Stats Analyzer</router-link>, the <router-link to="draw-sim">Draw Simulator</router-link>, and <router-link to="list-takeout">List Takeout</router-link>.</p>
 			<p>Click a tab in the mode menu, or use a <router-link to="keyboard-shortcuts#kbsc-deck-page-modes">keyboard shortcut</router-link>, to set the <router-link to="deck-pages">deck page</router-link> to your chosen mode. The active mode’s tab is highlighted with a gray background.</p>
 		</section>
 
