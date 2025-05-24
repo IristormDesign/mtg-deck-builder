@@ -149,11 +149,17 @@ export default {
 					return null
 				}
 
-				const obsoleteKeys = ['maxQty', 'uniqueID']
+				const obsoleteKeys = ['maxQty', 'starred', 'uniqueID']
 
 				for (const key of obsoleteKeys) {
 					if (key in card) {
-						delete card[key]
+						if (key === 'starred') {
+							if (card[key] !== true) {
+								delete card[key]
+							}
+						} else {
+							delete card[key]
+						}
 					}
 				}
 

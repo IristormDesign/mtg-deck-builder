@@ -1,8 +1,5 @@
 <template>
-	<label
-		class="card-star"
-		title="(A)"
-	>
+	<label class="card-star" title="(A)">
 		<input
 			type="checkbox"
 			@change="toggleCardStar(card)"
@@ -44,6 +41,8 @@ export default {
 
 			if (!card.starred) {
 				this.activeCardList.viewedStarredCard = this.anotherStarredCard
+
+				delete card.starred
 			}
 
 			this.$store.commit('decks', this.$store.state.decks)

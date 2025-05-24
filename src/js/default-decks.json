@@ -45,8 +45,7 @@
           "link": "https://scryfall.com/card/mkc/206/dimir-spybug?utm_source=api",
           "imgVersion": 2,
           "qty": 4,
-          "gapAfter": false,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Rune-Sealed Wall",
@@ -648,8 +647,7 @@
         "link": "https://scryfall.com/card/mkc/102/enhanced-surveillance?utm_source=api",
         "imgVersion": 2,
         "qty": 2,
-        "gapAfter": false,
-        "starred": false
+        "gapAfter": false
       }
     },
     {
@@ -1484,8 +1482,7 @@
           "link": "https://scryfall.com/card/dmc/142/atla-palani-nest-tender?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Marisi, Breaker of the Coil",
