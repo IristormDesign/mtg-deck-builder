@@ -6,7 +6,7 @@
 			:id="qtyCardID(i)"
 			:ref="qtyCardID(i)"
 			min="0"
-			:max="card.maxQty"
+			:max="this.maxQty"
 			v-model="cardObject.qty"
 			@focus="focusedOnQtyInput()"
 			@blur="blurredFromQtyInput()"
@@ -18,7 +18,7 @@
 				class="increment"
 				title="Increase quantity (E)"
 				@click="cardObject.qty++"
-				:disabled="card.qty >= card.maxQty"
+				:disabled="card.qty >= this.maxQty"
 			>
 				<svg><use href="#plus-icon" /></svg>
 			</button>
@@ -110,6 +110,7 @@ export default {
 
 			/* For future app updates, periodically check for new cards that modify the standard quantity limit, and add those cards' names here. See: https://scryfall.com/search?q=%28oracle%3A%22a+deck+can+have%22+oracle%3A%22cards+named%22%29+%28game%3Apaper%29&order=released&as=grid */
 			switch (this.card.name) {
+				case 'Cid, Timeless Artificer':
 				case 'Dragon’s Approach':
 				case 'Hare Apparent':
 				case 'Nazgûl':
@@ -119,10 +120,18 @@ export default {
 				case 'Seven Dwarves':
 				case 'Shadowborn Apostle':
 				case 'Slime Against Humanity':
+				case 'Tempest Hawk':
 				case 'Templar Knight':
 					return true
 				default:
 					return false
+			}
+		},
+		maxQty () {
+			if (this.maxQtyException) {
+				return 99
+			} else {
+				return 4
 			}
 		}
 	},
@@ -192,15 +201,7 @@ export default {
 			} else if (isNaN(card.qty)) { // If the user somehow entered non-digit characters for the quantity, set the quantity to 1 instead.
 				card.qty = 1
 			} else {
-				if (!card.maxQty) {
-					if (this.maxQtyException) {
-						card.maxQty = 99
-					} else {
-						card.maxQty = 4
-					}
-				}
-
-				if (card.maxQty === 99) {
+				if (this.maxQtyException) {
 					if (card.qty > 99) {
 						card.qty = 99
 					}

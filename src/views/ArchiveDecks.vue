@@ -124,6 +124,8 @@ export default {
 			})
 		},
 		archiveSelectedDecks () {
+			this.removeAnyObsoleteKeys()
+
 			const transitoryLink = document.createElement('a')
 
 			transitoryLink.style.display = 'none'
@@ -139,6 +141,38 @@ export default {
 			setTimeout(() => {
 				this.hasBeenArchived = true
 			}, 250) // Allow some time for the file browser to appear before showing the result message.
+		},
+		removeAnyObsoleteKeys () {
+			function perCard (card) {
+				/* First check whether a `card` exists, and whether it has the object type (rather than the string type, as some old versions of `viewedCard` data used to be.). */
+				if (!card || typeof card !== 'object') {
+					return null
+				}
+
+				const obsoleteKeys = ['maxQty', 'uniqueID']
+
+				for (const key of obsoleteKeys) {
+					if (key in card) {
+						delete card[key]
+					}
+				}
+
+				return card
+			}
+
+			this.$store.state.decks.forEach(deck => {
+				deck.cards = deck.cards.map(
+					card => perCard(card)
+				)
+				deck.sideboard.cards = deck.sideboard.cards.map(
+					card => perCard(card)
+				)
+
+				deck.viewedCard = perCard(deck.viewedCard)
+				deck.sideboard.viewedCard = perCard(deck.sideboard.viewedCard)
+			})
+
+			this.$store.commit('decks', this.$store.state.decks)
 		},
 		generateJSON () {
 			let data = '{"decks":['

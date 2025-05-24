@@ -22,8 +22,7 @@
           "link": "https://scryfall.com/card/mkm/105/snarling-gorehound?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Dimir Spybug",
@@ -47,7 +46,6 @@
           "imgVersion": 2,
           "qty": 4,
           "gapAfter": false,
-          "maxQty": 4,
           "starred": false
         },
         {
@@ -70,8 +68,7 @@
           "link": "https://scryfall.com/card/fdn/49/rune-sealed-wall?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Mirko, Obsessive Theorist",
@@ -94,9 +91,7 @@
           "link": "https://scryfall.com/card/mkc/2/mirko-obsessive-theorist?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": false,
-          "maxQty": 4,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Doom Whisperer",
@@ -119,9 +114,7 @@
           "link": "https://scryfall.com/card/mkc/128/doom-whisperer?utm_source=api",
           "imgVersion": 2,
           "qty": 2,
-          "gapAfter": false,
-          "maxQty": 4,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Syr Konrad, the Grim",
@@ -142,9 +135,7 @@
           "link": "https://scryfall.com/card/m3c/207/syr-konrad-the-grim?utm_source=api",
           "imgVersion": 2,
           "qty": 2,
-          "gapAfter": false,
-          "maxQty": 4,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Eye of Duskmantle",
@@ -166,8 +157,7 @@
           "link": "https://scryfall.com/card/mkc/27/eye-of-duskmantle?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": true,
-          "starred": false
+          "gapAfter": true
         },
         {
           "name": "Enhanced Surveillance",
@@ -184,9 +174,7 @@
           "link": "https://scryfall.com/card/mkc/102/enhanced-surveillance?utm_source=api",
           "imgVersion": 2,
           "qty": 2,
-          "gapAfter": false,
-          "maxQty": 4,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Disinformation Campaign",
@@ -204,9 +192,7 @@
           "link": "https://scryfall.com/card/mkc/208/disinformation-campaign?utm_source=api",
           "imgVersion": 2,
           "qty": 2,
-          "gapAfter": false,
-          "maxQty": 4,
-          "starred": false
+          "gapAfter": false
         },
         {
           "name": "Case of the Shifting Visage",
@@ -225,8 +211,7 @@
           "link": "https://scryfall.com/card/mkc/19/case-of-the-shifting-visage?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": true,
-          "maxQty": 4
+          "gapAfter": true
         },
         {
           "name": "Dimir Signet",
@@ -264,8 +249,7 @@
           "link": "https://scryfall.com/card/mkc/207/discovery-dispersal?utm_source=api",
           "imgVersion": 2,
           "qty": 2,
-          "gapAfter": true,
-          "maxQty": 4
+          "gapAfter": true
         },
         {
           "name": "Consider",
@@ -284,8 +268,7 @@
           "link": "https://scryfall.com/card/woc/87/consider?utm_source=api",
           "imgVersion": 2,
           "qty": 4,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Don’t Make a Sound",
@@ -304,8 +287,7 @@
           "link": "https://scryfall.com/card/dsk/49/dont-make-a-sound?utm_source=api",
           "imgVersion": 2,
           "qty": 4,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Mission Briefing",
@@ -324,8 +306,7 @@
           "link": "https://scryfall.com/card/mkc/110/mission-briefing?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Pile On",
@@ -345,8 +326,7 @@
           "link": "https://scryfall.com/card/mom/122/pile-on?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": true,
-          "maxQty": 4
+          "gapAfter": true
         },
         {
           "name": "Island",
@@ -361,8 +341,7 @@
           "link": "https://scryfall.com/card/und/89/island?utm_source=api",
           "imgVersion": 2,
           "qty": 5,
-          "gapAfter": false,
-          "maxQty": 99
+          "gapAfter": false
         },
         {
           "name": "Swamp",
@@ -377,8 +356,7 @@
           "link": "https://scryfall.com/card/und/91/swamp?utm_source=api",
           "imgVersion": 2,
           "qty": 5,
-          "gapAfter": false,
-          "maxQty": 99
+          "gapAfter": false
         },
         {
           "name": "Dimir Aqueduct",
@@ -393,8 +371,7 @@
           "link": "https://scryfall.com/card/otc/288/dimir-aqueduct?utm_source=api",
           "imgVersion": 2,
           "qty": 4,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Undercity Sewers",
@@ -411,8 +388,7 @@
           "link": "https://scryfall.com/card/mkm/270/undercity-sewers?utm_source=api",
           "imgVersion": 2,
           "qty": 4,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Clearwater Pathway",
@@ -432,8 +408,7 @@
           "link": "https://scryfall.com/card/znr/260/clearwater-pathway-murkwater-pathway?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Tocasia’s Dig Site",
@@ -481,9 +456,7 @@
             "link": "https://scryfall.com/card/mkc/122/thoughtbound-phantasm?utm_source=api",
             "imgVersion": 2,
             "qty": 2,
-            "gapAfter": false,
-            "maxQty": 4,
-            "starred": false
+            "gapAfter": false
           },
           {
             "name": "Nightveil Sprite",
@@ -505,8 +478,7 @@
             "link": "https://scryfall.com/card/j25/335/nightveil-sprite?utm_source=api",
             "imgVersion": 2,
             "qty": 2,
-            "gapAfter": false,
-            "maxQty": 4
+            "gapAfter": false
           },
           {
             "name": "Lazav, the Multifarious",
@@ -528,8 +500,7 @@
             "link": "https://scryfall.com/card/mkc/214/lazav-the-multifarious?utm_source=api",
             "imgVersion": 2,
             "qty": 1,
-            "gapAfter": false,
-            "maxQty": 4
+            "gapAfter": false
           },
           {
             "name": "Blood Operative",
@@ -550,8 +521,7 @@
             "link": "https://scryfall.com/card/grn/63/blood-operative?utm_source=api",
             "imgVersion": 2,
             "qty": 2,
-            "gapAfter": true,
-            "maxQty": 4
+            "gapAfter": true
           },
           {
             "name": "Jace, Wielder of Mysteries",
@@ -591,9 +561,7 @@
             "link": "https://scryfall.com/card/mkm/43/candlestick?utm_source=api",
             "imgVersion": 2,
             "qty": 1,
-            "gapAfter": true,
-            "maxQty": 4,
-            "starred": false
+            "gapAfter": true
           },
           {
             "name": "Go for the Throat",
@@ -610,8 +578,7 @@
             "link": "https://scryfall.com/card/2x2/76/go-for-the-throat?utm_source=api",
             "imgVersion": 2,
             "qty": 3,
-            "gapAfter": false,
-            "maxQty": 4
+            "gapAfter": false
           },
           {
             "name": "Price of Fame",
@@ -630,8 +597,7 @@
             "link": "https://scryfall.com/card/mkc/135/price-of-fame?utm_source=api",
             "imgVersion": 2,
             "qty": 2,
-            "gapAfter": true,
-            "maxQty": 4
+            "gapAfter": true
           },
           {
             "name": "Island",
@@ -645,8 +611,7 @@
             "layout": "normal",
             "link": "https://scryfall.com/card/und/89/island?utm_source=api",
             "imgVersion": 2,
-            "qty": 1,
-            "maxQty": 99
+            "qty": 1
           }
         ],
         "viewedCard": {
@@ -664,8 +629,7 @@
           "link": "https://scryfall.com/card/2x2/76/go-for-the-throat?utm_source=api",
           "imgVersion": 2,
           "qty": 3,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         }
       },
       "sortBy": "Type",
@@ -685,7 +649,6 @@
         "imgVersion": 2,
         "qty": 2,
         "gapAfter": false,
-        "maxQty": 4,
         "starred": false
       }
     },
@@ -1567,8 +1530,7 @@
           "link": "https://scryfall.com/card/c19/204/trostani-selesnyas-voice?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Ghired, Conclave Exile",
@@ -2045,8 +2007,7 @@
           "link": "https://scryfall.com/card/2x2/330/selesnya-sanctuary?utm_source=api",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
-          "maxQty": 4
+          "gapAfter": false
         },
         {
           "name": "Forest",
