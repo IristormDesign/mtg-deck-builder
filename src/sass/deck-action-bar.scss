@@ -28,7 +28,7 @@
 	ul {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: $lhse*.2;
+		gap: $lhse*.3333;
 		margin: 0 auto;
 		padding: 0;
 		height: 100%;
@@ -53,11 +53,14 @@
 		gap: 0 $lhse*.25;
 		align-items: center;
 		justify-content: center;
-		border: $border-width-sections solid transparent;
 		padding: 0 math.div($lhse, 3);
 		transition: $transition-duration-standard ease;
 		transition-property: color, background-color, text-decoration-color;
+		border-color: transparent;
 
+		&:not(:focus-visible) {
+			outline-color: $color-button-orange;
+		}
 		&:hover,
 		&:focus {
 			background: $color-mythic-brown;
@@ -71,6 +74,8 @@
 			pointer-events: none;
 			background: $color-heading-bg;
 			color: $color-text-extra-brighter;
+			border: 2px solid $color-heading-bg;
+			box-shadow: inset 0 0 0 2px $color-group-bg;
 		}
 	}
 	svg {
