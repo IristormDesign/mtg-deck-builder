@@ -76,6 +76,21 @@
 			color: $color-text-extra-brighter;
 			border: 2px solid $color-heading-bg;
 			box-shadow: inset 0 0 0 2px $color-group-bg;
+			position: relative;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: -$lhse*3.5;
+				width: 0;
+				height: 100%;
+				border: $lhse*.5 solid transparent;
+				border-top-color: $color-group-bg;
+				margin: auto;
+			}
 		}
 	}
 	svg {
@@ -150,6 +165,12 @@
 			flex-wrap: wrap;
 			border-radius: $border-radius-small-button;
 			padding-bottom: $lhse*.125;
+
+			&.current-page {
+				&::after {
+					bottom: -$lhse*6;
+				}
+			}
 		}
 		svg {
 			width: 100%;
@@ -178,6 +199,13 @@
 
 		a {
 			padding-bottom: 0;
+
+			&.current-page {
+				&::after {
+					bottom: -$lhse*5.75;
+					border-width: $lhse*.375;
+				}
+			}
 		}
 		.text-label {
 			margin-bottom: $lhse*.1667;
