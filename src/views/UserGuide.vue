@@ -194,8 +194,8 @@ export default {
 							name: 'Data Tables',
 							hash: '#data-tables'
 						}, {
-							name: 'Statistics Filter',
-							hash: '#statistics-filter'
+							name: 'Data Filter',
+							hash: '#data-filter'
 						}
 					]
 				}, {

@@ -73,7 +73,7 @@
 			<p>There’s only one <a href="#keyboard-shortcuts">keyboard shortcut</a> specially for the <router-link to="stats-analyzer">Stats Analyzer mode</router-link>.</p>
 
 			<ul class="keyboard-shortcuts">
-				<li><kbd>Esc</kbd>: Stop the active <router-link to="stats-analyzer#statistics-filter">statistics filter</router-link>.</li>
+				<li><kbd>Esc</kbd>: Stop the active <router-link to="stats-analyzer#data-filter">data filter</router-link>.</li>
 			</ul>
 		</section>
 

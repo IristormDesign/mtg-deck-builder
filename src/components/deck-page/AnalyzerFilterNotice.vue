@@ -6,9 +6,9 @@
 		<div>
 			<header>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M455.39-180q-15.08 0-25.23-10.16Q420-200.31 420-215.39v-231.53L196.08-731.38q-11.54-15.39-3.35-32 8.2-16.62 27.66-16.62h519.22q19.46 0 27.66 16.62 8.19 16.61-3.35 32L540-446.92v231.53q0 15.08-10.16 25.23Q519.69-180 504.61-180h-49.22ZM480-468l198-252H282l198 252Zm0 0Z"/></svg>
-				<h4>Filter: On</h4>
+				<h4>Data Filter: On</h4>
 			</header>
-			<p v-show="activeFilterDescription">The displayed statistics involve only <strong>{{ activeFilterDescription }}</strong>.</p>
+			<p v-show="activeFilterDescription">Filtering for <strong>{{ activeFilterDescription }}</strong></p>
 			<div class="button-container">
 				<button
 					@click="stopFiltering()"
@@ -27,13 +27,13 @@
 		<div>
 			<header>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M577.77-495.23 535-538l143-182H353l-60-60h446.61q18.85 0 27.35 16.62 8.5 16.61-3.04 32L577.77-495.23Zm214.38 412.3L540-335.08v119.69q0 15.08-10.16 25.23Q519.69-180 504.61-180h-49.22q-15.08 0-25.23-10.16Q420-200.31 420-215.39v-239.69L82.93-792.15l42.15-42.77 709.84 709.84-42.77 42.15ZM535-538Z"/></svg>
-				<h4>Filter: Off</h4>
+				<h4>Data Filter: Off</h4>
 			</header>
-			<p>The displayed statistics involve your <strong>whole deck</strong>.</p>
+			<p>Displaying statistics about your <strong>whole deck</strong></p>
 			<div class="button-container">
 				<button
 					disabled
-					title="No statistics filter is in use right now."
+					title="No data filter is in use right now."
 				>
 					<svg><use href="#cancel-icon" /></svg>
 					Stop Filtering
