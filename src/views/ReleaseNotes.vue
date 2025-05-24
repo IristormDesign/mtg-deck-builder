@@ -13,8 +13,8 @@
 				<figcaption>Illustration from <a href="https://scryfall.com/card/bro/65/take-flight" target="_blank">Take Flight<svg><use href="#open-in-new-icon" /></svg></a> by Joshua Cairos</figcaption>
 			</figure>
 
-			<p>MTG Deck Builder by Iristorm Design gets updates for improving the app’s user experience. This page logs the changes in each updated version, starting from the most recent release.</p>
-			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text edits. Because those types of changes are trivial and frequent, they’re not announced in every release note, even when those changes are made.</p>
+			<p>This page logs the changes made to MTG Deck Builder in each update, starting from the most recent release.</p>
+			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text revisions. Because those types of changes are trivial and frequent, they’re not announced in every release note, even when those changes are made.</p>
 		</header>
 
 		<section>
@@ -28,7 +28,7 @@
 				</li>
 				<li>
 					<p>✨ <strong>P/T Sum Sorts Planeswalkers</strong> ✨ – In the List Editor, when you sort cards by P/T sum, each planeswalker card is treated as if it has a P/T sum, where its power is 0 and its toughness is equal to its loyalty number.</p>
-					<p>This change might not take effect immediately for you. If you have a deck that already contained a planeswalker before this app release, then you’ll see a notice on the deck page informing you to update the deck’s data set. For decks to which you add planeswalkers <em>after</em> this app release, they won’t need a data set update.</p>
+					<p>This change might not take effect immediately for you. If you have a deck that already contained a planeswalker before this app release, then you’ll see a notice on the deck page informing you to update the deck’s data set. For decks to which you add planeswalkers <em>after</em> this app release, or for decks that have no planeswalkers, they won’t need a data set update.</p>
 				</li>
 				<li>
 					<p>✨ <strong>Release Notes</strong> ✨ – The app has a new page, Release Notes. (But you already know that!) Additionally, the app’s footer and the app update notification banner each provide a link to this page.</p>
@@ -56,7 +56,7 @@
 
 			<h4>May 6 <span class="side-note">(logged retroactively)</span></h4>
 			<ul>
-				<li>The List Editor has a pop-up tip explaining the different ways you can add cards.</li>
+				<li>The List Editor has a pop-up tip explaining the different ways you can add cards to your deck.</li>
 				<li>In the Stats Analyzer, the attribute “not starred” is renamed “un-starred.”</li>
 			</ul>
 
