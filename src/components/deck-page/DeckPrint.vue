@@ -4,39 +4,122 @@
 
 		<section v-if="mainNotEmpty">
 			<h3 v-if="sideboardNotEmpty">Main List</h3>
-			<ul :class="classShortList">
-				<li
-					v-for="card in deck.cards"
-					:key="doubleFacedCardName(card)"
-					:class="card.starred ? 'starred' : ''"
-				>
-					<span class="qty-print">
-						{{ card.qty }}
-						&nbsp;
-					</span>
-					{{ doubleFacedCardName(card) }}
-				</li>
-			</ul>
+			<div v-if="this.deck.cards.length + this.deck.sideboard.cards.length <= 33">
+				<ul>
+					<li
+						v-for="card in deck.cards"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+			</div>
+			<div v-else class="long-list-in-columns">
+				<ul>
+					<li
+						v-for="card in deck.cards.slice(0, (deck.cards.length + 1) / 3)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+				<ul>
+					<li
+						v-for="card in deck.cards.slice((deck.cards.length + 1) / 3, ((deck.cards.length + 1) / 3) * 2)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+				<ul>
+					<li
+						v-for="card in deck.cards.slice(((deck.cards.length + 1) / 3) * 2, ((deck.cards.length + 1) / 3) * 3)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+			</div>
 		</section>
 		<section v-if="sideboardNotEmpty">
 			<h3 v-if="mainNotEmpty">Sideboard List</h3>
-			<ul :class="classShortList">
-				<li
-					v-for="card in deck.sideboard.cards"
-					:key="doubleFacedCardName(card)"
-					:class="card.starred ? 'starred' : ''"
-				>
-					<span class="qty-print">
-						{{ card.qty }}
-						&nbsp;
-					</span>
-					{{ doubleFacedCardName(card) }}
-				</li>
-			</ul>
+			<div v-if="this.deck.cards.length + this.deck.sideboard.cards.length <= 33">
+				<ul>
+					<li
+						v-for="card in deck.sideboard.cards"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+			</div>
+			<div v-else class="long-list-in-columns">
+				<ul>
+					<li
+						v-for="card in deck.sideboard.cards.slice(0, (deck.sideboard.cards.length + 1) / 3)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+				<ul>
+					<li
+						v-for="card in deck.sideboard.cards.slice((deck.sideboard.cards.length + 1) / 3, ((deck.sideboard.cards.length + 1) / 3) * 2)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+				<ul>
+					<li
+						v-for="card in deck.sideboard.cards.slice(((deck.sideboard.cards.length + 1) / 3) * 2, ((deck.sideboard.cards.length + 1) / 3) * 3)"
+						:key="doubleFacedCardName(card)"
+						:class="card.starred ? 'starred' : ''"
+					>
+						<span class="qty-print">
+							{{ card.qty }}
+							&nbsp;
+						</span>
+						{{ doubleFacedCardName(card) }}
+					</li>
+				</ul>
+			</div>
 		</section>
-		<footer>
-			<p>Printed from MTG Deck Builder by Iristorm Design — magic.iristormdesign.com</p>
-		</footer>
 	</aside>
 </template>
 
@@ -51,11 +134,6 @@ export default {
 		sideboardNotEmpty: Boolean
 	},
 	computed: {
-		classShortList () {
-			const totalItems = this.deck.cards.length + this.deck.sideboard.cards.length
-
-			return totalItems < 33 ? 'short-list' : ''
-		}
 	}
 }
 </script>

@@ -120,20 +120,21 @@
 		h2 {
 			font-size: $print-font-size*1.3820;
 			margin: $lhsp*.5 0 $lhsp;
+			box-shadow: none !important;
+			border: none !important;
 		}
 		h3 {
 			font-size: $print-font-size;
 			margin: $lhsp 0 $lhsp*.5;
 		}
+		.long-list-in-columns {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: $lhsp*.5;
+		}
 		ul {
-			column-count: 3;
-			column-gap: $lhsp;
 			padding: 0;
 			margin: $lhsp*.5 0;
-
-			&.short-list {
-				column-count: 1;
-			}
 		}
 		li {
 			list-style: none;
@@ -147,14 +148,6 @@
 		.qty-print {
 			min-width: 1.3333em;
 			text-align: right;
-		}
-		footer {
-			margin-top: $lhsp*1.5;
-
-			p {
-				font-style: italic;
-				font-size: 80%;
-			}
 		}
 	}
 }
@@ -206,11 +199,6 @@
 		}
 		.deck-print-area {
 			display: block;
-
-			h2 {
-				box-shadow: none !important;
-				border: none !important;
-			}
 		}
 	}
 }
