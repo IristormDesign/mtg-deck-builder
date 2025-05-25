@@ -26,8 +26,9 @@
 
 		<section id="print-deck">
 			<h4>Print Deck</h4>
-			<p>Click the Print Deck button to print your deck’s main and sideboard card lists onto paper. Doing this method automatically applies some basic styling to the lists’ text. Any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor) will appear bold in the printed list.</p>
-			<p>If a list has a large number of card names, then the list’s printed version will be automatically laid out into three columns to conserve paper. (However, if you’re on Apple’s Safari browser, then it’ll always print the lists in only one column, because unfortunately, Safari doesn’t support multi-column layouts in printing. Other modern web browsers print multi-column layouts normally.)</p>
+			<p>You can get your deck’s main and sideboard card lists out on paper and ink. To do so, click the “Print Deck” button, which opens your web browser’s print dialog box. There you can choose a printer and your print settings, and look at a preview of the result.</p>
+			<p>When you print from List Takeout, it automatically applies some basic styling to the card lists’ text. For any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor), the print will render their lettering in bold. If your deck has a large total number of names, the print will lay out the lists into three adjacent columns to conserve paper.</p>
+			<p>Large card lists are best printed in the portrait (rather than landscape) orientation. A singular deck’s lists (barring those with an extraordinarily huge number of card names) can fit on one sheet in the common paper sizes of U.S. Letter and A4. Some smaller paper sizes may also work if your lists are short enough.</p>
 		</section>
 
 		<section id="copy-card-lists">

@@ -127,7 +127,7 @@
 			font-size: $print-font-size;
 			margin: $lhsp 0 $lhsp*.5;
 		}
-		.long-list-in-columns {
+		.columns {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: $lhsp*.5;
