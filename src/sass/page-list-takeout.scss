@@ -206,6 +206,11 @@
 		}
 		.deck-print-area {
 			display: block;
+
+			h2 {
+				box-shadow: none !important;
+				border: none !important;
+			}
 		}
 	}
 }
