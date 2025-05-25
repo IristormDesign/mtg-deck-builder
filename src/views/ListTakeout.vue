@@ -5,7 +5,7 @@
 	>
 		<template v-if="mainNotEmpty || sideboardNotEmpty">
 			<header class="intro">
-				<p>List Takeout renders copies of the card lists of <i>{{ deck.name }}</i> in simplified text versions. You may have uses for them outside MTG Deck Builder. <router-link to="/guide/list-takeout">(More info&hellip;)</router-link></p>
+				<p>List Takeout renders copies of the card lists of <i>{{ deck.name }}</i> in simplified text versions. You may find uses for them outside MTG Deck Builder. <router-link to="/guide/list-takeout">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="control-panel">
 				<div class="button-container">

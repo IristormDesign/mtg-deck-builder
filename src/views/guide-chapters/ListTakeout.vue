@@ -1,8 +1,8 @@
 <template functional>
 	<section id="list-takeout" key="list-takeout">
 		<h3>List Takeout</h3>
-		<p>List Takeout is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view the card lists of your deck in the form of plain text.</p>
-		<p>Why would you want to render your deck like this? Here are some possible reasons:</p>
+		<p>As you finish constructing a deck in MTG Deck Builder, that’s not the end of managing your deck—it’s the beginning! Now you’ll probably want to do something more with these cards beyond just looking at their virtual representations within this app. So, that’s when List Takeout enters the battlefield.</p>
+		<p>List Takeout is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view your deck’s card lists in the form of plain text. Why would you want this? Here are some possibilities:</p>
 		<ul>
 			<li>
 				<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic</i> card singles, they provide you a way to search for a list of cards at once. Stores may variously call this list-searching method “mass entry,” “deck builder,” etc. You can copy your deck’s plain-text list from List Takeout, then paste the list into an online store’s mass entry search.</p>
