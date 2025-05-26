@@ -28,12 +28,13 @@
 			<h4>Print Deck</h4>
 			<p>You can get your deck’s main and sideboard card lists out on paper and ink. To do so, click the “Print Deck” button, which opens your web browser’s print dialog box. There you can choose a printer and your print settings, and look at a preview of the result.</p>
 			<p>When you print from List Takeout, it automatically applies some basic styling to the card lists’ text. For any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor), the print will render their lettering in bold. If your deck has a large total number of names, the print will lay out the lists into three adjacent columns to conserve paper.</p>
-			<p>Large card lists are best printed in the portrait (rather than landscape) orientation. A singular deck’s lists (barring those with an extraordinarily huge number of card names) can fit on one sheet in the common paper sizes of U.S. Letter and A4. Some smaller paper sizes may also work if your lists are short enough.</p>
+			<p>Long card lists should be printed in the portrait (rather than landscape) paper orientation. A singular deck’s lists (barring those with an extraordinarily huge number of card names) can fit on one sheet in common paper sizes such as U.S. Letter and A4. Some smaller paper sizes may also work if your lists are short enough.</p>
+			<p>If the web browser you’re using is Apple’s Safari, be aware that printing from Safari may cause an extra, blank page to be printed. You may be able to prevent this by turning off the setting that would print the page headers and footers.</p>
 		</section>
 
 		<section id="copy-card-lists">
 			<h4>Copy Card Lists</h4>
-			<p>List Takeout has sections displaying the plain-text card lists for your deck’s main and sideboard groups. Both sections have a Copy button, either one of which you can click to have the respective section’s whole list instantly copied to the clipboard of your computer or phone. (Then you can paste that list elsewhere.)</p>
+			<p>List Takeout has sections presenting the plain-text card lists for your deck’s main and sideboard groups. Both sections have a Copy button. You can click either button to have the respective section’s whole list instantly copied to the clipboard of your computer or phone. (Then you can paste that list elsewhere.)</p>
 		</section>
 	</section>
 </template>

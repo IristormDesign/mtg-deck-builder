@@ -23,7 +23,7 @@
 			<h4>May __</h4>
 			<ul>
 				<li>
-					<p>In the List Takeout mode, when you click either of the “Copy” buttons, a simple message saying “Copied” briefly appears in place of the button instead of a dialog box popping up.</p>
+					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button. The simple message has replaced a dialog box for that action.</p>
 				</li>
 			</ul>
 
