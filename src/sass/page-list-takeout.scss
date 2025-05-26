@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'variables-and-mixins' as *;
 
 .list-takeout {
@@ -15,7 +16,7 @@
 		align-items: center;
 		gap: $lhse*.25 $lhse;
 		margin: $lhse auto;
-		border: $border-sections-thick;
+		border: $border-sections-medium;
 		padding: $lhse*.25 $lhse*.5;
 		width: fit-content;
 		flex-wrap: wrap;
@@ -80,6 +81,13 @@
 				height: $lhse*1.25;
 				margin-right: .25em;
 			}
+		}
+		.copied-message {
+			font-size: $font-size-small;
+			color: $color-text-extra-brighter;
+			font-style: italic;
+			cursor: none;
+			margin-top: -$lhse*.0625;
 		}
 	}
 	textarea {

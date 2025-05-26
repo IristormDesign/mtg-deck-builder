@@ -37,10 +37,14 @@
 				<section v-if="mainNotEmpty">
 					<header>
 						<h4>Main List</h4>
-						<button @click="copyList('mainList', 'main')">
+						<button
+							v-if="!showingMainCopiedMessage"
+							@click="copyList('mainList', 'main')"
+						>
 							<svg><use href="#copy-icon" /></svg>
 							Copy
 						</button>
+						<div v-else class="copied-message">Copied.</div>
 					</header>
 					<textarea
 						v-text="listCards()"
@@ -51,10 +55,14 @@
 				<section v-if="sideboardNotEmpty">
 					<header>
 						<h4>Sideboard List</h4>
-						<button @click="copyList('sideboardList', 'sideboard')">
+						<button
+							v-if="!showingSideboardCopiedMessage"
+							@click="copyList('sideboardList', 'sideboard')"
+						>
 							<svg><use href="#copy-icon" /></svg>
 							Copy
 						</button>
+						<div v-else class="copied-message">Copied.</div>
 					</header>
 					<textarea
 						v-text="listCards(true)"
@@ -68,23 +76,24 @@
 		<template v-else>
 			<p class="no-cards">Plain-text card lists will be provided here once you’ve added cards to this deck from the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
 		</template>
-
-		<standard-dialog dialogID="listCopied">
-			<p>The {{ this.$store.state.dialogData }} list is now copied to the clipboard of your computer or phone.</p>
-		</standard-dialog>
 	</div>
 </template>
 
 <script>
-import StandardDialog from '@/components/StandardDialog.vue'
 import DeckPrint from '@/components/deck-page/DeckPrint.vue'
 import autosize from 'autosize'
 import doubleFacedCards from '@/mixins/doubleFacedCards'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
-	components: { StandardDialog, DeckPrint },
+	components: { DeckPrint },
 	mixins: [doubleFacedCards, getActiveDeck],
+	data () {
+		return {
+			showingMainCopiedMessage: false,
+			showingSideboardCopiedMessage: false
+		}
+	},
 	computed: {
 		mainNotEmpty () {
 			return this.deck.cards.length > 0
@@ -146,12 +155,23 @@ export default {
 			text.select()
 			navigator.clipboard.writeText(text.value + '\n')
 
+			switch (stringName) {
+				case 'main':
+					this.showingMainCopiedMessage = true
+					break
+				case 'sideboard':
+					this.showingSideboardCopiedMessage = true
+			}
+
 			setTimeout(() => {
-				this.$store.commit('idOfShowingDialog', {
-					id: 'listCopied',
-					data: stringName
-				})
-			}, 125)
+				switch (stringName) {
+					case 'main':
+						this.showingMainCopiedMessage = false
+						break
+					case 'sideboard':
+						this.showingSideboardCopiedMessage = false
+				}
+			}, 2000)
 		},
 		printLists () {
 			window.print()

@@ -20,13 +20,20 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>May __</h4>
+			<ul>
+				<li>
+					<p>In the List Takeout mode, when you click either of the “Copy” buttons, a simple message saying “Copied” briefly appears in place of the button instead of a dialog box popping up.</p>
+				</li>
+			</ul>
+
 			<h4>May 25</h4>
 			<ul>
 				<li>
-					<p>The deck page mode formerly known as Text Renderer is renamed List Takeout. This mode’s icon in the mode menu is new, too.</p>
+					<p>The deck page mode formerly known as Text Renderer is renamed List Takeout. This mode’s icon in the mode menu is replaced, too.</p>
 				</li>
 				<li>
-					<p>Various elements, especially headings and the deck page mode menu tabs, have slight visual enhancements. In the mode menu, the tab of the active mode has a small triangle pointing down from the tab.</p>
+					<p>Various elements, especially headings and the tabs of the deck page mode menu, have slight visual enhancements. In the mode menu, the tab of the active mode has a small triangle pointing down from the tab.</p>
 				</li>
 				<li>
 					<p>Bug fix: For users of Apple’s Safari web browser, if you had tried to print out a large card list in List Takeout (previously Text Renderer), it couldn’t lay out the list across three columns as it’s supposed to. (This bug had never happened in other modern browsers, only Safari.)</p>
@@ -34,7 +41,7 @@
 			</ul>
 
 			<h4>May 23</h4>
-			<p>This release is extra large, with multiple major changes as well as minor ones.</p>
+			<p>This release is extra big, with multiple major changes as well as minor ones.</p>
 			<h5>Major Changes</h5>
 			<ul>
 				<li>
