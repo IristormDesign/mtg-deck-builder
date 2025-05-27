@@ -1,6 +1,6 @@
 <template>
 	<article class="page-not-found content-box wrap">
-		<h2>Error: Page Not Found</h2>
+		<h2>Page Not Found</h2>
 
 		<figure class="card-illustration">
 			<img

@@ -3,7 +3,7 @@
 		<div class="wrap">
 			<p>
 				<span class="group">
-					<a href="/"><strong>MTG Deck Builder</strong></a> by <a href="https://iristormdesign.com" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>
+					<a href="/">MTG Deck Builder</a> by <a href="https://iristormdesign.com" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>
 				</span>
 				<span class="group">
 					<span class="divider"> // </span>

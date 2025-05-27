@@ -17,10 +17,6 @@
 	}
 	p {
 		@include tiny-font-size;
-
-		strong {
-			font-weight: $font-weight-semibold;
-		}
 	}
 	.divider {
 		margin: 0 .25em;

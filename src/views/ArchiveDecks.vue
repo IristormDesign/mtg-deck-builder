@@ -113,6 +113,9 @@ export default {
 			this.checkedDecks.push(this.presetDeckName)
 		}
 	},
+	metaInfo: {
+		title: 'Archive Decks'
+	},
 	methods: {
 		selectAll () {
 			const checkboxes = this.$refs.checklist.querySelectorAll('input')

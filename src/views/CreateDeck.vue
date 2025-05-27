@@ -29,6 +29,9 @@ import sortDeckMenu from '@/mixins/sortDeckMenu.js'
 export default {
 	components: { StartNewDeck, ReplicateArchives },
 	mixins: [sortDeckMenu],
+	metaInfo: {
+		title: 'Create Deck'
+	},
 	methods: {
 		goToDeckPage (path) {
 			this.sortDeckMenu()

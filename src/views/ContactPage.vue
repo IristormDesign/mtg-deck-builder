@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<article class="contact-page content-box">
 		<h2>Contact</h2>
 
@@ -26,6 +26,14 @@
 		</div>
 	</article>
 </template>
+
+<script>
+export default {
+	metaInfo: {
+		title: 'Contact'
+	}
+}
+</script>
 
 <style lang="scss">
 	@use '@/sass/page-contact.scss';

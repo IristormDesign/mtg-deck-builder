@@ -163,6 +163,11 @@ export default {
 			})
 		}
 	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · Card List Entry'
+		}
+	},
 	methods: {
 		submitList () {
 			this.hasExcessiveQuantity = false

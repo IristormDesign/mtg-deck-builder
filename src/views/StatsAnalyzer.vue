@@ -108,6 +108,11 @@ export default {
 			})
 		}
 	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · Stats Analyzer'
+		}
+	},
 	methods: {
 		scrollTableIntoView (category) {
 			const section = document.querySelector(`#stats-${category}`)

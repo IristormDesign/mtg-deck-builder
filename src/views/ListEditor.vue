@@ -79,6 +79,11 @@ export default {
 	mixins: [cardListFunctions],
 	props: {
 		deck: Object
+	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · List Editor'
+		}
 	}
 }
 </script>

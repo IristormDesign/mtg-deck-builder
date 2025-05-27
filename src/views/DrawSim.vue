@@ -163,6 +163,11 @@ export default {
 			this.$store.commit('decks', this.$store.state.decks)
 		}
 	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · Draw Simulator'
+		}
+	},
 	methods: {
 		listenForDrawSimKeydownEvents (event) {
 			this.isHoldingShift = event.shiftKey

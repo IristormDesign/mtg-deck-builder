@@ -89,6 +89,16 @@ import headerLinkAttention from '@/mixins/headerLinkAttention'
 
 export default {
 	mixins: [headerLinkAttention],
+	metaInfo: {
+		title: 'MTG Deck Builder by Iristorm Design – Make your own Magic: The Gathering decks',
+		titleTemplate: null,
+		meta: [
+			{
+				name: 'description',
+				content: 'Construct and organize your decks for Magic: The Gathering with this free web app!'
+			}
+		]
+	},
 	methods: {
 		scrollToAppFeaturesSection () {
 			document.querySelector('.app-features')

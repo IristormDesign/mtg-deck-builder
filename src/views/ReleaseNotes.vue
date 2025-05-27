@@ -20,8 +20,11 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>May __</h4>
+			<h4>May 26</h4>
 			<ul>
+				<li>
+					<p>For every page of this app, the web browser tab shows a distinct title according to the name of the page displayed in that tab.</p>
+				</li>
 				<li>
 					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button. The simple message has replaced a dialog box for that action.</p>
 				</li>
@@ -94,3 +97,11 @@
 		</section>
 	</article>
 </template>
+
+<script>
+export default {
+	metaInfo: {
+		title: 'Release Notes'
+	}
+}
+</script>

@@ -317,6 +317,26 @@ export default {
 	mounted () {
 		this.setTargetedSection(this.$route.hash)
 	},
+	metaInfo () {
+		return {
+			title: 'User Guide',
+			titleTemplate: (() => {
+				const currentChapter = this.chapters.find(
+					chapter => `/guide/${chapter.path}` === this.$route.path
+				)
+				let title = ''
+
+				if (
+					currentChapter &&
+					currentChapter.name !== 'Introduction'
+				) {
+					title = `${currentChapter.name} · `
+				}
+
+				return title + 'User Guide · MTG Deck Builder'
+			})()
+		}
+	},
 	methods: {
 		setTargetedSection (target) {
 			this.$nextTick(() => {

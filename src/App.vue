@@ -33,6 +33,10 @@ import ScrollToTop from '@/components/ScrollToTop.vue'
 
 export default {
 	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
+	metaInfo: {
+		title: 'MTG Deck Builder by Iristorm Design',
+		titleTemplate: '%s · MTG Deck Builder'
+	},
 	computed: {
 		hasBrowserSupport () {
 			return ('HTMLDialogElement' in window)

@@ -135,6 +135,9 @@ export default {
 			this.checkedDecks.push(this.presetDeckName)
 		}
 	},
+	metaInfo: {
+		title: 'Delete Decks'
+	},
 	methods: {
 		selectAll () {
 			const checkboxes = this.$refs.checklist.querySelectorAll('input')
