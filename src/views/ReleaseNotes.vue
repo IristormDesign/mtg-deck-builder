@@ -29,6 +29,9 @@
 					<p>An under-the-hood adjustment has significantly boosted this app’s loading speed. However, it could cause some  parts of the app to break only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
 				</li>
 				<li>
+					<p>Bug fix: Sorting cards by P/T sum had incorrectly sorted planeswalker cards with a variable value for their base loyalty.</p>
+				</li>
+				<li>
 					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button.</p>
 				</li>
 			</ul>

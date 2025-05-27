@@ -396,15 +396,21 @@ export default {
 		sortByPTSum (cards) {
 			cards.sort((a, b) => {
 				const determineAttributes = (card) => {
+					const toNumber = val => {
+						if (!isNaN(Number(val))) { // If the value is an actual number...
+							return Number(val)
+						} else { // Else the value is a string, such as a variable symbol.
+							return 0
+						}
+					}
 					let power = 0
 					let toughness = 0
 
 					if (card.loyalty !== undefined) {
-						toughness = Number(card.loyalty)
+						toughness = toNumber(card.loyalty)
 					} else if (card.toughness !== undefined) {
-						power = isNaN(card.power) ? 0 : Number(card.power)
-
-						toughness = isNaN(card.toughness) ? 0 : Number(card.toughness)
+						power = toNumber(card.power)
+						toughness = toNumber(card.toughness)
 					}
 
 					return {
