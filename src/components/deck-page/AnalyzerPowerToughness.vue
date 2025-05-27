@@ -125,7 +125,7 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<th>{{ this.totalRowLabel ('cards with P/T') }}</th>
+					<th>{{ this.totalRowLabel ('cards ') }}<br>with P/T</th>
 					<td>{{ allPTCardsCount }}</td>
 					<td v-if="variablePT.ct">100.0<span>%</span></td>
 					<td
