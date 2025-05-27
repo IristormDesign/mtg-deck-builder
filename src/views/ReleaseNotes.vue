@@ -20,13 +20,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>May 26</h4>
+			<h4>May 27</h4>
 			<ul>
 				<li>
-					<p>For every page of this app, the web browser tab shows a distinct title according to the name of the page displayed in that tab.</p>
+					<p>For every page of this app, its tab in your web browser shows a distinct title according to the name of the page displayed in that tab.</p>
 				</li>
 				<li>
-					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button. The simple message has replaced a dialog box for that action.</p>
+					<p>An under-the-hood adjustment has significantly boosted this app’s loading speed. However, it could cause some  parts of the app to break only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
+				</li>
+				<li>
+					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button.</p>
 				</li>
 			</ul>
 
@@ -44,7 +47,7 @@
 			</ul>
 
 			<h4>May 23</h4>
-			<p>This release is extra big, with multiple major changes as well as minor ones.</p>
+			<p>This release is extra big, with multiple major changes as well as minor ones, as follows:</p>
 			<h5>Major Changes</h5>
 			<ul>
 				<li>
