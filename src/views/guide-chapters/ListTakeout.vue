@@ -29,7 +29,6 @@
 			<p>You can get your deck’s main and sideboard card lists out on paper and ink. To do so, click the “Print Deck” button, which opens your web browser’s print dialog box. There you can choose a printer and your print settings, and look at a preview of the result.</p>
 			<p>When you print from List Takeout, it automatically applies some basic styling to the card lists’ text. For any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor), the print will render their lettering in bold. If your deck has a large total number of names, the print will lay out the lists into three adjacent columns to conserve paper.</p>
 			<p>Long card lists should be printed in the portrait (rather than landscape) paper orientation. A singular deck’s lists (barring those with an extraordinarily huge number of card names) can fit on one sheet in common paper sizes such as U.S. Letter and A4. Some smaller paper sizes may also work if your lists are short enough.</p>
-			<p>If the web browser you’re using is Apple’s Safari, be aware that printing from Safari may cause an extra, blank page to be printed. You may be able to prevent this by turning off the setting that would print the page headers and footers.</p>
 		</section>
 
 		<section id="copy-card-lists">

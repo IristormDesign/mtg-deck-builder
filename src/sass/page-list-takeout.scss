@@ -194,6 +194,9 @@
 	* {
 		background: none !important;
 	}
+	.fade-bg {
+		min-height: 0 !important;
+	}
 	.fade-bg > :not(main),
 	.scroll-to-top,
 	.deck > :not(.list-takeout) {
