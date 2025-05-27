@@ -89,8 +89,17 @@
 		padding: 0;
 	}
 	.outdated-deck-data-notice {
-		max-width: none;
-		border-radius: 0;
+		aside {
+			max-width: none;
+			border-radius: 0;
+		}
+	}
+}
+@media (max-width: ($min-width-app*.5417)) {
+	.outdated-deck-data-notice {
+		aside {
+			margin: 0 auto $lhse*.5;
+		}
 	}
 }
 @media (max-width: ($min-width-app * .5)) {
@@ -100,8 +109,5 @@
 		.wrap {
 			padding: 0 math.div($lhse, 4);
 		}
-	}
-	.outdated-deck-data-notice {
-		margin: 0 auto $lhse*.5;
 	}
 }

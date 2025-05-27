@@ -411,6 +411,9 @@ $width-card-list-section-narrow:
 		grid-row: 1;
 		grid-column: span 1;
 
+		.sideboard-visible & {
+			border-bottom-left-radius: 0;
+		}
 		> form {
 			max-width: $width-card-bars-narrow + $width-card-adder-button;
 		}
@@ -452,6 +455,9 @@ $width-card-list-section-narrow:
 		input,
 		> form button {
 			font-size: 87.5%;
+		}
+		.sideboard-visible & {
+			border-bottom-left-radius: $lhse*.5;
 		}
 	}
 }

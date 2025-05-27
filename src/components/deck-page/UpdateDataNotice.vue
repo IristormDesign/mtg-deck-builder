@@ -4,7 +4,7 @@
 		class="outdated-deck-data-notice"
 	>
 		<aside v-if="cardUpdateStatus === 1">
-			<h3>Card Data Update</h3>
+			<h3>Deck Data Update</h3>
 			<p>This deck has an outdated set of card data. Update it now to get enhanced features! See the May 23 <router-link to="/release-notes">release notes</router-link> for more info.</p>
 			<div class="button-container">
 				<button @click="userEngagedUpdate()">Update</button>
