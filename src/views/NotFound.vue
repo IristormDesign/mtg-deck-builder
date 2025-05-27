@@ -6,6 +6,9 @@
 import NotFoundContent from '@/components/NotFoundContent.vue'
 
 export default {
-	components: { NotFoundContent }
+	components: { NotFoundContent },
+	metaInfo: {
+		title: 'Page Not Found'
+	}
 }
 </script>

@@ -129,6 +129,11 @@ export default {
 		autosize(this.$refs.mainList)
 		autosize(this.$refs.sideboardList)
 	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · List Takeout'
+		}
+	},
 	methods: {
 		listCards (forSideboard) {
 			const cards = () => {

@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<article class="donate-page content-box">
 		<h2>Donation Request</h2>
 
@@ -30,6 +30,14 @@
 		<p>You can also <router-link to="/contact">contact me</router-link> to send a suggestion or another message.</p>
 	</article>
 </template>
+
+<script>
+export default {
+	metaInfo: {
+		title: 'Donation Request'
+	}
+}
+</script>
 
 <style lang="scss">
 	@use '@/sass/page-donate.scss';

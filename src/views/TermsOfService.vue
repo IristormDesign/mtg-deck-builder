@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<article class="content-box">
 		<h2>Terms of Service</h2>
 
@@ -23,3 +23,11 @@
 		<p>These terms of service have been in effect since the date of their last revision, indicated above. They will remain in effect except with respect to any revisions in the future, which will take effect immediately after being posted on this page. If a revision is material, we will try to give at least 30 days’ notice before it takes effect.</p>
 	</article>
 </template>
+
+<script>
+export default {
+	metaInfo: {
+		title: 'Terms of Service'
+	}
+}
+</script>

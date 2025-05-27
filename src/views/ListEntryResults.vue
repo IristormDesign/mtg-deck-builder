@@ -151,6 +151,11 @@ export default {
 	created () {
 		this.noDataRedirect()
 	},
+	metaInfo () {
+		return {
+			title: this.deck.name + ' · Results of Card List Entry'
+		}
+	},
 	methods: {
 		noDataRedirect () {
 			if (
