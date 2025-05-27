@@ -4,7 +4,7 @@
 
 		<section v-if="cardsSuccessfullyAdded && cardsSuccessfullyAdded.length > 0">
 			<h4>✅ New Cards</h4>
-			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total) have been added to the main card group of <i>{{ deck.name }}</i>.</p>
+			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total names) have been added to the main card group of <i>{{ deck.name }}</i>.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardsSuccessfullyAdded"
@@ -19,7 +19,7 @@
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities have been updated to the new quantities you’ve set.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total names) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities have been updated to the new quantities you’ve set.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardsToUpdate"
