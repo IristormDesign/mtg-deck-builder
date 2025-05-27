@@ -40,7 +40,7 @@ export default {
 
 			axios
 				.get(
-					'https://api.scryfall.com/cards/random?q=legal%3Avintage+lang%3Aen+-is%3Adigital', // Get a random card that's legal in Vintage tournaments, is in English text, and is NOT a digital (MTG Arena) edition.
+					'https://api.scryfall.com/cards/random?q=legal%3Acommander+lang%3Aen+-is%3Adigital', // Get a random card that's legal in Commander, is in English, and is NOT a digital (MTG Arena) edition.
 					{ timeout: 10000 }
 				)
 				.then(response => {

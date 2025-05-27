@@ -254,7 +254,7 @@
 			<section id="random-card-query">
 				<h5>Random Card Query</h5>
 				<p>You can add the name of any <i>Magic</i> card at random to your deck. To do so, submit the special code <strong><code>#random</code></strong> in the <a href="#card-adder">card adder</a>. Your web browser may also show “#random” as a selectable option when the card adder’s text field gains browser focus.</p>
-				<p>This random method adds a card only from among physical (not <i>MTG Arena</i>) cards that are legal to play in Vintage tournaments. That comprises almost all (but not absolutely all) physical cards that have been printed in almost all <i>Magic</i> sets, from the original to the latest.</p>
+				<p>This random method adds a card only from among physical (not <i>MTG Arena</i>) English-language cards that are legal to play in Commander games. That comprises almost all (but not absolutely all) physical English-language cards that have been printed in almost all <i>Magic</i> sets, from the original to the latest.</p>
 			</section>
 			<section id="card-adder-other-info">
 				<h5>Other Information About the Card Adder</h5>
