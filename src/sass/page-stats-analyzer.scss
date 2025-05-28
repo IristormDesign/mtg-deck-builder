@@ -136,13 +136,13 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		}
 	}
 	tfoot {
-		background: $color-group-bg;
 
 		th,
 		td {
 			font-size: $font-size-small;
 			color: $color-text-darker;
 			line-height: $line-height-standard*.75;
+			background: $color-group-bg;
 		}
 	}
 	th,
