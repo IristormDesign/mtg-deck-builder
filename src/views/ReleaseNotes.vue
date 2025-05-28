@@ -23,16 +23,13 @@
 			<h4>May 27</h4>
 			<ul>
 				<li>
-					<p>For every page of this app, its tab in your web browser shows a distinct title according to the name of the page displayed in that tab.</p>
+					<p>An under-the-hood adjustment has boosted this app’s loading speed. However, it could cause some parts of the app to break, but only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
 				</li>
 				<li>
-					<p>An under-the-hood adjustment has significantly boosted this app’s loading speed. However, it could cause some  parts of the app to break only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
+					<p>Bug fix: If you used this app in the Safari web browser, and if you printed a deck’s lists from List Takeout, then Safari had caused an extra, blank page to be printed if you had enabled the print setting for page headers and footers.</p>
 				</li>
 				<li>
-					<p>Bug fix: Sorting cards by P/T sum had incorrectly sorted planeswalker cards with a variable value for their base loyalty.</p>
-				</li>
-				<li>
-					<p>In the List Takeout mode, when you click either of the Copy buttons, a simple message saying “Copied” briefly appears in place of the button.</p>
+					<p>Various minor bugs are fixed, and various minor tweaks to the user interface are made.</p>
 				</li>
 			</ul>
 
@@ -42,7 +39,7 @@
 					<p>The deck page mode formerly known as Text Renderer is renamed List Takeout. This mode’s icon in the mode menu is replaced, too.</p>
 				</li>
 				<li>
-					<p>Various elements, especially headings and the tabs of the deck page mode menu, have slight visual enhancements. In the mode menu, the tab of the active mode has a small triangle pointing down from the tab.</p>
+					<p>Various elements, especially headings and the tabs of the deck page mode menu, have slight visual enhancements.</p>
 				</li>
 				<li>
 					<p>Bug fix: For users of Apple’s Safari web browser, if you had tried to print out a large card list in List Takeout (previously Text Renderer), it couldn’t lay out the list across three columns as it’s supposed to. (This bug had never happened in other modern browsers, only Safari.)</p>
