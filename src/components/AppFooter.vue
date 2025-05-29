@@ -17,20 +17,10 @@
 				</span>
 			</p>
 			<p v-if="$route.name === 'home'">Intro background illustration from <a href="https://magic.wizards.com/en/news#wallpapers" target="_blank">Invasion of Dominaria<svg><use href="#open-in-new-icon" /></svg></a> by Denys Tsiperko.</p>
-			<p><i>Magic: The Gathering</i> brand and content are TM and &copy; by Wizards of the Coast, LLC. All other content, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design. MTG Deck Builder is not sponsored or endorsed by Wizards of the Coast, but is allowed under its Fan Content Policy.</p>
+			<p><i>Magic: The Gathering</i> brand and content are TM and &copy; by Wizards of the Coast, LLC. All other content, unless indicated otherwise, is copyright &copy; {{ new Date().getFullYear() }} by Damian Schmidt of Iristorm Design. MTG Deck Builder is not affiliated with or endorsed by Wizards of the Coast, but is allowed under its Fan Content Policy.</p>
 		</div>
 	</footer>
 </template>
-
-<script>
-export default {
-	data () {
-		return {
-			appVersion: process.env.VUE_APP_VERSION
-		}
-	}
-}
-</script>
 
 <style lang="scss">
 	@use '@/sass/app-footer.scss';
