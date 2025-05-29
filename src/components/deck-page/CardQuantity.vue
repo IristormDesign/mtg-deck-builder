@@ -146,7 +146,11 @@ export default {
 		}
 	},
 	beforeDestroy () {
-		this.$refs[this.qtyCardID(this.i)].removeEventListener(
+		const qtyCardRef = this.$refs[this.qtyCardID(this.i)]
+
+		if (!qtyCardRef) return
+
+		qtyCardRef.removeEventListener(
 			'keydown', this.listenForQtyKeydown
 		)
 	},
