@@ -5,7 +5,9 @@
 		:class="($store.state.showSideboard) ? 'sideboard-visible' : null"
 	>
 		<header class="deck-header">
-			<deck-name :deck="deck" />
+			<section class="deck-info deck-name">
+				<h2>{{ deck.name }}</h2>
+			</section>
 			<deck-colors :deck="deck" />
 			<average-mana-value :deck="deck" />
 			<date-edited :deck="deck" />
@@ -47,7 +49,6 @@
 </template>
 
 <script>
-import DeckName from '@/components/deck-page/DeckName.vue'
 import DeckColors from '@/components/deck-page/StatDeckColors.vue'
 import AverageManaValue from '@/components/deck-page/StatAverageManaValue.vue'
 import DateEdited from '@/components/deck-page/StatDateEdited.vue'
@@ -63,7 +64,7 @@ import cardListFunctions from '@/mixins/cardListFunctions.js'
 import keyboardShortcuts from '@/mixins/keyboardShortcuts.js'
 
 export default {
-	components: { DeckName, DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ModeMenu, DeckActions, UpdateDataNotice, DialogsCardRequests, NotFoundContent },
+	components: { DeckColors, AverageManaValue, DateEdited, CardNames, CardTotal, ModeMenu, DeckActions, UpdateDataNotice, DialogsCardRequests, NotFoundContent },
 	mixins: [getActiveDeck, cardListFunctions, keyboardShortcuts],
 	computed: {
 		validDeck () {

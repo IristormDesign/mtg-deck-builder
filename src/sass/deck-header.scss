@@ -28,17 +28,9 @@
 		overflow: hidden;
 		min-height: $height-deck-header-component;
 
-		> button {
-			@include link;
-			text-decoration-thickness: 1.5px;
-
-			h2 {
-				@include heading-font;
-				margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
-				color: inherit;
-				white-space: normal;
-				text-decoration-thickness: .0417em;
-			}
+		h2 {
+			margin: $lhse*.0833 0; // Adjust these vertical margins to eliminate larger margin-rounding gaps in the card list.
+			white-space: normal;
 		}
 	}
 	.deck-colors {

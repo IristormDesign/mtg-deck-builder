@@ -19,7 +19,8 @@
 					alt="Snippet of deck name link" title="Screenshot" loading="lazy"
 				/>
 			</p>
-			<p>In the <a href="#deck-page-header">deck page header</a>, the deck name section displays the name of your currently <router-link to="app-header#deck-menu">open deck</router-link>. The name itself is a link that you can click to rename the deck.</p>
+			<p>The deck name section in the <a href="#deck-page-header">deck page header</a> displays the name of your currently <router-link to="app-header#deck-menu">open deck</router-link>.</p>
+			<p>(To change the name of your deck, click the <router-link to="deck-page-header#deck-actions">Deck Actions button</router-link>, then select “<router-link to="deck-page-header#rename-action">Rename</router-link>” from the menu.)</p>
 		</section>
 
 		<section id="basic-statistics">
@@ -62,12 +63,17 @@
 
 		<section id="deck-actions">
 			<h4>Deck Actions</h4>
-			<p>In the <a href="#deck-page-header">deck page header</a>, click the Deck Actions button to display a dropdown menu with options that let you do special actions to your decks. These actions are <a href="#duplicate-action">duplicate</a>, <a href="#archive-action">archive</a>, and <a href="#delete-action">delete</a>, and their effects are explained in the next subchapters.</p>
+			<p>MTG Deck Builder lets you do special actions to your decks. These actions are <a href="#rename-action">rename</a>, <a href="#duplicate-action">duplicate</a>, <a href="#archive-action">archive</a>, and <a href="#delete-action">delete</a>.</p>
+			<p>In the <a href="#deck-page-header">deck page header</a>, click the Deck Actions button to display a dropdown menu of those four special actions. The effect of each is explained in the next subchapters.</p>
+
+			<section id="rename-action">
+				<h5>Rename</h5>
+				<p>You can change the <a href="deck-page-header#deck-name">name</a> of the <router-link to="app-header#deck-menu">deck you’re currently viewing</router-link>. To do so, select “Rename” from the <a href="#deck-actions">Deck Actions</a> menu.</p>
+			</section>
 
 			<section id="duplicate-action">
 				<h5>Duplicate</h5>
-				<p>You can instantly create a new deck that starts as an identical copy of the <router-link to="app-header#deck-menu">deck you’re currently viewing</router-link> at the time of duplication.</p>
-				<p>To do so, select Duplicate from the <a href="#deck-actions">Deck Actions</a> menu. The app prompts you to give the duplicate deck a <router-link to="#deck-name">unique name</router-link>.</p>
+				<p>You can instantly create a new deck that’s an identical copy of the <router-link to="app-header#deck-menu">deck you’re currently viewing</router-link> at the time of duplication. To do so, select “Duplicate” from the <a href="#deck-actions">Deck Actions</a> menu. The app then prompts you to give the duplicate deck a <router-link to="#deck-name">unique name</router-link>.</p>
 				<p>Immediately after duplicating, you’re directed to the <router-link to="deck-pages">deck page</router-link> of the duplicate.</p>
 			</section>
 
@@ -75,14 +81,14 @@
 				<h5>Archive</h5>
 				<p>In MTG Deck Builder, to “archive” a deck means to have the app make for you a <router-link to="storage-of-deck-data#deck-archive-files">deck archive file</router-link> from any decks whose data is <router-link to="storage-of-deck-data">stored in this app</router-link>.</p>
 				<p>A deck archive file has the complete copied data of chosen decks. Anyone who has a deck archive file—whether yourself or someone whom you’ve sent the file to—can <router-link to="create-deck#replicate-archived-decks">replicate the decks</router-link> from its data.</p>
-				<p>In the <a href="#deck-actions">Deck Actions</a> menu, select “Archive&hellip;” to go to the Archive Decks page. From there, select at least one of your decks to archive. The archive file is saved on your computer or phone to wherever your web browser puts downloads.</p>
+				<p>In the <a href="#deck-actions">Deck Actions</a> menu, select “Archive” to go to the Archive Decks page. From there, select at least one of your decks to archive. The archive file is saved on your computer or phone to wherever your web browser puts downloads.</p>
 				<p>If you archive one deck alone, then the archive file is automatically named after that deck’s name. If you archive multiple decks together, then the file is automatically named “My Decks.” You may rename the file whatever you want, as long as you keep its “.deck” file extension.</p>
 			</section>
 
 			<section id="delete-action">
 				<h5>Delete</h5>
-				<p>In the <a href="#deck-actions">Deck Actions</a> menu, select “Delete&hellip;” to go to the Delete Decks page. From there, you can select any decks to permanently remove from your web browser’s <router-link to="storage-of-deck-data">data storage</router-link> for MTG Deck Builder.</p>
-				<p>After a deck is deleted, if you’d try to go back to the URL that had belonged to that <router-link to="deck-pages">deck’s page</router-link>, then you’d be redirected to an “Error: Page Not Found” page instead.</p>
+				<p>You may eventually decide you no longer want to keep certain decks in your web browser’s <router-link to="storage-of-deck-data">data storage</router-link> for  MTG Deck Builder. If so, select “Delete” in the <a href="#deck-actions">Deck Actions</a> menu to go to the Delete Decks page. From there, you can select any of your decks to permanently remove.</p>
+				<p>After you delete a deck, if you’d try to go back to the URL that had belonged to that <router-link to="deck-pages">deck’s page</router-link>, then you’d be redirected to a “Page Not Found” error page.</p>
 			</section>
 		</section>
 	</section>

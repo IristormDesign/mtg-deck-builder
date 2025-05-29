@@ -36,8 +36,8 @@ $color-group-bg-darker: color.adjust($color-group-bg, $lightness: -4.17%, $satur
 $color-group-bg-extra-darker: color.adjust($color-group-bg, $lightness: -6.25%, $saturation: 8.33%);
 $color-group-bg-lighter: color.adjust($color-group-bg, $lightness: 6.25%, $saturation: -4.17%);
 $color-text: color.adjust($color-group-bg, $lightness: 60%, $saturation: -8.33%);
-$color-text-brighter: color.adjust($color-text, $lightness: 6.25%);
-$color-text-extra-brighter: color.adjust($color-text, $lightness: 12.5%);
+$color-text-brighter: color.adjust($color-text, $lightness: 4.17%);
+$color-text-extra-brighter: color.adjust($color-text, $lightness: 8.33%);
 $color-text-darker: color.adjust($color-text, $lightness: -12.5%, $saturation: -6.25%);
 $color-button-gray: color.adjust($color-mythic-complement, $lightness: 20%, $saturation: -75%);
 $color-heading-bg: color.adjust($color-group-bg, $lightness: 12.5%, $saturation: -8.33%);

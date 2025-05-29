@@ -298,7 +298,7 @@
 }
 @mixin pronounced-heading {
 	background: $color-heading-bg;
-	color: $color-text-brighter;
+	color: $color-text-extra-brighter;
 	padding: $lhse*.25 math.div($lhse, 3);
 	margin: $lhse math.div(-$lhse, 3) ($lhse*.5);
 	border-radius: $border-radius-button;

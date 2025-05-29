@@ -1,17 +1,10 @@
 <template>
-	<section class="deck-info deck-name">
-		<button
-			@click="promptToRename()"
-			title="Rename this deck"
-		>
-			<h2>{{ deck.name }}</h2>
-		</button>
-
+	<div>
 		<standard-dialog
 			dialogID="renameDeck"
 			class="with-text-input"
 		>
-			<p>Rename this deck:</p>
+			<p><strong>Rename this deck:</strong></p>
 			<form slot="form" method="dialog">
 				<input
 					v-model.trim="newName"
@@ -33,7 +26,7 @@
 			</form>
 		</standard-dialog>
 		<dialogs-deck-name />
-	</section>
+	</div>
 </template>
 
 <script>
@@ -45,6 +38,9 @@ import sortDeckMenu from '@/mixins/sortDeckMenu.js'
 export default {
 	components: { StandardDialog, DialogsDeckName },
 	mixins: [stringMethods, sortDeckMenu],
+	props: {
+		deck: Object
+	},
 	data () {
 		return {
 			newName: this.deck.name
@@ -55,15 +51,18 @@ export default {
 			return this.stringToPath(this.newName)
 		}
 	},
-	props: {
-		deck: Object
+	watch: {
+		/**
+		 * Watch for changes in the `dialogData` store state to update the `newName` data variable to match the name of the currently open deck. This is needed for when the user navigates from one deck page to another.
+		 * @param newData
+		 */
+		'$store.state.dialogData' (data) {
+			if (typeof data === 'string') {
+				this.newName = data
+			}
+		}
 	},
 	methods: {
-		promptToRename () {
-			this.newName = this.deck.name
-
-			this.$store.commit('idOfShowingDialog', 'renameDeck')
-		},
 		renameDeck () {
 			const store = this.$store
 

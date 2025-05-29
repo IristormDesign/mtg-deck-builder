@@ -108,6 +108,9 @@ export default {
 							hash: '#deck-actions',
 							subchapters: [
 								{
+									name: 'Rename',
+									hash: '#rename-action'
+								}, {
 									name: 'Duplicate',
 									hash: '#duplicate-action'
 								}, {

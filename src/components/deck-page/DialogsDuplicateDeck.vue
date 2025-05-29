@@ -4,7 +4,7 @@
 			dialogID="duplicateDeck"
 			class="with-text-input"
 		>
-			<p>Enter a unique name for the duplicate deck:</p>
+			<p><strong>Enter a unique name for the duplicate deck:</strong></p>
 			<form slot="form" method="dialog">
 				<input
 					v-model.trim="dupDeckName"

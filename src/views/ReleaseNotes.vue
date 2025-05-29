@@ -20,7 +20,14 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>May 27</h4>
+			<h4>May 29</h4>
+			<ul>
+				<li>
+					<p>On a deck page, the ability to rename the deck has been moved from the deck’s name as a link to a new action button in the Deck Actions menu.</p>
+				</li>
+			</ul>
+
+			<h4>May 28</h4>
 			<ul>
 				<li>
 					<p>An under-the-hood adjustment has boosted this app’s loading speed. However, it could cause some parts of the app to break, but only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
