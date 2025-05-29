@@ -199,6 +199,8 @@ kbd {
 code {
 	font-size: 83.33%;
 	background: $color-group-bg-darker;
+	outline: 1px solid $color-group-bg-extra-darker;
+	padding: 0 .1667em;
 }
 svg {
 	fill: currentColor;
