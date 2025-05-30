@@ -5,7 +5,7 @@
 		<p>List Takeout is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view your deck’s card lists in the form of plain text. Why would you want this? Here are some possibilities:</p>
 		<ul>
 			<li>
-				<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic</i> card singles, they provide you a way to search for a list of cards at once. Stores may variously call this list-searching method “mass entry,” “deck builder,” etc. You can copy your deck’s plain-text list from List Takeout, then paste the list into an online store’s mass entry search.</p>
+				<p><strong>Shop online faster for your deck’s cards.</strong> On some online stores that sell <i>Magic: The Gathering</i> card singles, they provide you a way to search for a list of cards at once. Stores may variously call this list-searching method “mass entry,” “deck builder,” etc. You can copy your deck’s plain-text list from List Takeout, then paste the list into an online store’s mass entry search.</p>
 			</li>
 			<li>
 				<p><strong>Print out a hard copy of your deck lists.</strong> A text document is well suited for printing on paper (unlike the web page of the <router-link to="list-editor">List Editor</router-link>).</p>
@@ -21,13 +21,14 @@
 
 		<section id="export-deck-as-text-file">
 			<h4>Export Deck as Text File</h4>
-			<p>Click the “Export Deck as Text File” button to have the app generate a plain-text file (.txt) that has your deck’s main and sideboard card lists. The file gets saved to wherever your web browser puts downloads.</p>
+			<p>You may want to get a plain-text (TXT) file of your deck’s card lists. This type of file can be opened on any operating system and in any word-processing program.</p>
+			<p>Click the “Export Deck as Text File” button to generate this file, which gets saved to wherever your web browser puts downloads.</p>
 		</section>
 
 		<section id="print-deck">
 			<h4>Print Deck</h4>
-			<p>You can get your deck’s main and sideboard card lists out on paper and ink. To do so, click the “Print Deck” button, which opens your web browser’s print dialog box. There you can choose a printer and your print settings, and look at a preview of the result.</p>
-			<p>When you print from List Takeout, it automatically applies some basic styling to the card lists’ text. For any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor), the print will render their lettering in bold. If your deck has a large total number of names, the print will lay out the lists into three adjacent columns to conserve paper.</p>
+			<p>You can put your deck’s card lists out on paper and ink. To do so, click the “Print Deck” button, which opens your web browser’s print dialog box. There you can choose a printer and your print settings, and look at a preview of the result.</p>
+			<p>When you print directly from List Takeout, it automatically applies some basic formatting to the card lists’ text. For any card names you’ve <router-link to="list-editor#card-stars">starred</router-link> (from the List Editor), the print will render their lettering in bold. If your deck has a large total number of names, the print will lay out the lists into three adjacent columns to conserve paper.</p>
 			<p>Long card lists should be printed in the portrait (rather than landscape) paper orientation. A singular deck’s lists (barring those with an extraordinarily huge number of card names) can fit on one sheet in common paper sizes such as U.S. Letter and A4. Some smaller paper sizes may also work if your lists are short enough.</p>
 		</section>
 
