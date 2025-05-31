@@ -9,6 +9,8 @@
 				<input
 					v-model.trim="dupDeckName"
 					type="text"
+					name="duplicateDeckName"
+					autocomplete="off"
 				/>
 				<div class="button-container">
 					<button

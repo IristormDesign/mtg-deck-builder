@@ -49,7 +49,9 @@
 					<textarea
 						v-text="listCards()"
 						ref="mainList"
+						name="mainList"
 						readonly
+						tabindex="-1"
 					></textarea>
 				</section>
 				<section v-if="sideboardNotEmpty">
@@ -67,7 +69,9 @@
 					<textarea
 						v-text="listCards(true)"
 						ref="sideboardList"
+						name="sideboardList"
 						readonly
+						tabindex="-1"
 					></textarea>
 				</section>
 			</div>

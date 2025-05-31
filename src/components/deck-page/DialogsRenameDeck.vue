@@ -10,6 +10,8 @@
 					v-model.trim="newName"
 					type="text"
 					maxlength="50"
+					name="newDeckName"
+					autocomplete="off"
 				/>
 				<div class="button-container">
 					<button
