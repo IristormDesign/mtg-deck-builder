@@ -1,6 +1,8 @@
 <template>
 	<footer class="app-footer">
-		<div class="wrap">
+		<recent-decks />
+
+		<div class="legal wrap">
 			<p>
 				<span class="group">
 					<a href="/">MTG Deck Builder</a> by <a href="https://iristormdesign.com" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>
@@ -21,6 +23,14 @@
 		</div>
 	</footer>
 </template>
+
+<script>
+import RecentDecks from '@/components/RecentDecks.vue'
+
+export default {
+	components: { RecentDecks }
+}
+</script>
 
 <style lang="scss">
 	@use '@/sass/app-footer.scss';

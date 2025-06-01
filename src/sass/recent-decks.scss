@@ -1,0 +1,86 @@
+@use "sass:color";
+@use 'sass:list';
+@use 'variables-and-mixins' as *;
+
+.recent-decks {
+	padding: 0 $lhse $lhse*1;
+	max-width: $max-width-app;
+	margin: 0 auto $lhse;
+
+	nav {
+		display: flex;
+		gap: $lhse;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		max-width: $max-width-app;
+		border-bottom: $border-width-sections-medium solid $color-content-bg;
+		padding-bottom: $lhse*1.5;
+		margin: 0 auto;
+	}
+	h3 {
+		margin: 0;
+		font-size: $font-size-small;
+		color: $color-text;
+		cursor: default;
+		white-space: nowrap;
+		text-align: center;
+	}
+	ul {
+		padding: 0;
+		display: flex;
+		gap: $lhse*.5;
+		flex-wrap: wrap;
+		margin: 0;
+		justify-content: center;
+		max-width: 100%;
+	}
+	li {
+		display: block;
+		justify-content: center;
+		align-content: center;
+		margin: 0;
+		width: $lhse*8;
+		height: $lhse*1.3333;
+	}
+	a {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: $lhse*.5;
+		border-radius: $border-radius-button;
+		font-family: $font-family-standard;
+		font-weight: $font-weight-label;
+		font-size: $font-size-small;
+		background: $color-group-bg-lighter;
+		text-decoration: none;
+		padding: $lhse*.125 $lhse*.375;
+		line-height: 1;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		text-align: left;
+		border: 1px solid $color-group-bg-darker;
+		background: $color-group-bg;
+		transition: $transition-duration-standard ease;
+		transition-property: opacity, filter;
+		opacity: .8;
+		filter: brightness(1.2) saturate(.8);
+
+		&:hover,
+		&:focus,
+		&:active {
+			opacity: 1;
+			filter: none;
+		}
+	}
+	.deck-name {
+		font-weight: $font-weight-label;
+	}
+	.deck-colors {
+		display: flex;
+		align-items: center;
+		opacity: $opacity-mana-symbols;
+		font-size: $font-size-small;
+	}
+}

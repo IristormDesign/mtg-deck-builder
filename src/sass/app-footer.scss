@@ -15,34 +15,39 @@
 		max-width: $max-width-content;
 		padding: 0 $lhse;
 	}
-	p {
-		@include tiny-font-size;
+	.legal {
+		p {
+			@include tiny-font-size;
+		}
+		a {
+			@include link-colors(color.adjust($color-link, $lightness: 8.33%, $saturation: -29.17%));
+
+			&:hover,
+			&:focus {
+				@include link-colors($color-link-focus);
+			}
+			&:active {
+				@include link-colors($color-link-active);
+			}
+		}
 	}
 	.divider {
 		margin: 0 .25em;
 	}
-	a {
-		@include link-colors(color.adjust($color-link, $lightness: 8.33%, $saturation: -29.17%));
 
-		&:hover,
-		&:focus {
-			@include link-colors($color-link-focus);
-		}
-		&:active {
-			@include link-colors($color-link-active);
-		}
-	}
 }
 
 @media (max-width: ($min-width-app*.75)) {
 	.app-footer {
-		p {
-			&:first-of-type {
-				line-height: $line-height-standard*1.5;
+		.legal {
+			p {
+				&:first-of-type {
+					line-height: $line-height-standard*1.5;
+				}
 			}
-		}
-		a {
-			display: inline-block;
+			a {
+				display: inline-block;
+			}
 		}
 		.group {
 			display: block;

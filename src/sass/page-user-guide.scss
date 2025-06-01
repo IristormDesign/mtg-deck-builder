@@ -65,6 +65,7 @@ $animation-highlight-toc: highlight-toc $animation-highlight-attributes;
 		padding: 0;
 		grid-column: 1;
 		grid-row: 2; // Positioned below the header.
+		margin-bottom: $margin-sections;
 
 		.scrollable-region {
 			@include glowing-edges-of-scrollable-container;

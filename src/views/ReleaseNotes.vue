@@ -12,18 +12,23 @@
 				/>
 				<figcaption>Illustration from <a href="https://scryfall.com/card/bro/65/take-flight" target="_blank">Take Flight<svg><use href="#open-in-new-icon" /></svg></a> by Joshua Cairos</figcaption>
 			</figure>
-
-			<p>This page logs the changes made to MTG Deck Builder in each update, starting from the most recent release.</p>
+			<p>MTG Deck Builder by Iristorm Design is a work-in-progress, and so it’s been updated often. This page logs the changes made in each update, starting from the latest release.</p>
 			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text revisions. Because those types of changes are trivial and frequent, they’re not announced in every release note, even when those changes are made.</p>
 		</header>
 
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>May 29</h4>
+			<h4>May 30</h4>
 			<ul>
 				<li>
+					<p>✨ In the app’s page footer, there’s a new section where you can see and open your recently opened decks.</p>
+				</li>
+				<li>
 					<p>On a deck page, the ability to rename the deck has been moved from the deck’s name as a link to a new action button in the Deck Actions menu.</p>
+				</li>
+				<li>
+					<p>Minor bug fixes.</p>
 				</li>
 			</ul>
 

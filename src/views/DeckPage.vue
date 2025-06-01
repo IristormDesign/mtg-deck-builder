@@ -83,11 +83,14 @@ export default {
 
 			this.$store.commit('focusCardBar', null)
 			this.$store.commit('showSideboard', false)
+
+			this.updateOpenDate()
 		}
 	},
 	created () {
 		this.showStarredCardIfAvailable()
 		this.$store.commit('showSideboard', false)
+		this.updateOpenDate()
 	},
 	methods: {
 		showStarredCardIfAvailable () {
@@ -121,6 +124,10 @@ export default {
 					block: 'nearest'
 				})
 			})
+		},
+		updateOpenDate () {
+			this.deck.openDate = new Date()
+			this.$store.commit('decks', this.$store.state.decks)
 		}
 	}
 }

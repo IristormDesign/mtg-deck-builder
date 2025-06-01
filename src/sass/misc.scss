@@ -50,11 +50,11 @@
 .release-notes {
 	section {
 		border-top: $border-sections;
-		margin-top: $lhse;
+		margin-top: $lhse*1.5;
 
 		h3 {
 			&:first-child {
-				margin-top: $lhse*.75;
+				margin-top: $lhse*.5;
 			}
 		}
 	}
