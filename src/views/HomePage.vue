@@ -59,24 +59,14 @@
 		<div class="final-call-to-action texture-bg">
 			<div class="wrap">
 				<div class="button-container">
-					<router-link to="guide/intro" :class="'button'">
-						<div>Read the<br/> User Guide</div>
+					<router-link to="/guide">
+						<div><small>Read the</small><br/> User Guide</div>
 					</router-link>
 				</div>
-
 				<div class="button-container">
-					<button
-						v-if="$store.state.decks.length > 0"
-						@click="this.homeOpenDeckButton"
+					<router-link to="/release-notes"
 					>
-						Open a Deck
-					</button>
-					<router-link
-						v-else
-						:to="{name: 'createDeck'}"
-						:class="'button'"
-					>
-						Create Deck
+						<div><small>Read the</small><br/> Release Notes</div>
 					</router-link>
 				</div>
 			</div>

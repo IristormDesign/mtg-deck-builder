@@ -13,8 +13,6 @@
 					<span class="divider"> // </span>
 					<router-link to="/privacy">Privacy Policy</router-link>
 					<span class="divider"> // </span>
-					<router-link to="/release-notes">Release Notes</router-link>
-					<span class="divider"> // </span>
 					<router-link to="/contact">Contact</router-link>
 				</span>
 			</p>

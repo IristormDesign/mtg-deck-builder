@@ -18,6 +18,7 @@
 	.legal {
 		p {
 			@include tiny-font-size;
+			text-align: center;
 		}
 		a {
 			@include link-colors(color.adjust($color-link, $lightness: 8.33%, $saturation: -29.17%));

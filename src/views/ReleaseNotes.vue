@@ -28,6 +28,9 @@
 					<p>On a deck page, the ability to rename the deck has been moved from the deck’s name as a link to a new action button in the Deck Actions menu.</p>
 				</li>
 				<li>
+					<p>The link to the Release Notes page has been removed from the app’s page footer and put onto the home page instead.</p>
+				</li>
+				<li>
 					<p>Minor bug fixes.</p>
 				</li>
 			</ul>

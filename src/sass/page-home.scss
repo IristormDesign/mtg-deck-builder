@@ -163,16 +163,13 @@
 			margin: math.div($lhse, 3) $lhse*.5;
 
 			&:last-of-type {
-				.button {
+				a {
 					background: $color-button-orange; // Needed for "Create Deck" button, which appears when there are zero stored decks.
 				}
 			}
 		}
-		.button {
-			background: $color-button-gray;
-		}
-		button,
-		.button {
+		a {
+			@include button;
 			min-width: $lhse*6;
 			height: $lhse*2.25;
 			width: math.div(100%, 3);
