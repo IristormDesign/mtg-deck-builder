@@ -19,7 +19,7 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>May 30</h4>
+			<h4>June 1</h4>
 			<ul>
 				<li>
 					<p>✨ In the app’s page footer, there’s a new section where you can see and open your recently opened decks.</p>

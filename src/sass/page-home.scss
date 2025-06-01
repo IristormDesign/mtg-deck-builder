@@ -172,12 +172,27 @@
 			@include button;
 			min-width: $lhse*6;
 			height: $lhse*2.25;
-			width: math.div(100%, 3);
+			width: $lhse*8;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			font-size: $font-size-bigger;
 			color: $color-black-label-text;
+			text-align: left;
+
+			svg {
+				width: $lhse*1.75;
+				height: $lhse*1.75;
+				margin-right: $lhse*.2;
+			}
+			.text-label {
+				margin-top: -$lhse*.125;
+				margin-right: $lhse*.25;
+			}
+			small {
+				@include tiny-font-size;
+			}
+
 		}
 	}
 }
@@ -231,8 +246,7 @@
 			.wrap {
 				position: relative;
 				background: $color-group-bg-lighter;
-				border-top: $border-width-sections solid $color-group-bg;
-				border-color: $color-content-bg;
+				border-top: $border-width-sections-thickest solid $color-group-bg-extra-darker;
 			}
 			.text-box {
 				position: relative;
