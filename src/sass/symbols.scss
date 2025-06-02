@@ -19,18 +19,12 @@
 
 	&.white {
 		background: $color-mana-white;
-
-		div {
-			transform: scaleX(.75);
-			font-weight: $font-weight-semibold*1.1667;
-		}
 	}
 	&.blue {
 		background: $color-mana-blue;
 	}
 	&.black {
 		background: $color-mana-black;
-		color: $color-darker-black-label-text;
 	}
 	&.red {
 		background: $color-mana-red;
@@ -62,12 +56,14 @@
 	.double-digits {
 		transform: scale(.75); // Transforming the scale is better than changing font-size because it doesn't affect margins.
 	}
-	&[title] {
-		cursor: help;
+	svg {
+		width: 75px !important;
+		height: 75px !important;
+		display: inline-block;
 	}
 }
 .size-mana-symbols {
-	grid-gap: 0 2px;
+	gap: 0 2px;
 	justify-items: center;
 
 	.mana-symbol {
@@ -110,7 +106,7 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr 1fr;
-		grid-gap: 2px;
+		gap: 2px;
 
 		.mana-symbol {
 			font-size: $font-size-stat-value*.8*.8*.8;

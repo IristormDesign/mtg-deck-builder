@@ -2,11 +2,11 @@ export default {
 	data () {
 		return {
 			manaSymbol: {
-				w: '<span class="mana-symbol white"><div>W</div></span>',
-				u: '<span class="mana-symbol blue">U</span>',
-				b: '<span class="mana-symbol black">B</span>',
-				r: '<span class="mana-symbol red">R</span>',
-				g: '<span class="mana-symbol green">G</span>',
+				w: '<svg class="mana-symbol white"><use href="#white-mana" /></svg>',
+				u: '<svg class="mana-symbol blue"><use href="#blue-mana" /></svg>',
+				b: '<svg class="mana-symbol black"><use href="#black-mana" /></svg>',
+				r: '<svg class="mana-symbol red"><use href="#red-mana" /></svg>',
+				g: '<svg class="mana-symbol green"><use href="#green-mana" /></svg>',
 				c: '<span class="mana-symbol">C</span>',
 				s: '<span class="mana-symbol">S</span>',
 				hybrid: '<span class="mana-symbol hybrid"><div>Y/Z</div></span>'

@@ -60,7 +60,7 @@
 				}
 			}
 		}
-		svg {
+		> svg {
 			width: $lhse*1.3333;
 			height: $lhse*1.3333;
 			margin-right: .25em;
@@ -114,6 +114,17 @@
 					opacity: 1;
 				}
 			}
+			&,
+			&:hover,
+			&:focus,
+			&:active {
+				svg {
+					fill: $color-black-label-text;
+					width: $lhse*.5;
+					height: $lhse*.5;
+					margin: 0;
+				}
+			}
 		}
 		.selected {
 			a {
@@ -147,7 +158,6 @@
 		display: flex;
 		font-size: 75%;
 		margin-left: .5em;
-		min-width: $lhse*2;
 		justify-content: center;
 		align-items: center;
 	}
@@ -213,7 +223,7 @@
 		line-height: 0;
 		border-radius: $border-radius-small-button;
 
-		svg {
+		> svg {
 			margin-top: -.6667em;
 			margin-bottom: -.0625em;
 		}

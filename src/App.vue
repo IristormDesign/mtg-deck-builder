@@ -4,11 +4,7 @@
 			class="fade-bg"
 			:class="this.$route.name === 'home' ? 'root-home-page' : null"
 		>
-			<svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg">
-				<symbol id="open-in-new-icon" viewBox="0 -960 960 960">
-					<path d="M228.31-164q-27.01 0-45.66-18.65Q164-201.3 164-228.31v-503.38q0-27.01 18.65-45.66Q201.3-796 228.31-796h236.3v52h-236.3q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v503.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h503.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-236.3h52v236.3q0 27.01-18.65 45.66Q758.7-164 731.69-164H228.31Zm159.46-186.62-37.15-37.15L706.85-744H576v-52h220v220h-52v-130.85L387.77-350.62Z"/>
-				</symbol>
-			</svg>
+			<global-svg-symbols />
 			<update-notif />
 			<app-header />
 			<main>
@@ -26,13 +22,14 @@
 </template>
 
 <script>
+import GlobalSvgSymbols from '@/components/GlobalSvgSymbols.vue'
 import UpdateNotif from '@/components/AppUpdateNotif.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 
 export default {
-	components: { UpdateNotif, AppHeader, AppFooter, ScrollToTop },
+	components: { GlobalSvgSymbols, UpdateNotif, AppHeader, AppFooter, ScrollToTop },
 	metaInfo: {
 		title: 'MTG Deck Builder by Iristorm Design',
 		titleTemplate: '%s · MTG Deck Builder'
