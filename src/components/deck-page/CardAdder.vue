@@ -53,19 +53,19 @@
 		</standard-dialog>
 		<standard-dialog dialogID="adderTip">
 			<h3>Tip for Adding Cards</h3>
-			<p>You can include new card names in your decks’ lists by submitting any one of the following kinds of queries:</p>
+			<p>To include new card names in your decks’ lists, submit any one of the following kinds of queries:</p>
 			<ul>
 				<li>
 					<p>Submit the <strong>name</strong> of a certain <i>Magic</i> card to add that card.</p>
 				</li>
 				<li>
-					<p>Submit the <strong>URL</strong> to a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card in that specific print edition.</p>
+					<p>Submit the <strong>URL</strong> to a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print edition. (Useful for cards that have been reprinted with different illustrations.)</p>
 				</li>
 				<li>
 					<p>Submit the code <strong><code>#random</code></strong> to add a random <i>Magic</i> card.</p>
 				</li>
 			</ul>
-			<p>Learn more about the card adder tool in the <router-link to="/guide/list-editor#card-adder">User Guide</router-link>.</p>
+			<p>For more info about the card adder tool, see the <router-link to="/guide/list-editor#card-adder">User Guide</router-link>.</p>
 		</standard-dialog>
 	</section>
 </template>

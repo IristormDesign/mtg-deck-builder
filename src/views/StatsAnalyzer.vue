@@ -65,7 +65,7 @@
 							<p>For every double-faced card, most categories count the attributes of the front and back faces together without repeating any same attributes between both. Only the “Mana Values of Spells” category ignores the back face.</p>
 						</li>
 						<li>
-							<p>Learn more about the Stats Analyzer in the <router-link to="/guide/stats-analyzer">User Guide</router-link>.</p>
+							<p>For more info about the Stats Analyzer, see the <router-link to="/guide/stats-analyzer">User Guide</router-link>.</p>
 						</li>
 					</ul>
 				</div>

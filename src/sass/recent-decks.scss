@@ -73,6 +73,9 @@
 			opacity: 1;
 			filter: none;
 		}
+		svg {
+			will-change: opacity; // Prevents a wiggling glitch on hover in Safari.
+		}
 	}
 	.deck-name {
 		font-weight: $font-weight-label;
