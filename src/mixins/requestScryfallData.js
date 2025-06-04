@@ -40,7 +40,7 @@ export default {
 
 			axios
 				.get(
-					'https://api.scryfall.com/cards/random?q=legal%3Acommander+lang%3Aen+-is%3Adigital', // Get a random card that's legal in Commander, is in English, and is NOT a digital (MTG Arena) edition.
+					'https://api.scryfall.com/cards/random?q=%28game%3Apaper%29+legal%3Acommander+-is%3Auniversesbeyond+is%3Aonlyprint+lang%3Aen', // The loading speed for random card requests speeds up by reducing the number of possible random cards via criteria filters.
 					{ timeout: 10000 }
 				)
 				.then(response => {
