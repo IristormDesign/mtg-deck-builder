@@ -22,7 +22,10 @@
 			<h4>June 3</h4>
 			<ul>
 				<li>
-					<p>The colored mana symbols are shown as their graphical symbols as seen on <i>Magic</i> cards (instead of being symbolized by a letter).</p>
+					<p>The colored mana symbols are now shown as their graphical symbols as seen on <i>Magic</i> cards (instead of being represented by an English letter).</p>
+				</li>
+				<li>
+					<p>Major bug fix: In the List Editor’s card adder, if you had tried to submit a card name that isn’t valid, then the card adder would appear to load forever instead of displaying an error notice.</p>
 				</li>
 			</ul>
 

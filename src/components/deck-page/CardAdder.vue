@@ -213,7 +213,14 @@ export default {
 				if (foundExistingCardByName) {
 					this.notifyCardExists(foundExistingCardByName)
 				} else { // Else the queried card doesn't match the name of another card in the list.
-					this.axiosRequestName(query)
+					this.axiosRequestName(query, (response) => {
+						this.loadingCard = false
+
+						this.$store.commit('idOfShowingDialog', {
+							id: 'invalidCardName',
+							data: query
+						})
+					})
 				}
 			}
 		},
