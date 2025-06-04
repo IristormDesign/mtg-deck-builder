@@ -17,21 +17,6 @@
 	justify-content: center;
 	overflow: hidden;
 
-	&.white {
-		background: $color-mana-white;
-	}
-	&.blue {
-		background: $color-mana-blue;
-	}
-	&.black {
-		background: $color-mana-black;
-	}
-	&.red {
-		background: $color-mana-red;
-	}
-	&.green {
-		background: $color-mana-green;
-	}
 	&.hybrid,
 	&.long-hybrid {
 		background: $color-mana-hybrid;

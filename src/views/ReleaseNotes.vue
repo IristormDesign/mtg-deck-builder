@@ -19,6 +19,13 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 3</h4>
+			<ul>
+				<li>
+					<p>The colored mana symbols are shown as their graphical symbols as seen on <i>Magic</i> cards (instead of being symbolized by a letter).</p>
+				</li>
+			</ul>
+
 			<h4>June 1</h4>
 			<ul>
 				<li>
