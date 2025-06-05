@@ -213,13 +213,21 @@ export default {
 				if (foundExistingCardByName) {
 					this.notifyCardExists(foundExistingCardByName)
 				} else { // Else the queried card doesn't match the name of another card in the list.
-					this.axiosRequestName(query, (response) => {
+					this.axiosRequestName(query, error => {
+						if (!error) return
+
 						this.loadingCard = false
 
-						this.$store.commit('idOfShowingDialog', {
-							id: 'invalidCardName',
-							data: query
-						})
+						if (error.code === 'ECONNABORTED') {
+							this.alertConnectionTimeout()
+						} else if (error.code === 'ERR_BAD_REQUEST') {
+							this.$store.commit('idOfShowingDialog', {
+								id: 'invalidCardName',
+								data: query
+							})
+						} else if (error.message) {
+							this.alertMiscErrorMessage(error.message)
+						}
 					})
 				}
 			}

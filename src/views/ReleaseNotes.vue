@@ -22,7 +22,7 @@
 			<h4>June 4</h4>
 			<ul>
 				<li>
-					<p></p>
+					<p>Major bug fix: A mistake in the previous update had caused <em>all</em> card requests to show an error message, even when the card had been successfully added anyway.</p>
 				</li>
 				<li>
 					<p>The colors of mana symbols are adjusted to be slightly more vibrant, and the colors of card bar surfaces are adjusted to be slightly less vibrant.</p>

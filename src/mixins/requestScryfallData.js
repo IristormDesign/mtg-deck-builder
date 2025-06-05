@@ -101,11 +101,9 @@ export default {
 		},
 		/**
 		 * Request the Scryfall API for a card by name.
-		 *
-		 * The `callback` and `oldCardData` parameters are unused except when an existing card is going to be replaced via a deck data update.
 		 * @param {string} name Required
 		 * @param {Function} callback
-		 * @param {Object} oldCardData
+		 * @param {Object} oldCardData - Unused except when an existing card is going to be replaced via a deck data update.
 		 * @returns {Function} Callback function
 		 */
 		axiosRequestName (name, callback, oldCardData) {
