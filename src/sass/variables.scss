@@ -67,17 +67,18 @@ $color-mana-blue: #ABE1FA; // Sampled from Gatherer.
 $color-mana-black: #CCC2C0; // Sampled from Gatherer.
 $color-mana-red: #F9AA8F; // Sampled from Gatherer.
 $color-mana-green: #9BD3AE; // Sampled from Gatherer.
-$color-mana-generic: color.scale(#CCC2C0, $saturation: -100%); // Sampled from Gatherer.
+$color-mana-generic-original: #CCC2C0; // Sampled from Gatherer.
+$color-mana-generic-desaturated: color.scale($color-mana-generic-original, $saturation: -100%);
 $color-mana-hybrid: color.adjust(
 	$color-rarity-gold, $lightness: 4.17%, $saturation: -6.25%
 );
 
 /* CARD FRAME COLORS */
 $color-frame-land: color.scale(
-	$color-mythic-yellow, $lightness: 29.17%, $saturation: -83.33%
+	$color-mythic-yellow, $lightness: 25%, $saturation: -83.33%
 );
 $color-frame-white: color.scale(
-	$color-mana-white, $lightness: -6.25%, $saturation: -80%
+	$color-mana-white, $lightness: -6.25%, $saturation: -87.5%
 );
 $color-frame-blue: color.scale(
 	$color-mana-blue, $lightness: -4.17%, $saturation: -58.33%
@@ -92,7 +93,7 @@ $color-frame-green: color.scale(
 	$color-mana-green, $lightness: 12.5%, $saturation: -45.83%
 );
 $color-frame-multi: color.adjust(
-	$color-mana-hybrid, $lightness: 8.33%, $saturation: -20.83%
+	$color-mana-hybrid, $lightness: 6.25%, $saturation: -29.17%
 );
 $color-frame-generic: color.adjust(
 	$color-rarity-silver, $lightness: 6.25%, $saturation: -8.33%
