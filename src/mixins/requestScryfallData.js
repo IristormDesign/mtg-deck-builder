@@ -38,19 +38,23 @@ export default {
 		axiosRequestRandom () {
 			console.info('Random card requested via Scryfall API.')
 
-			const randomizedQuery = (() => {
-				if (Math.random() < 1 / 3) {
-					/* Card that's legal in Modern, is NOT from Universes Beyond, and HAS been reprinted. */
-					return '+legal%3Amodern+-is%3Auniversesbeyond+-is%3Aonlyprint'
+			function getRandomizedQueryCriteria () {
+				const randomNumber = Math.random()
+
+				if (randomNumber < 1 / 16) {
+					return '+rarity%3Am' // Mythic rare rarity.
+				} else if (randomNumber < 4 / 16) {
+					return '+rarity%3Ar' // Rare rarity.
+				} else if (randomNumber < 9 / 16) {
+					return '+rarity%3Au' // Uncommon rarity.
 				} else {
-					/* Card that's legal in Commander, is NOT from Universes Beyond, and has NOT been reprinted. */
-					return '+legal%3Acommander+-is%3Auniversesbeyond+is%3Aonlyprint'
+					return '+rarity%3Ac' // Common rarity.
 				}
-			})()
+			}
 
 			axios
 				.get(
-					`https://api.scryfall.com/cards/random?q=%28game%3Apaper%29${randomizedQuery}+lang%3Aen`, // The loading speed for random card requests speeds up by reducing the number of possible random cards via criteria filters.
+					`https://api.scryfall.com/cards/random?q=%28game%3Apaper%29+legal%3Acommander${getRandomizedQueryCriteria()}+-is%3Auniversesbeyond+lang%3Aen`, // The loading speed for random card requests speeds up by reducing the number of possible random cards via criteria filters.
 					{ timeout: 10000 }
 				)
 				.then(response => {
