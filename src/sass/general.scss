@@ -94,7 +94,7 @@ ol {
 strong,
 b,
 th {
-	font-weight: $font-weight-label;
+	font-weight: $font-weight-semibold;
 
 	*:not(a) > & {
 		color: $color-text-brighter;
