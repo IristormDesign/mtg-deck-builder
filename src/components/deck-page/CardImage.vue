@@ -255,7 +255,7 @@ export default {
 			) {
 				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
-				console.info(`New image URL for "${card.name}" requested with Scryfall API`)
+				console.info(`New image URL for "${card.name}" requested via Scryfall API.`)
 
 				axios
 					.get(

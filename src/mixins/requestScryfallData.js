@@ -36,7 +36,7 @@ export default {
 		 * Request the Scryfall API for a random card.
 		 */
 		axiosRequestRandom () {
-			console.info('Random card requested with Scryfall API')
+			console.info('Random card requested via Scryfall API.')
 
 			axios
 				.get(
@@ -65,7 +65,7 @@ export default {
 			const cardSet = matchingQueryParts[2]
 			const collectorNumber = matchingQueryParts[4]
 
-			console.info(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested with Scryfall API`)
+			console.info(`Card #${collectorNumber} in set ${cardSet.toUpperCase()} requested via Scryfall API.`)
 
 			axios
 				.post(
@@ -107,7 +107,7 @@ export default {
 		 * @returns {Function} Callback function
 		 */
 		axiosRequestName (name, callback, oldCardData) {
-			console.info(`Card named "${name}" requested with Scryfall API`)
+			console.info(`Card named "${name}" requested via Scryfall API.`)
 
 			const urlEncodedQuery = name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 

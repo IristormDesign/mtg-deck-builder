@@ -328,7 +328,7 @@ export default {
 			})
 		},
 		requestCardFromScryfallAPI (card, callback) {
-			console.info(`Card named "${card.name}" requested with Scryfall API`)
+			console.info(`Card named "${card.name}" requested via Scryfall API.`)
 
 			const urlEncodedQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
