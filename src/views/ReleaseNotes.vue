@@ -19,6 +19,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 4</h4>
+			<ul>
+				<li>
+					<p></p>
+				</li>
+				<li>
+					<p>The colors of mana symbols are adjusted to be slightly more vibrant, and the colors of card bar surfaces are adjusted to be slightly less vibrant.</p>
+				</li>
+			</ul>
+
 			<h4>June 3</h4>
 			<ul>
 				<li>
