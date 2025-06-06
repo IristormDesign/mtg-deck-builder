@@ -254,6 +254,7 @@
 			<section id="random-card-query">
 				<h5>Random Card Query</h5>
 				<p>To add the name of a random <i>Magic</i> card to your deck, submit the special code <strong><code>#random</code></strong> in the <a href="#card-adder">card adder</a>. Your web browser may also show “#random” as a selectable option when the card adder’s text field gains browser focus.</p>
+				<p>The cards that can be added through this random query are ones with the following criteria: They’re legal to play in the Commander format (which includes the vast majority of <i>Magic</i> cards), are available as physical cards (rather than digital versions), are <em>not</em> from a <i>Universes Beyond</i> edition, and are in English.</p>
 			</section>
 			<section id="card-adder-other-info">
 				<h5>Other Information About the Card Adder</h5>
