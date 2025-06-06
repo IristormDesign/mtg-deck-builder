@@ -41,20 +41,34 @@ export default {
 			function getRandomizedQueryCriteria () {
 				const randomNumber = Math.random()
 
-				if (randomNumber < 1 / 16) {
-					return '+rarity%3Am' // Mythic rare rarity.
-				} else if (randomNumber < 4 / 16) {
-					return '+rarity%3Ar' // Rare rarity.
-				} else if (randomNumber < 9 / 16) {
-					return '+rarity%3Au' // Uncommon rarity.
+				if (randomNumber < 3 / 28) {
+					return '%3DW' // Mono-white cards.
+				} else if (randomNumber < 5 / 28) {
+					return '>%3DW' // White-minimum cards.
+				} else if (randomNumber < 8 / 28) {
+					return '%3DU' // Mono-blue cards.
+				} else if (randomNumber < 10 / 28) {
+					return '>%3DU' // Blue-minimum cards.
+				} else if (randomNumber < 13 / 28) {
+					return '%3DB' // Mono-black cards.
+				} else if (randomNumber < 15 / 28) {
+					return '>%3DB' // Black-minimum cards.
+				} else if (randomNumber < 18 / 28) {
+					return '%3DR' // Mono-red cards.
+				} else if (randomNumber < 20 / 28) {
+					return '>%3DR' // Red-minimum cards.
+				} else if (randomNumber < 23 / 28) {
+					return '%3DG' // Mono-green cards.
+				} else if (randomNumber < 25 / 28) {
+					return '>%3DG' // Green-minimum cards.
 				} else {
-					return '+rarity%3Ac' // Common rarity.
+					return '%3DC' // Colorless cards.
 				}
 			}
 
 			axios
 				.get(
-					`https://api.scryfall.com/cards/random?q=%28game%3Apaper%29+legal%3Acommander${getRandomizedQueryCriteria()}+-is%3Auniversesbeyond+lang%3Aen`, // The loading speed for random card requests speeds up by reducing the number of possible random cards via criteria filters.
+					`https://api.scryfall.com/cards/random?q=color${getRandomizedQueryCriteria()}+%28game%3Apaper%29+legal%3Acommander+-is%3Auniversesbeyond+lang%3Aen`, // The loading speed for random card requests speeds up by reducing the number of possible random cards via criteria filters.
 					{ timeout: 10000 }
 				)
 				.then(response => {
