@@ -36,6 +36,7 @@
 			transform: scale(1) translateY(-.25em);
 			letter-spacing: normal;
 			text-indent: 0;
+			font-weight: $font-weight-label;
 		}
 	}
 	.double-digits {
@@ -45,6 +46,7 @@
 .size-mana-symbols {
 	gap: 0 2px;
 	justify-items: center;
+	width: max-content; // Needed to prevent the contained mana symbols from appearing to squish horizontally when adjacent to a long text element.
 
 	.mana-symbol {
 		margin: 0;

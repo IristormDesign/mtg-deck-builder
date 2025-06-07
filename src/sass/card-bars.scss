@@ -161,6 +161,7 @@
 		display: flex;
 		align-items: center;
 		font-size: 91.67%;
+		min-width: max-content; // Prevents mana symbols from squishing horizontally when adjacent to a long text element.
 
 		.mana-symbol {
 			box-shadow: -1px 1.5px 0 0 $color-black-label-text; // Needs to look good on Firefox
