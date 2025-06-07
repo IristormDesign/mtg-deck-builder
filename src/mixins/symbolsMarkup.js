@@ -1,34 +1,48 @@
+function manaMarkup (fileName, altText, isLarge) {
+	function classes () {
+		let classes = 'mana-symbol'
+
+		if (isLarge) {
+			classes += ' hybrid'
+		}
+
+		return classes
+	}
+
+	return `<img class="${classes()}" src="/img/mana/${fileName}.svg" alt="${altText}" />`
+}
+
 export default {
 	data () {
 		return {
 			manaSymbol: {
-				w: '<svg class="mana-symbol"><use href="#white-mana" /></svg>',
-				u: '<svg class="mana-symbol"><use href="#blue-mana" /></svg>',
-				b: '<svg class="mana-symbol"><use href="#black-mana" /></svg>',
-				r: '<svg class="mana-symbol"><use href="#red-mana" /></svg>',
-				g: '<svg class="mana-symbol"><use href="#green-mana" /></svg>',
-				c: '<svg class="mana-symbol"><use href="#colorless-mana" /></svg>',
-				s: '<svg class="mana-symbol"><use href="#snow-mana" /></svg>',
-				wu: '<svg class="mana-symbol hybrid"><use href="#white-blue-mana" /></svg>',
-				wb: '<svg class="mana-symbol hybrid"><use href="#white-black-mana" /></svg>',
-				ub: '<svg class="mana-symbol hybrid"><use href="#blue-black-mana" /></svg>',
-				ur: '<svg class="mana-symbol hybrid"><use href="#blue-red-mana" /></svg>',
-				br: '<svg class="mana-symbol hybrid"><use href="#black-red-mana" /></svg>',
-				bg: '<svg class="mana-symbol hybrid"><use href="#black-green-mana" /></svg>',
-				rw: '<svg class="mana-symbol hybrid"><use href="#red-white-mana" /></svg>',
-				rg: '<svg class="mana-symbol hybrid"><use href="#red-green-mana" /></svg>',
-				gw: '<svg class="mana-symbol hybrid"><use href="#green-white-mana" /></svg>',
-				gu: '<svg class="mana-symbol hybrid"><use href="#green-blue-mana" /></svg>',
-				gen2w: '<svg class="mana-symbol hybrid"><use href="#two-generic-white-mana" /></svg>',
-				gen2u: '<svg class="mana-symbol hybrid"><use href="#two-generic-blue-mana" /></svg>',
-				gen2b: '<svg class="mana-symbol hybrid"><use href="#two-generic-black-mana" /></svg>',
-				gen2r: '<svg class="mana-symbol hybrid"><use href="#two-generic-red-mana" /></svg>',
-				gen2g: '<svg class="mana-symbol hybrid"><use href="#two-generic-green-mana" /></svg>',
-				wp: '<svg class="mana-symbol hybrid"><use href="#white-phyrexian-mana" /></svg>',
-				up: '<svg class="mana-symbol hybrid"><use href="#blue-phyrexian-mana" /></svg>',
-				bp: '<svg class="mana-symbol hybrid"><use href="#black-phyrexian-mana" /></svg>',
-				rp: '<svg class="mana-symbol hybrid"><use href="#red-phyrexian-mana" /></svg>',
-				gp: '<svg class="mana-symbol hybrid"><use href="#green-phyrexian-mana" /></svg>',
+				w: manaMarkup('white', 'W'),
+				u: manaMarkup('blue', 'U'),
+				b: manaMarkup('black', 'B'),
+				r: manaMarkup('red', 'R'),
+				g: manaMarkup('green', 'G'),
+				c: manaMarkup('colorless', 'C'),
+				s: manaMarkup('snow', 'S'),
+				wu: manaMarkup('hybrid-wu', 'W/U', true),
+				wb: manaMarkup('hybrid-wb', 'W/B', true),
+				ub: manaMarkup('hybrid-ub', 'U/B', true),
+				ur: manaMarkup('hybrid-ur', 'U/R', true),
+				br: manaMarkup('hybrid-br', 'B/R', true),
+				bg: manaMarkup('hybrid-bg', 'B/G', true),
+				rw: manaMarkup('hybrid-rw', 'R/W', true),
+				rg: manaMarkup('hybrid-rg', 'R/G', true),
+				gw: manaMarkup('hybrid-gw', 'G/W', true),
+				gu: manaMarkup('hybrid-gu', 'G/U', true),
+				'2w': manaMarkup('hybrid-2w', '2/W', true),
+				'2u': manaMarkup('hybrid-2u', '2/U', true),
+				'2b': manaMarkup('hybrid-2b', '2/B', true),
+				'2r': manaMarkup('hybrid-2r', '2/R', true),
+				'2g': manaMarkup('hybrid-2g', '2/G', true),
+				wp: manaMarkup('phyrexian-w', 'W/P', true),
+				up: manaMarkup('phyrexian-u', 'U/P', true),
+				bp: manaMarkup('phyrexian-b', 'B/P', true),
+				rp: manaMarkup('phyrexian-r', 'R/P', true),
+				gp: manaMarkup('phyrexian-g', 'G/P', true),
 				hybrid: '<span class="mana-symbol hybrid"><div>Y/Z</div></span>'
 			},
 			raritySymbol: {

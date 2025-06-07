@@ -41,11 +41,6 @@
 	.double-digits {
 		transform: scale(.75); // Transforming the scale is better than changing font-size because it doesn't affect margins.
 	}
-	svg {
-		width: 75px !important;
-		height: 75px !important;
-		display: inline-block;
-	}
 }
 .size-mana-symbols {
 	gap: 0 2px;
