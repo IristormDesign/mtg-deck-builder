@@ -61,7 +61,7 @@ export default {
 		},
 		cardMana () {
 			return this.styleManaSymbols(this.card.mana) + (
-				this.thisCardHasDoubleCastableFaces
+				this.thisCardHasDoubleCastableFaces && this.card.mana2
 					? ` // ${this.styleManaSymbols(this.card.mana2)}`
 					: ''
 			)
