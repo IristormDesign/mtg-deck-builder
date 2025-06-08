@@ -7,6 +7,12 @@ $height-card-image-section: #{680px * .6667};
 $transition-delay-card: math.div(1, 3) * 1s;
 $animation-duration-card-browse: $transition-delay-card;
 
+@keyframes remove-flash {
+	100% {
+		filter: none;
+	}
+}
+
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
 
@@ -31,16 +37,15 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 }
 @mixin card-link ($rise-from) {
-	$scale: scale(1.3333);
 	$translate: none;
 	$rotate: none;
 
 	@if $rise-from == 'left' {
-		$translate: translate($lhse*1.375, $lhse*2);
+		$translate: translate(0, $lhse*.5);
 		$rotate: rotate(math.div(-360, 192) * 1deg);
 	}
 	@if $rise-from == 'right' {
-		$translate: translate(-$lhse*1.375, $lhse*2);
+		$translate: translate(-33.33%, $lhse*.5);
 		$rotate: rotate(math.div(360, 192) * 1deg);
 	}
 
@@ -48,37 +53,42 @@ $animation-duration-card-browse: $transition-delay-card;
 		position: absolute;
 		display: block;
 		transition: $transition-duration-card-image-hover-fast ease 0s;
-		transition-property: transform, filter;
+		transition-property: filter, width, height, transform;
 		border-radius: $border-radius-group;
 		outline-offset: 0px;
+		width: 100%;
+		height: 100%;
 
 		&:hover,
 		&:focus,
 		&.kb-highlight {
-			transform: $scale $translate $rotate;
-			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
+			transform: $translate $rotate;
+			transition-duration: // The first duration is for the filter, the second is for the other properties.
+				$transition-duration-standard,
+				$transition-duration-card-image-hover-slow;
+			transition-delay: // The first delay is for the filter, the second is for the other properties.
+				0s,
+				$transition-delay-card;
+			width: 150%;
+			height: 150%;
+			filter: brightness(112.5%) contrast(87.5%);
+			animation: remove-flash $transition-duration-card-image-hover-slow ease $transition-delay-card forwards;
 
 			&.sideways {
 				@if $rise-from == 'left' {
-					$translate: translate($lhse*2.5, $lhse*.25);
+					$translate: translate($lhse*12.5, $lhse*9);
 					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
 				}
 				@if $rise-from == 'right' {
-					$translate: translate(-$lhse*2.5, $lhse*.25);
+					$translate: translate($lhse*3, $lhse*10);
 					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
 				}
 
-				transform: $scale $translate $rotate;
+				transform: $translate $rotate;
 			}
 		}
 		&:focus,
 		&.kb-highlight {
-			transition-delay: 0s;
-		}
-		&:active {
-			filter: brightness(112.5%);
-			transition-duration: .2s;
 			transition-delay: 0s;
 		}
 	}
@@ -149,6 +159,8 @@ $animation-duration-card-browse: $transition-delay-card;
 		mask-image: url('~@/img/card-mask.svg');
 		box-shadow: inset 0 0 0 10px color.adjust(#000, $lightness: 8.33%); // Black card border without card image
 		background: color.adjust($color-frame-generic, $lightness: -33.33%, $saturation: -4.17%);
+		width: fit-content;
+		height: fit-content;
 
 		&.land {
 			background: color.adjust($color-frame-land, $lightness: -37.5%);
@@ -339,6 +351,8 @@ $animation-duration-card-browse: $transition-delay-card;
 		a {
 			position: static;
 			margin: $lhse*.5;
+			transform: none !important;
+
 
 			&:hover,
 			&:focus,
@@ -377,6 +391,20 @@ $animation-duration-card-browse: $transition-delay-card;
 			}
 			&-leave-active {
 				animation: none;
+			}
+		}
+	}
+	.list-editor,
+	.draw-simulator {
+		.card-image {
+			a {
+				&,
+				&:hover,
+				&:focus {
+					width: auto;
+					height: auto;
+					filter: none;
+				}
 			}
 		}
 	}
