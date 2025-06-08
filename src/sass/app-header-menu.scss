@@ -89,10 +89,6 @@
 			width: 100%;
 			height: $lhse*1.8333;
 			margin-top: -$lhse*1.5;
-			border-radius: $border-radius-small-button;
-			border-bottom-right-radius: 0;
-			border-bottom-left-radius: 0;
-			background: $color-mythic-dim;
 			transition: $transition-duration-standard ease;
 			transition-property: opacity, transform;
 		}
@@ -192,8 +188,7 @@
 			}
 			ul {
 				max-width: 80vw;
-				position: fixed;
-				top: $height-app-header-tall;
+				top: $lhse*1.3333;
 				left: 0;
 				margin: 0 auto;
 			}
