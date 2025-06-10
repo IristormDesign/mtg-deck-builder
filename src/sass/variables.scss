@@ -51,7 +51,7 @@ $color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .3820);
 /* GRAYSCALE COLORS */
 $opacity-black-label-text: .8333;
 $color-black-label-text: rgba(#000, $opacity-black-label-text);
-$color-darker-black-label-text: rgba(#000, .875);
+$color-darker-black-label-text: rgba(#000, .9167);
 $color-button-border: rgba(#000, math.div(1, 3));
 $color-input-bg: color.adjust(#000, $lightness: 16.67%); // Technically pure gray, but appears subtly orangish when surrounded by the bluish-tinted gray of $color-group-bg.
 
@@ -76,13 +76,13 @@ $color-mana-hybrid: color.adjust(
 
 /* CARD FRAME COLORS */
 $color-frame-land: color.scale(
-	$color-mythic-yellow, $lightness: 25%, $saturation: -83.33%
+	$color-mythic-yellow, $lightness:	25%, $saturation: -83.33%
 );
 $color-frame-white: color.scale(
 	$color-mana-white, $lightness: -6.25%, $saturation: -87.5%
 );
 $color-frame-blue: color.scale(
-	$color-mana-blue, $lightness: -4.17%, $saturation: -60%
+	$color-mana-blue, $lightness: -4.17%, $saturation: -62.5%
 );
 $color-frame-black: color.scale(
 	$color-mana-black, $lightness: -16.67%, $saturation: -91.67%
@@ -91,7 +91,7 @@ $color-frame-red: color.scale(
 	$color-mana-red, $lightness: 8.33%, $saturation: -66.67%
 );
 $color-frame-green: color.scale(
-	$color-mana-green, $lightness: 12.5%, $saturation: -50%
+	$color-mana-green, $lightness: 12.5%, $saturation: -45.83%
 );
 $color-frame-multi: color.adjust(
 	$color-mana-hybrid, $lightness: 4.17%, $saturation: -29.17%
