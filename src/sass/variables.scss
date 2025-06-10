@@ -65,10 +65,11 @@ $color-rarity-special: #905D98; // Sampled from Scryfall
 $color-mana-white: #FFFCD5; // Sampled from Gatherer.
 $color-mana-blue: #ABE1FA; // Sampled from Gatherer.
 $color-mana-black: #CCC2C0; // Sampled from Gatherer.
+$color-mana-black-hybrid: color.scale(#A29490, $saturation: -91.67%); // Sampled from Gatherer.
 $color-mana-red: #F9AA8F; // Sampled from Gatherer.
 $color-mana-green: #9BD3AE; // Sampled from Gatherer.
 $color-mana-generic-original: #CCC2C0; // Sampled from Gatherer.
-$color-mana-generic-desaturated: color.scale($color-mana-generic-original, $saturation: -100%);
+$color-mana-generic-desaturated: color.scale($color-mana-generic-original, $saturation: -100%); // = #c6c6c6
 $color-mana-hybrid: color.adjust(
 	$color-rarity-gold, $lightness: 4.17%, $saturation: -6.25%
 );
@@ -84,7 +85,7 @@ $color-frame-blue: color.scale(
 	$color-mana-blue, $lightness: -4.17%, $saturation: -58.33%
 );
 $color-frame-black: color.scale(
-	$color-mana-black, $lightness: -16.67%, $saturation: -100%
+	$color-mana-black, $lightness: -16.67%, $saturation: -91.67%
 );
 $color-frame-red: color.scale(
 	$color-mana-red, $lightness: 8.33%, $saturation: -62.5%

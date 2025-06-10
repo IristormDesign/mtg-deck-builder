@@ -206,7 +206,7 @@
 					@include box-shadow-hover-card-bar(color.adjust($color-mana-blue, $lightness: -40%, $saturation: -16.67%));
 				}
 				&.black {
-					@include box-shadow-hover-card-bar(color.adjust($color-mana-black, $lightness: -40%), true);
+					@include box-shadow-hover-card-bar(color.adjust($color-mana-black, $lightness: -58.33%), true);
 				}
 				&.red {
 					@include box-shadow-hover-card-bar(color.adjust($color-mana-red, $lightness: -29.17%, $saturation: -25%));
