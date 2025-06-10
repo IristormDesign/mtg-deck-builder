@@ -4,7 +4,7 @@
 
 		<section v-if="cardsSuccessfullyAdded && cardsSuccessfullyAdded.length > 0">
 			<h4>✅ New Cards</h4>
-			<p>The following new card names (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total names) have been added to the main card group of <i>{{ deck.name }}</i>.</p>
+			<p>The following cards (<strong>{{ cardsSuccessfullyAdded.length }}</strong> total names) are added to the main card group of <i>{{ deck.name }}</i>.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardsSuccessfullyAdded"
@@ -14,24 +14,24 @@
 		</section>
 		<section v-else-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>❌ New Cards</h4>
-			<p>No new card names have been added to <i>{{ deck.name }}</i>.</p>
+			<p>No new card names are added to <i>{{ deck.name }}</i>.</p>
 		</section>
 
 		<section v-if="cardsToUpdate && cardsToUpdate.length > 0">
 			<h4>✅ Existing Cards</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total names) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities have been updated to the new quantities you’ve set.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.length }}</strong> total names) were already in the main card group of <i>{{ deck.name }}</i>, but their quantities are updated to the new quantities you’ve set.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardsToUpdate"
 					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
-			<p v-if="this.anyCardRemoved">Card names set to a quantity of zero have been removed.</p>
+			<p v-if="this.anyCardRemoved">Card names with a quantity of zero are removed from your deck.</p>
 		</section>
 
 		<section v-if="cardsToAddZeroQty && cardsToAddZeroQty.length > 0">
 			<h4>❌ New Zero-Quantity Cards</h4>
-			<p>The following new card names have <em>not</em> been added to <i>{{ deck.name }}</i> because you’ve set their quantities to zero. 🤔</p>
+			<p>The following new card names are <em>not</em> added to <i>{{ deck.name }}</i> because you’ve set their quantities to zero. 🤔</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardsToAddZeroQty"
@@ -42,14 +42,14 @@
 
 		<section v-if="cardRequestInvalid && cardRequestInvalid.length > 0">
 			<h4>❌ Invalid Cards</h4>
-			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>, and so they can’t be added to your deck.</p>
+			<p>The following card names aren’t recognized to exist in <i>Magic: The Gathering</i>.</p>
 			<ul>
 				<li
 					v-for="(card, index) of cardRequestInvalid"
 					:key="index"
 				>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
 			</ul>
-			<p>If you’re sure these card names exist, check your entries for spelling mistakes, missing words, or excess words. (Letter case doesn’t matter, though.) If you find mistakes in them, you can submit the names again with the corrections.</p>
+			<p>If you’re sure these cards exist, check your entries for spelling mistakes, missing words, or excess words. (Letter case doesn’t matter, though.) If you find mistakes in them, you can submit the names again with the corrections.</p>
 		</section>
 
 		<section v-if="cardRequestsAborted && cardRequestsAborted.length > 0">
@@ -96,7 +96,7 @@
 
 		<section v-if="repeatedCardNames && repeatedCardNames.length > 0">
 			<h4>❌ Repeated Cards</h4>
-			<p>The following entries are card names you’ve included more than once in your submitted list, and so each repeated name after its first instance has been ignored.</p>
+			<p>The following entries are card names you’ve included more than once in your submitted list, and so each repeated name after its first instance is ignored.</p>
 			<ul>
 				<li
 					v-for="(card, index) of repeatedCardNames"
