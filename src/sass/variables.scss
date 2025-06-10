@@ -82,19 +82,19 @@ $color-frame-white: color.scale(
 	$color-mana-white, $lightness: -6.25%, $saturation: -87.5%
 );
 $color-frame-blue: color.scale(
-	$color-mana-blue, $lightness: -4.17%, $saturation: -58.33%
+	$color-mana-blue, $lightness: -4.17%, $saturation: -60%
 );
 $color-frame-black: color.scale(
 	$color-mana-black, $lightness: -16.67%, $saturation: -91.67%
 );
 $color-frame-red: color.scale(
-	$color-mana-red, $lightness: 8.33%, $saturation: -62.5%
+	$color-mana-red, $lightness: 8.33%, $saturation: -66.67%
 );
 $color-frame-green: color.scale(
-	$color-mana-green, $lightness: 12.5%, $saturation: -45.83%
+	$color-mana-green, $lightness: 12.5%, $saturation: -50%
 );
 $color-frame-multi: color.adjust(
-	$color-mana-hybrid, $lightness: 6.25%, $saturation: -29.17%
+	$color-mana-hybrid, $lightness: 4.17%, $saturation: -29.17%
 );
 $color-frame-generic: color.adjust(
 	$color-rarity-silver, $lightness: 4.17%, $saturation: -8.33%
