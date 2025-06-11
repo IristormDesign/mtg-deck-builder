@@ -99,7 +99,7 @@
 		margin-left: -$lhse*.125;
 	}
 	.text-label {
-		font-size: 87.5%;
+		font-size: 100%;
 	}
 }
 .deck-actions {
@@ -141,6 +141,13 @@
 	}
 }
 
+@media (max-width: ($min-width-app*1.25)) {
+	.mode-menu {
+		.text-label {
+			font-size: 87.5%;
+		}
+	}
+}
 @media (max-width: ($width-app-breakpoint-tablet)) {
 	.mode-menu {
 		.text-label {

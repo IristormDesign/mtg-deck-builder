@@ -19,6 +19,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 10</h4>
+			<ul>
+				<li>
+					<p>Optimized the app’s loading speed.</p>
+				</li>
+				<li>
+					<p>Various minor visual enhancements and bug fixes.</p>
+				</li>
+			</ul>
+
 			<h4>June 4</h4>
 			<ul>
 				<li>
