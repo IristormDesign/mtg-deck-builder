@@ -19,6 +19,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 10</h4>
+			<ul>
+				<li>
+					<p>Parts of the app’s code have been significantly optimized, which should improve loading speed.</p>
+				</li>
+				<li>
+					<p>Various minor visual enhancements and bug fixes are made.</p>
+				</li>
+			</ul>
+
 			<h4>June 4</h4>
 			<ul>
 				<li>
@@ -118,14 +128,25 @@
 
 			<h4>May 6 <span class="side-note">(logged retroactively)</span></h4>
 			<ul>
-				<li>The List Editor has a pop-up tip explaining the different ways you can add cards to your deck.</li>
-				<li>In the Stats Analyzer, the attribute “not starred” is renamed “un-starred.”</li>
+				<li>
+					<p>The List Editor has a pop-up tip explaining the different ways you can add cards to your deck.</p>
+				</li>
+				<li>
+					<p>In the Stats Analyzer, the attribute “not starred” is renamed “un-starred.”
+					</p>
+				</li>
 			</ul>
 
 			<h4>May 4 <span class="side-note">(logged retroactively)</span></h4>
 			<ul>
-				<li>Many images throughout the app display in a higher resolution.</li>
-				<li>A graphical glitch in the Stats Analyzer is fixed.</li>
+				<li>
+					<p>Many images throughout the app display in a higher resolution.
+					</p>
+				</li>
+				<li>
+					<p>A graphical glitch in the Stats Analyzer is fixed.
+					</p>
+				</li>
 			</ul>
 		</section>
 
