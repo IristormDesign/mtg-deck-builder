@@ -76,7 +76,7 @@ $color-mana-hybrid: color.adjust(
 
 /* CARD FRAME COLORS */
 $color-frame-land: color.scale(
-	$color-mythic-yellow, $lightness:	25%, $saturation: -83.33%
+	$color-mythic-yellow, $lightness:	20.83%, $saturation: -83.33%
 );
 $color-frame-white: color.scale(
 	$color-mana-white, $lightness: -6.25%, $saturation: -87.5%
