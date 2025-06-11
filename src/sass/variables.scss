@@ -172,4 +172,5 @@ $border-radius-group: $lhse*.5;
 $border-radius-small-button: math.div($border-radius-group, 2);
 $layers: card-li-focus-within, card-li-hover, scroll-to-top, dropdown-label, card-overlay, app-header, update-notif, bg-overlay, above-overlay, app-menu-toggler;
 $filter-brightness-button-hover: brightness(1.1667) saturate(1.0833);
+$opacity-mana-symbols: .9167;
 $x: 1px dashed rgba(#0f0, .75);

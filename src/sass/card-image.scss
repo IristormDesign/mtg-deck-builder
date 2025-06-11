@@ -157,36 +157,10 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 	.card-shape {
 		mask-image: url('~@/img/card-mask.svg');
-		box-shadow: inset 0 0 0 10px color.adjust(#000, $lightness: 8.33%); // Black card border without card image
-		background: color.adjust($color-frame-generic, $lightness: -33.33%, $saturation: -4.17%);
+		box-shadow: inset 0 0 0 12px color.scale(#000, $lightness: 8.33%); // Black card border without card image
+		background: color.scale($color-frame-generic, $lightness: -25%);
 		width: fit-content;
 		height: fit-content;
-
-		&.land {
-			background: color.adjust($color-frame-land, $lightness: -37.5%);
-		}
-		&.W {
-			background: color.adjust($color-frame-white, $lightness: -16.67%, $saturation: -8.33%);
-
-			.loading-indicator {
-				color: #000;
-			}
-		}
-		&.U {
-			background: color.adjust($color-frame-blue, $lightness: -50%, $saturation: -8.33%);
-		}
-		&.B {
-			background: color.adjust($color-frame-black, $lightness: -50%);
-		}
-		&.R {
-			background: color.adjust($color-frame-red, $lightness: -50%, $saturation: -8.33%);
-		}
-		&.G {
-			background: color.adjust($color-frame-green, $lightness: -50%, $saturation: -8.33%);
-		}
-		&.multi {
-			background: color.adjust($color-frame-multi, $lightness: -25%, $saturation: -16.67%);
-		}
 	}
 	img {
 		display: block;

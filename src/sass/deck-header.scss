@@ -48,6 +48,9 @@
 				font-size: $font-size-stat-value;
 				display: flex;
 			}
+			img {
+				opacity: $opacity-mana-symbols;
+			}
 		}
 	}
 	.average-mana-value,

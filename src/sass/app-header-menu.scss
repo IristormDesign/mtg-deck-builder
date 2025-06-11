@@ -122,6 +122,9 @@
 				}
 			}
 		}
+		.mana-symbol {
+			opacity: $opacity-mana-symbols;
+		}
 		.selected {
 			a {
 				&,
