@@ -325,6 +325,16 @@ $width-card-list-section-narrow:
 			}
 		}
 	}
+	.maximum-cards-reached {
+		p {
+			@include tiny-font-size;
+			color: $color-text-darker;
+			font-style: italic;
+			min-width: auto;
+			max-width: $lhse*12;
+			line-height: $line-height-standard*.875;
+		}
+	}
 }
 .list-entry-button {
 	.sideboard-visible & {
@@ -407,6 +417,7 @@ $width-card-list-section-narrow:
 	.card-adder {
 		border-top-width: 0;
 		border-left: $border-sections;
+		border-bottom-left-radius: 0;
 		flex-grow: 2;
 		grid-row: 1;
 		grid-column: span 1;

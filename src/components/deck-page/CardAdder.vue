@@ -1,7 +1,19 @@
 <template>
 	<section class="card-adder">
+		<div
+			v-if="loadingCard"
+			class="loading-indicator"
+		>
+			<span>Loading card&hellip;</span>
+		</div>
+		<div
+			v-else-if="this.deck.cards.length + this.deck.sideboard.cards.length >= 200"
+			class="maximum-cards-reached"
+		>
+			<p>This deck has reached the maximum limit of 200 total card names among both the main and sideboard card groups.</p>
+		</div>
 		<form
-			v-if="!loadingCard"
+			v-else
 			@submit.prevent="heardSubmit()"
 		>
 			<label for="card-input">Add a new card name:</label>
@@ -45,9 +57,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M446.54-446.87H198.67v-67.59h247.87v-247.87h67.59v247.87h247.2v67.59h-247.2v247.2h-67.59v-247.2Z"/></svg>
 			</button>
 		</form>
-		<div v-else class="loading-indicator">
-			<span>Loading card&hellip;</span>
-		</div>
+
 		<standard-dialog dialogID="nonScryfallURLQuery">
 			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>.</p>
 		</standard-dialog>

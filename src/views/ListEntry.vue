@@ -1,7 +1,14 @@
 <template>
 	<article class="list-entry content-box">
 		<h3>Card List Entry</h3>
-		<template v-if="!isLoadingCards">
+
+		<template v-if="isLoadingCards">
+			<p>Loading your cards now. Please wait.</p>
+			<p class="loading-percentage">
+				<span v-if="loadingPercent >= 0">{{ loadingPercent }}%</span>
+			</p>
+		</template>
+		<template v-else>
 			<header class="intro">
 				<p>Here you can add multiple card names at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
@@ -36,12 +43,6 @@
 					<p>Spelling matters, but letter case doesn’t.</p>
 				</section>
 			</div>
-		</template>
-		<template v-else>
-			<p>Loading your cards now. Please wait.</p>
-			<p class="loading-percentage">
-				<span v-if="loadingPercent >= 0">{{ loadingPercent }}%</span>
-			</p>
 		</template>
 
 		<standard-dialog dialogID="excessiveQuantity">
