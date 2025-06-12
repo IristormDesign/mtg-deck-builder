@@ -76,7 +76,7 @@ export default {
 						case 'Snow':
 							return 'snow cards'
 						default:
-							return `cards of the “${attr.toLowerCase()}” supertype`
+							return `cards of the ${attr.toLowerCase()} supertype`
 					}
 
 				case 'types':
