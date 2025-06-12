@@ -64,17 +64,6 @@
 		color: $color-text;
 	}
 }
-
 .browser-unsupported {
-	padding: 6.25% $lhse;
-	max-width: $max-width-content;
 	margin: auto;
-
-	h1,
-	strong {
-		color: $color-text-extra-brighter;
-	}
-	p {
-		color: $color-text-brighter;
-	}
 }

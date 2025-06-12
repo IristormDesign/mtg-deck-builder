@@ -1,9 +1,9 @@
 <template>
-	<transition v-if="hasBrowserSupport">
-		<div
-			class="fade-bg"
-			:class="this.$route.name === 'home' ? 'root-home-page' : null"
-		>
+	<div
+		class="footer-pusher"
+		:class="this.$route.name === 'home' ? 'root-home-page' : null"
+	>
+		<template v-if="hasBrowserSupport">
 			<global-svg-symbols />
 			<update-notif />
 			<app-header />
@@ -12,13 +12,15 @@
 			</main>
 			<app-footer />
 			<scroll-to-top />
+		</template>
+		<div v-else class="browser-unsupported">
+			<article class="content-box">
+				<h2>Browser Unsupported</h2>
+				<p>Sorry, but <strong>MTG Deck Builder by Iristorm Design</strong> can’t be displayed because the web browser you’re currently using doesn’t pass the technical requirements to run it.</p>
+				<p>Please use this web app on one of the major web browsers, and ensure that the browser is updated to the newest version.</p>
+			</article>
 		</div>
-	</transition>
-	<article v-else class="browser-unsupported">
-		<h2>Browser Unsupported</h2>
-		<p>Sorry, but <strong>MTG Deck Builder by Iristorm Design</strong> can’t be displayed because the web browser you’re currently using doesn’t pass the technical requirements to run it.</p>
-		<p>To use this web app, please do it on one of the major web browsers, and ensure that the browser is updated to the newest version.</p>
-	</article>
+	</div>
 </template>
 
 <script>
