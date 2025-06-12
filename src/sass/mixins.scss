@@ -303,7 +303,7 @@
 	margin: $lhse math.div(-$lhse, 3) ($lhse*.5);
 	border-radius: $border-radius-button;
 	outline-offset: 2px !important;
-	border: 2px solid $color-heading-bg;
+	border: 1px solid $color-content-bg;
 	box-shadow: inset 0 0 0 2px $color-group-bg;
 }
 @mixin sideboard-header-bg {
