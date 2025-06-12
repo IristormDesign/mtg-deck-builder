@@ -1,9 +1,9 @@
 <template>
 	<header class="sideboard-header">
-		<h3>Sideboard</h3>
+		<h4>Sideboard</h4>
 
 		<section class="sideboard-card-total">
-			<h4>Total Cards<br> in Sideboard</h4>
+			<h5>Total Cards<br> in Sideboard</h5>
 			<div class="output">
 				{{ sideboardTotalCards }}
 				<svg

@@ -52,7 +52,7 @@
 			<p><strong>Error</strong>: Your URL query couldn’t get a card because that URL doesn’t go to a card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a>.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="adderTip">
-			<h3>Tip for Adding Cards</h3>
+			<h4>Tip for Adding Cards</h4>
 			<p>To include new card names in your decks’ lists, submit any one of the following kinds of queries:</p>
 			<ul>
 				<li>

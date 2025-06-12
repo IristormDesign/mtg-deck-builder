@@ -98,8 +98,10 @@
 		height: $lhse*1.5;
 		margin-left: -$lhse*.125;
 	}
-	.text-label {
+	h3 {
 		font-size: 100%;
+		color: inherit;
+		margin: 0;
 	}
 }
 .deck-actions {
@@ -143,14 +145,14 @@
 
 @media (max-width: ($min-width-app*1.25)) {
 	.mode-menu {
-		.text-label {
+		h3 {
 			font-size: 87.5%;
 		}
 	}
 }
 @media (max-width: ($width-app-breakpoint-tablet)) {
 	.mode-menu {
-		.text-label {
+		h3 {
 			font-size: 75%;
 			width: min-content;
 			line-height: $line-height-standard*.8;
@@ -182,7 +184,7 @@
 			width: 100%;
 			margin: 0;
 		}
-		.text-label {
+		h3 {
 			text-align: center;
 		}
 	}
@@ -212,7 +214,7 @@
 				}
 			}
 		}
-		.text-label {
+		h3 {
 			margin-bottom: $lhse*.1667;
 		}
 	}
@@ -243,7 +245,7 @@
 			padding-right: 0;
 			padding-left: 0;
 		}
-		.text-label {
+		h3 {
 			font-size: 62.5%;
 		}
 	}
