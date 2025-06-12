@@ -40,13 +40,12 @@
 					@click="handleRowClick('manaSymbols', 'Hybrid')"
 				>
 					<th>
-						<div
-							class="vert-center-cell"
-							v-html="`
-								<small>Hybrid</small>
-								${manaSymbol[manaSymbols.Hybrid.key]}
-							`"
-						></div>
+						<div class="vert-center-cell">
+							<small>Hybrid</small>
+							<span class="mana-symbol no-symbol-hybrid">
+								<div>Y/Z</div>
+							</span>
+						</div>
 					</th>
 					<td>{{ manaSymbols.Hybrid.ct }}</td>
 					<td>{{ manaSymbols.Hybrid.pct.toFixed(1) }}<span>%</span></td>

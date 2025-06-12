@@ -3,7 +3,7 @@ function manaMarkup (fileName, altText, isLarge) {
 		let classes = 'mana-symbol'
 
 		if (isLarge) {
-			classes += ' hybrid'
+			classes += ' large'
 		}
 
 		return classes
@@ -42,8 +42,7 @@ export default {
 				up: manaMarkup('phyrexian-u', 'U/P', true),
 				bp: manaMarkup('phyrexian-b', 'B/P', true),
 				rp: manaMarkup('phyrexian-r', 'R/P', true),
-				gp: manaMarkup('phyrexian-g', 'G/P', true),
-				hybrid: '<span class="mana-symbol hybrid"><div>Y/Z</div></span>'
+				gp: manaMarkup('phyrexian-g', 'G/P', true)
 			},
 			raritySymbol: {
 				c: '<div class="rarity-symbol common"><div>C</div></div>',

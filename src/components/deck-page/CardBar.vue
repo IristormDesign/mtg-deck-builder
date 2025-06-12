@@ -136,7 +136,7 @@ export default {
 				)
 				.replaceAll(
 					/{(\w+\/\w+)}/g, // Find any hybrid mana symbols (mana symbols containing a slash), such as `{G/W}`. Two-mana hybrid symbols should already be caught by a previous regex, but this one should cover any new two-mana hybrid symbols that could be released in the future.
-					'<span class="mana-symbol hybrid"><div>$1</div></span>'
+					'<span class="mana-symbol no-symbol-hybrid"><div>$1</div></span>'
 				)
 				.replaceAll(
 					/{\w+\/\w+\/.*}/g, // Find hybrid mana symbols having 2 or more slashes, such as `{G/U/P}`. (These symbols are very rare, but they do exist.)

@@ -17,11 +17,15 @@
 	justify-content: center;
 	overflow: hidden;
 
-	&.hybrid,
+	&.large,
+	&.no-symbol-hybrid,
+	&.long-hybrid {
+		font-size: 120%;
+	}
+	&.no-symbol-hybrid,
 	&.long-hybrid {
 		background: $color-mana-hybrid;
-		font-size: 120%;
-		font-weight: $font-weight-semibold*1.25;
+		font-weight: $font-weight-semibold;
 
 		div {
 			transform: scale(.5);
