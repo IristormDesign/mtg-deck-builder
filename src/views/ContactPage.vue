@@ -2,7 +2,7 @@
 	<article class="contact-page content-box">
 		<h2>Contact</h2>
 
-		<p>The creator of MTG Deck Builder is Damian Schmidt of <a href="https://iristormdesign.com/" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>. You can reach him for questions, praise, or insults via any of the following media. Bug reports are appreciated.</p>
+		<p>The creator of MTG Deck Builder is Damian Schmidt of <a href="https://iristormdesign.com/" target="_blank">Iristorm Design<svg><use href="#open-in-new-icon" /></svg></a>. You can reach him for questions, praise, or insults through any of the following media. Bug reports are appreciated.</p>
 
 		<figure class="card-illustration">
 			<img

@@ -39,7 +39,7 @@
 				</a>
 			</div>
 		</div>
-		<p>You can also <router-link to="/contact">contact me</router-link> to send a suggestion or another message.</p>
+		<p>You may also <router-link to="/contact">contact me</router-link> to send a suggestion or another message.</p>
 	</article>
 </template>
 
