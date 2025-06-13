@@ -13,19 +13,35 @@
 		margin-left: $lhse;
 		width: 50%;
 	}
-	.donate-button {
-		height: $lhse*2.75;
+	.donate-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: $lhse*.75 $lhse*1.5;
+		align-items: center;
+		margin: $lhse 0;
 
+		.button-container {
+			height: $lhse*2.75;
+		}
 		a {
 			@include button;
-			margin-left: 0;
+			min-width: $lhse*8;
+			gap: $lhse*.3333;
 		}
 		img {
 			height: $lhse*2;
 			width: auto;
+			border-radius: $border-radius-small-button;
+			filter: brightness(.9167);
 		}
 		span {
-			margin: 0 $lhse*.2;
+			text-align: left;
+			font-size: $font-size-bigger
+		}
+		small {
+			@include tiny-font-size(true);
+			display: block;
 		}
 	}
 }

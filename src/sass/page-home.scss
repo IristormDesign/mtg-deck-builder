@@ -177,8 +177,6 @@
 			align-items: center;
 			justify-content: center;
 			font-size: $font-size-bigger;
-			color: $color-black-label-text;
-			text-align: left;
 
 			svg {
 				width: $lhse*1.75;
@@ -188,9 +186,11 @@
 			.text-label {
 				margin-top: -$lhse*.125;
 				margin-right: $lhse*.25;
+				text-align: left;
 			}
 			small {
-				@include tiny-font-size;
+				@include tiny-font-size(true);
+				display: block;
 			}
 
 		}

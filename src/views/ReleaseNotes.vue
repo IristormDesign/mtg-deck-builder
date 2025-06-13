@@ -19,6 +19,13 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 13</h4>
+			<ul>
+				<li>
+					<p>On the Donation Request page, an option to donate through Stripe is included (in addition to PayPal).</p>
+				</li>
+			</ul>
+
 			<h4>June 10</h4>
 			<ul>
 				<li>
