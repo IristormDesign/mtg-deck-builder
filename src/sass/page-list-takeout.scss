@@ -197,10 +197,10 @@
 	* {
 		background: none !important;
 	}
-	.texture-bg {
+	.footer-pusher {
 		min-height: 0 !important;
 	}
-	.texture-bg > :not(main),
+	.footer-pusher > :not(main),
 	.scroll-to-top,
 	.deck > :not(.list-takeout) {
 		display: none !important;
