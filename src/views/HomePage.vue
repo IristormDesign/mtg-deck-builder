@@ -91,7 +91,11 @@ export default {
 		meta: [
 			{
 				name: 'description',
-				content: 'Construct and organize your decks for Magic: The Gathering with this free web app!'
+				content: 'Construct and manage your Magic: The Gathering decks with this free web app!'
+			},
+			{
+				name: 'canonical',
+				content: 'https://magic.iristormdesign.com'
 			}
 		]
 	},
