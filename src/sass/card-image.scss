@@ -157,13 +157,13 @@ $animation-duration-card-browse: $transition-delay-card;
 			transition-duration: $transition-duration-card-image-hover-slow;
 			width: 150%;
 			height: 150%;
+		}
+		&:hover {
+			transition-delay: $transition-delay-card;
 
 			.card-shape {
 				animation: card-flash $transition-delay-card*2 ease-in-out;
 			}
-		}
-		&:hover {
-			transition-delay: $transition-delay-card;
 		}
 	}
 	.card-shape {
