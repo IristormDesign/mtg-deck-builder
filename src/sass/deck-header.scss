@@ -120,11 +120,9 @@
 		margin-top: $lhse*.5;
 		min-width: 66.67vw;
 		justify-content: stretch;
-
-
 	}
 }
-@media (max-width: ($min-width-app * .75)) {
+@media (max-width: ($min-width-app * .8333)) {
 	.deck-header {
 		min-width: 66.67vw;
 
