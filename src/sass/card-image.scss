@@ -78,11 +78,11 @@ $animation-duration-card-browse: $transition-delay-card;
 
 			&.sideways {
 				@if $rise-from == 'left' {
-					$translate: translate($lhse*12.5, $lhse*9);
+					$translate: translate($lhse*3, -$lhse*2);
 					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
 				}
 				@if $rise-from == 'right' {
-					$translate: translate($lhse*3, $lhse*10);
+					$translate: translate(-$lhse*6.5, -$lhse*2);
 					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
 				}
 
@@ -137,11 +137,9 @@ $animation-duration-card-browse: $transition-delay-card;
 		&.kb-highlight {
 			filter: $drop-shadow-card-shadow;
 			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
 		}
-		&:focus-within,
-		&.kb-highlight {
-			transition-delay: 0s;
+		&:hover {
+			transition-delay: $transition-delay-card;
 		}
 	}
 	a {
@@ -157,13 +155,15 @@ $animation-duration-card-browse: $transition-delay-card;
 		&:focus,
 		&.kb-highlight {
 			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
 			width: 150%;
 			height: 150%;
 
 			.card-shape {
 				animation: card-flash $transition-delay-card*2 ease-in-out;
 			}
+		}
+		&:hover {
+			transition-delay: $transition-delay-card;
 		}
 	}
 	.card-shape {
