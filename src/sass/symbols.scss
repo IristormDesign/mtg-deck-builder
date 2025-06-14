@@ -59,6 +59,8 @@
 	$size-mana-symbol-base: $font-size-stat-value * 1.125;
 
 	&.one {
+		display: flex;
+
 		.mana-symbol {
 			font-size: $size-mana-symbol-base;
 		}
