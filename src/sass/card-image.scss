@@ -18,7 +18,22 @@ $animation-duration-card-browse: $transition-delay-card;
 		filter: none;
 	}
 }
-
+@keyframes overshadowed {
+	0% {
+		filter: brightness(100%);
+	}
+	100% {
+		filter: brightness(38.20%);
+	}
+}
+@keyframes turn-over {
+	100% {
+		transform:
+			rotateY(90deg)
+			scale(1.125)
+			translateY(-$lhse*2);
+	}
+}
 @mixin card-fan-in-from ($enter-from) {
 	$transform: none;
 
@@ -86,22 +101,6 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 	@if $position == 'right' {
 		filter: drop-shadow(-1px 1px 0 $color-card-edge);
-	}
-}
-@keyframes overshadowed {
-	0% {
-		filter: brightness(100%);
-	}
-	100% {
-		filter: brightness(38.20%);
-	}
-}
-@keyframes turn-over {
-	100% {
-		transform:
-			rotateY(90deg)
-			scale(1.125)
-			translateY(-$lhse*2);
 	}
 }
 
