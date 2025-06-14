@@ -9,7 +9,9 @@ function manaMarkup (fileName, altText, isLarge) {
 		return classes
 	}
 
-	return `<img class="${classes()}" src="/img/mana/${fileName}.svg" alt="${altText}" />`
+	const imagePath = require(`@/img/mana/${fileName}.svg`)
+
+	return `<img class="${classes()}" src="${imagePath}" alt="${altText}" />`
 }
 
 export default {

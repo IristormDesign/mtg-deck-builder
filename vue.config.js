@@ -7,6 +7,12 @@ module.exports = defineConfig({
 			entry: 'src/js/main.js'
 		}
 	},
+	configureWebpack: {
+		performance: {
+			maxAssetSize: 300000, // 300 KiB (up from 244 KiB default)
+			maxEntrypointSize: 300000 // 300 KiB
+		}
+	},
 	pwa: {
 		name: 'MTG Deck Builder by Iristorm Design',
 		short_name: 'MTG Deck Builder',
