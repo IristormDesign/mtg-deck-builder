@@ -138,11 +138,9 @@ $animation-duration-card-browse: $transition-delay-card;
 		&.kb-highlight {
 			filter: $drop-shadow-card-shadow;
 			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
 		}
-		&:focus-within,
-		&.kb-highlight {
-			transition-delay: 0s;
+		&:hover {
+			transition-delay: $transition-delay-card;
 		}
 	}
 	a {
@@ -158,13 +156,15 @@ $animation-duration-card-browse: $transition-delay-card;
 		&:focus,
 		&.kb-highlight {
 			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
 			width: 150%;
 			height: 150%;
 
 			.card-shape {
 				animation: card-flash $transition-delay-card*2 ease-in-out;
 			}
+		}
+		&:hover {
+			transition-delay: $transition-delay-card;
 		}
 	}
 	.card-shape {
