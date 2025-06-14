@@ -128,6 +128,8 @@
 
 		.deck-info {
 			@include deck-info-box-narrow();
+			padding-top: $lhse*.25;
+			padding-bottom: $lhse*.25;
 
 			h3 {
 				width: auto;
@@ -135,7 +137,6 @@
 				display: flex;
 			}
 			.output {
-				height: $line-height-standard*1.5rem;
 				margin-top: -$lhse*.0833 !important;
 			}
 		}
@@ -161,6 +162,7 @@
 			&:nth-of-type(6) {
 				grid-column: span 2;
 			}
+			&:nth-of-type(3),
 			&:nth-of-type(6) {
 				border-right-width: 0;
 			}
