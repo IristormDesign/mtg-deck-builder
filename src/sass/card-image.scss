@@ -56,22 +56,10 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 
 	a {
-		display: block;
-		transition: $transition-duration-card-image-hover-fast ease 0s;
-		transition-property: width, height, transform;
-		border-radius: $border-radius-group;
-		outline-offset: 0px;
-		width: 100%;
-		height: 100%;
-
 		&:hover,
 		&:focus,
 		&.kb-highlight {
 			transform: $translate $rotate;
-			transition-duration: $transition-duration-card-image-hover-slow;
-			transition-delay: $transition-delay-card;
-			width: 150%;
-			height: 150%;
 
 			&.sideways {
 				@if $rise-from == 'left' {
@@ -85,13 +73,6 @@ $animation-duration-card-browse: $transition-delay-card;
 
 				transform: $translate $rotate;
 			}
-			.card-shape {
-				animation: card-flash $transition-delay-card*2 ease-in-out;
-			}
-		}
-		&:focus,
-		&.kb-highlight {
-			transition-delay: 0s;
 		}
 	}
 }
@@ -113,6 +94,14 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 	100% {
 		filter: brightness(38.20%);
+	}
+}
+@keyframes turn-over {
+	100% {
+		transform:
+			rotateY(90deg)
+			scale(1.125)
+			translateY(-$lhse*2);
 	}
 }
 
@@ -154,6 +143,28 @@ $animation-duration-card-browse: $transition-delay-card;
 		&:focus-within,
 		&.kb-highlight {
 			transition-delay: 0s;
+		}
+	}
+	a {
+		display: block;
+		transition: $transition-duration-card-image-hover-fast ease 0s;
+		transition-property: width, height, transform;
+		border-radius: $border-radius-group;
+		outline-offset: 0px;
+		width: 100%;
+		height: 100%;
+
+		&:hover,
+		&:focus,
+		&.kb-highlight {
+			transition-duration: $transition-duration-card-image-hover-slow;
+			transition-delay: $transition-delay-card;
+			width: 150%;
+			height: 150%;
+
+			.card-shape {
+				animation: card-flash $transition-delay-card*2 ease-in-out;
+			}
 		}
 	}
 	.card-shape {
@@ -208,14 +219,6 @@ $animation-duration-card-browse: $transition-delay-card;
 		}
 		&-leave-active {
 			animation: overshadowed $animation-duration-card-browse ease-out;
-		}
-	}
-	@keyframes turn-over {
-		100% {
-			transform:
-				rotateY(90deg)
-				scale(1.125)
-				translateY(-$lhse*2);
 		}
 	}
 	.card-turning-over {
@@ -276,7 +279,6 @@ $animation-duration-card-browse: $transition-delay-card;
 	.card-image {
 		z-index: list.index($layers, app-header);
 		position: fixed;
-		transition: opacity $transition-duration-standard ease !important;
 
 		&.image-fade {
 			&-enter-active,
@@ -328,7 +330,7 @@ $animation-duration-card-browse: $transition-delay-card;
 		a {
 			position: static;
 			margin: $lhse*.5;
-			transform: none !important;
+			transform: none;
 
 			&:hover,
 			&:focus,
@@ -336,7 +338,7 @@ $animation-duration-card-browse: $transition-delay-card;
 				transform: none !important;
 
 				.card-shape {
-					animation: none !important
+					animation: none;
 				}
 			}
 		}
