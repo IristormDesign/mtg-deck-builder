@@ -7,7 +7,13 @@ $height-card-image-section: #{680px * .6667};
 $transition-delay-card: math.div(1, 3) * 1s;
 $animation-duration-card-browse: $transition-delay-card;
 
-@keyframes remove-flash {
+@keyframes card-flash {
+	0% {
+		filter: none;
+	}
+	50% {
+		filter: brightness(120%) contrast(90%);
+	}
 	100% {
 		filter: none;
 	}
@@ -22,16 +28,16 @@ $animation-duration-card-browse: $transition-delay-card;
 	@if $enter-from == 'right' {
 		$transform: rotate(10deg) translateY($lhse*.25) translateX($lhse*8) scale(1.0833);
 	}
-		@keyframes card-fan-in-#{$enter-from} {
-			0% {
-				opacity: 0;
-				transform: $transform translateY(-$lhse*2) scale(1.0833);
-			}
-			50% {
-				opacity: 1;
-			}
-		}
 
+	@keyframes card-fan-in-#{$enter-from} {
+		0% {
+			opacity: 0;
+			transform: $transform translateY(-$lhse*2) scale(1.0833);
+		}
+		50% {
+			opacity: 1;
+		}
+	}
 	& {
 		animation-name: card-fan-in-#{$enter-from};
 	}
@@ -50,10 +56,9 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 
 	a {
-		position: absolute;
 		display: block;
 		transition: $transition-duration-card-image-hover-fast ease 0s;
-		transition-property: filter, width, height, transform;
+		transition-property: width, height, transform;
 		border-radius: $border-radius-group;
 		outline-offset: 0px;
 		width: 100%;
@@ -63,16 +68,10 @@ $animation-duration-card-browse: $transition-delay-card;
 		&:focus,
 		&.kb-highlight {
 			transform: $translate $rotate;
-			transition-duration: // The first duration is for the filter, the second is for the other properties.
-				$transition-duration-standard,
-				$transition-duration-card-image-hover-slow;
-			transition-delay: // The first delay is for the filter, the second is for the other properties.
-				0s,
-				$transition-delay-card;
+			transition-duration: $transition-duration-card-image-hover-slow;
+			transition-delay: $transition-delay-card;
 			width: 150%;
 			height: 150%;
-			filter: brightness(112.5%) contrast(87.5%);
-			animation: remove-flash $transition-duration-card-image-hover-slow ease $transition-delay-card forwards;
 
 			&.sideways {
 				@if $rise-from == 'left' {
@@ -85,6 +84,9 @@ $animation-duration-card-browse: $transition-delay-card;
 				}
 
 				transform: $translate $rotate;
+			}
+			.card-shape {
+				animation: card-flash $transition-delay-card*2 ease-in-out;
 			}
 		}
 		&:focus,
@@ -141,7 +143,6 @@ $animation-duration-card-browse: $transition-delay-card;
 		position: absolute;
 		width: 100%;
 		transition: filter $transition-duration-card-image-hover-fast ease;
-		will-change: transform, filter; // This prevents a slight visual jump after a card overlays another in Chrome.
 
 		&:hover,
 		&:focus-within,
@@ -275,6 +276,7 @@ $animation-duration-card-browse: $transition-delay-card;
 	.card-image {
 		z-index: list.index($layers, app-header);
 		position: fixed;
+		transition: opacity $transition-duration-standard ease !important;
 
 		&.image-fade {
 			&-enter-active,
@@ -302,6 +304,7 @@ $animation-duration-card-browse: $transition-delay-card;
 		}
 		.image-overlay {
 			@include overlay-bg;
+			backdrop-filter: none; // Temporarily disabling due to a bug involving backdrop-filter and CSS transitions.
 		}
 		.card-shadow {
 			width: 100%;
@@ -312,7 +315,7 @@ $animation-duration-card-browse: $transition-delay-card;
 			&:hover,
 			&:focus-within,
 			&.kb-highlight {
-				filter: drop-shadow(0 0 $lhse rgba($color-text-brighter, .25));
+				filter: drop-shadow(0 0 $lhse*1.5 rgba($color-text-brighter, .25));
 			}
 		}
 		.card-edge {
@@ -327,11 +330,14 @@ $animation-duration-card-browse: $transition-delay-card;
 			margin: $lhse*.5;
 			transform: none !important;
 
-
 			&:hover,
 			&:focus,
 			&.kb-highlight {
 				transform: none !important;
+
+				.card-shape {
+					animation: none !important
+				}
 			}
 		}
 		img {
