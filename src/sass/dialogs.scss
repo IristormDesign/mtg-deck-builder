@@ -15,6 +15,7 @@ dialog {
 	filter: brightness(1) saturate(1);
 	box-shadow: $box-shadow-popups;
   transition: all 0s ease allow-discrete;
+	border-radius: $border-radius-group;
 
 	&::backdrop {
 		@include dialog-backdrop;
