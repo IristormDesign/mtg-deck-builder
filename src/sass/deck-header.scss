@@ -18,6 +18,8 @@
 	background: $color-group-bg;
 
 	.deck-info {
+		min-height: $height-deck-header-component;
+
 		h3 {
 			align-items: center;
 		}
@@ -41,9 +43,6 @@
 		.output {
 			width: max-content;
 
-			&.size-mana-symbols {
-				margin-top: 0;
-			}
 			&.no-colors {
 				font-size: $font-size-stat-value;
 				display: flex;
@@ -125,8 +124,6 @@
 	.deck-header {
 		grid-template-columns: repeat(5, auto);
 		justify-content: stretch;
-
-
 	}
 }
 @media (max-width: ($min-width-app * .75)) {
@@ -135,7 +132,6 @@
 
 		.deck-info {
 			@include deck-info-box-narrow();
-			min-height: auto;
 
 			h3 {
 				width: auto;
