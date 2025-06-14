@@ -42,6 +42,7 @@
 		}
 		.output {
 			width: max-content;
+			margin: 0;
 
 			&.no-colors {
 				font-size: $font-size-stat-value;
