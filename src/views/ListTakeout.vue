@@ -44,7 +44,7 @@
 							<svg><use href="#copy-icon" /></svg>
 							Copy
 						</button>
-						<div v-else class="copied-message">Copied.</div>
+						<div v-else class="copied-message">Now copied.</div>
 					</header>
 					<textarea
 						v-text="listCards()"
@@ -64,7 +64,7 @@
 							<svg><use href="#copy-icon" /></svg>
 							Copy
 						</button>
-						<div v-else class="copied-message">Copied.</div>
+						<div v-else class="copied-message">Now copied.</div>
 					</header>
 					<textarea
 						v-text="listCards(true)"
@@ -180,7 +180,7 @@ export default {
 					case 'sideboard':
 						this.showingSideboardCopiedMessage = false
 				}
-			}, 2000)
+			}, 3000)
 		},
 		printLists () {
 			window.print()
