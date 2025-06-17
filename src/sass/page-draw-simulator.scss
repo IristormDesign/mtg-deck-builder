@@ -47,6 +47,7 @@
 			align-items: center;
 			display: flex;
 			font-weight: $font-weight-label;
+			width: 1.5em;
 		}
 		.warning-symbol {
 			margin-left: .25em;
@@ -81,6 +82,7 @@
 		border-bottom-left-radius: $border-radius-group;
 		border-bottom-width: 0;
 		padding: $lhse*.4167 0; // Top padding is carefully adjusted to prevent integer-rounded gaps in the card list.
+		min-height: auto;
 
 		li {
 			&:nth-last-of-type(8) {
@@ -93,10 +95,11 @@
 			padding-right: $lhse;
 			padding-left: $lhse;
 			justify-content: space-evenly;
+			gap: $lhse*.5;
 
 			> p {
 				&:first-child {
-					margin: $lhse 0;
+					margin: $lhse*1.5 auto $lhse;
 				}
 			}
 			footer {
@@ -112,7 +115,6 @@
 				transition-duration: 0s;
 			}
 		}
-
 	}
 	.card-bar {
 		transition: 0s;
@@ -123,6 +125,7 @@
 		margin: $lhse*.5 0;
 		display: flex;
 		align-items: center;
+		margin-bottom: $lhse;
 
 		label {
 			padding-left: $lhse*.25;
@@ -145,7 +148,8 @@
 @media (max-width: $width-app-breakpoint-tablet) {
 	.draw-simulator {
 		.layout-column {
-			width: $width-card-bars-narrow + $width-card-star + $lhse*1.5;
+			min-width: $width-card-bars-narrow + $width-card-star + $lhse*1.5;
+			width: min-content
 		}
 		.control-panel {
 			grid-template-rows: repeat(2, $height-deck-header-component);
@@ -169,6 +173,17 @@
 			button {
 				padding-right: $lhse*.75;
 				padding-left: $lhse*.75;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .8)) {
+	.draw-simulator {
+		gap: 0;
+
+		.card-list-section {
+			li {
+				margin-left: -$lhse*.8333;
 			}
 		}
 	}
@@ -198,8 +213,8 @@
 		}
 		.deck-info {
 			@include deck-info-box-narrow;
-			padding-top: $lhse*.25;
-			padding-bottom: $lhse*.25;
+			padding-top: $lhse*.3333;
+			padding-bottom: $lhse*.1667;
 
 			.output {
 				min-width: auto;
