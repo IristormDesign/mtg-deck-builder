@@ -84,12 +84,6 @@ textarea {
 	text-decoration: none;
 	appearance: none;
 
-	&::placeholder {
-		color: rgba($color-text, .6667);
-		font-weight: normal;
-		font-style: italic;
-		font-family: $font-family-standard;
-	}
 	&:hover,
 	&:focus-visible {
 		text-decoration: none;
@@ -98,6 +92,16 @@ textarea {
 	&:active {
 		border-color: $color-link-active;
 		transition-duration: 0s;
+	}
+	&::placeholder {
+		color: rgba($color-text, .6667);
+		font-weight: normal;
+		font-style: italic;
+		font-family: $font-family-standard;
+	}
+	&::selection {
+		background: $color-mythic-orange;
+		color: #fff;
 	}
 }
 input {

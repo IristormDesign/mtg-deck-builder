@@ -241,7 +241,14 @@ export default {
 				this.viewCard(this.card)
 			}
 
-			this.$refs[this.qtyCardID(this.i)].addEventListener(
+			const qtyInput = this.$refs[this.qtyCardID(this.i)]
+
+			// Automatically select the quantity input's text when the user focuses on it.
+			this.$nextTick(() => {
+				qtyInput.select()
+			})
+
+			qtyInput.addEventListener(
 				'keydown', this.listenForQtyKeydown
 			)
 		},

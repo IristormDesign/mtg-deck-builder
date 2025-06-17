@@ -22,10 +22,10 @@
 			<h4>June 17</h4>
 			<ul>
 				<li>
-					<p>In the List Editor, the card sorter option “P/T sum” is renamed to just ”P/T.”</p>
+					<p>In the List Editor, when you click the quantity text field for any card, the quantity number becomes automatically highlighted so that you can replace that number with a new one right away.</p>
 				</li>
 				<li>
-					<p>Various minor visual enhancements are made.</p>
+					<p>In the List Editor, the card sorter option “P/T sum” is renamed to just “P/T.”</p>
 				</li>
 			</ul>
 
