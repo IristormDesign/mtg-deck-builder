@@ -81,8 +81,8 @@
 					<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>
 				</li>
 				<li>
-					<p><strong>P/T</strong> – Sorts from greatest to least by a number equal to the sum of the power and toughness (“P/T”) numbers of each card. (For example, the power/toughness sum of a 3/2 creature is 5.)</p>
-					<p>Additionally, every planeswalker card is handled for sorting by P/T as if its power is 0 and its toughness is equal to its loyalty number. Among cards with the same power/toughness sums as each other, they’re sorted by power alone from greatest to least. Cards without the power/toughness or loyalty attributes are moved to the bottom.</p>
+					<p><strong>P/T</strong> (Power and Toughness) – Sorts from greatest to least by the sum of the power and toughness numbers of each card. (For example, the power and toughness sum of a 3/2 creature is 5.) Among cards with the same sums as each other, they’re sorted by power alone from greatest to least.</p>
+					<p>Additionally, power/toughness sorting handles every planeswalker card as if it has those attributes, where its power is 0 and its toughness equals its loyalty number.  Cards without the power/toughness or loyalty attributes are moved to the bottom.</p>
 				</li>
 				<li>
 					<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
