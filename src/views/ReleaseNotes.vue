@@ -19,6 +19,13 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 18</h4>
+			<ul>
+				<li>
+					<p>In the Stats Analyzer, Phyrexian mana symbols are now counted distinctively from hybrid mana symbols.</p>
+				</li>
+			</ul>
+
 			<h4>June 17</h4>
 			<ul>
 				<li>

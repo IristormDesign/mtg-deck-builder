@@ -9,7 +9,8 @@ export default {
 				Green: /.G./g,
 				Colorless: /.C./g,
 				Snow: /.S./g,
-				Hybrid: /.\/./g
+				Hybrid: /.\/[^P]/g,
+				Phyrexian: /.\/P/g
 			},
 			regexCardTypes: {
 				Creature: /\bCreature\b/,

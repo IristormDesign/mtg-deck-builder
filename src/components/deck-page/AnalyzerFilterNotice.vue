@@ -57,7 +57,12 @@ export default {
 					return `${attr.toLowerCase()} spells`
 
 				case 'manaSymbols':
-					return `spells with ${attr.toLowerCase()} mana symbols`
+					switch (attr) {
+						case 'Phyrexian':
+							return `spells with ${attr} mana symbols`
+						default:
+							return `spells with ${attr.toLowerCase()} mana symbols`
+					}
 
 				case 'manaValues':
 					switch (attr) {

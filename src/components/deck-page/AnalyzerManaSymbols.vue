@@ -10,7 +10,7 @@
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>
 			<tbody class="filterable-stats">
-				<template v-for="(symbol, symbolName) in manaSymbolsMinusHybrid">
+				<template v-for="(symbol, symbolName) in basicManaSymbolsOnly">
 					<tr
 						v-if="symbol.ct > 0"
 						:key="symbolName"
@@ -32,23 +32,26 @@
 				</template>
 			</tbody>
 			<tbody
-				v-show="manaSymbols.Hybrid.ct > 0"
+				v-if="manaSymbols.Hybrid.ct > 0 || manaSymbols.Phyrexian.ct > 0"
 				class="filterable-stats"
 			>
 				<tr
+					v-if="manaSymbols.Hybrid.ct > 0"
 					:class="activeFilterClass('manaSymbols', 'Hybrid')"
 					@click="handleRowClick('manaSymbols', 'Hybrid')"
 				>
-					<th>
-						<div class="vert-center-cell">
-							<small>Hybrid</small>
-							<span class="mana-symbol no-symbol-hybrid">
-								<div>Y/Z</div>
-							</span>
-						</div>
-					</th>
+					<th>Hybrid</th>
 					<td>{{ manaSymbols.Hybrid.ct }}</td>
 					<td>{{ manaSymbols.Hybrid.pct.toFixed(1) }}<span>%</span></td>
+				</tr>
+				<tr
+					v-if="manaSymbols.Phyrexian.ct > 0"
+					:class="activeFilterClass('manaSymbols', 'Phyrexian')"
+					@click="handleRowClick('manaSymbols', 'Phyrexian')"
+				>
+					<th>Phyrexian</th>
+					<td>{{ manaSymbols.Phyrexian.ct }}</td>
+					<td>{{ manaSymbols.Phyrexian.pct.toFixed(1) }}<span>%</span></td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -105,25 +108,30 @@ export default {
 				Hybrid: {
 					ct: 0,
 					key: 'hybrid'
+				},
+				Phyrexian: {
+					ct: 0,
+					key: 'phyrexian'
 				}
 			}
 		}
 	},
 	computed: {
-		manaSymbolsMinusHybrid () {
+		basicManaSymbolsOnly () {
 			const csCopy = { ...this.manaSymbols }
 
 			delete csCopy.Hybrid
+			delete csCopy.Phyrexian
 
 			return csCopy
 		},
 		totalSymbolCount () {
-			return Object.values(this.manaSymbolsMinusHybrid).reduce(
+			return Object.values(this.basicManaSymbolsOnly).reduce(
 				(total, symbol) => total + symbol.ct, 0
 			)
 		},
 		totalSymbolPercentage () {
-			return Object.values(this.manaSymbolsMinusHybrid).reduce(
+			return Object.values(this.basicManaSymbolsOnly).reduce(
 				(total, symbol) => total + symbol.pct, 0
 			)
 		}
@@ -162,7 +170,7 @@ export default {
 
 						if (
 							!countedOnFrontFace[symbolName] ||
-								countedOnFrontFace[symbolName] < allSymbolMatches.length
+							countedOnFrontFace[symbolName] < allSymbolMatches.length
 						) {
 							countedOnFrontFace[symbolName] = allSymbolMatches.length
 						}
