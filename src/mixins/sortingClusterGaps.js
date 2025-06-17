@@ -34,8 +34,8 @@ export default {
 						return this.gapsSubtype(thisCard, nextCard, true)
 					case 'rarity':
 						return this.gapsRarity(thisCard, nextCard)
-					case 'p/t sum':
-						return this.gapsPTSum(thisCard, nextCard)
+					case 'p/t':
+						return this.gapsPT(thisCard, nextCard)
 					case 'quantity':
 						return this.gapsQty(thisCard, nextCard)
 				}
@@ -177,7 +177,7 @@ export default {
 				return true
 			}
 		},
-		gapsPTSum (thisCard, nextCard) {
+		gapsPT (thisCard, nextCard) {
 			function ptSum (card) {
 				function setNaNToZero (pt) {
 					if (isNaN(pt)) {

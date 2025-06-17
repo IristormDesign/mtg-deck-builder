@@ -19,6 +19,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 17</h4>
+			<ul>
+				<li>
+					<p>In the List Editor, the card sorter option “P/T sum” is renamed to just ”P/T.”</p>
+				</li>
+				<li>
+					<p>Various minor visual enhancements are made.</p>
+				</li>
+			</ul>
+
 			<h4>June 14</h4>
 			<ul>
 				<li>

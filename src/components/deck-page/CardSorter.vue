@@ -103,7 +103,7 @@ export default {
 			}
 		},
 		sorterMenuOptions () {
-			return ['Starred', 'Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'P/T Sum', 'Quantity']
+			return ['Starred', 'Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'P/T', 'Quantity']
 		}
 	},
 	watch: {
@@ -130,7 +130,7 @@ export default {
 		selectSorterMenuOption (attribute) {
 			this.isMenuOpen = false
 
-			if (this.sorterMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T sum option, because it always moves similar cards between each other, even after the list has already been sorted by P/T sum.
+			if (this.sorterMenu === attribute) return // Prevents the sortCards() method from running if the user has selected the currently selected sorting option. This is needed for the P/T option, because it always moves similar cards between each other, even after the list has already been sorted by P/T.
 
 			this.sorterMenu = attribute
 			this.sortCards()
@@ -178,9 +178,9 @@ export default {
 					this.sortByRarity(mainList)
 					this.sortByRarity(sbList)
 					break
-				case 'p/t sum':
-					this.sortByPTSum(mainList)
-					this.sortByPTSum(sbList)
+				case 'p/t':
+					this.sortByPT(mainList)
+					this.sortByPT(sbList)
 					break
 				case 'quantity':
 					this.sortByQuantity(mainList)
@@ -393,7 +393,7 @@ export default {
 				return rarityA - rarityB
 			})
 		},
-		sortByPTSum (cards) {
+		sortByPT (cards) {
 			cards.sort((a, b) => {
 				const determineAttributes = (card) => {
 					const toNumber = val => {

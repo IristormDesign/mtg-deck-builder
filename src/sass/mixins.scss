@@ -150,7 +150,7 @@
 	svg {
 		width: $lhse;
 		height: $lhse;
-		fill: $color-button-orange;
+		fill: $color-link;
 		margin: 0 0 0 math.div(-$lhse, 3);
 		transition: fill $transition-duration-standard ease;
 	}
