@@ -69,7 +69,7 @@
 					<p>Submit the <strong>name</strong> of a certain <i>Magic</i> card to add that card.</p>
 				</li>
 				<li>
-					<p>Submit the <strong>URL</strong> to a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print edition. (Useful for cards that have been reprinted with different illustrations.)</p>
+					<p>Submit the <strong>URL</strong> to a certain card’s page on <a href="https://scryfall.com/" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> to add that card of that specific print edition. (Useful for cards reprinted with different illustrations.)</p>
 				</li>
 				<li>
 					<p>Submit the code <strong><code>#random</code></strong> to add a random <i>Magic</i> card.</p>

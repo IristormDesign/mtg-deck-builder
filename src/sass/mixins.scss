@@ -160,7 +160,7 @@
 	}
 }
 @mixin dialog-backdrop {
-	background: rgba($color-content-bg, .5);
+	background: rgba($color-content-bg, .6180);
 	backdrop-filter: blur(5px);
 }
 @mixin overlay-bg {

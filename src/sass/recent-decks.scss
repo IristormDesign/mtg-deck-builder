@@ -42,14 +42,12 @@
 		margin: 0;
 		width: $lhse*8;
 		height: $lhse*1.3333;
-		overflow: hidden;
 		border-radius: $border-radius-button; // For decks with excessively long names.
 	}
 	a {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: $lhse*.5;
 		border-radius: $border-radius-button;
 		font-family: $font-family-standard;
 		font-weight: $font-weight-label;
@@ -57,7 +55,6 @@
 		background: $color-group-bg-lighter;
 		text-decoration: none;
 		padding: $lhse*.125 $lhse*.375;
-		line-height: 1;
 		width: 100%;
 		height: 100%;
 		text-align: left;
@@ -80,6 +77,11 @@
 	}
 	.deck-name {
 		font-weight: $font-weight-label;
+		overflow: hidden;
+		width: $lhse*6.3333;
+		text-overflow: ellipsis;
+		line-height: .875;
+		padding: $lhse*.125 0;
 	}
 	.deck-colors {
 		display: flex;

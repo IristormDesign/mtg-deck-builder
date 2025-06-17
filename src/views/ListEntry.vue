@@ -19,7 +19,7 @@
 						id="card-list-entry"
 						v-model.trim="textCardList"
 						ref="textCardList"
-						rows="12"
+						rows="15"
 						maxlength="5000"
 						spellcheck="false"
 					></textarea>
@@ -59,7 +59,7 @@
 			dialogID="leavingPageWarning"
 			class="with-two-buttons"
 		>
-			<p>⚠ If you leave this page now, then the card list you’ve entered in the submission form will be lost.</p>
+			<p>⚠ If you leave this page now, the card list you’ve entered in the submission form will be lost.</p>
 			<form slot="form" method="dialog">
 				<div class="button-container">
 					<button @click="leaveWarningUserResponse = true">Leave</button>

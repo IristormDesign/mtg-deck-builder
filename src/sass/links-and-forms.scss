@@ -45,6 +45,7 @@ select {
 		background: $color-input-bg-focus;
 		color: $color-link-focus;
 		border-color: $color-link-focus;
+		outline-offset: 0;
 	}
 }
 textarea {
@@ -61,6 +62,7 @@ textarea {
 	&:focus-visible {
 		background: $color-input-bg-focus;
 		color: $color-text-brighter-over-mythic-brown;
+		outline-offset: 0;
 	}
 	&:read-only {
 		&,
