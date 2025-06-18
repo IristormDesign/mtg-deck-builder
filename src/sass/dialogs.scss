@@ -3,11 +3,12 @@
 /* I've made the dialog exit transition duration 0s because Safari doesn't work well with it. */
 
 $transition-duration-dialog: .5s;
+$padding-dialog: $lhse*.75 $lhse;
 
 dialog {
 	background: $color-group-bg;
 	color: $color-text;
-	padding: $lhse*.75 $lhse;
+	padding: $padding-dialog;
 	width: fit-content;
 	max-width: $max-width-content*.875;
 	border: 1px solid $color-button-orange;
@@ -32,11 +33,35 @@ dialog {
 			transition-duration: $transition-duration-dialog;
 		}
 	}
+	&:has(.scrollable-region) {
+		padding: 0;
+	}
 	:first-child {
 		margin-top: 0;
 	}
-	> h4 {
+	h4 {
 		@include pronounced-heading;
+	}
+	.scrollable-region {
+		max-height: calc(100vh - #{$lhse*4});
+		overflow-x: hidden;
+		padding: $padding-dialog;
+		padding-bottom: $lhse*3;
+		font-size: $font-size-small;
+
+		h4 {
+			font-size: $font-size-bigger;
+			margin-top: 0;
+		}
+		+ form {
+			width: 100%;
+			background: rgba($color-heading-bg, .75);
+			position: absolute;
+			bottom: 0;
+			border-top: $border-width-sections solid $color-content-bg;
+			height: $lhse*2.0;
+			backdrop-filter: blur(2px);
+		}
 	}
 	p {
 		text-wrap: pretty;

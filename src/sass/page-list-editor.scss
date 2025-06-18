@@ -52,6 +52,23 @@ $width-card-list-section-narrow:
 		color: $color-text;
 		margin: 0;
 	}
+	.tip {
+		position: absolute;
+		top: $lhse*.0833;
+		right: $lhse*.0833;
+
+		button {
+			@include link;
+			width: $lhse;
+			height: $lhse;
+			min-width: 0;
+			border-radius: 50%;
+		}
+		svg {
+			width: $lhse;
+			height: $lhse;
+		}
+	}
 }
 .card-sorter,
 .card-group-switch {
@@ -66,6 +83,8 @@ $width-card-list-section-narrow:
 	}
 }
 .card-sorter {
+	position: relative;
+
 	&:has(:disabled) {
 		@include disabled-style;
 	}
@@ -280,23 +299,6 @@ $width-card-list-section-narrow:
 			animation-iteration-count: 2;
 			animation-direction: alternate;
 			animation-timing-function: ease-in-out;
-		}
-	}
-	.tip {
-		position: absolute;
-		top: $lhse*.0833;
-		right: $lhse*.0833;
-
-		button {
-			@include link;
-			width: $lhse;
-			height: $lhse;
-			min-width: 0;
-			border-radius: 50%;
-		}
-		svg {
-			width: $lhse;
-			height: $lhse;
 		}
 	}
 	.loading-indicator {

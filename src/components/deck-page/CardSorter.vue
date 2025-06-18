@@ -16,6 +16,15 @@
 			>
 				Sort cards by:
 			</label>
+			<div class="tip">
+				<button
+					type="button"
+					@click="$store.commit('idOfShowingDialog', 'sorterTip')"
+					title="About card-sorting options"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M450-290h60v-230h-60v230Zm30-298.46q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm.07 488.46q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+				</button>
+			</div>
 			<dropdown-menu
 				:isShowingDropdown="isMenuOpen"
 				togglerRef="sorterMenuInput"
@@ -63,15 +72,26 @@
 				</ul>
 			</dropdown-menu>
 		</fieldset>
+
+		<standard-dialog dialogID="sorterTip">
+			<div class="scrollable-region">
+				<h4>About Card-Sorting Options</h4>
+				<p>You can instantly rearrange the order of all card names by certain card attributes you choose. The sorting options and their effects are the following:</p>
+				<guide-card-sorter-options :displayAsDialog="true" />
+				<p>For more info about the card sorter tool, see the <router-link to="/guide/list-editor#card-sorter">User Guide</router-link>.</p>
+			</div>
+		</standard-dialog>
 	</section>
 </template>
 
 <script>
 import DropdownMenu from '@/components/DropdownMenu.vue'
+import StandardDialog from '@/components/StandardDialog.vue'
+import GuideCardSorterOptions from '@/views/guide-chapters/CardSorterOptions.vue'
 import sortingClusterGaps from '@/mixins/sortingClusterGaps.js'
 
 export default {
-	components: { DropdownMenu },
+	components: { DropdownMenu, StandardDialog, GuideCardSorterOptions },
 	mixins: [sortingClusterGaps],
 	props: {
 		deck: Object

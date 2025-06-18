@@ -1,4 +1,4 @@
-<template functional>
+<template>
 	<section id="list-editor" key="list-editor">
 		<h3>List Editor</h3>
 		<p>The List Editor is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can view, add, remove, and organize every card in your deck. You’ll probably spend more time in the List Editor than in the other modes.</p>
@@ -52,42 +52,9 @@
 			<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
 			<p>The card sorter has a dropdown menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <router-link to="app-header#deck-menu">open deck</router-link> (but not other decks you may have).</p>
 			<p>The card sorter’s options and their effects are the following:</p>
-			<ul>
-				<li>
-					<p><strong>Starred</strong> – Sorts between <a href="#card-stars">starred</a> and un-starred. If your deck has no card names with a star, then this sorting option is hidden.</p>
-				</li>
-				<li>
-					<p><strong>Name</strong> – Sorts alphabetically by card name.</p>
-				</li>
-				<li>
-					<p><strong>Mana Color</strong> – Sorts between monocolored, multicolored, and colorless. Monocolored cards are sorted by Wizards of the Coast’s conventional order of the mana colors: white, blue, black, red, green. Colorless cards are sorted between spells and lands.</p>
-				</li>
-				<li>
-					<p><strong>Mana Value</strong> – Sorts from least to greatest by mana value (a.k.a. converted mana cost). Cards of mana value 0 are sorted between lands and spells.</p>
-				</li>
-				<li>
-					<p><strong>Supertype</strong> – Sorts alphabetically by first-indicated supertype, and moves cards without supertypes to the bottom. (Common supertypes are “basic” [on land cards] and “legendary.”)</p>
-				</li>
-				<li>
-					<p><strong>Type</strong> – Sorts by card type in this order: creatures, planeswalkers, battles, enchantments, artifacts, sorceries, instants, lands.</p>
-				</li>
-				<li>
-					<p><strong>First Subtype</strong> – Sorts alphabetically by first-indicated subtype, and moves cards without subtypes to the bottom.</p>
-				</li>
-				<li>
-					<p><strong>Last Subtype</strong> – Sorts alphabetically by last-indicated subtype, and moves cards without subtypes to the bottom.</p>
-				</li>
-				<li>
-					<p><strong>Rarity</strong> – Sorts from highest to lowest by level of rarity.</p>
-				</li>
-				<li>
-					<p><strong>P/T</strong> (Power and Toughness) – Sorts from greatest to least by the sum of the power and toughness numbers of each card. (For example, the power and toughness sum of a 3/2 creature is 5.) Among cards with the same sums as each other, they’re sorted by power alone from greatest to least.</p>
-					<p>Additionally, power/toughness sorting handles every planeswalker card as if it has those attributes, where its power is 0 and its toughness equals its loyalty number.  Cards without the power/toughness or loyalty attributes are moved to the bottom.</p>
-				</li>
-				<li>
-					<p><strong>Quantity</strong> – Sorts from greatest to least by card name <a href="#card-quantities">quantity</a>.</p>
-				</li>
-			</ul>
+
+			<guide-card-sorter-options :displayAsDialog="false" />
+
 			<p>The results of sorting are cumulative, with the most recently selected sorting attribute given highest priority. For example: Let’s say you first sort by rarity, and next sort by type. As the result, the card names are sorted primarily by type, and within each sorted cluster of types (the creatures, the sorceries, etc.), the card names are sorted by rarity.</p>
 			<p>For easier skimming of the card list, every sorting option, except for name, inserts small gaps between each sorted cluster of card names.</p>
 			<p>Under certain conditions, the card sorter’s sorting option resets to “(Unsorted),” and any gaps in the card list between sorted clusters disappear. Those conditions happen whenever you do any of the following actions:
@@ -284,3 +251,11 @@
 		</section>
 	</section>
 </template>
+
+<script>
+import GuideCardSorterOptions from '@/views/guide-chapters/CardSorterOptions.vue'
+
+export default {
+	components: { GuideCardSorterOptions }
+}
+</script>
