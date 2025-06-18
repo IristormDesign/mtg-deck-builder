@@ -364,10 +364,10 @@ export default {
 			this.deckObject.sortBy = '(Unsorted)'
 
 			this.deck.cards.forEach(eachCard => {
-				eachCard.gapAfter = false
+				delete eachCard.gapAfter
 			})
 			this.deck.sideboard.cards.forEach(eachCard => {
-				eachCard.gapAfter = false
+				delete eachCard.gapAfter
 			})
 		}
 	}

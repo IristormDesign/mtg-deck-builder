@@ -12,7 +12,9 @@ export default {
 				const thisCard = cards[i]
 				const nextCard = cards[(i + 1)]
 
-				thisCard.gapAfter = this.hasGapAfter(thisCard, nextCard)
+				if (this.hasGapAfter(thisCard, nextCard)) {
+					thisCard.gapAfter = true
+				}
 			}
 		},
 		hasGapAfter (thisCard, nextCard) {

@@ -292,11 +292,13 @@ export default {
 				newCard.img = oldCard.img
 				newCard.imgVersion = oldCard.imgVersion
 				newCard.link = oldCard.link
-				newCard.gapAfter = oldCard.gapAfter
 				newCard.qty = oldCard.qty
 
 				if (oldCard.img2) {
 					newCard.img2 = oldCard.img2
+				}
+				if (oldCard.gapAfter === true) {
+					newCard.gapAfter = true
 				}
 
 				this.updateOldCard(newCard, oldCard.inSideboard)
@@ -398,10 +400,10 @@ export default {
 			this.determineDeckColors()
 
 			deck.cards.forEach(eachCard => {
-				eachCard.gapAfter = false
+				delete eachCard.gapAfter
 			})
 			deck.sideboard.cards.forEach(eachCard => {
-				eachCard.gapAfter = false
+				delete eachCard.gapAfter
 			})
 
 			this.$nextTick(() => {

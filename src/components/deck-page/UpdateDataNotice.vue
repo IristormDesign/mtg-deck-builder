@@ -97,7 +97,6 @@ export default {
 			}
 		},
 		prepareDataUpdate () {
-			const store = this.$store
 			this.cardsToUpdate = [] // Reset this array in case an update check is done more than once.
 
 			if (!this.deck.sideboard) { // Early versions of deck data didn't have the sideboard list. If the `sideboard` key is still missing from the `deck` object, then add it.
@@ -114,7 +113,7 @@ export default {
 				this.cardUpdateStatus = 1
 			} else {
 				this.deckObject.dataVersion = this.latestDeckDataVersion
-				store.commit('decks', store.state.decks)
+				this.$store.commit('decks', this.$store.state.decks)
 				this.cardUpdateStatus = 0
 			}
 		},
@@ -124,8 +123,7 @@ export default {
 					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on the newest version.
 				} else if (card.layout) continue // Any non-planeswalker card object with the `layout` key means that card's data set is on the newest version.
 
-				this.cardsToUpdate.push({
-					gapAfter: card.gapAfter,
+				const dataToPush = {
 					inSideboard: list === this.deck.sideboard,
 					name: this.doubleFacedCardName(card),
 					qty: card.qty,
@@ -133,7 +131,13 @@ export default {
 					img2: card.img2,
 					imgVersion: card.imgVersion,
 					link: card.link
-				})
+				}
+
+				if (card.gapAfter === true) {
+					dataToPush.gapAfter = true
+				}
+
+				this.cardsToUpdate.push(dataToPush)
 			}
 		},
 		userEngagedUpdate () {

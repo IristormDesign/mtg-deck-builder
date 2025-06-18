@@ -21,8 +21,7 @@
           "layout": "normal",
           "link": "mkm/105/snarling-gorehound",
           "imgVersion": 2,
-          "qty": 3,
-          "gapAfter": false
+          "qty": 3
         },
         {
           "name": "Dimir Spybug",
@@ -44,8 +43,7 @@
           "layout": "normal",
           "link": "mkc/206/dimir-spybug",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Rune-Sealed Wall",
@@ -66,8 +64,7 @@
           "layout": "normal",
           "link": "fdn/49/rune-sealed-wall",
           "imgVersion": 2,
-          "qty": 3,
-          "gapAfter": false
+          "qty": 3
         },
         {
           "name": "Mirko, Obsessive Theorist",
@@ -89,8 +86,7 @@
           "layout": "normal",
           "link": "mkc/2/mirko-obsessive-theorist",
           "imgVersion": 2,
-          "qty": 3,
-          "gapAfter": false
+          "qty": 3
         },
         {
           "name": "Doom Whisperer",
@@ -112,8 +108,7 @@
           "layout": "normal",
           "link": "mkc/128/doom-whisperer",
           "imgVersion": 2,
-          "qty": 2,
-          "gapAfter": false
+          "qty": 2
         },
         {
           "name": "Syr Konrad, the Grim",
@@ -133,8 +128,7 @@
           "layout": "normal",
           "link": "m3c/207/syr-konrad-the-grim",
           "imgVersion": 2,
-          "qty": 2,
-          "gapAfter": false
+          "qty": 2
         },
         {
           "name": "Eye of Duskmantle",
@@ -172,8 +166,7 @@
           "layout": "normal",
           "link": "mkc/102/enhanced-surveillance",
           "imgVersion": 2,
-          "qty": 2,
-          "gapAfter": false
+          "qty": 2
         },
         {
           "name": "Disinformation Campaign",
@@ -190,8 +183,7 @@
           "layout": "normal",
           "link": "mkc/208/disinformation-campaign",
           "imgVersion": 2,
-          "qty": 2,
-          "gapAfter": false
+          "qty": 2
         },
         {
           "name": "Case of the Shifting Visage",
@@ -266,8 +258,7 @@
           "layout": "normal",
           "link": "woc/87/consider",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Don’t Make a Sound",
@@ -285,8 +276,7 @@
           "layout": "normal",
           "link": "dsk/49/dont-make-a-sound",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Mission Briefing",
@@ -304,8 +294,7 @@
           "layout": "normal",
           "link": "mkc/110/mission-briefing",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Pile On",
@@ -339,8 +328,7 @@
           "layout": "normal",
           "link": "und/89/island",
           "imgVersion": 2,
-          "qty": 5,
-          "gapAfter": false
+          "qty": 5
         },
         {
           "name": "Swamp",
@@ -354,8 +342,7 @@
           "layout": "normal",
           "link": "und/91/swamp",
           "imgVersion": 2,
-          "qty": 5,
-          "gapAfter": false
+          "qty": 5
         },
         {
           "name": "Dimir Aqueduct",
@@ -369,8 +356,7 @@
           "layout": "normal",
           "link": "otc/288/dimir-aqueduct",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Undercity Sewers",
@@ -386,8 +372,7 @@
           "layout": "normal",
           "link": "mkm/270/undercity-sewers",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Clearwater Pathway",
@@ -406,8 +391,7 @@
           "layout": "modal_dfc",
           "link": "znr/260/clearwater-pathway-murkwater-pathway",
           "imgVersion": 2,
-          "qty": 3,
-          "gapAfter": false
+          "qty": 3
         },
         {
           "name": "Tocasia’s Dig Site",
@@ -627,8 +611,7 @@
           "layout": "normal",
           "link": "2x2/76/go-for-the-throat",
           "imgVersion": 2,
-          "qty": 3,
-          "gapAfter": false
+          "qty": 3
         }
       },
       "sortBy": "Type",
@@ -671,8 +654,7 @@
           "layout": "normal",
           "link": "akh/1/angel-of-sanctions",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Wingmate Roc",
@@ -693,8 +675,7 @@
           "layout": "normal",
           "link": "c19/78/wingmate-roc",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Doomed Artisan",
@@ -712,8 +693,7 @@
           "layout": "normal",
           "link": "c19/3/doomed-artisan",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Commander’s Insignia",
@@ -729,8 +709,7 @@
           "layout": "normal",
           "link": "scd/13/commanders-insignia",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Song of the Worldsoul",
@@ -748,8 +727,7 @@
           "layout": "normal",
           "link": "c19/6/song-of-the-worldsoul",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Phyrexian Rebirth",
@@ -765,8 +743,7 @@
           "layout": "normal",
           "link": "moc/199/phyrexian-rebirth",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Hour of Reckoning",
@@ -784,8 +761,7 @@
           "layout": "normal",
           "link": "moc/190/hour-of-reckoning",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Cliffside Rescuer",
@@ -805,8 +781,7 @@
           "layout": "normal",
           "link": "c19/1/cliffside-rescuer",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Intangible Virtue",
@@ -822,8 +797,7 @@
           "layout": "normal",
           "link": "cmm/31/intangible-virtue",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Roc Egg",
@@ -843,8 +817,7 @@
           "layout": "normal",
           "link": "c19/73/roc-egg",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Rootborn Defenses",
@@ -862,8 +835,7 @@
           "layout": "normal",
           "link": "scd/32/rootborn-defenses",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Trostani’s Judgment",
@@ -900,8 +872,7 @@
           "layout": "normal",
           "link": "fdn/622/dragonmaster-outcast",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Feldon of the Third Path",
@@ -919,8 +890,7 @@
           "layout": "normal",
           "link": "moc/277/feldon-of-the-third-path",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Ghired’s Belligerence",
@@ -938,8 +908,7 @@
           "layout": "normal",
           "link": "c19/25/ghireds-belligerence",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Heart-Piercer Manticore",
@@ -959,8 +928,7 @@
           "layout": "normal",
           "link": "akh/138/heart-piercer-manticore",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Flamerush Rider",
@@ -980,8 +948,7 @@
           "layout": "normal",
           "link": "moc/279/flamerush-rider",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Tectonic Hellion",
@@ -1001,8 +968,7 @@
           "layout": "normal",
           "link": "c19/29/tectonic-hellion",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Hate Mirage",
@@ -1036,7 +1002,6 @@
           "link": "c21/190/garruk-primal-hunter",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
           "loyalty": "3"
         },
         {
@@ -1057,8 +1022,7 @@
           "layout": "normal",
           "link": "c19/182/soul-of-zendikar",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Giant Adephage",
@@ -1078,8 +1042,7 @@
           "layout": "normal",
           "link": "dsc/179/giant-adephage",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Full Flowering",
@@ -1097,8 +1060,7 @@
           "layout": "normal",
           "link": "c19/32/full-flowering",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Selesnya Eulogist",
@@ -1118,8 +1080,7 @@
           "layout": "normal",
           "link": "c19/35/selesnya-eulogist",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Fresh Meat",
@@ -1135,8 +1096,7 @@
           "layout": "normal",
           "link": "c19/166/fresh-meat",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Momentous Fall",
@@ -1152,8 +1112,7 @@
           "layout": "normal",
           "link": "jmp/411/momentous-fall",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Second Harvest",
@@ -1169,8 +1128,7 @@
           "layout": "normal",
           "link": "c19/178/second-harvest",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Ohran Frostfang",
@@ -1188,8 +1146,7 @@
           "layout": "normal",
           "link": "otc/199/ohran-frostfang",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Thragtusk",
@@ -1207,8 +1164,7 @@
           "layout": "normal",
           "link": "ncc/316/thragtusk",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Shamanic Revelation",
@@ -1226,8 +1182,7 @@
           "layout": "normal",
           "link": "nec/129/shamanic-revelation",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Rampaging Baloths",
@@ -1248,8 +1203,7 @@
           "layout": "normal",
           "link": "j22/715/rampaging-baloths",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Colossal Majesty",
@@ -1265,8 +1219,7 @@
           "layout": "normal",
           "link": "afc/154/colossal-majesty",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Elemental Bond",
@@ -1282,8 +1235,7 @@
           "layout": "normal",
           "link": "scd/180/elemental-bond",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Beast Within",
@@ -1299,8 +1251,7 @@
           "layout": "normal",
           "link": "lcc/233/beast-within",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Voice of Many",
@@ -1318,8 +1269,7 @@
           "layout": "normal",
           "link": "khc/77/voice-of-many",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Harmonize",
@@ -1335,8 +1285,7 @@
           "layout": "normal",
           "link": "dsc/182/harmonize",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Slice in Twain",
@@ -1352,8 +1301,7 @@
           "layout": "normal",
           "link": "c20/190/slice-in-twain",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Garruk’s Packleader",
@@ -1371,8 +1319,7 @@
           "layout": "normal",
           "link": "c19/168/garruks-packleader",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Sakura-Tribe Elder",
@@ -1390,8 +1337,7 @@
           "layout": "normal",
           "link": "m3c/243/sakura-tribe-elder",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Explore",
@@ -1407,8 +1353,7 @@
           "layout": "normal",
           "link": "otc/192/explore",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Farseek",
@@ -1424,8 +1369,7 @@
           "layout": "normal",
           "link": "cmm/894/farseek",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Druid’s Deliverance",
@@ -1443,8 +1387,7 @@
           "layout": "normal",
           "link": "c19/162/druids-deliverance",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Cultivate",
@@ -1481,8 +1424,7 @@
           "layout": "normal",
           "link": "dmc/142/atla-palani-nest-tender",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Marisi, Breaker of the Coil",
@@ -1504,8 +1446,7 @@
           "layout": "normal",
           "link": "c19/46/marisi-breaker-of-the-coil",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Trostani, Selesnya’s Voice",
@@ -1526,8 +1467,7 @@
           "layout": "normal",
           "link": "c19/204/trostani-selesnyas-voice",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Ghired, Conclave Exile",
@@ -1550,7 +1490,6 @@
           "link": "c19/42/ghired-conclave-exile",
           "imgVersion": 2,
           "qty": 1,
-          "gapAfter": false,
           "starred": true
         },
         {
@@ -1572,8 +1511,7 @@
           "layout": "normal",
           "link": "c19/208/wayfaring-temple",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Tahngarth, First Mate",
@@ -1592,8 +1530,7 @@
           "layout": "normal",
           "link": "c19/50/tahngarth-first-mate",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Growing Ranks",
@@ -1612,8 +1549,7 @@
           "layout": "normal",
           "link": "c19/193/growing-ranks",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Emmara Tandris",
@@ -1632,8 +1568,7 @@
           "layout": "normal",
           "link": "c19/191/emmara-tandris",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Vitu-Ghazi Guildmage",
@@ -1654,8 +1589,7 @@
           "layout": "normal",
           "link": "c19/206/vitu-ghazi-guildmage",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Naya Charm",
@@ -1673,8 +1607,7 @@
           "layout": "normal",
           "link": "dmc/162/naya-charm",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Sundering Growth",
@@ -1708,8 +1641,7 @@
           "layout": "normal",
           "link": "blc/277/idol-of-oblivion",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Mimic Vat",
@@ -1725,8 +1657,7 @@
           "layout": "normal",
           "link": "ncc/372/mimic-vat",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Soul Foundry",
@@ -1742,8 +1673,7 @@
           "layout": "normal",
           "link": "c19/223/soul-foundry",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Desolation Twin",
@@ -1759,8 +1689,7 @@
           "layout": "normal",
           "link": "c21/82/desolation-twin",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Sol Ring",
@@ -1774,8 +1703,7 @@
           "layout": "normal",
           "link": "fdc/2/sol-ring",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Lightning Greaves",
@@ -1791,8 +1719,7 @@
           "layout": "normal",
           "link": "m3c/298/lightning-greaves",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Scaretiller",
@@ -1823,8 +1750,7 @@
           "layout": "normal",
           "link": "m3c/329/cinder-glade",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Exotic Orchard",
@@ -1838,8 +1764,7 @@
           "layout": "normal",
           "link": "dsc/275/exotic-orchard",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Gargoyle Castle",
@@ -1853,8 +1778,7 @@
           "layout": "normal",
           "link": "c19/245/gargoyle-castle",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Sungrass Prairie",
@@ -1868,8 +1792,7 @@
           "layout": "normal",
           "link": "woc/167/sungrass-prairie",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Boros Garrison",
@@ -1883,8 +1806,7 @@
           "layout": "normal",
           "link": "2x2/319/boros-garrison",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Graypelt Refuge",
@@ -1898,8 +1820,7 @@
           "layout": "normal",
           "link": "scd/303/graypelt-refuge",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Gruul Turf",
@@ -1913,8 +1834,7 @@
           "layout": "normal",
           "link": "2x2/325/gruul-turf",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Jungle Shrine",
@@ -1928,8 +1848,7 @@
           "layout": "normal",
           "link": "otc/303/jungle-shrine",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Kazandu Refuge",
@@ -1943,8 +1862,7 @@
           "layout": "normal",
           "link": "scd/307/kazandu-refuge",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Krosan Verge",
@@ -1958,8 +1876,7 @@
           "layout": "normal",
           "link": "mic/175/krosan-verge",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Myriad Landscape",
@@ -1973,8 +1890,7 @@
           "layout": "normal",
           "link": "dsc/289/myriad-landscape",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Rogue’s Passage",
@@ -1988,8 +1904,7 @@
           "layout": "normal",
           "link": "fdn/264/rogues-passage",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Selesnya Sanctuary",
@@ -2003,8 +1918,7 @@
           "layout": "normal",
           "link": "2x2/330/selesnya-sanctuary",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Forest",
@@ -2018,8 +1932,7 @@
           "layout": "normal",
           "link": "j22/111/forest",
           "imgVersion": 2,
-          "qty": 8,
-          "gapAfter": false
+          "qty": 8
         },
         {
           "name": "Plains",
@@ -2033,8 +1946,7 @@
           "layout": "normal",
           "link": "fdn/273/plains",
           "imgVersion": 2,
-          "qty": 7,
-          "gapAfter": false
+          "qty": 7
         },
         {
           "name": "Mountain",
@@ -2048,8 +1960,7 @@
           "layout": "normal",
           "link": "gn2/62/mountain",
           "imgVersion": 2,
-          "qty": 4,
-          "gapAfter": false
+          "qty": 4
         },
         {
           "name": "Ash Barrens",
@@ -2068,8 +1979,7 @@
           "layout": "normal",
           "link": "c20/255/ash-barrens",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Blossoming Sands",
@@ -2083,8 +1993,7 @@
           "layout": "normal",
           "link": "frf/166/blossoming-sands",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Command Tower",
@@ -2098,8 +2007,7 @@
           "layout": "normal",
           "link": "fdc/3/command-tower",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Evolving Wilds",
@@ -2113,8 +2021,7 @@
           "layout": "normal",
           "link": "woe/256/evolving-wilds",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Naya Panorama",
@@ -2128,8 +2035,7 @@
           "layout": "normal",
           "link": "ncc/417/naya-panorama",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Rugged Highlands",
@@ -2143,8 +2049,7 @@
           "layout": "normal",
           "link": "dds/59/rugged-highlands",
           "imgVersion": 2,
-          "qty": 1,
-          "gapAfter": false
+          "qty": 1
         },
         {
           "name": "Terramorphic Expanse",

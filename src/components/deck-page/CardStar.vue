@@ -32,10 +32,10 @@ export default {
 				deck.sortBy = '(Unsorted)'
 
 				deck.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
+					delete eachCard.gapAfter
 				})
 				deck.sideboard.cards.forEach(eachCard => {
-					eachCard.gapAfter = false
+					delete eachCard.gapAfter
 				})
 			}
 
