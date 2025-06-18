@@ -9,7 +9,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/9/3/93ab3e11-8584-406f-b9ae-9e1df4396cbc.jpg?1706241754",
+          "img": "front/9/3/93ab3e11-8584-406f-b9ae-9e1df4396cbc.jpg",
           "power": "1",
           "toughness": "1",
           "cmc": 1,
@@ -32,7 +32,7 @@
             "B",
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/9/69840910-eb86-49a4-915f-d21b5628fc04.jpg?1706240991",
+          "img": "front/6/9/69840910-eb86-49a4-915f-d21b5628fc04.jpg",
           "power": "1",
           "toughness": "1",
           "cmc": 2,
@@ -54,7 +54,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/a/da0f147b-95ed-4f32-9b46-6a633ae31976.jpg?1730488768",
+          "img": "front/d/a/da0f147b-95ed-4f32-9b46-6a633ae31976.jpg",
           "power": "0",
           "toughness": "6",
           "cmc": 3,
@@ -77,7 +77,7 @@
             "B",
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/9/690acbbf-5e92-4323-b939-31bdb07f9905.jpg?1706448873",
+          "img": "front/6/9/690acbbf-5e92-4323-b939-31bdb07f9905.jpg",
           "power": "1",
           "toughness": "3",
           "cmc": 3,
@@ -99,7 +99,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/e/8/e8aabcaf-0968-402f-bc9f-289756e4d4b7.jpg?1706240763",
+          "img": "front/e/8/e8aabcaf-0968-402f-bc9f-289756e4d4b7.jpg",
           "power": "6",
           "toughness": "6",
           "cmc": 5,
@@ -122,7 +122,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/9/b945f8c2-acfc-4622-8e96-993921d58995.jpg?1717190426",
+          "img": "front/b/9/b945f8c2-acfc-4622-8e96-993921d58995.jpg",
           "power": "5",
           "toughness": "4",
           "cmc": 5,
@@ -143,7 +143,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/9/0/905fa4ed-e496-43d8-9c4a-38e85d9b7651.jpg?1706240464",
+          "img": "front/9/0/905fa4ed-e496-43d8-9c4a-38e85d9b7651.jpg",
           "power": "3",
           "toughness": "8",
           "cmc": 7,
@@ -165,7 +165,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/4/2/42e6f705-2af7-47c2-961a-cf4c02b29f21.jpg?1706240689",
+          "img": "front/4/2/42e6f705-2af7-47c2-961a-cf4c02b29f21.jpg",
           "cmc": 2,
           "rarity": "uncommon",
           "keywords": [],
@@ -183,7 +183,7 @@
             "B",
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/3/d34ea8c4-03b1-415f-80e1-7c3cf6933685.jpg?1706240995",
+          "img": "front/d/3/d34ea8c4-03b1-415f-80e1-7c3cf6933685.jpg",
           "cmc": 3,
           "rarity": "uncommon",
           "keywords": [],
@@ -200,7 +200,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/5/65463a1b-39c1-4fc8-8de2-85224de810ac.jpg?1707678886",
+          "img": "front/6/5/65463a1b-39c1-4fc8-8de2-85224de810ac.jpg",
           "cmc": 3,
           "rarity": "rare",
           "keywords": [
@@ -217,7 +217,7 @@
           "mana": "{2}",
           "type": "Artifact",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/9/5/95de0112-3560-413c-91a9-a2b29d6488f6.jpg?1698988507",
+          "img": "front/9/5/95de0112-3560-413c-91a9-a2b29d6488f6.jpg",
           "cmc": 2,
           "rarity": "uncommon",
           "keywords": [],
@@ -238,7 +238,7 @@
             "B",
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/8/d/8df2658a-6174-411c-9217-aa5d15b9fef2.jpg?1706240992",
+          "img": "front/8/d/8df2658a-6174-411c-9217-aa5d15b9fef2.jpg",
           "cmc": 7,
           "rarity": "uncommon",
           "keywords": [
@@ -257,7 +257,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/a/8/a8b4ab5e-aa83-448e-94b3-a4a643968804.jpg?1692934923",
+          "img": "front/a/8/a8b4ab5e-aa83-448e-94b3-a4a643968804.jpg",
           "cmc": 1,
           "rarity": "common",
           "keywords": [
@@ -276,7 +276,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/5/b5f42e59-7315-41cb-9c41-346e44f0c5fb.jpg?1726286037",
+          "img": "front/b/5/b5f42e59-7315-41cb-9c41-346e44f0c5fb.jpg",
           "cmc": 2,
           "rarity": "common",
           "keywords": [
@@ -295,7 +295,7 @@
           "colors": [
             "U"
           ],
-          "img": "https://cards.scryfall.io/normal/front/5/e/5ed398e7-9d2b-4bd2-9a4b-2885e4749003.jpg?1706240710",
+          "img": "front/5/e/5ed398e7-9d2b-4bd2-9a4b-2885e4749003.jpg",
           "cmc": 2,
           "rarity": "rare",
           "keywords": [
@@ -314,7 +314,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/4/9/492e9369-0ca3-4c31-b747-75d615daf6e4.jpg?1682203929",
+          "img": "front/4/9/492e9369-0ca3-4c31-b747-75d615daf6e4.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [
@@ -332,7 +332,7 @@
           "mana": "",
           "type": "Basic Land — Island",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/c/5/c5258f33-02c6-4b45-b4de-4429b4508924.jpg?1583965902",
+          "img": "front/c/5/c5258f33-02c6-4b45-b4de-4429b4508924.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -347,7 +347,7 @@
           "mana": "",
           "type": "Basic Land — Swamp",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/e/2/e269461e-638f-433b-979b-820f87fb431a.jpg?1583965913",
+          "img": "front/e/2/e269461e-638f-433b-979b-820f87fb431a.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -362,7 +362,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/f/2f527759-84c9-4bd3-9763-a2105c9d93f9.jpg?1716475485",
+          "img": "front/2/f/2f527759-84c9-4bd3-9763-a2105c9d93f9.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -377,7 +377,7 @@
           "mana": "",
           "type": "Land — Island Swamp",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/b/2b5801fb-2026-4f25-98bc-ebb2f99684b9.jpg?1706242367",
+          "img": "front/2/b/2b5801fb-2026-4f25-98bc-ebb2f99684b9.jpg",
           "cmc": 0,
           "rarity": "rare",
           "keywords": [
@@ -399,8 +399,8 @@
           "cmc": 0,
           "colors": [],
           "colors2": [],
-          "img": "https://cards.scryfall.io/normal/front/b/4/b4b99ebb-0d54-4fe5-a495-979aaa564aa8.jpg?1669839436",
-          "img2": "https://cards.scryfall.io/normal/back/b/4/b4b99ebb-0d54-4fe5-a495-979aaa564aa8.jpg?1669839436",
+          "img": "front/b/4/b4b99ebb-0d54-4fe5-a495-979aaa564aa8.jpg",
+          "img2": "back/b/4/b4b99ebb-0d54-4fe5-a495-979aaa564aa8.jpg",
           "rarity": "rare",
           "keywords": [],
           "layout": "modal_dfc",
@@ -414,7 +414,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/3/23d4b90c-95b1-4828-bc08-7067da0d5364.jpg?1674422231",
+          "img": "front/2/3/23d4b90c-95b1-4828-bc08-7067da0d5364.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [
@@ -443,7 +443,7 @@
             "colors": [
               "U"
             ],
-            "img": "https://cards.scryfall.io/normal/front/d/b/dbcdf292-a391-4452-8116-20084754f591.jpg?1706240745",
+            "img": "front/d/b/dbcdf292-a391-4452-8116-20084754f591.jpg",
             "power": "2",
             "toughness": "2",
             "cmc": 1,
@@ -464,7 +464,7 @@
             "colors": [
               "U"
             ],
-            "img": "https://cards.scryfall.io/normal/front/b/5/b5c266ca-f2fc-4815-be7e-ee59894e4cc4.jpg?1730486906",
+            "img": "front/b/5/b5c266ca-f2fc-4815-be7e-ee59894e4cc4.jpg",
             "power": "1",
             "toughness": "2",
             "cmc": 2,
@@ -487,7 +487,7 @@
               "B",
               "U"
             ],
-            "img": "https://cards.scryfall.io/normal/front/6/6/662758ee-f7c8-4cba-b67b-48ac80c3b5ca.jpg?1708034341",
+            "img": "front/6/6/662758ee-f7c8-4cba-b67b-48ac80c3b5ca.jpg",
             "power": "1",
             "toughness": "3",
             "cmc": 2,
@@ -508,7 +508,7 @@
             "colors": [
               "B"
             ],
-            "img": "https://cards.scryfall.io/normal/front/0/0/000ac9e5-3c95-4e87-9424-109e2eea6b45.jpg?1572892902",
+            "img": "front/0/0/000ac9e5-3c95-4e87-9424-109e2eea6b45.jpg",
             "power": "3",
             "toughness": "1",
             "cmc": 3,
@@ -529,7 +529,7 @@
             "colors": [
               "U"
             ],
-            "img": "https://cards.scryfall.io/normal/front/6/a/6adb7d73-4482-4930-8497-cffd169b57e2.jpg?1557576232",
+            "img": "front/6/a/6adb7d73-4482-4930-8497-cffd169b57e2.jpg",
             "cmc": 4,
             "rarity": "rare",
             "keywords": [
@@ -549,7 +549,7 @@
             "colors": [
               "U"
             ],
-            "img": "https://cards.scryfall.io/normal/front/5/a/5aeae6fb-3834-4891-924e-3d1fb3e19e09.jpg?1706241568",
+            "img": "front/5/a/5aeae6fb-3834-4891-924e-3d1fb3e19e09.jpg",
             "cmc": 1,
             "rarity": "uncommon",
             "keywords": [
@@ -569,7 +569,7 @@
             "colors": [
               "B"
             ],
-            "img": "https://cards.scryfall.io/normal/front/1/5/155e966c-80ce-4942-a993-21b960aa28ab.jpg?1673147518",
+            "img": "front/1/5/155e966c-80ce-4942-a993-21b960aa28ab.jpg",
             "cmc": 2,
             "rarity": "uncommon",
             "keywords": [],
@@ -586,7 +586,7 @@
             "colors": [
               "B"
             ],
-            "img": "https://cards.scryfall.io/normal/front/e/9/e9054114-6740-4e2d-ae40-ccfb5e497d67.jpg?1706240781",
+            "img": "front/e/9/e9054114-6740-4e2d-ae40-ccfb5e497d67.jpg",
             "cmc": 4,
             "rarity": "uncommon",
             "keywords": [
@@ -603,7 +603,7 @@
             "mana": "",
             "type": "Basic Land — Island",
             "colors": [],
-            "img": "https://cards.scryfall.io/normal/front/c/5/c5258f33-02c6-4b45-b4de-4429b4508924.jpg?1583965902",
+            "img": "front/c/5/c5258f33-02c6-4b45-b4de-4429b4508924.jpg",
             "cmc": 0,
             "rarity": "common",
             "keywords": [],
@@ -620,7 +620,7 @@
           "colors": [
             "B"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/5/155e966c-80ce-4942-a993-21b960aa28ab.jpg?1673147518",
+          "img": "front/1/5/155e966c-80ce-4942-a993-21b960aa28ab.jpg",
           "cmc": 2,
           "rarity": "uncommon",
           "keywords": [],
@@ -639,7 +639,7 @@
         "colors": [
           "U"
         ],
-        "img": "https://cards.scryfall.io/normal/front/4/2/42e6f705-2af7-47c2-961a-cf4c02b29f21.jpg?1706240689",
+        "img": "front/4/2/42e6f705-2af7-47c2-961a-cf4c02b29f21.jpg",
         "cmc": 2,
         "rarity": "uncommon",
         "keywords": [],
@@ -659,7 +659,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/6/66b1cbf0-1273-406a-bc99-ce20ce53e5aa.jpg?1543674559",
+          "img": "front/6/6/66b1cbf0-1273-406a-bc99-ce20ce53e5aa.jpg",
           "power": "3",
           "toughness": "4",
           "cmc": 5,
@@ -681,7 +681,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/6/16930385-796e-4e11-b439-d0dbda63d72d.jpg?1568003938",
+          "img": "front/1/6/16930385-796e-4e11-b439-d0dbda63d72d.jpg",
           "power": "3",
           "toughness": "4",
           "cmc": 5,
@@ -703,7 +703,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/e/ded9c409-7131-4b3f-a6b9-25fa32c5ec2c.jpg?1568003364",
+          "img": "front/d/e/ded9c409-7131-4b3f-a6b9-25fa32c5ec2c.jpg",
           "power": "1",
           "toughness": "1",
           "cmc": 3,
@@ -722,7 +722,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/2/12b2b04b-27d1-4b5d-9bd6-9678f203cf20.jpg?1674674082",
+          "img": "front/1/2/12b2b04b-27d1-4b5d-9bd6-9678f203cf20.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [],
@@ -739,7 +739,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/b/bb73ec0d-f582-4f74-9b5c-180fe3aedcf6.jpg?1568003387",
+          "img": "front/b/b/bb73ec0d-f582-4f74-9b5c-180fe3aedcf6.jpg",
           "cmc": 6,
           "rarity": "rare",
           "keywords": [
@@ -758,7 +758,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/5/5/5516854d-ace3-4e02-a2d1-f780c3b15e37.jpg?1682208543",
+          "img": "front/5/5/5516854d-ace3-4e02-a2d1-f780c3b15e37.jpg",
           "cmc": 6,
           "rarity": "rare",
           "keywords": [],
@@ -775,7 +775,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/c/0/c0ffb58f-459a-4965-b1d6-a25442baf9c2.jpg?1682208461",
+          "img": "front/c/0/c0ffb58f-459a-4965-b1d6-a25442baf9c2.jpg",
           "cmc": 7,
           "rarity": "rare",
           "keywords": [
@@ -794,7 +794,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/c/9/c998d2ba-d2ca-4a85-b22a-ce8f42bb0d2f.jpg?1603098795",
+          "img": "front/c/9/c998d2ba-d2ca-4a85-b22a-ce8f42bb0d2f.jpg",
           "power": "2",
           "toughness": "2",
           "cmc": 2,
@@ -815,7 +815,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/7/d/7d251846-7aa5-4318-a96b-fbd9daf691f9.jpg?1689995749",
+          "img": "front/7/d/7d251846-7aa5-4318-a96b-fbd9daf691f9.jpg",
           "cmc": 2,
           "rarity": "uncommon",
           "keywords": [],
@@ -832,7 +832,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/a/8/a84a12d7-ffb3-4c05-973f-e00fbc2ab6c4.jpg?1568003903",
+          "img": "front/a/8/a84a12d7-ffb3-4c05-973f-e00fbc2ab6c4.jpg",
           "power": "0",
           "toughness": "3",
           "cmc": 3,
@@ -853,7 +853,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/4/644c5708-6e1e-4b59-a78e-1d91c181d19f.jpg?1674674260",
+          "img": "front/6/4/644c5708-6e1e-4b59-a78e-1d91c181d19f.jpg",
           "cmc": 3,
           "rarity": "common",
           "keywords": [
@@ -872,7 +872,7 @@
           "colors": [
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/5/b/5b105835-8ca3-43fc-9724-29edde02f0bb.jpg?1568003931",
+          "img": "front/5/b/5b105835-8ca3-43fc-9724-29edde02f0bb.jpg",
           "cmc": 6,
           "rarity": "common",
           "keywords": [
@@ -891,7 +891,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/7/b720f3a8-f38f-4460-86a3-dad541e7add7.jpg?1730490959",
+          "img": "front/b/7/b720f3a8-f38f-4460-86a3-dad541e7add7.jpg",
           "power": "1",
           "toughness": "1",
           "cmc": 1,
@@ -910,7 +910,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/0/3/0360f1ff-15c9-48e3-89eb-fbc4bf140c55.jpg?1690023788",
+          "img": "front/0/3/0360f1ff-15c9-48e3-89eb-fbc4bf140c55.jpg",
           "power": "2",
           "toughness": "3",
           "cmc": 3,
@@ -929,7 +929,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/8/b8348ef6-f2ae-4277-ae04-7849c508f0e4.jpg?1568003540",
+          "img": "front/b/8/b8348ef6-f2ae-4277-ae04-7849c508f0e4.jpg",
           "cmc": 2,
           "rarity": "rare",
           "keywords": [
@@ -948,7 +948,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/d/dd64160a-96e0-4593-ba42-c5e8bbfa0b15.jpg?1543675623",
+          "img": "front/d/d/dd64160a-96e0-4593-ba42-c5e8bbfa0b15.jpg",
           "power": "4",
           "toughness": "3",
           "cmc": 4,
@@ -969,7 +969,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/0/d/0de4181f-652e-4eab-8de0-57a346c51994.jpg?1682209328",
+          "img": "front/0/d/0de4181f-652e-4eab-8de0-57a346c51994.jpg",
           "power": "3",
           "toughness": "3",
           "cmc": 5,
@@ -990,7 +990,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/b/1b86be51-1b0b-49d0-917c-508f12c85c17.jpg?1568003570",
+          "img": "front/1/b/1b86be51-1b0b-49d0-917c-508f12c85c17.jpg",
           "power": "8",
           "toughness": "5",
           "cmc": 7,
@@ -1011,7 +1011,7 @@
           "colors": [
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/8/0/80e9aebe-5311-4bc6-bc0f-b8084f805db3.jpg?1675905729",
+          "img": "front/8/0/80e9aebe-5311-4bc6-bc0f-b8084f805db3.jpg",
           "cmc": 4,
           "rarity": "uncommon",
           "keywords": [],
@@ -1028,7 +1028,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/7/9/79cfc0d7-fccb-47fb-87b6-08dd32528be6.jpg?1625194361",
+          "img": "front/7/9/79cfc0d7-fccb-47fb-87b6-08dd32528be6.jpg",
           "cmc": 5,
           "rarity": "mythic",
           "keywords": [],
@@ -1046,7 +1046,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/0/108a4330-d9dd-429d-a2f8-c355ff914883.jpg?1568004676",
+          "img": "front/1/0/108a4330-d9dd-429d-a2f8-c355ff914883.jpg",
           "power": "6",
           "toughness": "6",
           "cmc": 6,
@@ -1067,7 +1067,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/8/9/893b22a7-b46c-4473-8d88-11ddf4406af1.jpg?1726285028",
+          "img": "front/8/9/893b22a7-b46c-4473-8d88-11ddf4406af1.jpg",
           "power": "7",
           "toughness": "7",
           "cmc": 7,
@@ -1088,7 +1088,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/e/a/ea2e9f4c-b6b4-4199-93ae-10df75590715.jpg?1568003591",
+          "img": "front/e/a/ea2e9f4c-b6b4-4199-93ae-10df75590715.jpg",
           "cmc": 1,
           "rarity": "rare",
           "keywords": [
@@ -1107,7 +1107,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/3/e/3e65d501-6a11-4278-949b-53a3f3502fcc.jpg?1568003616",
+          "img": "front/3/e/3e65d501-6a11-4278-949b-53a3f3502fcc.jpg",
           "power": "3",
           "toughness": "3",
           "cmc": 3,
@@ -1128,7 +1128,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/7/8/78bbdc81-d47f-4f0a-b359-c146cc07931d.jpg?1568004562",
+          "img": "front/7/8/78bbdc81-d47f-4f0a-b359-c146cc07931d.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [],
@@ -1145,7 +1145,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/9/1/91a6f558-a754-4437-8328-00a6ca47f9b5.jpg?1601079764",
+          "img": "front/9/1/91a6f558-a754-4437-8328-00a6ca47f9b5.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [],
@@ -1162,7 +1162,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/2/2/22b01c98-c24b-4255-921f-4820f3d395ea.jpg?1568004646",
+          "img": "front/2/2/22b01c98-c24b-4255-921f-4820f3d395ea.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [],
@@ -1179,7 +1179,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/0/6/0693bcd2-8a3d-4dcf-8360-5b9891044dfe.jpg?1712354597",
+          "img": "front/0/6/0693bcd2-8a3d-4dcf-8360-5b9891044dfe.jpg",
           "power": "2",
           "toughness": "6",
           "cmc": 5,
@@ -1198,7 +1198,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/e/beda7acd-e970-4222-9577-5133765d6052.jpg?1673484842",
+          "img": "front/b/e/beda7acd-e970-4222-9577-5133765d6052.jpg",
           "power": "5",
           "toughness": "3",
           "cmc": 5,
@@ -1217,7 +1217,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/9/b95f36ad-2fb0-448c-b74f-a2a104240d8d.jpg?1651656076",
+          "img": "front/b/9/b95f36ad-2fb0-448c-b74f-a2a104240d8d.jpg",
           "cmc": 5,
           "rarity": "rare",
           "keywords": [
@@ -1236,7 +1236,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/4/5/455f4de4-c6f5-43f5-b9f0-f1e9414b7748.jpg?1675651939",
+          "img": "front/4/5/455f4de4-c6f5-43f5-b9f0-f1e9414b7748.jpg",
           "power": "6",
           "toughness": "6",
           "cmc": 6,
@@ -1258,7 +1258,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/5/d/5db24df1-580f-4ff5-91a7-9a64a8352883.jpg?1631587815",
+          "img": "front/5/d/5db24df1-580f-4ff5-91a7-9a64a8352883.jpg",
           "cmc": 3,
           "rarity": "uncommon",
           "keywords": [],
@@ -1275,7 +1275,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/b/2/b2c1a36e-a17b-4168-9048-4cc02dd464c5.jpg?1674675489",
+          "img": "front/b/2/b2c1a36e-a17b-4168-9048-4cc02dd464c5.jpg",
           "cmc": 3,
           "rarity": "uncommon",
           "keywords": [],
@@ -1292,7 +1292,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/e/b/eb40c41c-f5f9-4323-b6ac-e28e405909d0.jpg?1711198012",
+          "img": "front/e/b/eb40c41c-f5f9-4323-b6ac-e28e405909d0.jpg",
           "cmc": 3,
           "rarity": "uncommon",
           "keywords": [],
@@ -1309,7 +1309,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/f/c/fccfa714-7fa0-4846-88c9-570f13683aa4.jpg?1631235232",
+          "img": "front/f/c/fccfa714-7fa0-4846-88c9-570f13683aa4.jpg",
           "power": "3",
           "toughness": "3",
           "cmc": 4,
@@ -1328,7 +1328,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/8/3/839b9c4c-0752-4d4f-abbb-ec2c9f9e55fa.jpg?1726285044",
+          "img": "front/8/3/839b9c4c-0752-4d4f-abbb-ec2c9f9e55fa.jpg",
           "cmc": 4,
           "rarity": "uncommon",
           "keywords": [],
@@ -1345,7 +1345,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/2/4/244831cc-6383-4daf-aeee-ea4893fdb4c2.jpg?1591321030",
+          "img": "front/2/4/244831cc-6383-4daf-aeee-ea4893fdb4c2.jpg",
           "cmc": 4,
           "rarity": "uncommon",
           "keywords": [],
@@ -1362,7 +1362,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/a/dafeafa0-b937-4387-8626-449a810486b4.jpg?1568004576",
+          "img": "front/d/a/dafeafa0-b937-4387-8626-449a810486b4.jpg",
           "power": "4",
           "toughness": "4",
           "cmc": 5,
@@ -1381,7 +1381,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/3/9/39fe0369-afa8-4c28-8aa5-d63eb68f2281.jpg?1717190574",
+          "img": "front/3/9/39fe0369-afa8-4c28-8aa5-d63eb68f2281.jpg",
           "power": "1",
           "toughness": "1",
           "cmc": 2,
@@ -1400,7 +1400,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/3/9/3976affd-8c2b-499a-a946-b629c2ba59c7.jpg?1712354565",
+          "img": "front/3/9/3976affd-8c2b-499a-a946-b629c2ba59c7.jpg",
           "cmc": 2,
           "rarity": "common",
           "keywords": [],
@@ -1417,7 +1417,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/4/14b7c0df-5af2-4a01-86b3-b2ed5d60e613.jpg?1690004828",
+          "img": "front/1/4/14b7c0df-5af2-4a01-86b3-b2ed5d60e613.jpg",
           "cmc": 2,
           "rarity": "common",
           "keywords": [],
@@ -1434,7 +1434,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/e/a/eabb6ba4-4256-401c-96eb-6e2a14c50602.jpg?1568004535",
+          "img": "front/e/a/eabb6ba4-4256-401c-96eb-6e2a14c50602.jpg",
           "cmc": 2,
           "rarity": "common",
           "keywords": [
@@ -1453,7 +1453,7 @@
           "colors": [
             "G"
           ],
-          "img": "https://cards.scryfall.io/normal/front/f/6/f6eecb56-d5a3-4c2b-a479-dbec61da9fb4.jpg?1675905744",
+          "img": "front/f/6/f6eecb56-d5a3-4c2b-a479-dbec61da9fb4.jpg",
           "cmc": 3,
           "rarity": "common",
           "keywords": [],
@@ -1472,7 +1472,7 @@
             "R",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/2/b/2b8414f7-22c3-4e1c-934b-4a0e7acf951d.jpg?1673305450",
+          "img": "front/2/b/2b8414f7-22c3-4e1c-934b-4a0e7acf951d.jpg",
           "power": "2",
           "toughness": "3",
           "cmc": 4,
@@ -1493,7 +1493,7 @@
             "R",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/c/3/c366e1c0-f62d-41ce-baec-de11dbc1c5f4.jpg?1568003704",
+          "img": "front/c/3/c366e1c0-f62d-41ce-baec-de11dbc1c5f4.jpg",
           "power": "5",
           "toughness": "4",
           "cmc": 4,
@@ -1515,7 +1515,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg?1568004834",
+          "img": "front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg",
           "power": "2",
           "toughness": "5",
           "cmc": 4,
@@ -1538,7 +1538,7 @@
             "R",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg?1568003672",
+          "img": "front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg",
           "power": "2",
           "toughness": "5",
           "cmc": 5,
@@ -1561,7 +1561,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/7/7/77d4920f-94f7-4780-9c5f-f0df6f6d3d6e.jpg?1568004866",
+          "img": "front/7/7/77d4920f-94f7-4780-9c5f-f0df6f6d3d6e.jpg",
           "power": "*",
           "toughness": "*",
           "cmc": 3,
@@ -1583,7 +1583,7 @@
             "G",
             "R"
           ],
-          "img": "https://cards.scryfall.io/normal/front/1/6/1692c11b-018e-47bf-b38d-3c3e6b79b37c.jpg?1568003736",
+          "img": "front/1/6/1692c11b-018e-47bf-b38d-3c3e6b79b37c.jpg",
           "power": "5",
           "toughness": "5",
           "cmc": 4,
@@ -1603,7 +1603,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/6/e/6ea45414-4047-4921-b77d-dfcba2fe7694.jpg?1568004758",
+          "img": "front/6/e/6ea45414-4047-4921-b77d-dfcba2fe7694.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [
@@ -1623,7 +1623,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/7/d/7d415858-5f7d-406c-bb30-b4c48ebaad08.jpg?1568004745",
+          "img": "front/7/d/7d415858-5f7d-406c-bb30-b4c48ebaad08.jpg",
           "power": "5",
           "toughness": "7",
           "cmc": 7,
@@ -1643,7 +1643,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/2/7/275a3199-1297-4281-a95c-374bcdc198ce.jpg?1568004846",
+          "img": "front/2/7/275a3199-1297-4281-a95c-374bcdc198ce.jpg",
           "power": "2",
           "toughness": "2",
           "cmc": 2,
@@ -1666,7 +1666,7 @@
             "R",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/c/e/ce1d6f9b-2ca8-48b8-b4a6-46a61c7c3905.jpg?1673305611",
+          "img": "front/c/e/ce1d6f9b-2ca8-48b8-b4a6-46a61c7c3905.jpg",
           "cmc": 3,
           "rarity": "uncommon",
           "keywords": [],
@@ -1684,7 +1684,7 @@
             "G",
             "W"
           ],
-          "img": "https://cards.scryfall.io/normal/front/9/6/96feebe2-0a6b-4df8-8e7d-ee0bb82ac0c1.jpg?1568004827",
+          "img": "front/9/6/96feebe2-0a6b-4df8-8e7d-ee0bb82ac0c1.jpg",
           "cmc": 2,
           "rarity": "common",
           "keywords": [
@@ -1701,7 +1701,7 @@
           "mana": "{2}",
           "type": "Artifact",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/b/6b87b385-0ad9-4aa7-8a7e-c42b9c002a99.jpg?1721429592",
+          "img": "front/6/b/6b87b385-0ad9-4aa7-8a7e-c42b9c002a99.jpg",
           "cmc": 2,
           "rarity": "rare",
           "keywords": [],
@@ -1716,7 +1716,7 @@
           "mana": "{3}",
           "type": "Artifact",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/d/f/dfa8757b-ef7d-44b8-ae80-45c436e85c1e.jpg?1673485399",
+          "img": "front/d/f/dfa8757b-ef7d-44b8-ae80-45c436e85c1e.jpg",
           "cmc": 3,
           "rarity": "rare",
           "keywords": [
@@ -1733,7 +1733,7 @@
           "mana": "{4}",
           "type": "Artifact",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/c/6c7a441b-e4af-41ba-85a4-fcb4f40534c3.jpg?1568004971",
+          "img": "front/6/c/6c7a441b-e4af-41ba-85a4-fcb4f40534c3.jpg",
           "cmc": 4,
           "rarity": "rare",
           "keywords": [
@@ -1750,7 +1750,7 @@
           "mana": "{10}",
           "type": "Creature — Eldrazi",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/9/3/935ad5f7-f86c-4fea-94fe-d111d4435ac4.jpg?1625192822",
+          "img": "front/9/3/935ad5f7-f86c-4fea-94fe-d111d4435ac4.jpg",
           "power": "10",
           "toughness": "10",
           "cmc": 10,
@@ -1767,7 +1767,7 @@
           "mana": "{1}",
           "type": "Artifact",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/1/219210d3-263c-41c4-9211-0e59b2d4ccf3.jpg?1732084010",
+          "img": "front/2/1/219210d3-263c-41c4-9211-0e59b2d4ccf3.jpg",
           "cmc": 1,
           "rarity": "uncommon",
           "keywords": [],
@@ -1782,7 +1782,7 @@
           "mana": "{2}",
           "type": "Artifact — Equipment",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/f/2f314778-7fa6-4807-b707-9f490dbf0d63.jpg?1717190783",
+          "img": "front/2/f/2f314778-7fa6-4807-b707-9f490dbf0d63.jpg",
           "cmc": 2,
           "rarity": "uncommon",
           "keywords": [
@@ -1799,7 +1799,7 @@
           "mana": "{4}",
           "type": "Artifact Creature — Scarecrow",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/3/23eb0fce-2e69-4280-8ee3-85736765fbbd.jpg?1712354895",
+          "img": "front/2/3/23eb0fce-2e69-4280-8ee3-85736765fbbd.jpg",
           "power": "1",
           "toughness": "4",
           "cmc": 4,
@@ -1816,7 +1816,7 @@
           "mana": "",
           "type": "Land — Mountain Forest",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/5/b/5becc1a4-c837-4885-92bd-9fdf7a820bb8.jpg?1717190904",
+          "img": "front/5/b/5becc1a4-c837-4885-92bd-9fdf7a820bb8.jpg",
           "cmc": 0,
           "rarity": "rare",
           "keywords": [],
@@ -1831,7 +1831,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/a/0/a0e58240-0a3e-4abf-b296-b97045de4677.jpg?1726285408",
+          "img": "front/a/0/a0e58240-0a3e-4abf-b296-b97045de4677.jpg",
           "cmc": 0,
           "rarity": "rare",
           "keywords": [],
@@ -1846,7 +1846,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/9/8/9834b4e1-7e9f-4f93-a2aa-13a52e8a11fc.jpg?1568005135",
+          "img": "front/9/8/9834b4e1-7e9f-4f93-a2aa-13a52e8a11fc.jpg",
           "cmc": 0,
           "rarity": "rare",
           "keywords": [],
@@ -1861,7 +1861,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/3/634bb7ce-d361-4617-acfa-acd5ae7fb1ff.jpg?1692936115",
+          "img": "front/6/3/634bb7ce-d361-4617-acfa-acd5ae7fb1ff.jpg",
           "cmc": 0,
           "rarity": "rare",
           "keywords": [],
@@ -1876,7 +1876,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/c/2/c26abe8c-4f06-448d-9e0e-8214592cb885.jpg?1673149468",
+          "img": "front/c/2/c26abe8c-4f06-448d-9e0e-8214592cb885.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1891,7 +1891,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/4/4/445ffa4d-d5ca-4ba6-b589-40d8490a4032.jpg?1674676454",
+          "img": "front/4/4/445ffa4d-d5ca-4ba6-b589-40d8490a4032.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1906,7 +1906,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/9/294b7e06-4758-4590-b1f0-b7f97537218f.jpg?1673149513",
+          "img": "front/2/9/294b7e06-4758-4590-b1f0-b7f97537218f.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1921,7 +1921,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/1/9/194c6ee7-c220-41a5-bf44-5e1d8d92879b.jpg?1712355055",
+          "img": "front/1/9/194c6ee7-c220-41a5-bf44-5e1d8d92879b.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1936,7 +1936,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/3/0/304b4d37-53e1-44a3-a892-627439edaf6f.jpg?1674676490",
+          "img": "front/3/0/304b4d37-53e1-44a3-a892-627439edaf6f.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1951,7 +1951,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/0/0/00a9814a-51f7-43b4-8835-91309b0c9d31.jpg?1637632166",
+          "img": "front/0/0/00a9814a-51f7-43b4-8835-91309b0c9d31.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1966,7 +1966,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/9/a/9a8b2950-8c5d-45ad-b2ce-59d96eca1e71.jpg?1726285456",
+          "img": "front/9/a/9a8b2950-8c5d-45ad-b2ce-59d96eca1e71.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1981,7 +1981,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/a/2/a2a424ea-ef32-4ac5-8f8c-3ea1839f01d4.jpg?1730489588",
+          "img": "front/a/2/a2a424ea-ef32-4ac5-8f8c-3ea1839f01d4.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -1996,7 +1996,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/e/8/e8af7e5a-806b-4264-9010-f497b40a7fb4.jpg?1673149548",
+          "img": "front/e/8/e8af7e5a-806b-4264-9010-f497b40a7fb4.jpg",
           "cmc": 0,
           "rarity": "uncommon",
           "keywords": [],
@@ -2011,7 +2011,7 @@
           "mana": "",
           "type": "Basic Land — Forest",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/e/e/ee56689a-da7b-4cd7-8767-e3f514b6db9e.jpg?1675645643",
+          "img": "front/e/e/ee56689a-da7b-4cd7-8767-e3f514b6db9e.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2026,7 +2026,7 @@
           "mana": "",
           "type": "Basic Land — Plains",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/3/7/37edc4b5-75f5-4b43-a57e-a8192565a2a0.jpg?1730489619",
+          "img": "front/3/7/37edc4b5-75f5-4b43-a57e-a8192565a2a0.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2041,7 +2041,7 @@
           "mana": "",
           "type": "Basic Land — Mountain",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/9/69eea766-b22e-4c2d-9e98-d57f38e031da.jpg?1576267490",
+          "img": "front/6/9/69eea766-b22e-4c2d-9e98-d57f38e031da.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2056,7 +2056,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/a/2/a2803e9d-cb96-44d8-9702-36d9c4d2ee45.jpg?1591321763",
+          "img": "front/a/2/a2803e9d-cb96-44d8-9702-36d9c4d2ee45.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [
@@ -2076,7 +2076,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/2/4/247579f6-cf8c-4c61-aae6-e01c1d9237dc.jpg?1562823368",
+          "img": "front/2/4/247579f6-cf8c-4c61-aae6-e01c1d9237dc.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2091,7 +2091,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/6/667b6c3b-75cc-4adf-b205-80925ca76d2a.jpg?1730767633",
+          "img": "front/6/6/667b6c3b-75cc-4adf-b205-80925ca76d2a.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2106,7 +2106,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/7/4/74f9c819-719a-461b-8e7e-a26c88e8099b.jpg?1692939977",
+          "img": "front/7/4/74f9c819-719a-461b-8e7e-a26c88e8099b.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2121,7 +2121,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/6/a/6a546a28-8df5-4080-9f50-af86d84a066f.jpg?1673485911",
+          "img": "front/6/a/6a546a28-8df5-4080-9f50-af86d84a066f.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2136,7 +2136,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/8/0/8040efe1-8ece-45bd-8426-443090baa55b.jpg?1592761872",
+          "img": "front/8/0/8040efe1-8ece-45bd-8426-443090baa55b.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2151,7 +2151,7 @@
           "mana": "",
           "type": "Land",
           "colors": [],
-          "img": "https://cards.scryfall.io/normal/front/7/4/74d8849c-fe0d-4749-9165-a22f8643888a.jpg?1673306273",
+          "img": "front/7/4/74d8849c-fe0d-4749-9165-a22f8643888a.jpg",
           "cmc": 0,
           "rarity": "common",
           "keywords": [],
@@ -2184,7 +2184,7 @@
           "R",
           "W"
         ],
-        "img": "https://cards.scryfall.io/normal/front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg?1568003672",
+        "img": "front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg",
         "power": "2",
         "toughness": "5",
         "cmc": 5,
@@ -2208,7 +2208,7 @@
           "R",
           "W"
         ],
-        "img": "https://cards.scryfall.io/normal/front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg?1568003672",
+        "img": "front/d/0/d0825bcd-8cf8-498a-a61e-406f136e1f3f.jpg",
         "power": "2",
         "toughness": "5",
         "cmc": 5,

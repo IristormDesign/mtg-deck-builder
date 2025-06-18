@@ -161,10 +161,21 @@ export default {
 			}
 		},
 		cardImage () {
-			if (!this.card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
-				return this.card.img
+			const card = this.card
+
+			/* In newer card data, each card image's URL is only the unique fragment of the URL. If the card's data is older, then the image URL will be the whole URL instead. */
+			function imgURL (string) {
+				if (string.startsWith('https://')) {
+					return string
+				} else {
+					return `https://cards.scryfall.io/normal/${string}`
+				}
+			}
+
+			if (!card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
+				return imgURL(card.img)
 			} else { // Else, the displayed card is double-faced and showing its back face.
-				return this.card.img2
+				return imgURL(card.img2)
 			}
 		}
 	},

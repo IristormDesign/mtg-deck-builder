@@ -4,6 +4,15 @@ import stringMethods from '@/mixins/stringMethods.js'
 import doubleFacedCards from './doubleFacedCards'
 import deckColors from '@/mixins/deckColors.js'
 
+function contractCardImageURL (url) {
+	const regexBeginningFragment = /^https:\/\/cards.scryfall.io\/normal\//i // The substring `https://cards.scryfall.io/normal/`, located at the beginning of a string.
+	const regexEndingFragment = /\?\d*$/i // A substring of a question mark followed by a series of digits, located at the end of string.
+
+	return url
+		.replace(regexBeginningFragment, '')
+		.replace(regexEndingFragment, '')
+}
+
 export default {
 	mixins: [latestDataVersions, stringMethods, doubleFacedCards, deckColors],
 	data () {
@@ -212,10 +221,10 @@ export default {
 				}
 
 				if (data.image_uris) {
-					newCard.img = data.image_uris.normal
+					newCard.img = contractCardImageURL(data.image_uris.normal)
 				} else {
-					newCard.img = dataFace1.image_uris.normal
-					newCard.img2 = dataFace2.image_uris.normal
+					newCard.img = contractCardImageURL(dataFace1.image_uris.normal)
+					newCard.img2 = contractCardImageURL(dataFace2.image_uris.normal)
 				}
 
 				if (data.power) {
@@ -243,7 +252,7 @@ export default {
 				newCard.mana = data.mana_cost
 				newCard.type = this.curlApostrophes(data.type_line)
 				newCard.colors = data.colors
-				newCard.img = data.image_uris.normal
+				newCard.img = contractCardImageURL(data.image_uris.normal)
 
 				if (data.power) {
 					newCard.power = data.power
