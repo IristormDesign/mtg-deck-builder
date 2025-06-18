@@ -26,26 +26,21 @@
 						appear-active-class="card-browse-appear-active"
 					>
 						<div
-							class="card-shadow"
-							:class="(turningOverCard) ? 'card-turning-over' : null"
+							class="card-shadow" :class="(turningOverCard) ? 'card-turning-over' : null"
 							:key="drawnCards || card.name"
 						><!-- The shadow is needed as its own element because Safari doesn't support more than drop-shadow filter on one element. -->
 							<div class="card-edge">
 								<a
-									:href="card.link"
+									:href="cardLink"
 									target="_blank"
 									ref="cardLink"
 									:class="shouldRotateSideways ? 'sideways' : null"
 									@focus="$store.commit('showingAnyPopup', false)"
 								>
-									<div
-										class="card-shape"
-										:class="cardColorClass"
-									>
+									<div class="card-shape" :class="cardColorClass">
 										<img
 											:src="cardImage"
-											width="488"
-											height="680"
+											width="488" height="680"
 											:alt="card.name"
 										/>
 									</div>
@@ -161,8 +156,6 @@ export default {
 			}
 		},
 		cardImage () {
-			const card = this.card
-
 			/* In newer card data, each card image's URL is only the unique fragment of the URL. If the card's data is older, then the image URL will be the whole URL instead. */
 			function imgURL (string) {
 				if (string.startsWith('https://')) {
@@ -172,10 +165,19 @@ export default {
 				}
 			}
 
-			if (!card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
-				return imgURL(card.img)
+			if (!this.card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
+				return imgURL(this.card.img)
 			} else { // Else, the displayed card is double-faced and showing its back face.
-				return imgURL(card.img2)
+				return imgURL(this.card.img2)
+			}
+		},
+		cardLink () {
+			const string = this.card.link
+
+			if (string.startsWith('https://')) {
+				return string
+			} else {
+				return `https://scryfall.com/card/${string}?utm_source=api`
 			}
 		}
 	},

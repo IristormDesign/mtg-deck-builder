@@ -5,8 +5,16 @@ import doubleFacedCards from './doubleFacedCards'
 import deckColors from '@/mixins/deckColors.js'
 
 function contractCardImageURL (url) {
-	const regexBeginningFragment = /^https:\/\/cards.scryfall.io\/normal\//i // The substring `https://cards.scryfall.io/normal/`, located at the beginning of a string.
+	const regexBeginningFragment = /^https:\/\/cards\.scryfall\.io\/normal\//i // The substring `https://cards.scryfall.io/normal/`, located at the beginning of a string.
 	const regexEndingFragment = /\?\d*$/i // A substring of a question mark followed by a series of digits, located at the end of string.
+
+	return url
+		.replace(regexBeginningFragment, '')
+		.replace(regexEndingFragment, '')
+}
+function contractCardLinkURL (url) {
+	const regexBeginningFragment = /^https:\/\/scryfall\.com\/card\//i // The substring `https://scryfall.com/card/`, located at the beginning of the string.
+	const regexEndingFragment = /\?utm_source=api$/i // The substring `?utm_source=api`, located at the end of the string.
 
 	return url
 		.replace(regexBeginningFragment, '')
@@ -271,7 +279,7 @@ export default {
 			newCard.rarity = data.rarity
 			newCard.keywords = data.keywords
 			newCard.layout = data.layout
-			newCard.link = data.scryfall_uri
+			newCard.link = contractCardLinkURL(data.scryfall_uri)
 			newCard.imgVersion = this.latestImageVersion
 
 			if (enteredQty) {
