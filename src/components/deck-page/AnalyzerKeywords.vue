@@ -73,6 +73,8 @@ export default {
 			const counts = this.keywordCounts
 
 			this.filteredCards().forEach(card => {
+				if (!card.keywords) return
+
 				card.keywords.forEach(kw => {
 					if (!counts[kw]) {
 						counts[kw] = 0

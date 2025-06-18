@@ -277,6 +277,8 @@ export default {
 		},
 		filteredCardsByKeywords () {
 			return this.deck.cards.filter(card => {
+				if (!card.keywords) return null
+
 				for (const kw in card.keywords) {
 					if (this.analyzerFilter.attribute === card.keywords[kw]) {
 						return card
