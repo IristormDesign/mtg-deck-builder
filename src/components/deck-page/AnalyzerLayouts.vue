@@ -68,7 +68,9 @@ export default {
 		countLayouts () {
 			this.filteredCards().forEach(
 				({ layout, qty }) => {
-					if (!layout) return
+					if (!layout) {
+						layout = 'normal'
+					}
 
 					if (!this.layoutStats[layout]) {
 						this.layoutStats[layout] = {

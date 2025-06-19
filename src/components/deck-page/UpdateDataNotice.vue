@@ -119,9 +119,13 @@ export default {
 		},
 		findOutdatedCards (list) {
 			for (const card of list.cards) {
-				if (card.type.includes('Planeswalker')) {
-					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on the newest version.
-				} else if (card.layout) continue // Any non-planeswalker card object with the `layout` key means that card's data set is on the newest version.
+				if (!card.img.startsWith('https://')) {
+					continue // Any card object with an `img` key whose value does NOT start with "https://" means that card's data set is on the newest version.
+				} else if (card.type.includes('Planeswalker')) {
+					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on a new-enough version.
+				} else if (card.layout) {
+					continue // Any other card object with the `layout` key means that card's data set is on a new-enough version.
+				}
 
 				const dataToPush = {
 					inSideboard: list === this.deck.sideboard,

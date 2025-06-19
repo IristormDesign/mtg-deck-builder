@@ -277,12 +277,15 @@ export default {
 				newCard.cmc = data.cmc
 			}
 			newCard.rarity = data.rarity
-			newCard.layout = data.layout
 			newCard.link = contractCardLinkURL(data.scryfall_uri)
 			newCard.imgVersion = this.latestImageVersion
 
 			if (data.keywords.length > 0) {
 				newCard.keywords = data.keywords
+			}
+
+			if (data.layout !== 'normal') {
+				newCard.layout = data.layout
 			}
 
 			if (enteredQty) {
