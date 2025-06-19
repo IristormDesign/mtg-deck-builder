@@ -106,6 +106,8 @@ export default {
 					switch (attr) {
 						case 'Special':
 							return 'cards of special rarity'
+						case 'Bonus':
+							return 'bonus cards'
 						case 'Other':
 							return 'cards of non-standard rarities'
 						default:

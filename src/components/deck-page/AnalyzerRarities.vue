@@ -93,22 +93,22 @@ export default {
 				switch (rarity) {
 					case 'common':
 						cts.Common += qty
-						break
+						return
 					case 'uncommon':
 						cts.Uncommon += qty
-						break
+						return
 					case 'rare':
 						cts.Rare += qty
-						break
+						return
 					case 'mythic':
 						cts['Mythic rare'] += qty
-						break
+						return
 					case 'special':
 						cts.Special += qty
-						break
+						return
 					case 'bonus':
 						cts.Bonus += qty
-						break
+						return
 					default:
 						cts.Other += qty
 				}
