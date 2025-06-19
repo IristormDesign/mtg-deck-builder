@@ -14,6 +14,8 @@ export default {
 
 				if (this.hasGapAfter(thisCard, nextCard)) {
 					thisCard.gapAfter = true
+				} else {
+					delete thisCard.gapAfter
 				}
 			}
 		},
