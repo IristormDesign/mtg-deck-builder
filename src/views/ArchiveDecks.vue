@@ -147,9 +147,10 @@ export default {
 		},
 		initializeCardDataReformatting () {
 			const reformatData = (card) => {
-				if (!card) return
+				/* First check whether a `card` exists, and whether it has the object type (rather than the string type, as some old versions of `viewedCard` data used to be.). */
+				if (!card || typeof card !== 'object') return
 
-				this.removeAnyObsoleteKeys(card)
+				this.removeExtraObjectKeys(card)
 
 				card.rarity = this.updateRarityDataFormat(card.rarity)
 			}
@@ -169,25 +170,19 @@ export default {
 				this.$store.commit('decks', this.$store.state.decks)
 			})
 		},
-		removeAnyObsoleteKeys (card) {
-			/* First check whether a `card` exists, and whether it has the object type (rather than the string type, as some old versions of `viewedCard` data used to be.). */
-			if (!card || typeof card !== 'object') {
-				return
+		removeExtraObjectKeys (card) {
+			if ('gapAfter' in card && card.gapAfter !== true) {
+				delete card.gapAfter
+			}
+			if ('keywords' in card && card.keywords.length === 0) {
+				delete card.keywords
+			}
+			if ('starred' in card && card.starred !== true) {
+				delete card.starred
 			}
 
-			const obsoleteKeys = ['maxQty', 'starred', 'uniqueID']
-
-			for (const key of obsoleteKeys) {
-				if (key in card) {
-					if (key === 'starred') {
-						if (card[key] !== true) {
-							delete card[key]
-						}
-					} else {
-						delete card[key]
-					}
-				}
-			}
+			delete card.maxQty
+			delete card.uniqueID
 		},
 		updateRarityDataFormat (rarity) {
 			switch (rarity) {
