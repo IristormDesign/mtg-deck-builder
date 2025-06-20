@@ -94,8 +94,6 @@ $animation-duration-card-browse: $transition-delay-card;
 @mixin card-edge-filters ($position) {
 	$color-card-edge: color.adjust(#fff, $lightness: -66.67%);
 
-	will-change: filter;
-
 	@if $position == 'left' {
 		filter: drop-shadow(1px 1px 0 $color-card-edge);
 	}
@@ -310,7 +308,6 @@ $animation-duration-card-browse: $transition-delay-card;
 		.card-shadow {
 			width: 100%;
 			height: 100%;
-			will-change: auto;
 
 			&,
 			&:hover,
