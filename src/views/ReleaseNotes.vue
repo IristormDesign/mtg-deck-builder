@@ -32,7 +32,7 @@
 			<h4>June 17</h4>
 			<ul>
 				<li>
-					<p>In the List Editor, when you click the quantity text field for any card, the quantity number becomes automatically highlighted so that you can replace that number with a new one right away.</p>
+					<p>In the List Editor, when you click the quantity text field for any card, the quantity number becomes automatically highlighted so that you can replace that number with a new one right away. (This effect doesn’t work if you’re using the Safari web browser, but you can double-click on the quantity text field instead.)</p>
 				</li>
 				<li>
 					<p>In the List Editor, the card sorter option “P/T sum” is renamed to just “P/T.”</p>
