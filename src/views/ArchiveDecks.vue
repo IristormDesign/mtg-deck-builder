@@ -127,7 +127,7 @@ export default {
 			})
 		},
 		archiveSelectedDecks () {
-			this.removeAnyObsoleteKeys()
+			this.initializeCardDataReformatting()
 
 			const transitoryLink = document.createElement('a')
 
@@ -145,43 +145,77 @@ export default {
 				this.hasBeenArchived = true
 			}, 250) // Allow some time for the file browser to appear before showing the result message.
 		},
-		removeAnyObsoleteKeys () {
-			function perCard (card) {
-				/* First check whether a `card` exists, and whether it has the object type (rather than the string type, as some old versions of `viewedCard` data used to be.). */
-				if (!card || typeof card !== 'object') {
-					return null
-				}
+		initializeCardDataReformatting () {
+			const reformatData = (card) => {
+				if (!card) return
 
-				const obsoleteKeys = ['maxQty', 'starred', 'uniqueID']
+				this.removeAnyObsoleteKeys(card)
 
-				for (const key of obsoleteKeys) {
-					if (key in card) {
-						if (key === 'starred') {
-							if (card[key] !== true) {
-								delete card[key]
-							}
-						} else {
-							delete card[key]
-						}
-					}
-				}
-
-				return card
+				card.rarity = this.updateRarityDataFormat(card.rarity)
 			}
 
 			this.$store.state.decks.forEach(deck => {
-				deck.cards = deck.cards.map(
-					card => perCard(card)
-				)
-				deck.sideboard.cards = deck.sideboard.cards.map(
-					card => perCard(card)
-				)
-
-				deck.viewedCard = perCard(deck.viewedCard)
-				deck.sideboard.viewedCard = perCard(deck.sideboard.viewedCard)
+				deck.cards.forEach(card => {
+					reformatData(card)
+				})
+				deck.sideboard.cards.forEach(card => {
+					reformatData(card)
+				})
+				deck.viewedCard = reformatData(deck.viewedCard)
+				deck.sideboard.viewedCard = reformatData(deck.sideboard.viewedCard)
 			})
 
-			this.$store.commit('decks', this.$store.state.decks)
+			this.$nextTick(() => {
+				this.$store.commit('decks', this.$store.state.decks)
+			})
+		},
+		removeAnyObsoleteKeys (card) {
+			/* First check whether a `card` exists, and whether it has the object type (rather than the string type, as some old versions of `viewedCard` data used to be.). */
+			if (!card || typeof card !== 'object') {
+				return
+			}
+
+			const obsoleteKeys = ['maxQty', 'starred', 'uniqueID']
+
+			for (const key of obsoleteKeys) {
+				if (key in card) {
+					if (key === 'starred') {
+						if (card[key] !== true) {
+							delete card[key]
+						}
+					} else {
+						delete card[key]
+					}
+				}
+			}
+		},
+		updateRarityDataFormat (rarity) {
+			switch (rarity) {
+				case 'common':
+				case 'c':
+					return 'c'
+				case 'uncommon':
+				case 'u':
+					return 'u'
+				case 'rare':
+				case 'r':
+					return 'r'
+				case 'mythic':
+				case 'm':
+					return 'm'
+				case 'special':
+				case 's':
+					return 's'
+				case 'bonus':
+				case 'b':
+					return 'b'
+			}
+
+			if (rarity.charAt(0) === '_') {
+				return rarity
+			} else {
+				return '_' + rarity
+			}
 		},
 		generateJSON () {
 			let data = '{"decks":['
