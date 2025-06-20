@@ -78,16 +78,22 @@ export default {
 
 			switch (this.card.rarity) {
 				case 'common':
+				case 'c':
 					return symbol.c
 				case 'uncommon':
+				case 'u':
 					return symbol.u
 				case 'rare':
+				case 'r':
 					return symbol.r
 				case 'mythic':
+				case 'm':
 					return symbol.m
 				case 'special':
+				case 's':
 					return symbol.s
 				case 'bonus':
+				case 'b':
 					return symbol.b
 				default:
 					return null

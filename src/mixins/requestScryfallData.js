@@ -276,9 +276,21 @@ export default {
 			if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
 				newCard.cmc = data.cmc
 			}
-			newCard.rarity = data.rarity
 			newCard.link = contractCardLinkURL(data.scryfall_uri)
 			newCard.imgVersion = this.latestImageVersion
+
+			switch (data.rarity) {
+				case 'common':
+				case 'uncommon':
+				case 'rare':
+				case 'mythic':
+				case 'special':
+				case 'bonus':
+					newCard.rarity = data.rarity.charAt(0)
+					break
+				default: // If the new card's rarity is somehow not any of the known rarities, then set the card's rarity value to a string comprising an underscore followed by the name of this unknown rarity. The underscore is important in case the unknown rarity's name happens to begin with the same letter as one of the known rarities' first letter, thus preventing bugs where the app checks the rarity value's first letter.
+					newCard.rarity = '_' + data.rarity
+			}
 
 			if (data.keywords.length > 0) {
 				newCard.keywords = data.keywords

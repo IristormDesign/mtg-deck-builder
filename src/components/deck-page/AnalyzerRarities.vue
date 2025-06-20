@@ -92,21 +92,27 @@ export default {
 			this.filteredCards().forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
+					case 'c':
 						cts.Common += qty
 						return
 					case 'uncommon':
+					case 'u':
 						cts.Uncommon += qty
 						return
 					case 'rare':
+					case 'r':
 						cts.Rare += qty
 						return
 					case 'mythic':
+					case 'm':
 						cts['Mythic rare'] += qty
 						return
 					case 'special':
+					case 's':
 						cts.Special += qty
 						return
 					case 'bonus':
+					case 'b':
 						cts.Bonus += qty
 						return
 					default:

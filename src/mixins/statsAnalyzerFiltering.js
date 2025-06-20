@@ -251,24 +251,23 @@ export default {
 		filteredCardsByRarities () {
 			return this.deck.cards.filter(card => {
 				const filter = this.analyzerFilter.attribute.toLowerCase()
+				const rarityLetters = ['c', 'u', 'r', 'm', 's', 'b']
+				const cardRarityFirstLetter = card.rarity.charAt(0)
 
-				if (filter === card.rarity) {
-					return card
-				} else if (
-					filter === 'mythic rare' &&
-					card.rarity === 'mythic'
-				) {
-					return card
-				} else if (filter === 'other') {
-					switch (card.rarity) {
-						case 'common':
-						case 'uncommon':
-						case 'rare':
-						case 'mythic':
-						case 'special':
-							return null
-						default:
-							return card
+				for (const letter of rarityLetters) {
+					if (
+						filter.charAt(0) === letter &&
+						cardRarityFirstLetter === letter
+					) {
+						return card
+					}
+				}
+
+				if (filter === 'other') {
+					if (rarityLetters.includes(cardRarityFirstLetter)) {
+						return null
+					} else {
+						return card
 					}
 				}
 
