@@ -62,11 +62,11 @@ $animation-duration-card-browse: $transition-delay-card;
 	$rotate: none;
 
 	@if $rise-from == 'left' {
-		$translate: translate(0, $lhse*.5);
+		$translate: translate($lhse*1.5, $lhse*3);
 		$rotate: rotate(math.div(-360, 192) * 1deg);
 	}
 	@if $rise-from == 'right' {
-		$translate: translate(-33.33%, $lhse*.5);
+		$translate: translate(-$lhse*1.5, $lhse*3);
 		$rotate: rotate(math.div(360, 192) * 1deg);
 	}
 
@@ -74,19 +74,19 @@ $animation-duration-card-browse: $transition-delay-card;
 		&:hover,
 		&:focus,
 		&.kb-highlight {
-			transform: $translate $rotate;
+			transform: scale(1.5) $translate $rotate;
 
 			&.sideways {
 				@if $rise-from == 'left' {
-					$translate: translate($lhse*3, -$lhse*2);
+					$translate: translate($lhse*3.5, $lhse);
 					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
 				}
 				@if $rise-from == 'right' {
-					$translate: translate(-$lhse*6.5, -$lhse*2);
+					$translate: translate(-$lhse*3.5, $lhse);
 					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
 				}
 
-				transform: $translate $rotate;
+				transform: scale(1.5) $translate $rotate;
 			}
 		}
 	}
@@ -145,18 +145,18 @@ $animation-duration-card-browse: $transition-delay-card;
 	a {
 		display: block;
 		transition: $transition-duration-card-image-hover-fast ease 0s;
-		transition-property: width, height, transform;
+		transition-property: transform;
 		border-radius: $border-radius-group;
 		outline-offset: 0px;
-		width: 100%;
-		height: 100%;
+		// width: 100%;
+		// height: 100%;
 
 		&:hover,
 		&:focus,
 		&.kb-highlight {
 			transition-duration: $transition-duration-card-image-hover-slow;
-			width: 150%;
-			height: 150%;
+			// width: 150%;
+			// height: 150%;
 		}
 		&:hover {
 			transition-delay: $transition-delay-card;
