@@ -153,15 +153,14 @@ export default {
 				this.removeExtraObjectKeys(card)
 
 				card.rarity = this.updateRarityDataFormat(card.rarity)
+
+				return card
 			}
 
 			this.$store.state.decks.forEach(deck => {
-				deck.cards.forEach(card => {
-					reformatData(card)
-				})
-				deck.sideboard.cards.forEach(card => {
-					reformatData(card)
-				})
+				deck.cards.forEach(card => reformatData(card))
+				deck.sideboard.cards.forEach(card => reformatData(card))
+
 				deck.viewedCard = reformatData(deck.viewedCard)
 				deck.sideboard.viewedCard = reformatData(deck.sideboard.viewedCard)
 			})
