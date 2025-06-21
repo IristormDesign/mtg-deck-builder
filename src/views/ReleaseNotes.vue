@@ -19,13 +19,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>June 19</h4>
+			<h4>June 21</h4>
 			<ul>
 				<li>
 					<p>In the List Editor, the card sorter has a pop-up tip explaining each card-sorting option.</p>
 				</li>
 				<li>
 					<p>In the Stats Analyzer, Phyrexian mana symbols are now counted distinctively from hybrid mana symbols.</p>
+				</li>
+				<li>
+					<p>Significant optimizations are made to the app’s code.</p>
 				</li>
 			</ul>
 
