@@ -4,7 +4,7 @@ import stringMethods from '@/mixins/stringMethods.js'
 import doubleFacedCards from './doubleFacedCards'
 import deckColors from '@/mixins/deckColors.js'
 
-function contractCardImageURL (url) {
+function truncateCardImageURL (url) {
 	const regexBeginningFragment = /^https:\/\/cards\.scryfall\.io\/normal\//i // The substring `https://cards.scryfall.io/normal/`, located at the beginning of a string.
 	const regexEndingFragment = /\?\d*$/i // A substring of a question mark followed by a series of digits, located at the end of string.
 
@@ -12,7 +12,7 @@ function contractCardImageURL (url) {
 		.replace(regexBeginningFragment, '')
 		.replace(regexEndingFragment, '')
 }
-function contractCardLinkURL (url) {
+function truncateCardLinkURL (url) {
 	const regexBeginningFragment = /^https:\/\/scryfall\.com\/card\//i // The substring `https://scryfall.com/card/`, located at the beginning of the string.
 	const regexEndingFragment = /\?utm_source=api$/i // The substring `?utm_source=api`, located at the end of the string.
 
@@ -229,10 +229,10 @@ export default {
 				}
 
 				if (data.image_uris) {
-					newCard.img = contractCardImageURL(data.image_uris.normal)
+					newCard.img = truncateCardImageURL(data.image_uris.normal)
 				} else {
-					newCard.img = contractCardImageURL(dataFace1.image_uris.normal)
-					newCard.img2 = contractCardImageURL(dataFace2.image_uris.normal)
+					newCard.img = truncateCardImageURL(dataFace1.image_uris.normal)
+					newCard.img2 = truncateCardImageURL(dataFace2.image_uris.normal)
 				}
 
 				if (data.power) {
@@ -260,7 +260,7 @@ export default {
 				newCard.mana = data.mana_cost
 				newCard.type = this.curlApostrophes(data.type_line)
 				newCard.colors = data.colors
-				newCard.img = contractCardImageURL(data.image_uris.normal)
+				newCard.img = truncateCardImageURL(data.image_uris.normal)
 
 				if (data.power) {
 					newCard.power = data.power
@@ -276,7 +276,7 @@ export default {
 			if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
 				newCard.cmc = data.cmc
 			}
-			newCard.link = contractCardLinkURL(data.scryfall_uri)
+			newCard.link = truncateCardLinkURL(data.scryfall_uri)
 			newCard.imgVersion = this.latestImageVersion
 
 			switch (data.rarity) {
