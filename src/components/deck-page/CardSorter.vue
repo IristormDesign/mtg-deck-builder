@@ -76,8 +76,8 @@
 		<standard-dialog dialogID="sorterTip">
 			<div class="scrollable-region">
 				<h4>About Card-Sorting Options</h4>
-				<p>You can instantly rearrange the order of all card names by certain card attributes you choose. The sorting options and their effects are the following:</p>
-				<guide-card-sorter-options :displayAsDialog="true" />
+				<p>You can instantly rearrange the card names in your deck’s lists according to a certain card attribute you choose. The sorting options and their effects are the following:</p>
+				<guide-card-sorter-options :displayAsDialog="true" class="small" />
 				<p>For more info about the card sorter tool, see the <router-link to="/guide/list-editor#card-sorter">User Guide</router-link>.</p>
 			</div>
 		</standard-dialog>

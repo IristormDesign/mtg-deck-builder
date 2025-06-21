@@ -46,8 +46,7 @@ dialog {
 		max-height: calc(100vh - #{$lhse*4});
 		overflow-x: hidden;
 		padding: $padding-dialog;
-		padding-bottom: $lhse*3;
-		font-size: $font-size-small;
+		padding-bottom: $lhse*2.5;
 
 		h4 {
 			font-size: $font-size-bigger;
