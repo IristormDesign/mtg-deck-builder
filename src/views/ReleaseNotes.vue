@@ -13,7 +13,8 @@
 				<figcaption>Illustration from <a href="https://scryfall.com/card/bro/65/take-flight" target="_blank">Take Flight<svg><use href="#open-in-new-icon" /></svg></a> by Joshua Cairos</figcaption>
 			</figure>
 			<p>MTG Deck Builder by Iristorm Design is a work-in-progress, and so it’s been updated often. This page logs the changes made in each update, starting from the latest release.</p>
-			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text revisions. Because those types of changes are trivial and frequent, they’re not announced in every release note, even when those changes are made.</p>
+			<p>Updates usually include at least minor optimizations, minor visual tweaks, or minor text revisions. Because those types of changes are trivial and frequent, they’re not announced in each release note, even when those changes are made.</p>
+			<p>If you’ve discovered that a recent update in MTG Deck Builder has caused a bug, please <router-link to="/contact">report it to the app developer</router-link> so that it can be fixed!</p>
 		</header>
 
 		<section>
@@ -28,7 +29,7 @@
 					<p>In the Stats Analyzer, Phyrexian mana symbols are now counted distinctively from hybrid mana symbols.</p>
 				</li>
 				<li>
-					<p>Significant optimizations are made to the app’s code.</p>
+					<p>Significant optimizations are made to the app’s code, improving performance.</p>
 				</li>
 			</ul>
 
@@ -101,7 +102,7 @@
 			<h4>May 28</h4>
 			<ul>
 				<li>
-					<p>An under-the-hood adjustment has boosted this app’s loading speed. However, it could cause some parts of the app to break, but only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems (but <router-link to="/contact">let the developer know</router-link> if you do).</p>
+					<p>An under-the-hood adjustment has boosted this app’s loading speed. However, it could cause some parts of the app to break, but only for the few people who are still using long-outdated web browsers. If you use any modern web browser, you shouldn’t notice any new problems.</p>
 				</li>
 				<li>
 					<p>Bug fix: If you used this app in the Safari web browser, and if you printed a deck’s lists from List Takeout, then Safari had caused an extra, blank page to be printed if you had enabled the print setting for page headers and footers.</p>
