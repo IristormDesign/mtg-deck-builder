@@ -4,7 +4,7 @@
 		class="update-notification"
 	>
 		<template v-if="!reloading">
-			<p>🔔 An <strong>update is ready</strong>! Reload the page to use the newest version now.&nbsp;</p>
+			<p>🔔 An app <strong>update is ready</strong>! Reload the page to use the newest version now.&nbsp;</p>
 			<div class="button-container reload">
 				<button @click="activateNewServiceWorker()">Reload</button>
 			</div>

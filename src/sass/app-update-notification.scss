@@ -9,6 +9,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: sticky;
+	top: 0;
+	box-shadow: $box-shadow-sticky-header;
 
 	p {
 		margin: $lhse*.25;
