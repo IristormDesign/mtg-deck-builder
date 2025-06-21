@@ -90,6 +90,8 @@
 </template>
 
 <script>
+import truncateURLs from '@/mixins/truncateURLs.js'
+
 export default {
 	props: {
 		presetDeckName: String
@@ -153,6 +155,8 @@ export default {
 				this.removeExtraObjectKeys(card)
 
 				card.rarity = this.updateRarityDataFormat(card.rarity)
+				card.img = truncateURLs.truncateCardImageURL(card.img)
+				card.link = truncateURLs.truncateCardLinkURL(card.link)
 
 				return card
 			}
