@@ -307,19 +307,18 @@
 	box-shadow: inset 0 0 0 2px $color-group-bg;
 }
 @mixin sideboard-header-bg {
-	$adjustment-amount: (math.div(1, 160))*100%;
+	$adjustment-amount: (math.div(1, 96))*100%;
+	$cl: color.adjust($color-mythic-brown, $lightness: $adjustment-amount);
+	$cd: color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount));
+	$size: $lhse*1.125;
+	$pos: (-$size*.625);
 
-	background-color: $color-mythic-brown;
-	background-image: repeating-linear-gradient(-45deg,
-		color.adjust($color-mythic-brown, $lightness: $adjustment-amount)
-			0,
-		color.adjust($color-mythic-brown, $lightness: $adjustment-amount)
-			.5em,
-		color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount))
-			.5em,
-		color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount))
-			1em
-	);
+	background-color: $cd;
+	background-image:
+		linear-gradient(45deg, $cl 25%, transparent 25%, transparent 75%, $cl 75%, $cl),
+		linear-gradient(-45deg, $cl 25%, transparent 25%, transparent 75%, $cl 75%, $cl);
+	background-size: $size $size;
+	background-position: $pos $pos, $pos $pos;
 	color: $color-text-over-mythic-brown;
 }
 @mixin glowing-edges-of-scrollable-container {
