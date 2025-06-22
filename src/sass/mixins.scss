@@ -310,8 +310,8 @@
 	$adjustment-amount: (math.div(1, 96))*100%;
 	$cl: color.adjust($color-mythic-brown, $lightness: $adjustment-amount);
 	$cd: color.adjust($color-mythic-brown, $lightness: (-$adjustment-amount));
-	$size: $lhse*1.125;
-	$pos: (-$size*.625);
+	$size: $lhse*1;
+	$pos: $size*0;
 
 	background-color: $cd;
 	background-image:
