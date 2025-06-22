@@ -33,11 +33,14 @@ export default {
 			const sortedColors = []
 
 			for (const color in counts) {
-				sortedColors.push([color, counts[color]])
+				sortedColors.push({
+					name: color,
+					count: counts[color]
+				})
 			}
 
 			sortedColors.sort((a, b) => {
-				return b[1] - a[1]
+				return b.count - a.count
 			})
 
 			return sortedColors
@@ -48,8 +51,8 @@ export default {
 			const output = []
 
 			this.sortColorsByTotals.forEach(color => {
-				if (color[1] > 0) {
-					switch (color[0]) {
+				if (color.count > 0) {
+					switch (color.name) {
 						case 'white':
 							output.push('W'); break
 						case 'blue':
