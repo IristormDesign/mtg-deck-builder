@@ -37,7 +37,6 @@ $width-card-list-section-narrow:
 	}
 	.adder-controls {
 		align-self: flex-start;
-		border-radius: $border-radius-group;
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
 		width: 100%;
@@ -280,7 +279,7 @@ $width-card-list-section-narrow:
 	}
 	.sideboard-visible & {
 		@include sideboard-header-bg;
-		border-bottom-right-radius: $lhse*.5;
+		border-bottom-right-radius: $border-radius-group;
 
 		label {
 			color: $color-text-over-mythic-brown;
@@ -462,15 +461,16 @@ $width-card-list-section-narrow:
 		border-top: $border-sections;
 		grid-row: 2;
 		grid-column: span 2;
-		border-bottom-right-radius: $lhse;
-		border-bottom-left-radius: $lhse;
+		border-bottom-right-radius: $border-radius-group;
+		border-bottom-left-radius: $border-radius-group;
 
 		input,
 		> form button {
 			font-size: 87.5%;
 		}
 		.sideboard-visible & {
-			border-bottom-left-radius: $lhse*.5;
+			border-bottom-right-radius: $border-radius-group;
+			border-bottom-left-radius: $border-radius-group;
 		}
 	}
 }
