@@ -1,6 +1,6 @@
 export default {
 	computed: {
-		sortColorsByTotals () {
+		sortManaSymbolsByTotals () {
 			const counts = {
 				white: 0,
 				blue: 0,
@@ -9,9 +9,12 @@ export default {
 				green: 0
 			}
 
-			this.deck.cards.forEach(({ colors, qty }) => {
-				colors.forEach(color => {
-					switch (color) {
+			this.deck.cards.forEach(({ mana, qty }) => {
+				const regexColorSymbols = /[WUBRG]/g
+				const symbols = mana.match(regexColorSymbols) || []
+
+				symbols.forEach(symbol => {
+					switch (symbol) {
 						case 'W':
 							counts.white += qty
 							break
@@ -30,27 +33,27 @@ export default {
 				})
 			})
 
-			const sortedColors = []
+			const sortedSymbols = []
 
-			for (const color in counts) {
-				sortedColors.push({
-					name: color,
-					count: counts[color]
+			for (const symbol in counts) {
+				sortedSymbols.push({
+					name: symbol,
+					count: counts[symbol]
 				})
 			}
 
-			sortedColors.sort((a, b) => {
+			sortedSymbols.sort((a, b) => {
 				return b.count - a.count
 			})
 
-			return sortedColors
+			return sortedSymbols
 		}
 	},
 	methods: {
 		determineDeckColors () {
 			const output = []
 
-			this.sortColorsByTotals.forEach(color => {
+			this.sortManaSymbolsByTotals.forEach(color => {
 				if (color.count > 0) {
 					switch (color.name) {
 						case 'white':

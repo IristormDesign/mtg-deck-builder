@@ -20,6 +20,14 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 22</h4>
+			<ul>
+				<li>
+					<p>In the deck page header’s Mana Colors statistic, the mana color symbols are now ordered by the deck’s total number of each color symbol (instead of by the number of cards per mana color).</p>
+					<p>This reordering of decks’ mana color symbols is also reflected in the app header’s “Open Deck” menu and the app footer’s “Recently Opened” menu.</p>
+				</li>
+			</ul>
+
 			<h4>June 21</h4>
 			<ul>
 				<li>
