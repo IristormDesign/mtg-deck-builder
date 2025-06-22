@@ -28,7 +28,14 @@ export default {
 				})
 			}
 
-			return result.sort((a, b) => b.count - a.count)
+			if (result.length === 0) {
+				return [{
+					symbol: 'C',
+					count: 1
+				}]
+			} else {
+				return result.sort((a, b) => b.count - a.count)
+			}
 		}
 	},
 	methods: {
@@ -49,6 +56,7 @@ export default {
 						case 'B': return s.b
 						case 'R': return s.r
 						case 'G': return s.g
+						case 'C': return s.c
 					}
 				}
 
