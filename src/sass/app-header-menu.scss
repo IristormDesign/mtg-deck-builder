@@ -156,9 +156,10 @@
 	.deck-menu-deck-colors {
 		display: flex;
 		font-size: 75%;
-		margin-left: .5em;
+		margin: 0 (-$lhse*.25) 0 .5em;
 		justify-content: center;
 		align-items: center;
+		width: $lhse*2.25;
 	}
 	.mana-symbol {
 		display: flex;
