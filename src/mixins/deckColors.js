@@ -28,14 +28,7 @@ export default {
 				})
 			}
 
-			if (result.length === 0) {
-				return [{
-					symbol: 'C',
-					count: 1
-				}]
-			} else {
-				return result.sort((a, b) => b.count - a.count)
-			}
+			return result.sort((a, b) => b.count - a.count)
 		}
 	},
 	methods: {
@@ -47,22 +40,25 @@ export default {
 		},
 		renderManaSymbols (deck) {
 			if (deck.colors) {
-				const getSymbolHTML = (color) => {
-					const s = this.manaSymbol
+				const sym = this.manaSymbol
 
-					switch (color) {
-						case 'W': return s.w
-						case 'U': return s.u
-						case 'B': return s.b
-						case 'R': return s.r
-						case 'G': return s.g
-						case 'C': return s.c
+				if (deck.colors.length > 0) {
+					const getSymbolHTML = (color) => {
+						switch (color) {
+							case 'W': return sym.w
+							case 'U': return sym.u
+							case 'B': return sym.b
+							case 'R': return sym.r
+							case 'G': return sym.g
+						}
 					}
-				}
 
-				return deck.colors.map(
-					color => getSymbolHTML(color)
-				).join('')
+					return deck.colors.map(
+						color => getSymbolHTML(color)
+					).join('')
+				} else {
+					return sym.c
+				}
 			} else {
 				this.determineDeckColors()
 			}
@@ -71,6 +67,7 @@ export default {
 			if (deck.colors) {
 				const getClassName = () => {
 					switch (deck.colors.length) {
+						case 0: return 'one' // For colorless mana symbol
 						case 1: return 'one'
 						case 2: return 'two'
 						case 3: return 'three'

@@ -22,10 +22,7 @@
 						<span class="deck-name">
 							{{ deck.name }}
 						</span>
-						<div
-							v-if="deck.colors.length > 0"
-							class="deck-colors"
-						>
+						<div class="deck-colors">
 							<div
 								:class="sizeManaSymbols(deck)"
 								v-html="renderManaSymbols(deck)"
