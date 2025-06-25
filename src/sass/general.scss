@@ -198,10 +198,14 @@ kbd {
 	}
 }
 code {
-	font-size: 83.33%;
+	font-size: 80%;
 	background: $color-group-bg-darker;
 	outline: 1px solid $color-group-bg-extra-darker;
 	padding: 0 .1667em;
+
+	&.long-url {
+		word-break: break-all;
+	}
 }
 svg {
 	fill: currentColor;

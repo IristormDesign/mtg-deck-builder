@@ -213,10 +213,11 @@
 				<h5 >Scryfall Card Page URL Query</h5>
 				<p>The website <a href="https://scryfall.com" target="_blank">Scryfall<svg><use href="#open-in-new-icon" /></svg></a> has individual pages for every print of every card in <i>Magic</i>. For any card’s page on Scryfall, you can copy that page’s URL from your web browser’s web address bar, then paste that URL into the <a href="#card-adder">card adder</a> on MTG Deck Builder. The respective card name will be automatically added to your deck.</p>
 				<p>The query for a Scryfall card page URL is useful for adding a card of a certain name that has been printed in multiple <i>Magic</i> sets, but the print you get by default through the <a href="#card-name-query">card name query</a> isn’t the one you prefer. You may want a specific alternative print of card because that print’s <a href="#card-image">image</a> depicts a different illustration or card set symbol from the other prints’ images.</p>
-				<p>For example, if you’d submit the URL<br>
-				<code class="url">https://scryfall.com/card/wc97/sg299/giant-growth</code><br>
-				in the card adder, then you’d get the card Giant Growth in a particular special edition print that had been released in 1997. That Giant Growth print is different from the one you’d get if instead you had submitted just the name “Giant Growth” in the card adder.</p>
+				<p>For example, if you submit the URL<br>
+				<code class="long-url">https://scryfall.com/card/wc97/sg299/giant-growth</code><br>
+				in the card adder, then you’d get the card Giant Growth in a particular special-edition print that had been released in 1997. That Giant Growth print is different from the one you’d get if you submit just the name “Giant Growth” instead in the card adder.</p>
 				<p>You can submit a Scryfall URL for a card name that already exists in your deck’s active <a href="#card-list">card list</a>, but is in a different print. In this case, the app will ask you to confirm whether you want the queried print to replace the existing one.</p>
+				<p>Note that URL queries in the card adder only work when they direct to card pages on Scryfall. They won’t work with other websites.</p>
 			</section>
 			<section id="random-card-query">
 				<h5>Random Card Query</h5>
