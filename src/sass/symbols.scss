@@ -48,7 +48,7 @@
 	}
 }
 .size-mana-symbols {
-	gap: 0 2px;
+	gap: 2px;
 	justify-items: center;
 	width: max-content; // Needed to prevent the contained mana symbols from appearing to squish horizontally when adjacent to a long text element.
 
@@ -71,6 +71,7 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr;
+		gap: 3px;
 
 		.mana-symbol {
 			font-size: $size-mana-symbol-base*$size-fraction + $size-addition;
@@ -81,6 +82,7 @@
 		grid-template-columns: repeat(6, 1fr);
 		grid-template-rows: 1fr 1fr;
 		margin-top: -$lhse*.0417;
+		gap: 0 3px;
 
 		.mana-symbol {
 			grid-row: 2;
@@ -97,7 +99,6 @@
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: 1fr 1fr;
-		gap: 2px;
 
 		.mana-symbol {
 			font-size: $size-mana-symbol-base*$size-fraction*$size-fraction*$size-fraction + $size-addition;
