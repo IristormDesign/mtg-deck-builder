@@ -144,17 +144,14 @@ $animation-duration-card-browse: $transition-delay-card;
 		display: block;
 		transition: $transition-duration-card-image-hover-fast ease 0s;
 		transition-property: transform;
+		will-change: transform;
 		border-radius: $border-radius-group;
 		outline-offset: 0px;
-		// width: 100%;
-		// height: 100%;
 
 		&:hover,
 		&:focus,
 		&.kb-highlight {
 			transition-duration: $transition-duration-card-image-hover-slow;
-			// width: 150%;
-			// height: 150%;
 		}
 		&:hover {
 			transition-delay: $transition-delay-card;
