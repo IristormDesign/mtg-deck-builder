@@ -133,6 +133,7 @@ $width-card-list-section-narrow:
 		cursor: pointer;
 		transition: $transition-duration-standard ease;
 		transition-property: opacity, fill, transform;
+		margin-right: $lhse*.1667;
 
 		&:hover {
 			fill: $color-link-focus;
