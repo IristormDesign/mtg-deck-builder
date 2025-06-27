@@ -63,16 +63,14 @@
 		transition: $transition-duration-standard ease;
 		transition-property: opacity, filter;
 		opacity: .8;
-		filter: brightness(1.2) saturate(.8);
+		filter: brightness(1.2);
+		will-change: opacity;
 
 		&:hover,
 		&:focus,
 		&:active {
 			opacity: 1;
 			filter: none;
-		}
-		svg {
-			will-change: opacity; // Prevents a wiggling glitch on hover in Safari.
 		}
 	}
 	.deck-name {
