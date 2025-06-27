@@ -71,7 +71,7 @@ $width-card-list-section-narrow:
 }
 .card-sorter,
 .card-group-switch {
-	svg {
+	> svg {
 		width: $lhse*1.8;
 		height: $lhse*1.8;
 		margin-right: $lhse*.25;
@@ -176,7 +176,7 @@ $width-card-list-section-narrow:
 	}
 }
 .card-group-switch {
-	svg {
+	> svg {
 		grid-row: 1 / 3;
 	}
 	> div {
