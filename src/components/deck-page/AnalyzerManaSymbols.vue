@@ -5,7 +5,7 @@
 			v-if="this.totalSymbolCount === 0"
 			class="no-data"
 		>
-			(No data)
+			(None)
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>

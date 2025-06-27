@@ -2,7 +2,7 @@
 	<section id="stats-starred">
 		<h4>Starred</h4>
 		<div v-if="noData()" class="no-data">
-			(No data)
+			(None)
 		</div>
 		<table v-else>
 			<thead v-html="tableHeadCommon"></thead>

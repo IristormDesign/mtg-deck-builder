@@ -5,7 +5,7 @@
 			v-if="Object.keys(subtypeCounts).length === 0"
 			class="no-data"
 		>
-			(No data)
+			(None)
 		</div>
 		<div
 			v-else
