@@ -20,11 +20,11 @@
 		<section>
 			<h3>2025 Releases</h3>
 
-			<h4>June 22</h4>
+			<h4>June 26</h4>
 			<ul>
 				<li>
-					<p>In the deck page header’s Mana Colors statistic, the mana color symbols are now ordered by the deck’s total number of each color symbol (instead of by the number of cards per mana color).</p>
-					<p>This reordering of decks’ mana color symbols is also reflected in the app header’s “Open Deck” menu and the app footer’s “Recently Opened” menu.</p>
+					<p>In the deck page header’s Mana Colors statistic, the order of mana color symbols is now slightly different: It’s still ordered from most to least frequent, but now it’s by the combined number of the total of number of cards per mana color plus the deck’s total number of each color symbol in mana costs. (Previously, it had been the former factor alone.)</p>
+					<p>This reordering of mana color symbols is also reflected in decks in the app header’s “Open Deck” menu and the app footer’s “Recently Opened” menu.</p>
 				</li>
 				<li>
 					<p>Decks containing no cards of any colored mana are now marked with the colorless mana symbol.</p>

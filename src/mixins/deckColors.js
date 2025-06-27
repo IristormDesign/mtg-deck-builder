@@ -1,7 +1,36 @@
 export default {
 	computed: {
-		sortedManaSymbolsByTotals () {
-			const counts = {
+		sortedManaSymbols () {
+			const colorCounts = {
+				W: 0,
+				U: 0,
+				B: 0,
+				R: 0,
+				G: 0
+			}
+
+			this.deck.cards.forEach(({ colors, qty }) => {
+				colors.forEach(color => {
+					switch (color) {
+						case 'W':
+							colorCounts.W += qty
+							break
+						case 'U':
+							colorCounts.U += qty
+							break
+						case 'B':
+							colorCounts.B += qty
+							break
+						case 'R':
+							colorCounts.R += qty
+							break
+						case 'G':
+							colorCounts.G += qty
+					}
+				})
+			})
+
+			const symbolCounts = {
 				W: 0,
 				U: 0,
 				B: 0,
@@ -10,21 +39,29 @@ export default {
 			}
 
 			this.deck.cards.forEach(card => {
-				const symbols = card.mana.match(/[WUBRG]/g) || []
+				const matchedSymbols = card.mana.match(/[WUBRG]/g) || []
 
-				symbols.forEach(symbol => {
-					counts[symbol] += card.qty
+				matchedSymbols.forEach(symbol => {
+					symbolCounts[symbol] += card.qty
 				})
 			})
 
+			const combinedCounts = {
+				W: colorCounts.W + symbolCounts.W,
+				U: colorCounts.U + symbolCounts.U,
+				B: colorCounts.B + symbolCounts.B,
+				R: colorCounts.R + symbolCounts.R,
+				G: colorCounts.G + symbolCounts.G
+			}
+
 			const result = []
 
-			for (const symbol in counts) {
-				if (counts[symbol] === 0) continue
+			for (const count in combinedCounts) {
+				if (combinedCounts[count] === 0) continue
 
 				result.push({
-					symbol,
-					count: counts[symbol]
+					symbol: count,
+					count: combinedCounts[count]
 				})
 			}
 
@@ -33,7 +70,7 @@ export default {
 	},
 	methods: {
 		determineDeckColors () {
-			this.deck.colors = this.sortedManaSymbolsByTotals
+			this.deck.colors = this.sortedManaSymbols
 				.map(color => color.symbol)
 
 			this.$store.commit('decks', this.$store.state.decks)
