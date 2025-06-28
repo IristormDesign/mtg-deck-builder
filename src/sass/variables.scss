@@ -44,7 +44,7 @@ $color-heading-bg: color.adjust($color-group-bg, $lightness: 12.5%, $saturation:
 $color-section-border: $color-heading-bg;
 $color-subtle-bluish-shadow-base: color.adjust($color-mythic-complement, $lightness: -50%);
 $color-subtle-bluish-shadow: rgba($color-subtle-bluish-shadow-base, .3820);
-$color-black-label-text: color.scale($color-group-bg, $lightness: -25%, $saturation: -50%); // If this color is updated, the top-level fill color for the mana symbol SVGs should also be updated to match it
+$color-black-label-text: color.scale($color-group-bg, $lightness: -25%, $saturation: -100%); // If this color is updated, the top-level fill color for the mana symbol SVGs should also be updated to match it
 
 /* INDIGO-BASED COLORS */
 // $color-mythic-yellow-complement: #0069db; // #FFF with overlay blend on mythic-orange-complement
