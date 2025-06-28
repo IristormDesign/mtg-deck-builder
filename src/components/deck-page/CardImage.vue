@@ -10,14 +10,14 @@
 		>
 			<transition name="placement-outline-fade">
 				<div
-					v-if="showPlacementOutline"
+					v-if="showingPlacementOutline"
 					class="card-placement-outline"
 				></div>
 			</transition>
 			<div class="image-container">
 				<div
-					class="image-overlay"
 					v-if="card"
+					class="image-overlay"
 					@click="hideImageOverlay()"
 				>
 					<transition
@@ -39,7 +39,7 @@
 								>
 									<div class="card-shape" :class="cardColorClass">
 										<img
-											:src="cardImage"
+											:src="cardImageURL"
 											width="488" height="680"
 											:alt="card.name"
 										/>
@@ -144,7 +144,7 @@ export default {
 		cardIsShowing () {
 			return this.$store.state.showCard
 		},
-		showPlacementOutline () {
+		showingPlacementOutline () {
 			if (this.isMobileLayout()) {
 				return false
 			} else if (this.$route.name === 'listEditor') {
@@ -155,7 +155,7 @@ export default {
 				return true
 			}
 		},
-		cardImage () {
+		cardImageURL () {
 			/* In newer card data, each card image's URL is only the unique fragment of the URL. If the card's data is older, then the image URL will be the whole URL instead. */
 			function imgURL (string) {
 				if (string.startsWith('https://')) {
@@ -165,10 +165,10 @@ export default {
 				}
 			}
 
-			if (!this.card.img2 || this.showingFrontFace) { // If the displayed card is a normal single-faced card, or if it's a double-faced card that's showing the front face...
-				return imgURL(this.card.img)
-			} else { // Else, the displayed card is double-faced and showing its back face.
+			if (this.card.img2 && !this.showingFrontFace) { // If the displayed card is double-faced with its back face up...
 				return imgURL(this.card.img2)
+			} else { // Else the displayed card is either a normal card, or it's a double-faced card with its front face up.
+				return imgURL(this.card.img)
 			}
 		},
 		cardLink () {
