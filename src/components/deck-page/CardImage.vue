@@ -124,18 +124,24 @@ export default {
 			return debounce(this.applyEffectsOnViewportResizing, 125)
 		},
 		shouldRotateSideways () {
-			if (this.card.layout === 'split') {
-				const hasAftermathAbility = this.card.keywords.find(
-					keyword => keyword === 'Aftermath'
-				)
+			const card = this.card
 
-				return !hasAftermathAbility
+			if (card.layout === 'split') {
+				if (card.keywords) {
+					const hasAftermathAbility = card.keywords.find(
+						keyword => keyword === 'Aftermath'
+					)
+
+					return !hasAftermathAbility
+				} else {
+					return true
+				}
 			} else if (
 				this.showingFrontFace &&
-				/\bBattle\b/.test(this.card.type)
+				/\bBattle\b/.test(card.type)
 			) {
 				return true
-			} else if (this.card.type.includes('Plane ')) {
+			} else if (card.type.includes('Plane ')) {
 				return true
 			} else {
 				return false
