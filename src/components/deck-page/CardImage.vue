@@ -2,7 +2,7 @@
 	<transition name="image-fade">
 		<section
 			class="card-image"
-			v-show="showCard"
+			v-show="cardIsShowing"
 			@mouseover="reactToHoverOverImage()"
 			@click="attentionAddCard()"
 			ref="cardImage"
@@ -141,7 +141,7 @@ export default {
 				return false
 			}
 		},
-		showCard () {
+		cardIsShowing () {
 			return this.$store.state.showCard
 		},
 		showPlacementOutline () {
@@ -187,7 +187,7 @@ export default {
 
 			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 		},
-		showCard (isShowing) {
+		cardIsShowing (isShowing) {
 			if (
 				this.isMobileLayout() &&
 				this.card
@@ -304,7 +304,7 @@ export default {
 		 * This effect is used for navigating from one deck page directly to another at wide viewports.
 		 */
 		delayTransitionOfCardImage () {
-			if (this.showCard) {
+			if (this.cardIsShowing) {
 				this.$store.commit('showCard', false)
 
 				this.$nextTick(() => {

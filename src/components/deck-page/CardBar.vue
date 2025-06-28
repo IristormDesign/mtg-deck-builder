@@ -1,6 +1,6 @@
 <template>
 	<button
-		@click="clickCardBar()"
+		@click="heardCardBarClick()"
 		:class="['card-bar', setButtonColor]"
 	>
 		<div class="card-label-group">
@@ -149,7 +149,7 @@ export default {
 					'<span class="mana-symbol long-hybrid"><div>…</div></span>'
 				)
 		},
-		clickCardBar () {
+		heardCardBarClick () {
 			this.viewCard(this.card)
 
 			this.$store.commit('highlightedCardLIIndex', -1)
