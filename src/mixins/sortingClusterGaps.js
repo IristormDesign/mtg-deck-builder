@@ -177,7 +177,7 @@ export default {
 			}
 		},
 		gapsRarity (thisCard, nextCard) {
-			if (thisCard.rarity !== nextCard.rarity) {
+			if (thisCard.rarity.charAt(0) !== nextCard.rarity.charAt(0)) {
 				return true
 			}
 		},
