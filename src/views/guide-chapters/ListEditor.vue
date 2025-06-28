@@ -49,7 +49,7 @@
 					alt="Snippet of card sorter" title="Screenshot" loading="lazy"
 				/>
 			</p>
-			<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort cards by.”</p>
+			<p>The card sorter is a tool that lets you instantly rearrange the order of all card names in the <a href="#card-list">card list</a> in various ways you can choose. It appears in the <a href="#list-editor">List Editor</a> in the section labeled “Sort Cards by.”</p>
 			<p>The card sorter has a dropdown menu providing you several kinds of card attributes as options. Select an attribute to have your deck’s card names sorted according to that attribute. Sorting affects both the main and sideboard <a href="#card-groups">groups</a> of your currently <router-link to="app-header#deck-menu">open deck</router-link> (but not other decks you may have).</p>
 			<p>The card sorter’s options and their effects are the following:</p>
 
@@ -71,7 +71,7 @@
 		<section id="card-groups">
 			<h4>Card Group Switch</h4>
 			<p>Each deck has two independent groups of cards called “main” and “<a href="#sideboard-uses">sideboard</a>.” The <a href="#list-editor">List Editor</a> displays only one card group at a time.</p>
-			<p>The card group switch is a pair of buttons that appears in the section of the List Editor labeled “View card group.” The switch lets you toggle between your deck’s main and sideboard groups for viewing in the List Editor. The <a href="#card-list">card list</a> and <a href="#card-adder">card adder</a> interact with whichever group is currently visible.</p>
+			<p>The card group switch is a pair of buttons that appears in the section of the List Editor labeled “View Card Group.” The switch lets you toggle between your deck’s main and sideboard groups for viewing in the List Editor. The <a href="#card-list">card list</a> and <a href="#card-adder">card adder</a> interact with whichever group is currently visible.</p>
 			<p>Alternatively, press the <kbd>R</kbd> key to switch card groups via <router-link to="keyboard-shortcuts">keyboard shortcut</router-link>.</p>
 			<p>Whenever you arrive on any deck page, the card group is automatically set to main at first. Whenever you switch to the sideboard, the <a href="#sideboard-header">sideboard header</a> appears.</p>
 
@@ -198,7 +198,7 @@
 					alt="Snippet of card adder" title="Screenshot" loading="lazy"
 				/>
 			</p>
-			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to put into your deck. The card adder appears in the section labeled “Add a new card name” in the <a href="#list-editor">List Editor</a>.</p>
+			<p>The card adder is a tool that lets you indicate a new name of a <i>Magic: The Gathering</i> card to put into your deck. The card adder appears in the section labeled “Add a New Card Name” in the <a href="#list-editor">List Editor</a>.</p>
 			<p>The card adder will insert the new name into the <a href="#card-list">card list</a> for either the main or the sideboard card group, whichever one that the <a href="#card-groups">card group switch</a> is currently set to. The background color of the card adder section changes as the group does: It appears dark gray when on main, and brown when on sideboard.</p>
 			<p>The card adder has a simple submission form that has a text field where you can enter a query for a card. There are three kinds of queries: <a href="#card-name-query">card names</a>, <a href="#scryfall-url-query">Scryfall card page URLs</a>, and the <a href="#random-card-query">“#random” code</a>.</p>
 			<p>To submit your query in the card adder, click the “+” (plus sign) button (located to the right of the text field), or by pressing the Enter/Return key on your keyboard.</p>

@@ -16,7 +16,7 @@
 			v-else
 			@submit.prevent="heardSubmit()"
 		>
-			<label for="card-input">Add a new card name:</label>
+			<label for="card-input">Add a New Card Name:</label>
 			<div class="tip">
 				<button
 					type="button"

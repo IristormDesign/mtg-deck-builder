@@ -14,7 +14,7 @@
 				class="section-label"
 				for="sorterMenuInput"
 			>
-				Sort cards by:
+				Sort Cards by:
 			</label>
 			<div class="tip">
 				<button
