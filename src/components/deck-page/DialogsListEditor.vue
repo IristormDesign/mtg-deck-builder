@@ -15,10 +15,10 @@
 			<p>⚠ You’re about to remove {{ dd.cardName }} from this card list.</p>
 			<form slot="form" method="dialog">
 				<div class="button-container">
-					<button @click="removeCard(dd.cardIndex)">Remove</button>
+					<button @click="removeCard(dd.cardIndex)" autofocus>Remove</button>
 				</div>
 				<div class="button-container">
-					<button class="cancel" autofocus>Cancel</button>
+					<button class="cancel">Cancel</button>
 				</div>
 			</form>
 		</standard-dialog>
