@@ -283,7 +283,7 @@ export default {
 			)
 		},
 		moveToOtherGroup () {
-			this.reactToFocusOnQtyInput()
+			// this.reactToFocusOnQtyInput()
 
 			const card = this.cardObject
 			const store = this.$store
