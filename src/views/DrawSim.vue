@@ -241,7 +241,7 @@ export default {
 				this.library.splice(0, 1)
 				this.drawnList.unshift(card)
 				if (
-					!this.isMobileLayout() &&
+					!this.checkWhetherMobileLayout() &&
 					(
 						showCard ||
 						this.library.length === 0

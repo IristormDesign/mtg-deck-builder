@@ -237,7 +237,7 @@ export default {
 			store.commit('decks', store.state.decks)
 		},
 		focusedOnQtyInput () {
-			if (!this.isMobileLayout()) {
+			if (!this.checkWhetherMobileLayout()) {
 				this.viewCard(this.card)
 			}
 

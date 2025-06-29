@@ -20,7 +20,7 @@ export default {
 		}
 	},
 	methods: {
-		isMobileLayout () {
+		checkWhetherMobileLayout () {
 			/* This needs to be a Vue method function rather than a Vue computed function to return updated values whenever the viewport changes. */
 			return window.innerWidth <= 768 // The number must match the media query max-width in CSS.
 		},

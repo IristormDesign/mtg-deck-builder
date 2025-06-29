@@ -94,6 +94,7 @@ export default {
 	},
 	data () {
 		return {
+			isMobileLayout: false,
 			showingFrontFace: true,
 			turningOverCard: false
 		}
@@ -136,7 +137,7 @@ export default {
 			return this.$store.state.showCard
 		},
 		showingPlacementOutline () {
-			if (this.isMobileLayout()) {
+			if (this.isMobileLayout) {
 				return false
 			} else if (this.$route.name === 'listEditor') {
 				return this.activeCardList.cards.length === 0
@@ -174,7 +175,7 @@ export default {
 			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 		},
 		cardIsShowing (isShowing) {
-			if (this.isMobileLayout() && this.currentlyViewedCard) {
+			if (this.isMobileLayout && this.currentlyViewedCard) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
@@ -188,6 +189,7 @@ export default {
 	},
 	created () {
 		this.checkForOutdatedImageURLs()
+		this.updateMobileLayoutState()
 
 		this.debounceResizingViewport = debounce(this.applyEffectsOnViewportResizing, 125)
 	},
@@ -215,11 +217,11 @@ export default {
 	methods: {
 		showCardPerViewport () {
 			this.$store.commit(
-				'showCard', !this.isMobileLayout()
+				'showCard', !this.isMobileLayout
 			)
 		},
 		hideImageOverlay () {
-			if (this.isMobileLayout()) {
+			if (this.isMobileLayout) {
 				this.$store.commit('showCard', false)
 			}
 		},
@@ -230,8 +232,13 @@ export default {
 					this.hideImageOverlay()
 			}
 		},
+		updateMobileLayoutState () {
+			this.isMobileLayout = this.checkWhetherMobileLayout()
+		},
 		applyEffectsOnViewportResizing () {
-			if (this.isMobileLayout()) {
+			this.updateMobileLayoutState()
+
+			if (this.isMobileLayout) {
 				this.hideImageOverlay()
 			} else {
 				this.$store.commit('showCard', true)
