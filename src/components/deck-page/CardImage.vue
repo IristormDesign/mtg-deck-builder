@@ -37,7 +37,7 @@
 									:class="shouldRotateSideways ? 'sideways' : null"
 									@focus="$store.commit('showingAnyPopup', false)"
 								>
-									<div class="card-shape" :class="cardColorClass">
+									<div class="card-shape">
 										<img
 											:src="cardImageURL"
 											width="488" height="680"
@@ -97,27 +97,6 @@ export default {
 				return this.deck.sideboard.viewedCard
 			} else {
 				return this.deck.viewedCard
-			}
-		},
-		cardColorClass () {
-			function perFace (colors, type) {
-				if (colors.length > 1) {
-					return 'multi'
-				} else if (colors.length === 1) {
-					return colors[0]
-				} else if (/\bLand\b/.test(type)) {
-					return 'land'
-				} else {
-					return null // Default to colorless spell.
-				}
-			}
-
-			const card = this.currentlyViewedCard
-
-			if (this.showingFrontFace) {
-				return perFace(card.colors, card.type)
-			} else {
-				return perFace(card.colors2, card.type2)
 			}
 		},
 		debounceResizingViewport () {
