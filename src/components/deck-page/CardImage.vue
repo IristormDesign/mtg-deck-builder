@@ -1,7 +1,7 @@
 <template>
 	<transition name="image-fade">
 		<section
-			class="card-image"
+			class="card-image-section"
 			v-show="cardIsShowing"
 			@mouseover="reactToHoverOverImage()"
 			@click="attentionAddCard()"

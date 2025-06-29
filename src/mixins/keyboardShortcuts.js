@@ -430,7 +430,7 @@ export default {
 		toggleCardImageEnlargement () {
 			if (this.isMobileLayout()) {
 				if (this.$store.state.showCard) {
-					const closeButton = document.querySelector('.card-image .close')
+					const closeButton = document.querySelector('.card-image-section .close')
 					const hi = this.highlightedIndex
 
 					if (closeButton) {
@@ -442,7 +442,7 @@ export default {
 					this.viewCardImageAtHighlightedIndex()
 				}
 			} else {
-				const image = document.querySelector('.card-image .image-overlay')
+				const image = document.querySelector('.card-image-section .image-overlay')
 
 				if (!image) return // If no card image even exists, then exit this function now.
 
@@ -465,7 +465,7 @@ export default {
 			}
 		},
 		openCardScryfallPage () {
-			const cardLink = document.querySelector('.card-image a')
+			const cardLink = document.querySelector('.card-image-section a')
 
 			if (!cardLink) return
 
@@ -476,7 +476,7 @@ export default {
 
 			if (!button) return
 
-			const cardImage = document.querySelector('.card-image .card-shadow')
+			const cardImage = document.querySelector('.card-image-section .card-shadow')
 
 			if (cardImage.classList.contains('card-browse-leave-active')) return // If the card image already has an ongoing animation, then do nothing right now. Otherwise, it may cause a glitchy-looking animation.
 
