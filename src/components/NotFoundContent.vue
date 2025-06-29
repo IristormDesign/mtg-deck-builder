@@ -12,8 +12,8 @@
 			<figcaption>Illustration from <a href="https://scryfall.com/card/stx/50/reject" target="_blank">Reject<svg><use href="#open-in-new-icon" /></svg></a> by Zoltan Boros</figcaption>
 		</figure>
 
-		<p>Your web browser tried to go to a page that doesn’t exist. If a page did exist at this URL before, it’s been deleted or renamed since then.</p>
-		<p v-if="this.$route.path.includes(`/deck/`)">Were you expecting to see the page for a deck made by another user? If so, ask that user to archive his or her deck and send the archive file to you. Then you can open the archive file on the <router-link :to="{name: 'createDeck'}">Create Deck page</router-link> to replicate that user’s deck. <router-link to="/guide/storage-of-deck-data" class="no-text-break">(More info&hellip;)</router-link></p>
+		<p class="bigger">Your web browser tried to go to a page that doesn’t exist. If a page did exist at this URL before, it’s been deleted or renamed since then.</p>
+		<p v-if="this.$route.path.includes(`/deck/`)" class="small">Or, were you expecting to see the page for a deck made by another user? If so, ask that user to archive his or her deck and send the archive file to you. Then you can open the archive file on the <router-link :to="{name: 'createDeck'}">Create Deck page</router-link> to replicate that user’s deck. <router-link to="/guide/storage-of-deck-data" class="no-text-break">(More info&hellip;)</router-link></p>
 	</article>
 </template>
 
