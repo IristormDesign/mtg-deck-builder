@@ -150,7 +150,10 @@ export default {
 				}
 			}
 
-			if (this.currentlyViewedCard.img2 && !this.showingFrontFace) { // If the displayed card is double-faced with its back face up...
+			if (
+				this.currentlyViewedCard.img2 &&
+				!this.showingFrontFace
+			) { // If the displayed card is double-faced with its back face up...
 				return imgURL(this.currentlyViewedCard.img2)
 			} else { // Else the displayed card is either a normal card, or it's a double-faced card with its front face up.
 				return imgURL(this.currentlyViewedCard.img)
@@ -168,6 +171,8 @@ export default {
 	},
 	watch: {
 		currentlyViewedCard () {
+			if (!this.currentlyViewedCard) return
+
 			this.checkForOutdatedImageURLs()
 
 			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
@@ -199,9 +204,12 @@ export default {
 		)
 	},
 	beforeDestroy () {
-		this.$refs.cardImage.removeEventListener(
-			'keydown', this.hideImageOverlayByKeyPress
-		)
+		if (this.$refs.cardImage) {
+			this.$refs.cardImage.removeEventListener(
+				'keydown', this.hideImageOverlayByKeyPress
+			)
+		}
+
 		window.removeEventListener(
 			'resize', this.debounceResizingViewport
 		)
@@ -257,7 +265,7 @@ export default {
 						`https://api.scryfall.com/cards/named?fuzzy=${cardQuery}`
 					)
 					.then(response => {
-						this.updateImageURL(response)
+						this.updateImageURL(response, card)
 					})
 					.catch(error => {
 						// eslint-disable-next-line
@@ -265,9 +273,8 @@ export default {
 					})
 			}
 		},
-		updateImageURL (response) {
+		updateImageURL (response, card) {
 			const data = response.data
-			const card = this.currentlyViewedCard
 
 			if (data.card_faces && !data.image_uris) { // If the card is double-faced...
 				card.img = data.card_faces[0].image_uris.normal
@@ -312,14 +319,14 @@ export default {
 
 			this.turningOverCard = true
 
-			const ms = 333.3
+			const cardFlipDuration = 333.3
 
 			setTimeout(() => {
 				this.showingFrontFace = !this.showingFrontFace
-			}, ms)
+			}, cardFlipDuration)
 			setTimeout(() => {
 				this.turningOverCard = false
-			}, ms * 2)
+			}, cardFlipDuration * 2)
 		}
 	}
 }
