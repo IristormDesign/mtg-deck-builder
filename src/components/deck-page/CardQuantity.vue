@@ -8,8 +8,8 @@
 			min="0"
 			:max="this.maxQty"
 			v-model="cardObject.qty"
-			@focus="focusedOnQtyInput()"
-			@blur="blurredFromQtyInput()"
+			@focus="reactToFocusOnQtyInput()"
+			@blur="reactToBlurFromQtyInput()"
 			@input="checkForHugeQuantity()"
 		/>
 		<div class="hover-extension"></div>
@@ -236,7 +236,7 @@ export default {
 			this.determineDeckColors()
 			store.commit('decks', store.state.decks)
 		},
-		focusedOnQtyInput () {
+		reactToFocusOnQtyInput () {
 			if (!this.checkWhetherMobileLayout()) {
 				this.viewCard(this.card)
 			}
@@ -252,7 +252,7 @@ export default {
 				'keydown', this.listenForQtyKeydown
 			)
 		},
-		blurredFromQtyInput () {
+		reactToBlurFromQtyInput () {
 			this.$refs[this.qtyCardID(this.i)].removeEventListener(
 				'keydown', this.listenForQtyKeydown
 			)
@@ -283,7 +283,7 @@ export default {
 			)
 		},
 		moveToOtherGroup () {
-			this.focusedOnQtyInput()
+			this.reactToFocusOnQtyInput()
 
 			const card = this.cardObject
 			const store = this.$store
