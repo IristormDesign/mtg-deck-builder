@@ -77,6 +77,15 @@ import latestDataVersions from '@/mixins/latestDataVersions.js'
 import axios from 'axios'
 import debounce from 'debounce'
 
+function getImageURL (string) {
+	/* In newer card data, each card image's URL is only the unique fragment of the URL. If the card's data is older, then the image URL will be the whole URL instead. */
+	if (string.startsWith('https://')) {
+		return string
+	} else {
+		return `https://cards.scryfall.io/normal/${string}`
+	}
+}
+
 export default {
 	mixins: [cardListFunctions, latestDataVersions],
 	props: {
@@ -98,9 +107,6 @@ export default {
 			} else {
 				return this.deck.viewedCard
 			}
-		},
-		debounceResizingViewport () {
-			return debounce(this.applyEffectsOnViewportResizing, 125)
 		},
 		shouldRotateSideways () {
 			const card = this.currentlyViewedCard
@@ -141,22 +147,12 @@ export default {
 			}
 		},
 		cardImageURL () {
-			/* In newer card data, each card image's URL is only the unique fragment of the URL. If the card's data is older, then the image URL will be the whole URL instead. */
-			function imgURL (string) {
-				if (string.startsWith('https://')) {
-					return string
-				} else {
-					return `https://cards.scryfall.io/normal/${string}`
-				}
-			}
+			const card = this.currentlyViewedCard
 
-			if (
-				this.currentlyViewedCard.img2 &&
-				!this.showingFrontFace
-			) { // If the displayed card is double-faced with its back face up...
-				return imgURL(this.currentlyViewedCard.img2)
+			if (card.img2 && !this.showingFrontFace) { // If the displayed card is double-faced with its back face up...
+				return getImageURL(card.img2)
 			} else { // Else the displayed card is either a normal card, or it's a double-faced card with its front face up.
-				return imgURL(this.currentlyViewedCard.img)
+				return getImageURL(card.img)
 			}
 		},
 		cardLink () {
@@ -192,6 +188,8 @@ export default {
 	},
 	created () {
 		this.checkForOutdatedImageURLs()
+
+		this.debounceResizingViewport = debounce(this.applyEffectsOnViewportResizing, 125)
 	},
 	mounted () {
 		this.showCardPerViewport()
@@ -200,7 +198,7 @@ export default {
 			'keydown', this.hideImageOverlayByKeyPress
 		)
 		window.addEventListener(
-			'resize', this.debounceResizingViewport
+			'resize', this.debounceResizingViewport, { passive: true }
 		)
 	},
 	beforeDestroy () {
@@ -211,7 +209,7 @@ export default {
 		}
 
 		window.removeEventListener(
-			'resize', this.debounceResizingViewport
+			'resize', this.debounceResizingViewport, { passive: true }
 		)
 	},
 	methods: {
