@@ -18,6 +18,16 @@
 		</header>
 
 		<section>
+			<h3>Known Bugs, Not Fixed Yet</h3>
+			<ul>
+				<li>
+					<p>In the List Editor, only under certain obscure conditions, the card image for any card you select may fail to appear. The exact cause of this bug is still under investigation.</p>
+					<p>If it ever occurs to you, you can get around it by simply reloading the web page.</p>
+				</li>
+			</ul>
+		</section>
+
+		<section>
 			<h3>2025 Releases</h3>
 
 			<h4>June 28</h4>
