@@ -20,6 +20,16 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>June 28</h4>
+			<ul>
+				<li>
+					<p>In the List Editor, a bug involving the “move to other card group” button is fixed.</p>
+				</li>
+				<li>
+					<p>Various optimizations and minor visual tweaks are made.</p>
+				</li>
+			</ul>
+
 			<h4>June 26</h4>
 			<ul>
 				<li>
