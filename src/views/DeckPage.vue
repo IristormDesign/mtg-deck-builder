@@ -109,6 +109,8 @@ export default {
 			})
 		},
 		updateOpenDate () {
+			if (!this.deck) return
+
 			this.deck.openDate = new Date()
 			this.$store.commit('decks', this.$store.state.decks)
 		}
