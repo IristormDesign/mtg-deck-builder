@@ -16,7 +16,7 @@
 			</transition>
 			<div class="image-container">
 				<div
-					v-if="card"
+					v-if="currentlyViewedCard"
 					class="image-overlay"
 					@click="hideImageOverlay()"
 				>
@@ -27,7 +27,7 @@
 					>
 						<div
 							class="card-shadow" :class="(turningOverCard) ? 'card-turning-over' : null"
-							:key="drawnCards || card.name"
+							:key="drawnCards || currentlyViewedCard.name"
 						><!-- The shadow is needed as its own element because Safari doesn't support more than drop-shadow filter on one element. -->
 							<div class="card-edge">
 								<a
@@ -41,7 +41,7 @@
 										<img
 											:src="cardImageURL"
 											width="488" height="680"
-											:alt="card.name"
+											:alt="currentlyViewedCard.name"
 										/>
 									</div>
 								</a>
@@ -58,7 +58,7 @@
 			<div class="turn-over">
 				<transition name="turn-over-button-transition">
 					<button
-						v-if="card && card.img2"
+						v-if="currentlyViewedCard && currentlyViewedCard.img2"
 						@click="clickedTurnOver()"
 						title="[Z]"
 					>
@@ -90,7 +90,7 @@ export default {
 		}
 	},
 	computed: {
-		card () {
+		currentlyViewedCard () {
 			if (this.$route.name === 'drawSim') {
 				return this.$store.state.viewedDrawnCard
 			} else if (this.$store.state.showSideboard) {
@@ -112,7 +112,7 @@ export default {
 				}
 			}
 
-			const card = this.card
+			const card = this.currentlyViewedCard
 
 			if (this.showingFrontFace) {
 				return perFace(card.colors, card.type)
@@ -124,7 +124,7 @@ export default {
 			return debounce(this.applyEffectsOnViewportResizing, 125)
 		},
 		shouldRotateSideways () {
-			const card = this.card
+			const card = this.currentlyViewedCard
 
 			if (card.layout === 'split') {
 				if (card.keywords) {
@@ -171,14 +171,14 @@ export default {
 				}
 			}
 
-			if (this.card.img2 && !this.showingFrontFace) { // If the displayed card is double-faced with its back face up...
-				return imgURL(this.card.img2)
+			if (this.currentlyViewedCard.img2 && !this.showingFrontFace) { // If the displayed card is double-faced with its back face up...
+				return imgURL(this.currentlyViewedCard.img2)
 			} else { // Else the displayed card is either a normal card, or it's a double-faced card with its front face up.
-				return imgURL(this.card.img)
+				return imgURL(this.currentlyViewedCard.img)
 			}
 		},
 		cardLink () {
-			const string = this.card.link
+			const string = this.currentlyViewedCard.link
 
 			if (string.startsWith('https://')) {
 				return string
@@ -188,16 +188,13 @@ export default {
 		}
 	},
 	watch: {
-		card () {
+		currentlyViewedCard () {
 			this.checkForOutdatedImageURLs()
 
 			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 		},
 		cardIsShowing (isShowing) {
-			if (
-				this.isMobileLayout() &&
-				this.card
-			) {
+			if (this.isMobileLayout() && this.currentlyViewedCard) {
 				this.$nextTick(() => {
 					if (isShowing) {
 						this.$refs.cardLink.focus()
@@ -259,7 +256,7 @@ export default {
 		 * Check whether the current card's image URL goes to one of Scryfall's outdated image servers. If so, update the URL.
 		 */
 		checkForOutdatedImageURLs () {
-			const card = this.card
+			const card = this.currentlyViewedCard
 
 			if (
 				!card ||
@@ -291,7 +288,7 @@ export default {
 		},
 		updateImageURL (response) {
 			const data = response.data
-			const card = this.card
+			const card = this.currentlyViewedCard
 
 			if (data.card_faces && !data.image_uris) { // If the card is double-faced...
 				card.img = data.card_faces[0].image_uris.normal
