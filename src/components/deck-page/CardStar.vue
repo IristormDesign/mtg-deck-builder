@@ -25,8 +25,8 @@ export default {
 			const deck = this.deck
 
 			deck.editDate = new Date()
-			this.activeCardList.viewedCard = card
-			this.activeCardList.viewedStarredCard = card
+			this.$set(this.activeCardList, 'viewedCard', card)
+			this.$set(this.activeCardList, 'viewedStarredCard', card)
 
 			if (deck.sortBy === 'Starred') {
 				deck.sortBy = '(Unsorted)'

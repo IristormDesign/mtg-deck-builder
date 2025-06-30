@@ -181,7 +181,7 @@ export default {
 			const card = this.card
 			const store = this.$store
 
-			this.activeCardList.viewedCard = card
+			this.$set(this.activeCardList, 'viewedCard', card)
 
 			if (card.qty < 0) {
 				card.qty = 0 // Don't allow negative numbers.
@@ -283,8 +283,6 @@ export default {
 			)
 		},
 		moveToOtherGroup () {
-			// this.reactToFocusOnQtyInput()
-
 			const card = this.cardObject
 			const store = this.$store
 
@@ -338,7 +336,7 @@ export default {
 					this.resetListSorting()
 				}
 
-				destGroup.viewedCard = card
+				this.$set(destGroup, 'viewedCard', card)
 
 				if (card.starred) {
 					originGroup.viewedStarredCard = this.anotherStarredCard

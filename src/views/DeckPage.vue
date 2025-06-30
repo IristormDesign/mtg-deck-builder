@@ -82,14 +82,14 @@ export default {
 			if (!deck) return
 
 			if (deck.viewedStarredCard) {
-				deck.viewedCard = deck.viewedStarredCard
+				this.$set(deck, 'viewedCard', deck.viewedStarredCard)
 			}
 
 			if (
 				deck.sideboard &&
 				deck.sideboard.viewedStarredCard
 			) {
-				deck.sideboard.viewedCard = deck.sideboard.viewedStarredCard
+				this.$set(deck.sideboard, 'viewedCard', deck.sideboard.viewedStarredCard)
 			}
 
 			this.$store.commit('decks', this.$store.state.decks)

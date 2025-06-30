@@ -31,16 +31,16 @@ export default {
 			if (this.$route.name === 'drawSim') {
 				store.commit('viewedDrawnCard', card)
 			} else if (store.state.showSideboard) {
-				deck.sideboard.viewedCard = card
+				this.$set(deck.sideboard, 'viewedCard', card)
 
 				if (deck.sideboard.viewedCard.starred) {
-					deck.sideboard.viewedStarredCard = card
+					this.$set(deck.sideboard, 'viewedStarredCard', card)
 				}
 			} else {
-				deck.viewedCard = card
+				this.$set(deck, 'viewedCard', card)
 
 				if (deck.viewedCard.starred) {
-					deck.viewedStarredCard = card
+					this.$set(deck, 'viewedStarredCard', card)
 				}
 			}
 

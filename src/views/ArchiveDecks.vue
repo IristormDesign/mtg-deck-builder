@@ -165,8 +165,8 @@ export default {
 				deck.cards.forEach(card => reformatData(card))
 				deck.sideboard.cards.forEach(card => reformatData(card))
 
-				deck.viewedCard = reformatData(deck.viewedCard)
-				deck.sideboard.viewedCard = reformatData(deck.sideboard.viewedCard)
+				this.$set(deck, 'viewedCard', reformatData(deck.viewedCard))
+				this.$set(deck.sideboard, 'viewedCard', reformatData(deck.sideboard.viewedCard))
 			})
 
 			this.$nextTick(() => {

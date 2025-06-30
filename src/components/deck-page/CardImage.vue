@@ -94,6 +94,7 @@ export default {
 	},
 	data () {
 		return {
+			isCheckingImageURLs: false,
 			isMobileLayout: false,
 			showingFrontFace: true,
 			turningOverCard: false
@@ -167,12 +168,21 @@ export default {
 		}
 	},
 	watch: {
-		currentlyViewedCard () {
-			if (!this.currentlyViewedCard) return
+		currentlyViewedCard: {
+			handler () {
+				if (!this.currentlyViewedCard || this.isCheckingImageURLs) return
 
-			this.checkForOutdatedImageURLs()
+				this.isCheckingImageURLs = true
+				this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 
-			this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
+				this.checkForOutdatedImageURLs()
+
+				this.$nextTick(() => {
+					this.isCheckingImageURLs = false
+				})
+			},
+			deep: true,
+			immediate: true
 		},
 		cardIsShowing (isShowing) {
 			if (this.isMobileLayout && this.currentlyViewedCard) {

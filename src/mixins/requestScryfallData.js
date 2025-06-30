@@ -343,7 +343,7 @@ export default {
 			const existingCard = this.findExistingCardByName(newCard.name)
 
 			if (existingCard) {
-				this.activeCardList.viewedCard = existingCard
+				this.$set(this.activeCardList, 'viewedCard', existingCard)
 
 				if (this.optionalReplacement) {
 					this.notifyCardExists(newCard, true)
@@ -376,7 +376,11 @@ export default {
 		 */
 		notifyCardExists (card, confirmToReplace) {
 			this.loadingCard = false
-			this.activeCardList.viewedCard = this.findExistingCardByName(card.name)
+			this.$set(
+				this.activeCardList,
+				'viewedCard',
+				this.findExistingCardByName(card.name)
+			)
 
 			if (confirmToReplace) {
 				this.$store.commit('idOfShowingDialog', {
@@ -409,7 +413,7 @@ export default {
 			})
 
 			this.$nextTick(() => {
-				this.activeCardList.viewedCard = newCard
+				this.$set(this.activeCardList, 'viewedCard', newCard)
 				this.$store.commit('decks', this.$store.state.decks)
 			})
 		}

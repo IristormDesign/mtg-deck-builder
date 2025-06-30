@@ -24,12 +24,12 @@ export default {
 				)
 			) {
 				if (index + 1 === cards.length) { // If this card is last in the list...
-					list.viewedCard = cards[index - 1]
+					this.$set(list, 'viewedCard', cards[index - 1])
 				} else {
-					list.viewedCard = cards[index + 1]
+					this.$set(list, 'viewedCard', cards[index + 1])
 				}
 			} else {
-				list.viewedCard = null
+				this.$set(list, 'viewedCard', null)
 			}
 
 			/* Now remove the card from the deck. */
