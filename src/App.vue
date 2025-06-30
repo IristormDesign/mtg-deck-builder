@@ -16,8 +16,8 @@
 		<div v-else class="browser-unsupported">
 			<article class="content-box">
 				<h2>Browser Unsupported</h2>
-				<p>Sorry, but <strong>MTG Deck Builder by Iristorm Design</strong> can’t be displayed because the web browser you’re currently using doesn’t pass the technical requirements to run it.</p>
-				<p>Please use this web app on one of the major web browsers, and ensure that the browser is updated to the newest version.</p>
+				<p>Sorry, but <strong>MTG Deck Builder by Iristorm Design</strong> can’t be displayed on the web browser you’re currently using.</p>
+				<p>This is because your browser doesn’t meet the minimum technical requirements to be able to run this web app. Please use this app on any one of the <a href="https://browsehappy.com/" target="_blank">major web browsers</a>, and ensure that the browser has been updated to its newest version.</p>
 			</article>
 		</div>
 	</div>
