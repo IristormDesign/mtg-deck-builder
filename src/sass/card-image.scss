@@ -88,11 +88,22 @@ $animation-duration-card-browse: $transition-delay-card;
 
 			&.sideways {
 				@if $rise-from == 'left' {
-					$translate: translate($lhse*3.5, $lhse);
+					@if $above-threshold {
+						$translate: translate($lhse*3.5, $lhse);
+					}
+					@else {
+						$translate: translate($lhse*3.5, 0);
+					}
+
 					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
 				}
 				@if $rise-from == 'right' {
-					$translate: translate(-$lhse*3.5, $lhse);
+					@if $above-threshold {
+						$translate: translate(-$lhse*3.5, $lhse);
+					}
+					@else {
+						$translate: translate(-$lhse*3.5, 0);
+					}
 					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
 				}
 
