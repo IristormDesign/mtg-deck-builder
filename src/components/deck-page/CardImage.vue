@@ -94,6 +94,8 @@ export default {
 	},
 	data () {
 		return {
+			cachedThreshold: null,
+			isAboveThreshold: false,
 			isCheckingImageURLs: false,
 			isMobileLayout: false,
 			showingFrontFace: true,
@@ -174,6 +176,7 @@ export default {
 
 				this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 
+				this.invalidateThresholdCache()
 				this.checkForOutdatedImageURLs()
 			},
 			deep: true,
@@ -248,6 +251,7 @@ export default {
 		},
 		applyEffectsOnViewportResizing () {
 			this.updateMobileLayoutState()
+			this.invalidateThresholdCache()
 
 			if (this.isMobileLayout) {
 				this.hideImageOverlay()
@@ -355,13 +359,27 @@ export default {
 
 			const image = this.$refs.cardImage
 
-			const imageY = image.getBoundingClientRect().top + window.scrollY
+			if (this.cachedThreshold === null) {
+				const imageY = image.getBoundingClientRect().top + window.scrollY
 
-			if (window.scrollY < imageY / 3) {
-				image.classList.remove('above-threshold')
-			} else {
-				image.classList.add('above-threshold')
+				this.cachedThreshold = imageY / 3
 			}
+
+			const shouldBeAboveThreshold = window.scrollY >= this.cachedThreshold
+
+			if (this.isAboveThreshold !== shouldBeAboveThreshold) {
+				this.isAboveThreshold = shouldBeAboveThreshold
+
+				if (shouldBeAboveThreshold) {
+					image.classList.add('above-threshold')
+				} else {
+					image.classList.remove('above-threshold')
+				}
+			}
+		},
+		invalidateThresholdCache () {
+			this.cachedThreshold = null
+			this.isAboveThreshold = false
 		}
 	}
 }
