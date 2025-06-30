@@ -184,7 +184,7 @@ export default {
 			'focusin', this.closeHeaderMenuOnOutsideFocus
 		)
 		window.addEventListener(
-			'resize', this.debouncedResizingViewport
+			'resize', this.debouncedResizingViewport, { passive: true }
 		)
 		this.$refs.deckMenuMOArea.addEventListener(
 			'mouseover', this.mouseoverDeckMenuMOArea
@@ -201,7 +201,7 @@ export default {
 			'focusin', this.closeHeaderMenuOnOutsideFocus
 		)
 		window.removeEventListener(
-			'resize', this.debouncedResizingViewport
+			'resize', this.debouncedResizingViewport, { passive: true }
 		)
 		this.$refs.deckMenuMOArea.removeEventListener(
 			'mouseover', this.mouseoverDeckMenuMOArea

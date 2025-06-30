@@ -103,7 +103,7 @@ export default {
 			this.highlightTOCLinkOfVisibleSection()
 
 			window.addEventListener(
-				'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter
+				'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter, { passive: true }
 			)
 		}
 	},
@@ -112,7 +112,7 @@ export default {
 	},
 	destroyed () {
 		window.removeEventListener(
-			'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter
+			'scroll', this.highlightPrimaryTOCLinkWhenAtPrimaryChapter, { passive: true }
 		)
 	},
 	methods: {

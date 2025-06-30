@@ -22,7 +22,7 @@ export default {
 	},
 	mounted () {
 		window.addEventListener(
-			'scroll', this.checkScrollPosition
+			'scroll', this.checkScrollPosition, { passive: true }
 		)
 	},
 	methods: {
