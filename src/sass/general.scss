@@ -14,10 +14,15 @@ body {
 	font: (20px + math.div(1, 3))/#{$line-height-standard} $font-family-standard;
 	font-weight: $font-weight-regular; // The font size is precisely set to make the lowercase E in the standard font family to have a sharp-looking crossbar instead of a blurry one.
 	color: $color-text;
-	background: $color-content-bg;
+	background: #000;
 	min-width: 320px;
 	overflow-x: clip; // Needed for the Draw Simulator's card image animations that appear from outside the viewport, and doesn't affect `sticky` positioning.
 	display: flow-root; // For use with `overflow-x: clip`.
+}
+.footer-pusher {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 	background:
 	  linear-gradient((180deg + 5.625),
 	   rgba($color-text-extra-brighter, 16.67%) 0,
@@ -25,11 +30,6 @@ body {
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
 		$color-content-bg;
-}
-.footer-pusher {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
 }
 .wrap {
 	max-width: $max-width-app;
