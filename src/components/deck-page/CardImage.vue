@@ -172,14 +172,9 @@ export default {
 			handler () {
 				if (!this.currentlyViewedCard || this.isCheckingImageURLs) return
 
-				this.isCheckingImageURLs = true
 				this.showingFrontFace = true // Whenever viewing another card, if it's a double-faced card, switch to its front-face image.
 
 				this.checkForOutdatedImageURLs()
-
-				this.$nextTick(() => {
-					this.isCheckingImageURLs = false
-				})
 			},
 			deep: true,
 			immediate: true
@@ -271,6 +266,8 @@ export default {
 				!card.img ||
 				regexOutdatedServer.test(card.img)
 			) {
+				this.isCheckingImageURLs = true
+
 				const cardQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
 
 				console.info(`New image URL for "${card.name}" requested via Scryfall API.`)
@@ -286,6 +283,10 @@ export default {
 						// eslint-disable-next-line
 						console.error(error)
 					})
+
+				this.$nextTick(() => {
+					this.isCheckingImageURLs = false
+				})
 			}
 		},
 		updateImageURL (response, card) {
