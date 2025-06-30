@@ -33,7 +33,7 @@
 			<h4>June 30</h4>
 			<ul>
 				<li>
-					<p>In the List Editor and Draw Simulator, when hovering your mouse pointer over the card image, the image now rises to a slightly upward position while your web browser window is at a high enough scroll position.</p>
+					<p>In the List Editor and Draw Simulator, when hovering your mouse pointer over the card image, the image now rises to a slightly upward position while the page is at a high enough scroll position.</p>
 				</li>
 				<li>
 					<p>Various optimizations and bug fixes are made.</p>
