@@ -58,27 +58,14 @@ $animation-duration-card-browse: $transition-delay-card;
 	}
 }
 @mixin card-link ($rise-from, $above-threshold) {
-	$translate: none;
-	$rotate: none;
+	// Calculate multipliers based on position
+	$x-multiplier: if($rise-from == 'left', 1.5, -1.5);
+	$rotation-direction: if($rise-from == 'left', -1, 1);
+	$y-offset: if($above-threshold, $lhse*3, 0);
 
-	@if $rise-from == 'left' {
-		@if $above-threshold {
-			$translate: translate($lhse*1.5, $lhse*3);
-		}
-		@else {
-			$translate: translate($lhse*1.5, 0);
-		}
-		$rotate: rotate(math.div(-360, 192) * 1deg);
-	}
-	@if $rise-from == 'right' {
-		@if $above-threshold {
-			$translate: translate(-$lhse*1.5, $lhse*3);
-		}
-		@else {
-			$translate: translate(-$lhse*1.5, 0);
-		}
-		$rotate: rotate(math.div(360, 192) * 1deg);
-	}
+	// Base transforms
+	$translate: translate($x-multiplier * $lhse, $y-offset);
+	$rotate: rotate(math.div($rotation-direction * 360, 192) * 1deg);
 
 	a {
 		&:hover,
@@ -87,27 +74,11 @@ $animation-duration-card-browse: $transition-delay-card;
 			transform: scale(1.5) $translate $rotate;
 
 			&.sideways {
-				@if $rise-from == 'left' {
-					@if $above-threshold {
-						$translate: translate($lhse*3.5, $lhse);
-					}
-					@else {
-						$translate: translate($lhse*3.5, 0);
-					}
+				$sideways-x: if($rise-from == 'left', 3.5, -3.5) * $lhse;
+				$sideways-y: if($above-threshold, $lhse, 0);
+				$sideways-rotation: 90deg + math.div($rotation-direction * 360, 128) * 1deg;
 
-					$rotate: rotate(90deg - math.div(360, 128) * 1deg);
-				}
-				@if $rise-from == 'right' {
-					@if $above-threshold {
-						$translate: translate(-$lhse*3.5, $lhse);
-					}
-					@else {
-						$translate: translate(-$lhse*3.5, 0);
-					}
-					$rotate: rotate(90deg + math.div(360, 128) * 1deg);
-				}
-
-				transform: scale(1.5) $translate $rotate;
+				transform: scale(1.5) translate($sideways-x, $sideways-y) rotate($sideways-rotation);
 			}
 		}
 	}
