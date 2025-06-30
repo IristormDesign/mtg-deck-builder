@@ -154,6 +154,8 @@ figure {
 	color: $color-text-darker;
 	width: fit-content;
 	height: fit-content;
+	position: relative;
+	z-index: 1; // Needed for floated <figure> elements with clickable links.
 
 	img {
 		margin: auto;
