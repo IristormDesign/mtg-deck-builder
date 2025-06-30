@@ -207,6 +207,9 @@ export default {
 		window.addEventListener(
 			'resize', this.debounceResizingViewport, { passive: true }
 		)
+		window.addEventListener(
+			'scroll', this.repositionHoveredImage, { passive: true }
+		)
 	},
 	beforeDestroy () {
 		if (this.$refs.cardImage) {
@@ -217,6 +220,9 @@ export default {
 
 		window.removeEventListener(
 			'resize', this.debounceResizingViewport, { passive: true }
+		)
+		window.removeEventListener(
+			'scroll', this.repositionHoveredImage, { passive: true }
 		)
 	},
 	methods: {
@@ -343,6 +349,19 @@ export default {
 			setTimeout(() => {
 				this.turningOverCard = false
 			}, cardFlipDuration * 2)
+		},
+		repositionHoveredImage () {
+			if (this.isMobileLayout) return
+
+			const image = this.$refs.cardImage
+
+			const imageY = image.getBoundingClientRect().top + window.scrollY
+
+			if (window.scrollY < imageY / 3) {
+				image.classList.remove('above-threshold')
+			} else {
+				image.classList.add('above-threshold')
+			}
 		}
 	}
 }

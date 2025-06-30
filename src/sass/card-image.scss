@@ -57,16 +57,26 @@ $animation-duration-card-browse: $transition-delay-card;
 		animation-name: card-fan-in-#{$enter-from};
 	}
 }
-@mixin card-link ($rise-from) {
+@mixin card-link ($rise-from, $above-threshold) {
 	$translate: none;
 	$rotate: none;
 
 	@if $rise-from == 'left' {
-		$translate: translate($lhse*1.5, $lhse*3);
+		@if $above-threshold {
+			$translate: translate($lhse*1.5, $lhse*3);
+		}
+		@else {
+			$translate: translate($lhse*1.5, 0);
+		}
 		$rotate: rotate(math.div(-360, 192) * 1deg);
 	}
 	@if $rise-from == 'right' {
-		$translate: translate(-$lhse*1.5, $lhse*3);
+		@if $above-threshold {
+			$translate: translate(-$lhse*1.5, $lhse*3);
+		}
+		@else {
+			$translate: translate(-$lhse*1.5, 0);
+		}
 		$rotate: rotate(math.div(360, 192) * 1deg);
 	}
 
@@ -238,8 +248,11 @@ $animation-duration-card-browse: $transition-delay-card;
 }
 .list-editor {
 	.card-image-section {
-		@include card-link('left');
+		@include card-link('left', false);
 
+		&.above-threshold {
+			@include card-link('left', true);
+		}
 		.card-edge {
 			@include card-edge-filters('left');
 		}
@@ -250,8 +263,11 @@ $animation-duration-card-browse: $transition-delay-card;
 }
 .draw-simulator {
 	.card-image-section {
-		@include card-link('right');
+		@include card-link('right', false);
 
+		&.above-threshold {
+			@include card-link('right', true);
+		}
 		.card-edge {
 			@include card-edge-filters('right');
 		}

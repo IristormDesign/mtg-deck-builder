@@ -21,7 +21,7 @@
 			<h3>Known Bugs, Not Fixed Yet</h3>
 			<ul>
 				<li>
-					<p>In the List Editor, only under certain obscure conditions, the card image for any card you select may fail to appear. The exact cause of this bug is still under investigation.</p>
+					<p>In the List Editor, only under certain rare conditions, the card image for any card you select may fail to appear. The exact cause of this bug is still under investigation.</p>
 					<p>If it ever occurs to you, you can get around it by simply reloading the web page.</p>
 				</li>
 			</ul>
@@ -29,6 +29,16 @@
 
 		<section>
 			<h3>2025 Releases</h3>
+
+			<h4>June 30</h4>
+			<ul>
+				<li>
+					<p>In the List Editor and Draw Simulator, when hovering your mouse pointer over the card image, the image now rises to a slightly upward position while your web browser window is at a high enough scroll position.</p>
+				</li>
+				<li>
+					<p>Various optimizations and bug fixes are made.</p>
+				</li>
+			</ul>
 
 			<h4>June 28</h4>
 			<ul>
