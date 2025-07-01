@@ -28,6 +28,7 @@ body {
 		),
 		top left repeat url('@/img/turbulence-bg-tile.jpg')
 		$color-content-bg;
+	overflow-x: clip; // Needed in order to prevent browser bugs caused by card image transitions coming in from outside the browser viewport. In Firefox, it causes horizontal scrollbars to appear. In Safari, the page automatically zooms out tat certain viewport widths.
 }
 .wrap {
 	max-width: $max-width-app;
