@@ -16,7 +16,6 @@
 		background: $color-group-bg;
 		border-radius: $border-radius-group;
 		width: $width-card-bars-wide + $width-card-star + math.div($lhse, 3);
-		min-width: $width-list-editor-region;
 	}
 	.card-browse-appear-active {
 		animation-delay: 0s; // This purposely prevents the delay in the card image that normally happens when arriving on a deck page, but that I don't want on the draw simulator page.
@@ -148,14 +147,13 @@
 @media (max-width: $width-app-breakpoint-tablet) {
 	.draw-simulator {
 		.layout-column {
-			min-width: $width-card-bars-narrow + $width-card-star + $lhse*1.5;
-			width: min-content
+			width: $lhse*16; // Just wide enough to fit the Draw Sim stats side by side.
 		}
 		.control-panel {
 			grid-template-rows: repeat(2, $height-deck-header-component);
 			grid-template-columns: repeat(2, 1fr);
 			height: auto;
-			justify-self: center
+			justify-self: center;
 		}
 		.deck-info {
 			@include deck-info-box-wide;
@@ -175,17 +173,16 @@
 				padding-left: $lhse*.75;
 			}
 		}
+		.card-list-section {
+			li {
+				margin-left: -$lhse*.8;
+			}
+		}
 	}
 }
 @media (max-width: ($min-width-app * .8)) {
 	.draw-simulator {
 		gap: 0;
-
-		.card-list-section {
-			li {
-				margin-left: -$lhse*.8333;
-			}
-		}
 	}
 }
 @media (max-width: ($min-width-app * .75)) {

@@ -16,8 +16,6 @@ body {
 	color: $color-text;
 	background: #000;
 	min-width: 320px;
-	overflow-x: clip; // Needed for the Draw Simulator's card image animations that appear from outside the viewport, and doesn't affect `sticky` positioning.
-	display: flow-root; // For use with `overflow-x: clip`.
 }
 .footer-pusher {
 	display: flex;
