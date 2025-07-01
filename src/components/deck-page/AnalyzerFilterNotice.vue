@@ -51,6 +51,7 @@ export default {
 	computed: {
 		activeFilterDescription () {
 			const attr = this.$store.state.analyzerFilter.attribute
+			const extraAttr = this.$store.state.analyzerFilter.extraAttribute
 
 			switch (this.$store.state.analyzerFilter.category) {
 				case 'colors':
@@ -59,7 +60,7 @@ export default {
 				case 'manaSymbols':
 					switch (attr) {
 						case 'Phyrexian':
-							return `spells with ${attr} mana symbols`
+							return 'spells with Phyrexian mana symbols'
 						default:
 							return `spells with ${attr.toLowerCase()} mana symbols`
 					}
@@ -70,6 +71,13 @@ export default {
 							return 'spells with a variable mana cost'
 						default:
 							return `spells with mana value ${attr}`
+					}
+
+				case 'producibleMana':
+					if (extraAttr) {
+						return `sources of ${extraAttr.toLowerCase()} mana`
+					} else {
+						return null
 					}
 
 				case 'supertypes':

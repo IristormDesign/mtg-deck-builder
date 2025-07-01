@@ -34,9 +34,7 @@ export default {
 				return 'filtering'
 			}
 		},
-		handleRowClick (category, attribute, exception) {
-			if (exception) return
-
+		handleRowClick (category, attribute, extraAttribute) {
 			const store = this.$store
 
 			if (
@@ -47,11 +45,12 @@ export default {
 			) {
 				store.commit('analyzerFilter', {
 					category: null,
-					attribute: null
+					attribute: null,
+					extraAttribute: null
 				})
 			} else {
 				store.commit('analyzerFilter', {
-					category, attribute
+					category, attribute, extraAttribute
 				})
 			}
 		},
@@ -63,6 +62,8 @@ export default {
 					return this.filteredCardsByManaSymbols()
 				case 'manaValues':
 					return this.filteredCardsByManaValues()
+				case 'producibleMana':
+					return this.filteredCardsByProducibleMana()
 				case 'supertypes':
 					return this.filteredCardsBySupertypes()
 				case 'types':
@@ -179,6 +180,13 @@ export default {
 				} else {
 					return null
 				}
+			})
+		},
+		filteredCardsByProducibleMana () {
+			const filteredColor = this.analyzerFilter.attribute
+
+			return this.deck.cards.filter(card => {
+				return card.prodMana?.includes(filteredColor)
 			})
 		},
 		filteredCardsBySupertypes () {

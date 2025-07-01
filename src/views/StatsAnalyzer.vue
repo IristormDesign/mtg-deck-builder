@@ -23,6 +23,8 @@
 
 			<analyzer-mana-values :deck="deck" />
 
+			<analyzer-producible-mana :deck="deck" />
+
 			<analyzer-supertypes :deck="deck" />
 
 			<analyzer-types :deck="deck" />
@@ -79,6 +81,7 @@ import AnalyzerFilterNotice from '@/components/deck-page/AnalyzerFilterNotice.vu
 import AnalyzerColors from '@/components/deck-page/AnalyzerColors.vue'
 import AnalyzerManaSymbols from '@/components/deck-page/AnalyzerManaSymbols.vue'
 import AnalyzerManaValues from '@/components/deck-page/AnalyzerManaValues.vue'
+import AnalyzerProducibleMana from '@/components/deck-page/AnalyzerProducibleMana.vue'
 import AnalyzerSupertypes from '@/components/deck-page/AnalyzerSupertypes.vue'
 import AnalyzerTypes from '@/components/deck-page/AnalyzerTypes.vue'
 import AnalyzerCreatureSubtypes from '@/components/deck-page/AnalyzerCreatureSubtypes.vue'
@@ -92,7 +95,7 @@ import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 import statsAnalyzerSubtypes from '@/mixins/statsAnalyzerSubtypes.js'
 
 export default {
-	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
+	components: { AnalyzerFilterNotice, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerProducibleMana, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
 	mixins: [statsAnalyzer, statsAnalyzerSubtypes],
 	props: {
 		deck: Object

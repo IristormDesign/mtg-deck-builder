@@ -119,13 +119,7 @@ export default {
 		},
 		findOutdatedCards (list) {
 			for (const card of list.cards) {
-				if (!card.img.startsWith('https://')) {
-					continue // Any card object with an `img` key whose value does NOT start with "https://" means that card's data set is on the newest version.
-				} else if (card.type.includes('Planeswalker')) {
-					if (card.loyalty) continue // Any planeswalker card object with a `loyalty` key means that card's data set is on a new-enough version.
-				} else if (card.layout) {
-					continue // Any other card object with the `layout` key means that card's data set is on a new-enough version.
-				}
+				if (card.prodMana) continue // Any `card` object with the `prodMana` key means it's already on the latest data version.
 
 				const dataToPush = {
 					inSideboard: list === this.deck.sideboard,
@@ -183,12 +177,6 @@ export default {
 			setTimeout(() => {
 				this.cardUpdateStatus = 4
 			}, 250) // This slight delay allows the displayed updated percentage to reach "100%" before the alert message appears.
-		},
-		archiveDeck () {
-			this.$router.push({
-				name: 'archiveDecks',
-				params: { presetDeckName: this.deck.name }
-			})
 		}
 	}
 }

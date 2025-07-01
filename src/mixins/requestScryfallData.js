@@ -260,6 +260,11 @@ export default {
 			if (!newCard.cmc) { // If the card's `cmc` value hasn't already been set by a previous condition...
 				newCard.cmc = data.cmc
 			}
+
+			if (data.produced_mana) {
+				newCard.prodMana = data.produced_mana
+			}
+
 			newCard.link = truncateURLs.truncateCardLinkURL(data.scryfall_uri)
 			newCard.imgVersion = this.latestImageVersion
 
