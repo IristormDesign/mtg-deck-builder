@@ -30,6 +30,14 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>July 1</h4>
+			<ul>
+				<li>
+					<p>✨ <strong>New Feature</strong>: The Stats Analyzer includes a whole new statistic category: Producible Mana Colors. This category displays the numbers of each mana color that can be generated among your deck’s cards.</p>
+					<p>If you have decks in this app that had been created before this release, then in order to get this new statistic category to work, you’ll probably need to update your decks’ card data sets. Cards that you add to any decks after this release won’t need to be updated, however.</p>
+				</li>
+			</ul>
+
 			<h4>June 30</h4>
 			<ul>
 				<li>
