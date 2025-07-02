@@ -68,10 +68,7 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			for (const rarity in this.rarityCounts) {
-				this.rarityCounts[rarity] = 0
-			}
-
+			this.resetRarityStats()
 			this.countRarities()
 		}
 	},
@@ -119,6 +116,11 @@ export default {
 						cts.Other += qty
 				}
 			})
+		},
+		resetRarityStats () {
+			for (const rarity in this.rarityCounts) {
+				this.rarityCounts[rarity] = 0
+			}
 		}
 	}
 }

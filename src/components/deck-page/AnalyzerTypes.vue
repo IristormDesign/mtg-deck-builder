@@ -60,13 +60,11 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			this.countTypes()
+			this.prepareTypeStats()
 		}
 	},
 	mounted () {
-		this.countTypes()
-
-		this.typeStats = this.sortTableByCounts(this.typeStats)
+		this.prepareTypeStats()
 	},
 	methods: {
 		noData () {
@@ -75,6 +73,11 @@ export default {
 			return Object.values(this.typeStats).every(
 				stat => stat.ct === 0
 			)
+		},
+		prepareTypeStats () {
+			this.countTypes()
+
+			this.typeStats = this.sortTableByCounts(this.typeStats)
 		},
 		initializeCounts () {
 			for (const stat in this.typeStats) {

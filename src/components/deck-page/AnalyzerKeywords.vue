@@ -57,18 +57,17 @@ export default {
 		analyzerFilter () {
 			this.keywordCounts = {}
 
-			this.countKeywords()
-
-			if (!this.analyzerFilter.attribute) {
-				this.sortKeywords()
-			}
+			this.prepareKeywordStats()
 		}
 	},
 	mounted () {
-		this.countKeywords()
-		this.sortKeywords()
+		this.prepareKeywordStats()
 	},
 	methods: {
+		prepareKeywordStats () {
+			this.countKeywords()
+			this.sortKeywords()
+		},
 		countKeywords () {
 			const counts = this.keywordCounts
 
@@ -84,13 +83,14 @@ export default {
 				})
 			})
 		},
+		/**
+		 * Sort the keywords by name alphabetically, then sort by their counts.
+		 */
 		sortKeywords () {
-			/* First alphabetize the keywords. */
 			this.keywordCounts = Object.fromEntries(
 				Object.entries(this.keywordCounts).sort()
 			)
 
-			/* Then sort the keywords by counts. */
 			this.keywordCounts = this.sortTableByCounts(this.keywordCounts)
 		}
 	}

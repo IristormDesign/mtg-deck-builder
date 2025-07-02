@@ -74,17 +74,12 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			for (const supertype in this.supertypeStats) {
-				this.supertypeStats[supertype].ct = 0
-			}
-
-			this.countSupertypes()
+			this.resetSupertypeStats()
+			this.prepareSupertypeStats()
 		}
 	},
 	mounted () {
-		this.countSupertypes()
-
-		this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
+		this.prepareSupertypeStats()
 	},
 	methods: {
 		noData () {
@@ -93,6 +88,11 @@ export default {
 			return Object.values(this.supertypeStats).every(
 				stat => stat.ct === 0
 			)
+		},
+		prepareSupertypeStats () {
+			this.countSupertypes()
+
+			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
 		},
 		countSupertypes () {
 			this.filteredCards().forEach(card => {
@@ -121,6 +121,11 @@ export default {
 				supertypesPerFace(card.type)
 				supertypesPerFace(card.type2)
 			})
+		},
+		resetSupertypeStats () {
+			for (const supertype in this.supertypeStats) {
+				this.supertypeStats[supertype].ct = 0
+			}
 		}
 	}
 }

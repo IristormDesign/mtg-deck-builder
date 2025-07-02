@@ -52,6 +52,7 @@ export default {
 	watch: {
 		analyzerFilter () {
 			this.layoutStats = {}
+
 			this.prepareLayoutStats()
 		}
 	},
@@ -66,21 +67,19 @@ export default {
 			this.layoutStats = this.sortTableByCounts(this.layoutStats)
 		},
 		countLayouts () {
-			this.filteredCards().forEach(
-				({ layout, qty }) => {
-					if (!layout) {
-						layout = 'normal'
-					}
-
-					if (!this.layoutStats[layout]) {
-						this.layoutStats[layout] = {
-							ct: 0
-						}
-					}
-
-					this.layoutStats[layout].ct += qty
+			this.filteredCards().forEach(({ layout, qty }) => {
+				if (!layout) {
+					layout = 'normal'
 				}
-			)
+
+				if (!this.layoutStats[layout]) {
+					this.layoutStats[layout] = {
+						ct: 0
+					}
+				}
+
+				this.layoutStats[layout].ct += qty
+			})
 		},
 		setPreferredLayoutLabels () {
 			for (const key in this.layoutStats) {

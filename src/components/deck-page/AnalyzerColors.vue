@@ -92,22 +92,12 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			for (const stat in this.colorStatsBasic) {
-				this.colorStatsBasic[stat].ct = 0
-			}
-			for (const stat in this.colorStatsExtra) {
-				this.colorStatsExtra[stat].ct = 0
-			}
-			this.allSpellsCount = 0
-
+			this.resetColorStats()
 			this.prepareColorStats()
 		}
 	},
 	mounted () {
 		this.prepareColorStats()
-
-		this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
-		this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
 	},
 	methods: {
 		prepareColorStats () {
@@ -116,6 +106,9 @@ export default {
 
 			this.calculatePercentageOfSpells(this.colorStatsBasic)
 			this.calculatePercentageOfSpells(this.colorStatsExtra)
+
+			this.colorStatsBasic = this.sortTableByCounts(this.colorStatsBasic)
+			this.colorStatsExtra = this.sortTableByCounts(this.colorStatsExtra)
 		},
 		initializeColorCounts () {
 			for (const color in this.colorStatsBasic) {
@@ -208,6 +201,16 @@ export default {
 
 				stat.pct = ((stat.ct / this.allSpellsCount) * 100).toFixed(1)
 			}
+		},
+		resetColorStats () {
+			for (const stat in this.colorStatsBasic) {
+				this.colorStatsBasic[stat].ct = 0
+			}
+			for (const stat in this.colorStatsExtra) {
+				this.colorStatsExtra[stat].ct = 0
+			}
+
+			this.allSpellsCount = 0
 		}
 	}
 }

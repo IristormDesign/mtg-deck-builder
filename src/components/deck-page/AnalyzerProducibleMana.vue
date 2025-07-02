@@ -86,24 +86,19 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			for (const color in this.producibleManaStats) {
-				this.producibleManaStats[color].ct = 0
-			}
-
+			this.resetProdManaStats()
 			this.prepareProducibleManaStats()
 		}
 	},
 	mounted () {
 		this.prepareProducibleManaStats()
-
-		this.producibleManaStats = this.sortTableByCounts(this.producibleManaStats)
 	},
 	methods: {
 		prepareProducibleManaStats () {
-			this.totalManaSources = 0
-
 			this.countManaProduced()
 			this.calculatePercentage()
+
+			this.producibleManaStats = this.sortTableByCounts(this.producibleManaStats)
 		},
 		countManaProduced () {
 			this.filteredCards().forEach(card => {
@@ -126,6 +121,13 @@ export default {
 			for (const color in pm) {
 				pm[color].pct = (pm[color].ct / this.totalManaSources * 100)
 			}
+		},
+		resetProdManaStats () {
+			for (const color in this.producibleManaStats) {
+				this.producibleManaStats[color].ct = 0
+			}
+
+			this.totalManaSources = 0
 		}
 	}
 }

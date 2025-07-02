@@ -83,10 +83,7 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			this.mvStats = {}
-			this.variableStat.ct = 0
-			this.allSpellsCount = 0
-
+			this.resetManaValueStats()
 			this.prepareManaValueStats()
 		}
 	},
@@ -131,6 +128,11 @@ export default {
 			}
 
 			this.variableStat.pct = returnPct(this.variableStat)
+		},
+		resetManaValueStats () {
+			this.mvStats = {}
+			this.variableStat.ct = 0
+			this.allSpellsCount = 0
 		}
 	}
 }

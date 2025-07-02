@@ -49,9 +49,7 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			this.starredCounts.Starred = 0
-			this.starredCounts['Un-starred'] = 0
-
+			this.resetStarredStats()
 			this.prepareStarredCounts()
 		}
 	},
@@ -72,15 +70,17 @@ export default {
 			this.starredCounts = this.sortTableByCounts(this.starredCounts)
 		},
 		countStarred () {
-			this.filteredCards().forEach(
-				({ starred, qty }) => {
-					if (starred) {
-						this.starredCounts.Starred += qty
-					} else {
-						this.starredCounts['Un-starred'] += qty
-					}
+			this.filteredCards().forEach(card => {
+				if (card.starred) {
+					this.starredCounts.Starred += card.qty
+				} else {
+					this.starredCounts['Un-starred'] += card.qty
 				}
-			)
+			})
+		},
+		resetStarredStats () {
+			this.starredCounts.Starred = 0
+			this.starredCounts['Un-starred'] = 0
 		}
 	}
 }

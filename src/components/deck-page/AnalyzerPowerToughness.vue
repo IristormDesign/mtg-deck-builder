@@ -161,16 +161,7 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			this.powerStats = {}
-			this.toughnessStats = {}
-			this.variablePT = {
-				ct: 0,
-				pct: 0
-			}
-			this.allPTCardsCount = 0
-			this.allPowerValues = []
-			this.allToughnessValues = []
-
+			this.resetPTStats()
 			this.preparePTStats()
 		}
 	},
@@ -292,6 +283,17 @@ export default {
 		},
 		disabledCell (stat) {
 			return stat === '*'
+		},
+		resetPTStats () {
+			this.powerStats = {}
+			this.toughnessStats = {}
+			this.variablePT = {
+				ct: 0,
+				pct: 0
+			}
+			this.allPTCardsCount = 0
+			this.allPowerValues = []
+			this.allToughnessValues = []
 		}
 	}
 }

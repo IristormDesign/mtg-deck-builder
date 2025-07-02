@@ -49,18 +49,16 @@ export default {
 	},
 	computed: {
 		totalCreatureCards () {
-			return this.filteredCards().reduce(
-				(total, { type, type2, qty }) => {
-					if (
-						/\bCreature\b/.test(type) ||
-						/\bCreature\b/.test(type2)
-					) {
-						return total + qty
-					}
+			return this.filteredCards().reduce((total, card) => {
+				if (
+					/\bCreature\b/.test(card.type) ||
+					/\bCreature\b/.test(card.type2)
+				) {
+					return total + card.qty
+				}
 
-					return total
-				}, 0
-			)
+				return total
+			}, 0)
 		}
 	},
 	methods: {

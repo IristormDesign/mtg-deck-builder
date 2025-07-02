@@ -138,22 +138,19 @@ export default {
 	},
 	watch: {
 		analyzerFilter () {
-			for (const symbol in this.manaSymbols) {
-				this.manaSymbols[symbol].ct = 0
-			}
-
+			this.resetManaSymbolStats()
 			this.prepareManaSymbolStats()
 		}
 	},
 	mounted () {
 		this.prepareManaSymbolStats()
-
-		this.manaSymbols = this.sortTableByCounts(this.manaSymbols)
 	},
 	methods: {
 		prepareManaSymbolStats () {
 			this.countManaSymbols()
 			this.calculatePercentage()
+
+			this.manaSymbols = this.sortTableByCounts(this.manaSymbols)
 		},
 		countManaSymbols () {
 			this.filteredCards().forEach(card => {
@@ -190,6 +187,11 @@ export default {
 
 			for (const symbol in cs) {
 				cs[symbol].pct = (cs[symbol].ct / this.totalSymbolCount * 100)
+			}
+		},
+		resetManaSymbolStats () {
+			for (const symbol in this.manaSymbols) {
+				this.manaSymbols[symbol].ct = 0
 			}
 		}
 	}

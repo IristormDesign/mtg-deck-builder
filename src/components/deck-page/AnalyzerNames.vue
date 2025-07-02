@@ -55,18 +55,17 @@ export default {
 		analyzerFilter () {
 			this.nameCounts = {}
 
-			this.countNames()
-
-			if (!this.analyzerFilter.attribute) {
-				this.sortNames()
-			}
+			this.prepareNameStats()
 		}
 	},
 	mounted () {
-		this.countNames()
-		this.sortNames()
+		this.prepareNameStats()
 	},
 	methods: {
+		prepareNameStats () {
+			this.countNames()
+			this.sortNames()
+		},
 		countNames () {
 			const counts = this.nameCounts
 
