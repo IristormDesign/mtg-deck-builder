@@ -2,7 +2,7 @@
 	<section id="stats-producibleMana">
 		<h4>Producible Mana Colors</h4>
 		<div
-			v-if="this.totalCount === 0"
+			v-if="this.totalManaSources === 0"
 			class="no-data"
 		>
 			(None)
@@ -36,7 +36,7 @@
 			<tfoot>
 				<tr>
 					<th>{{ totalRowLabel('sources') }}</th>
-					<td>{{ totalCount }}</td>
+					<td>{{ totalManaSources }}</td>
 					<td>100.0<span>%</span></td>
 				</tr>
 			</tfoot>
@@ -80,14 +80,8 @@ export default {
 					ct: 0,
 					name: 'Colorless'
 				}
-			}
-		}
-	},
-	computed: {
-		totalCount () {
-			return Object.values(this.producibleManaStats).reduce(
-				(total, symbol) => total + symbol.ct, 0
-			)
+			},
+			totalManaSources: 0
 		}
 	},
 	watch: {
@@ -106,6 +100,8 @@ export default {
 	},
 	methods: {
 		prepareProducibleManaStats () {
+			this.totalManaSources = 0
+
 			this.countManaProduced()
 			this.calculatePercentage()
 		},
@@ -120,13 +116,15 @@ export default {
 						this.producibleManaStats[color].ct += card.qty
 					}
 				})
+
+				this.totalManaSources += card.qty
 			})
 		},
 		calculatePercentage () {
 			const pm = this.producibleManaStats
 
 			for (const color in pm) {
-				pm[color].pct = (pm[color].ct / this.totalCount * 100)
+				pm[color].pct = (pm[color].ct / this.totalManaSources * 100)
 			}
 		}
 	}
