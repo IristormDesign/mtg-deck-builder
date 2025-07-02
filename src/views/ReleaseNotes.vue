@@ -18,17 +18,17 @@
 		</header>
 
 		<section>
-			<h3>Known Bugs, Not Fixed Yet</h3>
+			<h3>2025 Releases</h3>
+
+			<h4>July 2</h4>
 			<ul>
 				<li>
-					<p>In the List Editor, only under certain rare conditions, the card image for any card you select may fail to appear. The exact cause of this bug is still under investigation.</p>
-					<p>If it ever occurs to you, you can get around it by simply reloading the web page.</p>
+					<p>In the Stats Analyzer, when using a data filter, most statistics categories’ tables automatically get their rows re-sorted by quantity from most to least.</p>
+				</li>
+				<li>
+					<p>Bug fix: In the Stats Analyzer’s Layout category, selecting the “Normal” layout hadn’t filtered card data correctly.</p>
 				</li>
 			</ul>
-		</section>
-
-		<section>
-			<h3>2025 Releases</h3>
 
 			<h4>July 1</h4>
 			<ul>

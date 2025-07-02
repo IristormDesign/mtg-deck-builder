@@ -353,7 +353,12 @@ export default {
 		},
 		filteredCardsByLayouts () {
 			return this.deck.cards.filter(card => {
-				if (this.analyzerFilter.attribute === card.layout) {
+				if (
+					this.analyzerFilter.attribute === 'normal' &&
+					!card.layout
+				) {
+					return card
+				} else if (this.analyzerFilter.attribute === card.layout) {
 					return card
 				}
 
