@@ -1,7 +1,7 @@
 <template>
 	<section id="stats-starred">
 		<h4>Starred</h4>
-		<div v-if="noData()" class="no-data">
+		<div v-if="noData" class="no-data">
 			(None)
 		</div>
 		<table v-else>
@@ -39,48 +39,25 @@ export default {
 	props: {
 		deck: Object
 	},
-	data () {
-		return {
-			starredCounts: {
+	computed: {
+		starredCounts () {
+			const counts = {
 				Starred: 0,
 				'Un-starred': 0
 			}
-		}
-	},
-	watch: {
-		analyzerFilter () {
-			this.resetStarredStats()
-			this.prepareStarredCounts()
-		}
-	},
-	mounted () {
-		this.prepareStarredCounts()
-	},
-	methods: {
-		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
 
-			return Object.values(this.starredCounts).every(
-				ct => ct === 0
-			)
-		},
-		prepareStarredCounts () {
-			this.countStarred()
-
-			this.starredCounts = this.sortTableByCounts(this.starredCounts)
-		},
-		countStarred () {
 			this.filteredCards().forEach(card => {
 				if (card.starred) {
-					this.starredCounts.Starred += card.qty
+					counts.Starred += card.qty
 				} else {
-					this.starredCounts['Un-starred'] += card.qty
+					counts['Un-starred'] += card.qty
 				}
 			})
+
+			return this.sortTableByCounts(counts)
 		},
-		resetStarredStats () {
-			this.starredCounts.Starred = 0
-			this.starredCounts['Un-starred'] = 0
+		noData () {
+			return Object.values(this.starredCounts).every(ct => ct === 0)
 		}
 	}
 }
