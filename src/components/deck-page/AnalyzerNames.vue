@@ -80,13 +80,13 @@ export default {
 				counts[cardName] += card.qty
 			})
 		},
+		/**
+		 * Sort the names alphabetically and then by count.
+		 */
 		sortNames () {
-			/* First alphabetize the names. */
 			this.nameCounts = Object.fromEntries(
 				Object.entries(this.nameCounts).sort()
 			)
-
-			/* Then sort the names by counts. */
 			this.nameCounts = this.sortTableByCounts(this.nameCounts)
 		}
 	}
