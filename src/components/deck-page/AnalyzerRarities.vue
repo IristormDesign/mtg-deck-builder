@@ -1,10 +1,7 @@
 <template>
 	<section id="stats-rarities">
 		<h4>Rarities</h4>
-		<div
-			v-if="noData()"
-			class="no-data"
-		>
+		<div v-if="noData" class="no-data">
 			(None)
 		</div>
 		<table v-else>
@@ -53,9 +50,9 @@ export default {
 	props: {
 		deck: Object
 	},
-	data () {
-		return {
-			rarityCounts: {
+	computed: {
+		rarityCounts () {
+			const counts = {
 				Common: 0,
 				Uncommon: 0,
 				Rare: 0,
@@ -64,63 +61,42 @@ export default {
 				Bonus: 0,
 				Other: 0
 			}
-		}
-	},
-	watch: {
-		analyzerFilter () {
-			this.resetRarityStats()
-			this.countRarities()
-		}
-	},
-	mounted () {
-		this.countRarities()
-	},
-	methods: {
-		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
-
-			return Object.values(this.rarityCounts).every(
-				ct => ct === 0
-			)
-		},
-		countRarities () {
-			const cts = this.rarityCounts
 
 			this.filteredCards().forEach(({ rarity, qty }) => {
 				switch (rarity) {
 					case 'common':
 					case 'c':
-						cts.Common += qty
+						counts.Common += qty
 						return
 					case 'uncommon':
 					case 'u':
-						cts.Uncommon += qty
+						counts.Uncommon += qty
 						return
 					case 'rare':
 					case 'r':
-						cts.Rare += qty
+						counts.Rare += qty
 						return
 					case 'mythic':
 					case 'm':
-						cts['Mythic rare'] += qty
+						counts['Mythic rare'] += qty
 						return
 					case 'special':
 					case 's':
-						cts.Special += qty
+						counts.Special += qty
 						return
 					case 'bonus':
 					case 'b':
-						cts.Bonus += qty
+						counts.Bonus += qty
 						return
 					default:
-						cts.Other += qty
+						counts.Other += qty
 				}
 			})
+
+			return counts
 		},
-		resetRarityStats () {
-			for (const rarity in this.rarityCounts) {
-				this.rarityCounts[rarity] = 0
-			}
+		noData () {
+			return Object.values(this.rarityCounts).every(ct => ct === 0)
 		}
 	}
 }
