@@ -55,7 +55,7 @@ export default {
 
 			switch (this.$store.state.analyzerFilter.category) {
 				case 'names':
-					return attr
+					return `“${attr}”`
 
 				case 'colors':
 					return `${attr.toLowerCase()} spells`

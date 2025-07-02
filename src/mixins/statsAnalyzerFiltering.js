@@ -1,4 +1,7 @@
+import doubleFacedCards from '@/mixins/doubleFacedCards'
+
 export default {
+	mixins: [doubleFacedCards],
 	computed: {
 		analyzerFilter () {
 			return this.$store.state.analyzerFilter
@@ -89,7 +92,7 @@ export default {
 		},
 		filteredCardsByNames () {
 			return this.deck.cards.filter(card => {
-				return card.name === this.analyzerFilter.attribute
+				return this.doubleFacedCardName(card) === this.analyzerFilter.attribute
 			})
 		},
 		filteredCardsByColorsOfSpells () {

@@ -40,9 +40,10 @@
 
 <script>
 import statsAnalyzer from '@/mixins/statsAnalyzer.js'
+import doubleFacedCards from '@/mixins/doubleFacedCards.js'
 
 export default {
-	mixins: [statsAnalyzer],
+	mixins: [statsAnalyzer, doubleFacedCards],
 	props: {
 		deck: Object
 	},
@@ -69,12 +70,14 @@ export default {
 		countNames () {
 			const counts = this.nameCounts
 
-			this.filteredCards().forEach(({ name, qty }) => {
-				if (!counts[name]) {
-					counts[name] = 0
+			this.filteredCards().forEach(card => {
+				const cardName = this.doubleFacedCardName(card)
+
+				if (!counts[cardName]) {
+					counts[cardName] = 0
 				}
 
-				counts[name] += qty
+				counts[cardName] += card.qty
 			})
 		},
 		sortNames () {
