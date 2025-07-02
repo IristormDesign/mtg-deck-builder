@@ -136,7 +136,6 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		}
 	}
 	tfoot {
-
 		th,
 		td {
 			font-size: $font-size-small;
@@ -303,10 +302,9 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 	footer {
 		display: flex;
-		grid-column: 2 / 4;
-		border-top: $border-sections;
-		padding-top: $lhse;
-		margin-top: $lhse*.5;
+		grid-column: 3 / 5;
+		border: $border-sections;
+		padding: $lhse*.75;
 	}
 	.note {
 		font-size: $font-size-small;
@@ -327,6 +325,9 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		}
 		p {
 			margin: math.div($lhse, 3) 0;
+		}
+		:last-child {
+			margin-bottom: 0;
 		}
 	}
 }
@@ -432,6 +433,12 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		section {
 			grid-column: span 1;
 		}
+		footer {
+			margin-top: $lhse*.5;
+			border-width: 0;
+			border-top: $border-sections;
+			padding: $lhse 0 0;
+		}
 	}
 }
 @media (max-width: ($min-width-app * 1.0625)) {
@@ -469,6 +476,11 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		.tables {
 			grid-template-columns: 1fr;
 			width: 100%;
+		}
+		footer {
+			margin-top: $lhse*.5;
+			border-width: 0;
+			border-top: $border-sections;
 		}
 	}
 }
