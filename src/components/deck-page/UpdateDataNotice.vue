@@ -124,6 +124,7 @@ export default {
 				const dataToPush = {
 					inSideboard: list === this.deck.sideboard,
 					name: this.doubleFacedCardName(card),
+					rarity: card.rarity, // Cards of a particular name can be reprinted as a different rarity level, so this is needed to preserve the existing rarity of the card.
 					qty: card.qty,
 					img: card.img,
 					img2: card.img2,

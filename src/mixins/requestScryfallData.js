@@ -296,6 +296,7 @@ export default {
 			}
 
 			if (oldCard) {
+				newCard.rarity = oldCard.rarity
 				newCard.img = oldCard.img
 				newCard.imgVersion = oldCard.imgVersion
 				newCard.link = oldCard.link
