@@ -54,6 +54,9 @@ export default {
 			const extraAttr = this.$store.state.analyzerFilter.extraAttribute
 
 			switch (this.$store.state.analyzerFilter.category) {
+				case 'names':
+					return attr
+
 				case 'colors':
 					return `${attr.toLowerCase()} spells`
 

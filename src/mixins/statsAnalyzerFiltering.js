@@ -56,6 +56,8 @@ export default {
 		},
 		filteredCards () {
 			switch (this.analyzerFilter.category) {
+				case 'names':
+					return this.filteredCardsByNames()
 				case 'colors':
 					return this.filteredCardsByColorsOfSpells()
 				case 'manaSymbols':
@@ -84,6 +86,11 @@ export default {
 				default:
 					return this.deck.cards
 			}
+		},
+		filteredCardsByNames () {
+			return this.deck.cards.filter(card => {
+				return card.name === this.analyzerFilter.attribute
+			})
 		},
 		filteredCardsByColorsOfSpells () {
 			const perFace = (faceType, faceColors) => {

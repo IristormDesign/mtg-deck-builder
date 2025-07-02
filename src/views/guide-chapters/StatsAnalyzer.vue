@@ -18,6 +18,7 @@
 			<p>The page for the <a href="#stats-analyzer">Stats Analyzer</a> displays many data tables. Each table is for a different statistical category about the cards in your deck’s main card group. Some categories can have subcategories, with their tables having a thick border line separating each subcategory.</p>
 			<p>The following are the categories, with any subcategories in parentheses:</p>
 			<ul>
+				<li>Names</li>
 				<li>Colors of Spells (mana colors, mana color amounts per spell)</li>
 				<li>Mana Color Symbols in Costs of Spells (basic color symbols, hybrid symbol)</li>
 				<li>Mana Values of Spells (defined values, variable value)</li>
