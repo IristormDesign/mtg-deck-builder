@@ -25,8 +25,6 @@
 
 			<analyzer-mana-values :deck="deck" />
 
-			<analyzer-producible-mana :deck="deck" />
-
 			<analyzer-supertypes :deck="deck" />
 
 			<analyzer-types :deck="deck" />
@@ -42,6 +40,10 @@
 			/>
 
 			<analyzer-rarities :deck="deck" />
+
+			<template v-if="deck.dataVersion >= 5">
+				<analyzer-producible-mana :deck="deck" />
+			</template>
 
 			<template v-if="deck.dataVersion >= 2">
 				<analyzer-keywords :deck="deck" />
@@ -84,12 +86,12 @@ import AnalyzerNames from '@/components/deck-page/AnalyzerNames.vue'
 import AnalyzerColors from '@/components/deck-page/AnalyzerColors.vue'
 import AnalyzerManaSymbols from '@/components/deck-page/AnalyzerManaSymbols.vue'
 import AnalyzerManaValues from '@/components/deck-page/AnalyzerManaValues.vue'
-import AnalyzerProducibleMana from '@/components/deck-page/AnalyzerProducibleMana.vue'
 import AnalyzerSupertypes from '@/components/deck-page/AnalyzerSupertypes.vue'
 import AnalyzerTypes from '@/components/deck-page/AnalyzerTypes.vue'
 import AnalyzerCreatureSubtypes from '@/components/deck-page/AnalyzerCreatureSubtypes.vue'
 import AnalyzerOtherSubtypes from '@/components/deck-page/AnalyzerOtherSubtypes.vue'
 import AnalyzerRarities from '@/components/deck-page/AnalyzerRarities.vue'
+import AnalyzerProducibleMana from '@/components/deck-page/AnalyzerProducibleMana.vue'
 import AnalyzerKeywords from '@/components/deck-page/AnalyzerKeywords.vue'
 import AnalyzerPowerToughness from '@/components/deck-page/AnalyzerPowerToughness.vue'
 import AnalyzerLayouts from '@/components/deck-page/AnalyzerLayouts.vue'
@@ -98,7 +100,7 @@ import statsAnalyzer from '@/mixins/statsAnalyzer.js'
 import statsAnalyzerSubtypes from '@/mixins/statsAnalyzerSubtypes.js'
 
 export default {
-	components: { AnalyzerFilterNotice, AnalyzerNames, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerProducibleMana, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
+	components: { AnalyzerFilterNotice, AnalyzerNames, AnalyzerColors, AnalyzerManaSymbols, AnalyzerManaValues, AnalyzerSupertypes, AnalyzerTypes, AnalyzerCreatureSubtypes, AnalyzerOtherSubtypes, AnalyzerRarities, AnalyzerProducibleMana, AnalyzerKeywords, AnalyzerPowerToughness, AnalyzerLayouts, AnalyzerStarred },
 	mixins: [statsAnalyzer, statsAnalyzerSubtypes],
 	props: {
 		deck: Object

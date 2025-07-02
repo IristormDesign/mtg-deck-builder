@@ -22,12 +22,12 @@
 				<li>Colors of Spells (mana colors, mana color amounts per spell)</li>
 				<li>Mana Color Symbols in Costs of Spells (basic color symbols, hybrid symbol)</li>
 				<li>Mana Values of Spells (defined values, variable value)</li>
-				<li>Producible Mana Colors</li>
 				<li>Supertypes</li>
 				<li>Types</li>
 				<li>Creature Subtypes</li>
 				<li>Other Subtypes</li>
 				<li>Rarities</li>
+				<li>Producible Mana Colors</li>
 				<li>Keyword Abilities</li>
 				<li>Power & Toughness (greatest/median/least, variable)</li>
 				<li>Layouts</li>

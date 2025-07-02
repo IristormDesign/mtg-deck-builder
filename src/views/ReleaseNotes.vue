@@ -38,8 +38,7 @@
 				</li>
 				<li>
 					<p>✨ <strong>Producible Mana Colors Statistics</strong> ✨ – The other new statistics category in the Stats Analyzer is “Producible Mana Colors.” This displays the numbers of each mana color that can be generated among your deck’s cards.</p>
-					<p>If you have decks in this app that had been created before this version release, then the Producible Mana Colors category probably won’t work with those decks right away. To remedy this, you’ll need to have your decks’ card data sets updated. If that’s the case, a message will appear on the deck page saying so.</p>
-					<p>Newly created decks and cards that you add to any decks after this release will <em>not</em> need to be updated, however.</p>
+					<p>If you have decks in this app that had been created before this version release, then the Stats Analyzer won’t display the Producible Mana Colors category until your deck’s card data set has been updated. If a deck’s data set is outdated, a message will appear on the deck page saying so, and will give you the option to make it update. Newly created decks and cards that you add to any decks after this release will <em>not</em> need to be updated, however.</p>
 				</li>
 			</ul>
 

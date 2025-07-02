@@ -302,7 +302,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 	footer {
 		display: flex;
-		grid-column: 3 / 5;
+		grid-column: span 2;
 		border: $border-sections;
 		padding: $lhse*.75;
 	}
