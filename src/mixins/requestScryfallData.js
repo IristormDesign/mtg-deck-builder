@@ -396,7 +396,7 @@ export default {
 			} else {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'cardAlreadyInDeck',
-					data: this.doubleFacedCardName(card)
+					data: this.fullCardName(card)
 				})
 			}
 		},

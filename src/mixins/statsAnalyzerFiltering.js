@@ -92,7 +92,7 @@ export default {
 		},
 		filteredCardsByNames () {
 			return this.deck.cards.filter(card => {
-				return this.doubleFacedCardName(card) === this.analyzerFilter.attribute
+				return this.fullCardName(card) === this.analyzerFilter.attribute
 			})
 		},
 		filteredCardsByColorsOfSpells () {

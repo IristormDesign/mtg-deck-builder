@@ -193,7 +193,7 @@ export default {
 						store.commit('idOfShowingDialog', {
 							id: 'confirmCardRemoval',
 							data: {
-								cardName: this.doubleFacedCardName(card),
+								cardName: this.fullCardName(card),
 								cardIndex: this.i,
 								callback: () => {
 									card.qty = 1
@@ -309,7 +309,7 @@ export default {
 					store.commit('idOfShowingDialog', {
 						id: 'movingCardGroup',
 						data: {
-							card: this.doubleFacedCardName(card),
+							card: this.fullCardName(card),
 							activeGroup: cardGroupName(),
 							inactiveGroup: cardGroupName(true)
 						}

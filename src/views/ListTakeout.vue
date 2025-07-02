@@ -152,7 +152,7 @@ export default {
 
 			cards().forEach(card => {
 				arrayOfCardNames.push(
-					`${card.qty} ${this.doubleFacedCardName(card)}`
+					`${card.qty} ${this.fullCardName(card)}`
 				)
 			})
 

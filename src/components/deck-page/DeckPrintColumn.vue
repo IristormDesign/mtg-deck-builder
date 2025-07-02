@@ -2,14 +2,14 @@
 	<ul>
 		<li
 			v-for="card in columnCards"
-			:key="doubleFacedCardName(card)"
+			:key="fullCardName(card)"
 			:class="card.starred ? 'starred' : ''"
 		>
 			<span class="qty-print">
 				{{ card.qty }}
 				&nbsp;
 			</span>
-			{{ doubleFacedCardName(card) }}
+			{{ fullCardName(card) }}
 		</li>
 	</ul>
 </template>

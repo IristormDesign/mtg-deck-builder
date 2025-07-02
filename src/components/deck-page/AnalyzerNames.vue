@@ -71,7 +71,7 @@ export default {
 			const counts = this.nameCounts
 
 			this.filteredCards().forEach(card => {
-				const cardName = this.doubleFacedCardName(card)
+				const cardName = this.fullCardName(card)
 
 				if (!counts[cardName]) {
 					counts[cardName] = 0

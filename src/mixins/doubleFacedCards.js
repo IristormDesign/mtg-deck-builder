@@ -10,14 +10,10 @@ export default {
 					return false
 			}
 		},
-		doubleFacedCardName (card) {
-			let fullName = card.name
-
-			if (this.hasDoubleCastableFaces(card)) {
-				fullName += ` // ${card.name2}`
-			}
-
-			return fullName
+		fullCardName (card) {
+			return this.hasDoubleCastableFaces(card)
+				? `${card.name} // ${card.name2}`
+				: card.name
 		}
 	}
 }
