@@ -29,7 +29,7 @@
 					<p>Bug fix: In the Stats Analyzer’s Layout category, selecting the “Normal” layout hadn’t filtered card data correctly.</p>
 				</li>
 				<li>
-					<p>Many optimizations are made to the Stats Analyzer.</p>
+					<p>Many code optimizations and some visual adjustments are made to the Stats Analyzer.</p>
 				</li>
 			</ul>
 

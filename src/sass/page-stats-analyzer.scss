@@ -12,8 +12,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		background: $color-input-bg-focus;
 	}
 	&:active {
-		background: $color-input-bg-active;
-		color: $color-text-brighter-over-mythic-brown;
+		background: $color-highlight-bg-hover;
 	}
 }
 @mixin highlighted-table-component {
@@ -21,7 +20,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	outline-offset: -1px;
 
 	th {
-		color: $color-app-header-link-active;
+		color: #fff;
 	}
 	td {
 		color: $color-text-brighter-over-mythic-brown;
@@ -269,7 +268,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 				color: $color-link-active;
 			}
 			&.filtering {
-				color: $color-app-header-link-active;
+				color: #fff;
 
 				& {
 					@include highlighted-table-component;
@@ -336,7 +335,7 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	grid-column: span 4;
 	padding: 0 $lhse*1.5;
 	margin: math.div(-$lhse, 3) (-$lhse*1.5) 0;
-	border-width: 1px 0;
+	border-width: 1px;
 	border-style: solid;
 	border-color: $color-section-border;
 	background: $color-group-bg; // Needed for transition effect.

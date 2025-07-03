@@ -212,8 +212,8 @@ svg {
 	fill: currentColor;
 }
 ::selection {
-	background: rgba($color-content-bg, .5);
-	color: $color-link-active;
+	background: rgba($color-highlight-bg, .5);
+	color: #fff;
 	text-shadow: none;
 }
 ::-webkit-scrollbar {

@@ -99,10 +99,6 @@ textarea {
 		font-style: italic;
 		font-family: $font-family-standard;
 	}
-	&::selection {
-		background: $color-mythic-orange;
-		color: #fff;
-	}
 }
 input {
 	line-height: 1;
