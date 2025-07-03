@@ -1,10 +1,7 @@
 <template>
 	<section id="stats-supertypes">
 		<h4>Supertypes</h4>
-		<div
-			v-if="noData()"
-			class="no-data"
-		>
+		<div v-if="noData" class="no-data">
 			(None)
 		</div>
 		<table v-else>
@@ -42,9 +39,9 @@ export default {
 	props: {
 		deck: Object
 	},
-	data () {
-		return {
-			supertypeStats: {
+	computed: {
+		supertypeStats () {
+			const stats = {
 				Basic: {
 					regex: /\bBasic .+/
 				},
@@ -70,39 +67,19 @@ export default {
 					regex: /\bWorld .+/
 				}
 			}
-		}
-	},
-	watch: {
-		analyzerFilter () {
-			this.resetSupertypeStats()
-			this.prepareSupertypeStats()
-		}
-	},
-	mounted () {
-		this.prepareSupertypeStats()
-	},
-	methods: {
-		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
 
-			return Object.values(this.supertypeStats).every(
-				stat => stat.ct === 0
-			)
-		},
-		prepareSupertypeStats () {
-			this.countSupertypes()
+			for (const supertype in stats) {
+				stats[supertype].ct = 0
+			}
 
-			this.supertypeStats = this.sortTableByCounts(this.supertypeStats)
-		},
-		countSupertypes () {
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
 				const supertypesPerFace = (typeLine) => {
 					if (!typeLine) return
 
-					for (const supertypeName in this.supertypeStats) {
-						const stat = this.supertypeStats[supertypeName]
+					for (const supertypeName in stats) {
+						const stat = stats[supertypeName]
 
 						if (!stat.ct) {
 							stat.ct = 0
@@ -110,7 +87,7 @@ export default {
 
 						if (
 							stat.regex.test(typeLine) &&
-							!countedOnFrontFace[supertypeName]
+								!countedOnFrontFace[supertypeName]
 						) {
 							stat.ct += card.qty
 							countedOnFrontFace[supertypeName] = true
@@ -121,11 +98,13 @@ export default {
 				supertypesPerFace(card.type)
 				supertypesPerFace(card.type2)
 			})
+
+			return this.sortTableByCounts(stats)
 		},
-		resetSupertypeStats () {
-			for (const supertype in this.supertypeStats) {
-				this.supertypeStats[supertype].ct = 0
-			}
+		noData () {
+			return Object.values(this.supertypeStats).every(
+				stat => stat.ct === 0
+			)
 		}
 	}
 }
