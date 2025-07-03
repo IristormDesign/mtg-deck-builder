@@ -72,6 +72,12 @@ textarea {
 			color: $color-text;
 		}
 	}
+	&:not(:read-only) {
+		&::selection {
+			background: rgba($color-link, .5);
+			color: #fff;
+		}
+	}
 }
 input,
 select,
