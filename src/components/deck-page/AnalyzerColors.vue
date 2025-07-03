@@ -123,7 +123,7 @@ export default {
 				const qty = card.qty
 				const countedOnFrontFace = {}
 
-				const colorsPerFace = (faceColors) => {
+				const processColors = (faceColors) => {
 					if (!faceColors) return // Exit now if this function would try to count the undefined data of a single-faced card's back face.
 
 					function count (colorProp) {
@@ -181,10 +181,10 @@ export default {
 				}
 
 				if (faceIsSpell(card.type)) {
-					colorsPerFace(card.colors)
+					processColors(card.colors)
 				}
 				if (faceIsSpell(card.type2)) {
-					colorsPerFace(card.colors2)
+					processColors(card.colors2)
 				}
 
 				if (

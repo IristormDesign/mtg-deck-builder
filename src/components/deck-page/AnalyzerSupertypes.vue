@@ -43,51 +43,51 @@ export default {
 		supertypeStats () {
 			const stats = {
 				Basic: {
+					ct: 0,
 					regex: /\bBasic .+/
 				},
 				Elite: {
+					ct: 0,
 					regex: /\bElite .+/
 				},
 				Host: {
+					ct: 0,
 					regex: /\bHost .+/
 				},
 				Legendary: {
+					ct: 0,
 					regex: /\bLegendary .+/
 				},
 				Ongoing: {
+					ct: 0,
 					regex: /\bOngoing .+/
 				},
 				Snow: {
+					ct: 0,
 					regex: /\bSnow .+/
 				},
 				Token: {
+					ct: 0,
 					regex: /\bToken .+/
 				},
 				World: {
+					ct: 0,
 					regex: /\bWorld .+/
 				}
-			}
-
-			for (const supertype in stats) {
-				stats[supertype].ct = 0
 			}
 
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
-				const supertypesPerFace = (typeLine) => {
+				const processSupertypes = (typeLine) => {
 					if (!typeLine) return
 
 					for (const supertypeName in stats) {
 						const stat = stats[supertypeName]
 
-						if (!stat.ct) {
-							stat.ct = 0
-						}
-
 						if (
 							stat.regex.test(typeLine) &&
-								!countedOnFrontFace[supertypeName]
+							!countedOnFrontFace[supertypeName]
 						) {
 							stat.ct += card.qty
 							countedOnFrontFace[supertypeName] = true
@@ -95,8 +95,8 @@ export default {
 					}
 				}
 
-				supertypesPerFace(card.type)
-				supertypesPerFace(card.type2)
+				processSupertypes(card.type)
+				processSupertypes(card.type2)
 			})
 
 			return this.sortTableByCounts(stats)

@@ -157,7 +157,7 @@ export default {
 				const countedOnFrontFace = {}
 
 				for (const symbolName in this.manaSymbols) {
-					const symbolsPerFace = (faceMana) => {
+					const processSymbols = (faceMana) => {
 						if (!faceMana) return
 
 						const regex = this.regexManaSymbols[symbolName]
@@ -173,8 +173,8 @@ export default {
 						}
 					}
 
-					symbolsPerFace(card.mana)
-					symbolsPerFace(card.mana2)
+					processSymbols(card.mana)
+					processSymbols(card.mana2)
 
 					if (countedOnFrontFace[symbolName]) {
 						this.manaSymbols[symbolName].ct += countedOnFrontFace[symbolName] * card.qty

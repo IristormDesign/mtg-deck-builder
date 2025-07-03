@@ -42,26 +42,22 @@ export default {
 	computed: {
 		typeStats () {
 			const stats = {
-				Creature: {},
-				Planeswalker: {},
-				Battle: {},
-				Enchantment: {},
-				Artifact: {},
-				Sorcery: {},
-				Instant: {},
-				'Kindred/Tribal': {},
-				Land: {},
-				Other: {}
-			}
-
-			for (const stat in stats) {
-				stats[stat].ct = 0
+				Creature: { ct: 0 },
+				Planeswalker: { ct: 0 },
+				Battle: { ct: 0 },
+				Enchantment: { ct: 0 },
+				Artifact: { ct: 0 },
+				Sorcery: { ct: 0 },
+				Instant: { ct: 0 },
+				'Kindred/Tribal': { ct: 0 },
+				Land: { ct: 0 },
+				Other: { ct: 0 }
 			}
 
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
 
-				const typesPerFace = (typeLine) => {
+				const processTypes = (typeLine) => {
 					if (!typeLine) return
 
 					let recognizedType = false
@@ -88,8 +84,8 @@ export default {
 					}
 				}
 
-				typesPerFace(card.type)
-				typesPerFace(card.type2)
+				processTypes(card.type)
+				processTypes(card.type2)
 			})
 
 			return this.sortTableByCounts(stats)

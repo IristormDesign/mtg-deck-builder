@@ -205,7 +205,7 @@ export default {
 			}
 		},
 		determinePTStats (card, ptLabel) {
-			const ptPerFace = (facePTLabel) => {
+			const processPT = (facePTLabel) => {
 				if (!facePTLabel) return
 
 				const ptNum = Number(card[facePTLabel]) // Convert the power or toughness data into a number type, as it originally comes from the Scryfall API as a string type.
@@ -232,8 +232,8 @@ export default {
 				}
 			}
 
-			ptPerFace(ptLabel)
-			ptPerFace(ptLabel + '2') // For P/T on card's back face, if available.
+			processPT(ptLabel)
+			processPT(ptLabel + '2') // For P/T on card's back face, if available.
 		},
 		calculateMedian (values) {
 			values.sort((a, b) => a - b)

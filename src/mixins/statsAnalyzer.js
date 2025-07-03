@@ -52,7 +52,7 @@ export default {
 		determineVariablePowerToughness (card) {
 			let variablePTCount = 0
 
-			function perFace (p, t) {
+			function processPT (p, t) {
 				if (!p || !t) return
 
 				const isVariablePT = (
@@ -65,8 +65,8 @@ export default {
 				}
 			}
 
-			perFace(card.power, card.toughness)
-			perFace(card.power2, card.toughness2)
+			processPT(card.power, card.toughness)
+			processPT(card.power2, card.toughness2)
 
 			return variablePTCount
 		},
