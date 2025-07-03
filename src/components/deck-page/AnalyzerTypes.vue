@@ -1,10 +1,7 @@
 <template>
 	<section id="stats-types">
 		<h4>Types</h4>
-		<div
-			v-if="noData()"
-			class="no-data"
-		>
+		<div v-if="noData" class="no-data">
 			(None)
 		</div>
 		<table v-else>
@@ -42,9 +39,9 @@ export default {
 	props: {
 		deck: Object
 	},
-	data () {
-		return {
-			typeStats: {
+	computed: {
+		typeStats () {
+			const stats = {
 				Creature: {},
 				Planeswalker: {},
 				Battle: {},
@@ -56,36 +53,10 @@ export default {
 				Land: {},
 				Other: {}
 			}
-		}
-	},
-	watch: {
-		analyzerFilter () {
-			this.prepareTypeStats()
-		}
-	},
-	mounted () {
-		this.prepareTypeStats()
-	},
-	methods: {
-		noData () {
-			this.filteredCards() // This is needed here to make the table's data update after filtering.
 
-			return Object.values(this.typeStats).every(
-				stat => stat.ct === 0
-			)
-		},
-		prepareTypeStats () {
-			this.countTypes()
-
-			this.typeStats = this.sortTableByCounts(this.typeStats)
-		},
-		initializeCounts () {
-			for (const stat in this.typeStats) {
-				this.typeStats[stat].ct = 0
+			for (const stat in stats) {
+				stats[stat].ct = 0
 			}
-		},
-		countTypes () {
-			this.initializeCounts()
 
 			this.filteredCards().forEach(card => {
 				const countedOnFrontFace = {}
@@ -95,7 +66,7 @@ export default {
 
 					let recognizedType = false
 
-					for (const typeName in this.typeStats) {
+					for (const typeName in stats) {
 						const typeRegex = this.regexCardTypes[typeName]
 
 						if (
@@ -103,7 +74,7 @@ export default {
 							typeRegex.test(typeLine)
 						) {
 							if (!countedOnFrontFace[typeName]) {
-								this.typeStats[typeName].ct += card.qty
+								stats[typeName].ct += card.qty
 								countedOnFrontFace[typeName] = true
 							}
 
@@ -112,7 +83,7 @@ export default {
 					}
 
 					if (!recognizedType) {
-						this.typeStats.Other.ct += card.qty
+						stats.Other.ct += card.qty
 						countedOnFrontFace.Other = true
 					}
 				}
@@ -120,6 +91,13 @@ export default {
 				typesPerFace(card.type)
 				typesPerFace(card.type2)
 			})
+
+			return this.sortTableByCounts(stats)
+		},
+		noData () {
+			return Object.values(this.typeStats).every(
+				stat => stat.ct === 0
+			)
 		}
 	}
 }
