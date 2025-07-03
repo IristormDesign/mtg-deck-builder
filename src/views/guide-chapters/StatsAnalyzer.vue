@@ -46,7 +46,7 @@
 				</li>
 			</ul>
 			<p>The exception to the aforementioned table layout is the one for the Power & Toughness category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>
-			<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts, and all tables whenever a <a href="#data-filter">data filter</a> is on.</p>
+			<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts.</p>
 		</section>
 
 		<section id="data-filter">
