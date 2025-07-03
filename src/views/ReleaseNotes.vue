@@ -20,6 +20,13 @@
 		<section>
 			<h3>2025 Releases</h3>
 
+			<h4>July 3</h4>
+			<ul>
+				<li>
+					<p>✨ <strong>Sort by Mana Sources</strong> ✨ – In the List Editor, the card sorter has gained a new sorting option: mana sources! This method rearranges your deck’s cards by their number of producible mana colors. It may be especially helpful in decks that have a large variety of lands and other mana sources.</p>
+				</li>
+			</ul>
+
 			<h4>July 2</h4>
 			<ul>
 				<li>

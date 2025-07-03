@@ -123,7 +123,7 @@ export default {
 			}
 		},
 		sorterMenuOptions () {
-			return ['Starred', 'Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'P/T', 'Quantity']
+			return ['Starred', 'Name', 'Mana Color', 'Mana Value', 'Supertype', 'Type', 'First Subtype', 'Last Subtype', 'Rarity', 'Mana Sources', 'P/T', 'Quantity']
 		}
 	},
 	watch: {
@@ -197,6 +197,10 @@ export default {
 				case 'rarity':
 					this.sortByRarity(mainList)
 					this.sortByRarity(sbList)
+					break
+				case 'mana sources':
+					this.sortByManaSources(mainList)
+					this.sortByManaSources(sbList)
 					break
 				case 'p/t':
 					this.sortByPT(mainList)
@@ -411,6 +415,31 @@ export default {
 				const rarityB = rarityOrder.indexOf(b.rarity.charAt(0))
 
 				return rarityA - rarityB
+			})
+		},
+		sortByManaSources (cards) {
+			const colorOrder = ['W', 'U', 'B', 'R', 'G', 'C']
+
+			cards.sort((a, b) => {
+				if (!a.prodMana || a.prodMana.length === 0) {
+					return 1
+				} else if (!b.prodMana || b.prodMana.length === 0) {
+					return -1
+				} else if (a.prodMana.length > b.prodMana.length) {
+					return 1
+				} else if (b.prodMana.length > a.prodMana.length) {
+					return -1
+					// If both cards have the same number of mana production symbols but not exactly the same array of symbols, then sort them by the first symbol in their `prodMana` array.
+				} else if (a.prodMana?.length === b.prodMana?.length) {
+					for (let i = 0; i < a.prodMana.length; i++) {
+						if (a.prodMana[i] !== b.prodMana[i]) {
+							return colorOrder.indexOf(a.prodMana[i]) - colorOrder.indexOf(b.prodMana[i])
+						}
+					}
+					return 0
+				} else {
+					return 0
+				}
 			})
 		},
 		sortByPT (cards) {

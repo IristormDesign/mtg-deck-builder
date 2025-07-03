@@ -38,6 +38,8 @@ export default {
 						return this.gapsSubtype(thisCard, nextCard, true)
 					case 'rarity':
 						return this.gapsRarity(thisCard, nextCard)
+					case 'mana sources':
+						return this.gapsManaSources(thisCard, nextCard)
 					case 'p/t':
 						return this.gapsPT(thisCard, nextCard)
 					case 'quantity':
@@ -179,6 +181,24 @@ export default {
 		gapsRarity (thisCard, nextCard) {
 			if (thisCard.rarity.charAt(0) !== nextCard.rarity.charAt(0)) {
 				return true
+			}
+		},
+		gapsManaSources (thisCard, nextCard) {
+			if (thisCard.prodMana && !nextCard.prodMana) {
+				return true
+			} else { // If both cards produce different sets of mana colors, return true.
+				const tpSet = new Set(thisCard.prodMana)
+				const npSet = new Set(nextCard.prodMana)
+
+				if (tpSet.size !== npSet.size) {
+					return true
+				}
+				for (const color of tpSet) {
+					if (!npSet.has(color)) {
+						return true
+					}
+				}
+				return false
 			}
 		},
 		gapsPT (thisCard, nextCard) {
