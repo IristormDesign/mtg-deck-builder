@@ -28,6 +28,9 @@
 				<li>
 					<p>Bug fix: In the Stats Analyzer’s Layout category, selecting the “Normal” layout hadn’t filtered card data correctly.</p>
 				</li>
+				<li>
+					<p>Many optimizations are made to the Stats Analyzer.</p>
+				</li>
 			</ul>
 
 			<h4>July 1</h4>
