@@ -138,7 +138,7 @@ $width-textarea-card-list: $lhse*11.5; // Slightly wider than the width of a lin
 $border-width-sections: 1px;
 $border-width-sections-medium: 3px;
 $border-width-sections-thickest: 5px;
-$margin-card-gap-after: $border-width-sections-thickest;
+$margin-card-gap-after: $border-width-sections-thickest + 1px;
 
 /* BORDERS */
 $border-sections: $border-width-sections solid $color-section-border;
