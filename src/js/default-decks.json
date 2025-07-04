@@ -416,8 +416,8 @@
 				"B"
 			],
 			"dataVersion": 5,
-			"editDate": null,
-			"openDate": null,
+			"editDate": "null",
+			"openDate": "null",
 			"sideboard": {
 				"cards": [
 					{
@@ -1084,22 +1084,6 @@
 					"qty": 1
 				},
 				{
-					"name": "Ohran Frostfang",
-					"mana": "{3}{G}{G}",
-					"type": "Snow Creature — Snake",
-					"colors": [
-						"G"
-					],
-					"img": "front/0/6/0693bcd2-8a3d-4dcf-8360-5b9891044dfe.jpg",
-					"power": "2",
-					"toughness": "6",
-					"cmc": 5,
-					"rarity": "r",
-					"link": "otc/199/ohran-frostfang",
-					"imgVersion": 2,
-					"qty": 1
-				},
-				{
 					"name": "Thragtusk",
 					"mana": "{4}{G}",
 					"type": "Creature — Beast",
@@ -1112,6 +1096,22 @@
 					"cmc": 5,
 					"rarity": "r",
 					"link": "ncc/316/thragtusk",
+					"imgVersion": 2,
+					"qty": 1
+				},
+				{
+					"name": "Ohran Frostfang",
+					"mana": "{3}{G}{G}",
+					"type": "Snow Creature — Snake",
+					"colors": [
+						"G"
+					],
+					"img": "front/0/6/0693bcd2-8a3d-4dcf-8360-5b9891044dfe.jpg",
+					"power": "2",
+					"toughness": "6",
+					"cmc": 5,
+					"rarity": "r",
+					"link": "otc/199/ohran-frostfang",
 					"imgVersion": 2,
 					"qty": 1
 				},
@@ -1331,24 +1331,6 @@
 					"gapAfter": true
 				},
 				{
-					"name": "Atla Palani, Nest Tender",
-					"mana": "{1}{R}{G}{W}",
-					"type": "Legendary Creature — Human Shaman",
-					"colors": [
-						"G",
-						"R",
-						"W"
-					],
-					"img": "front/2/b/2b8414f7-22c3-4e1c-934b-4a0e7acf951d.jpg",
-					"power": "2",
-					"toughness": "3",
-					"cmc": 4,
-					"rarity": "m",
-					"link": "dmc/142/atla-palani-nest-tender",
-					"imgVersion": 2,
-					"qty": 1
-				},
-				{
 					"name": "Marisi, Breaker of the Coil",
 					"mana": "{1}{R}{G}{W}",
 					"type": "Legendary Creature — Cat Warrior",
@@ -1386,6 +1368,24 @@
 						"Populate"
 					],
 					"link": "c19/204/trostani-selesnyas-voice",
+					"imgVersion": 2,
+					"qty": 1
+				},
+				{
+					"name": "Atla Palani, Nest Tender",
+					"mana": "{1}{R}{G}{W}",
+					"type": "Legendary Creature — Human Shaman",
+					"colors": [
+						"G",
+						"R",
+						"W"
+					],
+					"img": "front/2/b/2b8414f7-22c3-4e1c-934b-4a0e7acf951d.jpg",
+					"power": "2",
+					"toughness": "3",
+					"cmc": 4,
+					"rarity": "m",
+					"link": "dmc/142/atla-palani-nest-tender",
 					"imgVersion": 2,
 					"qty": 1
 				},
@@ -1640,6 +1640,37 @@
 					"gapAfter": true
 				},
 				{
+					"name": "Gargoyle Castle",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/9/8/9834b4e1-7e9f-4f93-a2aa-13a52e8a11fc.jpg",
+					"cmc": 0,
+					"rarity": "r",
+					"link": "c19/245/gargoyle-castle",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"C"
+					]
+				},
+				{
+					"name": "Sungrass Prairie",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/6/3/634bb7ce-d361-4617-acfa-acd5ae7fb1ff.jpg",
+					"cmc": 0,
+					"rarity": "r",
+					"link": "woc/167/sungrass-prairie",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"W"
+					]
+				},
+				{
 					"name": "Cinder Glade",
 					"mana": "",
 					"type": "Land — Mountain Forest",
@@ -1672,118 +1703,6 @@
 						"R",
 						"U",
 						"W"
-					]
-				},
-				{
-					"name": "Gargoyle Castle",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/9/8/9834b4e1-7e9f-4f93-a2aa-13a52e8a11fc.jpg",
-					"cmc": 0,
-					"rarity": "r",
-					"link": "c19/245/gargoyle-castle",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"C"
-					]
-				},
-				{
-					"name": "Sungrass Prairie",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/6/3/634bb7ce-d361-4617-acfa-acd5ae7fb1ff.jpg",
-					"cmc": 0,
-					"rarity": "r",
-					"link": "woc/167/sungrass-prairie",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"W"
-					]
-				},
-				{
-					"name": "Boros Garrison",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/c/2/c26abe8c-4f06-448d-9e0e-8214592cb885.jpg",
-					"cmc": 0,
-					"rarity": "u",
-					"link": "2x2/319/boros-garrison",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"R",
-						"W"
-					]
-				},
-				{
-					"name": "Graypelt Refuge",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/4/4/445ffa4d-d5ca-4ba6-b589-40d8490a4032.jpg",
-					"cmc": 0,
-					"rarity": "u",
-					"link": "scd/303/graypelt-refuge",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"W"
-					]
-				},
-				{
-					"name": "Gruul Turf",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/2/9/294b7e06-4758-4590-b1f0-b7f97537218f.jpg",
-					"cmc": 0,
-					"rarity": "u",
-					"link": "2x2/325/gruul-turf",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"R"
-					]
-				},
-				{
-					"name": "Jungle Shrine",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/1/9/194c6ee7-c220-41a5-bf44-5e1d8d92879b.jpg",
-					"cmc": 0,
-					"rarity": "u",
-					"link": "otc/303/jungle-shrine",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"R",
-						"W"
-					]
-				},
-				{
-					"name": "Kazandu Refuge",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/3/0/304b4d37-53e1-44a3-a892-627439edaf6f.jpg",
-					"cmc": 0,
-					"rarity": "u",
-					"link": "scd/307/kazandu-refuge",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"R"
 					]
 				},
 				{
@@ -1832,6 +1751,38 @@
 					]
 				},
 				{
+					"name": "Boros Garrison",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/c/2/c26abe8c-4f06-448d-9e0e-8214592cb885.jpg",
+					"cmc": 0,
+					"rarity": "u",
+					"link": "2x2/319/boros-garrison",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"R",
+						"W"
+					]
+				},
+				{
+					"name": "Graypelt Refuge",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/4/4/445ffa4d-d5ca-4ba6-b589-40d8490a4032.jpg",
+					"cmc": 0,
+					"rarity": "u",
+					"link": "scd/303/graypelt-refuge",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"W"
+					]
+				},
+				{
 					"name": "Selesnya Sanctuary",
 					"mana": "",
 					"type": "Land",
@@ -1844,6 +1795,55 @@
 					"qty": 1,
 					"prodMana": [
 						"G",
+						"W"
+					]
+				},
+				{
+					"name": "Gruul Turf",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/2/9/294b7e06-4758-4590-b1f0-b7f97537218f.jpg",
+					"cmc": 0,
+					"rarity": "u",
+					"link": "2x2/325/gruul-turf",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"R"
+					]
+				},
+				{
+					"name": "Kazandu Refuge",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/3/0/304b4d37-53e1-44a3-a892-627439edaf6f.jpg",
+					"cmc": 0,
+					"rarity": "u",
+					"link": "scd/307/kazandu-refuge",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"R"
+					]
+				},
+				{
+					"name": "Jungle Shrine",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/1/9/194c6ee7-c220-41a5-bf44-5e1d8d92879b.jpg",
+					"cmc": 0,
+					"rarity": "u",
+					"link": "otc/303/jungle-shrine",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"R",
 						"W"
 					]
 				},
@@ -1914,6 +1914,21 @@
 					]
 				},
 				{
+					"name": "Naya Panorama",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/6/a/6a546a28-8df5-4080-9f50-af86d84a066f.jpg",
+					"cmc": 0,
+					"rarity": "c",
+					"link": "ncc/417/naya-panorama",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"C"
+					]
+				},
+				{
 					"name": "Blossoming Sands",
 					"mana": "",
 					"type": "Land",
@@ -1927,6 +1942,22 @@
 					"prodMana": [
 						"G",
 						"W"
+					]
+				},
+				{
+					"name": "Rugged Highlands",
+					"mana": "",
+					"type": "Land",
+					"colors": [],
+					"img": "front/8/0/8040efe1-8ece-45bd-8426-443090baa55b.jpg",
+					"cmc": 0,
+					"rarity": "c",
+					"link": "dds/59/rugged-highlands",
+					"imgVersion": 2,
+					"qty": 1,
+					"prodMana": [
+						"G",
+						"R"
 					]
 				},
 				{
@@ -1961,37 +1992,6 @@
 					"qty": 1
 				},
 				{
-					"name": "Naya Panorama",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/6/a/6a546a28-8df5-4080-9f50-af86d84a066f.jpg",
-					"cmc": 0,
-					"rarity": "c",
-					"link": "ncc/417/naya-panorama",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"C"
-					]
-				},
-				{
-					"name": "Rugged Highlands",
-					"mana": "",
-					"type": "Land",
-					"colors": [],
-					"img": "front/8/0/8040efe1-8ece-45bd-8426-443090baa55b.jpg",
-					"cmc": 0,
-					"rarity": "c",
-					"link": "dds/59/rugged-highlands",
-					"imgVersion": 2,
-					"qty": 1,
-					"prodMana": [
-						"G",
-						"R"
-					]
-				},
-				{
 					"name": "Terramorphic Expanse",
 					"mana": "",
 					"type": "Land",
@@ -2010,8 +2010,8 @@
 				"R"
 			],
 			"dataVersion": 5,
-			"editDate": null,
-			"openDate": null,
+			"editDate": "null",
+			"openDate": "null",
 			"sideboard": {
 				"cards": [],
 				"viewedCard": null
