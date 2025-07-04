@@ -15,7 +15,7 @@
 						v-if="symbol.ct > 0"
 						:key="symbolName"
 						:class="activeFilterClass('manaSymbols', symbolName)"
-						@click="handleRowClick('manaSymbols', symbolName)"
+						@click="handleRowClick('manaSymbols', symbolName, symbol.key)"
 					>
 						<th>
 							<div

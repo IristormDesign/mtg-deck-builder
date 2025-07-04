@@ -8,7 +8,14 @@
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M455.39-180q-15.08 0-25.23-10.16Q420-200.31 420-215.39v-231.53L196.08-731.38q-11.54-15.39-3.35-32 8.2-16.62 27.66-16.62h519.22q19.46 0 27.66 16.62 8.19 16.61-3.35 32L540-446.92v231.53q0 15.08-10.16 25.23Q519.69-180 504.61-180h-49.22ZM480-468l198-252H282l198 252Zm0 0Z"/></svg>
 				<h4>Data Filter: On</h4>
 			</header>
-			<p v-show="activeFilterDescription">Filtering for <strong>{{ activeFilterDescription }}</strong></p>
+
+			<p v-if="$store.state.analyzerFilter.category === 'manaSymbols'">
+				Filtering for <strong v-html="activeFilterDescription"></strong>
+			</p>
+			<p v-else-if="activeFilterDescription">
+				Filtering for <strong>{{ activeFilterDescription }}</strong>
+			</p>
+
 			<div class="button-container">
 				<button
 					@click="stopFiltering()"
@@ -45,9 +52,10 @@
 
 <script>
 import statsAnalyzer from '@/mixins/statsAnalyzer.js'
+import symbolsMarkup from '@/mixins/symbolsMarkup'
 
 export default {
-	mixins: [statsAnalyzer],
+	mixins: [statsAnalyzer, symbolsMarkup],
 	computed: {
 		activeFilterDescription () {
 			const attr = this.$store.state.analyzerFilter.attribute
@@ -62,10 +70,16 @@ export default {
 
 				case 'manaSymbols':
 					switch (attr) {
+						case 'Hybrid':
+							return 'mana costs with hybrid mana symbols'
 						case 'Phyrexian':
-							return 'spells with Phyrexian mana symbols'
+							return 'mana costs with Phyrexian mana symbols'
 						default:
-							return `spells with ${attr.toLowerCase()} mana symbols`
+							if (extraAttr) {
+								return `mana costs with ${this.manaSymbol[extraAttr]}`
+							} else {
+								return null
+							}
 					}
 
 				case 'manaValues':
@@ -100,7 +114,7 @@ export default {
 						case 'Sorcery':
 							return 'sorceries'
 						case 'Kindred/Tribal':
-							return 'cards of the kindred or tribal type'
+							return 'kindred or tribal cards'
 						case 'Other':
 							return 'cards of non-standard card types'
 						default:
