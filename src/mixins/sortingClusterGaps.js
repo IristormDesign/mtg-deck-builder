@@ -184,21 +184,14 @@ export default {
 			}
 		},
 		gapsManaSources (thisCard, nextCard) {
-			if (thisCard.prodMana && !nextCard.prodMana) {
+			if (thisCard.prodMana?.length !== nextCard.prodMana?.length) {
 				return true
-			} else { // If both cards produce different sets of mana colors, return true.
-				const tpSet = new Set(thisCard.prodMana)
-				const npSet = new Set(nextCard.prodMana)
-
-				if (tpSet.size !== npSet.size) {
-					return true
-				}
-				for (const color of tpSet) {
-					if (!npSet.has(color)) {
+			} else if (thisCard.prodMana) {
+				for (const color of thisCard.prodMana) {
+					if (!nextCard.prodMana.includes(color)) {
 						return true
 					}
 				}
-				return false
 			}
 		},
 		gapsPT (thisCard, nextCard) {

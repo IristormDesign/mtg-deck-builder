@@ -418,25 +418,42 @@ export default {
 			})
 		},
 		sortByManaSources (cards) {
-			const colorOrder = ['W', 'U', 'B', 'R', 'G', 'C']
+			const colorOrder = ['C', 'W', 'U', 'B', 'R', 'G']
 
 			cards.sort((a, b) => {
-				if (!a.prodMana || a.prodMana.length === 0) {
-					return 1
-				} else if (!b.prodMana || b.prodMana.length === 0) {
-					return -1
-				} else if (a.prodMana.length > b.prodMana.length) {
-					return 1
-				} else if (b.prodMana.length > a.prodMana.length) {
-					return -1
-					// If both cards have the same number of mana production symbols but not exactly the same array of symbols, then sort them by the first symbol in their `prodMana` array.
-				} else if (a.prodMana?.length === b.prodMana?.length) {
-					for (let i = 0; i < a.prodMana.length; i++) {
-						if (a.prodMana[i] !== b.prodMana[i]) {
-							return colorOrder.indexOf(a.prodMana[i]) - colorOrder.indexOf(b.prodMana[i])
-						}
-					}
+				const aManaCount = a.prodMana ? a.prodMana.length : 0
+				const bManaCount = b.prodMana ? b.prodMana.length : 0
+
+				// Cards with no mana production go to the end
+				if (aManaCount === 0 && bManaCount === 0) {
 					return 0
+				} else if (aManaCount === 0) {
+					return 1
+				} else if (bManaCount === 0) {
+					return -1
+				}
+
+				// Sort by number of distinct producible mana colors (least to most)
+				if (aManaCount !== bManaCount) {
+					return aManaCount - bManaCount
+				}
+
+				// If same number of colors, sort by first color in conventional order
+				const aColorIndex = colorOrder.indexOf(a.prodMana[0])
+				const bColorIndex = colorOrder.indexOf(b.prodMana[0])
+
+				if (aColorIndex !== bColorIndex) {
+					return aColorIndex - bColorIndex
+				}
+
+				// If same first color, sort by full mana string
+				const aMana = a.prodMana.join('')
+				const bMana = b.prodMana.join('')
+
+				if (aMana < bMana) {
+					return -1
+				} else if (aMana > bMana) {
+					return 1
 				} else {
 					return 0
 				}
