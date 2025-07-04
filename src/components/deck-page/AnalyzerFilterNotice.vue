@@ -9,7 +9,7 @@
 				<h4>Data Filter: On</h4>
 			</header>
 
-			<p v-if="$store.state.analyzerFilter.category === 'manaSymbols'">
+			<p v-if="filter.category === 'manaSymbols' || filter.category === 'producibleMana'">
 				Filtering for <strong v-html="activeFilterDescription"></strong>
 			</p>
 			<p v-else-if="activeFilterDescription">
@@ -57,11 +57,14 @@ import symbolsMarkup from '@/mixins/symbolsMarkup'
 export default {
 	mixins: [statsAnalyzer, symbolsMarkup],
 	computed: {
+		filter () {
+			return this.$store.state.analyzerFilter
+		},
 		activeFilterDescription () {
-			const attr = this.$store.state.analyzerFilter.attribute
-			const extraAttr = this.$store.state.analyzerFilter.extraAttribute
+			const attr = this.filter.attribute
+			const extraAttr = this.filter.extraAttribute
 
-			switch (this.$store.state.analyzerFilter.category) {
+			switch (this.filter.category) {
 				case 'names':
 					return `“${attr}”`
 
@@ -88,13 +91,6 @@ export default {
 							return 'spells with a variable mana cost'
 						default:
 							return `spells with mana value ${attr}`
-					}
-
-				case 'producibleMana':
-					if (extraAttr) {
-						return `sources of ${extraAttr.toLowerCase()} mana`
-					} else {
-						return null
 					}
 
 				case 'supertypes':
@@ -137,6 +133,13 @@ export default {
 							return 'cards of non-standard rarities'
 						default:
 							return `${attr.toLowerCase()}s`
+					}
+
+				case 'producibleMana':
+					if (attr) {
+						return `sources of ${this.manaSymbol[attr.toLowerCase()]}`
+					} else {
+						return null
 					}
 
 				case 'keywords':

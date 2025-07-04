@@ -15,9 +15,7 @@
 						v-if="stat.ct > 0"
 						:key="stat.name"
 						:class="activeFilterClass('producibleMana', letter)"
-						@click="handleRowClick(
-							'producibleMana', letter, stat.name
-						)"
+						@click="handleRowClick('producibleMana', letter)"
 					>
 						<th>
 							<div
