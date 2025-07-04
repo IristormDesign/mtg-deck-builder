@@ -23,9 +23,11 @@ $color-app-header-link-hover: color.adjust($color-app-header-link, $lightness: 1
 $color-app-header-link-active: color.adjust($color-app-header-link, $lightness: -6.25%, $saturation: 25%);
 $color-input-bg-focus: color.adjust($color-mythic-yellow, $lightness: -41.67%, $saturation: -62.5%);
 $color-card-star: color.adjust($color-mythic-yellow, $lightness: 16.67%, $saturation: 50%);
-$color-highlight-bg: color.scale($color-mythic-yellow, $lightness: -50%);
-$color-highlight-bg-hover: color.scale($color-highlight-bg, $lightness: 12.5%);
-$color-highlight-border: color.scale($color-highlight-bg, $lightness: 12.5%, $saturation: -6.25%);
+$color-highlight-bg: color.scale($color-mythic-yellow, $lightness: 16.67%);
+$color-highlight-bg-hover: $color-mythic-yellow;
+$color-highlight-border: color.scale($color-highlight-bg, $lightness: -25%, $saturation: -25%);
+$color-text-over-highlight-bg: color.scale($color-highlight-bg, $lightness: -87.5%, $saturation: -75%);
+$color-link-over-highlight-bg: color.scale($color-mythic-orange, $lightness: -45.83%, $saturation: 100%);
 
 /* SKY-BLUE-BASED COLORS */
 $color-mythic-complement: #15b4ed; // Inverted mythic-orange

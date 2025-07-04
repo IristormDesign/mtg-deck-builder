@@ -33,14 +33,17 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		background: $color-highlight-bg-hover;
 
 		th {
-			color: $color-app-header-link-hover;
+			color: #000;
+		}
+		td {
+			color: $color-text-over-highlight-bg;
 		}
 	}
 	&:active {
 		background: $color-group-bg;
 
 		th {
-			color: $color-mythic-orange;
+			color: $color-link-focus;
 		}
 		td {
 			color: $color-text-brighter;
@@ -197,10 +200,10 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			}
 			&:active {
 				th {
-					color: $color-link-active;
+					color: #000;
 				}
 				td {
-					color: $color-text-brighter-over-mythic-brown;
+					color: #fff;
 				}
 				th,
 				td {
@@ -213,8 +216,6 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			}
 		}
 		.filtering {
-			color: $color-text-brighter;
-
 			& {
 				@include highlighted-table-component;
 			}
@@ -222,6 +223,10 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 			td {
 				border-right-color: $color-highlight-border;
 				border-left-color: $color-highlight-border;
+				color: $color-text-over-highlight-bg;
+			}
+			th {
+				color: $color-link-over-highlight-bg;
 			}
 			&:active {
 				th,
@@ -265,10 +270,10 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 				outline-offset: -1px;
 			}
 			&:active {
-				color: $color-link-active;
+				color: #000;
 			}
 			&.filtering {
-				color: #fff;
+				color: #000; // Purposely darker for better visibility.
 
 				& {
 					@include highlighted-table-component;
@@ -291,13 +296,14 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 	}
 	.height-limiter {
 		overflow-y: auto;
-		max-height: $lhse * 13.4;
+		max-height: $lhse * 13.5; // Enough to show the header row plus 12 full data rows, plus one half of a row.
 		background-color: $color-group-bg; // This fixes a weird font-rendering glitch in Chrome that causes the element's text color to subtly dim while a scrollbar is present.
 	}
 	.mana-symbol {
 		font-size: 112.5%;
 		margin-top: -$lhse*.0625;
 		margin-bottom: -$lhse*.0625;
+		outline: 1px solid rgba(#000, .25);
 	}
 	footer {
 		display: flex;
@@ -350,18 +356,19 @@ $table-outer-borders: $border-width-sections-medium solid $color-heading-bg;
 		left: 0;
 		right: 0;
 		box-shadow: $box-shadow-sticky-header;
-		background: color.adjust($color-highlight-bg, $alpha: 0.9167, $saturation: 8.33%);
+		background: color.scale($color-highlight-bg, $alpha: -8.33%);
+		backdrop-filter: blur(2px);
 		border-color: $color-highlight-border;
-		color: $color-text-brighter-over-mythic-brown;
+		color: $color-text-over-highlight-bg;
 
 		header {
 			svg {
-				fill: #fff;
+				fill: $color-text-over-highlight-bg;
 			}
 		}
 		h4,
 		strong {
-			color: #fff;
+			color: $color-text-over-highlight-bg;
 		}
 	}
 	> div {
