@@ -47,6 +47,7 @@
 			</ul>
 			<p>The exception to the aforementioned table layout is the one for the Power & Toughness category, which has a table subsection with columns for power and toughness instead of for count and percentage.</p>
 			<p>In the table for most categories that shows card counts, rows are sorted by attributes’ counts from most to fewest. If multiple attributes have counts equal to each other, then their rows are sorted among each other alphabetically or in another fixed order. The exceptions are the tables for the “Mana Values of Spells” and “Rarities” categories, whose rows are always sorted in a fixed order regardless of their card counts.</p>
+			<p>Be aware that the Stats Analyzer’s tables are limited to a certain maximum height. This means it’s possible for a table to have so many rows that it can’t show all of them at once. In such a case, a scrollbar will appear beside the table, letting you scroll hidden rows into the table’s visible area.</p>
 		</section>
 
 		<section id="data-filter">
@@ -57,7 +58,7 @@
 			<p>When a filter is on, the following effects happen:</p>
 			<ul>
 				<li><p>Any data about your deck that doesn’t match the selected card attribute is temporarily hidden. All data will return once the filter is turned off.</p></li>
-				<li><p>For the table row relating to the filtered attribute, it distinctly appears highlighted orange with a bright orange dashed outline.</p></li>
+				<li><p>For the table row relating to the filtered attribute, it distinctly appears highlighted yellow with a bright orange dashed outline.</p></li>
 				<li><p>At the top of the Stats Analyzer is the filter notification banner. It indicates the specific attribute that’s currently being filtered for, if any.</p></li>
 				<li><p>In each statistical category, the numbers for the total counts and percentages update to count only your deck’s remaining cards after filtering.</p></li>
 				<li><p>No more than one filter can be active at a time. If you turn on a filter while another is already on, then the new filter replaces (rather than adds upon) the prior one.</p></li>
@@ -65,7 +66,7 @@
 			<p>To turn <em>off</em> a filter, thus restoring the complete statistics about your deck, do any one of the following actions:</p>
 			<ul>
 				<li>On the filter notification banner, click the Stop Filtering button.</li>
-				<li>Click the table row of the currently filtered card attribute, which is highlighted orange.</li>
+				<li>Click the table row of the currently filtered card attribute, which is highlighted yellow.</li>
 				<li><router-link to="keyboard-shortcuts">Press the <kbd>Esc</kbd> key</router-link>.</li>
 			</ul>
 		</section>
