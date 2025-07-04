@@ -74,7 +74,7 @@ textarea {
 	}
 	&:not(:read-only) {
 		&::selection {
-			background: rgba($color-link, .5);
+			background: rgba($color-mythic-orange, .5);
 			color: #fff;
 		}
 	}

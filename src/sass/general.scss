@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:math';
 @use 'variables-and-mixins' as *;
 
@@ -212,7 +213,7 @@ svg {
 	fill: currentColor;
 }
 ::selection {
-	background: rgba($color-highlight-bg, .5);
+	background: rgba(color.scale($color-highlight-bg, $lightness: -25%, $saturation: -50%), .5);
 	color: #fff;
 	text-shadow: none;
 }
