@@ -11,6 +11,8 @@
 	}
 }
 .list-entry {
+	max-width: $max-width-content*1.3333;
+
 	.columns {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -48,6 +50,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-items: center;
+	align-items: center;
 
 	label {
 		font-weight: $font-weight-label;
@@ -135,7 +138,7 @@
 	}
 }
 
-@media (max-width: ($min-width-app * .7083)) {
+@media (max-width: ($min-width-app * .8333)) {
 	.list-entry {
 		max-width: $max-width-content;
 
@@ -167,7 +170,6 @@
 		}
 		textarea {
 			box-sizing: border-box;
-			width: 100%;
 			padding: math.div($lhse, 3) $lhse*.5;
 			font-size: 80%;
 			margin-right: 0;

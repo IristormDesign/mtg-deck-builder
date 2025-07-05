@@ -10,7 +10,7 @@
 		</template>
 		<template v-else>
 			<header class="intro">
-				<p>Here you can add multiple card names at once to the main card group of <i>{{ deck.name }}</i>. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
+				<p>Here you can add multiple cards at once to <i>{{ deck.name }}</i>. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="columns">
 				<form class="list-entry-form">
@@ -19,7 +19,7 @@
 						id="card-list-entry"
 						v-model.trim="textCardList"
 						ref="textCardList"
-						rows="15"
+						rows="20"
 						maxlength="5000"
 						spellcheck="false"
 					></textarea>
@@ -34,13 +34,19 @@
 					<h4>Rules for List Formatting</h4>
 					<p>Have only one card name per line of the list.</p>
 					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name.</p>
-					<p>For example:</p>
-					<p><code>
-						13 Mountain<br>
-						1 Balefire Dragon<br>
-						4 Shock
-					</code></p>
 					<p>Spelling matters, but letter case doesn’t.</p>
+					<p>By default, all cards you enter will be added to your deck’s main group.</p>
+					<p>You can add particular cards to the sideboard group instead: Enter a line containing the word “Sideboard,” and below that line, enter a card list for the sideboard.</p>
+					<p>Example:</p>
+					<p><code>
+						4 Shock<br>
+						1 Balefire Dragon<br>
+						15 Mountain<br>
+						<br>
+						SIDEBOARD<br>
+						2 Vandalblast<br>
+						1 Blood Moon
+					</code></p>
 				</section>
 			</div>
 		</template>

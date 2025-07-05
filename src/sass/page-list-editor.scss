@@ -338,9 +338,6 @@ $width-card-list-section-narrow:
 	}
 }
 .list-entry-button {
-	.sideboard-visible & {
-		display: none;
-	}
 	a {
 		padding: 0;
 	}
@@ -395,9 +392,6 @@ $width-card-list-section-narrow:
 			section {
 				height: $lhse*3;
 			}
-			.sideboard-visible & {
-				grid-template-columns: 1fr minmax(auto, 5fr);
-			}
 		}
 	}
 	.scryfall-button,
@@ -423,9 +417,6 @@ $width-card-list-section-narrow:
 		grid-row: 1;
 		grid-column: span 1;
 
-		.sideboard-visible & {
-			border-bottom-left-radius: 0;
-		}
 		> form {
 			max-width: $width-card-bars-narrow + $width-card-adder-button;
 		}
@@ -442,9 +433,6 @@ $width-card-list-section-narrow:
 
 			section {
 				height: auto;
-			}
-			.sideboard-visible & {
-				grid-template-columns: 2fr;
 			}
 		}
 	}
@@ -467,10 +455,6 @@ $width-card-list-section-narrow:
 		input,
 		> form button {
 			font-size: 87.5%;
-		}
-		.sideboard-visible & {
-			border-bottom-right-radius: $border-radius-group;
-			border-bottom-left-radius: $border-radius-group;
 		}
 	}
 }
@@ -554,12 +538,6 @@ $width-card-list-section-narrow:
 
 		.layout-column {
 			border-radius: 0;
-		}
-		.sideboard-visible & {
-			.adder-controls,
-			.card-adder {
-				border-radius: 0;
-			}
 		}
 	}
 	.card-adder {
