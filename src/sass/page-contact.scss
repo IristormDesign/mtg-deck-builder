@@ -1,38 +1,11 @@
 @use 'variables-and-mixins' as *;
 
 .contact-page {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 0 $lhse;
-	max-width: $max-width-content*1.5;
-
 	h2 {
-		grid-column: span 2;
 		text-align: center;
 	}
-	> p {
-		&:first-of-type {
-			grid-column: span 2;
-			margin-top: 0;
-		}
-	}
-	.column {
-		> :first-child {
-			margin-top: $lhse*.5;
-		}
-		[href^="mailto:"] {
-			white-space: nowrap; // Needed for certain viewport widths.
-		}
-	}
-}
-
-@media (max-width: ($min-width-app)) {
-	.contact-page {
-		display: block;
-		max-width: $max-width-content;
-
-		.column {
-			margin-top: $lhse;
-		}
+	[href^="mailto:"],
+	[target="_blank"] {
+		white-space: nowrap;
 	}
 }
