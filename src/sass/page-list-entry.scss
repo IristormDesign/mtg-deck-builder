@@ -115,6 +115,8 @@
 		height: $lhse*1.3333;
 	}
 	.copy-button {
+		justify-content: flex-start;
+
 		button {
 			background: $color-button-gray;
 			font-size: 75%;

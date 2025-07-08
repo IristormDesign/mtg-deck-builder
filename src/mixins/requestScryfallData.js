@@ -179,9 +179,9 @@ export default {
 		/**
 		 * @param {Object} data - The card's data received straight from the Scryfall API.
 		 * @param {Object} [oldCard] - The card's existing data in the app. Param should be empty except when updating the card data version.
-		 * @param {Number} [enteredQty] - The number for the card's quantity. Param should be empty except when adding cards via card list entry.
+		 * @param {Object} [listEntryData] - An object containing certain card attributes when adding cards via card list entry.
 		 */
-		assignCardData (data, oldCard, enteredQty) {
+		assignCardData (data, oldCard, listEntryData) {
 			const newCard = {}
 
 			if (data.card_faces) { // If the card is a double-faced or split card...
@@ -289,8 +289,8 @@ export default {
 				newCard.layout = data.layout
 			}
 
-			if (enteredQty) {
-				newCard.qty = enteredQty
+			if (listEntryData?.qty) {
+				newCard.qty = listEntryData.qty
 			} else {
 				newCard.qty = 1
 			}
@@ -311,7 +311,7 @@ export default {
 
 				this.updateOldCard(newCard, oldCard.inSideboard)
 			} else {
-				this.validateNewCard(newCard, enteredQty)
+				this.validateNewCard(newCard, listEntryData)
 			}
 		},
 		/**
@@ -343,17 +343,25 @@ export default {
 		 * There are two reasons to do this: (1) It's possible for the Scryfall API's "fuzzy" search, which corrects misspelled names and assumes full names from partial queries, to return a slightly different name than what the user originally submitted. (2) It's also possible that the user's query was in the form of a Scryfall card page URL, and so now the name of that card needs to be checked.
 		 *
 		 * @param {Object} newCard
-		 * @param {Number} [fromListEntry] - Taken from the variable for the quantity of an added card via card list entry. If this param is empty, then the validation is adding a card from the standard card adder.
+		 * @param {Object} [listEntryData] - If this param is empty, then the validation is adding a card from the standard card adder instead of the card list entry.
 		*/
-		validateNewCard (newCard, fromListEntry) {
+		validateNewCard (newCard, listEntryData) {
 			const existingCard = this.findExistingCardByName(newCard.name)
+
+			if (listEntryData) {
+				if (listEntryData.inSideboard) {
+					this.$store.commit('showSideboard', true)
+				} else {
+					this.$store.commit('showSideboard', false)
+				}
+			}
 
 			if (existingCard) {
 				this.$set(this.activeCardList, 'viewedCard', existingCard)
 
 				if (this.optionalReplacement) {
 					this.notifyCardExists(newCard, true)
-				} else if (isNaN(fromListEntry)) {
+				} else if (isNaN(listEntryData.qty)) {
 					this.notifyCardExists(newCard)
 				}
 			} else {

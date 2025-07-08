@@ -36,9 +36,11 @@
 					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name.</p>
 					<p>Spelling matters, but letter case doesn’t.</p>
 					<p>By default, all cards you enter will be added to your deck’s main group.</p>
-					<p>You can add particular cards to the sideboard group instead: Enter a line containing the word “Sideboard,” and below that line, enter a card list for the sideboard.</p>
+					<p>You can direct some cards to the sideboard group instead: Below the main group’s card list, enter a blank line, and then below that, enter a second card list for the sideboard.</p>
+					<p>If you enter other lines of text that don’t match these formatting patterns, they’ll be ignored.</p>
 					<p>Example:</p>
 					<p><code>
+						MAIN<br>
 						4 Shock<br>
 						1 Balefire Dragon<br>
 						15 Mountain<br>
@@ -47,13 +49,15 @@
 						2 Vandalblast<br>
 						1 Blood Moon
 					</code></p>
+					<p>(The lines with the headings “MAIN” and “SIDEBOARD” have no effect on this process. The blank line between the lists is what actually distinguishes the two card groups.)</p>
 				</section>
 			</div>
 		</template>
 
 		<standard-dialog dialogID="excessiveQuantity">
 			<h4>Error: Excessive Quantity</h4>
-			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dd.qty }} {{ dd.name }}”). The quantity of each name must be no longer than two digits.</p>
+			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dd.qty }} {{ dd.name }}”).</p>
+			<p>The quantity of each name must be no longer than two digits.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="tooManyCardNames">
 			<p><strong>Error</strong>: Your list has too many card names. Please enter no more than 200.</p>
@@ -91,6 +95,8 @@ import requestScryfallData from '@/mixins/requestScryfallData.js'
 import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
+const regexCardEntry = /^(?:\s*)\d+\s+.+/gim // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+
 export default {
 	components: { StandardDialog },
 	mixins: [getActiveDeck, requestScryfallData, removeCard, stringMethods],
@@ -100,30 +106,38 @@ export default {
 			cardRequestsAborted: [],
 			cardRequestInvalid: [],
 			cardRequestOtherError: [],
-			cardsSuccessfullyAdded: [],
-			cardsToAdd: [],
+			cardsSuccessfullyAdded: {
+				main: [], sideboard: []
+			},
+			cardsToAdd: {
+				main: [], sideboard: []
+			},
 			cardsToAddZeroQty: [],
-			cardsToUpdate: [],
+			cardsToUpdate: {
+				main: [], sideboard: []
+			},
 			hasExcessiveQuantity: false,
-			invalidCardNames: [],
-			invalidEntries: [],
-			invalidQuantities: [],
+			invalidCardNames: {
+				main: [], sideboard: []
+			},
+			invalidQuantities: {
+				main: [], sideboard: []
+			},
 			isLoadingCards: false,
 			numberOfNewCardsRequested: 0,
-			repeatedCardNames: [],
-			submittedCards: [],
+			repeatedCardNames: {
+				main: [], sideboard: []
+			},
+			submittedCards: {
+				main: [], sideboard: []
+			},
 			textCardList: '',
 			leaveWarningUserResponse: false
 		}
 	},
 	computed: {
-		listEntries () {
-			const regexValidEntry = /^(?:\s*)\d+ .+/gim // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
-
-			return this.textCardList.match(regexValidEntry)
-		},
 		validateList () {
-			if (!this.listEntries) {
+			if (!this.textCardList.match(regexCardEntry)) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'invalidListFormat',
 					data: {
@@ -138,7 +152,7 @@ export default {
 		},
 		loadingPercent () {
 			return Math.floor(
-				this.numberOfNewCardsRequested / this.cardsToAdd.length * 100
+				this.numberOfNewCardsRequested / (this.cardsToAdd.main.length + this.cardsToAdd.sideboard.length) * 100
 			)
 		},
 		dd () {
@@ -150,8 +164,8 @@ export default {
 	},
 	beforeRouteLeave (to, from, next) {
 		if (
-			this.submittedCards.length > 0 ||
-			this.repeatedCardNames.length > 0 ||
+			this.submittedCards.main.length > 0 ||
+			this.repeatedCardNames.main.length > 0 ||
 			this.textCardList.length < 10
 		) {
 			next()
@@ -186,11 +200,11 @@ export default {
 
 			if (!this.validateList) return
 
-			this.parseEntries()
+			this.processSubmission()
 
 			if (this.hasExcessiveQuantity) return
 
-			if (this.submittedCards.length > 200) {
+			if (this.submittedCards.main.length + this.submittedCards.sideboard.length > 200) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'tooManyCardNames',
 					data: {
@@ -201,140 +215,208 @@ export default {
 				return
 			}
 
-			this.determineNewOrExistingCardNames()
+			this.determineNewOrExistingCardNames('main')
+			this.determineNewOrExistingCardNames('sideboard')
 
-			if (this.cardsToAdd.length > 0) {
-				this.addNewCardsToDeck()
+			const ca = this.cardsToAdd
+			const cu = this.cardsToUpdate
+
+			if (ca.main.length > 0) {
+				this.addNewCardsToDeck('main')
 				this.isLoadingCards = true
 			}
-			if (this.cardsToUpdate.length > 0) {
-				this.updateExistingQuantities()
+			if (ca.sideboard.length > 0) {
+				this.addNewCardsToDeck('sideboard')
 				this.isLoadingCards = true
 			}
+			if (cu.main.length > 0) {
+				this.updateExistingQuantities('main')
+				this.isLoadingCards = true
+			}
+			if (cu.sideboard.length > 0) {
+				this.updateExistingQuantities('sideboard')
+				this.isLoadingCards = true
+			}
+
+			this.$store.commit('decks', this.$store.state.decks)
+
 			if (
-				this.cardsToAddZeroQty.length > 0 &&
-				this.cardsToAdd.length === 0 &&
-				this.cardsToUpdate.length === 0
+				(
+					this.cardsToAddZeroQty.length > 0 ||
+					cu.main.length + cu.sideboard.length > 0
+				) &&
+				ca.main.length + ca.sideboard.length === 0
 			) {
 				this.goToResultsPage()
 			}
 		},
-		parseEntries () {
-			const regexInvalidEntry = /^(?!(?:\s*)\d+ .+).+/gim // Any line in a multiline string that contains any characters but is NOT in the valid format for card list entries.
-			this.invalidEntries = this.textCardList.match(regexInvalidEntry) || []
+		processSubmission () {
+			const allLines = this.textCardList.split('\n')
+			const regexEmptyLine = /^\s*$/ // A substring that contains nothing from beginning to end, except maybe whitespace characters. (The newline characters have been removed from the `split()` method above.)
+			let sideboardBeginningIndex = -1
+			const validListEntries = {
+				main: [], sideboard: []
+			}
+
+			for (let i = 0; i < allLines.length; i++) {
+				const line = allLines[i]?.trim() || ''
+				const prevLine = allLines[i - 1]?.trim() || ''
+
+				if (sideboardBeginningIndex < 0) { // If the sideboard beginning index hasn't been found yet...
+					if (prevLine.match(regexCardEntry) && line.match(regexEmptyLine)) {
+						sideboardBeginningIndex = i
+					} else if (line.match(regexCardEntry)) {
+						validListEntries.main.push(line)
+					}
+				} else { // Else the sideboard beginning index has already been found.
+					if (line.match(regexCardEntry)) {
+						validListEntries.sideboard.push(line)
+					}
+				}
+			}
 
 			const regexQuantity = /^(\d+)(?= )/i // A substring that begins with a number and ends with a space.
 			const regexName = /^\d+ (.+)/i // A substring of any characters that follow the `regexQuantity` pattern.
 			const regexFrontFaceName = /^\d+ (.[^/]+)(?= *\/+)/i // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
 
-			this.submittedCards = [] // Clear this array in case it contains leftover data from a previous submission attempt.
-			this.repeatedCardNames = []
+			/* Reset the following arrays in case they contain leftover data from a previous submission attempt. */
+			this.submittedCards = {
+				main: [], sideboard: []
+			}
+			this.repeatedCardNames = {
+				main: [], sideboard: []
+			}
 
-			for (let item of this.listEntries) {
-				item = item.trim()
+			const parseEntries = (groupName) => {
+				for (const item of validListEntries[groupName]) {
+					let cardQty = item.match(regexQuantity)[1]
+					let cardName
 
-				let qty = item.match(regexQuantity)[1]
-				let name
+					if (item.match(regexFrontFaceName)) {
+						cardName = item.match(regexFrontFaceName)[1]
+					} else {
+						cardName = item.match(regexName)[1]
+					}
 
-				if (item.match(regexFrontFaceName)) {
-					name = item.match(regexFrontFaceName)[1]
-				} else {
-					name = item.match(regexName)[1]
-				}
+					if (!cardQty && !cardName) break
 
-				if (!qty && !name) break
+					cardQty = Number(cardQty)
+					cardName = this.cleanedCardName(cardName)
 
-				qty = Number(qty)
-				name = this.cleanedCardName(name)
+					if (cardQty > 99) {
+						this.$store.commit('idOfShowingDialog', {
+							id: 'excessiveQuantity',
+							data: {
+								qty: cardQty,
+								name: cardName,
+								callback: this.focusOnTextarea
+							}
+						})
 
-				if (qty > 99) {
-					this.$store.commit('idOfShowingDialog', {
-						id: 'excessiveQuantity',
-						data: {
-							qty,
-							name,
-							callback: this.focusOnTextarea
-						}
-					})
+						this.hasExcessiveQuantity = true
 
-					this.hasExcessiveQuantity = true
+						return
+					}
 
-					return
-				}
+					const existingNameInAddList = this.submittedCards[groupName].find(existingCard =>
+						existingCard.name.toUpperCase() === cardName.toUpperCase()
+					)
 
-				const existingNameInAddList = this.submittedCards.find(existingCard =>
-					existingCard.name.toUpperCase() === name.toUpperCase()
-				)
-
-				if (existingNameInAddList) {
-					this.repeatedCardNames.push({
-						qty,
-						name
-					})
-				} else {
-					this.submittedCards.push({
-						qty,
-						name
-					})
+					if (existingNameInAddList) {
+						this.repeatedCardNames[groupName].push({
+							qty: cardQty,
+							name: cardName
+						})
+					} else {
+						this.submittedCards[groupName].push({
+							qty: cardQty,
+							name: cardName
+						})
+					}
 				}
 			}
+			parseEntries('main')
+			parseEntries('sideboard')
 		},
-		determineNewOrExistingCardNames () {
-			this.submittedCards.forEach(card => {
-				const existingCard = this.findExistingCardByName(card.name, this.deck)
+		determineNewOrExistingCardNames (groupName) {
+			this.submittedCards[groupName].forEach(card => {
+				const groupObject = (() => {
+					if (groupName === 'sideboard') {
+						return this.deck.sideboard
+					} else {
+						return this.deck
+					}
+				})()
+				const existingCard = this.findExistingCardByName(card.name, groupObject)
 
 				if (existingCard) {
 					card.name = existingCard.name
 					card.name2 = existingCard.name2
 
-					this.cardsToUpdate.push(card)
+					this.cardsToUpdate[groupName].push(card)
 				} else if (card.qty <= 0) {
 					this.cardsToAddZeroQty.push(card)
 				} else {
-					this.cardsToAdd.push(card)
+					this.cardsToAdd[groupName].push(card)
 				}
 			})
 		},
-		updateExistingQuantities () {
-			this.cardsToUpdate.forEach(submittedCard => {
-				const cardIndex = this.deck.cards.findIndex(foundCard => {
+		updateExistingQuantities (groupName) {
+			console.log(`Updating existing card quantities in the deck's ${groupName} group.`)
+
+			this.cardsToUpdate[groupName].forEach(submittedCard => {
+				const targetGroup = (() => {
+					if (groupName === 'sideboard') {
+						return this.deck.sideboard
+					} else {
+						return this.deck
+					}
+				})()
+				const cardIndex = targetGroup.cards.findIndex(foundCard => {
 					return foundCard.name.toUpperCase() === submittedCard.name.toUpperCase()
 				})
-				const existingCard = this.deck.cards[cardIndex]
 
-				existingCard.qty = submittedCard.qty
+				if (cardIndex >= 0) {
+					const existingCard = targetGroup.cards[cardIndex]
 
-				if (existingCard.qty <= 0) {
-					this.removeCard(cardIndex, true)
+					existingCard.qty = submittedCard.qty
 
-					this.anyCardRemoved = true
+					if (existingCard.qty <= 0) {
+						this.removeCard(cardIndex, true)
+
+						this.anyCardRemoved = true
+					}
+				} else {
+					console.warn(`Card named "${submittedCard.name}" not found in the deck's ${groupName} group.`)
 				}
 			})
-
-			this.$store.commit('decks', this.$store.state.decks)
-
-			if (this.cardsToAdd.length === 0) {
-				this.goToResultsPage()
-			}
 		},
-		addNewCardsToDeck () {
-			this.cardsToAdd.forEach((card, index) => {
+		addNewCardsToDeck (groupName) {
+			const sideboardTimeoutDuration = () => {
+				if (groupName === 'sideboard') {
+					return this.cardsToAdd.main.length + 1
+				} else {
+					return 1
+				}
+			}
+
+			this.cardsToAdd[groupName].forEach((card, index) => {
 				setTimeout(() => {
 					const done = () => {
 						this.numberOfNewCardsRequested++
 
-						if (this.numberOfNewCardsRequested === this.cardsToAdd.length) {
+						if (this.numberOfNewCardsRequested === (this.cardsToAdd.main.length + this.cardsToAdd.sideboard.length)) {
 							this.goToResultsPage()
 						}
 					}
 
 					// this.cardRequestsAborted.push(card)
 					// done()
-					this.requestCardFromScryfallAPI(card, done)
-				}, ((index + 1) * 125))
+					this.requestCardFromScryfallAPI(card, done, groupName)
+				}, (index * 125 * sideboardTimeoutDuration))
 			})
 		},
-		requestCardFromScryfallAPI (card, callback) {
+		requestCardFromScryfallAPI (card, callback, groupName) {
 			console.info(`Card named "${card.name}" requested via Scryfall API.`)
 
 			const urlEncodedQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -342,12 +424,15 @@ export default {
 			axios
 				.get(
 					`https://api.scryfall.com/cards/named?fuzzy=${urlEncodedQuery}`,
-					{ timeout: 8000 }
+					{ timeout: 10000 }
 				)
 				.then(response => {
-					this.recordForResultsPage(response.data, card)
+					this.recordForResultsPage(response.data, card, groupName)
 
-					this.assignCardData(response.data, null, card.qty)
+					this.assignCardData(response.data, null, {
+						qty: card.qty,
+						inSideboard: groupName === 'sideboard'
+					})
 				})
 				.catch(error => {
 					switch (error.code) {
@@ -366,7 +451,7 @@ export default {
 					return callback()
 				})
 		},
-		recordForResultsPage (data, card) {
+		recordForResultsPage (data, card, groupName) {
 			if (data.card_faces) {
 				card.name = this.cleanedCardName(data.card_faces[0].name)
 				card.name2 = this.cleanedCardName(data.card_faces[1].name)
@@ -374,13 +459,19 @@ export default {
 				card.name = this.cleanedCardName(data.name)
 			}
 
-			const existingCard = this.findExistingCardByName(card.name, this.deck)
+			const existingCard = this.findExistingCardByName(card.name, (() => {
+				if (groupName === 'sideboard') {
+					return this.deck.sideboard
+				} else {
+					return this.deck
+				}
+			})())
 
 			if (existingCard) {
-				this.cardsToUpdate.push(card)
-				this.updateExistingQuantities()
+				this.cardsToUpdate[groupName].push(card)
+				this.updateExistingQuantities(groupName)
 			} else {
-				this.cardsSuccessfullyAdded.push(card)
+				this.cardsSuccessfullyAdded[groupName].push(card)
 			}
 		},
 		goToResultsPage () {
@@ -394,7 +485,6 @@ export default {
 					cardsSuccessfullyAdded: this.cardsSuccessfullyAdded,
 					cardsToAddZeroQty: this.cardsToAddZeroQty,
 					cardsToUpdate: this.cardsToUpdate,
-					invalidEntries: this.invalidEntries,
 					invalidQuantities: this.invalidQuantities,
 					repeatedCardNames: this.repeatedCardNames
 				}
