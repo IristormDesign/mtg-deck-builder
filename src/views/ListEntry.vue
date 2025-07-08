@@ -24,7 +24,7 @@
 						spellcheck="false"
 					></textarea>
 					<div class="button-container">
-						<button @click.prevent="submitList">
+						<button @click.prevent="submitForm">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M650-131v-120H530v-60h120v-120h60v120h120v60H710v120h-60ZM130-250v-60h60v60h-60Zm140 0v-60h181.85q-1.85 15.8-1.35 30.09t2.35 29.91H270ZM130-410v-60h60v60h-60Zm140 0v-60h279.08q-17.23 12.15-31.5 27.15-14.27 15-25.96 32.85H270ZM130-570v-60h60v60h-60Zm140 0v-60h480v60H270ZM130-730v-60h60v60h-60Zm140 0v-60h480v60H270Z"/></svg>
 							Add Cards
 						</button>
@@ -95,7 +95,13 @@ import requestScryfallData from '@/mixins/requestScryfallData.js'
 import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
-const regexCardEntry = /^(?:\s*)\d+\s+.+/gim // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+const regexPatterns = {
+	cardEntry: /^(?:\s*)\d+\s+.+/gim, // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+	emptyLine: /^\s*$/, // A substring that contains nothing from beginning to end, except maybe whitespace characters. (Lines' newline characters have been removed from the `split()` method.)
+	frontFaceName: /^\d+ (.[^/]+)(?= *\/+)/i, // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
+	name: /^\d+ (.+)/i, // A substring of any characters that follow the `regexQuantity` pattern.
+	quantity: /^(\d+)(?= )/i // A substring that begins with a number and ends with a space.
+}
 
 export default {
 	components: { StandardDialog },
@@ -137,7 +143,7 @@ export default {
 	},
 	computed: {
 		validateList () {
-			if (!this.textCardList.match(regexCardEntry)) {
+			if (!this.textCardList.match(regexPatterns.cardEntry)) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'invalidListFormat',
 					data: {
@@ -152,11 +158,14 @@ export default {
 		},
 		loadingPercent () {
 			return Math.floor(
-				this.numberOfNewCardsRequested / (this.cardsToAdd.main.length + this.cardsToAdd.sideboard.length) * 100
+				this.numberOfNewCardsRequested / this.totalCardsToAdd * 100
 			)
 		},
 		dd () {
 			return this.$store.state.dialogData
+		},
+		totalCardsToAdd () {
+			return this.cardsToAdd.main.length + this.cardsToAdd.sideboard.length
 		}
 	},
 	mounted () {
@@ -190,69 +199,60 @@ export default {
 		}
 	},
 	methods: {
-		submitList () {
-			this.hasExcessiveQuantity = false
-
-			if (!this.textCardList) {
-				this.focusOnTextarea()
-				return
-			}
-
-			if (!this.validateList) return
+		submitForm () {
+			if (!this.validateSubmission()) return
 
 			this.processSubmission()
 
 			if (this.hasExcessiveQuantity) return
+			if (!this.validateCardCount()) return
 
-			if (this.submittedCards.main.length + this.submittedCards.sideboard.length > 200) {
+			this.executeSubmission()
+		},
+		validateSubmission () {
+			this.hasExcessiveQuantity = false
+
+			if (!this.textCardList) {
+				this.focusOnTextarea()
+				return false
+			}
+
+			return this.validateList
+		},
+		validateCardCount () {
+			const totalCards = this.submittedCards.main.length + this.submittedCards.sideboard.length
+
+			if (totalCards > 200) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'tooManyCardNames',
-					data: {
-						callback: this.focusOnTextarea
-					}
+					data: { callback: this.focusOnTextarea }
 				})
-
-				return
+				return false
 			}
-
+			return true
+		},
+		executeSubmission () {
 			this.determineNewOrExistingCardNames('main')
 			this.determineNewOrExistingCardNames('sideboard')
-
-			const ca = this.cardsToAdd
-			const cu = this.cardsToUpdate
-
-			if (ca.main.length > 0) {
-				this.addNewCardsToDeck('main')
-				this.isLoadingCards = true
-			}
-			if (ca.sideboard.length > 0) {
-				this.addNewCardsToDeck('sideboard')
-				this.isLoadingCards = true
-			}
-			if (cu.main.length > 0) {
-				this.updateExistingQuantities('main')
-				this.isLoadingCards = true
-			}
-			if (cu.sideboard.length > 0) {
-				this.updateExistingQuantities('sideboard')
-				this.isLoadingCards = true
-			}
+			this.addNewCardsToDeck('main')
+			this.addNewCardsToDeck('sideboard')
+			this.updateExistingQuantities('main')
+			this.updateExistingQuantities('sideboard')
 
 			this.$store.commit('decks', this.$store.state.decks)
 
 			if (
 				(
 					this.cardsToAddZeroQty.length > 0 ||
-					cu.main.length + cu.sideboard.length > 0
+					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0
 				) &&
-				ca.main.length + ca.sideboard.length === 0
+				this.totalCardsToAdd === 0
 			) {
 				this.goToResultsPage()
 			}
 		},
 		processSubmission () {
 			const allLines = this.textCardList.split('\n')
-			const regexEmptyLine = /^\s*$/ // A substring that contains nothing from beginning to end, except maybe whitespace characters. (The newline characters have been removed from the `split()` method above.)
 			let sideboardBeginningIndex = -1
 			const validListEntries = {
 				main: [], sideboard: []
@@ -263,21 +263,17 @@ export default {
 				const prevLine = allLines[i - 1]?.trim() || ''
 
 				if (sideboardBeginningIndex < 0) { // If the sideboard beginning index hasn't been found yet...
-					if (prevLine.match(regexCardEntry) && line.match(regexEmptyLine)) {
+					if (prevLine.match(regexPatterns.cardEntry) && line.match(regexPatterns.emptyLine)) {
 						sideboardBeginningIndex = i
-					} else if (line.match(regexCardEntry)) {
+					} else if (line.match(regexPatterns.cardEntry)) {
 						validListEntries.main.push(line)
 					}
 				} else { // Else the sideboard beginning index has already been found.
-					if (line.match(regexCardEntry)) {
+					if (line.match(regexPatterns.cardEntry)) {
 						validListEntries.sideboard.push(line)
 					}
 				}
 			}
-
-			const regexQuantity = /^(\d+)(?= )/i // A substring that begins with a number and ends with a space.
-			const regexName = /^\d+ (.+)/i // A substring of any characters that follow the `regexQuantity` pattern.
-			const regexFrontFaceName = /^\d+ (.[^/]+)(?= *\/+)/i // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
 
 			/* Reset the following arrays in case they contain leftover data from a previous submission attempt. */
 			this.submittedCards = {
@@ -287,67 +283,41 @@ export default {
 				main: [], sideboard: []
 			}
 
-			const parseEntries = (groupName) => {
+			const getCardEntriesFromSubmission = (groupName) => {
 				for (const item of validListEntries[groupName]) {
-					let cardQty = item.match(regexQuantity)[1]
-					let cardName
+					const cardEntry = this.parseCardEntry(item)
 
-					if (item.match(regexFrontFaceName)) {
-						cardName = item.match(regexFrontFaceName)[1]
-					} else {
-						cardName = item.match(regexName)[1]
-					}
-
-					if (!cardQty && !cardName) break
-
-					cardQty = Number(cardQty)
-					cardName = this.cleanedCardName(cardName)
-
-					if (cardQty > 99) {
-						this.$store.commit('idOfShowingDialog', {
-							id: 'excessiveQuantity',
-							data: {
-								qty: cardQty,
-								name: cardName,
-								callback: this.focusOnTextarea
-							}
-						})
-
-						this.hasExcessiveQuantity = true
-
-						return
-					}
-
-					const existingNameInAddList = this.submittedCards[groupName].find(existingCard =>
-						existingCard.name.toUpperCase() === cardName.toUpperCase()
-					)
-
-					if (existingNameInAddList) {
-						this.repeatedCardNames[groupName].push({
-							qty: cardQty,
-							name: cardName
-						})
-					} else {
-						this.submittedCards[groupName].push({
-							qty: cardQty,
-							name: cardName
-						})
+					if (cardEntry) {
+						this.submittedCards[groupName].push(cardEntry)
 					}
 				}
 			}
-			parseEntries('main')
-			parseEntries('sideboard')
+			getCardEntriesFromSubmission('main')
+			getCardEntriesFromSubmission('sideboard')
+		},
+		parseCardEntry (entry) {
+			const qtyMatch = entry.match(regexPatterns.quantity)
+			const nameMatch = entry.match(regexPatterns.frontFaceName) || entry.match(regexPatterns.name)
+
+			if (!qtyMatch || !nameMatch) {
+				return null
+			}
+
+			const cardQty = Number(qtyMatch[1])
+			const cardName = this.cleanedCardName(nameMatch[1])
+
+			if (cardQty > 99) {
+				this.showExcessiveQuantityError(cardQty, cardName)
+				return null
+			}
+
+			return {
+				qty: cardQty, name: cardName
+			}
 		},
 		determineNewOrExistingCardNames (groupName) {
 			this.submittedCards[groupName].forEach(card => {
-				const groupObject = (() => {
-					if (groupName === 'sideboard') {
-						return this.deck.sideboard
-					} else {
-						return this.deck
-					}
-				})()
-				const existingCard = this.findExistingCardByName(card.name, groupObject)
+				const existingCard = this.findExistingCardByName(card.name, this.getCardGroupObject(groupName))
 
 				if (existingCard) {
 					card.name = existingCard.name
@@ -362,22 +332,20 @@ export default {
 			})
 		},
 		updateExistingQuantities (groupName) {
-			console.log(`Updating existing card quantities in the deck's ${groupName} group.`)
+			if (this.cardsToUpdate[groupName].length === 0) {
+				return
+			}
+
+			this.isLoadingCards = true
 
 			this.cardsToUpdate[groupName].forEach(submittedCard => {
-				const targetGroup = (() => {
-					if (groupName === 'sideboard') {
-						return this.deck.sideboard
-					} else {
-						return this.deck
-					}
-				})()
-				const cardIndex = targetGroup.cards.findIndex(foundCard => {
+				const targetGroupCards = this.getCardGroupObject(groupName).cards
+				const cardIndex = targetGroupCards.findIndex(foundCard => {
 					return foundCard.name.toUpperCase() === submittedCard.name.toUpperCase()
 				})
 
 				if (cardIndex >= 0) {
-					const existingCard = targetGroup.cards[cardIndex]
+					const existingCard = targetGroupCards[cardIndex]
 
 					existingCard.qty = submittedCard.qty
 
@@ -392,6 +360,12 @@ export default {
 			})
 		},
 		addNewCardsToDeck (groupName) {
+			if (this.cardsToAdd[groupName].length === 0) {
+				return
+			}
+
+			this.isLoadingCards = true
+
 			const sideboardTimeoutDuration = () => {
 				if (groupName === 'sideboard') {
 					return this.cardsToAdd.main.length + 1
@@ -405,7 +379,7 @@ export default {
 					const done = () => {
 						this.numberOfNewCardsRequested++
 
-						if (this.numberOfNewCardsRequested === (this.cardsToAdd.main.length + this.cardsToAdd.sideboard.length)) {
+						if (this.numberOfNewCardsRequested === this.totalCardsToAdd) {
 							this.goToResultsPage()
 						}
 					}
@@ -459,13 +433,9 @@ export default {
 				card.name = this.cleanedCardName(data.name)
 			}
 
-			const existingCard = this.findExistingCardByName(card.name, (() => {
-				if (groupName === 'sideboard') {
-					return this.deck.sideboard
-				} else {
-					return this.deck
-				}
-			})())
+			const existingCard = this.findExistingCardByName(
+				card.name, this.getCardGroupObject(groupName)
+			)
 
 			if (existingCard) {
 				this.cardsToUpdate[groupName].push(card)
@@ -498,6 +468,9 @@ export default {
 		},
 		focusOnTextarea () {
 			this.$refs.textCardList.focus()
+		},
+		getCardGroupObject (groupName) {
+			return groupName === 'sideboard' ? this.deck.sideboard : this.deck
 		}
 	}
 }
