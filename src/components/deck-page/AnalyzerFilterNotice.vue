@@ -74,12 +74,12 @@ export default {
 				case 'manaSymbols':
 					switch (attr) {
 						case 'Hybrid':
-							return 'mana costs with hybrid mana symbols'
+							return 'spells with hybrid mana symbols in mana costs'
 						case 'Phyrexian':
-							return 'mana costs with Phyrexian mana symbols'
+							return 'spells with Phyrexian mana symbols in mana costs'
 						default:
 							if (extraAttr) {
-								return `mana costs with ${this.manaSymbol[extraAttr]}`
+								return `spells with ${this.manaSymbol[extraAttr]} in mana costs`
 							} else {
 								return null
 							}

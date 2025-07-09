@@ -1,8 +1,8 @@
 <template functional>
 	<section id="stats-analyzer" key="stats-analyzer">
 		<h3>Stats Analyzer</h3>
-		<p>The Stats Analyzer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can inspect lots of data about your deck’s composition. If you’re curious about how many cards your deck has by a certain attribute, the Stats Analyzer is the mode to see.</p>
-		<p>While the <router-link to="deck-page-header">deck page header</router-link> shows a few <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> about your deck, the Stats Analyzer mode shows additional statistics that go much further in depth.</p>
+		<p>The Stats Analyzer is a <router-link to="deck-pages#deck-page-modes">deck page mode</router-link> where you can inspect lots of data about your deck’s composition. If you’re curious about how many cards your deck has by a particular card attribute, the Stats Analyzer is the mode you want to check.</p>
+		<p>Note that while the <router-link to="deck-page-header">deck page header</router-link> shows a few <router-link to="deck-page-header#basic-statistics">basic statistics</router-link> about your deck, the Stats Analyzer mode shows additional statistics that go much further in depth.</p>
 		<p>To set the <router-link to="deck-pages">deck page</router-link> to this mode, click the “Stats Analyzer” tab in the <router-link to="deck-page-header#mode-menu">mode menu</router-link>, or <router-link to="keyboard-shortcuts">press the <kbd>2</kbd> key</router-link> (while on the deck page).</p>
 		<p>
 			<img class="screenshot"
