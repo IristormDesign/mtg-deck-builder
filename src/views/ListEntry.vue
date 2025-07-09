@@ -207,7 +207,25 @@ export default {
 			if (this.hasExcessiveQuantity) return
 			if (!this.validateCardCount()) return
 
-			this.executeSubmission()
+			this.determineNewOrExistingCardNames('main')
+			this.determineNewOrExistingCardNames('sideboard')
+			this.addNewCardsToDeck('main')
+			this.addNewCardsToDeck('sideboard')
+			this.updateExistingQuantities('main')
+			this.updateExistingQuantities('sideboard')
+
+			this.$nextTick(() => {
+				this.$store.commit('decks', this.$store.state.decks)
+			})
+
+			if (
+				(
+					this.cardsToAddZeroQty.length > 0 ||
+					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0
+				) && this.totalCardsToAdd === 0
+			) {
+				this.goToResultsPage()
+			}
 		},
 		validateSubmission () {
 			this.hasExcessiveQuantity = false
@@ -230,26 +248,6 @@ export default {
 				return false
 			}
 			return true
-		},
-		executeSubmission () {
-			this.determineNewOrExistingCardNames('main')
-			this.determineNewOrExistingCardNames('sideboard')
-			this.addNewCardsToDeck('main')
-			this.addNewCardsToDeck('sideboard')
-			this.updateExistingQuantities('main')
-			this.updateExistingQuantities('sideboard')
-
-			this.$store.commit('decks', this.$store.state.decks)
-
-			if (
-				(
-					this.cardsToAddZeroQty.length > 0 ||
-					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0
-				) &&
-				this.totalCardsToAdd === 0
-			) {
-				this.goToResultsPage()
-			}
 		},
 		processSubmission () {
 			const allLines = this.textCardList.split('\n')
@@ -317,7 +315,10 @@ export default {
 		},
 		determineNewOrExistingCardNames (groupName) {
 			this.submittedCards[groupName].forEach(card => {
-				const existingCard = this.findExistingCardByName(card.name, this.getCardGroupObject(groupName))
+				const existingCard = this.findExistingCardByName(
+					card.name,
+					{ inSideboard: groupName === 'sideboard' }
+				)
 
 				if (existingCard) {
 					card.name = existingCard.name
@@ -332,14 +333,11 @@ export default {
 			})
 		},
 		updateExistingQuantities (groupName) {
-			if (this.cardsToUpdate[groupName].length === 0) {
-				return
-			}
-
 			this.isLoadingCards = true
 
+			const targetGroupCards = this.getCardGroupObject(groupName).cards
+
 			this.cardsToUpdate[groupName].forEach(submittedCard => {
-				const targetGroupCards = this.getCardGroupObject(groupName).cards
 				const cardIndex = targetGroupCards.findIndex(foundCard => {
 					return foundCard.name.toUpperCase() === submittedCard.name.toUpperCase()
 				})
@@ -354,8 +352,6 @@ export default {
 
 						this.anyCardRemoved = true
 					}
-				} else {
-					console.warn(`Card named "${submittedCard.name}" not found in the deck's ${groupName} group.`)
 				}
 			})
 		},
@@ -366,31 +362,30 @@ export default {
 
 			this.isLoadingCards = true
 
-			const sideboardTimeoutDuration = () => {
+			const done = () => {
+				this.numberOfNewCardsRequested++
+
+				if (this.numberOfNewCardsRequested === this.totalCardsToAdd) {
+					this.goToResultsPage()
+				}
+			}
+			const timeoutDuration = (index) => {
 				if (groupName === 'sideboard') {
-					return this.cardsToAdd.main.length + 1
+					return index + this.cardsToAdd.main.length
 				} else {
-					return 1
+					return index
 				}
 			}
 
 			this.cardsToAdd[groupName].forEach((card, index) => {
 				setTimeout(() => {
-					const done = () => {
-						this.numberOfNewCardsRequested++
-
-						if (this.numberOfNewCardsRequested === this.totalCardsToAdd) {
-							this.goToResultsPage()
-						}
-					}
-
 					// this.cardRequestsAborted.push(card)
 					// done()
-					this.requestCardFromScryfallAPI(card, done, groupName)
-				}, (index * 125 * sideboardTimeoutDuration))
+					this.requestNewCardFromScryfall(card, done, groupName)
+				}, (timeoutDuration(index) * 125))
 			})
 		},
-		requestCardFromScryfallAPI (card, callback, groupName) {
+		requestNewCardFromScryfall (card, callback, groupName) {
 			console.info(`Card named "${card.name}" requested via Scryfall API.`)
 
 			const urlEncodedQuery = card.name.replace(/\s/g, '+') // Turn any spaces into pluses from the card's name.
@@ -434,7 +429,8 @@ export default {
 			}
 
 			const existingCard = this.findExistingCardByName(
-				card.name, this.getCardGroupObject(groupName)
+				card.name,
+				{ inSideboard: groupName === 'sideboard' }
 			)
 
 			if (existingCard) {

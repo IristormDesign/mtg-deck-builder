@@ -320,9 +320,9 @@ export default {
 		 * @param {boolean} inSideboard - Whether the card is in the sideboard.
 		*/
 		updateOldCard (modelCard, inSideboard) {
-			this.$store.commit('showSideboard', inSideboard)
+			const cardGroup = inSideboard ? this.deck.sideboard : this.deck
 
-			const existingCard = this.activeCardList.cards.find(foundCard => {
+			const existingCard = cardGroup.cards.find(foundCard => {
 				const regexDoubleFacedName = new RegExp(`(${modelCard.name})[ /]*(${modelCard.name2})`, 'i') // This regex finds names of double-faced cards that includes the back face's name, and with zero or more slashes (`/`) in between the front face and back face names. In older card data, the names for double-faced cards had included both face's names together with a singular slash.
 
 				return (
@@ -346,18 +346,18 @@ export default {
 		 * @param {Object} [listEntryData] - If this param is empty, then the validation is adding a card from the standard card adder instead of the card list entry.
 		*/
 		validateNewCard (newCard, listEntryData) {
-			const existingCard = this.findExistingCardByName(newCard.name)
+			const existingCard = this.findExistingCardByName(newCard.name, listEntryData)
 
-			if (listEntryData) {
-				if (listEntryData.inSideboard) {
-					this.$store.commit('showSideboard', true)
+			const targetGroup = (() => {
+				if (listEntryData) {
+					return listEntryData.inSideboard ? this.deck.sideboard : this.deck
 				} else {
-					this.$store.commit('showSideboard', false)
+					return this.activeCardList
 				}
-			}
+			})()
 
 			if (existingCard) {
-				this.$set(this.activeCardList, 'viewedCard', existingCard)
+				this.$set(targetGroup, 'viewedCard', existingCard)
 
 				if (this.optionalReplacement) {
 					this.notifyCardExists(newCard, true)
@@ -365,24 +365,34 @@ export default {
 					this.notifyCardExists(newCard)
 				}
 			} else {
-				this.insertCardIntoDeck(newCard)
+				this.insertCardIntoDeck(newCard, targetGroup)
 			}
 		},
 		/**
 		 * @param {String} cardName
-		 * @param {Object} [cardGroup]
+		 * @param {Object} [listEntryData] - This param should be defined only if this method has been called from the card list entry process.
 		 * @returns {Object} The card object, if it's found.
 		 */
-		findExistingCardByName (cardName, cardGroup) {
+		findExistingCardByName (cardName, listEntryData) {
+			const cardGroup = (() => {
+				if (listEntryData) {
+					if (listEntryData.inSideboard) {
+						return this.deck.sideboard
+					} else {
+						return this.deck
+					}
+				} else {
+					return this.activeCardList
+				}
+			})()
+
 			cardName = this.curlApostrophes(cardName).trim()
 
-			if (!cardGroup) {
-				cardGroup = this.activeCardList
-			}
-
-			return cardGroup.cards.find(foundCard =>
+			const foundExistingCard = cardGroup.cards.find(foundCard =>
 				cardName.toUpperCase() === foundCard.name.toUpperCase()
 			)
+
+			return foundExistingCard
 		},
 		/**
 		 * @param {Object} card The card object.
@@ -408,10 +418,10 @@ export default {
 				})
 			}
 		},
-		insertCardIntoDeck (newCard) {
+		insertCardIntoDeck (newCard, targetGroup) {
 			this.loadingCard = false
 
-			this.activeCardList.cards.push(newCard)
+			targetGroup.cards.push(newCard)
 
 			const deck = this.deck
 
@@ -427,7 +437,7 @@ export default {
 			})
 
 			this.$nextTick(() => {
-				this.$set(this.activeCardList, 'viewedCard', newCard)
+				this.$set(targetGroup, 'viewedCard', newCard)
 				this.$store.commit('decks', this.$store.state.decks)
 			})
 		}

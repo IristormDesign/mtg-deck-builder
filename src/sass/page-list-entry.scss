@@ -96,6 +96,18 @@
 	}
 }
 .list-entry-results {
+	h3 {
+		margin-bottom: $lhse;
+	}
+	> section {
+		border-bottom: $border-sections;
+		padding-bottom: $lhse*.5;
+		margin-bottom: $lhse;
+
+		h4 {
+			margin-top: $lhse;
+		}
+	}
 	.invalid-list {
 		li {
 			font-style: italic;
