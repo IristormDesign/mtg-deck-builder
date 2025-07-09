@@ -108,9 +108,19 @@
 			margin-top: $lhse;
 		}
 	}
-	.invalid-list {
-		li {
-			font-style: italic;
+	.card-lists {
+		display: grid;
+		gap: $lhse $lhse*1.5;
+		margin: $lhse 0;
+
+		&.two-columns {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		h5 {
+			margin-top: 0;
+		}
+		ul {
+			margin-bottom: 0;
 		}
 	}
 	.ok {
@@ -171,6 +181,15 @@
 
 			h4 {
 				margin-top: $lhse*.5;
+			}
+		}
+	}
+}
+@media (max-width: ($min-width-app * .5)) {
+	.list-entry-results {
+		.card-lists {
+			&.two-columns {
+				grid-template-columns: 1fr;
 			}
 		}
 	}

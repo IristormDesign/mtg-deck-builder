@@ -118,7 +118,9 @@ export default {
 			cardsToAdd: {
 				main: [], sideboard: []
 			},
-			cardsToAddZeroQty: [],
+			cardsToAddZeroQty: {
+				main: [], sideboard: []
+			},
 			cardsToUpdate: {
 				main: [], sideboard: []
 			},
@@ -220,7 +222,7 @@ export default {
 
 			if (
 				(
-					this.cardsToAddZeroQty.length > 0 ||
+					this.cardsToAddZeroQty.main.length + this.cardsToAddZeroQty.sideboard.length > 0 ||
 					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0
 				) && this.totalCardsToAdd === 0
 			) {
@@ -326,7 +328,7 @@ export default {
 
 					this.cardsToUpdate[groupName].push(card)
 				} else if (card.qty <= 0) {
-					this.cardsToAddZeroQty.push(card)
+					this.cardsToAddZeroQty[groupName].push(card)
 				} else {
 					this.cardsToAdd[groupName].push(card)
 				}
