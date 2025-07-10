@@ -5,7 +5,7 @@
 		<section v-if="cardsSuccessfullyAdded?.main.length + cardsSuccessfullyAdded?.sideboard.length > 0">
 			<h4>✅ New Cards</h4>
 			<p>The following cards (<strong>{{ cardsSuccessfullyAdded.main.length + cardsSuccessfullyAdded.sideboard.length }}</strong> total distinct name<template v-if="cardsSuccessfullyAdded.main.length + cardsSuccessfullyAdded.sideboard.length > 1">s</template>) have been added to <i>{{ deck.name }}</i>.</p>
-			<div class="card-lists" :class="twoColumnsClass">
+			<div class="card-lists" :class="twoColumnsClass(cardsSuccessfullyAdded)">
 				<section v-if="cardsSuccessfullyAdded.main.length > 0">
 					<h5>Main Group</h5>
 					<ul>
@@ -30,7 +30,7 @@
 		<section v-if="cardsToUpdate?.main.length + cardsToUpdate?.sideboard.length > 0">
 			<h4>✅ Existing Cards, Updated Quantities</h4>
 			<p>The following card names (<strong>{{ cardsToUpdate.main.length + cardsToUpdate.sideboard.length }}</strong> total distinct name<template v-if="cardsToUpdate.main.length + cardsToUpdate.sideboard.length > 1">s</template>) already exist in their respective card groups of <i>{{ deck.name }}</i>. These cards’ former quantity numbers have been replaced with the new quantity numbers you’ve set.</p>
-			<div class="card-lists" :class="twoColumnsClass">
+			<div class="card-lists" :class="twoColumnsClass(cardsToUpdate)">
 				<section v-if="cardsToUpdate.main.length > 0">
 					<h5>Main Group</h5>
 					<ul>
@@ -56,7 +56,7 @@
 		<section v-if="cardsToAddZeroQty.main?.length + cardsToAddZeroQty.sideboard?.length > 0">
 			<h4>❌ New Zero-Quantity Cards</h4>
 			<p>The following card names have <em>not</em> been added to <i>{{ deck.name }}</i> because they’re new names set to a quantity of zero in their respective card groups. 🤔</p>
-			<div class="card-lists" :class="twoColumnsClass">
+			<div class="card-lists" :class="twoColumnsClass(cardsToAddZeroQty)">
 				<section v-if="cardsToAddZeroQty.main.length > 0">
 					<h5>Main Group</h5>
 					<ul>
@@ -135,7 +135,7 @@
 		<section v-if="repeatedCardNames?.main.length + repeatedCardNames?.sideboard.length > 0">
 			<h4>❌ Repeated Cards</h4>
 			<p>The following entries are card names you’ve included more than once within the same card group. Each repeated name after its first instance within each group has been ignored.</p>
-			<div class="card-lists" :class="twoColumnsClass">
+			<div class="card-lists" :class="twoColumnsClass(repeatedCardNames)">
 				<section v-if="repeatedCardNames.main.length > 0">
 					<h5>Main Group</h5>
 					<ul>
@@ -186,16 +186,7 @@ export default {
 		}
 	},
 	computed: {
-		twoColumnsClass () {
-			if (
-				this.cardsToUpdate.main.length > 0 &&
-				this.cardsToUpdate.sideboard.length > 0
-			) {
-				return 'two-columns'
-			} else {
-				return ''
-			}
-		}
+
 	},
 	created () {
 		this.noDataRedirect()
@@ -217,6 +208,16 @@ export default {
 				!this.repeatedCardNames
 			) {
 				this.$router.replace('list-entry')
+			}
+		},
+		twoColumnsClass (cardArray) {
+			if (
+				cardArray.main.length > 0 &&
+				cardArray.sideboard.length > 0
+			) {
+				return 'two-columns'
+			} else {
+				return ''
 			}
 		},
 		displayFullName (card) {
