@@ -53,7 +53,7 @@
 	align-items: center;
 
 	label {
-		font-weight: $font-weight-label;
+		@include heading-font;
 		text-align: center;
 		padding: $lhse*.0833 $lhse*.75 $lhse*.1667;
 		background: $color-heading-bg;
@@ -72,6 +72,11 @@
 		box-shadow: 0 0 0 $lhse*.25 $color-heading-bg;
 		position: relative;
 		z-index: 1;
+
+		&::placeholder {
+			font-style: italic;
+			font-size: 120%; // Inverse of $font-size-card-list-textarea to make the placeholder text appear as the standard font size.
+		}
 	}
 	.button-container {
 		width: fit-content;

@@ -10,11 +10,11 @@
 		</template>
 		<template v-else>
 			<header class="intro">
-				<p>Here you can add multiple cards at once to <i>{{ deck.name }}</i>. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
+				<p>Add multiple cards at once to <i>{{ deck.name }}</i> using the entry form below. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="columns">
 				<form class="list-entry-form">
-					<label for="card-list-entry">Enter a list of cards:</label>
+					<label for="card-list-entry">Entry Form</label>
 					<textarea
 						id="card-list-entry"
 						v-model.trim="textCardList"
@@ -22,6 +22,7 @@
 						rows="20"
 						maxlength="5000"
 						spellcheck="false"
+						placeholder="Paste or type a list of cards here."
 					></textarea>
 					<div class="button-container">
 						<button @click.prevent="submitForm">
@@ -32,11 +33,9 @@
 				</form>
 				<section class="rules">
 					<h4>Rules for List Formatting</h4>
-					<p>Have only one card name per line of the list.</p>
-					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name.</p>
-					<p>Spelling matters, but letter case doesn’t.</p>
-					<p>By default, all cards you enter will be added to your deck’s main group.</p>
-					<p>You can direct some cards to the sideboard group instead: Below the main group’s card list, enter a blank line, and then below that, enter a second card list for the sideboard.</p>
+					<p>Put only one card name per line of the list.</p>
+					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. Spelling matters, but letter case doesn’t.</p>
+					<p>By default, all cards you enter will be added to your deck’s main group. You can direct some cards to the sideboard group instead: Below the main group’s card list, enter a blank line, and then below that, enter a second card list for the sideboard.</p>
 					<p>If you enter other lines of text that don’t match these formatting patterns, they’ll be ignored.</p>
 					<p>Example:</p>
 					<p><code>
@@ -49,7 +48,7 @@
 						2 Vandalblast<br>
 						1 Blood Moon
 					</code></p>
-					<p>(The lines with the headings “MAIN” and “SIDEBOARD” have no effect on this process. The blank line between the lists is what actually distinguishes the two card groups.)</p>
+					<p>(The lines with the headings “MAIN” and “SIDEBOARD” have no effect on the process. It’s the blank line between the lists that will actually distinguish the two card groups.)</p>
 				</section>
 			</div>
 		</template>
@@ -126,9 +125,6 @@ export default {
 			},
 			hasExcessiveQuantity: false,
 			invalidCardNames: {
-				main: [], sideboard: []
-			},
-			invalidQuantities: {
 				main: [], sideboard: []
 			},
 			isLoadingCards: false,
@@ -337,15 +333,21 @@ export default {
 		updateExistingQuantities (groupName) {
 			this.isLoadingCards = true
 
-			const targetGroupCards = this.getCardGroupObject(groupName).cards
+			const targetGroup = (() => {
+				if (groupName === 'sideboard') {
+					return this.deck.sideboard
+				} else {
+					return this.deck
+				}
+			})()
 
 			this.cardsToUpdate[groupName].forEach(submittedCard => {
-				const cardIndex = targetGroupCards.findIndex(foundCard => {
+				const cardIndex = targetGroup.cards.findIndex(foundCard => {
 					return foundCard.name.toUpperCase() === submittedCard.name.toUpperCase()
 				})
 
 				if (cardIndex >= 0) {
-					const existingCard = targetGroupCards[cardIndex]
+					const existingCard = targetGroup.cards[cardIndex]
 
 					existingCard.qty = submittedCard.qty
 
@@ -453,7 +455,6 @@ export default {
 					cardsSuccessfullyAdded: this.cardsSuccessfullyAdded,
 					cardsToAddZeroQty: this.cardsToAddZeroQty,
 					cardsToUpdate: this.cardsToUpdate,
-					invalidQuantities: this.invalidQuantities,
 					repeatedCardNames: this.repeatedCardNames
 				}
 			})
@@ -466,9 +467,6 @@ export default {
 		},
 		focusOnTextarea () {
 			this.$refs.textCardList.focus()
-		},
-		getCardGroupObject (groupName) {
-			return groupName === 'sideboard' ? this.deck.sideboard : this.deck
 		}
 	}
 }
