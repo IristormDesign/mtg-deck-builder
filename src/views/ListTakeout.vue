@@ -78,7 +78,7 @@
 			<deck-print :deck="deck" :mainNotEmpty="mainNotEmpty" :sideboardNotEmpty="sideboardNotEmpty" />
 		</template>
 		<template v-else>
-			<p class="no-cards">Plain-text card lists will be provided here once you’ve added cards to this deck from the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
+			<p class="no-cards">Plain-text card lists of your deck will be provided here once you’ve added cards from the <router-link :to="{name: 'listEditor'}"><strong>List Editor</strong></router-link>.</p>
 		</template>
 	</div>
 </template>

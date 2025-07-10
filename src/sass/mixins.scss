@@ -9,11 +9,9 @@
 }
 @mixin tiny-font-size($for-heading-font: false) {
 	@if ($for-heading-font) {
-		font-size: 60%;
 		font-size: 66.67%;
 	}
 	@else {
-		font-size: 66.67%;
 		font-size: 75%;
 	}
 

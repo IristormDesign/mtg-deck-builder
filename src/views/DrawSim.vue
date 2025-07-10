@@ -88,7 +88,7 @@
 						/>
 						<label for="exclude-starred">Exclude starred cards</label>
 					</div>
-					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group in the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.</p>
+					<p>To be able to use the Draw Simulator, first add cards to your deck’s main card group from the <router-link :to="{name: 'listEditor'}"><strong>List Editor</strong></router-link>.</p>
 				</div>
 			</section>
 		</div>

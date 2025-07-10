@@ -98,7 +98,7 @@
 
 			> p {
 				&:first-child {
-					margin: $lhse*1.5 auto $lhse;
+					margin: $lhse*2 auto;
 				}
 			}
 			footer {
@@ -133,7 +133,6 @@
 	}
 	.notes {
 		border-top: $border-sections;
-		margin-top: $lhse;
 
 		p {
 			font-size: $font-size-small;

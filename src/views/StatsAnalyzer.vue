@@ -3,13 +3,7 @@
 		class="stats-analyzer content-box"
 		role="tabpanel" aria-labelledby="stats-analyzer-tab"
 	>
-		<p
-			v-if="deck.cards.length <= 0"
-			class="no-cards"
-		>
-			Statistics about your deck will appear here once you’ve added cards to the main card group in the <router-link :to="{name: 'listEditor'}">List Editor</router-link>.
-		</p>
-		<div v-else class="tables">
+		<div class="tables">
 			<svg class="svg-symbols" xmlns="http://www.w3.org/2000/svg">
 				<symbol id="cancel-icon" viewBox="0 -960 960 960">
 					<path d="m339-301.85 141-141 141 141L658.15-339l-141-141 141-141L621-658.15l-141 141-141-141L301.85-621l141 141-141 141L339-301.85ZM480.07-116q-74.84 0-141.21-28.42t-116.18-78.21q-49.81-49.79-78.25-116.13Q116-405.1 116-479.93q0-75.84 28.42-141.71t78.21-115.68q49.79-49.81 116.13-78.25Q405.1-844 479.93-844q75.84 0 141.71 28.42t115.68 78.21q49.81 49.79 78.25 115.63Q844-555.9 844-480.07q0 74.84-28.42 141.21t-78.21 116.18q-49.79 49.81-115.63 78.25Q555.9-116 480.07-116Zm-.07-52q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z"/>
@@ -58,7 +52,7 @@
 			<analyzer-starred :deck="deck" />
 
 			<footer>
-				<div class="note">
+				<div v-if="deck.cards.length > 0" class="note">
 					<h4>About These Statistics</h4>
 					<ul>
 						<li>
@@ -74,6 +68,9 @@
 							<p>For more info about the Stats Analyzer, see the <router-link to="/guide/stats-analyzer">User Guide</router-link>.</p>
 						</li>
 					</ul>
+				</div>
+				<div v-else>
+					<p>Statistics about your deck will appear on this page once you’ve added cards to the main card group from the <router-link :to="{name: 'listEditor'}"><strong>List Editor</strong></router-link>.</p>
 				</div>
 			</footer>
 		</div>
