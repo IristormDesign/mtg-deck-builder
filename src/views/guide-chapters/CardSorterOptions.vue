@@ -31,8 +31,8 @@
 			<p><strong>Mana Sources</strong> – Sorts from least to most by the number of distinct mana colors that each card can produce. Among cards having equal numbers of producible colors to each other, they’re grouped with other cards having the same combination of producible colors. Cards that can’t produce any mana are moved to the bottom.</p>
 		</li>
 		<li>
-			<p><strong>P/T</strong> (Power and Toughness) – Sorts from greatest to least by the sum of the power and toughness numbers of each card. (For example, the power and toughness sum of a 3/2 creature is 5.) Among cards with the same sums as each other, they’re sorted by power alone from greatest to least.</p>
-			<p>Additionally, power/toughness sorting handles every planeswalker card as if it has those attributes, where its power is 0 and its toughness equals its loyalty number.  Cards without the power/toughness or loyalty attributes are moved to the bottom.</p>
+			<p><strong>P/T</strong> – Sorts from greatest to least by the sum of the power and toughness (“P/T”) numbers of each card. (For example, the power/toughness sum of a 3/2 creature is 5.) Among cards with the same sums as each other, they’re sorted by power alone from greatest to least.</p>
+			<p>Further, P/T sorting treats each planeswalker card as if it has those attributes, where its power is 0 and its toughness equals its loyalty number.  Cards without the power/toughness or loyalty attributes are moved to the bottom.</p>
 		</li>
 		<li>
 			<p><strong>Quantity</strong> – Sorts from greatest to least by card name <template v-if="displayAsDialog">quantity</template><a v-else href="#card-quantities">quantity</a>.</p>
