@@ -4,13 +4,13 @@ import requestScryfallData from '@/mixins/requestScryfallData.js'
 import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
-const regexPatterns = {
-	cardEntry: /^(?:\s*)\d+\s+.+/gim, // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+const regex = {
+	cardEntry: /^(?:\s*)\d+\s+.+/m, // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
 	blankLine: /^\s*$/, // A substring that contains nothing from beginning to end, except maybe whitespace characters. (Lines' newline characters have been removed from the `split()` method.)
-	blankLineBetweenCardEntries: /^\s*\d+\s+.+(\n\s*){1,}\n\s*\d+\s+.+/gm, // A substring that contains at least one blank line between two card entries, where each card entry begins with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
-	frontFaceName: /^\d+ (.[^/]+)(?= *\/+)/i, // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
-	name: /^\d+ (.+)/i, // A substring of any characters that follow the `regexQuantity` pattern.
-	quantity: /^(\d+)(?= )/i // A substring that begins with a number and ends with a space.
+	blankLineBetweenCardEntries: /^\s*\d+\s+.+(\n\s*){1,}\n\s*\d+\s+.+/m, // A substring that contains at least one blank line between two card entries, where each card entry begins with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+	frontFaceName: /^\d+ (.[^/]+)(?= *\/+)/, // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
+	name: /^\d+ (.+)/, // A substring of any characters that follow the `regexQuantity` pattern.
+	quantity: /^(\d+)(?= )/ // A substring that begins with a number and ends with a space.
 }
 
 export default {
@@ -52,7 +52,7 @@ export default {
 				return false
 			}
 
-			if (!regexPatterns.cardEntry.test(this.textCardList)) {
+			if (!regex.cardEntry.test(this.textCardList)) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'invalidListFormat',
 					data: {
@@ -61,7 +61,7 @@ export default {
 				})
 
 				return false
-			} else if (this.textCardList.match(regexPatterns.blankLineBetweenCardEntries)?.length > 1) {
+			} else if (regex.blankLineBetweenCardEntries.test(this.textCardList)) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'extraCardGroups',
 					data: {
@@ -115,13 +115,16 @@ export default {
 				const prevLine = allLines[i - 1]?.trim() || ''
 
 				if (sideboardBeginningIndex < 0) { // If the sideboard beginning index hasn't been found yet...
-					if (prevLine.match(regexPatterns.cardEntry) && line.match(regexPatterns.blankLine)) {
+					if (
+						regex.cardEntry.test(prevLine) &&
+						regex.blankLine.test(line)
+					) {
 						sideboardBeginningIndex = i
-					} else if (line.match(regexPatterns.cardEntry)) {
+					} else if (regex.cardEntry.test(line)) {
 						validListEntries.main.push(line)
 					}
 				} else { // Else the sideboard beginning index has already been found.
-					if (line.match(regexPatterns.cardEntry)) {
+					if (regex.cardEntry.test(line)) {
 						validListEntries.sideboard.push(line)
 					}
 				}
@@ -240,8 +243,8 @@ export default {
 			})
 		},
 		parseCardEntry (entry) {
-			const qtyMatch = entry.match(regexPatterns.quantity)
-			const nameMatch = entry.match(regexPatterns.frontFaceName) || entry.match(regexPatterns.name)
+			const qtyMatch = entry.match(regex.quantity)
+			const nameMatch = entry.match(regex.frontFaceName) || entry.match(regex.name)
 
 			if (!qtyMatch || !nameMatch) {
 				return null
