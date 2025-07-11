@@ -336,6 +336,8 @@ export default {
 					existingCard[key] = modelCard[key]
 				}
 			}
+
+			this.$store.commit('decks', this.$store.state.decks)
 		},
 		/**
 		 * Check that the card doesn't exist by name in the card list, even if this check has already been done once.

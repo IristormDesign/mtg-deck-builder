@@ -33,6 +33,7 @@ export default {
 			cardsToUpdate: {
 				main: [], sideboard: []
 			},
+			entryWithExcessiveQty: null,
 			invalidCardNames: {
 				main: [], sideboard: []
 			},
@@ -45,7 +46,7 @@ export default {
 		}
 	},
 	computed: {
-		validateForm () {
+		submissionIsValid () {
 			if (!this.textCardList) {
 				this.focusOnTextarea()
 
@@ -73,14 +74,31 @@ export default {
 			} else {
 				return true
 			}
+		},
+		hasExcessiveCardQty () {
+			if (this.entryWithExcessiveQty) {
+				this.$store.commit('idOfShowingDialog', {
+					id: 'excessiveQuantity',
+					data: {
+						qty: this.entryWithExcessiveQty.qty,
+						name: this.entryWithExcessiveQty.name,
+						callback: this.focusOnTextarea
+					}
+				})
+
+				return true
+			} else {
+				return false
+			}
 		}
 	},
 	methods: {
 		submitForm () {
-			if (!this.validateForm) return
+			if (!this.submissionIsValid) return
 
 			this.processSubmission()
 
+			if (this.hasExcessiveCardQty) return
 			if (!this.validateCardCount()) return
 
 			this.determineNewOrExistingCardNames('main')
@@ -89,10 +107,6 @@ export default {
 			this.addNewCardsToDeck('sideboard')
 			this.updateExistingQuantities('main')
 			this.updateExistingQuantities('sideboard')
-
-			this.$nextTick(() => {
-				this.$store.commit('decks', this.$store.state.decks)
-			})
 
 			if (
 				(
@@ -130,7 +144,8 @@ export default {
 				}
 			}
 
-			/* Reset the following arrays in case they contain leftover data from a previous submission attempt. */
+			/* Reset the following properties in case they contain leftover data from a previous submission attempt. */
+			this.entryWithExcessiveQty = null
 			this.submittedCards = {
 				main: [], sideboard: []
 			}
@@ -252,22 +267,15 @@ export default {
 
 			const cardQty = Number(qtyMatch[1])
 			const cardName = this.cleanedCardName(nameMatch[1])
-
-			if (cardQty > 99) {
-				this.$store.commit('idOfShowingDialog', {
-					id: 'excessiveQuantity',
-					data: {
-						qty: cardQty,
-						name: cardName,
-						callback: this.focusOnTextarea
-					}
-				})
-
-				return null
+			const returnObj = {
+				qty: cardQty,
+				name: cardName
 			}
 
-			return {
-				qty: cardQty, name: cardName
+			if (cardQty > 99) {
+				this.entryWithExcessiveQty = returnObj
+			} else {
+				return returnObj
 			}
 		},
 		requestNewCardFromScryfall (card, callback, groupName) {

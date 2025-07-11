@@ -10,7 +10,7 @@
 		</template>
 		<template v-else>
 			<header class="intro">
-				<p>Add multiple cards at once to <i>{{ deck.name }}</i> using the entry form below. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
+				<p>Add multiple cards all at once to <i>{{ deck.name }}</i> using the entry form below. <router-link to="/guide/card-list-entry">(More info&hellip;)</router-link></p>
 			</header>
 			<div class="columns">
 				<form class="list-entry-form">
