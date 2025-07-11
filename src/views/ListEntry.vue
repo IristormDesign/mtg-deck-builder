@@ -33,7 +33,7 @@
 				</form>
 				<section class="rules">
 					<h4>Rules for List Formatting</h4>
-					<p>Put only one card name per line of the list.</p>
+					<p>Have only one card name per line of the list.</p>
 					<p>Begin each line with a number for the card’s quantity, and follow with the card’s name. Spelling matters, but letter case doesn’t.</p>
 					<p>By default, all cards you enter will be added to your deck’s main group. You can direct some cards to the sideboard group instead: Below the main group’s card list, enter a blank line, and then below that, enter a second card list for the sideboard.</p>
 					<p>If you enter other lines of text that don’t match these formatting patterns, they’ll be ignored.</p>
@@ -55,11 +55,17 @@
 
 		<standard-dialog dialogID="excessiveQuantity">
 			<h4>Error: Excessive Quantity</h4>
-			<p>Your list has been rejected because it includes a card name with an overly huge quantity (“{{ dd.qty }} {{ dd.name }}”).</p>
+			<p>Your submitted form has been rejected because it includes a card name with an overly huge quantity (“{{ dd.qty }} {{ dd.name }}”).</p>
 			<p>The quantity of each name must be no longer than two digits.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="tooManyCardNames">
-			<p><strong>Error</strong>: Your list has too many card names. Please enter no more than 200.</p>
+			<p><strong>Error</strong>: Your submitted form has too many card names. Please have no more than 200 total names among both the main and sideboard card groups.</p>
+		</standard-dialog>
+		<standard-dialog dialogID="extraCardGroups">
+			<h4>Error: Unclear Designation of Card Groups</h4>
+			<p>Your submitted form has been rejected because it has multiple blank lines between card entries. This confuses MTG Deck Builder about which of your deck’s two card groups (either main or sideboard) you intend to add the cards to.</p>
+			<p>In the entry form, a blank line signifies the end of the main group’s card list and the beginning of the sideboard group’s. A card list can’t have any blank lines inserted within itself, or else it won’t be recognized as a single whole list.</p>
+			<p>To fix this error, revise your submission to have only one or zero blank lines throughout.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="invalidListFormat">
 			<p><strong>Error</strong>: The text you’ve entered isn’t in the valid format for a card list.</p>
@@ -95,7 +101,6 @@ export default {
 	mixins: [listEntryProcessing],
 	data () {
 		return {
-			hasExcessiveQuantity: false,
 			isLoadingCards: false,
 			numberOfNewCardsRequested: 0,
 			textCardList: '',
