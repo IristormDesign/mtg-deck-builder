@@ -96,13 +96,13 @@ export default {
 		submitForm () {
 			if (!this.submissionIsValid) return
 
-			this.processSubmission()
+			this.getLinesOfLists()
 
 			if (this.hasExcessiveCardQty) return
 			if (!this.validateCardCount()) return
 
-			this.determineNewOrExistingCardNames('main')
-			this.determineNewOrExistingCardNames('sideboard')
+			this.processCardEntries('main')
+			this.processCardEntries('sideboard')
 			this.addNewCardsToDeck('main')
 			this.addNewCardsToDeck('sideboard')
 			this.updateExistingQuantities('main')
@@ -111,13 +111,14 @@ export default {
 			if (
 				(
 					this.cardsToAddZeroQty.main.length + this.cardsToAddZeroQty.sideboard.length > 0 ||
-					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0
+					this.cardsToUpdate.main.length + this.cardsToUpdate.sideboard.length > 0 ||
+					this.repeatedCardNames.main.length + this.repeatedCardNames.sideboard.length > 0
 				) && this.totalCardsToAdd === 0
 			) {
 				this.goToResultsPage()
 			}
 		},
-		processSubmission () {
+		getLinesOfLists () {
 			const allLines = this.textCardList.split('\n')
 			let sideboardBeginningIndex = -1
 			const validListEntries = {
@@ -179,22 +180,47 @@ export default {
 			}
 			return true
 		},
-		determineNewOrExistingCardNames (groupName) {
+		processCardEntries (groupName) {
+			const processedCards = {
+				main: [], sideboard: []
+			}
+
 			this.submittedCards[groupName].forEach(card => {
-				const existingCard = this.findExistingCardByName(
-					card.name,
-					{ inSideboard: groupName === 'sideboard' }
-				)
+				const repeatedCardName = processedCards[groupName]?.find(processedCard => {
+					return (
+						processedCard.name.toUpperCase() === card.name.toUpperCase() &&
+						processedCard.name2?.toUpperCase() === card.name2?.toUpperCase()
+					)
+				})
 
-				if (existingCard) {
-					card.name = existingCard.name
-					card.name2 = existingCard.name2
+				processedCards[groupName].push({
+					name: card.name,
+					name2: card.name2,
+					qty: card.qty
+				})
 
-					this.cardsToUpdate[groupName].push(card)
-				} else if (card.qty <= 0) {
-					this.cardsToAddZeroQty[groupName].push(card)
+				if (repeatedCardName) {
+					this.repeatedCardNames[groupName].push({
+						name: card.name,
+						name2: card.name2,
+						qty: card.qty
+					})
 				} else {
-					this.cardsToAdd[groupName].push(card)
+					const existingCardInDeck = this.findExistingCardByName(
+						card.name,
+						{ inSideboard: groupName === 'sideboard' }
+					)
+
+					if (existingCardInDeck) {
+						card.name = existingCardInDeck.name
+						card.name2 = existingCardInDeck.name2
+
+						this.cardsToUpdate[groupName].push(card)
+					} else if (card.qty <= 0) {
+						this.cardsToAddZeroQty[groupName].push(card)
+					} else {
+						this.cardsToAdd[groupName].push(card)
+					}
 				}
 			})
 		},

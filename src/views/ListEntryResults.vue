@@ -133,8 +133,8 @@
 		</section>
 
 		<section v-if="repeatedCardNames?.main.length + repeatedCardNames?.sideboard.length > 0">
-			<h4>❌ Repeated Cards</h4>
-			<p>The following entries are card names you’ve included more than once within the same card group. Each repeated name after its first instance within each group has been ignored.</p>
+			<h4>❌ Repeated Card Names</h4>
+			<p>You’ve entered the following card names multiple times for the same card group. Each name repeated after its first instance within its group has been ignored.</p>
 			<div class="card-lists" :class="twoColumnsClass(repeatedCardNames)">
 				<section v-if="repeatedCardNames.main.length > 0">
 					<h5>Main Group</h5>
