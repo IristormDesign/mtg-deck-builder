@@ -186,12 +186,12 @@ export default {
 			}
 
 			this.submittedCards[groupName].forEach(card => {
-				const repeatedCardName = processedCards[groupName]?.find(processedCard => {
-					return (
-						processedCard.name.toUpperCase() === card.name.toUpperCase() &&
-						processedCard.name2?.toUpperCase() === card.name2?.toUpperCase()
+				const repeatedCardName = processedCards[groupName]?.find(
+					processedCard => (
+						this.cleanedCardName(processedCard.name.toUpperCase()) === this.cleanedCardName(card.name.toUpperCase()) &&
+						this.cleanedCardName(processedCard.name2?.toUpperCase()) === this.cleanedCardName(card.name2?.toUpperCase())
 					)
-				})
+				)
 
 				processedCards[groupName].push({
 					name: card.name,
@@ -360,6 +360,8 @@ export default {
 			}
 		},
 		cleanedCardName (cardName) {
+			if (!cardName) return ''
+
 			cardName = this.removeExcessSpaces(cardName)
 			cardName = this.curlApostrophes(cardName)
 
