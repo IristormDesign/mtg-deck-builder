@@ -11,7 +11,7 @@
 
 		<section v-if="cardsToUpdate?.main.length + cardsToUpdate?.sideboard.length > 0">
 			<h4>✅ Existing Cards, Updated Quantities</h4>
-			<p>The following card names (<strong>{{ cardsToUpdate.main.length + cardsToUpdate.sideboard.length }}</strong> total distinct name<template v-if="cardsToUpdate.main.length + cardsToUpdate.sideboard.length > 1">s</template>) already exist in their respective card groups of <i>{{ deck.name }}</i>. These cards’ former quantity numbers have been replaced with the new quantity numbers you’ve set.</p>
+			<p>The following card names (<strong>{{ cardsToUpdate.main.length + cardsToUpdate.sideboard.length }}</strong> total distinct name<template v-if="cardsToUpdate.main.length + cardsToUpdate.sideboard.length > 1">s</template>) already exist in their respective card groups of <i>{{ deck.name }}</i>. These names’ former quantity numbers have been replaced with the new quantity numbers you’ve set.</p>
 
 			<ler-card-lists :cardEntryCategory="cardsToUpdate" />
 

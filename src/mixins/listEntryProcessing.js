@@ -5,9 +5,9 @@ import removeCard from '@/mixins/removeCard.js'
 import stringMethods from '@/mixins/stringMethods.js'
 
 const regex = {
-	cardEntry: /^(?:\s*)\d+\s+.+/m, // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+	cardEntry: /^(?:\s*)\d+\s+.+/m, // Any line in a multiline string beginning with a number, then a space, then any other characters. The line may begin with any whitespace characters.
 	blankLine: /^\s*$/, // A substring that contains nothing from beginning to end, except maybe whitespace characters. (Lines' newline characters have been removed from the `split()` method.)
-	blankLineBetweenCardEntries: /^\s*\d+\s+.+(\n\s*){1,}\n\s*\d+\s+.+/m, // A substring that contains at least one blank line between two card entries, where each card entry begins with a number, then a space, then any other characters. The line may begin with any number of whitespace characters.
+	blankLineAfterCardEntry: /^\s*\d+\s+.+(?:\n\s*){2,}/gm, // A substring that contains a card entry (a line beginning with a number, then a space, then any other characters) followed by at least one blank line.
 	frontFaceName: /^\d+ (.[^/]+)(?= *\/+)/, // A substring like the `regexName` pattern, except that it ends before the first "/" (slash), while the whole string does contain at least one "/".
 	name: /^\d+ (.+)/, // A substring of any characters that follow the `regexQuantity` pattern.
 	quantity: /^(\d+)(?= )/ // A substring that begins with a number and ends with a space.
@@ -62,7 +62,7 @@ export default {
 				})
 
 				return false
-			} else if (regex.blankLineBetweenCardEntries.test(this.textCardList)) {
+			} else if (this.textCardList.match(regex.blankLineAfterCardEntry).length > 1) {
 				this.$store.commit('idOfShowingDialog', {
 					id: 'extraCardGroups',
 					data: {

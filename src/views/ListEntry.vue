@@ -40,7 +40,7 @@
 					2 Vandalblast<br>
 					1 Blood Moon
 				</code></p>
-				<p>(The lines with the headings “MAIN” and “SIDEBOARD” have no effect on the process. It’s the blank line between the lists that will actually distinguish the two card groups.)</p>
+				<p>(The lines with the headings “MAIN” and “SIDEBOARD” have no effect on grouping the cards. It’s the blank line between the lists that will actually distinguish the two card groups.)</p>
 			</section>
 		</div>
 
@@ -62,8 +62,8 @@
 		</standard-dialog>
 		<standard-dialog dialogID="extraCardGroups">
 			<h4>Error: Unclear Designation of Card Groups</h4>
-			<p>Your submitted form has been rejected because it has multiple blank lines between card entries. This confuses MTG Deck Builder about which of your deck’s two card groups (either main or sideboard) you intend to add the cards to.</p>
-			<p>In the entry form, a blank line signifies the end of the main group’s card list and the beginning of the sideboard group’s. A card list can’t have any blank lines inserted within itself, or else it won’t be recognized as a single whole list.</p>
+			<p>Your submitted form has been rejected because it has multiple blank lines. This confuses MTG Deck Builder about which of your deck’s two card groups (either main or sideboard) you intend to add the cards to.</p>
+			<p>In the entry form, a blank line signifies the end of the main group’s card list and the beginning of the sideboard group’s. A card list cannot have any blank lines inserted within itself, or else it won’t be recognized as a single whole list.</p>
 			<p>To fix this error, revise your submission to have only one or zero blank lines throughout.</p>
 		</standard-dialog>
 		<standard-dialog dialogID="invalidListFormat">
