@@ -5,77 +5,24 @@
 		<section v-if="cardsSuccessfullyAdded?.main.length + cardsSuccessfullyAdded?.sideboard.length > 0">
 			<h4>✅ New Cards</h4>
 			<p>The following cards (<strong>{{ cardsSuccessfullyAdded.main.length + cardsSuccessfullyAdded.sideboard.length }}</strong> total distinct name<template v-if="cardsSuccessfullyAdded.main.length + cardsSuccessfullyAdded.sideboard.length > 1">s</template>) have been added to <i>{{ deck.name }}</i>.</p>
-			<div class="card-lists" :class="twoColumnsClass(cardsSuccessfullyAdded)">
-				<section v-if="cardsSuccessfullyAdded.main.length > 0">
-					<h5>Main Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsSuccessfullyAdded.main"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-				<section v-if="cardsSuccessfullyAdded.sideboard.length > 0">
-					<h5>Sideboard Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsSuccessfullyAdded.sideboard"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-			</div>
+
+			<ler-card-lists :cardEntryCategory="cardsSuccessfullyAdded" />
 		</section>
 
 		<section v-if="cardsToUpdate?.main.length + cardsToUpdate?.sideboard.length > 0">
 			<h4>✅ Existing Cards, Updated Quantities</h4>
 			<p>The following card names (<strong>{{ cardsToUpdate.main.length + cardsToUpdate.sideboard.length }}</strong> total distinct name<template v-if="cardsToUpdate.main.length + cardsToUpdate.sideboard.length > 1">s</template>) already exist in their respective card groups of <i>{{ deck.name }}</i>. These cards’ former quantity numbers have been replaced with the new quantity numbers you’ve set.</p>
-			<div class="card-lists" :class="twoColumnsClass(cardsToUpdate)">
-				<section v-if="cardsToUpdate.main.length > 0">
-					<h5>Main Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsToUpdate.main"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-				<section v-if="cardsToUpdate.sideboard.length > 0">
-					<h5>Sideboard Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsToUpdate.sideboard"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-			</div>
+
+			<ler-card-lists :cardEntryCategory="cardsToUpdate" />
+
 			<p v-if="this.anyCardRemoved">The card names set to a quantity of zero have been removed from your deck.</p>
 		</section>
 
 		<section v-if="cardsToAddZeroQty.main?.length + cardsToAddZeroQty.sideboard?.length > 0">
 			<h4>❌ New Zero-Quantity Cards</h4>
 			<p>The following card names have <em>not</em> been added to <i>{{ deck.name }}</i> because they’re new names set to a quantity of zero in their respective card groups. 🤔</p>
-			<div class="card-lists" :class="twoColumnsClass(cardsToAddZeroQty)">
-				<section v-if="cardsToAddZeroQty.main.length > 0">
-					<h5>Main Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsToAddZeroQty.main"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-				<section v-if="cardsToAddZeroQty.sideboard.length > 0">
-					<h5>Sideboard Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of cardsToAddZeroQty.sideboard"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-			</div>
+
+			<ler-card-lists :cardEntryCategory="cardsToAddZeroQty" />
 		</section>
 
 		<section v-if="cardRequestInvalid?.length > 0">
@@ -135,26 +82,8 @@
 		<section v-if="repeatedCardNames?.main.length + repeatedCardNames?.sideboard.length > 0">
 			<h4>❌ Repeated Card Names</h4>
 			<p>You’ve entered the following card names multiple times for the same card group. Each name repeated after its first instance within its group has been ignored.</p>
-			<div class="card-lists" :class="twoColumnsClass(repeatedCardNames)">
-				<section v-if="repeatedCardNames.main.length > 0">
-					<h5>Main Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of repeatedCardNames.main"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-				<section v-if="repeatedCardNames.sideboard.length > 0">
-					<h5>Sideboard Group</h5>
-					<ul>
-						<li
-							v-for="(card, index) of repeatedCardNames.sideboard"
-							:key="index"
-						>{{ displayFullName(card) }} (&times;{{ card.qty }})</li>
-					</ul>
-				</section>
-			</div>
+
+			<ler-card-lists :cardEntryCategory="repeatedCardNames" />
 		</section>
 
 		<div class="ok button-container">
@@ -166,9 +95,11 @@
 </template>
 
 <script>
+import LerCardLists from '@/components/deck-page/ListEntryResultsCardLists.vue'
 import getActiveDeck from '@/mixins/getActiveDeck.js'
 
 export default {
+	components: { LerCardLists },
 	mixins: [getActiveDeck],
 	props: {
 		anyCardRemoved: Boolean,
@@ -184,9 +115,6 @@ export default {
 		return {
 			showMessageCopiedList: false
 		}
-	},
-	computed: {
-
 	},
 	created () {
 		this.noDataRedirect()
@@ -210,20 +138,8 @@ export default {
 				this.$router.replace('list-entry')
 			}
 		},
-		twoColumnsClass (cardArray) {
-			if (
-				cardArray.main.length > 0 &&
-				cardArray.sideboard.length > 0
-			) {
-				return 'two-columns'
-			} else {
-				return ''
-			}
-		},
 		displayFullName (card) {
-			return card.name + (
-				card.name2 ? ` // ${card.name2}` : ''
-			)
+			return card.name + (card.name2 ? ` // ${card.name2}` : '')
 		},
 		copyFailedList (failedReason) {
 			let listText = ''
